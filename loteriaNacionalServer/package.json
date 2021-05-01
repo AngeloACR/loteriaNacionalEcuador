@@ -6,6 +6,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "async": "^2.6.0",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "compression": "^1.7.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "*",
+    "cors": "*",
+    "express": "*",
+    "express-rate-limit": "^2.11.0",
+    "helmet": "^3.9.0",
+    "jsonwebtoken": "*",
+    "mysql": "*",
+    "wcf.js": "*",
+    "nodemailer": "*",
+    "multer": "*",
+    "node-schedule": "*"
+  },
   "keywords": [
     "loteria",
     "servidor",
