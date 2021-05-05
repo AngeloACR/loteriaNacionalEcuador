@@ -1,7 +1,16 @@
+@import url("../../../sass/fonts.scss");
+
+$fuente-titulo: 'Monstserrat Bold';
+$fuente-subtitulo: 'Monstserrat SemiBold';
+$fuente-parrafo: 'Monstserrat Regular';
+$fuente-botones: 'Monstserrat SemiBold';
+
+$color-botton: #2f72b9;
+
 .navbar_contenedor {
     width: 100%;
     margin: auto;
-    background-color: gainsboro;
+    background: #f2f2f2;
 
     .navbar {
         width: 80%;
@@ -9,28 +18,32 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px;
+        /* padding: 10px; */
         .navbar_info {
             
             a {
                 padding-right: 25px;
                 text-decoration: none;
                 color: black;
+                font-family: $fuente-subtitulo;
+                font-size: 13px;
             }
         }
 
         .navbar_carrito {
             width: auto;
             display: flex;
+            align-items: center;
+            font-size: 13px;
 
-            i {
-                background-color: blue;
-                border-radius: 20px;
-                width: 30px;
-                text-align: center;
-                color: white;
-                padding: 8px;
+            p {
+                font-family: $fuente-subtitulo;
+            }
+
+            .carrito_icon {
+                width: 18px;
                 margin: auto;
+
             }
 
             .carrito {
@@ -45,12 +58,29 @@
         margin: auto;
         display: flex;
         justify-content: flex-end;
+        
 
         li {
-            margin-right: 40px;
+            margin-left: 40px;
             list-style: none;
             padding-top: 22px;
             padding-bottom: 22px;
+            font-family: $fuente-subtitulo;
+            font-size: 14px;
+
+            a {
+                text-decoration: none;
+                color: black;
+
+                
+            }
+
+            .activado {
+                background-color: $color-botton;
+                padding: 16px;
+                border-radius: 30px;
+                color: #fff;
+            }
         }
     }
 }
