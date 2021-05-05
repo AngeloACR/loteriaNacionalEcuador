@@ -1,0 +1,58 @@
+/* @import url("../../../../sass/fonts.scss"); */
+
+$fuente-titulo: 'Monstserrat Bold';
+$fuente-subtitulo: 'Monstserrat SemiBold';
+$fuente-parrafo: 'Monstserrat Regular';
+$fuente-botones: 'Monstserrat SemiBold';
+
+.selectionBox {
+  display: flex;
+  margin-top: 30px;
+
+  .lotteryBox {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: auto;
+    box-shadow:0px 0px 25px -12px #000000;
+    -moz-box-shadow:0px 0px 25px -12px #000000;
+    -webkit-box-shadow:0px 0px 25px -12px #000000;
+
+    .loteria {
+        background-color: #2f72b9;
+    }
+
+    .lotto {
+        background-color: #b51f20;
+    }
+
+    .pozo {
+        background-color: #057333;
+    }
+
+    .lotteryImg {
+      width: 70px;
+      margin: auto;
+      padding: 10px;
+    }
+
+    .lotteryButton {
+        width: 130px;
+        margin: auto;
+        padding: 10px;
+        border-radius: 30px;
+        border: none;
+        position: relative;
+        top: 20px;
+        text-decoration: none;
+        text-align: center;
+        color: #fff;
+        font-family: $fuente-botones;
+        font-size: 10px;
+    }
+
+    .active {
+        display: none;
+    }
+  }
+}

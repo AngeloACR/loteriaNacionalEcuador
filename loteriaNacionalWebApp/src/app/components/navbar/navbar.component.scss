@@ -10,7 +10,7 @@ $color-botton: #2f72b9;
 .navbar_contenedor {
     width: 100%;
     margin: auto;
-    background: #f2f2f2;
+    /* background-color: #f2f2f2 !important; */
 
     .navbar {
         width: 80%;
@@ -37,18 +37,21 @@ $color-botton: #2f72b9;
             font-size: 13px;
 
             p {
+                display: flex;
+                align-items: center;
                 font-family: $fuente-subtitulo;
             }
 
             .carrito_icon {
-                width: 18px;
+                width: 20px;
                 margin: auto;
 
             }
 
             .carrito {
-                border-left: 4px solid gray;
-                margin-left: 5px;
+                /* border-left: 4px solid gray; */
+                margin: 0 8px;
+                color: gray;
             }
         }
     }
@@ -58,8 +61,8 @@ $color-botton: #2f72b9;
         margin: auto;
         display: flex;
         justify-content: flex-end;
+        padding: 10px 0;
         
-
         li {
             margin-left: 40px;
             list-style: none;
