@@ -150,7 +150,8 @@ footer {
             color: #fff;
             background-color: $color-botton;
             font-size: 10px;
-            border: none;
+            border: 1.5px solid $color-botton;
+            cursor: pointer;
           }
         }
       }
