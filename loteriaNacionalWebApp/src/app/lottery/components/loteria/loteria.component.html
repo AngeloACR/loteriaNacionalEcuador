@@ -1,6 +1,6 @@
 <div class="contenedor_loteria">
 
-  <ul class="menuBox">
+  <!--   <ul class="menuBox">
     <li class="menuItem">Loteria Nacional</li>
     <li class="menuItem">Sorteo: <br>
       <select class="fechaItem" name="" id="">
@@ -14,10 +14,11 @@
     <li class="menuItem">Precios: <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, dolore!</p>
     </li>
     <li class="menuItem">Mi cuenta</li>
-  </ul>
+  </ul> -->
 
+  <app-sidemenu></app-sidemenu>
 
-  <div class="contendor_seleccion">
+  <!-- <div class="contendor_seleccion">
     <h3>Ingresa tu numero de la suerte</h3>
     <form action="">
       <div class="numeros_suerte">
@@ -174,7 +175,10 @@
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>
     </div>
-  </div>
+  </div> -->
+
+  <app-number-selection></app-number-selection>
+
 
   <div class="contenedor_ticket">
     <div class="logo_ticket">
@@ -183,47 +187,143 @@
     <div>
       <hr size="2px" />
     </div>
-    <div class="contenedor_informacion_ticket">
-      <div class="contenedor_informacion_ticket_izquierdo">
-        <div class="contenedor_informacion_ticket_izquierdo_logo">
-          <img src="../../../../assets/img/loteria nacional.png" alt="">
-        </div>
-        <div class="contenedor_informacion_ticket_izquierdo_barra">
-          <img src="../../../../assets/img/codigo_barr.jpg" alt="">
-        </div>
-      </div>
-      <div class="contenedor_informacion_ticket_derecho">
-        <div class="ticket_titulo">
-          <div>
-            <h3>Ticket #245</h3>
+    <div class="scroll">
+      <div class="contenedor_informacion_ticket">
+        <div class="contenedor_informacion_ticket_izquierdo">
+          <div class="contenedor_informacion_ticket_izquierdo_logo">
+            <img src="../../../../assets/img/loteria nacional.png" alt="">
           </div>
-          <div>
-            <p>Sorteo 6592</p>
-            <p>05/05/2021</p>
+          <div class="contenedor_informacion_ticket_izquierdo_barra">
+            <img src="../../../../assets/img/codigo_barr.jpg" alt="">
           </div>
         </div>
-        <hr size="2px" />
-        <div class="ticket_monto">
-          <p>200.000,00</p>
-          <p>Al entero</p>
-        </div>
-        <hr size="2px" />
-        <div class="ticket_entero_fraccion">
-          <div class="ticket_entero">
-            <h5>Entero</h5>
+        <div class="contenedor_informacion_ticket_derecho">
+          <div class="ticket_titulo">
             <div>
-              <p>1</p>
-              <p>4</p>
-              <p>5</p>
-              <p>7</p>
-              <p>4</p>
+              <h3>Ticket #245</h3>
+            </div>
+            <div>
+              <p>Sorteo 6592</p>
+              <p>05/05/2021</p>
             </div>
           </div>
-          <div class="ticket_fraccion">
-            <h5>Fraccion</h5>
+          <hr size="2px" />
+          <div class="ticket_monto">
+            <p>200.000,00</p>
+            <p>Al entero</p>
+          </div>
+          <hr size="2px" />
+          <div class="ticket_entero_fraccion">
+            <div class="ticket_entero">
+              <h5>Entero</h5>
+              <div>
+                <p>1</p>
+                <p>4</p>
+                <p>5</p>
+                <p>7</p>
+                <p>4</p>
+              </div>
+            </div>
+            <div class="ticket_fraccion">
+              <h5>Fraccion</h5>
+              <div>
+                <p>1</p>
+                <p>3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contenedor_informacion_ticket">
+        <div class="contenedor_informacion_ticket_izquierdo">
+          <div class="contenedor_informacion_ticket_izquierdo_logo">
+            <img src="../../../../assets/img/loteria nacional.png" alt="">
+          </div>
+          <div class="contenedor_informacion_ticket_izquierdo_barra">
+            <img src="../../../../assets/img/codigo_barr.jpg" alt="">
+          </div>
+        </div>
+        <div class="contenedor_informacion_ticket_derecho">
+          <div class="ticket_titulo">
             <div>
-              <p>1</p>
-              <p>3</p>
+              <h3>Ticket #245</h3>
+            </div>
+            <div>
+              <p>Sorteo 6592</p>
+              <p>05/05/2021</p>
+            </div>
+          </div>
+          <hr size="2px" />
+          <div class="ticket_monto">
+            <p>400.000,00</p>
+            <p>Al entero</p>
+          </div>
+          <hr size="2px" />
+          <div class="ticket_entero_fraccion">
+            <div class="ticket_entero">
+              <h5>Entero</h5>
+              <div>
+                <p>9</p>
+                <p>4</p>
+                <p>5</p>
+                <p>7</p>
+                <p>4</p>
+              </div>
+            </div>
+            <div class="ticket_fraccion">
+              <h5>Fraccion</h5>
+              <div>
+                <p>1</p>
+                <p>3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contenedor_informacion_ticket">
+        <div class="contenedor_informacion_ticket_izquierdo">
+          <div class="contenedor_informacion_ticket_izquierdo_logo">
+            <img src="../../../../assets/img/loteria nacional.png" alt="">
+          </div>
+          <div class="contenedor_informacion_ticket_izquierdo_barra">
+            <img src="../../../../assets/img/codigo_barr.jpg" alt="">
+          </div>
+        </div>
+        <div class="contenedor_informacion_ticket_derecho">
+          <div class="ticket_titulo">
+            <div>
+              <h3>Ticket #245</h3>
+            </div>
+            <div>
+              <p>Sorteo 6592</p>
+              <p>05/05/2021</p>
+            </div>
+          </div>
+          <hr size="2px" />
+          <div class="ticket_monto">
+            <p>200.000,00</p>
+            <p>Al entero</p>
+          </div>
+          <hr size="2px" />
+          <div class="ticket_entero_fraccion">
+            <div class="ticket_entero">
+              <h5>Entero</h5>
+              <div>
+                <p>1</p>
+                <p>4</p>
+                <p>5</p>
+                <p>7</p>
+                <p>4</p>
+              </div>
+            </div>
+            <div class="ticket_fraccion">
+              <h5>Fraccion</h5>
+              <div>
+                <p>1</p>
+                <p>3</p>
+              </div>
             </div>
           </div>
         </div>
