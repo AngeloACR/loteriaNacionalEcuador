@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Monstserrat Bold';
+    src: url('../assets/fonts/Montserrat-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Monstserrat SemiBold';
+    src: url('../assets/fonts/Montserrat-SemiBold.otf');
+}
+
+@font-face {
+    font-family: 'Monstserrat Regular';
+    src: url('../assets/fonts/Montserrat-Regular.otf');
+}
+
+
+$fuente-titulo: 'Monstserrat Bold';
+$fuente-subtitulo: 'Monstserrat SemiBold';
+$fuente-parrafo: 'Monstserrat Regular';
+$fuente-botones: 'Monstserrat SemiBold';

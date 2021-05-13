@@ -4,8 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 const routes: Routes = [
   {
     path: "lottery",
-    loadChildren: () =>
-      import("./lottery/lottery.module").then(m => m.LotteryModule)
+    loadChildren: () => import("./lottery/lottery.module").then(m => m.LotteryModule)
   },
   {
     path: "user",
