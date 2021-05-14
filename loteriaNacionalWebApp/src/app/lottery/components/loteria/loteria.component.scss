@@ -12,7 +12,7 @@ $color-botton: #2f72b9;
 
   margin-top: 80px;
 
-  /*   .menuBox {
+  .menuBox {
     margin-right: 15px;
     margin-top: 0px;
 
@@ -55,9 +55,9 @@ $color-botton: #2f72b9;
         font-size: 12px;
       }
     }
-  } */
+  }
 
-  /*   .contendor_seleccion {
+  .contendor_seleccion {
     h3 {
       font-family: $fuente-subtitulo;
       font-size: 18px;
@@ -86,6 +86,8 @@ $color-botton: #2f72b9;
       input[type="number"] {
         -moz-appearance: textfield;
       }
+
+      
 
       .activado {
         margin-left: 13px;
@@ -214,7 +216,7 @@ $color-botton: #2f72b9;
         }
       }
     }
-  } */
+  }
 
   .contenedor_ticket {
     width: 42%;
@@ -247,28 +249,28 @@ $color-botton: #2f72b9;
       height: 250px;
       overflow: auto;
 
-        &::-webkit-scrollbar {
-          -webkit-appearance: none;
-        }
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
 
-        &::-webkit-scrollbar:vertical {
-          width: 10px;
-        }
+      &::-webkit-scrollbar:vertical {
+        width: 10px;
+      }
 
-        /* &::-webkit-scrollbar-button:increment,
+      /* &::-webkit-scrollbar-button:increment,
         &::-webkit-scrollbar-button {
           display: none;
         } */
 
-        &::-webkit-scrollbar-thumb {
-          background-color: #fff;
-          border-radius: 20px;
-          border: 2px solid #fff;
-        }
+      &::-webkit-scrollbar-thumb {
+        background-color: #fff;
+        border-radius: 20px;
+        border: 2px solid #fff;
+      }
 
-        &::-webkit-scrollbar-track {
-          border-radius: 10px;
-        }
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
 
       .contenedor_informacion_ticket {
         width: 90%;
