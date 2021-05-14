@@ -1,0 +1,102 @@
+.headerBox {
+  width: 100%;
+  background-image: url("/assets/slider.png");
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+}
+
+.sideBox {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.maintextBox {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.tagTextBox {
+  color: white;
+  width: 100%;
+  font-size: 16px;
+}
+
+.headerButton {
+}
+
+.instructionsBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.instructionBox {
+  display: flex;
+  position: relative;
+  height: 30vh;
+}
+
+.upInstruction {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.firstNumber {
+  border-radius: 80px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.downInstruction {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.downNumber {
+  border-radius: 80px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.instructionTitle {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 23px;
+}
+
+.instructionText {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
