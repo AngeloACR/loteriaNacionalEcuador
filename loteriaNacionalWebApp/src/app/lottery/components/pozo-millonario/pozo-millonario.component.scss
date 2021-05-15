@@ -1,32 +1,515 @@
-$fuente-titulo: 'Monstserrat Bold';
-$fuente-subtitulo: 'Monstserrat SemiBold';
-$fuente-parrafo: 'Monstserrat Regular';
-$fuente-botones: 'Monstserrat SemiBold';
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
 
-.menuBox {
-    margin-top: 80px;
+$color-pozo: #b51f20;
+$color-pozo: #057333;
+
+$color-botton: #2f72b9;
+
+.contenedor_loteria {
+  width: 94%;
+  margin: auto;
+  display: flex;
+
+  margin-top: 80px;
+
+  .menuBox {
+    margin-right: 15px;
+    margin-top: 0px;
 
     .menuItem {
-        width: 250px;
-        height: 40px;
-        list-style: none;
-        padding: 20px 0;
+      width: 225px;
+      height: 40px;
+      list-style: none;
+      padding: 20px 10px;
+      font-family: $fuente-subtitulo;
+      background-color: #f2f2f2;
+      padding-left: 15px;
+      margin: 0 0 4px 0;
+
+      &:nth-child(1) {
+        background-color: $color-pozo;
         font-family: $fuente-subtitulo;
+        margin: 0;
+        height: 18px;
+        color: #fff;
+      }
+
+      &:nth-child(5) {
+        height: 13px;
+      }
+
+      p {
+        font-size: 10px;
+        font-family: $fuente-parrafo;
+      }
+
+      .fechaItem {
+        width: 100%;
+        margin: auto;
+        padding: 12px 0px;
+        border: none;
         background-color: #f2f2f2;
-        padding-left: 15px;
-        margin: 0 0 4px 0;
-        
-        &:nth-child(1) {
-            background-color: #057333;
+        outline: none;
+
+        font-family: $fuente-parrafo;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .contendor_seleccion {
+    width: 100%;
+
+    form {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+
+      .contenedor_formulario {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .contenedor_select {
+          width: 100%;
+          margin: auto;
+
+          h3 {
             font-family: $fuente-subtitulo;
-            margin: 0;
-            height: 18px;
-            color: #fff
+            font-size: 16px;
+          }
+
+          .select_option {
+            width: 90%;
+            display: block;
+            font-size: 16px;
+            font-family: $fuente-parrafo;
+            font-weight: 400;
+            color: #444;
+            background-color: #f2f2f2;
+            line-height: 1.3;
+            padding: 0.4em 1.4em 0.3em 0.8em;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
+            border-radius: 0.3em;
+            &:hover {
+              border-color: #888;
+            }
+            &:focus {
+              outline: none;
+            }
+          }
         }
 
-        p {
-            font-size: 10px;
-            font-family: $fuente-parrafo;
+        .numeros_suerte {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+
+          h3 {
+            font-family: $fuente-subtitulo;
+            font-size: 16px;
+          }
+
+          .numeros {
+            width: 100%;
+            margin: auto;
+
+            input[type="number"] {
+              width: 20px;
+              padding: 10px 12px;
+              margin-right: 9px;
+              text-align: center;
+              font-family: $fuente-subtitulo;
+              border: 1.5px solid #000;
+              border-radius: 4px;
+              color: #000;
+            }
+
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+            input[type="number"] {
+              -moz-appearance: textfield;
+            }
+          }
         }
+      }
+
+      .contenedor_select {
+        width: 100%;
+        margin: auto;
+        margin: 10px auto;
+
+        .select_option {
+          width: 90%;
+          display: block;
+          font-size: 16px;
+          font-family: $fuente-parrafo;
+          font-weight: 400;
+          color: #444;
+          background-color: #f2f2f2;
+          line-height: 1.3;
+          padding: 0.4em 1.4em 0.3em 0.8em;
+          box-sizing: border-box;
+          border: 1px solid #aaa;
+          box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
+          border-radius: 0.3em;
+          &:hover {
+            border-color: #888;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .tabs_animales {
+        width: 100%;
+        display: flex;
+
+        button {
+          border: none;
+          border-radius: 20px;
+          font-family: $fuente-subtitulo;
+          font-size: 11px;
+          background-color: #f2f2f2;
+          color: rgba(0, 0, 0, 0.726);
+          padding: 10px 35px;
+          margin: 8px 12px 15px 0px;
+        }
+      }
+
+      .boton_cartones {
+        width: 100%;
+        margin: 10px auto;
+        display: flex;
+        justify-content: flex-start;
+
+        button {
+          width: 220px;
+          background-color: #fff;
+          padding: 20px 25px;
+          border-radius: 30px;
+          border: 1px solid $color-pozo;
+          color: #fff;
+          font-family: $fuente-botones;
+          background-color: $color-pozo;
+          font-size: 13px;
+          cursor: pointer;
+        }
+      }
     }
+
+    p {
+      font-family: $fuente-botones;
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      margin: auto;
+
+      tbody {
+        width: auto;
+        margin: auto;
+
+        tr {
+          display: flex;
+
+          td {
+            width: 100%;
+            margin: 3px;
+            position: relative;
+
+            background-color: #f2f2f2;
+            text-align: center;
+            border-radius: 10px;
+
+            input[type="checkbox"] {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              opacity: 0;
+            }
+
+            input[type="checkbox"]:checked ~ div {
+              background-color: $color-pozo;
+              border-radius: 10px;
+              color: #fff !important;
+              transition: background-color 0.3s ease-out;
+              opacity: 1;
+            }
+
+            .contenedor_seleccion_numero {
+              width: 100%;
+              height: 200px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              .imagen_animal {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: auto 8px;
+
+                img {
+                  width: 70px;
+                  height: 70px;
+                  border-radius: 30px;
+                }
+              }
+
+              .numeros {
+                display: flex;
+                flex-wrap: wrap;
+
+                p {
+                  display: block;
+                  padding: 8px;
+                  background-color: #fff;
+                  color: #444;
+                  margin-right: 4px;
+                }
+              }
+            }
+          }
+        }
+      }
+      hr {
+        width: 97%;
+        margin: auto;
+        margin: 15px auto;
+      }
+    }
+
+    .contenedor_botones {
+      width: 100%;
+      display: flex;
+      margin: auto;
+      justify-content: space-between;
+
+      .boton {
+        padding: 8px 10px;
+        border: none;
+        background-color: $color-pozo;
+        font-family: $fuente-parrafo;
+        color: #fff;
+        border-radius: 50px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .boton_boleto {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 25px;
+      margin-bottom: 20px;
+
+      button {
+        width: 220px;
+        background-color: #fff;
+        padding: 20px 17px;
+        border-radius: 30px;
+        border: 1px solid $color-pozo;
+        color: $color-pozo;
+        font-family: $fuente-titulo;
+        font-size: 13px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-pozo;
+          border: 1px solid transparent;
+          color: #fff;
+          transition: background-color 0.4s ease;
+        }
+      }
+    }
+  }
+
+  .contenedor_ticket {
+    width: 50%;
+    height: 530px;
+    margin-left: 8px;
+    border-radius: 30px;
+    background-color: $color-pozo;
+
+    .logo_ticket {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 70%;
+        height: 180px;
+        margin: auto;
+      }
+    }
+
+    hr {
+      width: 90%;
+      margin: auto;
+      color: #fff;
+    }
+
+    .scroll {
+      height: 250px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
+
+      &::-webkit-scrollbar:vertical {
+        width: 10px;
+      }
+
+      /* &::-webkit-scrollbar-button:increment,
+        &::-webkit-scrollbar-button {
+          display: none;
+        } */
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #fff;
+        border-radius: 20px;
+        border: 2px solid #fff;
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
+
+      .contenedor_informacion_ticket {
+        width: 95%;
+        margin: auto;
+        display: flex;
+        margin: 10px auto;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        .contenedor_numeros {
+          display: flex;
+          flex-direction: column;
+
+          .arriba {
+            width: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #c3c3c3;
+
+            h3 {
+                font-family: $fuente-subtitulo;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .numeros {
+                width: 100%;
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: space-evenly;
+
+              p {
+                display: flex;
+                margin: 3px;
+                justify-content: center;
+                align-items: center;
+                padding: 8px;
+                background-color: #fff;
+                color: #444;
+                margin-right: 4px;
+                font-family: $fuente-parrafo;
+                font-size: 13px;
+              }
+            }
+          }
+
+          .abajo {
+            width: 100%;
+            margin: auto;
+            display: flex;
+
+            .contenedor_logo {
+                margin-right: 15px;
+                img {
+                  width: auto;
+                  height: 70px;
+                }
+              }
+            .contenedor_info {
+                display: flex;
+
+                .contenido {
+                    width: 100%;
+                    margin: auto;
+                    background-color: #fff;
+                    padding: 5px 30px;
+
+                    img {
+                        width: 16px;
+                        margin: auto;
+                    }
+                }
+            }
+          }
+        }
+        .contenedor_codigo_barra {
+          display: flex;
+          width: 25%;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .boton_comprar {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        width: 90%;
+        padding: 20px 30px;
+        background-color: $color-pozo;
+        border: 1px solid #fff;
+        border-radius: 40px;
+        margin: 10px auto;
+        font-family: $fuente-botones;
+        color: #fff;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background-color 0.5s ease;
+
+        &:hover {
+          background-color: #fff;
+          color: $color-pozo;
+        }
+      }
+    }
+  }
 }
