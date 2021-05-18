@@ -6,11 +6,9 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-botton: #2f72b9;
 
 .contenedor_loteria {
-  width: 86%;
-  margin: auto;
+  width: 100%;
   display: flex;
-
-  margin-top: 80px;
+  justify-content: space-evenly;
 
   .menuBox {
     margin-right: 15px;
@@ -65,16 +63,23 @@ $color-botton: #2f72b9;
 
     .numeros_suerte {
       display: flex;
+      align-items: center;
+      flex-wrap: wrap;
 
       input[type="number"] {
-        width: 20px;
-        padding: 10px 12px;
-        margin-right: 9px;
+        width: 6%;
+        padding: 8px 6px;
+        margin: 0 5px 0 5px;
         text-align: center;
         font-family: $fuente-subtitulo;
         border: 1.5px solid #000;
-        border-radius: 4px;
+        border-radius: 2px;
         color: #000;
+        -moz-appearance: textfield;
+
+        &:nth-child(1) {
+          margin: 0 5px 0 0;
+        }
       }
 
       input[type="number"]::-webkit-inner-spin-button,
@@ -83,22 +88,22 @@ $color-botton: #2f72b9;
         margin: 0;
       }
 
-      input[type="number"] {
-        -moz-appearance: textfield;
-      }
-
-      
-
-      .activado {
-        margin-left: 13px;
+      button {
         background-color: $color-botton;
-        padding: 16px;
+        padding: 10px 15px;
         border-radius: 30px;
-        border: none;
+        border: 1px solid $color-botton;
+        margin-left: 10px;
         color: #fff;
         font-family: $fuente-botones;
         font-size: 11px;
         cursor: pointer;
+
+        &:hover {
+          background-color: white;
+          color: $color-botton;
+          transition: background-color 0.4s ease;
+        }
       }
     }
 
@@ -131,7 +136,7 @@ $color-botton: #2f72b9;
 
               background-color: #f2f2f2;
               text-align: center;
-              border-radius: 10px;
+              border-radius: 4px;
 
               input[type="checkbox"] {
                 width: 100%;
@@ -177,14 +182,32 @@ $color-botton: #2f72b9;
         justify-content: space-between;
 
         .boton {
-          padding: 8px 10px;
-          border: none;
-          background-color: $color-botton;
+          width: 3vw;
+          height: 3vw;
+          border: 1px solid $color-botton;
           font-family: $fuente-parrafo;
+          background-color: $color-botton;
           color: #fff;
           border-radius: 50px;
           font-size: 20px;
           cursor: pointer;
+
+          &:nth-child(1) i {
+            padding: 3px 3px 0 0;
+          }
+          &:nth-child(2) i {
+            padding: 3px 0px 0 3px;
+          }
+
+          &:hover {
+            background-color: white;
+            color: $color-botton;
+            transition: background-color 0.4s ease;
+          }
+
+          &:active {
+            border: none;
+          }
         }
       }
     }
@@ -219,9 +242,9 @@ $color-botton: #2f72b9;
   }
 
   .contenedor_ticket {
-    width: 42%;
-    height: 440px;
-    margin-left: 8px;
+    width: 40%;
+    height: 60%;
+    margin-left: 10px;
     border-radius: 30px;
     background-color: $color-botton;
 
@@ -232,8 +255,7 @@ $color-botton: #2f72b9;
       justify-content: center;
 
       img {
-        width: 70%;
-        height: 80px;
+        width: 120px;
         margin: auto;
         margin: 15px auto;
       }
@@ -286,9 +308,6 @@ $color-botton: #2f72b9;
           padding: 10px 8px;
 
           .contenedor_informacion_ticket_izquierdo_logo {
-            img {
-              width: 40px;
-            }
           }
 
           .contenedor_informacion_ticket_izquierdo_barra {
@@ -306,9 +325,12 @@ $color-botton: #2f72b9;
           .ticket_titulo {
             display: flex;
             margin: auto;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
 
+            img {
+              width: 40px;
+            }
             h3 {
               font-family: $fuente-titulo;
               font-size: 16px;
