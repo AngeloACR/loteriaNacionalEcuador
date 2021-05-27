@@ -1,61 +1,71 @@
 /* @import url("../../../../sass/fonts.scss"); */
 
-$fuente-titulo: 'Monstserrat Bold';
-$fuente-subtitulo: 'Monstserrat SemiBold';
-$fuente-parrafo: 'Monstserrat Regular';
-$fuente-botones: 'Monstserrat SemiBold';
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
 
-.selectionBox {
-  width: 80%;
-  margin: auto;
-  margin-top: 30px;
+.lotteryBox {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 27vw;
+  height: 27vw;
+  padding: 10px;
+  /* margin: auto; */
+  box-shadow: 0px 0px 25px -12px #000000;
+  -moz-box-shadow: 0px 0px 25px -12px #000000;
+  -webkit-box-shadow: 0px 0px 25px -12px #000000;
 
-  .lotteryBox {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    /* margin: auto; */
-    margin-right: 20px;
-    box-shadow:0px 0px 25px -12px #000000;
-    -moz-box-shadow:0px 0px 25px -12px #000000;
-    -webkit-box-shadow:0px 0px 25px -12px #000000;
+  .loteria {
+    background-color: #2f72b9;
+    border: 3px solid #2f72b9;
+  }
 
-    .loteria {
-        background-color: #2f72b9;
-    }
+  .lotto {
+    background-color: #b51f20;
+    border: 3px solid #b51f20;
+  }
 
-    .lotto {
-        background-color: #b51f20;
-    }
+  .pozo {
+    background-color: #057333;
+    border: 3px solid #057333;
+  }
 
-    .pozo {
-        background-color: #057333;
-    }
+  .loteria:hover {
+    background-color: white;
+    color: #2f72b9;
+  }
 
-    .lotteryImg {
-      width: 70px;
-      margin: auto;
-      padding: 10px;
-    }
+  .lotto:hover {
+    background-color: white;
+    color: #b51f20;
+  }
 
-    .lotteryButton {
-        width: 130px;
-        margin: auto;
-        padding: 10px;
-        border-radius: 30px;
-        border: none;
-        position: relative;
-        top: 20px;
-        text-decoration: none;
-        text-align: center;
-        color: #fff;
-        font-family: $fuente-botones;
-        font-size: 10px;
-    }
+  .pozo:hover {
+    background-color: white;
+    color: #057333;
+  }
 
-    .active {
-        display: none;
-    }
+  .lotteryImg {
+    width: 35%;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .lotteryButton {
+    padding: 10px 40px 10px 40px;
+    border-radius: 30px;
+    position: relative;
+    top: 20px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-family: $fuente-botones;
+    font-size: 10px;
+  }
+
+  .active {
+    display: none;
   }
 }

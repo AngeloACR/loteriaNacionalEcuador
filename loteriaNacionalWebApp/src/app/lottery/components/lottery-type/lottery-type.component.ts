@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lottery-type',
@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lottery-type.component.scss']
 })
 export class LotteryTypeComponent implements OnInit {
-
+  @Input() image: String; 
+  @Input() link: String;
+  @Input() name: String;
+  @Input() pozo: String;
   constructor() { }
 
   ngOnInit() {

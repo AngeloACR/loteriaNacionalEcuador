@@ -1,12 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url("./sass/_fonts.scss");
 
-
-$fuente-titulo: 'Monstserrat Bold';
-$fuente-subtitulo: 'Monstserrat SemiBold';
-$fuente-parrafo: 'Monstserrat Regular';
-$fuente-botones: 'Monstserrat SemiBold';
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
 
 /*
 * {
@@ -19,3 +17,13 @@ body {
     margin: 0;
     padding: 0;
 } */
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  outline: none;
+}

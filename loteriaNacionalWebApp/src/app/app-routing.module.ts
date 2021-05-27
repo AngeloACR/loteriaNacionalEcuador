@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import("./user/user.module").then(m => m.UserModule)
   },
   {
-    path: "landing",
+    path: "",
     loadChildren: () =>
       import("./landing/landing.module").then(m => m.LandingModule)
   },
@@ -19,7 +19,8 @@ const routes: Routes = [
     path: "payment",
     loadChildren: () =>
       import("./payment/payment.module").then(m => m.PaymentModule)
-  }
+  },
+  { path: 'inquiry', loadChildren: () => import('./inquiry/inquiry.module').then(m => m.InquiryModule) }
 ];
 
 @NgModule({
