@@ -1,0 +1,90 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-botton: #2f72b9;
+
+.contenedor_ticket {
+  width: 100%;
+  height: 400px;
+  border-radius: 30px;
+  background-color: $color-botton;
+
+  .logo_ticket {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 120px;
+      margin: auto;
+      margin: 15px auto;
+    }
+  }
+
+  hr {
+    width: 90%;
+    margin: auto;
+    color: #fff;
+  }
+
+  .scroll {
+    height: 250px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar:vertical {
+      width: 10px;
+    }
+
+    /* &::-webkit-scrollbar-button:increment,
+        &::-webkit-scrollbar-button {
+          display: none;
+        } */
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #fff;
+      border-radius: 20px;
+      border: 2px solid #fff;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+  }
+
+  .boton_comprar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      width: 90%;
+      padding: 20px 30px;
+      background-color: $color-botton;
+      border: 1px solid #fff;
+      border-radius: 40px;
+      margin: 10px auto;
+      font-family: $fuente-botones;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+
+      &:hover {
+        background-color: #fff;
+        color: $color-botton;
+      }
+    }
+  }
+}

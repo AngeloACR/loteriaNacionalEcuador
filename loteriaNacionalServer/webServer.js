@@ -9,10 +9,6 @@ const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const app = express();
 
-const auth = require('./users/routes/auth');
-
-const lessons = require('./lessons/routes/lessons');
-const notes = require('./notes/routes/notes');
 
 module.exports.init = function (folder, thePath, port) {
     app.set('port', (port));

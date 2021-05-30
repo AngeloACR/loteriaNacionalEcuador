@@ -8,18 +8,16 @@ $color-lotto: #b51f20;
 $color-botton: #2f72b9;
 
 .contenedor_loteria {
-  width: 86%;
-  margin: auto;
+  width: 100%;
   display: flex;
-
-  margin-top: 80px;
+  justify-content: space-evenly;
 
   .menuBox {
-    margin-right: 15px;
-    margin-top: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 20%;
 
     .menuItem {
-      width: 225px;
       height: 40px;
       list-style: none;
       padding: 20px 10px;
@@ -60,6 +58,7 @@ $color-botton: #2f72b9;
   }
 
   .contendor_seleccion {
+    width: 50%;
     h3 {
       font-family: $fuente-subtitulo;
       font-size: 18px;
@@ -67,16 +66,23 @@ $color-botton: #2f72b9;
 
     .numeros_suerte {
       display: flex;
+      align-items: center;
+      flex-wrap: wrap;
 
       input[type="number"] {
-        width: 20px;
-        padding: 10px 12px;
-        margin-right: 9px;
+        width: 6%;
+        padding: 8px 6px;
+        margin: 0 5px 0 5px;
         text-align: center;
         font-family: $fuente-subtitulo;
         border: 1.5px solid #000;
         border-radius: 4px;
         color: #000;
+        -moz-appearance: textfield;
+
+        &:nth-child(1) {
+          margin: 0 5px 0 0;
+        }
       }
 
       input[type="number"]::-webkit-inner-spin-button,
@@ -85,12 +91,8 @@ $color-botton: #2f72b9;
         margin: 0;
       }
 
-      input[type="number"] {
-        -moz-appearance: textfield;
-      }
-
       .select_option {
-        width: 100%;
+        width: 40%;
         display: block;
         font-size: 16px;
         font-family: $fuente-parrafo;
@@ -115,16 +117,22 @@ $color-botton: #2f72b9;
         } */
       }
 
-      .activado {
-        margin-left: 13px;
+      button {
         background-color: $color-lotto;
-        padding: 16px;
+        padding: 10px 6%;
         border-radius: 30px;
-        border: none;
+        border: 1px solid $color-lotto;
         color: #fff;
         font-family: $fuente-botones;
         font-size: 11px;
+        margin-top: 10px;
         cursor: pointer;
+
+        &:hover {
+          background-color: white;
+          color: $color-lotto;
+          transition: background-color 0.4s ease;
+        }
       }
     }
 
@@ -157,7 +165,7 @@ $color-botton: #2f72b9;
 
               background-color: #f2f2f2;
               text-align: center;
-              border-radius: 10px;
+              border-radius: 4px;
 
               input[type="checkbox"] {
                 width: 100%;
@@ -203,14 +211,32 @@ $color-botton: #2f72b9;
         justify-content: space-between;
 
         .boton {
-          padding: 8px 10px;
-          border: none;
-          background-color: $color-lotto;
+          width: 3vw;
+          height: 3vw;
+          border: 1px solid $color-lotto;
           font-family: $fuente-parrafo;
+          background-color: $color-lotto;
           color: #fff;
           border-radius: 50px;
           font-size: 20px;
           cursor: pointer;
+
+          &:nth-child(1) i {
+            padding: 3px 3px 0 0;
+          }
+          &:nth-child(2) i {
+            padding: 3px 0px 0 3px;
+          }
+
+          &:hover {
+            background-color: white;
+            color: $color-lotto;
+            transition: background-color 0.4s ease;
+          }
+
+          &:active {
+            border: none;
+          }
         }
       }
     }
@@ -245,9 +271,9 @@ $color-botton: #2f72b9;
   }
 
   .contenedor_ticket {
-    width: 34%;
-    height: 440px;
-    margin-left: 8px;
+    width: 25%;
+    height: 60%;
+    margin-left: 10px;
     border-radius: 30px;
     background-color: $color-lotto;
 
@@ -258,8 +284,7 @@ $color-botton: #2f72b9;
       justify-content: center;
 
       img {
-        width: 70%;
-        height: 80px;
+        width: 120px;
         margin: auto;
         margin: 15px auto;
       }
@@ -274,6 +299,9 @@ $color-botton: #2f72b9;
     .scroll {
       height: 250px;
       overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       &::-webkit-scrollbar {
         -webkit-appearance: none;
@@ -299,10 +327,9 @@ $color-botton: #2f72b9;
       }
 
       .contenedor_informacion_ticket {
-        width: 95%;
-        margin: auto;
+        width: 90%;
         /* display: flex; */
-        margin: 10px auto;
+        margin: 10px 0;
         background-color: #f2f2f2;
         border-radius: 5px;
         box-sizing: border-box;
@@ -315,15 +342,15 @@ $color-botton: #2f72b9;
           padding: 9px;
 
           .contenedor_logo {
-            margin-right: 15px;
+            width: 50%;
             img {
-              width: 120px;
-              height: 50px;
+              width: 80%;
             }
           }
 
           .contenedor_info {
             display: flex;
+            width: 50%;
             padding: auto 10px;
             flex-direction: column;
 

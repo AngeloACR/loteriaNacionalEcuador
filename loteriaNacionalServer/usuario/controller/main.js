@@ -1,18 +1,13 @@
 const User = require('../model/user');
+const Lottery = require('../../loterianacional/controller/main');
 
 module.exports.logUser = async (req, res) => {
     try {
-        const email = req.body.email;
-        const password = req.body.password;
-        let sess = req.session;
-        let auth = await User.authUser(email, password);
-        console.log(auth);
-        if (auth.status) {
-            sess.isLogged = auth.auth;
-            sess.jwToken = auth.token;
-        } else {
-        }
-        res.status(200).json(auth);
+        console.log('En el controlador de usuarios');
+        let response = await Lottery.autenticarUsuario();
+        console.log('Devolviendo el response');
+        console.log(response);
+        res.status(200).json(response);
     } catch (e) {
         res.status(400).json(e.toString());
     }
