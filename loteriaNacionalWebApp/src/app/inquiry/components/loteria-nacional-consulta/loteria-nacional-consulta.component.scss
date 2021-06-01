@@ -1,0 +1,189 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-loteria: #2f72b9;
+
+%input {
+  padding: 13px 0px;
+  padding-left: 6px;
+  color: #977474;
+  background-color: #c3c3c3;
+  border: none;
+  border-left: 4px solid $color-loteria;
+}
+
+
+.container {
+  width: 100%;
+  margin: 20px auto;
+
+  display: grid;
+  grid-template-columns: 71% 1fr;
+  gap: 30px;
+
+  .container_consulta {
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    border-radius: 20px;
+    border: 5px solid $color-loteria;
+
+    .boletin_oficial {
+      width: 100%;
+      height: 65px;
+      display: flex;
+      margin: auto;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $color-loteria;
+      border-radius: 15px 15px 0 0;
+
+      h1 {
+        font-size: 17px;
+        color: #fff;
+        font-family: $fuente-parrafo;
+        margin-left: 20px;
+      }
+    }
+
+    .cuerpo_boletin {
+      width: 100%;
+
+      grid-template-rows: 30% 40% 30%;
+
+      .explicacion {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        .content_explicacion {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+
+          .icono {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid $color-loteria;
+            padding: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 30px;
+            margin-right: 12px;
+          }
+
+          p:nth-child(2) {
+            width: 60%;
+            font-size: 12px;
+            color: #c3c3c3;
+          }
+        }
+      }
+
+      .separador {
+        width: 80%;
+        margin: auto;
+      }
+
+      .consulta_boleto {
+        width: 90%;
+        margin: 30px auto;
+
+        color: #c3c3c3;
+
+        .formulario {
+          display: grid;
+          grid-template-columns: repeat(2, 50%);
+          gap: 15px;
+
+          .input {
+            display: grid;
+            grid-template-rows: repeat(2, 50%);
+
+            gap: 10px;
+
+            .input_content {
+              display: flex;
+              flex-direction: column;
+
+              label {
+                margin-bottom: 10px;
+                font-size: 15px;
+              }
+
+              input[type="text"] {
+                @extend %input;
+                padding-top: 14px;
+                outline: none
+
+              }
+
+              input[type="date"] {
+                @extend %input;
+                padding-top: 14px;
+                padding-right: 8px;
+                outline: none
+
+              }
+
+              select {
+                @extend %input;
+                color: #977474;
+                outline: none;
+              }
+            }
+
+            p {
+              font-size: 12px;
+            }
+
+            button {
+              background-color: $color-loteria;
+              border: none;
+              border-radius: 30px;
+              color: #fff;
+              font-family: $fuente-parrafo;
+              margin-top: 25px;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      .espacio {
+        margin-bottom: 100px;
+      }
+
+      .consulta_fecha {
+        width: 100%;
+
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(3, 1fr);
+      }
+    }
+
+    .pie_boletin {
+      width: 100%;
+      height: 35px;
+      background-color: $color-loteria;
+      border-radius: 0 0 15px 15px;
+    }
+  }
+
+  .container_ticket {
+    width: 100%;
+    margin: 0px;
+  }
+}

@@ -1,15 +1,15 @@
 <div class="contenedor_ticket">
-    <div class="logo_ticket">
-        <img [src]="logo" alt="">
-    </div>
-    <div>
-        <hr size="2px" />
-    </div>
-    <div class="scroll">
-        <app-loteria-nacional-ticket *ngFor="let ticket of tickets" [ticketIndex]="ticket.ticketIndes"
-            [date]="ticket.date" [fraccion]="ticket.fraccion" [ticketNumbers]="ticket.ticketNumbers"
-            [sorteoNumber]="ticketsorteoNumber"></app-loteria-nacional-ticket>
-        <!--       <div class="contenedor_informacion_ticket">
+  <div class="logo_ticket">
+    <img [src]="logo" alt="">
+  </div>
+  <div>
+    <hr size="2px" />
+  </div>
+  <div class="scroll">
+    <app-loteria-nacional-ticket *ngFor="let ticket of tickets" [ticketIndex]="ticket.ticketIndes" [date]="ticket.date"
+      [fraccion]="ticket.fraccion" [ticketNumbers]="ticket.ticketNumbers" [sorteoNumber]="ticketsorteoNumber">
+    </app-loteria-nacional-ticket>
+    <!--       <div class="contenedor_informacion_ticket">
             <div class="contenedor_informacion_ticket_derecho">
     
               <div class="ticket_titulo">
@@ -131,11 +131,11 @@
               </div>
             </div>
           </div> -->
-    </div>
-    <div>
-        <hr size="2px" />
-    </div>
-    <div class="boton_comprar">
-        <button>COMPRAR</button>
-    </div>
+  </div>
+  <div>
+    <hr size="2px" />
+  </div>
+  <div class="boton_comprar">
+    <button>COMPRAR</button>
+  </div>
 </div>
