@@ -22,7 +22,9 @@
     "wcf.js": "*",
     "nodemailer": "*",
     "multer": "*",
-    "node-schedule": "*"
+    "soap": "*",
+    "node-schedule": "*",
+    "xml2js": "*"
   },
   "keywords": [
     "loteria",
