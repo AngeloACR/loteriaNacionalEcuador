@@ -19,13 +19,13 @@ module.exports.autenticarUsuario = async () => {
       <![CDATA[
         <mt>
             <c>
-          <aplicacion>17</aplicacion>
+          <aplicacion>25</aplicacion>
           <usuario>sitiowebprep</usuario>
           <clave>12345678</clave>
           <maquina>192.168.1.13</maquina>
           <codError>0</codError>
           <msgError />
-          <medio>MedioId</medio>
+          <medio>17</medio>
           <operacion>1234568891</operacion>
             </c>
         </mt>
