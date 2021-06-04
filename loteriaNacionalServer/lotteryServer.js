@@ -9,39 +9,39 @@ const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const app = express();
 
-const tickets = require('./lottery/routes/tickets');
+const inquiry = require('./lottery/routes/inquiry');
 
 module.exports.init = function (port) {
-    app.set('port', (port));
+  app.set('port', (port));
 
-    // Middlewares initialization
+  // Middlewares initialization
 
-    // app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc) 
-    /* 
-    var limiter = new RateLimit({
-      windowMs: 15*60*1000, // 15 minutes 
-      max: 50, // limit each IP to 50 requests per windowMs 
-      delayMs: 0 // disable delaying - full speed until the max limit is reached 
-    });
-     
-    //  apply to all requests 
-    app.use(limiter);*/
+  // app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc) 
+  /* 
+  var limiter = new RateLimit({
+    windowMs: 15*60*1000, // 15 minutes 
+    max: 50, // limit each IP to 50 requests per windowMs 
+    delayMs: 0 // disable delaying - full speed until the max limit is reached 
+  });
+   
+  //  apply to all requests 
+  app.use(limiter);*/
 
-    //App compression
-    app.use(compression());
+  //App compression
+  app.use(compression());
 
-    // Cors Middleware
-    app.use(cors());
+  // Cors Middleware
+  app.use(cors());
 
-    // Body Parser Middleware
-    app.use(bodyParser.json());
+  // Body Parser Middleware
+  app.use(bodyParser.json());
 
-    app.use(helmet());
+  app.use(helmet());
 
 
-    //Adding routes
+  //Adding routes
 
-    app.use('/tickets', tickets);
+  app.use('/inquiry', inquiry);
 
-    return app
+  return app
 }
