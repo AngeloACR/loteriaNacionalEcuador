@@ -25,7 +25,9 @@ module.exports.searchLottoWinner = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarBoletoGanador(2, 5447, 306589, token);
+        let sorteo = req.sorteo;
+        let combinacion = req.combinacion;
+        response = await Lottery.consultarBoletoGanador(2, sorteo, combinacion, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -37,7 +39,10 @@ module.exports.searchLoteriaWinner = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarBoletoGanador(1, 5447, 306589, token);
+        let sorteo = req.body.sorteo;
+        let combinacion = req.body.combinacion[0];
+        console.log(combinacion)
+        response = await Lottery.consultarBoletoGanador(1, sorteo, combinacion, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -49,7 +54,9 @@ module.exports.searchPozoWinner = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarBoletoGanador(5, 5447, 306589, token);
+        let sorteo = req.sorteo;
+        let combinacion = req.combinacion;
+        response = await Lottery.consultarBoletoGanador(5, sorteo, combinacion, token);
 
         res.status(200).json(response);
     } catch (e) {

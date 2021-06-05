@@ -145,7 +145,7 @@ module.exports.consultarBoletos = async (tipoLoteria, token) => {
         </c>
         <i>
         <MedioId>${medioId}</MedioId>
-      <Cantidad>50</Cantidad>          
+      <Cantidad>10</Cantidad>          
       <JuegoId>${tipoLoteria}</JuegoId>
         </i>
     </mt>

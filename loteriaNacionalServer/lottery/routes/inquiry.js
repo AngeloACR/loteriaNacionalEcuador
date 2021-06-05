@@ -2,11 +2,11 @@ const express = require('express');
 const lotteryRouter = express.Router();
 const LotteryController = require('../controller/main');
 
-lotteryRouter.get('/loteriaGanador', LotteryController.searchLoteriaWinner);
+lotteryRouter.post('/loteriaGanador', LotteryController.searchLoteriaWinner);
 
-lotteryRouter.get('/lottoGanador', LotteryController.searchLottoWinner);
+lotteryRouter.post('/lottoGanador', LotteryController.searchLottoWinner);
 
-lotteryRouter.get('/pozoGanador', LotteryController.searchPozoWinner);
+lotteryRouter.post('/pozoGanador', LotteryController.searchPozoWinner);
 
 lotteryRouter.get('/pozoConsulta', LotteryController.searchPozoConsulta);
 
