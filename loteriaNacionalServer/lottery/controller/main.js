@@ -96,7 +96,7 @@ module.exports.searchPozoConsulta = async (req, res) => {
 
 
 
-module.exports.searchLottoSorteos = async (req, res) => {
+module.exports.searchLottoSorteosJugados = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
@@ -108,7 +108,7 @@ module.exports.searchLottoSorteos = async (req, res) => {
     }
 };
 
-module.exports.searchLoteriaSorteos = async (req, res) => {
+module.exports.searchLoteriaSorteosJugados = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
@@ -120,7 +120,7 @@ module.exports.searchLoteriaSorteos = async (req, res) => {
     }
 };
 
-module.exports.searchPozoSorteos = async (req, res) => {
+module.exports.searchPozoSorteosJugados = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;

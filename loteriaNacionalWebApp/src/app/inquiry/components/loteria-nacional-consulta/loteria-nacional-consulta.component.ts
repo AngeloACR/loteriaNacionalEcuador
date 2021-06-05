@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+
+import { InquiryService } from "../../services/inquiry.service";
 
 @Component({
-  selector: 'app-loteria-nacional-consulta',
-  templateUrl: './loteria-nacional-consulta.component.html',
-  styleUrls: ['./loteria-nacional-consulta.component.scss']
+  selector: "app-loteria-nacional-consulta",
+  templateUrl: "./loteria-nacional-consulta.component.html",
+  styleUrls: ["./loteria-nacional-consulta.component.scss"]
 })
 export class LoteriaNacionalConsultaComponent implements OnInit {
+  sorteosJugados: any;
 
-  constructor() { }
+  constructor(private inquiryService: InquiryService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    console.log("En la consulta de loteria");
+    this.sorteosJugados = await this.inquiryService.recuperarSorteosJugados(1);
   }
-
 }

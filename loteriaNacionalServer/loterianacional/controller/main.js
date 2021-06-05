@@ -199,7 +199,7 @@ module.exports.consultarSorteos = async (tipoLoteria, token) => {
         <operacion>1234567890</operacion>
           </c>
           <i>
-        <MedioId>17</MedioId>
+        <MedioId>${medioId}</MedioId>
         <JuegoId>${tipoLoteria}</JuegoId>
           </i>
       </mt>
@@ -217,7 +217,10 @@ module.exports.consultarSorteos = async (tipoLoteria, token) => {
         let errorCode = parseInt(data.mt.c[0].codError[0]);
         console.log(errorCode)
         if (!errorCode) {
-          let response = data.mt;
+          let aux = data.mt.rs[0].r[0].Row;
+          let response = aux.map(sorteo => {
+            return sorteo.$;
+          });
           resolve(response);
         } else {
           reject(data.mt.c[0].msgError[0])

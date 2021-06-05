@@ -4,6 +4,10 @@ import { BoletinLoteriaNacionalComponent } from "./containers/boletin-loteria-na
 import { BoletinLottoComponent } from "./containers/boletin-lotto/boletin-lotto.component";
 import { BoletinPozoMillonarioComponent } from "./containers/boletin-pozo-millonario/boletin-pozo-millonario.component";
 
+import { ConsultaLottoComponent } from "./containers/consulta-lotto/consulta-lotto.component";
+import { ConsultaPozoMillonarioComponent } from "./containers/consulta-pozo-millonario/consulta-pozo-millonario.component";
+import { ConsultaLoteriaNacionalComponent } from "./containers/consulta-loteria-nacional/consulta-loteria-nacional.component";
+
 import { InquiryComponent } from "./inquiry.component";
 
 const routes: Routes = [
@@ -11,12 +15,18 @@ const routes: Routes = [
     path: "",
     component: InquiryComponent,
     children: [
-      { path: "lottery_consulta", component: BoletinLoteriaNacionalComponent },
       { path: "inquiry", component: InquiryComponent },
-      { path: "lotto_consulta", component: BoletinLottoComponent },
+      { path: "lottery_boletin", component: BoletinLoteriaNacionalComponent },
+      { path: "lotto_boletin", component: BoletinLottoComponent },
+      {
+        path: "pozo_millonario_boletin",
+        component: BoletinPozoMillonarioComponent
+      },
+      { path: "lottery_consulta", component: ConsultaLoteriaNacionalComponent },
+      { path: "lotto_consulta", component: ConsultaLottoComponent },
       {
         path: "pozo_millonario_consulta",
-        component: BoletinPozoMillonarioComponent
+        component: ConsultaPozoMillonarioComponent
       }
     ]
   }

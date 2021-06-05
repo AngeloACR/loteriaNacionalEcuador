@@ -59,15 +59,14 @@
         <h3 class="">Consulta por Boletin de Resultados</h3>
 
         <form action="" class="formulario">
-          <div class="input">
-            <div class="input_content">
-              <label for="">Selecciona el numero del sorteo:</label>
-              <select name="" id="" placeholder="N° 6595 - 10/may/2021 18:30:00">
-                <option value="">N° 6595 - 10/may/2021 18:30:00</option>
-                <option value="">N° 6596 - 10/may/2021 19:30:00</option>
-                <option value="">N° 6597 - 10/may/2021 20:30:00</option>
-              </select>
-            </div>
+          <div class="input">            <div class="input_content">
+            <label for="">Selecciona el numero del sorteo:</label>
+            <select name="" id="" placeholder="">
+              <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
+                {{option.FSort}}</option>
+            </select>
+          </div>
+
             <p>Si deseas consultar varios boletos, ingresalos separados por coma [,] ejemplo: 12345,67897 (5 digitos)
             </p>
           </div>

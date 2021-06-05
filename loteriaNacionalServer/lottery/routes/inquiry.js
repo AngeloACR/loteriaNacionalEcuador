@@ -2,25 +2,25 @@ const express = require('express');
 const lotteryRouter = express.Router();
 const LotteryController = require('../controller/main');
 
-lotteryRouter.post('/loteriaGanador', LotteryController.searchLoteriaWinner);
+lotteryRouter.get('/loteriaGanador', LotteryController.searchLoteriaWinner);
 
-lotteryRouter.post('/lottoGanador', LotteryController.searchLottoWinner);
+lotteryRouter.get('/lottoGanador', LotteryController.searchLottoWinner);
 
-lotteryRouter.post('/pozoGanador', LotteryController.searchPozoWinner);
+lotteryRouter.get('/pozoGanador', LotteryController.searchPozoWinner);
 
-lotteryRouter.post('/pozoConsulta', LotteryController.searchPozoConsulta);
+lotteryRouter.get('/pozoConsulta', LotteryController.searchPozoConsulta);
 
-lotteryRouter.post('/lottoConsulta', LotteryController.searchLottoConsulta);
+lotteryRouter.get('/lottoConsulta', LotteryController.searchLottoConsulta);
 
-lotteryRouter.post('/loteriaConsulta', LotteryController.searchLoteriaConsulta);
+lotteryRouter.get('/loteriaConsulta', LotteryController.searchLoteriaConsulta);
 
 
 
-lotteryRouter.post('/pozoSorteos', LotteryController.searchPozoSorteos);
+lotteryRouter.get('/pozoSorteosJugados', LotteryController.searchPozoSorteosJugados);
 
-lotteryRouter.post('/lottoSorteos', LotteryController.searchLottoSorteos);
+lotteryRouter.get('/lottoSorteosJugados', LotteryController.searchLottoSorteosJugados);
 
-lotteryRouter.post('/loteriaSorteos', LotteryController.searchLoteriaSorteos);
+lotteryRouter.get('/loteriaSorteosJugados', LotteryController.searchLoteriaSorteosJugados);
 
 
 module.exports = lotteryRouter;
