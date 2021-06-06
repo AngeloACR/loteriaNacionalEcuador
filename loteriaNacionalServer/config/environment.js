@@ -7,7 +7,7 @@ module.exports = {
     mSecret: 'My secret moves will never be discovered',
     production: false,
     webPort: 3200,
-    lotteryPort: 3400,
+    lotteryPort: 5480,
     userPort: 3600,
     host: 'localhost',
     mysqlPort: '3306',
