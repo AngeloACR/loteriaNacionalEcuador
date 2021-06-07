@@ -1,0 +1,148 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-botton: #2f72b9;
+
+.tooltip {
+  color: #000000;
+  outline: none;
+  cursor: help;
+  text-decoration: none;
+  position: relative;
+}
+
+.tooltip span {
+  margin-left: -999em;
+  position: absolute;
+  transition: opacity 1s ease;
+  -webkit-transition: opacity 1s ease;
+}
+
+.tooltip:hover span {
+  font-family: $fuente-parrafo;
+  position: absolute;
+  left: 1em;
+  top: 2em;
+  z-index: 99;
+  margin-left: 0;
+  width: 250px;
+
+  border-radius: 5px 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip:hover img {
+  border: 0;
+  margin: -10px 0 0 -55px;
+  float: left;
+  position: absolute;
+}
+
+.tooltip:hover em {
+  font-family: Candara, Tahoma, Geneva, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  padding: 0.2em 0 0.6em 0;
+}
+
+.classic {
+  padding: 0.8em 1em;
+}
+
+.custom {
+  padding: 0.5em 0.8em 0.8em 2em;
+}
+
+* html a:hover {
+  background: transparent;
+}
+
+.classic {
+  background: $color-botton;
+  border: none;
+  border-radius: 30px;
+
+}
+
+input[type="checkbox"] {
+  /* width: 100%;
+  height: 100%; */
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  opacity: 0;
+}
+
+/* input[type="checkbox"]:checked~div {
+  background-color: $color-botton;
+  border-radius: 10px;
+  color: #fff !important;
+  transition: background-color 0.3s ease-out;
+  opacity: 1;
+} */
+
+div {
+  display: flex;
+  justify-content: space-around;
+
+  p {
+    font-size: 16px;
+    font-family: $fuente-titulo;
+    opacity: 0.7;
+  }
+}
+
+.numeros_grupo {
+  display: grid;
+  grid-template-columns: repeat(5, auto) 1fr;
+
+  p {
+    width: 18px;
+    height: 18px;
+    padding: 8px 6px;
+    font-family: $fuente-subtitulo;
+    font-size: 12px;
+    border: 1.5px solid #000;
+    border-radius: 2px;
+    color: #000;
+    -moz-appearance: textfield;
+    margin-right: 3px;
+    background-color: #fff;
+  }
+}
+
+.fracciones {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(2, 50%);
+  gap: 2px 0px;
+
+  p {
+    width: 30px;
+    height: 30px;
+    padding: 8px 6px;
+    font-size: 0.8rem;
+    font-family: "Monstserrat SemiBold";
+    border: 1.5px solid #000;
+    border-radius: 2px;
+    color: #000;
+    -moz-appearance: textfield;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .checkbox {
+    opacity: 1;
+    position: relative;
+    top: -28%;
+    left: 24%;
+    width: 10px;
+  }
+}

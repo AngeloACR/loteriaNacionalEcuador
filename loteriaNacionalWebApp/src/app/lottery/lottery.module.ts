@@ -21,6 +21,7 @@ import { LottoConfiguradorComponent } from "./components/lotto-configurador/lott
 import { LoteriaNacionalConfiguradorComponent } from "./components/loteria-nacional-configurador/loteria-nacional-configurador.component";
 import { PozoMillonarioConfiguradorComponent } from "./components/pozo-millonario-configurador/pozo-millonario-configurador.component";
 import { SeleccionTipoComponent } from "./components/seleccion-tipo/seleccion-tipo.component";
+import { TooltipComponent } from './containers/tooltip/tooltip.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SeleccionTipoComponent } from "./components/seleccion-tipo/seleccion-ti
     LottoConfiguradorComponent,
     LoteriaNacionalConfiguradorComponent,
     PozoMillonarioConfiguradorComponent,
-    SeleccionTipoComponent
+    SeleccionTipoComponent,
+    TooltipComponent
   ],
   entryComponents: [
     LotteryTypeComponent,
