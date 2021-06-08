@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class InquiryService {
   today = new Date();
@@ -47,5 +47,20 @@ export class InquiryService {
         resolve(sorteosJugados);
       });
     });
+  }
+
+  obtenerBoletin(tipoLoteria, sorteo) {
+
+    switch (tipoLoteria) {
+      case 1:
+        return 'ruta de imagen de loteria nacional';
+      case 2:
+        return 'ruta de imagen de lotto';
+      case 3:
+        return 'ruta de imagen de pozo millonario';
+
+      default:
+        break;
+    }
   }
 }
