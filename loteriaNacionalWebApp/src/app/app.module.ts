@@ -9,6 +9,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 
 //Anexando fontAwesome
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
@@ -16,7 +17,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

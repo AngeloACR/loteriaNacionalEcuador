@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-loteria',
-  templateUrl: './loteria.component.html',
-  styleUrls: ['./loteria.component.scss']
+  selector: "app-loteria",
+  templateUrl: "./loteria.component.html",
+  styleUrls: ["./loteria.component.scss"]
 })
 export class LoteriaComponent implements OnInit {
+  tickets: any;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
