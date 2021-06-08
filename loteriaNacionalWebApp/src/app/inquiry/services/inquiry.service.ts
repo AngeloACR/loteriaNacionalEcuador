@@ -7,10 +7,11 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 export class InquiryService {
   today = new Date();
   localSource = "http://localhost:3400";
-  serverSource = "";
+  testSource = "https://api-loteria.gustavoliver.com";
+  productionSource = "";
 
   //mySource = this.localSource;
-  mySource = this.localSource;
+  mySource = this.testSource;
 
   constructor(private http: HttpClient) {}
 
