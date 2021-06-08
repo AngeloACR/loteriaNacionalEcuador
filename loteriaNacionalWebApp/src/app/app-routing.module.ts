@@ -12,13 +12,11 @@ const routes: Routes = [
   },
   {
     path: "",
-    loadChildren: () =>
-      import("./landing/landing.module").then(m => m.LandingModule)
+    loadChildren: () => import("./landing/landing.module").then(m => m.LandingModule)
   },
   {
     path: "payment",
-    loadChildren: () =>
-      import("./payment/payment.module").then(m => m.PaymentModule)
+    loadChildren: () => import("./payment/payment.module").then(m => m.PaymentModule)
   },
   { path: 'inquiry', loadChildren: () => import('./inquiry/inquiry.module').then(m => m.InquiryModule) }
 ];

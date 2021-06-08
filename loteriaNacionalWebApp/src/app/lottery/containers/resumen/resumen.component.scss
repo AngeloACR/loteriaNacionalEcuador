@@ -1,0 +1,41 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-botton: #2f72b9;
+
+.container {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 30%);
+
+  .menuBox {
+    margin-right: 15px;
+    margin-top: 0px;
+
+    .menuItem {
+      width: 225px;
+      height: 40px;
+      list-style: none;
+      padding: 10px 4px;
+      font-family: $fuente-subtitulo;
+      background-color: #f2f2f2;
+      padding-left: 15px;
+      margin-bottom: 2px;
+      transition: background-color .3s ease;
+
+      display: flex;
+      align-items: center;
+
+      &:hover {
+          background-color: $color-botton;
+      }
+
+      p {
+        font-size: 10px;
+        font-family: $fuente-parrafo;
+      }
+    }
+  }
+}
