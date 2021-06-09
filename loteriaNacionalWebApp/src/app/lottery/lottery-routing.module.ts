@@ -16,8 +16,7 @@ const routes: Routes = [
       { path: "loteria", component: LoteriaComponent },
       { path: "", component: SeleccionComponent },
       { path: "lotto", component: LottoComponent },
-      { path: "pozo-millonario", component: PozoMillonarioComponent },
-      { path: "resumen", component: ResumenComponent }
+      { path: "pozo-millonario", component: PozoMillonarioComponent }
     ]
   }
 ];
