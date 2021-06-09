@@ -2,12 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 export class InquiryService {
   today = new Date();
   localSource = "http://localhost:3400";
-  testSource = "https://api-loteria.gustavoliver.com";
+  testSource = "http://api-loteria.gustavoliver.com";
   productionSource = "";
 
   //mySource = this.localSource;
@@ -50,14 +50,13 @@ export class InquiryService {
   }
 
   obtenerBoletin(tipoLoteria, sorteo) {
-
     switch (tipoLoteria) {
       case 1:
-        return 'ruta de imagen de loteria nacional';
+        return "ruta de imagen de loteria nacional";
       case 2:
-        return 'ruta de imagen de lotto';
+        return "ruta de imagen de lotto";
       case 3:
-        return 'ruta de imagen de pozo millonario';
+        return "ruta de imagen de pozo millonario";
 
       default:
         break;
