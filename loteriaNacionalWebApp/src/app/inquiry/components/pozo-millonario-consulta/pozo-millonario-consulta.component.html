@@ -1,7 +1,3 @@
-<div class="contenedor_imagen">
-  <app-pozo-millonario-boletin></app-pozo-millonario-boletin>
-</div>
-
 <div class="container">
   <div class="container_consulta">
     <div class="boletin_oficial">
@@ -47,8 +43,10 @@
           <div class="input">
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
-              <input type="date">
-
+              <select name="" id="" placeholder="">
+                <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
+                  {{option.FSort}}</option>
+              </select>
             </div>
             <button>VER RESULTADOS</button>
           </div>

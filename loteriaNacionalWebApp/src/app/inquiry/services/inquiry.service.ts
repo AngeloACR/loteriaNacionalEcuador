@@ -49,17 +49,84 @@ export class InquiryService {
     });
   }
 
-  obtenerBoletin(tipoLoteria, sorteo) {
+  recuperarBoletoGanador(tipoLoteria, sorteo, combinaciones) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/inquiry";
     switch (tipoLoteria) {
       case 1:
-        return "ruta de imagen de loteria nacional";
+        endpoint = `${endpoint}/loteriaGanador`;
+        console.log("Recuperando boleto ganador de loteria");
+        break;
       case 2:
-        return "ruta de imagen de lotto";
-      case 3:
-        return "ruta de imagen de pozo millonario";
+        endpoint = `${endpoint}/lottoGanador`;
+        console.log("Recuperando boleto ganador de lotto");
+        break;
+      case 5:
+        endpoint = `${endpoint}/pozoGanador`;
+        console.log("Recuperando boleto ganador de pozo millonario");
+
+        break;
 
       default:
         break;
     }
+    var address = this.mySource;
+
+    address = address + endpoint;
+    let body = {
+      sorteo,
+      combinaciones
+    };
+
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(address, body, { headers: headers })
+        .subscribe((data: any[]) => {
+          let boletoGanador = data;
+          console.log(boletoGanador);
+          resolve(boletoGanador);
+        });
+    });
+  }
+
+  obtenerBoletin(tipoLoteria, sorteo) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/inquiry";
+    switch (tipoLoteria) {
+      case 1:
+        endpoint = `${endpoint}/loteriaBoletin`;
+        console.log("Recuperando boletin de loteria");
+        break;
+      case 2:
+        endpoint = `${endpoint}/lottoBoletin`;
+        console.log("Recuperando boletin de lotto");
+        break;
+      case 5:
+        endpoint = `${endpoint}/pozoBoletin`;
+        console.log("Recuperando boletin de pozo millonario");
+
+        break;
+
+      default:
+        break;
+    }
+    var address = this.mySource;
+
+    address = address + endpoint;
+    let body = {
+      sorteo
+    };
+
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(address, body, { headers: headers })
+        .subscribe((data: any) => {
+          let boletin = data.address;
+          console.log(boletin);
+          resolve(boletin);
+        });
+    });
   }
 }

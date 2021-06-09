@@ -8,6 +8,12 @@ lotteryRouter.post('/lottoGanador', LotteryController.searchLottoWinner);
 
 lotteryRouter.post('/pozoGanador', LotteryController.searchPozoWinner);
 
+lotteryRouter.post('/loteriaBoletin', LotteryController.searchLoteriaBoletin);
+
+lotteryRouter.post('/lottoBoletin', LotteryController.searchLottoBoletin);
+
+lotteryRouter.post('/pozoBoletin', LotteryController.searchPozoBoletin);
+
 lotteryRouter.get('/pozoConsulta', LotteryController.searchPozoConsulta);
 
 lotteryRouter.get('/lottoConsulta', LotteryController.searchLottoConsulta);
