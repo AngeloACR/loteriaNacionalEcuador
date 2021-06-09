@@ -103,6 +103,13 @@ div {
   display: grid;
   grid-template-columns: repeat(5, auto) 1fr;
 
+  h3 {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   p {
     width: 18px;
     height: 18px;
@@ -136,6 +143,10 @@ div {
     -moz-appearance: textfield;
     background-color: #fff;
     text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .checkbox {
