@@ -6,12 +6,12 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 })
 export class InquiryService {
   today = new Date();
-  localSource = "http://localhost:3400";
+  localSource = "http://localhost:5480";
   testSource = "http://api-loteria.gustavoliver.com";
   productionSource = "";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
 
   constructor(private http: HttpClient) {}
 
@@ -30,6 +30,40 @@ export class InquiryService {
         break;
       case 5:
         endpoint = `${endpoint}/pozoSorteosJugados`;
+        console.log("Recuperando sorteos de pozo millonario");
+
+        break;
+
+      default:
+        break;
+    }
+    var address = this.mySource;
+
+    address = address + endpoint;
+    return new Promise((resolve, reject) => {
+      this.http.get(address, { headers: headers }).subscribe((data: any[]) => {
+        let sorteosJugados = data;
+        console.log(sorteosJugados);
+        resolve(sorteosJugados);
+      });
+    });
+  }
+
+  recuperarUltimosResultados(tipoLoteria) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/inquiry";
+    switch (tipoLoteria) {
+      case 1:
+        endpoint = `${endpoint}/loteriaUltimosResultados`;
+        console.log("Recuperando sorteos de loteria");
+        break;
+      case 2:
+        endpoint = `${endpoint}/lottoUltimosResultados`;
+        console.log("Recuperando sorteos de lotto");
+        break;
+      case 5:
+        endpoint = `${endpoint}/pozoUltimosResultados`;
         console.log("Recuperando sorteos de pozo millonario");
 
         break;
@@ -78,7 +112,7 @@ export class InquiryService {
       sorteo,
       combinaciones
     };
-
+    console.log(body);
     return new Promise((resolve, reject) => {
       this.http
         .post(address, body, { headers: headers })

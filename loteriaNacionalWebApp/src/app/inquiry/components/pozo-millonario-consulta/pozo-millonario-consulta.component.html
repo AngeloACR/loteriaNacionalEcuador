@@ -34,7 +34,7 @@
           <div class="input">
             <div class="input_content">
               <label for="">Ingresa numero(s) de boleto(s):</label>
-              <input type="text">
+              <input name="combinaciones" type="text" (input)="deleteSpaces()" [(ngModel)]="combinacionesAux">
             </div>
             <p>Si deseas consultar varios cartones, ingresalos separados por coma [,] ejemplo: 0273982, 1834902.
               Ingresar todos los 7 digitos del No. Carton, incluyendo ceros (0) de la izquierda, ejemplo: 0037946.</p>
@@ -43,12 +43,12 @@
           <div class="input">
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
-              <select name="" id="" placeholder="">
+              <select name="sorteoGanador" id="sorteoGanador" placeholder="" [(ngModel)]="sorteoGanador">
                 <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
                   {{option.FSort}}</option>
               </select>
             </div>
-            <button>VER RESULTADOS</button>
+            <button (click)="buscarBoletoGanador()">VER RESULTADOS</button>
           </div>
         </form>
       </div>
@@ -64,18 +64,18 @@
           <div class="input">
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
-              <select name="" id="" placeholder="">
+              <select name="sorteoBoletin" id="sorteoBoletin" placeholder="" [(ngModel)]="sorteoBoletin">
                 <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
                   {{option.FSort}}</option>
               </select>
             </div>
 
-            <p>Si deseas consultar varios boletos, ingresalos separados por coma [,] ejemplo: 12345,67897 (5 digitos)
-            </p>
+            <!--             <p>Si deseas consultar varios boletos, ingresalos separados por coma [,] ejemplo: 12345,67897 (5 digitos)
+            </p> -->
           </div>
 
           <div class="input">
-            <button>VER RESULTADOS</button>
+            <button (click)="buscarBoletin()">VER RESULTADOS</button>
           </div>
         </form>
       </div>
@@ -91,7 +91,7 @@
           <div class="input">
             <div class="input_content">
               <label for="">Desde:</label>
-              <input type="date">
+              <input name="fechaInicial" type="date" [(ngModel)]="fechaInicial">
 
             </div>
             <p></p>
@@ -101,7 +101,7 @@
 
             <div class="input_content">
               <label for="">Hasta:</label>
-              <input type="date">
+              <input name="fechaFinal" type="date" [(ngModel)]="fechaFinal">
 
             </div>
             <p></p>
@@ -110,13 +110,13 @@
           <div class="input">
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
-              <select name="" id="" placeholder="">
+              <select name="sorteoRango" id="sorteoRango" placeholder="" [(ngModel)]="sorteoRango">
                 <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
                   {{option.FSort}}</option>
               </select>
             </div>
           </div>
-          <button>VER RESULTADOS</button>
+          <button (click)="buscarRango()">VER RESULTADOS</button>
         </form>
       </div>
     </div>

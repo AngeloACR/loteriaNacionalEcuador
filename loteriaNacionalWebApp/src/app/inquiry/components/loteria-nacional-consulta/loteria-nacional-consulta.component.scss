@@ -14,6 +14,15 @@ $color-loteria: #2f72b9;
   border-left: 4px solid $color-loteria;
 }
 
+.modalBox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
 
 .container {
   width: 100%;
@@ -67,7 +76,6 @@ $color-loteria: #2f72b9;
           display: flex;
           justify-content: center;
           align-items: center;
-
 
           .icono {
             width: 25px;
@@ -126,16 +134,14 @@ $color-loteria: #2f72b9;
               input[type="text"] {
                 @extend %input;
                 padding-top: 14px;
-                outline: none
-
+                outline: none;
               }
 
               input[type="date"] {
                 @extend %input;
                 padding-top: 14px;
                 padding-right: 8px;
-                outline: none
-
+                outline: none;
               }
 
               select {

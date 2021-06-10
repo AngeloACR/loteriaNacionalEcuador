@@ -108,7 +108,25 @@ module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion,
           let errorCode = parseInt(data.mt.c[0].codError[0]);
           console.log(errorCode)
           if (!errorCode) {
-            let response = data.mt;
+            let aux = data.mt.rs[0].r;
+            console.log(aux);
+            let response;
+            if (aux != "" && aux.length != 0) {
+              aux = data.mt.rs[0].r[0].Row[0].$;
+
+              response = {
+                status: true,
+                combinacion,
+                data: aux
+              }
+            } else {
+              aux = data.mt.rs[0].r;
+              response = {
+                status: false,
+                combinacion,
+                data: aux
+              }
+            }
             resolve(response);
           } else {
             reject(data.mt.c[0].msgError[0])
@@ -121,7 +139,7 @@ module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion,
   }
 };
 
-module.exports.consultarBoletos = async (tipoLoteria, token) => {
+module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
   try {
     console.log('Entrando al api de loteria nacional');
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -145,7 +163,7 @@ module.exports.consultarBoletos = async (tipoLoteria, token) => {
         </c>
         <i>
         <MedioId>${medioId}</MedioId>
-      <Cantidad>10</Cantidad>          
+      <Cantidad>1</Cantidad>          
       <JuegoId>${tipoLoteria}</JuegoId>
         </i>
     </mt>
@@ -154,7 +172,6 @@ module.exports.consultarBoletos = async (tipoLoteria, token) => {
       `
     }
 
-    console.log(client.describe());
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
         if (err) reject(err);

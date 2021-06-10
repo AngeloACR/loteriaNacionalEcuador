@@ -1,4 +1,4 @@
-<div class="container"> 
+<div class="container">
   <div class="container_consulta">
     <div class="boletin_oficial">
       <h1>CONSULTAS</h1>
@@ -28,7 +28,7 @@
           <div class="input">
             <div class="input_content">
               <label for="">Ingresa numero(s) de boleto(s):</label>
-              <input type="text">
+              <input name="combinaciones" type="text" (input)="deleteSpaces()" [(ngModel)]="combinacionesAux">
             </div>
             <p>Si deseas consultar varios boletos, ingresalos separados por coma [,] ejemplo: 12345,67897 (5 digitos)
           </div>
@@ -36,12 +36,12 @@
           <div class="input">
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
-              <select name="" id="" placeholder="">
-                <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
+              <select name="sorteoGanador" id="sorteoGanador" placeholder="" [(ngModel)]="sorteoGanador">
+                <option *ngFor="let option of sorteosJugados" [value]="option.SortId">N° {{option.SortId}} -
                   {{option.FSort}}</option>
               </select>
             </div>
-            <button>VER RESULTADOS</button>
+            <button (click)="buscarBoletoGanador()">VER RESULTADOS</button>
           </div>
         </form>
       </div>
@@ -55,8 +55,9 @@
           <div class="input">
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
-              <select name="" id="" placeholder="">
-                <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
+              <select name="sorteoBoletin" id="sorteoBoletin" placeholder="" [(ngModel)]="sorteoBoletin">
+                <option *ngFor="let option of sorteosJugados" [value]="option.SortId">N°
+                  {{option.SortId}} -
                   {{option.FSort}}</option>
               </select>
             </div>
@@ -64,7 +65,7 @@
           </div>
 
           <div class="input">
-            <button>VER RESULTADOS</button>
+            <button (click)="buscarBoletin()">VER RESULTADOS</button>
           </div>
         </form>
       </div>
@@ -73,5 +74,8 @@
   </div>
   <div class="container_ticket">
     <app-loteria-nacional-ticket></app-loteria-nacional-ticket>
+  </div>
+  <div class="modalBox" *ngIf="showResultados">
+    <app-resultados (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados"></app-resultados>
   </div>
 </div>

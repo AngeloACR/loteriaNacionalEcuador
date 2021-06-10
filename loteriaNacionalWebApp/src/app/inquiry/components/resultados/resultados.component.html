@@ -1,0 +1,18 @@
+<div class="blackBox">
+</div>
+
+<div class="resultsBox">
+    <div (click)="closeBox()" class="closeBox">
+        X
+    </div>
+    <div class="resultBox" *ngFor="let resultado of resultados">
+
+        <div *ngIf="resultado.status" class="messageBox">
+            <p>Boleto número {{resultado.combinacion}} - Este boleto resultó ganador!!!</p>
+        </div>
+        <div *ngIf="!resultado.status" class="messageBox">
+            <p>Boleto número {{resultado.combinacion}} - Este boleto no ganó</p>
+
+        </div>
+    </div>
+</div>

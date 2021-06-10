@@ -21,6 +21,15 @@ lotteryRouter.get('/lottoConsulta', LotteryController.searchLottoConsulta);
 lotteryRouter.get('/loteriaConsulta', LotteryController.searchLoteriaConsulta);
 
 
+lotteryRouter.get('/loteriaUltimosResultados', LotteryController.searchLoteriaUltimosResultados);
+lotteryRouter.get('/lottoUltimosResultados', LotteryController.searchLottoUltimosResultados);
+lotteryRouter.get('/pozoUltimosResultados', LotteryController.searchPozoUltimosResultados);
+
+
+
+
+
+
 
 lotteryRouter.get('/pozoSorteosJugados', LotteryController.searchPozoSorteosJugados);
 

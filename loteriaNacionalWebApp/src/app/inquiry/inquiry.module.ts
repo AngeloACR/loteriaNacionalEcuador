@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 import { InquiryRoutingModule } from "./inquiry-routing.module";
 import { InquiryComponent } from "./inquiry.component";
@@ -27,9 +27,10 @@ import { BoletinPozoMillonarioComponent } from "./containers/boletin-pozo-millon
 import { ConsultaLottoComponent } from "./containers/consulta-lotto/consulta-lotto.component";
 import { ConsultaPozoMillonarioComponent } from "./containers/consulta-pozo-millonario/consulta-pozo-millonario.component";
 import { ConsultaLoteriaNacionalComponent } from "./containers/consulta-loteria-nacional/consulta-loteria-nacional.component";
-import { ResultadosLottoComponent } from './containers/resultados-lotto/resultados-lotto.component';
-import { ResultadosLoteriaNacionalComponent } from './containers/resultados-loteria-nacional/resultados-loteria-nacional.component';
-import { ResultadosPozoMillonarioComponent } from './containers/resultados-pozo-millonario/resultados-pozo-millonario.component';
+import { ResultadosLottoComponent } from "./containers/resultados-lotto/resultados-lotto.component";
+import { ResultadosLoteriaNacionalComponent } from "./containers/resultados-loteria-nacional/resultados-loteria-nacional.component";
+import { ResultadosPozoMillonarioComponent } from "./containers/resultados-pozo-millonario/resultados-pozo-millonario.component";
+import { ResultadosComponent } from './components/resultados/resultados.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +57,9 @@ import { ResultadosPozoMillonarioComponent } from './containers/resultados-pozo-
     ConsultaLoteriaNacionalComponent,
     ResultadosLottoComponent,
     ResultadosLoteriaNacionalComponent,
-    ResultadosPozoMillonarioComponent
+    ResultadosPozoMillonarioComponent,
+    ResultadosComponent
   ],
-  imports: [CommonModule, InquiryRoutingModule, HttpClientModule]
+  imports: [CommonModule, InquiryRoutingModule, HttpClientModule, FormsModule]
 })
 export class InquiryModule {}
