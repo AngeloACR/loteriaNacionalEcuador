@@ -4,6 +4,8 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #2f72b9;
+$color-lotto: #b51f20;
+$color-pozo: #057333;
 
 .resultBox {
     width: 80%;
@@ -23,5 +25,17 @@ $color-botton: #2f72b9;
     .active {
         background-color: $color-botton;
         color: #fff;       
+    }
+
+    .loteria {
+        background-color: $color-botton;
+    }
+
+    .lotto {
+        background-color: $color-lotto;
+    }
+
+    .pozo {
+        background-color: $color-pozo;
     }
 }

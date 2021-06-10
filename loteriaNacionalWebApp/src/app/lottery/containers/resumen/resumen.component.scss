@@ -8,8 +8,9 @@ $color-botton: #2f72b9;
 .container {
   width: 80%;
   margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+  display: flex;
+  justify-content: space-between;
+  /* grid-template-columns: repeat(3, auto); */
 
   .menuBox {
     margin-right: 15px;
