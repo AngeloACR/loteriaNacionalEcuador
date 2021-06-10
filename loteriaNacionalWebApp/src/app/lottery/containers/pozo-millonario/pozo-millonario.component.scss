@@ -9,16 +9,19 @@ $color-pozo: #057333;
 $color-botton: #2f72b9;
 
 .contenedor_loteria {
-  width: 100%;
+  width: 80%;
+  margin: auto;
+
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   .menuBox {
-    padding: 0;
-    margin: 0px;
-    width: 20%;
+    margin-right: 15px;
+    /* margin-top: 0px; */
+    padding: 0 !important;
 
     .menuItem {
+      width: 225px;
       height: 40px;
       list-style: none;
       padding: 20px 10px;
@@ -60,6 +63,7 @@ $color-botton: #2f72b9;
 
   .contendor_seleccion {
     width: 50%;
+    margin-right: 15px;
 
     form {
       width: 100%;

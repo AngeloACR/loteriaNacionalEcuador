@@ -1,3 +1,5 @@
+<app-seleccion-tipo></app-seleccion-tipo>
+
 <div class="contenedor_loteria">
 
   <ul class="menuBox">
@@ -29,61 +31,15 @@
       </div>
     </form>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
-    <div class="contenedor_numeros_suerte">
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-            <td>
-              <app-tooltip></app-tooltip>
-            </td>
-          </tr>
-        </tbody>
-        <hr size="2px" color="gray" />
-      </table>
+    <div class="contenedor_numeros_suerte" >
+        <app-tooltip *ngFor="let item of tooltips"></app-tooltip>
+    </div>
 
-      <div class="contenedor_botones">
-        <button class="boton"><i class="fa fa-chevron-left"></i></button>
-        <button class="boton"><i class="fa fa-chevron-right"></i></button>
-      </div>
+    <hr size="2px" color="gray" />
+
+    <div class="contenedor_botones">
+      <button class="boton"><i class="fa fa-chevron-left"></i></button>
+      <button class="boton"><i class="fa fa-chevron-right"></i></button>
     </div>
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>

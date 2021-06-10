@@ -19,9 +19,12 @@ $color-lotto: #b51f20;
   width: 100%;
   margin: 20px auto;
 
-  display: grid;
+  /* display: grid;
   grid-template-columns: 71% 1fr;
-  gap: 30px;
+  gap: 30px; */
+
+  display: flex;
+  justify-content: space-between;
 
   .container_consulta {
     width: 100%;
@@ -183,7 +186,7 @@ $color-lotto: #b51f20;
   }
 
   .container_ticket {
-    width: 100%;
+    width: 45%;
     margin: 0px;
   }
 }

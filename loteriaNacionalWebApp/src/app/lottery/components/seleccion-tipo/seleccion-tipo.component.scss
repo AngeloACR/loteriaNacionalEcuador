@@ -1,0 +1,82 @@
+$color-loteria: #2f72b9;
+$color-lotto: #b51f20;
+$color-pozo: #057333;
+
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+
+  display: flex;
+
+  a {
+    position: relative;
+    top: 20px;
+    margin: 20px 0;
+    margin-right: 10px;
+    text-decoration: none;
+    align-items: center;
+    color: #fff;
+    font-family: $fuente-botones;
+    font-size: 12px;
+
+    display: block;
+    width: 180px;
+    height: 90px;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.60);
+    -moz-box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.60);
+    box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.60);
+
+    .contenedor_loteria {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        width: 70px;
+        margin: auto;
+      }
+
+      .boton {
+        border-radius: 20px;
+        width: 100px;
+        height: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+        top: 0.5rem;
+
+      }
+
+      .loteria {
+        background-color: $color-loteria;
+      }
+
+      .lotto {
+        background-color: $color-lotto;
+        position: relative;
+        top: 2.5rem;
+      }
+
+      .pozo {
+        background-color: $color-pozo;
+      }
+    }
+  }
+
+  .active {
+    display: none;
+    transition: all .3s ease;
+  }
+}

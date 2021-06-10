@@ -8,16 +8,19 @@ $color-lotto: #b51f20;
 $color-botton: #2f72b9;
 
 .contenedor_loteria {
-  width: 100%;
+  width: 80%;
+  margin: auto;
+
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   .menuBox {
-    padding: 0px;
-    margin: 0px;
-    width: 20%;
+    margin-right: 15px;
+    /* margin-top: 0px; */
+    padding: 0 !important;
 
     .menuItem {
+      width: 225px;
       height: 40px;
       list-style: none;
       padding: 20px 10px;
@@ -92,7 +95,7 @@ $color-botton: #2f72b9;
       }
 
       .select_option {
-        width: 40%;
+        width: 60%;
         display: block;
         font-size: 16px;
         font-family: $fuente-parrafo;
@@ -104,6 +107,8 @@ $color-botton: #2f72b9;
         border: 1px solid #aaa;
         box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
         border-radius: 0.3em;
+        margin-right: 10px;
+        margin-top: 10px;
         &:hover {
           border-color: #888;
         }
@@ -125,8 +130,8 @@ $color-botton: #2f72b9;
         color: #fff;
         font-family: $fuente-botones;
         font-size: 11px;
-        margin-top: 10px;
         cursor: pointer;
+        margin-top: 10px;
 
         &:hover {
           background-color: white;
