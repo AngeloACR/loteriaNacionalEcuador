@@ -1,9 +1,9 @@
 <div class="tooltip">
-  <button (click)="mostrar = !mostrar; fondo = true" [ngClass]="{'fondoAzul': fondo}">
+  <button (click)="fondo = !fondo;" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
     <p *ngFor="let item of numeros">{{ item }}</p>
   </button>
 
-  <span *ngIf="mostrar">
+  <span >
     <div class="numeros_grupo">
       <p *ngFor="let item of numeros">{{ item }}</p>
       <h3>Fraccion</h3>
