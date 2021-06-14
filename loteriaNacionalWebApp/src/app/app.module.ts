@@ -11,10 +11,13 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+/* import {NgxPaginationModule} from 'ngx-pagination'; */
+
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
   imports: [
     BrowserModule,
+    /* NgxPaginationModule, //// */
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,

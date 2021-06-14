@@ -32,8 +32,11 @@
     </form>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
     <div class="contenedor_numeros_suerte" >
-        <app-tooltip *ngFor="let item of tooltips"></app-tooltip>
-    </div>
+        <app-tooltip *ngFor="let item of tooltips  "></app-tooltip> <!-- | paginate: { itemsPerPage: 2, currentPage: pageActual }; -->
+
+    </div> 
+    <!-- <pagination-controls (pageChange)="pageActual = $event"></pagination-controls> -->
+    
 
     <hr size="2px" color="gray" />
 
