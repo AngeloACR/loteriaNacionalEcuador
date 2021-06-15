@@ -6,4 +6,20 @@ import { Injectable } from '@angular/core';
 export class PaymentService {
 
   constructor() { }
+
+  reservarSaldo() {
+
+  }
+
+  liberarSaldo() {
+
+  }
+
+  recargarSaldo() {
+
+  }
+
+  confirmarCompra() {
+    
+  }
 }
