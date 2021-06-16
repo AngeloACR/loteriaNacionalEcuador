@@ -1,87 +1,156 @@
-.select-sim {
-    width:300px;
-    height:22px;
-    line-height:22px;
-    vertical-align:middle;
-    position:relative;
-    background:white;
-    border:1px solid #ccc;
-    overflow:hidden;
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-loteria: #7c91a8;
+
+.containerCompra {
+  width: 100%;
+  margin: auto;
+
+  .mensajeBox {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-family: $fuente-subtitulo;
+      font-size: 35px;
+      margin: 20px 0 0 0;
+    }
+
+    h1 {
+      font-family: $fuente-parrafo;
+      font-size: 20px;
+      color: green;
+    }
   }
-  
-  .select-sim::after {
-    content:"▼";
-    font-size:0.5em;
-    font-family:arial;
-    position:absolute;
-    top:50%;
-    right:5px;
-    transform:translate(0, -50%);
+
+  .titleBox {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    font-weight: 600;
+
+    p {
+      font-family: $fuente-parrafo;
+      font-size: 14px;
+    }
+
+    a {
+      font-family: $fuente-parrafo;
+    }
   }
-  
-  .select-sim:hover::after {
-    content:"";
+
+  .containerInfoBox {
+
+    .titleLoteryBox {
+      display: flex;
+      background-color: #f2f2f2;
+      
+
+      h3 {
+        margin-left: 20px;
+        color: #000;
+        font-family: $fuente-subtitulo;
+        font-size: 16px;
+      }
+    }
+    
+    .fondoBox {
+      justify-content: space-between;
+      background-color: $color-loteria;
+      padding-left: 20px;
+      padding-right: 10px;
+    }
+
+    .dateClientBox {
+      width: 100%;
+
+      .infoClientBox {
+        display: flex;
+        justify-content: space-between;
+
+        p:nth-child(1) {
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .dateLoteryBox {
+      
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      column-gap: 3rem;
+
+      .infoSorteoBox {
+        margin-left: 20px;
+
+        p {
+          font-weight: 500;
+          font-size: 15px;
+        }
+      }
+
+      .infoTicketBox {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        font-family: $fuente-parrafo;
+        font-size: 15px;
+
+        .dateTicketBox {
+          font-weight: 600;
+          font-size: 15px;
+        }
+
+        .numberBox {
+          text-align: center;
+        }
+
+        .montoBox {
+          text-align: right;
+          font-weight: 600;
+        }
+      }
+    }
   }
-  
-  .select-sim:hover {
-    overflow:visible;
+
+  .totalBox {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 70px;
+
+    display: flex;
+    justify-content: flex-end;
+
+    p {
+      font-family: $fuente-parrafo;
+      color: #000;
+
+      span {
+        color: red;
+      }
+    }
   }
-  
-  .select-sim:hover .options .option label {
-    display:inline-block;
+
+  .mensajeButtonBox {
+    margin: auto;
+    margin-bottom: 20px;
+
+    padding: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #c3c3c3;
+
+    p {
+      font-family: $fuente-botones;
+      font-size: 23px;
+      color: green;
+    }
   }
-  
-  .select-sim:hover .options {
-    background:white;
-    border:1px solid #ccc;
-    position:absolute;
-    top:-1px;
-    left:-1px;
-    width:400px;
-    height: 200px;
-    overflow-y:scroll;
-  }
-  
-  .select-sim .options .option {
-    overflow:hidden;
-  }
-  
-  .select-sim:hover .options .option {
-    height:150px;
-    overflow:hidden;
-  }
-  
-  .select-sim .options .option img {
-    vertical-align:middle;
-    width: 90px;
-  }
-  
-  .select-sim .options .option label {
-    display:none;
-  }
-  
-  .select-sim .options .option input {
-    width:0;
-    height:0;
-    overflow:hidden;
-    margin:0;
-    padding:0;
-    float:left;
-    display:inline-block;
-    /* fix specific for Firefox */
-    position: absolute;
-    left: -10000px;
-  }
-  
-  .select-sim .options .option input:checked + label {
-    display:block;
-    width:100%;
-  }
-  
-  .select-sim:hover .options .option input + label {
-    display:block;
-  }
-  
-  .select-sim:hover .options .option input:checked + label {
-    background:#fffff0;
-  }
+}
