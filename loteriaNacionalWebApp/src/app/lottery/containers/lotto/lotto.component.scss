@@ -253,6 +253,14 @@ $color-botton: #2f72b9;
             border: none;
           }
         }
+
+        .disabled {
+          display: none;
+        }
+
+        .enabled {
+          display: block;
+        }
       }
     }
 

@@ -14,8 +14,10 @@ export class LottoComponent implements OnInit {
   incrementar() {
     if (this.pageActual >= this.seleccionLotto.length/4) {
       this.pageActual - 1;
+      
     } else {
       this.pageActual++;
+      
     }
   }
 

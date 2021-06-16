@@ -55,117 +55,26 @@
 
     <table>
       <tbody>
-        <tr>
+        <tr *ngFor="let item of seleccionPozo | paginate: { itemsPerPage: 4, currentPage: pageActual };">
           <td>
-            <input type="checkbox" name="" id="">
-            <div class="contenedor_seleccion_numero">
-              <div class="imagen_animal">
-                <p>Mascota: </p>
-                <img src="../../../../assets/mascotas/mascotas pozo millonario-ballena.png" alt="">
-              </div>
-              <div class="numeros">
-                <p>01</p>
-                <p>14</p>
-                <p>24</p>
-                <p>78</p>
-                <p>96</p>
-                <p>54</p>
-                <p>32</p>
-                <p>02</p>
-                <p>44</p>
-                <p>77</p>
-                <p>45</p>
-                <p>23</p>
-                <p>67</p>
-                <p>99</p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <input type="checkbox" name="" id="">
-            <div class="contenedor_seleccion_numero">
-              <div class="imagen_animal">
-                <p>Mascota: </p>
-                <img src="../../../../assets/mascotas/mascotas pozo millonario-galapago.png" alt="">
-              </div>
-              <div class="numeros">
-                <p>01</p>
-                <p>14</p>
-                <p>24</p>
-                <p>78</p>
-                <p>96</p>
-                <p>54</p>
-                <p>32</p>
-                <p>02</p>
-                <p>44</p>
-                <p>77</p>
-                <p>45</p>
-                <p>23</p>
-                <p>67</p>
-                <p>99</p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="checkbox" name="" id="">
-            <div class="contenedor_seleccion_numero">
-              <div class="imagen_animal">
-                <p>Mascota: </p>
-                <img src="../../../../assets/mascotas/mascotas pozo millonario-papagayo.png" alt="">
-              </div>
-              <div class="numeros">
-                <p>01</p>
-                <p>14</p>
-                <p>24</p>
-                <p>78</p>
-                <p>96</p>
-                <p>54</p>
-                <p>32</p>
-                <p>02</p>
-                <p>44</p>
-                <p>77</p>
-                <p>45</p>
-                <p>23</p>
-                <p>67</p>
-                <p>99</p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <input type="checkbox" name="" id="">
-            <div class="contenedor_seleccion_numero">
-              <div class="imagen_animal">
-                <p>Mascota: </p>
-                <img src="../../../../assets/mascotas/mascotas pozo millonario-perro.png" alt="">
-              </div>
-              <div class="numeros">
-                <p>01</p>
-                <p>14</p>
-                <p>24</p>
-                <p>78</p>
-                <p>96</p>
-                <p>54</p>
-                <p>32</p>
-                <p>02</p>
-                <p>44</p>
-                <p>77</p>
-                <p>45</p>
-                <p>23</p>
-                <p>67</p>
-                <p>99</p>
-              </div>
-            </div>
+            <app-seleccion-pozo></app-seleccion-pozo>
           </td>
         </tr>
       </tbody>
-      <hr size="2px" color="gray" />
     </table>
+    <hr size="2px" color="gray" />
 
     <div class="contenedor_botones">
-      <button class="boton"><i class="fa fa-chevron-left"></i></button>
-      <button class="boton"><i class="fa fa-chevron-right"></i></button>
+      <button class="boton" (click)="decrementar()">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="boton" (click)="incrementar()">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div>
+      Page Actual: {{pageActual}}
     </div>
 
     <div class="boton_boleto">
