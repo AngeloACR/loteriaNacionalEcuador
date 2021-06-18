@@ -6,7 +6,7 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-botton: #2f72b9;
 
 .contenedor_loteria {
-  width: 80%;
+  width: 95%;
   margin: auto;
 
   display: flex;
@@ -124,42 +124,41 @@ $color-botton: #2f72b9;
       grid-template-rows: repeat(4, auto);
       gap: 10px 15px;
     }
-      .contenedor_botones {
-        width: 100%;
-        display: flex;
-        margin: auto;
-        justify-content: space-between;
+    .contenedor_botones {
+      width: 100%;
+      display: flex;
+      margin: auto;
+      justify-content: space-between;
 
-        .boton {
-          width: 3vw;
-          height: 3vw;
-          border: 1px solid $color-botton;
-          font-family: $fuente-parrafo;
-          background-color: $color-botton;
-          color: #fff;
-          border-radius: 50px;
-          font-size: 20px;
-          cursor: pointer;
+      .boton {
+        width: 3vw;
+        height: 3vw;
+        border: 1px solid $color-botton;
+        font-family: $fuente-parrafo;
+        background-color: $color-botton;
+        color: #fff;
+        border-radius: 50px;
+        font-size: 20px;
+        cursor: pointer;
 
-          &:nth-child(1) i {
-            padding: 3px 3px 0 0;
-          }
-          &:nth-child(2) i {
-            padding: 3px 0px 0 3px;
-          }
+        &:nth-child(1) i {
+          padding: 3px 3px 0 0;
+        }
+        &:nth-child(2) i {
+          padding: 3px 0px 0 3px;
+        }
 
-          &:hover {
-            background-color: white;
-            color: $color-botton;
-            transition: background-color 0.4s ease;
-          }
+        &:hover {
+          background-color: white;
+          color: $color-botton;
+          transition: background-color 0.4s ease;
+        }
 
-          &:active {
-            border: none;
-          }
+        &:active {
+          border: none;
         }
       }
-    
+    }
 
     .boton_boleto {
       width: 100%;

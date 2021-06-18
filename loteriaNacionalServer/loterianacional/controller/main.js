@@ -117,12 +117,14 @@ module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion,
               response = {
                 status: true,
                 combinacion,
+                sorteo,
                 data: aux
               }
             } else {
               aux = data.mt.rs[0].r;
               response = {
                 status: false,
+                sorteo,
                 combinacion,
                 data: aux
               }
@@ -193,7 +195,7 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
   }
 };
 
-module.exports.consultarSorteos = async (tipoLoteria, token) => {
+module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
   try {
     console.log('Entrando al api de loteria nacional');
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -250,16 +252,55 @@ module.exports.consultarSorteos = async (tipoLoteria, token) => {
   }
 };
 
-module.exports.cambioClave = async () => {
+module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
   try {
     console.log('Entrando al api de loteria nacional');
-    let client = await soap.createClientAsync(wsdlFile, { envelopeKey: "s" });
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+
+    let message = {
+
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
+        <mt>
+          <c>
+            <aplicacion>25</aplicacion>
+            <transaccion>8</transaccion>
+            <usuario>${usuarioClientePsd}</usuario>
+            <maquina>192.168.1.13</maquina>
+            <codError>0</codError>
+            <msgError />
+            <medio>${medioId}</medio>
+            <token>${token}</token>
+            <operacion>1234567890</operacion>
+          </c>
+          <i>
+            <MedioId>${medioId}</MedioId>
+            <JuegoId>${tipoLoteria}</JuegoId>
+          </i>
+        </mt>
+        ]]>
+      </PI_DatosXml>
+      `
+    }
+
     console.log(client.describe());
     return new Promise(async (resolve, reject) => {
-      client.fnCambioClave({ mt: [{ s: [{ aplicacion: 17, usuario: "sitiowebprep", clave: 12345678, maquina: "192.168.1.13", medio: 17, operacion: 1234567890 }] }] }, function (err, res, rawResponse, soapHeader, rawRequest) {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
         if (err) reject(err);
-        console.log(res);
-        resolve(rawRequest);
+        console.log(rawRequest);
+        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
+        let errorCode = parseInt(data.mt.c[0].codError[0]);
+        console.log(errorCode)
+        if (!errorCode) {
+          let aux = data.mt.rs[0].r[0].Row;
+          let response = aux.map(sorteo => {
+            return sorteo.$;
+          });
+          resolve(response);
+        } else {
+          reject(data.mt.c[0].msgError[0])
+        }
       });
     });
   } catch (e) {
@@ -268,192 +309,182 @@ module.exports.cambioClave = async () => {
   }
 };
 
-
-module.exports.obtenerNumerosLoteria = async (req, res) => {
+module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, token, combinacion, combinacionFigura) => {
   try {
-    let binding = new BasicHttpBinding(
-      {
-        MessageEncoding: "Mtom"
-        , SecurityMode: "TransportWithMessageCredential"
-      })
-    let proxy = new Proxy(binding, address)
+    console.log('Entrando al api de loteria nacional');
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
+    let message = {
 
-    /*Ensure your message below looks like a valid working SOAP UI request*/
-    let message = `<mt>
-        <c>
-          <aplicacion>25</aplicacion>
-          <transaccion>9</transaccion>
-          <usuario> UsuarioCliente </usuario>
-          <maquina>DireccionIpLocal</maquina>
-          <codError>0</codError>
-          <msgError />
-          <medio>MedioId</medio>
-          <token>55033007112012121148550330074812</token>
-          <operacion>1234567890</operacion>
-        </c>
-        <i>
-          <JuegoId>1</JuegoId>
-          <MedioId>17</MedioId>
-          <SorteoId>5413</SorteoId>
-          <Combinacion>%87</Combinacion>
-          <Registros>3</Registros>
-          <UsuarioId>usrClientePsd</UsuarioId>
-          <CombFigura></CombFigura>
-          <Sugerir>False</Sugerir>
-        </i>
-      </mt>`;
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
+        <mt>
+  <c>
+    <aplicacion>25</aplicacion>
+    <transaccion>9</transaccion>
+    <usuario>${usuarioClientePsd}</usuario>
+    <maquina>192.168.1.13</maquina>
+    <codError>0</codError>
+    <msgError />
+    <medio>${medioId}</medio>
+    <token>${token}</token>
+    <operacion>1234567890</operacion>
+  </c>
+  <i>
+  <MedioId>${medioId}</MedioId>
+  <JuegoId>${tipoLoteria}</JuegoId>
+    <SorteoId>${sorteo}</SorteoId>
+    <Combinacion>${combinacion}</Combinacion>
+    <Registros>20</Registros>
+    <UsuarioId>italtronicprep</UsuarioId>
+    <CombFigura>${combinacionFigura}</CombFigura>
+    <Sugerir>True</Sugerir>
+  </i>
+</mt>	
+        ]]>
+      </PI_DatosXml>
+      `
+    }
 
-    /*proxy.send's second argument is the soap action; you can find the soap action in your wsdl*/
-    proxy.send(message, "http://YourNamespace/IYourService/YourMethod", function (response, ctx) {
-      console.log(response);
-      /*Your response is in xml and which can either be used as it is of you can parse it to JSON etc.....*/
-      res.status(200).json(response);
+    console.log(client.describe());
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
+        if (err) reject(err);
+        console.log(rawRequest);
+        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
+        let errorCode = parseInt(data.mt.c[0].codError[0]);
+        console.log(errorCode)
+        if (!errorCode) {
+          let aux = data.mt.rs[0].r;
+          let response = [];
+          aux.forEach(aux2 => {
+            if (aux2.Row) {
+              aux2.Row.forEach(aux3 => {
+
+                response.push(aux3.$)
+              });
+            }
+          });
+          resolve(response);
+        } else {
+          reject(data.mt.c[0].msgError[0])
+        }
+      });
     });
   } catch (e) {
-    res.status(400).json(e.toString());
+    console.log(e.toString());
+    throw e;
   }
 };
 
-module.exports.obtenerNumerosLotto = async (req, res) => {
+module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones, token) => {
   try {
-    let binding = new BasicHttpBinding(
-      {
-        MessageEncoding: "Mtom"
-        , SecurityMode: "TransportWithMessageCredential"
-      })
-    let proxy = new Proxy(binding, address)
+    console.log('Entrando al api de loteria nacional');
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let combinacionesXML = "";
+    combinaciones.forEach(combinacion => {
+      let fraccionesXML = "";
+      if (tipoLoteria == 1) {
 
+        let fracciones = combinacion.Fra.split(',');
+        fracciones.forEach(fraccion => {
+          fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
+        });
+      }
+      combinacionesXML = `${combinacionesXML}<R sorteo="${sorteo}" numero="${combinacion.Num}" cantid="${combinacion.Cant}" >${fraccionesXML}</R>`
+    });
+    let message = {
 
-    /*Ensure your message below looks like a valid working SOAP UI request*/
-    let message = `<mt>
-        <c>
-          <aplicacion>25</aplicacion>
-          <transaccion>9</transaccion>
-          <usuario> UsuarioCliente </usuario>
-          <maquina>DireccionIpLocal</maquina>
-          <codError>0</codError>
-          <msgError />
-          <medio>MedioId</medio>
-          <token>55033007112012121148550330074812</token>
-          <operacion>1234567890</operacion>
-        </c>
-        <i>
-          <JuegoId>1</JuegoId>
-          <MedioId>17</MedioId>
-          <SorteoId>5413</SorteoId>
-          <Combinacion>%87</Combinacion>
-          <Registros>3</Registros>
-          <UsuarioId>usrClientePsd</UsuarioId>
-          <CombFigura></CombFigura>
-          <Sugerir>False</Sugerir>
-        </i>
-      </mt>`;
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
+<mt>
+<c>
+  <aplicacion>25</aplicacion>
+  <transaccion>12</transaccion>
+  <usuario>${usuarioClientePsd}</usuario>
+  <maquina>192.168.1.13</maquina>
+  <codError>0</codError>
+  <msgError />
+  <medio>${medioId}</medio>
+  <token>${token}</token>
+  <operacion>1234567890</operacion>
+</c>
+  <i>
+  <MedioId>${medioId}</MedioId>
+  <UsuarioId>italtronicprep</UsuarioId>
+    <ReservaId>0</ReservaId>
+    <Observacion>Reserva de Boletos</Observacion>
+    <xmlNumeros>
+<RS >
+  <JG id="${tipoLoteria}">
+    ${combinacionesXML} 
+  </JG>
+</RS>
+    </xmlNumeros>
+  </i>
+</mt>
+        ]]>
+      </PI_DatosXml>
+      `
+    }
 
-    /*proxy.send's second argument is the soap action; you can find the soap action in your wsdl*/
-    proxy.send(message, "http://YourNamespace/IYourService/YourMethod", function (response, ctx) {
-      console.log(response);
-      /*Your response is in xml and which can either be used as it is of you can parse it to JSON etc.....*/
-      res.status(200).json(response);
+    console.log(client.describe());
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
+        if (err) reject(err);
+        console.log(rawRequest);
+        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
+        let errorCode = parseInt(data.mt.c[0].codError[0]);
+        console.log(errorCode)
+        if (!errorCode) {
+          let response = [];
+          let reservaId = data.mt.o[0].ReturnValue;
+          let aux = data.mt.rs[0].r[0];
+          let boletosReservados = [];
+          aux.Row.forEach(boletoReservado => {
+            boletosReservados.push(boletoReservado.$);
+          });
+          switch (tipoLoteria) {
+            case 1:
+              let aux2 = data.mt.rs[0].r[1];
+              let fraccionesReservadas = [];
+              aux2.Row.forEach(fraccionReservada => {
+                fraccionesReservadas.push(fraccionReservada.$);
+              });
+              response = {
+                reservaId,
+                boletosReservados,
+                fraccionesReservadas
+              }
+              break;
+            case 2:
+
+              response = {
+                reservaId,
+                boletosReservados
+              }
+              break;
+            case 5:
+              response = {
+                reservaId,
+                boletosReservados
+              }
+              break;
+
+            default:
+              break;
+          }
+          resolve(response);
+        } else {
+          reject(data.mt.c[0].msgError[0])
+        }
+      });
     });
   } catch (e) {
-    res.status(400).json(e.toString());
-  }
-};
-
-module.exports.obtenerNumerosPozo = async (req, res) => {
-  try {
-    let binding = new BasicHttpBinding(
-      {
-        MessageEncoding: "Mtom"
-        , SecurityMode: "TransportWithMessageCredential"
-      })
-    let proxy = new Proxy(binding, address)
-
-
-    /*Ensure your message below looks like a valid working SOAP UI request*/
-    let message = `<mt>
-        <c>
-          <aplicacion>25</aplicacion>
-          <transaccion>9</transaccion>
-          <usuario> UsuarioCliente </usuario>
-          <maquina>DireccionIpLocal</maquina>
-          <codError>0</codError>
-          <msgError />
-          <medio>MedioId</medio>
-          <token>55033007112012121148550330074812</token>
-          <operacion>1234567890</operacion>
-        </c>
-        <i>
-          <JuegoId>1</JuegoId>
-          <MedioId>17</MedioId>
-          <SorteoId>5413</SorteoId>
-          <Combinacion>%87</Combinacion>
-          <Registros>3</Registros>
-          <UsuarioId>usrClientePsd</UsuarioId>
-          <CombFigura></CombFigura>
-          <Sugerir>False</Sugerir>
-        </i>
-      </mt>`;
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
-
-    /*proxy.send's second argument is the soap action; you can find the soap action in your wsdl*/
-    proxy.send(message, "http://YourNamespace/IYourService/YourMethod", function (response, ctx) {
-      console.log(response);
-      /*Your response is in xml and which can either be used as it is of you can parse it to JSON etc.....*/
-      res.status(200).json(response);
-    });
-  } catch (e) {
-    res.status(400).json(e.toString());
-  }
-};
-
-module.exports.reservarBoletos = async (req, res) => {
-  try {
-    let binding = new BasicHttpBinding(
-      {
-        MessageEncoding: "Mtom"
-        , SecurityMode: "TransportWithMessageCredential"
-      })
-    let proxy = new Proxy(binding, address)
-
-
-    /*Ensure your message below looks like a valid working SOAP UI request*/
-    let message = `<mt>
-        <c>
-          <aplicacion>25</aplicacion>
-          <transaccion>9</transaccion>
-          <usuario> UsuarioCliente </usuario>
-          <maquina>DireccionIpLocal</maquina>
-          <codError>0</codError>
-          <msgError />
-          <medio>MedioId</medio>
-          <token>55033007112012121148550330074812</token>
-          <operacion>1234567890</operacion>
-        </c>
-        <i>
-          <JuegoId>1</JuegoId>
-          <MedioId>17</MedioId>
-          <SorteoId>5413</SorteoId>
-          <Combinacion>%87</Combinacion>
-          <Registros>3</Registros>
-          <UsuarioId>usrClientePsd</UsuarioId>
-          <CombFigura></CombFigura>
-          <Sugerir>False</Sugerir>
-        </i>
-      </mt>`;
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
-
-    /*proxy.send's second argument is the soap action; you can find the soap action in your wsdl*/
-    proxy.send(message, "http://YourNamespace/IYourService/YourMethod", function (response, ctx) {
-      console.log(response);
-      /*Your response is in xml and which can either be used as it is of you can parse it to JSON etc.....*/
-      res.status(200).json(response);
-    });
-  } catch (e) {
-    res.status(400).json(e.toString());
+    console.log(e.toString());
+    throw e;
   }
 };
 
@@ -505,53 +536,6 @@ module.exports.liberarReservas = async (req, res) => {
 };
 
 module.exports.venderBoletos = async (req, res) => {
-  try {
-    let binding = new BasicHttpBinding(
-      {
-        MessageEncoding: "Mtom"
-        , SecurityMode: "TransportWithMessageCredential"
-      })
-    let proxy = new Proxy(binding, address)
-
-
-    /*Ensure your message below looks like a valid working SOAP UI request*/
-    let message = `<mt>
-        <c>
-          <aplicacion>25</aplicacion>
-          <transaccion>9</transaccion>
-          <usuario> UsuarioCliente </usuario>
-          <maquina>DireccionIpLocal</maquina>
-          <codError>0</codError>
-          <msgError />
-          <medio>MedioId</medio>
-          <token>55033007112012121148550330074812</token>
-          <operacion>1234567890</operacion>
-        </c>
-        <i>
-          <JuegoId>1</JuegoId>
-          <MedioId>17</MedioId>
-          <SorteoId>5413</SorteoId>
-          <Combinacion>%87</Combinacion>
-          <Registros>3</Registros>
-          <UsuarioId>usrClientePsd</UsuarioId>
-          <CombFigura></CombFigura>
-          <Sugerir>False</Sugerir>
-        </i>
-      </mt>`;
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
-
-    /*proxy.send's second argument is the soap action; you can find the soap action in your wsdl*/
-    proxy.send(message, "http://YourNamespace/IYourService/YourMethod", function (response, ctx) {
-      console.log(response);
-      /*Your response is in xml and which can either be used as it is of you can parse it to JSON etc.....*/
-      res.status(200).json(response);
-    });
-  } catch (e) {
-    res.status(400).json(e.toString());
-  }
-};
-
-module.exports.consultarResultados = async (req, res) => {
   try {
     let binding = new BasicHttpBinding(
       {

@@ -6,9 +6,22 @@
     <hr size="2px" />
   </div>
   <div *ngIf="tickets.length!=0" class="scroll">
-    <app-loteria-nacional-ticket *ngFor="let ticket of tickets" [ticketIndex]="ticket.ticketIndex" [date]="ticket.date"
-      [fraccion]="ticket.fraccion" [ticketNumbers]="ticket.ticketNumbers" [sorteoNumber]="ticketsorteoNumber">
-    </app-loteria-nacional-ticket>
+    <div *ngIf="isLoteriaNacional">
+
+      <app-loteria-nacional-ticket class="ticketBox" *ngFor="let ticket of tickets" [ticket]="ticket">
+      </app-loteria-nacional-ticket>
+    </div>
+    <div *ngIf="isLotto">
+
+      <app-lotto-ticket class="ticketBox" *ngFor="let ticket of tickets">
+      </app-lotto-ticket>
+    </div>
+    <div *ngIf="isPozoMillonario">
+
+      <app-pozo-millonario-ticket class="ticketBox" *ngFor="let ticket of tickets">
+      </app-pozo-millonario-ticket>
+    </div>
+
     <!--       <div class="contenedor_informacion_ticket">
             <div class="contenedor_informacion_ticket_derecho">
     

@@ -14,5 +14,7 @@ module.exports = {
     mysqlUser: 'serverUser',
     mysqlPass: '',
     dbName: "LoteriaNacional",
-    connectionLimit: 100
+    connectionLimit: 100,
+    ftpHost: 'localhost',
+    ftpPort: 2222
 }

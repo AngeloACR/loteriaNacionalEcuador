@@ -2,47 +2,7 @@ const Ticket = require('../model/ticket');
 const Transaction = require('../model/transaction');
 const Lottery = require('../../loterianacional/controller/main');
 
-
-
-module.exports.checkBalance = async (req, res) => {
-    try {
-
-        res.status(200).json();
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
-module.exports.buyTickets = async (req, res) => {
-    try {
-
-        res.status(200).json();
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
-
-
-
-
-module.exports.searchLoteriaUltimosResultados = async (req, res) => {
-    try {
-        let response = await Lottery.autenticarUsuario();
-        let token = response.token;
-        let sorteo = req.body.sorteo;
-        let combinaciones = req.body.combinaciones;
-        response = [];
-        let length = combinaciones.length;
-        for (let i = 0; i < length; i++) {
-            let aux = await Lottery.consultarBoletoGanador(2, sorteo, combinaciones[i], token);
-            response.push(aux);
-        }
-        res.status(200).json(response);
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
+/*************************** CONSULTA DE RESULTADOS************************/
 
 module.exports.searchLoteriaWinner = async (req, res) => {
     try {
@@ -54,24 +14,6 @@ module.exports.searchLoteriaWinner = async (req, res) => {
         let length = combinaciones.length;
         for (let i = 0; i < length; i++) {
             let aux = await Lottery.consultarBoletoGanador(1, sorteo, combinaciones[i], token);
-            response.push(aux);
-        }
-        res.status(200).json(response);
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
-module.exports.searchPozoUltimosResultados = async (req, res) => {
-    try {
-        let response = await Lottery.autenticarUsuario();
-        let token = response.token;
-        let sorteo = req.body.sorteo;
-        let combinaciones = req.body.combinaciones;
-        response = [];
-        let length = combinaciones.length;
-        for (let i = 0; i < length; i++) {
-            let aux = await Lottery.consultarBoletoGanador(5, sorteo, combinaciones[i], token);
             response.push(aux);
         }
         res.status(200).json(response);
@@ -98,24 +40,6 @@ module.exports.searchLottoWinner = async (req, res) => {
     }
 };
 
-module.exports.searchLoteriaWinner = async (req, res) => {
-    try {
-        let response = await Lottery.autenticarUsuario();
-        let token = response.token;
-        let sorteo = req.body.sorteo;
-        let combinaciones = req.body.combinaciones;
-        response = [];
-        let length = combinaciones.length;
-        for (let i = 0; i < length; i++) {
-            let aux = await Lottery.consultarBoletoGanador(1, sorteo, combinaciones[i], token);
-            response.push(aux);
-        }
-        res.status(200).json(response);
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
 module.exports.searchPozoWinner = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
@@ -133,7 +57,6 @@ module.exports.searchPozoWinner = async (req, res) => {
         res.status(400).json(e.toString());
     }
 };
-
 
 module.exports.searchLottoBoletin = async (req, res) => {
     try {
@@ -169,7 +92,6 @@ module.exports.searchPozoBoletin = async (req, res) => {
     }
 };
 
-
 module.exports.searchLoteriaUltimosResultados = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
@@ -203,49 +125,12 @@ module.exports.searchPozoUltimosResultados = async (req, res) => {
     }
 };
 
-module.exports.searchLottoConsulta = async (req, res) => {
-    try {
-        let response = await Lottery.autenticarUsuario();
-        let token = response.token;
-        response = await Lottery.consultarBoletos(2, token);
-
-        res.status(200).json(response);
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
-module.exports.searchLoteriaConsulta = async (req, res) => {
-    try {
-        let response = await Lottery.autenticarUsuario();
-        let token = response.token;
-        response = await Lottery.consultarBoletos(1, token);
-
-        res.status(200).json(response);
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
-module.exports.searchPozoConsulta = async (req, res) => {
-    try {
-        let response = await Lottery.autenticarUsuario();
-        let token = response.token;
-        response = await Lottery.consultarBoletos(5, token);
-
-        res.status(200).json(response);
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
-
 
 module.exports.searchLottoSorteosJugados = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarSorteos(2, token);
+        response = await Lottery.consultarSorteosJugados(2, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -257,7 +142,7 @@ module.exports.searchLoteriaSorteosJugados = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarSorteos(1, token);
+        response = await Lottery.consultarSorteosJugados(1, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -269,7 +154,7 @@ module.exports.searchPozoSorteosJugados = async (req, res) => {
     try {
         let response = await Lottery.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarSorteos(5, token);
+        response = await Lottery.consultarSorteosJugados(5, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -277,22 +162,104 @@ module.exports.searchPozoSorteosJugados = async (req, res) => {
     }
 };
 
-module.exports.getAvailableTickets = async (req, res) => {
-    try {
+/*************************** COMPRA DE BOLETOS ************************/
 
-        res.status(200).json();
+
+module.exports.searchLottoSorteosDisponibles = async (req, res) => {
+    try {
+        let response = await Lottery.autenticarUsuario();
+        let token = response.token;
+        response = await Lottery.consultarSorteosDisponibles(2, token);
+
+        res.status(200).json(response);
     } catch (e) {
         res.status(400).json(e.toString());
     }
 };
 
-module.exports.getSingleTicketData = async (req, res) => {
+module.exports.searchLoteriaSorteosDisponibles = async (req, res) => {
     try {
+        let response = await Lottery.autenticarUsuario();
+        let token = response.token;
+        response = await Lottery.consultarSorteosDisponibles(1, token);
 
-        res.status(200).json();
+        res.status(200).json(response);
     } catch (e) {
         res.status(400).json(e.toString());
     }
 };
+
+module.exports.searchPozoSorteosDisponibles = async (req, res) => {
+    try {
+        let response = await Lottery.autenticarUsuario();
+        let token = response.token;
+        response = await Lottery.consultarSorteosDisponibles(5, token);
+
+        res.status(200).json(response);
+    } catch (e) {
+        res.status(400).json(e.toString());
+    }
+};
+
+module.exports.searchLottoCombinacionesDisponibles = async (req, res) => {
+    try {
+        let response = await Lottery.autenticarUsuario();
+        let token = response.token;
+        let sorteo = req.body.sorteo;
+        let combinacion = req.body.combinacion;
+        let combinacionFigura = req.body.combinacionFigura;
+        let combinaciones = await Lottery.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
+        let reserva = await Lottery.reservarCombinaciones(2, sorteo, combinaciones, token);
+        response = {
+            combinaciones,
+            reserva
+        }
+
+        res.status(200).json(response);
+    } catch (e) {
+        res.status(400).json(e.toString());
+    }
+};
+
+module.exports.searchLoteriaCombinacionesDisponibles = async (req, res) => {
+    try {
+        let response = await Lottery.autenticarUsuario();
+        let token = response.token;
+        let sorteo = req.body.sorteo;
+        let combinacion = req.body.combinacion;
+        let combinacionFigura = req.body.combinacionFigura;
+        let combinaciones = await Lottery.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
+        let reserva = await Lottery.reservarCombinaciones(1, sorteo, combinaciones, token);
+        response = {
+            combinaciones,
+            reserva
+        }
+        res.status(200).json(response);
+    } catch (e) {
+        res.status(400).json(e.toString());
+    }
+};
+
+module.exports.searchPozoCombinacionesDisponibles = async (req, res) => {
+    try {
+        let response = await Lottery.autenticarUsuario();
+        let token = response.token;
+        let sorteo = req.body.sorteo;
+        let combinacion = req.body.combinacion;
+        let combinacionFigura = req.body.combinacionFigura;
+        let combinaciones = await Lottery.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
+        let reserva = await Lottery.reservarCombinaciones(5, sorteo, combinaciones, token);
+        response = {
+            combinaciones,
+            reserva
+        }
+
+        res.status(200).json(response);
+    } catch (e) {
+        res.status(400).json(e.toString());
+    }
+};
+
+
 
 const LotteryController = module.exports

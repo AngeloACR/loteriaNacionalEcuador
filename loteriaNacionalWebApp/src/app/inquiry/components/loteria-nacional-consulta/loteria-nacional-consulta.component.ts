@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { InquiryService } from "../../services/inquiry.service";
@@ -13,7 +13,7 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
   sorteoGanador: any;
   sorteoBoletin: any;
   combinacionesAux: any;
-
+  @Output() resultados = new EventEmitter();
   constructor(private router: Router, private inquiryService: InquiryService) {}
 
   async ngOnInit() {
@@ -33,21 +33,10 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
       combinaciones
     );
     console.log(data);
-    this.toggleResultados(data);
-  }
-  showResultados: boolean = false;
-  resultados: any;
-  toggleResultados(resultados) {
-    this.resultados = resultados;
-    console.log(this.resultados);
-    this.showResultados = true;
+    this.resultados.emit(data);
   }
 
   async buscarBoletin() {
     this.router.navigateByUrl(`/inquiry/loteria_boletin/${this.sorteoBoletin}`);
-  }
-
-  closeBox() {
-    this.showResultados = false;
   }
 }

@@ -14,10 +14,8 @@ $color-lotto: #b51f20;
   border-left: 4px solid $color-lotto;
 }
 
-
 .container {
   width: 100%;
-  margin: 20px auto;
 
   /* display: grid;
   grid-template-columns: 71% 1fr;
@@ -70,7 +68,6 @@ $color-lotto: #b51f20;
           display: flex;
           justify-content: center;
           align-items: center;
-
 
           .icono {
             width: 25px;
@@ -129,16 +126,14 @@ $color-lotto: #b51f20;
               input[type="text"] {
                 @extend %input;
                 padding-top: 14px;
-                outline: none
-
+                outline: none;
               }
 
               input[type="date"] {
                 @extend %input;
                 padding-top: 14px;
                 padding-right: 8px;
-                outline: none
-
+                outline: none;
               }
 
               select {

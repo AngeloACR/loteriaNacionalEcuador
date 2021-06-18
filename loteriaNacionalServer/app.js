@@ -1,4 +1,5 @@
 const lotteryServer = require('./lotteryServer');
+const ftpServer = require('./ftpServer');
 const webServer = require('./webServer');
 const userServer = require('./userServer');
 const config = require('./config/environment');
@@ -18,6 +19,16 @@ const lotteryApp = lotteryServer.init(lotteryPort);
 lotteryApp.listen(lotteryPort, () => {
     console.log('Server running at: ' + lotteryPort);
 });
+
+const ftpHost = config.ftpHost;
+const ftpPort = config.ftpPort;
+
+const ftpApp = ftpServer.init(ftpHost, ftpPort);
+
+ftpApp.listen()
+    .then(() => {
+        console.log(`Server running at ftp://${ftpHost}:${ftpPort}/`);
+    });
 /*
 const userPort = config.userPort;
 const userApp = userServer.init(userPort);
