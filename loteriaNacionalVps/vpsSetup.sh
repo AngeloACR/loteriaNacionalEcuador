@@ -24,7 +24,7 @@ chkconfig mysqld on
  sudo yum install nginx
 
 #nginx+php setup
-sudo yum install yum-utils –y
+sudo yum install yum-utils
 sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 sudo yum-config-manager ––enable remi–php72
 sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql –y
