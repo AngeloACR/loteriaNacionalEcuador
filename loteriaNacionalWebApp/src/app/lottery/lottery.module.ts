@@ -25,6 +25,9 @@ import { TooltipComponent } from './containers/tooltip/tooltip.component';
 import { SeleccionLottoComponent } from './containers/seleccion-lotto/seleccion-lotto.component';
 import { SeleccionPozoComponent } from './containers/seleccion-pozo/seleccion-pozo.component';
 
+
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     LotteryComponent,
@@ -63,6 +66,6 @@ import { SeleccionPozoComponent } from './containers/seleccion-pozo/seleccion-po
     PozoMillonarioConfiguradorComponent,
     SeleccionTipoComponent
   ],
-  imports: [CommonModule, LotteryRoutingModule]
+  imports: [CommonModule, LotteryRoutingModule, NgxPaginationModule]
 })
 export class LotteryModule {}

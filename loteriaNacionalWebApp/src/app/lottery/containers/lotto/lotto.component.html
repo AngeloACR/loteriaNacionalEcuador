@@ -41,109 +41,24 @@
     <div class="contenedor_numeros_suerte">
       <table>
         <tbody>
-          <tr>
+          <tr *ngFor="let item of seleccionLotto | paginate: { itemsPerPage: 4, currentPage: pageActual };">
             <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>1</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>4</p>
-                <p>4</p>
-              </div>
-            </td>
-            <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>8</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>7</p>
-                <p>4</p>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>4</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>4</p>
-                <p>4</p>
-              </div>
-            </td>
-            <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>9</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>4</p>
-                <p>4</p>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>6</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>4</p>
-                <p>4</p>
-              </div>
-            </td>
-            <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>8</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>4</p>
-                <p>4</p>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>4</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>4</p>
-                <p>4</p>
-              </div>
-            </td>
-            <td>
-              <input type="checkbox" name="" id="">
-              <div>
-                <p>0</p>
-                <p>4</p>
-                <p>5</p>
-                <p>7</p>
-                <p>4</p>
-                <p>4</p>
-              </div>
-            </td>
+              <app-seleccion-lotto></app-seleccion-lotto>
+            </td>  
           </tr>
         </tbody>
         <hr size="2px" color="gray" />
+        <!-- <pagination-controls (pageChange)="pageActual = $event"></pagination-controls> -->
       </table>
 
+
       <div class="contenedor_botones">
-        <button class="boton"><i class="fa fa-chevron-left"></i></button>
-        <button class="boton"><i class="fa fa-chevron-right"></i></button>
+        <button class="boton" (click)="decrementar()">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button class="boton" (click)="incrementar()">
+          <i class="fa fa-chevron-right"></i>
+        </button>
       </div>
     </div>
     <div class="boton_boleto">
