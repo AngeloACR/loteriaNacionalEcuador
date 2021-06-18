@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { InquiryService } from "../../services/inquiry.service";
@@ -12,6 +12,7 @@ export class LottoConsultaComponent implements OnInit {
   sorteoGanador: any;
   sorteoBoletin: any;
   combinacionesAux: any;
+  @Output() resultados = new EventEmitter();
 
   constructor(private router: Router, private inquiryService: InquiryService) {}
 
@@ -33,6 +34,7 @@ export class LottoConsultaComponent implements OnInit {
       combinaciones
     );
     console.log(data);
+    this.resultados.emit(data);
   }
 
   async buscarBoletin() {

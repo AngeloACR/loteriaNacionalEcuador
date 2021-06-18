@@ -1,1 +1,10 @@
-<app-loteria-nacional-consulta></app-loteria-nacional-consulta>
+<div class="container">
+    <app-loteria-nacional-consulta style="width: 65%" (resultados)="toggleResultados($event)">
+    </app-loteria-nacional-consulta>
+    <app-loteria-nacional-selector style="width: 30%"></app-loteria-nacional-selector>
+
+    <div class="modalBox" *ngIf="showResultados">
+        <app-resultados [isLoteriaNacional]="true" (close)="closeBox()" *ngIf="showResultados"
+            [resultados]="resultados"></app-resultados>
+    </div>
+</div>

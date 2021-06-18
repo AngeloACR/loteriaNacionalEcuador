@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from "@angular/core";
 export class TicketScrollerComponent implements OnInit {
   @Input() logo: String;
   @Input() tickets: any;
+  @Input() isLoteriaNacional: boolean = false;
+  @Input() isLotto: boolean = false;
+  @Input() isPozoMillonario: boolean = false ;
   constructor() {}
 
   ngOnInit() {}

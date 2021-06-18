@@ -10,8 +10,8 @@ export class InquiryService {
   testSource = "http://api-loteria.gustavoliver.com";
   productionSource = "";
 
-  mySource = this.localSource;
-  //mySource = this.testSource;
+  //mySource = this.localSource;
+  mySource = this.testSource;
 
   constructor(private http: HttpClient) {}
 

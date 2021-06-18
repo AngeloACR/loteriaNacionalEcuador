@@ -6,13 +6,15 @@ module.exports = {
     cSecret: 'My incredible Loteria Nacional',
     mSecret: 'My secret moves will never be discovered',
     production: false,
-    webPort: 3200,
+    ventasPort: 6800,
+    contenidosPort: 5950,
     lotteryPort: 5480,
-    userPort: 3600,
     host: 'localhost',
     mysqlPort: '3306',
     mysqlUser: 'serverUser',
     mysqlPass: '',
     dbName: "LoteriaNacional",
-    connectionLimit: 100
+    connectionLimit: 100,
+    ftpHost: 'localhost',
+    ftpPort: 2222
 }

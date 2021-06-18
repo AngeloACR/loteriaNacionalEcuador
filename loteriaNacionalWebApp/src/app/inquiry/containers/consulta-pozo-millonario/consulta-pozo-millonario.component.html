@@ -1,1 +1,9 @@
-<app-pozo-millonario-consulta></app-pozo-millonario-consulta>
+<div class="container">
+
+    <app-pozo-millonario-consulta style="width: 65%;" (resultados)="toggleResultados($event)">
+    </app-pozo-millonario-consulta>
+    <app-pozo-millonario-selector style="width: 30%;"></app-pozo-millonario-selector>
+    <div class="modalBox" *ngIf="showResultados">
+        <app-resultados (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados"></app-resultados>
+    </div>
+</div>

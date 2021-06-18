@@ -31,5 +31,29 @@ export class LoteriaComponent implements OnInit {
   
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tickets = [
+      {
+        ticketIndex: 245,
+        date: "05/05/2021",
+        fraccion: ["01", "03", "05", "10"],
+        ticketNumbers: ["5", "6", "4", "4", "3"],
+        sorteo: 6575
+      },
+      {
+        ticketIndex: 245,
+        date: "05/05/2021",
+        fraccion: ["01", "03", "05", "10"],
+        ticketNumbers: ["5", "6", "4", "4", "3"],
+        sorteo: 6575
+      },
+      {
+        ticketIndex: 245,
+        date: "05/05/2021",
+        fraccion: ["01", "03", "05", "10"],
+        ticketNumbers: ["5", "6", "4", "4", "3"],
+        sorteo: 6575
+      }
+    ];
+  }
 }

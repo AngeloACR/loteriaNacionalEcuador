@@ -5,14 +5,16 @@
     <div (click)="closeBox()" class="closeBox">
         X
     </div>
-    <div class="resultBox" *ngFor="let resultado of resultados">
+    <div class="resultBox" *ngFor="let ticket of tickets">
 
-        <div *ngIf="resultado.status" class="messageBox">
-            <p>Boleto número {{resultado.combinacion}} - Este boleto resultó ganador!!!</p>
+        <div *ngIf="isLoteriaNacional" class="messageBox">
+            <app-loteria-nacional-ticket [ticket]="ticket"></app-loteria-nacional-ticket>
         </div>
-        <div *ngIf="!resultado.status" class="messageBox">
-            <p>Boleto número {{resultado.combinacion}} - Este boleto no ganó</p>
-
+        <div *ngIf="isLotto" class="messageBox">
+            <app-lotto-ticket></app-lotto-ticket>
+        </div>
+        <div *ngIf="isPozoMillonario" class="messageBox">
+            <app-pozo-millonario-ticket></app-pozo-millonario-ticket>
         </div>
     </div>
 </div>

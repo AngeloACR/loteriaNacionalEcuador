@@ -17,7 +17,7 @@ const routes: Routes = [
     component: InquiryComponent,
     children: [
       {
-        path: "lottery_boletin/:sorteo",
+        path: "loteria_boletin/:sorteo",
         component: BoletinLoteriaNacionalComponent
       },
       { path: "lotto_boletin/:sorteo", component: BoletinLottoComponent },
@@ -25,7 +25,7 @@ const routes: Routes = [
         path: "pozo_millonario_boletin/:sorteo",
         component: BoletinPozoMillonarioComponent
       },
-      { path: "lottery_consulta", component: ConsultaLoteriaNacionalComponent },
+      { path: "loteria_consulta", component: ConsultaLoteriaNacionalComponent },
       { path: "lotto_consulta", component: ConsultaLottoComponent },
       { path: "", component: SeleccionComponent },
       {

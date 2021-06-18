@@ -31,19 +31,19 @@
       </div>
     </form>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
-    <div class="contenedor_numeros_suerte" >
+    <div class="contenedor_numeros_suerte">
 
       <table>
         <tbody>
           <tr *ngFor="let item of seleccionLoteria | paginate: { itemsPerPage: 9, currentPage: pageActual };">
             <td>
               <app-tooltip *ngFor="let item of tooltips  "></app-tooltip>
-            </td>  
+            </td>
           </tr>
         </tbody>
       </table>
 
-    </div> 
+    </div>
     <hr size="2px" color="gray" />
 
     <div class="contenedor_botones">
@@ -63,7 +63,8 @@
     </div>
   </div>
 
-  <app-ticket-scroller style="width: 25%;" [tickets]="tickets" logo="assets/img/loteria nacional.png">
+  <app-ticket-scroller style="width: 25%;" [tickets]="tickets" isLoteriaNacional="true"
+    logo="assets/img/loteria nacional.png">
   </app-ticket-scroller>
 
   <!--   <div class="contenedor_ticket">

@@ -24,7 +24,8 @@
     "multer": "*",
     "soap": "*",
     "node-schedule": "*",
-    "xml2js": "*"
+    "xml2js": "*",
+    "ftp-srv": "*"
   },
   "keywords": [
     "loteria",

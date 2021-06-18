@@ -8,34 +8,34 @@ $color-lotto: #b51f20;
 $color-pozo: #057333;
 
 .resultBox {
-    width: 80%;
-    margin: auto;
-    font-family: $fuente-parrafo;
-    margin-top: 40px;
-    
-    a {
-        text-decoration: none;
-        font-size: 14px;
-        padding: 7.9px 12px;
-        font-family: $fuente-subtitulo;
-        color: #000;
-        margin-right: 7px;
-    };
+  width: 95%;
+  margin: auto;
+  font-family: $fuente-parrafo;
+  margin-top: 40px;
 
-    .active {
-        background-color: $color-botton;
-        color: #fff;       
-    }
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    padding: 7.9px 12px;
+    font-family: $fuente-subtitulo;
+    color: #000;
+    margin-right: 7px;
+  }
 
-    .loteria {
-        background-color: $color-botton;
-    }
+  .active {
+    background-color: $color-botton;
+    color: #fff;
+  }
 
-    .lotto {
-        background-color: $color-lotto;
-    }
+  .loteria {
+    background-color: $color-botton;
+  }
 
-    .pozo {
-        background-color: $color-pozo;
-    }
+  .lotto {
+    background-color: $color-lotto;
+  }
+
+  .pozo {
+    background-color: $color-pozo;
+  }
 }

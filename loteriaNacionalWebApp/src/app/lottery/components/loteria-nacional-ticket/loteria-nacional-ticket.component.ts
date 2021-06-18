@@ -6,12 +6,19 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./loteria-nacional-ticket.component.scss"]
 })
 export class LoteriaNacionalTicketComponent implements OnInit {
-  @Input() ticketIndex: Number;
-  @Input() date: String;
-  @Input() fraccion: Number[];
-  @Input() ticketNumbers: Number[];
-  @Input() sorteoNumber: Number[];
+  @Input() ticket: any;
+  ticketIndex: Number;
+  date: String;
+  fraccion: Number[];
+  ticketNumbers: Number[];
+  sorteo: Number;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ticketIndex = this.ticket.ticketIndex;
+    this.date = this.ticket.date;
+    this.fraccion = this.ticket.fraccion;
+    this.ticketNumbers = this.ticket.ticketNumbers;
+    this.sorteo = this.ticket.sorteo;
+  }
 }
