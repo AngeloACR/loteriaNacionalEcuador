@@ -53,9 +53,6 @@ sudo certbot --nginx -d venta-prueba.loteria.com.ec
 sudo certbot --nginx -d contenidos-prueba.loteria.com.ec 
 sudo certbot --nginx -d venta-api-prueba.loteria.com.ec 
 
-#git install
-sudo apt-get install git
-
 #nodemon install
 sudo npm install nodemon -g
 
