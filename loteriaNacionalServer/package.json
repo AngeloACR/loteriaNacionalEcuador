@@ -4,7 +4,8 @@
   "description": "Servidor de Loteria Nacional Ecuador, contendra principalmente una Api para interactuar con el servidor de loteria, otra para contactar al servidor de la plataforma de juegos, y una para interactuar con las aplicaciones web y movil.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-worker app.js"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -21,11 +22,13 @@
     "mysql": "*",
     "wcf.js": "*",
     "nodemailer": "*",
+    "mongoose": "*",
     "multer": "*",
     "soap": "*",
     "node-schedule": "*",
     "xml2js": "*",
-    "ftp-srv": "*"
+    "ftp-srv": "*",
+    "node-worker-threads-pool": "*"
   },
   "keywords": [
     "loteria",

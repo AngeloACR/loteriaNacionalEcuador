@@ -11,7 +11,7 @@ const app = express();
 
 const inquiry = require('./lottery/routes/inquiry');
 const lottery = require('./lottery/routes/lottery');
-const results = require('./lottery/routes/results');
+const results = require('./results/routes/results');
 
 module.exports.init = function (port) {
   app.set('port', (port));

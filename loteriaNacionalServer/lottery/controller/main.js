@@ -1,5 +1,3 @@
-const Ticket = require('../model/ticket');
-const Transaction = require('../model/transaction');
 const Lottery = require('../../loterianacional/controller/main');
 
 /*************************** CONSULTA DE RESULTADOS************************/

@@ -1,5 +1,5 @@
 const FtpSrv = require('ftp-srv');
-
+const ResultadosController = require('./results/controller/main')
 
 module.exports.init = function (hostname, port) {
 
@@ -9,7 +9,7 @@ module.exports.init = function (hostname, port) {
     });
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {
-        if (username === 'test' && password === 'test' || username === 'anonymous') {
+        if (username === 'test' && password === 'test') {
             resolve({ root: `${__dirname}/uploads` });
         } else reject('Bad username or password');
 
@@ -24,7 +24,24 @@ module.exports.init = function (hostname, port) {
                 tipoLoteria: fileAux[1],
                 sorteo
             }
-            console.log(fileData)
+            console.log(fileData);
+
+            switch (fileData.fileType) {
+                case 'BOLPRE':
+                    ResultadosController.agregarResultados(fileData.sorteo, fileData.tipoLoteria)
+                    break;
+                case 'PREM':
+                    ResultadosController.agregarPremios(fileData.sorteo, fileData.tipoLoteria)
+
+                    break;
+                case 'SORT':
+                    ResultadosController.agregarSorteos(fileData.sorteo, fileData.tipoLoteria, true)
+
+                    break;
+
+                default:
+                    break;
+            }
         });
     });
 

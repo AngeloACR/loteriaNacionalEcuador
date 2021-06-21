@@ -1,3 +1,4 @@
+const db = require('./database');
 const lotteryServer = require('./lotteryServer');
 const ftpServer = require('./ftpServer');
 const webServer = require('./webServer');
@@ -8,6 +9,8 @@ const webPort = config.ventasPort;
 const webFolder = './public/loteriaNacionalWeb';
 const webPath = webFolder + '/index.html';
 const webApp = webServer.init(webFolder, webPath, webPort);
+
+const connection = db.initConnect();
 
 webApp.listen(webPort, () => {
     console.log('Server running at: ' + webPort);
