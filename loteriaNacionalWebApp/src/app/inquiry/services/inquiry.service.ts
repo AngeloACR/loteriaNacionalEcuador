@@ -10,8 +10,8 @@ export class InquiryService {
   testSource = "http://api-loteria.gustavoliver.com";
   productionSource = "";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
 
   constructor(private http: HttpClient) {}
 
@@ -42,7 +42,7 @@ export class InquiryService {
     address = address + endpoint;
     return new Promise((resolve, reject) => {
       this.http.get(address, { headers: headers }).subscribe((data: any[]) => {
-        let sorteosJugados = data;
+        let sorteosJugados = data.values;
         console.log(sorteosJugados);
         resolve(sorteosJugados);
       });

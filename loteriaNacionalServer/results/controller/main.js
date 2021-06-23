@@ -123,10 +123,8 @@ const mainController = {
                         combinacion2: data[i].$.C2,
                         combinacion3: data[i].$.C3,
                         codigo: data[i].$.B,
-                        detallePremio: {
-                            premio: premioData.values._id,
-                            combinacionGanadora: data[i].X[0].R[0].$.CG
-                        }
+                        premio: premioData.values._id,
+                        combinacionGanadora: data[i].X[0].R[0].$.CG
                     }
                     ResultadosController.addResultado(resultado);
                 }

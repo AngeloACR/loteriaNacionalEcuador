@@ -1,5 +1,6 @@
 {
   "purchaseDate": "07/05/2021",
+  "currency": "USD",
   "purchaseDetails": [
     {
       "lotteryType": "Loteria Nacional",
@@ -9,7 +10,7 @@
       },
       "drawNumber": 2578,
       "drawDate": "10/05/2021",
-      "subtotal": 20
+      "subtotal": 20.0
     },
     {
       "lotteryType": "Lotto",
@@ -21,7 +22,7 @@
       },
       "drawNumber": 2578,
       "drawDate": "10/05/2021",
-      "subtotal": 5
+      "subtotal": 5.0
     },
     {
       "lotteryType": "Pozo Millonario",
@@ -46,9 +47,9 @@
       "drawNumber": 2578,
       "drawDate": "10/05/2021",
       "purchasedFractions": [1],
-      "subtotal": 5
+      "subtotal": 5.0
     }
   ],
-  "total": 30,
-  "reservationId": 3
+  "total": 30.0,
+  "transactionId": 3
 }

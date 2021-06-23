@@ -13,6 +13,12 @@ const sorteoSchema = new mongoose.Schema({
     tipoLoteria: {
         type: Number,
     },
+    fecha: {
+        type: String,
+    },
+    nombre: {
+        type: String,
+    },
     premios: [{
         type: Schema.Types.ObjectId,
         ref: 'Premio',

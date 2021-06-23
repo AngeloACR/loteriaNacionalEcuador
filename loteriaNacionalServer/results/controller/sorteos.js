@@ -40,9 +40,9 @@ const sorteosController = {
         }
     },
 
-    getSorteos: async function () {
+    getSorteos: async function (tipoLoteria) {
         try {
-            const query = {};
+            const query = { 'tipoLoteria': tipoLoteria };
             let sorteos = await Sorteo.find(query)
             let response = {
                 status: true,

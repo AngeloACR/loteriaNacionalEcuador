@@ -44,8 +44,8 @@
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
               <select name="sorteoGanador" id="sorteoGanador" placeholder="" [(ngModel)]="sorteoGanador">
-                <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
-                  {{option.FSort}}</option>
+                <option *ngFor="let option of sorteosJugados" [value]="option.sorteo">N° {{option.sorteo}} -
+                  {{option.fecha}}</option>
               </select>
             </div>
             <button (click)="buscarBoletoGanador()">VER RESULTADOS</button>
@@ -65,8 +65,8 @@
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
               <select name="sorteoBoletin" id="sorteoBoletin" placeholder="" [(ngModel)]="sorteoBoletin">
-                <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
-                  {{option.FSort}}</option>
+                <option *ngFor="let option of sorteosJugados" [value]="option.sorteo">N° {{option.sorteo}} -
+                  {{option.fecha}}</option>
               </select>
             </div>
 
@@ -109,8 +109,8 @@
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
               <select name="sorteoRango" id="sorteoRango" placeholder="" [(ngModel)]="sorteoRango">
-                <option *ngFor="let option of sorteosJugados" value="option.SortId">N° {{option.SortId}} -
-                  {{option.FSort}}</option>
+                <option *ngFor="let option of sorteosJugados" [value]="option.sorteo">N° {{option.sorteo}} -
+                  {{option.fecha}}</option>
               </select>
             </div>
           </div>

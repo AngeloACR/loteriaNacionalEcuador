@@ -23,14 +23,12 @@ const resultadoSchema = new mongoose.Schema({
     codigo: {
         type: Number,
     },
-    detallePremio: {
-        premio: {
-            type: Schema.Types.ObjectId,
-            ref: 'Premio',
-        },
-        combinacionGanadora: {
-            type: Number,
-        }
+    premio: {
+        type: Schema.Types.ObjectId,
+        ref: 'Premio',
+    },
+    combinacionGanadora: {
+        type: Number,
     }
 });
 

@@ -1,22 +1,33 @@
 const express = require('express');
 const lotteryRouter = express.Router();
-const LotteryController = require('../controller/main');
+const LotteryController = require('../controller/inquiry').inquiryLotteryController;
+const InquiryController = require('../controller/inquiry').inquiryController;
 
-lotteryRouter.post('/loteriaGanador', LotteryController.searchLoteriaWinner);
-lotteryRouter.post('/lottoGanador', LotteryController.searchLottoWinner);
-lotteryRouter.post('/pozoGanador', LotteryController.searchPozoWinner);
+lotteryRouter.post('/loteriaGanadorLoteria', LotteryController.searchLoteriaWinner);
+lotteryRouter.post('/lottoGanadorLoteria', LotteryController.searchLottoWinner);
+lotteryRouter.post('/pozoGanadorLoteria', LotteryController.searchPozoWinner);
+lotteryRouter.post('/loteriaBoletinLoteria', LotteryController.searchLoteriaBoletin);
+lotteryRouter.post('/lottoBoletinLoteria', LotteryController.searchLottoBoletin);
+lotteryRouter.post('/pozoBoletinLoteria', LotteryController.searchPozoBoletin);
+lotteryRouter.get('/loteriaUltimosResultadosLoteria', LotteryController.searchLoteriaUltimosResultados);
+lotteryRouter.get('/lottoUltimosResultadosLoteria', LotteryController.searchLottoUltimosResultados);
+lotteryRouter.get('/pozoUltimosResultadosLoteria', LotteryController.searchPozoUltimosResultados);
+lotteryRouter.get('/pozoSorteosJugadosLoteria', LotteryController.searchPozoSorteosJugados);
+lotteryRouter.get('/lottoSorteosJugadosLoteria', LotteryController.searchLottoSorteosJugados);
+lotteryRouter.get('/loteriaSorteosJugadosLoteria', LotteryController.searchLoteriaSorteosJugados);
 
-lotteryRouter.post('/loteriaBoletin', LotteryController.searchLoteriaBoletin);
-lotteryRouter.post('/lottoBoletin', LotteryController.searchLottoBoletin);
-lotteryRouter.post('/pozoBoletin', LotteryController.searchPozoBoletin);
-
-lotteryRouter.get('/loteriaUltimosResultados', LotteryController.searchLoteriaUltimosResultados);
-lotteryRouter.get('/lottoUltimosResultados', LotteryController.searchLottoUltimosResultados);
-lotteryRouter.get('/pozoUltimosResultados', LotteryController.searchPozoUltimosResultados);
-
-lotteryRouter.get('/pozoSorteosJugados', LotteryController.searchPozoSorteosJugados);
-lotteryRouter.get('/lottoSorteosJugados', LotteryController.searchLottoSorteosJugados);
-lotteryRouter.get('/loteriaSorteosJugados', LotteryController.searchLoteriaSorteosJugados);
+lotteryRouter.post('/loteriaGanador', InquiryController.buscarLoteriaWinner);
+lotteryRouter.post('/lottoGanador', InquiryController.buscarLottoWinner);
+lotteryRouter.post('/pozoGanador', InquiryController.buscarPozoWinner);
+lotteryRouter.post('/loteriaBoletin', InquiryController.buscarLoteriaBoletin);
+lotteryRouter.post('/lottoBoletin', InquiryController.buscarLottoBoletin);
+lotteryRouter.post('/pozoBoletin', InquiryController.buscarPozoBoletin);
+lotteryRouter.get('/loteriaUltimosResultados', InquiryController.buscarLoteriaUltimosResultados);
+lotteryRouter.get('/lottoUltimosResultados', InquiryController.buscarLottoUltimosResultados);
+lotteryRouter.get('/pozoUltimosResultados', InquiryController.buscarPozoUltimosResultados);
+lotteryRouter.get('/pozoSorteosJugados', InquiryController.buscarPozoSorteosJugados);
+lotteryRouter.get('/lottoSorteosJugados', InquiryController.buscarLottoSorteosJugados);
+lotteryRouter.get('/loteriaSorteosJugados', InquiryController.buscarLoteriaSorteosJugados);
 
 
 module.exports = lotteryRouter;
