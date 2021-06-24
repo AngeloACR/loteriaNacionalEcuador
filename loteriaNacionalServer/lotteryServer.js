@@ -31,9 +31,12 @@ module.exports.init = function (port) {
 
   //App compression
   app.use(compression());
-
+  var corsOptions = {
+    origin: 'https://ventas-prueba.loteria.com.ec',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
   // Cors Middleware
-  app.use(cors());
+  app.use( cors(corsOptions));
 
   // Body Parser Middleware
   app.use(bodyParser.json());
