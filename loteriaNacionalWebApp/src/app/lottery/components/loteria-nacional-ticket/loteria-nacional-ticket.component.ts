@@ -11,7 +11,17 @@ export class LoteriaNacionalTicketComponent implements OnInit {
   @Input() fraccion: Number[];
   @Input() ticketNumbers: Number[];
   @Input() sorteoNumber: Number[];
+
+  objeto:any;
+  numero:any;
+  
+
   constructor() {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    
+    console.log(JSON.parse(localStorage.getItem('loteriaTickets')));
+    /* this.ticketNumbers = JSON.parse(localStorage.getItem('loterianumero' + ticket)); */
+    
+  }
 }

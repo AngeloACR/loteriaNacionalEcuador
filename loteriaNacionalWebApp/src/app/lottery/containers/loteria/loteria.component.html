@@ -35,9 +35,9 @@
 
       <table>
         <tbody>
-          <tr *ngFor="let item of seleccionLoteria | paginate: { itemsPerPage: 9, currentPage: pageActual };">
+          <tr *ngFor="let item of numeros | paginate: { itemsPerPage: 9, currentPage: pageActual }; let valor = index">
             <td>
-              <app-tooltip *ngFor="let item of tooltips  "></app-tooltip>
+              <app-tooltip [numeros]="item" [ticket] = "valor"></app-tooltip>
             </td>  
           </tr>
         </tbody>
@@ -54,10 +54,7 @@
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
-
-    <div>
-      Page actual: {{pageActual}}
-    </div>
+    
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>
     </div>

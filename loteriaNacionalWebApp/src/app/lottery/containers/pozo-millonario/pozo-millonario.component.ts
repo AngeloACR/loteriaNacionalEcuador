@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-pozo-millonario",
@@ -8,7 +8,9 @@ import { Component, OnInit } from "@angular/core";
 export class PozoMillonarioComponent implements OnInit {
   tickets: any;
 
-  seleccionPozo: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3];
+  arreglo_animales: string[] = [];
+
+  seleccionPozo: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5];
   pageActual: number = 0;
 
   incrementar() {
@@ -26,6 +28,11 @@ export class PozoMillonarioComponent implements OnInit {
       this.pageActual = 1;
     }
       this.pageActual--;
+  }
+
+  remover( animal: string) {
+    this.arreglo_animales = this.arreglo_animales.filter( function(i: string ) { return i !== animal});
+    console.log( this.arreglo_animales )
   }
 
   constructor() {}

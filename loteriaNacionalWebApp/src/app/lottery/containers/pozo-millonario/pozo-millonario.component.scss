@@ -186,8 +186,9 @@ $color-botton: #2f72b9;
       .tabs_animales {
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
 
-        button {
+        p {
           border: none;
           border-radius: 20px;
           font-family: $fuente-subtitulo;

@@ -30,5 +30,7 @@ export class LottoComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(JSON.parse(localStorage.getItem('usuario[0]')));
+  }
 }

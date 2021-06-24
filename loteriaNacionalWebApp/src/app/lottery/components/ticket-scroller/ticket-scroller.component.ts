@@ -10,5 +10,7 @@ export class TicketScrollerComponent implements OnInit {
   @Input() tickets: any;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 }
