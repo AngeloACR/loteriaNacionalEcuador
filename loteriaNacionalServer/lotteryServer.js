@@ -31,13 +31,15 @@ module.exports.init = function (port) {
 
   //App compression
   app.use(compression());
-  var corsOptions = {
-    origin: 'https://ventas-prueba.loteria.com.ec',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
   // Cors Middleware
-  app.use( cors(corsOptions));
-
+  app.use(cors());
+  app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'https://ventas-prueba.loteria.com.ec');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+  });
   // Body Parser Middleware
   app.use(bodyParser.json());
 
