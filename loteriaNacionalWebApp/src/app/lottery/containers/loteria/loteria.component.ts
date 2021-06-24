@@ -44,7 +44,7 @@ export class LoteriaComponent implements OnInit {
   constructor() {}
 
   async ngOnInit() {
-    this.tickets = localStorage.setItem('loteriaTickets', JSON.stringify('loteriaTickets'));
+   /*  this.tickets = localStorage.setItem('loteriaTickets', JSON.stringify('loteriaTickets')); */
 
     /* this.tickets = JSON.parse(localStorage.getItem('loteriaTickets')); */
   }

@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 export class LottoComponent implements OnInit {
   tickets: any;
 
-  seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3];
+  seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   pageActual: number = 0;
 
   incrementar() {
@@ -31,6 +31,6 @@ export class LottoComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(JSON.parse(localStorage.getItem('usuario[0]')));
+   /*  console.log(JSON.parse(localStorage.getItem('usuario[0]'))); */
   }
 }

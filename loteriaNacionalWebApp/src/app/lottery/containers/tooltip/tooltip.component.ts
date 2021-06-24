@@ -20,6 +20,7 @@ export class TooltipComponent implements OnInit {
   checkbox8: boolean = false;
   checkbox9: boolean = false;
   checkbox10: boolean = false;
+  checkbox11: boolean = false;
   
   cheks: any = [
     { numero: 1, variable: this.checkbox1 },
@@ -32,6 +33,7 @@ export class TooltipComponent implements OnInit {
     { numero: 8, variable: this.checkbox8 },
     { numero: 9, variable: this.checkbox9 },
     { numero: 10, variable: this.checkbox10 },
+    { numero: 11, variable: this.checkbox11 },
   ];
 
   mostrar: boolean = false;

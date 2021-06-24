@@ -20,7 +20,7 @@ export class LoteriaNacionalTicketComponent implements OnInit {
 
   async ngOnInit() {
     
-    console.log(JSON.parse(localStorage.getItem('loteriaTickets')));
+    /* console.log(JSON.parse(localStorage.getItem('loteriaTickets'))); */
     /* this.ticketNumbers = JSON.parse(localStorage.getItem('loterianumero' + ticket)); */
     
   }
