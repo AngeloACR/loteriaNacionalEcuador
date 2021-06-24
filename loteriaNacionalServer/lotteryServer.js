@@ -31,19 +31,13 @@ module.exports.init = function (port) {
 
   //App compression
   app.use(compression());
+  app.use(helmet());
   // Cors Middleware
   app.use(cors());
-  app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://ventas-prueba.loteria.com.ec');
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-  });
+  app.options('*', cors())
   // Body Parser Middleware
   app.use(bodyParser.json());
 
-  app.use(helmet());
 
 
   //Adding routes
