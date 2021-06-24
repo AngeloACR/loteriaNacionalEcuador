@@ -10,7 +10,7 @@ rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
 sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/mysql-community.repo
 yum --enablerepo=mysql80-community install mysql-community-server
 service mysqld start
-grep "A temporary password" /var/log/mysqld.log
+grep "loteriamysqldb" /var/log/mysqld.log
 mysql_secure_installation
 service mysqld restart
 chkconfig mysqld on
@@ -49,9 +49,6 @@ sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --reload
 
 sudo yum install certbot python3-certbot-nginx
-sudo certbot --nginx -d venta-prueba.loteria.com.ec 
-sudo certbot --nginx -d contenidos-prueba.loteria.com.ec 
-sudo certbot --nginx -d venta-api-prueba.loteria.com.ec 
 
 #nodemon install
 sudo npm install nodemon -g

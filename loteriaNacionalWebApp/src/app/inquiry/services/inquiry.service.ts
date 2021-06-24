@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 export class InquiryService {
   today = new Date();
   localSource = "http://localhost:5480";
-  testSource = "http://ventas-api-prueba.loteria.com.ec";
-  productionSource = "http://ventas-api.loteria.com.ec";
+  testSource = "https://ventas-api-prueba.loteria.com.ec";
+  productionSource = "https://ventas-api.loteria.com.ec";
 
   //mySource = this.localSource;
   mySource = this.testSource;
