@@ -243,19 +243,75 @@ const inquiryController = {
     buscarPozoWinner: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
+            let sorteoId = (await Sorteos.getSorteoByNumber(sorteo)).values._id;
             let combinaciones = req.body.combinaciones;
-            response = [];
+            let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Lottery.consultarBoletoGanador(5, sorteo, combinaciones[i], token);
-                response.push(aux);
+                let aux = await Results.getResultadoGanador(sorteoId, combinaciones[i]);
+                if (aux.status) {
+                    aux.values.forEach(boleto => {
+
+                        let responseAux = {
+                            status: true,
+                            combinacion: combinaciones[i],
+                            sorteo,
+                            data: boleto
+                        }
+                        response.push(responseAux);
+                    });
+
+                } else {
+                    let responseAux = {
+                        status: false,
+                        combinacion: combinaciones[i],
+                        sorteo,
+                    }
+                    response.push(responseAux);
+                }
             }
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
     },
+    buscarPozoPlancha: async (req, res) => {
+        try {
+            let sorteo = req.body.sorteo;
+            let boletoInicial = req.body.boletoInicial;
+            let boletoFinal = req.body.boletoFinal;
+            let size = boletoFinal - boletoInicial + 1;
+            let combinaciones = [...Array(size).keys()].map(i => i + boletoInicial);
+            let response = [];
+            let length = combinaciones.length;
+            for (let i = 0; i < length; i++) {
+                let aux = await Results.getResultadoGanador(sorteoId, combinaciones[i]);
+                if (aux.status) {
+                    aux.values.forEach(boleto => {
 
+                        let responseAux = {
+                            status: true,
+                            combinacion: combinaciones[i],
+                            sorteo,
+                            data: boleto
+                        }
+                        response.push(responseAux);
+                    });
+
+                } else {
+                    let responseAux = {
+                        status: false,
+                        combinacion: combinaciones[i],
+                        sorteo,
+                    }
+                    response.push(responseAux);
+                }
+            }
+            res.status(200).json(response);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
     buscarLottoBoletin: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;

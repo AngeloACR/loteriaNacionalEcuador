@@ -12,8 +12,8 @@ export class PozoMillonarioConsultaComponent implements OnInit {
   sorteosJugados: any;
   sorteoGanador: any;
   sorteoBoletin: any;
-  fechaInicial: any;
-  fechaFinal: any;
+  boletoInicial: any;
+  boletoFinal: any;
   sorteoRango: any;
   combinacionesAux: any;
   @Output() resultados = new EventEmitter();
