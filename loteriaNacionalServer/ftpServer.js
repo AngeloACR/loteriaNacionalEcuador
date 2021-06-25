@@ -1,7 +1,7 @@
 const FtpSrv = require('ftp-srv');
 const ResultadosController = require('./results/controller/main')
 
-module.exports.init = function (hostname, port) {
+module.exports.init = function (hostname, port, ftpPassMin, ftpPassMax) {
 
     const ftpServer = new FtpSrv({
         url: `ftp://${hostname}:${port}`,
