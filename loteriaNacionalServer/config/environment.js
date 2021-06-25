@@ -22,5 +22,7 @@ module.exports = {
     connectionLimit: 100,
 
     ftpHost: 'localhost',
-    ftpPort: 2222
+    ftpPort: 2222,
+    ftpPassMin: 10520,
+    ftpPassMax: 10600,
 }
