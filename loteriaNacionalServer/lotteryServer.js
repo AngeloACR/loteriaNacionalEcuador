@@ -34,7 +34,6 @@ module.exports.init = function (port) {
   app.use(helmet());
   // Cors Middleware
   app.use(cors());
-  app.options('*', cors())
   // Body Parser Middleware
   app.use(bodyParser.json());
 
