@@ -1,0 +1,11 @@
+[Unit]
+Description=Launcher para el servidor de loteria
+After=network.target
+
+[Service]
+Type=idle
+ExecStart=/root/service/launchServer.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
