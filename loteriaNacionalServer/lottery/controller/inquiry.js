@@ -387,7 +387,7 @@ const inquiryController = {
     buscarLoteriaSorteosJugados: async (req, res) => {
         try {
             response = await Sorteos.getSorteos(1);
-
+            console.log(response);
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
