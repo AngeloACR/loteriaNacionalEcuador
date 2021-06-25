@@ -21,7 +21,8 @@ module.exports = {
     dbName: "LoteriaNacional",
     connectionLimit: 100,
 
-    ftpHost: 'localhost',
+    ftpHostTest: 'localhost',
+    ftpHostProd: '172.81.117.113',
     ftpPort: 2222,
     ftpPassMin: 10520,
     ftpPassMax: 10600,
