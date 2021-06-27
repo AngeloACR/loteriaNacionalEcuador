@@ -165,8 +165,8 @@ $color-botton: #2f72b9;
 .fracciones {
   display: grid;
   grid-template-columns: repeat(5, auto);
-  grid-template-rows: repeat(2, 50%);
-  gap: 2px 0px;
+  /* grid-template-rows: repeat(2, 50%);
+  gap: 2px 0px; */
 
   p {
     width: 30px;

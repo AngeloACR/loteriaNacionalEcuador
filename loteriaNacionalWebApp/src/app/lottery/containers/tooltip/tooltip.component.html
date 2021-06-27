@@ -1,25 +1,28 @@
 <div class="tooltip">
-  <button (click)="fondo = !fondo;" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
-    <p *ngFor="let item of numeros">{{ item }}</p>
+  <!-- *ngFor="let item of numeros" -->
+  <button (click)="fondo = !fondo; agregarTicket(numeros, fondo, ticket)" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
+    <p>{{ numeros.numero1 }}</p>
+    <p>{{ numeros.numero2 }}</p>
+    <p>{{ numeros.numero3 }}</p>
+    <p>{{ numeros.numero4 }}</p>
+    <p>{{ numeros.numero5 }}</p>
   </button>
-
-  <span >
+  <span *ngIf="fondo">
     <div class="numeros_grupo">
-      <p *ngFor="let item of numeros">{{ item }}</p>
+      <p>{{ numeros.numero1 }}</p>
+      <p>{{ numeros.numero2 }}</p>
+      <p>{{ numeros.numero3 }}</p>
+      <p>{{ numeros.numero4 }}</p>
+      <p>{{ numeros.numero5 }}</p>
       <h3>Fraccion</h3>
     </div>
     <hr>
     <div class="fracciones">
-      <p>1<input (click)="checkbox1 != !checkbox1" class="checkbox" type="checkbox" name="" value="1" id=""></p>
-      <p>2<input (click)="checkbox2 != !checkbox2" class="checkbox" type="checkbox" name="" value="2" id=""></p>
-      <p>3<input (click)="checkbox3 != !checkbox3" class="checkbox" type="checkbox" name="" value="3" id=""></p>
-      <p>4<input (click)="checkbox4 != !checkbox4" class="checkbox" type="checkbox" name="" value="4" id=""></p>
-      <p>5<input (click)="checkbox5 != !checkbox5" class="checkbox" type="checkbox" name="" value="5" id=""></p>
-      <p>6<input (click)="checkbox6 != !checkbox6" class="checkbox" type="checkbox" name="" value="6" id=""></p>
-      <p>7<input (click)="checkbox7 != !checkbox7" class="checkbox" type="checkbox" name="" value="7" id=""></p>
-      <p>8<input (click)="checkbox8 != !checkbox8" class="checkbox" type="checkbox" name="" value="8" id=""></p>
-      <p>9<input (click)="checkbox9 != !checkbox9" class="checkbox" type="checkbox" name="" value="9" id=""></p>
-      <p>10<input (click)="checkbox10 != !checkbox10" class="checkbox" type="checkbox" name=""  value="10" id=""></p>
+      <p *ngFor="let numeroCheck of cheks; let i = index">
+        {{ numeroCheck.numero }}
+        <input (click)="numeroCheck.variable = !numeroCheck.variable; "
+          class="checkbox" type="checkbox" name="" [value]="numeroCheck.numero" id="">
+      </p>
     </div>
     <hr>
   </span>

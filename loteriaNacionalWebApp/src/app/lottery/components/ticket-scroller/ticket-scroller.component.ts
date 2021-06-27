@@ -13,5 +13,7 @@ export class TicketScrollerComponent implements OnInit {
   @Input() isPozoMillonario: boolean = false ;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 }

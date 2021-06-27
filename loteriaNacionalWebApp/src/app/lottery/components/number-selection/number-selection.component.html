@@ -1,7 +1,7 @@
 <div class="select-sim" id="select-nombre">
   <div class="options">
-    <div class="option" *ngFor="let animal of animales">
-      <input type="radio" name="nombre" [value]="animal.nombre" id="nombre-{{animal.nombre}}" />
+    <div class="option" *ngFor="let animal of animales; let i = index">
+      <input (click)="agregar(animal.nombre, i)" type="radio" name="nombre" [value]="animal.nombre" id="nombre-{{animal.nombre}}" />
       <label for="nombre-{{animal.nombre}}">
         <img [src]="animal.ruta" [alt]="animal.nombre" />
       </label>
