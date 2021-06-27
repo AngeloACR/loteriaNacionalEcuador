@@ -22,7 +22,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
 
   async ngOnInit() {
     console.log("En la consulta de loteria");
-    this.sorteosJugados = await this.inquiryService.recuperarSorteosJugados(1);
+    this.sorteosJugados = await this.inquiryService.recuperarSorteosJugados(5);
   }
 
   deleteSpaces() {

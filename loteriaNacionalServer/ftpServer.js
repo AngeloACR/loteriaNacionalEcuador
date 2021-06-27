@@ -6,9 +6,6 @@ module.exports.init = function (hostname, port, ftpPassMin, ftpPassMax) {
     const ftpServer = new FtpSrv({
         url: `ftp://${hostname}:${port}`,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
-        pasv_url: "172.81.117.113",
-        pasv_min: ftpPassMin,
-        pasv_max: ftpPassMax,
     });
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {

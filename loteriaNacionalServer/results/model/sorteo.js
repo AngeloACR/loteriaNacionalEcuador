@@ -13,8 +13,17 @@ const sorteoSchema = new mongoose.Schema({
     tipoLoteria: {
         type: Number,
     },
+    precio: {
+        type: Number,
+    },
     fecha: {
         type: String,
+    },
+    cantidadDeFracciones: {
+        type: Number,
+    },
+    valorPremioPrincipal: {
+        type: Number,
     },
     nombre: {
         type: String,

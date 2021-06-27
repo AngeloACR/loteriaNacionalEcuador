@@ -8,6 +8,15 @@ const SorteosController = require('./sorteos');
 var fs = require('fs');
 
 const mainController = {
+    agregarSorteosHTTP: async (req, res) => {
+        try {
+            let response = await SorteosController.updateSorteos();
+            res.status(200).json(response);
+
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
     agregarResultadosHTTP: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;

@@ -316,7 +316,7 @@ const inquiryController = {
         try {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 2
-            let boletinAddress = `http://ventas-api-prueba.loteria.com.ec/uploads/boletines/boletin-${tipoLoteria}${sorteo}.jpg`
+            let boletinAddress = `https://ventas-prueba.loteria.com.ec/api/uploads/boletines/boletin-${tipoLoteria}${sorteo}.jpg`
             res.status(200).json(boletinAddress);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -327,7 +327,7 @@ const inquiryController = {
         try {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 1
-            let boletinAddress = `http://ventas-api-prueba.loteria.com.ec/uploads/boletines/boletin-${tipoLoteria}${sorteo}.jpg`
+            let boletinAddress = `https://ventas-prueba.loteria.com.ec/api/uploads/boletines/boletin-${tipoLoteria}${sorteo}.jpg`
 
             res.status(200).json(boletinAddress);
         } catch (e) {
@@ -339,7 +339,7 @@ const inquiryController = {
         try {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 5
-            let boletinAddress = `http://ventas-api-prueba.loteria.com.ec/uploads/boletines/boletin-${tipoLoteria}${sorteo}.jpg`
+            let boletinAddress = `https://ventas-prueba.loteria.com.ec/api/uploads/boletines/boletin-${tipoLoteria}${sorteo}.jpg`
             res.status(200).json(boletinAddress);
         } catch (e) {
             res.status(400).json(e.toString());

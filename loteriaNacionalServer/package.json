@@ -28,6 +28,7 @@
     "node-schedule": "*",
     "xml2js": "*",
     "ftp-srv": "*",
+    "cron": "*",
     "node-worker-threads-pool": "*"
   },
   "keywords": [

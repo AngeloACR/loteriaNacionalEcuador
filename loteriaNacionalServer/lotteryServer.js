@@ -6,14 +6,17 @@ const compression = require('compression');
 const config = require('./config/environment');
 const cookieSess = require('cookie-session');
 const helmet = require('helmet');
+const Sorteos = require('./results/controller/sorteos');
 const RateLimit = require('express-rate-limit');
 const app = express();
 
 const inquiry = require('./lottery/routes/inquiry');
 const lottery = require('./lottery/routes/lottery');
-const results = require('./results/routes/results');
+const results = require('./results/routes/results'); var CronJob = require('cron').CronJob;
 
 module.exports.init = function (port) {
+  var job = new CronJob('0 0 0 * * *', Sorteos.updateSorteos(), null, true, 'America/Los_Angeles');
+  job.start();
   app.set('port', (port));
 
   // Middlewares initialization

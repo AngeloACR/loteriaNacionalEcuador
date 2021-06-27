@@ -13,7 +13,7 @@ const claveClientePsd = 12345678;
 
 module.exports.autenticarUsuario = async () => {
   try {
-    console.log('Entrando al api de loteria nacional');
+
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -38,16 +38,16 @@ module.exports.autenticarUsuario = async () => {
       `
     }
 
-    console.log(client.describe());
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(message
         //{ mt: [{ c: [{ aplicacion: 17, usuario: "sitiowebprep", maquina: "192.168.1.13", medio: 17, operacion: 1234567890 }] }] }
         , async function (err, res, rawResponse, soapHeader, rawRequest) {
           if (err) reject(err);
-          console.log(rawRequest);
+
           let data = await parser.parseStringPromise(res.fnAutenticacionResult)
           let errorCode = parseInt(data.mt.c[0].codError[0]);
-          console.log(errorCode)
+
           if (!errorCode) {
             let response = {
               token: data.mt.c[0].token[0]
@@ -66,7 +66,7 @@ module.exports.autenticarUsuario = async () => {
 
 module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion, token) => {
   try {
-    console.log('Entrando al api de loteria nacional');
+
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -97,19 +97,19 @@ module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion,
       `
     }
 
-    console.log(client.describe());
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message
         //{ mt: [{ c: [{ aplicacion: 17, usuario: "sitiowebprep", maquina: "192.168.1.13", medio: 17, operacion: 1234567890 }] }] }
         , async function (err, res, rawResponse, soapHeader, rawRequest) {
           if (err) reject(err);
-          console.log(rawRequest);
+
           let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
           let errorCode = parseInt(data.mt.c[0].codError[0]);
-          console.log(errorCode)
+
           if (!errorCode) {
             let aux = data.mt.rs[0].r;
-            console.log(aux);
+
             let response;
             if (aux != "" && aux.length != 0) {
               aux = data.mt.rs[0].r[0].Row[0].$;
@@ -143,7 +143,6 @@ module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion,
 
 module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
   try {
-    console.log('Entrando al api de loteria nacional');
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -177,10 +176,10 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
         if (err) reject(err);
-        console.log(rawRequest);
+
         let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
         let errorCode = parseInt(data.mt.c[0].codError[0]);
-        console.log(errorCode)
+
         if (!errorCode) {
           let response = data.mt;
           resolve(response);
@@ -197,7 +196,7 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
 
 module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
   try {
-    console.log('Entrando al api de loteria nacional');
+
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -227,14 +226,11 @@ module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
       `
     }
 
-    console.log(client.describe());
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
         if (err) reject(err);
-        console.log(rawRequest);
         let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
         let errorCode = parseInt(data.mt.c[0].codError[0]);
-        console.log(errorCode)
         if (!errorCode) {
           let aux = data.mt.rs[0].r[0].Row;
           let response = aux.map(sorteo => {
@@ -254,7 +250,7 @@ module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
 
 module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
   try {
-    console.log('Entrando al api de loteria nacional');
+
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -284,14 +280,13 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
       `
     }
 
-    console.log(client.describe());
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
         if (err) reject(err);
-        console.log(rawRequest);
+
         let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
         let errorCode = parseInt(data.mt.c[0].codError[0]);
-        console.log(errorCode)
+
         if (!errorCode) {
           let aux = data.mt.rs[0].r[0].Row;
           let response = aux.map(sorteo => {
@@ -311,7 +306,7 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
 
 module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, token, combinacion, combinacionFigura) => {
   try {
-    console.log('Entrando al api de loteria nacional');
+
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -347,14 +342,14 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
       `
     }
 
-    console.log(client.describe());
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
         if (err) reject(err);
-        console.log(rawRequest);
+
         let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
         let errorCode = parseInt(data.mt.c[0].codError[0]);
-        console.log(errorCode)
+
         if (!errorCode) {
           let aux = data.mt.rs[0].r;
           let response = [];
@@ -380,7 +375,7 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
 
 module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones, token) => {
   try {
-    console.log('Entrando al api de loteria nacional');
+
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let combinacionesXML = "";
     combinaciones.forEach(combinacion => {
@@ -430,14 +425,14 @@ module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones
       `
     }
 
-    console.log(client.describe());
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
         if (err) reject(err);
-        console.log(rawRequest);
+
         let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
         let errorCode = parseInt(data.mt.c[0].codError[0]);
-        console.log(errorCode)
+
         if (!errorCode) {
           let response = [];
           let reservaId = data.mt.o[0].ReturnValue;
