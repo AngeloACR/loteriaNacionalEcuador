@@ -3,8 +3,9 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: "lottery",
-    loadChildren: () => import("./lottery/lottery.module").then(m => m.LotteryModule)
+    path: "compra_boletos",
+    loadChildren: () =>
+      import("./lottery/lottery.module").then(m => m.LotteryModule)
   },
   {
     path: "user",
@@ -12,13 +13,19 @@ const routes: Routes = [
   },
   {
     path: "",
-    loadChildren: () => import("./landing/landing.module").then(m => m.LandingModule)
+    loadChildren: () =>
+      import("./landing/landing.module").then(m => m.LandingModule)
   },
   {
     path: "payment",
-    loadChildren: () => import("./payment/payment.module").then(m => m.PaymentModule)
+    loadChildren: () =>
+      import("./payment/payment.module").then(m => m.PaymentModule)
   },
-  { path: 'inquiry', loadChildren: () => import('./inquiry/inquiry.module').then(m => m.InquiryModule) }
+  {
+    path: "inicio",
+    loadChildren: () =>
+      import("./inquiry/inquiry.module").then(m => m.InquiryModule)
+  }
 ];
 
 @NgModule({

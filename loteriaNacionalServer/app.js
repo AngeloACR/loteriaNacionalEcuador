@@ -4,6 +4,7 @@ const ftpServer = require('./ftpServer');
 const webServer = require('./webServer');
 const userServer = require('./userServer');
 const config = require('./config/environment');
+const cronjobs = require('./cronjobs');
 
 const webPort = config.ventasPort;
 const webFolder = './public/loteriaNacionalWeb';
@@ -35,6 +36,11 @@ ftpApp.listen()
     .then(() => {
         console.log(`Server running at ftp://${ftpHost}:${ftpPort}/`);
     });
+
+let jobs = cronjobs.setCronJobs();
+jobs.forEach(job => {
+    job.start();
+});
 /*
 const userPort = config.userPort;
 const userApp = userServer.init(userPort);

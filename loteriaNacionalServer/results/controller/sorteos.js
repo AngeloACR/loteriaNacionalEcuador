@@ -99,8 +99,8 @@ const sorteosController = {
 
     updateSorteo: async function (numeroSorteo, data) {
         try {
-            let sorteo = await this.getSorteoByNumber(numeroSorteo)
-            //sorteo.tipoLoteria = data.tipoLoteria;
+            let sorteoResponse = await this.getSorteoByNumber(numeroSorteo)
+            let sorteo = sorteoResponse.values;
             sorteo = await sorteo.save();
             response = {
                 status: true,
@@ -111,7 +111,7 @@ const sorteosController = {
         } catch (error) {
             let response = {
                 status: false,
-                msg: error.toString().replace("Error: ", "")
+                msg: error.toString()
             }
             return response
         }
@@ -119,8 +119,7 @@ const sorteosController = {
 
     updateSorteos: async function () {
         try {
-            console.log("here")
-
+            console.log("Actualizando sorteos")
             let response = await Lottery.autenticarUsuario();
             let token = response.token;
 
@@ -131,7 +130,7 @@ const sorteosController = {
             response = [];
             for (let i = 0; i < lottoLength; i++) {
                 const sorteo = sorteosLotto[i];
-                let auxSorteo = await this.getSorteoByNumber(sorteo.sortId);
+                let auxSorteo = await this.getSorteoByNumber(sorteo.SortId);
                 let data = {
                     tipoLoteria: 2,
                     sorteo: sorteo.SortId,
@@ -152,7 +151,7 @@ const sorteosController = {
             let loteriaLength = sorteosLoteriaNacional.length;
             for (let i = 0; i < loteriaLength; i++) {
                 const sorteo = sorteosLoteriaNacional[i];
-                let auxSorteo = await this.getSorteoByNumber(sorteo.sortId);
+                let auxSorteo = await this.getSorteoByNumber(sorteo.SortId);
                 let data = {
                     tipoLoteria: 1,
                     sorteo: sorteo.SortId,
@@ -173,7 +172,7 @@ const sorteosController = {
             let pozoLength = sorteosPozoMillonario.length;
             for (let i = 0; i < pozoLength; i++) {
                 const sorteo = sorteosPozoMillonario[i];
-                let auxSorteo = await this.getSorteoByNumber(sorteo.sortId);
+                let auxSorteo = await this.getSorteoByNumber(sorteo.SortId);
                 let data = {
                     tipoLoteria: 5,
                     sorteo: sorteo.SortId,
@@ -195,7 +194,6 @@ const sorteosController = {
                 status: true,
                 values: response
             }
-            console.log(responseAux);
             return responseAux
         } catch (error) {
             let response = {

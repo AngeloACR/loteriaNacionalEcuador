@@ -124,6 +124,28 @@ export class InquiryService {
         });
     });
   }
+  recuperarBoletoGanadorPorPlancha(boletoInicial, boletoFinal, sorteo) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/inquiry/pozoPlancha";
+    var address = this.mySource;
+
+    address = address + endpoint;
+    let body = {
+      sorteo,
+      boletoInicial,
+      boletoFinal
+    };
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(address, body, { headers: headers })
+        .subscribe((data: any[]) => {
+          let boletoGanador = data;
+          console.log(boletoGanador);
+          resolve(boletoGanador);
+        });
+    });
+  }
 
   obtenerBoletin(tipoLoteria, sorteo) {
     let headers = new HttpHeaders();

@@ -281,17 +281,19 @@ const inquiryController = {
             let boletoInicial = req.body.boletoInicial;
             let boletoFinal = req.body.boletoFinal;
             let size = boletoFinal - boletoInicial + 1;
-            let combinaciones = [...Array(size).keys()].map(i => i + boletoInicial);
+            let boletos = [...Array(size).keys()].map(i => i + boletoInicial);
             let response = [];
-            let length = combinaciones.length;
+            let length = boletos.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanador(sorteoId, combinaciones[i]);
+                let auxResult = await Results.getResultadoByCodigo(sorteoId, boletos[i]);
+                let combinacion = auxResult.values.combinacion1;
+                let aux = await Results.getResultadoGanador(sorteoId, combinacion);
                 if (aux.status) {
                     aux.values.forEach(boleto => {
 
                         let responseAux = {
                             status: true,
-                            combinacion: combinaciones[i],
+                            combinacion,
                             sorteo,
                             data: boleto
                         }
@@ -301,7 +303,7 @@ const inquiryController = {
                 } else {
                     let responseAux = {
                         status: false,
-                        combinacion: combinaciones[i],
+                        combinacion,
                         sorteo,
                     }
                     response.push(responseAux);

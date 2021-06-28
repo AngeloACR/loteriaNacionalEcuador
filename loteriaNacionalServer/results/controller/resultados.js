@@ -432,6 +432,23 @@ const resultadosController = {
         }
     },
 
+    getResultadoByCodigo: async function (sorteo, codigo) {
+        try {
+            let query = { 'sorteo': sorteo, 'codigo': codigo }
+            let resultado = await Resultado.findOne(query)
+            let response = {
+                status: true,
+                values: resultado
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
     updateResultado: async function (id, data) {
         try {
             let resultado = await this.getResultadoById(id)

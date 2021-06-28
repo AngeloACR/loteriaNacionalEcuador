@@ -12,11 +12,9 @@ const app = express();
 
 const inquiry = require('./lottery/routes/inquiry');
 const lottery = require('./lottery/routes/lottery');
-const results = require('./results/routes/results'); var CronJob = require('cron').CronJob;
+const results = require('./results/routes/results');
 
 module.exports.init = function (port) {
-  var job = new CronJob('0 0 0 * * *', Sorteos.updateSorteos(), null, true, 'America/Los_Angeles');
-  job.start();
   app.set('port', (port));
 
   // Middlewares initialization
