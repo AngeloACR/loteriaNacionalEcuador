@@ -52,3 +52,26 @@
             </div>
         </div> -->
     </div>
+
+    <div>
+        <hr size="2px" />
+    </div>
+
+    <p class="texto">Sorteo N° 6595 lunes 10 de mayo del 2021</p>
+
+    <div class="ticket_entero">
+        <h5>PRIMERA SUERTE</h5>
+        <div>
+            <p *ngFor="let number of ticketNumbers">{{number}}</p>
+        </div>
+    </div>
+
+    <div>
+        <hr size="2px" style="margin: 18px auto;" />
+    </div>
+
+    <div class="boton_comprar">
+        <button (click)="verUltimoBoletin()">VER BOLETIN</button>
+        <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
+    </div>
+</div>

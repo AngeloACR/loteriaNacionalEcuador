@@ -13,6 +13,9 @@ export class LottoSelectorComponent implements OnInit {
 
   verUltimoBoletin() {
     let sorteo = 4565;
-    this.router.navigateByUrl(`/lotto_boletin/${sorteo}`);
+    this.router.navigateByUrl(`/resultados/lotto_boletin/${sorteo}`);
+  }
+  verResultados() {
+    this.router.navigateByUrl(`/resultados/lotto_consulta`);
   }
 }

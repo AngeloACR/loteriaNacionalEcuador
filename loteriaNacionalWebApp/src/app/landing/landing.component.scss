@@ -1,155 +1,21 @@
-$fuente-titulo: "Monstserrat Bold";
-$fuente-subtitulo: "Monstserrat SemiBold";
-$fuente-parrafo: "Monstserrat Regular";
-$fuente-botones: "Monstserrat SemiBold";
+.iframeBox {
+  width: 95%;
+  margin: 20px auto;
 
-$color-botton: #2f72b9;
+  iframe {
+    width: 100%;
+    max-width: 1080px;
+    height: 180px;
 
-.headerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.selectionBox {
   width: 100%;
-  background-image: url("/assets/slider.png");
-  background-size: cover;
-  background-position: center;
-  height: 65vh;
-
-  .sideBox {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    font-family: $fuente-titulo;
-
-    .maintextBox {
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      width: 50%;
-    }
-
-    .tagTextBox {
-      color: white;
-      width: 100%;
-      font-size: 16px;
-      font-family: $fuente-parrafo;
-      font-size: 12px;
-    }
-
-    .headerButton {
-      font-family: $fuente-botones;
-      border: none;
-      border-radius: 30px;
-      color: $color-botton;
-      background-color: #fff;
-      padding: 10px 20px;
-      font-size: 10px;
-      margin-top: 40px;
-      cursor: pointer;
-    }
-  }
-}
-
-/* .instructionsBox {
   display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: auto;
-  margin-top: 30px;
-
-  .derecho {
-    position: absolute;
-    left: 50%;
-    bottom: -115px;
-    border-left: 1px solid #000;
-    padding-left: 15px;
-  }
-
-  .derecho_derecho {
-    position: absolute;
-    left: 50%;
-    bottom: -500px;
-    border-left: 1px solid #000;
-    padding-left: 15px;
-  }
-
-  .instructionBox {
-    display: flex;
-    height: 30vh;
-    width: 50%;
-
-    .upInstruction {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-
-      .instructionTitle {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 23px;
-        font-family: $fuente-titulo;
-        color: $color-botton;
-      }
-
-      .instructionText {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 12px;
-        font-family: $fuente-parrafo;
-        line-height: 20px;
-      }
-    }
-
-    .firstNumber {
-      border-radius: 50%;
-      color: white;
-      font-size: 55px;
-      font-weight: bold;
-      background-color: $color-botton;
-      width: 50px;
-      height: 40px;
-      display: flex;
-      padding: 25px;
-      align-items: center;
-      justify-content: center;
-      font-family: $fuente-titulo;
-    }
-
-    .downInstruction {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: flex-end;
-      width: 50%;
-
-      .instructionTitle {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 21px;
-        font-family: $fuente-titulo;
-        color: $color-botton;
-      }
-
-      .instructionText {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 12px;
-        font-family: $fuente-parrafo;
-      }
-    }
-    .downNumber {
-      border-radius: 80px;
-      color: white;
-      font-size: 30px;
-      font-weight: bold;
-      background-color: black;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 20px;
 }
- */

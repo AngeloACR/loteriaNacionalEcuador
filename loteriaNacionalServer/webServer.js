@@ -36,6 +36,14 @@ module.exports.init = function (folder, thePath, port) {
     app.use(bodyParser.json());
 
     app.use(helmet());
+    app.use(
+        helmet.contentSecurityPolicy({
+            useDefaults: true,
+            directives: {
+                "frame-ancestors": ["'self'", "https://*.loteria.com.ec"]
+            },
+        })
+    );
 
     // Set Static Folder
 

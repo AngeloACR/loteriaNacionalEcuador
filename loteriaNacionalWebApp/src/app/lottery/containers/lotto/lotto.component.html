@@ -15,7 +15,6 @@
     </li>
     <li class="menuItem">Precios: <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, dolore!</p>
     </li>
-    <li class="menuItem">Mi cuenta</li>
   </ul>
 
   <div class="contendor_seleccion">
@@ -44,7 +43,7 @@
           <tr *ngFor="let item of seleccionLotto | paginate: { itemsPerPage: 4, currentPage: pageActual };">
             <td>
               <app-seleccion-lotto></app-seleccion-lotto>
-            </td>  
+            </td>
           </tr>
         </tbody>
         <hr size="2px" color="gray" />

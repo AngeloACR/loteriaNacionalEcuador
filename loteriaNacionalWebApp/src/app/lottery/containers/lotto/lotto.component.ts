@@ -9,28 +9,26 @@ export class LottoComponent implements OnInit {
   tickets: any;
 
   seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  pageActual: number = 0;
+  pageActual: number = 1;
 
   incrementar() {
-    if (this.pageActual >= this.seleccionLotto.length/4) {
+    if (this.pageActual >= this.seleccionLotto.length / 4) {
       this.pageActual - 1;
-      
     } else {
       this.pageActual++;
-      
     }
   }
 
   decrementar() {
-    if(this.pageActual <= 0) {
+    this.pageActual--;
+    if (this.pageActual <= 1) {
       this.pageActual = 1;
     }
-      this.pageActual--;
   }
 
   constructor() {}
 
   ngOnInit() {
-   /*  console.log(JSON.parse(localStorage.getItem('usuario[0]'))); */
+    /*  console.log(JSON.parse(localStorage.getItem('usuario[0]'))); */
   }
 }

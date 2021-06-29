@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import("./user/user.module").then(m => m.UserModule)
   },
   {
-    path: "",
+    path: "inicio",
     loadChildren: () =>
       import("./landing/landing.module").then(m => m.LandingModule)
   },
@@ -22,7 +22,7 @@ const routes: Routes = [
       import("./payment/payment.module").then(m => m.PaymentModule)
   },
   {
-    path: "inicio",
+    path: "resultados",
     loadChildren: () =>
       import("./inquiry/inquiry.module").then(m => m.InquiryModule)
   }

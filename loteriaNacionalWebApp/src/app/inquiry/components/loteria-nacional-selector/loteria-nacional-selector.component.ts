@@ -23,6 +23,10 @@ export class LoteriaNacionalSelectorComponent implements OnInit {
 
   verUltimoBoletin() {
     let sorteo = 4565;
-    this.router.navigateByUrl(`/loteria_boletin/${sorteo}`);
+    this.router.navigateByUrl(`/resultados/loteria_boletin/${sorteo}`);
+  }
+
+  verResultados() {
+    this.router.navigateByUrl(`/resultados/loteria_consulta`);
   }
 }

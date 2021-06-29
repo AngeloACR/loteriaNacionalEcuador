@@ -1,6 +1,7 @@
 <div class="tooltip">
   <!-- *ngFor="let item of numeros" -->
-  <button (click)="fondo = !fondo; agregarTicket(numeros, fondo, ticket)" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
+  <!--   <button (click)="fondo = !fondo; agregarTicket(numeros, fondo, ticket)" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
+ --> <button (click)="fondo = !fondo;" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
     <p>{{ numeros.numero1 }}</p>
     <p>{{ numeros.numero2 }}</p>
     <p>{{ numeros.numero3 }}</p>
@@ -20,8 +21,8 @@
     <div class="fracciones">
       <p *ngFor="let numeroCheck of cheks; let i = index">
         {{ numeroCheck.numero }}
-        <input (click)="numeroCheck.variable = !numeroCheck.variable; "
-          class="checkbox" type="checkbox" name="" [value]="numeroCheck.numero" id="">
+        <input (click)="numeroCheck.variable = !numeroCheck.variable; " class="checkbox" type="checkbox" name=""
+          [value]="numeroCheck.numero" id="">
       </p>
     </div>
     <hr>
