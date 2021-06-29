@@ -41,12 +41,10 @@
         </div>
       </div>
       <div class="contenedor_select">
-        <app-number-selection></app-number-selection>
+        <app-number-selection [animales]="arreglo_animales"></app-number-selection>
       </div>
       <div class="tabs_animales">
-        <button>CAMARON</button>
-        <button>DELFIN</button>
-        <button>PERRO</button>
+        <p *ngFor="let animal of arreglo_animales" (click)="remover(animal)">{{ animal }}</p>
       </div>
       <button class="activado">BUSCAR CARTONES</button>
     </form>
@@ -73,9 +71,9 @@
       </button>
     </div>
 
-    <div>
+    <!-- <div>
       Page Actual: {{pageActual}}
-    </div>
+    </div> -->
 
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>
