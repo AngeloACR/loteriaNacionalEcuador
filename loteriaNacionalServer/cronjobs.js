@@ -3,7 +3,7 @@ var CronJob = require('cron').CronJob;
 
 module.exports.setCronJobs = function () {
     let jobs = [];
-    var job = new CronJob('00 00 01 * * *', Sorteos.updateSorteos, null, true, 'America/Guayaquil');
+    var job = new CronJob('00 35 00 * * *', Sorteos.updateSorteos, null, true, 'America/Guayaquil');
     jobs.push(job)
     return jobs;
 }
