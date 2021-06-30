@@ -56,8 +56,10 @@ const sorteosController = {
 
     getSorteoByNumber: async function (numeroSorteo) {
         try {
+            console.log('Obteniendo sorteo');
             let query = { 'sorteo': numeroSorteo }
             let sorteo = await Sorteo.findOne(query)
+            console.log(sorteo);
             let response;
             if (sorteo) {
                 response = {
@@ -128,9 +130,12 @@ const sorteosController = {
             let sorteosPozoMillonario = await Lottery.consultarSorteosJugados(5, token);
             let lottoLength = sorteosLotto.length;
             response = [];
+            console.log('Empezando a guardar sorteos')
             for (let i = 0; i < lottoLength; i++) {
                 const sorteo = sorteosLotto[i];
-                let auxSorteo = await this.getSorteoByNumber(sorteo.SortId);
+                console.log(sorteo);
+                let auxSorteo = await sorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
+                console.log(auxSorteo);
                 let data = {
                     tipoLoteria: 2,
                     sorteo: sorteo.SortId,
@@ -141,17 +146,21 @@ const sorteosController = {
                     valorPremioPrincipal: sorteo.VPremio,
                 }
                 if (auxSorteo.status) {
-                    let updatedSorteo = await this.updateSorteo(data.sorteo, data);
+                    console.log('Actualizando sorteo');
+                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
                     response.push(updatedSorteo)
                 } else {
-                    let newSorteo = await this.addSorteo(data);
+                    console.log('Creando sorteo')
+                    let newSorteo = await sorteosController.addSorteo(data);
                     response.push(newSorteo)
                 }
             }
             let loteriaLength = sorteosLoteriaNacional.length;
             for (let i = 0; i < loteriaLength; i++) {
                 const sorteo = sorteosLoteriaNacional[i];
-                let auxSorteo = await this.getSorteoByNumber(sorteo.SortId);
+                console.log(sorteo);
+                let auxSorteo = await sorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
+                console.log(auxSorteo);
                 let data = {
                     tipoLoteria: 1,
                     sorteo: sorteo.SortId,
@@ -162,17 +171,20 @@ const sorteosController = {
                     valorPremioPrincipal: sorteo.VPremio,
                 }
                 if (auxSorteo.status) {
-                    let updatedSorteo = await this.updateSorteo(data.sorteo, data);
+                    console.log('Actualizando sorteo');
+                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
                     response.push(updatedSorteo)
                 } else {
-                    let newSorteo = await this.addSorteo(data);
+                    console.log('Creando sorteo')
+                    let newSorteo = await sorteosController.addSorteo(data);
                     response.push(newSorteo)
                 }
             }
             let pozoLength = sorteosPozoMillonario.length;
             for (let i = 0; i < pozoLength; i++) {
                 const sorteo = sorteosPozoMillonario[i];
-                let auxSorteo = await this.getSorteoByNumber(sorteo.SortId);
+                console.log(sorteo);
+                let auxSorteo = await sorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
                 let data = {
                     tipoLoteria: 5,
                     sorteo: sorteo.SortId,
@@ -183,10 +195,10 @@ const sorteosController = {
                     valorPremioPrincipal: sorteo.VPremio,
                 }
                 if (auxSorteo.status) {
-                    let updatedSorteo = await this.updateSorteo(data.sorteo, data);
+                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
                     response.push(updatedSorteo)
                 } else {
-                    let newSorteo = await this.addSorteo(data);
+                    let newSorteo = await sorteosController.addSorteo(data);
                     response.push(newSorteo)
                 }
             }
