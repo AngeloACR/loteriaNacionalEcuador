@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       { path: "loteria_consulta", component: ConsultaLoteriaNacionalComponent },
       { path: "lotto_consulta", component: ConsultaLottoComponent },
-      { path: "", component: SeleccionComponent },
+      { path: "ultimos_resultados", component: SeleccionComponent },
       {
         path: "pozo_millonario_consulta",
         component: ConsultaPozoMillonarioComponent

@@ -34,7 +34,7 @@
           <div class="input">
             <div class="input_content">
               <label for="">Ingresa numero(s) de boleto(s):</label>
-              <input name="combinaciones" type="text" (input)="deleteSpaces()" [(ngModel)]="combinacionesAux">
+              <input name="combinaciones" type="text" (input)="validateField()" [(ngModel)]="combinacionesAux">
             </div>
             <p>Si deseas consultar varios cartones, ingresalos separados por coma [,] ejemplo: 0273982, 1834902.
               Ingresar todos los 7 digitos del No. Carton, incluyendo ceros (0) de la izquierda, ejemplo: 0037946.</p>
@@ -89,7 +89,7 @@
           <div class="input">
             <div class="input_content">
               <label for="">Desde:</label>
-              <input name="boletoInicial" type="text" [(ngModel)]="boletoInicial">
+              <input name="boletoInicial" (input)="validateField()" type="text" [(ngModel)]="boletoInicial">
 
             </div>
             <p></p>
@@ -99,7 +99,7 @@
 
             <div class="input_content">
               <label for="">Hasta:</label>
-              <input name="boletoFinal" type="text" [(ngModel)]="boletoFinal">
+              <input name="boletoFinal" (input)="validateField()" type="text" [(ngModel)]="boletoFinal">
 
             </div>
             <p></p>

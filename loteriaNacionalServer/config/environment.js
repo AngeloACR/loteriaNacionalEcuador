@@ -20,7 +20,9 @@ module.exports = {
     mysqlPass: '',
     dbName: "LoteriaNacional",
     connectionLimit: 100,
-
+    sourceBoletinesA: 'https://contenidos-prueba.loteria.com.ec/boletines/',
+    sourceBoletinesB: 'https://ventas-api-prueba.loteria.com.ec/boletines/',
+    sourceBoletinesC: 'http://localhost:5480/boletines/',
     ftpHostTest: 'localhost',
     ftpHostProd: '172.81.117.113',
     ftpPort: 2222,

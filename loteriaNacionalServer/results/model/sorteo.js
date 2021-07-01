@@ -28,6 +28,9 @@ const sorteoSchema = new mongoose.Schema({
     nombre: {
         type: String,
     },
+    ultimoSorteo: {
+        type: Boolean,
+    },
     premios: [{
         type: Schema.Types.ObjectId,
         ref: 'Premio',

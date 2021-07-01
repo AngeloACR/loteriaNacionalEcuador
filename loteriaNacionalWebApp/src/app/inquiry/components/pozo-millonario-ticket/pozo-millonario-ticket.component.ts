@@ -1,5 +1,4 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-pozo-millonario-ticket",
@@ -7,12 +6,16 @@ import { Router } from "@angular/router";
   styleUrls: ["./pozo-millonario-ticket.component.scss"]
 })
 export class PozoMillonarioTicketComponent implements OnInit {
-  constructor(private router: Router) {}
+  @Input() ticket: any;
 
-  ngOnInit() {}
+  description: String;
+  ticketNumbers: Number[];
+  sorteo: Number;
+  constructor() {}
 
-  verUltimoBoletin() {
-    let sorteo = 4565;
-    this.router.navigateByUrl(`/loteria_boletin/${sorteo}`);
+  ngOnInit() {
+    this.description = this.ticket.description;
+    this.ticketNumbers = this.ticket.ticketNumbers;
+    this.sorteo = this.ticket.sorteo;
   }
 }

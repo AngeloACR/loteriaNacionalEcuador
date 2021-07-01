@@ -1,9 +1,11 @@
 const Lottery = require('../../loterianacional/controller/main');
 const Results = require('../../results/controller/resultados');
 const Sorteos = require('../../results/controller/sorteos');
-
+const config = require('../../config/environment');
 /*************************** CONSULTA DE RESULTADOS************************/
-
+//let boletinesSource = config.sourceBoletinesA;
+let sourceBoletines = config.sourceBoletinesB;
+//let sourceBoletines = config.sourceBoletinesC;
 const inquiryLotteryController = {
 
 
@@ -318,7 +320,8 @@ const inquiryController = {
         try {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 2
-            let boletinAddress = `https://contenidos-prueba.loteria.com.ec/uploads/boletines/T${tipoLoteria}${sorteo}.jpg`
+            let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`
+            
             res.status(200).json(boletinAddress);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -329,8 +332,8 @@ const inquiryController = {
         try {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 1
-            let boletinAddress = `https://contenidos-prueba.loteria.com.ec/uploads/boletines/T${tipoLoteria}${sorteo}.jpg`
-
+            let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`
+            
             res.status(200).json(boletinAddress);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -341,7 +344,7 @@ const inquiryController = {
         try {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 5
-            let boletinAddress = `https://ventas-api-prueba.loteria.com.ec/uploads/boletines/T${tipoLoteria}${sorteo}.jpg`
+            let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`
             res.status(200).json(boletinAddress);
         } catch (e) {
             res.status(400).json(e.toString());

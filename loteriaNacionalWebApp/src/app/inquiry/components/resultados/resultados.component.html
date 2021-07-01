@@ -7,7 +7,10 @@
     </div>
     <div class="resultBox" *ngFor="let ticket of tickets">
 
-        <div *ngIf="isLoteriaNacional" class="messageBox">
+        <div class="messageBox">
+            <app-resultado [ticket]="ticket" [isLoteriaNacional]="isLoteriaNacional"></app-resultado>
+        </div>
+        <!-- <div *ngIf="isLoteriaNacional" class="messageBox">
             <app-loteria-nacional-ticket [ticket]="ticket"></app-loteria-nacional-ticket>
         </div>
         <div *ngIf="isLotto" class="messageBox">
@@ -15,6 +18,6 @@
         </div>
         <div *ngIf="isPozoMillonario" class="messageBox">
             <app-pozo-millonario-ticket></app-pozo-millonario-ticket>
-        </div>
+        </div> -->
     </div>
 </div>

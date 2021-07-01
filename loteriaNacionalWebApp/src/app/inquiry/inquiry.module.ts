@@ -31,6 +31,7 @@ import { ResultadosLottoComponent } from "./containers/resultados-lotto/resultad
 import { ResultadosLoteriaNacionalComponent } from "./containers/resultados-loteria-nacional/resultados-loteria-nacional.component";
 import { ResultadosPozoMillonarioComponent } from "./containers/resultados-pozo-millonario/resultados-pozo-millonario.component";
 import { ResultadosComponent } from './components/resultados/resultados.component';
+import { ResultadoComponent } from './components/resultado/resultado.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ResultadosComponent } from './components/resultados/resultados.componen
     ResultadosLottoComponent,
     ResultadosLoteriaNacionalComponent,
     ResultadosPozoMillonarioComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    ResultadoComponent
   ],
   imports: [CommonModule, InquiryRoutingModule, HttpClientModule, FormsModule]
 })

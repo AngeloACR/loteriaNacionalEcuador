@@ -38,7 +38,7 @@ module.exports.init = function (port) {
   // Body Parser Middleware
   app.use(bodyParser.json());
 
-
+  app.use('/boletines', express.static('uploads/boletines'));
 
   //Adding routes
 

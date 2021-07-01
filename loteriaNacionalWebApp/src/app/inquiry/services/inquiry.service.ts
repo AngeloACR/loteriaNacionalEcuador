@@ -180,7 +180,7 @@ export class InquiryService {
       this.http
         .post(address, body, { headers: headers })
         .subscribe((data: any) => {
-          let boletin = data.address;
+          let boletin = data;
           console.log(boletin);
           resolve(boletin);
         });

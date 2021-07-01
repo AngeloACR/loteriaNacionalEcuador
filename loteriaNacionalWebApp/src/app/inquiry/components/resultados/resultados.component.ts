@@ -19,20 +19,11 @@ export class ResultadosComponent implements OnInit {
       let description;
       let ticketNumbers;
       ticketNumbers = resultado.combinacion.split("");
-      if (resultado.status) {
-        let valorPremio = resultado.data.premio.valorPremioConDescuento;
-        if (this.isLoteriaNacional) {
-          valorPremio = resultado.data.premio.valorFraccionConDescuento;
-        }
-        let nombre = resultado.data.premio.nombre;
-        description = `Boleto ganador del premio ${nombre} por un monto de ${valorPremio}`;
-      } else {
-        description = "Boleto perdedor";
-      }
       let ticket = {
         sorteo: resultado.sorteo,
         description,
-        ticketNumbers
+        ticketNumbers,
+        resultado
       };
       this.tickets.push(ticket);
     });

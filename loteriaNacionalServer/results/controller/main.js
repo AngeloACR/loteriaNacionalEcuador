@@ -1,6 +1,8 @@
 
 var xml2js = require('xml2js');
 var parser = xml2js.Parser();
+
+const Lottery = require('../../loterianacional/controller/main');
 const ResultadosController = require('./resultados');
 const PremiosController = require('./premios');
 const SorteosController = require('./sorteos');
@@ -62,6 +64,96 @@ const mainController = {
             throw e;
         }
     },
+    updateSorteos: async function () {
+        try {
+            console.log("Actualizando sorteos")
+            let response = await Lottery.autenticarUsuario();
+            let token = response.token;
+
+            let sorteosLotto = await Lottery.consultarSorteosJugados(2, token);
+            let sorteosLoteriaNacional = await Lottery.consultarSorteosJugados(1, token);
+            let sorteosPozoMillonario = await Lottery.consultarSorteosJugados(5, token);
+            let lottoLength = sorteosLotto.length;
+            response = [];
+            console.log('Empezando a guardar sorteos')
+            for (let i = 0; i < lottoLength; i++) {
+                const sorteo = sorteosLotto[i];
+                let auxSorteo = await SorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
+                let data = {
+                    tipoLoteria: 2,
+                    sorteo: sorteo.SortId,
+                    nombre: sorteo.SortNomb,
+                    precio: sorteo.PVP,
+                    fecha: sorteo.FSort,
+                    cantidadDeFracciones: sorteo.CFrac,
+                    valorPremioPrincipal: sorteo.VPremio,
+                }
+                if (auxSorteo.status) {
+                    let updatedSorteo = await SorteosController.updateSorteo(data.sorteo, data);
+                    response.push(updatedSorteo)
+                } else {
+                    let newSorteo = await SorteosController.addSorteo(data);
+                    response.push(newSorteo)
+                }
+            }
+            await SorteosController.setUltimoSorteo(2);
+            let loteriaLength = sorteosLoteriaNacional.length;
+            for (let i = 0; i < loteriaLength; i++) {
+                const sorteo = sorteosLoteriaNacional[i];
+                let auxSorteo = await SorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
+                let data = {
+                    tipoLoteria: 1,
+                    sorteo: sorteo.SortId,
+                    nombre: sorteo.SortNomb,
+                    precio: sorteo.PVP,
+                    fecha: sorteo.FSort,
+                    cantidadDeFracciones: sorteo.CFrac,
+                    valorPremioPrincipal: sorteo.VPremio,
+                }
+                if (auxSorteo.status) {
+                    let updatedSorteo = await SorteosController.updateSorteo(data.sorteo, data);
+                    response.push(updatedSorteo)
+                } else {
+                    let newSorteo = await SorteosController.addSorteo(data);
+                    response.push(newSorteo)
+                }
+            }
+            await SorteosController.setUltimoSorteo(1);
+            let pozoLength = sorteosPozoMillonario.length;
+            for (let i = 0; i < pozoLength; i++) {
+                const sorteo = sorteosPozoMillonario[i];
+                let auxSorteo = await SorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
+                let data = {
+                    tipoLoteria: 5,
+                    sorteo: sorteo.SortId,
+                    nombre: sorteo.SortNomb,
+                    precio: sorteo.PVP,
+                    fecha: sorteo.FSort,
+                    cantidadDeFracciones: sorteo.CFrac,
+                    valorPremioPrincipal: sorteo.VPremio,
+                }
+                if (auxSorteo.status) {
+                    let updatedSorteo = await SorteosController.updateSorteo(data.sorteo, data);
+                    response.push(updatedSorteo)
+                } else {
+                    let newSorteo = await SorteosController.addSorteo(data);
+                    response.push(newSorteo)
+                }
+            }
+            await SorteosController.setUltimoSorteo(5);
+            let responseAux = {
+                status: true,
+                values: response
+            }
+            return responseAux
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
     agregarSorteos: async (numeroSorteo, tipoLoteria, desdeArchivo) => {
         try {
             let auxSorteo = await SorteosController.getSorteoByNumber(numeroSorteo);
@@ -115,7 +207,7 @@ const mainController = {
     agregarResultados: async (sorteo, tipoLoteria) => {
         try {
             let filePath = `uploads/resultados/BOLPRE-${tipoLoteria}-${sorteo}.xml`;
-            let sorteoData = await mainController.agregarSorteos(sorteo, tipoLoteria, false);
+            //let sorteoData = await mainController.agregarSorteos(sorteo, tipoLoteria, false);
             fs.readFile(filePath, 'utf8', async function (err, xmlData) {
                 if (err) throw err;
                 let dataSet = `<dataset>${xmlData}</dataset>`
@@ -127,7 +219,8 @@ const mainController = {
                     let premioData = await PremiosController.getPremioByCodigo(codigoPremio)
                     let resultado = {
                         tipoLoteria,
-                        sorteo: sorteoData.values._id,
+                        sorteo,
+                        //sorteo: sorteoData.values._id,
                         combinacion1: data[i].$.C1,
                         combinacion2: data[i].$.C2,
                         combinacion3: data[i].$.C3,
@@ -147,7 +240,7 @@ const mainController = {
     agregarPremios: async (sorteo, tipoLoteria) => {
         try {
             let filePath = `uploads/resultados/PREM-${tipoLoteria}-${sorteo}.xml`;
-            let sorteoData = await mainController.agregarSorteos(sorteo, tipoLoteria, false);
+            //let sorteoData = await mainController.agregarSorteos(sorteo, tipoLoteria, false);
             fs.readFile(filePath, 'utf8', async function (err, xmlData) {
                 if (err) throw err;
                 let dataSet = `<dataset>${xmlData}</dataset>`
@@ -158,7 +251,8 @@ const mainController = {
                 data.forEach(premioAux => {
                     let premio = {
                         tipoLoteria,
-                        sorteo: sorteoData.values._id,
+                        //sorteo: sorteoData.values._id,
+                        sorteo,
                         nombre: premioAux.$.N,
                         codigo: premioAux.$.P,
                         tipoPremio: premioAux.$.TP,

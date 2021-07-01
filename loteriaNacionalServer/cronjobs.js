@@ -1,9 +1,11 @@
-const Sorteos = require('./results/controller/sorteos');
+const Resultados = require('./results/controller/main');
 var CronJob = require('cron').CronJob;
 
 module.exports.setCronJobs = function () {
     let jobs = [];
-    var job = new CronJob('00 15 01 * * *', Sorteos.updateSorteos, null, true, 'America/Guayaquil');
+    //let jobTime='00 * * * * *'
+    let jobTime = '00 00 00 * * *'
+    var job = new CronJob(jobTime, Resultados.updateSorteos, null, true, 'America/Guayaquil');
     jobs.push(job)
     return jobs;
 }

@@ -27,7 +27,7 @@
         <div class="input">
           <div class="input_content">
             <label for="">Ingresa numero(s) de boleto(s):</label>
-            <input name="combinaciones" type="text" (input)="deleteSpaces()" [(ngModel)]="combinacionesAux">
+            <input name="combinaciones" type="text" (input)="validateField()" [(ngModel)]="combinacionesAux">
           </div>
           <p>Si deseas consultar varios boletos, ingresalos separados por coma [,] ejemplo: 12345,67897 (5 digitos)
         </div>

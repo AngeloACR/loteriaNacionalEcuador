@@ -29,6 +29,9 @@ const resultadoSchema = new mongoose.Schema({
     },
     combinacionGanadora: {
         type: Number,
+    },
+    uñtimoResultado: {
+        type: Boolean,
     }
 });
 
