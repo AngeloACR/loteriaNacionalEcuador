@@ -110,6 +110,12 @@ export class PozoMillonarioConsultaComponent implements OnInit {
   }
   async buscarRango() {
     console.log("Buscando por rango");
+    let data = await this.inquiryService.recuperarBoletoGanador(
+      this.boletoInicial,
+      this.boletoFinal,
+      this.sorteoRango
+    );
+    this.resultados.emit(data);
     //this.router.navigateByUrl(`/pozo_millonario_boletin/${this.sorteoBoletin}`);
   }
 }
