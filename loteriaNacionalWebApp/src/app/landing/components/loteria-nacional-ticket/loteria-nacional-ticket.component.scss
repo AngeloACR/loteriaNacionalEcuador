@@ -9,6 +9,7 @@ $color-botton: #2f72b9;
   width: 100%;
   display: flex;
   margin: 10px auto;
+  padding: 10px;
   background-color: #f2f2f2;
   border-radius: 5px;
   box-sizing: border-box;
@@ -94,7 +95,7 @@ $color-botton: #2f72b9;
 
         div {
           display: flex;
-          justify-content: center;
+          justify-content: flex-start;
           margin: 0 0 15px 0;
 
           p {

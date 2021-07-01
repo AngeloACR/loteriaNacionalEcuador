@@ -9,6 +9,7 @@ $color-lotto: #b51f20;
   width: 100%;
   margin: 10px auto;
   background-color: #f2f2f2;
+  padding: 10px;
   border-radius: 5px;
   box-sizing: border-box;
 
@@ -69,39 +70,38 @@ $color-lotto: #b51f20;
         font-family: $fuente-titulo;
       }
     }
+  }
+  .contenedor_numeros {
+    width: 50%;
+    margin: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: $fuente-subtitulo;
 
-    .contenedor_numeros {
-      width: 50%;
-      margin: left;
+    .numero {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-around;
+      margin-left: 10px;
+    }
+
+    .contenedor_n {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      font-family: $fuente-subtitulo;
 
-      .numero {
-        background-color: #fff;
-        display: flex;
-        justify-content: space-around;
-        margin-left: 10px;
+      padding: 6px;
+
+      h5 {
+        margin: 5px auto;
+        font-size: 10px;
       }
 
-      .contenedor_n {
+      .numeros {
         display: flex;
-        flex-direction: column;
-
-        padding: 6px;
-
-        h5 {
-          margin: 5px auto;
-          font-size: 10px;
-        }
-
-        .numeros {
-          display: flex;
-          justify-content: space-around;
-          background-color: #fff;
-          margin-left: 10px;
-        }
+        justify-content: space-around;
+        background-color: #fff;
+        margin-left: 10px;
       }
     }
   }
