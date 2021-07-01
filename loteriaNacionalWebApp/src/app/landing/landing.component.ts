@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./landing.component.scss"]
 })
 export class LandingComponent implements OnInit {
-  link: string = "https://contenidos-prueba.loteria.com.ec/slider-de-inicio";
+  link: string = "https://contenidos-prueba.loteria.com.ec/divi-slide";
   title: string = "sliderLoteria";
   constructor() {}
 

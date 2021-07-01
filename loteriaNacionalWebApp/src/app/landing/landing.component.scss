@@ -1,11 +1,10 @@
 .iframeBox {
-  width: 95%;
-  margin: 20px auto;
+  width: 100%;
+  margin: 0px;
 
   iframe {
     width: 100%;
-    max-width: 1080px;
-    height: 180px;
+    height: 450px;
 
     display: flex;
     justify-content: center;
