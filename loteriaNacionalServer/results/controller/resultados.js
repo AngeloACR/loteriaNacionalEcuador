@@ -436,9 +436,17 @@ const resultadosController = {
         try {
             let query = { 'sorteo': sorteo, 'codigo': codigo }
             let resultado = await Resultado.findOne(query)
-            let response = {
-                status: true,
-                values: resultado
+            let response;
+            if (resultado && resultado.length != 0) {
+
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
             }
             return response;
         } catch (error) {
