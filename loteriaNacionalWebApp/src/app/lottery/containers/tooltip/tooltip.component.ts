@@ -6,9 +6,8 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./tooltip.component.scss"],
 })
 export class TooltipComponent implements OnInit {
-
-  @Input() numeros:any;
-  @Input() ticket:any;
+  @Input() numeros: any;
+  @Input() ticket: any;
 
   checkbox1: boolean = false;
   checkbox2: boolean = false;
@@ -20,8 +19,7 @@ export class TooltipComponent implements OnInit {
   checkbox8: boolean = false;
   checkbox9: boolean = false;
   checkbox10: boolean = false;
-  checkbox11: boolean = false;
-  
+
   cheks: any = [
     { numero: 1, variable: this.checkbox1 },
     { numero: 2, variable: this.checkbox2 },
@@ -32,8 +30,7 @@ export class TooltipComponent implements OnInit {
     { numero: 7, variable: this.checkbox7 },
     { numero: 8, variable: this.checkbox8 },
     { numero: 9, variable: this.checkbox9 },
-    { numero: 10, variable: this.checkbox10 },
-    { numero: 11, variable: this.checkbox11 },
+    { numero: 10, variable: this.checkbox10 }
   ];
 
   mostrar: boolean = false;
@@ -42,19 +39,20 @@ export class TooltipComponent implements OnInit {
   valor: boolean = false;
   loteriaTickets: any = [];
 
-  /* agregarTicket(numeroTicket, estado, ticket) {
-    this.loteriaTickets.push({ticket: ticket, numeroTicket: numeroTicket, estado: estado});
-
-    if(estado == true){
-      localStorage.setItem('loteriaTickets' , JSON.stringify(this.loteriaTickets));
-      localStorage.setItem('loterianumero' + ticket, JSON.stringify(numeroTicket));
-    } else { 
-      localStorage.removeItem('loterianumero' +  ticket);
-      localStorage.removeItem('loteriaTickets');
-    }
-  } */
-
   constructor() {}
 
-  async ngOnInit() {}
+  seleccionarTodo() {
+    this.checkbox1 = !this.checkbox1;
+    this.checkbox2 = !this.checkbox2;
+    this.checkbox3 = !this.checkbox3;
+    this.checkbox4 = !this.checkbox4;
+    this.checkbox5 = !this.checkbox5;
+    this.checkbox6 = !this.checkbox6;
+    this.checkbox7 = !this.checkbox7;
+    this.checkbox8 = !this.checkbox8;
+    this.checkbox9 = !this.checkbox9;
+    this.checkbox10 = !this.checkbox10;
+  }
+
+  ngOnInit() {}
 }

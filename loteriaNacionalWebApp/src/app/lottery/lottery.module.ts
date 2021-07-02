@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { PozoMillonarioComponent } from "./containers/pozo-millonario/pozo-millonario.component";
 import { LoteriaComponent } from "./containers/loteria/loteria.component";
@@ -26,7 +27,6 @@ import { SeleccionLottoComponent } from './containers/seleccion-lotto/seleccion-
 import { SeleccionPozoComponent } from './containers/seleccion-pozo/seleccion-pozo.component';
 
 
-import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [

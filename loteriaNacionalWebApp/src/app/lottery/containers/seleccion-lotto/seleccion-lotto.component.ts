@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-seleccion-lotto',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seleccion-lotto.component.scss']
 })
 export class SeleccionLottoComponent implements OnInit {
+
+  @Input() numeros: any;
 
   constructor() { }
 

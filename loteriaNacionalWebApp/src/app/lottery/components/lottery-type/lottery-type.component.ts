@@ -9,7 +9,7 @@ export class LotteryTypeComponent implements OnInit {
   @Input() image: String; 
   @Input() link: String;
   @Input() name: String;
-  @Input() pozo: String;
+  @Input() loteria: String;
   constructor() { }
 
   ngOnInit() {

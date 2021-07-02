@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LotteryService } from "../../services/lottery.service";
 
 @Component({
   selector: "app-lotto",
@@ -6,29 +7,69 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./lotto.component.scss"]
 })
 export class LottoComponent implements OnInit {
+  
+  pageActual: number = 1;
+  desaparecer_izquierdo: boolean = true;
+  desaparecer_derecho: boolean = false;
+  numeros: object[] = [];
+  sorteo: any;
+  premioPrecio: any;
+  
   tickets: any;
 
-  seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  pageActual: number = 1;
+  constructor( private lotteryService: LotteryService) {
+
+    this.numeros = [
+      [ 1, 4, 5, 7, 4 ],
+      [ 8, 4, 5, 7, 4 ],
+      [ 3, 4, 5, 7, 4 ],
+      [ 4, 4, 5, 7, 4 ],
+      [ 9, 4, 5, 7, 4 ],
+      [ 5, 4, 5, 7, 4 ],
+      [ 4, 4, 5, 7, 4 ],
+      [ 2, 4, 5, 7, 4 ],
+      [ 6, 4, 5, 7, 4 ],
+      [ 6, 4, 5, 7, 4 ],
+    ];
+  }
+  
+
+  /* seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; */
+  
 
   incrementar() {
-    if (this.pageActual >= this.seleccionLotto.length / 4) {
-      this.pageActual - 1;
+    if (this.pageActual >= this.numeros.length / 4) {
+      this.desaparecer_derecho = true;
     } else {
       this.pageActual++;
     }
+
+    if ( this.pageActual === 1) {
+      this.desaparecer_izquierdo = true;
+    } else {
+      this.desaparecer_izquierdo = false;
+    }
+    console.log( this.pageActual );
   }
 
   decrementar() {
-    this.pageActual--;
     if (this.pageActual <= 1) {
       this.pageActual = 1;
+      this.desaparecer_izquierdo = true;
+    } else {
+      this.pageActual--;
+      this.desaparecer_derecho = false;
     }
+    console.log( this.pageActual );
+
   }
 
-  constructor() {}
+  irPage( page: number) {
+    this.pageActual = page;
+  }
 
   ngOnInit() {
-    /*  console.log(JSON.parse(localStorage.getItem('usuario[0]'))); */
+    this.sorteo = this.lotteryService.obtenerSorteo();
+    this.premioPrecio = this.lotteryService.obtenerPremioPrecio( 2 );
   }
 }

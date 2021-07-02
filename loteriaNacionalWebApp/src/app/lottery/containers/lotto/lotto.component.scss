@@ -224,6 +224,15 @@ $color-botton: #2f72b9;
         margin: auto;
         justify-content: space-between;
 
+        .desaparecer { 
+          opacity: 0;
+          cursor: default;
+        }
+  
+        .aparecer { 
+          display: inline;
+        }
+
         .boton {
           width: 3vw;
           height: 3vw;

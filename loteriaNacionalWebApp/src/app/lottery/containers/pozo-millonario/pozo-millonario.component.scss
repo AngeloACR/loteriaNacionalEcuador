@@ -197,6 +197,24 @@ $color-botton: #2f72b9;
           color: rgba(0, 0, 0, 0.726);
           padding: 10px 35px;
           margin: 8px 12px 15px 0px;
+          position: relative;
+
+          span {
+            position: absolute;
+            top: 10%;
+            right: 7%;
+            color: gray;
+            font-size: 15px;
+            background-color: #fff;
+            padding: 4px 8px;
+            border-radius: 10px;
+            /* border: 1px solid #000; */
+            text-align: center;
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            cursor: pointer;
+          }
         }
       }
 
@@ -315,6 +333,15 @@ $color-botton: #2f72b9;
       display: flex;
       margin: auto;
       justify-content: space-between;
+
+      .desaparecer { 
+        opacity: 0;
+        cursor: default;
+      }
+
+      .aparecer { 
+        display: inline;
+      }
 
       .boton {
         width: 3vw;

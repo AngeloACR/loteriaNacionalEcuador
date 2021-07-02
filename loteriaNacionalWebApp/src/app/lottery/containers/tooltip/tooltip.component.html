@@ -2,28 +2,25 @@
   <!-- *ngFor="let item of numeros" -->
   <!--   <button (click)="fondo = !fondo; agregarTicket(numeros, fondo, ticket)" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
  --> <button (click)="fondo = !fondo;" [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}">
-    <p>{{ numeros.numero1 }}</p>
-    <p>{{ numeros.numero2 }}</p>
-    <p>{{ numeros.numero3 }}</p>
-    <p>{{ numeros.numero4 }}</p>
-    <p>{{ numeros.numero5 }}</p>
+    <p *ngFor="let numero of numeros">{{ numero }}</p>
   </button>
   <span *ngIf="fondo">
     <div class="numeros_grupo">
-      <p>{{ numeros.numero1 }}</p>
-      <p>{{ numeros.numero2 }}</p>
-      <p>{{ numeros.numero3 }}</p>
-      <p>{{ numeros.numero4 }}</p>
-      <p>{{ numeros.numero5 }}</p>
+      <p *ngFor="let numero of numeros">{{ numero }}</p>
       <h3>Fraccion</h3>
     </div>
     <hr>
-    <div class="fracciones">
-      <p *ngFor="let numeroCheck of cheks; let i = index">
-        {{ numeroCheck.numero }}
+    <div class="seleccionAll">
+      <p>Seleccionar todas las fracciones</p>
+      <input (click)="seleccionarTodo()" type="checkbox" name="" id="">
+    </div>
+    <hr>
+    <div class="contenedor_fracciones">
+      <div class="fracciones" *ngFor="let numeroCheck of cheks; let i = index">
         <input (click)="numeroCheck.variable = !numeroCheck.variable; " class="checkbox" type="checkbox" name=""
-          [value]="numeroCheck.numero" id="">
-      </p>
+        [value]="numeroCheck.numero" id="">
+        <p>{{ numeroCheck.numero }}</p>
+      </div>
     </div>
     <hr>
   </span>
