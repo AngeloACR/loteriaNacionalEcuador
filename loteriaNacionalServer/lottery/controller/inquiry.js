@@ -175,12 +175,11 @@ const inquiryController = {
     buscarLoteriaWinner: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
-            let sorteoId = (await Sorteos.getSorteoByNumber(sorteo)).values._id;
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanador(sorteoId, combinaciones[i]);
+                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     aux.values.forEach(boleto => {
 
@@ -210,12 +209,11 @@ const inquiryController = {
     buscarLottoWinner: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
-            let sorteoId = (await Sorteos.getSorteoByNumber(sorteo)).values._id;
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanador(sorteoId, combinaciones[i]);
+                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     aux.values.forEach(boleto => {
 
@@ -245,12 +243,11 @@ const inquiryController = {
     buscarPozoWinner: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
-            let sorteoId = (await Sorteos.getSorteoByNumber(sorteo)).values._id;
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanador(sorteoId, combinaciones[i]);
+                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     aux.values.forEach(boleto => {
 
@@ -280,7 +277,6 @@ const inquiryController = {
     buscarPozoPlancha: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
-            let sorteoId = (await Sorteos.getSorteoByNumber(sorteo)).values._id;
             let boletoInicial = parseInt(req.body.boletoInicial);
             let boletoFinal = parseInt(req.body.boletoFinal);
             let size = boletoFinal - boletoInicial + 1;
@@ -289,11 +285,11 @@ const inquiryController = {
             let response = [];
             let length = boletos.length;
             for (let i = 0; i < length; i++) {
-                let auxResult = await Results.getResultadoByCodigo(sorteoId, boletos[i]);
+                let auxResult = await Results.getResultadoByCodigo(sorteo, boletos[i]);
                 if (auxResult.status) {
 
                     let combinacion = auxResult.values.combinacion1;
-                    let aux = await Results.getResultadoGanador(sorteoId, combinacion);
+                    let aux = await Results.getResultadoGanador(sorteo, combinacion);
                     if (aux.status) {
                         aux.values.forEach(boleto => {
 
