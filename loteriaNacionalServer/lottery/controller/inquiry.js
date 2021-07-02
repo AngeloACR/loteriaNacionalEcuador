@@ -289,27 +289,38 @@ const inquiryController = {
             let length = boletos.length;
             for (let i = 0; i < length; i++) {
                 let auxResult = await Results.getResultadoByCodigo(sorteoId, boletos[i]);
-                let combinacion = auxResult.values.combinacion1;
-                let aux = await Results.getResultadoGanador(sorteoId, combinacion);
-                if (aux.status) {
-                    aux.values.forEach(boleto => {
+                if (auxResult.status) {
 
+                    let combinacion = auxResult.values.combinacion1;
+                    let aux = await Results.getResultadoGanador(sorteoId, combinacion);
+                    if (aux.status) {
+                        aux.values.forEach(boleto => {
+
+                            let responseAux = {
+                                status: true,
+                                combinacion,
+                                sorteo,
+                                data: boleto
+                            }
+                            response.push(responseAux);
+                        });
+
+                    } else {
                         let responseAux = {
-                            status: true,
+                            status: false,
                             combinacion,
                             sorteo,
-                            data: boleto
                         }
                         response.push(responseAux);
-                    });
-
+                    }
                 } else {
                     let responseAux = {
                         status: false,
-                        combinacion,
+                        combinacion: boletos[i],
                         sorteo,
                     }
                     response.push(responseAux);
+
                 }
             }
             res.status(200).json(response);
