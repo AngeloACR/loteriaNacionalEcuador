@@ -139,12 +139,19 @@ $color-loteria: #2f72b9;
 
           button {
             background-color: $color-loteria;
-            border: none;
+            border: 1px solid $color-loteria;
             border-radius: 30px;
             color: #fff;
             font-family: $fuente-parrafo;
             margin-top: 25px;
             font-size: 13px;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+
+            &:hover {
+              background-color: #fff;
+              color: $color-loteria;
+            }
           }
         }
       }

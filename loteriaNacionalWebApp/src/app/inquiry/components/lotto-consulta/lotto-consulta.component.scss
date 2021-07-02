@@ -87,7 +87,7 @@ $color-lotto: #b51f20;
           p:nth-child(2) {
             width: 60%;
             font-size: 12px;
-            color: #e2e2e2;
+            color: #1f1f1f;
           }
         }
       }
@@ -101,7 +101,7 @@ $color-lotto: #b51f20;
         width: 90%;
         margin: 30px auto;
 
-        color: #e2e2e2;
+        color: #1f1f1f;
 
         .formulario {
           display: grid;
@@ -149,12 +149,19 @@ $color-lotto: #b51f20;
 
             button {
               background-color: $color-lotto;
-              border: none;
+              border: 1px solid $color-lotto;
               border-radius: 30px;
               color: #fff;
               font-family: $fuente-parrafo;
               margin-top: 25px;
               font-size: 13px;
+              cursor: pointer;
+              transition: background-color 0.5s ease;
+
+              &:hover {
+                background-color: #fff;
+                color: $color-lotto;
+              }
             }
           }
         }
