@@ -3,7 +3,8 @@ $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
-$color-pozo: #057333;
+$color-pozo: #04b865;
+//$color-pozo: #057333;
 
 .contenedor_ticket {
   width: 90%;
@@ -158,8 +159,11 @@ $color-pozo: #057333;
     button {
       width: 90%;
       padding: 20px 30px;
-      background-color: $color-pozo;
-      border: 1px solid #fff;
+
+      //      background-color: $color-pozo;
+      background-color: #186b76;
+      //border: 1px solid #fff;
+      border: 1px solid #186b76;
       border-radius: 40px;
       margin: 10px auto;
       font-family: $fuente-botones;
@@ -170,7 +174,8 @@ $color-pozo: #057333;
 
       &:hover {
         background-color: #fff;
-        color: $color-pozo;
+        //color: $color-pozo;
+        color: #186b76;
       }
     }
   }

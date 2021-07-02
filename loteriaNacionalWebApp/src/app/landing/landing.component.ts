@@ -7,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LandingComponent implements OnInit {
   link: string = "https://contenidos-prueba.loteria.com.ec/divi-slide";
+  linkNews: string = "https://contenidos-prueba.loteria.com.ec/newsletter";
   title: string = "sliderLoteria";
   constructor() {}
 

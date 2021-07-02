@@ -28,8 +28,10 @@ $fuente-botones: "Monstserrat SemiBold";
   }
 
   .pozo {
-    background-color: #057333;
-    border: 3px solid #057333;
+    background-color: #04b865;
+//    background-color: #057333;
+  //  border: 3px solid #057333;
+    border: 3px solid #04b865;
   }
 
   .loteria:hover {
@@ -44,7 +46,9 @@ $fuente-botones: "Monstserrat SemiBold";
 
   .pozo:hover {
     background-color: white;
-    color: #057333;
+    
+//    color: #057333;
+    color: #04b865;
   }
 
   .lotteryImg {
