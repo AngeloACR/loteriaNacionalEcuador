@@ -8,6 +8,9 @@ const ultimoResultadoSchema = new mongoose.Schema({
     ultimoResultado: {
         type: Schema.Types.ObjectId,
         ref: 'Resultado',
+    },
+    sorteo: {
+        type: Number
     }
 });
 

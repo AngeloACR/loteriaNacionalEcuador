@@ -12,7 +12,7 @@ const premioSchema = new mongoose.Schema({
         ref: 'Sorteo',
     },
     codigo: {
-        type: Number
+        type: String
     },
     nombre: {
         type: String

@@ -254,7 +254,7 @@ const mainController = {
                         //sorteo: sorteoData.values._id,
                         sorteo,
                         nombre: premioAux.$.N,
-                        codigo: premioAux.$.P,
+                        codigo: `${sorteo}-${premioAux.$.P}`,
                         tipoPremio: premioAux.$.TP,
                         primeraSuerte: premioAux.$.PS,
                         valorPremio: premioAux.$.VP,
