@@ -281,10 +281,10 @@ const inquiryController = {
         try {
             let sorteo = req.body.sorteo;
             let sorteoId = (await Sorteos.getSorteoByNumber(sorteo)).values._id;
-            let boletoInicial = req.body.boletoInicial;
-            let boletoFinal = req.body.boletoFinal;
+            let boletoInicial = parseInt(req.body.boletoInicial);
+            let boletoFinal = parseInt(req.body.boletoFinal);
             let size = boletoFinal - boletoInicial + 1;
-            let boletos = [...Array(size).keys()].map(i => i + boletoInicial);
+            let boletos = [...Array(size).keys()].map(i => parseInt(i) + boletoInicial);
             console.log(boletos);
             let response = [];
             let length = boletos.length;
