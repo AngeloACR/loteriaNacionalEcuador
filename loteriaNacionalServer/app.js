@@ -25,8 +25,8 @@ lotteryApp.listen(lotteryPort, () => {
 });
 
 const ftpHost = config.ftpHostTest;
-//const ftpHost = config.ftpHostProd;
-const ftpPort = config.ftpPort;
+const ftpHost = config.ftpHostProd;
+//const ftpPort = config.ftpPort;
 const ftpPassMin = config.ftpPassMin;
 const ftpPassMax = config.ftpPassMax;
 
