@@ -341,7 +341,6 @@ const resultadosController = {
         try {
             let query = { 'sorteo': sorteo, 'combinacion1': combinacion }
             let resultado = await Resultado.find(query).populate('premio');
-            console.log(resultado);
             if (resultado && resultado.length != 0) {
 
                 response = {
@@ -353,7 +352,6 @@ const resultadosController = {
                     status: false
                 }
             }
-            console.log(response);
             return response;
         } catch (error) {
             let response = {
