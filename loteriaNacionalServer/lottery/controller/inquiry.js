@@ -285,6 +285,7 @@ const inquiryController = {
             let boletoFinal = req.body.boletoFinal;
             let size = boletoFinal - boletoInicial + 1;
             let boletos = [...Array(size).keys()].map(i => i + boletoInicial);
+            console.log(boletos);
             let response = [];
             let length = boletos.length;
             for (let i = 0; i < length; i++) {
