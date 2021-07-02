@@ -59,7 +59,7 @@ $color-botton: #2f72b9;
     height: 42px;
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 10px 0;
 
@@ -70,7 +70,7 @@ $color-botton: #2f72b9;
 
       a {
         text-decoration: none;
-        padding: 1rem;
+        padding: 12px;
         color: #000980;
 
         &:hover {
