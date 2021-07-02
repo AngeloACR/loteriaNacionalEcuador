@@ -284,7 +284,7 @@ const inquiryController = {
             let boletoInicial = parseInt(req.body.boletoInicial);
             let boletoFinal = parseInt(req.body.boletoFinal);
             let size = boletoFinal - boletoInicial + 1;
-            let boletos = [...Array(size).keys()].map(i => parseInt(i) + boletoInicial);
+            let boletos = [...Array(size).keys()].map(i => parseString(parseInt(i) + boletoInicial));
             console.log(boletos);
             let response = [];
             let length = boletos.length;
