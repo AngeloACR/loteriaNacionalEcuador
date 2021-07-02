@@ -280,6 +280,7 @@ const inquiryController = {
     buscarPozoPlancha: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
+            let sorteoId = (await Sorteos.getSorteoByNumber(sorteo)).values._id;
             let boletoInicial = req.body.boletoInicial;
             let boletoFinal = req.body.boletoFinal;
             let size = boletoFinal - boletoInicial + 1;
@@ -321,7 +322,7 @@ const inquiryController = {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 2
             let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`
-            
+
             res.status(200).json(boletinAddress);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -333,7 +334,7 @@ const inquiryController = {
             let sorteo = req.body.sorteo;
             let tipoLoteria = 1
             let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`
-            
+
             res.status(200).json(boletinAddress);
         } catch (e) {
             res.status(400).json(e.toString());
