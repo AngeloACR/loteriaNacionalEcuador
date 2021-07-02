@@ -1,7 +1,5 @@
 <?php
 
-// https://kinsta.com/es/aprender/acelerar-wordpress/
-// Add custom Theme Functions here
 
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles', 11);
 function my_theme_enqueue_styles()

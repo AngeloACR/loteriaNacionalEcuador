@@ -6,34 +6,3 @@
  Template:       Divi
  Version:        1.0.0
 */
-
-@font-face {
-  /*Nombre por el que llamaremos a la fuente*/
-  font-family: "Abingdon";
-
-  /*Referencia de todo los formatos*/
-  src: url("https://zambirucayuyi.com/wp-content/themes/divi-child/fuentes/Abingdon Bold.otf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  /*Nombre por el que llamaremos a la fuente*/
-  font-family: "PlayfairDisplay";
-
-  /*Referencia de todo los formatos*/
-  src: url("https://zambirucayuyi.com/wp-content/themes/divi-child/fuentes/PlayfairDisplay-bold.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Abingdon", Arial, sans-serif !important;
-}
-
-p {
-  font-family: "PlayfairDisplay", Arial, sans-serif !important;
-}

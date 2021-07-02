@@ -110,7 +110,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
   }
   async buscarRango() {
     console.log("Buscando por rango");
-    let data = await this.inquiryService.recuperarBoletoGanador(
+    let data = await this.inquiryService.recuperarBoletoGanadorPorPlancha(
       this.boletoInicial,
       this.boletoFinal,
       this.sorteoRango
