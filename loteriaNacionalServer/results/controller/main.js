@@ -215,17 +215,18 @@ const mainController = {
                 let data = aux.dataset.R;
                 let length = data.length;
                 for (let i = 0; i < length; i++) {
-                    let codigoPremio = data[i].X[0].R[0].$.P;
-                    let premioData = await PremiosController.getPremioByCodigo(codigoPremio)
+                    let codigoPremio = `${sorteo}-${data[i].X[0].R[0].$.P}`;
+                    //let premioData = await PremiosController.getPremioByCodigo(codigoPremio)
                     let resultado = {
                         tipoLoteria,
-                        sorteo,
+                        numeroSorteo: sorteo,
                         //sorteo: sorteoData.values._id,
                         combinacion1: data[i].$.C1,
                         combinacion2: data[i].$.C2,
                         combinacion3: data[i].$.C3,
                         codigo: data[i].$.B,
-                        premio: premioData.values._id,
+                        //premio: premioData.values._id,
+                        codigoPremio,
                         combinacionGanadora: data[i].X[0].R[0].$.CG
                     }
                     ResultadosController.addResultado(resultado);

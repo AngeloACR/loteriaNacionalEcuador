@@ -7,9 +7,12 @@ const premioSchema = new mongoose.Schema({
 /*         type: Schema.Types.ObjectId,
         ref: 'TipoLoteria',
  */    },
-    sorteo: {
-        type: Schema.Types.ObjectId,
-        ref: 'Sorteo',
+    /*     sorteo: {
+            type: Schema.Types.ObjectId,
+            ref: 'Sorteo',
+        }, */
+    numeroSorteo: {
+        type: Number
     },
     codigo: {
         type: String
@@ -39,5 +42,15 @@ const premioSchema = new mongoose.Schema({
         type: String,
     },
 })
+
+
+premioSchema.virtual('sorteo', {
+    ref: 'Sorteo', // The model to use
+    localField: 'numeroSorteo', // Find people where `localField`
+    foreignField: 'sorteo', // is equal to `foreignField`
+    // If `justOne` is true, 'members' will be a single doc as opposed to
+    // an array. `justOne` is false by default.
+    justOne: true,
+});
 
 const Premio = module.exports = mongoose.model("Premio", premioSchema);

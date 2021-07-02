@@ -7,10 +7,10 @@ const resultadoSchema = new mongoose.Schema({
 /*         type: Schema.Types.ObjectId,
     ref: 'TipoLoteria',
 */    },
-    sorteo: {
+    /* sorteo: {
         type: Schema.Types.ObjectId,
         ref: 'Sorteo',
-    },
+    }, */
     combinacion1: {
         type: String
     },
@@ -23,16 +23,37 @@ const resultadoSchema = new mongoose.Schema({
     codigo: {
         type: Number,
     },
+    codigoPremio: {
+        type: String
+    },
+    numeroSorteo: {
+        type: String
+    }
+    /* 
     premio: {
         type: Schema.Types.ObjectId,
         ref: 'Premio',
     },
     combinacionGanadora: {
         type: Number,
-    },
-    uñtimoResultado: {
-        type: Boolean,
-    }
+    } */
+});
+
+resultadoSchema.virtual('premio', {
+    ref: 'Premio', // The model to use
+    localField: 'codigoPremio', // Find people where `localField`
+    foreignField: 'codigo', // is equal to `foreignField`
+    // If `justOne` is true, 'members' will be a single doc as opposed to
+    // an array. `justOne` is false by default.
+    justOne: true,
+});
+resultadoSchema.virtual('sorteo', {
+    ref: 'Sorteo', // The model to use
+    localField: 'numeroSorteo', // Find people where `localField`
+    foreignField: 'sorteo', // is equal to `foreignField`
+    // If `justOne` is true, 'members' will be a single doc as opposed to
+    // an array. `justOne` is false by default.
+    justOne: true,
 });
 
 const Resultado = module.exports = mongoose.model("Resultado", resultadoSchema);
