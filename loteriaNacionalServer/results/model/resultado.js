@@ -37,6 +37,9 @@ const resultadoSchema = new mongoose.Schema({
     combinacionGanadora: {
         type: Number,
     } */
+},{
+    toJSON: {virtuals: true},
+    toObject: {virtuals: true},
 });
 
 resultadoSchema.virtual('premio', {

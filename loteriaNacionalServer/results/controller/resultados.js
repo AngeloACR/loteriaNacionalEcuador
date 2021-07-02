@@ -53,9 +53,35 @@ const resultadosController = {
     },
     getResultadoGanador: async function (sorteo, combinacion) {
         try {
-            let query = { 'sorteo': sorteo, 'combinacion1': combinacion }
+            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
             let resultado = await Resultado.find(query).populate('premio');
+            console.log(resultado);
             if (resultado && resultado.length != 0) {
+
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
+    getResultadoByCombinacion1: async function (combinacion1) {
+        try {
+            let query = { 'combinacion1': combinacion1 }
+            let resultado = await Resultado.findOne(query)
+            if (resultado) {
 
                 response = {
                     status: true,

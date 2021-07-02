@@ -12,7 +12,7 @@ const premioSchema = new mongoose.Schema({
             ref: 'Sorteo',
         }, */
     numeroSorteo: {
-        type: Number
+        type: String
     },
     codigo: {
         type: String
@@ -41,7 +41,10 @@ const premioSchema = new mongoose.Schema({
     descripcionDescuento: {
         type: String,
     },
-})
+}, {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    });
 
 
 premioSchema.virtual('sorteo', {

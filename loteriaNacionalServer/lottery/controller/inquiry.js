@@ -421,6 +421,17 @@ const inquiryController = {
             res.status(400).json(e.toString());
         }
     },
+    buscarResultadoPrueba: async (req, res) => {
+        try {
+            let sorteo = req.body.sorteo;
+            let combinacion = req.body.combinacion;
+            let response = await Results.getResultadoGanador(sorteo, combinacion);
+
+            res.status(200).json(response);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
 }
 
 const mainInquiryController = {
