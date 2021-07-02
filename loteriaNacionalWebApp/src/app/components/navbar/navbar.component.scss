@@ -13,7 +13,7 @@ $color-botton: #2f72b9;
   //background-color: #000980 !important;
 
   .navbar {
-    width: 80%;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -55,21 +55,28 @@ $color-botton: #2f72b9;
   }
 
   .navbar_links {
-    width: 80%;
+    width: 100%;
+    height: 42px;
     margin: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 10px 0;
 
     li {
-      margin-left: 40px;
       list-style: none;
       font-family: $fuente-subtitulo;
       font-size: 14px;
 
       a {
         text-decoration: none;
+        padding: 1rem;
         color: #000980;
+
+        &:hover {
+          background-color: #000980;
+          color: white;
+        }
       }
 
       .activado {
