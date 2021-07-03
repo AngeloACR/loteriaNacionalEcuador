@@ -192,9 +192,9 @@ const mainController = {
                     }
                     if (tipoLoteria == "2") {
                         if (codigoPremioAux == "23") {
-                            await ResultadosController.setUltimoLottoPlus(resultado, codigoPremio);
+                            await ResultadosController.setUltimoLottoPlus(tipoLoteria, resultado, codigoPremio);
                         } else if (codigoPremioAux == "24") {
-                            await ResultadosController.setUltimoLottito(resultado, codigoPremio, indexLottito);
+                            await ResultadosController.setUltimoLottito(tipoLoteria, resultado, codigoPremio, indexLottito);
                             indexLottito++;
                         }
 
