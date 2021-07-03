@@ -259,6 +259,14 @@ const mainController = {
                 });
 
             });
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
 }
 
 module.exports = mainController
