@@ -239,7 +239,8 @@ const mainController = {
                 let data = aux.dataset.R;
                 let length = data.length;
 
-                data.forEach(premioAux => {
+                for (let i = 0; i < length; i++) {
+                    let premioAux = data[i]
                     let premio = {
                         tipoLoteria,
                         numeroSorteo: sorteo,
@@ -254,8 +255,8 @@ const mainController = {
                         descripcionDescuento: premioAux.$.OD,
                     }
 
-                    PremiosController.addPremio(premio);
-                });
+                    await PremiosController.addPremio(premio);
+                };
 
             });
         } catch (error) {
