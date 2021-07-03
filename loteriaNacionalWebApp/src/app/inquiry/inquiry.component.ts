@@ -7,9 +7,7 @@ import { InquiryService } from "./services/inquiry.service";
   styleUrls: ["./inquiry.component.scss"]
 })
 export class InquiryComponent implements OnInit {
-  constructor(private inquiry: InquiryService) {}
+  constructor() {}
 
-  async ngOnInit() {
-    await this.inquiry.recuperarUltimosResultados();
-  }
+  async ngOnInit() {}
 }
