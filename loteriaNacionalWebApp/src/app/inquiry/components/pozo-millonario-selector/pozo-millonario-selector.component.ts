@@ -15,28 +15,13 @@ export class PozoMillonarioSelectorComponent implements OnInit {
       localStorage.getItem("pozoMillonarioUltimoResultado")
     );
     this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
-    this.ticketNumbers = [
-      "01",
-      "02",
-      "09",
-      "10",
-      "11",
-      "12",
-      "15",
-      "16",
-      "17",
-      "18",
-      "19",
-      "22",
-      "23",
-      "24"
-    ];
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
       date: "05/05/2021",
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       numeroSorteo: data.numeroSorteo,
+      codigo: data.ultimoResultado.codigo,
       sorteo: data.sorteo
     };
   }

@@ -9,10 +9,27 @@ const ultimoResultadoSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Resultado',
     },
+    resultadoLottoPlus: {
+        type: Schema.Types.ObjectId,
+        ref: 'Resultado',
+    },
+    resultadosLottito: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Resultado',
+    }],
     numeroSorteo: {
         type: String
     },
-    codigoPremio: {
+    indexLottito: {
+        type: Number
+    },
+    codigoPremioPrincipal: {
+        type: String
+    },
+    codigoPremioLottoPlus: {
+        type: String
+    },
+    codigoPremioLottito: {
         type: String
     }
 }, {
@@ -31,9 +48,25 @@ ultimoResultadoSchema.virtual('sorteo', {
 
 
 
-ultimoResultadoSchema.virtual('premio', {
+ultimoResultadoSchema.virtual('premioPrincipal', {
     ref: 'Premio', // The model to use
-    localField: 'codigoPremio', // Find people where `localField`
+    localField: 'codigoPremioPrincipal', // Find people where `localField`
+    foreignField: 'codigo', // is equal to `foreignField`
+    // If `justOne` is true, 'members' will be a single doc as opposed to
+    // an array. `justOne` is false by default.
+    justOne: true,
+});
+ultimoResultadoSchema.virtual('premioLottoPlus', {
+    ref: 'Premio', // The model to use
+    localField: 'codigoPremioLottoPlus', // Find people where `localField`
+    foreignField: 'codigo', // is equal to `foreignField`
+    // If `justOne` is true, 'members' will be a single doc as opposed to
+    // an array. `justOne` is false by default.
+    justOne: true,
+});
+ultimoResultadoSchema.virtual('premioLottito', {
+    ref: 'Premio', // The model to use
+    localField: 'codigoPremioLottito', // Find people where `localField`
     foreignField: 'codigo', // is equal to `foreignField`
     // If `justOne` is true, 'members' will be a single doc as opposed to
     // an array. `justOne` is false by default.

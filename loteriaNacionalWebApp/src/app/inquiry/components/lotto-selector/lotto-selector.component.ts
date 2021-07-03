@@ -11,12 +11,19 @@ export class LottoSelectorComponent implements OnInit {
   ticketNumbers: String[];
   ticketNumbers2: String[];
   ticketNumbers3: String[];
+  ticketLottoPlus: String;
+  ticketLottito: Array<String>;
+
   constructor(private router: Router) {}
   ngOnInit() {
     let data = JSON.parse(localStorage.getItem("lottoUltimoResultado"));
     this.ticketNumbers = data.ultimoResultado.combinacion1.split("");
     this.ticketNumbers2 = data.ultimoResultado.combinacion2.split("");
     this.ticketNumbers3 = data.ultimoResultado.combinacion3.split("");
+    this.ticketLottoPlus = data.resultadoLottoPlus.combinacion2; //.split("");
+    this.ticketLottito = data.resultadoLottito.map(resultado => {
+      resultado.combinacion3; //.split("");
+    });
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
       date: "05/05/2021",
@@ -24,6 +31,8 @@ export class LottoSelectorComponent implements OnInit {
       ticketNumbers: this.ticketNumbers,
       ticketNumbers2: this.ticketNumbers2,
       ticketNumbers3: this.ticketNumbers3,
+      ticketLottoPlus: this.ticketLottoPlus,
+      ticketLottito: this.ticketLottito,
       numeroSorteo: data.numeroSorteo,
       sorteo: data.sorteo
     };

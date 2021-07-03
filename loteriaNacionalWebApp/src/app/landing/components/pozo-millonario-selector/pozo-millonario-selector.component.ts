@@ -11,33 +11,25 @@ export class PozoMillonarioSelectorComponent implements OnInit {
   ticketNumbers: String[];
   constructor(private router: Router) {}
   ngOnInit() {
-    this.ticketNumbers = [
-      "01",
-      "02",
-      "09",
-      "10",
-      "11",
-      "12",
-      "15",
-      "16",
-      "17",
-      "18",
-      "19",
-      "22",
-      "23",
-      "24"
-    ];
+    let data = JSON.parse(
+      localStorage.getItem("pozoMillonarioUltimoResultado")
+    );
+    this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
     this.ticketGanador = {
-      ticketIndex: 245,
+      ticketIndex: data.ultimoResultado.codigo,
       date: "05/05/2021",
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
-      sorteo: 6575
+      numeroSorteo: data.numeroSorteo,
+      sorteo: data.sorteo,
+      codigo: data.ultimoResultado.codigo,
     };
   }
-
   verUltimoBoletin() {
-    let sorteo = 4565;
+    let sorteo = this.ticketGanador.numeroSorteo;
     this.router.navigateByUrl(`/resultados/pozo_millonario_boletin/${sorteo}`);
+  }
+  verResultados() {
+    this.router.navigateByUrl(`/resultados/pozo_millonario_consulta`);
   }
 }

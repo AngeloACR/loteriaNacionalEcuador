@@ -172,6 +172,7 @@ const mainController = {
                 let aux = await parser.parseStringPromise(dataSet, { trim: true })
                 let data = aux.dataset.R;
                 let length = data.length;
+                let indexLottito = 0;
                 for (let i = 0; i < length; i++) {
                     let codigoPremioAux = data[i].X[0].R[0].$.P;
                     let codigoPremio = `${sorteo}-${codigoPremioAux}`;
@@ -189,42 +190,17 @@ const mainController = {
                     if (codigoPremioAux == "1") {
                         await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
                     }
+                    if (tipoLoteria == "2") {
+                        if (codigoPremioAux == "23") {
+                            await ResultadosController.setUltimoLottoPlus(resultado, codigoPremio);
+                        } else if (codigoPremioAux == "24") {
+                            await ResultadosController.setUltimoLottito(resultado, codigoPremio, indexLottito);
+                            indexLottito++;
+                        }
+
+                    }
                 }
 
-
-            });
-        } catch (e) {
-            throw e
-        }
-    },
-
-    agregarPremios: async (sorteo, tipoLoteria) => {
-        try {
-            let filePath = `uploads/resultados/PREM-${tipoLoteria}-${sorteo}.xml`;
-            fs.readFile(filePath, 'utf8', async function (err, xmlData) {
-                if (err) throw err;
-                let dataSet = `<dataset>${xmlData}</dataset>`
-                let aux = await parser.parseStringPromise(dataSet, { trim: true })
-                let data = aux.dataset.R;
-                let length = data.length;
-
-                data.forEach(premioAux => {
-                    let premio = {
-                        tipoLoteria,
-                        numeroSorteo: sorteo,
-                        nombre: premioAux.$.N,
-                        codigo: `${sorteo}-${premioAux.$.P}`,
-                        tipoPremio: premioAux.$.TP,
-                        primeraSuerte: premioAux.$.PS,
-                        valorPremio: premioAux.$.VP,
-                        valorPremioConDescuento: premioAux.$.VD,
-                        valorFraccion: premioAux.$.VF,
-                        valorFraccionConDescuento: premioAux.$.FD,
-                        descripcionDescuento: premioAux.$.OD,
-                    }
-
-                    PremiosController.addPremio(premio);
-                });
 
             });
         } catch (e) {

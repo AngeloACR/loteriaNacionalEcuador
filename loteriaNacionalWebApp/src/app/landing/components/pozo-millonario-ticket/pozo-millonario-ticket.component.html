@@ -1,9 +1,9 @@
 <div class="contenedor_informacion_ticket">
   <div class="contenedor_numeros">
     <div class="arriba">
-      <h3>07/MAY/2021</h3>
+      <h3>{{sorteo.fecha}}</h3>
       <div class="numeros">
-        <p *ngFor="let number of numbers">{{number}}</p>
+        <p *ngFor="let number of ticketNumbers">{{number}}</p>
       </div>
     </div>
     <div class="abajo">
@@ -13,11 +13,11 @@
       <div class="contenedor_info">
         <div class="contenido">
           <p>N° Sorteo</p>
-          <p>930</p>
+          <p>{{numeroSorteo}}</p>
         </div>
         <div class="contenido">
           <p>N° Cartón</p>
-          <p>5.365.459</p>
+          <p>{{ticket.codigo}}</p>
         </div>
         <div class="contenido">
           <img src="../../../../assets/img/pozzo millonario.png" alt="">

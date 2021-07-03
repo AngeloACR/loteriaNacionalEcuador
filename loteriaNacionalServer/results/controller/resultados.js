@@ -247,7 +247,14 @@ const resultadosController = {
     getUltimoResultado: async function (tipoLoteria) {
         try {
             let query = { 'tipoLoteria': tipoLoteria }
-            let resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('sorteo').populate('premio');
+            let resultado;
+            if (tipoLoteria == 2) {
+
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('sorteo').populate('premioPrincipal').populate('premioLottoPlus').populate('premioLottito');
+            } else {
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('resultadoLottoPlus').populate('resultadosLottito').populate('sorteo').populate('premioPrincipal');
+
+            }
             let response;
             if (resultado) {
                 response = {
@@ -294,6 +301,59 @@ const resultadosController = {
         }
 
     },
+    setUltimoLottito: async function (resultado, codigoPremioLottito, indexLottito) {
+        try {
+            let data = {
+                tipoLoteria,
+                resultadosLottito: [resultado._id],
+                codigoPremioLottito,
+                indexLottito
+            }
+
+            let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
+            if (ultimoResultadoResponse.status) {
+                console.log('Actualizando ultimo resultado');
+                if (index == 0) {
+                    ultimoResultadoResponse.values.resultadosLottito = []
+                }
+                ultimoResultadoResponse.values.resultadosLottito.push(resultado._id);
+                ultimoResultadoResponse.values.codigoPremioLottito = data.codigoPremioLottito;
+                ultimoResultadoResponse.values.indexLottito = data.indexLottito;
+                let newUltimoResultado = await ultimoResultadoResponse.values.save()
+            } else {
+                console.log('Creando ultimo resultado');
+                let newUltimoResultado = new UltimoResultado(data)
+                newUltimoResultado = await newUltimoResultado.save()
+            }
+        } catch (e) {
+            console.log(e.toString());
+        }
+
+    },
+    setUltimoLottoPlus: async function (resultado, codigoPremioLottoPlus) {
+        try {
+            let data = {
+                tipoLoteria,
+                resultadosLottoPlus: resultado._id,
+                codigoPremioLottoPlus
+            }
+            let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
+            if (ultimoResultadoResponse.status) {
+                console.log('Actualizando ultimo resultado');
+                ultimoResultadoResponse.values.resultadoLottoPlus = data.resultadoLottoPlus;
+                ultimoResultadoResponse.values.codigoPremioLottoPlus = data.codigoPremioLottoPlus;
+                let newUltimoResultado = await ultimoResultadoResponse.values.save()
+            } else {
+                console.log('Creando ultimo resultado');
+                let newUltimoResultado = new UltimoResultado(data)
+                newUltimoResultado = await newUltimoResultado.save()
+            }
+        } catch (e) {
+            console.log(e.toString());
+        }
+
+    },
+
 
 }
 module.exports = resultadosController
