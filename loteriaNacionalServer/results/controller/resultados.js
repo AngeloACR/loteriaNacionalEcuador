@@ -301,7 +301,7 @@ const resultadosController = {
         }
 
     },
-    setUltimoLottito: async function (resultado, codigoPremioLottito, indexLottito) {
+    setUltimoLottito: async function (tipoLoteria, resultado, codigoPremioLottito, indexLottito) {
         try {
             let data = {
                 tipoLoteria,
@@ -330,7 +330,7 @@ const resultadosController = {
         }
 
     },
-    setUltimoLottoPlus: async function (resultado, codigoPremioLottoPlus) {
+    setUltimoLottoPlus: async function (tipoLoteria, resultado, codigoPremioLottoPlus) {
         try {
             let data = {
                 tipoLoteria,
