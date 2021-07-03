@@ -242,10 +242,9 @@ const mainController = {
                 data.forEach(premioAux => {
                     let premio = {
                         tipoLoteria,
-                        //sorteo: sorteoData.values._id,
-                        sorteo,
+                        numeroSorteo: sorteo,
                         nombre: premioAux.$.N,
-                        codigo: premioAux.$.P,
+                        codigo: `${sorteo}-${premioAux.$.P}`,
                         tipoPremio: premioAux.$.TP,
                         primeraSuerte: premioAux.$.PS,
                         valorPremio: premioAux.$.VP,
