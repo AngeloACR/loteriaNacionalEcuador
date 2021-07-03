@@ -228,6 +228,37 @@ const mainController = {
             return response
         }
     },
+    agregarPremios: async (sorteo, tipoLoteria) => {
+        try {
+            let filePath = `uploads/resultados/PREM-${tipoLoteria}-${sorteo}.xml`;
+            //let sorteoData = await mainController.agregarSorteos(sorteo, tipoLoteria, false);
+            fs.readFile(filePath, 'utf8', async function (err, xmlData) {
+                if (err) throw err;
+                let dataSet = `<dataset>${xmlData}</dataset>`
+                let aux = await parser.parseStringPromise(dataSet, { trim: true })
+                let data = aux.dataset.R;
+                let length = data.length;
+
+                data.forEach(premioAux => {
+                    let premio = {
+                        tipoLoteria,
+                        //sorteo: sorteoData.values._id,
+                        sorteo,
+                        nombre: premioAux.$.N,
+                        codigo: premioAux.$.P,
+                        tipoPremio: premioAux.$.TP,
+                        primeraSuerte: premioAux.$.PS,
+                        valorPremio: premioAux.$.VP,
+                        valorPremioConDescuento: premioAux.$.VD,
+                        valorFraccion: premioAux.$.VF,
+                        valorFraccionConDescuento: premioAux.$.FD,
+                        descripcionDescuento: premioAux.$.OD,
+                    }
+
+                    PremiosController.addPremio(premio);
+                });
+
+            });
 }
 
 module.exports = mainController
