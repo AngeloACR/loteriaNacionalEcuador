@@ -313,7 +313,7 @@ const resultadosController = {
             let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
             if (ultimoResultadoResponse.status) {
                 console.log('Actualizando ultimo resultado');
-                if (index == 0) {
+                if (indexLottito == 0) {
                     ultimoResultadoResponse.values.resultadosLottito = []
                 }
                 ultimoResultadoResponse.values.resultadosLottito.push(resultado._id);
