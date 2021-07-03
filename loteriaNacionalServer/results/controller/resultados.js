@@ -334,7 +334,7 @@ const resultadosController = {
         try {
             let data = {
                 tipoLoteria,
-                resultadosLottoPlus: resultado._id,
+                resultadoLottoPlus: resultado._id,
                 codigoPremioLottoPlus
             }
             let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
