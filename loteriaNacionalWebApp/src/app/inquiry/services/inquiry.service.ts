@@ -50,40 +50,6 @@ export class InquiryService {
     });
   }
 
-  recuperarUltimosResultados(tipoLoteria) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry";
-    switch (tipoLoteria) {
-      case 1:
-        endpoint = `${endpoint}/loteriaUltimosResultados`;
-        console.log("Recuperando sorteos de loteria");
-        break;
-      case 2:
-        endpoint = `${endpoint}/lottoUltimosResultados`;
-        console.log("Recuperando sorteos de lotto");
-        break;
-      case 5:
-        endpoint = `${endpoint}/pozoUltimosResultados`;
-        console.log("Recuperando sorteos de pozo millonario");
-
-        break;
-
-      default:
-        break;
-    }
-    var address = this.mySource;
-
-    address = address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(address, { headers: headers }).subscribe((data: any[]) => {
-        let sorteosJugados = data;
-        console.log(sorteosJugados);
-        resolve(sorteosJugados);
-      });
-    });
-  }
-
   recuperarBoletoGanador(tipoLoteria, sorteo, combinaciones) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
@@ -124,6 +90,7 @@ export class InquiryService {
         });
     });
   }
+
   recuperarBoletoGanadorPorPlancha(boletoInicial, boletoFinal, sorteo) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
@@ -144,6 +111,31 @@ export class InquiryService {
           console.log(boletoGanador);
           resolve(boletoGanador);
         });
+    });
+  }
+
+  recuperarUltimosResultados() {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/inquiry/ultimosResultados";
+    var address = this.mySource;
+
+    return new Promise((resolve, reject) => {
+      this.http.get(address, { headers: headers }).subscribe((data: any) => {
+        let loteriaNacional = data.loteriaNacional;
+        let lotto = data.lotto;
+        let pozoMillonario = data.pozoMillonario;
+        localStorage.setItem(
+          "loteriaNacionalUltimoResultado",
+          JSON.stringify(loteriaNacional)
+        );
+        localStorage.setItem("lottoUltimoResultado", JSON.stringify(lotto));
+        localStorage.setItem(
+          "pozoMillonarioUltimoResultado",
+          JSON.stringify(pozoMillonario)
+        );
+        resolve(data);
+      });
     });
   }
 

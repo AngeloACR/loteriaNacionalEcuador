@@ -7,12 +7,29 @@ import { Router } from "@angular/router";
   styleUrls: ["./lotto-selector.component.scss"]
 })
 export class LottoSelectorComponent implements OnInit {
+  ticketGanador: any;
+  ticketNumbers: String[];
+  ticketNumbers2: String[];
+  ticketNumbers3: String[];
   constructor(private router: Router) {}
-
-  ngOnInit() {}
-
+  ngOnInit() {
+    let data = JSON.parse(localStorage.getItem("lottoUltimoResultado"));
+    this.ticketNumbers = data.ultimoResultado.combinacion1.split("");
+    this.ticketNumbers2 = data.ultimoResultado.combinacion2.split("");
+    this.ticketNumbers3 = data.ultimoResultado.combinacion3.split("");
+    this.ticketGanador = {
+      ticketIndex: data.ultimoResultado.codigo,
+      date: "05/05/2021",
+      description: "Boleto Ganador",
+      ticketNumbers: this.ticketNumbers,
+      ticketNumbers2: this.ticketNumbers2,
+      ticketNumbers3: this.ticketNumbers3,
+      numeroSorteo: data.numeroSorteo,
+      sorteo: data.sorteo
+    };
+  }
   verUltimoBoletin() {
-    let sorteo = 4565;
+    let sorteo = this.ticketGanador.numeroSorteo;
     this.router.navigateByUrl(`/resultados/lotto_boletin/${sorteo}`);
   }
   verResultados() {

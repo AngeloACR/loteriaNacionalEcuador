@@ -1,4 +1,5 @@
 const Resultado = require('../model/resultado');
+const UltimoResultado = require('../model/ultimoResultado');
 
 const resultadosController = {
 
@@ -40,6 +41,25 @@ const resultadosController = {
         }
     },
 
+    updateResultado: async function (id, data) {
+        try {
+            let resultado = await this.getResultadoById(id)
+            resultado = await resultado.save();
+            response = {
+                status: true,
+                values: resultado
+            }
+            return response
+
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
     getResultados: async function () {
         try {
             const query = {};
@@ -51,6 +71,7 @@ const resultadosController = {
             return response;
         } catch (error) { throw error; }
     },
+
     getResultadoGanador: async function (sorteo, combinacion) {
         try {
             let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
@@ -170,6 +191,32 @@ const resultadosController = {
         }
     },
 
+    getResultadoPrincipal: async function (sorteo, tipoLoteria) {
+        try {
+            let query = { 'tipoLoteria': tipoLoteria, 'codigoPremio': `${sorteo}-1` }
+            let resultado = await Resultado.findOne(query)
+            let response;
+            if (resultado && resultado.length != 0) {
+
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
     getResultadoByCodigo: async function (sorteo, codigo) {
         try {
             let query = { 'sorteo': sorteo, 'codigo': codigo }
@@ -195,18 +242,24 @@ const resultadosController = {
             return response
         }
     },
-    updateResultado: async function (id, data) {
-        try {
-            let resultado = await this.getResultadoById(id)
-            resultado.name = data.name;
-            resultado.code = data.code;
-            resultado = await resultado.save();
-            response = {
-                status: true,
-                values: resultado
-            }
-            return response
 
+
+    getUltimoResultado: async function (tipoLoteria) {
+        try {
+            let query = { 'tipoLoteria': tipoLoteria }
+            let resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('sorteo').populate('premio');
+            let response;
+            if (resultado) {
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
+            }
+            return response;
         } catch (error) {
             let response = {
                 status: false,
@@ -214,6 +267,32 @@ const resultadosController = {
             }
             return response
         }
+    },
+
+    setUltimoResultado: async function (tipoLoteria, resultado, codigoPremio) {
+        try {
+            let data = {
+                tipoLoteria,
+                numeroSorteo: resultado.numeroSorteo,
+                ultimoResultado: resultado._id,
+                codigoPremio
+            }
+            let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
+            if (ultimoResultadoResponse.status) {
+                console.log('Actualizando ultimo resultado');
+                ultimoResultadoResponse.values.ultimoResultado = data.ultimoResultado;
+                ultimoResultadoResponse.values.numeroSorteo = data.numeroSorteo;
+                ultimoResultadoResponse.values.codigoPremio = data.codigoPremio;
+                let newUltimoResultado = await ultimoResultadoResponse.values.save()
+            } else {
+                console.log('Creando ultimo resultado');
+                let newUltimoResultado = new UltimoResultado(data)
+                newUltimoResultado = await newUltimoResultado.save()
+            }
+        } catch (e) {
+            console.log(e.toString());
+        }
+
     },
 
 }

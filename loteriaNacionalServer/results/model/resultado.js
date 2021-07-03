@@ -4,13 +4,7 @@ const Schema = require('mongoose').Schema;
 const resultadoSchema = new mongoose.Schema({
     tipoLoteria: {
         type: Number,
-/*         type: Schema.Types.ObjectId,
-    ref: 'TipoLoteria',
-*/    },
-    /* sorteo: {
-        type: Schema.Types.ObjectId,
-        ref: 'Sorteo',
-    }, */
+    },
     combinacion1: {
         type: String
     },
@@ -29,18 +23,10 @@ const resultadoSchema = new mongoose.Schema({
     numeroSorteo: {
         type: String
     }
-    /* 
-    premio: {
-        type: Schema.Types.ObjectId,
-        ref: 'Premio',
-    },
-    combinacionGanadora: {
-        type: Number,
-    } */
-},{
-    toJSON: {virtuals: true},
-    toObject: {virtuals: true},
-});
+}, {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    });
 
 resultadoSchema.virtual('premio', {
     ref: 'Premio', // The model to use

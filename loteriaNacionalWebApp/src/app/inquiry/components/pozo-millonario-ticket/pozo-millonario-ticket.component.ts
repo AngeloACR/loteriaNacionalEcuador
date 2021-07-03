@@ -7,8 +7,18 @@ import { Router } from "@angular/router";
   styleUrls: ["./pozo-millonario-ticket.component.scss"]
 })
 export class PozoMillonarioTicketComponent implements OnInit {
-  @Input() numbers: any;
-  constructor(private router: Router) {}
+  @Input() ticket: any;
 
-  ngOnInit() {}
+  description: String;
+  ticketNumbers: Number[];
+  numeroSorteo: Number;
+  sorteo: any;
+  constructor() {}
+
+  ngOnInit() {
+    this.description = this.ticket.description;
+    this.ticketNumbers = this.ticket.ticketNumbers;
+    this.numeroSorteo = this.ticket.numeroSorteo;
+    this.sorteo = this.ticket.sorteo;
+  }
 }

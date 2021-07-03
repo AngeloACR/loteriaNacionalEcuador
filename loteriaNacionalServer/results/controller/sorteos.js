@@ -1,7 +1,4 @@
 const Sorteo = require('../model/sorteo');
-const UltimoSorteo = require('../model/ultimoSorteo');
-
-const Lottery = require('../../loterianacional/controller/main');
 
 const sorteosController = {
 
@@ -38,6 +35,26 @@ const sorteosController = {
             let response = {
                 status: false,
                 msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
+    updateSorteo: async function (numeroSorteo, data) {
+        try {
+            let sorteoResponse = await this.getSorteoByNumber(numeroSorteo)
+            let sorteo = sorteoResponse.values;
+            sorteo = await sorteo.save();
+            response = {
+                status: true,
+                values: sorteo
+            }
+            return response
+
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString()
             }
             return response
         }
@@ -97,19 +114,29 @@ const sorteosController = {
             return response
         }
     },
-    getUltimoSorteoByTipoLoteria: async function (tipoLoteria) {
+
+    setSorteos: async function (tipoLoteria, sorteos) {
         try {
-            let query = { 'tipoLoteria': tipoLoteria }
-            let sorteo = await UltimoSorteo.findOne(query)
-            let response;
-            if (sorteo) {
-                response = {
-                    status: true,
-                    values: sorteo
+            let response = [];
+            let length = sorteos.length;
+            for (let i = 0; i < length; i++) {
+                const sorteo = sorteos[i];
+                let auxSorteo = await sorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
+                let data = {
+                    tipoLoteria,
+                    sorteo: sorteo.SortId,
+                    nombre: sorteo.SortNomb,
+                    precio: sorteo.PVP,
+                    fecha: sorteo.FSort,
+                    cantidadDeFracciones: sorteo.CFrac,
+                    valorPremioPrincipal: sorteo.VPremio,
                 }
-            } else {
-                response = {
-                    status: false
+                if (auxSorteo.status) {
+                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
+                    response.push(updatedSorteo)
+                } else {
+                    let newSorteo = await sorteosController.addSorteo(data);
+                    response.push(newSorteo)
                 }
             }
             return response;
@@ -122,149 +149,6 @@ const sorteosController = {
         }
     },
 
-    updateSorteo: async function (numeroSorteo, data) {
-        try {
-            let sorteoResponse = await this.getSorteoByNumber(numeroSorteo)
-            let sorteo = sorteoResponse.values;
-            sorteo = await sorteo.save();
-            response = {
-                status: true,
-                values: sorteo
-            }
-            return response
-
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString()
-            }
-            return response
-        }
-    },
-    setUltimoSorteo: async function (tipoLoteria) {
-        try {
-
-            let response = await sorteosController.getSorteos(tipoLoteria);
-            let sorteos = response.values;
-            let ultimoSorteo = sorteos[0];
-            let sorteosLength = sorteos.length;
-            for (let i = 0; i < sorteosLength; i++) {
-                const sorteo = sorteos[i];
-                if (ultimoSorteo.sorteo < sorteo.sorteo) {
-                    ultimoSorteo = sorteo;
-                }
-            }
-            let data = {
-                tipoLoteria,
-                sorteo: ultimoSorteo.sorteo,
-                ultimoSorteo: ultimoSorteo._id
-            }
-            let ultimoSorteoResponse = await sorteosController.getUltimoSorteoByTipoLoteria(tipoLoteria);
-            if (ultimoSorteoResponse.status) {
-                console.log('Actualizando ultimo sorteo');
-                ultimoSorteoResponse.values.ultimoSorteo = data.ultimoSorteo;
-                ultimoSorteoResponse.values.sorteo = data.sorteo;
-                let newUltimoSorteo = await ultimoSorteoResponse.values.save()
-            } else {
-                console.log('Creando ultimo sorteo');
-                let newUltimoSorteo = new UltimoSorteo(data)
-                newUltimoSorteo = await newUltimoSorteo.save()
-            }
-        } catch (e) {
-            console.log(e.toString());
-        }
-
-    },
-    updateSorteos: async function () {
-        try {
-            console.log("Actualizando sorteos")
-            let response = await Lottery.autenticarUsuario();
-            let token = response.token;
-
-            let sorteosLotto = await Lottery.consultarSorteosJugados(2, token);
-            let sorteosLoteriaNacional = await Lottery.consultarSorteosJugados(1, token);
-            let sorteosPozoMillonario = await Lottery.consultarSorteosJugados(5, token);
-            let lottoLength = sorteosLotto.length;
-            response = [];
-            console.log('Empezando a guardar sorteos')
-            for (let i = 0; i < lottoLength; i++) {
-                const sorteo = sorteosLotto[i];
-                let auxSorteo = await sorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
-                let data = {
-                    tipoLoteria: 2,
-                    sorteo: sorteo.SortId,
-                    nombre: sorteo.SortNomb,
-                    precio: sorteo.PVP,
-                    fecha: sorteo.FSort,
-                    cantidadDeFracciones: sorteo.CFrac,
-                    valorPremioPrincipal: sorteo.VPremio,
-                }
-                if (auxSorteo.status) {
-                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
-                    response.push(updatedSorteo)
-                } else {
-                    let newSorteo = await sorteosController.addSorteo(data);
-                    response.push(newSorteo)
-                }
-            }
-            await mainController.setUltimoSorteo(2);
-            let loteriaLength = sorteosLoteriaNacional.length;
-            for (let i = 0; i < loteriaLength; i++) {
-                const sorteo = sorteosLoteriaNacional[i];
-                let auxSorteo = await sorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
-                let data = {
-                    tipoLoteria: 1,
-                    sorteo: sorteo.SortId,
-                    nombre: sorteo.SortNomb,
-                    precio: sorteo.PVP,
-                    fecha: sorteo.FSort,
-                    cantidadDeFracciones: sorteo.CFrac,
-                    valorPremioPrincipal: sorteo.VPremio,
-                }
-                if (auxSorteo.status) {
-                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
-                    response.push(updatedSorteo)
-                } else {
-                    let newSorteo = await sorteosController.addSorteo(data);
-                    response.push(newSorteo)
-                }
-            }
-            await mainController.setUltimoSorteo(1);
-            let pozoLength = sorteosPozoMillonario.length;
-            for (let i = 0; i < pozoLength; i++) {
-                const sorteo = sorteosPozoMillonario[i];
-                let auxSorteo = await sorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
-                let data = {
-                    tipoLoteria: 5,
-                    sorteo: sorteo.SortId,
-                    nombre: sorteo.SortNomb,
-                    precio: sorteo.PVP,
-                    fecha: sorteo.FSort,
-                    cantidadDeFracciones: sorteo.CFrac,
-                    valorPremioPrincipal: sorteo.VPremio,
-                }
-                if (auxSorteo.status) {
-                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
-                    response.push(updatedSorteo)
-                } else {
-                    let newSorteo = await sorteosController.addSorteo(data);
-                    response.push(newSorteo)
-                }
-            }
-            await mainController.setUltimoSorteo(5);
-            let responseAux = {
-                status: true,
-                values: response
-            }
-            return responseAux
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
 
 }
 module.exports = sorteosController

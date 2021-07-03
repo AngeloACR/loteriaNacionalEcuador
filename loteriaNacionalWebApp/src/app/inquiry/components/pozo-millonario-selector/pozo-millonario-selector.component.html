@@ -6,14 +6,14 @@
         <hr size="2px" />
     </div>
     <div class="scroll">
-        <app-pozo-millonario-ticket [numbers]="ticketNumbers"></app-pozo-millonario-ticket>
+        <app-pozo-millonario-ticket [ticket]="ticketGanador"></app-pozo-millonario-ticket>
     </div>
 
     <div>
         <hr size="2px" />
     </div>
 
-    <p class="texto">Sorteo N° 930 lunes 10 de mayo del 2021</p>
+    <p class="texto">Sorteo N° {{ticketGanador.numeroSorteo}} - {{ticketGanador.sorteo.fecha}}</p>
 
     <div class="ticket_entero">
         <h5>NÚMEROS GANADORES</h5>

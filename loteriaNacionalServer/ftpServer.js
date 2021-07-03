@@ -1,19 +1,35 @@
 const FtpSrv = require('ftp-srv');
 const ResultadosController = require('./results/controller/main')
+const config = require('./config/environment');
 
-module.exports.init = function (hostname, port, ftpPassMin, ftpPassMax) {
+const ftpUser = config.ftpUserTest;
+//const ftpUser = config.ftpUserProd;
 
+const ftpPass = config.ftpPassTest;
+//const ftpPass = config.ftpPassProd;
+
+const ftpPath = `${__dirname}${config.ftpPath}`;
+
+
+const ftpPassMin = config.ftpPassMin;
+const ftpPassMax = config.ftpPassMax;
+
+
+
+module.exports.init = function (ftpHost, ftpPort) {
+
+    const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
     const ftpServer = new FtpSrv({
-        url: `ftp://${hostname}:${port}`,
+        url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
-        pasv_url: '192.168.1.1',
+        pasv_url: ftpHost,
         pasv_min: ftpPassMin,
         pasv_max: ftpPassMax,
     });
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {
-        if (username === 'test' && password === 'test') {
-            resolve({ root: `${__dirname}/uploads` });
+        if (username === ftpUser && password === ftpPass) {
+            resolve({ root: ftpPath });
         } else reject('Bad username or password');
 
         connection.on('STOR', (error, filePath) => {
@@ -37,11 +53,6 @@ module.exports.init = function (hostname, port, ftpPassMin, ftpPassMax) {
                     ResultadosController.agregarPremios(fileData.sorteo, fileData.tipoLoteria)
 
                     break;
-                case 'SORT':
-                    ResultadosController.agregarSorteos(fileData.sorteo, fileData.tipoLoteria, true)
-
-                    break;
-
                 default:
                     break;
             }

@@ -11,18 +11,22 @@ export class LoteriaNacionalSelectorComponent implements OnInit {
   ticketNumbers: String[];
   constructor(private router: Router) {}
   ngOnInit() {
-    this.ticketNumbers = ["5", "6", "4", "4", "3"];
+    let data = JSON.parse(
+      localStorage.getItem("loteriaNacionalUltimoResultado")
+    );
+    this.ticketNumbers = data.ultimoResultado.combinacion1.split("");
     this.ticketGanador = {
-      ticketIndex: 245,
+      ticketIndex: data.ultimoResultado.codigo,
       date: "05/05/2021",
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
-      sorteo: 6575
+      numeroSorteo: data.numeroSorteo,
+      sorteo: data.sorteo
     };
   }
 
   verUltimoBoletin() {
-    let sorteo = 4565;
+    let sorteo = this.ticketGanador.numeroSorteo;
     this.router.navigateByUrl(`/resultados/loteria_boletin/${sorteo}`);
   }
 

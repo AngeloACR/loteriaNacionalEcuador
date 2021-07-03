@@ -3,12 +3,8 @@ const Schema = require('mongoose').Schema;
 
 const sorteoSchema = new mongoose.Schema({
     sorteo: {
-        type: Number
-    },/* 
-    tipoLoteria: {
-        type: Schema.Types.ObjectId,
-        ref: 'TipoLoteria',
-    }, */
+        type: String
+    },
 
     tipoLoteria: {
         type: Number,
@@ -31,10 +27,6 @@ const sorteoSchema = new mongoose.Schema({
     ultimoSorteo: {
         type: Boolean,
     },
-    premios: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Premio',
-    }],
 
 })
 

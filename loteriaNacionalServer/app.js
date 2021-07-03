@@ -2,7 +2,6 @@ const db = require('./database');
 const lotteryServer = require('./lotteryServer');
 const ftpServer = require('./ftpServer');
 const webServer = require('./webServer');
-const userServer = require('./userServer');
 const config = require('./config/environment');
 const cronjobs = require('./cronjobs');
 
@@ -24,13 +23,10 @@ lotteryApp.listen(lotteryPort, () => {
     console.log('Server running at: ' + lotteryPort);
 });
 
-//const ftpHost = config.ftpHostTest;
-const ftpHost = config.ftpHostProd;
+const ftpHost = config.ftpHostTest;
+//const ftpHost = config.ftpHostProd;
 const ftpPort = config.ftpPort;
-const ftpPassMin = config.ftpPassMin;
-const ftpPassMax = config.ftpPassMax;
-
-const ftpApp = ftpServer.init(ftpHost, ftpPort, ftpPassMin, ftpPassMax);
+const ftpApp = ftpServer.init(ftpHost, ftpPort);
 
 ftpApp.listen()
     .then(() => {
@@ -41,10 +37,3 @@ let jobs = cronjobs.setCronJobs();
 jobs.forEach(job => {
     job.start();
 });
-/*
-const userPort = config.userPort;
-const userApp = userServer.init(userPort);
-
-userApp.listen(userPort, () => {
-    console.log('Server running at: ' + userPort);
-}); */

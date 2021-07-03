@@ -30,6 +30,7 @@ lotteryRouter.get('/pozoSorteosJugados', InquiryController.buscarPozoSorteosJuga
 lotteryRouter.get('/lottoSorteosJugados', InquiryController.buscarLottoSorteosJugados);
 lotteryRouter.get('/loteriaSorteosJugados', InquiryController.buscarLoteriaSorteosJugados);
 lotteryRouter.post('/resultadoPrueba', InquiryController.buscarResultadoPrueba);
+lotteryRouter.get('/ultimosResultados', InquiryController.buscarUltimosResultados);
 
 
 module.exports = lotteryRouter;

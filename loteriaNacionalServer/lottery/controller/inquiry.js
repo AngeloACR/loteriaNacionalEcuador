@@ -1,8 +1,11 @@
 const Lottery = require('../../loterianacional/controller/main');
+const Resultados = require('../../results/controller/main');
 const Results = require('../../results/controller/resultados');
 const Sorteos = require('../../results/controller/sorteos');
 const config = require('../../config/environment');
+
 /*************************** CONSULTA DE RESULTADOS************************/
+
 //let boletinesSource = config.sourceBoletinesA;
 let sourceBoletines = config.sourceBoletinesB;
 //let sourceBoletines = config.sourceBoletinesC;
@@ -206,6 +209,7 @@ const inquiryController = {
             res.status(400).json(e.toString());
         }
     },
+
     buscarLottoWinner: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
@@ -240,6 +244,7 @@ const inquiryController = {
             res.status(400).json(e.toString());
         }
     },
+
     buscarPozoWinner: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
@@ -274,6 +279,7 @@ const inquiryController = {
             res.status(400).json(e.toString());
         }
     },
+
     buscarPozoPlancha: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
@@ -325,6 +331,7 @@ const inquiryController = {
             res.status(400).json(e.toString());
         }
     },
+
     buscarLottoBoletin: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
@@ -387,7 +394,6 @@ const inquiryController = {
         }
     },
 
-
     buscarLottoSorteosJugados: async (req, res) => {
         try {
             response = await Sorteos.getSorteos(2);
@@ -417,11 +423,22 @@ const inquiryController = {
             res.status(400).json(e.toString());
         }
     },
+
     buscarResultadoPrueba: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let response = await Results.getResultadoGanador(sorteo, combinacion);
+
+            res.status(200).json(response);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+
+    buscarUltimosResultados: async (req, res) => {
+        try {
+            let response = await Resultados.getUltimosResultados();
 
             res.status(200).json(response);
         } catch (e) {
