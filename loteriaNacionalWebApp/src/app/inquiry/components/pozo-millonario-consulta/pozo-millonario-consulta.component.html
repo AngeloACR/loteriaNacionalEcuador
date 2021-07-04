@@ -11,17 +11,16 @@
         </div>
         <div class="content_explicacion">
           <p class="icono">2</p>
-          <p>Luego Elige la fecha del sorteo.</p>
+          <p>Luego elige la fecha del sorteo.</p>
         </div>
 
         <div class="content_explicacion">
-          <p class="icono">!</p>
-          <p>Los boletos a consultar deben corresponder a la misma fecha y puedes revisar de los ultimos 3 meses.</p>
+          <p class="icono">3</p>
+          <p>Si compraste por plancha, ingresa los 8 numeros seguidos del rango secuencial.</p>
         </div>
         <div class="content_explicacion">
-          <p class="icono">3</p>
-          <p>Si compraste por plancha, ingresa los 8 numeros seguidos del rango secuencial. Ver ubicacion del rango
-            secuencial. click aqui</p>
+          <p class="icono">!</p>
+          <p>Los boletos a consultar deben corresponder a la misma fecha y puedes revisar de los ultimos 3 meses.</p>
         </div>
       </div>
       <div class="separador">
@@ -72,11 +71,8 @@
               </select>
             </div>
 
-            <!--             <p>Si deseas consultar varios boletos, ingresalos separados por coma [,] ejemplo: 12345,67897 (5 digitos)
-            </p> -->
+            <button (click)="buscarBoletin()">VER RESULTADOS</button>
           </div>
-
-          <button (click)="buscarBoletin()">VER RESULTADOS</button>
         </form>
       </div>
 
@@ -116,8 +112,8 @@
                   {{option.fecha}}</option>
               </select>
             </div>
+            <button (click)="buscarRango()">VER RESULTADOS</button>
           </div>
-          <button (click)="buscarRango()">VER RESULTADOS</button>
         </form>
       </div>
     </div>

@@ -10,8 +10,8 @@ export class InquiryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
   //mySource = this.productionSource;
 
   constructor(private http: HttpClient) {}
@@ -119,7 +119,8 @@ export class InquiryService {
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/inquiry/ultimosResultados";
     var address = this.mySource;
-
+    console.log("Buscando ultimos resultados");
+    address = address + endpoint;
     return new Promise((resolve, reject) => {
       this.http.get(address, { headers: headers }).subscribe((data: any) => {
         let loteriaNacional = data.loteriaNacional;
@@ -129,11 +130,14 @@ export class InquiryService {
           "loteriaNacionalUltimoResultado",
           JSON.stringify(loteriaNacional)
         );
+        console.log(`Valor de loteria nacional: ${loteriaNacional}`);
         localStorage.setItem("lottoUltimoResultado", JSON.stringify(lotto));
+        console.log(`Valor de lotto: ${lotto}`);
         localStorage.setItem(
           "pozoMillonarioUltimoResultado",
           JSON.stringify(pozoMillonario)
         );
+        console.log(`Valor de pozo millonario: ${pozoMillonario}`);
         resolve(data);
       });
     });

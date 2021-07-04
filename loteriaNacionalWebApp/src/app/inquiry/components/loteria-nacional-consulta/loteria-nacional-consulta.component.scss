@@ -176,3 +176,51 @@ $color-loteria: #2f72b9;
     border-radius: 0 0 15px 15px;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .container_consulta {
+    .boletin_oficial {
+    }
+
+    .cuerpo_boletin {
+      .explicacion {
+        grid-template-columns: repeat(2, 1fr);
+
+        .content_explicacion {
+          .icono {
+            width: 25px;
+            height: 25px;
+            font-size: 30px;
+            margin-right: 8px;
+          }
+
+          p:nth-child(2) {
+            font-size: 8px;
+          }
+        }
+      }
+
+      .separador {
+      }
+
+      .consulta_boleto {
+        .formulario {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .input {
+            display: block;
+            width: 90%;
+
+            button {
+              margin: auto;
+              margin-top: 25px;
+              padding: 15px 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
