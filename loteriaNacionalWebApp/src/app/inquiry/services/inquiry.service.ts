@@ -130,14 +130,14 @@ export class InquiryService {
           "loteriaNacionalUltimoResultado",
           JSON.stringify(loteriaNacional)
         );
-        console.log(`Valor de loteria nacional: ${loteriaNacional}`);
+        console.log(loteriaNacional);
         localStorage.setItem("lottoUltimoResultado", JSON.stringify(lotto));
-        console.log(`Valor de lotto: ${lotto}`);
+        console.log(lotto);
         localStorage.setItem(
           "pozoMillonarioUltimoResultado",
           JSON.stringify(pozoMillonario)
         );
-        console.log(`Valor de pozo millonario: ${pozoMillonario}`);
+        console.log(pozoMillonario);
         resolve(data);
       });
     });

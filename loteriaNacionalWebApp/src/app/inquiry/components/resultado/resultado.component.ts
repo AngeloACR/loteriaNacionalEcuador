@@ -11,9 +11,11 @@ export class ResultadoComponent implements OnInit {
 
   description: String;
   nombrePremio: String;
+  descripcionDescuento: String;
   ticketNumbers: Number[];
   sorteo: Number;
   valorPremio: Number;
+  valorFraccion: Number;
   constructor() {}
 
   ngOnInit() {
@@ -22,9 +24,10 @@ export class ResultadoComponent implements OnInit {
     let resultado = this.ticket.resultado;
     if (resultado.status) {
       this.description = `Boleto ganador`;
-      this.valorPremio = this.ticket.resultado.data.premio.valorPremioConDescuento;
+      this.valorPremio = this.ticket.resultado.data.premio.valorPremio;
+      this.descripcionDescuento = this.ticket.resultado.data.premio.descripcionDescuento;
       if (this.isLoteriaNacional) {
-        this.valorPremio = this.ticket.resultado.data.premio.valorFraccionConDescuento;
+        this.valorFraccion = this.ticket.resultado.data.premio.valorFraccion;
       }
       this.nombrePremio = this.ticket.resultado.data.premio.nombre;
     } else {
