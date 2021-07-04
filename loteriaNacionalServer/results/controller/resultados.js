@@ -248,7 +248,7 @@ const resultadosController = {
         try {
             let query = { 'tipoLoteria': tipoLoteria }
             let resultado;
-            if (tipoLoteria == 2) {
+            if (tipoLoteria != 2) {
 
                 resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('sorteo').populate('premioPrincipal').populate('premioLottoPlus').populate('premioLottito');
             } else {
