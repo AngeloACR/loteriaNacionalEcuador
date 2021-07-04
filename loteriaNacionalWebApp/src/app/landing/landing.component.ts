@@ -10,8 +10,10 @@ export class LandingComponent implements OnInit {
   link: string = "https://contenidos-prueba.loteria.com.ec/divi-slide";
   linkNews: string = "https://contenidos-prueba.loteria.com.ec/newsletter";
   title: string = "sliderLoteria";
+  infoReady: boolean = false;
   constructor(private inquiry: InquiryService) {}
   async ngOnInit() {
     await this.inquiry.recuperarUltimosResultados();
+    this.infoReady = true;
   }
 }

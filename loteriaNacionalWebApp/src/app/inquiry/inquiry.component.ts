@@ -8,7 +8,9 @@ import { InquiryService } from "./services/inquiry.service";
 })
 export class InquiryComponent implements OnInit {
   constructor(private inquiry: InquiryService) {}
+  infoReady = false;
   async ngOnInit() {
     await this.inquiry.recuperarUltimosResultados();
+    this.infoReady = true;
   }
 }

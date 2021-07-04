@@ -3,7 +3,7 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
   </iframe>
 </div>
-<div class="selectionBox">
+<div class="selectionBox" *ngIf="infoReady">
 
   <app-loteria-nacional-selector class="selectorBox"></app-loteria-nacional-selector>
   <app-lotto-selector class="selectorBox"></app-lotto-selector>

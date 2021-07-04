@@ -22,14 +22,15 @@ export class ResultadoComponent implements OnInit {
     this.ticketNumbers = this.ticket.ticketNumbers;
     this.sorteo = this.ticket.sorteo;
     let resultado = this.ticket.resultado;
+    console.log(resultado);
     if (resultado.status) {
       this.description = `Boleto ganador`;
-      this.valorPremio = this.ticket.resultado.data.premio.valorPremio;
-      this.descripcionDescuento = this.ticket.resultado.data.premio.descripcionDescuento;
+      this.valorPremio = resultado.data.premio.valorPremio;
+      this.descripcionDescuento = resultado.data.premio.descripcionDescuento;
       if (this.isLoteriaNacional) {
-        this.valorFraccion = this.ticket.resultado.data.premio.valorFraccion;
+        this.valorFraccion = resultado.data.premio.valorFraccion;
       }
-      this.nombrePremio = this.ticket.resultado.data.premio.nombre;
+      this.nombrePremio = resultado.data.premio.nombre;
     } else {
       this.description = "Boleto perdedor";
     }
