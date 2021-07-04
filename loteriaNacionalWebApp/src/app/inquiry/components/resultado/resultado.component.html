@@ -3,6 +3,7 @@
     <div class="resultadoTitulo">
         <p>Sorteo {{sorteo}}</p>
         <div class="numeroBoleto">
+            <p style="margin-right: 5px;">Combinación: </p>
             <p *ngFor="let number of ticketNumbers">{{number}}</p>
         </div>
     </div>
@@ -11,20 +12,26 @@
         <p>{{description}}</p>
     </div>
     <div *ngIf="ticket.resultado.status" class="resultadoDetalles">
-        <p>Nombre del premio: {{nombrePremio}}</p>
+        <p>Premio: {{nombrePremio}}</p>
 
         <hr size="2px" />
         <div class="montoPremio">
 
             <div class="valorPremio">
                 <h5>Entero</h5>
-                <p>Valor: {{valorPremio}} USD</p>
+                <p>{{valorPremio}} USD</p>
             </div>
             <div class="valorPremio" *ngIf="isLoteriaNacional">
 
                 <h5>Fracción</h5>
-                <p>Valor: {{valorPremio}} USD</p>
+                <p>{{valorFraccion}} USD</p>
             </div>
+        </div>
+        <div class="mensajeDescuento">
+        <p>
+            
+            {{descripcionDescuento}}
+        </p>
         </div>
     </div>
 </div>

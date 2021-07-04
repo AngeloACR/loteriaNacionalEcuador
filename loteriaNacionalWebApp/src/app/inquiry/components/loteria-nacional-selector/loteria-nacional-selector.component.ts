@@ -14,10 +14,11 @@ export class LoteriaNacionalSelectorComponent implements OnInit {
     let data = JSON.parse(
       localStorage.getItem("loteriaNacionalUltimoResultado")
     );
+    console.log(data);
     this.ticketNumbers = data.ultimoResultado.combinacion1.split("");
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
-      date: "05/05/2021",
+      date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       numeroSorteo: data.numeroSorteo,

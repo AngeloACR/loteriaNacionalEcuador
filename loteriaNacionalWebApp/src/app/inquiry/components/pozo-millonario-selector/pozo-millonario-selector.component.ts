@@ -14,10 +14,11 @@ export class PozoMillonarioSelectorComponent implements OnInit {
     let data = JSON.parse(
       localStorage.getItem("pozoMillonarioUltimoResultado")
     );
+    console.log(data);
     this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
-      date: "05/05/2021",
+      date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       numeroSorteo: data.numeroSorteo,

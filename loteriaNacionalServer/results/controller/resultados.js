@@ -250,9 +250,9 @@ const resultadosController = {
             let resultado;
             if (tipoLoteria != 2) {
 
-                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('sorteo').populate('premioPrincipal').populate('premioLottoPlus').populate('premioLottito');
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('sorteo').populate('premioPrincipal');
             } else {
-                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('resultadoLottoPlus').populate('resultadosLottito').populate('sorteo').populate('premioPrincipal');
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('resultadoLottoPlus').populate('resultadosLottito').populate('sorteo').populate('premioPrincipal').populate('premioLottoPlus').populate('premioLottito');
 
             }
             let response;
@@ -276,20 +276,20 @@ const resultadosController = {
         }
     },
 
-    setUltimoResultado: async function (tipoLoteria, resultado, codigoPremio) {
+    setUltimoResultado: async function (tipoLoteria, resultado, codigoPremioPrincipal) {
         try {
             let data = {
                 tipoLoteria,
                 numeroSorteo: resultado.numeroSorteo,
                 ultimoResultado: resultado._id,
-                codigoPremio
+                codigoPremioPrincipal
             }
             let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
             if (ultimoResultadoResponse.status) {
                 console.log('Actualizando ultimo resultado');
                 ultimoResultadoResponse.values.ultimoResultado = data.ultimoResultado;
                 ultimoResultadoResponse.values.numeroSorteo = data.numeroSorteo;
-                ultimoResultadoResponse.values.codigoPremio = data.codigoPremio;
+                ultimoResultadoResponse.values.codigoPremioPrincipal = data.codigoPremioPrincipal;
                 let newUltimoResultado = await ultimoResultadoResponse.values.save()
             } else {
                 console.log('Creando ultimo resultado');

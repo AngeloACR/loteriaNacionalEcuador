@@ -17,12 +17,12 @@ export class PozoMillonarioSelectorComponent implements OnInit {
     this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
-      date: "05/05/2021",
+      date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       numeroSorteo: data.numeroSorteo,
       sorteo: data.sorteo,
-      codigo: data.ultimoResultado.codigo,
+      codigo: data.ultimoResultado.codigo
     };
   }
   verUltimoBoletin() {

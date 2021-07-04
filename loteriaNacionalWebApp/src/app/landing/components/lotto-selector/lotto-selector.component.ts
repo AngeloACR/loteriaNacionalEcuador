@@ -21,12 +21,12 @@ export class LottoSelectorComponent implements OnInit {
     this.ticketNumbers2 = data.ultimoResultado.combinacion2.split("");
     this.ticketNumbers3 = data.ultimoResultado.combinacion3.split("");
     this.ticketLottoPlus = data.resultadoLottoPlus.combinacion2; //.split("");
-    this.ticketLottito = data.resultadoLottito.map(resultado => {
-      resultado.combinacion3; //.split("");
+    this.ticketLottito = data.resultadosLottito.map(resultado => {
+      return resultado.combinacion3; //.split("");
     });
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
-      date: "05/05/2021",
+      date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       ticketNumbers2: this.ticketNumbers2,
