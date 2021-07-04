@@ -88,3 +88,23 @@ $color-botton: #2f72b9;
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .navbar_contenedor {
+    width: 100%;
+    margin: auto;
+    background-color: #28abe2;
+    color: white;
+    .navbar_links {
+      li {
+        font-size: 8px;
+        a {
+          &:active {
+            background-color: white;
+            color: #28abe2;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 <div class="container">
-    <app-lotto-consulta style="width: 65%;" (resultados)="toggleResultados($event)"></app-lotto-consulta>
-    <app-lotto-selector style="width: 30%;"></app-lotto-selector>
+    <app-lotto-consulta class="consultaBox" (resultados)="toggleResultados($event)">
+    </app-lotto-consulta>
+    <app-lotto-selector class="selectorBox"></app-lotto-selector>
     <div class="modalBox" *ngIf="showResultados">
         <app-resultados (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados"></app-resultados>
     </div>
