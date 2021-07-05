@@ -15,19 +15,22 @@ mysql_secure_installation
 service mysqld restart
 chkconfig mysqld on
 
-#mariaDB install
-#sudo yum install mariadb-server
+#httpd install
+sudo dnf install httpd
+sudo systemctl start httpd
 
 #nginx install
  sudo yum install epel-release
  sudo yum update
  sudo yum install nginx
+ chmod +x nginx.sh
+ ./nginx.sh
 
 #nginx+php setup
 sudo yum install yum-utils
 sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-sudo yum-config-manager ––enable remi–php72
-sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql –y
+sudo yum-config-manager ––enable remi–php74
+sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql
 
 #node and npm install
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
@@ -39,9 +42,9 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 10.13.0
 
 #python install
-sudo yum install -y https://repo.ius.io/ius-release-el7.rpm
+sudo yum install https://repo.ius.io/ius-release-el7.rpm
 sudo yum update
-sudo yum install -y python36u python36u-libs python36u-devel python36u-pip
+sudo yum install python36u python36u-libs python36u-devel python36u-pip
 
 #certbot install
 sudo firewall-cmd --permanent --add-service=http
@@ -49,6 +52,9 @@ sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --reload
 
 sudo yum install certbot python3-certbot-nginx
+sudo certbot --nginx -d ventas.loteria.com.ec
+sudo certbot --nginx -d ventas-api.loteria.com.ec
+sudo certbot --nginx -d contenidos.loteria.com.ec
 
 #nodemon install
 sudo npm install nodemon -g
@@ -56,8 +62,15 @@ sudo npm install nodemon -g
 #pm2 install
 sudo npm install pm2 -g
 
-#mongo import
-#mongoimport --db dbName --collection collectionName --file fileName.json --jsonArray
-
 #screen install
 sudo yum install screen
+
+#wordpress install
+cd /var/www/html
+wget https://wordpress.org/latest.tar.gz
+yum install tar
+tar -zxvf latest.tar.gz
+rm latest.tar.gz
+mv  -v ./wordpress/* ./
+find /var/www/html/ -type d -exec chmod 755 {} \;
+find /var/www/html -type f -exec chmod 644 {} \;
