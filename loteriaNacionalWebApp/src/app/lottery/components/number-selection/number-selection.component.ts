@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from "@angular/core";
 export class NumberSelectionComponent implements OnInit {
   @Input("animales") arreglo_animales: string[] = [];
 
-  estado: boolean = true;
+  /* estado: boolean = true; */
 
   animales: object = [
     {
@@ -74,7 +74,7 @@ export class NumberSelectionComponent implements OnInit {
       if (animal === this.arreglo_animales[i]) { return; }
     }
     this.arreglo_animales.push(animal);
-    console.log(this.arreglo_animales, this.estado);
+    console.log(this.arreglo_animales);
   }
 
   constructor() {}

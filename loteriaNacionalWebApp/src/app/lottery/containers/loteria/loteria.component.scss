@@ -144,7 +144,7 @@ $color-botton: #2f72b9;
 
               background-color: #f2f2f2;
               text-align: center;
-              border-radius: 4px;
+              border-radius: 20px;
 
               /* width: 100%;
       margin: auto;
@@ -164,6 +164,15 @@ $color-botton: #2f72b9;
       display: flex;
       margin: auto;
       justify-content: space-between;
+
+      .desaparecer { 
+        opacity: 0;
+        cursor: default;
+      }
+
+      .aparecer { 
+        display: inline;
+      }
 
       .boton {
         width: 3vw;

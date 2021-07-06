@@ -1,6 +1,6 @@
 <div class="lotteryBox">
     <img class="lotteryImg" [src]="image" alt="">
-    <p *ngIf="pozo" class="lotteryMoney">{{pozo}}</p>
+    <p *ngIf="loteria" class="lotteryMoney">{{ loteria }}</p>
 
     <a [routerLink]="link" class="lotteryButton" [ngClass]="name" routerLinkActive="active">JUGAR</a>
 </div>

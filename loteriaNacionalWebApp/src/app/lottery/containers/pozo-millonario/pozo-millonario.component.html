@@ -3,17 +3,17 @@
 <div class="contenedor_loteria">
 
   <ul class="menuBox">
-    <li class="menuItem">Pozo Millonario</li>
+    <li class="menuItem">Lotto</li>
     <li class="menuItem">Sorteo: <br>
       <select class="fechaItem" name="" id="">
-        <option value="">Fecha1</option>
-        <option value="">Fecha2</option>
-        <option value="">Fecha3</option>
+        <option value="" *ngFor="let item of sorteo">
+          {{ item.fecha }}
+        </option>
       </select>
     </li>
-    <li class="menuItem">Premios: <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, dolore!</p>
+    <li class="menuItem">Premios: <p>{{ premioPrecio[0]}}$</p>
     </li>
-    <li class="menuItem">Precios: <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, dolore!</p>
+    <li class="menuItem">Precio: <p>{{ premioPrecio[1]}}$</p>
     </li>
   </ul>
 
@@ -43,7 +43,7 @@
         <app-number-selection [animales]="arreglo_animales"></app-number-selection>
       </div>
       <div class="tabs_animales">
-        <p *ngFor="let animal of arreglo_animales" (click)="remover(animal)">{{ animal }}</p>
+        <p *ngFor="let animal of arreglo_animales" (click)="remover(animal)">{{ animal }} <span>x</span></p>
       </div>
       <button class="activado">BUSCAR CARTONES</button>
     </form>
@@ -52,9 +52,9 @@
 
     <table>
       <tbody>
-        <tr *ngFor="let item of seleccionPozo | paginate: { itemsPerPage: 4, currentPage: pageActual };">
+        <tr *ngFor="let ticket of seleccionPozo | paginate: { itemsPerPage: 4, currentPage: pageActual };">
           <td>
-            <app-seleccion-pozo></app-seleccion-pozo>
+            <app-seleccion-pozo [tickets]="ticket"></app-seleccion-pozo>
           </td>
         </tr>
       </tbody>
@@ -62,10 +62,17 @@
     <hr size="2px" color="gray" />
 
     <div class="contenedor_botones">
-      <button class="boton" (click)="decrementar()">
+      <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton" (click)="decrementar()">
         <i class="fa fa-chevron-left"></i>
       </button>
-      <button class="boton" (click)="incrementar()">
+
+      
+        <button class="boton">
+          {{ pageActual }}
+        </button>
+
+
+      <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton" (click)="incrementar()">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>

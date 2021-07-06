@@ -1,11 +1,7 @@
 <div class="contenedor">
     <input type="checkbox" name="" id="">
     <div class="contenedor_numeros">
-        <p>1</p>
-        <p>4</p>
-        <p>5</p>
-        <p>7</p>
-        <p>4</p>
-        <p>4</p>
+        <p *ngFor="let numero of numeros">{{ numero }}</p>
     </div>
+
 </div>
