@@ -80,75 +80,10 @@ const mainController = {
             response = [];
             let lottoResponse = await SorteosController.setSorteos(2, sorteosLotto);
             response.push(lottoResponse);
-            /*             let lottoLength = sorteosLotto.length;
-                        for (let i = 0; i < lottoLength; i++) {
-                            const sorteo = sorteosLotto[i];
-                            let auxSorteo = await SorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
-                            let data = {
-                                tipoLoteria: 2,
-                                sorteo: sorteo.SortId,
-                                nombre: sorteo.SortNomb,
-                                precio: sorteo.PVP,
-                                fecha: sorteo.FSort,
-                                cantidadDeFracciones: sorteo.CFrac,
-                                valorPremioPrincipal: sorteo.VPremio,
-                            }
-                            if (auxSorteo.status) {
-                                let updatedSorteo = await SorteosController.updateSorteo(data.sorteo, data);
-                                response.push(updatedSorteo)
-                            } else {
-                                let newSorteo = await SorteosController.addSorteo(data);
-                                response.push(newSorteo)
-                            }
-                        }
-             */
             let loteriaNacionalResponse = await SorteosController.setSorteos(1, sorteosLoteriaNacional);
             response.push(loteriaNacionalResponse);
-            /* let loteriaLength = sorteosLoteriaNacional.length;
-            for (let i = 0; i < loteriaLength; i++) {
-                const sorteo = sorteosLoteriaNacional[i];
-                let auxSorteo = await SorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
-                let data = {
-                    tipoLoteria: 1,
-                    sorteo: sorteo.SortId,
-                    nombre: sorteo.SortNomb,
-                    precio: sorteo.PVP,
-                    fecha: sorteo.FSort,
-                    cantidadDeFracciones: sorteo.CFrac,
-                    valorPremioPrincipal: sorteo.VPremio,
-                }
-                if (auxSorteo.status) {
-                    let updatedSorteo = await SorteosController.updateSorteo(data.sorteo, data);
-                    response.push(updatedSorteo)
-                } else {
-                    let newSorteo = await SorteosController.addSorteo(data);
-                    response.push(newSorteo)
-                }
-            } */
             let pozoMillonarioResponse = await SorteosController.setSorteos(5, sorteosPozoMillonario);
             response.push(pozoMillonarioResponse);
-            /*             let pozoLength = sorteosPozoMillonario.length;
-                        for (let i = 0; i < pozoLength; i++) {
-                            const sorteo = sorteosPozoMillonario[i];
-                            let auxSorteo = await SorteosController.getSorteoByNumber(parseInt(sorteo.SortId));
-                            let data = {
-                                tipoLoteria: 5,
-                                sorteo: sorteo.SortId,
-                                nombre: sorteo.SortNomb,
-                                precio: sorteo.PVP,
-                                fecha: sorteo.FSort,
-                                cantidadDeFracciones: sorteo.CFrac,
-                                valorPremioPrincipal: sorteo.VPremio,
-                            }
-                            if (auxSorteo.status) {
-                                let updatedSorteo = await SorteosController.updateSorteo(data.sorteo, data);
-                                response.push(updatedSorteo)
-                            } else {
-                                let newSorteo = await SorteosController.addSorteo(data);
-                                response.push(newSorteo)
-                            }
-                        }
-             */
             let responseAux = {
                 status: true,
                 values: response
@@ -173,6 +108,7 @@ const mainController = {
                 let data = aux.dataset.R;
                 let length = data.length;
                 let indexLottito = 0;
+                let resultadosLottito = []
                 for (let i = 0; i < length; i++) {
                     let codigoPremioAux = data[i].X[0].R[0].$.P;
                     let codigoPremio = `${sorteo}-${codigoPremioAux}`;
@@ -194,12 +130,15 @@ const mainController = {
                         if (codigoPremioAux == "23") {
                             await ResultadosController.setUltimoLottoPlus(tipoLoteria, resultado, codigoPremio);
                         } else if (codigoPremioAux == "24") {
-                            await ResultadosController.setUltimoLottito(tipoLoteria, resultado, codigoPremio, indexLottito);
+                            resultadosLottito.push(resultado._id);
+                            codigoPremioLottito
                             indexLottito++;
                         }
 
                     }
                 }
+                let codigoPremioLottito = `${sorteo}-24`;
+                await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
 
 
             });

@@ -291,21 +291,17 @@ const resultadosController = {
                 ultimoResultadoResponse.values.numeroSorteo = data.numeroSorteo;
                 ultimoResultadoResponse.values.codigoPremioPrincipal = data.codigoPremioPrincipal;
                 let newUltimoResultado = await ultimoResultadoResponse.values.save()
-            } else {
-                console.log('Creando ultimo resultado');
-                let newUltimoResultado = new UltimoResultado(data)
-                newUltimoResultado = await newUltimoResultado.save()
             }
         } catch (e) {
             console.log(e.toString());
         }
 
     },
-    setUltimoLottito: async function (tipoLoteria, resultado, codigoPremioLottito, indexLottito) {
+    setUltimoLottito: async function (tipoLoteria, resultados, codigoPremioLottito, indexLottito) {
         try {
             let data = {
                 tipoLoteria,
-                resultadosLottito: [resultado._id],
+                resultadosLottito: resultados,
                 codigoPremioLottito,
                 indexLottito
             }
@@ -316,14 +312,10 @@ const resultadosController = {
                 if (indexLottito == 0) {
                     ultimoResultadoResponse.values.resultadosLottito = []
                 }
-                ultimoResultadoResponse.values.resultadosLottito.push(resultado._id);
+                ultimoResultadoResponse.values.resultadosLottito = data.resultadosLottito;
                 ultimoResultadoResponse.values.codigoPremioLottito = data.codigoPremioLottito;
                 ultimoResultadoResponse.values.indexLottito = data.indexLottito;
                 let newUltimoResultado = await ultimoResultadoResponse.values.save()
-            } else {
-                console.log('Creando ultimo resultado');
-                let newUltimoResultado = new UltimoResultado(data)
-                newUltimoResultado = await newUltimoResultado.save()
             }
         } catch (e) {
             console.log(e.toString());

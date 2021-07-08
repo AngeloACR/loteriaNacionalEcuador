@@ -131,10 +131,11 @@ const sorteosController = {
                     cantidadDeFracciones: sorteo.CFrac,
                     valorPremioPrincipal: sorteo.VPremio,
                 }
-                if (auxSorteo.status) {
-                    let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
+                if (!auxSorteo.status) {
+                    /* let updatedSorteo = await sorteosController.updateSorteo(data.sorteo, data);
                     response.push(updatedSorteo)
                 } else {
+                     */
                     let newSorteo = await sorteosController.addSorteo(data);
                     response.push(newSorteo)
                 }

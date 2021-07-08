@@ -2,11 +2,11 @@ const FtpSrv = require('ftp-srv');
 const ResultadosController = require('./results/controller/main')
 const config = require('./config/environment');
 
-const ftpUser = config.ftpUserTest;
-//const ftpUser = config.ftpUserProd;
+//const ftpUser = config.ftpUserTest;
+const ftpUser = config.ftpUserProd;
 
-const ftpPass = config.ftpPassTest;
-//const ftpPass = config.ftpPassProd;
+//const ftpPass = config.ftpPassTest;
+const ftpPass = config.ftpPassProd;
 
 const ftpPath = `${__dirname}${config.ftpPath}`;
 
@@ -15,6 +15,8 @@ const ftpPassMin = config.ftpPassMin;
 const ftpPassMax = config.ftpPassMax;
 
 
+var fs = require('fs');
+
 
 module.exports.init = function (ftpHost, ftpPort) {
 
@@ -22,6 +24,11 @@ module.exports.init = function (ftpHost, ftpPort) {
     const ftpServer = new FtpSrv({
         url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
+        tls: {
+            key: fs.readFileSync(`${__dirname}/cert/loteria-wildcard.key`),
+            cert: fs.readFileSync(`${__dirname}/cert/loteria-wildcard.crt`),
+            ca: fs.readFileSync(`${__dirname}/cert/loteria-wildcard.csr`)
+        },
         pasv_url: ftpHost,
         pasv_min: ftpPassMin,
         pasv_max: ftpPassMax,

@@ -23,6 +23,7 @@ lotteryApp.listen(lotteryPort, () => {
     console.log('Server running at: ' + lotteryPort);
 });
 
+//const ftpHost = config.ftpHostLocal;
 //const ftpHost = config.ftpHostTest;
 const ftpHost = config.ftpHostProd;
 const ftpPort = config.ftpPort;

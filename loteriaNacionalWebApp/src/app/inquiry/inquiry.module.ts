@@ -30,12 +30,22 @@ import { ConsultaLoteriaNacionalComponent } from "./containers/consulta-loteria-
 import { ResultadosLottoComponent } from "./containers/resultados-lotto/resultados-lotto.component";
 import { ResultadosLoteriaNacionalComponent } from "./containers/resultados-loteria-nacional/resultados-loteria-nacional.component";
 import { ResultadosPozoMillonarioComponent } from "./containers/resultados-pozo-millonario/resultados-pozo-millonario.component";
-import { ResultadosComponent } from './components/resultados/resultados.component';
-import { ResultadoComponent } from './components/resultado/resultado.component';
+import { ResultadosComponent } from "./components/resultados/resultados.component";
+import { ResultadoComponent } from "./components/resultado/resultado.component";
 
 @NgModule({
   declarations: [
     InquiryComponent,
+    SeleccionComponent,
+    BoletinLottoComponent,
+    BoletinLoteriaNacionalComponent,
+    BoletinPozoMillonarioComponent,
+    ConsultaLottoComponent,
+    ConsultaPozoMillonarioComponent,
+    ConsultaLoteriaNacionalComponent,
+    ResultadosLottoComponent,
+    ResultadosLoteriaNacionalComponent,
+    ResultadosPozoMillonarioComponent,
     LottoConsultaComponent,
     LoteriaNacionalConsultaComponent,
     PozoMillonarioConsultaComponent,
@@ -49,16 +59,23 @@ import { ResultadoComponent } from './components/resultado/resultado.component';
     LoteriaNacionalBoletinComponent,
     PozoMillonarioBoletinComponent,
     SeleccionTipoComponent,
-    SeleccionComponent,
-    BoletinLottoComponent,
-    BoletinLoteriaNacionalComponent,
-    BoletinPozoMillonarioComponent,
-    ConsultaLottoComponent,
-    ConsultaPozoMillonarioComponent,
-    ConsultaLoteriaNacionalComponent,
-    ResultadosLottoComponent,
-    ResultadosLoteriaNacionalComponent,
-    ResultadosPozoMillonarioComponent,
+    ResultadosComponent,
+    ResultadoComponent
+  ],
+  entryComponents: [
+    LottoConsultaComponent,
+    LoteriaNacionalConsultaComponent,
+    PozoMillonarioConsultaComponent,
+    LottoSelectorComponent,
+    LoteriaNacionalSelectorComponent,
+    PozoMillonarioSelectorComponent,
+    LottoTicketComponent,
+    LoteriaNacionalTicketComponent,
+    PozoMillonarioTicketComponent,
+    LottoBoletinComponent,
+    LoteriaNacionalBoletinComponent,
+    PozoMillonarioBoletinComponent,
+    SeleccionTipoComponent,
     ResultadosComponent,
     ResultadoComponent
   ],

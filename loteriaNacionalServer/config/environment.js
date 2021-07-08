@@ -39,8 +39,9 @@ module.exports = {
     sourceBoletinesC: 'http://localhost:5480/boletines/',
 
     // FTP DATA
-    ftpHostTest: 'localhost',
-    ftpHostProd: '172.81.117.113',
+    ftpHostLocal: 'localhost',
+    ftpHostTest: '172.81.117.113',
+    ftpHostProd: '144.208.73.177',
     ftpPort: 2222,
     ftpPassMin: 10520,
     ftpPassMax: 10600,

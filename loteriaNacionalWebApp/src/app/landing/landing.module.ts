@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { InquiryModule } from "../inquiry/inquiry.module";
 
 import { LandingRoutingModule } from "./landing-routing.module";
 import { LandingComponent } from "./landing.component";
@@ -20,14 +21,15 @@ import { PozoMillonarioTicketComponent } from "./components/pozo-millonario-tick
     LandingComponent,
     GanadoresComponent,
     SafePipe,
-    LoteriaNacionalTicketComponent,
+    InstruccionesComponent
+    /*     LoteriaNacionalTicketComponent,
     LottoTicketComponent,
     PozoMillonarioTicketComponent,
-    InstruccionesComponent,
     LoteriaNacionalSelectorComponent,
     LottoSelectorComponent,
     PozoMillonarioSelectorComponent
+ */
   ],
-  imports: [CommonModule, LandingRoutingModule]
+  imports: [CommonModule, LandingRoutingModule, InquiryModule]
 })
 export class LandingModule {}
