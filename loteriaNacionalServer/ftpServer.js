@@ -21,9 +21,9 @@ var fs = require('fs');
 
 module.exports.init = function (ftpHost, ftpPort) {
 
-    const keyPath = path.dirname(config.keyPath);
-    const certPath = path.dirname(config.certPath);
-    const reqPath = path.dirname(config.reqPath);
+    const keyPath = path.join(config.sslPath, config.keyFile);
+    const certPath = path.join(config.sslPath, config.certFile);
+    const reqPath = path.join(config.sslPath, config.reqFile);
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
     const ftpServer = new FtpSrv({
         url: ftpUrl,

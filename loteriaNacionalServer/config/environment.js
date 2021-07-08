@@ -52,8 +52,9 @@ module.exports = {
     ftpPath: '/uploads/resultados',
 
     //SSL DATA
-    keyPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/privkey.pem',
-    certPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/fullchain.pem',
-    reqPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/request.pem'
+    sslPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/',
+    keyFile: 'privkey.pem',
+    certFile: 'fullchain.pem',
+    reqFile: 'request.pem'
 
 }
