@@ -48,7 +48,7 @@ module.exports = {
     ftpUserTest: 'test',
     ftpUserProd: 'loterianacional',
     ftpPassTest: 'test',
-    ftpUserProd: '$lnftp123..$',
+    ftpPassProd: '$lnftp123..$',
     ftpPath: '/uploads/resultados',
 
     //SSL DATA

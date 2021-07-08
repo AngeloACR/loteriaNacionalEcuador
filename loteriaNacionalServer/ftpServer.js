@@ -39,6 +39,7 @@ module.exports.init = function (ftpHost, ftpPort) {
     });
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {
+        console.log(password);
         if (username === ftpUser && password === ftpPass) {
             resolve({ root: ftpPath });
         } else reject('Bad username or password');
