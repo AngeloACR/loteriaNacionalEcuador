@@ -131,14 +131,15 @@ const mainController = {
                             await ResultadosController.setUltimoLottoPlus(tipoLoteria, resultado, codigoPremio);
                         } else if (codigoPremioAux == "24") {
                             resultadosLottito.push(resultado._id);
-                            codigoPremioLottito
                             indexLottito++;
                         }
 
                     }
                 }
-                let codigoPremioLottito = `${sorteo}-24`;
-                await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
+                if (tipoLoteria == 2) {
+                    let codigoPremioLottito = `${sorteo}-24`;
+                    await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
+                }
 
 
             });
