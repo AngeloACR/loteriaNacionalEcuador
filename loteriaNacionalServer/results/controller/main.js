@@ -136,7 +136,7 @@ const mainController = {
 
                     }
                 }
-                if (tipoLoteria == 2) {
+                if (tipoLoteria == "2") {
                     let codigoPremioLottito = `${sorteo}-24`;
                     await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
                 }
