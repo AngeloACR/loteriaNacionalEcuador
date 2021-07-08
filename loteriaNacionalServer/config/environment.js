@@ -49,5 +49,11 @@ module.exports = {
     ftpUserProd: 'loterianacional',
     ftpPassTest: 'test',
     ftpUserProd: '$lnftp123..$',
-    ftpPath: '/uploads/resultados'
+    ftpPath: '/uploads/resultados',
+
+    //SSL DATA
+    keyPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/privkey.pem',
+    certPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/fullchain.pem',
+    reqPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/request.pem'
+
 }

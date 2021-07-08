@@ -1,4 +1,5 @@
 const FtpSrv = require('ftp-srv');
+const path = require('path');
 const ResultadosController = require('./results/controller/main')
 const config = require('./config/environment');
 
@@ -20,14 +21,17 @@ var fs = require('fs');
 
 module.exports.init = function (ftpHost, ftpPort) {
 
+    const keyPath = path.dirname(config.keyPath);
+    const certPath = path.dirname(config.certPath);
+    const reqPath = path.dirname(config.reqPath);
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
     const ftpServer = new FtpSrv({
         url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
         tls: {
-            key: fs.readFileSync(`${__dirname}/cert/loteria-wildcard.key`),
-            cert: fs.readFileSync(`${__dirname}/cert/loteria-wildcard.crt`),
-            ca: fs.readFileSync(`${__dirname}/cert/loteria-wildcard.csr`)
+            key: fs.readFileSync(keyPath),
+            cert: fs.readFileSync(certPath),
+            ca: fs.readFileSync(reqPath)
         },
         pasv_url: ftpHost,
         pasv_min: ftpPassMin,
