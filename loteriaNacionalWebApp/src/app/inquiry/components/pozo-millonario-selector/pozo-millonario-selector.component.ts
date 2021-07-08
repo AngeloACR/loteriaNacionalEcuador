@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 export class PozoMillonarioSelectorComponent implements OnInit {
   ticketGanador: any;
   ticketNumbers: String[];
+  mascota: String;
   constructor(private router: Router) {}
   ngOnInit() {
     let data = JSON.parse(
@@ -16,11 +17,14 @@ export class PozoMillonarioSelectorComponent implements OnInit {
     );
     console.log(data);
     this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
+    this.mascota = data.ultimoResultado.combinacion3;
+
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
       date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
+      mascota: this.mascota,
       numeroSorteo: data.numeroSorteo,
       codigo: data.ultimoResultado.codigo,
       sorteo: data.sorteo

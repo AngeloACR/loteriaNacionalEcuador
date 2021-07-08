@@ -89,9 +89,11 @@ $color-pozo: #04b865;
           width: 50%;
           p {
             margin: 0;
+            font-family: $fuente-parrafo;
           }
           p:first-child {
-            font-size: 10px;
+            font-family: $fuente-subtitulo;
+            font-size: 15px;
           }
           img {
             width: 100%;

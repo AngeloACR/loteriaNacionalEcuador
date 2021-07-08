@@ -79,6 +79,14 @@ import { ResultadoComponent } from "./components/resultado/resultado.component";
     ResultadosComponent,
     ResultadoComponent
   ],
-  imports: [CommonModule, InquiryRoutingModule, HttpClientModule, FormsModule]
+  imports: [CommonModule, InquiryRoutingModule, HttpClientModule, FormsModule],
+    exports: [
+      LottoSelectorComponent,
+      LoteriaNacionalSelectorComponent,
+      PozoMillonarioSelectorComponent,
+      LottoTicketComponent,
+      LoteriaNacionalTicketComponent,
+      PozoMillonarioTicketComponent
+    ],
 })
 export class InquiryModule {}

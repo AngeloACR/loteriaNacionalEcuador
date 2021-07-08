@@ -19,46 +19,49 @@ export class PozoMillonarioComponent implements OnInit {
   sorteo: any;
   premioPrecio: any;
 
-  seleccionPozo: object = [
+  seleccionPozo: object[] = [
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-ballena.png',
+      animal:
+        "../../../../assets/mascotas/mascotas pozo millonario-ballena.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-camaron.png',
+      animal:
+        "../../../../assets/mascotas/mascotas pozo millonario-camaron.png",
       numero: [12, 54, 32, 58, 64, 72, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-foca.png',
+      animal: "../../../../assets/mascotas/mascotas pozo millonario-foca.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-perro.png',
+      animal: "../../../../assets/mascotas/mascotas pozo millonario-perro.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png',
+      animal:
+        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-conejo.png',
+      animal: "../../../../assets/mascotas/mascotas pozo millonario-conejo.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-delfin.png',
+      animal: "../../../../assets/mascotas/mascotas pozo millonario-delfin.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-mono.png',
+      animal: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     },
     {
-      animal: '../../../../assets/mascotas/mascotas pozo millonario-mono.png',
+      animal: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
       numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
     }
-  ]
+  ];
 
-  constructor( private lotteryService: LotteryService ) {}
+  constructor(private lotteryService: LotteryService) {}
 
   incrementar() {
     if (this.pageActual >= this.seleccionPozo.length / 4) {
@@ -67,12 +70,12 @@ export class PozoMillonarioComponent implements OnInit {
       this.pageActual++;
     }
 
-    if ( this.pageActual === 1) {
+    if (this.pageActual === 1) {
       this.desaparecer_izquierdo = true;
     } else {
       this.desaparecer_izquierdo = false;
     }
-    console.log( this.pageActual );
+    console.log(this.pageActual);
   }
 
   decrementar() {
@@ -83,11 +86,10 @@ export class PozoMillonarioComponent implements OnInit {
       this.pageActual--;
       this.desaparecer_derecho = false;
     }
-    console.log( this.pageActual );
-
+    console.log(this.pageActual);
   }
 
-  irPage( page: number) {
+  irPage(page: number) {
     this.pageActual = page;
   }
 
@@ -98,10 +100,8 @@ export class PozoMillonarioComponent implements OnInit {
     console.log(this.arreglo_animales);
   }
 
-  
-
   ngOnInit() {
     this.sorteo = this.lotteryService.obtenerSorteo();
-    this.premioPrecio = this.lotteryService.obtenerPremioPrecio( 3 );
+    this.premioPrecio = this.lotteryService.obtenerPremioPrecio(3);
   }
 }
