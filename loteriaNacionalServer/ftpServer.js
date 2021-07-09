@@ -3,11 +3,11 @@ const path = require('path');
 const ResultadosController = require('./results/controller/main')
 const config = require('./config/environment');
 
-const ftpUser = config.ftpUserTest;
-//const ftpUser = config.ftpUserProd;
+//const ftpUser = config.ftpUserTest;
+const ftpUser = config.ftpUserProd;
 
-const ftpPass = config.ftpPassTest;
-//const ftpPass = config.ftpPassProd;
+//const ftpPass = config.ftpPassTest;
+const ftpPass = config.ftpPassProd;
 
 const ftpPath = `${__dirname}${config.ftpPath}`;
 
@@ -21,11 +21,11 @@ var fs = require('fs');
 
 module.exports.init = function (ftpHost, ftpPort) {
 
-    const keyPath = path.join(config.sslPath, config.keyFile);
-    const certPath = path.join(config.sslPath, config.certFile);
-    const reqPath = path.join(config.sslPath, config.reqFile);
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
-    /*     const ftpServer = new FtpSrv({
+    /*     const keyPath = path.join(config.sslPath, config.keyFile);
+        const certPath = path.join(config.sslPath, config.certFile);
+        const reqPath = path.join(config.sslPath, config.reqFile);
+        const ftpServer = new FtpSrv({
             url: ftpUrl,
             greeting: ['Welcome', 'to', 'the', 'jungle!'],
             tls: {
@@ -36,8 +36,8 @@ module.exports.init = function (ftpHost, ftpPort) {
             pasv_url: ftpHost,
             pasv_min: ftpPassMin,
             pasv_max: ftpPassMax,
-        });
-     */
+        }); */
+
     const ftpServer = new FtpSrv({
         url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],

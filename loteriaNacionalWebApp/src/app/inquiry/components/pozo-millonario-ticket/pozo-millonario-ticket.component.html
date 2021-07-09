@@ -19,7 +19,7 @@
           <p>N° Cartón</p>
           <p>{{ticket.codigo}}</p>
         </div>
-        <div class="contenido">
+        <div *ngIf="ticket.mascota" class="contenido">
           <p>{{ticket.mascota}}</p>
           <!-- <img src="../../../../assets/img/pozzo millonario.png" alt=""> -->
         </div>

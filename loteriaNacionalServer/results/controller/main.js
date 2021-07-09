@@ -26,19 +26,22 @@ const mainController = {
             let tipoLoteria = req.body.tipoLoteria;
             let filePath = `uploads/resultados/BOLPRE-${tipoLoteria}-${sorteo}.xml`;
 
-            fs.readFile(filePath, 'utf8', async function (err, xmlData) {
+            /* fs.readFile(filePath, 'utf8', async function (err, xmlData) {
                 if (err) throw err;
                 let dataSet = `<dataset>${xmlData}</dataset>`
                 let aux = await parser.parseStringPromise(dataSet, { trim: true })
                 let data = aux.dataset.R;
                 let length = data.length;
-                console.log(length);
-                response = {
-                    data
-                }
-                res.status(200).json(response);
+                console.log(length); */
+            let data = await Lottery.autenticarUsuario()
+            let ultimosResultados = await Lottery.consultarUltimosResultados(5, data.token);
 
-            });
+            let response = {
+                ultimosResultados
+            }
+            res.status(200).json(response);
+
+            //});
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -105,12 +108,13 @@ const mainController = {
             fs.readFile(filePath, 'utf8', async function (err, xmlData) {
                 if (err) throw err;
                 let dataSet = `<dataset>${xmlData}</dataset>`
-            console.log('Haciendo parse del archivo');
-            let aux = await parser.parseStringPromise(dataSet, { trim: true })
+                console.log('Haciendo parse del archivo');
+                let aux = await parser.parseStringPromise(dataSet, { trim: true })
                 let data = aux.dataset.R;
                 let length = data.length;
                 let indexLottito = 0;
                 let resultadosLottito = []
+                let premioPozo = false;
                 for (let i = 0; i < length; i++) {
                     let codigoPremioAux = data[i].X[0].R[0].$.P;
                     let codigoPremio = `${sorteo}-${codigoPremioAux}`;
@@ -127,6 +131,9 @@ const mainController = {
                     resultado = (await ResultadosController.addResultado(resultado)).values;
                     if (codigoPremioAux == "1") {
                         await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
+                        if (tipoLoteria == "5") {
+                            premioPozo = true;
+                        }
                     }
                     if (tipoLoteria == "2") {
                         if (codigoPremioAux == "23") {
@@ -142,8 +149,24 @@ const mainController = {
                     let codigoPremioLottito = `${sorteo}-24`;
                     await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
                 }
+                if(tipoLoteria == "5" && !premioPozo){
 
+            let data = await Lottery.autenticarUsuario()
+            let ultimoResultado = await Lottery.consultarUltimosResultados(5, data.token);
 
+            let codigoPremio = `${sorteo}-1`;
+            let resultado = {
+                tipoLoteria,
+                numeroSorteo: sorteo,
+                combinacion2: ultimoResultado.Comb,
+                combinacion3: '',
+                codigoPremio,
+                combinacionGanadora: "2"
+            }
+            resultado = (await ResultadosController.addResultado(resultado)).values;
+            await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
+
+                }
             });
         } catch (e) {
             throw e;

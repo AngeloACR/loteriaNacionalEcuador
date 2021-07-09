@@ -183,7 +183,7 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
         let errorCode = parseInt(data.mt.c[0].codError[0]);
 
         if (!errorCode) {
-          let response = data.mt;
+          let response = data.mt.rs[0].r[0].Row[0].$;
           resolve(response);
         } else {
           reject(data.mt.c[0].msgError[0])
