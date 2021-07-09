@@ -18,14 +18,12 @@ $color-lotto: #b51f20;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    padding: 9px;
 
     .contenedor_logo {
       margin-right: 15px;
 
       img {
-        width: 120px;
-        height: 50px;
+        height: 70px;
       }
     }
 
@@ -36,7 +34,8 @@ $color-lotto: #b51f20;
 
       p {
         font-family: $fuente-subtitulo;
-        font-size: 16px;
+        font-size: 14px;
+        text-align: right;
       }
     }
   }
@@ -52,10 +51,9 @@ $color-lotto: #b51f20;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      padding-right: 14px;
 
       p:nth-child(1) {
-        font-size: 32px;
+        font-size: 30px;
         -webkit-text-stroke: 2px $color-lotto;
         color: #fff;
         font-family: $fuente-titulo;

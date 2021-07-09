@@ -26,8 +26,7 @@ $color-pozo: #04b865;
       justify-content: flex-start;
       flex-wrap: wrap;
       background-color: #e2e2e2;
-      border-radius: 5px 0 0 5px;
-      padding: 10px;
+      border-radius: 0 0 5px 5px;
 
       h3 {
         font-family: $fuente-subtitulo;
@@ -71,7 +70,7 @@ $color-pozo: #04b865;
 
       .contenedor_logo {
         img {
-          width: 70px;
+          height: 90px;
         }
       }
       .contenedor_info {
@@ -82,18 +81,18 @@ $color-pozo: #04b865;
 
         .contenido {
           margin: auto;
-          background-color: #fff;
           align-items: center;
           display: flex;
           flex-direction: column;
-          width: 50%;
+          width: 100%;
           p {
             margin: 0;
             font-family: $fuente-parrafo;
           }
           p:first-child {
             font-family: $fuente-subtitulo;
-            font-size: 15px;
+            font-size: 14px;
+            text-align: right;
           }
           img {
             width: 100%;
