@@ -22,29 +22,29 @@ var fs = require('fs');
 module.exports.init = function (ftpHost, ftpPort) {
 
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
-    /*     const keyPath = path.join(config.sslPath, config.keyFile);
-        const certPath = path.join(config.sslPath, config.certFile);
-        const reqPath = path.join(config.sslPath, config.reqFile);
-        const ftpServer = new FtpSrv({
-            url: ftpUrl,
-            greeting: ['Welcome', 'to', 'the', 'jungle!'],
-            tls: {
-                key: fs.readFileSync(keyPath),
-                cert: fs.readFileSync(certPath),
-                ca: fs.readFileSync(reqPath)
-            },
-            pasv_url: ftpHost,
-            pasv_min: ftpPassMin,
-            pasv_max: ftpPassMax,
-        }); */
-
+    const keyPath = path.join(config.sslPath, config.keyFile);
+    const certPath = path.join(config.sslPath, config.certFile);
+    const reqPath = path.join(config.sslPath, config.reqFile);
     const ftpServer = new FtpSrv({
         url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
+        tls: {
+            key: fs.readFileSync(keyPath),
+            cert: fs.readFileSync(certPath),
+            ca: fs.readFileSync(reqPath)
+        },
         pasv_url: ftpHost,
         pasv_min: ftpPassMin,
         pasv_max: ftpPassMax,
     });
+
+    /*     const ftpServer = new FtpSrv({
+            url: ftpUrl,
+            greeting: ['Welcome', 'to', 'the', 'jungle!'],
+            pasv_url: ftpHost,
+            pasv_min: ftpPassMin,
+            pasv_max: ftpPassMax,
+        }); */
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {
         if (username === ftpUser && password === ftpPass) {
