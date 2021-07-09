@@ -22,7 +22,7 @@ module.exports = {
     medioAplicatioId: 17,
 
     aplicativoAddressTest: 'serviciomt-prep.wsdl',
-    aplicativoAddressProd: 'serviciomt.wsdl',
+    aplicativoAddressProd: 'serviciomt-prod.wsdl',
 
     // DATABASE DATA
     prodDB: "mongodb://localhost:27017/loteriaDB",

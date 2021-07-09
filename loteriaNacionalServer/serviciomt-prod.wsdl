@@ -1,0 +1,127 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+    xmlns:tns="http://tempuri.org/"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+    xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+    xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" name="ServicioMT" targetNamespace="http://tempuri.org/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://tempuri.org/Imports">
+            <xsd:import schemaLocation="http://www1.loteria.com.ec/WCFMT/ServicioMT.svc?xsd=xsd0" namespace="http://tempuri.org/"/>
+            <xsd:import schemaLocation="http://www1.loteria.com.ec/WCFMT/ServicioMT.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="IServicioMT_fnAutenticacion_InputMessage">
+        <wsdl:part name="parameters" element="tns:fnAutenticacion"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnAutenticacion_OutputMessage">
+        <wsdl:part name="parameters" element="tns:fnAutenticacionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnEjecutaTransaccion_InputMessage">
+        <wsdl:part name="parameters" element="tns:fnEjecutaTransaccion"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnEjecutaTransaccion_OutputMessage">
+        <wsdl:part name="parameters" element="tns:fnEjecutaTransaccionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnLoginAplicacion_InputMessage">
+        <wsdl:part name="parameters" element="tns:fnLoginAplicacion"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnLoginAplicacion_OutputMessage">
+        <wsdl:part name="parameters" element="tns:fnLoginAplicacionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnCambioClave_InputMessage">
+        <wsdl:part name="parameters" element="tns:fnCambioClave"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnCambioClave_OutputMessage">
+        <wsdl:part name="parameters" element="tns:fnCambioClaveResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnRegistroPersona_InputMessage">
+        <wsdl:part name="parameters" element="tns:fnRegistroPersona"/>
+    </wsdl:message>
+    <wsdl:message name="IServicioMT_fnRegistroPersona_OutputMessage">
+        <wsdl:part name="parameters" element="tns:fnRegistroPersonaResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="IServicioMT">
+        <wsdl:operation name="fnAutenticacion">
+            <wsdl:input wsaw:Action="http://tempuri.org/IServicioMT/fnAutenticacion" message="tns:IServicioMT_fnAutenticacion_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IServicioMT/fnAutenticacionResponse" message="tns:IServicioMT_fnAutenticacion_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="fnEjecutaTransaccion">
+            <wsdl:input wsaw:Action="http://tempuri.org/IServicioMT/fnEjecutaTransaccion" message="tns:IServicioMT_fnEjecutaTransaccion_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IServicioMT/fnEjecutaTransaccionResponse" message="tns:IServicioMT_fnEjecutaTransaccion_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="fnLoginAplicacion">
+            <wsdl:input wsaw:Action="http://tempuri.org/IServicioMT/fnLoginAplicacion" message="tns:IServicioMT_fnLoginAplicacion_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IServicioMT/fnLoginAplicacionResponse" message="tns:IServicioMT_fnLoginAplicacion_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="fnCambioClave">
+            <wsdl:input wsaw:Action="http://tempuri.org/IServicioMT/fnCambioClave" message="tns:IServicioMT_fnCambioClave_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IServicioMT/fnCambioClaveResponse" message="tns:IServicioMT_fnCambioClave_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="fnRegistroPersona">
+            <wsdl:input wsaw:Action="http://tempuri.org/IServicioMT/fnRegistroPersona" message="tns:IServicioMT_fnRegistroPersona_InputMessage"/>
+            <wsdl:output wsaw:Action="http://tempuri.org/IServicioMT/fnRegistroPersonaResponse" message="tns:IServicioMT_fnRegistroPersona_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_IServicioMT" type="tns:IServicioMT">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="fnAutenticacion">
+            <soap:operation soapAction="http://tempuri.org/IServicioMT/fnAutenticacion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="fnEjecutaTransaccion">
+            <soap:operation soapAction="http://tempuri.org/IServicioMT/fnEjecutaTransaccion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="fnLoginAplicacion">
+            <soap:operation soapAction="http://tempuri.org/IServicioMT/fnLoginAplicacion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="fnCambioClave">
+            <soap:operation soapAction="http://tempuri.org/IServicioMT/fnCambioClave" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="fnRegistroPersona">
+            <soap:operation soapAction="http://tempuri.org/IServicioMT/fnRegistroPersona" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ServicioMT">
+        <wsdl:port name="BasicHttpBinding_IServicioMT" binding="tns:BasicHttpBinding_IServicioMT">
+            <soap:address location="http://www1.loteria.com.ec/WCFMT/ServicioMT.svc"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

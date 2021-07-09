@@ -8,6 +8,8 @@ $color-lotto: #b51f20;
 .contenedor_ticket {
   /* width: 34%; */
   width: 90%;
+  max-width: 400px;
+
   padding: 15px;
   border-radius: 30px;
   background-color: $color-lotto;

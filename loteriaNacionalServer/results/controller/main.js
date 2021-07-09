@@ -101,10 +101,12 @@ const mainController = {
     agregarResultados: async (sorteo, tipoLoteria) => {
         try {
             let filePath = `uploads/resultados/BOLPRE-${tipoLoteria}-${sorteo}.xml`;
+            console.log('Empezando a agregar resultado');
             fs.readFile(filePath, 'utf8', async function (err, xmlData) {
                 if (err) throw err;
                 let dataSet = `<dataset>${xmlData}</dataset>`
-                let aux = await parser.parseStringPromise(dataSet, { trim: true })
+            console.log('Haciendo parse del archivo');
+            let aux = await parser.parseStringPromise(dataSet, { trim: true })
                 let data = aux.dataset.R;
                 let length = data.length;
                 let indexLottito = 0;

@@ -3,11 +3,11 @@ const path = require('path');
 const ResultadosController = require('./results/controller/main')
 const config = require('./config/environment');
 
-//const ftpUser = config.ftpUserTest;
-const ftpUser = config.ftpUserProd;
+const ftpUser = config.ftpUserTest;
+//const ftpUser = config.ftpUserProd;
 
-//const ftpPass = config.ftpPassTest;
-const ftpPass = config.ftpPassProd;
+const ftpPass = config.ftpPassTest;
+//const ftpPass = config.ftpPassProd;
 
 const ftpPath = `${__dirname}${config.ftpPath}`;
 
@@ -25,21 +25,28 @@ module.exports.init = function (ftpHost, ftpPort) {
     const certPath = path.join(config.sslPath, config.certFile);
     const reqPath = path.join(config.sslPath, config.reqFile);
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
+    /*     const ftpServer = new FtpSrv({
+            url: ftpUrl,
+            greeting: ['Welcome', 'to', 'the', 'jungle!'],
+            tls: {
+                key: fs.readFileSync(keyPath),
+                cert: fs.readFileSync(certPath),
+                ca: fs.readFileSync(reqPath)
+            },
+            pasv_url: ftpHost,
+            pasv_min: ftpPassMin,
+            pasv_max: ftpPassMax,
+        });
+     */
     const ftpServer = new FtpSrv({
         url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
-        tls: {
-            key: fs.readFileSync(keyPath),
-            cert: fs.readFileSync(certPath),
-            ca: fs.readFileSync(reqPath)
-        },
         pasv_url: ftpHost,
         pasv_min: ftpPassMin,
         pasv_max: ftpPassMax,
     });
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {
-        console.log(password);
         if (username === ftpUser && password === ftpPass) {
             resolve({ root: ftpPath });
         } else reject('Bad username or password');

@@ -44,7 +44,7 @@ nvm install 10.13.0
 #python install
 sudo yum install https://repo.ius.io/ius-release-el7.rpm
 sudo yum update
-sudo yum install python36u python36u-libs python36u-devel python36u-pip #REINSTALL PYTHON
+sudo yum install python36 python36-libs python36-devel python36-pip #REINSTALL PYTHON
 
 #certbot install
 sudo firewall-cmd --permanent --add-service=http

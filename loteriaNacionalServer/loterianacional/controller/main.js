@@ -6,17 +6,17 @@ const config = require('../../config/environment');
 //const address = "http://www1.loteria.com.ec/WCFMT/ServicioMT.svc?singleWsdl";
 
 
-const address = config.aplicativoAddressTest;
-//const address = config.aplicativoAddressProd;
+//const address = config.aplicativoAddressTest;
+const address = config.aplicativoAddressProd;
 
 
 const medioId = config.medioAplicatioId;
 
-const usuarioClientePsd = config.usuarioAplicativoTest;
-//const usuarioClientePsd = config.usuarioAplicativoProd;
+//const usuarioClientePsd = config.usuarioAplicativoTest;
+const usuarioClientePsd = config.usuarioAplicativoProd;
 
-const claveClientePsd = config.passwordAplicativoTest;
-//const claveClientePsd = config.passwordAplicativoProd;
+//const claveClientePsd = config.passwordAplicativoTest;
+const claveClientePsd = config.passwordAplicativoProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
