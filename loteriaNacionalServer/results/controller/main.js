@@ -160,6 +160,7 @@ const mainController = {
                 numeroSorteo: sorteo,
                 combinacion2: ultimoResultado.Comb,
                 combinacion3: '',
+                combinacion1: '',
                 codigoPremio,
                 combinacionGanadora: "2"
             }

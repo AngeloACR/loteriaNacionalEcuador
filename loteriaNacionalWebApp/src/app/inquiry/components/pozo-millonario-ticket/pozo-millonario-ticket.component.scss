@@ -17,10 +17,10 @@ $color-pozo: #04b865;
 
   .contenedor_numeros {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
-    .arriba {
-      width: 40%;
+    .abajo {
+      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
@@ -62,12 +62,12 @@ $color-pozo: #04b865;
       }
     }
 
-    .abajo {
-      width: 60%;
+    .arriba {
+      width: 100%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
 
       .contenedor_logo {
         img {
