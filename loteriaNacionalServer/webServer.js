@@ -36,13 +36,19 @@ module.exports.init = function (folder, thePath, port) {
     app.use(bodyParser.json());
 
     app.use(helmet());
+    app.use('/*',
+        (req, rest, next) => {
+            req.removeHeader('X-Frame-Options');
+            next();
+        }
+    );
     app.use(
         helmet.contentSecurityPolicy({
             useDefaults: true,
             directives: {
                 "frame-ancestors": ["'self'", "https://*.loteria.com.ec"],
-                "frame-src": ["https://ventas.loteria.com.ec"],
-                "script-src": ["https://ventas.loteria.com.ec"],
+                "frame-src": ["'self'", "https://*.loteria.com.ec"],
+                "script-src": ["'self'", "https://*.loteria.com.ec"],
             },
         })
     );
