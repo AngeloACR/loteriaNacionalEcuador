@@ -36,7 +36,7 @@ module.exports.init = function (folder, thePath, port) {
     app.use(bodyParser.json());
 
     app.use(helmet());
-    app.use('/*',
+    app.use(
         (req, rest, next) => {
             req.removeHeader('X-Frame-Options');
             next();

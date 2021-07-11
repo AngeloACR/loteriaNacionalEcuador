@@ -38,13 +38,13 @@ module.exports.init = function (ftpHost, ftpPort) {
         pasv_max: ftpPassMax,
     });
 
-    /*     const ftpServer = new FtpSrv({
-            url: ftpUrl,
-            greeting: ['Welcome', 'to', 'the', 'jungle!'],
-            pasv_url: ftpHost,
-            pasv_min: ftpPassMin,
-            pasv_max: ftpPassMax,
-        }); */
+    /* const ftpServer = new FtpSrv({
+        url: ftpUrl,
+        greeting: ['Welcome', 'to', 'the', 'jungle!'],
+        pasv_url: ftpHost,
+        pasv_min: ftpPassMin,
+        pasv_max: ftpPassMax,
+    }); */
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {
         if (username === ftpUser && password === ftpPass) {
