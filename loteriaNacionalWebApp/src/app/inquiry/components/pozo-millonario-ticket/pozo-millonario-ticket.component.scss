@@ -37,7 +37,7 @@ $color-pozo: #04b865;
     .ticket_titulo {
       display: flex;
       margin: auto;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
 
       img {
@@ -52,9 +52,8 @@ $color-pozo: #04b865;
       p {
         margin: 0px;
         font-family: $fuente-subtitulo;
-        font-size: 14px;
+        font-size: 16px;
         text-align: right;
-        margin-right: 10px;
       }
     }
 
