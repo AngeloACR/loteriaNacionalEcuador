@@ -1,30 +1,28 @@
 <div class="contenedor_informacion_ticket">
-  <div class="contenedor_numeros">
-    <div class="arriba">
-      <div class="contenedor_logo">
-        <img src="../../../../assets/img/pozzo millonario.png" alt="">
-      </div>
-      <div class="contenedor_info">
-        <div class="contenido">
-          <p>Sorteo N° {{ticket.numeroSorteo}} - {{ticket.sorteo.fecha}}</p>
-        </div>
-        <div *ngIf="ticket.codigo" class="contenido">
-          <p>N° Cartón</p>
-          <p>{{ticket.codigo}}</p>
-        </div>
-        <div *ngIf="ticket.mascota" class="contenido">
-          <p>{{ticket.mascota}}</p>
-          <!-- <img src="../../../../assets/img/pozzo millonario.png" alt=""> -->
-        </div>
+  <div class="contenedor_informacion_ticket_derecho">
+
+    <div class="ticket_titulo">
+      <img src="../../../../assets/img/pozzo millonario.png" alt="">
+
+      <div>
+        <p>Sorteo N° {{ticket.numeroSorteo}} - {{ticket.sorteo.fecha}}</p>
       </div>
     </div>
-
-    <div class="abajo">
-      <h3>NÚMEROS GANADORES</h3>
-      <div class="numeros">
-        <p *ngFor="let number of ticketNumbers">{{number}}</p>
+    <hr size="2px" />
+    <div class="ticket_monto">
+      <p>NÚMEROS GANADORES</p>
+    </div>
+    <hr size="2px" />
+    <div class="ticket_entero_fraccion">
+      <div class="ticket_entero">
+        <div>
+          <p *ngFor="let number of ticketNumbers">{{number}}</p>
+        </div>
       </div>
     </div>
   </div>
-
+</div>
+<div *ngIf="ticket.mascota" class="contenido">
+  <p>{{ticket.mascota}}</p>
+  <!-- <img src="../../../../assets/img/pozzo millonario.png" alt=""> -->
 </div>
