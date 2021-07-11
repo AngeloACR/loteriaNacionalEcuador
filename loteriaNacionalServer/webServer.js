@@ -37,8 +37,8 @@ module.exports.init = function (folder, thePath, port) {
 
     app.use(helmet());
     app.use(
-        (req, rest, next) => {
-            req.removeHeader('X-Frame-Options');
+        (req, res, next) => {
+            res.removeHeader('X-Frame-Options');
             next();
         }
     );
