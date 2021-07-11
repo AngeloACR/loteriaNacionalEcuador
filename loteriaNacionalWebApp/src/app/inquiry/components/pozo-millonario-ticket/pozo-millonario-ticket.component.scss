@@ -65,6 +65,7 @@ $color-pozo: #04b865;
 
       p:nth-child(1) {
         font-size: 30px;
+        text-align: center;
         -webkit-text-stroke: 2px $color-pozo;
         color: #fff;
         font-family: $fuente-titulo;
@@ -98,6 +99,7 @@ $color-pozo: #04b865;
         div {
           display: flex;
           justify-content: center;
+          flex-wrap: wrap;
           margin: 0 0 15px 0;
 
           p {
@@ -107,7 +109,7 @@ $color-pozo: #04b865;
             font-family: $fuente-subtitulo;
             font-size: 16px;
             color: #000;
-            margin: 0px 2px;
+            margin: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
