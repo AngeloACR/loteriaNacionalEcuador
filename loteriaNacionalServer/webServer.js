@@ -40,7 +40,9 @@ module.exports.init = function (folder, thePath, port) {
         helmet.contentSecurityPolicy({
             useDefaults: true,
             directives: {
-                "frame-ancestors": ["'self'", "https://*.loteria.com.ec"]
+                "frame-ancestors": ["'self'", "https://*.loteria.com.ec"],
+                "frame-src": ["https://ventas.loteria.com.ec"],
+                "script-src": ["https://ventas.loteria.com.ec"],
             },
         })
     );
