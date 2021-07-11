@@ -10,6 +10,7 @@ export class PozoMillonarioSelectorComponent implements OnInit {
   ticketGanador: any;
   ticketNumbers: String[];
   mascota: String;
+  mascotaPath: String;
   constructor(private router: Router) {}
   ngOnInit() {
     let data = JSON.parse(

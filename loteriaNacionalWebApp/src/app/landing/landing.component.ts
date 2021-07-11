@@ -17,5 +17,12 @@ export class LandingComponent implements OnInit {
   async ngOnInit() {
     await this.inquiry.recuperarUltimosResultados();
     this.infoReady = true;
+    var iframe: any = document.getElementById("diviSlide");
+
+    // Adjusting the iframe height onload event
+    iframe.onload = function() {
+      iframe.style.height =
+        iframe.contentWindow.document.body.scrollHeight + "px";
+    };
   }
 }
