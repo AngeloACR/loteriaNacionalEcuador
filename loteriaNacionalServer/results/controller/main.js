@@ -114,6 +114,7 @@ const mainController = {
                 let length = data.length;
                 let indexLottito = 0;
                 let resultadosLottito = []
+                let mascota;
                 let premioPozo = false;
                 let reintegroPozo = false;
                 for (let i = 0; i < length; i++) {
@@ -147,31 +148,33 @@ const mainController = {
                     }
                     if (tipoLoteria == "5" && codigoPremioAux == "6" && !reintegroPozo) {
                         reintegroPozo == true;
-                        let mascota = resultado.combinacion3;
-                        await ResultadosController.setMascota(tipoLoteria, mascota);
+                        mascota = resultado.combinacion3;
                     }
                 }
                 if (tipoLoteria == "2") {
                     let codigoPremioLottito = `${sorteo}-24`;
                     await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
                 }
-                if (tipoLoteria == "5" && !premioPozo) {
+                if (tipoLoteria == "5") {
+                    await ResultadosController.setMascota(tipoLoteria, mascota);
+                    if (!premioPozo) {
 
-                    let data = await Lottery.autenticarUsuario()
-                    let ultimoResultado = await Lottery.consultarUltimosResultados(5, data.token);
+                        let data = await Lottery.autenticarUsuario()
+                        let ultimoResultado = await Lottery.consultarUltimosResultados(5, data.token);
 
-                    let codigoPremio = `${sorteo}-1`;
-                    let resultado = {
-                        tipoLoteria,
-                        numeroSorteo: sorteo,
-                        combinacion2: ultimoResultado.Comb,
-                        combinacion3: '',
-                        combinacion1: '',
-                        codigoPremio,
-                        combinacionGanadora: "2"
+                        let codigoPremio = `${ultimoResultado.SortId}-1`;
+                        let resultado = {
+                            tipoLoteria,
+                            numeroSorteo: ultimoResultado.SortId,
+                            combinacion2: ultimoResultado.Comb,
+                            combinacion3: '',
+                            combinacion1: '',
+                            codigoPremio,
+                            combinacionGanadora: "2"
+                        }
+                        resultado = (await ResultadosController.addResultado(resultado)).values;
+                        await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
                     }
-                    resultado = (await ResultadosController.addResultado(resultado)).values;
-                    await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
 
                 }
             });
