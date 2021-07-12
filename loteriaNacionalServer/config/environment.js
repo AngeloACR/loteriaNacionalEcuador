@@ -34,8 +34,8 @@ module.exports = {
     connectionLimit: 100,
 
     // STATIC FILES PATHS
-    sourceBoletinesA: 'https://contenidos-prueba.loteria.com.ec/boletines/',
-    sourceBoletinesB: 'https://ventas-api-prueba.loteria.com.ec/boletines/',
+    sourceBoletinesTest: 'https://ventas-api-prueba.loteria.com.ec/boletines/',
+    sourceBoletinesProd: 'https://ventas-api.loteria.com.ec/boletines/',
     sourceBoletinesC: 'http://localhost:5480/boletines/',
 
     // FTP DATA

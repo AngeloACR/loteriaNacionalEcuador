@@ -7,7 +7,8 @@ const config = require('../../config/environment');
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let boletinesSource = config.sourceBoletinesA;
-let sourceBoletines = config.sourceBoletinesB;
+//let sourceBoletines = config.sourceBoletinesTest;
+let sourceBoletines = config.sourceBoletinesProd;
 //let sourceBoletines = config.sourceBoletinesC;
 const inquiryLotteryController = {
 
