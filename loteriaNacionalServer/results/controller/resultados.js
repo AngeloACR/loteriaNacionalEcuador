@@ -345,7 +345,7 @@ const resultadosController = {
         }
 
     },
-    setMacota: async function (tipoLoteria, nombreMascota) {
+    setMascota: async function (tipoLoteria, nombreMascota) {
         try {
             let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
             if (ultimoResultadoResponse.status) {

@@ -19,7 +19,7 @@ export class PozoMillonarioSelectorComponent implements OnInit {
     );
     console.log(data);
     this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
-    this.mascota = data.ultimoResultado.mascota;
+    this.mascota = data.mascota;
     this.mascotaPath = this.inquiry.obtenerMascota(this.mascota);
 
     this.ticketGanador = {
