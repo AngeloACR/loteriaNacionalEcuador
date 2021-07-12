@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ResultadoComponent implements OnInit {
   @Input() ticket: any;
+  @Input() tipoLoteria: any;
   @Input() isLoteriaNacional: boolean = false;
 
   description: String;

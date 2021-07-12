@@ -8,7 +8,8 @@
     <div class="resultBox" *ngFor="let ticket of tickets">
 
         <div class="messageBox" [ngClass]="loteriaBackground">
-            <app-resultado [ticket]="ticket" [isLoteriaNacional]="isLoteriaNacional"></app-resultado>
+            <app-resultado [ticket]="ticket" [tipoLoteria]="tipoLoteria" [isLoteriaNacional]="isLoteriaNacional">
+            </app-resultado>
         </div>
     </div>
 </div>
