@@ -268,3 +268,9 @@ $color-botton: #2f72b9;
     }
   }
 }
+
+@media screen and (max-width: 320px) {
+  .contenedor_ticket {
+    margin: auto;
+  }
+}

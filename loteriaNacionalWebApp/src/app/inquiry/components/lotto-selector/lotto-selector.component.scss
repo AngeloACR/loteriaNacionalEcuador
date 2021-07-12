@@ -258,3 +258,9 @@ $color-lotto: #b51f20;
     }
   }
 }
+
+@media screen and (max-width: 320px) {
+  .contenedor_ticket {
+    margin: auto;
+  }
+}

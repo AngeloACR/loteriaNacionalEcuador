@@ -224,3 +224,9 @@ $color-pozo: #04b865;
     }
   }
 }
+
+@media screen and (max-width: 320px) {
+  .contenedor_ticket {
+    margin: auto;
+  }
+}
