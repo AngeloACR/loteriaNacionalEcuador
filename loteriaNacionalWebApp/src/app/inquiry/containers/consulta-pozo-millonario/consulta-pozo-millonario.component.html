@@ -4,6 +4,7 @@
     </app-pozo-millonario-consulta>
     <app-pozo-millonario-selector class="selectorBox"></app-pozo-millonario-selector>
     <div class="modalBox" *ngIf="showResultados">
-        <app-resultados (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados"></app-resultados>
+        <app-resultados tipoLoteria="5" (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados">
+        </app-resultados>
     </div>
 </div>

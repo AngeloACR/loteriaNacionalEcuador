@@ -7,14 +7,36 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 })
 export class ResultadosComponent implements OnInit {
   @Input() resultados: any;
+  @Input() tipoLoteria: any;
   @Input() isLoteriaNacional: boolean = false;
   @Input() isLotto: boolean = false;
   @Input() isPozoMillonario: boolean = false;
   tickets: any[] = [];
   @Output() close = new EventEmitter();
+  loteriaBackground: any;
   constructor() {}
 
   ngOnInit() {
+    switch (this.tipoLoteria) {
+      case 1:
+        this.loteriaBackground = {
+          backgroundLoteriaNacional: true
+        };
+        break;
+      case 2:
+        this.loteriaBackground = {
+          backgroundLotto: true
+        };
+
+        break;
+
+      default:
+        this.loteriaBackground = {
+          backgroundPozoMillonario: true
+        };
+
+        break;
+    }
     this.resultados.forEach(resultado => {
       let description;
       let ticketNumbers;

@@ -1,37 +1,26 @@
 <div class="resultadoBox">
-
-    <div class="resultadoTitulo">
-        <p>Sorteo {{sorteo}}</p>
-        <div class="numeroBoleto">
-            <p style="margin-right: 5px;">Combinación: </p>
-            <p *ngFor="let number of ticketNumbers">{{number}}</p>
-        </div>
-    </div>
-    <hr size="2px" />
-    <div class="resultadoDescripcion">
-        <p>{{description}}</p>
-    </div>
     <div *ngIf="ticket.resultado.status" class="resultadoDetalles">
-        <p>Premio: {{nombrePremio}}</p>
-
-        <hr size="2px" />
-        <div class="montoPremio">
-
-            <div class="valorPremio">
-                <h5>Entero</h5>
-                <p>{{valorPremio}} USD</p>
-            </div>
-            <div class="valorPremio" *ngIf="isLoteriaNacional">
-
-                <h5>Fracción</h5>
-                <p>{{valorFraccion}} USD</p>
-            </div>
-        </div>
-        <div class="mensajeDescuento">
-        <p>
+        <p>Bienvenido al <span>País de los Ganadores <img src="assets/ganadorbrillante.png" alt=""></span></p>
+        <p>Eres una persona afortunada, acabas de ganar el sorteo número<span>#{{sorteo}}</span> con la combinación
+            ganadora <span>{{number}}</span>, la cantidad de <span>${{valorPremio}} al entero</span>
+            <span *ngIf="tipoLoteria==1">, ${{valorFraccion}} a la fracción.</span></p><br>
+        <!--                     <div class="mensajeDescuento">
+                        <p>
             
-            {{descripcionDescuento}}
-        </p>
-        </div>
+                            {{descripcionDescuento}}
+                        </p>
+                    </div>
+ -->
+
+        <img src="assets/ganadorpremio.png" alt="">
+        <p>Cóbralo en tu <span>Punto de la suerte</span> más cercano, descúbrelo
+            <a href="https://www4.loteria.com.ec/puntos-de-la-suerte">aquí </a>. </p>
+    </div>
+    <div *ngIf="!ticket.resultado.status" class="resultadoDetalles">
+        <p><span>Démosle otro intento</span> ¡La combinación {{number}} no ha ganado!</p><br>
+        <p>Puede que el próximo boleto si sea el de la suerte <span>¡Seguro te toca!</span></p><br>
+        <img src="assets/perdedorpremio.png" alt=""><br>
+        <p>Cómpralo en tu <span>Punto de la suerte</span> más cercano, descúbrelo
+            <a href="https://www4.loteria.com.ec/puntos-de-la-suerte">aquí</a></p>
     </div>
 </div>

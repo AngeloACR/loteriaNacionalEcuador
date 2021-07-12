@@ -8,7 +8,7 @@ $color-botton: #2f72b9;
 .resultadoBox {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100%; /* 
   .resultadoTitulo {
     display: flex;
     align-items: center;
@@ -32,15 +32,29 @@ $color-botton: #2f72b9;
       font-weight: bold;
       margin: 0 0 5px 0;
     }
-  }
+  } */
   .resultadoDetalles {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     p {
-      text-align: center;
+      text-align: left;
+      font-size: 16px;
+      color: white;
+      span {
+        font-weight: bold;
+        img {
+          width: 18px;
+        }
+      }
     }
+    img {
+      width: 100px;
+      margin: auto;
+      align-self: center;
+    }
+    /* 
     .montoPremio {
       display: flex;
       justify-content: center;
@@ -57,16 +71,16 @@ $color-botton: #2f72b9;
         }
         p {
           font-size: 16px;
-        font-weight: bold;
-      }
+          font-weight: bold;
+        }
       }
 
-      .descripcionDescuento{
-        p{
+      .descripcionDescuento {
+        p {
           margin: 0;
           font-size: 14px;
         }
       }
-    }
+    } */
   }
 }

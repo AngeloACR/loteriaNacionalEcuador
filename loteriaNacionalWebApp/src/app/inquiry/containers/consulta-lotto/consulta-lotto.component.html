@@ -3,7 +3,8 @@
     </app-lotto-consulta>
     <app-lotto-selector class="selectorBox"></app-lotto-selector>
     <div class="modalBox" *ngIf="showResultados">
-        <app-resultados (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados"></app-resultados>
+        <app-resultados tipoLoteria="2" (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados">
+        </app-resultados>
     </div>
 
 </div>

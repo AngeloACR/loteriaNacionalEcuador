@@ -4,7 +4,7 @@
     <app-loteria-nacional-selector class="selectorBox"></app-loteria-nacional-selector>
 
     <div class="modalBox" *ngIf="showResultados">
-        <app-resultados [isLoteriaNacional]="true" (close)="closeBox()" *ngIf="showResultados"
-            [resultados]="resultados"></app-resultados>
+        <app-resultados tipoLoteria="1" (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados">
+        </app-resultados>
     </div>
 </div>
