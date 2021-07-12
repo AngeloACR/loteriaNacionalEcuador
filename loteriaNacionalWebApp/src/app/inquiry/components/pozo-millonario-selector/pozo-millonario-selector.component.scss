@@ -13,7 +13,14 @@ $color-pozo: #04b865;
   border-radius: 30px;
   background-color: $color-pozo;
   margin: auto;
-
+  .texto {
+    color: #fff;
+    font-family: $fuente-titulo;
+    font-size: 14px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5px;
+  }
   .logo_ticket {
     width: 100%;
     margin: auto;
@@ -181,47 +188,13 @@ $color-pozo: #04b865;
       }
     }
   }
-}
 
-.texto {
-  color: #fff;
-  font-family: $fuente-titulo;
-  font-size: 14px;
-  text-align: center;
-  margin: auto;
-  margin-top: 5px;
-}
-
-.ticket_entero {
-  padding-left: 13px;
-
-  h5 {
-    margin-top: 18px;
-    margin-bottom: 18px;
-    font-family: $fuente-titulo;
-    text-align: center;
-    font-size: 17px;
-    color: #fff;
-  }
-
-  div {
+  .texto_premios {
     display: flex;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 0 15px 0;
-
-    p {
-      width: 40px;
-      height: 40px;
-      background-color: #fff;
-      font-family: $fuente-subtitulo;
-      font-size: 14px;
-      color: #000;
-      margin: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 2px;
+    img {
+      width: 60%;
     }
   }
 }
