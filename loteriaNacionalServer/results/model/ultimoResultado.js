@@ -26,6 +26,9 @@ const ultimoResultadoSchema = new mongoose.Schema({
     codigoPremioPrincipal: {
         type: String
     },
+    mascota: {
+        type: String
+    },
     codigoPremioLottoPlus: {
         type: String
     },

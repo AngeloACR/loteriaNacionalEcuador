@@ -34,7 +34,7 @@ const mainController = {
                 let length = data.length;
                 console.log(length); */
             let data = await Lottery.autenticarUsuario()
-            let ultimosResultados = await Lottery.consultarUltimosResultados(1, data.token);
+            let ultimosResultados = await Lottery.consultarUltimosResultados(5, data.token);
 
             let response = {
                 ultimosResultados
@@ -115,6 +115,7 @@ const mainController = {
                 let indexLottito = 0;
                 let resultadosLottito = []
                 let premioPozo = false;
+                let reintegroPozo = false;
                 for (let i = 0; i < length; i++) {
                     let codigoPremioAux = data[i].X[0].R[0].$.P;
                     let codigoPremio = `${sorteo}-${codigoPremioAux}`;
@@ -143,6 +144,11 @@ const mainController = {
                             indexLottito++;
                         }
 
+                    }
+                    if (tipoLoteria == "5" && codigoPremioAux == "6" && !reintegroPozo) {
+                        reintegroPozo == true;
+                        let mascota = resultado.combinacion3;
+                        await ResultadosController.setMascota(tipoLoteria, mascota);
                     }
                 }
                 if (tipoLoteria == "2") {

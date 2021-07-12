@@ -39,12 +39,10 @@ export class ResultadosComponent implements OnInit {
     }
     this.resultados.forEach(resultado => {
       let description;
-      let ticketNumbers;
-      ticketNumbers = resultado.combinacion.split("");
       let ticket = {
         sorteo: resultado.sorteo,
         description,
-        ticketNumbers,
+        combinacion: resultado.combinacion,
         resultado
       };
       this.tickets.push(ticket);

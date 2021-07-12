@@ -345,6 +345,67 @@ const resultadosController = {
         }
 
     },
+    setMacota: async function (tipoLoteria, nombreMascota) {
+        try {
+            let ultimoResultadoResponse = await resultadosController.getUltimoResultado(tipoLoteria);
+            if (ultimoResultadoResponse.status) {
+                console.log('Actualizando ultimo resultado');
+                let mascota;
+                switch (nombreMascota) {
+                    case "Camarón":
+                        mascota = "01"
+                        break;
+                    case "Delfín":
+                        mascota = "02"
+                        break;
+                    case "Perro":
+                        mascota = "03"
+                        break;
+                    case "Llama":
+                        mascota = "04"
+                        break;
+                    case "Papagayo":
+                        mascota = "05"
+                        break;
+                    case "Conejo":
+                        mascota = "06"
+                        break;
+                    case "Mono":
+                        mascota = "07"
+                        break;
+                    case "Galápago":
+                        mascota = "08"
+                        break;
+                    case "Tucán":
+                        mascota = "09"
+                        break;
+                    case "Ballena":
+                        mascota = "10"
+                        break;
+                    case "Oso":
+                        mascota = "11"
+                        break;
+                    case "Foca":
+                        mascota = "12"
+                        break;
+                    case "Cangrejo":
+                        mascota = "13"
+                        break;
+                    case "Cóndor":
+                        mascota = "14"
+                        break;
+                    case "Iguana":
+                        mascota = "15"
+                        break;
+                }
+                ultimoResultadoResponse.values.mascota = mascota;
+                let newUltimoResultado = await ultimoResultadoResponse.values.save()
+            }
+        } catch (e) {
+            console.log(e.toString());
+        }
+
+    },
 
 
 }

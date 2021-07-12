@@ -6,7 +6,7 @@
     <li class="menuItem">Loteria Nacional</li>
     <li class="menuItem">Sorteo: <br>
       <select class="fechaItem" name="" id="">
-        <option value="" *ngFor="let item of sorteo">
+        <option [value]="item" *ngFor="let item of sorteo">
           {{ item.fecha }}
         </option>
       </select>
@@ -48,17 +48,19 @@
     <hr size="2px" color="gray" />
 
     <div class="contenedor_botones">
-      <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton" (click)="decrementar()">
+      <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton"
+        (click)="decrementar()">
         <i class="fa fa-chevron-left"></i>
       </button>
 
-      
-        <button class="boton">
-          {{ pageActual }}
-        </button>
+
+      <button class="boton">
+        {{ pageActual }}
+      </button>
 
 
-      <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton" (click)="incrementar()">
+      <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton"
+        (click)="incrementar()">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>

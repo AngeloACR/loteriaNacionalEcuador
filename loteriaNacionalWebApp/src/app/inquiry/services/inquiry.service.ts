@@ -182,4 +182,59 @@ export class InquiryService {
         });
     });
   }
+
+  obtenerMascota(mascota) {
+    let mascotaPath;
+    switch (mascota) {
+      case "01":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-camaron.png";
+        break;
+      case "02":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-delfin.png";
+        break;
+      case "03":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-perro.png";
+        break;
+      case "04":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-llama.png";
+        break;
+      case "05":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-papagayo.png";
+        break;
+      case "06":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-conejo.png";
+        break;
+      case "07":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-mono.png";
+        break;
+      case "08":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-galapago.png";
+        break;
+      case "09":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-tucan.png";
+        break;
+      case "10":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-ballena.png";
+        break;
+      case "11":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-oso.png";
+        break;
+      case "12":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-foca.png";
+        break;
+      case "13":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-cangrejo.png";
+        break;
+      case "14":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-condor.png";
+        break;
+      case "15":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-iguana.png";
+        break;
+
+      default:
+        break;
+    }
+    return mascotaPath;
+  }
 }

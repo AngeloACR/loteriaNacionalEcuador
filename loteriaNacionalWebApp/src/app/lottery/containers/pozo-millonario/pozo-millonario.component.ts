@@ -101,7 +101,7 @@ export class PozoMillonarioComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sorteo = this.lotteryService.obtenerSorteo();
-    this.premioPrecio = this.lotteryService.obtenerPremioPrecio(3);
+    this.sorteo = this.lotteryService.obtenerSorteo(5);
+    this.premioPrecio = this.lotteryService.obtenerPremioPrecio(5);
   }
 }

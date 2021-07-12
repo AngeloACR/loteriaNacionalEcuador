@@ -13,14 +13,12 @@ export class ResultadoComponent implements OnInit {
   description: String;
   nombrePremio: String;
   descripcionDescuento: String;
-  ticketNumbers: Number[];
   sorteo: Number;
   valorPremio: Number;
   valorFraccion: Number;
   constructor() {}
 
   ngOnInit() {
-    this.ticketNumbers = this.ticket.ticketNumbers;
     this.sorteo = this.ticket.sorteo;
     let resultado = this.ticket.resultado;
     console.log(resultado);
