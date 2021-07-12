@@ -79,3 +79,35 @@
     }
   }
 }
+
+@media screen and (min-width: 1800px) {
+  .iframeBox {
+    iframe {
+      height: 650px;
+    }
+  }
+}
+
+@media screen and (min-width: 2200px) {
+  .iframeBox {
+    iframe {
+      height: 770px;
+    }
+  }
+}
+
+@media screen and (min-width: 2500px) {
+  .iframeBox {
+    iframe {
+      height: 900px;
+    }
+  }
+}
+
+@media screen and (min-width: 3000px) {
+  .iframeBox {
+    iframe {
+      height: 1050px;
+    }
+  }
+}

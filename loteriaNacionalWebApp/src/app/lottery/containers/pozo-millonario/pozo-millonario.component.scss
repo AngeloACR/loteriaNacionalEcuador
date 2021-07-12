@@ -334,12 +334,12 @@ $color-botton: #2f72b9;
       margin: auto;
       justify-content: space-between;
 
-      .desaparecer { 
+      .desaparecer {
         opacity: 0;
         cursor: default;
       }
 
-      .aparecer { 
+      .aparecer {
         display: inline;
       }
 
@@ -552,6 +552,15 @@ $color-botton: #2f72b9;
             width: 100%;
           }
         }
+      }
+    }
+
+    .texto_premios {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 60%;
       }
     }
 
