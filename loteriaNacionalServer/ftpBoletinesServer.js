@@ -8,7 +8,7 @@ const ftpUser = config.ftpUserProd;
 //const ftpPass = config.ftpPassTest;
 const ftpPass = config.ftpPassProd;
 
-const ftpPath = `${__dirname}${config.ftpPath}`;
+const ftpPath = `${__dirname}${config.ftpBoletinesPath}`;
 
 
 const ftpPassMin = config.ftpPassMin;

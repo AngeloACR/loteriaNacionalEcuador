@@ -50,7 +50,8 @@ module.exports = {
     ftpUserProd: 'loterianacional',
     ftpPassTest: 'test',
     ftpPassProd: '$lnftp123..$',
-    ftpPath: '/uploads/resultados',
+    ftpResultadosPath: '/uploads/resultados',
+    ftpBoletinessPath: '/uploads/boletines',
 
     //SSL DATA
     sslPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/',
