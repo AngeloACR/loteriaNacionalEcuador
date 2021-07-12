@@ -12,6 +12,7 @@ $color-pozo: #04b865;
   padding: 15px;
   border-radius: 30px;
   background-color: $color-pozo;
+  margin: auto;
 
   .logo_ticket {
     width: 100%;
@@ -222,11 +223,5 @@ $color-pozo: #04b865;
       justify-content: center;
       border-radius: 2px;
     }
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .contenedor_ticket {
-    margin: auto;
   }
 }

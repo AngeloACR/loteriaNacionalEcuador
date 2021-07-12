@@ -9,7 +9,7 @@ $color-botton: #2f72b9;
   width: 90%;
   max-width: 400px;
   padding: 15px;
-  /* height: 60%; */
+  margin: auto;
   border-radius: 30px;
   background-color: $color-botton;
 
@@ -266,11 +266,5 @@ $color-botton: #2f72b9;
       justify-content: center;
       border-radius: 2px;
     }
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .contenedor_ticket {
-    margin: auto;
   }
 }

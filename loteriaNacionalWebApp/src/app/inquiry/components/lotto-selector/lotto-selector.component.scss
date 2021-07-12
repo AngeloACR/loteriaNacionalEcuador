@@ -10,6 +10,7 @@ $color-lotto: #b51f20;
   width: 90%;
   max-width: 400px;
 
+  margin: auto;
   padding: 15px;
   border-radius: 30px;
   background-color: $color-lotto;
@@ -256,11 +257,5 @@ $color-lotto: #b51f20;
       font-size: 0.8rem;
       color: #fff;
     }
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .contenedor_ticket {
-    margin: auto;
   }
 }
