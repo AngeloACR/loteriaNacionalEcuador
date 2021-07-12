@@ -8,31 +8,7 @@ $color-botton: #2f72b9;
 .resultadoBox {
   display: flex;
   flex-direction: column;
-  width: 100%; /* 
-  .resultadoTitulo {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    p {
-      font-size: 14px;
-      margin: 0 0 5px 0;
-    }
-    .numeroBoleto {
-      display: flex;
-      p {
-        font-size: 14px;
-        margin: 0 0 5px 0;
-      }
-    }
-  }
-  .resultadoDescripcion {
-    p {
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-      margin: 0 0 5px 0;
-    }
-  } */
+  width: 100%;
   .resultadoDetalles {
     display: flex;
     flex-direction: column;
@@ -55,38 +31,26 @@ $color-botton: #2f72b9;
         cursor: pointer;
       }
     }
-    img {
-      width: 100px;
-      margin: auto;
-      align-self: center;
-    }
-    /* 
-    .montoPremio {
+    .detailBox {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 100%;
-      .valorPremio {
-        width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        width: 150px;
+        margin: auto;
+        align-self: center;
+      }
+      .detailText {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        h5 {
-          font-size: 16px;
-          margin: 0;
-        }
+        align-items: flex-start;
         p {
           font-size: 16px;
-          font-weight: bold;
+          span {
+            font-weight: bold;
+          }
         }
       }
-
-      .descripcionDescuento {
-        p {
-          margin: 0;
-          font-size: 14px;
-        }
-      }
-    } */
+    }
   }
 }

@@ -1,6 +1,7 @@
 const db = require('./database');
 const lotteryServer = require('./lotteryServer');
-const ftpServer = require('./ftpServer');
+const ftpBoletinesServer = require('./ftpBoletinesServer');
+const ftpResultadosServer = require('./ftpResultadosServer');
 const webServer = require('./webServer');
 const config = require('./config/environment');
 const cronjobs = require('./cronjobs');
@@ -26,12 +27,19 @@ lotteryApp.listen(lotteryPort, () => {
 //const ftpHost = config.ftpHostLocal;
 //const ftpHost = config.ftpHostTest;
 const ftpHost = config.ftpHostProd;
-const ftpPort = config.ftpPort;
-const ftpApp = ftpServer.init(ftpHost, ftpPort);
+const ftpBoletinesPort = config.ftpBoletinesPort;
+const ftpBoletinesApp = ftpBoletinesServer.init(ftpHost, ftpBoletinesPort);
 
-ftpApp.listen()
+ftpBoletinesApp.listen()
     .then(() => {
-        console.log(`Server running at ftp://${ftpHost}:${ftpPort}/`);
+        console.log(`Server running at ftp://${ftpHost}:${ftpBoletinesPort}/`);
+    });
+const ftpResultadosPort = config.ftpResultadosPort;
+const ftpResultadosApp = ftpBoletinesServer.init(ftpHost, ftpResultadosPort);
+
+ftpResultadosApp.listen()
+    .then(() => {
+        console.log(`Server running at ftp://${ftpHost}:${ftpResultadosPort}/`);
     });
 
 let jobs = cronjobs.setCronJobs();
