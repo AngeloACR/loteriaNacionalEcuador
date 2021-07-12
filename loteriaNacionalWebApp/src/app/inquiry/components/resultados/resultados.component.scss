@@ -21,11 +21,19 @@
 }
 
 .resultBox {
-  width: 70%;
+  width: 95%;
   margin: 15px 0;
-  border-style: solid;
-  border-color: black;
-  border-width: 0 0 1px 0;
+
+  .messageBox {
+    padding: 20px;
+    border-radius: 23px;
+  }
+
+  hr {
+    width: 90%;
+    margin: auto;
+    color: #fff;
+  }
 }
 
 .closeBox {

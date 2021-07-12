@@ -18,12 +18,12 @@ export class ResultadosComponent implements OnInit {
 
   ngOnInit() {
     switch (this.tipoLoteria) {
-      case 1:
+      case "1":
         this.loteriaBackground = {
           backgroundLoteriaNacional: true
         };
         break;
-      case 2:
+      case "2":
         this.loteriaBackground = {
           backgroundLotto: true
         };
