@@ -51,7 +51,7 @@ module.exports = {
     ftpPassTest: 'test',
     ftpPassProd: '$lnftp123..$',
     ftpResultadosPath: '/uploads/resultados',
-    ftpBoletinessPath: '/uploads/boletines',
+    ftpBoletinesPath: '/uploads/boletines',
 
     //SSL DATA
     sslPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/',
