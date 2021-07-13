@@ -32,28 +32,24 @@ export class LoteriaComponent implements OnInit {
   }
 
   incrementar() {
-    if (this.pageActual >= this.numeros.length / 9) {
+    this.pageActual++;
+    if (this.pageActual >= this.numeros.length / 10) {
       this.desaparecer_derecho = true;
     } else {
-      this.pageActual++;
+      this.desaparecer_derecho = false;
     }
-
-    if (this.pageActual === 1) {
-      this.desaparecer_izquierdo = true;
-    } else {
-      this.desaparecer_izquierdo = false;
-    }
-    console.log(this.pageActual);
+    this.desaparecer_izquierdo = false;
   }
 
   decrementar() {
+    this.pageActual--;
     if (this.pageActual <= 1) {
       this.pageActual = 1;
       this.desaparecer_izquierdo = true;
     } else {
-      this.pageActual--;
-      this.desaparecer_derecho = false;
+      this.desaparecer_izquierdo = false;
     }
+    this.desaparecer_derecho = false;
     console.log(this.pageActual);
   }
 
@@ -66,5 +62,8 @@ export class LoteriaComponent implements OnInit {
   ngOnInit() {
     this.sorteo = this.lotteryService.obtenerSorteo(1);
     this.premioPrecio = this.lotteryService.obtenerPremioPrecio(1);
+    if (this.pageActual >= this.numeros.length / 10) {
+      this.desaparecer_derecho = true;
+    }
   }
 }

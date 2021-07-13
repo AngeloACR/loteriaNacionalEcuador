@@ -24,14 +24,14 @@ export class LotteryService {
             fecha: "16/08/21",
             premio: "200000",
             precio: "15",
-            fracciones: "40",
+            fracciones: "30",
             numero: "6526"
           },
           {
             fecha: "17/08/21",
             premio: "200000",
             precio: "15",
-            fracciones: "40",
+            fracciones: "20",
             numero: "6526"
           }
         ]);
@@ -67,21 +67,21 @@ export class LotteryService {
             fecha: "15/08/21",
             premio: "200000",
             precio: "15",
-            fracciones: "40",
+            fracciones: "1",
             numero: "930"
           },
           {
             fecha: "16/08/21",
             premio: "200000",
             precio: "15",
-            fracciones: "40",
+            fracciones: "1",
             numero: "931"
           },
           {
             fecha: "17/08/21",
             premio: "200000",
             precio: "15",
-            fracciones: "40",
+            fracciones: "1",
             numero: "932"
           }
         ]);

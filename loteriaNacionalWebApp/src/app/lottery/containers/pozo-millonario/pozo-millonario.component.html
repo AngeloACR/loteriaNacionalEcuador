@@ -43,7 +43,7 @@
         <app-number-selection [animales]="arreglo_animales"></app-number-selection>
       </div>
       <div class="tabs_animales">
-        <p *ngFor="let animal of arreglo_animales" (click)="remover(animal)">{{ animal }} <span>x</span></p>
+        <p *ngFor="let animal of arreglo_animales">{{ animal }} <span (click)="remover(animal)">x</span></p>
       </div>
       <button class="activado">BUSCAR CARTONES</button>
     </form>
@@ -62,17 +62,19 @@
     <hr size="2px" color="gray" />
 
     <div class="contenedor_botones">
-      <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton" (click)="decrementar()">
+      <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton"
+        (click)="decrementar()">
         <i class="fa fa-chevron-left"></i>
       </button>
 
-      
-        <button class="boton">
-          {{ pageActual }}
-        </button>
+
+      <button class="boton">
+        {{ pageActual }}
+      </button>
 
 
-      <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton" (click)="incrementar()">
+      <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton"
+        (click)="incrementar()">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>

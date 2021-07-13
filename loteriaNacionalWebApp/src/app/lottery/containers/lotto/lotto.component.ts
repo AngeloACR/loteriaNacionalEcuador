@@ -34,28 +34,24 @@ export class LottoComponent implements OnInit {
   /* seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; */
 
   incrementar() {
+    this.pageActual++;
     if (this.pageActual >= this.numeros.length / 4) {
       this.desaparecer_derecho = true;
     } else {
-      this.pageActual++;
+      this.desaparecer_derecho = false;
     }
-
-    if (this.pageActual === 1) {
-      this.desaparecer_izquierdo = true;
-    } else {
-      this.desaparecer_izquierdo = false;
-    }
-    console.log(this.pageActual);
+    this.desaparecer_izquierdo = false;
   }
 
   decrementar() {
+    this.pageActual--;
     if (this.pageActual <= 1) {
       this.pageActual = 1;
       this.desaparecer_izquierdo = true;
     } else {
-      this.pageActual--;
-      this.desaparecer_derecho = false;
+      this.desaparecer_izquierdo = false;
     }
+    this.desaparecer_derecho = false;
     console.log(this.pageActual);
   }
 
@@ -66,5 +62,8 @@ export class LottoComponent implements OnInit {
   ngOnInit() {
     this.sorteo = this.lotteryService.obtenerSorteo(2);
     this.premioPrecio = this.lotteryService.obtenerPremioPrecio(2);
+    if (this.pageActual >= this.numeros.length / 4) {
+      this.desaparecer_derecho = true;
+    }
   }
 }

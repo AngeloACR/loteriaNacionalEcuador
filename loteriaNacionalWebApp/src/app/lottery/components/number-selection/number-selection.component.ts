@@ -13,59 +13,63 @@ export class NumberSelectionComponent implements OnInit {
   animales: object = [
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-camaron.png",
-      nombre: "camaron",
+      nombre: "Camarón",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-      nombre: "cangrejo",
+      nombre: "Cangrejo",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-ballena.png",
-      nombre: "ballena",
+      nombre: "Ballena",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-condor.png",
-      nombre: "condor",
+      nombre: "Cóndor",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-conejo.png",
-      nombre: "conejo",
+      nombre: "Conejo",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-delfin.png",
-      nombre: "delfin",
+      nombre: "Delfín",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-foca.png",
-      nombre: "foca",
+      nombre: "Foca",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-galapago.png",
-      nombre: "galapago",
+      nombre: "Galápago",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-iguana.png",
-      nombre: "iguana",
+      nombre: "Iguana",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-llama.png",
-      nombre: "llama",
+      nombre: "Llama",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-      nombre: "mono",
+      nombre: "Mono",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-oso.png",
-      nombre: "oso",
+      nombre: "Oso",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-papagayo.png",
-      nombre: "papagayo",
+      nombre: "Papagayo",
     },
     {
       ruta: "../../../../assets/mascotas/mascotas pozo millonario-perro.png",
-      nombre: "perro",
+      nombre: "Perro",
+    },
+    {
+      ruta: "../../../../assets/mascotas/mascotas pozo millonario-tucan.png",
+      nombre: "Tucán",
     },
   ];
 
