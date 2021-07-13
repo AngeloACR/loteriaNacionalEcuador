@@ -27,7 +27,6 @@ export class LottoSelectorComponent implements OnInit {
     });
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
-      date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       ticketNumbers2: this.ticketNumbers2,

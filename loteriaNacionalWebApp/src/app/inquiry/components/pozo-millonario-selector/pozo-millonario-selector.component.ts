@@ -24,7 +24,6 @@ export class PozoMillonarioSelectorComponent implements OnInit {
 
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
-      date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       mascota: this.mascota,

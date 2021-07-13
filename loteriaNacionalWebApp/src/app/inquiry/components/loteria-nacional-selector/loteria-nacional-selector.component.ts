@@ -18,7 +18,6 @@ export class LoteriaNacionalSelectorComponent implements OnInit {
     this.ticketNumbers = data.ultimoResultado.combinacion1.split("");
     this.ticketGanador = {
       ticketIndex: data.ultimoResultado.codigo,
-      date: data.sorteo.fecha,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       numeroSorteo: data.numeroSorteo,
