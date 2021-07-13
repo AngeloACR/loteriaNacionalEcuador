@@ -34,7 +34,7 @@
 
       <table>
         <tbody>
-          <tr *ngFor="let item of numeros | paginate: { itemsPerPage: 10, currentPage: pageActual }; let valor = index">
+          <tr *ngFor="let item of numeros | paginate: { itemsPerPage: 4, currentPage: pageActual }; let valor = index">
             <td>
               <app-tooltip [numeros]="item" [ticket]="valor"></app-tooltip>
             </td>

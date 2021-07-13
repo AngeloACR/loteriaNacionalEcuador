@@ -6,7 +6,7 @@
 
       <div>
         <p>Sorteo N° {{ticket.numeroSorteo}}</p>
-        <p>{{ticket.sorteo.fecha}}</p>
+        <p *ngIf="ticket.sorteo.fecha">{{ticket.sorteo.fecha}}</p>
       </div>
     </div>
     <hr size="2px" />

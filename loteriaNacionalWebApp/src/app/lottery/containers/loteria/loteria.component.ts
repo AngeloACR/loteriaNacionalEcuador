@@ -33,7 +33,7 @@ export class LoteriaComponent implements OnInit {
 
   incrementar() {
     this.pageActual++;
-    if (this.pageActual >= this.numeros.length / 10) {
+    if (this.pageActual >= this.numeros.length / 4) {
       this.desaparecer_derecho = true;
     } else {
       this.desaparecer_derecho = false;
@@ -62,7 +62,7 @@ export class LoteriaComponent implements OnInit {
   ngOnInit() {
     this.sorteo = this.lotteryService.obtenerSorteo(1);
     this.premioPrecio = this.lotteryService.obtenerPremioPrecio(1);
-    if (this.pageActual >= this.numeros.length / 10) {
+    if (this.pageActual >= this.numeros.length / 4) {
       this.desaparecer_derecho = true;
     }
   }
