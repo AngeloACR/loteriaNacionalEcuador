@@ -35,7 +35,7 @@ ftpBoletinesApp.listen()
         console.log(`Server running at ftp://${ftpHost}:${ftpBoletinesPort}/`);
     });
 const ftpResultadosPort = config.ftpResultadosPort;
-const ftpResultadosApp = ftpBoletinesServer.init(ftpHost, ftpResultadosPort);
+const ftpResultadosApp = ftpResultadosServer.init(ftpHost, ftpResultadosPort);
 
 ftpResultadosApp.listen()
     .then(() => {
