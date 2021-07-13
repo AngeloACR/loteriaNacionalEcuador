@@ -352,10 +352,10 @@ const resultadosController = {
                 console.log('Actualizando ultimo resultado');
                 let mascota;
                 switch (nombreMascota) {
-                    case "Camarón":
+                    case "Camar�n":
                         mascota = "01"
                         break;
-                    case "Delfín":
+                    case "Delf�n":
                         mascota = "02"
                         break;
                     case "Perro":
@@ -373,10 +373,10 @@ const resultadosController = {
                     case "Mono":
                         mascota = "07"
                         break;
-                    case "Galápago":
+                    case "Gal�pago":
                         mascota = "08"
                         break;
-                    case "Tucán":
+                    case "Tuc�n":
                         mascota = "09"
                         break;
                     case "Ballena":
@@ -391,7 +391,7 @@ const resultadosController = {
                     case "Cangrejo":
                         mascota = "13"
                         break;
-                    case "Cóndor":
+                    case "C�ndor":
                         mascota = "14"
                         break;
                     case "Iguana":

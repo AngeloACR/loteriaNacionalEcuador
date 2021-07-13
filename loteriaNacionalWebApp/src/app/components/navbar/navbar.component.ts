@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./navbar.component.scss"]
 })
 export class NavbarComponent implements OnInit {
-  ganadoresLink: String = "https://www4.loteria.com.ec/ganadores";
+  ganadoresLink: String = "https://www.loteria.com.ec/ganadores";
   constructor() {}
 
   ngOnInit() {}
