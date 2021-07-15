@@ -64,6 +64,7 @@ $color-lotto: #b51f20;
       p:nth-child(1) {
         font-size: 30px;
         -webkit-text-stroke: 2px $color-lotto;
+        text-align: center;
         color: $color-lotto;
         font-family: $fuente-titulo;
         margin: 10px 0px;

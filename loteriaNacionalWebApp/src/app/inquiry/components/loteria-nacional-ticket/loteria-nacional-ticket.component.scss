@@ -63,8 +63,9 @@ $color-botton: #2f72b9;
 
       p:nth-child(1) {
         font-size: 30px;
+        text-align: center;
         -webkit-text-stroke: 2px $color-botton;
-        color: #fff;
+        color: $color-botton;
         font-family: $fuente-titulo;
         margin: 10px 0px;
       }

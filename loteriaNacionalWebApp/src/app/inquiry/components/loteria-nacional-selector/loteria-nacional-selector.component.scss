@@ -8,6 +8,7 @@ $color-botton: #2f72b9;
 .contenedor_ticket {
   width: 90%;
   max-width: 400px;
+  min-width: 300px;
   padding: 15px;
   margin: auto;
   border-radius: 30px;
@@ -18,11 +19,21 @@ $color-botton: #2f72b9;
     margin: auto;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
 
     img {
-      height: 120px;
+      height: 100px;
       margin: auto;
-      margin: 15px auto;
+    }
+    p {
+      margin: 0;
+      font-family: $fuente-titulo;
+      font-style: italic;
+      font-size: 16px;
+      color: white;
+      visibility: hidden;
     }
   }
 

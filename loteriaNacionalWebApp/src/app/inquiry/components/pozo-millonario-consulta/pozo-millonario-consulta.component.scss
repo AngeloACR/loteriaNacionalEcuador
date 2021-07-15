@@ -160,6 +160,16 @@ $color-pozo: #04b865;
                 @extend %input;
                 color: #4d4d4d;
                 outline: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border-radius: 0;
+                cursor: pointer;
+                option:first-child {
+                  visibility: hidden;
+                }
+                option {
+                  cursor: pointer;
+                }
               }
             }
 

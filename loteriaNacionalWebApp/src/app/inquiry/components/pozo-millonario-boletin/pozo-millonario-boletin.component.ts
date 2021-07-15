@@ -10,6 +10,7 @@ import { InquiryService } from "../../services/inquiry.service";
 })
 export class PozoMillonarioBoletinComponent implements OnInit {
   boletinImagen: any;
+  imgNotFound: boolean = false;
   sorteo: any;
   constructor(
     private actRoute: ActivatedRoute,
@@ -27,5 +28,10 @@ export class PozoMillonarioBoletinComponent implements OnInit {
       5,
       this.sorteo
     );
+  }
+
+  handleImgError() {
+    console.log("Img not found");
+    this.imgNotFound = true;
   }
 }

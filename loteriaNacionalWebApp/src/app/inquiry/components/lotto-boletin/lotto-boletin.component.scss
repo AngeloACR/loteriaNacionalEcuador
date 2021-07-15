@@ -14,4 +14,21 @@ $color-botton: #b51f20;
   img {
     width: 100%;
   }
+
+  .boletinNotFound {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    p {
+      font-family: $fuente-parrafo;
+      font-size: 16px;
+      text-align: center;
+      a {
+        text-decoration: none;
+        color: black;
+        font-family: $fuente-titulo;
+        cursor: pointer;
+      }
+    }
+  }
 }

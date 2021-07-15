@@ -10,6 +10,7 @@ import { InquiryService } from "../../services/inquiry.service";
 export class LoteriaNacionalBoletinComponent implements OnInit {
   boletinImagen: any;
   sorteo: any;
+  imgNotFound: boolean = false;
   constructor(
     private actRoute: ActivatedRoute,
     private router: Router,
@@ -26,5 +27,10 @@ export class LoteriaNacionalBoletinComponent implements OnInit {
       1,
       this.sorteo
     );
+  }
+
+  handleImgError() {
+    console.log("Img not found");
+    this.imgNotFound = true;
   }
 }

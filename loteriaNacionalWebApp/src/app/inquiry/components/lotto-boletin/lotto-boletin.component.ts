@@ -9,6 +9,7 @@ import { InquiryService } from "../../services/inquiry.service";
 })
 export class LottoBoletinComponent implements OnInit {
   boletinImagen: any;
+  imgNotFound: boolean = false;
   sorteo: any;
   constructor(
     private actRoute: ActivatedRoute,
@@ -26,5 +27,10 @@ export class LottoBoletinComponent implements OnInit {
       2,
       this.sorteo
     );
+  }
+
+  handleImgError() {
+    console.log("Img not found");
+    this.imgNotFound = true;
   }
 }
