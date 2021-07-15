@@ -6,8 +6,8 @@
  * @link       https://tecnobunker.net
  * @since      1.0.0
  *
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  * @author     Tecnobunker <info@tecnobunker.net>
  */
-class Geo_Target_Loader
+class LN_Plugin_Loader
 {
 
 	/**

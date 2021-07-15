@@ -6,8 +6,8 @@
  * @link       https://tecnobunker.net
  * @since      1.0.0
  *
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  * @author     Tecnobunker <info@tecnobunker.net>
  */
-class Geo_Target_Deactivator
+class LN_Plugin_Deactivator
 {
 
 	/**

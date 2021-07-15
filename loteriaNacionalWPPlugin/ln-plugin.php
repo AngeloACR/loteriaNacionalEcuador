@@ -17,7 +17,7 @@
  * @wordpress-plugin
  * Plugin Name:       LN Plugin
  * Plugin URI:        https://tecnobunker.net
- * Description:       Integra mercadopago dentro de tu pluginplace.
+ * Description:       Integración para loteria nacional.
  * Version:           1.3.0
  * Author:            Tecnobunker
  * Author URI:        https://tecnobunker.net
@@ -41,118 +41,153 @@ define('LN_PLUGIN_VERSION', '1.3.0');
 
 define('LN_PLUGIN_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
-if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
 
-	/**
-	 * The code that runs during plugin activation.
-	 * This action is documented in includes/class-ln-plugin-activator.php
-	 */
-	function activate_ln_plugin()
-	{
-		require_once LN_PLUGIN_PLUGIN_DIR . 'includes/class-ln-plugin-activator.php';
-		LN_Plugin_Activator::activate();
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-ln-plugin-activator.php
+ */
+function activate_ln_plugin()
+{
+	require_once LN_PLUGIN_PLUGIN_DIR . 'includes/class-ln-plugin-activator.php';
+	LN_Plugin_Activator::activate();
+}
+
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-ln-plugin-deactivator.php
+ */
+function deactivate_ln_plugin()
+{
+	require_once LN_PLUGIN_PLUGIN_DIR . 'includes/class-ln-plugin-deactivator.php';
+	LN_Plugin_Deactivator::deactivate();
+}
+
+register_activation_hook(__FILE__, 'activate_ln_plugin');
+register_deactivation_hook(__FILE__, 'deactivate_ln_plugin');
+
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+require LN_PLUGIN_PLUGIN_DIR . 'includes/class-ln-plugin.php';
+
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    1.0.0
+ */
+
+
+
+add_action('wp_ajax_nopriv_uploadBoletines', 'uploadBoletines');
+add_action('wp_ajax_uploadBoletines', 'uploadBoletines');
+
+function uploadBoletines()
+{
+	$home = get_home_url();
+
+	$boletinesUploadFolder = '/wp-content/uploads/boletines/';
+	$boletosUploadFolder = '/wp-content/uploads/boletos/';
+	$boletinesPath = $_SERVER['DOCUMENT_ROOT'] . $boletinesUploadFolder;
+	$boletosPath = $_SERVER['DOCUMENT_ROOT'] . $boletosUploadFolder;
+	if (!file_exists($boletinesPath)) {
+		mkdir($boletinesPath, 0755, true);
 	}
-
-	/**
-	 * The code that runs during plugin deactivation.
-	 * This action is documented in includes/class-ln-plugin-deactivator.php
-	 */
-	function deactivate_ln_plugin()
-	{
-		require_once LN_PLUGIN_PLUGIN_DIR . 'includes/class-ln-plugin-deactivator.php';
-		LN_Plugin_Deactivator::deactivate();
+	if (!file_exists($boletosPath)) {
+		mkdir($boletosPath, 0755, true);
 	}
+	if (isset($_REQUEST) && isset($_FILES)) {
+		foreach ($_FILES as $f => $file) {
+			$filename = basename($file['name']);
 
-	register_activation_hook(__FILE__, 'activate_ln_plugin');
-	register_deactivation_hook(__FILE__, 'deactivate_ln_plugin');
+			$tipoImagen = $filename[0];
+			$tipoLoteria = $filename[1];
+			if ($tipoImagen == "T") {
+				$documentFolder = $boletinesPath;
+			} else if ($tipoImagen == "B") {
+				$documentFolder = $boletosPath;
+			} else {
+				$response = array(
+					'status' => false,
+					'message' => 'El nombre del archivo no sigue el formato descrito'
+				);
 
-	/**
-	 * The core plugin class that is used to define internationalization,
-	 * admin-specific hooks, and public-facing site hooks.
-	 */
-	require LN_PLUGIN_PLUGIN_DIR . 'includes/class-ln-plugin.php';
-
-	/**
-	 * Begins execution of the plugin.
-	 *
-	 * Since everything within the plugin is registered via hooks,
-	 * then kicking off the plugin from this point in the file does
-	 * not affect the page life cycle.
-	 *
-	 * @since    1.0.0
-	 */
-
-
-
-	add_action('wp_ajax_nopriv_uploadBoletines', 'uploadBoletines');
-	add_action('wp_ajax_uploadBoletines', 'uploadBoletines');
-
-	function uploadBoletines()
-	{
-		$home = get_home_url();
-
-		$boletinesUploadFolder = '/wp-content/uploads/boletines/';
-		$boletosUploadFolder = '/wp-content/uploads/boletos/';
-		$boletinesPath = $_SERVER['DOCUMENT_ROOT'] . $boletinesUploadFolder;
-		$boletosPath = $_SERVER['DOCUMENT_ROOT'] . $boletosUploadFolder;
-		if (!file_exists($boletinesPath)) {
-			mkdir($boletinesPath, 0755, true);
-		}
-		if (!file_exists($boletosPath)) {
-			mkdir($boletosPath, 0755, true);
-		}
-		if (isset($_REQUEST) && isset($_FILES)) {
-			foreach ($_FILES as $f => $file) {
-				$filename = basename($file['name']);
-
-				$tipoImagen = $filename[0];
-				$tipoLoteria = $filename[1];
-				if ($tipoImagen == "T") {
-					$documentFolder = $boletinesPath;
-				} else if ($tipoImagen == "B") {
-					$documentFolder = $boletosPath;
-				}
-				$targetFile = $documentFolder . $filename;
-				move_uploaded_file($file["tmp_name"], $targetFile);
+				break;
 			}
-		}
+			if ($tipoLoteria != "1" && $tipoLoteria != "2" && $tipoLoteria != "5") {
+				$response = array(
+					'status' => false,
+					'message' => 'El tipo de lotería indicado no coincide con ninguno de los de Loteria Nacional'
+				);
 
+				break;
+			}
+			$targetFile = $documentFolder . $filename;
+			move_uploaded_file($file["tmp_name"], $targetFile);
+			$host = "ventas.loteria.com.ec";
+			$port = 2224;
+			$timeout = 360;
+			$user = "loterianacional";
+			$pass = "\$lnftp123..$";
+			$ftp = ftp_ssl_connect($host, $port, $timeout);
+			$ftpLogin = ftp_login($ftp, $user, $pass);
+
+			$ret = ftp_nb_put($ftp, $filename, $targetFile, FTP_BINARY, FTP_AUTORESUME);
+
+			while (FTP_MOREDATA == $ret) {
+				// display progress bar, or something
+				$ret = ftp_nb_continue($ftp);
+			}
+			$ftpEncoded = json_encode($ftp);
+			$ftpLoginEncoded = json_encode($ftpLogin);
+			ftp_close($ftp);
+			$ftpDone = true;
+		}
+	}
+
+	if ($ftpDone) {
 
 		$response = array(
 			'status' => true,
-		);
-
-		echo json_encode($response);
-
-		wp_die();
-	}
-
-
-	add_action('admin_menu', 'ln_plugin_menu');
-
-	function ln_plugin_menu()
-	{
-		add_menu_page(
-			'Carga de boletines y boletos',
-			'Boletines y boletos',
-			'edit_users',
-			'ln_plugin_menu',
-			'ln_plugin_menu_content',
-			'',
-			10
+			'message' => 'Archivos cargados exitosamente'
 		);
 	}
 
-	function ln_plugin_menu_content()
-	{
-		require_once LN_PLUGIN_PLUGIN_DIR . 'ln-templates/ln-plugin-uploader.php';
-	}
+	echo json_encode($response);
 
-	function run_ln_plugin()
-	{
-
-		$plugin = new LN_Plugin();
-		$plugin->run();
-	}
-	run_ln_plugin();
+	wp_die();
 }
+
+
+add_action('admin_menu', 'ln_plugin_menu');
+
+function ln_plugin_menu()
+{
+	add_menu_page(
+		'Carga de boletines',
+		'Boletines',
+		'edit_posts',
+		'ln_plugin_menu',
+		'ln_plugin_menu_content',
+		'',
+		2
+	);
+}
+
+function ln_plugin_menu_content()
+{
+	require_once LN_PLUGIN_PLUGIN_DIR . 'ln-templates/ln-plugin-uploader.php';
+}
+
+
+function run_ln_plugin()
+{
+
+	$plugin = new LN_Plugin();
+	$plugin->run();
+}
+run_ln_plugin();

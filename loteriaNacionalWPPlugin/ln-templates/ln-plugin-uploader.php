@@ -1,135 +1,238 @@
 <?php
 /* Template Name:illescasBlog */
 
+$home = get_home_url();
+$pcIconPath = $home . "/wp-content/plugins/lnPlugin/assets/uploadIcon.png";
+$loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
+
 ?>
-<h1 class="statusTitle">CARGA DE BOLETINES Y BOLETOS</h1>
+<div class="bigBox">
+    <div class="moduleBox">
+        <div class="titleBox">
+            <p>CARGA DE BOLETINES</p>
+        </div>
+        <div class="instructionsBox">
+            <p>- El nombre de los archivos de boletin deben empezar con una "T" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: T5943.jpg, T2256.jpg, T16626.jpg</p>
+            <p>- Los códigos de los juegos son: </p>
+            <p class="codeTag">- 1 para Loteria Nacional</p>
+            <p class="codeTag">- 2 para Lotto</p>
+            <p class="codeTag">- 5 para Pozo Millonario</p>
+            <p>- Es importante seguir el protocolo descrito, de lo contrario los archivos no se cargarán correctamente y los usuarios de la plataforma web no podrán visualizarlos.</p>
+        </div>
 
-<div class="uploaderBox">
+        <div class="uploadIcons">
+            <div class="pcUpload">
+            </div>
+            <form class="fileUpload" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>
+                        <img id="pc" src="<?php echo $pcIconPath; ?>" alt="">
+                        <input type="file" name="clientFile" id="file" accept="image/*" multiple />
+                        <p class="uploadTag">Cargar boletines</p>
+                    </label>
+                </div>
+            </form>
+        </div>
 
+        <div id="boletinesBox" class="uploadedBoletines">
+        </div>
+    </div>
 </div>
 
-?
 <style>
-    .statusTitle {
+    #file {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    .moduleBox {
+        height: 100%;
+        width: 90%;
+        overflow: scroll;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .instructionsBox {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .codeTag {
+        margin: 0 0 0 20px;
+    }
+
+    .uploadTag {
+        margin: 0;
+        font-weight: bold;
         text-align: center;
     }
 
-    .cashCont {
+    .moduleBox::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #F5F5F5;
+    }
+
+    .moduleBox::-webkit-scrollbar {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+
+    .moduleBox::-webkit-scrollbar-thumb {
+        background-color: #d91887;
+    }
+
+    .uploadIcons {
         display: flex;
         flex-direction: row;
+        width: 100%;
+        align-items: center;
         justify-content: center;
-        align-items: center;
-        margin-bottom: 0 !important;
     }
 
-    .bigBox {
-        border-width: 1px;
-        border-style: solid;
-        border-color: grey;
-    }
-
-    .cashElem {
-        display: flex;
-        width: 18%;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 50px;
-        align-items: center;
-    }
-
-    .cashElem p {
-        margin: 0;
-        padding: 0;
-    }
-
-    .cashElem select {
-        margin: 0;
-        padding: 0;
-    }
-
-    .cashElem .submit {
-        margin: 0;
-        padding: 0;
-    }
-
-    .cashElem button {
+    .uploadIcons img {
+        height: 100px;
+        margin-right: 15px;
+        margin-left: 15px;
         cursor: pointer;
     }
 
-    ul.usersList {
-        width: 90% !important;
-        margin: 0 auto;
+    .uploadedBoletines {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
-
-    @media screen and (max-width: 600px) {
-        .postTitle p {
-            font-size: 18px;
-        }
+    .uploadedBoletin {
+        width: 14%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 20px;
     }
+
+    .uploadedBoletin img {
+        width: 100%;
+    }
+
+    .buttonBox {
+        width: 180px;
+        margin-bottom: 30px;
+        cursor: pointer;
+    }
+
+    .buttonBox a {
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-color: #d91887;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 23px;
+        border-color: #d91887;
+    }
+
+    .buttonBox a:hover {
+        background-color: white;
+        color: #d91887;
+    }
+
+    @media only screen and (max-width: 800px) {}
 </style>
-
 <script>
-    let refreshButtons = document.getElementsByClassName("refreshButton");
-    console.log(refreshButtons);
-    let vmcAccessToken = "<?php echo $accessToken; ?>"
-    let authUrl = 'https://api.mercadopago.com/oauth/token';
-    Array.prototype.forEach.call(refreshButtons, function(refreshButton) {
+    var pc = document.getElementById("pc");
+    var pcUpload = document.getElementById("file");
 
-        refreshButton.addEventListener('click', function(event) {
-            let data = event.target.id
-            let splitData = data.split("/--/");
-            let refreshToken = splitData[0];
-            let vendorId = splitData[1];
-            console.log(refreshToken);
-            console.log(vendorId);
-            var details = {
 
-                client_secret: vmcAccessToken,
-                grant_type: 'refresh_token',
-                refresh_token: refreshToken
-            };
+    let pcUploadLink = "<?php echo $src . "/wp-admin/admin-ajax.php?action=uploadBoletines"; ?>";
 
-            var formBody = [];
-            for (var property in details) {
-                var encodedKey = encodeURIComponent(property);
-                var encodedValue = encodeURIComponent(details[property]);
-                formBody.push(encodedKey + "=" + encodedValue);
+
+    showBoletines();
+
+    pcUpload.addEventListener("change", function() {
+        var fileList = pcUpload.files; // The <input type="file" /> field
+        let i = 0;
+        // Loop through each data and create an array file[] containing our files data.
+        // our AJAX identifier
+        let link = getUploadLink();
+        console.log(fileList);
+        let fd = new FormData();
+        for (let i = 0; i < fileList.length; i++) {
+            name = "clientFile" + i;
+            fd.append(name, fileList[i]);
+        }
+        triggerLoader()
+        let ajax = new XMLHttpRequest();
+        ajax.open("POST", link, true);
+        ajax.onreadystatechange = function(aEvt) {
+            console.log(ajax)
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) {
+                    let response = JSON.parse(ajax.responseText);
+                    showBoletines();
+                    setLocalStorage();
+                    console.log(response);
+                    dismissLoader()
+                    if (response.status) {
+
+                        alert(`${response.message}`);
+                    } else {
+                        alert(`Hubo un error subiendo los archivos: ${response.message}`);
+                    }
+                } else
+                    console.log("Error loading page\n");
             }
-            formBody = formBody.join("&");
+        };
+        ajax.send(fd);
 
-            fetch(authUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                    },
-                    body: formBody
-                })
-                .then(async (data) => {
+    })
 
-                    let jsonResponse = await data.json()
-                    console.log(jsonResponse);
-                    let publicKey = jsonResponse.public_key;
-                    let accessToken = jsonResponse.access_token;
-                    let refreshToken = jsonResponse.refresh_token;
-                    let actionLink = `${vmc_market_params.ajax_url}?action=refreshVendor&accessToken=${accessToken}&refreshToken=${refreshToken}&publicKey=${publicKey}&vendorId=${vendorId}`;
+    function setLocalStorage() {}
 
-                    let ajax = new XMLHttpRequest();
-                    ajax.open("GET", actionLink, true);
-                    ajax.onreadystatechange = function(aEvt) {
-                        console.log(ajax)
-                        if (ajax.readyState == 4) {
-                            if (ajax.status == 200) {
-                                let response = JSON.parse(ajax.responseText);
-                                console.log(response);
-                                window.location.reload();
-                            } else
-                                console.log("Error\n");
-                        }
-                    };
-                    ajax.send();
-                })
-        })
-    });
+    function showBoletines() {}
+
+    function getUploadLink() {
+        let link = `${pcUploadLink}&contentType=false&processData=false`;
+        return link
+    }
+
+    function triggerLoader() {
+        console.log('waiting');
+        let home = "<?php echo $home; ?>";
+        let loaderBox = document.createElement("div");
+        let loader = document.createElement("img");
+        let loaderText = document.createElement("p");
+        loaderText.innerText = "Espere mientras procesamos su información";
+        loader.src = `<?php echo $loaderPath; ?>`;
+        loaderBox.appendChild(loader);
+        loaderBox.appendChild(loaderText);
+
+        loaderBox.className = "loaderBox";
+        loaderBox.id = "registerLoader";
+        let body = document.getElementsByTagName("body")[0];
+        //let registerBox = document.getElementById("registerBox");
+        body.appendChild(loaderBox);
+    }
+
+    function dismissLoader() {
+        let loaderBox = document.getElementById("registerLoader");
+        let body = document.getElementsByTagName("body")[0];
+        //let registerBox = document.getElementById("registerBox");
+        body.removeChild(loaderBox);
+        console.log('done');
+    }
 </script>

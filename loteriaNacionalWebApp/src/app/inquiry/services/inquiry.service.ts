@@ -42,12 +42,19 @@ export class InquiryService {
 
     address = address + endpoint;
     return new Promise((resolve, reject) => {
-      this.http.get(address, { headers: headers }).subscribe((data: any[]) => {
+      this.http.get(address, { headers: headers }).subscribe((data: any) => {
         let sorteosJugados = data.values;
         console.log(sorteosJugados);
+        sorteosJugados.sort(this.ordenaSorteos);
         resolve(sorteosJugados);
       });
     });
+  }
+
+  ordenaSorteos(a, b) {
+    let a1 = a["sorteo"];
+    let b1 = b["sorteo"];
+    return b1 - a1;
   }
 
   recuperarBoletoGanador(tipoLoteria, sorteo, combinaciones) {

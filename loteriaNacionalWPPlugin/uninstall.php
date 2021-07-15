@@ -19,13 +19,13 @@
  * For more information, see the following discussion:
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
- * @link       https://www.linkedin.com/in/nicolas-estefan-lopez-beltran-2693a6102/
+ * @link       https://tecnobunker.net/
  * @since      1.0.0
  *
- * @package    Synapsis_Payment
+ * @package    LN_Plugin
  */
 
 // If uninstall not called from WordPress, then exit.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if (!defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }

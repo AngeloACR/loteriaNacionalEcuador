@@ -9,13 +9,10 @@ $home = get_home_url();
 <div class="bigBox">
     <div class="moduleBox">
         <div class="titleBox">
-            <p>CARGA DE BOLETINES Y BOLETOS</p>
+            <p>CARGA DE BOLETINES</p>
         </div>
         <div class="instructionsBox">
-            <p>-Cargue y visualice el listado de boletines y boletos.</p>
-        </div>
-        <div class="counterBox">
-            <p>Ultimo Boletin: <span id="numberOfBoletinesUploaded"></span></p>
+            <p>-Cargue listado de boletines.</p>
         </div>
 
         <div class="uploadIcons">
@@ -32,9 +29,6 @@ $home = get_home_url();
         </div>
 
         <div id="boletinesBox" class="uploadedBoletines">
-        </div>
-        <div class="buttonBox">
-            <a href="<?php echo $urlEditor; ?>">IR AL EDITOR</a>
         </div>
     </div>
 </div>

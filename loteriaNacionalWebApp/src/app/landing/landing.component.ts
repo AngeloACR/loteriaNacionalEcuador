@@ -17,6 +17,6 @@ export class LandingComponent implements OnInit {
   async ngOnInit() {
     await this.inquiry.recuperarUltimosResultados();
     this.infoReady = true;
-
   }
+
 }

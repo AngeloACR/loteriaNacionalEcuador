@@ -9,8 +9,8 @@
  * @link       https://tecnobunker.net
  * @since      1.0.0
  *
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  * @author     Tecnobunker <info@tecnobunker.net>
  */
-class Geo_Target
+class LN_Plugin
 {
 
 	/**
@@ -36,7 +36,7 @@ class Geo_Target
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Geo_Target_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      LN_Plugin_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -69,17 +69,16 @@ class Geo_Target
 	 */
 	public function __construct()
 	{
-		if (defined('GEO_TARGET_VERSION')) {
-			$this->version = GEO_TARGET_VERSION;
+		if (defined('LN_PLUGIN_VERSION')) {
+			$this->version = LN_PLUGIN_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'geo-target';
+		$this->plugin_name = 'ln-plugin';
 
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
 	}
 
 	/**
@@ -87,10 +86,10 @@ class Geo_Target
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Geo_Target_Loader. Orchestrates the hooks of the plugin.
-	 * - Geo_Target_i18n. Defines internationalization functionality.
-	 * - Geo_Target_Admin. Defines all hooks for the admin area.
-	 * - Geo_Target_Public. Defines all hooks for the public side of the site.
+	 * - LN_Plugin_Loader. Orchestrates the hooks of the plugin.
+	 * - LN_Plugin_i18n. Defines internationalization functionality.
+	 * - LN_Plugin_Admin. Defines all hooks for the admin area.
+	 * - LN_Plugin_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -105,33 +104,26 @@ class Geo_Target
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-geo-target-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ln-plugin-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-geo-target-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ln-plugin-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-geo-target-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-ln-plugin-admin.php';
 
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-geo-target-public.php';
-
-
-		$this->loader = new Geo_Target_Loader();
+		$this->loader = new LN_Plugin_Loader();
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Geo_Target_i18n class in order to set the domain and to register the hook
+	 * Uses the LN_Plugin_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -140,7 +132,7 @@ class Geo_Target
 	private function set_locale()
 	{
 
-		$plugin_i18n = new Geo_Target_i18n();
+		$plugin_i18n = new LN_Plugin_i18n();
 
 		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
@@ -155,43 +147,10 @@ class Geo_Target
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Geo_Target_Admin($this->get_plugin_name(), $this->get_version());
+		$plugin_admin = new LN_Plugin_Admin($this->get_plugin_name(), $this->get_version());
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-		$this->loader->add_action('admin_init', $plugin_admin, 'registerSettings');
-		$this->loader->add_filter('woocommerce_email_classes', $plugin_admin, 'addGeoTargetEmail');
-
-		/* 		$this->loader->add_action('init', $plugin_admin, 'setRestaurantCPT');
-		$this->loader->add_action('contextual_help', $plugin_admin, 'my_contextual_help', 0, 3);
-		$this->loader->add_action('add_meta_boxes', $plugin_admin, 'geo_restaurant_name');
-		$this->loader->add_action('save_post', $plugin_admin, 'geo_restaurant_name_save');
-		$this->loader->add_action('add_meta_boxes', $plugin_admin, 'geo_restaurant_max_distance');
-		$this->loader->add_action('save_post', $plugin_admin, 'geo_restaurant_max_distance_save');
-
-		$this->loader->add_action('add_meta_boxes', $plugin_admin, 'geo_restaurant_address');
-		$this->loader->add_action('save_post', $plugin_admin, 'geo_restaurant_address_save');
-		$this->loader->add_filter('post_updated_messages', $plugin_admin, 'my_updated_messages'); */
-	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks()
-	{
-
-		$plugin_public = new Geo_Target_Public($this->get_plugin_name(), $this->get_version());
-
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-		$this->loader->add_action('woocommerce_checkout_process',   $plugin_public, 'validate_checkout_fields');
-		$this->loader->add_action('woocommerce_checkout_update_order_meta', $plugin_public, 'save_restaurant_email_checkout_hidden_field');
-
-		//$this->loader->add_action('rest_api_init',   $plugin_public, 'notifyApi');
 	}
 
 	/**
@@ -222,7 +181,7 @@ class Geo_Target
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Geo_Target_Loader    Orchestrates the hooks of the plugin.
+	 * @return    LN_Plugin_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader()
 	{

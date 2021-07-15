@@ -9,8 +9,8 @@
  * @link       https://tecnobunker.net
  * @since      1.0.0
  *
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Geo_Target
- * @subpackage Geo_Target/includes
+ * @package    LN_Plugin
+ * @subpackage LN_Plugin/includes
  * @author     Tecnobunker <info@tecnobunker.net>
  */
-class Geo_Target_i18n
+class LN_Plugin_i18n
 {
 
 
@@ -37,7 +37,7 @@ class Geo_Target_i18n
 	{
 
 		load_plugin_textdomain(
-			'synapsis-payment',
+			'ln-plugin',
 			false,
 			dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
 		);

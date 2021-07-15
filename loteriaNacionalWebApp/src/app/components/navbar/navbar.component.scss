@@ -6,106 +6,51 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #2f72b9;
-
-.navbar_contenedor {
-  width: 100%;
-  margin: auto;
-  //background-color: #000980 !important;
-
-  .navbar {
+nav {
+  display: block;
+  .navbar_contenedor {
     width: 100%;
-    margin: auto;
+    background-color: #28abe2 !important;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    /* padding: 10px; */
-    .navbar_info {
-      a {
-        padding-right: 25px;
-        text-decoration: none;
-        color: black;
-        font-family: $fuente-subtitulo;
-        font-size: 13px;
-      }
-    }
-
-    .navbar_carrito {
-      width: auto;
+    .navbar_links {
+      width: 100%;
       display: flex;
-      align-items: center;
-      font-size: 13px;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
 
-      p {
-        display: flex;
-        align-items: center;
+      li {
+        list-style: none;
         font-family: $fuente-subtitulo;
-      }
+        font-size: 0.8rem;
+        line-height: 1.5;
+        cursor: pointer;
 
-      .carrito_icon {
-        width: 20px;
-        margin: auto;
-      }
-
-      .carrito {
-        /* border-left: 4px solid gray; */
-        margin: 0 8px;
-        color: gray;
-      }
-    }
-  }
-
-  .navbar_links {
-    width: 100%;
-    height: 42px;
-    margin: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 0;
-
-    li {
-      list-style: none;
-      font-family: $fuente-subtitulo;
-      font-size: 14px;
-
-      a {
-        text-decoration: none;
-        padding: 12px;
-        color: #000980;
-
-        &:hover {
-          background-color: #000980;
-          color: white;
+        a {
+          display: block;
+          color: #212121;
+          padding: 0.6rem;
+          text-decoration: none;
+          font-weight: 700 !important;
+          &:hover {
+            color: white;
+          }
         }
-      }
-
-      .activado {
-        background-color: $color-botton;
-        padding: 16px;
-        border-radius: 30px;
-        color: #fff;
+        &:hover {
+          color: white;
+          background: rgb(33 33 33 / 20%);
+        }
       }
     }
   }
 }
-
 @media screen and (max-width: 800px) {
-  .navbar_contenedor {
-    width: 100%;
-    margin: auto;
-    background-color: #28abe2;
-    color: white;
-    .navbar_links {
-      li {
-        font-size: 10px;
-        a {
-          color: white;
-          font-family: $fuente-subtitulo;
-
-          &:active {
-            background-color: white;
-            color: #28abe2;
-          }
+  nav {
+    .navbar_contenedor {
+      .navbar_links {
+        li {
+          font-size: 10px;
         }
       }
     }
