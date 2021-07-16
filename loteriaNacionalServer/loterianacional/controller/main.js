@@ -8,13 +8,13 @@ const config = require('../../config/environment');
 
 const medioId = config.medioAplicatioId;
 
-const address = config.aplicativoAddressTest;
+/* const address = config.aplicativoAddressTest;
 const usuarioClientePsd = config.usuarioAplicativoTest;
-const claveClientePsd = config.passwordAplicativoTest;
-/* const address = config.aplicativoAddressProd;
+const claveClientePsd = config.passwordAplicativoTest; */
+const address = config.aplicativoAddressProd;
 const usuarioClientePsd = config.usuarioAplicativoProd;
 const claveClientePsd = config.passwordAplicativoProd;
- */
+
 
 module.exports.autenticarUsuario = async () => {
   try {
