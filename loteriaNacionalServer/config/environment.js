@@ -36,7 +36,7 @@ module.exports = {
     // STATIC FILES PATHS
     sourceBoletinesTest: 'https://ventas-api-prueba.loteria.com.ec/boletines/',
     sourceBoletinesProd: 'https://ventas-api.loteria.com.ec/boletines/',
-    sourceBoletinesC: 'http://localhost:5480/boletines/',
+    sourceBoletinesLocal: 'http://localhost:5480/boletines/',
 
     // FTP DATA
     ftpHostLocal: 'localhost',
@@ -55,6 +55,7 @@ module.exports = {
 
     //SSL DATA
     sslPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/',
+    sslPathTest: '/etc/letsencrypt/live/ventas-prueba.loteria.com.ec/',
     keyFile: 'privkey.pem',
     certFile: 'fullchain.pem',
     reqFile: 'request.pem'

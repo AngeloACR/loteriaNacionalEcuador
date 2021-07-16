@@ -25,8 +25,8 @@ lotteryApp.listen(lotteryPort, () => {
 });
 
 //const ftpHost = config.ftpHostLocal;
-//const ftpHost = config.ftpHostTest;
-const ftpHost = config.ftpHostProd;
+const ftpHost = config.ftpHostTest;
+//const ftpHost = config.ftpHostProd;
 const ftpBoletinesPort = config.ftpBoletinesPort;
 const ftpBoletinesApp = ftpBoletinesServer.init(ftpHost, ftpBoletinesPort);
 

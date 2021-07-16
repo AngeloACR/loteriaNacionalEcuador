@@ -2,21 +2,19 @@ var xml2js = require('xml2js');
 var parser = xml2js.Parser();
 var soap = require('soap');
 const config = require('../../config/environment');
-//const address = "http://200.24.198.70/WCFMT_PREP/servicioMT.svc?wsdl";
-//const address = "http://www1.loteria.com.ec/WCFMT/ServicioMT.svc?singleWsdl";
 
 
-//const address = config.aplicativoAddressTest;
-const address = config.aplicativoAddressProd;
 
 
 const medioId = config.medioAplicatioId;
 
-//const usuarioClientePsd = config.usuarioAplicativoTest;
+const address = config.aplicativoAddressTest;
+const usuarioClientePsd = config.usuarioAplicativoTest;
+const claveClientePsd = config.passwordAplicativoTest;
+/* const address = config.aplicativoAddressProd;
 const usuarioClientePsd = config.usuarioAplicativoProd;
-
-//const claveClientePsd = config.passwordAplicativoTest;
 const claveClientePsd = config.passwordAplicativoProd;
+ */
 
 module.exports.autenticarUsuario = async () => {
   try {
