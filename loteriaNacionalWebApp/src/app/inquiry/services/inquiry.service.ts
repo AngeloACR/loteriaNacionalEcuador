@@ -11,7 +11,7 @@ export class InquiryService {
   productionSource = "https://ventas-api.loteria.com.ec";
 
   //mySource = this.localSource;
-  //mySource = this.testSource;
+//mySource = this.testSource;
   mySource = this.productionSource;
 
   constructor(private http: HttpClient) {}

@@ -45,7 +45,7 @@ module.exports = {
     ftpResultadosPort: 2222,
     ftpBoletinesPort: 2224,
     ftpPassMin: 10520,
-    ftpPassMax: 10600,
+    ftpPassMax: 10521,
     ftpUserTest: 'test',
     ftpUserProd: 'loterianacional',
     ftpPassTest: 'test',

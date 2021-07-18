@@ -3,9 +3,9 @@ const path = require('path');
 const config = require('./config/environment');
 
 //const ftpUser = config.ftpUserTest;
-const ftpUser = config.ftpUserProd;
-
 //const ftpPass = config.ftpPassTest;
+
+const ftpUser = config.ftpUserProd;
 const ftpPass = config.ftpPassProd;
 
 const ftpPath = `${__dirname}${config.ftpBoletinesPath}`;

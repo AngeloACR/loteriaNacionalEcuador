@@ -1,4 +1,5 @@
 const Lottery = require('../../loterianacional/controller/main');
+const Ventas = require('../../loterianacional/controller/ventas');
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -165,9 +166,9 @@ module.exports.searchPozoSorteosJugados = async (req, res) => {
 
 module.exports.searchLottoSorteosDisponibles = async (req, res) => {
     try {
-        let response = await Lottery.autenticarUsuario();
+        let response = await Ventas.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarSorteosDisponibles(2, token);
+        response = await Ventas.consultarSorteosDisponibles(2, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -177,9 +178,9 @@ module.exports.searchLottoSorteosDisponibles = async (req, res) => {
 
 module.exports.searchLoteriaSorteosDisponibles = async (req, res) => {
     try {
-        let response = await Lottery.autenticarUsuario();
+        let response = await Ventas.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarSorteosDisponibles(1, token);
+        response = await Ventas.consultarSorteosDisponibles(1, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -189,9 +190,9 @@ module.exports.searchLoteriaSorteosDisponibles = async (req, res) => {
 
 module.exports.searchPozoSorteosDisponibles = async (req, res) => {
     try {
-        let response = await Lottery.autenticarUsuario();
+        let response = await Ventas.autenticarUsuario();
         let token = response.token;
-        response = await Lottery.consultarSorteosDisponibles(5, token);
+        response = await Ventas.consultarSorteosDisponibles(5, token);
 
         res.status(200).json(response);
     } catch (e) {
@@ -201,13 +202,13 @@ module.exports.searchPozoSorteosDisponibles = async (req, res) => {
 
 module.exports.searchLottoCombinacionesDisponibles = async (req, res) => {
     try {
-        let response = await Lottery.autenticarUsuario();
+        let response = await Ventas.autenticarUsuario();
         let token = response.token;
         let sorteo = req.body.sorteo;
         let combinacion = req.body.combinacion;
         let combinacionFigura = req.body.combinacionFigura;
-        let combinaciones = await Lottery.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
-        let reserva = await Lottery.reservarCombinaciones(2, sorteo, combinaciones, token);
+        let combinaciones = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
+        let reserva = await Ventas.reservarCombinaciones(2, sorteo, combinaciones, token);
         response = {
             combinaciones,
             reserva
@@ -221,13 +222,13 @@ module.exports.searchLottoCombinacionesDisponibles = async (req, res) => {
 
 module.exports.searchLoteriaCombinacionesDisponibles = async (req, res) => {
     try {
-        let response = await Lottery.autenticarUsuario();
+        let response = await Ventas.autenticarUsuario();
         let token = response.token;
         let sorteo = req.body.sorteo;
         let combinacion = req.body.combinacion;
         let combinacionFigura = req.body.combinacionFigura;
-        let combinaciones = await Lottery.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
-        let reserva = await Lottery.reservarCombinaciones(1, sorteo, combinaciones, token);
+        let combinaciones = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
+        let reserva = await Ventas.reservarCombinaciones(1, sorteo, combinaciones, token);
         response = {
             combinaciones,
             reserva
@@ -240,13 +241,13 @@ module.exports.searchLoteriaCombinacionesDisponibles = async (req, res) => {
 
 module.exports.searchPozoCombinacionesDisponibles = async (req, res) => {
     try {
-        let response = await Lottery.autenticarUsuario();
+        let response = await Ventas.autenticarUsuario();
         let token = response.token;
         let sorteo = req.body.sorteo;
         let combinacion = req.body.combinacion;
         let combinacionFigura = req.body.combinacionFigura;
-        let combinaciones = await Lottery.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
-        let reserva = await Lottery.reservarCombinaciones(5, sorteo, combinaciones, token);
+        let combinaciones = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
+        let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
         response = {
             combinaciones,
             reserva
