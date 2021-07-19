@@ -48,10 +48,13 @@ module.exports.init = function (ftpHost, ftpPort) {
 
     ftpServer.on('login', ({ connection, username, password }, resolve, reject) => {
         if (username === ftpUser && password === ftpPass) {
+            console.log(ftpPath);
             resolve({ root: ftpPath });
         } else reject('Bad username or password');
 
         connection.on('STOR', (error, filePath) => {
+            console.log(error);
+            if (error) return;
             let aux = filePath.split('/');
             let fileName = aux[aux.length - 1];
             let fileAux = fileName.split('-');
@@ -79,9 +82,9 @@ module.exports.init = function (ftpHost, ftpPort) {
     });
 
     ftpServer.on('client-error', (connection, context, error) => {
-        console.log('connection: ' + connection);
-        console.log('context: ' + context);
-        console.log('error: ' + error);
+        console.log(connection);
+        console.log(context);
+        console.log(error);
     });
 
 
