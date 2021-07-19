@@ -1,6 +1,8 @@
+import logging
 from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 from pyftpdlib.authorizers import DummyAuthorizer
+from pyftpdlib.authorizers import WindowsAuthorizer
 
 
 class MyHandler(FTPHandler):
@@ -70,7 +72,8 @@ def main():
     ftpPort = 2222
     ftpHost = 'ventas-prueba.loteria.com.ec'
     #ftpHost = 'ventas.loteria.com.ec'
-    authorizer = DummyAuthorizer()
+    #authorizer = DummyAuthorizer()
+    authorizer = WindowsAuthorizer()
     authorizer.add_user(username, password, homedir=ftpPath, perm='elradfmwMT')
     # Instantiate FTP handler class
     handler = FTPHandler
@@ -85,4 +88,4 @@ def main():
     server.serve_forever()
 
 if __name__ == "__main__":
-    main()
+    main() """
