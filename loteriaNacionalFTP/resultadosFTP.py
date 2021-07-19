@@ -72,10 +72,16 @@ def main():
     #ftpHost = 'ventas.loteria.com.ec'
     authorizer = DummyAuthorizer()
     authorizer.add_user(username, password, homedir=ftpPath, perm='elradfmwMT')
-
-    handler = MyHandler
+    # Instantiate FTP handler class
+    handler = FTPHandler
     handler.authorizer = authorizer
+
+    # Define a customized banner (string returned when client connects)
+    handler.banner = "FTP de resultados de Lotería Nacional de Ecuador."
     server = FTPServer((ftpHost, ftpPort), handler)
+    server.max_cons = 256
+    server.max_cons_per_ip = 5
+    logging.basicConfig(level=logging.DEBUG)
     server.serve_forever()
 
 if __name__ == "__main__":
