@@ -1,8 +1,9 @@
 import logging
 from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
-from pyftpdlib.authorizers import DummyAuthorizer
-from pyftpdlib.authorizers import WindowsAuthorizer
+from pyftpdlib.authorizers import UnixAuthorizer
+from pyftpdlib.filesystems import UnixFilesystem
+
 
 
 class MyHandler(FTPHandler):
@@ -73,12 +74,13 @@ def main():
     ftpHost = 'ventas-prueba.loteria.com.ec'
     #ftpHost = 'ventas.loteria.com.ec'
     #authorizer = DummyAuthorizer()
-    authorizer = WindowsAuthorizer()
+    authorizer = UnixAuthorizer(rejected_users=["root"], require_valid_shell=True)
     authorizer.add_user(username, password, homedir=ftpPath, perm='elradfmwMT')
     # Instantiate FTP handler class
     handler = FTPHandler
     handler.authorizer = authorizer
 
+    handler.abstracted_fs = UnixFilesystem
     # Define a customized banner (string returned when client connects)
     handler.banner = "FTP de resultados de Lotería Nacional de Ecuador."
     server = FTPServer((ftpHost, ftpPort), handler)
