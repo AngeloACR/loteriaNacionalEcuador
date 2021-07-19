@@ -68,7 +68,8 @@ def main():
     password = '$lnftp123..$'
     ftpPath = '/root/loteriaNacionalEcuador/loteriaNacionalServer/uploads/resultados'
     ftpPort = 2222
-    ftpHost = 'ventas.loteria.com.ec'
+    ftpHost = 'ventas-prueba.loteria.com.ec'
+    #ftpHost = 'ventas.loteria.com.ec'
     authorizer = DummyAuthorizer()
     authorizer.add_user(username, passowrd, homedir=ftpPath, perm='elradfmwMT')
 
