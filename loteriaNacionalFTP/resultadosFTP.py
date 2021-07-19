@@ -1,8 +1,7 @@
 import logging
 from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
-from pyftpdlib.authorizers import UnixAuthorizer
-from pyftpdlib.filesystems import UnixFilesystem
+from pyftpdlib.authorizers import DummyAuthorizer
 
 
 
@@ -71,16 +70,14 @@ def main():
     password = '$lnftp123..$'
     ftpPath = '/root/loteriaNacionalEcuador/loteriaNacionalServer/uploads/resultados'
     ftpPort = 2222
-    ftpHost = 'ventas-prueba.loteria.com.ec'
+    ftpHost = "172.81.117.113"
+    #ftpHost = 'ventas-prueba.loteria.com.ec'
     #ftpHost = 'ventas.loteria.com.ec'
-    #authorizer = DummyAuthorizer()
-    authorizer = UnixAuthorizer(rejected_users=["root"], require_valid_shell=True)
+    authorizer = DummyAuthorizer()
     authorizer.add_user(username, password, homedir=ftpPath, perm='elradfmwMT')
     # Instantiate FTP handler class
     handler = FTPHandler
     handler.authorizer = authorizer
-
-    handler.abstracted_fs = UnixFilesystem
     # Define a customized banner (string returned when client connects)
     handler.banner = "FTP de resultados de Lotería Nacional de Ecuador."
     server = FTPServer((ftpHost, ftpPort), handler)
