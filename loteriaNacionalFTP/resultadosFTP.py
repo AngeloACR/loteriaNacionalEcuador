@@ -6,7 +6,7 @@ from pyftpdlib.authorizers import DummyAuthorizer
 class MyHandler(FTPHandler):
 
     def on_connect(self):
-        print("%s:%s connected" % (self.remote_ip, self.remote_port))
+        print("Connected")
 
     def on_disconnect(self):
         # do something when client disconnects
@@ -71,11 +71,11 @@ def main():
     ftpHost = 'ventas-prueba.loteria.com.ec'
     #ftpHost = 'ventas.loteria.com.ec'
     authorizer = DummyAuthorizer()
-    authorizer.add_user(username, passowrd, homedir=ftpPath, perm='elradfmwMT')
+    authorizer.add_user(username, password, homedir=ftpPath, perm='elradfmwMT')
 
     handler = MyHandler
     handler.authorizer = authorizer
-    server = FTPServer(ftphost, ftpPort), handler)
+    server = FTPServer((ftpHost, ftpPort), handler)
     server.serve_forever()
 
 if __name__ == "__main__":
