@@ -6,58 +6,52 @@ import sys
 
 def connectDB(myDB):
 	try:
-		connection = MongoClient(myDB)
-		return connection
+        connection = MongoClient(myDB)
+        return connection
 	except:
-		sendResult("Connect Error")
+        sendResult("Connect Error")
 
 def closeConnect(connection):
 	try:
-		connection.close()
+        connection.close()
 	except:
-		sendResult("Close Error")
+        sendResult("Close Error")
 
 def agregarPremios(premiosNuevos, sorteo, db):
     try:
         connection = connectDB(db)
-
-		""" premios = connection.loteriaPruebaDB.premios
+        """ premios = connection.loteriaPruebaDB.premios
         sendResult(premios)
          """
         sendResult(premiosNuevos)
-		closeConnect(connection)
-		
+        closeConnect(connection)
         status = True
-		return status
+        return status
     except Exception as ex:
-		template = "An exception of type {0} occurred. Arguments:\n{1!r}"
-		message = template.format(type(ex).__name__, ex.args)
-		sendResult(message)
-		status = False
-		return status
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        sendResult(message)
+        status = False
+        return status
 
 def sendResult(message):
-	print(message)
-	sys.stdout.flush()
+    print(message)
+    sys.stdout.flush()
 
 def main():
-	myDB = "mongodb://localhost:27017/loteriaPruebaDB"
-	#myDB = "mongodb://localhost:27017/loteriaDB"
-	filename = sys.argv[1]
-	filepath = "/root/loteriaNacionalEcuador/loteriaNacionalServer" + filename
+    myDB = "mongodb://localhost:27017/loteriaPruebaDB"
+    #myDB = "mongodb://localhost:27017/loteriaDB"
+    filename = sys.argv[1]
+    filepath = "/root/loteriaNacionalEcuador/loteriaNacionalServer" + filename
     file = open(filepath)
-
     content = file.read().replace("\n", " ")
     file.close()
     content = "<dataset>"+content+"</dataset>"
-
     premios = ET.fromstring(content)
-    
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
     agregarPremios(premios. sorteo, myDB)
-
                 """ let data = aux.dataset.R;
                 let length = data.length;
 
