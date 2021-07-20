@@ -43,7 +43,7 @@ def main():
     #myDB = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
-    file = open(filepath, encoding="ANSI")
+    file = open(filepath, encoding="iso-8859-1")
     content = file.read()
     file.close()
     content = "<dataset>"+content+"</dataset>"
@@ -51,7 +51,7 @@ def main():
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
-    agregarPremios(premios. sorteo, myDB)
+    agregarPremios(premios, sorteo, myDB)
     """ let data = aux.dataset.R;
     let length = data.length;
 
