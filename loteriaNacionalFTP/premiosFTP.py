@@ -25,8 +25,9 @@ def agregarPremios(premiosNuevos, sorteo, db):
         premios = myDB['premios']
         sendResult(premios)
         sendResult(premiosNuevos)
-        for x in premiosNuevos[0]:
-            sendResult(x.tag, x.attrib)
+        for x in premiosNuevos:
+            resultado = x.attrib
+            sendResult(resultado['J'])
         closeConnect(connection)
         status = True
         return status
