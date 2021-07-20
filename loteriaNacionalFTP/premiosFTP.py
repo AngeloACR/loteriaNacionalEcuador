@@ -43,7 +43,7 @@ def main():
     #myDB = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
-    file = open(filepath)
+    file = open(filepath, encoding="ANSI")
     content = file.read()
     file.close()
     content = "<dataset>"+content+"</dataset>"
