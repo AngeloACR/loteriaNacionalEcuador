@@ -5,16 +5,16 @@ from pymongo import MongoClient
 import sys
 
 def connectDB(myDB):
-	try:
+    try:
         connection = MongoClient(myDB)
         return connection
-	except:
+    except:
         sendResult("Connect Error")
 
 def closeConnect(connection):
-	try:
+    try:
         connection.close()
-	except:
+    except:
         sendResult("Close Error")
 
 def agregarPremios(premiosNuevos, sorteo, db):
