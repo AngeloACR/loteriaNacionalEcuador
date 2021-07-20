@@ -22,9 +22,9 @@ def agregarPremios(premiosNuevos, sorteo, db):
         connection = connectDB(db)
 
 		""" premios = connection.loteriaPruebaDB.premios
-
         sendResult(premios)
-         """sendResult(premiosNuevos)
+         """
+        sendResult(premiosNuevos)
 		closeConnect(connection)
 		
         status = True
