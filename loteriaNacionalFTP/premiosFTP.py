@@ -24,7 +24,9 @@ def agregarPremios(premiosNuevos, sorteo, db):
         premios = loteriaPruebaDB['premios']
         sendResult(premios)
         sendResult(premiosNuevos)
-        closeConnect(connection)
+        for x in premiosNuevos[0]:
+            print(x.tag, x.attrib)
+        closeConnect(loteriaPruebaDB)
         status = True
         return status
     except Exception as ex:
