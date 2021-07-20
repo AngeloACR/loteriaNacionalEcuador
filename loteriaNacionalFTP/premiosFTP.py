@@ -29,7 +29,7 @@ def agregarPremios(premiosNuevos, sorteo, db):
             premioData = x.attrib
             codigo = sorteo + premioData['P']
             descripcionDescuento = ''
-            if(premioData.key('OD') != None):
+            if('OD' in premioData):
                 descripcionDescuento = premioData['OD']
             premio = {
                 "tipoLoteria": premioData['J'],
