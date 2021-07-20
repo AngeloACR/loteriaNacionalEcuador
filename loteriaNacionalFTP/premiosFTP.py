@@ -44,7 +44,7 @@ def main():
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
     file = open(filepath)
-    content = file.read().replace("\n", " ")
+    content = file.read()
     file.close()
     content = "<dataset>"+content+"</dataset>"
     premios = ET.fromstring(content)
