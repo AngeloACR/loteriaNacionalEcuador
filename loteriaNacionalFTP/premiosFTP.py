@@ -28,18 +28,21 @@ def agregarPremios(premiosNuevos, sorteo, db):
         for x in premiosNuevos:
             premioData = x.attrib
             codigo = sorteo + premioData['P']
+            descripcionDescuento = ''
+            if(premioData['OD']):
+                descripcionDescuento = premioData['OD']
             premio = {
                 "tipoLoteria": premioData['J'],
                 "numeroSorteo": sorteo,
                 "nombre": premioData['N'],
                 "codigo": codigo,
-                "tipoPremio": premioData['Tp'],
+                "tipoPremio": premioData['TP'],
                 "primeraSuerte": premioData['PS'],
                 "valorPremio": premioData['VP'],
                 "valorPremioConDescuento": premioData['VD'],
                 "valorFraccion": premioData['VF'],
                 "valorFraccionConDescuento": premioData['FD'],
-                "descripcionDescuento": premioData['OD'],
+                "descripcionDescuento": descripcionDescuento
             }
             loteriaDB['premios'].insert_one(premio)
         closeConnect(connection)
