@@ -20,14 +20,28 @@ def closeConnect(connection):
 def agregarPremios(premiosNuevos, sorteo, db):
     try:
         connection = connectDB(db)
-        myDB = connection['loteriaPruebaDB']
-        #myDB = connection['loteriaDB']
-        premios = myDB['premios']
+        loteriaDB = connection['loteriaPruebaDB']
+        #loteriaDB = connection['loteriaDB']
+        premios = loteriaDB['premios']
         sendResult(premios)
         sendResult(premiosNuevos)
         for x in premiosNuevos:
-            resultado = x.attrib
-            sendResult(resultado['J'])
+            premioData = x.attrib
+            codigo = sorteo + premioData['P']
+            premio = {
+                "tipoLoteria": premioData['J'],
+                "numeroSorteo": sorteo,
+                "nombre": premioData['N'],
+                "codigo": codigo,
+                "tipoPremio": premioData['Tp'],
+                "primeraSuerte": premioData['PS'],
+                "valorPremio": premioData['VP'],
+                "valorPremioConDescuento": premioData['VD'],
+                "valorFraccion": premioData['VF'],
+                "valorFraccionConDescuento": premioData['FD'],
+                "descripcionDescuento": premioData['OD'],
+            }
+            loteriaDB['premios'].insert_one(premio)
         closeConnect(connection)
         status = True
         return status
@@ -43,7 +57,7 @@ def sendResult(message):
     sys.stdout.flush()
 
 def main():
-    myDB = "mongodb://localhost:27017/loteriaPruebaDB"
+    db = "mongodb://localhost:27017/loteriaPruebaDB"
     #myDB = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
@@ -55,7 +69,7 @@ def main():
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
-    agregarPremios(premios, sorteo, myDB)
+    agregarPremios(premios, sorteo, db)
     """ let data = aux.dataset.R;
     let length = data.length;
 
