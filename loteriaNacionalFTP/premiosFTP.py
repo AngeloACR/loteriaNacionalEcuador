@@ -42,7 +42,7 @@ def main():
     myDB = "mongodb://localhost:27017/loteriaPruebaDB"
     #myDB = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    filepath = "/root/loteriaNacionalEcuador/loteriaNacionalServer" + filename
+    filepath = "/root/loteriaNacionalEcuador/loteriaNacionalServer/uploads/resultados" + filename
     file = open(filepath)
     content = file.read().replace("\n", " ")
     file.close()
