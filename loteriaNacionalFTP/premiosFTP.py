@@ -52,27 +52,27 @@ def main():
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
     agregarPremios(premios. sorteo, myDB)
-                """ let data = aux.dataset.R;
-                let length = data.length;
+    """ let data = aux.dataset.R;
+    let length = data.length;
 
-                for (let i = 0; i < length; i++) {
-                    let premioAux = data[i]
-                    let premio = {
-                        tipoLoteria,
-                        numeroSorteo: sorteo,
-                        nombre: premioAux.$.N,
-                        codigo: `${sorteo}-${premioAux.$.P}`,
-                        tipoPremio: premioAux.$.TP,
-                        primeraSuerte: premioAux.$.PS,
-                        valorPremio: premioAux.$.VP,
-                        valorPremioConDescuento: premioAux.$.VD,
-                        valorFraccion: premioAux.$.VF,
-                        valorFraccionConDescuento: premioAux.$.FD,
-                        descripcionDescuento: premioAux.$.OD,
-                    }
+    for (let i = 0; i < length; i++) {
+        let premioAux = data[i]
+        let premio = {
+            tipoLoteria,
+            numeroSorteo: sorteo,
+            nombre: premioAux.$.N,
+            codigo: `${sorteo}-${premioAux.$.P}`,
+            tipoPremio: premioAux.$.TP,
+            primeraSuerte: premioAux.$.PS,
+            valorPremio: premioAux.$.VP,
+            valorPremioConDescuento: premioAux.$.VD,
+            valorFraccion: premioAux.$.VF,
+            valorFraccionConDescuento: premioAux.$.FD,
+            descripcionDescuento: premioAux.$.OD,
+        }
 
-                    await PremiosController.addPremio(premio);
-                }; """
+        await PremiosController.addPremio(premio);
+    }; """
         
 
 if __name__ == "__main__":
