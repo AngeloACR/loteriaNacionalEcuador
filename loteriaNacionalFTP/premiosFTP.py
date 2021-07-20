@@ -17,7 +17,7 @@ def closeConnect(connection):
 	except:
 		sendResult("Close Error")
 
-def agregarPremios(premios, sorteo, db)
+def agregarPremios(premios, sorteo, db):
     try:
         print(premios)
     except:
