@@ -7,7 +7,8 @@ import sys
 def connectDB(myDB):
     try:
         connection = MongoClient(myDB)
-        return connection
+        return connection['loteriaPruebaDB']
+        #return connection['loteriaDB']
     except:
         sendResult("Connect Error")
 
@@ -19,10 +20,9 @@ def closeConnect(connection):
 
 def agregarPremios(premiosNuevos, sorteo, db):
     try:
-        connection = connectDB(db)
-        """ premios = connection.loteriaPruebaDB.premios
+        loteriaPruebaDB = connectDB(db)
+        premios = loteriaPruebaDB['premios']
         sendResult(premios)
-         """
         sendResult(premiosNuevos)
         closeConnect(connection)
         status = True
