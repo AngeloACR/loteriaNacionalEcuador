@@ -17,10 +17,28 @@ def closeConnect(connection):
 	except:
 		sendResult("Close Error")
 
-def agregarPremios(premios, sorteo, db):
+def agregarPremios(premiosNuevos, sorteo, db):
     try:
-        print(premios)
-    except:
+        connection = connectDB(db)
+
+		premios = connection.loteriaPruebaDB.premios
+
+        sendResult(premios)
+        sendResult(premiosNuevos)
+		closeConnect(connection)
+		
+        status = True
+		return status
+    except Exception as ex:
+		template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+		message = template.format(type(ex).__name__, ex.args)
+		sendResult(message)
+		status = False
+		return status
+
+def sendResult(message):
+	print(message)
+	sys.stdout.flush()
 
 def main():
 	myDB = "mongodb://localhost:27017/loteriaPruebaDB"
