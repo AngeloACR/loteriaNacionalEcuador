@@ -77,39 +77,36 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 reintegroPozo = True
                 nombreMascota = combinacion3
                 myquery = { "tipoLoteria": tipoLoteria }
-                switch (nombreMascota){
-
-                    if(nombreMascota == "Camar�n"):
-                        mascota = "01"
-                    elif(nombreMascota == "Delf�n"):
-                        mascota = "02"
-                    elif(nombreMascota == "Perro"):
-                        mascota = "03"
-                    elif(nombreMascota == "Llama"):
-                        mascota = "04"
-                    elif(nombreMascota == "Papagayo"):
-                        mascota = "05"
-                    elif(nombreMascota == "Conejo"):
-                        mascota = "06"
-                    elif(nombreMascota == "Mono"):
-                        mascota = "07"
-                    elif(nombreMascota == "Gal�pago"):
-                        mascota = "08"
-                    elif(nombreMascota == "Tuc�n"):
-                        mascota = "09"
-                    elif(nombreMascota == "Ballena"):
-                        mascota = "10"
-                    elif(nombreMascota == "Oso"):
-                        mascota = "11"
-                    elif(nombreMascota == "Foca"):
-                        mascota = "12"
-                    elif(nombreMascota == "Cangrejo"):
-                        mascota = "13"
-                    elif(nombreMascota == "C�ndor"):
-                        mascota = "14"
-                    elif(nombreMascota == "Iguana"):
-                        mascota = "15"
-                } 
+                if(nombreMascota == "Camar�n"):
+                    mascota = "01"
+                elif(nombreMascota == "Delf�n"):
+                    mascota = "02"
+                elif(nombreMascota == "Perro"):
+                    mascota = "03"
+                elif(nombreMascota == "Llama"):
+                    mascota = "04"
+                elif(nombreMascota == "Papagayo"):
+                    mascota = "05"
+                elif(nombreMascota == "Conejo"):
+                    mascota = "06"
+                elif(nombreMascota == "Mono"):
+                    mascota = "07"
+                elif(nombreMascota == "Gal�pago"):
+                    mascota = "08"
+                elif(nombreMascota == "Tuc�n"):
+                    mascota = "09"
+                elif(nombreMascota == "Ballena"):
+                    mascota = "10"
+                elif(nombreMascota == "Oso"):
+                    mascota = "11"
+                elif(nombreMascota == "Foca"):
+                    mascota = "12"
+                elif(nombreMascota == "Cangrejo"):
+                    mascota = "13"
+                elif(nombreMascota == "C�ndor"):
+                    mascota = "14"
+                elif(nombreMascota == "Iguana"):
+                    mascota = "15"
                 data = { "$set":{
                     "mascota": mascota,
                 }}
