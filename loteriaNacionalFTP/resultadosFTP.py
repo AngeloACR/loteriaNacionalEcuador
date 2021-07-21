@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-
-import xml.etree.ElementTree as ET
+from bson.objectid import ObjectId
 from pymongo import MongoClient
+import xml.etree.ElementTree as ET
 import sys
 import requests
 
@@ -57,7 +57,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "tipoLoteria": int(tipoLoteria),
                     "numeroSorteo": sorteo,
                     "codigoPremioPrincipal": codigoPremio,
-                    "ultimoResultado": resultadoId
+                    "ultimoResultado": ObjectId(resultadoId)
                 } }
                 loteriaDB['ultimoresultados'].update_one(myquery, newvalues)
                 if(tipoLoteria == "5"):
@@ -66,12 +66,12 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 if (premioData['P'] == "23"):
                     myquery = { "tipoLoteria": int(tipoLoteria) }
                     data = { "$set":{
-                        "resultadoLottoPlus": resultadoId,
+                        "resultadoLottoPlus": ObjectId(resultadoId),
                         "codigoPremioLottoPlus": codigoPremio
                     }}
                     loteriaDB['ultimoresultados'].update_one(myquery, data)
                 if (premioData['P'] == "24"):
-                    resultadosLottito.append(resultadoId)
+                    resultadosLottito.append(ObjectId(resultadoId))
                     indexLottito = indexLottito + 1
             if (tipoLoteria == "5" and premioData['P'] == "6" and not reintegroPozo):
                 reintegroPozo = True
@@ -127,7 +127,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             resultadoId = loteriaDB['resultados'].insert_one(resultado)
             myquery = { "tipoLoteria": int(tipoLoteria) }            
             data = { "$set":{
-                "ultimoResultado": resultadoId,
+                "ultimoResultado": ObjectId(resultadoId),
                 "numeroSorteo": resultado['numeroSorteo'],
                 "codigoPremioPrincipal": resultado['codigoPremio'],
             }}
