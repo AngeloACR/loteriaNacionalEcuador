@@ -99,8 +99,8 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 "tipoLoteria": tipoLoteria,
                 "numeroSorteo": sorteo,
                 "combinacion1": resultadoData['C1'],
-                "combinacion2": resultadoData['C2'],
-                "combinacion3": resultadoData['C3'],
+                "combinacion2": combinacion2,
+                "combinacion3": combinacion3,
                 "codigo": resultadoData['B'],
                 #"codigoPremio": codigoPremio,
                 #"combinacionGanadora": data[i].X[0].R[0].$.CG
