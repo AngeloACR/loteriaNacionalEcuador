@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from bson.objectid import ObjectId
 from pymongo import MongoClient
+import codecs
 import xml.etree.ElementTree as ET
 import sys
 import requests
@@ -77,9 +78,9 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 reintegroPozo = True
                 nombreMascota = combinacion3
                 myquery = { "tipoLoteria": int(tipoLoteria) }
-                if(nombreMascota == "Camar�n"):
+                if(nombreMascota == "Camarón"):
                     mascota = "01"
-                elif(nombreMascota == "Delf�n"):
+                elif(nombreMascota == "Delfín"):
                     mascota = "02"
                 elif(nombreMascota == "Perro"):
                     mascota = "03"
@@ -91,9 +92,9 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     mascota = "06"
                 elif(nombreMascota == "Mono"):
                     mascota = "07"
-                elif(nombreMascota == "Gal�pago"):
+                elif(nombreMascota == "Galápago"):
                     mascota = "08"
-                elif(nombreMascota == "Tuc�n"):
+                elif(nombreMascota == "Tucán"):
                     mascota = "09"
                 elif(nombreMascota == "Ballena"):
                     mascota = "10"
@@ -103,7 +104,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     mascota = "12"
                 elif(nombreMascota == "Cangrejo"):
                     mascota = "13"
-                elif(nombreMascota == "C�ndor"):
+                elif(nombreMascota == "Cóndor"):
                     mascota = "14"
                 elif(nombreMascota == "Iguana"):
                     mascota = "15"
@@ -152,8 +153,15 @@ def main():
     db = "mongodb://localhost:27017/loteriaPruebaDB"
     #db = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    filepath = "/home/loterianacional/resultados" + filename
-    file = open(filepath, 'r+', encoding="iso-8859-1")
+    filepath = "/home/loterianacional/resultados" + filename    
+    with codecs.open(filepath, 'r', encoding = 'iso-8859-1') as file:
+        lines = file.read()
+
+    with codecs.open(filepath, 'w', encoding = 'utf8') as file:
+        file.write(lines)
+
+    file = open(filepath, 'r+', encoding="utf8")
+
     content = file.read()
     file.seek(0, 0)
     file.write("<dataset>" + content+ '</dataset>')
