@@ -22,14 +22,14 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         connection = connectDB(db)
         loteriaDB = connection['loteriaPruebaDB']
         #loteriaDB = connection['loteriaDB']
-        premios = loteriaDB['resultados']
+        resultados = loteriaDB['resultados']
         for x in resultadosNuevos:
             resultadoData = x.attrib
 
             if('C2' in premioData):
-                combinacion2 = premioData['C2']
+                combinacion2 = resultadoData['C2']
             if('C3' in premioData):
-                combinacion3 = premioData['C3']
+                combinacion3 = resultadoData['C3']
             """ let indexLottito = 0;
                 let resultadosLottito = []
                 let mascota;
