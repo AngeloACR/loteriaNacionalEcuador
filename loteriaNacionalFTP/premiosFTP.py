@@ -17,14 +17,12 @@ def closeConnect(connection):
     except:
         sendResult("Close Error")
 
-def agregarPremios(premiosNuevos, sorteo, db):
+def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
     try:
         connection = connectDB(db)
         loteriaDB = connection['loteriaPruebaDB']
         #loteriaDB = connection['loteriaDB']
         premios = loteriaDB['premios']
-        sendResult(premios)
-        sendResult(premiosNuevos)
         for x in premiosNuevos:
             premioData = x.attrib
             codigo = sorteo + premioData['P']
@@ -32,7 +30,7 @@ def agregarPremios(premiosNuevos, sorteo, db):
             if('OD' in premioData):
                 descripcionDescuento = premioData['OD']
             premio = {
-                "tipoLoteria": premioData['J'],
+                "tipoLoteria": tipoLoteria,
                 "numeroSorteo": sorteo,
                 "nombre": premioData['N'],
                 "codigo": codigo,
@@ -61,7 +59,7 @@ def sendResult(message):
 
 def main():
     db = "mongodb://localhost:27017/loteriaPruebaDB"
-    #myDB = "mongodb://localhost:27017/loteriaDB"
+    #db = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
     file = open(filepath, encoding="iso-8859-1")
@@ -73,27 +71,6 @@ def main():
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
     agregarPremios(premios, sorteo, db)
-    """ let data = aux.dataset.R;
-    let length = data.length;
-
-    for (let i = 0; i < length; i++) {
-        let premioAux = data[i]
-        let premio = {
-            tipoLoteria,
-            numeroSorteo: sorteo,
-            nombre: premioAux.$.N,
-            codigo: `${sorteo}-${premioAux.$.P}`,
-            tipoPremio: premioAux.$.TP,
-            primeraSuerte: premioAux.$.PS,
-            valorPremio: premioAux.$.VP,
-            valorPremioConDescuento: premioAux.$.VD,
-            valorFraccion: premioAux.$.VF,
-            valorFraccionConDescuento: premioAux.$.FD,
-            descripcionDescuento: premioAux.$.OD,
-        }
-
-        await PremiosController.addPremio(premio);
-    }; """
         
 
 if __name__ == "__main__":

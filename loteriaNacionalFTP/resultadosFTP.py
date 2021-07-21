@@ -17,33 +17,16 @@ def closeConnect(connection):
 	except:
 		sendResult("Close Error")
 
-def agregarResultados(resultados, sorteo, db)
+def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
     try:
-    except:
+        connection = connectDB(db)
+        loteriaDB = connection['loteriaPruebaDB']
+        #loteriaDB = connection['loteriaDB']
+        premios = loteriaDB['resultados']
+        for x in resultadosNuevos:
+            resultadoData = x.attrib
 
-def main():
-	myDB = "mongodb://localhost:27017/loteriaPruebaDB"
-	#myDB = "mongodb://localhost:27017/loteriaDB"
-	filename = sys.argv[1]
-	filepath = "/root/loteriaNacionalEcuador/loteriaNacionalServer" + filename
-    file = open(filepath)
-
-    content = file.read().replace("\n", " ")
-    file.close()
-    content = "<dataset>"+content+"</dataset>"
-
-    resultados = ET.fromstring(content)
-    
-    data = filename.split("-")
-    tipoLoteria = data[1]
-    sorteo = data[2].split(".")[0]
-
-    agregarResultados(resultados, sorteo, myDB)
-
-                """ let aux = await parser.parseStringPromise(dataSet, { trim: true })
-                let data = aux.dataset.R;
-                let length = data.length;
-                let indexLottito = 0;
+            """ let indexLottito = 0;
                 let resultadosLottito = []
                 let mascota;
                 let premioPozo = false;
@@ -108,6 +91,48 @@ def main():
                     }
 
                 } """
+            resultado = {
+                "tipoLoteria": tipoLoteria,
+                "numeroSorteo": sorteo,
+                "combinacion1": resultadoData['C1'],
+                "combinacion2": resultadoData['C2'],
+                "combinacion3": resultadoData['C3'],
+                "codigo": resultadoData['B'],
+                "codigoPremio",
+                #"combinacionGanadora": data[i].X[0].R[0].$.CG
+            }
+            sendResult(resultadoData['X'])
+            #loteriaDB['resultados'].insert_one(resultado)
+        closeConnect(connection)
+        status = True
+        return status
+    except Exception as ex:
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        sendResult(message)
+        status = False
+        return status
+
+def sendResult(message):
+    print(message)
+    sys.stdout.flush()
+
+def main():
+	db = "mongodb://localhost:27017/loteriaPruebaDB"
+	#db = "mongodb://localhost:27017/loteriaDB"
+	filename = sys.argv[1]
+    filepath = "/home/loterianacional/resultados" + filename
+    file = open(filepath, encoding="iso-8859-1")
+    content = file.read()
+    file.close()
+    content = "<dataset>"+content+"</dataset>"
+    premios = ET.fromstring(content)
+    data = filename.split("-")
+    tipoLoteria = data[1]
+    sorteo = data[2].split(".")[0]
+    agregarResultados(resultados, tipoLoteria, sorteo, db)
+
+                
         
 
 if __name__ == "__main__":
