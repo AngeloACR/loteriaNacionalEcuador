@@ -77,7 +77,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 reintegroPozo = True
                 nombreMascota = combinacion3
                 myquery = { "tipoLoteria": tipoLoteria }
-                switch (nombreMascota) {
+                switch (nombreMascota): 
                     case "Camar�n":
                         mascota = "01"
                         break
@@ -123,7 +123,6 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     case "Iguana":
                         mascota = "15"
                         break
-                }
                 data = { "$set":{
                     "mascota": mascota,
                 }}
