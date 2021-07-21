@@ -77,52 +77,39 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 reintegroPozo = True
                 nombreMascota = combinacion3
                 myquery = { "tipoLoteria": tipoLoteria }
-                switch (nombreMascota): 
-                    case "Camar�n":
+                switch (nombreMascota){
+
+                    if(nombreMascota == "Camar�n"):
                         mascota = "01"
-                        break
-                    case "Delf�n":
+                    elif(nombreMascota == "Delf�n"):
                         mascota = "02"
-                        break
-                    case "Perro":
+                    elif(nombreMascota == "Perro"):
                         mascota = "03"
-                        break
-                    case "Llama":
+                    elif(nombreMascota == "Llama"):
                         mascota = "04"
-                        break
-                    case "Papagayo":
+                    elif(nombreMascota == "Papagayo"):
                         mascota = "05"
-                        break
-                    case "Conejo":
+                    elif(nombreMascota == "Conejo"):
                         mascota = "06"
-                        break
-                    case "Mono":
+                    elif(nombreMascota == "Mono"):
                         mascota = "07"
-                        break
-                    case "Gal�pago":
+                    elif(nombreMascota == "Gal�pago"):
                         mascota = "08"
-                        break
-                    case "Tuc�n":
+                    elif(nombreMascota == "Tuc�n"):
                         mascota = "09"
-                        break
-                    case "Ballena":
+                    elif(nombreMascota == "Ballena"):
                         mascota = "10"
-                        break
-                    case "Oso":
+                    elif(nombreMascota == "Oso"):
                         mascota = "11"
-                        break
-                    case "Foca":
+                    elif(nombreMascota == "Foca"):
                         mascota = "12"
-                        break
-                    case "Cangrejo":
+                    elif(nombreMascota == "Cangrejo"):
                         mascota = "13"
-                        break
-                    case "C�ndor":
+                    elif(nombreMascota == "C�ndor"):
                         mascota = "14"
-                        break
-                    case "Iguana":
+                    elif(nombreMascota == "Iguana"):
                         mascota = "15"
-                        break
+                } 
                 data = { "$set":{
                     "mascota": mascota,
                 }}
