@@ -25,8 +25,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         resultados = loteriaDB['resultados']
         for x in resultadosNuevos[0]:
             resultadoData = x[0].attrib
-            premioData = x[1].attrib
-            sendResult(premioData)
+            sendResult(resultadoData)
             combinacion2 = ''
             combinacion3 = ''
             if('C2' in resultadoData):
@@ -134,7 +133,8 @@ def main():
     file.write("<dataset>" + content+ '</dataset>')
     file.close()
     # content = "<dataset>"+content+"</dataset>"
-    resultados = ET.parse(filepath).getroot()
+    resultadosTree = ET.parse(filepath)
+    resultados = resultadosTree.getroot()
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
