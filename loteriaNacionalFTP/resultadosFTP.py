@@ -25,6 +25,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         resultados = loteriaDB['resultados']
         for x in resultadosNuevos:
             resultadoData = x.attrib
+            sendResult(resultadoData)
             combinacion2 = ''
             combinacion3 = ''
             if('C2' in resultadoData):
