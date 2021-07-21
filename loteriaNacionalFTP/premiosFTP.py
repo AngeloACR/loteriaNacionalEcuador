@@ -70,7 +70,7 @@ def main():
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
-    agregarPremios(premios, sorteo, db)
+    agregarPremios(premios, tipoLoteria, sorteo, db)
         
 
 if __name__ == "__main__":
