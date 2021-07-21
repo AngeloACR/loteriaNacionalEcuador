@@ -25,7 +25,7 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
         premios = loteriaDB['premios']
         for x in premiosNuevos:
             premioData = x.attrib
-            codigo = sorteo + premioData['P']
+            codigo = sorteo + "-" + premioData['P']
             descripcionDescuento = ''
             if('OD' in premioData):
                 descripcionDescuento = premioData['OD']

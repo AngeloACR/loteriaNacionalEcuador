@@ -3,6 +3,7 @@
 import xml.etree.ElementTree as ET
 from pymongo import MongoClient
 import sys
+import requests
 
 def connectDB(myDB):
     try:
@@ -23,80 +24,22 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         loteriaDB = connection['loteriaPruebaDB']
         #loteriaDB = connection['loteriaDB']
         resultados = loteriaDB['resultados']
-        for x in resultadosNuevos[0]:
+        for x in resultadosNuevos:
             resultadoData = x.attrib
-            premioData = x[0].attrib
+            premioData = x[0][0].attrib
             sendResult(resultadoData)
+            sendResult(premioData)
             combinacion2 = ''
             combinacion3 = ''
             if('C2' in resultadoData):
                 combinacion2 = resultadoData['C2']
             if('C3' in resultadoData):
                 combinacion3 = resultadoData['C3']
-            """ let indexLottito = 0;
-                let resultadosLottito = []
-                let mascota;
-                let premioPozo = false;
-                let reintegroPozo = false;
-                for (let i = 0; i < length; i++) {
-                    let codigoPremioAux = data[i].X[0].R[0].$.P;
-                    let codigoPremio = `${sorteo}-${codigoPremioAux}`;
-                    let resultado = {
-                        tipoLoteria,
-                        numeroSorteo: sorteo,
-                        combinacion1: data[i].$.C1,
-                        combinacion2: data[i].$.C2,
-                        combinacion3: data[i].$.C3,
-                        codigo: data[i].$.B,
-                        codigoPremio,
-                        combinacionGanadora: data[i].X[0].R[0].$.CG
-                    }
-                    resultado = (await ResultadosController.addResultado(resultado)).values;
-                    if (codigoPremioAux == "1") {
-                        await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
-                        if (tipoLoteria == "5") {
-                            premioPozo = true;
-                        }
-                    }
-                    if (tipoLoteria == "2") {
-                        if (codigoPremioAux == "23") {
-                            await ResultadosController.setUltimoLottoPlus(tipoLoteria, resultado, codigoPremio);
-                        } else if (codigoPremioAux == "24") {
-                            resultadosLottito.push(resultado._id);
-                            indexLottito++;
-                        }
-
-                    }
-                    if (tipoLoteria == "5" && codigoPremioAux == "6" && !reintegroPozo) {
-                        reintegroPozo == true;
-                        mascota = resultado.combinacion3;
-                    }
-                }
-                if (tipoLoteria == "2") {
-                    let codigoPremioLottito = `${sorteo}-24`;
-                    await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
-                }
-                if (tipoLoteria == "5") {
-                    await ResultadosController.setMascota(tipoLoteria, mascota);
-                    if (!premioPozo) {
-                        let data = await Lottery.autenticarUsuario()
-                        let ultimoResultado = await Lottery.consultarUltimosResultados(5, data.token);
-
-                        let codigoPremio = `${ultimoResultado.SortId}-1`;
-                        let resultado = {
-                            tipoLoteria,
-                            numeroSorteo: ultimoResultado.SortId,
-                            combinacion2: ultimoResultado.Comb,
-                            combinacion3: '',
-                            combinacion1: '',
-                            codigoPremio,
-                            combinacionGanadora: "2"
-                        }
-                        resultado = (await ResultadosController.addResultado(resultado)).values;
-                        await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
-                    }
-
-                } """
+            codigoPremio = sorteo+"-"+premioData['P']
+            indexLottito = 0
+            resultadosLottito = []
+            premioPozo = False
+            reintegroPozo = False
             resultado = {
                 "tipoLoteria": tipoLoteria,
                 "numeroSorteo": sorteo,
@@ -104,11 +47,110 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 "combinacion2": combinacion2,
                 "combinacion3": combinacion3,
                 "codigo": resultadoData['B'],
-                #"codigoPremio": codigoPremio,
-                #"combinacionGanadora": data[i].X[0].R[0].$.CG
+                "codigoPremio": codigoPremio,
+                "combinacionGanadora": premioData['CG']
             }
-            sendResult(resultadoData[0])
-            #loteriaDB['resultados'].insert_one(resultado)
+            resultadoId = loteriaDB['resultados'].insert_one(resultado)
+            if(premioData['P'] == "1"):
+                myquery = { "tipoLoteria": tipoLoteria }
+                newvalues = { "$set": { 
+                    "tipoLoteria": tipoLoteria,
+                    "numeroSorteo": sorteo,
+                    "codigoPremioPrincipal": codigoPremio,
+                    "ultimoResultado": resultadoId
+                } }
+                loteriaDB['ultimoresultados'].update_one(myquery, newvalues)
+                if(tipoLoteria == "5"):
+                    premioPozo = True
+            if (tipoLoteria == "2"):
+                if (premioData['P'] == "23"):
+                    myquery = { "tipoLoteria": tipoLoteria }
+                    data = { "$set":{
+                        "resultadoLottoPlus": resultadoId,
+                        "codigoPremioLottoPlus": codigoPremio
+                    }}
+                    loteriaDB['ultimoresultados'].update_one(myquery, data)
+                if (premioData['P'] == "24"):
+                    resultadosLottito.append(resultadoId)
+                    indexLottito++;
+            if (tipoLoteria == "5" && premioData['P'] == "6" && !reintegroPozo):
+                reintegroPozo = True;
+                nombreMascota = combinacion3;
+                myquery = { "tipoLoteria": tipoLoteria }
+                switch (nombreMascota) {
+                    case "Camar�n":
+                        mascota = "01"
+                        break;
+                    case "Delf�n":
+                        mascota = "02"
+                        break;
+                    case "Perro":
+                        mascota = "03"
+                        break;
+                    case "Llama":
+                        mascota = "04"
+                        break;
+                    case "Papagayo":
+                        mascota = "05"
+                        break;
+                    case "Conejo":
+                        mascota = "06"
+                        break;
+                    case "Mono":
+                        mascota = "07"
+                        break;
+                    case "Gal�pago":
+                        mascota = "08"
+                        break;
+                    case "Tuc�n":
+                        mascota = "09"
+                        break;
+                    case "Ballena":
+                        mascota = "10"
+                        break;
+                    case "Oso":
+                        mascota = "11"
+                        break;
+                    case "Foca":
+                        mascota = "12"
+                        break;
+                    case "Cangrejo":
+                        mascota = "13"
+                        break;
+                    case "C�ndor":
+                        mascota = "14"
+                        break;
+                    case "Iguana":
+                        mascota = "15"
+                        break;
+                }
+                data = { "$set":{
+                    "mascota": mascota,
+                }}
+                loteriaDB['ultimoresultados'].update_one(myquery, data)
+        if(tipoLoteria == "2"):
+            myquery = { "tipoLoteria": tipoLoteria }
+            codigoPremioLottito = sorteo + '-24'
+            data = { "$set":{
+                "resultadosLottito": resultadosLottito,
+                "codigoPremioLottito": codigoPremioLottito,
+                "indexLottito": indexLottito
+            }}
+            loteriaDB['ultimoresultados'].update_one(myquery, data)
+        if(tipoLoteria == "5" && !premioPozo):
+            url = "https://ventas.loteria.com.ec"
+            response = requests.get(url)
+            resultado = response
+            resultadoId = loteriaDB['resultados'].insert_one(resultado)
+            myquery = { "tipoLoteria": tipoLoteria }            
+            data = { "$set":{
+                "ultimoResultado": resultadoId,
+                "numeroSorteo": resultado['numeroSorteo'],
+                "codigoPremioPrincipal": resultado['codigoPremio'],
+            }}
+            loteriaDB['ultimoresultados'].update_one(myquery, data)
+
+                            
         closeConnect(connection)
         status = True
         return status
