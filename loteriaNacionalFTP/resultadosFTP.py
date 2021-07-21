@@ -26,9 +26,9 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         for x in resultadosNuevos:
             resultadoData = x.attrib
 
-            if('C2' in premioData):
+            if('C2' in resultadoData):
                 combinacion2 = resultadoData['C2']
-            if('C3' in premioData):
+            if('C3' in resultadoData):
                 combinacion3 = resultadoData['C3']
             """ let indexLottito = 0;
                 let resultadosLottito = []
