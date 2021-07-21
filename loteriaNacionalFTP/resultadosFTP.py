@@ -73,7 +73,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 if (premioData['P'] == "24"):
                     resultadosLottito.append(resultadoId)
                     indexLottito = indexLottito + 1
-            if (tipoLoteria == "5" && premioData['P'] == "6" && !reintegroPozo):
+            if (tipoLoteria == "5" and premioData['P'] == "6" and not reintegroPozo):
                 reintegroPozo = True
                 nombreMascota = combinacion3
                 myquery = { "tipoLoteria": tipoLoteria }
@@ -137,7 +137,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 "indexLottito": indexLottito
             }}
             loteriaDB['ultimoresultados'].update_one(myquery, data)
-        if(tipoLoteria == "5" && !premioPozo):
+        if(tipoLoteria == "5" and not premioPozo):
             url = "https://ventas.loteria.com.ec"
             response = requests.get(url)
             resultado = response
@@ -155,7 +155,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         status = True
         return status
     except Exception as ex:
-        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        template = "An exception of type {0} occurred. Arguments:\n{1not r}"
         message = template.format(type(ex).__name__, ex.args)
         sendResult(message)
         status = False
