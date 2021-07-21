@@ -24,6 +24,10 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         loteriaDB = connection['loteriaPruebaDB']
         #loteriaDB = connection['loteriaDB']
         resultados = loteriaDB['resultados']
+        indexLottito = 0
+        resultadosLottito = []
+        premioPozo = False
+        reintegroPozo = False
         for x in resultadosNuevos:
             resultadoData = x.attrib
             premioData = x[0][0].attrib
@@ -36,10 +40,6 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             if('C3' in resultadoData):
                 combinacion3 = resultadoData['C3']
             codigoPremio = sorteo+"-"+premioData['P']
-            indexLottito = 0
-            resultadosLottito = []
-            premioPozo = False
-            reintegroPozo = False
             resultado = {
                 "tipoLoteria": int(tipoLoteria),
                 "numeroSorteo": sorteo,
@@ -70,7 +70,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                         "codigoPremioLottoPlus": codigoPremio
                     }}
                     loteriaDB['ultimoresultados'].update_one(myquery, data)
-                if (premioData['P'] == "24"):
+                elif (premioData['P'] == "24"):
                     resultadosLottito.append(ObjectId(resultadoId.inserted_id))
                     indexLottito = indexLottito + 1
             if (tipoLoteria == "5" and premioData['P'] == "6" and not reintegroPozo):
