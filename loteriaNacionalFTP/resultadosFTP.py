@@ -72,57 +72,57 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     loteriaDB['ultimoresultados'].update_one(myquery, data)
                 if (premioData['P'] == "24"):
                     resultadosLottito.append(resultadoId)
-                    indexLottito++;
+                    indexLottito = indexLottito + 1
             if (tipoLoteria == "5" && premioData['P'] == "6" && !reintegroPozo):
-                reintegroPozo = True;
-                nombreMascota = combinacion3;
+                reintegroPozo = True
+                nombreMascota = combinacion3
                 myquery = { "tipoLoteria": tipoLoteria }
                 switch (nombreMascota) {
                     case "Camar�n":
                         mascota = "01"
-                        break;
+                        break
                     case "Delf�n":
                         mascota = "02"
-                        break;
+                        break
                     case "Perro":
                         mascota = "03"
-                        break;
+                        break
                     case "Llama":
                         mascota = "04"
-                        break;
+                        break
                     case "Papagayo":
                         mascota = "05"
-                        break;
+                        break
                     case "Conejo":
                         mascota = "06"
-                        break;
+                        break
                     case "Mono":
                         mascota = "07"
-                        break;
+                        break
                     case "Gal�pago":
                         mascota = "08"
-                        break;
+                        break
                     case "Tuc�n":
                         mascota = "09"
-                        break;
+                        break
                     case "Ballena":
                         mascota = "10"
-                        break;
+                        break
                     case "Oso":
                         mascota = "11"
-                        break;
+                        break
                     case "Foca":
                         mascota = "12"
-                        break;
+                        break
                     case "Cangrejo":
                         mascota = "13"
-                        break;
+                        break
                     case "C�ndor":
                         mascota = "14"
-                        break;
+                        break
                     case "Iguana":
                         mascota = "15"
-                        break;
+                        break
                 }
                 data = { "$set":{
                     "mascota": mascota,
