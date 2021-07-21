@@ -41,7 +41,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             premioPozo = False
             reintegroPozo = False
             resultado = {
-                "tipoLoteria": tipoLoteria,
+                "tipoLoteria": int(tipoLoteria),
                 "numeroSorteo": sorteo,
                 "combinacion1": resultadoData['C1'],
                 "combinacion2": combinacion2,
@@ -52,9 +52,9 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             }
             resultadoId = loteriaDB['resultados'].insert_one(resultado)
             if(premioData['P'] == "1"):
-                myquery = { "tipoLoteria": tipoLoteria }
+                myquery = { "tipoLoteria": int(tipoLoteria) }
                 newvalues = { "$set": { 
-                    "tipoLoteria": tipoLoteria,
+                    "tipoLoteria": int(tipoLoteria),
                     "numeroSorteo": sorteo,
                     "codigoPremioPrincipal": codigoPremio,
                     "ultimoResultado": resultadoId
@@ -64,7 +64,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     premioPozo = True
             if (tipoLoteria == "2"):
                 if (premioData['P'] == "23"):
-                    myquery = { "tipoLoteria": tipoLoteria }
+                    myquery = { "tipoLoteria": int(tipoLoteria) }
                     data = { "$set":{
                         "resultadoLottoPlus": resultadoId,
                         "codigoPremioLottoPlus": codigoPremio
@@ -76,7 +76,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             if (tipoLoteria == "5" and premioData['P'] == "6" and not reintegroPozo):
                 reintegroPozo = True
                 nombreMascota = combinacion3
-                myquery = { "tipoLoteria": tipoLoteria }
+                myquery = { "tipoLoteria": int(tipoLoteria) }
                 if(nombreMascota == "Camar�n"):
                     mascota = "01"
                 elif(nombreMascota == "Delf�n"):
@@ -112,7 +112,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 }}
                 loteriaDB['ultimoresultados'].update_one(myquery, data)
         if(tipoLoteria == "2"):
-            myquery = { "tipoLoteria": tipoLoteria }
+            myquery = { "tipoLoteria": int(tipoLoteria) }
             codigoPremioLottito = sorteo + '-24'
             data = { "$set":{
                 "resultadosLottito": resultadosLottito,
@@ -125,7 +125,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             response = requests.get(url)
             resultado = response
             resultadoId = loteriaDB['resultados'].insert_one(resultado)
-            myquery = { "tipoLoteria": tipoLoteria }            
+            myquery = { "tipoLoteria": int(tipoLoteria) }            
             data = { "$set":{
                 "ultimoResultado": resultadoId,
                 "numeroSorteo": resultado['numeroSorteo'],
@@ -138,7 +138,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         status = True
         return status
     except Exception as ex:
-        template = "An exception of type {0} occurred. Arguments:\n{1not r}"
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
         message = template.format(type(ex).__name__, ex.args)
         sendResult(message)
         status = False
