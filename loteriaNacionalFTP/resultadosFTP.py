@@ -126,11 +126,13 @@ def main():
     #db = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
-    file = open(filepath, encoding="iso-8859-1")
+    file = open(filepath, 'a', encoding="iso-8859-1")
     content = file.read()
+    file.seek(0, 0)
+    file.write("<dataset>" + content+ '</dataset>')
     file.close()
-    content = "<dataset>"+content+"</dataset>"
-    resultados = ET.fromstring(content)
+    # content = "<dataset>"+content+"</dataset>"
+    resultados = ET.parse(filepath)
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
