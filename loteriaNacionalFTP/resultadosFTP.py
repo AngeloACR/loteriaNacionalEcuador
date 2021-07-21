@@ -5,17 +5,17 @@ from pymongo import MongoClient
 import sys
 
 def connectDB(myDB):
-	try:
-		connection = MongoClient(myDB)
-		return connection
-	except:
-		sendResult("Connect Error")
+    try:
+        connection = MongoClient(myDB)
+        return connection
+    except:
+        sendResult("Connect Error")
 
 def closeConnect(connection):
-	try:
-		connection.close()
-	except:
-		sendResult("Close Error")
+    try:
+        connection.close()
+    except:
+        sendResult("Close Error")
 
 def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
     try:
@@ -72,7 +72,6 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 if (tipoLoteria == "5") {
                     await ResultadosController.setMascota(tipoLoteria, mascota);
                     if (!premioPozo) {
-
                         let data = await Lottery.autenticarUsuario()
                         let ultimoResultado = await Lottery.consultarUltimosResultados(5, data.token);
 
@@ -118,9 +117,9 @@ def sendResult(message):
     sys.stdout.flush()
 
 def main():
-	db = "mongodb://localhost:27017/loteriaPruebaDB"
-	#db = "mongodb://localhost:27017/loteriaDB"
-	filename = sys.argv[1]
+    db = "mongodb://localhost:27017/loteriaPruebaDB"
+    #db = "mongodb://localhost:27017/loteriaDB"
+    filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
     file = open(filepath, encoding="iso-8859-1")
     content = file.read()
