@@ -26,6 +26,10 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         for x in resultadosNuevos:
             resultadoData = x.attrib
 
+            if('C2' in premioData):
+                combinacion2 = premioData['C2']
+            if('C3' in premioData):
+                combinacion3 = premioData['C3']
             """ let indexLottito = 0;
                 let resultadosLottito = []
                 let mascota;
