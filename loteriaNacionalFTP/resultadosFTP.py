@@ -125,7 +125,7 @@ def main():
     content = file.read()
     file.close()
     content = "<dataset>"+content+"</dataset>"
-    premios = ET.fromstring(content)
+    resultados = ET.fromstring(content)
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
