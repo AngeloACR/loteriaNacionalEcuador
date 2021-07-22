@@ -21,13 +21,13 @@ var fs = require('fs');
 module.exports.init = function (ftpHost, ftpPort) {
 
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
-    const keyPath = path.join(config.sslPath, config.keyFile);
+    /* const keyPath = path.join(config.sslPath, config.keyFile);
     const certPath = path.join(config.sslPath, config.certFile);
-    const reqPath = path.join(config.sslPath, config.reqFile);
+    const reqPath = path.join(config.sslPath, config.reqFile); */
 
-    /* const keyPath = path.join(config.sslPathTest, config.keyFile);
+    const keyPath = path.join(config.sslPathTest, config.keyFile);
     const certPath = path.join(config.sslPathTest, config.certFile);
-    const reqPath = path.join(config.sslPathTest, config.reqFile); */
+    const reqPath = path.join(config.sslPathTest, config.reqFile);
     const ftpServer = new FtpSrv({
         url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
