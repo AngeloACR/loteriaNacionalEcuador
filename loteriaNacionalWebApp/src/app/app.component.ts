@@ -13,6 +13,5 @@ export class AppComponent implements OnInit {
   faCoffee = faCoffee;
   constructor(private inquiry: InquiryService) {}
   async ngOnInit() {
-    await this.inquiry.recuperarUltimosResultados();
   }
 }

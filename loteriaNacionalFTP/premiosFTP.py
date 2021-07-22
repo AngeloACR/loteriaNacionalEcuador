@@ -20,8 +20,8 @@ def closeConnect(connection):
 def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
     try:
         connection = connectDB(db)
-        loteriaDB = connection['loteriaPruebaDB']
-        #loteriaDB = connection['loteriaDB']
+        #loteriaDB = connection['loteriaPruebaDB']
+        loteriaDB = connection['loteriaDB']
         premios = loteriaDB['premios']
         for x in premiosNuevos:
             premioData = x.attrib
@@ -64,8 +64,8 @@ def sendResult(message):
     sys.stdout.flush()
 
 def main():
-    db = "mongodb://localhost:27017/loteriaPruebaDB"
-    #db = "mongodb://localhost:27017/loteriaDB"
+    #db = "mongodb://localhost:27017/loteriaPruebaDB"
+    db = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
     file = open(filepath, encoding="iso-8859-1")
