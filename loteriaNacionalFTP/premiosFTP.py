@@ -27,10 +27,16 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
             premioData = x.attrib
             codigo = sorteo + "-" + premioData['P']
             descripcionDescuento = ''
+            valorFraccion = ''
+            valorFraccionConDescuento = ''
             if('OD' in premioData):
                 descripcionDescuento = premioData['OD']
+            if('VF' in premioData):
+                valorFraccion = premioData['VF']
+            if('VD' in premioData):
+                valorFraccionConDescuento = premioData['FD']
             premio = {
-                "tipoLoteria": tipoLoteria,
+                "tipoLoteria": int(tipoLoteria),
                 "numeroSorteo": sorteo,
                 "nombre": premioData['N'],
                 "codigo": codigo,
@@ -38,8 +44,8 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
                 "primeraSuerte": premioData['PS'],
                 "valorPremio": premioData['VP'],
                 "valorPremioConDescuento": premioData['VD'],
-                "valorFraccion": premioData['VF'],
-                "valorFraccionConDescuento": premioData['FD'],
+                "valorFraccion": valorFraccion,
+                "valorFraccionConDescuento": valorFraccionConDescuento,
                 "descripcionDescuento": descripcionDescuento
             }
             loteriaDB['premios'].insert_one(premio)

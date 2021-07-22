@@ -121,13 +121,10 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             loteriaDB['ultimoresultados'].update_one(myquery, data)
         if(tipoLoteria == "5" and not premioPozo):
             url = "https://ventas-api-prueba.loteria.com.ec/results/ultimoResultadoPozo"
-            sendResult("Pidiendo resultados http")
             response = requests.get(url)
             resultado = response.json()
-            sendResult(resultado)
             resultadoId = loteriaDB['resultados'].insert_one(resultado)
-            myquery = { "tipoLoteria": int(tipoLoteria) }            
-            sendResult(myquery)
+            myquery = { "tipoLoteria": int(tipoLoteria) }
             data = { "$set":{
                 "ultimoResultado": ObjectId(resultadoId.inserted_id),
                 "numeroSorteo": resultado['numeroSorteo'],
