@@ -33,7 +33,7 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
                 descripcionDescuento = premioData['OD']
             if('VF' in premioData):
                 valorFraccion = premioData['VF']
-            if('VD' in premioData):
+            if('FD' in premioData):
                 valorFraccionConDescuento = premioData['FD']
             premio = {
                 "tipoLoteria": int(tipoLoteria),
