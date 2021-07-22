@@ -26,7 +26,7 @@ const mainController = {
 
             let codigoPremio = `${ultimoResultado.SortId}-1`;
             let resultado = {
-                tipoLoteria,
+                tipoLoteria: 5,
                 numeroSorteo: ultimoResultado.SortId,
                 combinacion2: ultimoResultado.Comb,
                 combinacion3: '',
