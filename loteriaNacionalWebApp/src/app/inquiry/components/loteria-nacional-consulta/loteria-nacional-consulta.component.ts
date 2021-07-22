@@ -19,6 +19,9 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
   sorteoGanador: any;
   sorteoBoletin: any;
   combinacionesAux: any;
+  characterCount: number = 0;
+  previousLength: number = 0;
+
   @Output() resultados = new EventEmitter();
   constructor(
     private router: Router,
@@ -33,62 +36,70 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
 
   validateField() {
     this.changeDetectorRef.detectChanges();
-    this.combinacionesAux = this.deleteLetters();
-    //this.cleanCombinationSpaces();
-    //this.maxDigits(5);
+    this.validate();
     this.changeDetectorRef.markForCheck();
   }
 
-  cleanCombinationSpaces() {
-    let combinaciones = this.combinacionesAux.split(",");
-    let length = combinaciones.length;
-    let lastIndex = length - 1;
-    let lastCombinacion = combinaciones[lastIndex];
-    if (lastCombinacion[0] == " ") {
-      lastCombinacion = lastCombinacion.substring(1);
+  maxDigits: number = 5;
+  numbers: Array<any> = [];
+  cameFromBackspace: boolean = false;
+  validate() {
+    let reg = /[^0-9]/g;
+    let currentLength = this.combinacionesAux.length;
+    if (this.previousLength > currentLength) {
+      if (this.combinacionesAux[currentLength - 1] == ",") {
+        this.combinacionesAux = this.combinacionesAux.slice(0, -1);
+        this.cameFromBackspace = true;
+      }
+    } else {
+      this.numbers = this.combinacionesAux.split(", ");
+      if (this.cameFromBackspace) {
+        let lastNumber = this.numbers[this.numbers.length - 1];
+        let auxLength = lastNumber.length;
+        let number = lastNumber[auxLength - 1];
+        this.numbers[this.numbers.length - 1] = lastNumber.slice(0, -1);
+        this.numbers.push(number);
+        this.cameFromBackspace = false;
+      }
+      this.combinacionesAux = "";
+      this.numbers.forEach(number => {
+        number = number.replace(reg, "");
+        this.combinacionesAux = `${this.combinacionesAux}${number}`;
+        if (number.length == this.maxDigits) {
+          this.combinacionesAux = `${this.combinacionesAux}, `;
+        }
+      });
     }
-    let lastCombinacionLength = lastCombinacion.length;
-    if (lastCombinacionLength > 1) {
-      lastCombinacion = lastCombinacion.replace(" ", "");
-
-      this.combinacionesAux = this.combinacionesAux.slice(
-        0,
-        -lastCombinacionLength
-      );
-
-      this.combinacionesAux = this.combinacionesAux.concat("", lastCombinacion);
-    }
+    this.previousLength = this.combinacionesAux.length;
   }
 
-  maxDigits(max) {
-    let combinaciones = this.deleteSpaces();
-    combinaciones = combinaciones.split(",");
-    let length = combinaciones.length;
-    let lastIndex = length - 1;
-    let lastCombinacion = combinaciones[lastIndex];
-    let lastCombinacionLength = lastCombinacion.length;
-    console.log(lastCombinacionLength);
-    if (lastCombinacionLength > max) {
-      lastCombinacion = lastCombinacion.substring(0, max);
-      this.combinacionesAux = this.combinacionesAux.slice(0, -(max + 1));
-
-      this.combinacionesAux = this.combinacionesAux.concat("", lastCombinacion);
-    }
-  }
-
-  deleteLetters() {
-    let reg = /[^0-9|,| ]/g;
-    let combinacionesAux = this.combinacionesAux.replace(reg, "");
-    return combinacionesAux;
-  }
-
-  deleteSpaces() {
-    let combinacionesAux = this.combinacionesAux.replace(" ", "");
-    return combinacionesAux;
-  }
   async buscarBoletoGanador() {
-    let combinaciones = this.deleteSpaces();
-    combinaciones = combinaciones.split(",");
+    let aux = this.combinacionesAux;
+    if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
+      aux = this.combinacionesAux.slice(0, -2);
+    }
+
+    let combinaciones: Array<any> = aux.split(", ");
+    combinaciones = combinaciones.map((combinacion, index) => {
+      let auxLength = combinacion.length;
+      console.log(auxLength);
+      if (auxLength != 0) {
+        if (combinaciones.length - 1 == index) {
+          if (auxLength < this.maxDigits) {
+            let auxAdd = this.maxDigits - auxLength;
+            for (let i = 1; i <= auxAdd; i++) {
+              combinacion = `0${combinacion}`;
+              console.log(combinacion);
+            }
+          }
+        }
+        return combinacion;
+      }
+    });
+    if (!this.sorteoGanador) {
+      alert("Por favor seleccione un sorteo");
+      return;
+    }
     let data: any = await this.inquiryService.recuperarBoletoGanador(
       1,
       this.sorteoGanador,
@@ -99,6 +110,11 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
   }
 
   async buscarBoletin() {
+    if (!this.sorteoBoletin) {
+      alert("Por favor seleccione un sorteo");
+      return;
+    }
+
     this.router.navigateByUrl(
       `/resultados/loteria_boletin/${this.sorteoBoletin}`
     );

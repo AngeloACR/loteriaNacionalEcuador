@@ -287,7 +287,6 @@ const inquiryController = {
             let boletoFinal = parseInt(req.body.boletoFinal);
             let size = boletoFinal - boletoInicial + 1;
             let boletos = [...Array(size).keys()].map(i => (parseInt(i) + boletoInicial).toString());
-            console.log(boletos);
             let response = [];
             let length = boletos.length;
             for (let i = 0; i < length; i++) {
@@ -407,7 +406,6 @@ const inquiryController = {
     buscarLoteriaSorteosJugados: async (req, res) => {
         try {
             response = await Sorteos.getSorteos(1);
-            console.log(response);
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());

@@ -14,7 +14,6 @@ const claveClientePsd = config.passwordAplicativoProd; */
 
 module.exports.autenticarUsuario = async () => {
     try {
-        console.log('Autenticando usuario');
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
         let message = {
@@ -41,7 +40,6 @@ module.exports.autenticarUsuario = async () => {
         return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
                 if (err) reject(err);
-                console.log(res);
                 let data = await parser.parseStringPromise(res.fnAutenticacionResult)
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
 
@@ -49,7 +47,6 @@ module.exports.autenticarUsuario = async () => {
                     let response = {
                         token: data.mt.c[0].token[0]
                     }
-                    console.log('Recibiendo token');
                     resolve(response);
                 } else {
                     reject(data.mt.c[0].msgError[0])

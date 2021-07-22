@@ -40,59 +40,9 @@ const mainController = {
             res.status(400).json(e.toString());
         }
     },
-    agregarResultadosHTTP: async (req, res) => {
-        try {
-            let sorteo = req.body.sorteo;
-            let tipoLoteria = req.body.tipoLoteria;
-            let filePath = `uploads/resultados/BOLPRE-${tipoLoteria}-${sorteo}.xml`;
-
-            /* fs.readFile(filePath, 'utf8', async function (err, xmlData) {
-                if (err) throw err;
-                let dataSet = `<dataset>${xmlData}</dataset>`
-                let aux = await parser.parseStringPromise(dataSet, { trim: true })
-                let data = aux.dataset.R;
-                let length = data.length;
-                console.log(length); */
-            let data = await Lottery.autenticarUsuario()
-            let ultimosResultados = await Lottery.consultarUltimosResultados(5, data.token);
-
-            let response = {
-                ultimosResultados
-            }
-            res.status(200).json(response);
-
-            //});
-        } catch (e) {
-            res.status(400).json(e.toString());
-        }
-    },
-
-    agregarPremiosHTTP: async (req, res) => {
-        try {
-            let sorteo = req.body.sorteo;
-            let tipoLoteria = req.body.tipoLoteria;
-            let filePath = `uploads/resultados/PREM-${tipoLoteria}-${sorteo}.xml`;
-
-            fs.readFile(filePath, 'utf8', async function (err, xmlData) {
-                if (err) throw err;
-                let dataSet = `<dataset>${xmlData}</dataset>`
-                let aux = await parser.parseStringPromise(dataSet, { trim: true })
-                let data = aux.dataset.R;
-                let length = data.length;
-                console.log(length);
-                response = {
-                    data
-                }
-                res.status(200).json(response);
-            });
-        } catch (e) {
-            throw e;
-        }
-    },
 
     agregarSorteos: async function () {
         try {
-            console.log("Actualizando sorteos")
             let response = await Lottery.autenticarUsuario();
             let token = response.token;
 
@@ -121,88 +71,6 @@ const mainController = {
         }
     },
 
-    agregarResultados: async (sorteo, tipoLoteria) => {
-        try {
-            let filePath = `uploads/resultados/BOLPRE-${tipoLoteria}-${sorteo}.xml`;
-            console.log('Empezando a agregar resultado');
-            fs.readFile(filePath, 'utf8', async function (err, xmlData) {
-                if (err) throw err;
-                let dataSet = `<dataset>${xmlData}</dataset>`
-                console.log('Haciendo parse del archivo');
-                let aux = await parser.parseStringPromise(dataSet, { trim: true })
-                let data = aux.dataset.R;
-                let length = data.length;
-                let indexLottito = 0;
-                let resultadosLottito = []
-                let mascota;
-                let premioPozo = false;
-                let reintegroPozo = false;
-                for (let i = 0; i < length; i++) {
-                    let codigoPremioAux = data[i].X[0].R[0].$.P;
-                    let codigoPremio = `${sorteo}-${codigoPremioAux}`;
-                    let resultado = {
-                        tipoLoteria,
-                        numeroSorteo: sorteo,
-                        combinacion1: data[i].$.C1,
-                        combinacion2: data[i].$.C2,
-                        combinacion3: data[i].$.C3,
-                        codigo: data[i].$.B,
-                        codigoPremio,
-                        combinacionGanadora: data[i].X[0].R[0].$.CG
-                    }
-                    resultado = (await ResultadosController.addResultado(resultado)).values;
-                    if (codigoPremioAux == "1") {
-                        await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
-                        if (tipoLoteria == "5") {
-                            premioPozo = true;
-                        }
-                    }
-                    if (tipoLoteria == "2") {
-                        if (codigoPremioAux == "23") {
-                            await ResultadosController.setUltimoLottoPlus(tipoLoteria, resultado, codigoPremio);
-                        } else if (codigoPremioAux == "24") {
-                            resultadosLottito.push(resultado._id);
-                            indexLottito++;
-                        }
-
-                    }
-                    if (tipoLoteria == "5" && codigoPremioAux == "6" && !reintegroPozo) {
-                        reintegroPozo == true;
-                        mascota = resultado.combinacion3;
-                    }
-                }
-                if (tipoLoteria == "2") {
-                    let codigoPremioLottito = `${sorteo}-24`;
-                    await ResultadosController.setUltimoLottito(tipoLoteria, resultadosLottito, codigoPremioLottito, indexLottito);
-                }
-                if (tipoLoteria == "5") {
-                    await ResultadosController.setMascota(tipoLoteria, mascota);
-                    if (!premioPozo) {
-
-                        let data = await Lottery.autenticarUsuario()
-                        let ultimoResultado = await Lottery.consultarUltimosResultados(5, data.token);
-
-                        let codigoPremio = `${ultimoResultado.SortId}-1`;
-                        let resultado = {
-                            tipoLoteria,
-                            numeroSorteo: ultimoResultado.SortId,
-                            combinacion2: ultimoResultado.Comb,
-                            combinacion3: '',
-                            combinacion1: '',
-                            codigoPremio,
-                            combinacionGanadora: "2"
-                        }
-                        resultado = (await ResultadosController.addResultado(resultado)).values;
-                        await ResultadosController.setUltimoResultado(tipoLoteria, resultado, codigoPremio);
-                    }
-
-                }
-            });
-        } catch (e) {
-            throw e;
-        }
-    },
-
     getUltimosResultados: async function () {
         try {
             let loteriaNacionalResponse = await ResultadosController.getUltimoResultado(1)
@@ -215,45 +83,6 @@ const mainController = {
             }
 
             return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
-    agregarPremios: async (sorteo, tipoLoteria) => {
-        try {
-            let filePath = `uploads/resultados/PREM-${tipoLoteria}-${sorteo}.xml`;
-            //let sorteoData = await mainController.agregarSorteos(sorteo, tipoLoteria, false);
-            fs.readFile(filePath, 'utf8', async function (err, xmlData) {
-                if (err) throw err;
-                let dataSet = `<dataset>${xmlData}</dataset>`
-                let aux = await parser.parseStringPromise(dataSet, { trim: true })
-                let data = aux.dataset.R;
-                let length = data.length;
-
-                for (let i = 0; i < length; i++) {
-                    let premioAux = data[i]
-                    let premio = {
-                        tipoLoteria,
-                        numeroSorteo: sorteo,
-                        nombre: premioAux.$.N,
-                        codigo: `${sorteo}-${premioAux.$.P}`,
-                        tipoPremio: premioAux.$.TP,
-                        primeraSuerte: premioAux.$.PS,
-                        valorPremio: premioAux.$.VP,
-                        valorPremioConDescuento: premioAux.$.VD,
-                        valorFraccion: premioAux.$.VF,
-                        valorFraccionConDescuento: premioAux.$.FD,
-                        descripcionDescuento: premioAux.$.OD,
-                    }
-
-                    await PremiosController.addPremio(premio);
-                };
-
-            });
         } catch (error) {
             let response = {
                 status: false,

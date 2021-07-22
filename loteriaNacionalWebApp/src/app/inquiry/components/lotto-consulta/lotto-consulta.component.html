@@ -7,7 +7,7 @@
       <div class="explicacion">
         <div class="content_explicacion">
           <p class="icono">1</p>
-          <p>Si consultas por Boleto y Sorteo: ingresa todos los boletos separados por una coma(,).</p>
+          <p>Ingresa la combinación principal de tu boleto.</p>
         </div>
         <div class="content_explicacion">
           <p class="icono">2</p>
@@ -30,7 +30,8 @@
               <label for="">Ingresa numero(s) de boleto(s):</label>
               <input name="combinaciones" type="text" (input)="validateField()" [(ngModel)]="combinacionesAux">
             </div>
-            <p>Si deseas consultar varios boletos, ingresalos separados por coma [,] ejemplo: 123445, 678978 (6 digitos)
+            <p>Ingresa los 6 dígitos de la combinación principal de tu boleto. Puedes consultar varios boletos a la vez,
+              ejemplo: 123445, 678978 (6 digitos)
           </div>
 
           <div class="input">
@@ -52,7 +53,7 @@
         <hr>
       </div>
 
-      <div class="consulta_boleto espacio">        
+      <div class="consulta_boleto espacio">
         <h3 class="">Consulta por Boletin de Resultados</h3>
         <form action="" class="formulario">
           <div class="input">
