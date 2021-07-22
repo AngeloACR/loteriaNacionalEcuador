@@ -122,7 +122,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
         if(tipoLoteria == "5" and not premioPozo):
             url = "https://ventas-api-prueba.loteria.com.ec/results/ultimoResultadoPozo"
             sendResult("Pidiendo resultados http")
-            response = requests.post(url, data={})
+            response = requests.get(url)
             resultado = response.json()
             sendResult(resultado)
             resultadoId = loteriaDB['resultados'].insert_one(resultado)
