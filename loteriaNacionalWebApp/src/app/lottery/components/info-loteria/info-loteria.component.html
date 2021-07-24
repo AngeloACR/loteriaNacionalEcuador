@@ -1,13 +1,16 @@
 <ul class="menuBox">
   <li class="menuItem" [ngClass]="{'fondoLoteria': fondoLoteria, 'fondoLotto': fondoLotto, 'fondoPozo': fondoPozo}">
-    {{ titulo }}</li>
+    {{ titulo }}
+  </li>
   <li class="menuItem">Sorteo: <br>
-    <select class="fechaItem" name="" id="">
-      <option [value]="item" *ngFor="let item of sorteo">
-        {{ item.fecha }}
-      </option>
+    <select class="fechaItem" [(ngModel)]="seleccionado">  <!-- multiple="multiple" -->
+      <option [ngValue]="objeto" *ngFor="let objeto of sorteo">{{ objeto.fecha }}</option>
     </select>
   </li>
-  <li class="menuItem">Premios: <p>$</p></li>
-  <li class="menuItem">Precio: <p>$</p></li>
+  <li class="menuItem"> 
+    Premio: <p>{{ seleccionado?.premio }}</p>
+  </li>
+  <li class="menuItem"> 
+    Precio: <p>{{ seleccionado?.precio }}</p>
+  </li>
 </ul>

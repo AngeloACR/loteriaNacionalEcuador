@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NgxPaginationModule } from 'ngx-pagination';
+
 
 import { PozoMillonarioComponent } from "./containers/pozo-millonario/pozo-millonario.component";
 import { LoteriaComponent } from "./containers/loteria/loteria.component";
@@ -26,7 +26,15 @@ import { TooltipComponent } from './containers/tooltip/tooltip.component';
 import { SeleccionLottoComponent } from './containers/seleccion-lotto/seleccion-lotto.component';
 import { SeleccionPozoComponent } from './containers/seleccion-pozo/seleccion-pozo.component';
 import { InfoLoteriaComponent } from './components/info-loteria/info-loteria.component';
+import { PaginatePipe } from './pipes/paginate.pipe';
 
+/* import { NgxPaginationModule } from 'ngx-pagination'; */
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { StylePaginatorDirective } from './style-paginator.directive';
+
+
+import { FormsModule } from '@angular/forms';
+import { CustomMatPaginatorIntl } from "./paginacion-es";
 
 
 @NgModule({
@@ -52,7 +60,9 @@ import { InfoLoteriaComponent } from './components/info-loteria/info-loteria.com
     TooltipComponent,
     SeleccionLottoComponent,
     SeleccionPozoComponent,
-    InfoLoteriaComponent
+    InfoLoteriaComponent,
+    PaginatePipe,
+    StylePaginatorDirective
   ],
   entryComponents: [
     LotteryTypeComponent,
@@ -68,6 +78,18 @@ import { InfoLoteriaComponent } from './components/info-loteria/info-loteria.com
     PozoMillonarioConfiguradorComponent,
     SeleccionTipoComponent
   ],
-  imports: [CommonModule, LotteryRoutingModule, NgxPaginationModule]
+  imports: [
+    CommonModule, 
+    LotteryRoutingModule, 
+    /* NgxPaginationModule, */ 
+    MatPaginatorModule, 
+    FormsModule
+  ],
+  providers: [
+    {
+      provide: MatPaginatorIntl, 
+      useClass: CustomMatPaginatorIntl
+    }
+  ],
 })
 export class LotteryModule {}

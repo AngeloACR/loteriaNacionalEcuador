@@ -7,38 +7,48 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { FormsModule } from "@angular/forms";
-import {NgxPaginationModule} from 'ngx-pagination'; 
+/* import {NgxPaginationModule} from 'ngx-pagination';  */
 
 //Anexando fontAwesome
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
 
+import { BrowserAnimationsModule/* , NoopAnimationsModule */ } from "@angular/platform-browser/animations";
 
-import {MatPaginatorModule} from '@angular/material/paginator';
+/* import {MatTableModule} from '@angular/material/table'; */
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CustomMatPaginatorIntl } from './lottery/paginacion-es';
+
+
 
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, FooterComponent],
   imports: [
     BrowserModule,
-    NgxPaginationModule,
+    /* NgxPaginationModule, */
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    NoopAnimationsModule,
     BrowserAnimationsModule,
+    /* NoopAnimationsModule, */
     FormsModule,
-
-
 
 
     MatPaginatorModule,
     MatFormFieldModule
   ],
-  exports: [MatPaginatorModule,
-    MatFormFieldModule],
-  providers: [],
+  exports: [
+    MatPaginatorModule,
+    MatFormFieldModule, 
+    FormsModule
+  ],
+  providers: [
+    /* {
+      provide: MatPaginatorIntl, 
+      useClass: CustomMatPaginatorIntl
+    } */
+  ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { sorteo } from '../../interfaces/lottery.interface';
 import { LotteryService } from '../../services/lottery.service';
 
 @Component({
@@ -8,7 +9,6 @@ import { LotteryService } from '../../services/lottery.service';
 })
 export class InfoLoteriaComponent implements OnInit {
 
-  sorteo: any;
   @Input() titulo: string;
   @Input() color: string;
   @Input() loteria: number;
@@ -16,6 +16,9 @@ export class InfoLoteriaComponent implements OnInit {
   fondoLoteria: boolean = true;
   fondoLotto: boolean = false;
   fondoPozo: boolean = false;
+
+  sorteo: sorteo[];
+  seleccionado: any;
 
   constructor(private lotteryService: LotteryService) { }
 

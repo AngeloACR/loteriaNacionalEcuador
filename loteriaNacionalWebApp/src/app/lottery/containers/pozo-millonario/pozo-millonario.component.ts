@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { LotteryService } from "../../services/lottery.service";
 import { animales, ticketsAnimales, sorteo } from '../../interfaces/lottery.interface';
+import { PageEvent } from "@angular/material";
+
 
 @Component({
   selector: "app-pozo-millonario",
@@ -16,6 +18,10 @@ export class PozoMillonarioComponent implements OnInit {
   
   ticketAnimales: ticketsAnimales[];
   /* animalesSeleccionadosTicket: ticketsAnimales[] = []; */
+
+  page_size: number = 4;
+  page_number: number = 1;
+  pageSizeOptions: [5, 10, 20, 100];
 
   constructor(private lotteryService: LotteryService) {}
 
@@ -62,6 +68,11 @@ export class PozoMillonarioComponent implements OnInit {
     }
     localStorage.setItem("ticketAnimales", JSON.stringify(this.ticketAnimales));
     /* localStorage.setItem("animalesSeleccionadosTicket", JSON.stringify(this.animalesSeleccionadosTicket)); */
+  }
+
+  handlerPage(e: PageEvent) {
+    this.page_size = e.pageSize
+    this.page_number = e.pageIndex + 1
   }
 
   ngOnInit() {

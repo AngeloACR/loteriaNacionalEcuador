@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { PageEvent } from "@angular/material";
 
 import { LotteryService } from "../../services/lottery.service";
 
@@ -10,11 +11,12 @@ import { LotteryService } from "../../services/lottery.service";
 export class LoteriaComponent implements OnInit {
   tickets: any;
   numeros: object[] = [];
-  pageActual: number = 1;
-  desaparecer_izquierdo: boolean = true;
-  desaparecer_derecho: boolean = false;
   sorteo: any;
   premioPrecio: any;
+
+  page_size: number = 9;
+  page_number: number = 1;
+  pageSizeOptions: [5, 10, 20, 100];
 
   constructor(private lotteryService: LotteryService) {
     this.numeros = [
@@ -31,39 +33,17 @@ export class LoteriaComponent implements OnInit {
     ];
   }
 
-  incrementar() {
-    this.pageActual++;
-    if (this.pageActual >= this.numeros.length / 10) {
-      this.desaparecer_derecho = true;
-    } else {
-      this.desaparecer_derecho = false;
-    }
-    this.desaparecer_izquierdo = false;
+  handlerPage(e: PageEvent) {
+    this.page_size = e.pageSize
+    this.page_number = e.pageIndex + 1
   }
 
-  decrementar() {
-    this.pageActual--;
-    if (this.pageActual <= 1) {
-      this.pageActual = 1;
-      this.desaparecer_izquierdo = true;
-    } else {
-      this.desaparecer_izquierdo = false;
-    }
-    this.desaparecer_derecho = false;
-    console.log(this.pageActual);
-  }
-
-  irPage(page: number) {
-    this.pageActual = page;
-  }
 
   loteriaTickets: number[];
 
   ngOnInit() {
     this.sorteo = this.lotteryService.obtenerSorteo(1);
     /* this.premioPrecio = this.lotteryService.obtenerPremioPrecio(1); */
-    if (this.pageActual >= this.numeros.length / 10) {
-      this.desaparecer_derecho = true;
-    }
+
   }
 }

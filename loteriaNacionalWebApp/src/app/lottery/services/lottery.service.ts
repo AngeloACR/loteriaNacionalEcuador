@@ -20,24 +20,24 @@ export class LotteryService {
         return (this.sorteo = [
           {
             fecha: "15/08/21",
-            premio: "200000",
-            precio: "15",
+            premio: "1500",
+            precio: "12",
             fracciones: "40",
-            numero: "6526"
+            numero: "6528"
           },
           {
             fecha: "16/08/21",
-            premio: "200000",
-            precio: "15",
+            premio: "1800",
+            precio: "18",
             fracciones: "30",
-            numero: "6526"
+            numero: "6527"
           },
           {
             fecha: "17/08/21",
-            premio: "200000",
-            precio: "15",
+            premio: "1305",
+            precio: "150",
             fracciones: "20",
-            numero: "6526"
+            numero: "6529"
           }
         ]);
 
@@ -45,22 +45,22 @@ export class LotteryService {
         return (this.sorteo = [
           {
             fecha: "16/08/21",
-            premio: "200000",
-            precio: "15",
+            premio: "250000",
+            precio: "18",
             fracciones: "1",
             numero: "2514"
           },
           {
             fecha: "17/08/21",
             premio: "200000",
-            precio: "15",
+            precio: "23",
             fracciones: "1",
             numero: "2531"
           },
           {
-            fecha: "17/08/21",
-            premio: "200000",
-            precio: "15",
+            fecha: "18/08/21",
+            premio: "180000",
+            precio: "100",
             fracciones: "1",
             numero: "2536"
           }
@@ -70,24 +70,31 @@ export class LotteryService {
         return (this.sorteo = [
           {
             fecha: "20/08/21",
-            premio: "200000",
+            premio: "200500",
             precio: "15",
             fracciones: "1",
             numero: "930"
           },
           {
             fecha: "16/08/21",
-            premio: "200000",
-            precio: "15",
+            premio: "180000",
+            precio: "23",
             fracciones: "1",
             numero: "931"
           },
           {
             fecha: "17/08/21",
-            premio: "200000",
-            precio: "15",
+            premio: "30000",
+            precio: "18",
             fracciones: "1",
             numero: "932"
+          },
+          {
+            fecha: "12/08/21",
+            premio: "80000",
+            precio: "13",
+            fracciones: "1",
+            numero: "972"
           }
         ]);
     }
@@ -157,7 +164,56 @@ export class LotteryService {
         nombre: 'mono',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
         status: false
-      }
+      },
+      {
+        ruta:
+          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+          nombre: 'congrejo',
+        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+        status: false
+      },
+      {
+        ruta:
+          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+          nombre: 'congrejo',
+        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+        status: false
+      },
+      {
+        ruta:
+          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+          nombre: 'congrejo',
+        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+        status: false
+      },
+      {
+        ruta:
+          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+          nombre: 'congrejo',
+        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+        status: false
+      },
+      {
+        ruta:
+          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+          nombre: 'congrejo',
+        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+        status: false
+      },
+      {
+        ruta:
+          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+          nombre: 'congrejo',
+        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+        status: false
+      },
+      {
+        ruta:
+          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+          nombre: 'congrejo',
+        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+        status: false
+      },
     ];
 
     localStorage.setItem('ticketAnimales', JSON.stringify(this.ticketsAnimales));
