@@ -2,20 +2,7 @@
 
 <div class="contenedor_loteria">
 
-  <ul class="menuBox">
-    <li class="menuItem">Lotto</li>
-    <li class="menuItem">Sorteo: <br>
-      <select class="fechaItem" name="" id="">
-        <option value="" *ngFor="let item of sorteo">
-          {{ item.fecha }}
-        </option>
-      </select>
-    </li>
-    <li class="menuItem">Premios: <p>{{ premioPrecio[0]}}$</p>
-    </li>
-    <li class="menuItem">Precio: <p>{{ premioPrecio[1]}}$</p>
-    </li>
-  </ul>
+  <app-info-loteria titulo="Pozo Millonario" color="pozo" [loteria]=5></app-info-loteria>
 
   <div class="contendor_seleccion">
     <form action="">
@@ -40,10 +27,30 @@
         </div>
       </div>
       <div class="contenedor_select">
-        <app-number-selection [animales]="arreglo_animales"></app-number-selection>
+
+        <!-- <app-number-selection 
+          [animales]="arreglo_animales" 
+          (propagar)="procesaPropagar($event)">
+        </app-number-selection>  -->
+
+        <div class="select-sim" id="select-nombre">
+          <div class="options">
+            <div class="option" *ngFor="let animal of seleccionAnimales; let i = index">   
+                <input (click)="agregar(animal.nombre, i)" type="checkbox" [checked]="animal.status"  name="nombre" [value]="animal.nombre" id="nombre-{{animal.nombre}}" />
+                <label for="nombre-{{animal.nombre}}">
+                  <img [src]="animal.ruta" [alt]="animal.nombre" />
+                </label>
+            </div>
+          </div>
+        </div>
+
       </div>
+      
       <div class="tabs_animales">
-        <p *ngFor="let animal of arreglo_animales">{{ animal }} <span (click)="remover(animal)">x</span></p>
+        <p *ngFor="let animal of animalesTabs">
+          {{ animal.nombre}} 
+          <span (click)="remover(animal.nombre)">x</span>
+        </p>
       </div>
       <button class="activado">BUSCAR CARTONES</button>
     </form>
@@ -52,9 +59,19 @@
 
     <table>
       <tbody>
-        <tr *ngFor="let ticket of seleccionPozo | paginate: { itemsPerPage: 4, currentPage: pageActual };">
+        <tr *ngFor="let ticket of ticketAnimales; let i = index "> <!-- | paginate: { itemsPerPage: 4, currentPage: pageActual }; -->
           <td>
-            <app-seleccion-pozo [tickets]="ticket"></app-seleccion-pozo>
+            <input type="checkbox" name="" id="" [checked]="ticket.status" (click)="seleccionarTicket(ticket.nombre,i)">
+            <div class="contenedor_seleccion_numero">
+              <div class="imagen_animal">
+                <p>Mascota: </p>
+                <img [src]="ticket.ruta" alt="">
+              </div>
+              <div class="numeros" >
+                <p *ngFor="let numero of ticket.numero">{{ numero }}</p>
+              </div>
+            </div>
+            <!-- <app-seleccion-pozo [tickets]="ticketMascota"></app-seleccion-pozo> -->
           </td>
         </tr>
       </tbody>
@@ -62,19 +79,17 @@
     <hr size="2px" color="gray" />
 
     <div class="contenedor_botones">
-      <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton"
-        (click)="decrementar()">
+      <button class="boton">
         <i class="fa fa-chevron-left"></i>
       </button>
 
 
-      <button class="boton">
+      <!-- <button class="boton">
         {{ pageActual }}
-      </button>
+      </button> -->
 
 
-      <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton"
-        (click)="incrementar()">
+      <button class="boton">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>

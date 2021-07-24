@@ -25,6 +25,7 @@ import { SeleccionTipoComponent } from "./components/seleccion-tipo/seleccion-ti
 import { TooltipComponent } from './containers/tooltip/tooltip.component';
 import { SeleccionLottoComponent } from './containers/seleccion-lotto/seleccion-lotto.component';
 import { SeleccionPozoComponent } from './containers/seleccion-pozo/seleccion-pozo.component';
+import { InfoLoteriaComponent } from './components/info-loteria/info-loteria.component';
 
 
 
@@ -50,7 +51,8 @@ import { SeleccionPozoComponent } from './containers/seleccion-pozo/seleccion-po
     SeleccionTipoComponent,
     TooltipComponent,
     SeleccionLottoComponent,
-    SeleccionPozoComponent
+    SeleccionPozoComponent,
+    InfoLoteriaComponent
   ],
   entryComponents: [
     LotteryTypeComponent,

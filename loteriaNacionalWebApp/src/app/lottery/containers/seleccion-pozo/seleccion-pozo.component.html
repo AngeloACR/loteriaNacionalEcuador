@@ -2,7 +2,7 @@
 <div class="contenedor_seleccion_numero">
   <div class="imagen_animal">
     <p>Mascota: </p>
-    <img [src]="tickets.animal" alt="">
+    <img [src]="tickets['ruta']" alt="">
   </div>
   <div class="numeros" >
     <p *ngFor="let item of tickets.numero">{{ item }}</p>

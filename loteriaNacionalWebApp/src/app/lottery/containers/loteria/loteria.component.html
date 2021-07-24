@@ -2,20 +2,7 @@
 
 <div class="contenedor_loteria">
 
-  <ul class="menuBox">
-    <li class="menuItem">Loteria Nacional</li>
-    <li class="menuItem">Sorteo: <br>
-      <select class="fechaItem" name="" id="">
-        <option [value]="item" *ngFor="let item of sorteo">
-          {{ item.fecha }}
-        </option>
-      </select>
-    </li>
-    <li class="menuItem">Premios: <p>{{ premioPrecio[0]}}$</p>
-    </li>
-    <li class="menuItem">Precio: <p>{{ premioPrecio[1]}}$</p>
-    </li>
-  </ul>
+  <app-info-loteria titulo="Loteria Nacional" color="loteria" [loteria]="1"></app-info-loteria>
 
   <div class="contendor_seleccion">
     <h3>Ingresa tu numero de la suerte</h3>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { LotteryService } from "../../services/lottery.service";
+import { animales, ticketsAnimales, sorteo } from '../../interfaces/lottery.interface';
 
 @Component({
   selector: "app-pozo-millonario",
@@ -7,100 +8,80 @@ import { LotteryService } from "../../services/lottery.service";
   styleUrls: ["./pozo-millonario.component.scss"]
 })
 export class PozoMillonarioComponent implements OnInit {
-  tickets: any;
 
-  arreglo_animales: string[] = [];
+  sorteo: sorteo[];
 
-  pageActual: number = 1;
-  desaparecer_izquierdo: boolean = true;
-  desaparecer_derecho: boolean = false;
-
-  numeros: object[] = [];
-  sorteo: any;
-  premioPrecio: any;
-
-  seleccionPozo: object[] = [
-    {
-      animal:
-        "../../../../assets/mascotas/mascotas pozo millonario-ballena.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal:
-        "../../../../assets/mascotas/mascotas pozo millonario-camaron.png",
-      numero: [12, 54, 32, 58, 64, 72, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal: "../../../../assets/mascotas/mascotas pozo millonario-foca.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal: "../../../../assets/mascotas/mascotas pozo millonario-perro.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal:
-        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal: "../../../../assets/mascotas/mascotas pozo millonario-conejo.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal: "../../../../assets/mascotas/mascotas pozo millonario-delfin.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    },
-    {
-      animal: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-      numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99]
-    }
-  ];
+  seleccionAnimales: animales[];
+  animalesTabs: animales[] = [];
+  
+  ticketAnimales: ticketsAnimales[];
+  /* animalesSeleccionadosTicket: ticketsAnimales[] = []; */
 
   constructor(private lotteryService: LotteryService) {}
 
-  incrementar() {
-    this.pageActual++;
-    if (this.pageActual >= this.seleccionPozo.length / 4) {
-      this.desaparecer_derecho = true;
-    } else {
-      this.desaparecer_derecho = false;
-    }
-    this.desaparecer_izquierdo = false;
-  }
+  agregar(animal: string, i: number) {
+    if(this.seleccionAnimales[i].status === false) {
+      this.seleccionAnimales[i].status = true
+      this.animalesTabs.push({nombre:animal, status:true})
 
-  decrementar() {
-    this.pageActual--;
-    if (this.pageActual <= 1) {
-      this.pageActual = 1;
-      this.desaparecer_izquierdo = true;
     } else {
-      this.desaparecer_izquierdo = false;
+      this.seleccionAnimales[i].status = false
+      this.animalesTabs = this.animalesTabs.filter( element => {
+        return element.nombre !== animal
+      })
     }
-    this.desaparecer_derecho = false;
-    console.log(this.pageActual);
-  }
-
-  irPage(page: number) {
-    this.pageActual = page;
+    localStorage.setItem("animalesSeleccionados", JSON.stringify(this.seleccionAnimales));
+    localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
 
   remover(animal: string) {
-    this.arreglo_animales = this.arreglo_animales.filter(function(i: string) {
-      return i !== animal;
+    this.animalesTabs = this.animalesTabs.filter( element => {
+      return element.nombre !== animal
+    })
+
+    this.seleccionAnimales.forEach( (element) => {
+      if (element.nombre === animal) {
+        return element.status = false
+      }  
     });
-    console.log(this.arreglo_animales);
+    
+    localStorage.setItem("animalesSeleccionados", JSON.stringify(this.seleccionAnimales));
+    localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
+  }
+  
+  seleccionarTicket(animal: string, i: number) {
+    if(this.ticketAnimales[i].status === false) {
+      this.ticketAnimales[i].status = true
+      /* this.animalesSeleccionadosTicket.push({nombre:animal, status:true}) */
+
+    } else {
+      this.ticketAnimales[i].status = false
+      /* this.animalesSeleccionadosTicket = this.animalesSeleccionadosTicket.filter( element => {
+        return element.nombre !== animal
+      }) */
+    }
+    localStorage.setItem("ticketAnimales", JSON.stringify(this.ticketAnimales));
+    /* localStorage.setItem("animalesSeleccionadosTicket", JSON.stringify(this.animalesSeleccionadosTicket)); */
   }
 
   ngOnInit() {
+    this.seleccionAnimales = JSON.parse(localStorage.getItem("animalesSeleccionados"));
+    this.animalesTabs = JSON.parse(localStorage.getItem("animalesTabs"));
+
+    this.ticketAnimales = JSON.parse(localStorage.getItem("ticketAnimales"));
+    /* this.animalesSeleccionadosTicket = JSON.parse(localStorage.getItem("animalesSeleccionadosTicket")); */
+
+    //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
+    this.seleccionAnimales.forEach( element => {
+      this.animalesTabs.forEach( elemento => {
+        if(elemento.nombre === element.nombre) {
+          element.status = elemento.status;
+        }
+      }) 
+    })
+    localStorage.setItem("animalesSeleccionados", JSON.stringify(this.seleccionAnimales));
+
+    this.ticketAnimales = JSON.parse(localStorage.getItem("ticketAnimales"));
     this.sorteo = this.lotteryService.obtenerSorteo(5);
-    this.premioPrecio = this.lotteryService.obtenerPremioPrecio(5);
-    if (this.pageActual >= this.seleccionPozo.length / 4) {
-      this.desaparecer_derecho = true;
-    }
   }
 }

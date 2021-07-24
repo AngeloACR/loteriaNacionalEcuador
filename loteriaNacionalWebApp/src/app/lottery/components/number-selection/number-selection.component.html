@@ -1,10 +1,12 @@
 <div class="select-sim" id="select-nombre">
   <div class="options">
-    <div class="option" *ngFor="let animal of animales; let i = index">
-      <input (click)="agregar(animal.nombre, i); " type="radio" name="nombre" [value]="animal.nombre" id="nombre-{{animal.nombre}}" />
-      <label for="nombre-{{animal.nombre}}">
-        <img [src]="animal.ruta" [alt]="animal.nombre" />
-      </label>
+    <div class="option" *ngFor="let animal of animales; let i = index">   
+        <input (click)="estado(animal.nombre)" type="checkbox" [checked]="animal.status"  name="nombre" [value]="animal.nombre" id="nombre-{{animal.nombre}}" />
+        <label for="nombre-{{animal.nombre}}">
+          <img [src]="animal.ruta" [alt]="animal.nombre" />
+        </label>
     </div>
   </div>
 </div>
+
+<!-- {{  | json}} -->

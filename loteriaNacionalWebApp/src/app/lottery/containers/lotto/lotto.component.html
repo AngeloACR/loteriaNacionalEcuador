@@ -2,20 +2,7 @@
 
 <div class="contenedor_loteria">
 
-  <ul class="menuBox">
-    <li class="menuItem">Lotto</li>
-    <li class="menuItem">Sorteo: <br>
-      <select class="fechaItem" name="" id="">
-        <option value="" *ngFor="let item of sorteo">
-          {{ item.fecha }}
-        </option>
-      </select>
-    </li>
-    <li class="menuItem">Premios: <p>{{ premioPrecio[0]}}$</p>
-    </li>
-    <li class="menuItem">Precio: <p>{{ premioPrecio[1]}}$</p>
-    </li>
-  </ul>
+  <app-info-loteria titulo="Lotto" color="lotto" [loteria]=2></app-info-loteria>
 
   <div class="contendor_seleccion">
     <h3>Ingresa tu numero de la suerte</h3>

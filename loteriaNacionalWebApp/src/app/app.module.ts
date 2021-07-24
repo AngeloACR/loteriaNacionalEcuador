@@ -11,7 +11,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 //Anexando fontAwesome
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
+
+
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -23,8 +27,17 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
     FontAwesomeModule,
     HttpClientModule,
     NoopAnimationsModule,
-    FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+
+
+
+
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
+  exports: [MatPaginatorModule,
+    MatFormFieldModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

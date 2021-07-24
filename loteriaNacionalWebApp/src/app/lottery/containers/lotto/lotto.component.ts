@@ -61,7 +61,7 @@ export class LottoComponent implements OnInit {
 
   ngOnInit() {
     this.sorteo = this.lotteryService.obtenerSorteo(2);
-    this.premioPrecio = this.lotteryService.obtenerPremioPrecio(2);
+    /* this.premioPrecio = this.lotteryService.obtenerPremioPrecio(2); */
     if (this.pageActual >= this.numeros.length / 4) {
       this.desaparecer_derecho = true;
     }
