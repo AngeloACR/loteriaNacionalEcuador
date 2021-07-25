@@ -2,8 +2,14 @@ export interface sorteo {
   fecha: string;
   premio: string;
   precio: string;
-  fracciones: string;
+  fracciones: number;
   numero: string;
+}
+
+export interface ticketsNacional {
+  numeros: number[];
+  status: boolean;
+  identificador: number;
 }
 export interface ticketsLotto {
   numeros: number[];

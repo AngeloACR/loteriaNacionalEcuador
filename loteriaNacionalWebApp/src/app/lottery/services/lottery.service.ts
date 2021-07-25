@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { animales, ticketsAnimales, sorteo, ticketsLotto } from '../interfaces/lottery.interface';
+import { animales, ticketsAnimales, sorteo, ticketsLotto, ticketsNacional } from '../interfaces/lottery.interface';
 
 @Injectable({
   providedIn: "root"
@@ -7,15 +7,16 @@ import { animales, ticketsAnimales, sorteo, ticketsLotto } from '../interfaces/l
 export class LotteryService {
   sorteo: sorteo[];
 
+  ticketsNacional: ticketsNacional[];
   ticketsLotto: ticketsLotto[];
-
   ticketsAnimales: ticketsAnimales[];
   animales: animales[];
 
   constructor() {
     this.obtenerAnimalesSelecionados()
-    this.obtenerTicketsAnimales() 
+    this.obtenerTicketsNacional()
     this.obtenerTicketsLotto()
+    this.obtenerTicketsAnimales() 
   }
 
   obtenerSorteo(loteria: number) {
@@ -26,21 +27,21 @@ export class LotteryService {
             fecha: "15/08/21",
             premio: "1500",
             precio: "12",
-            fracciones: "40",
+            fracciones: 40,
             numero: "6528"
           },
           {
             fecha: "16/08/21",
             premio: "1800",
             precio: "18",
-            fracciones: "30",
+            fracciones: 30,
             numero: "6527"
           },
           {
             fecha: "17/08/21",
             premio: "1305",
             precio: "150",
-            fracciones: "20",
+            fracciones: 20,
             numero: "6529"
           }
         ]);
@@ -51,21 +52,21 @@ export class LotteryService {
             fecha: "16/08/21",
             premio: "250000",
             precio: "18",
-            fracciones: "1",
+            fracciones: 1,
             numero: "2514"
           },
           {
             fecha: "17/08/21",
             premio: "200000",
             precio: "23",
-            fracciones: "1",
+            fracciones: 1,
             numero: "2531"
           },
           {
             fecha: "18/08/21",
             premio: "180000",
             precio: "100",
-            fracciones: "1",
+            fracciones: 1,
             numero: "2536"
           }
         ]);
@@ -76,32 +77,94 @@ export class LotteryService {
             fecha: "20/08/21",
             premio: "200500",
             precio: "15",
-            fracciones: "1",
+            fracciones: 1,
             numero: "930"
           },
           {
             fecha: "16/08/21",
             premio: "180000",
             precio: "23",
-            fracciones: "1",
+            fracciones: 1,
             numero: "931"
           },
           {
             fecha: "17/08/21",
             premio: "30000",
             precio: "18",
-            fracciones: "1",
+            fracciones: 1,
             numero: "932"
           },
           {
             fecha: "12/08/21",
             premio: "80000",
             precio: "13",
-            fracciones: "1",
+            fracciones: 1,
             numero: "972"
           }
         ]);
     }
+  }
+
+  obtenerTicketsNacional() {
+    this.ticketsNacional = [
+      {
+        numeros: [1, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [8, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [3, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [4, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [9, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [5, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [2, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [6, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [4, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [6, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [4, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      }
+    ];
+
+    localStorage.setItem('ticketsNacional', JSON.stringify(this.ticketsNacional));
   }
 
   obtenerTicketsLotto() {
