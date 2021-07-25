@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PageEvent } from "@angular/material";
+import { sorteo, ticketsLotto } from '../../interfaces/lottery.interface';
 import { LotteryService } from "../../services/lottery.service";
 
 @Component({
@@ -8,29 +9,26 @@ import { LotteryService } from "../../services/lottery.service";
   styleUrls: ["./lotto.component.scss"]
 })
 export class LottoComponent implements OnInit {
-  numeros: object[] = [];
-  sorteo: any;
-  premioPrecio: any;
+  
+  sorteo: sorteo[];
 
-  tickets: any;
+  ticketsLotto: ticketsLotto[];
 
   page_size: number = 4;
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
 
-  constructor(private lotteryService: LotteryService) {
-    this.numeros = [
-      [1, 4, 5, 7, 4],
-      [8, 4, 5, 7, 4],
-      [3, 4, 5, 7, 4],
-      [4, 4, 5, 7, 4],
-      [9, 4, 5, 7, 4],
-      [5, 4, 5, 7, 4],
-      [4, 4, 5, 7, 4],
-      [2, 4, 5, 7, 4],
-      [6, 4, 5, 7, 4],
-      [6, 4, 5, 7, 4]
-    ];
+  constructor(private lotteryService: LotteryService) {}
+
+  seleccionarTicket(id: number) {
+    this.ticketsLotto.forEach( element => {
+      if(element.identificador === id) {
+        element.status = !element.status
+      }
+    })
+    console.log(id)
+    
+    localStorage.setItem("ticketsLotto", JSON.stringify(this.ticketsLotto));
   }
 
   handlerPage(e: PageEvent) {
@@ -38,11 +36,8 @@ export class LottoComponent implements OnInit {
     this.page_number = e.pageIndex + 1
   }
 
-  /* seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; */
-
   ngOnInit() {
+    this.ticketsLotto = JSON.parse(localStorage.getItem("ticketsLotto"));
     this.sorteo = this.lotteryService.obtenerSorteo(2);
-    /* this.premioPrecio = this.lotteryService.obtenerPremioPrecio(2); */
-
   }
 }

@@ -68,7 +68,7 @@ export class StylePaginatorDirective {
       let node = // Numero de elementos en el paginador
         this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[0]
           .childNodes[2];
-      console.log(node);
+      /* console.log(node); */
 
       /* node.style.visibility = 'hidden'; */
       node.style.display = 'none';

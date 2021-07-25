@@ -27,21 +27,27 @@
     <div class="contenedor_numeros_suerte">
       <table>
         <tbody>
-          <tr *ngFor="let numero of numeros | paginacion:page_size:page_number; let i = index ">
+          <tr *ngFor="let ticket of ticketsLotto | paginacion:page_size:page_number; let i = index ">
             <td>
-              <app-seleccion-lotto [numeros]="numero"></app-seleccion-lotto>
+              <div class="contenedor">
+                  <input type="checkbox" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
+                  <div class="contenedor_numeros">
+                      <p *ngFor="let numero of ticket.numeros">{{ numero }}</p> 
+                  </div>
+              </div>
+              <!-- <app-seleccion-lotto [tickets]="ticket"></app-seleccion-lotto> -->
             </td>
           </tr>
         </tbody>
         <hr size="2px" color="gray" />
-        <!-- <pagination-controls (pageChange)="pageActual = $event"></pagination-controls> -->
       </table>
+
 
 
       <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
         <mat-paginator 
                     style-paginator 
-                    [length]="numeros.length"
+                    [length]="ticketsLotto.length"
                     [pageSize]="page_size"
                     (page)="handlerPage($event)">
         </mat-paginator>

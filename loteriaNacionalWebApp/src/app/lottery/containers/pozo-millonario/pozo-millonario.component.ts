@@ -17,7 +17,6 @@ export class PozoMillonarioComponent implements OnInit {
   animalesTabs: animales[] = [];
   
   ticketAnimales: ticketsAnimales[];
-  /* animalesSeleccionadosTicket: ticketsAnimales[] = []; */
 
   page_size: number = 4;
   page_number: number = 1;
@@ -55,19 +54,14 @@ export class PozoMillonarioComponent implements OnInit {
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
   
-  seleccionarTicket(animal: string, i: number) {
-    if(this.ticketAnimales[i].status === false) {
-      this.ticketAnimales[i].status = true
-      /* this.animalesSeleccionadosTicket.push({nombre:animal, status:true}) */
-
-    } else {
-      this.ticketAnimales[i].status = false
-      /* this.animalesSeleccionadosTicket = this.animalesSeleccionadosTicket.filter( element => {
-        return element.nombre !== animal
-      }) */
-    }
+  seleccionarTicket(id: number) {
+    this.ticketAnimales.forEach( element => {
+      if(element.identificador === id) {
+        element.status = !element.status
+      }
+    })
+    
     localStorage.setItem("ticketAnimales", JSON.stringify(this.ticketAnimales));
-    /* localStorage.setItem("animalesSeleccionadosTicket", JSON.stringify(this.animalesSeleccionadosTicket)); */
   }
 
   handlerPage(e: PageEvent) {
@@ -80,8 +74,7 @@ export class PozoMillonarioComponent implements OnInit {
     this.animalesTabs = JSON.parse(localStorage.getItem("animalesTabs"));
 
     this.ticketAnimales = JSON.parse(localStorage.getItem("ticketAnimales"));
-    /* this.animalesSeleccionadosTicket = JSON.parse(localStorage.getItem("animalesSeleccionadosTicket")); */
-
+    
     //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
     this.seleccionAnimales.forEach( element => {
       this.animalesTabs.forEach( elemento => {
@@ -92,7 +85,6 @@ export class PozoMillonarioComponent implements OnInit {
     })
     localStorage.setItem("animalesSeleccionados", JSON.stringify(this.seleccionAnimales));
 
-    this.ticketAnimales = JSON.parse(localStorage.getItem("ticketAnimales"));
     this.sorteo = this.lotteryService.obtenerSorteo(5);
   }
 }

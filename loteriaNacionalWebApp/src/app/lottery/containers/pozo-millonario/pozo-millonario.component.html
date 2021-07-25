@@ -61,7 +61,7 @@
       <tbody>
         <tr *ngFor="let ticket of ticketAnimales | paginacion:page_size:page_number; let i = index ">
           <td>
-            <input type="checkbox" name="" id="" [checked]="ticket.status" (click)="seleccionarTicket(ticket.nombre,i)">
+            <input type="checkbox" name="" id="" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
             <div class="contenedor_seleccion_numero">
               <div class="imagen_animal">
                 <p>Mascota: </p>

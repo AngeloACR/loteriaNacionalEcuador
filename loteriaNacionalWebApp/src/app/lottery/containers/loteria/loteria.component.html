@@ -36,11 +36,11 @@
 
     <div class="contenedor_botones" style="display: flex; justify-content: center;">
       <mat-paginator 
-      style-paginator 
+                    style-paginator 
                     [length]="numeros.length"
                     [pageSize]="page_size"
                     (page)="handlerPage($event)">
-      </mat-paginator>
+        </mat-paginator>
     </div>
 
     <div class="boton_boleto">

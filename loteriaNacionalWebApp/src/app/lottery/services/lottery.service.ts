@@ -1,17 +1,21 @@
 import { Injectable } from "@angular/core";
-import { animales, ticketsAnimales, sorteo } from '../interfaces/lottery.interface';
+import { animales, ticketsAnimales, sorteo, ticketsLotto } from '../interfaces/lottery.interface';
 
 @Injectable({
   providedIn: "root"
 })
 export class LotteryService {
   sorteo: sorteo[];
+
+  ticketsLotto: ticketsLotto[];
+
   ticketsAnimales: ticketsAnimales[];
   animales: animales[];
 
   constructor() {
     this.obtenerAnimalesSelecionados()
     this.obtenerTicketsAnimales() 
+    this.obtenerTicketsLotto()
   }
 
   obtenerSorteo(loteria: number) {
@@ -100,6 +104,68 @@ export class LotteryService {
     }
   }
 
+  obtenerTicketsLotto() {
+    this.ticketsLotto = [
+      {
+        numeros: [1, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [8, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [3, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [4, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [9, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [5, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [2, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [6, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [4, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [6, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      },
+      {
+        numeros: [4, 4, 5, 7, 4],
+        status: false,
+        identificador: Math.random()
+      }
+    ];
+
+    localStorage.setItem('ticketsLotto', JSON.stringify(this.ticketsLotto));
+  }
+
   obtenerTicketsAnimales() {
     this.ticketsAnimales = [
       {
@@ -107,112 +173,129 @@ export class LotteryService {
           "../../../../assets/mascotas/mascotas pozo millonario-ballena.png",
           nombre: 'ballena',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-camaron.png",
           nombre: 'camaron',
         numero: [12, 54, 32, 58, 64, 72, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta: "../../../../assets/mascotas/mascotas pozo millonario-foca.png",
         nombre: 'foca',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta: "../../../../assets/mascotas/mascotas pozo millonario-perro.png",
         nombre: 'perro',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta: "../../../../assets/mascotas/mascotas pozo millonario-conejo.png",
         nombre: 'conejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta: "../../../../assets/mascotas/mascotas pozo millonario-delfin.png",
         nombre: 'delfin',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
         nombre: 'mono',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
         nombre: 'mono',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
         nombre: 'mono',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
       {
         ruta:
           "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
           nombre: 'congrejo',
         numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false
+        status: false,
+        identificador: Math.random()
       },
     ];
 
