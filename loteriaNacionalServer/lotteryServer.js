@@ -13,6 +13,7 @@ const app = express();
 const inquiry = require('./lottery/routes/inquiry');
 const lottery = require('./lottery/routes/lottery');
 const results = require('./results/routes/results');
+const cache = require('./cache/routes/main');
 
 module.exports.init = function (port) {
   app.set('port', (port));
@@ -45,6 +46,7 @@ module.exports.init = function (port) {
   app.use('/inquiry', inquiry);
   app.use('/lottery', lottery);
   app.use('/results', results);
+  app.use('/cache', cache);
 
   return app
 }

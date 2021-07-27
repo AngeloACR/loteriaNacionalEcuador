@@ -3,9 +3,9 @@ const resultsRouter = express.Router();
 const CacheController = require('../controller/main');
 
 resultsRouter.post('/ultimosResultados', CacheController.getUltimosResultados);
-resultsRouter.get('/loteriaSorteos', ResultsController.getLoteriaSorteos);
-resultsRouter.get('/lottoSorteos', ResultsController.getLottoSorteos);
-resultsRouter.get('/pozoSorteos', ResultsController.getPozoSorteos);
+resultsRouter.get('/loteriaSorteosJugados', ResultsController.getLoteriaSorteos);
+resultsRouter.get('/lottoSorteosJugados', ResultsController.getLottoSorteos);
+resultsRouter.get('/pozoSorteosJugados', ResultsController.getPozoSorteos);
 
 
 module.exports = resultsRouter;

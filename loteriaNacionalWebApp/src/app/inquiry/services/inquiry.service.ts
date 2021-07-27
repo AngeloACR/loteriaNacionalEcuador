@@ -11,15 +11,16 @@ export class InquiryService {
   productionSource = "https://ventas-api.loteria.com.ec";
 
   //mySource = this.localSource;
-//mySource = this.testSource;
-  mySource = this.productionSource;
+  mySource = this.testSource;
+  //mySource = this.productionSource;
 
   constructor(private http: HttpClient) {}
 
   recuperarSorteosJugados(tipoLoteria) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry";
+    //let endpoint = "/inquiry";
+    let endpoint = "/cache";
     switch (tipoLoteria) {
       case 1:
         endpoint = `${endpoint}/loteriaSorteosJugados`;
@@ -124,7 +125,8 @@ export class InquiryService {
   recuperarUltimosResultados() {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry/ultimosResultados";
+    //let endpoint = "/inquiry/ultimosResultados";
+    let endpoint = "/cache/ultimosResultados";
     var address = this.mySource;
     console.log("Buscando ultimos resultados");
     address = address + endpoint;
