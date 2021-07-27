@@ -1,11 +1,11 @@
 const express = require('express');
-const resultsRouter = express.Router();
+const cacheRouter = express.Router();
 const CacheController = require('../controller/main');
 
-resultsRouter.get('/ultimosResultados', CacheController.getUltimosResultados);
-resultsRouter.get('/loteriaSorteosJugados', ResultsController.getLoteriaSorteos);
-resultsRouter.get('/lottoSorteosJugados', ResultsController.getLottoSorteos);
-resultsRouter.get('/pozoSorteosJugados', ResultsController.getPozoSorteos);
+cacheRouter.get('/ultimosResultados', CacheController.getUltimosResultados);
+cacheRouter.get('/loteriaSorteosJugados', CacheController.getLoteriaSorteos);
+cacheRouter.get('/lottoSorteosJugados', CacheController.getLottoSorteos);
+cacheRouter.get('/pozoSorteosJugados', CacheController.getPozoSorteos);
 
 
-module.exports = resultsRouter;
+module.exports = cacheRouter;
