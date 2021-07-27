@@ -8,7 +8,8 @@ module.exports.setCronJobs = function () {
     let jobTimeA = '00 00 00 * * *'
     var jobA = new CronJob(jobTimeA, Resultados.agregarSorteos, null, true, 'America/Guayaquil');
     jobs.push(jobA)
-    let jobTimeB = '00 00 04,16 * * *'
+    //let jobTimeB = '00 00 04,16 * * *'
+    let jobTimeB = '00 */3 * * * *'
     var jobB = new CronJob(jobTimeB, Cache.setSorteos, null, true, 'America/Guayaquil');
     jobs.push(jobB)
     let jobTimeC = '00 00 04,16 * * *'
