@@ -27,7 +27,6 @@ const cacheController = {
     setUltimosResultados: async () => {
         try {
             let response = await Resultados.getUltimosResultados();
-            console.log(response);
             await client.setAsync('ultimosResultados', JSON.stringify(response));
 
         } catch (e) {
@@ -38,7 +37,6 @@ const cacheController = {
     getLoteriaSorteos: async (req, res) => {
         try {
             let response = await client.getAsync('loteriaSorteos');
-            console.log(response);
             res.status(200).json(JSON.parse(response));
         } catch (e) {
             res.status(400).json(e.toString());
