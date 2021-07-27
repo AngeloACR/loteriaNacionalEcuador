@@ -35,7 +35,20 @@ module.exports.init = function (port) {
   app.use(compression());
   app.use(helmet());
   // Cors Middleware
-  app.use(cors());
+  const corsOpts = {
+    origin: '*',
+
+    methods: [
+      'GET',
+      'POST',
+    ],
+
+    allowedHeaders: [
+      'Content-Type',
+    ],
+  };
+
+  app.use(cors(corsOpts));
   // Body Parser Middleware
   app.use(bodyParser.json());
 
