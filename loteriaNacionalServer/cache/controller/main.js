@@ -38,7 +38,7 @@ const cacheController = {
     getLoteriaSorteos: async (req, res) => {
         try {
             let response = await client.getAsync('loteriaSorteos');
-
+            console.log(response);
             res.status(200).json(JSON.parse(response));
         } catch (e) {
             res.status(400).json(e.toString());
@@ -69,9 +69,6 @@ const cacheController = {
             await client.setAsync('lottoSorteos', JSON.stringify(lottoSorteos));
             let pozoSorteos = await Sorteos.getSorteos(5);
             await client.setAsync('pozoSorteos', JSON.stringify(pozoSorteos));
-            console.log(loteriaSorteos);
-            console.log(lottoSorteos);
-            console.log(pozoSorteos);
 
         } catch (e) {
             console.log(e.toString())
