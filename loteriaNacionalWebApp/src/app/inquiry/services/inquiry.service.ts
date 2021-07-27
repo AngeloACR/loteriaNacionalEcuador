@@ -128,7 +128,6 @@ export class InquiryService {
     //let endpoint = "/inquiry/ultimosResultados";
     let endpoint = "/cache/ultimosResultados";
     var address = this.mySource;
-    console.log("Buscando ultimos resultados");
     address = address + endpoint;
     return new Promise((resolve, reject) => {
       this.http.get(address, { headers: headers }).subscribe((data: any) => {
@@ -139,14 +138,11 @@ export class InquiryService {
           "loteriaNacionalUltimoResultado",
           JSON.stringify(loteriaNacional)
         );
-        console.log(loteriaNacional);
         localStorage.setItem("lottoUltimoResultado", JSON.stringify(lotto));
-        console.log(lotto);
         localStorage.setItem(
           "pozoMillonarioUltimoResultado",
           JSON.stringify(pozoMillonario)
         );
-        console.log(pozoMillonario);
         resolve(data);
       });
     });

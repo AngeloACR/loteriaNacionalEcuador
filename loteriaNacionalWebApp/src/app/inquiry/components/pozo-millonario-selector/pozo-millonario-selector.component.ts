@@ -17,7 +17,6 @@ export class PozoMillonarioSelectorComponent implements OnInit {
     let data = JSON.parse(
       localStorage.getItem("pozoMillonarioUltimoResultado")
     );
-    console.log(data);
     this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
     this.mascota = data.mascota;
     this.mascotaPath = this.inquiry.obtenerMascota(this.mascota);
