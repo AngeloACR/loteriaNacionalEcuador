@@ -1,6 +1,6 @@
 const Lottery = require('../../loterianacional/controller/main');
-const Resultados = require('../../results/controller/main');
 const Results = require('../../results/controller/resultados');
+const Resultados = require('../../results/controller/main');
 const Sorteos = require('../../results/controller/sorteos');
 const config = require('../../config/environment');
 

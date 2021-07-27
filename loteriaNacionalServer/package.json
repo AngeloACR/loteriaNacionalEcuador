@@ -19,17 +19,16 @@
     "express-rate-limit": "^2.11.0",
     "helmet": "^3.9.0",
     "jsonwebtoken": "*",
-    "mysql": "*",
-    "wcf.js": "*",
     "nodemailer": "*",
     "mongoose": "*",
+    "redis": "*",
     "multer": "*",
     "soap": "*",
     "node-schedule": "*",
     "xml2js": "*",
+    "bluebird": "*",
     "ftp-srv": "*",
-    "cron": "*",
-    "node-worker-threads-pool": "*"
+    "cron": "*"
   },
   "keywords": [
     "loteria",
