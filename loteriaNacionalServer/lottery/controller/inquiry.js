@@ -204,8 +204,6 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
-
-            console.log(response)
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
