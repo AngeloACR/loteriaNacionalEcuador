@@ -181,7 +181,6 @@ const inquiryController = {
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
-            console.log('buscando resultado de loteria nacional');
             for (let i = 0; i < length; i++) {
                 let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
@@ -205,7 +204,6 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
-            console.log(response);
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());

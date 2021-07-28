@@ -1,7 +1,7 @@
 const config = require('./config/environment');
 const mongoose = require('mongoose');
-const myDB = config.testDB;
-//const myDB = config.prodDB;
+//const myDB = config.testDB;
+const myDB = config.prodDB;
 
 
 module.exports.initConnect = function () {
