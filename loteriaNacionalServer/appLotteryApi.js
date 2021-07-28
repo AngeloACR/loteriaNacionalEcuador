@@ -6,6 +6,7 @@ const cronjobs = require('./cronjobs');
 
 
 const connection = db.initConnect();
+
 const lotteryPort = config.lotteryPort;
 const lotteryApp = lotteryServer.init(lotteryPort);
 
