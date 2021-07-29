@@ -44,6 +44,11 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
   numbers: Array<any> = [];
   cameFromBackspace: boolean = false;
   validate() {
+    let reg = /[^0-9|,| ]/g;
+
+    this.combinacionesAux = this.combinacionesAux.replace(reg, "");
+  }
+  /*   validate() {
     let reg = /[^0-9]/g;
     let currentLength = this.combinacionesAux.length;
     if (this.previousLength > currentLength) {
@@ -71,25 +76,30 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
       });
     }
     this.previousLength = this.combinacionesAux.length;
+  } */
+
+  cleanSpaces(combinacion) {
+    let reg = /[^0-9]/g;
+    let aux = combinacion.replace(reg, "");
+    return aux;
   }
 
   async buscarBoletoGanador() {
     let aux = this.combinacionesAux;
-    if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
+    /*     if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
       aux = this.combinacionesAux.slice(0, -2);
-    }
+    } */
 
-    let combinaciones: Array<any> = aux.split(", ");
+    let combinaciones: Array<any> = aux.split(",");
     combinaciones = combinaciones.map((combinacion, index) => {
+      combinacion = this.cleanSpaces(combinacion);
       let auxLength = combinacion.length;
-      console.log(auxLength);
       if (auxLength != 0) {
         if (combinaciones.length - 1 == index) {
           if (auxLength < this.maxDigits) {
             let auxAdd = this.maxDigits - auxLength;
             for (let i = 1; i <= auxAdd; i++) {
               combinacion = `0${combinacion}`;
-              console.log(combinacion);
             }
           }
         }
