@@ -16,12 +16,12 @@ export class TooltipComponent implements OnInit {
   fondo: boolean = false;
   /* fracciones: sorteo[]; */
 
-  contador = [];
+  /* contador = []; */
 
   constructor( private lotteryService: LotteryService) {}
 
 
-  checkbox1: boolean = false;
+  /* checkbox1: boolean = false;
   checkbox2: boolean = false;
   checkbox3: boolean = false;
   checkbox4: boolean = false;
@@ -43,11 +43,22 @@ export class TooltipComponent implements OnInit {
     { numero: 8, variable: this.checkbox8 },
     { numero: 9, variable: this.checkbox9 },
     { numero: 10, variable: this.checkbox10 }
-  ];
+  ]; */
 
   activar() {
-    this.contador.length = this.fracciones;
+    /* this.contador.length = this.fracciones; */
     this.fondo = !this.fondo
+  }
+
+  seleccionarTicket(id: number) {
+    this.ticket.forEach( element => {
+      if(element.identificador === id) {
+        element.status = !element.status
+      }
+    })
+    console.log(id)
+    
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticket));
   }
 
   seleccionarFraccion() {

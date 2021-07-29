@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PageEvent } from "@angular/material";
-import { sorteo, ticketsNacional } from "../../interfaces/lottery.interface";
+import { sorteo, ticketsNacional } from '../../interfaces/lottery.interface';
 
 import { LotteryService } from "../../services/lottery.service";
 
@@ -30,12 +30,42 @@ export class LoteriaComponent implements OnInit {
     this.page_number = e.pageIndex + 1
   }
 
-  procesaEmitir(fracciones: number) {
+  seleccionarTicket(id: number) {
+    /* this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional")); */
+
+    this.fondo = !this.fondo
+    this.ticketsNacional.forEach( element => {
+      if(element.identificador === id) {
+        element.status = !element.status
+      }
+    })
+    
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticketsNacional));
+  }
+
+  fraccionSeleccionada(idTicket: number, id: number) {
+    this.ticketsNacional.forEach( element => {
+      if(element.identificador === idTicket) {
+        element.seleccionados.forEach( elemento => {
+          if(elemento.fraccion === id) {
+            elemento.status = !elemento.status
+          }
+        })
+      }
+    })
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticketsNacional));
+  }
+
+  procesaEmitir(fracciones: number | null) {
     this.fracciones = fracciones;
+    this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
   }
 
   ngOnInit() {
+
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
+
     this.sorteo = this.lotteryService.obtenerSorteo(1);
+
   }
 }

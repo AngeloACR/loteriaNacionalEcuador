@@ -109,56 +109,67 @@ export class LotteryService {
     this.ticketsNacional = [
       {
         numeros: [1, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [8, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [3, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [4, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [9, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [5, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [2, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [6, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [4, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [6, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       },
       {
         numeros: [4, 4, 5, 7, 4],
+        seleccionados: [],
         status: false,
         identificador: Math.random()
       }

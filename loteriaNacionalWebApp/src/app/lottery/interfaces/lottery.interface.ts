@@ -6,8 +6,13 @@ export interface sorteo {
   numero: string;
 }
 
+export interface fracciones {
+  fraccion: number;
+  status: boolean;
+}
 export interface ticketsNacional {
   numeros: number[];
+  seleccionados: fracciones[];
   status: boolean;
   identificador: number;
 }

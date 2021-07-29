@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { sorteo } from '../../interfaces/lottery.interface';
+import { sorteo, ticketsNacional } from '../../interfaces/lottery.interface';
 import { LotteryService } from '../../services/lottery.service';
 
 @Component({
@@ -15,17 +15,15 @@ export class InfoLoteriaComponent implements OnInit {
 
   @Output() emitir = new EventEmitter<sorteo[]>();
 
-  seleccionado: sorteo[];
+  seleccionado: sorteo[] = [];
   sorteo: sorteo[];
 
   fondoLoteria: boolean = true;
   fondoLotto: boolean = false;
   fondoPozo: boolean = false;
 
-  /* seleccionado: any; */
-
   constructor(private lotteryService: LotteryService) { 
-    
+    /* this.seleccionado['fracciones'] = 20 */
   }
 
   getClassColor( loteria: number ) {
@@ -43,12 +41,40 @@ export class InfoLoteriaComponent implements OnInit {
   }
 
   onEmitir() {
-    let fracciones = this.seleccionado.fracciones;
+    let fracciones: sorteo[];
+    fracciones = this.seleccionado['fracciones'];
+
+    let ticketsNacional: ticketsNacional[];
+    
+    ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
+    // Eliminio lo que existe
+    ticketsNacional.forEach(element => {
+      for (let i = 0; i < this.seleccionado['fracciones']; i++) {
+        element.seleccionados.splice(0, this.seleccionado['fracciones'])
+      }
+    });
+    localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional));
+
+    ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
+
+    // Vuelvo a llenar
+    ticketsNacional.forEach(element => {
+      for (let i = 0; i < this.seleccionado['fracciones']; i++) {
+        element.seleccionados.push({fraccion: i + 1, status: false})
+      }
+    });
+
+    localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional));
+    
 
     this.emitir.emit(fracciones);
   }
 
   ngOnInit() {
+
+    
+
+
     this.sorteo = this.lotteryService.obtenerSorteo( this.loteria );
     this.getClassColor( this.loteria );
   }

@@ -2,7 +2,7 @@
   <button [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}" (click)="activar()" >
     <p *ngFor="let numero of ticket.numeros">{{ numero }}</p>
   </button>
-  <span *ngIf="fondo">
+  <!-- <span *ngIf="fondo">
     <div class="numeros_grupo">
       <p *ngFor="let numero of ticket.numeros">{{ numero }}</p>
       <h3>Fraccion</h3>
@@ -21,6 +21,6 @@
       </div>
     </div>
     <hr>
-  </span>
+  </span> -->
 </div>
 
