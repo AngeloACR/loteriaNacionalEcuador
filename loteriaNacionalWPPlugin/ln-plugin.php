@@ -18,7 +18,7 @@
  * Plugin Name:       LN Plugin
  * Plugin URI:        https://tecnobunker.net
  * Description:       Integración para loteria nacional.
- * Version:           1.3.0
+ * Version:           1.4.0
  * Author:            Tecnobunker
  * Author URI:        https://tecnobunker.net
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('LN_PLUGIN_VERSION', '1.3.0');
+define('LN_PLUGIN_VERSION', '1.4.0');
 
 define('LN_PLUGIN_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
@@ -136,6 +136,12 @@ function uploadBoletines()
 			$ftp = ftp_ssl_connect($host, $port, $timeout);
 			$ftpLogin = ftp_login($ftp, $user, $pass);
 
+			$fileList = ftp_nlist($ftp, $filename); //Returns an array of filenames from the specified directory on success or FALSE on error. 
+
+			// Test if file is in the ftp_nlist array
+			if (in_array($filename, $fileList)) {
+				ftp_delete($ftp, $filename);
+			}
 			$ret = ftp_nb_put($ftp, $filename, $targetFile, FTP_BINARY, FTP_AUTORESUME);
 
 			while (FTP_MOREDATA == $ret) {

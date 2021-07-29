@@ -39,11 +39,11 @@ export class LottoConsultaComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
     this.validate();
     this.changeDetectorRef.markForCheck();
-  }  validate() {
+  }
+  validate() {
     let reg = /[^0-9|,| ]/g;
 
     this.combinacionesAux = this.combinacionesAux.replace(reg, "");
-
   }
   /*   validate() {
     let reg = /[^0-9]/g;
@@ -83,7 +83,7 @@ export class LottoConsultaComponent implements OnInit {
 
   async buscarBoletoGanador() {
     let aux = this.combinacionesAux;
-/*     if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
+    /*     if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
       aux = this.combinacionesAux.slice(0, -2);
     } */
 
@@ -92,12 +92,10 @@ export class LottoConsultaComponent implements OnInit {
       combinacion = this.cleanSpaces(combinacion);
       let auxLength = combinacion.length;
       if (auxLength != 0) {
-        if (combinaciones.length - 1 == index) {
-          if (auxLength < this.maxDigits) {
-            let auxAdd = this.maxDigits - auxLength;
-            for (let i = 1; i <= auxAdd; i++) {
-              combinacion = `0${combinacion}`;
-            }
+        if (auxLength < this.maxDigits) {
+          let auxAdd = this.maxDigits - auxLength;
+          for (let i = 1; i <= auxAdd; i++) {
+            combinacion = `0${combinacion}`;
           }
         }
         return combinacion;

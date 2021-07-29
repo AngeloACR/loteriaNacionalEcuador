@@ -12,7 +12,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
             <p>CARGA DE BOLETINES</p>
         </div>
         <div class="instructionsBox">
-            <p>- El nombre de los archivos de boletin deben empezar con una "T" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: T5943.jpg, T2256.jpg, T16626.jpg</p>
+            <p>- El nombre de los archivos de boletin debe empezar con una "T" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: T5943.jpg, T2256.jpg, T16626.jpg</p>
             <p>- Los códigos de los juegos son: </p>
             <p class="codeTag">- 1 para Loteria Nacional</p>
             <p class="codeTag">- 2 para Lotto</p>
@@ -50,8 +50,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
 
     .moduleBox {
         height: 100%;
-        width: 90%;
-        overflow: scroll;
+        width: 100%;
         overflow-x: hidden;
         display: flex;
         flex-direction: column;
@@ -190,6 +189,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
                     if (response.status) {
 
                         alert(`${response.message}`);
+                        window.location.reload();
                     } else {
                         alert(`Hubo un error subiendo los archivos: ${response.message}`);
                     }

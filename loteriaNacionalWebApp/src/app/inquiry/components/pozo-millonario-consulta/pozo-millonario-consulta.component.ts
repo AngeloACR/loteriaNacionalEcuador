@@ -97,12 +97,10 @@ export class PozoMillonarioConsultaComponent implements OnInit {
       combinacion = this.cleanSpaces(combinacion);
       let auxLength = combinacion.length;
       if (auxLength != 0) {
-        if (combinaciones.length - 1 == index) {
-          if (auxLength < this.maxDigits) {
-            let auxAdd = this.maxDigits - auxLength;
-            for (let i = 1; i <= auxAdd; i++) {
-              combinacion = `0${combinacion}`;
-            }
+        if (auxLength < this.maxDigits) {
+          let auxAdd = this.maxDigits - auxLength;
+          for (let i = 1; i <= auxAdd; i++) {
+            combinacion = `0${combinacion}`;
           }
         }
         return combinacion;
