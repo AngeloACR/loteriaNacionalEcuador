@@ -18,6 +18,16 @@ const cacheController = {
         });
         return client;
     },
+    actualizarCache: async (req, res) => {
+        try {
+            await cacheController.setUltimosResultados()
+            await cacheController.setSorteos()
+            let response = "Done"
+            res.status(200).json(response);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
     getUltimosResultados: async (req, res) => {
         try {
             let client = cacheController.getClient();

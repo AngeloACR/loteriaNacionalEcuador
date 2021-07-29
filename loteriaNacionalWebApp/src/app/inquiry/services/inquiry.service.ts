@@ -19,8 +19,8 @@ export class InquiryService {
   recuperarSorteosJugados(tipoLoteria) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry";
-    //let endpoint = "/cache";
+    //let endpoint = "/inquiry";
+    let endpoint = "/cache";
     switch (tipoLoteria) {
       case 1:
         endpoint = `${endpoint}/loteriaSorteosJugados`;
@@ -125,8 +125,8 @@ export class InquiryService {
   recuperarUltimosResultados() {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry/ultimosResultados";
-    //let endpoint = "/cache/ultimosResultados";
+    //let endpoint = "/inquiry/ultimosResultados";
+    let endpoint = "/cache/ultimosResultados";
     var address = this.mySource;
     address = address + endpoint;
     return new Promise((resolve, reject) => {
