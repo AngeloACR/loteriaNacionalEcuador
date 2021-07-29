@@ -21,13 +21,12 @@ var fs = require('fs');
 module.exports.init = function (ftpHost, ftpPort) {
 
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
-    const keyPath = path.join(config.sslPath, config.keyFile);
-    const certPath = path.join(config.sslPath, config.certFile);
-    const reqPath = path.join(config.sslPath, config.reqFile);
+    //let sslPath = config.sslPath;
+    let sslPath = config.sslPathTest;
+    const keyPath = path.join(sslPath, config.keyFile);
+    const certPath = path.join(sslPath, config.certFile);
+    const reqPath = path.join(sslPath, config.reqFile);
 
-    /* const keyPath = path.join(config.sslPathTest, config.keyFile);
-    const certPath = path.join(config.sslPathTest, config.certFile);
-    const reqPath = path.join(config.sslPathTest, config.reqFile); */
     const ftpServer = new FtpSrv({
         url: ftpUrl,
         greeting: ['Welcome', 'to', 'the', 'jungle!'],
@@ -57,29 +56,7 @@ module.exports.init = function (ftpHost, ftpPort) {
         connection.on('STOR', (error, filePath) => {
             let aux = filePath.split('/');
             let fileName = aux[aux.length - 1];
-            console.log(fileName)
-/*             let fileAux = fileName.split('-');
-            let sorteo = fileAux[2].split('.')[0];
-            let fileData = {
-
-                fileType: fileAux[0],
-                tipoLoteria: fileAux[1],
-                sorteo
-            }
-            console.log(fileData);
-
-            switch (fileData.fileType) {
-                case 'BOLPRE':
-                    ResultadosController.agregarResultados(fileData.sorteo, fileData.tipoLoteria)
-                    break;
-                case 'PREM':
-                    ResultadosController.agregarPremios(fileData.sorteo, fileData.tipoLoteria)
-
-                    break;
-                default:
-                    break;
-            }
- */        });
+        });
     });
 
     ftpServer.on('client-error', (connection, context, error) => {
