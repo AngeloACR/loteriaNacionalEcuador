@@ -117,7 +117,6 @@ const sorteosController = {
 
     setSorteos: async function (tipoLoteria, sorteos) {
         try {
-            console.log('setting sorteos');
             let response = [];
             let length = sorteos.length;
             for (let i = 0; i < length; i++) {
