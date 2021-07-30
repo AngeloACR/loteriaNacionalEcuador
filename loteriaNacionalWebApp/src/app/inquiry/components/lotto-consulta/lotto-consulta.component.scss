@@ -146,6 +146,7 @@ $color-lotto: #b51f20;
                 cursor: pointer;
                 option:first-child {
                   visibility: hidden;
+                  display: none;
                 }
                 option {
                   cursor: pointer;

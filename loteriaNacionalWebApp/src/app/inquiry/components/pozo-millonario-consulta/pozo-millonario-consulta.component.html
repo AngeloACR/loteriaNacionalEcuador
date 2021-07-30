@@ -36,14 +36,14 @@
               <input name="combinaciones" type="text" (input)="validateField()" [(ngModel)]="combinacionesAux">
             </div>
             <p>Ingresa todos los 7 digitos del N° Carton, incluyendo ceros (0) de la izquierda, ejemplo: 0037946.
-              Puedes ingresar varios cartones a la vez</p>
+              Puedes ingresar varios cartones a la vez, separados por coma.</p>
           </div>
 
           <div class="input">
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
               <select name="sorteoGanador" id="sorteoGanador" placeholder="" [(ngModel)]="sorteoGanador">
-                <option [value]="null"></option>
+                <option value="default" selected disabled>Seleccione un sorteo</option>
                 <option *ngFor="let option of sorteosJugados" [value]="option.sorteo">N° {{option.sorteo}} -
                   {{option.fecha}}</option>
               </select>
@@ -65,7 +65,7 @@
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
               <select name="sorteoBoletin" id="sorteoBoletin" placeholder="" [(ngModel)]="sorteoBoletin">
-                <option [value]="null"></option>
+                <option value="default" selected disabled>Seleccione un sorteo</option>
                 <option *ngFor="let option of sorteosJugados" [value]="option.sorteo">N° {{option.sorteo}} -
                   {{option.fecha}}</option>
               </select>
@@ -107,7 +107,7 @@
             <div class="input_content">
               <label for="">Selecciona el numero del sorteo:</label>
               <select name="sorteoRango" id="sorteoRango" placeholder="" [(ngModel)]="sorteoRango">
-                <option [value]="null"></option>
+                <option value="default" selected disabled>Seleccione un sorteo</option>
                 <option *ngFor="let option of sorteosJugados" [value]="option.sorteo">N° {{option.sorteo}} -
                   {{option.fecha}}</option>
               </select>

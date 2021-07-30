@@ -136,6 +136,7 @@ $color-loteria: #2f72b9;
               cursor: pointer;
               option:first-child {
                 visibility: hidden;
+                display: none;
               }
               option {
                 cursor: pointer;

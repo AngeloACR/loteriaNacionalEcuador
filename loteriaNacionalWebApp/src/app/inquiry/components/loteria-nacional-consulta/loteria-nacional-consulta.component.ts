@@ -32,6 +32,14 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
   async ngOnInit() {
     console.log("En la consulta de loteria");
     this.sorteosJugados = await this.inquiryService.recuperarSorteosJugados(1);
+    this.setSorteoDefault();
+  }
+
+  setSorteoDefault() {
+    this.changeDetectorRef.detectChanges();
+    this.sorteoGanador = "default";
+    this.sorteoBoletin = "default";
+    this.changeDetectorRef.markForCheck();
   }
   validateField() {
     this.changeDetectorRef.detectChanges();

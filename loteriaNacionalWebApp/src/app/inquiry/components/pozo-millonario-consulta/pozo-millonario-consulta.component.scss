@@ -166,6 +166,7 @@ $color-pozo: #04b865;
                 cursor: pointer;
                 option:first-child {
                   visibility: hidden;
+                  display: none;
                 }
                 option {
                   cursor: pointer;
