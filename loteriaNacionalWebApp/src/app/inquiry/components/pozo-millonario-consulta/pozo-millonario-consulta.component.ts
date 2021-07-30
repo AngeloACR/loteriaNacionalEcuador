@@ -86,38 +86,61 @@ export class PozoMillonarioConsultaComponent implements OnInit {
     return aux;
   }
 
+  isLoading: boolean = false;
+  loadingMessage: String = "Consultando los resultados";
+
+  triggerLoader() {
+    this.isLoading = true;
+  }
+
+  dismissLoader() {
+    this.isLoading = false;
+  }
+
   async buscarBoletoGanador() {
-    let aux = this.combinacionesAux;
-    /*     if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
+    try {
+      this.triggerLoader();
+      let aux = this.combinacionesAux;
+      /*     if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
       aux = this.combinacionesAux.slice(0, -2);
     } */
 
-    let combinaciones: Array<any> = aux.split(",");
-    combinaciones = combinaciones.map((combinacion, index) => {
-      combinacion = this.cleanSpaces(combinacion);
-      let auxLength = combinacion.length;
-      if (auxLength != 0) {
-        if (auxLength < this.maxDigits) {
-          let auxAdd = this.maxDigits - auxLength;
-          for (let i = 1; i <= auxAdd; i++) {
-            combinacion = `0${combinacion}`;
+      let combinaciones: Array<any> = aux.split(",");
+      combinaciones = combinaciones.map((combinacion, index) => {
+        combinacion = this.cleanSpaces(combinacion);
+        let auxLength = combinacion.length;
+        if (auxLength != 0) {
+          if (auxLength < this.maxDigits) {
+            let auxAdd = this.maxDigits - auxLength;
+            for (let i = 1; i <= auxAdd; i++) {
+              combinacion = `0${combinacion}`;
+            }
           }
+          return combinacion;
         }
-        return combinacion;
+      });
+      if (!this.sorteoGanador) {
+        this.dismissLoader();
+        alert("Por favor seleccione un sorteo");
+        return;
       }
-    });
-    if (!this.sorteoGanador) {
-      alert("Por favor seleccione un sorteo");
-      return;
+      let data: any = await this.inquiryService.recuperarBoletoGanador(
+        1,
+        this.sorteoGanador,
+        combinaciones
+      );
+      console.log(data);
+      this.resultados.emit(data);
+      this.dismissLoader();
+    } catch (e) {
+      this.dismissLoader();
+      alert(
+        "Ocurrio un error consultando los resultados, por favor intente de nuevo"
+      );
+      console.log(e);
     }
-    let data: any = await this.inquiryService.recuperarBoletoGanador(
-      1,
-      this.sorteoGanador,
-      combinaciones
-    );
-    console.log(data);
-    this.resultados.emit(data);
   }
+
   async buscarBoletin() {
     if (!this.sorteoBoletin) {
       alert("Por favor seleccione un sorteo");
@@ -128,17 +151,27 @@ export class PozoMillonarioConsultaComponent implements OnInit {
     );
   }
   async buscarRango() {
-    console.log("Buscando por rango");
-    if (!this.sorteoRango) {
-      alert("Por favor seleccione un sorteo");
-      return;
+    try {
+      this.triggerLoader();
+      console.log("Buscando por rango");
+      if (!this.sorteoRango) {
+        this.dismissLoader();
+        alert("Por favor seleccione un sorteo");
+        return;
+      }
+      let data = await this.inquiryService.recuperarBoletoGanadorPorPlancha(
+        this.boletoInicial,
+        this.boletoFinal,
+        this.sorteoRango
+      );
+      this.resultados.emit(data);
+      //this.router.navigateByUrl(`/pozo_millonario_boletin/${this.sorteoBoletin}`);
+    } catch (e) {
+      this.dismissLoader();
+      alert(
+        "Ocurrio un error consultando los resultados, por favor intente de nuevo"
+      );
+      console.log(e);
     }
-    let data = await this.inquiryService.recuperarBoletoGanadorPorPlancha(
-      this.boletoInicial,
-      this.boletoFinal,
-      this.sorteoRango
-    );
-    this.resultados.emit(data);
-    //this.router.navigateByUrl(`/pozo_millonario_boletin/${this.sorteoBoletin}`);
   }
 }

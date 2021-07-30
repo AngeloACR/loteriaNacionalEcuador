@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
+import { SharedModule } from "../shared/shared.module";
 
 import { InquiryRoutingModule } from "./inquiry-routing.module";
 import { InquiryComponent } from "./inquiry.component";
@@ -79,14 +80,20 @@ import { ResultadoComponent } from "./components/resultado/resultado.component";
     ResultadosComponent,
     ResultadoComponent
   ],
-  imports: [CommonModule, InquiryRoutingModule, HttpClientModule, FormsModule],
-    exports: [
-      LottoSelectorComponent,
-      LoteriaNacionalSelectorComponent,
-      PozoMillonarioSelectorComponent,
-      LottoTicketComponent,
-      LoteriaNacionalTicketComponent,
-      PozoMillonarioTicketComponent
-    ],
+  imports: [
+    CommonModule,
+    InquiryRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    SharedModule
+  ],
+  exports: [
+    LottoSelectorComponent,
+    LoteriaNacionalSelectorComponent,
+    PozoMillonarioSelectorComponent,
+    LottoTicketComponent,
+    LoteriaNacionalTicketComponent,
+    PozoMillonarioTicketComponent
+  ]
 })
 export class InquiryModule {}
