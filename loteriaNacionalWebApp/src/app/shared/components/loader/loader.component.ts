@@ -7,8 +7,21 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class LoaderComponent implements OnInit {
   @Input() message: string;
-
+  @Input() loader: string;
+  loaderPath: string;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    switch (this.loader) {
+      case "lotto":
+        this.loaderPath = "assets/lottoLoader.gif";
+        break;
+      case "pozo":
+        this.loaderPath = "assets/pozoLoader.gif";
+        break;
+      default:
+        this.loaderPath = "assets/loteriaLoader.gif";
+        break;
+    }
+  }
 }
