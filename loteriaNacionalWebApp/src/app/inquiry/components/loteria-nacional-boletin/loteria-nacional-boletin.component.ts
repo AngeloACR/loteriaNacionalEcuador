@@ -11,6 +11,7 @@ export class LoteriaNacionalBoletinComponent implements OnInit {
   boletinImagen: any;
   sorteo: any;
   imgNotFound: boolean = false;
+  showBox: boolean = false;
   constructor(
     private actRoute: ActivatedRoute,
     private router: Router,
@@ -23,14 +24,29 @@ export class LoteriaNacionalBoletinComponent implements OnInit {
 
   async ngOnInit() {
     /* console.log("En la consulta de loteria"); */
+    this.triggerLoader();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.boletinImagen = await this.inquiryService.obtenerBoletin(
       1,
       this.sorteo
     );
+    this.showBox = true;
+    this.dismissLoader();
   }
 
   handleImgError() {
     console.log("Img not found");
     this.imgNotFound = true;
+  }
+
+  isLoading: boolean = false;
+  loadingMessage: String = "Buscando el boletin";
+
+  triggerLoader() {
+    this.isLoading = true;
+  }
+
+  dismissLoader() {
+    this.isLoading = false;
   }
 }

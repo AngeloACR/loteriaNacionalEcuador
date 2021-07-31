@@ -11,6 +11,7 @@ import { InquiryService } from "../../services/inquiry.service";
 export class PozoMillonarioBoletinComponent implements OnInit {
   boletinImagen: any;
   imgNotFound: boolean = false;
+  showBox: boolean = false;
   sorteo: any;
   constructor(
     private actRoute: ActivatedRoute,
@@ -24,14 +25,29 @@ export class PozoMillonarioBoletinComponent implements OnInit {
 
   async ngOnInit() {
     /* console.log("En la consulta de loteria"); */
+    this.triggerLoader();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.boletinImagen = await this.inquiryService.obtenerBoletin(
       5,
       this.sorteo
     );
+    this.showBox = true;
+    this.dismissLoader();
   }
 
   handleImgError() {
     console.log("Img not found");
     this.imgNotFound = true;
+  }
+
+  isLoading: boolean = false;
+  loadingMessage: String = "Buscando el boletin";
+
+  triggerLoader() {
+    this.isLoading = true;
+  }
+
+  dismissLoader() {
+    this.isLoading = false;
   }
 }

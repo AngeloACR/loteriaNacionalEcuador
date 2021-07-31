@@ -7,10 +7,10 @@ import { InquiryService } from "../inquiry/services/inquiry.service";
   styleUrls: ["./landing.component.scss"]
 })
 export class LandingComponent implements OnInit {
-  //link: string = "https://contenidos-prueba.loteria.com.ec/divi-slide";
-  //linkNews: string = "https://contenidos-prueba.loteria.com.ec/newsletter";
-  link: string = "https://contenidos.loteria.com.ec/divi-slide";
-  linkNews: string = "https://contenidos.loteria.com.ec/newsletter";
+  link: string = "https://contenidos-prueba.loteria.com.ec/divi-slide";
+  linkNews: string = "https://contenidos-prueba.loteria.com.ec/newsletter";
+  //link: string = "https://contenidos.loteria.com.ec/divi-slide";
+  //linkNews: string = "https://contenidos.loteria.com.ec/newsletter";
   title: string = "sliderLoteria";
   infoReady: boolean = false;
   constructor(private inquiry: InquiryService) {}
