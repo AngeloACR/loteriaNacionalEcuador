@@ -53,14 +53,11 @@ export class PozoMillonarioConsultaComponent implements OnInit {
     this.validate();
     this.changeDetectorRef.markForCheck();
   }
-  validate() {
-    let reg = /[^0-9|,| ]/g;
 
-    this.combinacionesAux = this.combinacionesAux.replace(reg, "");
-  }
-  /*   validate() {
+  validate() {
     let reg = /[^0-9]/g;
     let currentLength = this.combinacionesAux.length;
+    let addComma = false;
     if (this.previousLength > currentLength) {
       if (this.combinacionesAux[currentLength - 1] == ",") {
         this.combinacionesAux = this.combinacionesAux.slice(0, -1);
@@ -77,21 +74,26 @@ export class PozoMillonarioConsultaComponent implements OnInit {
         this.cameFromBackspace = false;
       }
       this.combinacionesAux = "";
-      this.numbers.forEach(number => {
+      let numbersLength = this.numbers.length;
+      let lastNumberAux = this.numbers[numbersLength - 1];
+      lastNumberAux = lastNumberAux.replace(reg, "");
+      if (lastNumberAux.length == this.maxDigits + 1) {
+        let lastNumber = lastNumberAux[this.maxDigits];
+        let beforeLastNumber = lastNumberAux.slice(0, -1);
+        this.numbers.pop();
+        this.numbers.push(beforeLastNumber);
+        this.numbers.push(lastNumber);
+      }
+      numbersLength = this.numbers.length;
+      this.numbers.forEach((number, index) => {
         number = number.replace(reg, "");
         this.combinacionesAux = `${this.combinacionesAux}${number}`;
-        if (number.length == this.maxDigits) {
+        if (number.length == this.maxDigits && index != numbersLength - 1) {
           this.combinacionesAux = `${this.combinacionesAux}, `;
         }
       });
     }
     this.previousLength = this.combinacionesAux.length;
-  } */
-
-  cleanSpaces(combinacion) {
-    let reg = /[^0-9]/g;
-    let aux = combinacion.replace(reg, "");
-    return aux;
   }
 
   isLoading: boolean = false;
@@ -105,17 +107,38 @@ export class PozoMillonarioConsultaComponent implements OnInit {
     this.isLoading = false;
   }
 
+  preventArrow(e) {
+    if (
+      ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1
+    ) {
+      e.preventDefault();
+    }
+  }
+
+  moveCursorToEnd(e) {
+    this.changeDetectorRef.detectChanges();
+    let el = e.target;
+    if (typeof el.selectionStart == "number") {
+      el.selectionStart = el.selectionEnd = el.value.length;
+    } else if (typeof el.createTextRange != "undefined") {
+      el.focus();
+      var range = el.createTextRange();
+      range.collapse(false);
+      range.select();
+    }
+    this.changeDetectorRef.markForCheck();
+  }
+
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
       let aux = this.combinacionesAux;
-      /*     if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
-      aux = this.combinacionesAux.slice(0, -2);
-    } */
+      if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
+        aux = this.combinacionesAux.slice(0, -2);
+      }
 
-      let combinaciones: Array<any> = aux.split(",");
+      let combinaciones: Array<any> = aux.split(", ");
       combinaciones = combinaciones.map((combinacion, index) => {
-        combinacion = this.cleanSpaces(combinacion);
         let auxLength = combinacion.length;
         if (auxLength != 0) {
           if (auxLength < this.maxDigits) {
@@ -127,7 +150,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
           return combinacion;
         }
       });
-      if (!this.sorteoGanador) {
+      if (this.sorteoGanador == "default") {
         this.dismissLoader();
         alert("Por favor seleccione un sorteo");
         return;
@@ -150,7 +173,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
   }
 
   async buscarBoletin() {
-    if (!this.sorteoBoletin) {
+    if (this.sorteoBoletin == "default") {
       alert("Por favor seleccione un sorteo");
       return;
     }
@@ -162,7 +185,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
     try {
       this.triggerLoader();
       console.log("Buscando por rango");
-      if (!this.sorteoRango) {
+      if (this.sorteoRango == "default") {
         this.dismissLoader();
         alert("Por favor seleccione un sorteo");
         return;

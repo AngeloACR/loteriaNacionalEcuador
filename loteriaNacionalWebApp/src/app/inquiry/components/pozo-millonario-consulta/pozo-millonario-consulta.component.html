@@ -33,7 +33,8 @@
           <div class="input">
             <div class="input_content">
               <label for="">Ingresa numero(s) de boleto(s):</label>
-              <input name="combinaciones" type="text" (input)="validateField()" [(ngModel)]="combinacionesAux">
+              <input name="combinaciones" type="text" (keydown)="preventArrow($event)" (click)="moveCursorToEnd($event)"
+                (focus)="moveCursorToEnd($event)" (input)="validateField()" [(ngModel)]="combinacionesAux">
             </div>
             <p>Ingresa todos los 7 digitos del N° Carton, incluyendo ceros (0) de la izquierda, ejemplo: 0037946.
               Puedes ingresar varios cartones a la vez, separados por coma.</p>
