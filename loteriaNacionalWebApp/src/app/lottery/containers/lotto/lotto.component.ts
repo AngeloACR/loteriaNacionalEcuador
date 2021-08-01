@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { PageEvent } from "@angular/material";
+import { sorteo, ticketsLotto } from '../../interfaces/lottery.interface';
 import { LotteryService } from "../../services/lottery.service";
 
 @Component({
@@ -7,63 +9,35 @@ import { LotteryService } from "../../services/lottery.service";
   styleUrls: ["./lotto.component.scss"]
 })
 export class LottoComponent implements OnInit {
-  pageActual: number = 1;
-  desaparecer_izquierdo: boolean = true;
-  desaparecer_derecho: boolean = false;
-  numeros: object[] = [];
-  sorteo: any;
-  premioPrecio: any;
+  
+  sorteo: sorteo[];
 
-  tickets: any;
+  ticketsLotto: ticketsLotto[];
 
-  constructor(private lotteryService: LotteryService) {
-    this.numeros = [
-      [1, 4, 5, 7, 4],
-      [8, 4, 5, 7, 4],
-      [3, 4, 5, 7, 4],
-      [4, 4, 5, 7, 4],
-      [9, 4, 5, 7, 4],
-      [5, 4, 5, 7, 4],
-      [4, 4, 5, 7, 4],
-      [2, 4, 5, 7, 4],
-      [6, 4, 5, 7, 4],
-      [6, 4, 5, 7, 4]
-    ];
+  page_size: number = 4;
+  page_number: number = 1;
+  pageSizeOptions: [5, 10, 20, 100];
+
+  constructor(private lotteryService: LotteryService) {}
+
+  seleccionarTicket(id: number) {
+    this.ticketsLotto.forEach( element => {
+      if(element.identificador === id) {
+        element.status = !element.status
+      }
+    })
+    console.log(id)
+    
+    localStorage.setItem("ticketsLotto", JSON.stringify(this.ticketsLotto));
   }
 
-  /* seleccionLotto: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; */
-
-  incrementar() {
-    this.pageActual++;
-    if (this.pageActual >= this.numeros.length / 4) {
-      this.desaparecer_derecho = true;
-    } else {
-      this.desaparecer_derecho = false;
-    }
-    this.desaparecer_izquierdo = false;
-  }
-
-  decrementar() {
-    this.pageActual--;
-    if (this.pageActual <= 1) {
-      this.pageActual = 1;
-      this.desaparecer_izquierdo = true;
-    } else {
-      this.desaparecer_izquierdo = false;
-    }
-    this.desaparecer_derecho = false;
-    console.log(this.pageActual);
-  }
-
-  irPage(page: number) {
-    this.pageActual = page;
+  handlerPage(e: PageEvent) {
+    this.page_size = e.pageSize
+    this.page_number = e.pageIndex + 1
   }
 
   ngOnInit() {
+    this.ticketsLotto = JSON.parse(localStorage.getItem("ticketsLotto"));
     this.sorteo = this.lotteryService.obtenerSorteo(2);
-    this.premioPrecio = this.lotteryService.obtenerPremioPrecio(2);
-    if (this.pageActual >= this.numeros.length / 4) {
-      this.desaparecer_derecho = true;
-    }
   }
 }

@@ -2,20 +2,7 @@
 
 <div class="contenedor_loteria">
 
-  <ul class="menuBox">
-    <li class="menuItem">Lotto</li>
-    <li class="menuItem">Sorteo: <br>
-      <select class="fechaItem" name="" id="">
-        <option value="" *ngFor="let item of sorteo">
-          {{ item.fecha }}
-        </option>
-      </select>
-    </li>
-    <li class="menuItem">Premios: <p>{{ premioPrecio[0]}}$</p>
-    </li>
-    <li class="menuItem">Precio: <p>{{ premioPrecio[1]}}$</p>
-    </li>
-  </ul>
+  <app-info-loteria titulo="Lotto" color="lotto" [loteria]=2></app-info-loteria>
 
   <div class="contendor_seleccion">
     <h3>Ingresa tu numero de la suerte</h3>
@@ -40,31 +27,30 @@
     <div class="contenedor_numeros_suerte">
       <table>
         <tbody>
-          <tr *ngFor="let numero of numeros | paginate: { itemsPerPage: 4, currentPage: pageActual };">
+          <tr *ngFor="let ticket of ticketsLotto | paginacion:page_size:page_number; let i = index ">
             <td>
-              <app-seleccion-lotto [numeros]="numero"></app-seleccion-lotto>
+              <div class="contenedor">
+                  <input type="checkbox" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
+                  <div class="contenedor_numeros">
+                      <p *ngFor="let numero of ticket.numeros">{{ numero }}</p> 
+                  </div>
+              </div>
+              <!-- <app-seleccion-lotto [tickets]="ticket"></app-seleccion-lotto> -->
             </td>
           </tr>
         </tbody>
         <hr size="2px" color="gray" />
-        <!-- <pagination-controls (pageChange)="pageActual = $event"></pagination-controls> -->
       </table>
 
 
-      <div class="contenedor_botones">
-        <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton" (click)="decrementar()">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-  
-        
-          <button class="boton">
-            {{ pageActual }}
-          </button>
-  
-  
-        <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton" (click)="incrementar()">
-          <i class="fa fa-chevron-right"></i>
-        </button>
+
+      <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
+        <mat-paginator 
+                    style-paginator 
+                    [length]="ticketsLotto.length"
+                    [pageSize]="page_size"
+                    (page)="handlerPage($event)">
+        </mat-paginator>
       </div>
     </div>
     <div class="boton_boleto">

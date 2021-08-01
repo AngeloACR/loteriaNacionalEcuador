@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { PageEvent } from "@angular/material";
+import { sorteo, ticketsNacional } from '../../interfaces/lottery.interface';
 
 import { LotteryService } from "../../services/lottery.service";
 
@@ -9,61 +11,60 @@ import { LotteryService } from "../../services/lottery.service";
 })
 export class LoteriaComponent implements OnInit {
   tickets: any;
-  numeros: object[] = [];
-  pageActual: number = 1;
-  desaparecer_izquierdo: boolean = true;
-  desaparecer_derecho: boolean = false;
-  sorteo: any;
-  premioPrecio: any;
+  
+  sorteo: sorteo[];
+  ticketsNacional: ticketsNacional[];
 
-  constructor(private lotteryService: LotteryService) {
-    this.numeros = [
-      [1, 4, 5, 7, 4],
-      [8, 4, 5, 7, 4],
-      [3, 4, 5, 7, 4],
-      [4, 4, 5, 7, 4],
-      [9, 4, 5, 7, 4],
-      [5, 4, 5, 7, 4],
-      [4, 4, 5, 7, 4],
-      [2, 4, 5, 7, 4],
-      [6, 4, 5, 7, 4],
-      [6, 4, 5, 7, 4]
-    ];
+  mostrar: boolean = false;
+  fondo: boolean = false;
+  fracciones: number;
+
+  page_size: number = 9;
+  page_number: number = 1;
+  pageSizeOptions: [5, 10, 20, 100];
+
+  constructor(private lotteryService: LotteryService) {}
+
+  handlerPage(e: PageEvent) {
+    this.page_size = e.pageSize
+    this.page_number = e.pageIndex + 1
   }
 
-  incrementar() {
-    this.pageActual++;
-    if (this.pageActual >= this.numeros.length / 4) {
-      this.desaparecer_derecho = true;
-    } else {
-      this.desaparecer_derecho = false;
-    }
-    this.desaparecer_izquierdo = false;
+  seleccionarTicket(id: number) {
+    /* this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional")); */
+
+    this.fondo = !this.fondo
+    this.ticketsNacional.forEach( element => {
+      if(element.identificador === id) {
+        element.status = !element.status
+      }
+    })
+    
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticketsNacional));
   }
 
-  decrementar() {
-    this.pageActual--;
-    if (this.pageActual <= 1) {
-      this.pageActual = 1;
-      this.desaparecer_izquierdo = true;
-    } else {
-      this.desaparecer_izquierdo = false;
-    }
-    this.desaparecer_derecho = false;
-    console.log(this.pageActual);
+  fraccionSeleccionada(idTicket: number, id: number) {
+    this.ticketsNacional.forEach( element => {
+      if(element.identificador === idTicket) {
+        element.seleccionados.forEach( elemento => {
+          if(elemento.fraccion === id) {
+            elemento.status = !elemento.status
+          }
+        })
+      }
+    })
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticketsNacional));
   }
 
-  irPage(page: number) {
-    this.pageActual = page;
+  procesaEmitir(fracciones: number | null) {
+    this.fracciones = fracciones;
+    this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
   }
-
-  loteriaTickets: number[];
 
   ngOnInit() {
+
+    this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
+
     this.sorteo = this.lotteryService.obtenerSorteo(1);
-    this.premioPrecio = this.lotteryService.obtenerPremioPrecio(1);
-    if (this.pageActual >= this.numeros.length / 4) {
-      this.desaparecer_derecho = true;
-    }
   }
 }

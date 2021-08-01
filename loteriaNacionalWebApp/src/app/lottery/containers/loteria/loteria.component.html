@@ -2,20 +2,8 @@
 
 <div class="contenedor_loteria">
 
-  <ul class="menuBox">
-    <li class="menuItem">Loteria Nacional</li>
-    <li class="menuItem">Sorteo: <br>
-      <select class="fechaItem" name="" id="">
-        <option [value]="item" *ngFor="let item of sorteo">
-          {{ item.fecha }}
-        </option>
-      </select>
-    </li>
-    <li class="menuItem">Premios: <p>{{ premioPrecio[0]}}$</p>
-    </li>
-    <li class="menuItem">Precio: <p>{{ premioPrecio[1]}}$</p>
-    </li>
-  </ul>
+  <app-info-loteria titulo="Loteria Nacional" color="loteria" [loteria]="1" (emitir)="procesaEmitir($event)">
+  </app-info-loteria>
 
   <div class="contendor_seleccion">
     <h3>Ingresa tu numero de la suerte</h3>
@@ -31,46 +19,58 @@
     </form>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
     <div class="contenedor_numeros_suerte">
-
       <table>
         <tbody>
-          <tr *ngFor="let item of numeros | paginate: { itemsPerPage: 4, currentPage: pageActual }; let valor = index">
+          <tr *ngFor="let ticket of ticketsNacional | paginacion:page_size:page_number; let i = index">
+            <!--   -->
             <td>
-              <app-tooltip [numeros]="item" [ticket]="valor"></app-tooltip>
+              <div class="tooltip">
+                <input type="checkbox" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
+                <div class="contenedor_numeros">
+                  <p *ngFor="let numero of ticket.numeros">{{ numero }}</p>
+                </div>
+                <span *ngIf="ticket.status">
+                  <div class="numeros_grupo">
+                    <p *ngFor="let numero of ticket.numeros">{{ numero }}</p>
+                    <h3>Fraccion</h3>
+                  </div>
+                  <hr>
+                  <div class="seleccionAll">
+                    <p>Seleccionar todas las fracciones</p>
+                    <input style="position: relative; width: 20px; opacity: 1; margin-left: 5px" type="checkbox">
+                    <!-- (click)="seleccionarTodo()" -->
+                  </div>
+                  <hr>
+                  <div class="contenedor_fracciones">
+                    <div class="fracciones" *ngFor="let item of ticket.seleccionados; let i = index">
+                      <input (click)="fraccionSeleccionada(ticket.identificador, i + 1)" [checked]="item.status"
+                        class="checkbox" type="checkbox" [id]="i">
+                      <label [for]="i">{{ item.fraccion }}</label>
+                    </div>
+                  </div>
+                  <hr>
+                </span>
+              </div>
+              <!-- <app-tooltip [ticket]="tickets" [fracciones]="fracciones"></app-tooltip> -->
             </td>
           </tr>
         </tbody>
+        <hr size="2px" color="gray" />
       </table>
+      <!-- {{ ticketsNacional | json }} -->
 
-      <!-- <pagination-controls (pageChange)="pageActual = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
-
+      <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
+        <mat-paginator style-paginator [length]="ticketsNacional.length" [pageSize]="page_size"
+          (page)="handlerPage($event)">
+        </mat-paginator>
+      </div>
     </div>
-    <hr size="2px" color="gray" />
-
-    <div class="contenedor_botones">
-      <button [ngClass]="{'desaparecer': desaparecer_izquierdo, 'aparecer': !desaparecer_izquierdo}" class="boton"
-        (click)="decrementar()">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-
-
-      <button class="boton">
-        {{ pageActual }}
-      </button>
-
-
-      <button [ngClass]="{'desaparecer': desaparecer_derecho, 'aparecer': !desaparecer_derecho}" class="boton"
-        (click)="incrementar()">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-    </div>
-
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>
     </div>
   </div>
 
-  <app-ticket-scroller style="width: 25%;" [tickets]="tickets" isLoteriaNacional="true"
+  <app-ticket-scroller style="width: 25%;" [tickets]="ticketsNacional" isLoteriaNacional="true"
     logo="assets/img/loteria nacional.png">
   </app-ticket-scroller>
 

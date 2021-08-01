@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { sorteo, ticketsNacional } from "../../interfaces/lottery.interface";
+import { LotteryService } from "../../services/lottery.service";
 
 @Component({
   selector: "app-tooltip",
@@ -6,10 +8,20 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./tooltip.component.scss"],
 })
 export class TooltipComponent implements OnInit {
-  @Input() numeros: any;
-  @Input() ticket: any;
 
-  checkbox1: boolean = false;
+  @Input() ticket: ticketsNacional[];
+  @Input() fracciones: number = 0;
+
+  mostrar: boolean = false;
+  fondo: boolean = false;
+  /* fracciones: sorteo[]; */
+
+  /* contador = []; */
+
+  constructor( private lotteryService: LotteryService) {}
+
+
+  /* checkbox1: boolean = false;
   checkbox2: boolean = false;
   checkbox3: boolean = false;
   checkbox4: boolean = false;
@@ -31,28 +43,29 @@ export class TooltipComponent implements OnInit {
     { numero: 8, variable: this.checkbox8 },
     { numero: 9, variable: this.checkbox9 },
     { numero: 10, variable: this.checkbox10 }
-  ];
+  ]; */
 
-  mostrar: boolean = false;
-  fondo: boolean = false;
-
-  valor: boolean = false;
-  loteriaTickets: any = [];
-
-  constructor() {}
-
-  seleccionarTodo() {
-    this.checkbox1 = !this.checkbox1;
-    this.checkbox2 = !this.checkbox2;
-    this.checkbox3 = !this.checkbox3;
-    this.checkbox4 = !this.checkbox4;
-    this.checkbox5 = !this.checkbox5;
-    this.checkbox6 = !this.checkbox6;
-    this.checkbox7 = !this.checkbox7;
-    this.checkbox8 = !this.checkbox8;
-    this.checkbox9 = !this.checkbox9;
-    this.checkbox10 = !this.checkbox10;
+  activar() {
+    /* this.contador.length = this.fracciones; */
+    this.fondo = !this.fondo
   }
 
-  ngOnInit() {}
+  seleccionarTicket(id: number) {
+    this.ticket.forEach( element => {
+      if(element.identificador === id) {
+        element.status = !element.status
+      }
+    })
+    console.log(id)
+    
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticket));
+  }
+
+  seleccionarFraccion() {
+    
+  }
+
+  ngOnInit() {
+    
+  }
 }

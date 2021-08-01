@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ticketsAnimales } from '../../interfaces/lottery.interface';
 
 @Component({
   selector: 'app-seleccion-pozo',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SeleccionPozoComponent implements OnInit {
 
-  @Input() tickets: any;
+  @Input() tickets: ticketsAnimales[];
 
   constructor() { 
     
