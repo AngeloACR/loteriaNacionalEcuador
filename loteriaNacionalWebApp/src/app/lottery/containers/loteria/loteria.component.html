@@ -21,10 +21,14 @@
     <div class="contenedor_numeros_suerte">
       <table>
         <tbody>
-          <tr *ngFor="let ticket of ticketsNacional | paginacion:page_size:page_number; let i = index"> <!--   -->
+          <tr *ngFor="let ticket of ticketsNacional | paginacion:page_size:page_number; let i = index">
+            <!--   -->
             <td>
               <div class="tooltip">
-                <input type="checkbox" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
+                <input 
+                  type="checkbox" 
+                  [checked]="ticket.status" 
+                  (click)="seleccionarTicket(ticket.identificador)">
                 <div class="contenedor_numeros">
                   <p *ngFor="let numero of ticket.numeros">{{ numero }}</p>
                 </div>
@@ -36,23 +40,29 @@
                   <hr>
                   <div class="seleccionAll">
                     <p>Seleccionar todas las fracciones</p>
-                    <input style="position: relative; width: 20px; opacity: 1; margin-left: 5px"  type="checkbox">  <!-- (click)="seleccionarTodo()" -->
+                    <input 
+                      style="position: relative; width: 20px; opacity: 1; margin-left: 5px" 
+                      type="checkbox"
+                      (click)="seleccionarTodo(ticket.identificador)"> <!--  -->
                   </div>
                   <hr>
                   <div class="contenedor_fracciones">
                     <div class="fracciones" *ngFor="let item of ticket.seleccionados; let i = index">
-                      <input (click)="fraccionSeleccionada(ticket.identificador, i + 1)" 
-                             [checked] ="item.status" 
-                             class="checkbox" 
-                             type="checkbox"
-                             [id]="i"> 
+                      
+                      <input 
+                        (click)="fraccionSeleccionada(ticket.identificador, i + 1)" 
+                        [checked]="item.status"
+                        class="checkbox" 
+                        type="checkbox" 
+                        [id]="i">
                       <label [for]="i">{{ item.fraccion }}</label>
                     </div>
                   </div>
                   <hr>
+                  <!-- <app-tool [ticket]="ticket" [fracciones]="fracciones"></app-tool> -->
                 </span>
               </div>
-              <!-- <app-tooltip [ticket]="tickets" [fracciones]="fracciones"></app-tooltip> --> 
+              <!-- <app-tooltip [ticket]="tickets" [fracciones]="fracciones"></app-tooltip> -->
             </td>
           </tr>
         </tbody>

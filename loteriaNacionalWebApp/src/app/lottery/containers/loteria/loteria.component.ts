@@ -31,7 +31,6 @@ export class LoteriaComponent implements OnInit {
   }
 
   seleccionarTicket(id: number) {
-    /* this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional")); */
 
     this.fondo = !this.fondo
     this.ticketsNacional.forEach( element => {
@@ -39,12 +38,13 @@ export class LoteriaComponent implements OnInit {
         element.status = !element.status
       }
     })
-    
+    /* console.log(id) */
     localStorage.setItem("ticketsNacional", JSON.stringify(this.ticketsNacional));
   }
 
   fraccionSeleccionada(idTicket: number, id: number) {
     this.ticketsNacional.forEach( element => {
+      console.log(idTicket, element.identificador)
       if(element.identificador === idTicket) {
         element.seleccionados.forEach( elemento => {
           if(elemento.fraccion === id) {
@@ -56,16 +56,26 @@ export class LoteriaComponent implements OnInit {
     localStorage.setItem("ticketsNacional", JSON.stringify(this.ticketsNacional));
   }
 
+  seleccionarTodo(id: number) {
+    this.ticketsNacional.forEach( element => {
+      if(element.identificador === id) {
+        for (let i = 0; i < this.fracciones['fracciones']; i++) {
+          element.seleccionados[i].status = true 
+        }
+      }
+    })
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticketsNacional));
+  }
+
   procesaEmitir(fracciones: number | null) {
     this.fracciones = fracciones;
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
   }
 
   ngOnInit() {
-
+    let x = JSON.parse(localStorage.getItem("sorteoLoteriaNacional"));
+    this.fracciones = x.fracciones;
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
-
     this.sorteo = this.lotteryService.obtenerSorteo(1);
-
   }
 }

@@ -172,6 +172,12 @@ export class LotteryService {
         seleccionados: [],
         status: false,
         identificador: Math.random()
+      },
+      {
+        numeros: [5, 5, 5, 8, 4],
+        seleccionados: [],
+        status: false,
+        identificador: Math.random()
       }
     ];
 

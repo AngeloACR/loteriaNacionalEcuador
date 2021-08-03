@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { sorteo, ticketsNacional } from '../../interfaces/lottery.interface';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import { sorteo, ticketsNacional, fracciones } from '../../interfaces/lottery.interface';
 import { LotteryService } from '../../services/lottery.service';
 
 @Component({
@@ -14,16 +14,32 @@ export class InfoLoteriaComponent implements OnInit {
   @Input() loteria: number;
 
   @Output() emitir = new EventEmitter<sorteo[]>();
+  @Output() cargarSorteo = new EventEmitter<sorteo[]>();
 
   seleccionado: sorteo[] = [];
   sorteo: sorteo[];
+  fracciones: sorteo[];
 
   fondoLoteria: boolean = true;
   fondoLotto: boolean = false;
   fondoPozo: boolean = false;
 
-  constructor(private lotteryService: LotteryService) { 
-    /* this.seleccionado['fracciones'] = 20 */
+  constructor(
+    private lotteryService: LotteryService,
+    private ChangeDetectorRef: ChangeDetectorRef
+  ) { }
+
+  async ngOnInit() {
+    this.seleccionado = JSON.parse(localStorage.getItem("sorteoLoteriaNacional"));
+    this.sorteo = await this.lotteryService.obtenerSorteo( this.loteria );
+    this.getClassColor( this.loteria );
+  }
+
+  setSorteoDefault() {
+    this.ChangeDetectorRef.detectChanges();
+    this.seleccionado;
+    this.ChangeDetectorRef.markForCheck();
+    
   }
 
   getClassColor( loteria: number ) {
@@ -40,22 +56,19 @@ export class InfoLoteriaComponent implements OnInit {
     }
   }
 
-  onEmitir() {
-    let fracciones: sorteo[];
-    fracciones = this.seleccionado['fracciones'];
+  onEmitir(seleccion) {
+    this.fracciones = seleccion;
+    localStorage.setItem("sorteoLoteriaNacional", JSON.stringify(this.fracciones));
 
     let ticketsNacional: ticketsNacional[];
     
     ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
-    // Eliminio lo que existe
+    // Elimino lo que existe
     ticketsNacional.forEach(element => {
       for (let i = 0; i < this.seleccionado['fracciones']; i++) {
         element.seleccionados.splice(0, this.seleccionado['fracciones'])
       }
     });
-    localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional));
-
-    ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
 
     // Vuelvo a llenar
     ticketsNacional.forEach(element => {
@@ -67,16 +80,6 @@ export class InfoLoteriaComponent implements OnInit {
     localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional));
     
 
-    this.emitir.emit(fracciones);
+    this.emitir.emit(this.fracciones);
   }
-
-  ngOnInit() {
-
-    
-
-
-    this.sorteo = this.lotteryService.obtenerSorteo( this.loteria );
-    this.getClassColor( this.loteria );
-  }
-
 }
