@@ -12,6 +12,7 @@ export class LottoSelectorComponent implements OnInit {
   ticketNumbers2: String[];
   ticketNumbers3: String[];
   ticketLottoPlus: String;
+  ticketNosVemosJefe: String;
   ticketLottito: Array<String>;
 
   constructor(private router: Router) {}
@@ -21,6 +22,7 @@ export class LottoSelectorComponent implements OnInit {
     this.ticketNumbers2 = data.ultimoResultado.combinacion2.split("");
     this.ticketNumbers3 = data.ultimoResultado.combinacion3.split("");
     this.ticketLottoPlus = data.resultadoLottoPlus.combinacion2; //.split("");
+    this.ticketNosVemosJefe = data.resultadoNosVemosJefe.combinacion4; //.split("");
     this.ticketLottito = data.resultadosLottito.map(resultado => {
       return resultado.combinacion3; //.split("");
     });

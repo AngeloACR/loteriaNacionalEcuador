@@ -192,49 +192,94 @@ export class InquiryService {
     let mascotaPath;
     switch (mascota) {
       case "01":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-camaron.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Camaron.JPG";
         break;
       case "02":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-delfin.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Delfin.JPG";
         break;
       case "03":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-perro.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Perro.JPG";
         break;
       case "04":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-llama.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Llama.JPG";
         break;
       case "05":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-papagayo.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Papagayo.JPG";
         break;
       case "06":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-conejo.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Conejo.JPG";
         break;
       case "07":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-mono.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Mono.JPG";
         break;
       case "08":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-galapago.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Galapago.JPG";
         break;
       case "09":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-tucan.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tucan.JPG";
         break;
       case "10":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-ballena.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Ballena.JPG";
         break;
       case "11":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-oso.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Oso.JPG";
         break;
       case "12":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-foca.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Foca.JPG";
         break;
       case "13":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-cangrejo.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Cangrejo.JPG";
         break;
       case "14":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-condor.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Condor.JPG";
         break;
       case "15":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-iguana.png";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Iguana.JPG";
+        break;
+      case "16":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Caballo.JPG";
+        break;
+      case "17":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Rana.JPG";
+        break;
+      case "18":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tiburon.JPG";
+        break;
+      case "19":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Caracol.JPG";
+        break;
+      case "20":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Oveja.JPG";
+        break;
+      case "21":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Gallo.JPG";
+        break;
+      case "22":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Abeja.JPG";
+        break;
+      case "23":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Mariposa.JPG";
+        break;
+      case "24":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Pez.JPG";
+        break;
+      case "25":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Pinguino.JPG";
+        break;
+      case "26":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Cocodrilo.JPG";
+        break;
+      case "27":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Vaca.JPG";
+        break;
+      case "28":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Chanchito.JPG";
+        break;
+      case "29":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tigre.JPG";
+        break;
+      case "30":
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Gato.JPG";
         break;
 
       default:

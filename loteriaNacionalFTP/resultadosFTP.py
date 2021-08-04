@@ -34,10 +34,13 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             premioData = x[0][0].attrib
             combinacion2 = ''
             combinacion3 = ''
+            combinacion4 = ''
             if('C2' in resultadoData):
                 combinacion2 = resultadoData['C2']
             if('C3' in resultadoData):
                 combinacion3 = resultadoData['C3']
+            if('C4' in resultadoData):
+                combinacion4 = resultadoData['C4']
             codigoPremio = sorteo+"-"+premioData['P']
             resultado = {
                 "tipoLoteria": int(tipoLoteria),
@@ -45,6 +48,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 "combinacion1": resultadoData['C1'],
                 "combinacion2": combinacion2,
                 "combinacion3": combinacion3,
+                "combinacion4": combinacion4,
                 "codigo": resultadoData['B'],
                 "codigoPremio": codigoPremio,
                 "combinacionGanadora": premioData['CG']
@@ -72,6 +76,13 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 elif (premioData['P'] == "24"):
                     resultadosLottito.append(ObjectId(resultadoId.inserted_id))
                     indexLottito = indexLottito + 1
+                elif (premioData['P'] == "25"):
+                    myquery = { "tipoLoteria": int(tipoLoteria) }
+                    data = { "$set":{
+                        "resultadoNosVemosJefe": ObjectId(resultadoId.inserted_id),
+                        "codigoPremioNosVemosJefe": codigoPremio
+                    }}
+                    loteriaDB['ultimoresultados'].update_one(myquery, data)
             if (tipoLoteria == "5" and premioData['P'] == "6" and not reintegroPozo):
                 reintegroPozo = True
                 nombreMascota = combinacion3

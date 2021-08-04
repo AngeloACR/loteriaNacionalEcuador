@@ -14,6 +14,9 @@ const resultadoSchema = new mongoose.Schema({
     combinacion3: {
         type: String,
     },
+    combinacion4: {
+        type: String,
+    },
     codigo: {
         type: Number,
     },
