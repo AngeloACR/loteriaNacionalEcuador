@@ -5,11 +5,10 @@ import { LotteryService } from "../../services/lottery.service";
 @Component({
   selector: "app-tooltip",
   templateUrl: "./tooltip.component.html",
-  styleUrls: ["./tooltip.component.scss"],
+  styleUrls: ["./tooltip.component.scss"]
 })
 export class TooltipComponent implements OnInit {
-
-  @Input() ticket: ticketsNacional[];
+  @Input() ticket: ticketsNacional;
   @Input() fracciones: number = 0;
 
   mostrar: boolean = false;
@@ -18,8 +17,7 @@ export class TooltipComponent implements OnInit {
 
   /* contador = []; */
 
-  constructor( private lotteryService: LotteryService) {}
-
+  constructor(private lotteryService: LotteryService) {}
 
   /* checkbox1: boolean = false;
   checkbox2: boolean = false;
@@ -47,25 +45,19 @@ export class TooltipComponent implements OnInit {
 
   activar() {
     /* this.contador.length = this.fracciones; */
-    this.fondo = !this.fondo
+    this.fondo = !this.fondo;
   }
 
   seleccionarTicket(id: number) {
-    this.ticket.forEach( element => {
-      if(element.identificador === id) {
-        element.status = !element.status
-      }
-    })
-    console.log(id)
-    
+    if (this.ticket.identificador === id) {
+      this.ticket.status = !this.ticket.status;
+    }
+    console.log(id);
+
     localStorage.setItem("ticketsNacional", JSON.stringify(this.ticket));
   }
 
-  seleccionarFraccion() {
-    
-  }
+  seleccionarFraccion() {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 }

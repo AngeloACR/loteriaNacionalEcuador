@@ -40,7 +40,28 @@ const mainController = {
             res.status(400).json(e.toString());
         }
     },
+    agregarUltimoResultadoPozo: async (req, res) => {
+        try {
+            let data = await Lottery.autenticarUsuario()
+            let ultimoResultado = await Lottery.consultarUltimosResultados(5, data.token);
 
+            let codigoPremio = `${ultimoResultado.SortId}-1`;
+            let resultado = {
+                tipoLoteria: 5,
+                numeroSorteo: ultimoResultado.SortId,
+                combinacion2: ultimoResultado.Comb,
+                combinacion3: '',
+                combinacion1: '',
+                codigoPremio,
+                combinacionGanadora: "2"
+            }
+            ResultadosController.updateUltimoResultado(resultado)
+            res.status(200).json(resultado);
+
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
     agregarSorteos: async function () {
         try {
             let response = await Lottery.autenticarUsuario();

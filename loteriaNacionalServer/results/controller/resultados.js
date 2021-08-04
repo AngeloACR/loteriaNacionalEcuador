@@ -41,6 +41,32 @@ const resultadosController = {
         }
     },
 
+    updateUltimoResultado: async function (element) {
+        try {
+            let tipoLoteria = element.tipoLoteria;
+            let resultado = await resultadosController.addResultado(element);
+            let resultadoId = resultado.values._id;
+            let query = { 'tipoLoteria': tipoLoteria }
+            let ultimoResultado = await UltimoResultado.findOne(query)
+            ultimoResultado.ultimoResultado = resultadoId;
+            ultimoResultado.numeroSorteo = element.numeroSorteo;
+            ultimoResultado.codigoPremioPrincipal = element.codigoPremio;
+            ultimoResultado = await ultimoResultado.save()
+            let response = {
+                status: true,
+                values: ultimoResultado
+            }
+            return response;
+        } catch (error) {
+            console.log(error.toString())
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
     updateResultado: async function (id, data) {
         try {
             let resultado = await this.getResultadoById(id)

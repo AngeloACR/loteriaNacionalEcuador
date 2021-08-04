@@ -91,14 +91,9 @@ function uploadBoletines()
 	$home = get_home_url();
 
 	$boletinesUploadFolder = '/wp-content/uploads/boletines/';
-	$boletosUploadFolder = '/wp-content/uploads/boletos/';
 	$boletinesPath = $_SERVER['DOCUMENT_ROOT'] . $boletinesUploadFolder;
-	$boletosPath = $_SERVER['DOCUMENT_ROOT'] . $boletosUploadFolder;
 	if (!file_exists($boletinesPath)) {
 		mkdir($boletinesPath, 0755, true);
-	}
-	if (!file_exists($boletosPath)) {
-		mkdir($boletosPath, 0755, true);
 	}
 	if (isset($_REQUEST) && isset($_FILES)) {
 		foreach ($_FILES as $f => $file) {
@@ -108,8 +103,6 @@ function uploadBoletines()
 			$tipoLoteria = $filename[1];
 			if ($tipoImagen == "T") {
 				$documentFolder = $boletinesPath;
-			} else if ($tipoImagen == "B") {
-				$documentFolder = $boletosPath;
 			} else {
 				$response = array(
 					'status' => false,
@@ -148,8 +141,7 @@ function uploadBoletines()
 				// display progress bar, or something
 				$ret = ftp_nb_continue($ftp);
 			}
-			$ftpEncoded = json_encode($ftp);
-			$ftpLoginEncoded = json_encode($ftpLogin);
+
 			ftp_close($ftp);
 			$ftpDone = true;
 		}
@@ -169,26 +161,123 @@ function uploadBoletines()
 }
 
 
-add_action('admin_menu', 'ln_plugin_menu');
+add_action('admin_menu', 'ln_plugin_boletin_menu');
 
-function ln_plugin_menu()
+function ln_plugin_boletin_menu()
 {
 	add_menu_page(
 		'Carga de boletines',
 		'Boletines',
 		'edit_posts',
-		'ln_plugin_menu',
-		'ln_plugin_menu_content',
+		'ln_plugin_boletin_menu',
+		'ln_plugin_boletin_menu_content',
 		'',
 		2
 	);
 }
 
-function ln_plugin_menu_content()
+function ln_plugin_boletin_menu_content()
 {
 	require_once LN_PLUGIN_PLUGIN_DIR . 'ln-templates/ln-plugin-uploader.php';
 }
 
+add_action('wp_ajax_nopriv_uploadBoletines', 'uploadBoletos');
+add_action('wp_ajax_uploadBoletines', 'uploadBoletos');
+
+function uploadBoletos()
+{
+	$home = get_home_url();
+
+	$boletosUploadFolder = '/wp-content/uploads/boletos/';
+	$boletosPath = $_SERVER['DOCUMENT_ROOT'] . $boletosUploadFolder;
+	if (!file_exists($boletosPath)) {
+		mkdir($boletosPath, 0755, true);
+	}
+	if (isset($_REQUEST) && isset($_FILES)) {
+		foreach ($_FILES as $f => $file) {
+			$filename = basename($file['name']);
+
+			$tipoImagen = $filename[0];
+			$tipoLoteria = $filename[1];
+			if ($tipoImagen == "B") {
+				$documentFolder = $boletosPath;
+			} else {
+				$response = array(
+					'status' => false,
+					'message' => 'El nombre del archivo no sigue el formato descrito'
+				);
+
+				break;
+			}
+			if ($tipoLoteria != "1" && $tipoLoteria != "2" && $tipoLoteria != "5") {
+				$response = array(
+					'status' => false,
+					'message' => 'El tipo de lotería indicado no coincide con ninguno de los de Loteria Nacional'
+				);
+
+				break;
+			}
+			$targetFile = $documentFolder . $filename;
+			move_uploaded_file($file["tmp_name"], $targetFile);
+			$host = "ventas.loteria.com.ec";
+			$port = 2226;
+			$timeout = 360;
+			$user = "loterianacional";
+			$pass = "\$lnftp123..$";
+			$ftp = ftp_ssl_connect($host, $port, $timeout);
+			$ftpLogin = ftp_login($ftp, $user, $pass);
+
+			$fileList = ftp_nlist($ftp, $filename); //Returns an array of filenames from the specified directory on success or FALSE on error. 
+
+			// Test if file is in the ftp_nlist array
+			if (in_array($filename, $fileList)) {
+				ftp_delete($ftp, $filename);
+			}
+			$ret = ftp_nb_put($ftp, $filename, $targetFile, FTP_BINARY, FTP_AUTORESUME);
+
+			while (FTP_MOREDATA == $ret) {
+				// display progress bar, or something
+				$ret = ftp_nb_continue($ftp);
+			}
+
+			ftp_close($ftp);
+			$ftpDone = true;
+		}
+	}
+
+	if ($ftpDone) {
+
+		$response = array(
+			'status' => true,
+			'message' => 'Archivos cargados exitosamente'
+		);
+	}
+
+	echo json_encode($response);
+
+	wp_die();
+}
+
+
+add_action('admin_menu', 'ln_plugin_boleto_menu');
+
+function ln_plugin_boleto_menu()
+{
+	add_menu_page(
+		'Carga de boletos',
+		'Boletos',
+		'edit_posts',
+		'ln_plugin_boleto_menu',
+		'ln_plugin_boleto_menu_content',
+		'',
+		3
+	);
+}
+
+function ln_plugin_boleto_menu_content()
+{
+	require_once LN_PLUGIN_PLUGIN_DIR . 'ln-templates/ln-plugin-boletos-uploader.php';
+}
 
 function run_ln_plugin()
 {

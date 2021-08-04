@@ -37,6 +37,9 @@ module.exports = {
     sourceBoletinesTest: 'https://ventas-api-prueba.loteria.com.ec/boletines/',
     sourceBoletinesProd: 'https://ventas-api.loteria.com.ec/boletines/',
     sourceBoletinesLocal: 'http://localhost:5480/boletines/',
+    sourceBoletosTest: 'https://ventas-api-prueba.loteria.com.ec/boletos/',
+    sourceBoletosProd: 'https://ventas-api.loteria.com.ec/boletos/',
+    sourceBoletosLocal: 'http://localhost:5480/boletos/',
 
     // FTP DATA
     ftpHostLocal: 'localhost',
@@ -44,6 +47,7 @@ module.exports = {
     ftpHostProd: '144.208.73.177',
     ftpResultadosPort: 2222,
     ftpBoletinesPort: 2224,
+    ftpBoletosPort: 2226,
     ftpPassMin: 10520,
     ftpPassMax: 10521,
     ftpUserTest: 'test',
@@ -52,6 +56,7 @@ module.exports = {
     ftpPassProd: '$lnftp123..$',
     ftpResultadosPath: '/uploads/resultados',
     ftpBoletinesPath: '/uploads/boletines',
+    ftpBoletosPath: '/uploads/boletines',
 
     //SSL DATA
     sslPath: '/etc/letsencrypt/live/ventas.loteria.com.ec/',

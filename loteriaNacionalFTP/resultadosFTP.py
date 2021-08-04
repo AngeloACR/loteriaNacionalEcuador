@@ -106,6 +106,36 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     mascota = "14"
                 elif(nombreMascota == "Iguana"):
                     mascota = "15"
+                elif(nombreMascota == "Caballo"):
+                    mascota = "16"
+                elif(nombreMascota == "Rana"):
+                    mascota = "17"
+                elif(nombreMascota == "Tiburón"):
+                    mascota = "18"
+                elif(nombreMascota == "Caracol"):
+                    mascota = "19"
+                elif(nombreMascota == "Oveja"):
+                    mascota = "20"
+                elif(nombreMascota == "Gallo"):
+                    mascota = "21"
+                elif(nombreMascota == "Abeja"):
+                    mascota = "22"
+                elif(nombreMascota == "Mariposa"):
+                    mascota = "23"
+                elif(nombreMascota == "Pez"):
+                    mascota = "24"
+                elif(nombreMascota == "Pingüino"):
+                    mascota = "25"
+                elif(nombreMascota == "Cocodrilo"):
+                    mascota = "26"
+                elif(nombreMascota == "Vaca"):
+                    mascota = "27"
+                elif(nombreMascota == "Chanchito"):
+                    mascota = "28"
+                elif(nombreMascota == "Tigre"):
+                    mascota = "29"
+                elif(nombreMascota == "Gato"):
+                    mascota = "30"
                 data = { "$set":{
                     "mascota": mascota,
                 }}
