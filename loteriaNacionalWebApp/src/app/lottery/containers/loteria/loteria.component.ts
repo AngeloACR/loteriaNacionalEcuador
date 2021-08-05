@@ -54,7 +54,12 @@ export class LoteriaComponent implements OnInit {
       /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
       );*/
-      this.ticketsNacional = await this.lotteryService.obtenerTickets(1);
+      this.ticketsNacional = await this.lotteryService.obtenerTickets(
+        1,
+        this.sorteoSeleccionado,
+        this.combinacionDeLaSuerte,
+        ""
+      );
 
       this.showNumeros = true;
     }
@@ -79,6 +84,7 @@ export class LoteriaComponent implements OnInit {
   procesaEmitir(sorteo: sorteo | String) {
     this.sorteoSeleccionado = sorteo;
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
+    this.showNumeros = false;
   }
 
   async ngOnInit() {

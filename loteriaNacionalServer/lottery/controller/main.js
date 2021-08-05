@@ -208,8 +208,68 @@ module.exports.searchLottoCombinacionesDisponibles = async (req, res) => {
         let sorteo = req.body.sorteo;
         let combinacion = req.body.combinacion;
         let combinacionFigura = req.body.combinacionFigura;
-        let combinaciones = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
-        let reserva = await Ventas.reservarCombinaciones(2, sorteo, combinaciones, token);
+        let ticketsLotto = [
+            {
+                numeros: [1, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [8, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [3, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [4, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [9, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [5, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [2, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [6, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [4, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [6, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [4, 4, 5, 7, 4],
+                status: false,
+                identificador: Math.random()
+            }
+        ];
+
+        //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
+        let combinaciones = ticketsLotto;
+        //let reserva = await Ventas.reservarCombinaciones(2, sorteo, combinaciones, token);
+        let reserva = "";
         response = {
             combinaciones,
             reserva
@@ -228,8 +288,81 @@ module.exports.searchLoteriaCombinacionesDisponibles = async (req, res) => {
         let sorteo = req.body.sorteo;
         let combinacion = req.body.combinacion;
         let combinacionFigura = req.body.combinacionFigura;
-        let combinaciones = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
-        let reserva = await Ventas.reservarCombinaciones(1, sorteo, combinaciones, token);
+        let ticketsNacional = [
+            {
+                numeros: [1, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [8, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [3, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [4, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [9, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [5, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [2, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [6, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [4, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [6, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                numeros: [4, 4, 5, 7, 4],
+                seleccionados: [],
+                status: false,
+                identificador: Math.random()
+            }
+        ];
+
+        //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
+
+        let combinaciones = ticketsNacional;
+
+        //let reserva = await Ventas.reservarCombinaciones(1, sorteo, combinaciones, token);
+        let reserva = "";
         response = {
             combinaciones,
             reserva
@@ -247,8 +380,142 @@ module.exports.searchPozoCombinacionesDisponibles = async (req, res) => {
         let sorteo = req.body.sorteo;
         let combinacion = req.body.combinacion;
         let combinacionFigura = req.body.combinacionFigura;
-        let combinaciones = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
-        let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
+        let ticketsAnimales = [
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-ballena.png",
+                nombre: "ballena",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-camaron.png",
+                nombre: "camaron",
+                numero: [12, 54, 32, 58, 64, 72, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta: "../../../../assets/mascotas/mascotas pozo millonario-foca.png",
+                nombre: "foca",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta: "../../../../assets/mascotas/mascotas pozo millonario-perro.png",
+                nombre: "perro",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta: "../../../../assets/mascotas/mascotas pozo millonario-conejo.png",
+                nombre: "conejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta: "../../../../assets/mascotas/mascotas pozo millonario-delfin.png",
+                nombre: "delfin",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
+                nombre: "mono",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
+                nombre: "mono",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
+                nombre: "mono",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            },
+            {
+                ruta:
+                    "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
+                nombre: "congrejo",
+                numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
+                status: false,
+                identificador: Math.random()
+            }
+        ];
+
+        //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
+        let combinaciones = ticketsAnimales
+        //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
+        let reserva = "";
         response = {
             combinaciones,
             reserva

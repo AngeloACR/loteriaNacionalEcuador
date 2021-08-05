@@ -178,83 +178,8 @@ export class LotteryService {
     let b1 = b["sorteo"];
     return b1 - a1;
   }
-  obtenerTicketsNacional() {
-    this.ticketsNacional = [
-      {
-        numeros: [1, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [8, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [3, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [9, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [5, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [2, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [6, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [6, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      }
-    ];
 
-    localStorage.setItem(
-      "ticketsNacional",
-      JSON.stringify(this.ticketsNacional)
-    );
-  }
-
-  obtenerTickets(loteria): Promise<any> {
+  obtenerTickets(loteria, sorteo, combinacion, combinacionFigura): Promise<any> {
     this.ticketsNacional = [
       {
         numeros: [1, 4, 5, 7, 4],
@@ -518,6 +443,11 @@ export class LotteryService {
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
     let endpoint = "/lottery";
+    let body = {
+      sorteo,
+      combinacion,
+      combinacionFigura
+    }
     switch (loteria) {
       case 1:
         endpoint = `${endpoint}/loteriaCombinacionesDisponibles`;
@@ -526,15 +456,13 @@ export class LotteryService {
 
         address = address + endpoint;
         return new Promise<Array<ticketsNacional>>((resolve, reject) => {
-          /* this.http
-            .post(address, { headers: headers }, {})
+          this.http
+            .post(address, body, { headers: headers })
             .subscribe((data: any) => {
-              let sorteosJugados: Array<ticketsNacional> = data.values;
-              console.log(sorteosJugados);
-              sorteosJugados.sort(this.ordenaSorteos);
-              resolve(sorteosJugados);
-            }); */
-          resolve(this.ticketsNacional);
+              let combinacionesDisponibles: Array<ticketsNacional> = data;
+              console.log(combinacionesDisponibles);
+              resolve(combinacionesDisponibles);
+            });
         });
         break;
       case 2:
@@ -544,15 +472,13 @@ export class LotteryService {
 
         address = address + endpoint;
         return new Promise<Array<ticketsLotto>>((resolve, reject) => {
-          /* this.http
-            .post(address, { headers: headers }, {})
+          this.http
+            .post(address, body, { headers: headers })
             .subscribe((data: any) => {
-              let sorteosJugados: Array<ticketsLotto> = data.values;
-              console.log(sorteosJugados);
-              sorteosJugados.sort(this.ordenaSorteos);
-              resolve(sorteosJugados);
-            }); */
-          resolve(this.ticketsLotto);
+              let combinacionesDisponibles: Array<ticketsLotto> = data.values;
+              console.log(combinacionesDisponibles);
+              resolve(combinacionesDisponibles);
+            });
         });
         break;
       case 5:
@@ -562,15 +488,13 @@ export class LotteryService {
 
         address = address + endpoint;
         return new Promise<Array<ticketsAnimales>>((resolve, reject) => {
-          /* this.http
-            .post(address, { headers: headers }, {})
+          this.http
+            .post(address, body, { headers: headers })
             .subscribe((data: any) => {
-              let sorteosJugados: Array<ticketsAnimales> = data.values;
-              console.log(sorteosJugados);
-              sorteosJugados.sort(this.ordenaSorteos);
-              resolve(sorteosJugados);
-            }); */
-          resolve(this.ticketsAnimales);
+              let combinacionesDisponibles: Array<ticketsAnimales> = data.values;
+              console.log(combinacionesDisponibles);
+              resolve(combinacionesDisponibles);
+            });
         });
 
         break;
