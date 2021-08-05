@@ -1,6 +1,6 @@
 const express = require('express');
 const lotteryRouter = express.Router();
-const LotteryController = require('../controller/main');
+const LotteryController = require('../controller/ventas');
 
 lotteryRouter.post('/loteriaCombinacionesDisponibles', LotteryController.searchLoteriaCombinacionesDisponibles);
 lotteryRouter.post('/lottoCombinacionesDisponibles', LotteryController.searchLottoCombinacionesDisponibles);
