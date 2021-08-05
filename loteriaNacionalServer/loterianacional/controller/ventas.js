@@ -101,7 +101,15 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
                 if (!errorCode) {
                     let aux = data.mt.rs[0].r[0].Row;
                     let response = aux.map(sorteo => {
-                        return sorteo.$;
+                        let sorteoAux = {
+                            fecha: sorteo.$.FCadSort,
+                            cantidadDeFracciones: sorteo.$.CFrac,
+                            valorPremioPrincipal: sorteo.$.VPremio,
+                            precio: sorteo.$.PVP,
+                            sorteo: sorteo.$.sortId,
+                            nombre: sorteo.$.sortNomb
+                        }
+                        return sorteoAux;
                     });
                     resolve(response);
                 } else {

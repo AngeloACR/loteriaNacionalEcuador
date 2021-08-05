@@ -14,7 +14,7 @@ export class LoteriaComponent implements OnInit {
 
   sorteo: sorteo[];
   ticketsNacional: ticketsNacional[];
-  combinacionDeLaSuerte: any;
+  combinacionDeLaSuerte: any = ["", "", "", "", ""];
 
   mostrar: boolean = false;
   fondo: boolean = false;

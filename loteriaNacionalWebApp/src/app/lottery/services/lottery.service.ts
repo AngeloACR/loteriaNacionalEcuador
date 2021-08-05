@@ -50,7 +50,7 @@ export class LotteryService {
           this.http
             .get(address, { headers: headers })
             .subscribe((data: any) => {
-              let sorteosJugados: Array<sorteo> = data.values;
+              let sorteosJugados: Array<sorteo> = data;
               console.log(sorteosJugados);
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
@@ -86,13 +86,14 @@ export class LotteryService {
       case 2:
         endpoint = `${endpoint}/lottoSorteosDisponibles`;
         console.log("Recuperando sorteos de lotto");
+        var address = this.mySource;
 
         address = address + endpoint;
         return new Promise<Array<sorteo>>((resolve, reject) => {
           this.http
             .get(address, { headers: headers })
             .subscribe((data: any) => {
-              let sorteosJugados: Array<sorteo> = data.values;
+              let sorteosJugados: Array<sorteo> = data;
               console.log(sorteosJugados);
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
@@ -128,13 +129,14 @@ export class LotteryService {
       case 5:
         endpoint = `${endpoint}/pozoSorteosDisponibles`;
         console.log("Recuperando sorteos de pozo millonario");
+        var address = this.mySource;
 
         address = address + endpoint;
         return new Promise<Array<sorteo>>((resolve, reject) => {
           this.http
             .get(address, { headers: headers })
             .subscribe((data: any) => {
-              let sorteosJugados: Array<sorteo> = data.values;
+              let sorteosJugados: Array<sorteo> = data;
               console.log(sorteosJugados);
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
