@@ -3,6 +3,7 @@ const Results = require('../../results/controller/resultados');
 const Resultados = require('../../results/controller/main');
 const Sorteos = require('../../results/controller/sorteos');
 const config = require('../../config/environment');
+const Ventas = require('../../loterianacional/controller/ventas');
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -19,38 +20,38 @@ const ventasController = {
             let response = await Ventas.autenticarUsuario();
             let token = response.token;
             response = await Ventas.consultarSorteosDisponibles(2, token);
-    
-    
+
+
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
     },
-    
+
     searchLoteriaSorteosDisponibles: async (req, res) => {
         try {
             let response = await Ventas.autenticarUsuario();
             let token = response.token;
             response = await Ventas.consultarSorteosDisponibles(1, token);
-    
+
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
     },
-    
+
     searchPozoSorteosDisponibles: async (req, res) => {
         try {
             let response = await Ventas.autenticarUsuario();
             let token = response.token;
             response = await Ventas.consultarSorteosDisponibles(5, token);
-    
+
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
     },
-    
+
     searchLottoCombinacionesDisponibles: async (req, res) => {
         try {
             let response = await Ventas.autenticarUsuario();
@@ -115,7 +116,7 @@ const ventasController = {
                     identificador: Math.random()
                 }
             ];
-    
+
             //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
             let combinaciones = ticketsLotto;
             //let reserva = await Ventas.reservarCombinaciones(2, sorteo, combinaciones, token);
@@ -124,13 +125,13 @@ const ventasController = {
                 combinaciones,
                 reserva
             }
-    
+
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
     },
-    
+
     searchLoteriaCombinacionesDisponibles: async (req, res) => {
         try {
             let response = await Ventas.autenticarUsuario();
@@ -206,11 +207,11 @@ const ventasController = {
                     identificador: Math.random()
                 }
             ];
-    
+
             //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
-    
+
             let combinaciones = ticketsNacional;
-    
+
             //let reserva = await Ventas.reservarCombinaciones(1, sorteo, combinaciones, token);
             let reserva = "";
             response = {
@@ -222,7 +223,7 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
-    
+
     searchPozoCombinacionesDisponibles: async (req, res) => {
         try {
             let response = await Ventas.autenticarUsuario();
@@ -361,7 +362,7 @@ const ventasController = {
                     identificador: Math.random()
                 }
             ];
-    
+
             //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
             let combinaciones = ticketsAnimales
             //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
@@ -370,7 +371,7 @@ const ventasController = {
                 combinaciones,
                 reserva
             }
-    
+
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
