@@ -106,8 +106,8 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
                             cantidadDeFracciones: sorteo.$.CFrac,
                             valorPremioPrincipal: sorteo.$.VPremio,
                             precio: sorteo.$.PVP,
-                            sorteo: sorteo.$.sortId,
-                            nombre: sorteo.$.sortNomb
+                            sorteo: sorteo.$.SortId,
+                            nombre: sorteo.$.SortNomb
                         }
                         return sorteoAux;
                     });

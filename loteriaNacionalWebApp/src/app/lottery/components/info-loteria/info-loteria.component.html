@@ -5,7 +5,7 @@
   <li class="menuItem">Sorteo: <br>
     <select class="fechaItem" [(ngModel)]="seleccionado" (click)="onEmitir()">
       <!-- multiple="multiple" -->
-      <option [ngValue]="objeto" *ngFor="let objeto of sorteo">{{ objeto.fecha }}</option>
+      <option [ngValue]="objeto" *ngFor="let objeto of sorteo">{{objeto.nombre}} / {{ objeto.fecha }}</option>
     </select>
   </li>
   <li class="menuItem">
