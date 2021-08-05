@@ -9,16 +9,16 @@
     <h3>Ingresa tu numero de la suerte</h3>
     <form action="">
       <div class="numeros_suerte">
-        <input type="number" min="0" max="9" name="" placeholder="2">
-        <input type="number" min="0" max="9" name="" placeholder="4">
-        <input type="number" min="0" max="9" name="" placeholder="5">
-        <input type="number" min="0" max="9" name="" placeholder="7">
-        <input type="number" min="0" max="9" name="" placeholder="4">
-        <button class="activado">BUSCAR NUMERO</button>
+        <input type="number" [(ngModel)]="combinacionDeLaSuerte[0]" min="0" max="9" name="" placeholder="2">
+        <input type="number" [(ngModel)]="combinacionDeLaSuerte[1]" min="0" max="9" name="" placeholder="4">
+        <input type="number" [(ngModel)]="combinacionDeLaSuerte[2]" min="0" max="9" name="" placeholder="5">
+        <input type="number" [(ngModel)]="combinacionDeLaSuerte[3]" min="0" max="9" name="" placeholder="7">
+        <input type="number" [(ngModel)]="combinacionDeLaSuerte[4]" min="0" max="9" name="" placeholder="4">
+        <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
       </div>
     </form>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
-    <div class="contenedor_numeros_suerte">
+    <div class="contenedor_numeros_suerte" *ngIf="showNumeros">
       <table>
         <tbody>
           <tr *ngFor="let ticket of ticketsNacional | paginacion:page_size:page_number; let i = index">

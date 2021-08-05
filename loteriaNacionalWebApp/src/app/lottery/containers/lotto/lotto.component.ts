@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PageEvent } from "@angular/material";
-import { sorteo, ticketsLotto } from '../../interfaces/lottery.interface';
+import { sorteo, ticketsLotto } from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
 
 @Component({
@@ -9,7 +9,6 @@ import { LotteryService } from "../../services/lottery.service";
   styleUrls: ["./lotto.component.scss"]
 })
 export class LottoComponent implements OnInit {
-  
   sorteo: sorteo[];
 
   ticketsLotto: ticketsLotto[];
@@ -21,23 +20,23 @@ export class LottoComponent implements OnInit {
   constructor(private lotteryService: LotteryService) {}
 
   seleccionarTicket(id: number) {
-    this.ticketsLotto.forEach( element => {
-      if(element.identificador === id) {
-        element.status = !element.status
+    this.ticketsLotto.forEach(element => {
+      if (element.identificador === id) {
+        element.status = !element.status;
       }
-    })
-    console.log(id)
-    
+    });
+    console.log(id);
+
     localStorage.setItem("ticketsLotto", JSON.stringify(this.ticketsLotto));
   }
 
   handlerPage(e: PageEvent) {
-    this.page_size = e.pageSize
-    this.page_number = e.pageIndex + 1
+    this.page_size = e.pageSize;
+    this.page_number = e.pageIndex + 1;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.ticketsLotto = JSON.parse(localStorage.getItem("ticketsLotto"));
-    this.sorteo = this.lotteryService.obtenerSorteo(2);
+    this.sorteo = await this.lotteryService.obtenerSorteo(2);
   }
 }

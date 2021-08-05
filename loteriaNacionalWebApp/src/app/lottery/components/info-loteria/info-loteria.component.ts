@@ -12,10 +12,10 @@ export class InfoLoteriaComponent implements OnInit {
   @Input() color: string;
   @Input() loteria: number;
 
-  @Output() emitir = new EventEmitter<sorteo[]>();
+  @Output() emitir = new EventEmitter<sorteo>();
 
   seleccionado: sorteo;
-  sorteo: sorteo[];
+  sorteo: Array<sorteo>;
 
   fondoLoteria: boolean = true;
   fondoLotto: boolean = false;
@@ -39,10 +39,10 @@ export class InfoLoteriaComponent implements OnInit {
   }
 
   onEmitir() {
-    let fracciones: any;
+    /*let fracciones: any;
     fracciones = this.seleccionado["fracciones"];
 
-    let ticketsNacional: ticketsNacional[];
+         let ticketsNacional: ticketsNacional[];
 
     ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
     // Eliminio lo que existe
@@ -62,13 +62,13 @@ export class InfoLoteriaComponent implements OnInit {
       }
     });
 
-    localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional));
+    localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional)); */
 
-    this.emitir.emit(fracciones);
+    this.emitir.emit(this.seleccionado);
   }
 
-  ngOnInit() {
-    this.sorteo = this.lotteryService.obtenerSorteo(this.loteria);
+  async ngOnInit() {
+    this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);
     this.getClassColor(this.loteria);
   }
 }

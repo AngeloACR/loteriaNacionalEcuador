@@ -1,9 +1,10 @@
 export interface sorteo {
   fecha: string;
-  premio: string;
+  cantidadDeFracciones: number;
+  valorPremioPrincipal: any;
   precio: string;
-  fracciones: number;
-  numero: string;
+  sorteo: string;
+  nombre: string;
 }
 
 export interface fracciones {

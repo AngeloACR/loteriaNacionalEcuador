@@ -170,7 +170,16 @@ module.exports.searchLottoSorteosDisponibles = async (req, res) => {
         let token = response.token;
         response = await Ventas.consultarSorteosDisponibles(2, token);
 
-        res.status(200).json(response);
+        let sorteo = {
+            fecha: response.FCadSort,
+            cantidadDeFracciones: response.CFrac,
+            valorPremioPrincipal: response.VPremio,
+            precio: response.PVP,
+            sorteo: response.sortId,
+            nombre: response.sortNomb
+        }
+
+        res.status(200).json(sorteo);
     } catch (e) {
         res.status(400).json(e.toString());
     }

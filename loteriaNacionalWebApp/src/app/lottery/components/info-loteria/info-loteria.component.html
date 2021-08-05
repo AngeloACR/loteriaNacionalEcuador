@@ -3,14 +3,15 @@
     {{ titulo }}
   </li>
   <li class="menuItem">Sorteo: <br>
-    <select class="fechaItem" [(ngModel)]="seleccionado" (click)="onEmitir()">  <!-- multiple="multiple" -->
+    <select class="fechaItem" [(ngModel)]="seleccionado" (click)="onEmitir()">
+      <!-- multiple="multiple" -->
       <option [ngValue]="objeto" *ngFor="let objeto of sorteo">{{ objeto.fecha }}</option>
     </select>
   </li>
-  <li class="menuItem"> 
-    Premio: <p>{{ seleccionado?.premio }}</p>
+  <li class="menuItem">
+    Premio: <p>{{ seleccionado?.valorPremioPrincipal }}</p>
   </li>
-  <li class="menuItem"> 
+  <li class="menuItem">
     Precio: <p>{{ seleccionado?.precio }}</p>
   </li>
 </ul>
