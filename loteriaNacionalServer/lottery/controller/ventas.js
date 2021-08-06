@@ -218,6 +218,7 @@ const ventasController = {
                     fraccionesDisponibles: element.Fra,
                     seleccionados: [],
                     status: false,
+                    identificador: Math.random()
                 }
                 return combinacion
             });;

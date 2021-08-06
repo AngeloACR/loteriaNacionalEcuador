@@ -54,12 +54,13 @@ export class LoteriaComponent implements OnInit {
       this.showNumeros = false;
 
       let combinacion = this.combinacionDeLaSuerte.map(element => {
-        if (element == null || element == undefined) {
+        if (element == null || element == undefined || element == "") {
           return "_";
         } else {
           return element;
         }
       });
+      console.log(combinacion);
       this.ticketsNacional = await this.lotteryService.obtenerTickets(
         1,
         this.sorteoSeleccionado,
