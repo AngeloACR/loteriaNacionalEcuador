@@ -30,14 +30,11 @@
               <div class="tooltip">
                 <input type="checkbox" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
                 <div class="contenedor_numeros">
-                  <!-- <p *ngFor="let numero of ticket.numeros">{{ numero }}</p> -->
-                  <p>{{ ticket.combinacion }}</p>
+                  <p *ngFor="let numero of ticket.display">{{ numero }}</p>
                 </div>
                 <span *ngIf="ticket.status">
                   <div class="numeros_grupo">
-                    <!-- <p *ngFor="let numero of ticket.numeros">{{ numero }}</p> -->
-                    <p>{{ ticket.combinacion }}</p>
-
+                    <p *ngFor="let numero of ticket.display">{{ numero }}</p>
                     <h3>Fraccion</h3>
                   </div>
                   <hr>

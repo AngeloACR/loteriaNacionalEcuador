@@ -13,6 +13,7 @@ export interface fracciones {
 }
 export interface ticketsNacional {
   combinacion: string;
+  display: string[];
   fraccionesDisponibles: fracciones[];
   seleccionados: fracciones[];
   status: boolean;

@@ -214,6 +214,7 @@ const ventasController = {
                 let combinacion = {
 
                     combinacion: element.Num,
+                    display: element.Num.split(""),
                     fraccionesDisponibles: element.Fra,
                     seleccionados: [],
                     status: false,

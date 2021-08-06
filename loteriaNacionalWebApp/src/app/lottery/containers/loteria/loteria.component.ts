@@ -51,6 +51,7 @@ export class LoteriaComponent implements OnInit {
       /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
         );*/
+      this.showNumeros = false;
 
       let combinacion = this.combinacionDeLaSuerte.map(element => {
         if (element == null || element == undefined) {
