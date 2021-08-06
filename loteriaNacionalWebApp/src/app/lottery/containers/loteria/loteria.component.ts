@@ -47,17 +47,25 @@ export class LoteriaComponent implements OnInit {
     );
   }
   async buscarNumero() {
-    if (this.sorteoSeleccionado == "default") {
+    if (this.sorteoSeleccionado != "default") {
       alert("Por favor seleccione un sorteo");
       this.showNumeros = false;
     } else {
       /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
-      );*/
+        );*/
+
+      let combinacion = this.combinacionDeLaSuerte.map(element => {
+        if (element == null || element == undefined) {
+          return "_";
+        } else {
+          return element;
+        }
+      });
       this.ticketsNacional = await this.lotteryService.obtenerTickets(
         1,
         this.sorteoSeleccionado,
-        this.combinacionDeLaSuerte.join(""),
+        combinacion.join(""),
         ""
       );
 
