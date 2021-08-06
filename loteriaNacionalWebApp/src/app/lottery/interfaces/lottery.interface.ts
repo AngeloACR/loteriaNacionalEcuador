@@ -12,7 +12,8 @@ export interface fracciones {
   status: boolean;
 }
 export interface ticketsNacional {
-  numeros: number[];
+  combinacion: string;
+  fraccionesDisponibles: fracciones[];
   seleccionados: fracciones[];
   status: boolean;
   identificador: number;

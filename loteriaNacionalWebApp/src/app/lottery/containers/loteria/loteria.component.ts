@@ -89,8 +89,8 @@ export class LoteriaComponent implements OnInit {
     );
   }
   sorteoSeleccionado: sorteo | String;
-  procesaEmitir(sorteo: sorteo | String) {
-    this.sorteoSeleccionado = sorteo;
+  procesaEmitir(sorteo) {
+    this.sorteoSeleccionado = sorteo.sorteo;
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
     this.showNumeros = false;
   }
