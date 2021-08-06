@@ -45,10 +45,10 @@
                   </div>
                   <hr>
                   <div class="contenedor_fracciones">
-                    <div class="fracciones" *ngFor="let item of ticket.seleccionados; let i = index">
+                    <div class="fracciones" *ngFor="let item of ticket.fraccionesDisponibles; let i = index">
                       <input (click)="fraccionSeleccionada(ticket.identificador, i + 1)" [checked]="item.status"
                         class="checkbox" type="checkbox" [id]="i">
-                      <label [for]="i">{{ item.fraccion }}</label>
+                      <label [for]="i">{{ item }}</label>
                     </div>
                   </div>
                   <hr>
