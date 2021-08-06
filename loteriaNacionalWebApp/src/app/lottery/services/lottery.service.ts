@@ -179,266 +179,12 @@ export class LotteryService {
     return b1 - a1;
   }
 
-  obtenerTickets(loteria, sorteo, combinacion, combinacionFigura): Promise<any> {
-    this.ticketsNacional = [
-      {
-        numeros: [1, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [8, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [3, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [9, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [5, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [2, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [6, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [6, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        seleccionados: [],
-        status: false,
-        identificador: Math.random()
-      }
-    ];
-
-    this.ticketsLotto = [
-      {
-        numeros: [1, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [8, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [3, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [9, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [5, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [2, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [6, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [6, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        numeros: [4, 4, 5, 7, 4],
-        status: false,
-        identificador: Math.random()
-      }
-    ];
-
-    this.ticketsAnimales = [
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-ballena.png",
-        nombre: "ballena",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-camaron.png",
-        nombre: "camaron",
-        numero: [12, 54, 32, 58, 64, 72, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta: "../../../../assets/mascotas/mascotas pozo millonario-foca.png",
-        nombre: "foca",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta: "../../../../assets/mascotas/mascotas pozo millonario-perro.png",
-        nombre: "perro",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta: "../../../../assets/mascotas/mascotas pozo millonario-conejo.png",
-        nombre: "conejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta: "../../../../assets/mascotas/mascotas pozo millonario-delfin.png",
-        nombre: "delfin",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-        nombre: "mono",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-        nombre: "mono",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-        nombre: "mono",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      },
-      {
-        ruta:
-          "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-        nombre: "congrejo",
-        numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-        status: false,
-        identificador: Math.random()
-      }
-    ];
-
+  obtenerTickets(
+    loteria,
+    sorteo,
+    combinacion,
+    combinacionFigura
+  ): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
@@ -447,7 +193,7 @@ export class LotteryService {
       sorteo,
       combinacion,
       combinacionFigura
-    }
+    };
     switch (loteria) {
       case 1:
         endpoint = `${endpoint}/loteriaCombinacionesDisponibles`;
@@ -459,7 +205,8 @@ export class LotteryService {
           this.http
             .post(address, body, { headers: headers })
             .subscribe((data: any) => {
-              let combinacionesDisponibles: Array<ticketsNacional> = data;
+              let combinacionesDisponibles: Array<ticketsNacional> =
+                data.combinaciones;
               console.log(combinacionesDisponibles);
               resolve(combinacionesDisponibles);
             });
@@ -475,7 +222,8 @@ export class LotteryService {
           this.http
             .post(address, body, { headers: headers })
             .subscribe((data: any) => {
-              let combinacionesDisponibles: Array<ticketsLotto> = data.values;
+              let combinacionesDisponibles: Array<ticketsLotto> =
+                data.combinaciones;
               console.log(combinacionesDisponibles);
               resolve(combinacionesDisponibles);
             });
@@ -491,7 +239,8 @@ export class LotteryService {
           this.http
             .post(address, body, { headers: headers })
             .subscribe((data: any) => {
-              let combinacionesDisponibles: Array<ticketsAnimales> = data.values;
+              let combinacionesDisponibles: Array<ticketsAnimales> =
+                data.combinaciones;
               console.log(combinacionesDisponibles);
               resolve(combinacionesDisponibles);
             });

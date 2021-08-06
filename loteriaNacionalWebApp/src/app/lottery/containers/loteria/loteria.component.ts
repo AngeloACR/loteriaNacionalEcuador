@@ -57,7 +57,7 @@ export class LoteriaComponent implements OnInit {
       this.ticketsNacional = await this.lotteryService.obtenerTickets(
         1,
         this.sorteoSeleccionado,
-        this.combinacionDeLaSuerte,
+        this.combinacionDeLaSuerte.join(""),
         ""
       );
 

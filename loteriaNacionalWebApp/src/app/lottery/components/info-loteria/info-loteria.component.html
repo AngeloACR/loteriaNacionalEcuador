@@ -5,6 +5,7 @@
   <li class="menuItem">Sorteo: <br>
     <select class="fechaItem" [(ngModel)]="seleccionado" (change)="onEmitir()">
       <!-- multiple="multiple" -->
+      <option value="default" selected disabled>Seleccione un sorteo</option>
       <option [ngValue]="objeto" *ngFor="let objeto of sorteo">{{objeto.nombre}}</option>
     </select>
   </li>

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ChangeDetectorRef
+} from "@angular/core";
 import { sorteo, ticketsNacional } from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
 
@@ -12,16 +19,19 @@ export class InfoLoteriaComponent implements OnInit {
   @Input() color: string;
   @Input() loteria: number;
 
-  @Output() emitir = new EventEmitter<sorteo>();
+  @Output() emitir = new EventEmitter<sorteo | String>();
 
-  seleccionado: sorteo;
+  seleccionado: sorteo | String;
   sorteo: Array<sorteo>;
 
   fondoLoteria: boolean = true;
   fondoLotto: boolean = false;
   fondoPozo: boolean = false;
 
-  constructor(private lotteryService: LotteryService) {
+  constructor(
+    private lotteryService: LotteryService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     /* this.seleccionado['fracciones'] = 20 */
   }
 
@@ -70,5 +80,12 @@ export class InfoLoteriaComponent implements OnInit {
   async ngOnInit() {
     this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);
     this.getClassColor(this.loteria);
+    this.setSorteoDefault();
+  }
+
+  setSorteoDefault() {
+    this.changeDetectorRef.detectChanges();
+    this.seleccionado = "default";
+    this.changeDetectorRef.markForCheck();
   }
 }

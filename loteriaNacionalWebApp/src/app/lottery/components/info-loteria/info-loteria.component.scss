@@ -44,6 +44,15 @@ $color-botton: #2f72b9;
         height: 13px;
       }
 
+      select{
+
+        cursor: pointer;
+        option:first-child {
+          visibility: hidden;
+          display: none;
+        }
+      }
+
       p {
         font-size: 10px;
         font-family: $fuente-parrafo;

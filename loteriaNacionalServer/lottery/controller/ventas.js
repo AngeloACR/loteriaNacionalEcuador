@@ -208,8 +208,8 @@ const ventasController = {
                 }
             ];
 
-            //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
-
+            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
+console.log(combinacionesAux);
             let combinaciones = ticketsNacional;
 
             //let reserva = await Ventas.reservarCombinaciones(1, sorteo, combinaciones, token);
