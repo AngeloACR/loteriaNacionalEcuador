@@ -16,6 +16,9 @@ module.exports = {
     usuarioAplicativoTest: 'sitiowebprep',
     passwordAplicativoTest: '12345678',
 
+    usuarioAplicativoTest: 'italtronicprep',
+    passwordAplicativoTest: '12345678',
+
     usuarioAplicativoProd: 'sitiowebprodrsd',
     passwordAplicativoProd: '$13w8p707R6o',
 

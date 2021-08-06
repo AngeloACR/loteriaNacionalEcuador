@@ -6,8 +6,8 @@ const config = require('../../config/environment');
 const medioId = config.medioAplicatioId;
 
 const address = config.aplicativoAddressTest;
-const usuarioClientePsd = config.usuarioAplicativoTest;
-const claveClientePsd = config.passwordAplicativoTest;
+const usuarioClientePsd = config.usuarioClienteTest;
+const claveClientePsd = config.passwordClienteTest;
 /* const address = config.aplicativoAddressProd;
 const usuarioClientePsd = config.usuarioAplicativoProd;
 const claveClientePsd = config.passwordAplicativoProd; */
@@ -338,6 +338,41 @@ module.exports.liberarReservas = async (req, res) => {
     }
 };
 
+module.exports.eliminarReservas = async (req, res) => {
+    try {
+
+
+        /*Ensure your message below looks like a valid working SOAP UI request*/
+        let message = `<mt>
+          <c>
+            <aplicacion>25</aplicacion>
+            <transaccion>9</transaccion>
+            <usuario> UsuarioCliente </usuario>
+            <maquina>DireccionIpLocal</maquina>
+            <codError>0</codError>
+            <msgError />
+            <medio>MedioId</medio>
+            <token>55033007112012121148550330074812</token>
+            <operacion>1234567890</operacion>
+          </c>
+          <i>
+            <JuegoId>1</JuegoId>
+            <MedioId>17</MedioId>
+            <SorteoId>5413</SorteoId>
+            <Combinacion>%87</Combinacion>
+            <Registros>3</Registros>
+            <UsuarioId>usrClientePsd</UsuarioId>
+            <CombFigura></CombFigura>
+            <Sugerir>False</Sugerir>
+          </i>
+        </mt>`;
+        /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+
+
+    } catch (e) {
+        res.status(400).json(e.toString());
+    }
+};
 module.exports.venderBoletos = async (req, res) => {
     try {
 

@@ -49,6 +49,7 @@ export class InfoLoteriaComponent implements OnInit {
   }
 
   onEmitir() {
+    this.changeDetectorRef.detectChanges();
     /*let fracciones: any;
     fracciones = this.seleccionado["fracciones"];
 
@@ -73,6 +74,7 @@ export class InfoLoteriaComponent implements OnInit {
     });
 
     localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional)); */
+    this.changeDetectorRef.markForCheck();
 
     this.emitir.emit(this.seleccionado);
   }

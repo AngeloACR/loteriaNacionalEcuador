@@ -48,9 +48,6 @@ export class LoteriaComponent implements OnInit {
   }
   async buscarNumero() {
     if (this.sorteoSeleccionado != "default") {
-      alert("Por favor seleccione un sorteo");
-      this.showNumeros = false;
-    } else {
       /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
         );*/
@@ -70,6 +67,9 @@ export class LoteriaComponent implements OnInit {
       );
 
       this.showNumeros = true;
+    } else {
+      alert("Por favor seleccione un sorteo");
+      this.showNumeros = false;
     }
   }
 
