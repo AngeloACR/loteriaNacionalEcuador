@@ -14,15 +14,17 @@ import { PageEvent } from "@angular/material";
 })
 export class PozoMillonarioComponent implements OnInit {
   sorteo: sorteo[];
+  combinacionDeLaSuerte: any = ["", "", "", ""];
 
   seleccionAnimales: animales[];
   animalesTabs: animales[] = [];
 
   ticketAnimales: ticketsAnimales[];
 
-  page_size: number = 4;
+  page_size: number = 6;
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
+  showNumeros: boolean = false;
 
   constructor(private lotteryService: LotteryService) {}
 
@@ -76,13 +78,49 @@ export class PozoMillonarioComponent implements OnInit {
     this.page_number = e.pageIndex + 1;
   }
 
+  obtenerMascota(mascota) {
+    return this.lotteryService.obtenerMascota(mascota);
+  }
+
+  async buscarNumero() {
+    if (this.sorteoSeleccionado != "default") {
+      /*this.ticketsNacional = JSON.parse(
+        localStorage.getItem("ticketsNacional")
+        );*/
+      this.showNumeros = false;
+
+      let combinacion = this.combinacionDeLaSuerte.map(element => {
+        if (element == null || element == undefined || element == "") {
+          return "_";
+        } else {
+          return element;
+        }
+      });
+      console.log(combinacion);
+      this.ticketAnimales = await this.lotteryService.obtenerTickets(
+        5,
+        this.sorteoSeleccionado,
+        combinacion.join(""),
+        ""
+      );
+
+      this.showNumeros = true;
+    } else {
+      alert("Por favor seleccione un sorteo");
+      this.showNumeros = false;
+    }
+  }
+
+  sorteoSeleccionado: sorteo | String;
+  procesaEmitir(sorteo) {
+    this.sorteoSeleccionado = sorteo.sorteo;
+    this.ticketAnimales = JSON.parse(localStorage.getItem("ticketsAnimales"));
+  }
   async ngOnInit() {
     this.seleccionAnimales = JSON.parse(
       localStorage.getItem("animalesSeleccionados")
     );
     this.animalesTabs = JSON.parse(localStorage.getItem("animalesTabs"));
-
-    this.ticketAnimales = JSON.parse(localStorage.getItem("ticketAnimales"));
 
     //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
     this.seleccionAnimales.forEach(element => {

@@ -20,7 +20,7 @@ export class LoteriaComponent implements OnInit {
   fondo: boolean = false;
   fracciones: number;
   showNumeros: boolean = false;
-  page_size: number = 9;
+  page_size: number = 6;
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
 
@@ -94,7 +94,6 @@ export class LoteriaComponent implements OnInit {
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo.sorteo;
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
-    this.showNumeros = false;
   }
 
   async ngOnInit() {

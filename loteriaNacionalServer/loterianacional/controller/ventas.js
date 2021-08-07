@@ -150,7 +150,7 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
     <JuegoId>${tipoLoteria}</JuegoId>
       <SorteoId>${sorteo}</SorteoId>
       <Combinacion>${combinacion}</Combinacion>
-      <Registros>100</Registros>
+      <Registros>96</Registros>
       <UsuarioId>${usuarioClientePsd}</UsuarioId>
       <CombFigura>${combinacionFigura}</CombFigura>
       <Sugerir>True</Sugerir>

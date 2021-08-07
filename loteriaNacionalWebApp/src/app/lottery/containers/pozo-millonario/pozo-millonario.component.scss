@@ -6,7 +6,6 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-pozo: #04b865;
 //$color-pozo: #057333;
 
-
 // Estilos de seleccion animal ticket
 
 input[type="checkbox"] {
@@ -61,9 +60,7 @@ input[type="checkbox"]:checked ~ div {
   }
 }
 
-
 // Estilos de seleccion animal ticket
-
 
 // Estilos de seleccion animal
 
@@ -158,25 +155,23 @@ $color-botton: #2f72b9;
   left: -10000px;
 }
 
-.select-sim .options .option input:checked+label {
+.select-sim .options .option input:checked + label {
   /* display: block;
   width: 100%; */
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.select-sim:hover .options .option input+label {
+.select-sim:hover .options .option input + label {
   display: block;
   background-color: #fff;
 }
 
-.select-sim:hover .options .option input:checked+label {
+.select-sim:hover .options .option input:checked + label {
   background-color: $color-pozo;
   border-radius: 40px;
 }
 
 // Estilos de seleccion animal
-
-
 
 .contenedor_loteria {
   width: 95%;
@@ -234,99 +229,24 @@ $color-botton: #2f72b9;
   .contendor_seleccion {
     width: 50%;
     margin-right: 15px;
+    display: flex;
+    flex-direction: column;
 
-    form {
+    .contenedor_formulario {
       width: 100%;
       margin: auto;
       display: flex;
-      flex-direction: column;
-
-      .contenedor_formulario {
-        width: 100%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .contenedor_select {
-          width: 100%;
-          margin: auto;
-
-          h3 {
-            font-family: $fuente-subtitulo;
-            font-size: 16px;
-          }
-
-          .select_option {
-            width: 100%;
-            display: block;
-            font-size: 16px;
-            font-family: $fuente-parrafo;
-            font-weight: 400;
-            color: #444;
-            background-color: #f2f2f2;
-            line-height: 1.3;
-            padding: 0.4em 1.4em 0.3em 0.8em;
-            box-sizing: border-box;
-            border: 1px solid #aaa;
-            box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
-            border-radius: 0.3em;
-            &:hover {
-              border-color: #888;
-            }
-            &:focus {
-              outline: none;
-            }
-          }
-        }
-
-        .numeros_suerte {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-
-          h3 {
-            font-family: $fuente-subtitulo;
-            font-size: 16px;
-          }
-
-          .numeros {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-
-            input[type="number"] {
-              width: 12%;
-              padding: 8px 6px;
-              margin: 0 5px 0 5px;
-              text-align: center;
-              font-family: $fuente-subtitulo;
-              border: 1.5px solid #000;
-              border-radius: 2px;
-              color: #000;
-              -moz-appearance: textfield;
-
-              &:nth-child(1) {
-                margin: 0 5px 0 0;
-              }
-            }
-
-            input[type="number"]::-webkit-inner-spin-button,
-            input[type="number"]::-webkit-outer-spin-button {
-              -webkit-appearance: none;
-              margin: 0;
-            }
-          }
-        }
-      }
+      justify-content: space-between;
+      align-items: center;
 
       .contenedor_select {
         width: 100%;
         margin: auto;
-        margin: 10px auto;
-        z-index: 100;
+
+        h3 {
+          font-family: $fuente-subtitulo;
+          font-size: 16px;
+        }
 
         .select_option {
           width: 100%;
@@ -342,67 +262,137 @@ $color-botton: #2f72b9;
           border: 1px solid #aaa;
           box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
           border-radius: 0.3em;
-
           &:hover {
             border-color: #888;
           }
-
           &:focus {
             outline: none;
           }
         }
       }
 
-      .tabs_animales {
+      .numeros_suerte {
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-end;
 
-        p {
-          border: none;
-          border-radius: 20px;
+        h3 {
           font-family: $fuente-subtitulo;
-          font-size: 11px;
-          background-color: #f2f2f2;
-          color: rgba(0, 0, 0, 0.726);
-          padding: 10px 35px;
-          margin: 8px 12px 15px 0px;
-          position: relative;
+          font-size: 16px;
+        }
 
-          span {
-            position: absolute;
-            top: 10%;
-            right: 7%;
-            color: gray;
-            font-size: 15px;
-            background-color: #fff;
-            padding: 4px 8px;
-            border-radius: 10px;
-            /* border: 1px solid #000; */
+        .numeros {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+
+          input[type="number"] {
+            width: 12%;
+            padding: 8px 6px;
+            margin: 0 5px 0 5px;
             text-align: center;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
-            cursor: pointer;
+            font-family: $fuente-subtitulo;
+            border: 1.5px solid #000;
+            border-radius: 2px;
+            color: #000;
+            -moz-appearance: textfield;
+
+            &:nth-child(1) {
+              margin: 0 5px 0 0;
+            }
+          }
+
+          input[type="number"]::-webkit-inner-spin-button,
+          input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
           }
         }
       }
+    }
 
-      button {
-        background-color: $color-pozo;
-        padding: 10px 15px;
-        border-radius: 30px;
-        border: 1px solid $color-pozo;
-        color: #fff;
-        font-family: $fuente-botones;
-        font-size: 11px;
-        cursor: pointer;
+    .contenedor_select {
+      width: 100%;
+      margin: auto;
+      margin: 10px auto;
+      z-index: 100;
+
+      .select_option {
+        width: 100%;
+        display: block;
+        font-size: 16px;
+        font-family: $fuente-parrafo;
+        font-weight: 400;
+        color: #444;
+        background-color: #f2f2f2;
+        line-height: 1.3;
+        padding: 0.4em 1.4em 0.3em 0.8em;
+        box-sizing: border-box;
+        border: 1px solid #aaa;
+        box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
+        border-radius: 0.3em;
 
         &:hover {
-          background-color: white;
-          color: $color-pozo;
-          transition: background-color 0.4s ease;
+          border-color: #888;
         }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .tabs_animales {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+
+      p {
+        border: none;
+        border-radius: 20px;
+        font-family: $fuente-subtitulo;
+        font-size: 11px;
+        background-color: #f2f2f2;
+        color: rgba(0, 0, 0, 0.726);
+        padding: 10px 35px;
+        margin: 8px 12px 15px 0px;
+        position: relative;
+
+        span {
+          position: absolute;
+          top: 10%;
+          right: 7%;
+          color: gray;
+          font-size: 15px;
+          background-color: #fff;
+          padding: 4px 8px;
+          border-radius: 10px;
+          /* border: 1px solid #000; */
+          text-align: center;
+          /* display: flex; */
+          /* justify-content: center; */
+          /* align-items: center; */
+          cursor: pointer;
+        }
+      }
+    }
+
+    button {
+      background-color: $color-pozo;
+      padding: 10px 15px;
+      border-radius: 30px;
+      border: 1px solid $color-pozo;
+      color: #fff;
+      font-family: $fuente-botones;
+      font-size: 11px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+        color: $color-pozo;
+        transition: background-color 0.4s ease;
       }
     }
 

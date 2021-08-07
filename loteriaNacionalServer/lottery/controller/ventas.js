@@ -59,66 +59,21 @@ const ventasController = {
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let combinacionFigura = req.body.combinacionFigura;
-            let ticketsLotto = [
-                {
-                    numeros: [1, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [8, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [3, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [4, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [9, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [5, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [2, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [6, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [4, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [6, 4, 5, 7, 4],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [4, 4, 5, 7, 4],
+
+            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
+            console.log(combinacionesAux);
+            let combinaciones = combinacionesAux.map(element => {
+                let combinacion = {
+                    combinacion1: element.Num,
+                    combinacion2: element.Num2,
+                    combinacion3: element.Num3,
+                    //combinacion4: element.Num4,
+                    display: element.Num.split(""),
                     status: false,
                     identificador: Math.random()
                 }
-            ];
-
-            //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
-            let combinaciones = ticketsLotto;
+                return combinacion
+            });
             //let reserva = await Ventas.reservarCombinaciones(2, sorteo, combinaciones, token);
             let reserva = "";
             response = {
@@ -209,7 +164,7 @@ const ventasController = {
             ];
 
             let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
-            console.log(combinacionesAux);
+
             let combinaciones = combinacionesAux.map(element => {
                 let combinacion = {
 
@@ -221,7 +176,7 @@ const ventasController = {
                     identificador: Math.random()
                 }
                 return combinacion
-            });;
+            });
 
             //let reserva = await Ventas.reservarCombinaciones(1, sorteo, combinaciones, token);
             let reserva = "";
@@ -374,8 +329,19 @@ const ventasController = {
                 }
             ];
 
-            //let combinaciones = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
-            let combinaciones = ticketsAnimales
+            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
+
+            let combinaciones = combinacionesAux.map(element => {
+                let combinacion = {
+                    mascota: element.Fig,
+                    combinacion1: element.Num,
+                    combinacion2: element.Num2,
+                    display: element.Num.match(/.{1,2}/g),
+                    status: false,
+                    identificador: Math.random()
+                }
+                return combinacion
+            });
             //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
             let reserva = "";
             response = {

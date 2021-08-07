@@ -20,7 +20,10 @@ export interface ticketsNacional {
   identificador: number;
 }
 export interface ticketsLotto {
-  numeros: number[];
+  combinacion1: string;
+  combinacion2: string;
+  combinacion3: string;
+  display: string[];
   status: boolean;
   identificador: number;
 }
@@ -30,9 +33,10 @@ export interface animales {
   status: boolean;
 }
 export interface ticketsAnimales {
-  ruta?: string;
-  nombre: string;
-  numero?: Array<number>;
+  mascota: string;
+  combinacion1: string;
+  combinacion2: string;
+  display?: Array<string>;
   status: boolean;
   identificador: number;
 }

@@ -38,13 +38,19 @@ export class InfoLoteriaComponent implements OnInit {
   getClassColor(loteria: number) {
     switch (loteria) {
       case 1:
-        return (this.fondoLoteria = true);
+        this.fondoLoteria = true;
+        this.fondoLotto = false;
+        this.fondoPozo = false;
 
       case 2:
-        return (this.fondoLotto = true);
+        this.fondoLotto = true;
+        this.fondoLoteria = false;
+        this.fondoPozo = false;
 
       case 5:
-        return (this.fondoPozo = true);
+        this.fondoPozo = true;
+        this.fondoLotto = false;
+        this.fondoLoteria = false;
     }
   }
 
