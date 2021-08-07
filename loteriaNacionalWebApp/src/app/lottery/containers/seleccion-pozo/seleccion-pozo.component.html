@@ -4,9 +4,7 @@
     <p>Mascota: </p>
     <img [src]="tickets['ruta']" alt="">
   </div>
-  <div class="numeros" >
-    <p *ngFor="let item of tickets.numero">{{ item }}</p>
+  <div class="numeros">
+    <p *ngFor="let item of tickets.display">{{ item }}</p>
   </div>
 </div>
-
-

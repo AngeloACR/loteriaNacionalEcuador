@@ -19,9 +19,9 @@ export class InfoLoteriaComponent implements OnInit {
   @Input() color: string;
   @Input() loteria: number;
 
-  @Output() emitir = new EventEmitter<sorteo | String>();
+  @Output() emitir = new EventEmitter<sorteo | string>();
 
-  seleccionado: sorteo | String;
+  seleccionado: sorteo | string;
   sorteo: Array<sorteo>;
 
   fondoLoteria: boolean = true;
@@ -82,8 +82,15 @@ export class InfoLoteriaComponent implements OnInit {
     localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional)); */
     this.changeDetectorRef.markForCheck();
 
+    this.fecha = (this.seleccionado as sorteo).fecha;
+    this.premio = (this.seleccionado as sorteo).valorPremioPrincipal;
+    this.precio = (this.seleccionado as sorteo).precio;
     this.emitir.emit(this.seleccionado);
   }
+
+  fecha: string = "";
+  premio: string = "";
+  precio: string = "";
 
   async ngOnInit() {
     this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);
