@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PageEvent } from "@angular/material";
 import { sorteo, ticketsNacional } from "../../interfaces/lottery.interface";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 import { LotteryService } from "../../services/lottery.service";
 
@@ -23,9 +24,18 @@ export class LoteriaComponent implements OnInit {
   page_size: number = 6;
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
+  token: string;
+  usuario: string;
 
-  constructor(private lotteryService: LotteryService) {}
-
+  constructor(
+    private lotteryService: LotteryService,
+    private actRoute: ActivatedRoute
+  ) {
+    this.actRoute.params.subscribe(params => {
+      this.token = params["token"];
+      this.usuario = params["usuario"];
+    });
+  }
   handlerPage(e: PageEvent) {
     this.page_size = e.pageSize;
     this.page_number = e.pageIndex + 1;
@@ -47,31 +57,39 @@ export class LoteriaComponent implements OnInit {
     );
   }
   async buscarNumero() {
-    if (this.sorteoSeleccionado != "default") {
-      /*this.ticketsNacional = JSON.parse(
+    try {
+      this.isLoading = true;
+      this.loadingMessage = "Buscando combinaciones disponibles";
+      if (this.sorteoSeleccionado != "default") {
+        /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
         );*/
-      this.showNumeros = false;
+        this.showNumeros = false;
 
-      let combinacion = this.combinacionDeLaSuerte.map(element => {
-        if (element == null || element == undefined || element == "") {
-          return "_";
-        } else {
-          return element;
-        }
-      });
-      console.log(combinacion);
-      this.ticketsNacional = await this.lotteryService.obtenerTickets(
-        1,
-        this.sorteoSeleccionado,
-        combinacion.join(""),
-        ""
-      );
+        let combinacion = this.combinacionDeLaSuerte.map(element => {
+          if (element == null || element == undefined || element == "") {
+            return "_";
+          } else {
+            return element;
+          }
+        });
+        console.log(combinacion);
+        this.ticketsNacional = await this.lotteryService.obtenerTickets(
+          1,
+          this.sorteoSeleccionado,
+          combinacion.join(""),
+          ""
+        );
 
-      this.showNumeros = true;
-    } else {
-      alert("Por favor seleccione un sorteo");
-      this.showNumeros = false;
+        this.showNumeros = true;
+      } else {
+        alert("Por favor seleccione un sorteo");
+        this.showNumeros = false;
+      }
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
     }
   }
 
@@ -95,8 +113,14 @@ export class LoteriaComponent implements OnInit {
     this.sorteoSeleccionado = sorteo.sorteo;
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
   }
-
+  isLoading: boolean;
+  showComponents: boolean = false;
+  loadingMessage: string;
   async ngOnInit() {
+    this.isLoading = true;
+    this.loadingMessage = "Cargando los sorteos disponibles";
     this.sorteo = await this.lotteryService.obtenerSorteo(1);
+    this.isLoading = false;
+    this.showComponents = true;
   }
 }

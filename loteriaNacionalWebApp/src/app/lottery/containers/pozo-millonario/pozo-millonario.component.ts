@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { LotteryService } from "../../services/lottery.service";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import {
   animales,
   ticketsAnimales,
@@ -25,8 +26,17 @@ export class PozoMillonarioComponent implements OnInit {
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
   showNumeros: boolean = false;
-
-  constructor(private lotteryService: LotteryService) {}
+  token: string;
+  usuario: string;
+  constructor(
+    private lotteryService: LotteryService,
+    private actRoute: ActivatedRoute
+  ) {
+    this.actRoute.params.subscribe(params => {
+      this.token = params["token"];
+      this.usuario = params["usuario"];
+    });
+  }
 
   agregar(animal: string, i: number) {
     if (this.seleccionAnimales[i].status === false) {
@@ -83,6 +93,8 @@ export class PozoMillonarioComponent implements OnInit {
   }
 
   async buscarNumero() {
+    try {
+      this.isLoading = true;
     if (this.sorteoSeleccionado != "default") {
       /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
@@ -109,14 +121,23 @@ export class PozoMillonarioComponent implements OnInit {
       alert("Por favor seleccione un sorteo");
       this.showNumeros = false;
     }
+    this.isLoading = false;
+  } catch (e) {
+    this.isLoading = false;
+    alert(e.toString());
   }
-
+}
   sorteoSeleccionado: sorteo | String;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo.sorteo;
     this.ticketAnimales = JSON.parse(localStorage.getItem("ticketsAnimales"));
   }
+  isLoading: boolean;
+  showComponents: boolean = false;
+  loadingMessage: string;
   async ngOnInit() {
+    this.isLoading = true;
+    this.loadingMessage = "Cargando los sorteos disponibles";
     this.seleccionAnimales = JSON.parse(
       localStorage.getItem("animalesSeleccionados")
     );
@@ -136,5 +157,7 @@ export class PozoMillonarioComponent implements OnInit {
     );
 
     this.sorteo = await this.lotteryService.obtenerSorteo(5);
+    this.isLoading = false;
+    this.showComponents = true;
   }
 }

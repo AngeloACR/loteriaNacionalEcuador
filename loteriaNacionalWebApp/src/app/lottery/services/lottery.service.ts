@@ -44,9 +44,9 @@ export class LotteryService {
         endpoint = `${endpoint}/loteriaSorteosDisponibles`;
         console.log("Recuperando sorteos de loteria");
         var address = this.mySource;
-
+        
         address = address + endpoint;
-        return new Promise<Array<sorteo>>((resolve, reject) => {
+          return new Promise<Array<sorteo>>((resolve, reject) => {
           this.http
             .get(address, { headers: headers })
             .subscribe((data: any) => {
@@ -55,42 +55,32 @@ export class LotteryService {
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
             });
-          this.sorteo = [
-            {
-              fecha: "15/08/21",
-              valorPremioPrincipal: "1500",
-              precio: "12",
-              cantidadDeFracciones: 40,
-              sorteo: "6528",
-              nombre: "Sorteo 6558"
-            },
-            {
-              fecha: "16/08/21",
-              valorPremioPrincipal: "1800",
-              precio: "18",
-              cantidadDeFracciones: 30,
-              sorteo: "6527",
-              nombre: "Sorteo 6558"
-            },
-            {
-              fecha: "17/08/21",
-              valorPremioPrincipal: "1305",
-              precio: "150",
-              cantidadDeFracciones: 20,
-              sorteo: "6529",
-              nombre: "Sorteo 6558"
-            }
-          ];
-        });
-        break;
-      case 2:
-        endpoint = `${endpoint}/lottoSorteosDisponibles`;
-        console.log("Recuperando sorteos de lotto");
-        var address = this.mySource;
+          });
+            break;
+        case 2:
+          endpoint = `${endpoint}/lottoSorteosDisponibles`;
+          console.log("Recuperando sorteos de lotto");
+          var address = this.mySource;
 
-        address = address + endpoint;
-        return new Promise<Array<sorteo>>((resolve, reject) => {
-          this.http
+          address = address + endpoint;
+          return new Promise<Array<sorteo>>((resolve, reject) => {
+            this.http
+            .get(address, { headers: headers })
+            .subscribe((data: any) => {
+              let sorteosJugados: Array<sorteo> = data;
+              sorteosJugados.sort(this.ordenaSorteos);
+              resolve(sorteosJugados);
+          });
+        });
+          break;
+        case 5:
+          endpoint = `${endpoint}/pozoSorteosDisponibles`;
+          console.log("Recuperando sorteos de pozo millonario");
+          var address = this.mySource;
+
+          address = address + endpoint;
+          return new Promise<Array<sorteo>>((resolve, reject) => {
+            this.http
             .get(address, { headers: headers })
             .subscribe((data: any) => {
               let sorteosJugados: Array<sorteo> = data;
@@ -98,79 +88,10 @@ export class LotteryService {
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
             });
-          this.sorteo = [
-            {
-              fecha: "15/08/21",
-              valorPremioPrincipal: "1500",
-              precio: "12",
-              cantidadDeFracciones: 40,
-              sorteo: "6528",
-              nombre: "Sorteo 6558"
-            },
-            {
-              fecha: "16/08/21",
-              valorPremioPrincipal: "1800",
-              precio: "18",
-              cantidadDeFracciones: 30,
-              sorteo: "6527",
-              nombre: "Sorteo 6558"
-            },
-            {
-              fecha: "17/08/21",
-              valorPremioPrincipal: "1305",
-              precio: "150",
-              cantidadDeFracciones: 20,
-              sorteo: "6529",
-              nombre: "Sorteo 6558"
-            }
-          ];
-        });
-        break;
-      case 5:
-        endpoint = `${endpoint}/pozoSorteosDisponibles`;
-        console.log("Recuperando sorteos de pozo millonario");
-        var address = this.mySource;
+          });
 
-        address = address + endpoint;
-        return new Promise<Array<sorteo>>((resolve, reject) => {
-          this.http
-            .get(address, { headers: headers })
-            .subscribe((data: any) => {
-              let sorteosJugados: Array<sorteo> = data;
-              console.log(sorteosJugados);
-              sorteosJugados.sort(this.ordenaSorteos);
-              resolve(sorteosJugados);
-            });
-          this.sorteo = [
-            {
-              fecha: "15/08/21",
-              valorPremioPrincipal: "1500",
-              precio: "12",
-              cantidadDeFracciones: 40,
-              sorteo: "6528",
-              nombre: "Sorteo 6558"
-            },
-            {
-              fecha: "16/08/21",
-              valorPremioPrincipal: "1800",
-              precio: "18",
-              cantidadDeFracciones: 30,
-              sorteo: "6527",
-              nombre: "Sorteo 6558"
-            },
-            {
-              fecha: "17/08/21",
-              valorPremioPrincipal: "1305",
-              precio: "150",
-              cantidadDeFracciones: 20,
-              sorteo: "6529",
-              nombre: "Sorteo 6558"
-            }
-          ];
-        });
-
-        break;
-    }
+          break;
+      }
   }
 
   ordenaSorteos(a, b) {

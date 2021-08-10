@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
+import { SharedModule } from "../shared/shared.module";
 
 import { PozoMillonarioComponent } from "./containers/pozo-millonario/pozo-millonario.component";
 import { LoteriaComponent } from "./containers/loteria/loteria.component";
@@ -22,20 +23,21 @@ import { LottoConfiguradorComponent } from "./components/lotto-configurador/lott
 import { LoteriaNacionalConfiguradorComponent } from "./components/loteria-nacional-configurador/loteria-nacional-configurador.component";
 import { PozoMillonarioConfiguradorComponent } from "./components/pozo-millonario-configurador/pozo-millonario-configurador.component";
 import { SeleccionTipoComponent } from "./components/seleccion-tipo/seleccion-tipo.component";
-import { TooltipComponent } from './containers/tooltip/tooltip.component';
-import { SeleccionLottoComponent } from './containers/seleccion-lotto/seleccion-lotto.component';
-import { SeleccionPozoComponent } from './containers/seleccion-pozo/seleccion-pozo.component';
-import { InfoLoteriaComponent } from './components/info-loteria/info-loteria.component';
-import { PaginatePipe } from './pipes/paginate.pipe';
+import { TooltipComponent } from "./containers/tooltip/tooltip.component";
+import { SeleccionLottoComponent } from "./containers/seleccion-lotto/seleccion-lotto.component";
+import { SeleccionPozoComponent } from "./containers/seleccion-pozo/seleccion-pozo.component";
+import { InfoLoteriaComponent } from "./components/info-loteria/info-loteria.component";
+import { PaginatePipe } from "./pipes/paginate.pipe";
 
 /* import { NgxPaginationModule } from 'ngx-pagination'; */
-import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
-import { StylePaginatorDirective } from './style-paginator.directive';
+import {
+  MatPaginatorModule,
+  MatPaginatorIntl
+} from "@angular/material/paginator";
+import { StylePaginatorDirective } from "./style-paginator.directive";
 
-
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms";
 import { CustomMatPaginatorIntl } from "./paginacion-es";
-
 
 @NgModule({
   declarations: [
@@ -79,17 +81,19 @@ import { CustomMatPaginatorIntl } from "./paginacion-es";
     SeleccionTipoComponent
   ],
   imports: [
-    CommonModule, 
-    LotteryRoutingModule, 
-    /* NgxPaginationModule, */ 
-    MatPaginatorModule, 
+    CommonModule,
+    LotteryRoutingModule,
+    /* NgxPaginationModule, */
+
+    MatPaginatorModule,
+    SharedModule,
     FormsModule
   ],
   providers: [
     {
-      provide: MatPaginatorIntl, 
+      provide: MatPaginatorIntl,
       useClass: CustomMatPaginatorIntl
     }
-  ],
+  ]
 })
 export class LotteryModule {}

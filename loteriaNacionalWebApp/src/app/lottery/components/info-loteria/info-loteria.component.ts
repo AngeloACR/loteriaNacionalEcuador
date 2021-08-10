@@ -6,7 +6,7 @@ import {
   Output,
   ChangeDetectorRef
 } from "@angular/core";
-import { sorteo, ticketsNacional } from "../../interfaces/lottery.interface";
+import { sorteo } from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
 
 @Component({
@@ -18,6 +18,7 @@ export class InfoLoteriaComponent implements OnInit {
   @Input() titulo: string;
   @Input() color: string;
   @Input() loteria: number;
+  @Input() sorteos: Array<sorteo>;
 
   @Output() emitir = new EventEmitter<sorteo | string>();
 
@@ -31,55 +32,32 @@ export class InfoLoteriaComponent implements OnInit {
   constructor(
     private lotteryService: LotteryService,
     private changeDetectorRef: ChangeDetectorRef
-  ) {
-    /* this.seleccionado['fracciones'] = 20 */
-  }
+  ) {}
 
-  getClassColor(loteria: number) {
-    switch (loteria) {
-      case 1:
+  getClassColor(color: string) {
+    switch (color) {
+      case "loteria":
         this.fondoLoteria = true;
         this.fondoLotto = false;
         this.fondoPozo = false;
+        break;
 
-      case 2:
+      case "lotto":
         this.fondoLotto = true;
         this.fondoLoteria = false;
         this.fondoPozo = false;
+        break;
 
-      case 5:
+      case "pozo":
         this.fondoPozo = true;
         this.fondoLotto = false;
         this.fondoLoteria = false;
+        break;
     }
   }
 
   onEmitir() {
     this.changeDetectorRef.detectChanges();
-    /*let fracciones: any;
-    fracciones = this.seleccionado["fracciones"];
-
-         let ticketsNacional: ticketsNacional[];
-
-    ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
-    // Eliminio lo que existe
-    ticketsNacional.forEach(element => {
-      for (let i = 0; i < this.seleccionado["fracciones"]; i++) {
-        element.seleccionados.splice(0, this.seleccionado["fracciones"]);
-      }
-    });
-    localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional));
-
-    ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
-
-    // Vuelvo a llenar
-    ticketsNacional.forEach(element => {
-      for (let i = 0; i < this.seleccionado["fracciones"]; i++) {
-        element.seleccionados.push({ fraccion: i + 1, status: false });
-      }
-    });
-
-    localStorage.setItem("ticketsNacional", JSON.stringify(ticketsNacional)); */
     this.changeDetectorRef.markForCheck();
 
     this.fecha = (this.seleccionado as sorteo).fecha;
@@ -93,9 +71,10 @@ export class InfoLoteriaComponent implements OnInit {
   precio: string = "";
 
   async ngOnInit() {
+    this.getClassColor(this.color);
+    this.setSorteoDefault(); /* 
     this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);
-    this.getClassColor(this.loteria);
-    this.setSorteoDefault();
+    console.log(this.sorteo); */
   }
 
   setSorteoDefault() {

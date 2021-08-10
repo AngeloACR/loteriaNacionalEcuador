@@ -67,7 +67,7 @@ const ventasController = {
                     combinacion1: element.Num,
                     combinacion2: element.Num2,
                     combinacion3: element.Num3,
-                    //combinacion4: element.Num4,
+                    combinacion4: element.Num4,
                     display: element.Num.split(""),
                     status: false,
                     identificador: Math.random()

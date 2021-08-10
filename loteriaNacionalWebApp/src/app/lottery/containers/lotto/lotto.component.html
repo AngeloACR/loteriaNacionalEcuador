@@ -1,8 +1,9 @@
 <app-seleccion-tipo></app-seleccion-tipo>
 
-<div class="contenedor_loteria">
+<div class="contenedor_loteria" *ngIf="showComponents">
 
-  <app-info-loteria titulo="Lotto" color="lotto" [loteria]=2></app-info-loteria>
+  <app-info-loteria titulo="Lotto" color="lotto" [sorteos]="sorteo" [loteria]=2 (emitir)="procesaEmitir($event)">
+  </app-info-loteria>
 
   <div class="contendor_seleccion">
     <h3>Ingresa tu numero de la suerte</h3>
@@ -19,11 +20,11 @@
         <option class="option" value="">30 Boletos al azar</option>
         <option class="option" value="">50 Boletos al azar</option>
       </select>
-      <button class="activado">BUSCAR NUMERO</button>
+      <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
     </div>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
-    <div class="contenedor_numeros_suerte">
-      <table *ngIf="showNumeros">
+    <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
+      <table>
         <tbody>
           <tr *ngFor="let ticket of ticketsLotto | paginacion:page_size:page_number; let i = index ">
             <td>
@@ -229,3 +230,4 @@
     </div>
   </div>
 </div>
+<app-loader loader="lotto" [message]="loadingMessage" *ngIf="isLoading"></app-loader>
