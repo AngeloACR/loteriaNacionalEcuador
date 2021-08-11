@@ -8,10 +8,10 @@ const authController = {
             await authController.logoutUser();
             let response = await Ventas.autenticarUsuario();
             let lotteryToken = response.token;
-            let response = {
+            response = {
                 lotteryToken
             }
-            return lotteryToken;
+            return response;
         } catch (e) {
             throw e
         }
