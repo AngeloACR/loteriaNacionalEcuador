@@ -1,23 +1,28 @@
-<div class="tooltip">
-  <button [ngClass]="{'fondoAzul': fondo, 'fondoNormal': !fondo}" (click)="activar()">
-    <p *ngFor="let numero of ticket.display">{{ numero }}</p>
-  </button>
-  <!-- <span *ngIf="fondo">
+<div class="tooltip" *ngFor="let item of ticket">
+  {{ item | json }}
+  <input type="checkbox" [checked]="item.status" (click)="seleccionarTicket(item.identificador)">
+  <div class="contenedor_numeros">
+    <p *ngFor="let numero of item.numeros"> {{ numero }}</p>
+  </div>
+  <!-- <span *ngIf="item.status">
     <div class="numeros_grupo">
-      <p *ngFor="let numero of ticket.numeros">{{ numero }}</p>
+      <p *ngFor="let numero of item.numeros">{{ numero }}</p>
       <h3>Fraccion</h3>
     </div>
     <hr>
     <div class="seleccionAll">
       <p>Seleccionar todas las fracciones</p>
-      <input (click)="seleccionarTodo()" type="checkbox"> 
+      <input style="position: relative; width: 20px; opacity: 1; margin-left: 5px"  type="checkbox"> 
     </div>
     <hr>
     <div class="contenedor_fracciones">
-      <div class="fracciones" *ngFor="let i of contador; let e = index">
-        <input (click)="seleccionarFraccion()" class="checkbox" type="checkbox" name=""
-        [value]="numeroCheck.numero" id="">
-        <p>{{ e }}</p>
+      <div class="fracciones" *ngFor="let ite of item.seleccionados; let i = index">
+        <input (click)="fraccionSeleccionada(ite.identificador, i + 1)" 
+               [checked] ="ite.status" 
+               class="checkbox" 
+               type="checkbox"
+               [id]="i"> 
+        <label [for]="i">{{ ite.fraccion }}</label>
       </div>
     </div>
     <hr>

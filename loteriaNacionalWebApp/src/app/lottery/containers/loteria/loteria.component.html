@@ -41,8 +41,8 @@
                   <hr>
                   <div class="seleccionAll">
                     <p>Seleccionar todas las fracciones</p>
-                    <input style="position: relative; width: 20px; opacity: 1; margin-left: 5px" type="checkbox">
-                    <!-- (click)="seleccionarTodo()" -->
+                    <input (click)="seleccionarTodo(ticket.identificador)"
+                      style="position: relative; width: 20px; opacity: 1; margin-left: 5px" type="checkbox">
                   </div>
                   <hr>
                   <div class="contenedor_fracciones">
@@ -53,29 +53,30 @@
                     </div>
                   </div>
                   <hr>
+                  <!-- <app-tool [ticket]="ticket" [fracciones]="fracciones"></app-tool> -->
                 </span>
               </div>
               <!-- <app-tooltip [ticket]="tickets" [fracciones]="fracciones"></app-tooltip> -->
             </td>
           </tr>
         </tbody>
-        <hr size="2px" color="gray" />
+        <hr size="2px" color="gray" style="width: 100%;" />
       </table>
-      <!-- {{ ticketsNacional | json }} -->
-
       <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
         <mat-paginator style-paginator [length]="ticketsNacional.length" [pageSize]="page_size"
           (page)="handlerPage($event)">
         </mat-paginator>
       </div>
+      <!-- {{ ticketsNacional | json }} -->
+
+
     </div>
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>
     </div>
   </div>
 
-  <app-ticket-scroller style="width: 25%;" [tickets]="ticketsNacional" isLoteriaNacional="true"
-    logo="assets/img/loteria nacional.png">
+  <app-ticket-scroller [tickets]="ticketsNacional" isLoteriaNacional="true" logo="assets/img/loteria nacional.png">
   </app-ticket-scroller>
 
   <!--   <div class="contenedor_ticket">

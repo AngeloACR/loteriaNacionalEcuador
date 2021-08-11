@@ -8,56 +8,47 @@ import { LotteryService } from "../../services/lottery.service";
   styleUrls: ["./tooltip.component.scss"]
 })
 export class TooltipComponent implements OnInit {
-  @Input() ticket: ticketsNacional;
-  @Input() fracciones: number = 0;
+  @Input() ticket: ticketsNacional[];
+
+  sorteo: sorteo[];
+  /* ticketsNacional: ticketsNacional[]; */
 
   mostrar: boolean = false;
   fondo: boolean = false;
-  /* fracciones: sorteo[]; */
-
-  /* contador = []; */
+  fracciones: number;
 
   constructor(private lotteryService: LotteryService) {}
 
-  /* checkbox1: boolean = false;
-  checkbox2: boolean = false;
-  checkbox3: boolean = false;
-  checkbox4: boolean = false;
-  checkbox5: boolean = false;
-  checkbox6: boolean = false;
-  checkbox7: boolean = false;
-  checkbox8: boolean = false;
-  checkbox9: boolean = false;
-  checkbox10: boolean = false;
-
-  cheks: any = [
-    { numero: 1, variable: this.checkbox1 },
-    { numero: 2, variable: this.checkbox2 },
-    { numero: 3, variable: this.checkbox3 },
-    { numero: 4, variable: this.checkbox4 },
-    { numero: 5, variable: this.checkbox5 },
-    { numero: 6, variable: this.checkbox6 },
-    { numero: 7, variable: this.checkbox7 },
-    { numero: 8, variable: this.checkbox8 },
-    { numero: 9, variable: this.checkbox9 },
-    { numero: 10, variable: this.checkbox10 }
-  ]; */
-
-  activar() {
-    /* this.contador.length = this.fracciones; */
-    this.fondo = !this.fondo;
-  }
-
   seleccionarTicket(id: number) {
-    if (this.ticket.identificador === id) {
-      this.ticket.status = !this.ticket.status;
-    }
-    console.log(id);
+    this.fondo = !this.fondo;
+    this.ticket.forEach(element => {
+      if (element.identificador === id) {
+        element.status = !element.status;
+      }
+    });
 
     localStorage.setItem("ticketsNacional", JSON.stringify(this.ticket));
   }
 
-  seleccionarFraccion() {}
+  fraccionSeleccionada(idTicket: number, id: number) {
+    this.ticket.forEach(element => {
+      if (element.identificador === idTicket) {
+        element.seleccionados.forEach(elemento => {
+          if (elemento.fraccion === id) {
+            elemento.status = !elemento.status;
+          }
+        });
+      }
+    });
+    localStorage.setItem("ticketsNacional", JSON.stringify(this.ticket));
+  }
 
-  ngOnInit() {}
+  procesaEmitir(fracciones: number | null) {
+    this.fracciones = fracciones;
+    this.ticket = JSON.parse(localStorage.getItem("ticketsNacional"));
+  }
+
+  ngOnInit() {
+    this.ticket = JSON.parse(localStorage.getItem("ticketsNacional"));
+  }
 }

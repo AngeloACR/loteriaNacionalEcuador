@@ -25,9 +25,11 @@ export class LotteryService {
   ticketsLotto: ticketsLotto[];
   ticketsAnimales: ticketsAnimales[];
   animales: animales[];
+  animalesTabs: animales[];
 
   constructor(private http: HttpClient) {
     this.obtenerAnimalesSelecionados();
+    this.obtenerAnimalesTabs();
   }
 
   obtenerSorteo(token, loteria: number) {
@@ -444,5 +446,11 @@ export class LotteryService {
     );
 
     /* console.log(this.animales) */
+  }
+
+  obtenerAnimalesTabs() {
+    this.animalesTabs = [];
+
+    localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
 }

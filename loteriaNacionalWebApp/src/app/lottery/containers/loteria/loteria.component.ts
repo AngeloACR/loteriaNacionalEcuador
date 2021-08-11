@@ -43,15 +43,13 @@ export class LoteriaComponent implements OnInit {
   }
 
   seleccionarTicket(id: number) {
-    /* this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional")); */
-
     this.fondo = !this.fondo;
     this.ticketsNacional.forEach(element => {
       if (element.identificador === id) {
         element.status = !element.status;
       }
     });
-
+    /* console.log(id) */
     localStorage.setItem(
       "ticketsNacional",
       JSON.stringify(this.ticketsNacional)
@@ -110,6 +108,21 @@ export class LoteriaComponent implements OnInit {
       JSON.stringify(this.ticketsNacional)
     );
   }
+
+  seleccionarTodo(id: number) {
+    this.ticketsNacional.forEach(element => {
+      if (element.identificador === id) {
+        for (let i = 0; i < this.fracciones["fracciones"]; i++) {
+          element.seleccionados[i].status = true;
+        }
+      }
+    });
+    localStorage.setItem(
+      "ticketsNacional",
+      JSON.stringify(this.ticketsNacional)
+    );
+  }
+
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo;

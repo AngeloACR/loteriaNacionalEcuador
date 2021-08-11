@@ -81,11 +81,11 @@ export class StylePaginatorDirective {
             if (nodeArray[i].disabled) {
               this.ren.setStyle(nodeArray[i], "background-color", "#E3E4E5");
               this.ren.setStyle(nodeArray[i], "color", "white");
-              this.ren.setStyle(nodeArray[i], "margin", "0 10em");
+              this.ren.setStyle(nodeArray[i], "margin", "0 4rem");
             } else {
               this.ren.setStyle(nodeArray[i], "background-color", "#293133"); /* #04b865 */
               this.ren.setStyle(nodeArray[i], "color", "white");
-              this.ren.setStyle(nodeArray[i], "margin", "0 10em");
+              this.ren.setStyle(nodeArray[i], "margin", "0 4rem");
             }
           }
         }
