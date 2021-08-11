@@ -75,36 +75,16 @@
           </td>
         </tr>
       </tbody>
+      <hr size="2px" color="gray" style="width: 100%;" />
+      <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
+              <mat-paginator 
+              style-paginator 
+                            [length]="ticketAnimales.length"
+                            [pageSize]="page_size"
+                            (page)="handlerPage($event)">
+              </mat-paginator>
+            </div>
     </table>
-    <hr size="2px" color="gray" />
-
-    <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
-
-      <!-- showFirstLastButtons -->
-      <mat-paginator 
-      style-paginator 
-                    [length]="ticketAnimales.length"
-                    [pageSize]="page_size"
-                    (page)="handlerPage($event)">
-      </mat-paginator>
-      <!-- <button class="boton">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-
-
-      <button class="boton">
-        {{ pageActual }}
-      </button>
-
-
-      <button class="boton">
-        <i class="fa fa-chevron-right"></i>
-      </button> -->
-    </div>
-
-    <!-- <div>
-      Page Actual: {{pageActual}}
-    </div> -->
 
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>

@@ -2,7 +2,11 @@
 
 <div class="contenedor_loteria">
 
-  <app-info-loteria titulo="Loteria Nacional" color="loteria" [loteria]="1" (emitir)="procesaEmitir($event)">
+  <app-info-loteria 
+      titulo="Loteria Nacional" 
+      color="loteria" 
+      [loteria]="1" 
+      (emitir)="procesaEmitir($event)">
   </app-info-loteria>
 
   <div class="contendor_seleccion">
@@ -66,25 +70,26 @@
             </td>
           </tr>
         </tbody>
-        <hr size="2px" color="gray" />
+        <hr size="2px" color="gray" style="width: 100%;" />
+        <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
+          <mat-paginator 
+            style-paginator 
+            [length]="ticketsNacional.length" 
+            [pageSize]="page_size"
+            (page)="handlerPage($event)">
+          </mat-paginator>
+        </div>
       </table>
       <!-- {{ ticketsNacional | json }} -->
 
-      <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
-        <mat-paginator 
-          style-paginator 
-          [length]="ticketsNacional.length" 
-          [pageSize]="page_size"
-          (page)="handlerPage($event)">
-        </mat-paginator>
-      </div>
+      
     </div>
     <div class="boton_boleto">
       <button>RESUMEN DE BOLETOS</button>
     </div>
   </div>
 
-  <app-ticket-scroller style="width: 25%;" [tickets]="ticketsNacional" isLoteriaNacional="true"
+  <app-ticket-scroller [tickets]="ticketsNacional" isLoteriaNacional="true"
     logo="assets/img/loteria nacional.png">
   </app-ticket-scroller>
 

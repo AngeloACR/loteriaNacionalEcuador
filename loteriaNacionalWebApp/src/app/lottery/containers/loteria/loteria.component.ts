@@ -44,7 +44,7 @@ export class LoteriaComponent implements OnInit {
 
   fraccionSeleccionada(idTicket: number, id: number) {
     this.ticketsNacional.forEach( element => {
-      console.log(idTicket, element.identificador)
+      
       if(element.identificador === idTicket) {
         element.seleccionados.forEach( elemento => {
           if(elemento.fraccion === id) {

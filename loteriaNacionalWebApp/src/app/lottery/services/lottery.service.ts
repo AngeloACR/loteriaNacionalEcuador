@@ -11,12 +11,14 @@ export class LotteryService {
   ticketsLotto: ticketsLotto[];
   ticketsAnimales: ticketsAnimales[];
   animales: animales[];
+  animalesTabs: animales[];
 
   constructor() {
     this.obtenerAnimalesSelecionados()
     this.obtenerTicketsNacional()
     this.obtenerTicketsLotto()
     this.obtenerTicketsAnimales() 
+    this.obtenerAnimalesTabs()
   }
 
   obtenerSorteo(loteria: number) {
@@ -464,5 +466,12 @@ export class LotteryService {
     localStorage.setItem('animalesSeleccionados', JSON.stringify(this.animales));
 
     /* console.log(this.animales) */
+  }
+
+  obtenerAnimalesTabs() {
+    this.animalesTabs = [];
+
+    localStorage.setItem('animalesTabs', JSON.stringify(this.animalesTabs));
+
   }
 }

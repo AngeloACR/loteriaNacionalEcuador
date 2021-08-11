@@ -11,6 +11,9 @@ $color-botton: #2f72b9;
 $color-botton: #2f72b9;
 
 .tooltip {
+  margin: auto;
+  display: flex;
+  justify-content: center;
   
   /* color: #000000;
   outline: none;
@@ -52,7 +55,7 @@ $color-botton: #2f72b9;
   }
 
   .contenedor_numeros {
-    width: 150px;
+    width: 100%;
     height: 60px;
     display: flex;
     justify-content: space-around;
@@ -294,10 +297,9 @@ $color-botton: #2f72b9;
 
 .contenedor_loteria {
   width: 95%;
-  margin: auto;
-
-  display: flex;
-  justify-content: space-between;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
 
   .menuBox {
     margin-right: 15px;
@@ -346,6 +348,10 @@ $color-botton: #2f72b9;
   }
 
   .contendor_seleccion {
+    width: 900px;
+    /* margin: auto 15px; */
+    display: flex;
+    flex-direction: column;
     h3 {
       font-family: $fuente-subtitulo;
       font-size: 18px;
@@ -410,22 +416,28 @@ $color-botton: #2f72b9;
 
       table {
         width: 100%;
-        margin: auto;
+    /* display: flex; */
+    flex-direction: column;
+    /* margin: auto; */
 
         tbody {
           width: 100%;
-          margin: auto;
-          display: grid;
-          grid-template-columns: repeat(3, auto);
-          grid-template-rows: repeat(3, auto);
-          gap: 15px 10px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: 1fr;
+    gap: 20px;
 
           tr {
+            width: 100%;
+    height: 100%;
             display: flex;
+    margin: auto;
 
             td {
-              /* width: 100%;
-              margin: 7px; */
+              width: 100%;
+    height: 100%;
+    margin: auto;
               position: relative;
 
               background-color: #f2f2f2;
@@ -529,9 +541,9 @@ $color-botton: #2f72b9;
 
     .logo_ticket {
       width: 100%;
-      margin: auto;
-      display: flex;
-      justify-content: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 
       img {
         width: 120px;

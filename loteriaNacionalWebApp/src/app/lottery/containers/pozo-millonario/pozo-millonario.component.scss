@@ -232,8 +232,11 @@ $color-botton: #2f72b9;
   }
 
   .contendor_seleccion {
-    width: 50%;
-    margin-right: 15px;
+    width: auto;
+    margin: auto 15px;
+    display: flex;
+    flex-direction: column;
+
 
     form {
       width: 100%;
@@ -412,7 +415,9 @@ $color-botton: #2f72b9;
     }
 
     table {
-      width: 100%;
+      width: auto;
+      display: flex;
+      flex-direction: column;
       margin: auto;
 
       tbody {

@@ -25,6 +25,7 @@ export class PozoMillonarioComponent implements OnInit {
   constructor(private lotteryService: LotteryService) {}
 
   agregar(animal: string, i: number) {
+    console.log(animal)
     if(this.seleccionAnimales[i].status === false) {
       this.seleccionAnimales[i].status = true
       this.animalesTabs.push({nombre:animal, status:true})
