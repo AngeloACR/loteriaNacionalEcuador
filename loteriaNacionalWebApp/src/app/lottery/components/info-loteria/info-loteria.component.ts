@@ -76,10 +76,10 @@ export class InfoLoteriaComponent implements OnInit {
     this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);
     console.log(this.sorteo); */
   }
-
+  sorteoDefault: sorteo;
   setSorteoDefault() {
     this.changeDetectorRef.detectChanges();
-    let sorteoDefault: sorteo = {
+    this.sorteoDefault = {
       nombre: "default",
       fecha: "",
       valorPremioPrincipal: "",
@@ -87,7 +87,7 @@ export class InfoLoteriaComponent implements OnInit {
       cantidadDeFracciones: 0,
       sorteo: ""
     };
-    this.seleccionado = sorteoDefault;
+    this.seleccionado = this.sorteoDefault;
     this.changeDetectorRef.markForCheck();
     this.onEmitir();
   }
