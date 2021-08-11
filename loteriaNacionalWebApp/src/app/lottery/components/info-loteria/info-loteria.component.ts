@@ -59,7 +59,7 @@ export class InfoLoteriaComponent implements OnInit {
   onEmitir() {
     this.changeDetectorRef.detectChanges();
     this.changeDetectorRef.markForCheck();
-
+    console.log(this.seleccionado);
     this.fecha = (this.seleccionado as sorteo).fecha;
     this.premio = (this.seleccionado as sorteo).valorPremioPrincipal;
     this.precio = (this.seleccionado as sorteo).precio;
@@ -73,8 +73,8 @@ export class InfoLoteriaComponent implements OnInit {
   async ngOnInit() {
     this.getClassColor(this.color);
     this.setSorteoDefault(); /* 
-    this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);
-    console.log(this.sorteo); */
+    this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);*/
+    console.log(this.sorteos);
   }
   sorteoDefault: sorteo;
   setSorteoDefault() {

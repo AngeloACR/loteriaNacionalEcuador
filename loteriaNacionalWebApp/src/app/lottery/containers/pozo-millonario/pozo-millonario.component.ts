@@ -34,7 +34,7 @@ export class PozoMillonarioComponent implements OnInit {
   ) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
-      this.usuario = params["usuario"];
+      console.log(this.token);
     });
   }
 
@@ -112,7 +112,7 @@ export class PozoMillonarioComponent implements OnInit {
         this.ticketAnimales = await this.lotteryService.obtenerTickets(
           this.token,
           5,
-          this.sorteoSeleccionado,
+          this.sorteoSeleccionado.sorteo,
           combinacion.join(""),
           ""
         );
@@ -130,7 +130,7 @@ export class PozoMillonarioComponent implements OnInit {
   }
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
-    this.sorteoSeleccionado.nombre = sorteo.sorteo;
+    this.sorteoSeleccionado.nombre = sorteo;
     this.ticketAnimales = JSON.parse(localStorage.getItem("ticketsAnimales"));
   }
   isLoading: boolean;

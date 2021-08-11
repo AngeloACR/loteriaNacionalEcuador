@@ -192,21 +192,38 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
     }
 };
 
-module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones, token) => {
+module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reservaId) => {
     try {
 
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-        let combinacionesXML = "";
-        combinaciones.forEach(combinacion => {
-            let fraccionesXML = "";
-            if (tipoLoteria == 1) {
-
-                let fracciones = combinacion.Fra.split(',');
+        let loteriaCombinacionesXML = "";
+        let lottoCombinacionesXML = "";
+        let pozoCombinacionesXML = "";
+        loteria.forEach(item => {
+            item.combinaciones.forEach(elemento => {
+                let combinacion = elemento.combinacion;
+                let fraccionesXML = ""
+                let fracciones = elemento.fracciones.map(seleccion => {
+                    return seleccion.fraccion;
+                });
                 fracciones.forEach(fraccion => {
                     fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
                 });
-            }
-            combinacionesXML = `${combinacionesXML}<R sorteo="${sorteo}" numero="${combinacion.Num}" cantid="${combinacion.Cant}" >${fraccionesXML}</R>`
+                let cant = fracciones.length;
+                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+            });
+        });
+        lotto.forEach(item => {
+            item.combinaciones.forEach(combinacion => {
+                let cant = 1;
+                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+            });
+        });
+        pozo.forEach(item => {
+            item.combinaciones.forEach(combinacion => {
+                let cant = 1;
+                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+            });
         });
         let message = {
 
@@ -227,14 +244,22 @@ module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones
   </c>
     <i>
     <MedioId>${medioId}</MedioId>
-    <UsuarioId>italtronicprep</UsuarioId>
-      <ReservaId>0</ReservaId>
+    <UsuarioId>${usuarioClientePsd}</UsuarioId>
+      <ReservaId>${reservaId}</ReservaId>
       <Observacion>Reserva de Boletos</Observacion>
       <xmlNumeros>
   <RS >
-    <JG id="${tipoLoteria}">
-      ${combinacionesXML} 
-    </JG>
+
+    <JG id="1">
+    ${loteriaCombinacionesXML} 
+    </JG>        
+    <JG id="2">
+    ${lottoCombinacionesXML} 
+    </JG>        
+    <JG id="5">
+    ${pozoCombinacionesXML} 
+    </JG>        
+
   </RS>
       </xmlNumeros>
     </i>
@@ -255,7 +280,10 @@ module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones
                 if (!errorCode) {
                     let response = [];
                     let reservaId = data.mt.o[0].ReturnValue;
-                    let aux = data.mt.rs[0].r[0];
+                    let response = {
+                        reservaId
+                    }
+                    /* let aux = data.mt.rs[0].r[0];
                     let boletosReservados = [];
                     aux.Row.forEach(boletoReservado => {
                         boletosReservados.push(boletoReservado.$);
@@ -274,7 +302,7 @@ module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones
                             }
                             break;
                         case 2:
-
+ 
                             response = {
                                 reservaId,
                                 boletosReservados
@@ -286,10 +314,10 @@ module.exports.reservarCombinaciones = async (tipoLoteria, sorteo, combinaciones
                                 boletosReservados
                             }
                             break;
-
+ 
                         default:
                             break;
-                    }
+                    } */
                     resolve(response);
                 } else {
                     reject(data.mt.c[0].msgError[0])
@@ -338,41 +366,144 @@ module.exports.liberarReservas = async (req, res) => {
     }
 };
 
-module.exports.eliminarReservas = async (req, res) => {
+module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId) => {
     try {
 
+        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+        let loteriaCombinacionesXML = "";
+        let lottoCombinacionesXML = "";
+        let pozoCombinacionesXML = "";
+        loteria.forEach(item => {
+            item.combinaciones.forEach(elemento => {
+                let combinacion = elemento.combinacion;
+                let fraccionesXML = ""
+                let fracciones = elemento.fracciones.map(seleccion => {
+                    return seleccion.fraccion;
+                });
+                fracciones.forEach(fraccion => {
+                    fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
+                });
+                let cant = fracciones.length;
+                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+            });
+        });
+        lotto.forEach(item => {
+            item.combinaciones.forEach(combinacion => {
+                let cant = 1;
+                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+            });
+        });
+        pozo.forEach(item => {
+            item.combinaciones.forEach(combinacion => {
+                let cant = 1;
+                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+            });
+        });
 
-        /*Ensure your message below looks like a valid working SOAP UI request*/
-        let message = `<mt>
+        let message = {
+
+            $xml: `
+        <PI_DatosXml>
+        <![CDATA[
+                    <mt>
           <c>
             <aplicacion>25</aplicacion>
-            <transaccion>9</transaccion>
-            <usuario> UsuarioCliente </usuario>
-            <maquina>DireccionIpLocal</maquina>
+            <transaccion>66</transaccion>
+            <usuario>${usuarioClientePsd}</usuario>
+            <maquina>192.168.1.13</maquina>
             <codError>0</codError>
             <msgError />
-            <medio>MedioId</medio>
-            <token>55033007112012121148550330074812</token>
+            <medio>${medioId}</medio>
+            <token>${token}</token>
             <operacion>1234567890</operacion>
-          </c>
-          <i>
-            <JuegoId>1</JuegoId>
-            <MedioId>17</MedioId>
-            <SorteoId>5413</SorteoId>
-            <Combinacion>%87</Combinacion>
-            <Registros>3</Registros>
-            <UsuarioId>usrClientePsd</UsuarioId>
-            <CombFigura></CombFigura>
-            <Sugerir>False</Sugerir>
-          </i>
-        </mt>`;
-        /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+            </c>
+              <i>
+              <MedioId>${medioId}</MedioId>
+              <UsuarioId>${usuarioClientePsd}</UsuarioId>
+                <ReservaId>${reservaId}</ReservaId>
+                <Observacion>Reserva de Boletos</Observacion>
+                <xmlNumeros>
+            <RS >
+          
+              <JG id="1">
+              ${loteriaCombinacionesXML} 
+              </JG>        
+              <JG id="2">
+              ${lottoCombinacionesXML} 
+              </JG>        
+              <JG id="5">
+              ${pozoCombinacionesXML} 
+              </JG>        
+          
+            </RS>
+                </xmlNumeros>
+              </i>
+            </mt>
+                    ]]>
+                  </PI_DatosXml>`
+            /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
 
+        }
+        return new Promise(async (resolve, reject) => {
+            client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
+                if (err) reject(err);
 
+                let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
+                let errorCode = parseInt(data.mt.c[0].codError[0]);
+
+                if (!errorCode) {
+                    let response = [];
+                    let reservaId = data.mt.o[0].ReturnValue;
+                    let response = {
+                        reservaId
+                    }
+                    /* let aux = data.mt.rs[0].r[0];
+                    let boletosReservados = [];
+                    aux.Row.forEach(boletoReservado => {
+                        boletosReservados.push(boletoReservado.$);
+                    });
+                    switch (tipoLoteria) {
+                        case 1:
+                            let aux2 = data.mt.rs[0].r[1];
+                            let fraccionesReservadas = [];
+                            aux2.Row.forEach(fraccionReservada => {
+                                fraccionesReservadas.push(fraccionReservada.$);
+                            });
+                            response = {
+                                reservaId,
+                                boletosReservados,
+                                fraccionesReservadas
+                            }
+                            break;
+                        case 2:
+ 
+                            response = {
+                                reservaId,
+                                boletosReservados
+                            }
+                            break;
+                        case 5:
+                            response = {
+                                reservaId,
+                                boletosReservados
+                            }
+                            break;
+ 
+                        default:
+                            break;
+                    } */
+                    resolve(response);
+                } else {
+                    reject(data.mt.c[0].msgError[0])
+                }
+            });
+        });
     } catch (e) {
-        res.status(400).json(e.toString());
+        console.log(e.toString());
+        throw e;
     }
-};
+}
+
 module.exports.venderBoletos = async (req, res) => {
     try {
 

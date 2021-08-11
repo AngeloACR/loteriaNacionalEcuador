@@ -32,8 +32,9 @@ export class LoteriaComponent implements OnInit {
     private actRoute: ActivatedRoute
   ) {
     this.actRoute.params.subscribe(params => {
+      console.log(params);
       this.token = params["token"];
-      this.usuario = params["usuario"];
+      console.log(this.token);
     });
   }
   handlerPage(e: PageEvent) {
@@ -77,7 +78,7 @@ export class LoteriaComponent implements OnInit {
         this.ticketsNacional = await this.lotteryService.obtenerTickets(
           this.token,
           1,
-          this.sorteoSeleccionado,
+          this.sorteoSeleccionado.sorteo,
           combinacion.join(""),
           ""
         );
@@ -111,7 +112,7 @@ export class LoteriaComponent implements OnInit {
   }
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
-    this.sorteoSeleccionado = sorteo.sorteo;
+    this.sorteoSeleccionado = sorteo;
     this.ticketsNacional = JSON.parse(localStorage.getItem("ticketsNacional"));
   }
   isLoading: boolean;

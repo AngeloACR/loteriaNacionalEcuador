@@ -28,7 +28,7 @@ export class LottoComponent implements OnInit {
   ) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
-      this.usuario = params["usuario"];
+      console.log(this.token);
     });
   }
   async buscarNumero() {
@@ -51,7 +51,7 @@ export class LottoComponent implements OnInit {
         this.ticketsLotto = await this.lotteryService.obtenerTickets(
           this.token,
           2,
-          this.sorteoSeleccionado,
+          this.sorteoSeleccionado.sorteo,
           combinacion.join(""),
           ""
         );
@@ -69,7 +69,8 @@ export class LottoComponent implements OnInit {
   }
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
-    this.sorteoSeleccionado = sorteo.sorteo;
+    console.log(sorteo);
+    this.sorteoSeleccionado = sorteo;
     this.ticketsLotto = JSON.parse(localStorage.getItem("ticketsLotto"));
   }
   seleccionarTicket(id: number) {

@@ -31,7 +31,7 @@
               <div class="contenedor">
                 <input type="checkbox" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
                 <div class="contenedor_numeros">
-                  <p *ngFor="let numero of ticket.numeros">{{ numero }}</p>
+                  <p *ngFor="let numero of ticket.display">{{ numero }}</p>
                 </div>
               </div>
               <!-- <app-seleccion-lotto [tickets]="ticket"></app-seleccion-lotto> -->

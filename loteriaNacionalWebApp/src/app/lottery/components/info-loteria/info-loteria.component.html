@@ -4,8 +4,8 @@
   </li>
   <li class="menuItem">Sorteo: <br>
     <select class="fechaItem" [(ngModel)]="seleccionado" (change)="onEmitir()">
-      <option [value]="sorteoDefault" selected disabled>Seleccione un sorteo</option>
-      <option [value]="objeto" *ngFor="let objeto of sorteos">{{objeto.nombre}}</option>
+      <option [ngValue]="sorteoDefault" selected disabled>Seleccione un sorteo</option>
+      <option [ngValue]="objeto" *ngFor="let objeto of sorteos">{{objeto.nombre}}</option>
     </select>
   </li>
   <li class="menuItem">

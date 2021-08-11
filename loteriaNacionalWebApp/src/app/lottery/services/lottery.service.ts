@@ -74,6 +74,7 @@ export class LotteryService {
             })
             .subscribe((data: any) => {
               let sorteosJugados: Array<sorteo> = data;
+              console.log(sorteosJugados);
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
             });
@@ -95,7 +96,6 @@ export class LotteryService {
             })
             .subscribe((data: any) => {
               let sorteosJugados: Array<sorteo> = data;
-              console.log(sorteosJugados);
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
             });

@@ -23,6 +23,7 @@ export interface ticketsLotto {
   combinacion1: string;
   combinacion2: string;
   combinacion3: string;
+  combinacion4: string;
   display: string[];
   status: boolean;
   identificador: number;

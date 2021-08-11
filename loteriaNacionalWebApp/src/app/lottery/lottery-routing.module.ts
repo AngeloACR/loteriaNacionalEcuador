@@ -13,11 +13,11 @@ const routes: Routes = [
     path: "",
     component: LotteryComponent,
     children: [
-      { path: "loteria", component: LoteriaComponent },
+      { path: "loteria/:token", component: LoteriaComponent },
       { path: "resumen", component: ResumenComponent },
-      { path: "lotto", component: LottoComponent },
+      { path: "lotto/:token", component: LottoComponent },
       {
-        path: "pozo-millonario",
+        path: "pozo-millonario/:token",
         component: PozoMillonarioComponent
       },
       { path: "", component: SeleccionComponent }
