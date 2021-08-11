@@ -3,17 +3,12 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: "compra_boletos",
+    path: "compra_tus_juegos",
     loadChildren: () =>
       import("./lottery/lottery.module").then(m => m.LotteryModule)
   },
   {
-    path: "compra_boletos/:token",
-    loadChildren: () =>
-      import("./lottery/lottery.module").then(m => m.LotteryModule)
-  },
-  {
-    path: "compra_boletos/:token/:username",
+    path: "compra_tus_juegos/:token",
     loadChildren: () =>
       import("./lottery/lottery.module").then(m => m.LotteryModule)
   },

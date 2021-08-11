@@ -28,13 +28,9 @@ export class LotteryService {
 
   constructor(private http: HttpClient) {
     this.obtenerAnimalesSelecionados();
-    /*  this.obtenerTicketsNacional();
-    this.obtenerTickets();
-    this.obtenerTicketsAnimales();
-   */
   }
 
-  obtenerSorteo(loteria: number) {
+  obtenerSorteo(token, loteria: number) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
@@ -44,54 +40,69 @@ export class LotteryService {
         endpoint = `${endpoint}/loteriaSorteosDisponibles`;
         console.log("Recuperando sorteos de loteria");
         var address = this.mySource;
-        
+
         address = address + endpoint;
-          return new Promise<Array<sorteo>>((resolve, reject) => {
+        return new Promise<Array<sorteo>>((resolve, reject) => {
           this.http
-            .get(address, { headers: headers })
+            .get(address, {
+              params: {
+                token
+              },
+              headers: headers
+            })
             .subscribe((data: any) => {
               let sorteosJugados: Array<sorteo> = data;
               console.log(sorteosJugados);
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
             });
-          });
-            break;
-        case 2:
-          endpoint = `${endpoint}/lottoSorteosDisponibles`;
-          console.log("Recuperando sorteos de lotto");
-          var address = this.mySource;
-
-          address = address + endpoint;
-          return new Promise<Array<sorteo>>((resolve, reject) => {
-            this.http
-            .get(address, { headers: headers })
-            .subscribe((data: any) => {
-              let sorteosJugados: Array<sorteo> = data;
-              sorteosJugados.sort(this.ordenaSorteos);
-              resolve(sorteosJugados);
-          });
         });
-          break;
-        case 5:
-          endpoint = `${endpoint}/pozoSorteosDisponibles`;
-          console.log("Recuperando sorteos de pozo millonario");
-          var address = this.mySource;
+        break;
+      case 2:
+        endpoint = `${endpoint}/lottoSorteosDisponibles`;
+        console.log("Recuperando sorteos de lotto");
+        var address = this.mySource;
 
-          address = address + endpoint;
-          return new Promise<Array<sorteo>>((resolve, reject) => {
-            this.http
-            .get(address, { headers: headers })
+        address = address + endpoint;
+        return new Promise<Array<sorteo>>((resolve, reject) => {
+          this.http
+            .get(address, {
+              params: {
+                token
+              },
+              headers: headers
+            })
+            .subscribe((data: any) => {
+              let sorteosJugados: Array<sorteo> = data;
+              sorteosJugados.sort(this.ordenaSorteos);
+              resolve(sorteosJugados);
+            });
+        });
+        break;
+      case 5:
+        endpoint = `${endpoint}/pozoSorteosDisponibles`;
+        console.log("Recuperando sorteos de pozo millonario");
+        var address = this.mySource;
+
+        address = address + endpoint;
+        return new Promise<Array<sorteo>>((resolve, reject) => {
+          this.http
+            .get(address, {
+              params: {
+                token
+              },
+              headers: headers
+            })
             .subscribe((data: any) => {
               let sorteosJugados: Array<sorteo> = data;
               console.log(sorteosJugados);
               sorteosJugados.sort(this.ordenaSorteos);
               resolve(sorteosJugados);
             });
-          });
+        });
 
-          break;
-      }
+        break;
+    }
   }
 
   ordenaSorteos(a, b) {
@@ -101,6 +112,7 @@ export class LotteryService {
   }
 
   obtenerTickets(
+    token,
     loteria,
     sorteo,
     combinacion,
@@ -112,6 +124,7 @@ export class LotteryService {
     let endpoint = "/lottery";
     let body = {
       sorteo,
+      token,
       combinacion,
       combinacionFigura
     };

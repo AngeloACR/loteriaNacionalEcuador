@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 @Component({
-  selector: 'app-seleccion-tipo',
-  templateUrl: './seleccion-tipo.component.html',
-  styleUrls: ['./seleccion-tipo.component.scss']
+  selector: "app-seleccion-tipo",
+  templateUrl: "./seleccion-tipo.component.html",
+  styleUrls: ["./seleccion-tipo.component.scss"]
 })
 export class SeleccionTipoComponent implements OnInit {
   linkLotto: string;
@@ -20,8 +20,8 @@ export class SeleccionTipoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.linkLoteriaNacional = `/compra_boletos/${this.token}/${this.usuario}/loteria`;
-    this.linkLotto = `/compra_boletos/${this.token}/${this.usuario}/lotto`;
-    this.linkPozoMillonario = `/compra_boletos/${this.token}/${this.usuario}/pozo-millonario`;
+    this.linkLoteriaNacional = `/compra_tus_juegos/${this.token}/loteria`;
+    this.linkLotto = `/compra_tus_juegos/${this.token}/lotto`;
+    this.linkPozoMillonario = `/compra_tus_juegos/${this.token}/pozo-millonario`;
   }
 }

@@ -4,6 +4,8 @@ const Resultados = require('../../results/controller/main');
 const Sorteos = require('../../results/controller/sorteos');
 const config = require('../../config/environment');
 const Ventas = require('../../loterianacional/controller/ventas');
+const Auth = require('../../exalogic/controller/auth');
+const Wallet = require('../../exalogic/controller/wallet');
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -17,9 +19,10 @@ const ventasController = {
 
     searchLottoSorteosDisponibles: async (req, res) => {
         try {
-            let response = await Ventas.autenticarUsuario();
-            let token = response.token;
-            response = await Ventas.consultarSorteosDisponibles(2, token);
+            let token = req.params.token;
+
+            let response = await Auth.authUser(token);
+            response = await Ventas.consultarSorteosDisponibles(2, response.lotteryToken);
 
 
             res.status(200).json(response);
@@ -30,9 +33,10 @@ const ventasController = {
 
     searchLoteriaSorteosDisponibles: async (req, res) => {
         try {
-            let response = await Ventas.autenticarUsuario();
-            let token = response.token;
-            response = await Ventas.consultarSorteosDisponibles(1, token);
+            let token = req.params.token;
+
+            let response = await Auth.authUser(token);
+            response = await Ventas.consultarSorteosDisponibles(1, response.lotteryToken);
 
             res.status(200).json(response);
         } catch (e) {
@@ -42,9 +46,10 @@ const ventasController = {
 
     searchPozoSorteosDisponibles: async (req, res) => {
         try {
-            let response = await Ventas.autenticarUsuario();
-            let token = response.token;
-            response = await Ventas.consultarSorteosDisponibles(5, token);
+            let token = req.params.token;
+
+            let response = await Auth.authUser(token);
+            response = await Ventas.consultarSorteosDisponibles(5, response.lotteryToken);
 
             res.status(200).json(response);
         } catch (e) {
@@ -54,13 +59,14 @@ const ventasController = {
 
     searchLottoCombinacionesDisponibles: async (req, res) => {
         try {
-            let response = await Ventas.autenticarUsuario();
-            let token = response.token;
+            let token = req.body.token;
+
+            let response = await Auth.authUser(token);
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let combinacionFigura = req.body.combinacionFigura;
 
-            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, token, combinacion, combinacionFigura);
+            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, response.lotteryToken, combinacion, combinacionFigura);
             console.log(combinacionesAux);
             let combinaciones = combinacionesAux.map(element => {
                 let combinacion = {
@@ -89,81 +95,14 @@ const ventasController = {
 
     searchLoteriaCombinacionesDisponibles: async (req, res) => {
         try {
-            let response = await Ventas.autenticarUsuario();
-            let token = response.token;
+            let token = req.body.token;
+
+            let response = await Auth.authUser(token);
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let combinacionFigura = req.body.combinacionFigura;
-            let ticketsNacional = [
-                {
-                    numeros: [1, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [8, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [3, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [4, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [9, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [5, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [2, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [6, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [4, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [6, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    numeros: [4, 4, 5, 7, 4],
-                    seleccionados: [],
-                    status: false,
-                    identificador: Math.random()
-                }
-            ];
 
-            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, token, combinacion, combinacionFigura);
+            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(1, sorteo, response.lotteryToken, combinacion, combinacionFigura);
 
             let combinaciones = combinacionesAux.map(element => {
                 let combinacion = {
@@ -192,144 +131,14 @@ const ventasController = {
 
     searchPozoCombinacionesDisponibles: async (req, res) => {
         try {
-            let response = await Ventas.autenticarUsuario();
-            let token = response.token;
+            let token = req.body.token;
+
+            let response = await Auth.authUser(token);
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let combinacionFigura = req.body.combinacionFigura;
-            let ticketsAnimales = [
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-ballena.png",
-                    nombre: "ballena",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-camaron.png",
-                    nombre: "camaron",
-                    numero: [12, 54, 32, 58, 64, 72, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta: "../../../../assets/mascotas/mascotas pozo millonario-foca.png",
-                    nombre: "foca",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta: "../../../../assets/mascotas/mascotas pozo millonario-perro.png",
-                    nombre: "perro",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta: "../../../../assets/mascotas/mascotas pozo millonario-conejo.png",
-                    nombre: "conejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta: "../../../../assets/mascotas/mascotas pozo millonario-delfin.png",
-                    nombre: "delfin",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-                    nombre: "mono",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-                    nombre: "mono",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta: "../../../../assets/mascotas/mascotas pozo millonario-mono.png",
-                    nombre: "mono",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                },
-                {
-                    ruta:
-                        "../../../../assets/mascotas/mascotas pozo millonario-cangrejo.png",
-                    nombre: "congrejo",
-                    numero: [24, 78, 96, 54, 32, 10, 44, 7, 45, 23, 67, 99],
-                    status: false,
-                    identificador: Math.random()
-                }
-            ];
 
-            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, token, combinacion, combinacionFigura);
+            let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(5, sorteo, response.lotteryToken, combinacion, combinacionFigura);
 
             let combinaciones = combinacionesAux.map(element => {
                 let combinacion = {

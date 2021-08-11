@@ -15,13 +15,12 @@ export class SeleccionComponent implements OnInit {
   constructor(private actRoute: ActivatedRoute) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
-      this.usuario = params["username"];
     });
   }
 
   ngOnInit() {
-    this.linkLoteriaNacional = `/compra_boletos/${this.token}/${this.usuario}/loteria`;
-    this.linkLotto = `/compra_boletos/${this.token}/${this.usuario}/lotto`;
-    this.linkPozoMillonario = `/compra_boletos/${this.token}/${this.usuario}/pozo-millonario`;
+    this.linkLoteriaNacional = `/compra_tus_juegos/${this.token}/loteria`;
+    this.linkLotto = `/compra_tus_juegos/${this.token}/lotto`;
+    this.linkPozoMillonario = `/compra_tus_juegos/${this.token}/pozo-millonario`;
   }
 }

@@ -34,7 +34,7 @@ export class LottoComponent implements OnInit {
   async buscarNumero() {
     try {
       this.isLoading = true;
-      if (this.sorteoSeleccionado != "default") {
+      if (this.sorteoSeleccionado.nombre != "default") {
         /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
         );*/
@@ -49,6 +49,7 @@ export class LottoComponent implements OnInit {
         });
         console.log(combinacion);
         this.ticketsLotto = await this.lotteryService.obtenerTickets(
+          this.token,
           2,
           this.sorteoSeleccionado,
           combinacion.join(""),
@@ -66,7 +67,7 @@ export class LottoComponent implements OnInit {
       alert(e.toString());
     }
   }
-  sorteoSeleccionado: sorteo | String;
+  sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo.sorteo;
     this.ticketsLotto = JSON.parse(localStorage.getItem("ticketsLotto"));
@@ -93,7 +94,7 @@ export class LottoComponent implements OnInit {
   async ngOnInit() {
     this.isLoading = true;
     this.loadingMessage = "Cargando los sorteos disponibles";
-    this.sorteo = await this.lotteryService.obtenerSorteo(2);
+    this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
     this.isLoading = false;
     this.showComponents = true;
   }

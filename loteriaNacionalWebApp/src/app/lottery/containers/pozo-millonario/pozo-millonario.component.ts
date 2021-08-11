@@ -95,41 +95,42 @@ export class PozoMillonarioComponent implements OnInit {
   async buscarNumero() {
     try {
       this.isLoading = true;
-    if (this.sorteoSeleccionado != "default") {
-      /*this.ticketsNacional = JSON.parse(
+      if (this.sorteoSeleccionado.nombre != "default") {
+        /*this.ticketsNacional = JSON.parse(
         localStorage.getItem("ticketsNacional")
         );*/
-      this.showNumeros = false;
+        this.showNumeros = false;
 
-      let combinacion = this.combinacionDeLaSuerte.map(element => {
-        if (element == null || element == undefined || element == "") {
-          return "_";
-        } else {
-          return element;
-        }
-      });
-      console.log(combinacion);
-      this.ticketAnimales = await this.lotteryService.obtenerTickets(
-        5,
-        this.sorteoSeleccionado,
-        combinacion.join(""),
-        ""
-      );
+        let combinacion = this.combinacionDeLaSuerte.map(element => {
+          if (element == null || element == undefined || element == "") {
+            return "_";
+          } else {
+            return element;
+          }
+        });
+        console.log(combinacion);
+        this.ticketAnimales = await this.lotteryService.obtenerTickets(
+          this.token,
+          5,
+          this.sorteoSeleccionado,
+          combinacion.join(""),
+          ""
+        );
 
-      this.showNumeros = true;
-    } else {
-      alert("Por favor seleccione un sorteo");
-      this.showNumeros = false;
+        this.showNumeros = true;
+      } else {
+        alert("Por favor seleccione un sorteo");
+        this.showNumeros = false;
+      }
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
     }
-    this.isLoading = false;
-  } catch (e) {
-    this.isLoading = false;
-    alert(e.toString());
   }
-}
-  sorteoSeleccionado: sorteo | String;
+  sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
-    this.sorteoSeleccionado = sorteo.sorteo;
+    this.sorteoSeleccionado.nombre = sorteo.sorteo;
     this.ticketAnimales = JSON.parse(localStorage.getItem("ticketsAnimales"));
   }
   isLoading: boolean;
@@ -156,7 +157,7 @@ export class PozoMillonarioComponent implements OnInit {
       JSON.stringify(this.seleccionAnimales)
     );
 
-    this.sorteo = await this.lotteryService.obtenerSorteo(5);
+    this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 5);
     this.isLoading = false;
     this.showComponents = true;
   }
