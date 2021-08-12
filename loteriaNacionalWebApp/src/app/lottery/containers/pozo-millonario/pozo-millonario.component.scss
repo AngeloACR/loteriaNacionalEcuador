@@ -68,8 +68,6 @@ $color-botton: #2f72b9;
 
 .select-sim {
   width: 300px;
-  height: 22px;
-  line-height: 22px;
   vertical-align: middle;
   position: relative;
   background: white;
@@ -81,7 +79,7 @@ $color-botton: #2f72b9;
 }
 
 .select-sim::after {
-  content: "Seleccione un animal"; /* ▼ */
+  //content: "Seleccione un animal"; /* ▼ */
   position: absolute;
   top: 50%;
   right: 5px;
@@ -127,15 +125,17 @@ $color-botton: #2f72b9;
 }
 
 .select-sim:hover .options .option {
-  height: 100px;
+  height: 80px;
   overflow: hidden;
 }
 
 .select-sim .options .option img {
   vertical-align: middle;
-  width: 90px;
+
+  width: 70px;
+  height: 70px;
   /* background-color: green; */
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 .select-sim .options .option label {
@@ -164,11 +164,13 @@ $color-botton: #2f72b9;
 .select-sim:hover .options .option input + label {
   display: block;
   background-color: #fff;
+  text-align: center;
+  margin: 4px;
 }
 
 .select-sim:hover .options .option input:checked + label {
   background-color: $color-pozo;
-  border-radius: 40px;
+  border-radius: 15px;
 }
 
 // Estilos de seleccion animal

@@ -33,6 +33,7 @@ export class LottoComponent implements OnInit {
   }
   async buscarNumero() {
     try {
+      this.loadingMessage = "Buscando combinaciones disponibles";
       this.isLoading = true;
       if (this.sorteoSeleccionado.nombre != "default") {
         /*this.ticketsNacional = JSON.parse(

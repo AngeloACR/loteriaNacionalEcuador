@@ -35,6 +35,7 @@
         </app-number-selection>  -->
 
       <div class="select-sim" id="select-nombre">
+        Seleccione un animal
         <div class="options">
           <div class="option" *ngFor="let animal of seleccionAnimales; let i = index">
             <input (click)="agregar(animal.nombre, i)" type="checkbox" [checked]="animal.status" name="nombre"
@@ -71,7 +72,7 @@
                   <img [src]="obtenerAnimal(ticket.mascota)" alt="">
                 </div>
                 <div class="numeros">
-                  <p *ngFor="let numero of ticket.numero">{{ numero }}</p>
+                  <p *ngFor="let numero of ticket.display;">{{ numero }}</p>
                 </div>
               </div>
               <!-- <app-seleccion-pozo [tickets]="ticketMascota"></app-seleccion-pozo> -->

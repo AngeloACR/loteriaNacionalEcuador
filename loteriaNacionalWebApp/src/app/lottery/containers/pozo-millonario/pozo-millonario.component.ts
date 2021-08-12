@@ -93,8 +93,12 @@ export class PozoMillonarioComponent implements OnInit {
     return this.lotteryService.obtenerMascota(mascota);
   }
 
+  ordenaCombinacion(a, b) {
+    return a - b;
+  }
   async buscarNumero() {
     try {
+      this.loadingMessage = "Buscando combinaciones disponibles";
       this.isLoading = true;
       if (this.sorteoSeleccionado.nombre != "default") {
         /*this.ticketsNacional = JSON.parse(
@@ -102,20 +106,15 @@ export class PozoMillonarioComponent implements OnInit {
         );*/
         this.showNumeros = false;
 
-        let combinacion = this.combinacionDeLaSuerte.map(element => {
-          if (element == null || element == undefined || element == "") {
-            return "_";
-          } else {
-            return element;
-          }
-        });
+        let combinacion = this.combinacionDeLaSuerte;
         console.log(combinacion);
+        combinacion.sort(this.ordenaCombinacion);
         this.ticketAnimales = await this.lotteryService.obtenerTickets(
           this.token,
           5,
           this.sorteoSeleccionado.sorteo,
           combinacion.join(""),
-          ""
+          "01"
         );
 
         this.showNumeros = true;
@@ -131,12 +130,16 @@ export class PozoMillonarioComponent implements OnInit {
   }
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
-    this.sorteoSeleccionado.nombre = sorteo;
+    this.sorteoSeleccionado = sorteo;
     this.ticketAnimales = JSON.parse(localStorage.getItem("ticketsAnimales"));
   }
   isLoading: boolean;
   showComponents: boolean = false;
   loadingMessage: string;
+
+  obtenerAnimal(mascota) {
+    return this.lotteryService.obtenerMascota(mascota);
+  }
   async ngOnInit() {
     this.isLoading = true;
     this.loadingMessage = "Cargando los sorteos disponibles";

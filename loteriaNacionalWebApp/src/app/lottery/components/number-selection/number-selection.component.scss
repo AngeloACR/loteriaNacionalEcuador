@@ -22,6 +22,7 @@ $color-pozo: #057333;
 .select-sim::after {
   content: "Seleccione un animal"; /* ▼ */
   position: absolute;
+  text-align: center;
   top: 50%;
   right: 5px;
   transform: translate(-84%, -50%);
@@ -94,19 +95,18 @@ $color-pozo: #057333;
   left: -10000px;
 }
 
-.select-sim .options .option input:checked+label {
+.select-sim .options .option input:checked + label {
   /* display: block;
   width: 100%; */
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.select-sim:hover .options .option input+label {
+.select-sim:hover .options .option input + label {
   display: block;
   background-color: #fff;
 }
 
-.select-sim:hover .options .option input:checked+label {
+.select-sim:hover .options .option input:checked + label {
   background-color: $color-pozo;
   border-radius: 40px;
 }
-
