@@ -35,7 +35,7 @@
         </app-number-selection>  -->
 
       <div class="select-sim" id="select-nombre">
-        Seleccione un animal
+        Seleccione tus mascotas de la suerte
         <div class="options">
           <div class="option" *ngFor="let animal of seleccionAnimales; let i = index">
             <input (click)="agregar(animal, i)" type="checkbox" [checked]="animal.status" name="nombre" [value]="animal"
