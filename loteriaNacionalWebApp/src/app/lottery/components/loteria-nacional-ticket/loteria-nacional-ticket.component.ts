@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { ticketsNacional } from "../../interfaces/lottery.interface";
 
 @Component({
   selector: "app-loteria-nacional-ticket",
@@ -6,11 +7,12 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./loteria-nacional-ticket.component.scss"]
 })
 export class LoteriaNacionalTicketComponent implements OnInit {
-  @Input() ticketIndex: Number;
-  @Input() date: String;
-  @Input() fraccion: Number[];
-  @Input() ticketNumbers: Number[];
-  @Input() sorteoNumber: Number[];
+  @Input() ticket: ticketsNacional;
+  ticketIndex: number;
+  date: string;
+  fraccion: number[];
+  ticketNumbers: number[];
+  sorteoNumber: number[];
 
   objeto: any;
   numero: any;

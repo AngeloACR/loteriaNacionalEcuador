@@ -1,9 +1,15 @@
 <div class="container">
 
 
-  <app-loteria-nacional-configurador></app-loteria-nacional-configurador>
+  <app-ticket-scroller [tickets]="ticketsNacional" tipoLoteria="loteria">
+  </app-ticket-scroller>
 
-  <app-lotto-configurador></app-lotto-configurador>
 
-  <app-pozo-millonario-configurador></app-pozo-millonario-configurador>
+  <app-ticket-scroller [tickets]="ticketsLotto" tipoLoteria="lotto">
+  </app-ticket-scroller>
+
+
+  <app-ticket-scroller [tickets]="ticketsPozo" tipoLoteria="pozo">
+  </app-ticket-scroller>
+
 </div>

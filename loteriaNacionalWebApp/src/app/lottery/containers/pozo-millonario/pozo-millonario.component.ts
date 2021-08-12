@@ -31,7 +31,9 @@ export class PozoMillonarioComponent implements OnInit {
   usuario: string;
   constructor(
     private lotteryService: LotteryService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+
+    private router: Router
   ) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
@@ -139,16 +141,15 @@ export class PozoMillonarioComponent implements OnInit {
             "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo."
           );
           return;
-        } else{
-
+        } else {
           this.ticketAnimales = await this.lotteryService.obtenerTickets(
             this.token,
             5,
             this.sorteoSeleccionado.sorteo,
             combinacion.join(""),
             combinacionFigura.join("")
-            );
-          }
+          );
+        }
 
         this.showNumeros = true;
       } else {
@@ -159,7 +160,7 @@ export class PozoMillonarioComponent implements OnInit {
     } catch (e) {
       alert(
         "Parece que ha habido un problema, revise el formulario e intente de nuevo"
-        );
+      );
       this.isLoading = false;
       console.log(e);
     }
@@ -172,10 +173,15 @@ export class PozoMillonarioComponent implements OnInit {
   isLoading: boolean;
   showComponents: boolean = false;
   loadingMessage: string;
-  
+
   obtenerAnimal(mascota) {
     return this.lotteryService.obtenerMascota(mascota);
   }
+
+  abrirResumen() {
+    this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
+  }
+
   async ngOnInit() {
     this.isLoading = true;
     this.loadingMessage = "Cargando los sorteos disponibles";

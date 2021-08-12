@@ -4,13 +4,23 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #2f72b9;
+$color-lotto: #b51f20;
+$color-pozo: #04b865;
 
+.contenedor_ticket.fondoLoteria {
+  background-color: $color-botton;
+}
+.contenedor_ticket.fondoPozo {
+  background-color: $color-pozo;
+}
+.contenedor_ticket.fondoLotto {
+  background-color: $color-lotto;
+}
 .contenedor_ticket {
   width: 100%;
-    height: auto;
-    border-radius: 30px;
-    background-color: $color-botton;
-    padding: 15px;
+  height: auto;
+  border-radius: 30px;
+  padding: 15px;
 
   .logo_ticket {
     width: 100%;
@@ -82,7 +92,6 @@ $color-botton: #2f72b9;
     button {
       width: 90%;
       padding: 20px 30px;
-      background-color: $color-botton;
       border: 1px solid #fff;
       border-radius: 40px;
       margin: 10px auto;
@@ -91,10 +100,26 @@ $color-botton: #2f72b9;
       font-size: 12px;
       cursor: pointer;
       transition: background-color 0.5s ease;
-
+    }
+    button.fondoLoteria {
+      background-color: $color-botton;
       &:hover {
         background-color: #fff;
         color: $color-botton;
+      }
+    }
+    button.fondoLotto {
+      background-color: $color-lotto;
+      &:hover {
+        background-color: #fff;
+        color: $color-lotto;
+      }
+    }
+    button.fondoPozo {
+      background-color: $color-pozo;
+      &:hover {
+        background-color: #fff;
+        color: $color-pozo;
       }
     }
   }

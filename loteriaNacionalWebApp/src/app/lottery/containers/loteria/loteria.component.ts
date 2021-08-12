@@ -29,7 +29,8 @@ export class LoteriaComponent implements OnInit {
 
   constructor(
     private lotteryService: LotteryService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private router: Router,
   ) {
     this.actRoute.params.subscribe(params => {
       console.log(params);
@@ -128,6 +129,10 @@ export class LoteriaComponent implements OnInit {
       "ticketsNacional",
       JSON.stringify(this.ticketsNacional)
     );
+  }
+
+  abrirResumen(){
+    this.router.navigate([`compra_tus_juegos/resumen/${this.token}`])
   }
 
   sorteoSeleccionado: sorteo;

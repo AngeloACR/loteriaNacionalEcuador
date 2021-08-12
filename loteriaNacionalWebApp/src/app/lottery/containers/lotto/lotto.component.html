@@ -49,13 +49,16 @@
         </mat-paginator>
       </div>
     </div>
-    <div class="boton_boleto">
-      <button>RESUMEN DE BOLETOS</button>
+    <div class="boton_boleto"> <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
+
     </div>
   </div>
 
 
-  <div class="contenedor_ticket">
+
+  <app-ticket-scroller [tickets]="ticketsLotto" tipoLoteria="lotto">
+  </app-ticket-scroller>
+  <!--   <div class="contenedor_ticket">
     <div class="logo_ticket">
       <img src="../../../../assets/img/lotto.png" alt="">
     </div>
@@ -228,6 +231,6 @@
     <div class="boton_comprar">
       <button>COMPRAR</button>
     </div>
-  </div>
+  </div> -->
 </div>
 <app-loader loader="lotto" [message]="loadingMessage" *ngIf="isLoading"></app-loader>

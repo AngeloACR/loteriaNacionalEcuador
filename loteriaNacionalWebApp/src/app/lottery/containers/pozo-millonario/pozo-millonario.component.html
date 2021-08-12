@@ -95,12 +95,16 @@
     </div> -->
 
     <div class="boton_boleto">
-      <button>RESUMEN DE BOLETOS</button>
+      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
+
     </div>
   </div>
 
 
-  <div class="contenedor_ticket">
+
+  <app-ticket-scroller [tickets]="ticketsAnimales" tipoLoteria="pozo">
+  </app-ticket-scroller>
+  <!--   <div class="contenedor_ticket">
     <div class="logo_ticket">
       <img src="../../../../assets/img/pozzo millonario.png" alt="">
     </div>
@@ -155,7 +159,7 @@
     <div class="boton_comprar">
       <button>COMPRAR</button>
     </div>
-  </div>
+  </div> -->
 
 </div>
 <app-loader loader="pozo" [message]="loadingMessage" *ngIf="isLoading"></app-loader>

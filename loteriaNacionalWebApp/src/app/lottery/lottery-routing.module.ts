@@ -14,7 +14,7 @@ const routes: Routes = [
     component: LotteryComponent,
     children: [
       { path: "loteria/:token", component: LoteriaComponent },
-      { path: "resumen", component: ResumenComponent },
+      { path: "resumen/:token", component: ResumenComponent },
       { path: "lotto/:token", component: LottoComponent },
       {
         path: "pozo-millonario/:token",

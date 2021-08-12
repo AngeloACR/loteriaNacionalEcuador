@@ -72,33 +72,12 @@
 
     </div>
     <div class="boton_boleto">
-      <button>RESUMEN DE BOLETOS</button>
+      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
     </div>
   </div>
 
-  <app-ticket-scroller [tickets]="ticketsNacional" isLoteriaNacional="true" logo="assets/img/loteria nacional.png">
+  <app-ticket-scroller [tickets]="ticketsNacional" tipoLoteria="loteria">
   </app-ticket-scroller>
-
-  <!--   <div class="contenedor_ticket">
-    <div class="logo_ticket">
-      <img src="../../../../assets/img/loteria nacional.png" alt="">
-    </div>
-    <div>
-      <hr size="2px" />
-    </div>
-    <div class="scroll">
-      <app-loteria-nacional-ticket *ngFor="let ticket of tickets" [ticketIndex]="ticket.ticketIndes"
-        [date]="ticket.date" [fraccion]="ticket.fraccion" [ticketNumbers]="ticket.ticketNumbers"
-        [sorteoNumber]="ticketsorteoNumber"></app-loteria-nacional-ticket>
-      </div>
-    <div>
-      <hr size="2px" />
-    </div>
-    <div class="boton_comprar">
-      <button>COMPRAR</button>
-    </div>
-  </div>
- -->
 </div>
 
 <app-loader loader="loteria" [message]="loadingMessage" *ngIf="isLoading"></app-loader>

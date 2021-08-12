@@ -24,7 +24,8 @@ export class LottoComponent implements OnInit {
 
   constructor(
     private lotteryService: LotteryService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
@@ -91,6 +92,10 @@ export class LottoComponent implements OnInit {
     console.log(id);
 
     localStorage.setItem("ticketsLotto", JSON.stringify(this.ticketsLotto));
+  }
+
+  abrirResumen() {
+    this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
   }
 
   handlerPage(e: PageEvent) {
