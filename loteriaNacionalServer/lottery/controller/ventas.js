@@ -145,7 +145,8 @@ const ventasController = {
                     mascota: element.Fig,
                     combinacion1: element.Num,
                     combinacion2: element.Num2,
-                    display: element.Num2.match(/.{1,2}/g),
+                    display: element.Num2.split(','),
+                    //display: element.Num2.match(/.{1,2}/g),
                     status: false,
                     identificador: Math.random()
                 }
