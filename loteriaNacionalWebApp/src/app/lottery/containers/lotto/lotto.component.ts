@@ -40,14 +40,22 @@ export class LottoComponent implements OnInit {
         localStorage.getItem("ticketsNacional")
         );*/
         this.showNumeros = false;
-
+        let isHigher = false;
         let combinacion = this.combinacionDeLaSuerte.map(element => {
           if (element == null || element == undefined || element == "") {
             return "_";
+          } else if (element.length != 1) {
+            isHigher = true;
           } else {
             return element;
           }
         });
+        if (isHigher) {
+          alert(
+            "Sólo puede ingresar valores entre 0 y 9 al formulario. Por favor revíselo e intente de nuevo"
+          );
+          return;
+        }
         console.log(combinacion);
         this.ticketsLotto = await this.lotteryService.obtenerTickets(
           this.token,
