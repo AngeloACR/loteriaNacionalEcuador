@@ -7,6 +7,7 @@ import {
   sorteo
 } from "../../interfaces/lottery.interface";
 import { PageEvent } from "@angular/material";
+import { ReturnStatement } from "@angular/compiler";
 
 @Component({
   selector: "app-pozo-millonario",
@@ -15,7 +16,7 @@ import { PageEvent } from "@angular/material";
 })
 export class PozoMillonarioComponent implements OnInit {
   sorteo: sorteo[];
-  combinacionDeLaSuerte: any = ["", "", "", ""];
+  combinacionDeLaSuerte: string[] = ["", "", "", ""];
 
   seleccionAnimales: animales[];
   animalesTabs: animales[] = [];
@@ -38,15 +39,15 @@ export class PozoMillonarioComponent implements OnInit {
     });
   }
 
-  agregar(animal: string, i: number) {
+  agregar(animal: animales, i: number) {
     console.log(animal);
     if (this.seleccionAnimales[i].status === false) {
       this.seleccionAnimales[i].status = true;
-      this.animalesTabs.push({ nombre: animal, status: true });
+      this.animalesTabs.push(this.seleccionAnimales[i]);
     } else {
       this.seleccionAnimales[i].status = false;
       this.animalesTabs = this.animalesTabs.filter(element => {
-        return element.nombre !== animal;
+        return element.nombre !== animal.nombre;
       });
     }
     localStorage.setItem(
@@ -105,17 +106,49 @@ export class PozoMillonarioComponent implements OnInit {
         localStorage.getItem("ticketsNacional")
         );*/
         this.showNumeros = false;
-
-        let combinacion = this.combinacionDeLaSuerte;
-        console.log(combinacion);
+        let isHigher = false;
+        this.combinacionDeLaSuerte.forEach(number => {
+          let aux = parseInt(number);
+          if (aux > 25) {
+            isHigher = true;
+          }
+        });
+        let combinacion = this.combinacionDeLaSuerte.map(number => {
+          let numero = number;
+          if (numero.length < 2) {
+            numero = `0${numero}`;
+          } else if (numero.length > 2) {
+            let length = numero.length;
+            numero = `${numero[length - 2]}${numero[length - 1]}`;
+          }
+          console.log(numero);
+          if (numero == "0" || numero == "00") {
+            return "";
+          }
+          return numero;
+        });
+        let combinacionFigura = this.animalesTabs.map(animal => {
+          return animal.identificador;
+        });
         combinacion.sort(this.ordenaCombinacion);
-        this.ticketAnimales = await this.lotteryService.obtenerTickets(
-          this.token,
-          5,
-          this.sorteoSeleccionado.sorteo,
-          combinacion.join(""),
-          "01"
-        );
+        combinacionFigura.sort(this.ordenaCombinacion);
+        console.log(combinacion);
+        console.log(combinacionFigura);
+        if (isHigher) {
+          alert(
+            "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo."
+          );
+          return;
+        } else{
+
+          this.ticketAnimales = await this.lotteryService.obtenerTickets(
+            this.token,
+            5,
+            this.sorteoSeleccionado.sorteo,
+            combinacion.join(""),
+            combinacionFigura.join("")
+            );
+          }
 
         this.showNumeros = true;
       } else {
@@ -124,8 +157,11 @@ export class PozoMillonarioComponent implements OnInit {
       }
       this.isLoading = false;
     } catch (e) {
+      alert(
+        "Parece que ha habido un problema, revise el formulario e intente de nuevo"
+        );
       this.isLoading = false;
-      alert(e.toString());
+      console.log(e);
     }
   }
   sorteoSeleccionado: sorteo;
@@ -136,7 +172,7 @@ export class PozoMillonarioComponent implements OnInit {
   isLoading: boolean;
   showComponents: boolean = false;
   loadingMessage: string;
-
+  
   obtenerAnimal(mascota) {
     return this.lotteryService.obtenerMascota(mascota);
   }

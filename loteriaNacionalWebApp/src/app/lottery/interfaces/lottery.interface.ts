@@ -30,6 +30,7 @@ export interface ticketsLotto {
 }
 export interface animales {
   ruta?: string;
+  identificador?: string;
   nombre: string;
   status: boolean;
 }

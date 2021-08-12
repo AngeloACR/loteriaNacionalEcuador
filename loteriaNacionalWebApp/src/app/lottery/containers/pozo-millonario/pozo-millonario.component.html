@@ -38,8 +38,8 @@
         Seleccione un animal
         <div class="options">
           <div class="option" *ngFor="let animal of seleccionAnimales; let i = index">
-            <input (click)="agregar(animal.nombre, i)" type="checkbox" [checked]="animal.status" name="nombre"
-              [value]="animal.nombre" id="nombre-{{animal.nombre}}" />
+            <input (click)="agregar(animal, i)" type="checkbox" [checked]="animal.status" name="nombre" [value]="animal"
+              id="nombre-{{animal.nombre}}" />
             <label for="nombre-{{animal.nombre}}">
               <img [src]="animal.ruta" [alt]="animal.nombre" />
             </label>
@@ -68,7 +68,6 @@
                 (click)="seleccionarTicket(ticket.identificador)">
               <div class="contenedor_seleccion_numero">
                 <div class="imagen_animal">
-                  <p>Mascota: </p>
                   <img [src]="obtenerAnimal(ticket.mascota)" alt="">
                 </div>
                 <div class="numeros">
