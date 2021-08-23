@@ -11,6 +11,8 @@ module.exports = {
     contenidosPort: 5950,
     lotteryPort: 5480,
     host: 'localhost',
+    exalogicHostTest: '',
+    exalogicHostProd: '',
 
     // DATA FOR LOTERIA NACIONAL API
     usuarioAplicativoTest: 'sitiowebprep',

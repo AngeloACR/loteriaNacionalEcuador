@@ -29,7 +29,8 @@
             <!--   -->
             <td>
               <div class="tooltip">
-                <input type="checkbox" [checked]="ticket.status" (click)="seleccionarTicket(ticket.identificador)">
+                <input type="checkbox" [checked]="ticket.status"
+                  (click)="seleccionarTicket(page_size*(page_number-1)+i)">
                 <div class="contenedor_numeros">
                   <p *ngFor="let numero of ticket.display">{{ numero }}</p>
                 </div>
@@ -41,15 +42,17 @@
                   <hr>
                   <div class="seleccionAll">
                     <p>Seleccionar todas las fracciones</p>
-                    <input (click)="seleccionarTodo(ticket.identificador)"
-                      style="position: relative; width: 20px; opacity: 1; margin-left: 5px" type="checkbox">
+                    <input (click)="seleccionarTodo(page_size*(page_number-1)+i)"
+                      style="position: relative; width: 20px; opacity: 1; margin-left: 5px"
+                      [(ngModel)]="allFractions[page_size*(page_number-1)+i]" type="checkbox">
                   </div>
                   <hr>
                   <div class="contenedor_fracciones">
-                    <div class="fracciones" *ngFor="let item of ticket.fraccionesDisponibles; let i = index">
-                      <input (click)="fraccionSeleccionada(ticket.identificador, i + 1)" [checked]="item.status"
-                        class="checkbox" type="checkbox" [id]="i">
-                      <label [for]="i">{{ item }}</label>
+                    <div class="fracciones" *ngFor="let item of ticket.fraccionesDisponibles; let j = index">
+                      <input (click)="fraccionSeleccionada(page_size*(page_number-1)+i, item)"
+                        [checked]="isSelected(page_size*(page_number-1)+i, item)" class="checkbox" type="checkbox"
+                        id="{{ticket.identificador}}-{{item}}">
+                      <label for="{{ticket.identificador}}-{{item}}">{{ item }}</label>
                     </div>
                   </div>
                   <hr>
@@ -76,7 +79,7 @@
     </div>
   </div>
 
-  <app-ticket-scroller [tickets]="ticketsNacional" tipoLoteria="loteria">
+  <app-ticket-scroller [tickets]="ticketsSeleccionados" tipoLoteria="loteria">
   </app-ticket-scroller>
 </div>
 

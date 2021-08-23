@@ -77,14 +77,28 @@ export class PozoMillonarioComponent implements OnInit {
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
 
-  seleccionarTicket(id: number) {
-    this.ticketAnimales.forEach(element => {
-      if (element.identificador === id) {
-        element.status = !element.status;
-      }
-    });
+  seleccionarTicket(id: string) {
+    this.ticketAnimales[id].status = !this.ticketAnimales[id].status;
+    if (!this.ticketAnimales[id].status) {
+      this.removeSeleccionado(this.ticketAnimales[id].identificador);
+    } else {
+      this.pushToSeleccionado(this.ticketAnimales[id]);
+    }
+  }
+  ticketsSeleccionados: any = {};
 
-    localStorage.setItem("ticketAnimales", JSON.stringify(this.ticketAnimales));
+  removeSeleccionado(identificador) {
+    delete this.ticketsSeleccionados[identificador];
+    localStorage.setItem('seleccionadosPozo', JSON.stringify(this.ticketsSeleccionados));
+  }
+
+  pushToSeleccionado(ticket) {
+    this.ticketsSeleccionados[ticket.identificador] = {
+      ticket,
+      sorteo: this.sorteoSeleccionado
+    };
+    console.log(this.ticketsSeleccionados);
+    localStorage.setItem('seleccionadosPozo', JSON.stringify(this.ticketsSeleccionados));
   }
 
   handlerPage(e: PageEvent) {
@@ -184,7 +198,12 @@ export class PozoMillonarioComponent implements OnInit {
 
   async ngOnInit() {
     this.isLoading = true;
-    this.loadingMessage = "Cargando los sorteos disponibles";
+    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))){
+      this.ticketsSeleccionados = JSON.parse(
+        localStorage.getItem("seleccionadosPozo")
+      );
+      }
+      this.loadingMessage = "Cargando los sorteos disponibles";
     this.seleccionAnimales = JSON.parse(
       localStorage.getItem("animalesSeleccionados")
     );

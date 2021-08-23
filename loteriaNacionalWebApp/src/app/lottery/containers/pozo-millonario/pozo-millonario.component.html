@@ -65,7 +65,7 @@
           <tr *ngFor="let ticket of ticketAnimales | paginacion:page_size:page_number; let i = index ">
             <td>
               <input type="checkbox" name="" id="" [checked]="ticket.status"
-                (click)="seleccionarTicket(ticket.identificador)">
+                (click)="seleccionarTicket(page_size*(page_number-1)+i)">
               <div class="contenedor_seleccion_numero">
                 <div class="imagen_animal">
                   <img [src]="obtenerAnimal(ticket.mascota)" alt="">
@@ -102,7 +102,7 @@
 
 
 
-  <app-ticket-scroller [tickets]="ticketsAnimales" tipoLoteria="pozo">
+  <app-ticket-scroller [tickets]="ticketsSeleccionados" tipoLoteria="pozo">
   </app-ticket-scroller>
   <!--   <div class="contenedor_ticket">
     <div class="logo_ticket">

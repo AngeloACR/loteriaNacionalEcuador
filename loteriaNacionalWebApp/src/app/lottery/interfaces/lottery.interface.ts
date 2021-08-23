@@ -7,17 +7,13 @@ export interface sorteo {
   nombre: string;
 }
 
-export interface fracciones {
-  fraccion: number;
-  status: boolean;
-}
 export interface ticketsNacional {
   combinacion: string;
   display: string[];
-  fraccionesDisponibles: fracciones[];
-  seleccionados: fracciones[];
+  fraccionesDisponibles: string[];
+  seleccionados: string[];
   status: boolean;
-  identificador: number;
+  identificador: string;
 }
 export interface ticketsLotto {
   combinacion1: string;
@@ -26,7 +22,7 @@ export interface ticketsLotto {
   combinacion4: string;
   display: string[];
   status: boolean;
-  identificador: number;
+  identificador: string;
 }
 export interface animales {
   ruta?: string;
@@ -40,5 +36,5 @@ export interface ticketsAnimales {
   combinacion2: string;
   display?: Array<string>;
   status: boolean;
-  identificador: number;
+  identificador: string;
 }

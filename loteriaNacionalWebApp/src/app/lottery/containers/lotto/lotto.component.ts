@@ -79,19 +79,31 @@ export class LottoComponent implements OnInit {
   }
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
-    console.log(sorteo);
     this.sorteoSeleccionado = sorteo;
-    this.ticketsLotto = JSON.parse(localStorage.getItem("ticketsLotto"));
   }
-  seleccionarTicket(id: number) {
-    this.ticketsLotto.forEach(element => {
-      if (element.identificador === id) {
-        element.status = !element.status;
-      }
-    });
-    console.log(id);
+  seleccionarTicket(id: string) {
+    this.ticketsLotto[id].status = !this.ticketsLotto[id].status;
+    if (!this.ticketsLotto[id].status) {
+      this.removeSeleccionado(this.ticketsLotto[id].identificador);
+    } else {
+      this.pushToSeleccionado(this.ticketsLotto[id]);
+    }
+  }
 
-    localStorage.setItem("ticketsLotto", JSON.stringify(this.ticketsLotto));
+  ticketsSeleccionados: any = {};
+
+  removeSeleccionado(identificador) {
+    delete this.ticketsSeleccionados[identificador];
+    localStorage.setItem('seleccionadosLotto', JSON.stringify(this.ticketsSeleccionados));
+  }
+
+  pushToSeleccionado(ticket) {
+    this.ticketsSeleccionados[ticket.identificador] = {
+      ticket,
+      sorteo: this.sorteoSeleccionado
+    };
+    console.log(this.ticketsSeleccionados);
+    localStorage.setItem('seleccionadosLotto', JSON.stringify(this.ticketsSeleccionados));
   }
 
   abrirResumen() {
@@ -108,7 +120,12 @@ export class LottoComponent implements OnInit {
   loadingMessage: string;
   async ngOnInit() {
     this.isLoading = true;
-    this.loadingMessage = "Cargando los sorteos disponibles";
+    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))){
+      this.ticketsSeleccionados = JSON.parse(
+        localStorage.getItem("seleccionadosLotto")
+      );
+      }
+      this.loadingMessage = "Cargando los sorteos disponibles";
     this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
     this.isLoading = false;
     this.showComponents = true;

@@ -3,10 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const compression = require('compression');
-const config = require('./config/environment');
-const cookieSess = require('cookie-session');
 const helmet = require('helmet');
-const RateLimit = require('express-rate-limit');
 const app = express();
 
 

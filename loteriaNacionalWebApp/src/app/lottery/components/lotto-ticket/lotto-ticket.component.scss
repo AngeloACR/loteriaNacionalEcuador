@@ -1,0 +1,143 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-botton: #b51f20;
+
+.contenedor_informacion_ticket {
+  width: 100%;
+  display: flex;
+  margin: 10px 0;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-sizing: border-box;
+
+  .contenedor_informacion_ticket_izquierdo {
+    margin: 0px auto;
+    padding: 10px 8px;
+
+    .contenedor_informacion_ticket_izquierdo_logo {
+    }
+
+    .contenedor_informacion_ticket_izquierdo_barra {
+      img {
+        width: 40px;
+        height: 120px;
+        margin: auto;
+      }
+    }
+  }
+  .contenedor_informacion_ticket_derecho {
+    width: 100%;
+    margin: auto;
+
+    .ticket_titulo {
+      display: flex;
+      margin: auto;
+      justify-content: space-around;
+      align-items: center;
+
+      img {
+        width: 40px;
+      }
+      h3 {
+        font-family: $fuente-titulo;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+
+      p {
+        margin: 0px;
+        font-family: $fuente-subtitulo;
+        font-size: 10px;
+        margin-right: 10px;
+      }
+    }
+
+    .ticket_monto {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-right: 14px;
+
+      p:nth-child(1) {
+        font-size: 32px;
+        -webkit-text-stroke: 2px $color-botton;
+        color: #fff;
+        font-family: $fuente-titulo;
+        margin: 10px 0px;
+      }
+
+      p:nth-child(2) {
+        font-size: 14px;
+        margin: 0px;
+        margin-bottom: 5px;
+        color: $color-botton;
+        font-family: $fuente-subtitulo;
+      }
+    }
+
+    .ticket_entero_fraccion {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: $fuente-subtitulo;
+
+      .ticket_entero {
+        padding-left: 15px;
+
+        h5 {
+          margin-top: 7px;
+          margin-bottom: 8px;
+        }
+
+        div {
+          display: flex;
+          justify-content: center;
+          margin: 0 0 15px 0;
+
+          p {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            font-family: $fuente-subtitulo;
+            font-size: 14px;
+            color: #000;
+            margin: 0px 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      .ticket_fraccion {
+        padding-left: 15px;
+
+        h5 {
+          margin-top: 7px;
+          margin-bottom: 8px;
+        }
+
+        div {
+          display: flex;
+          justify-content: center;
+
+          p {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            font-family: $fuente-subtitulo;
+            font-size: 14px;
+            color: #000;
+            margin: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}

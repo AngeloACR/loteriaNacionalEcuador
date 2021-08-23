@@ -11,10 +11,16 @@ import {
   styleUrls: ["./resumen.component.scss"]
 })
 export class ResumenComponent implements OnInit {
-  ticketsNacional: ticketsNacional;
-  ticketsLotto: ticketsLotto;
-  ticketsPozo: ticketsAnimales;
+  ticketsNacional: any;
+  ticketsLotto: any;
+  ticketsPozo: any;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ticketsNacional = JSON.parse(
+      localStorage.getItem("seleccionadosLoteria")
+    );
+    this.ticketsLotto = JSON.parse(localStorage.getItem("seleccionadosLotto"));
+    this.ticketsPozo = JSON.parse(localStorage.getItem("seleccionadosPozo"));
+  }
 }

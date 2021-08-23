@@ -1,5 +1,4 @@
 const FtpSrv = require('ftp-srv');
-const path = require('path');
 const ResultadosController = require('./results/controller/main')
 const config = require('./config/environment');
 

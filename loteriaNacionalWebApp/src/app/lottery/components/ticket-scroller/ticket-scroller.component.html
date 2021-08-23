@@ -6,23 +6,26 @@
   <div>
     <hr size="2px" />
   </div>
-  <ng-template *ngIf=" tickets && tickets.length!=0">
+  <ng-container *ngIf="checkTickets()">
     <div *ngIf="isLoteriaNacional" class="scroll">
 
-      <app-loteria-nacional-ticket *ngFor="let ticket of tickets" [ticket]="ticket">
+      <app-loteria-nacional-ticket *ngFor="let item of tickets | keyvalue" [ticket]="item.value.ticket"
+        [sorteo]="item.value.sorteo">
       </app-loteria-nacional-ticket>
     </div>
     <div *ngIf="isLotto" class="scroll">
 
-      <app-lotto-ticket *ngFor="let ticket of tickets" [ticket]="ticket">
+      <app-lotto-ticket *ngFor="let item of tickets | keyvalue" [ticket]="item.value.ticket"
+        [sorteo]="item.value.sorteo">
       </app-lotto-ticket>
     </div>
     <div *ngIf="isPozoMillonario" class="scroll">
 
-      <app-pozo-millonario-ticket *ngFor="let ticket of tickets" [ticket]="ticket">
+      <app-pozo-millonario-ticket *ngFor="let item of tickets | keyvalue" [ticket]="item.value.ticket"
+        [sorteo]="item.value.sorteo">
       </app-pozo-millonario-ticket>
     </div>
-  </ng-template>
+  </ng-container>
   <div>
     <hr size="2px" />
   </div>

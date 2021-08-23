@@ -23,9 +23,6 @@ import { LottoConfiguradorComponent } from "./components/lotto-configurador/lott
 import { LoteriaNacionalConfiguradorComponent } from "./components/loteria-nacional-configurador/loteria-nacional-configurador.component";
 import { PozoMillonarioConfiguradorComponent } from "./components/pozo-millonario-configurador/pozo-millonario-configurador.component";
 import { SeleccionTipoComponent } from "./components/seleccion-tipo/seleccion-tipo.component";
-import { TooltipComponent } from "./containers/tooltip/tooltip.component";
-import { SeleccionLottoComponent } from "./containers/seleccion-lotto/seleccion-lotto.component";
-import { SeleccionPozoComponent } from "./containers/seleccion-pozo/seleccion-pozo.component";
 import { InfoLoteriaComponent } from "./components/info-loteria/info-loteria.component";
 import { PaginatePipe } from "./pipes/paginate.pipe";
 
@@ -59,9 +56,6 @@ import { CustomMatPaginatorIntl } from "./paginacion-es";
     LoteriaNacionalConfiguradorComponent,
     PozoMillonarioConfiguradorComponent,
     SeleccionTipoComponent,
-    TooltipComponent,
-    SeleccionLottoComponent,
-    SeleccionPozoComponent,
     InfoLoteriaComponent,
     PaginatePipe,
     StylePaginatorDirective

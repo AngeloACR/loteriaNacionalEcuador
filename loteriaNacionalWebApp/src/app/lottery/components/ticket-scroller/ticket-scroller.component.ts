@@ -23,6 +23,7 @@ export class TicketScrollerComponent implements OnInit {
   comprar() {}
 
   ngOnInit() {
+    console.log(this.tickets);
     switch (this.tipoLoteria) {
       case "loteria":
         this.isLoteriaNacional = true;
@@ -36,6 +37,12 @@ export class TicketScrollerComponent implements OnInit {
         this.isPozoMillonario = true;
         this.logoPath = "assets/img/pozzo millonario.png";
         break;
+    }
+  }
+
+  checkTickets() {
+    if (this.tickets) {
+      return Object.keys(this.tickets).length != 0;
     }
   }
 }
