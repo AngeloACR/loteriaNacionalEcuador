@@ -35,7 +35,7 @@ const ventasController = {
     searchLoteriaSorteosDisponibles: async (req, res) => {
         try {
             let token = req.query.token;
-
+            console.log(token);
             //let response = await Auth.authUser(token);
             let response = await Ventas.autenticarUsuario();
             let lotteryToken = response.token;
