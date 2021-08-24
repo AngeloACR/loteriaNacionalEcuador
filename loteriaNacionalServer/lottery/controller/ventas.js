@@ -36,8 +36,8 @@ const ventasController = {
             let token = req.query.token;
 
             let response = await Auth.authUser(token);
-            console.log(response)
             let finalResponse = await Ventas.consultarSorteosDisponibles(1, response.lotteryToken);
+            console.log(finalResponse)
 
             res.status(200).json(finalResponse);
         } catch (e) {
