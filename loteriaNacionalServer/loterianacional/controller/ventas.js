@@ -67,6 +67,9 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
 
         const usuarioClientePsd = config.usuarioClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+        console.log(usuarioClientePsd);
+        console.log(medioId);
+        console.log(token);
         let message = {
 
             $xml: `
