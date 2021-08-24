@@ -67,7 +67,6 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
 
         const usuarioClientePsd = config.usuarioClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-        console.log(client);
         let message = {
 
             $xml: `
@@ -98,9 +97,9 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
         return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
                 if (err) reject(err);
-                console.log(err);
                 let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
+                console.log(errorCode);
 
                 if (!errorCode) {
                     let aux = data.mt.rs[0].r[0].Row;
