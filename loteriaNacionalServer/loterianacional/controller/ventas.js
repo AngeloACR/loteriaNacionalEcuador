@@ -4,16 +4,17 @@ var soap = require('soap');
 const config = require('../../config/environment');
 
 const medioId = config.medioAplicatioId;
-
 const address = config.aplicativoAddressTest;
-const usuarioClientePsd = config.usuarioClienteTest;
-const claveClientePsd = config.passwordClienteTest;
 /* const address = config.aplicativoAddressProd;
 const usuarioClientePsd = config.usuarioAplicativoProd;
 const claveClientePsd = config.passwordAplicativoProd; */
 
 module.exports.autenticarUsuario = async () => {
     try {
+        const medioId = config.medioAplicatioId;
+        const address = config.aplicativoAddressTest;
+        const usuarioClientePsd = config.usuarioClienteTest;
+        const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
         let message = {
