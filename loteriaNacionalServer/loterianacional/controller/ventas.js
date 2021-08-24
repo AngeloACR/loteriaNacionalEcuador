@@ -65,6 +65,8 @@ module.exports.autenticarUsuario = async () => {
 module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
     try {
 
+        const usuarioClientePsd = config.usuarioClienteTest;
+        const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
         let message = {
@@ -129,6 +131,8 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
 module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, token, combinacion, combinacionFigura) => {
     try {
 
+        const usuarioClientePsd = config.usuarioClienteTest;
+        const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
         let message = {
@@ -198,6 +202,8 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
 module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reservaId) => {
     try {
 
+        const usuarioClientePsd = config.usuarioClienteTest;
+        const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
         let loteriaCombinacionesXML = "";
         let lottoCombinacionesXML = "";
@@ -372,6 +378,8 @@ module.exports.liberarReservas = async (req, res) => {
 module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId) => {
     try {
 
+        const usuarioClientePsd = config.usuarioClienteTest;
+        const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
         let loteriaCombinacionesXML = "";
         let lottoCombinacionesXML = "";
@@ -511,6 +519,8 @@ module.exports.venderBoletos = async (req, res) => {
     try {
 
 
+        const usuarioClientePsd = config.usuarioClienteTest;
+        const claveClientePsd = config.passwordClienteTest;
 
         /*Ensure your message below looks like a valid working SOAP UI request*/
         let message = `<mt>
