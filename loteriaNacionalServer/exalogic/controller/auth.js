@@ -70,7 +70,6 @@ const authController = {
                     "currency": "USD",
                     "balance": "30.00"
                 }
-                console.log(response);
                 resolve(response);
             });
         } catch (e) {

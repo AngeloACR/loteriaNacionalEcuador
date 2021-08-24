@@ -22,10 +22,10 @@ const ventasController = {
             let token = req.query.token;
 
             let response = await Auth.authUser(token);
-            response = await Ventas.consultarSorteosDisponibles(2, response.lotteryToken);
+            let finalResponse = await Ventas.consultarSorteosDisponibles(2, response.lotteryToken);
 
 
-            res.status(200).json(response);
+            res.status(200).json(finalResponse);
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -36,9 +36,10 @@ const ventasController = {
             let token = req.query.token;
 
             let response = await Auth.authUser(token);
-            response = await Ventas.consultarSorteosDisponibles(1, response.lotteryToken);
+            console.log(response)
+            let finalResponse = await Ventas.consultarSorteosDisponibles(1, response.lotteryToken);
 
-            res.status(200).json(response);
+            res.status(200).json(finalResponse);
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -49,9 +50,9 @@ const ventasController = {
             let token = req.query.token;
 
             let response = await Auth.authUser(token);
-            response = await Ventas.consultarSorteosDisponibles(5, response.lotteryToken);
+            let finalResponse = await Ventas.consultarSorteosDisponibles(5, response.lotteryToken);
 
-            res.status(200).json(response);
+            res.status(200).json(finalResponse);
         } catch (e) {
             res.status(400).json(e.toString());
         }
