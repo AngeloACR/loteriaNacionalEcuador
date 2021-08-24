@@ -138,24 +138,61 @@ export class LoteriaComponent implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
-  removeSeleccionado(identificador) {
-    delete this.ticketsSeleccionados[identificador];
-    localStorage.setItem(
-      "seleccionadosLoteria",
-      JSON.stringify(this.ticketsSeleccionados)
-    );
+  async removeSeleccionado(identificador) {
+    try {
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsSeleccionados[identificador].ticket,
+        sorteo: this.sorteoSeleccionado
+      };
+
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        aux,
+        1
+      );
+
+      delete this.ticketsSeleccionados[identificador];
+
+      localStorage.setItem(
+        "seleccionadosLoteria",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
+    }
   }
 
-  pushToSeleccionado(ticket) {
-    this.ticketsSeleccionados[ticket.identificador] = {
-      ticket,
-      sorteo: this.sorteoSeleccionado
-    };
-    console.log(this.ticketsSeleccionados);
-    localStorage.setItem(
-      "seleccionadosLoteria",
-      JSON.stringify(this.ticketsSeleccionados)
-    );
+  async pushToSeleccionado(ticket) {
+    try {
+      this.loadingMessage = "Agregando boleto al carrito";
+      this.isLoading = true;
+
+      let aux = {
+        ticket,
+        sorteo: this.sorteoSeleccionado
+      };
+      this.ticketsSeleccionados[ticket.identificador] = aux;
+
+      let response = await this.lotteryService.reservarBoletos(
+        this.token,
+        aux,
+        1
+      );
+
+      localStorage.setItem(
+        "seleccionadosLoteria",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
+    }
   }
 
   isSelected(idTicket: number, idFraccion: string) {
@@ -180,13 +217,13 @@ export class LoteriaComponent implements OnInit {
   showComponents: boolean = false;
   loadingMessage: string;
   async ngOnInit() {
+    this.loadingMessage = "Cargando los sorteos disponibles";
     this.isLoading = true;
-    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))){
+    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
       this.ticketsSeleccionados = JSON.parse(
         localStorage.getItem("seleccionadosLoteria")
       );
-      }
-      this.loadingMessage = "Cargando los sorteos disponibles";
+    }
     this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
     this.isLoading = false;
     this.showComponents = true;

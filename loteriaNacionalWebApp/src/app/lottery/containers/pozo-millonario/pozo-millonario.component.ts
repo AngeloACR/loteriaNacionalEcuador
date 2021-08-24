@@ -87,18 +87,60 @@ export class PozoMillonarioComponent implements OnInit {
   }
   ticketsSeleccionados: any = {};
 
-  removeSeleccionado(identificador) {
-    delete this.ticketsSeleccionados[identificador];
-    localStorage.setItem('seleccionadosPozo', JSON.stringify(this.ticketsSeleccionados));
+  async removeSeleccionado(identificador) {
+    try {
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsSeleccionados[identificador].ticket,
+        sorteo: this.sorteoSeleccionado
+      };
+
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        aux,
+        1
+      );
+
+      delete this.ticketsSeleccionados[identificador];
+
+      localStorage.setItem(
+        "seleccionadosPozo",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
+    }
   }
 
-  pushToSeleccionado(ticket) {
-    this.ticketsSeleccionados[ticket.identificador] = {
-      ticket,
-      sorteo: this.sorteoSeleccionado
-    };
-    console.log(this.ticketsSeleccionados);
-    localStorage.setItem('seleccionadosPozo', JSON.stringify(this.ticketsSeleccionados));
+  async pushToSeleccionado(ticket) {
+    try {
+      this.loadingMessage = "Agregando boleto al carrito";
+      this.isLoading = true;
+
+      let aux = {
+        ticket,
+        sorteo: this.sorteoSeleccionado
+      };
+      this.ticketsSeleccionados[ticket.identificador] = aux;
+
+      let response = await this.lotteryService.reservarBoletos(
+        this.token,
+        aux,
+        5
+      );
+      localStorage.setItem(
+        "seleccionadosPozo",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
+    }
   }
 
   handlerPage(e: PageEvent) {
@@ -198,12 +240,12 @@ export class PozoMillonarioComponent implements OnInit {
 
   async ngOnInit() {
     this.isLoading = true;
-    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))){
+    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
       this.ticketsSeleccionados = JSON.parse(
         localStorage.getItem("seleccionadosPozo")
       );
-      }
-      this.loadingMessage = "Cargando los sorteos disponibles";
+    }
+    this.loadingMessage = "Cargando los sorteos disponibles";
     this.seleccionAnimales = JSON.parse(
       localStorage.getItem("animalesSeleccionados")
     );

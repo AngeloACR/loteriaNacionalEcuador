@@ -92,18 +92,60 @@ export class LottoComponent implements OnInit {
 
   ticketsSeleccionados: any = {};
 
-  removeSeleccionado(identificador) {
-    delete this.ticketsSeleccionados[identificador];
-    localStorage.setItem('seleccionadosLotto', JSON.stringify(this.ticketsSeleccionados));
+  async removeSeleccionado(identificador) {
+    try {
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsSeleccionados[identificador].ticket,
+        sorteo: this.sorteoSeleccionado
+      };
+
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        aux,
+        1
+      );
+
+      delete this.ticketsSeleccionados[identificador];
+
+      localStorage.setItem(
+        "seleccionadosLotto",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
+    }
   }
 
-  pushToSeleccionado(ticket) {
-    this.ticketsSeleccionados[ticket.identificador] = {
-      ticket,
-      sorteo: this.sorteoSeleccionado
-    };
-    console.log(this.ticketsSeleccionados);
-    localStorage.setItem('seleccionadosLotto', JSON.stringify(this.ticketsSeleccionados));
+  async pushToSeleccionado(ticket) {
+    try {
+      this.loadingMessage = "Agregando boleto al carrito";
+      this.isLoading = true;
+
+      let aux = {
+        ticket,
+        sorteo: this.sorteoSeleccionado
+      };
+      this.ticketsSeleccionados[ticket.identificador] = aux;
+
+      let response = await this.lotteryService.reservarBoletos(
+        this.token,
+        aux,
+        2
+      );
+
+      localStorage.setItem(
+        "seleccionadosLotto",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
+    }
   }
 
   abrirResumen() {
@@ -120,12 +162,12 @@ export class LottoComponent implements OnInit {
   loadingMessage: string;
   async ngOnInit() {
     this.isLoading = true;
-    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))){
+    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
       this.ticketsSeleccionados = JSON.parse(
         localStorage.getItem("seleccionadosLotto")
       );
-      }
-      this.loadingMessage = "Cargando los sorteos disponibles";
+    }
+    this.loadingMessage = "Cargando los sorteos disponibles";
     this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
     this.isLoading = false;
     this.showComponents = true;

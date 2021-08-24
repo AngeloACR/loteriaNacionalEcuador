@@ -507,4 +507,110 @@ export class LotteryService {
 
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
+
+  reservarBoletos(token, boleto, tipoLoteria) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/lottery";
+    endpoint = `${endpoint}/reservarBoletos`;
+    console.log("Reservando boletos de loteria");
+    var address = this.mySource;
+
+    address = address + endpoint;
+
+    let body = {
+      token
+    };
+    let aux;
+    switch (tipoLoteria) {
+      case 1:
+        aux = {
+          combinaciones: boleto.ticket.combinacion,
+          sorteo: boleto.sorteo
+        };
+        body["loteria"] = aux;
+        break;
+      case 2:
+        aux = {
+          combinaciones: boleto.ticket.combinacion1,
+          sorteo: boleto.sorteo
+        };
+        body["lotto"] = aux;
+        break;
+
+      default:
+        aux = {
+          combinaciones: boleto.ticket.combinacion1,
+          sorteo: boleto.sorteo
+        };
+        body["pozo"] = aux;
+        break;
+    }
+    return new Promise<Array<sorteo>>((resolve, reject) => {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          let sorteosJugados: Array<sorteo> = data;
+          console.log(sorteosJugados);
+          sorteosJugados.sort(this.ordenaSorteos);
+          resolve(sorteosJugados);
+        },
+        (error: any) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
+  eliminarBoletosDeReserva(token, boleto, tipoLoteria) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/lottery";
+    endpoint = `${endpoint}/eliminarBoletosDeReserva`;
+    console.log("Reservando boletos de loteria");
+    var address = this.mySource;
+
+    address = address + endpoint;
+
+    let body = {
+      token
+    };
+    let aux;
+    switch (tipoLoteria) {
+      case 1:
+        aux = {
+          combinaciones: boleto.ticket.combinacion,
+          sorteo: boleto.sorteo
+        };
+        body["loteria"] = aux;
+        break;
+      case 2:
+        aux = {
+          combinaciones: boleto.ticket.combinacion1,
+          sorteo: boleto.sorteo
+        };
+        body["lotto"] = aux;
+        break;
+
+      default:
+        aux = {
+          combinaciones: boleto.ticket.combinacion1,
+          sorteo: boleto.sorteo
+        };
+        body["pozo"] = aux;
+        break;
+    }
+    return new Promise<Array<sorteo>>((resolve, reject) => {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          let sorteosJugados: Array<sorteo> = data;
+          console.log(sorteosJugados);
+          sorteosJugados.sort(this.ordenaSorteos);
+          resolve(sorteosJugados);
+        },
+        (error: any) => {
+          reject(error);
+        }
+      );
+    });
+  }
 }

@@ -19,7 +19,7 @@ const ventasController = {
 
     searchLottoSorteosDisponibles: async (req, res) => {
         try {
-            let token = req.params.token;
+            let token = req.query.token;
 
             let response = await Auth.authUser(token);
             response = await Ventas.consultarSorteosDisponibles(2, response.lotteryToken);
@@ -33,7 +33,7 @@ const ventasController = {
 
     searchLoteriaSorteosDisponibles: async (req, res) => {
         try {
-            let token = req.params.token;
+            let token = req.query.token;
 
             let response = await Auth.authUser(token);
             response = await Ventas.consultarSorteosDisponibles(1, response.lotteryToken);
@@ -46,7 +46,7 @@ const ventasController = {
 
     searchPozoSorteosDisponibles: async (req, res) => {
         try {
-            let token = req.params.token;
+            let token = req.query.token;
 
             let response = await Auth.authUser(token);
             response = await Ventas.consultarSorteosDisponibles(5, response.lotteryToken);
@@ -156,6 +156,56 @@ const ventasController = {
             let reserva = "";
             response = {
                 combinaciones,
+                reserva
+            }
+
+            res.status(200).json(response);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+
+    reservarBoletos: async (req, res) => {
+        try {
+            let token = req.body.token;
+
+            let response = await Auth.authUser(token);
+            let loteria = req.body.loteria ? req.body.loteria : [];
+            let lotto = req.body.lotto ? req.body.lotto : [];
+            let pozo = req.body.pozo ? req.body.pozo : [];
+            let reservaId = req.body.reservaId ? req.body.reservaId : 0;
+
+            let reservasAux = await Ventas.reservarCombinaciones(loteria, lotto, pozo, response.lotteryToken, reservaId);
+
+            //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
+            let reserva = "";
+            response = {
+                reservasAux,
+                reserva
+            }
+
+            res.status(200).json(response);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+
+    eliminarBoletosDeReserva: async (req, res) => {
+        try {
+            let token = req.body.token;
+
+            let response = await Auth.authUser(token);
+            let loteria = req.body.loteria ? req.body.loteria : [];
+            let lotto = req.body.lotto ? req.body.lotto : [];
+            let pozo = req.body.pozo ? req.body.pozo : [];
+            let reservaId = req.body.reservaId ? req.body.reservaId : 0;
+
+            let reservasAux = await Ventas.eliminarReservas(loteria, lotto, pozo, response.lotteryToken, reservaId);
+
+            //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
+            let reserva = "";
+            response = {
+                reservasAux,
                 reserva
             }
 
