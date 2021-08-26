@@ -12,7 +12,7 @@ lotteryRouter.get('/loteriaSorteosDisponibles', LotteryController.searchLoteriaS
 
 
 lotteryRouter.post('/reservarBoletos', LotteryController.reservarBoletos);
-lotteryRouter.get('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);
+lotteryRouter.post('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);
 
 
 module.exports = lotteryRouter;

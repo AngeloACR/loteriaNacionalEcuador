@@ -25,7 +25,7 @@ const ventasController = {
             let lotteryToken = response.lotteryToken;
             let finalResponse = await Ventas.consultarSorteosDisponibles(2, lotteryToken);
 
-
+            console.log(finalResponse)
             res.status(200).json(finalResponse);
         } catch (e) {
             res.status(400).json(e.toString());

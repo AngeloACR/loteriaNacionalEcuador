@@ -290,7 +290,7 @@ $color-botton: #2f72b9;
           flex-wrap: wrap;
           justify-content: flex-end;
 
-          input[type="number"] {
+          input[type="text"] {
             width: 12%;
             padding: 8px 6px;
             margin: 0 5px 0 5px;
@@ -306,8 +306,8 @@ $color-botton: #2f72b9;
             }
           }
 
-          input[type="number"]::-webkit-inner-spin-button,
-          input[type="number"]::-webkit-outer-spin-button {
+          input[type="text"]::-webkit-inner-spin-button,
+          input[type="text"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
           }

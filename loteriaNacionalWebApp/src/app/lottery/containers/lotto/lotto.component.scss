@@ -7,11 +7,8 @@ $color-lotto: #b51f20;
 
 $color-botton: #2f72b9;
 
-
 // Estilos del componente seleccion Lotto
 .contenedor {
-
-
   input[type="checkbox"] {
     width: 100%;
     height: 100%;
@@ -21,7 +18,7 @@ $color-botton: #2f72b9;
     opacity: 0;
   }
 
-  input[type="checkbox"]:checked~div {
+  input[type="checkbox"]:checked ~ div {
     background-color: $color-lotto;
     border-radius: 10px;
     color: #fff !important;
@@ -38,7 +35,6 @@ $color-botton: #2f72b9;
       font-family: $fuente-titulo;
       opacity: 0.7;
     }
-
   }
 }
 
@@ -110,7 +106,7 @@ $color-botton: #2f72b9;
       align-items: center;
       flex-wrap: wrap;
 
-      input[type="number"] {
+      input[type="text"] {
         width: 6%;
         padding: 8px 6px;
         margin: 0 5px 0 5px;
@@ -126,8 +122,8 @@ $color-botton: #2f72b9;
         }
       }
 
-      input[type="number"]::-webkit-inner-spin-button,
-      input[type="number"]::-webkit-outer-spin-button {
+      input[type="text"]::-webkit-inner-spin-button,
+      input[type="text"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
@@ -261,12 +257,12 @@ $color-botton: #2f72b9;
         margin: auto;
         justify-content: space-between;
 
-        .desaparecer { 
+        .desaparecer {
           opacity: 0;
           cursor: default;
         }
-  
-        .aparecer { 
+
+        .aparecer {
           display: inline;
         }
 
