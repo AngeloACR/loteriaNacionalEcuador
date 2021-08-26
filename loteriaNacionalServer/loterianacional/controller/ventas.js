@@ -220,18 +220,21 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                 loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
         });
+        console.log(loteriaCombinacionesXML)
         lotto.forEach(item => {
             item.combinaciones.forEach(combinacion => {
                 let cant = 1;
                 lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
         });
+        console.log(lottoCombinacionesXML)
         pozo.forEach(item => {
             item.combinaciones.forEach(combinacion => {
                 let cant = 1;
                 pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
         });
+        console.log(pozoCombinacionesXML)
         let message = {
 
             $xml: `
