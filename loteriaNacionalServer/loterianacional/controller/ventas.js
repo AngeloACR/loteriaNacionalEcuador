@@ -210,7 +210,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
             loteria.forEach(item => {
                 let combinacion = item.combinacion;
                 let fraccionesXML = ""
-                let fracciones = elemento.fracciones.map(seleccion => {
+                let fracciones = item.fracciones.map(seleccion => {
                     return seleccion.fraccion;
                 });
                 fracciones.forEach(fraccion => {
