@@ -201,8 +201,8 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
 
         const usuarioClientePsd = config.usuarioClienteTest;
         const claveClientePsd = config.passwordClienteTest;
-        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
         console.log(usuarioClientePsd);
+        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
         let loteriaCombinacionesXML = "";
         let lottoCombinacionesXML = "";
         let pozoCombinacionesXML = "";
