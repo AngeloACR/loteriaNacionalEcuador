@@ -211,7 +211,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                 let combinacion = item.combinacion;
                 let fraccionesXML = ""
                 fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`
-                let cant = fracciones.length;
+                let cant = 1;
                 loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
 
             });
