@@ -524,25 +524,31 @@ export class LotteryService {
     let aux;
     switch (tipoLoteria) {
       case 1:
-        aux = {
-          combinaciones: boleto.ticket.combinacion,
-          sorteo: boleto.sorteo
-        };
+        aux = [
+          {
+            combinaciones: boleto.ticket.combinacion,
+            sorteo: boleto.sorteo
+          }
+        ];
         body["loteria"] = aux;
         break;
       case 2:
-        aux = {
-          combinaciones: boleto.ticket.combinacion1,
-          sorteo: boleto.sorteo
-        };
+        aux = [
+          {
+            combinaciones: boleto.ticket.combinacion1,
+            sorteo: boleto.sorteo
+          }
+        ];
         body["lotto"] = aux;
         break;
 
       default:
-        aux = {
-          combinaciones: boleto.ticket.combinacion1,
-          sorteo: boleto.sorteo
-        };
+        aux = [
+          {
+            combinaciones: boleto.ticket.combinacion1,
+            sorteo: boleto.sorteo
+          }
+        ];
         body["pozo"] = aux;
         break;
     }
