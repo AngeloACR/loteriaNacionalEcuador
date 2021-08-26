@@ -283,6 +283,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
 
                 let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
+                console.log(errorCode);
 
                 if (!errorCode) {
                     let response = [];
@@ -328,8 +329,6 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                     console.log(response);
                     resolve(response);
                 } else {
-                    let errorCode = data.mt.c[0].msgError[0];
-                    console.log(errorCode)
                     reject(errorCode)
                 }
             });
