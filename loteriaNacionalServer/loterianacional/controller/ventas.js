@@ -205,34 +205,41 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
         let loteriaCombinacionesXML = "";
         let lottoCombinacionesXML = "";
         let pozoCombinacionesXML = "";
-        loteria.forEach(item => {
-            item.combinaciones.forEach(elemento => {
-                let combinacion = elemento.combinacion;
-                let fraccionesXML = ""
-                let fracciones = elemento.fracciones.map(seleccion => {
-                    return seleccion.fraccion;
+        if (loteria.length != 0) {
+
+            loteria.forEach(item => {
+                item.combinaciones.forEach(elemento => {
+                    let combinacion = elemento.combinacion;
+                    let fraccionesXML = ""
+                    let fracciones = elemento.fracciones.map(seleccion => {
+                        return seleccion.fraccion;
+                    });
+                    fracciones.forEach(fraccion => {
+                        fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
+                    });
+                    let cant = fracciones.length;
+                    loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
                 });
-                fracciones.forEach(fraccion => {
-                    fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
+            });
+        }
+        if (lotto.length != 0) {
+            console.log(loteriaCombinacionesXML)
+            lotto.forEach(item => {
+                item.combinaciones.forEach(combinacion => {
+                    let cant = 1;
+                    lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
                 });
-                let cant = fracciones.length;
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
-        });
-        console.log(loteriaCombinacionesXML)
-        lotto.forEach(item => {
-            item.combinaciones.forEach(combinacion => {
-                let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+        }
+        if (pozo.length != 0) {
+            console.log(lottoCombinacionesXML)
+            pozo.forEach(item => {
+                item.combinaciones.forEach(combinacion => {
+                    let cant = 1;
+                    pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                });
             });
-        });
-        console.log(lottoCombinacionesXML)
-        pozo.forEach(item => {
-            item.combinaciones.forEach(combinacion => {
-                let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
-            });
-        });
+        }
         console.log(pozoCombinacionesXML)
         let message = {
 
