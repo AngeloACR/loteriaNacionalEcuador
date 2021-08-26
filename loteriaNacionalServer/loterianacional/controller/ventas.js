@@ -209,7 +209,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
 
             loteria.forEach(item => {
                 item.combinaciones.forEach(elemento => {
-                    let combinacion = elemento.combinacion;
+                    let combinacion = item.combinacion;
                     let fraccionesXML = ""
                     let fracciones = elemento.fracciones.map(seleccion => {
                         return seleccion.fraccion;
@@ -393,30 +393,26 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
         let lottoCombinacionesXML = "";
         let pozoCombinacionesXML = "";
         loteria.forEach(item => {
-            item.combinaciones.forEach(elemento => {
-                let combinacion = elemento.combinacion;
-                let fraccionesXML = ""
-                let fracciones = elemento.fracciones.map(seleccion => {
-                    return seleccion.fraccion;
-                });
-                fracciones.forEach(fraccion => {
-                    fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
-                });
-                let cant = fracciones.length;
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+            let combinacion = item.combinacion;
+            let fraccionesXML = ""
+            let fracciones = elemento.fracciones.map(seleccion => {
+                return seleccion.fraccion;
             });
+            fracciones.forEach(fraccion => {
+                fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
+            });
+            let cant = fracciones.length;
+            loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
         });
         lotto.forEach(item => {
-            item.combinaciones.forEach(combinacion => {
-                let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
-            });
+            let combinacion = item.combinacion;
+            let cant = 1;
+            lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
         });
         pozo.forEach(item => {
-            item.combinaciones.forEach(combinacion => {
-                let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
-            });
+            let combinacion = item.combinacion;
+            let cant = 1;
+            pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
         });
 
         let message = {
