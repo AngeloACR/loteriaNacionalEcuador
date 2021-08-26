@@ -62,24 +62,14 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = true;
       if (this.sorteoSeleccionado.nombre != "default") {
         this.showNumeros = false;
-        let isHigher = false;
         let combinacion = this.combinacionDeLaSuerte.map(element => {
           element = element.toString();
           if (element == null || element == undefined || element == "") {
             return "_";
-          } else if (element.length != 1) {
-            isHigher = true;
           } else {
             return element;
           }
         });
-        if (isHigher) {
-          this.showNumeros = false;
-          alert(
-            "Sólo puede ingresar valores entre 0 y 9 al formulario. Por favor revíselo e intente de nuevo"
-          );
-          return;
-        }
         this.ticketsNacional = await this.lotteryService.obtenerTickets(
           this.token,
           1,

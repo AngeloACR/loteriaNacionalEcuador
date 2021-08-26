@@ -111,7 +111,7 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e.toString());
+      alert(e);
     }
   }
 
@@ -175,11 +175,8 @@ export class PozoMillonarioComponent implements OnInit {
           let numero = number;
           if (numero.length < 2) {
             numero = `0${numero}`;
-          } else if (numero.length > 2) {
-            let length = numero.length;
-            numero = `${numero[length - 2]}${numero[length - 1]}`;
           }
-          console.log(numero);
+
           if (numero == "0" || numero == "00") {
             return "";
           }
@@ -190,8 +187,7 @@ export class PozoMillonarioComponent implements OnInit {
         });
         combinacion.sort(this.ordenaCombinacion);
         combinacionFigura.sort(this.ordenaCombinacion);
-        console.log(combinacion);
-        console.log(combinacionFigura);
+
         if (isHigher) {
           alert(
             "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo."
