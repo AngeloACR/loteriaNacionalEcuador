@@ -168,14 +168,17 @@ const ventasController = {
     reservarBoletos: async (req, res) => {
         try {
             let token = req.body.token;
+            console.log(token);
 
             let response = await Auth.authUser(token);
+            console.log(response);
             let loteria = req.body.loteria ? req.body.loteria : [];
             let lotto = req.body.lotto ? req.body.lotto : [];
             let pozo = req.body.pozo ? req.body.pozo : [];
             let reservaId = req.body.reservaId ? req.body.reservaId : 0;
 
             let reservasAux = await Ventas.reservarCombinaciones(loteria, lotto, pozo, response.lotteryToken, reservaId);
+            console.log(reservasAux);
 
             //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
             let reserva = "";
