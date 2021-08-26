@@ -210,16 +210,17 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
             loteria.forEach(item => {
                 let combinacion = item.combinacion;
                 let fraccionesXML = ""
-                let fracciones = item.fracciones.map(seleccion => {
-                    return seleccion.fraccion;
-                });
-                fracciones.forEach(fraccion => {
-                    fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
-                });
+                fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`
                 let cant = fracciones.length;
                 loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
 
             });
+            loteriaCombinacionesXML = `
+            <JG id="1">
+            ${loteriaCombinacionesXML}
+            </JG>        
+              
+            `
         }
         console.log(loteriaCombinacionesXML)
         if (lotto.length != 0) {
@@ -229,6 +230,12 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                 lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
 
             });
+            lottoCombinacionesXML = `
+            <JG id="2">
+            ${lottoCombinacionesXML}
+            </JG>        
+              
+            `
         }
         console.log(lottoCombinacionesXML)
         if (pozo.length != 0) {
@@ -238,6 +245,12 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                 pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
 
             });
+            pozoCombinacionesXML = `
+            <JG id="5">
+            ${pozoCombinacionesXML}
+            </JG>        
+              
+            `
         }
         console.log(pozoCombinacionesXML)
         let message = {
@@ -265,15 +278,9 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
       <xmlNumeros>
   <RS >
 
-    <JG id="1">
     ${loteriaCombinacionesXML} 
-    </JG>        
-    <JG id="2">
     ${lottoCombinacionesXML} 
-    </JG>        
-    <JG id="5">
     ${pozoCombinacionesXML} 
-    </JG>        
 
   </RS>
       </xmlNumeros>
@@ -397,14 +404,10 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
             loteria.forEach(item => {
                 let combinacion = item.combinacion;
                 let fraccionesXML = ""
-                let fracciones = elemento.fracciones.map(seleccion => {
-                    return seleccion.fraccion;
-                });
 
-                fracciones.forEach(fraccion => {
-                    fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
-                });
-                let cant = fracciones.length;
+                fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`
+
+                let cant = 1;
 
                 loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
