@@ -549,10 +549,9 @@ export class LotteryService {
     return new Promise<Array<sorteo>>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-          let sorteosJugados: Array<sorteo> = data;
-          console.log(sorteosJugados);
-          sorteosJugados.sort(this.ordenaSorteos);
-          resolve(sorteosJugados);
+          let response: any = data;
+          console.log(response);
+          resolve(response);
         },
         (error: any) => {
           reject(error);
@@ -602,10 +601,9 @@ export class LotteryService {
     return new Promise<Array<sorteo>>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-          let sorteosJugados: Array<sorteo> = data;
-          console.log(sorteosJugados);
-          sorteosJugados.sort(this.ordenaSorteos);
-          resolve(sorteosJugados);
+          let response: any = data;
+          console.log(response);
+          resolve(response);
         },
         (error: any) => {
           reject(error);

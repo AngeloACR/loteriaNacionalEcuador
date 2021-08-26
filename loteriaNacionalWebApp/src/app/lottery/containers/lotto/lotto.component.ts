@@ -65,7 +65,7 @@ export class LottoComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e.toString());
+      alert(e);
     }
   }
   sorteoSeleccionado: sorteo;

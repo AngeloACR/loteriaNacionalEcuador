@@ -204,11 +204,12 @@ export class PozoMillonarioComponent implements OnInit {
         }
 
         this.showNumeros = true;
+        this.isLoading = false;
       } else {
         alert("Por favor seleccione un sorteo");
         this.showNumeros = false;
+        this.isLoading = false;
       }
-      this.isLoading = false;
     } catch (e) {
       alert(
         "Parece que ha habido un problema, revise el formulario e intente de nuevo"
