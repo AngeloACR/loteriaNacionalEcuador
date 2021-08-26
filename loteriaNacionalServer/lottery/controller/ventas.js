@@ -193,6 +193,7 @@ const ventasController = {
             console.log(response);
             res.status(200).json(response);
         } catch (e) {
+            console.log(e.toString());
             res.status(400).json(e.toString());
         }
     },
