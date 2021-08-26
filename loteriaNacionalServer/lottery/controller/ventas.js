@@ -176,6 +176,7 @@ const ventasController = {
             let lotto = req.body.lotto ? req.body.lotto : [];
             let pozo = req.body.pozo ? req.body.pozo : [];
             let reservaId = req.body.reservaId ? req.body.reservaId : 0;
+            console.log(reservaId);
 
             let reservasAux = await Ventas.reservarCombinaciones(loteria, lotto, pozo, response.lotteryToken, reservaId);
             console.log(reservasAux);

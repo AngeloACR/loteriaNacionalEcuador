@@ -202,6 +202,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
         const usuarioClientePsd = config.usuarioClienteTest;
         const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+
         let loteriaCombinacionesXML = "";
         let lottoCombinacionesXML = "";
         let pozoCombinacionesXML = "";
@@ -275,7 +276,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
         `
         }
 
-
+        console.log(message);
         return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
                 if (err) reject(err);
@@ -324,9 +325,12 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                         default:
                             break;
                     } */
+                    console.log(response);
                     resolve(response);
                 } else {
-                    reject(data.mt.c[0].msgError[0])
+                    let errorCode = data.mt.c[0].msgError[0];
+                    console.log(errorCode)
+                    reject(errorCode)
                 }
             });
         });
