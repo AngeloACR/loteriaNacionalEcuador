@@ -217,19 +217,19 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                     fraccionesXML = `${fraccionesXML}<F id="${fraccion}" />`
                 });
                 let cant = fracciones.length;
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
         });
         lotto.forEach(item => {
             item.combinaciones.forEach(combinacion => {
                 let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
         });
         pozo.forEach(item => {
             item.combinaciones.forEach(combinacion => {
                 let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
         });
         let message = {
