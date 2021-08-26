@@ -336,7 +336,9 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                     console.log(response);
                     resolve(response);
                 } else {
-                    reject(errorCode)
+                    let errorMsg = data.mt.c[0].msgError[0];
+                    console.log(errorMsg)
+                    reject(errorMsg)
                 }
             });
         });
