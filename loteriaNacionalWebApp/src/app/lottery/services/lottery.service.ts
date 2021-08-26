@@ -546,7 +546,7 @@ export class LotteryService {
         body["pozo"] = aux;
         break;
     }
-    return new Promise<Array<sorteo>>((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
@@ -598,7 +598,7 @@ export class LotteryService {
         body["pozo"] = aux;
         break;
     }
-    return new Promise<Array<sorteo>>((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
