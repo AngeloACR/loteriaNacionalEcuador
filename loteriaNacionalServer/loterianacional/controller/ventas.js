@@ -288,7 +288,6 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                 console.log(errorCode);
 
                 if (!errorCode) {
-                    let response = [];
                     let reservaId = data.mt.o[0].ReturnValue;
                     let response = {
                         reservaId

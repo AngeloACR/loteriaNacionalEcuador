@@ -212,12 +212,12 @@ const ventasController = {
 
             //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
             let reserva = "";
-            response = {
+            let finalResponse = {
                 reservasAux,
                 reserva
             }
 
-            res.status(200).json(response);
+            res.status(200).json(finalResponse);
         } catch (e) {
             res.status(400).json(e.toString());
         }
