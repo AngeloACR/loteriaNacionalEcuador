@@ -408,6 +408,12 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
 
                 loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
+            loteriaCombinacionesXML = `
+            <JG id="1">
+            ${loteriaCombinacionesXML}
+            </JG>        
+              
+            `
         }
         if (lotto.length != 0) {
             lotto.forEach(item => {
@@ -415,6 +421,12 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
                 let cant = 1;
                 lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
+            lottoCombinacionesXML = `
+            <JG id="2">
+            ${lottoCombinacionesXML}
+            </JG>        
+              
+            `
         }
         if (pozo.length != 0) {
             pozo.forEach(item => {
@@ -422,6 +434,12 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
                 let cant = 1;
                 pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
+            pozoCombinacionesXML = `
+            <JG id="5">
+            ${pozoCombinacionesXML}
+            </JG>        
+              
+            `
         }
         let message = {
 
@@ -448,15 +466,9 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
                 <xmlNumeros>
             <RS >
           
-              <JG id="1">
               ${loteriaCombinacionesXML} 
-              </JG>        
-              <JG id="2">
               ${lottoCombinacionesXML} 
-              </JG>        
-              <JG id="5">
-              ${pozoCombinacionesXML} 
-              </JG>        
+              ${pozoCombinacionesXML}
           
             </RS>
                 </xmlNumeros>
