@@ -75,7 +75,7 @@ export class LottoComponent implements OnInit {
   seleccionarTicket(id: string) {
     this.ticketsLotto[id].status = !this.ticketsLotto[id].status;
     if (!this.ticketsLotto[id].status) {
-      this.removeSeleccionado(this.ticketsLotto[id].identificador);
+      this.removeSeleccionado(this.ticketsLotto[id].identificador, "");
     } else {
       this.pushToSeleccionado(this.ticketsLotto[id]);
     }
@@ -83,7 +83,7 @@ export class LottoComponent implements OnInit {
 
   ticketsSeleccionados: any = {};
 
-  async removeSeleccionado(identificador) {
+  async removeSeleccionado(identificador, fraccion) {
     try {
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
@@ -95,6 +95,7 @@ export class LottoComponent implements OnInit {
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         aux,
+        fraccion,
         1
       );
 

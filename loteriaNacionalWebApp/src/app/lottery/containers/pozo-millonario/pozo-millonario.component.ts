@@ -80,14 +80,14 @@ export class PozoMillonarioComponent implements OnInit {
   seleccionarTicket(id: string) {
     this.ticketAnimales[id].status = !this.ticketAnimales[id].status;
     if (!this.ticketAnimales[id].status) {
-      this.removeSeleccionado(this.ticketAnimales[id].identificador);
+      this.removeSeleccionado(this.ticketAnimales[id].identificador, "");
     } else {
       this.pushToSeleccionado(this.ticketAnimales[id]);
     }
   }
   ticketsSeleccionados: any = {};
 
-  async removeSeleccionado(identificador) {
+  async removeSeleccionado(identificador, fraccion) {
     try {
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
@@ -99,6 +99,7 @@ export class PozoMillonarioComponent implements OnInit {
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         aux,
+        fraccion,
         1
       );
 

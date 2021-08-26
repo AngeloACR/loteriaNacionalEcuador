@@ -52,7 +52,7 @@ export class LoteriaComponent implements OnInit {
     if (!this.ticketsNacional[id].status) {
       this.ticketsNacional[id].seleccionados = [];
       this.allFractions[id] = false;
-      this.removeSeleccionado(this.ticketsNacional[id].identificador);
+      this.removeSeleccionado(this.ticketsNacional[id].identificador, "");
     }
   }
 
@@ -103,9 +103,13 @@ export class LoteriaComponent implements OnInit {
       idFraccion
     );
     if (index != -1) {
+      let fraccion = this.ticketsNacional[idTicket].seleccionados[idFraccion];
       this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
       if (this.ticketsNacional[idTicket].seleccionados.length == 0) {
-        this.removeSeleccionado(this.ticketsNacional[idTicket].identificador);
+        this.removeSeleccionado(
+          this.ticketsNacional[idTicket].identificador,
+          fraccion
+        );
       }
     } else {
       this.ticketsNacional[idTicket].seleccionados.push(idFraccion);
@@ -117,18 +121,21 @@ export class LoteriaComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
     this.allFractions[id] = !this.allFractions[id];
     this.ticketsNacional[id].seleccionados = [];
-    if (this.allFractions[id]) {
-      this.ticketsNacional[id].fraccionesDisponibles.forEach(element => {
+    this.ticketsNacional[id].fraccionesDisponibles.forEach(element => {
+      if (this.allFractions[id]) {
         this.ticketsNacional[id].seleccionados.push(element);
-      });
-      this.pushToSeleccionado(this.ticketsNacional[id]);
-    } else {
-      this.removeSeleccionado(this.ticketsNacional[id].identificador);
-    }
+        this.pushToSeleccionado(this.ticketsNacional[id]);
+      } else {
+        this.removeSeleccionado(
+          this.ticketsNacional[id].identificador,
+          element
+        );
+      }
+    });
     this.changeDetectorRef.markForCheck();
   }
 
-  async removeSeleccionado(identificador) {
+  async removeSeleccionado(identificador, fraccion) {
     try {
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
@@ -140,6 +147,7 @@ export class LoteriaComponent implements OnInit {
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         aux,
+        fraccion,
         1
       );
 
