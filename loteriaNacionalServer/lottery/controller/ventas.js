@@ -24,8 +24,6 @@ const ventasController = {
             let response = await Auth.authUser(token);
             let lotteryToken = response.lotteryToken;
             let finalResponse = await Ventas.consultarSorteosDisponibles(2, lotteryToken);
-
-            console.log(finalResponse)
             res.status(200).json(finalResponse);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -35,7 +33,6 @@ const ventasController = {
     searchLoteriaSorteosDisponibles: async (req, res) => {
         try {
             let token = req.query.token;
-            console.log(token);
             //let response = await Auth.authUser(token);
             let response = await Ventas.autenticarUsuario();
             let lotteryToken = response.token;
@@ -71,7 +68,6 @@ const ventasController = {
             let combinacionFigura = req.body.combinacionFigura;
 
             let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(2, sorteo, response.lotteryToken, combinacion, combinacionFigura);
-            console.log(combinacionesAux);
             let combinaciones = combinacionesAux.map(element => {
                 let combinacion = {
                     combinacion1: element.Num,
@@ -187,7 +183,7 @@ const ventasController = {
                 reservasAux,
                 reserva
             }
-
+            console.log(response);
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
