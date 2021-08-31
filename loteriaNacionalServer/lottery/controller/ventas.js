@@ -131,7 +131,7 @@ const ventasController = {
         try {
             /*
             {
-                "token": "661c0ce5ccabbeb1136a"
+                "token": "661c0ce5ccabbeb1136a",
                 "transactionId": "2223846696262170",
                 "amount": "40.00",
                 "reservationDetails": [
@@ -141,7 +141,7 @@ const ventasController = {
                         "drawNumber": 2578,
                         "drawDate": "2021-05-10",
                         "subTotal": 10.0,
-                        "combinationC": "267855",
+                        "combinationC1": "267855",
                         "combinationC2": "256987",
                         "combinationC3": "526987",
                         "combinationC4": "075366"
@@ -154,7 +154,7 @@ const ventasController = {
                 "command": "reserveLottery",
                 "systemCode": "1",
                 "sessionToken": req.body.token,
-                "transactionId": "2223846696262170",
+                "transactionId": req.body.transactionId,
                 "language": "en",
                 "currency": "USD",
                 "operationTimeStamp": operationTimeStamp,
