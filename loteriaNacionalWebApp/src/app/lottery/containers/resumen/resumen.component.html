@@ -1,15 +1,24 @@
 <div class="container">
 
 
-  <app-ticket-scroller [tickets]="ticketsNacional" tipoLoteria="loteria">
+  <app-ticket-scroller isResumen="true" [tickets]="ticketsNacional" tipoLoteria="loteria">
   </app-ticket-scroller>
 
 
-  <app-ticket-scroller [tickets]="ticketsLotto" tipoLoteria="lotto">
+  <app-ticket-scroller isResumen="true" [tickets]="ticketsLotto" tipoLoteria="lotto">
   </app-ticket-scroller>
 
 
-  <app-ticket-scroller [tickets]="ticketsPozo" tipoLoteria="pozo">
+  <app-ticket-scroller isResumen="true" [tickets]="ticketsPozo" tipoLoteria="pozo">
   </app-ticket-scroller>
 
+  <button (click)="comprar()">Finalizar Compra</button>
+
+</div>
+
+<div *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada" class="paymentBox">
+  <app-confirmacion-de-compra class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
+  <app-compra-finalizada class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
+  <app-saldo-insuficiente class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
+  <app-compra-cancelada class="paymentItem" *ngIf="compraCancelada"></app-compra-cancelada>
 </div>

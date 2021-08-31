@@ -1,8 +1,8 @@
 import {
   Component,
-  EventEmitter,
   Input,
   OnInit,
+  EventEmitter,
   Output,
   ChangeDetectorRef
 } from "@angular/core";

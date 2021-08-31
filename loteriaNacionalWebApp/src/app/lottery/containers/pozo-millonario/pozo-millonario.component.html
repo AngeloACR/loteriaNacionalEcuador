@@ -106,7 +106,7 @@
 
 
 
-  <app-ticket-scroller [tickets]="ticketsSeleccionados" tipoLoteria="pozo">
+  <app-ticket-scroller (emitirCompra)="abrirResumen()" [tickets]="ticketsSeleccionados" tipoLoteria="pozo">
   </app-ticket-scroller>
   <!--   <div class="contenedor_ticket">
     <div class="logo_ticket">

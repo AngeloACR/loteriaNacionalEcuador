@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <app-ticket-scroller [tickets]="ticketsSeleccionados" tipoLoteria="loteria">
+  <app-ticket-scroller (emitirCompra)="abrirResumen()" [tickets]="ticketsSeleccionados" tipoLoteria="loteria">
   </app-ticket-scroller>
 </div>
 

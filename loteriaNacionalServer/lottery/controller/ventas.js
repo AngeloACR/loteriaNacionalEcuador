@@ -16,6 +16,157 @@ let sourceBoletos = config.sourceBoletosTest;
 
 const ventasController = {
 
+    authUser: async (req, res) => {
+        try {
+            let token = req.body.token;
+            /* {
+                "token": "JLLKJFD6535SADASD"
+            } */
+            let authData = {
+                "command": "checkToken",
+                "systemCode": "1",
+                "sessionToken": token,
+                "language": "en",
+                "currency": "USD"
+            }
+            let response = await Auth.authUser(authData);
+            let finalResponse = {
+                authData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    getBalance: async (req, res) => {
+        try {
+            let token = req.body.token;
+            /* {
+    "token": "JLLKJFD6535SADASD"
+} */
+
+            let data = {
+                "command": "getBalance",
+                "systemCode": "1",
+                "sessionToken": token,
+                "language": "en",
+                "currency": "USD"
+            }
+            let response = await Wallet.getBalance(data);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    sellLotery: async (req, res) => {
+        try {
+            //let token = req.query.token;
+            /* {
+                "token": "515465356SDAF",
+                "reserveId": 123564987,
+                "Amount": "30.00"
+                "ticketId": "13565132"
+                "transactionId": "2223846696262170"
+            } */
+
+            let data = {
+                "command": "sellLottery ",
+                "systemCode": "1",
+                "sessionToken": req.body.token,
+                "transactionId": req.body.transactionId,
+                "reserveId": req.body.reserveId,
+                "language": "en",
+                "currency": "USD",
+                "operationTimeStamp": Date.now(),
+                "ticketId": req.body.ticketId,
+                "amount": req.body.amount
+            }
+
+            let response = await Wallet.sellLottery(data);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    cancelLottery: async (req, res) => {
+        try {
+            let token = req.body.token;
+
+            /* {
+                "token": "515465356SDAF",
+                "reserveId": 123564987,
+                "amount": "30.00",
+                "transactionId": "2223846696262170"
+            } */
+            let data = {
+                "command": "cancelLottery",
+                "systemCode": "1",
+                "sessionToken": req.body.token,
+                "transactionId": req.body.transactionId,
+                "reserveId": req.body.reserveId,
+                "language": "en",
+                "currency": "USD",
+                "operationTimeStamp": Date.now(),
+                "amount": req.body.amount
+            }
+            let response = await Wallet.cancelLottery(data);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    reserveLottery: async (req, res) => {
+        try {
+            /*
+            {
+                token: "3521653JKSDASD564",
+                "transactionId": "2223846696262170",
+                amount: "40.00",
+                reservationDetails: [
+                    {
+                        "lotteryType": 2,
+                        "lotteryName": "Lotto",
+                        "drawNumber": 2578,
+                        "drawDate": "10/05/2021",
+                        "subTotal": 10.0,
+                        "combinationC": "267855",
+                        "combinationC2": "256987",
+                        "combinationC3": "526987",
+                        "combinationC4": "075366"
+                    }]
+            }
+            
+            */
+            let data = {
+                "command": "reserveLottery ",
+                "systemCode": "1",
+                "sessionToken": req.body.token,
+                "transactionId": "2223846696262170",
+                "language": "en",
+                "currency": "USD",
+                "operationTimeStamp": Date.now(),
+                "amount": req.body.amount,
+                "reservationDetails": req.body.reservationDetails
+            }
+
+            let response = await Wallet.cancelLottery(data);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
 
     searchLottoSorteosDisponibles: async (req, res) => {
         try {

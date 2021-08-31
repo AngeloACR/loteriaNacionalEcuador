@@ -30,7 +30,7 @@
     <hr size="2px" />
   </div>
   <div class="boton_comprar">
-    <button (click)="comprar()"
+    <button (click)="comprar()" *ngIf="!isResumen"
       [ngClass]="{'fondoLoteria': isLoteriaNacional, 'fondoLotto': isLotto, 'fondoPozo': isPozoMillonario}">COMPRAR</button>
   </div>
 </div>

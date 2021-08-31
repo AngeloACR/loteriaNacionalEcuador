@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import {
   ticketsNacional,
   ticketsLotto,
@@ -14,13 +14,18 @@ export class TicketScrollerComponent implements OnInit {
   @Input() logo: String;
   @Input() tickets: any;
   @Input() tipoLoteria: string;
+  @Input() isResumen: boolean = false;
+  @Output() emitirCompra = new EventEmitter();
+
   isLoteriaNacional: boolean = false;
   isLotto: boolean = false;
   isPozoMillonario: boolean = false;
   logoPath: string;
   constructor() {}
 
-  comprar() {}
+  comprar() {
+    this.emitirCompra.emit();
+  }
 
   ngOnInit() {
     console.log(this.tickets);

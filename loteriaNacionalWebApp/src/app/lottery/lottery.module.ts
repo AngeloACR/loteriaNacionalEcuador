@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { SharedModule } from "../shared/shared.module";
+import { PaymentModule } from "../payment/payment.module";
 
 import { PozoMillonarioComponent } from "./containers/pozo-millonario/pozo-millonario.component";
 import { LoteriaComponent } from "./containers/loteria/loteria.component";
@@ -81,6 +82,7 @@ import { CustomMatPaginatorIntl } from "./paginacion-es";
 
     MatPaginatorModule,
     SharedModule,
+    PaymentModule,
     FormsModule
   ],
   providers: [
