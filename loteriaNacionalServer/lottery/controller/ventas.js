@@ -86,7 +86,7 @@ const ventasController = {
                 "ticketId": req.body.ticketId,
                 "amount": req.body.amount
             }
-
+            console.log(data);
             let response = await Wallet.sellLottery(data);
             let finalResponse = {
                 getBalanceData: response
