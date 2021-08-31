@@ -72,6 +72,7 @@ const ventasController = {
                 "ticketId": "13565132"
                 "transactionId": "2223846696262170"
             } */
+            let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
 
             let data = {
                 "command": "sellLottery",
@@ -81,7 +82,7 @@ const ventasController = {
                 "reserveId": req.body.reserveId,
                 "language": "en",
                 "currency": "USD",
-                "operationTimeStamp": Date.now(),
+                "operationTimeStamp": operationTimeStamp,
                 "ticketId": req.body.ticketId,
                 "amount": req.body.amount
             }
@@ -105,6 +106,7 @@ const ventasController = {
                 "amount": "30.00",
                 "transactionId": "2223846696262170"
             } */
+            let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
             let data = {
                 "command": "cancelLottery",
                 "systemCode": "1",
@@ -113,7 +115,7 @@ const ventasController = {
                 "reserveId": req.body.reserveId,
                 "language": "en",
                 "currency": "USD",
-                "operationTimeStamp": Date.now(),
+                "operationTimeStamp": operationTimeStamp,
                 "amount": req.body.amount
             }
             let response = await Wallet.cancelLottery(data);
@@ -147,6 +149,7 @@ const ventasController = {
             }
             
             */
+            let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
             let data = {
                 "command": "reserveLottery",
                 "systemCode": "1",
@@ -154,7 +157,7 @@ const ventasController = {
                 "transactionId": "2223846696262170",
                 "language": "en",
                 "currency": "USD",
-                "operationTimeStamp": Date.now(),
+                "operationTimeStamp": operationTimeStamp,
                 "amount": req.body.amount,
                 "reservationDetails": req.body.reservationDetails
             }
