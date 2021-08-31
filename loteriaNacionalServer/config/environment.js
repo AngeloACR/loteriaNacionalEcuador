@@ -11,9 +11,9 @@ module.exports = {
     contenidosPort: 5950,
     lotteryPort: 5480,
     host: 'localhost',
-    exalogicHostTest: 'https://www.loteria.com.ec',
+    exalogicHostTest: 'www.loteria.com.ec',
     exalogicEndpointTest: '/lotery_api/XReceiver',
-    exalogicHostProd: 'https://www.loteria.com.ec',
+    exalogicHostProd: 'www.loteria.com.ec',
     exalogicEndpointProd: '/lotery_api/XReceiver',
 
     // DATA FOR LOTERIA NACIONAL API
