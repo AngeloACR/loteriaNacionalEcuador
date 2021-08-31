@@ -161,13 +161,13 @@ const walletController = {
                         }
                     })
 
-                    req.on('error', error => {
-                        console.error(error)
-                    })
-
-                    req.write(data)
-                    req.end()
                 });
+                req.on('error', error => {
+                    console.error(error)
+                })
+
+                req.write(data)
+                req.end()
             });
             /*                 let response = await Ventas.autenticarUsuario();
                             let lotteryToken = response.token;

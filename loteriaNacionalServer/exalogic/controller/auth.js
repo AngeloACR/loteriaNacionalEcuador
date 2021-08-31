@@ -42,6 +42,7 @@ const authController = {
                             resolve(body);
                         }
                     })
+                });
 
                     req.on('error', error => {
                         console.error(error)
@@ -66,7 +67,6 @@ const authController = {
                                         "balance": "30.00"
                                     }
                                     resolve(response); */
-                });
             })
         } catch (e) {
             throw e
