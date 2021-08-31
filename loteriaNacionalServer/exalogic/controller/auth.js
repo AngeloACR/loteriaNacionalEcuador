@@ -25,7 +25,7 @@ const authController = {
                         'Content-Length': authData.length
                     }
                 }
-
+                console.log(options)
                 const req = https.request(options, res => {
                     console.log(`statusCode: ${res.statusCode}`)
 
@@ -48,7 +48,7 @@ const authController = {
                         reject(error);
                     })
 
-                    req.write(data)
+                    req.write(authData)
                     req.end()
 
                     /*             let response = await Ventas.autenticarUsuario();

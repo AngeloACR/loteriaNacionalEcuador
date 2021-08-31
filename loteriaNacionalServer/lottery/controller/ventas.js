@@ -29,6 +29,7 @@ const ventasController = {
                 "language": "en",
                 "currency": "USD"
             }
+            console.log(authData)
             let response = await Auth.authUser(authData);
             let finalResponse = {
                 authData: response
