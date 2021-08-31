@@ -61,7 +61,7 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
-    sellLotery: async (req, res) => {
+    sellLottery: async (req, res) => {
         try {
             //let token = req.query.token;
             /* {
