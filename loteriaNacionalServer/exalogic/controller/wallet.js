@@ -40,7 +40,8 @@ const walletController = {
                         if (res.statusCode != 200) {
                             reject("error")
                         } else {
-                            resolve(body);
+                            let response = JSON.parse(body);
+                            resolve(response);
                         }
 
                     });
@@ -97,7 +98,9 @@ const walletController = {
                         if (res.statusCode != 200) {
                             reject("error")
                         } else {
-                            resolve(body);
+                            let response = JSON.parse(body);
+                            resolve(response);
+
                         }
 
                     });
@@ -157,7 +160,9 @@ const walletController = {
                         if (res.statusCode != 200) {
                             reject("error")
                         } else {
-                            resolve(body);
+                            let response = JSON.parse(body);
+                            resolve(response);
+
                         }
                     })
 
@@ -213,7 +218,8 @@ const walletController = {
                         if (res.statusCode != 200) {
                             reject("error")
                         } else {
-                            resolve(body);
+                            let response = JSON.parse(body);
+                            resolve(response);
                         }
 
                     });

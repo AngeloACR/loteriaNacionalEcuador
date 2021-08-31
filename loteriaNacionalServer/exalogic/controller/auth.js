@@ -39,34 +39,35 @@ const authController = {
                         if (res.statusCode != 200) {
                             reject("error")
                         } else {
-                            resolve(body);
+                            let response = JSON.parse(body);
+                            resolve(response);
                         }
                     })
                 });
 
-                    req.on('error', error => {
-                        console.error(error)
-                        reject(error);
-                    })
+                req.on('error', error => {
+                    console.error(error)
+                    reject(error);
+                })
 
-                    req.write(authData)
-                    req.end()
+                req.write(authData)
+                req.end()
 
-                    /*             let response = await Ventas.autenticarUsuario();
-                                    let lotteryToken = response.token;
-                                    response = {
-                                        "resultCode": "0",
-                                        "resultDescription": "Successful transaction",
-                                        "transactionId": "2223846696262170",
-                                        lotteryToken,
-                                        "user": "PaolinoPaperino",
-                                        "accountId": "789885645",
-                                        "personalId": 145345,
-                                        "playerDocument": "6759088653452",
-                                        "currency": "USD",
-                                        "balance": "30.00"
-                                    }
-                                    resolve(response); */
+                /*             let response = await Ventas.autenticarUsuario();
+                                let lotteryToken = response.token;
+                                response = {
+                                    "resultCode": "0",
+                                    "resultDescription": "Successful transaction",
+                                    "transactionId": "2223846696262170",
+                                    lotteryToken,
+                                    "user": "PaolinoPaperino",
+                                    "accountId": "789885645",
+                                    "personalId": 145345,
+                                    "playerDocument": "6759088653452",
+                                    "currency": "USD",
+                                    "balance": "30.00"
+                                }
+                                resolve(response); */
             })
         } catch (e) {
             throw e
