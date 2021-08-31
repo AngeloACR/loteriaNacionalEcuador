@@ -20,7 +20,7 @@ const ventasController = {
         try {
             let token = req.body.token;
             /* {
-                "token": "JLLKJFD6535SADASD"
+                "token": "661c0ce5ccabbeb1136a"
             } */
             let authData = {
                 "command": "checkToken",
@@ -43,7 +43,7 @@ const ventasController = {
         try {
             let token = req.body.token;
             /* {
-    "token": "JLLKJFD6535SADASD"
+    "token": "661c0ce5ccabbeb1136a"
 } */
 
             let data = {
@@ -66,7 +66,7 @@ const ventasController = {
         try {
             //let token = req.query.token;
             /* {
-                "token": "515465356SDAF",
+                "token": "661c0ce5ccabbeb1136a"
                 "reserveId": 123564987,
                 "Amount": "30.00"
                 "ticketId": "13565132"
@@ -100,7 +100,7 @@ const ventasController = {
             let token = req.body.token;
 
             /* {
-                "token": "515465356SDAF",
+                "token": "661c0ce5ccabbeb1136a"
                 "reserveId": 123564987,
                 "amount": "30.00",
                 "transactionId": "2223846696262170"
@@ -129,10 +129,10 @@ const ventasController = {
         try {
             /*
             {
-                token: "3521653JKSDASD564",
+                "token": "661c0ce5ccabbeb1136a"
                 "transactionId": "2223846696262170",
-                amount: "40.00",
-                reservationDetails: [
+                "amount": "40.00",
+                "reservationDetails": [
                     {
                         "lotteryType": 2,
                         "lotteryName": "Lotto",

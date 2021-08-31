@@ -39,7 +39,7 @@ const authController = {
                         if (res.statusCode != 200) {
                             reject("error")
                         } else {
-                            let response = JSON.parse(body);
+                            let response = body == '' ? '' : JSON.parse(body);
                             resolve(response);
                         }
                     })
