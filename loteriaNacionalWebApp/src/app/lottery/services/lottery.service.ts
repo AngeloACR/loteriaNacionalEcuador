@@ -214,94 +214,94 @@ export class LotteryService {
     let mascotaPath;
     switch (mascota) {
       case "01":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Camaron.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Camaron.png";
         break;
       case "02":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Delfin.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Delfin.png";
         break;
       case "03":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Perro.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Perro.png";
         break;
       case "04":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Llama.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Llama.png";
         break;
       case "05":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Papagayo.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Papagayo.png";
         break;
       case "06":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Conejo.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Conejo.png";
         break;
       case "07":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Mono.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Mono.png";
         break;
       case "08":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Galapago.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Galapago.png";
         break;
       case "09":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tucan.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tucan.png";
         break;
       case "10":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Ballena.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Ballena.png";
         break;
       case "11":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Oso.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Oso.png";
         break;
       case "12":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Foca.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Foca.png";
         break;
       case "13":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Cangrejo.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Cangrejo.png";
         break;
       case "14":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Condor.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Condor.png";
         break;
       case "15":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Iguana.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Iguana.png";
         break;
       case "16":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Caballo.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Caballo.png";
         break;
       case "17":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Rana.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Rana.png";
         break;
       case "18":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tiburon.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tiburon.png";
         break;
       case "19":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Caracol.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Caracol.png";
         break;
       case "20":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Oveja.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Oveja.png";
         break;
       case "21":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Gallo.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Gallo.png";
         break;
       case "22":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Abeja.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Abeja.png";
         break;
       case "23":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Mariposa.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Mariposa.png";
         break;
       case "24":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Pez.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Pez.png";
         break;
       case "25":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Pinguino.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Pinguino.png";
         break;
       case "26":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Cocodrilo.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Cocodrilo.png";
         break;
       case "27":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Vaca.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Vaca.png";
         break;
       case "28":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Chanchito.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Chanchito.png";
         break;
       case "29":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tigre.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Tigre.png";
         break;
       case "30":
-        mascotaPath = "assets/mascotas/mascotas pozo millonario-Gato.JPG";
+        mascotaPath = "assets/mascotas/mascotas pozo millonario-Gato.png";
         break;
 
       default:
@@ -313,181 +313,181 @@ export class LotteryService {
   obtenerAnimalesSelecionados() {
     this.animales = [
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Camaron.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Camaron.png",
         identificador: "01",
         nombre: "Camarón",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Cangrejo.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Cangrejo.png",
         identificador: "13",
         nombre: "Cangrejo",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Ballena.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Ballena.png",
         identificador: "10",
         nombre: "Ballena",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Condor.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Condor.png",
         identificador: "14",
         nombre: "Cóndor",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Conejo.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Conejo.png",
         identificador: "06",
         nombre: "Conejo",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Delfin.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Delfin.png",
         identificador: "02",
         nombre: "Delfín",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Foca.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Foca.png",
         identificador: "12",
         nombre: "Foca",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Galapago.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Galapago.png",
         identificador: "08",
         nombre: "Galápago",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Iguana.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Iguana.png",
         identificador: "15",
         nombre: "Iguana",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Llama.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Llama.png",
         identificador: "04",
         nombre: "Llama",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Mono.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Mono.png",
         identificador: "07",
         nombre: "Mono",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Oso.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Oso.png",
         identificador: "11",
         nombre: "Oso",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Papagayo.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Papagayo.png",
         identificador: "05",
         nombre: "Papagayo",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Perro.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Perro.png",
         identificador: "03",
         nombre: "Perro",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Tucan.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Tucan.png",
         identificador: "09",
         nombre: "Tucán",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Caballo.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Caballo.png",
         identificador: "16",
         nombre: "Caballo",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Rana.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Rana.png",
         identificador: "17",
         nombre: "Rana",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Tiburon.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Tiburon.png",
         identificador: "18",
         nombre: "Tiburón",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Caracol.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Caracol.png",
         identificador: "19",
         nombre: "Caracol",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Oveja.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Oveja.png",
         identificador: "20",
         nombre: "Oveja",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Gallo.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Gallo.png",
         identificador: "21",
         nombre: "Gallo",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Abeja.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Abeja.png",
         identificador: "22",
         nombre: "Abeja",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Mariposa.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Mariposa.png",
         identificador: "23",
         nombre: "Mariposa",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Pez.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Pez.png",
         identificador: "24",
         nombre: "Pez",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Pinguino.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Pinguino.png",
         identificador: "25",
         nombre: "Pingüino",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Cocodrilo.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Cocodrilo.png",
         identificador: "26",
         nombre: "Cocodrilo",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Vaca.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Vaca.png",
         identificador: "27",
         nombre: "Vaca",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Chanchito.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Chanchito.png",
         identificador: "28",
         nombre: "Chanchito",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Tigre.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Tigre.png",
         identificador: "29",
         nombre: "Tigre",
         status: false
       },
       {
-        ruta: "assets/mascotas/mascotas pozo millonario-Gato.JPG",
+        ruta: "assets/mascotas/mascotas pozo millonario-Gato.png",
         identificador: "30",
         nombre: "Gato",
         status: false
