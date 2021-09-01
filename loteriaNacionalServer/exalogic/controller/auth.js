@@ -34,7 +34,7 @@ const authController = {
                         body = body + chunk;
                     });
 
-                    res.on('end', function () {
+                    res.on('end', async function () {
                         console.log("Body :" + body);
                         if (res.statusCode != 200) {
                             reject("error")
