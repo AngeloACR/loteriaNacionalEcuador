@@ -10,8 +10,8 @@ const Wallet = require('../../exalogic/controller/wallet');
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletos = config.sourceBoletosLocal;
-//let sourceBoletos = config.sourceBoletosTest;
-let sourceBoletos = config.sourceBoletosProd;
+let sourceBoletos = config.sourceBoletosTest;
+//let sourceBoletos = config.sourceBoletosProd;
 
 
 const ventasController = {

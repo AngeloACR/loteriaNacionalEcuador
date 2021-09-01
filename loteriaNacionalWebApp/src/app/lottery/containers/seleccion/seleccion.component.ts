@@ -13,7 +13,7 @@ export class SeleccionComponent implements OnInit {
   token: string;
   usuario: string;
   constructor(private actRoute: ActivatedRoute) {
-    this.actRoute.params.subscribe(params => {
+    this.actRoute.queryParams.subscribe(params => {
       this.token = params["token"];
       console.log(this.token);
     });
