@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { InquiryService } from "./inquiry/services/inquiry.service";
+import {
+  Router,
+  Event,
+  NavigationStart,
+  NavigationEnd,
+  NavigationError
+} from "@angular/router";
 
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,7 +17,22 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 export class AppComponent implements OnInit {
   title = "loteriaNacionalWeb";
   faCoffee = faCoffee;
-  constructor(private inquiry: InquiryService) {}
-  async ngOnInit() {
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        let data = decodeURIComponent(event.url);
+        if (data.includes("compra_tus_juegos?token")) {
+          let url = data.split("?token=")[0];
+          let token = data.split("?token=")[1];
+          this.router.navigateByUrl(`${url}/${token}`);
+        }
+      }
+      if (event instanceof NavigationEnd) {
+      }
+      if (event instanceof NavigationError) {
+        console.log(event.error);
+      }
+    });
   }
+  async ngOnInit() {}
 }

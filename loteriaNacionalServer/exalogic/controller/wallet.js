@@ -54,15 +54,6 @@ const walletController = {
                 req.write(data)
                 req.end()
 
-                /*                 let response = await Ventas.autenticarUsuario();
-                                let lotteryToken = response.token;
-                                response = {
-                                    "resultCode": "0",
-                                    "resultDescription": "Successful transaction",
-                                    "transactionId": "2223846696262170",
-                                }
-                                resolve(response);
-                 */
             });
 
         } catch (e) {
@@ -113,14 +104,6 @@ const walletController = {
                 req.write(data)
                 req.end()
 
-                /*             let response = await Ventas.autenticarUsuario();
-                               let lotteryToken = response.token;
-                               response = {
-                                   "resultCode": "0",
-                                   "resultDescription": "Successful transaction",
-                                   "transactionId": "2223846696262170",
-                               }
-                               resolve(response); */
 
             });
 
@@ -174,15 +157,7 @@ const walletController = {
                 req.write(data)
                 req.end()
             });
-            /*                 let response = await Ventas.autenticarUsuario();
-                            let lotteryToken = response.token;
-                            response = {
-                                "resultCode": "0",
-                                "resultDescription": "Successful transaction",
-                                "transactionId": "2223846696262170",
-                            }
-                            resolve(response);
-             */
+
 
         } catch (e) {
             throw e

@@ -40,6 +40,11 @@ const authController = {
                             reject("error")
                         } else {
                             let response = body == '' ? '' : JSON.parse(body);
+                            if (response['lotteryToken'] && response['lotteryToken'] == '') {
+
+                                let token = (await Ventas.autenticarUsuario()).token
+                                response['lotteryToken'] = token
+                            }
                             resolve(response);
                         }
                     })
@@ -52,22 +57,6 @@ const authController = {
 
                 req.write(authData)
                 req.end()
-
-                /*             let response = await Ventas.autenticarUsuario();
-                                let lotteryToken = response.token;
-                                response = {
-                                    "resultCode": "0",
-                                    "resultDescription": "Successful transaction",
-                                    "transactionId": "2223846696262170",
-                                    lotteryToken,
-                                    "user": "PaolinoPaperino",
-                                    "accountId": "789885645",
-                                    "personalId": 145345,
-                                    "playerDocument": "6759088653452",
-                                    "currency": "USD",
-                                    "balance": "30.00"
-                                }
-                                resolve(response); */
             })
         } catch (e) {
             throw e

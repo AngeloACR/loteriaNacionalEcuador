@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
-
+import { LotteryService } from "../../services/lottery.service";
 @Component({
   selector: "app-seleccion",
   templateUrl: "./seleccion.component.html",
@@ -12,16 +12,21 @@ export class SeleccionComponent implements OnInit {
   linkPozoMillonario: string;
   token: string;
   usuario: string;
-  constructor(private actRoute: ActivatedRoute) {
-    this.actRoute.queryParams.subscribe(params => {
+  constructor(
+    private actRoute: ActivatedRoute,
+    private lottery: LotteryService
+  ) {
+    this.actRoute.params.subscribe(params => {
       this.token = params["token"];
       console.log(this.token);
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
     this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
     this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;
+    let data = await this.lottery.authUser(this.token);
+    console.log(data);
   }
 }

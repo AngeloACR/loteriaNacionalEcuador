@@ -210,6 +210,31 @@ export class LotteryService {
     }
   }
 
+  authUser(token): Promise<any> {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+    let endpoint = "/lottery";
+    let body = {
+      token
+    };
+    endpoint = `${endpoint}/auth`;
+    var address = this.mySource;
+
+    address = address + endpoint;
+    return new Promise<Array<any>>((resolve, reject) => {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          console.log(data);
+          localStorage.setItem("userData", data);
+          resolve(data);
+        },
+        (error: any) => {
+          reject(error);
+        }
+      );
+    });
+  }
   obtenerMascota(mascota) {
     let mascotaPath;
     switch (mascota) {

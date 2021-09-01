@@ -16,7 +16,7 @@ let sourceBoletos = config.sourceBoletosTest;
 
 const ventasController = {
 
-    authUser: async (req, res) => {
+    authUserHttp: async (req, res) => {
         try {
             let token = req.body.token;
             /* {
@@ -39,7 +39,7 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
-    getBalance: async (req, res) => {
+    getBalanceHttp: async (req, res) => {
         try {
             let token = req.body.token;
             /* {
@@ -62,7 +62,7 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
-    sellLottery: async (req, res) => {
+    sellLotteryHttp: async (req, res) => {
         try {
             //let token = req.query.token;
             /* {
@@ -96,7 +96,7 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
-    cancelLottery: async (req, res) => {
+    cancelLotteryHttp: async (req, res) => {
         try {
             let token = req.body.token;
 
@@ -127,7 +127,7 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
-    reserveLottery: async (req, res) => {
+    reserveLotteryHttp: async (req, res) => {
         try {
             /*
             {
@@ -171,12 +171,165 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
+    authUser: async (data) => {
+        try {
+            let token = data.token;
+            /* {
+                "token": "661c0ce5ccabbeb1136a"
+            } */
+            let authData = {
+                "command": "checkToken",
+                "systemCode": "1",
+                "sessionToken": token,
+                "language": "en",
+                "currency": "USD"
+            }
+            console.log(authData)
+            let response = await Auth.authUser(authData);
+            let finalResponse = {
+                authData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    getBalance: async (data) => {
+        try {
+            let token = data.token;
+            /* {
+    "token": "661c0ce5ccabbeb1136a"
+} */
 
+            let exaData = {
+                "command": "getBalance",
+                "systemCode": "1",
+                "sessionToken": token,
+                "language": "en",
+                "currency": "USD"
+            }
+            let response = await Wallet.getBalance(exaData);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    sellLottery: async (data) => {
+        try {
+            /* {
+                "token": "661c0ce5ccabbeb1136a"
+                "reserveId": 123564987,
+                "amount": "30.00"
+                "ticketId": "13565132"
+                "transactionId": "2223846696262170"
+            } */
+            let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
+
+            let exaData = {
+                "command": "sellLottery",
+                "systemCode": "1",
+                "sessionToken": data.token,
+                "transactionId": data.transactionId,
+                "reserveId": data.reserveId,
+                "language": "en",
+                "currency": "USD",
+                "operationTimeStamp": operationTimeStamp,
+                "ticketId": data.ticketId,
+                "amount": data.amount
+            }
+            let response = await Wallet.sellLottery(exaData);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    cancelLottery: async (data) => {
+        try {
+
+            /* {
+                "token": "661c0ce5ccabbeb1136a"
+                "reserveId": 123564987,
+                "amount": "30.00",
+                "transactionId": "2223846696262170"
+            } */
+            let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
+            let exaData = {
+                "command": "cancelLottery",
+                "systemCode": "1",
+                "sessionToken": data.token,
+                "transactionId": data.transactionId,
+                "reserveId": data.reserveId,
+                "language": "en",
+                "currency": "USD",
+                "operationTimeStamp": operationTimeStamp,
+                "amount": data.amount
+            }
+            let response = await Wallet.cancelLottery(exaData);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    reserveLottery: async (data) => {
+        try {
+            /*
+            {
+                "token": "661c0ce5ccabbeb1136a",
+                "transactionId": "2223846696262170",
+                "amount": "40.00",
+                "reservationDetails": [
+                    {
+                        "lotteryType": 2,
+                        "lotteryName": "Lotto",
+                        "drawNumber": 2578,
+                        "drawDate": "2021-05-10",
+                        "subTotal": 10.0,
+                        "combinationC1": "267855",
+                        "combinationC2": "256987",
+                        "combinationC3": "526987",
+                        "combinationC4": "075366"
+                    }]
+            }
+            
+            */
+            let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
+            let exaData = {
+                "command": "reserveLottery",
+                "systemCode": "1",
+                "sessionToken": data.token,
+                "transactionId": data.transactionId,
+                "language": "en",
+                "currency": "USD",
+                "operationTimeStamp": operationTimeStamp,
+                "amount": data.amount,
+                "reservationDetails": data.reservationDetails
+            }
+
+            let response = await Wallet.cancelLottery(exaData);
+            let finalResponse = {
+                getBalanceData: response
+            }
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
     searchLottoSorteosDisponibles: async (req, res) => {
         try {
             let token = req.query.token;
-
-            let response = await Auth.authUser(token);
+            let authData = {
+                token
+            }
+            let response = await ventasController.authUser(authData);
             let lotteryToken = response.lotteryToken;
             let finalResponse = await Ventas.consultarSorteosDisponibles(2, lotteryToken);
             res.status(200).json(finalResponse);
@@ -188,8 +341,11 @@ const ventasController = {
     searchLoteriaSorteosDisponibles: async (req, res) => {
         try {
             let token = req.query.token;
-            //let response = await Auth.authUser(token);
-            let response = await Ventas.autenticarUsuario();
+            let authData = {
+                token
+            }
+            let response = await ventasController.authUser(authData);
+            //let response = await Ventas.autenticarUsuario();
             let lotteryToken = response.token;
             let finalResponse = await Ventas.consultarSorteosDisponibles(1, lotteryToken);
 
@@ -202,8 +358,10 @@ const ventasController = {
     searchPozoSorteosDisponibles: async (req, res) => {
         try {
             let token = req.query.token;
-
-            let response = await Auth.authUser(token);
+            let authData = {
+                token
+            }
+            let response = await ventasController.authUser(authData);
             let lotteryToken = response.lotteryToken;
             let finalResponse = await Ventas.consultarSorteosDisponibles(5, lotteryToken);
 
@@ -216,8 +374,10 @@ const ventasController = {
     searchLottoCombinacionesDisponibles: async (req, res) => {
         try {
             let token = req.body.token;
-
-            let response = await Auth.authUser(token);
+            let authData = {
+                token
+            }
+            let response = await ventasController.authUser(authData);
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let combinacionFigura = req.body.combinacionFigura;
@@ -235,11 +395,8 @@ const ventasController = {
                 }
                 return combinacion
             });
-            //let reserva = await Ventas.reservarCombinaciones(2, sorteo, combinaciones, token);
-            let reserva = "";
             response = {
-                combinaciones,
-                reserva
+                combinaciones
             }
 
             res.status(200).json(response);
@@ -251,8 +408,10 @@ const ventasController = {
     searchLoteriaCombinacionesDisponibles: async (req, res) => {
         try {
             let token = req.body.token;
-
-            let response = await Auth.authUser(token);
+            let authData = {
+                token
+            }
+            let response = await ventasController.authUser(authData);
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let combinacionFigura = req.body.combinacionFigura;
@@ -272,11 +431,8 @@ const ventasController = {
                 return combinacion
             });
 
-            //let reserva = await Ventas.reservarCombinaciones(1, sorteo, combinaciones, token);
-            let reserva = "";
             response = {
-                combinaciones,
-                reserva
+                combinaciones
             }
             res.status(200).json(response);
         } catch (e) {
@@ -287,8 +443,10 @@ const ventasController = {
     searchPozoCombinacionesDisponibles: async (req, res) => {
         try {
             let token = req.body.token;
-
-            let response = await Auth.authUser(token);
+            let authData = {
+                token
+            }
+            let response = await ventasController.authUser(authData);
             let sorteo = req.body.sorteo;
             let combinacion = req.body.combinacion;
             let combinacionFigura = req.body.combinacionFigura;
@@ -307,11 +465,8 @@ const ventasController = {
                 }
                 return combinacion
             });
-            //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
-            let reserva = "";
             response = {
-                combinaciones,
-                reserva
+                combinaciones
             }
 
             res.status(200).json(response);
