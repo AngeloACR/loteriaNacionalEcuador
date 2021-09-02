@@ -18,7 +18,6 @@ $color-botton: #2f72b9;
     max-width: 400px;
   }
   .boton_boleto {
-    width: 100%;
     margin: auto;
     display: flex;
     justify-content: flex-start;
@@ -90,4 +89,5 @@ $color-botton: #2f72b9;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
+  overflow-y: scroll;
 }

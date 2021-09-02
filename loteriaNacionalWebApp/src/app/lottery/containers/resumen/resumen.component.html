@@ -11,8 +11,14 @@
 
   <app-ticket-scroller class="ticketScroll" isResumen="true" [tickets]="ticketsPozo" tipoLoteria="pozo">
   </app-ticket-scroller>
+  <div class="boton_boleto">
 
-  <button class="boton_boleto" (click)="comprar()">Finalizar Compra</button>
+    <button (click)="comprar()">FINALIZAR COMPRA</button>
+  </div>
+  <div class="boton_boleto">
+
+    <button (click)="seguirComprando()">SEGUIR COMPRANDO</button>
+  </div>
 
 </div>
 <div class="blackBox" *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada"></div>

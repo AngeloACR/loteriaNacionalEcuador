@@ -50,6 +50,7 @@ export class ResumenComponent implements OnInit {
   cancelMessage: string = "";
   volver() {
     this.lotteryService.borrarCarrito();
+    this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
@@ -58,7 +59,12 @@ export class ResumenComponent implements OnInit {
     this.confirmacionDeCompra = true;
   }
 
-  finalizarCompra() {
+  seguirComprando() {
+    this.dismissCompras();
+    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
+  }
+
+  confirmarCompra() {
     this.dismissCompras();
     this.compraFinalizada = true;
   }

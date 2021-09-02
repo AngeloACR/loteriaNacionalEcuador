@@ -32,7 +32,7 @@ export class TicketScrollerComponent implements OnInit {
     switch (this.tipoLoteria) {
       case "loteria":
         this.isLoteriaNacional = true;
-        this.logoPath = "assets/Lotto middle.png";
+        this.logoPath = "assets/img/loteria-amarillo.png";
         break;
       case "lotto":
         this.isLotto = true;

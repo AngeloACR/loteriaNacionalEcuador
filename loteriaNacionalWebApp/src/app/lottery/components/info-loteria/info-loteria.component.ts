@@ -74,7 +74,6 @@ export class InfoLoteriaComponent implements OnInit {
     this.getClassColor(this.color);
     this.setSorteoDefault(); /* 
     this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);*/
-    console.log(this.sorteos);
   }
   sorteoDefault: sorteo;
   setSorteoDefault() {
@@ -87,7 +86,8 @@ export class InfoLoteriaComponent implements OnInit {
       cantidadDeFracciones: 0,
       sorteo: ""
     };
-    this.seleccionado = this.sorteoDefault;
+    //this.seleccionado = this.sorteoDefault;
+    this.seleccionado = this.sorteo[0];
     this.changeDetectorRef.markForCheck();
     this.onEmitir();
   }

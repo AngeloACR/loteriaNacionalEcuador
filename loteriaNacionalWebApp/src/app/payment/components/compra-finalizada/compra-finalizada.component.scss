@@ -45,11 +45,9 @@ $color-loteria: #7c91a8;
   }
 
   .containerInfoBox {
-
     .titleLoteryBox {
       display: flex;
       background-color: #f2f2f2;
-      
 
       h3 {
         margin-left: 20px;
@@ -58,7 +56,7 @@ $color-loteria: #7c91a8;
         font-size: 16px;
       }
     }
-    
+
     .fondoBox {
       justify-content: space-between;
       background-color: $color-loteria;
@@ -80,7 +78,6 @@ $color-loteria: #7c91a8;
     }
 
     .dateLoteryBox {
-      
       display: grid;
       grid-template-columns: 30% 1fr;
       column-gap: 3rem;
@@ -140,17 +137,25 @@ $color-loteria: #7c91a8;
     margin-bottom: 20px;
 
     padding: 16px;
-
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
 
     border: 1px solid #c3c3c3;
 
+    &:hover {
+      background-color: green;
+    }
+
     p {
       font-family: $fuente-botones;
       font-size: 23px;
       color: green;
+    }
+
+    &:hover p {
+      color: white;
     }
   }
 }
