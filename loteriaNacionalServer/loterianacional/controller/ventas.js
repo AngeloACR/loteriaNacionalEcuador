@@ -101,6 +101,7 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
 
                 if (!errorCode) {
+                    console.log(data);
                     let aux = data.mt.rs[0].r[0].Row;
                     let response = aux.map(sorteo => {
                         let sorteoAux = {
