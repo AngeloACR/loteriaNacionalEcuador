@@ -40,11 +40,8 @@ const authController = {
                             reject("error")
                         } else {
                             let response = body == '' ? '' : JSON.parse(body);
-                            if (response['lotteryToken'] && response['lotteryToken'] == '') {
-
                                 let token = (await Ventas.autenticarUsuario()).token
                                 response['lotteryToken'] = token
-                            }
                             resolve(response);
                         }
                     })

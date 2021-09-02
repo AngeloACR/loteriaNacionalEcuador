@@ -1,24 +1,25 @@
 <div class="container">
 
 
-  <app-ticket-scroller isResumen="true" [tickets]="ticketsNacional" tipoLoteria="loteria">
+  <app-ticket-scroller class="ticketScroll" isResumen="true" [tickets]="ticketsNacional" tipoLoteria="loteria">
   </app-ticket-scroller>
 
 
-  <app-ticket-scroller isResumen="true" [tickets]="ticketsLotto" tipoLoteria="lotto">
+  <app-ticket-scroller class="ticketScroll" isResumen="true" [tickets]="ticketsLotto" tipoLoteria="lotto">
   </app-ticket-scroller>
 
 
-  <app-ticket-scroller isResumen="true" [tickets]="ticketsPozo" tipoLoteria="pozo">
+  <app-ticket-scroller class="ticketScroll" isResumen="true" [tickets]="ticketsPozo" tipoLoteria="pozo">
   </app-ticket-scroller>
 
-  <button (click)="comprar()">Finalizar Compra</button>
+  <button class="boton_boleto" (click)="comprar()">Finalizar Compra</button>
 
 </div>
-
+<div class="blackBox" *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada"></div>
 <div *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada" class="paymentBox">
-  <app-confirmacion-de-compra class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
-  <app-compra-finalizada class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
+  <app-confirmacion-de-compra (finalizarCompra)="finalizarCompra()" (cancelarCompra)="cancelarCompra($event)"
+    class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
+  <app-compra-finalizada (volver)="volver()" class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
   <app-saldo-insuficiente class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
-  <app-compra-cancelada class="paymentItem" *ngIf="compraCancelada"></app-compra-cancelada>
+  <app-compra-cancelada class="paymentItem" [message]="cancelMessage" *ngIf="compraCancelada"></app-compra-cancelada>
 </div>

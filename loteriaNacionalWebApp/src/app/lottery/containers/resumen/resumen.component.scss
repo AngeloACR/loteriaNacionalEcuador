@@ -10,8 +10,40 @@ $color-botton: #2f72b9;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   /* grid-template-columns: repeat(3, auto); */
+  .ticketScroll {
+    width: 30%;
+    min-width: 300px;
+    max-width: 400px;
+  }
+  .boton_boleto {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 25px;
+    margin-bottom: 20px;
 
+    button {
+      width: 220px;
+      background-color: #fff;
+      padding: 20px 17px;
+      border-radius: 30px;
+      border: 1px solid $color-botton;
+      color: $color-botton;
+      font-family: $fuente-titulo;
+      font-size: 13px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-botton;
+        border: 1px solid transparent;
+        color: #fff;
+        transition: background-color 0.4s ease;
+      }
+    }
+  }
   .menuBox {
     margin-right: 15px;
     margin-top: 0px;
@@ -43,6 +75,8 @@ $color-botton: #2f72b9;
 }
 
 .blackBox {
+  position: fixed;
+  z-index: 10;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
@@ -51,7 +85,9 @@ $color-botton: #2f72b9;
   width: 70%;
   height: 70%;
   position: fixed;
+  z-index: 20;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: white;
 }

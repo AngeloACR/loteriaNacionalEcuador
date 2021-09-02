@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 import {
   ticketsNacional,
@@ -19,9 +20,17 @@ export class ResumenComponent implements OnInit {
   compraFinalizada: boolean = false;
   saldoInsuficiente: boolean = false;
   compraCancelada: boolean = false;
+  token: string;
+  constructor(
+    private actRoute: ActivatedRoute,
 
-  constructor() {}
-
+    private router: Router
+  ) {
+    this.actRoute.params.subscribe(params => {
+      this.token = params["token"];
+      console.log(this.token);
+    });
+  }
   ngOnInit() {
     this.ticketsNacional = JSON.parse(
       localStorage.getItem("seleccionadosLoteria")
@@ -35,6 +44,11 @@ export class ResumenComponent implements OnInit {
     this.compraFinalizada = false;
     this.saldoInsuficiente = false;
     this.compraCancelada = false;
+  }
+
+  cancelMessage: string = "";
+  volver() {
+    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
   comprar() {
