@@ -32,11 +32,23 @@ export class LotteryService {
     this.obtenerAnimalesTabs();
   }
 
+  getAuthData() {
+    let data = JSON.parse(localStorage.getItem("userData"));
+    let lotteryToken = data.lotteryToken;
+    let user = data.user_;
+    let response = {
+      lotteryToken,
+      user
+    };
+    return response;
+  }
+
   obtenerSorteo(token, loteria: number) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
     let endpoint = "/lottery";
+    let authData = this.getAuthData();
     switch (loteria) {
       case 1:
         endpoint = `${endpoint}/loteriaSorteosDisponibles`;
@@ -48,7 +60,8 @@ export class LotteryService {
           this.http
             .get(address, {
               params: {
-                token
+                lotteryToken: authData.lotteryToken,
+                user: authData.user
               },
               headers: headers
             })
@@ -75,7 +88,8 @@ export class LotteryService {
           this.http
             .get(address, {
               params: {
-                token
+                lotteryToken: authData.lotteryToken,
+                user: authData.user
               },
               headers: headers
             })
@@ -102,7 +116,8 @@ export class LotteryService {
           this.http
             .get(address, {
               params: {
-                token
+                lotteryToken: authData.lotteryToken,
+                user: authData.user
               },
               headers: headers
             })
@@ -139,9 +154,11 @@ export class LotteryService {
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
     let endpoint = "/lottery";
+    let authData = this.getAuthData();
     let body = {
       sorteo,
-      token,
+      lotteryToken: authData.lotteryToken,
+      user: authData.lotteryToken,
       combinacion,
       combinacionFigura
     };
@@ -542,9 +559,10 @@ export class LotteryService {
     var address = this.mySource;
 
     address = address + endpoint;
-
+    let authData = this.getAuthData();
     let body = {
-      token
+      lotteryToken: authData.lotteryToken,
+      user: authData.user
     };
     let aux;
     switch (tipoLoteria) {
@@ -605,8 +623,10 @@ export class LotteryService {
 
     address = address + endpoint;
 
+    let authData = this.getAuthData();
     let body = {
-      token
+      lotteryToken: authData.lotteryToken,
+      user: authData.user
     };
     let aux;
     switch (tipoLoteria) {

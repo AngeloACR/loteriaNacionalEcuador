@@ -62,7 +62,7 @@ module.exports.autenticarUsuario = async () => {
     }
 };
 
-module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
+module.exports.consultarSorteosDisponibles = async (tipoLoteria, token, user) => {
     try {
 
         const usuarioClientePsd = config.usuarioClienteTest;
@@ -76,7 +76,7 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
             <c>
               <aplicacion>25</aplicacion>
               <transaccion>8</transaccion>
-              <usuario>${usuarioClientePsd}</usuario>
+              <usuario>${user}</usuario>
               <maquina>192.168.1.13</maquina>
               <codError>0</codError>
               <msgError />
@@ -126,11 +126,9 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token) => {
     }
 };
 
-module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, token, combinacion, combinacionFigura) => {
+module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, token, combinacion, combinacionFigura, user) => {
     try {
 
-        const usuarioClientePsd = config.usuarioClienteTest;
-        const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
         let message = {
@@ -142,7 +140,7 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
     <c>
       <aplicacion>25</aplicacion>
       <transaccion>9</transaccion>
-      <usuario>${usuarioClientePsd}</usuario>
+      <usuario>${user}</usuario>
       <maquina>192.168.1.13</maquina>
       <codError>0</codError>
       <msgError />
@@ -156,7 +154,7 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
       <SorteoId>${sorteo}</SorteoId>
       <Combinacion>${combinacion}</Combinacion>
       <Registros>96</Registros>
-      <UsuarioId>${usuarioClientePsd}</UsuarioId>
+      <UsuarioId>${user}</UsuarioId>
       <CombFigura>${combinacionFigura}</CombFigura>
       <Sugerir>True</Sugerir>
     </i>
@@ -197,11 +195,9 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
     }
 };
 
-module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reservaId) => {
+module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reservaId, user) => {
     try {
 
-        const usuarioClientePsd = config.usuarioClienteTest;
-        console.log(usuarioClientePsd);
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
         let loteriaCombinacionesXML = "";
         let lottoCombinacionesXML = "";
@@ -263,7 +259,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
   <c>
     <aplicacion>25</aplicacion>
     <transaccion>12</transaccion>
-    <usuario>${usuarioClientePsd}</usuario>
+    <usuario>${user}</usuario>
     <maquina>192.168.1.13</maquina>
     <codError>0</codError>
     <msgError />
@@ -273,7 +269,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
   </c>
     <i>
     <MedioId>${medioId}</MedioId>
-    <UsuarioId>${usuarioClientePsd}</UsuarioId>
+    <UsuarioId>${user}</UsuarioId>
       <ReservaId>${reservaId}</ReservaId>
       <Observacion>Reserva de Boletos</Observacion>
       <xmlNumeros>
@@ -356,47 +352,9 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
     }
 };
 
-module.exports.liberarReservas = async (req, res) => {
+module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId, user) => {
     try {
 
-
-        /*Ensure your message below looks like a valid working SOAP UI request*/
-        let message = `<mt>
-          <c>
-            <aplicacion>25</aplicacion>
-            <transaccion>9</transaccion>
-            <usuario> UsuarioCliente </usuario>
-            <maquina>DireccionIpLocal</maquina>
-            <codError>0</codError>
-            <msgError />
-            <medio>MedioId</medio>
-            <token>55033007112012121148550330074812</token>
-            <operacion>1234567890</operacion>
-          </c>
-          <i>
-            <JuegoId>1</JuegoId>
-            <MedioId>17</MedioId>
-            <SorteoId>5413</SorteoId>
-            <Combinacion>%87</Combinacion>
-            <Registros>3</Registros>
-            <UsuarioId>usrClientePsd</UsuarioId>
-            <CombFigura></CombFigura>
-            <Sugerir>False</Sugerir>
-          </i>
-        </mt>`;
-        /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
-
-
-    } catch (e) {
-        res.status(400).json(e.toString());
-    }
-};
-
-module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId) => {
-    try {
-
-        const usuarioClientePsd = config.usuarioClienteTest;
-        const claveClientePsd = config.passwordClienteTest;
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
         let loteriaCombinacionesXML = "";
         let lottoCombinacionesXML = "";
@@ -454,7 +412,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
           <c>
             <aplicacion>25</aplicacion>
             <transaccion>66</transaccion>
-            <usuario>${usuarioClientePsd}</usuario>
+            <usuario>${user}</usuario>
             <maquina>192.168.1.13</maquina>
             <codError>0</codError>
             <msgError />
@@ -464,7 +422,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
             </c>
               <i>
               <MedioId>${medioId}</MedioId>
-              <UsuarioId>${usuarioClientePsd}</UsuarioId>
+              <UsuarioId>${user}</UsuarioId>
                 <ReservaId>${reservaId}</ReservaId>
                 <Observacion>Reserva de Boletos</Observacion>
                 <xmlNumeros>
@@ -543,7 +501,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId)
     }
 }
 
-module.exports.venderBoletos = async (req, res) => {
+module.exports.venderBoletos = async (user) => {
     try {
 
 
