@@ -335,7 +335,7 @@ const ventasController = {
             }
             let response = await ventasController.authUser(authData);
             //let response = await Ventas.autenticarUsuario();
-            let lotteryToken = response.token;
+            let lotteryToken = response.lotteryToken;
             let finalResponse = await Ventas.consultarSorteosDisponibles(1, lotteryToken);
 
             res.status(200).json(finalResponse);
