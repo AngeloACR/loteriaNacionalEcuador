@@ -23,7 +23,6 @@ export class InfoLoteriaComponent implements OnInit {
   @Output() emitir = new EventEmitter<sorteo>();
 
   seleccionado: sorteo;
-  sorteo: Array<sorteo>;
 
   fondoLoteria: boolean = true;
   fondoLotto: boolean = false;
@@ -87,7 +86,7 @@ export class InfoLoteriaComponent implements OnInit {
       sorteo: ""
     };
     //this.seleccionado = this.sorteoDefault;
-    this.seleccionado = this.sorteo[0];
+    this.seleccionado = this.sorteos[0];
     this.changeDetectorRef.markForCheck();
     this.onEmitir();
   }
