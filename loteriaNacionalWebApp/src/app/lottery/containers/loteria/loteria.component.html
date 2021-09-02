@@ -19,6 +19,13 @@
         name="combinacionDeLaSuerte3" [(ngModel)]="combinacionDeLaSuerte[3]">
       <input type="text" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
         name="combinacionDeLaSuerte4" [(ngModel)]="combinacionDeLaSuerte[4]">
+
+      <select class="select_option" name="" id="">
+        <option class="option" value="">Seleccion individual</option>
+        <option class="option" value="">5 Boletos al azar</option>
+        <option class="option" value="">30 Boletos al azar</option>
+        <option class="option" value="">50 Boletos al azar</option>
+      </select>
       <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
     </div>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>

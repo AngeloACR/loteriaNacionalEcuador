@@ -17,8 +17,8 @@
 </div>
 <div class="blackBox" *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada"></div>
 <div *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada" class="paymentBox">
-  <app-confirmacion-de-compra (finalizarCompra)="finalizarCompra()" (cancelarCompra)="cancelarCompra($event)"
-    class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
+  <app-confirmacion-de-compra (compraConfirmada)="confirmarCompra()" (compraCancelada)="cancelarCompra($event)"
+    (comprarDespues)="dismissCompras()" class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
   <app-compra-finalizada (volver)="volver()" class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
   <app-saldo-insuficiente class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
   <app-compra-cancelada class="paymentItem" [message]="cancelMessage" *ngIf="compraCancelada"></app-compra-cancelada>

@@ -34,7 +34,7 @@ const ventasController = {
             let finalResponse = {
                 authData: response
             }
-            res.status(200).json(finalResponse);
+            res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -57,7 +57,7 @@ const ventasController = {
             let finalResponse = {
                 getBalanceData: response
             }
-            res.status(200).json(finalResponse);
+            res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -91,7 +91,7 @@ const ventasController = {
             let finalResponse = {
                 getBalanceData: response
             }
-            res.status(200).json(finalResponse);
+            res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -122,7 +122,7 @@ const ventasController = {
             let finalResponse = {
                 getBalanceData: response
             }
-            res.status(200).json(finalResponse);
+            res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -166,7 +166,7 @@ const ventasController = {
             let finalResponse = {
                 getBalanceData: response
             }
-            res.status(200).json(finalResponse);
+            res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
         }
@@ -185,13 +185,14 @@ const ventasController = {
                 "currency": "USD"
             }
             console.log(authData)
-            let response = await Auth.authUser(authData);
-            let finalResponse = {
-                authData: response
+            //let response = await Auth.authUser(authData);
+            let aux = await Ventas.autenticarUsuario();
+            let response = {
+                lotteryToken: aux.token
             }
-            res.status(200).json(finalResponse);
+            return response;
         } catch (e) {
-            res.status(400).json(e.toString());
+            throw e;
         }
     },
     getBalance: async (data) => {
@@ -209,12 +210,9 @@ const ventasController = {
                 "currency": "USD"
             }
             let response = await Wallet.getBalance(exaData);
-            let finalResponse = {
-                getBalanceData: response
-            }
-            res.status(200).json(finalResponse);
+            return response;
         } catch (e) {
-            res.status(400).json(e.toString());
+            throw e;
         }
     },
     sellLottery: async (data) => {
@@ -241,12 +239,9 @@ const ventasController = {
                 "amount": data.amount
             }
             let response = await Wallet.sellLottery(exaData);
-            let finalResponse = {
-                getBalanceData: response
-            }
-            res.status(200).json(finalResponse);
+            return response;
         } catch (e) {
-            res.status(400).json(e.toString());
+            throw e;
         }
     },
     cancelLottery: async (data) => {
@@ -271,12 +266,9 @@ const ventasController = {
                 "amount": data.amount
             }
             let response = await Wallet.cancelLottery(exaData);
-            let finalResponse = {
-                getBalanceData: response
-            }
-            res.status(200).json(finalResponse);
+            return response;
         } catch (e) {
-            res.status(400).json(e.toString());
+            throw e;
         }
     },
     reserveLottery: async (data) => {
@@ -315,12 +307,9 @@ const ventasController = {
             }
 
             let response = await Wallet.cancelLottery(exaData);
-            let finalResponse = {
-                getBalanceData: response
-            }
-            res.status(200).json(finalResponse);
+            return response;
         } catch (e) {
-            res.status(400).json(e.toString());
+            throw e;
         }
     },
     searchLottoSorteosDisponibles: async (req, res) => {
@@ -532,6 +521,31 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
+    comprarBoletos: async (req, res) => {
+        try {
+            let token = req.body.token;
+
+            let response = await Auth.authUser(token);
+            let loteria = req.body.loteria ? req.body.loteria : [];
+            let lotto = req.body.lotto ? req.body.lotto : [];
+            let pozo = req.body.pozo ? req.body.pozo : [];
+            let reservaId = req.body.reservaId ? req.body.reservaId : 0;
+
+            let reservasAux = await Ventas.eliminarReservas(loteria, lotto, pozo, response.lotteryToken, reservaId);
+
+            //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
+            let reserva = "";
+            let finalResponse = {
+                reservasAux,
+                reserva
+            }
+
+            res.status(200).json(finalResponse);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+
 }
 
 module.exports = ventasController;

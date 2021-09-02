@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
+import { LotteryService } from "../../services/lottery.service";
 
 import {
   ticketsNacional,
@@ -23,7 +24,7 @@ export class ResumenComponent implements OnInit {
   token: string;
   constructor(
     private actRoute: ActivatedRoute,
-
+    private lotteryService: LotteryService,
     private router: Router
   ) {
     this.actRoute.params.subscribe(params => {
@@ -48,6 +49,7 @@ export class ResumenComponent implements OnInit {
 
   cancelMessage: string = "";
   volver() {
+    this.lotteryService.borrarCarrito();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
@@ -64,6 +66,7 @@ export class ResumenComponent implements OnInit {
     this.dismissCompras();
     this.compraCancelada = true;
   }
+
   recargarSaldo() {
     this.dismissCompras();
     this.saldoInsuficiente = true;

@@ -40,8 +40,6 @@ const authController = {
                             reject("error")
                         } else {
                             let response = body == '' ? '' : JSON.parse(body);
-                                let token = (await Ventas.autenticarUsuario()).token
-                                response['lotteryToken'] = token
                             resolve(response);
                         }
                     })

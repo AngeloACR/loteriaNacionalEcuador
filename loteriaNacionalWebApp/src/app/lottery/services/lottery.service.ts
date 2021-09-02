@@ -647,4 +647,13 @@ export class LotteryService {
       );
     });
   }
+
+  getCarritoLoteria() {}
+  getCarritoLotto() {}
+  getCarritoPozo() {}
+  borrarCarrito() {
+    localStorage.setItem("seleccionadosLoteria", JSON.stringify([]));
+    localStorage.setItem("seleccionadosLotto", JSON.stringify([]));
+    localStorage.setItem("seleccionadosPozo", JSON.stringify([]));
+  }
 }
