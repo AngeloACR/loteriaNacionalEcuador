@@ -134,9 +134,9 @@ const mainController = {
             let date = sorteo.fecha;
             let day = date.split(" ")[0].split("/")[0]
             let month = parseInt(date.split(" ")[0].split("/")[1]) - 1
-            let year = date.split(" ")[0].split("/")[2]
+            let year = parseInf(date.split(" ")[0].split("/")[2])
             let today = new Date();
-            let todayYear = today.getYear();
+            let todayYear = today.getYear() + 1900;
             let todayMonth = today.getMonth();
             let todayDay = today.getDay()
             let limit;
@@ -148,7 +148,7 @@ const mainController = {
                 limit = todayMonth - 3;
                 limitYear = todayYear
             }
-            console.log(date)
+            console.log(month)
             if ((month < limit || (month == limit && day <= todayDay)) && year <= limitYear) {
                 console.log(`I should be deleting this sorteo: ${sorteo.sorteo}`)
                 outdatedSorteos.push(sorteo.sorteo);
