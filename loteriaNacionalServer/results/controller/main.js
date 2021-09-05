@@ -154,9 +154,9 @@ const mainController = {
             if ((month < limit || (month == limit && day <= todayDay)) && year <= limitYear) {
                 console.log(`I should be deleting this sorteo: ${sorteo.sorteo}`)
                 outdatedSorteos.push(sorteo.sorteo);
-                await Resultados.deleteResultadosBySorteo(sorteo.sorteo);
-                await Premios.deletePremiosBySorteo(sorteo.sorteo);
-                await Sorteos.deleteSorteo(sorteo.sorteo);
+                await ResultadosController.deleteResultadosBySorteo(sorteo.sorteo);
+                await PremiosController.deletePremiosBySorteo(sorteo.sorteo);
+                await SorteosController.deleteSorteo(sorteo.sorteo);
             }
         }
 
@@ -166,3 +166,6 @@ const mainController = {
 }
 
 module.exports = mainController
+
+
+
