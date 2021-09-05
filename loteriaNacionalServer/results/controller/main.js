@@ -127,7 +127,6 @@ const mainController = {
     limpiarDB: async function () {
         console.log('Empezando limpieza de DB');
         let sorteos = (await SorteosController.getAllSorteos()).values;
-        console.log(sorteos);
         let outdatedSorteos = [];
         let n = sorteos.length;
         for (let i = 0; i < sorteos.length; i++) {
@@ -136,7 +135,7 @@ const mainController = {
             let date = sorteo.fecha;
             let day = date.split(" ")[0].split("/")[0]
             let month = parseInt(date.split(" ")[0].split("/")[1]) - 1
-            let year = parseInf(date.split(" ")[0].split("/")[2])
+            let year = parseInt(date.split(" ")[0].split("/")[2])
             let today = new Date();
             let todayYear = today.getYear() + 1900;
             let todayMonth = today.getMonth();
@@ -166,6 +165,3 @@ const mainController = {
 }
 
 module.exports = mainController
-
-
-
