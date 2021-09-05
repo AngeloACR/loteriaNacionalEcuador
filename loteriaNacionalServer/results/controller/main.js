@@ -124,7 +124,7 @@ const mainController = {
             res.status(400).json(e.toString());
         }
     },
-    limpiarDB = async function () {
+    limpiarDB: async function () {
         let sorteos = (await Sorteos.getSorteos()).values;
         let outdatedSorteos = [];
         sorteos.forEach(sorteo => {
