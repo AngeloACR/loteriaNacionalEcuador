@@ -50,10 +50,10 @@ const premiosController = {
         try {
             sorteo = `${sorteo}`;
             const query = { "numeroSorteo": sorteo };
-            let resultados = await Resultado.find(query)
+            let premios = await Premio.find(query)
             let response = {
                 status: true,
-                values: resultados
+                values: premios
             }
             return response;
         } catch (error) { throw error; }
