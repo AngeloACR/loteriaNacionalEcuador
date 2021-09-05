@@ -116,7 +116,7 @@ const mainController = {
 
     limpiarDBHttp: async function () {
         try {
-
+            console.log('Limpiando DB por http');
             let response = await mainController.limpiarDB();
             res.status(200).json(response);
 
@@ -125,7 +125,9 @@ const mainController = {
         }
     },
     limpiarDB: async function () {
+        console.log('Empezando limpieza de DB');
         let sorteos = (await Sorteos.getSorteos()).values;
+        console.log(sorteos);
         let outdatedSorteos = [];
         sorteos.forEach(sorteo => {
 
