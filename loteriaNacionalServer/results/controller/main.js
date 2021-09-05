@@ -129,7 +129,7 @@ const mainController = {
         let sorteos = (await SorteosController.getAllSorteos()).values;
         let outdatedSorteos = [];
         let n = sorteos.length;
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             for (let i = 0; i < sorteos.length; i++) {
                 const sorteo = sorteos[i];
 
