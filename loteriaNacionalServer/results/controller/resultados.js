@@ -31,6 +31,7 @@ const resultadosController = {
                 let resultado = resultados[i];
 
                 let deleteRes = await resultado.remove();
+
                 response.push({
                     status: true,
                     values: deleteRes
