@@ -129,7 +129,9 @@ const mainController = {
         let sorteos = (await SorteosController.getAllSorteos()).values;
         console.log(sorteos);
         let outdatedSorteos = [];
-        sorteos.forEach(sorteo => {
+        let n = sorteos.length;
+        for (let i = 0; i < sorteos.length; i++) {
+            const sorteo = sorteos[i];
 
             let date = sorteo.fecha;
             let day = date.split(" ")[0].split("/")[0]
@@ -156,7 +158,8 @@ const mainController = {
                 await Premios.deletePremiosBySorteo(sorteo._id);
                 await Sorteos.deleteSorteo(sorteo._id);
             }
-        });
+        }
+
         console.log(outdatedSorteos)
         return outdatedSorteos;
     }
