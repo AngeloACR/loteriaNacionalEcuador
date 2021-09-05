@@ -148,7 +148,7 @@ const mainController = {
                 limit = todayMonth - 3;
                 limitYear = todayYear
             }
-            console.log(limit)
+            console.log(date)
             if ((month < limit || (month == limit && day <= todayDay)) && year <= limitYear) {
                 console.log(`I should be deleting this sorteo: ${sorteo.sorteo}`)
                 outdatedSorteos.push(sorteo.sorteo);
