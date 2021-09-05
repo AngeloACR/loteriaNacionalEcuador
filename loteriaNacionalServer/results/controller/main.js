@@ -114,7 +114,7 @@ const mainController = {
         }
     },
 
-    limpiarDBHttp: async function () {
+    limpiarDBHttp: async function (req, res) {
         try {
             console.log('Limpiando DB por http');
             let response = await mainController.limpiarDB();
