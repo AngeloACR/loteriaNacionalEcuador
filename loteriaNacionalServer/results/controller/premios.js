@@ -47,7 +47,7 @@ const premiosController = {
 
     getPremiosBySorteo: async function (sorteo) {
         try {
-            const query = { "sorteo": sorteo };
+            const query = { "numeroSorteo": sorteo };
             let resultados = await Resultado.find(query)
             let response = {
                 status: true,
