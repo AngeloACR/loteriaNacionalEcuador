@@ -129,40 +129,50 @@ const mainController = {
         let sorteos = (await SorteosController.getAllSorteos()).values;
         let outdatedSorteos = [];
         let n = sorteos.length;
-        for (let i = 0; i < sorteos.length; i++) {
-            const sorteo = sorteos[i];
+        return new Promise((resolve, reject) => {
+            for (let i = 0; i < sorteos.length; i++) {
+                const sorteo = sorteos[i];
 
-            let date = sorteo.fecha;
-            let day = date.split(" ")[0].split("/")[0]
-            let month = parseInt(date.split(" ")[0].split("/")[1]) - 1
-            let year = parseInt(date.split(" ")[0].split("/")[2])
-            let today = new Date();
-            let todayYear = today.getYear() + 1900;
-            let todayMonth = today.getMonth();
-            let todayDay = today.getDay()
-            let limit;
-            let limitYear
-            if (todayMonth < 3) {
-                limit = todayMonth + 9;
-                limitYear = todayYear - 1
-            } else {
-                limit = todayMonth - 3;
-                limitYear = todayYear
+                let date = sorteo.fecha;
+                let day = date.split(" ")[0].split("/")[0]
+                let month = parseInt(date.split(" ")[0].split("/")[1]) - 1
+                let year = parseInt(date.split(" ")[0].split("/")[2])
+                let today = new Date();
+                let todayYear = today.getYear() + 1900;
+                let todayMonth = today.getMonth();
+                let todayDay = today.getDay()
+                let limit;
+                let limitYear
+                if (todayMonth < 3) {
+                    limit = todayMonth + 9;
+                    limitYear = todayYear - 1
+                } else {
+                    limit = todayMonth - 3;
+                    limitYear = todayYear
+                }
+                console.log(month)
+                if ((month < limit || (month == limit && day <= todayDay)) && year <= limitYear) {
+                    console.log(`I should be deleting this sorteo: ${sorteo.sorteo}`)
+                    outdatedSorteos.push(sorteo.sorteo);
+                    await ResultadosController.deleteResultadosBySorteo(sorteo.sorteo);
+                    await PremiosController.deletePremiosBySorteo(sorteo.sorteo);
+                    await SorteosController.deleteSorteo(sorteo.sorteo);
+                }
             }
-            console.log(month)
-            if ((month < limit || (month == limit && day <= todayDay)) && year <= limitYear) {
-                console.log(`I should be deleting this sorteo: ${sorteo.sorteo}`)
-                outdatedSorteos.push(sorteo.sorteo);
-                await ResultadosController.deleteResultadosBySorteo(sorteo.sorteo);
-                await PremiosController.deletePremiosBySorteo(sorteo.sorteo);
-                await SorteosController.deleteSorteo(sorteo.sorteo);
-            }
-        }
 
-        console.log(outdatedSorteos)
-        return outdatedSorteos;
+            resolve(outdatedSorteos)
+        });
     }
 }
 
 module.exports = mainController
 
+/* 	"objects" : 6742429,
+	"avgObjSize" : 202.45296613431154,
+    "dataSize" : 1.27127836458385,
+
+    	"objects" : 6742362,
+	"avgObjSize" : 202.45314713152453,
+	"dataSize" : 1.2712668683379889,
+
+ */

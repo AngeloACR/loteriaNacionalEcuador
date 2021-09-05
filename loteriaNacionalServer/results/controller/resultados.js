@@ -24,7 +24,7 @@ const resultadosController = {
     },
     deleteResultadosBySorteo: async function (sorteo) {
         try {
-            let response = await this.getResultadosBySorteo(sorteo);
+            let response = await resultadosController.getResultadosBySorteo(sorteo);
             let resultados = response.values;
             response = [];
             for (let i = 0; i < n; i++) {
