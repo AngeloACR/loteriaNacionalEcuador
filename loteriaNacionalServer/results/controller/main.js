@@ -133,7 +133,7 @@ const mainController = {
 
             let date = sorteo.fecha;
             let day = date.split(" ")[0].split("/")[0]
-            let month = date.split(" ")[0].split("/")[1]
+            let month = parseInt(date.split(" ")[0].split("/")[1]) - 1
             let year = date.split(" ")[0].split("/")[2]
             let today = new Date();
             let todayYear = today.getYear();
