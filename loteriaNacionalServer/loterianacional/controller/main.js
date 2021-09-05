@@ -83,7 +83,7 @@ module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion,
           <msgError />
           <medio>${medioId}</medio>
           <token>${token}</token>
-          <operacion>1234567890</operacion>
+          <operacion>${Date.now()}</operacion>
         </c>
         <i>
           <JuegoId>${tipoLoteria}</JuegoId>
@@ -157,7 +157,7 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
       <msgError />
       <medio>${medioId}</medio>
       <token>${token}</token>
-      <operacion>1234567890</operacion>
+      <operacion>${Date.now()}</operacion>
         </c>
         <i>
         <MedioId>${medioId}</MedioId>
@@ -211,7 +211,7 @@ module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
         <msgError />
         <medio>${medioId}</medio>
         <token>${token}</token>
-        <operacion>1234567890</operacion>
+        <operacion>${Date.now()}</operacion>
           </c>
           <i>
         <MedioId>${medioId}</MedioId>

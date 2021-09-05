@@ -82,7 +82,7 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token, user) =>
               <msgError />
               <medio>${medioId}</medio>
               <token>${token}</token>
-              <operacion>1234567890</operacion>
+              <operacion>${Date.now()}</operacion>
             </c>
             <i>
               <MedioId>${medioId}</MedioId>
@@ -146,7 +146,7 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
       <msgError />
       <medio>${medioId}</medio>
       <token>${token}</token>
-      <operacion>1234567890</operacion>
+      <operacion>${Date.now()}</operacion>
     </c>
     <i>
     <MedioId>${medioId}</MedioId>
@@ -265,7 +265,7 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
     <msgError />
     <medio>${medioId}</medio>
     <token>${token}</token>
-    <operacion>1234567890</operacion>
+    <operacion>${Date.now()}</operacion>
   </c>
     <i>
     <MedioId>${medioId}</MedioId>
@@ -418,7 +418,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
             <msgError />
             <medio>${medioId}</medio>
             <token>${token}</token>
-            <operacion>1234567890</operacion>
+            <operacion>${Date.now()}</operacion>
             </c>
               <i>
               <MedioId>${medioId}</MedioId>
@@ -454,41 +454,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
                     let response = {
                         reservaId
                     }
-                    /* let aux = data.mt.rs[0].r[0];
-                    let boletosReservados = [];
-                    aux.Row.forEach(boletoReservado => {
-                        boletosReservados.push(boletoReservado.$);
-                    });
-                    switch (tipoLoteria) {
-                        case 1:
-                            let aux2 = data.mt.rs[0].r[1];
-                            let fraccionesReservadas = [];
-                            aux2.Row.forEach(fraccionReservada => {
-                                fraccionesReservadas.push(fraccionReservada.$);
-                            });
-                            response = {
-                                reservaId,
-                                boletosReservados,
-                                fraccionesReservadas
-                            }
-                            break;
-                        case 2:
- 
-                            response = {
-                                reservaId,
-                                boletosReservados
-                            }
-                            break;
-                        case 5:
-                            response = {
-                                reservaId,
-                                boletosReservados
-                            }
-                            break;
- 
-                        default:
-                            break;
-                    } */
+
                     resolve(response);
                 } else {
                     reject(data.mt.c[0].msgError[0])
@@ -501,39 +467,117 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
     }
 }
 
-module.exports.venderBoletos = async (user) => {
+module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user) => {
     try {
 
 
-        const usuarioClientePsd = config.usuarioClienteTest;
-        const claveClientePsd = config.passwordClienteTest;
+        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+        let loteriaCombinacionesXML = "";
+        let lottoCombinacionesXML = "";
+        let pozoCombinacionesXML = "";
+        if (loteria.length != 0) {
+            loteria.forEach(item => {
+                let combinacion = item.combinacion;
+                let fraccionesXML = ""
 
+                fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`
+
+                let cant = 1;
+
+                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+            });
+            loteriaCombinacionesXML = `
+            <JG id="1">
+            ${loteriaCombinacionesXML}
+            </JG>        
+              
+            `
+        }
+        if (lotto.length != 0) {
+            lotto.forEach(item => {
+                let combinacion = item.combinacion;
+                let cant = 1;
+                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+            });
+            lottoCombinacionesXML = `
+            <JG id="2">
+            ${lottoCombinacionesXML}
+            </JG>        
+              
+            `
+        }
+        if (pozo.length != 0) {
+            pozo.forEach(item => {
+                let combinacion = item.combinacion;
+                let cant = 1;
+                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+            });
+            pozoCombinacionesXML = `
+            <JG id="5">
+            ${pozoCombinacionesXML}
+            </JG>        
+              
+            `
+        }
         /*Ensure your message below looks like a valid working SOAP UI request*/
         let message = `<mt>
-          <c>
-            <aplicacion>25</aplicacion>
-            <transaccion>9</transaccion>
-            <usuario> UsuarioCliente </usuario>
-            <maquina>DireccionIpLocal</maquina>
-            <codError>0</codError>
-            <msgError />
-            <medio>MedioId</medio>
-            <token>55033007112012121148550330074812</token>
-            <operacion>1234567890</operacion>
-          </c>
-          <i>
-            <JuegoId>1</JuegoId>
-            <MedioId>17</MedioId>
-            <SorteoId>5413</SorteoId>
-            <Combinacion>%87</Combinacion>
-            <Registros>3</Registros>
-            <UsuarioId>usrClientePsd</UsuarioId>
-            <CombFigura></CombFigura>
-            <Sugerir>False</Sugerir>
-          </i>
-        </mt>`;
+        <c>
+          <aplicacion>25</aplicacion>
+          <transaccion>15</transaccion>
+          <usuario> ${user} </usuario>
+          <maquina>DireccionIpLocal</maquina>
+          <codError>0</codError>
+          <msgError />
+          <medio>${medioId}</medio>
+          <token>${lotteryToken}</token>
+          <operacion>${Date.now()}</operacion>
+        </c>
+        <i>
+          <ReservaId>${reservaId}</ReservaId>
+          <xmlVenta>
+      <VT>
+             <V total="12">
+             </V>
+             <FP 	 ordComp="${ordComp}" >
+              <R forCo="CVT" Total="${total}" />
+             </FP>
+          </VT>
+          </xmlVenta>
+          <xmlNumeros>
+          <RS >
+        
+            ${loteriaCombinacionesXML} 
+            ${lottoCombinacionesXML} 
+            ${pozoCombinacionesXML}
+        
+          </RS>
+              </xmlNumeros>
+          <MedioId>${medioId}</MedioId>
+          <UsuarioId>${user}</UsuarioId>
+        </i>
+      </mt>`;
         /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
 
+        return new Promise(async (resolve, reject) => {
+            client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
+                if (err) reject(err);
+
+                let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
+                let errorCode = parseInt(data.mt.c[0].codError[0]);
+
+                if (!errorCode) {
+                    let response = [];
+                    let ventaOutput = data.mt.o[0];
+                    let response = {
+                        ventaOuput
+                    }
+
+                    resolve(response);
+                } else {
+                    reject(data.mt.c[0].msgError[0])
+                }
+            });
+        });
 
     } catch (e) {
         res.status(400).json(e.toString());

@@ -20,6 +20,42 @@ const premiosController = {
             return response
         }
     },
+    deletePremiosBySorteo: async function (sorteo) {
+        try {
+            let response = await this.getPremiosBySorteo(sorteo);
+            let premios = response.values;
+            let response = [];
+            let n = premios.length;
+            for (let i = 0; i < n; i++) {
+                let premio = premios[i];
+
+                let deleteRes = await premio.remove();
+                response.push({
+                    status: true,
+                    values: deleteRes
+                })
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
+    getPremiosBySorteo: async function (sorteo) {
+        try {
+            const query = { "sorteo": sorteo };
+            let resultados = await Resultado.find(query)
+            let response = {
+                status: true,
+                values: resultados
+            }
+            return response;
+        } catch (error) { throw error; }
+    },
 
     addPremio: async function (element) {
         try {

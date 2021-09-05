@@ -31,6 +31,7 @@ const ventasController = {
             }
             console.log(authData)
             let response = await Auth.authUser(authData);
+            if (response['password']) delete response['password'];
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -171,6 +172,7 @@ const ventasController = {
             }
             console.log(authData)
             let response = await Auth.authUser(authData);
+            if (response['password']) delete response['password'];
             return response;
         } catch (e) {
             throw e;
@@ -514,17 +516,35 @@ const ventasController = {
     },
     comprarBoletos: async (req, res) => {
         try {
-            /* let token = req.body.token;
-
+            /* 
             let response = await ventasController.authUser(token); */
+            let token = req.body.token;
+            let balanceData = ventasController.getBalance(token)
+            let exaReserveData = ventasController.reserveLottery(token)
             let lotteryToken = req.body.lotteryToken
             let user = req.body.user
-            let loteria = req.body.loteria ? req.body.loteria : [];
-            let lotto = req.body.lotto ? req.body.lotto : [];
-            let pozo = req.body.pozo ? req.body.pozo : [];
-            let reservaId = req.body.reservaId ? req.body.reservaId : 0;
+            let loteria = req.body.loteria
+            let lotto = req.body.lotto
+            let pozo = req.body.pozo
+            let reservaId = req.body.reservaId;
+            let ordComp = "39225"
+            let total = req.body.amount
+            let loteriaVentaAux = await Ventas.venderBoletos(ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user);
 
-            let reservasAux = await Ventas.eliminarReservas(loteria, lotto, pozo, lotteryToken, reservaId, user);
+            let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
+            let sellLotteryData = {
+                "command": "sellLottery",
+                "systemCode": "1",
+                "sessionToken": req.body.token,
+                "transactionId": req.body.transactionId,
+                "reserveId": req.body.reservaId,
+                "language": "en",
+                "currency": "USD",
+                "operationTimeStamp": operationTimeStamp,
+                "ticketId": loteriaVentaAux.ticketId,
+                "amount": req.body.amount
+            }
+            let exaSellLotteryData = ventasController.sellLottery(sellLotteryData)
 
             //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
             let reserva = "";

@@ -1,4 +1,5 @@
 const Resultado = require('../model/resultado');
+const Premio = require('../model/premio');
 const UltimoResultado = require('../model/ultimoResultado');
 
 const resultadosController = {
@@ -21,7 +22,41 @@ const resultadosController = {
             return response
         }
     },
+    deleteResultadosBySorteo: async function (sorteo) {
+        try {
+            let response = await this.getResultadosBySorteo(sorteo);
+            let resultados = response.values;
+            let response = [];
+            for (let i = 0; i < n; i++) {
+                let resultado = resultados[i];
 
+                let deleteRes = await resultado.remove();
+                response.push({
+                    status: true,
+                    values: deleteRes
+                })
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
+    getResultadosBySorteo: async function (sorteo) {
+        try {
+            const query = { "sorteo": sorteo };
+            let resultados = await Resultado.find(query)
+            let response = {
+                status: true,
+                values: resultados
+            }
+            return response;
+        } catch (error) { throw error; }
+    },
     addResultado: async function (element) {
         try {
             let newResultado = new Resultado(element);
@@ -97,7 +132,6 @@ const resultadosController = {
             return response;
         } catch (error) { throw error; }
     },
-
     getResultadoGanador: async function (sorteo, combinacion) {
         try {
             let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
