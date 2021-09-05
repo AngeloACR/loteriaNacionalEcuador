@@ -26,7 +26,7 @@ const resultadosController = {
         try {
             let response = await this.getResultadosBySorteo(sorteo);
             let resultados = response.values;
-            let response = [];
+            response = [];
             for (let i = 0; i < n; i++) {
                 let resultado = resultados[i];
 

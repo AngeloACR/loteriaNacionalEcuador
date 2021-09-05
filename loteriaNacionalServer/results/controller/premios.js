@@ -24,7 +24,7 @@ const premiosController = {
         try {
             let response = await this.getPremiosBySorteo(sorteo);
             let premios = response.values;
-            let response = [];
+            response = [];
             let n = premios.length;
             for (let i = 0; i < n; i++) {
                 let premio = premios[i];
