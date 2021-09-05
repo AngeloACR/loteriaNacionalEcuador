@@ -72,6 +72,18 @@ const sorteosController = {
         } catch (error) { throw error; }
     },
 
+    getAllSorteos: async function (tipoLoteria) {
+        try {
+            const query = {};
+            let sorteos = await Sorteo.find(query)
+            let response = {
+                status: true,
+                values: sorteos
+            }
+            return response;
+        } catch (error) { throw error; }
+    },
+
     getSorteoByNumber: async function (numeroSorteo) {
         try {
             let query = { 'sorteo': numeroSorteo }

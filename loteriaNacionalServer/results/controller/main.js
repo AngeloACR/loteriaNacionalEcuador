@@ -126,7 +126,7 @@ const mainController = {
     },
     limpiarDB: async function () {
         console.log('Empezando limpieza de DB');
-        let sorteos = (await SorteosController.getSorteos()).values;
+        let sorteos = (await SorteosController.getAllSorteos()).values;
         console.log(sorteos);
         let outdatedSorteos = [];
         sorteos.forEach(sorteo => {
