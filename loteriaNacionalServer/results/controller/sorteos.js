@@ -4,7 +4,7 @@ const sorteosController = {
 
     deleteSorteo: async function (id) {
         try {
-            let response = await this.getSorteoById(id);
+            let response = await this.getSorteoByNumber(id);
             let sorteo = response.values;
             let deleteRes = await sorteo.remove();
             response = {
