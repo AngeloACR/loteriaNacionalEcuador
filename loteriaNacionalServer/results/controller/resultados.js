@@ -27,9 +27,10 @@ const resultadosController = {
             let response = await resultadosController.getResultadosBySorteo(sorteo);
             let resultados = response.values;
             response = [];
+            let n = resultados.length;
+            console.log('About to delete resultados')
             for (let i = 0; i < n; i++) {
                 let resultado = resultados[i];
-
                 let deleteRes = await resultado.remove();
 
                 response.push({

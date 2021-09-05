@@ -26,8 +26,8 @@ const premiosController = {
             let premios = response.values;
             response = [];
             let n = premios.length;
+            console.log("deleting Premios")
             for (let i = 0; i < n; i++) {
-                console.log("deleting Premio")
                 let premio = premios[i];
 
                 let deleteRes = await premio.remove();
