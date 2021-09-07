@@ -141,8 +141,8 @@ const resultadosController = {
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await Resultado.find(query).lean();
             let premio = await Premio.getPremioByCodigo(resultado.codigoPremio);
-            resultado['premio'] = premio;
             if (resultado) {
+                resultado['premio'] = premio;
 
                 response = {
                     status: true,
