@@ -42,18 +42,35 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             if('C4' in resultadoData):
                 combinacion4 = resultadoData['C4']
             codigoPremio = sorteo+"-"+premioData['P']
-            resultado = {
-                "tipoLoteria": int(tipoLoteria),
-                "numeroSorteo": sorteo,
-                "combinacion1": resultadoData['C1'],
-                "combinacion2": combinacion2,
-                "combinacion3": combinacion3,
-                "combinacion4": combinacion4,
-                "codigo": resultadoData['B'],
-                "codigoPremio": codigoPremio,
-                "combinacionGanadora": premioData['CG']
-            }
-            resultadoId = loteriaDB['resultados'].insert_one(resultado)
+            if (tipoLoteria == "1"):
+                resultado = {
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                    "codigo": resultadoData['B'],
+                    "codigoPremio": codigoPremio
+                }
+                resultadoId = loteriaDB['resultados'].insert_one(resultado)
+            if (tipoLoteria == "2"):
+                resultado = {
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                    "combinacion2": combinacion2,
+                    "combinacion3": combinacion3,
+                    "combinacion4": combinacion4,
+                    "codigo": resultadoData['B'],
+                    "codigoPremio": codigoPremio
+                }
+                resultadoId = loteriaDB['resultados'].insert_one(resultado)
+            if (tipoLoteria == "5"):
+                resultado = {
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                    "combinacion2": combinacion2,
+                    "combinacion3": combinacion3,
+                    "codigo": resultadoData['B'],
+                    "codigoPremio": codigoPremio
+                }
+                resultadoId = loteriaDB['resultados'].insert_one(resultado)                
             if(premioData['P'] == "1"):
                 myquery = { "tipoLoteria": int(tipoLoteria) }
                 newvalues = { "$set": { 
