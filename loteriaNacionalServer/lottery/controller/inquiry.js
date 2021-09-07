@@ -186,6 +186,8 @@ const inquiryController = {
                 let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     aux.values.forEach(boleto => {
+                        let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+                        boleto['premio'] = premio.values;
 
                         let responseAux = {
                             status: true,
