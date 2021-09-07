@@ -49,7 +49,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigo": resultadoData['B'],
                     "codigoPremio": codigoPremio
                 }
-                resultadoId = loteriaDB['resultados'].insert_one(resultado)
+                resultadoId = loteriaDB['resultadoloterias'].insert_one(resultado)
             if (tipoLoteria == "2"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -60,7 +60,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigo": resultadoData['B'],
                     "codigoPremio": codigoPremio
                 }
-                resultadoId = loteriaDB['resultados'].insert_one(resultado)
+                resultadoId = loteriaDB['resultadolottos'].insert_one(resultado)
             if (tipoLoteria == "5"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -70,7 +70,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigo": resultadoData['B'],
                     "codigoPremio": codigoPremio
                 }
-                resultadoId = loteriaDB['resultados'].insert_one(resultado)                
+                resultadoId = loteriaDB['resultadopozos'].insert_one(resultado)                
             if(premioData['P'] == "1"):
                 myquery = { "tipoLoteria": int(tipoLoteria) }
                 newvalues = { "$set": { 
