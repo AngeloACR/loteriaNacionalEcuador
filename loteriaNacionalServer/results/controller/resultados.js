@@ -138,8 +138,8 @@ const resultadosController = {
     getResultadoGanador: async function (sorteo, combinacion) {
         try {
             let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
-            let resultado = await Resultado.find(query).populate('premio');
-            //let resultado = await Resultado.find(query).lean();
+            //let resultado = await Resultado.find(query).populate('premio');
+            let resultado = await Resultado.find(query).lean();
             if (resultado && resultado.length != 0) {
                 response = {
                     status: true,

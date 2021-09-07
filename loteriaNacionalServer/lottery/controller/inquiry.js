@@ -188,9 +188,9 @@ const inquiryController = {
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
-                        let boleto = aux.values[j];/* 
+                        let boleto = aux.values[j];
                         let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-                        boleto['premio'] = premio.values; */
+                        boleto['premio'] = premio.values;
 
                         let responseAux = {
                             status: true,
@@ -229,9 +229,9 @@ const inquiryController = {
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
-                        let boleto = aux.values[j];/* 
+                        let boleto = aux.values[j];
                         let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-                        boleto['premio'] = premio.values; */
+                        boleto['premio'] = premio.values;
                         let responseAux = {
                             status: true,
                             combinacion: combinaciones[i],
@@ -269,9 +269,9 @@ const inquiryController = {
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
-                        let boleto = aux.values[j];/* 
+                        let boleto = aux.values[j];
                         let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-                        boleto['premio'] = premio.values; */
+                        boleto['premio'] = premio.values;
                         let responseAux = {
                             status: true,
                             combinacion: combinaciones[i],
