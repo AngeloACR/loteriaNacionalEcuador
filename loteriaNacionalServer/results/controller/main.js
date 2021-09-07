@@ -125,8 +125,11 @@ const mainController = {
     },
     parseResultados: async function () {
         console.time('parseResultados')
+        console.log('Parsing loteria')
         await ResultadosController.parseResultadosLoteria();
+        console.log('Parsing lotto')
         await ResultadosController.parseResultadosLotto();
+        console.log('Parsing pozo')
         await ResultadosController.parseResultadosPozo();
         console.timeEnd('parseResultados')
     },

@@ -518,7 +518,7 @@ const resultadosController = {
         try {
 
             let query = { 'tipoLoteria': 2 }
-            let resultadosLotto = await Resultado.find(query).limit(10000);
+            let resultadosLotto = await Resultado.find(query).limit(100000);
             let nLotto = resultadosLotto.length;
             let aux = nLotto;
             while (nLotto != 0) {
@@ -537,7 +537,7 @@ const resultadosController = {
                     }
                     await resultadosController.addResultadoLotto(newResultado)
                 }
-                resultadosLotto = await Resultado.find(query).skip(aux).limit(10000);
+                resultadosLotto = await Resultado.find(query).skip(aux).limit(100000);
                 nLotto = resultadosLotto.length;
                 aux += nLotto;
             }
