@@ -227,8 +227,11 @@ const inquiryController = {
             for (let i = 0; i < length; i++) {
                 let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
-                    aux.values.forEach(boleto => {
-
+                    let n = aux.values.length;
+                    for (let j = 0; j < n; j++) {
+                        let boleto = aux.values[j];/* 
+                        let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+                        boleto['premio'] = premio.values; */
                         let responseAux = {
                             status: true,
                             combinacion: combinaciones[i],
@@ -236,7 +239,7 @@ const inquiryController = {
                             data: boleto
                         }
                         response.push(responseAux);
-                    });
+                    };
 
                 } else {
                     let responseAux = {
@@ -264,8 +267,11 @@ const inquiryController = {
             for (let i = 0; i < length; i++) {
                 let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
-                    aux.values.forEach(boleto => {
-
+                    let n = aux.values.length;
+                    for (let j = 0; j < n; j++) {
+                        let boleto = aux.values[j];/* 
+                        let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+                        boleto['premio'] = premio.values; */
                         let responseAux = {
                             status: true,
                             combinacion: combinaciones[i],
@@ -273,7 +279,7 @@ const inquiryController = {
                             data: boleto
                         }
                         response.push(responseAux);
-                    });
+                    };
 
                 } else {
                     let responseAux = {
