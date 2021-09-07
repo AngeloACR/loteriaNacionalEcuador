@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = require('mongoose').Schema;
 
-const resultadoSchema = new mongoose.Schema({
+const resultadoLoteriaSchema = new mongoose.Schema({
     combinacion1: {
         type: String
     },
@@ -19,7 +19,7 @@ const resultadoSchema = new mongoose.Schema({
         toObject: { virtuals: true },
     });
 
-resultadoSchema.virtual('premio', {
+resultadoLoteriaSchema.virtual('premio', {
     ref: 'Premio', // The model to use
     localField: 'codigoPremio', // Find people where `localField`
     foreignField: 'codigo', // is equal to `foreignField`
@@ -27,7 +27,7 @@ resultadoSchema.virtual('premio', {
     // an array. `justOne` is false by default.
     justOne: true,
 });
-resultadoSchema.virtual('sorteo', {
+resultadoLoteriaSchema.virtual('sorteo', {
     ref: 'Sorteo', // The model to use
     localField: 'numeroSorteo', // Find people where `localField`
     foreignField: 'sorteo', // is equal to `foreignField`
@@ -36,4 +36,4 @@ resultadoSchema.virtual('sorteo', {
     justOne: true,
 });
 
-const Resultado = module.exports = mongoose.model("Resultado", resultadoSchema);
+const ResultadoLoteria = module.exports = mongoose.model("ResultadoLoteria", resultadoLoteriaSchema);
