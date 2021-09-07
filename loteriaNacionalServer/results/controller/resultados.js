@@ -1,5 +1,5 @@
 const Resultado = require('../model/resultado');
-const Premio = require('../model/premio');
+const Premio = require('../controller/premios');
 const UltimoResultado = require('../model/ultimoResultado');
 
 const resultadosController = {
@@ -138,8 +138,11 @@ const resultadosController = {
     getResultadoGanador: async function (sorteo, combinacion) {
         try {
             let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
-            let resultado = await Resultado.find(query).populate('premio');
-            if (resultado && resultado.length != 0) {
+            //let resultado = await Resultado.find(query).populate('premio');
+            let resultado = await Resultado.find(query).lean();
+            let premio = await Premio.getPremioByCodigo(resultado.codigoPremio);
+            resultado['premio'] = premio;
+            if (resultado) {
 
                 response = {
                     status: true,

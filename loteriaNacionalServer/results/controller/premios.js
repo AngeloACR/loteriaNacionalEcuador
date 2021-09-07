@@ -93,7 +93,7 @@ const premiosController = {
     getPremioByCodigo: async function (codigo) {
         try {
             let query = { 'codigo': codigo }
-            let premio = await Premio.findOne(query)
+            let premio = await Premio.findOne(query).lean();
             let response = {
                 status: true,
                 values: premio

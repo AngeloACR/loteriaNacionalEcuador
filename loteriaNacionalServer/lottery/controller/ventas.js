@@ -516,11 +516,23 @@ const ventasController = {
     },
     comprarBoletos: async (req, res) => {
         try {
-            /* 
-            let response = await ventasController.authUser(token); */
-            let token = req.body.token;
-            let balanceData = ventasController.getBalance(token)
-            let exaReserveData = ventasController.reserveLottery(token)
+            let exaBalanceData = { token: req.body.token };
+            let balanceResponse = ventasController.getBalance(exaBalanceData)
+            // if(balanceResponse.code<0) throw new Error('Balance insuficiente');
+            let apiReserveData = {
+                amount: req.body.amount,
+                reservationDetails: req.body.reservationDetails,
+            }
+            let apiReservaResponse = await ventasController.crearReserva(apiReservaData);
+            let exaReservaData = {
+                token: req.body.token,
+                transactionId: apiReservaResponse._id,
+                amount: req.body.amount,
+                reservationDetails: req.body.reservationDetails,
+            }
+            let exaReservaResponse = ventasController.reserveLottery(exaReservaData)
+            // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
+
             let lotteryToken = req.body.lotteryToken
             let user = req.body.user
             let loteria = req.body.loteria
@@ -529,10 +541,11 @@ const ventasController = {
             let reservaId = req.body.reservaId;
             let ordComp = "39225"
             let total = req.body.amount
-            let loteriaVentaAux = await Ventas.venderBoletos(ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user);
+            let loteriaVentaResponse = await Ventas.venderBoletos(ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user);
+            // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
             let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
-            let sellLotteryData = {
+            let exaVentaData = {
                 "command": "sellLottery",
                 "systemCode": "1",
                 "sessionToken": req.body.token,
@@ -541,16 +554,18 @@ const ventasController = {
                 "language": "en",
                 "currency": "USD",
                 "operationTimeStamp": operationTimeStamp,
-                "ticketId": loteriaVentaAux.ticketId,
+                "ticketId": loteriaVentaResponse.ticketId,
                 "amount": req.body.amount
             }
-            let exaSellLotteryData = ventasController.sellLottery(sellLotteryData)
+            let exaVentaResponse = ventasController.sellLottery(exaVentaData)
+            // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
-            //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
-            let reserva = "";
+            let apiVentaData = {
+
+            };
+            let apiVentaResponse = ventasController.crearVenta(apiVentaData);
             let finalResponse = {
-                reservasAux,
-                reserva
+                data: apiVentaResponse,
             }
 
             res.status(200).json(finalResponse);

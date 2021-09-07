@@ -6,26 +6,54 @@ const reservaSchema = new mongoose.Schema({
         sorteo: {
             type: String
         },
-        combinacion: {
+        fecha: {
+            type: String
+        },
+        combinacion1: {
             type: String
         },
         fracciones: [{
             type: String
         }],
+        subtotal: {
+            type: String
+        },
     }],
     lotto: [{
-        combinacion: {
+        combinacion1: {
+            type: String
+        },
+        combinacion2: {
+            type: String
+        },
+        combinacion3: {
+            type: String
+        },
+        combinacion4: {
+            type: String
+        },
+        subtotal: {
             type: String
         },
     }],
     pozo: [{
-        combinacion: {
+        combinacion1: {
+            type: String
+        },
+        combinacion2: {
+            type: String
+        },
+        combinacion3: {
+            type: String
+        },
+        subtotal: {
             type: String
         },
     }],
-    reservaId: {
+    total: {
         type: String
     },
+
 }, {
         toJSON: { virtuals: true },
         toObject: { virtuals: true },
