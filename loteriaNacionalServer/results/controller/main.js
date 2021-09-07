@@ -113,7 +113,60 @@ const mainController = {
             return response
         }
     },
+    parseResultadosHttp: async function (req, res) {
+        try {
+            console.log('Actualizando tablas de resultados por http');
+            let response = await mainController.parseResultados();
+            res.status(200).json(response);
 
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+    parseResultados: async function () {
+        let resultadosLoteria = await ResultadosController.getResultadosByTipoLoteria(1);
+        let nLoteria = resultadosLoteria.length;
+        for (let i = 0; i < nLoteria; i++) {
+            const element = resultadosLoteria[i];
+            let newResultado = {
+                combinacion1: element.combinacion1,
+                codigo: element.codigo,
+                codigoPremio: element.codigoPremio,
+                numeroSorteo: element.numeroSorteo,
+            }
+            await ResultadosController.addResultadoLoteria(newResultado)
+        }
+        let resultadosLotto = await ResultadosController.getResultadosByTipoLoteria(2);
+        let nLotto = resultadosLotto.length;
+        for (let i = 0; i < nLotto; i++) {
+            const element = resultadosLotto[i];
+
+            let newResultado = {
+                combinacion1: element.combinacion1,
+                combinacion2: element.combinacion2,
+                combinacion3: element.combinacion3,
+                combinacion4: element.combinacion4,
+                codigo: element.codigo,
+                codigoPremio: element.codigoPremio,
+                numeroSorteo: element.numeroSorteo,
+            }
+            await ResultadosController.addResultadoLotto(newResultado)
+        }
+        let resultadosPozo = await ResultadosController.getResultadosByTipoLoteria(5);
+        let nPozo = resultadosPozo.length;
+        for (let i = 0; i < nPozo; i++) {
+            const element = resultadosPozo[i];
+            let newResultado = {
+                combinacion1: element.combinacion1,
+                combinacion2: element.combinacion2,
+                combinacion3: element.combinacion3,
+                codigo: element.codigo,
+                codigoPremio: element.codigoPremio,
+                numeroSorteo: element.numeroSorteo,
+            }
+            await ResultadosController.addResultadoPozo(newResultado)
+        }
+    },
     limpiarDBHttp: async function (req, res) {
         try {
             console.log('Limpiando DB por http');

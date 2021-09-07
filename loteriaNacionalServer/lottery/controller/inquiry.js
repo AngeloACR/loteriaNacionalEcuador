@@ -184,7 +184,7 @@ const inquiryController = {
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanadorLoteria(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -225,7 +225,7 @@ const inquiryController = {
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanadorLotto(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -265,7 +265,7 @@ const inquiryController = {
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanadorPozo(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -311,7 +311,7 @@ const inquiryController = {
                 if (auxResult.status) {
 
                     let combinacion = auxResult.values.combinacion1;
-                    let aux = await Results.getResultadoGanador(sorteo, combinacion);
+                    let aux = await Results.getResultadoGanadorPozo(sorteo, combinacion);
                     if (aux.status) {
                         aux.values.forEach(boleto => {
 

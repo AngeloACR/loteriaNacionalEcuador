@@ -6,6 +6,7 @@ resultsRouter.post('/agregarSorteos', ResultsController.agregarSorteosHTTP);
 resultsRouter.get('/ultimoResultadoPozo', ResultsController.ultimoResultadoPozo);
 resultsRouter.get('/agregarUltimoResultadoPozo', ResultsController.agregarUltimoResultadoPozo);
 resultsRouter.get('/limpiarDB', ResultsController.limpiarDBHttp);
+resultsRouter.get('/parseResultados', ResultsController.parseResultadosHttp);
 
 
 module.exports = resultsRouter;

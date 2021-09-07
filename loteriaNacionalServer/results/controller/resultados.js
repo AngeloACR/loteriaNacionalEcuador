@@ -1,4 +1,7 @@
 const Resultado = require('../model/resultado');
+const ResultadoLoteria = require('../model/resultadoLoteria');
+const ResultadoLotto = require('../model/resultadoLotto');
+const ResultadoPozo = require('../model/resultadoPozo');
 const Premio = require('../controller/premios');
 const UltimoResultado = require('../model/ultimoResultado');
 
@@ -78,7 +81,60 @@ const resultadosController = {
             return response
         }
     },
-
+    addResultadoLoteria: async function (element) {
+        try {
+            let newResultado = new ResultadoLoteria(element);
+            let resultado = await newResultado.save()
+            let response = {
+                status: true,
+                values: resultado
+            }
+            return response;
+        } catch (error) {
+            console.log(error.toString())
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    addResultadoLotto: async function (element) {
+        try {
+            let newResultado = new ResultadoLotto(element);
+            let resultado = await newResultado.save()
+            let response = {
+                status: true,
+                values: resultado
+            }
+            return response;
+        } catch (error) {
+            console.log(error.toString())
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    addResultadoPozo: async function (element) {
+        try {
+            let newResultado = new ResultadoPozo(element);
+            let resultado = await newResultado.save()
+            let response = {
+                status: true,
+                values: resultado
+            }
+            return response;
+        } catch (error) {
+            console.log(error.toString())
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
     updateUltimoResultado: async function (element) {
         try {
             let tipoLoteria = element.tipoLoteria;
@@ -159,7 +215,78 @@ const resultadosController = {
             return response
         }
     },
-
+    getResultadoGanadorLoteria: async function (sorteo, combinacion) {
+        try {
+            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
+            //let resultado = await Resultado.find(query).populate('premio');
+            let resultado = await ResultadoLoteria.find(query).lean();
+            if (resultado && resultado.length != 0) {
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    getResultadoGanadorLotto: async function (sorteo, combinacion) {
+        try {
+            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
+            //let resultado = await Resultado.find(query).populate('premio');
+            let resultado = await ResultadoLotto.find(query).lean();
+            if (resultado && resultado.length != 0) {
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    getResultadoGanadorPozo: async function (sorteo, combinacion) {
+        try {
+            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
+            //let resultado = await Resultado.find(query).populate('premio');
+            let resultado = await ResultadoPozo.find(query).lean();
+            if (resultado && resultado.length != 0) {
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
     getResultadoByCombinacion1: async function (combinacion1) {
         try {
             let query = { 'combinacion1': combinacion1 }
@@ -235,6 +362,23 @@ const resultadosController = {
         }
     },
 
+    getResultadosByTipoLoteria: async function (tipoLoteria) {
+        try {
+            let query = { 'tipoLoteria': tipoLoteria }
+            let resultados = await Resultado.find(query).lean();
+            let response = {
+                status: true,
+                values: resultados
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
     getResultadoById: async function (id) {
         try {
             let query = { '_id': id }
