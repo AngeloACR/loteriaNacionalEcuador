@@ -483,6 +483,107 @@ const resultadosController = {
     },
 
 
+    parseResultadosLoteria: async function () {
+        try {
+
+            let query = { 'tipoLoteria': 1 }
+            let resultadosLoteria = await Resultado.find(query).limit(10000);
+            let nLoteria = resultadosLoteria.length;
+            let aux = nLoteria;
+            while (nLoteria != 0) {
+
+                for (let i = 0; i < nLoteria; i++) {
+                    const element = resultadosLoteria[i];
+                    let newResultado = {
+                        combinacion1: element.combinacion1,
+                        codigo: element.codigo,
+                        codigoPremio: element.codigoPremio,
+                        numeroSorteo: element.numeroSorteo,
+                    }
+                    await resultadosController.addResultadoLoteria(newResultado)
+                }
+                resultadosLoteria = await Resultado.find(query).skip(aux).limit(10000);
+                nLoteria = resultadosLoteria.length;
+                aux += nLoteria;
+            }
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    parseResultadosLotto: async function () {
+        try {
+
+            let query = { 'tipoLoteria': 2 }
+            let resultadosLotto = await Resultado.find(query).limit(10000);
+            let nLotto = resultadosLotto.length;
+            let aux = nLotto;
+            while (nLotto != 0) {
+
+                for (let i = 0; i < nLotto; i++) {
+                    const element = resultadosLotto[i];
+
+                    let newResultado = {
+                        combinacion1: element.combinacion1,
+                        combinacion2: element.combinacion2,
+                        combinacion3: element.combinacion3,
+                        combinacion4: element.combinacion4,
+                        codigo: element.codigo,
+                        codigoPremio: element.codigoPremio,
+                        numeroSorteo: element.numeroSorteo,
+                    }
+                    await resultadosController.addResultadoLotto(newResultado)
+                }
+                resultadosLotto = await Resultado.find(query).skip(aux).limit(10000);
+                nLotto = resultadosLotto.length;
+                aux += nLotto;
+            }
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    parseResultadosPozo: async function () {
+        try {
+
+            let query = { 'tipoLoteria': 5 }
+            let resultadosPozo = await Resultado.find(query).limit(10000);
+            let nPozo = resultadosPozo.length;
+            let aux = nPozo;
+            while (nPozo != 0) {
+
+                for (let i = 0; i < nPozo; i++) {
+                    const element = resultadosPozo[i];
+
+                    let newResultado = {
+                        combinacion1: element.combinacion1,
+                        combinacion2: element.combinacion2,
+                        combinacion3: element.combinacion3,
+                        codigo: element.codigo,
+                        codigoPremio: element.codigoPremio,
+                        numeroSorteo: element.numeroSorteo,
+                    }
+                    await resultadosController.addResultadoPozo(newResultado)
+                }
+                resultadosPozo = await Resultado.find(query).skip(aux).limit(10000);
+                nPozo = resultadosPozo.length;
+                aux += nPozo;
+            }
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
 
 }
 module.exports = resultadosController
