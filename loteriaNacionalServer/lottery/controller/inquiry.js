@@ -185,7 +185,7 @@ const inquiryController = {
             for (let i = 0; i < length; i++) {
                 let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
-                    let n = aux.values;
+                    let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
                         let boleto = aux.values[j];
                         let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
