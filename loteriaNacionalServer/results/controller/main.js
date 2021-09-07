@@ -124,9 +124,11 @@ const mainController = {
         }
     },
     parseResultados: async function () {
+        console.time('parseResultados')
         await ResultadosController.parseResultadosLoteria();
         await ResultadosController.parseResultadosLotto();
         await ResultadosController.parseResultadosPozo();
+        console.timeEnd('parseResultados')
     },
     limpiarDBHttp: async function (req, res) {
         try {
