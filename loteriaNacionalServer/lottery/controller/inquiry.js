@@ -178,6 +178,7 @@ const inquiryController = {
 
     buscarLoteriaWinner: async (req, res) => {
         try {
+            console.time('consultaLoteria')
             let sorteo = req.body.sorteo;
             let combinaciones = req.body.combinaciones;
             let response = [];
@@ -187,9 +188,9 @@ const inquiryController = {
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
-                        let boleto = aux.values[j];
+                        let boleto = aux.values[j];/* 
                         let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-                        boleto['premio'] = premio.values;
+                        boleto['premio'] = premio.values; */
 
                         let responseAux = {
                             status: true,
@@ -209,6 +210,7 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
+            console.timeEnd('consultaLoteria')
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -217,6 +219,7 @@ const inquiryController = {
 
     buscarLottoWinner: async (req, res) => {
         try {
+            console.time('consultaLotto')
             let sorteo = req.body.sorteo;
             let combinaciones = req.body.combinaciones;
             let response = [];
@@ -244,6 +247,7 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
+            console.timeEnd('consultaLotto')
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -252,6 +256,7 @@ const inquiryController = {
 
     buscarPozoWinner: async (req, res) => {
         try {
+            console.time('consultaPozo')
             let sorteo = req.body.sorteo;
             let combinaciones = req.body.combinaciones;
             let response = [];
@@ -279,6 +284,7 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
+            console.timeEnd('consultaPozo')
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
