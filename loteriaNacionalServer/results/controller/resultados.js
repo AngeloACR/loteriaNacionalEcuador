@@ -525,12 +525,12 @@ const resultadosController = {
 
                 for (let i = 0; i < nLotto; i++) {
                     const element = resultadosLotto[i];
-
+                    let combinacion4 = element.combinacion4 ? element.combinacion4 : '';
                     let newResultado = {
                         combinacion1: element.combinacion1,
                         combinacion2: element.combinacion2,
                         combinacion3: element.combinacion3,
-                        combinacion4: element.combinacion4,
+                        combinacion4,
                         codigo: element.codigo,
                         codigoPremio: element.codigoPremio,
                         numeroSorteo: element.numeroSorteo,
