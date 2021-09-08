@@ -14,10 +14,7 @@ const reservaSchema = new mongoose.Schema({
         },
         fracciones: [{
             type: String
-        }],
-        subtotal: {
-            type: String
-        },
+        }]
     }],
     lotto: [{
         combinacion1: {
@@ -31,10 +28,7 @@ const reservaSchema = new mongoose.Schema({
         },
         combinacion4: {
             type: String
-        },
-        subtotal: {
-            type: String
-        },
+        }
     }],
     pozo: [{
         combinacion1: {
@@ -45,10 +39,7 @@ const reservaSchema = new mongoose.Schema({
         },
         combinacion3: {
             type: String
-        },
-        subtotal: {
-            type: String
-        },
+        }
     }],
     total: {
         type: String

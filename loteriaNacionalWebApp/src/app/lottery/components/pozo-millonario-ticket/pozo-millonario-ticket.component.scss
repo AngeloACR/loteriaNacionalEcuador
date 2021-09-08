@@ -95,6 +95,7 @@ $color-botton: #04b865;
         div {
           display: flex;
           justify-content: center;
+          flex-wrap: wrap;
           margin: 0 0 15px 0;
 
           p {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { ticketsAnimales, sorteo } from "../../interfaces/lottery.interface";
+import { LotteryService } from "../../services/lottery.service";
 
 @Component({
   selector: "app-pozo-millonario-ticket",
@@ -13,18 +14,26 @@ export class PozoMillonarioTicketComponent implements OnInit {
   date: string;
   ticketNumbers: string[];
   sorteoNumber: string;
+  mascota: any;
 
   objeto: any;
   numero: any;
 
-  constructor() {}
+  constructor(private lotteryService: LotteryService) {}
 
   async ngOnInit() {
     this.ticketIndex = this.ticket.combinacion1;
     this.ticketNumbers = this.ticket.display;
     this.sorteoNumber = this.sorteo.sorteo;
     this.date = this.sorteo.fecha;
+    this.mascota = this.lotteryService.obtenerCaracteristicasDeMascota(
+      this.ticket.mascota
+    );
     /* console.log(JSON.parse(localStorage.getItem('loteriaTickets'))); */
     /* this.ticketNumbers = JSON.parse(localStorage.getItem('loterianumero' + ticket)); */
+  }
+
+  obtenerAnimal(mascota) {
+    return this.lotteryService.obtenerMascota(mascota);
   }
 }

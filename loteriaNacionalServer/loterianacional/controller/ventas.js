@@ -368,7 +368,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
 
                 let cant = 1;
 
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
             loteriaCombinacionesXML = `
             <JG id="1">
@@ -381,7 +381,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
             lotto.forEach(item => {
                 let combinacion = item.combinacion;
                 let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
             lottoCombinacionesXML = `
             <JG id="2">
@@ -394,7 +394,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
             pozo.forEach(item => {
                 let combinacion = item.combinacion;
                 let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
             pozoCombinacionesXML = `
             <JG id="5">
@@ -403,6 +403,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
               
             `
         }
+
         let message = {
 
             $xml: `

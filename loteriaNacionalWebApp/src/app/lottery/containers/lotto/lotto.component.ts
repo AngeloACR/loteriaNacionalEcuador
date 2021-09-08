@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { PageEvent } from "@angular/material";
-import { sorteo, ticketsLotto } from "../../interfaces/lottery.interface";
+import {
+  sorteo,
+  ticketsNacional,
+  ticketsAnimales,
+  ticketsLotto
+} from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
@@ -29,7 +34,6 @@ export class LottoComponent implements OnInit {
   ) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
-      console.log(this.token);
     });
   }
   async buscarNumero() {
@@ -48,7 +52,6 @@ export class LottoComponent implements OnInit {
             return element;
           }
         });
-        console.log(combinacion);
         this.ticketsLotto = await this.lotteryService.obtenerTickets(
           this.token,
           2,
@@ -83,6 +86,8 @@ export class LottoComponent implements OnInit {
 
   ticketsSeleccionados: any = {};
 
+  ticketsPozo: any = {};
+  ticketsLoteria: any = {};
   async removeSeleccionado(identificador, fraccion) {
     try {
       this.loadingMessage = "Removiendo boleto del carrito";
@@ -91,12 +96,14 @@ export class LottoComponent implements OnInit {
         ticket: this.ticketsSeleccionados[identificador].ticket,
         sorteo: this.sorteoSeleccionado
       };
+      let reservaId = this.lotteryService.getReservaId();
 
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         aux,
         fraccion,
-        1
+        2,
+        reservaId
       );
 
       delete this.ticketsSeleccionados[identificador];
@@ -123,16 +130,18 @@ export class LottoComponent implements OnInit {
       };
       this.ticketsSeleccionados[ticket.identificador] = aux;
 
+      let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.reservarBoletos(
         this.token,
         aux,
-        2
+        2,
+
+        reservaId
       );
 
-      localStorage.setItem(
-        "seleccionadosLotto",
-        JSON.stringify(this.ticketsSeleccionados)
-      );
+      this.lotteryService.setReservaId(response.reservasAux.reservaId[0]);
+      this.lotteryService.setCarritoLotto(this.ticketsSeleccionados);
+
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -158,6 +167,14 @@ export class LottoComponent implements OnInit {
       this.ticketsSeleccionados = JSON.parse(
         localStorage.getItem("seleccionadosLotto")
       );
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
+      this.ticketsLoteria = JSON.parse(
+        localStorage.getItem("seleccionadosLoteria")
+      );
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
+      this.ticketsPozo = JSON.parse(localStorage.getItem("seleccionadosPozo"));
     }
     this.loadingMessage = "Cargando los sorteos disponibles";
     this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);

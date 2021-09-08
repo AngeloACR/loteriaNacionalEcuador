@@ -466,13 +466,8 @@ const ventasController = {
             let lotto = req.body.lotto ? req.body.lotto : [];
             let pozo = req.body.pozo ? req.body.pozo : [];
             let reservaId = req.body.reservaId ? req.body.reservaId : 0;
-            console.log(loteria);
-            console.log(lotto);
-            console.log(pozo);
-            console.log(reservaId);
 
             let reservasAux = await Ventas.reservarCombinaciones(loteria, lotto, pozo, lotteryToken, reservaId, user);
-            console.log(reservasAux);
 
             //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
             let reserva = "";
@@ -480,7 +475,6 @@ const ventasController = {
                 reservasAux,
                 reserva
             }
-            console.log(response);
             res.status(200).json(response);
         } catch (e) {
             console.log(e.toString());

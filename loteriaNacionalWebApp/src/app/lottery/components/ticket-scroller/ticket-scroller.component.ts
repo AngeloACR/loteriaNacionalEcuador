@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input,
+  EventEmitter,
+  Output
+} from "@angular/core";
 import {
   ticketsNacional,
   ticketsLotto,
@@ -12,6 +19,9 @@ import {
 })
 export class TicketScrollerComponent implements OnInit {
   @Input() logo: String;
+  @Input() ticketsLoteria: any;
+  @Input() ticketsLotto: any;
+  @Input() ticketsPozo: any;
   @Input() tickets: any;
   @Input() tipoLoteria: string;
   @Input() isResumen: boolean = false;
@@ -21,6 +31,7 @@ export class TicketScrollerComponent implements OnInit {
   isLotto: boolean = false;
   isPozoMillonario: boolean = false;
   logoPath: string;
+  total: number;
   constructor() {}
 
   comprar() {
@@ -28,7 +39,6 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.tickets);
     switch (this.tipoLoteria) {
       case "loteria":
         this.isLoteriaNacional = true;
@@ -43,11 +53,50 @@ export class TicketScrollerComponent implements OnInit {
         this.logoPath = "assets/img/pozzo millonario.png";
         break;
     }
+    this.getTotal();
   }
 
-  checkTickets() {
-    if (this.tickets) {
-      return Object.keys(this.tickets).length != 0;
+  ngDoCheck() {
+    this.getTotal();
+  }
+
+  checkTicketsLoteria() {
+    if (this.ticketsLoteria) {
+      return Object.keys(this.ticketsLoteria).length != 0;
     }
+  }
+
+  checkTicketsLotto() {
+    if (this.ticketsLotto) {
+      return Object.keys(this.ticketsLotto).length != 0;
+    }
+  }
+
+  checkTicketsPozo() {
+    if (this.ticketsPozo) {
+      return Object.keys(this.ticketsPozo).length != 0;
+    }
+  }
+
+  getTotal() {
+    let total = 0;
+    for (const key in this.ticketsLoteria) {
+      let ticket = this.ticketsLoteria[key];
+      let amount = parseFloat(ticket.sorteo.precio);
+      ticket.ticket.seleccionados.forEach(element => {
+        total += parseFloat(ticket.sorteo.precio);
+      });
+    }
+    for (const key in this.ticketsLotto) {
+      let ticket = this.ticketsLotto[key];
+      let amount = parseFloat(ticket.sorteo.precio);
+      total += parseFloat(ticket.sorteo.precio);
+    }
+    for (const key in this.ticketsPozo) {
+      let ticket = this.ticketsPozo[key];
+      let amount = parseFloat(ticket.sorteo.precio);
+      total += parseFloat(ticket.sorteo.precio);
+    }
+    this.total = total;
   }
 }

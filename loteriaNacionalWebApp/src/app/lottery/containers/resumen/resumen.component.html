@@ -1,15 +1,8 @@
 <div class="container">
 
 
-  <app-ticket-scroller class="ticketScroll" isResumen="true" [tickets]="ticketsNacional" tipoLoteria="loteria">
-  </app-ticket-scroller>
-
-
-  <app-ticket-scroller class="ticketScroll" isResumen="true" [tickets]="ticketsLotto" tipoLoteria="lotto">
-  </app-ticket-scroller>
-
-
-  <app-ticket-scroller class="ticketScroll" isResumen="true" [tickets]="ticketsPozo" tipoLoteria="pozo">
+  <app-ticket-scroller class="ticketScroll" isResumen="true" [ticketsLoteria]="ticketsNacional"
+    [ticketsLotto]="ticketsLotto" [ticketsPozo]="ticketsPozo" tipoLoteria="loteria">
   </app-ticket-scroller>
   <div class="boton_boleto">
 

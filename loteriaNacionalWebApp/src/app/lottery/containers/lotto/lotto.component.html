@@ -63,7 +63,8 @@
 
 
 
-  <app-ticket-scroller (emitirCompra)="abrirResumen()" [tickets]="ticketsSeleccionados" tipoLoteria="lotto">
+  <app-ticket-scroller (emitirCompra)="abrirResumen()" [ticketsLoteria]="ticketsLoteria"
+    [ticketsLotto]="ticketsSeleccionados" [ticketsPozo]="ticketsPozo" tipoLoteria="lotto">
   </app-ticket-scroller>
 </div>
 <app-loader loader="lotto" [message]="loadingMessage" *ngIf="isLoading"></app-loader>

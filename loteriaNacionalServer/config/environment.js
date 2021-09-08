@@ -10,6 +10,7 @@ module.exports = {
     ventasPort: 6800,
     contenidosPort: 5950,
     lotteryPort: 5480,
+    migrationPort: 5000,
     host: 'localhost',
     exalogicHostTest: 'www.loteria.com.ec',
     exalogicEndpointTest: '/lotery_api/XReceiver',

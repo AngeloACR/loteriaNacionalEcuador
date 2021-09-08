@@ -178,13 +178,13 @@ const inquiryController = {
 
     buscarLoteriaWinner: async (req, res) => {
         try {
-            console.time('consultaLoteria')
             let sorteo = req.body.sorteo;
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanadorLoteria(sorteo, combinaciones[i]);
+                //let aux = await Results.getResultadoGanadorLoteria(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -210,7 +210,6 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
-            console.timeEnd('consultaLoteria')
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -219,13 +218,13 @@ const inquiryController = {
 
     buscarLottoWinner: async (req, res) => {
         try {
-            console.time('consultaLotto')
             let sorteo = req.body.sorteo;
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanadorLotto(sorteo, combinaciones[i]);
+                //let aux = await Results.getResultadoGanadorLotto(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -250,7 +249,6 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
-            console.timeEnd('consultaLotto')
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());
@@ -259,13 +257,13 @@ const inquiryController = {
 
     buscarPozoWinner: async (req, res) => {
         try {
-            console.time('consultaPozo')
             let sorteo = req.body.sorteo;
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanadorPozo(sorteo, combinaciones[i]);
+                //let aux = await Results.getResultadoGanadorPozo(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -290,7 +288,6 @@ const inquiryController = {
                     response.push(responseAux);
                 }
             }
-            console.timeEnd('consultaPozo')
             res.status(200).json(response);
         } catch (e) {
             res.status(400).json(e.toString());

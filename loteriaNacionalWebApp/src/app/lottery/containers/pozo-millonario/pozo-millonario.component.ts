@@ -4,7 +4,9 @@ import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import {
   animales,
   ticketsAnimales,
-  sorteo
+  sorteo,
+  ticketsNacional,
+  ticketsLotto
 } from "../../interfaces/lottery.interface";
 import { PageEvent } from "@angular/material";
 import { ReturnStatement } from "@angular/compiler";
@@ -37,12 +39,10 @@ export class PozoMillonarioComponent implements OnInit {
   ) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
-      console.log(this.token);
     });
   }
 
   agregar(animal: animales, i: number) {
-    console.log(animal);
     if (this.seleccionAnimales[i].status === false) {
       this.seleccionAnimales[i].status = true;
       this.animalesTabs.push(this.seleccionAnimales[i]);
@@ -70,10 +70,8 @@ export class PozoMillonarioComponent implements OnInit {
       }
     });
 
-    localStorage.setItem(
-      "animalesSeleccionados",
-      JSON.stringify(this.seleccionAnimales)
-    );
+    this.lotteryService.setCarritoPozo(this.ticketsSeleccionados);
+
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
 
@@ -95,12 +93,13 @@ export class PozoMillonarioComponent implements OnInit {
         ticket: this.ticketsSeleccionados[identificador].ticket,
         sorteo: this.sorteoSeleccionado
       };
-
+      let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         aux,
         fraccion,
-        1
+        5,
+        reservaId
       );
 
       delete this.ticketsSeleccionados[identificador];
@@ -126,16 +125,18 @@ export class PozoMillonarioComponent implements OnInit {
         sorteo: this.sorteoSeleccionado
       };
       this.ticketsSeleccionados[ticket.identificador] = aux;
-
+      console.log("Buscando la id de reserva");
+      let reservaId = this.lotteryService.getReservaId();
+      console.log(reservaId);
       let response = await this.lotteryService.reservarBoletos(
         this.token,
         aux,
-        5
+        5,
+        reservaId
       );
-      localStorage.setItem(
-        "seleccionadosPozo",
-        JSON.stringify(this.ticketsSeleccionados)
-      );
+
+      this.lotteryService.setReservaId(response.reservasAux.reservaId[0]);
+      this.lotteryService.setCarritoPozo(this.ticketsSeleccionados);
 
       this.isLoading = false;
     } catch (e) {
@@ -216,7 +217,6 @@ export class PozoMillonarioComponent implements OnInit {
         "Parece que ha habido un problema, revise el formulario e intente de nuevo"
       );
       this.isLoading = false;
-      console.log(e);
     }
   }
   sorteoSeleccionado: sorteo;
@@ -236,11 +236,23 @@ export class PozoMillonarioComponent implements OnInit {
     this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
   }
 
+  ticketsLoteria: any = {};
+  ticketsLotto: any = {};
   async ngOnInit() {
     this.isLoading = true;
     if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
       this.ticketsSeleccionados = JSON.parse(
         localStorage.getItem("seleccionadosPozo")
+      );
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
+      this.ticketsLoteria = JSON.parse(
+        localStorage.getItem("seleccionadosLoteria")
+      );
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
+      this.ticketsLotto = JSON.parse(
+        localStorage.getItem("seleccionadosLotto")
       );
     }
     this.loadingMessage = "Cargando los sorteos disponibles";
