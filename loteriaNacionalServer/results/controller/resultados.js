@@ -272,6 +272,7 @@ const resultadosController = {
                     status: false
                 }
             }
+            console.log(response);
             return response;
         } catch (error) {
             let response = {
@@ -279,6 +280,7 @@ const resultadosController = {
                 msg: error.toString().replace("Error: ", "")
             }
             console.log(JSON.stringify(error));
+            console.log(response);
             return response
         }
     },
