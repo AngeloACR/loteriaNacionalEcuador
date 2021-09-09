@@ -99,9 +99,7 @@ export class LoteriaComponent implements OnInit {
   }
 
   fraccionSeleccionada(idTicket: number, idFraccion: string) {
-    if (this.allFractions[idTicket]) {
-      this.allFractions[idTicket] = false;
-    }
+    if (this.allFractions[idTicket]) this.allFractions[idTicket] = false;
     let index = this.ticketsNacional[idTicket].seleccionados.indexOf(
       idFraccion
     );
@@ -135,10 +133,16 @@ export class LoteriaComponent implements OnInit {
         this.ticketsNacional[id].seleccionados.push(element);
         this.pushToSeleccionado(this.ticketsNacional[id]);
       } else {
-        this.removeSeleccionado(
-          this.ticketsNacional[id].identificador,
-          element
-        );
+        let index = this.ticketsNacional[id].seleccionados.indexOf(element);
+        if (this.ticketsNacional[id].seleccionados.length == 0) {
+          this.removeSeleccionado(
+            this.ticketsNacional[id].identificador,
+            element
+          );
+        } else {
+          this.removeFraccion(this.ticketsNacional[id].identificador, element);
+        }
+        this.removeFraccion(this.ticketsNacional[id].identificador, element);
       }
     });
     this.changeDetectorRef.markForCheck();
@@ -220,7 +224,7 @@ export class LoteriaComponent implements OnInit {
         sorteo: this.sorteoSeleccionado
       };
       this.ticketsSeleccionados[ticket.identificador] = aux;
-
+      console.log(aux);
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.reservarBoletos(
         this.token,
@@ -250,6 +254,48 @@ export class LoteriaComponent implements OnInit {
     this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
   }
 
+  confirmacionDeCompra: boolean = false;
+  compraFinalizada: boolean = false;
+  saldoInsuficiente: boolean = false;
+  compraCancelada: boolean = false;
+
+  cancelMessage: string = "";
+
+  dismissCompras() {
+    this.confirmacionDeCompra = false;
+    this.compraFinalizada = false;
+    this.saldoInsuficiente = false;
+    this.compraCancelada = false;
+  }
+  volver() {
+    this.lotteryService.borrarCarrito();
+    this.dismissCompras();
+    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
+  }
+
+  comprar() {
+    this.dismissCompras();
+    this.confirmacionDeCompra = true;
+  }
+
+  seguirComprando() {
+    this.dismissCompras();
+    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
+  }
+
+  confirmarCompra() {
+    this.dismissCompras();
+    this.compraFinalizada = true;
+  }
+  cancelarCompra() {
+    this.dismissCompras();
+    this.compraCancelada = true;
+  }
+
+  recargarSaldo() {
+    this.dismissCompras();
+    this.saldoInsuficiente = true;
+  }
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo;

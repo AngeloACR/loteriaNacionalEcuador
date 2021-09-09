@@ -2,7 +2,7 @@
 
 <div class="contenedor_loteria" *ngIf="showComponents">
 
-  <app-info-loteria titulo="Pozo Millonario" color="pozo" [sorteos]="sorteo" [loteria]=5
+  <app-info-loteria class="infoBox" titulo="Pozo Millonario" color="pozo" [sorteos]="sorteo" [loteria]=5
     (emitir)="procesaEmitir($event)">
   </app-info-loteria>
 
@@ -97,18 +97,26 @@
     <!-- <div>
       Page Actual: {{pageActual}}
     </div> -->
-
+    <!-- 
     <div class="boton_boleto">
       <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
 
-    </div>
+    </div> -->
   </div>
 
 
 
-  <app-ticket-scroller (emitirCompra)="abrirResumen()" [ticketsLoteria]="ticketsLoteria" [ticketsLotto]="ticketsLotto"
-    [ticketsPozo]="ticketsSeleccionados" tipoLoteria="pozo">
+  <app-ticket-scroller class="ticketScroller" (emitirCompra)="comprar()" [ticketsLoteria]="ticketsLoteria"
+    [ticketsLotto]="ticketsLotto" [ticketsPozo]="ticketsSeleccionados" tipoLoteria="pozo">
   </app-ticket-scroller>
 
 </div>
 <app-loader loader="pozo" [message]="loadingMessage" *ngIf="isLoading"></app-loader>
+<div class="blackBox" *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada"></div>
+<div *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada" class="paymentBox">
+  <app-confirmacion-de-compra (compraConfirmada)="confirmarCompra()" (compraCancelada)="cancelarCompra($event)"
+    (comprarDespues)="dismissCompras()" class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
+  <app-compra-finalizada (volver)="volver()" class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
+  <app-saldo-insuficiente class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
+  <app-compra-cancelada class="paymentItem" [message]="cancelMessage" *ngIf="compraCancelada"></app-compra-cancelada>
+</div>

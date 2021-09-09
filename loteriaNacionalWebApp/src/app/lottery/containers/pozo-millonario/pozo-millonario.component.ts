@@ -236,6 +236,48 @@ export class PozoMillonarioComponent implements OnInit {
     this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
   }
 
+  confirmacionDeCompra: boolean = false;
+  compraFinalizada: boolean = false;
+  saldoInsuficiente: boolean = false;
+  compraCancelada: boolean = false;
+
+  cancelMessage: string = "";
+
+  dismissCompras() {
+    this.confirmacionDeCompra = false;
+    this.compraFinalizada = false;
+    this.saldoInsuficiente = false;
+    this.compraCancelada = false;
+  }
+  volver() {
+    this.lotteryService.borrarCarrito();
+    this.dismissCompras();
+    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
+  }
+
+  comprar() {
+    this.dismissCompras();
+    this.confirmacionDeCompra = true;
+  }
+
+  seguirComprando() {
+    this.dismissCompras();
+    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
+  }
+
+  confirmarCompra() {
+    this.dismissCompras();
+    this.compraFinalizada = true;
+  }
+  cancelarCompra() {
+    this.dismissCompras();
+    this.compraCancelada = true;
+  }
+
+  recargarSaldo() {
+    this.dismissCompras();
+    this.saldoInsuficiente = true;
+  }
   ticketsLoteria: any = {};
   ticketsLotto: any = {};
   async ngOnInit() {

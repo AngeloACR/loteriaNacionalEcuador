@@ -2,7 +2,7 @@
 
 <div class="contenedor_loteria" *ngIf="showComponents">
 
-  <app-info-loteria titulo="Loteria Nacional" [sorteos]="sorteo" color="loteria" [loteria]=1
+  <app-info-loteria class="infoBox" titulo="Loteria Nacional" [sorteos]="sorteo" color="loteria" [loteria]=1
     (emitir)="procesaEmitir($event)">
   </app-info-loteria>
 
@@ -42,11 +42,6 @@
                   <p *ngFor="let numero of ticket.display">{{ numero }}</p>
                 </div>
                 <span *ngIf="ticket.status">
-                  <div class="numeros_grupo">
-                    <p *ngFor="let numero of ticket.display">{{ numero }}</p>
-                    <h3>Fraccion</h3>
-                  </div>
-                  <hr>
                   <div class="seleccionAll">
                     <p>Seleccionar todas las fracciones</p>
                     <input (click)="seleccionarTodo(page_size*(page_number-1)+i)"
@@ -81,13 +76,23 @@
 
 
     </div>
+    <!-- 
     <div class="boton_boleto">
       <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-    </div>
+    </div> -->
   </div>
 
-  <app-ticket-scroller (emitirCompra)="abrirResumen()" [ticketsLoteria]="ticketsSeleccionados" [ticketsLotto]="ticketsLotto" [ticketsPozo]="ticketsPozo" tipoLoteria="loteria">
+  <app-ticket-scroller class="ticketScroller" (emitirCompra)="comprar()" [ticketsLoteria]="ticketsSeleccionados"
+    [ticketsLotto]="ticketsLotto" [ticketsPozo]="ticketsPozo" tipoLoteria="loteria">
   </app-ticket-scroller>
 </div>
 
 <app-loader loader="loteria" [message]="loadingMessage" *ngIf="isLoading"></app-loader>
+<div class="blackBox" *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada"></div>
+<div *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada" class="paymentBox">
+  <app-confirmacion-de-compra (compraConfirmada)="confirmarCompra()" (compraCancelada)="cancelarCompra($event)"
+    (comprarDespues)="dismissCompras()" class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
+  <app-compra-finalizada (volver)="volver()" class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
+  <app-saldo-insuficiente class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
+  <app-compra-cancelada class="paymentItem" [message]="cancelMessage" *ngIf="compraCancelada"></app-compra-cancelada>
+</div>

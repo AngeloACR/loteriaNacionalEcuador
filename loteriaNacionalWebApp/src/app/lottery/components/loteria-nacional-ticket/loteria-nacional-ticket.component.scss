@@ -32,109 +32,28 @@ $color-botton: #2f72b9;
     width: 100%;
     margin: auto;
 
-    .ticket_titulo {
-      display: flex;
-      margin: auto;
-      justify-content: space-around;
-      align-items: center;
-
-      img {
-        width: 40px;
-      }
-      h3 {
-        font-family: $fuente-titulo;
-        font-size: 16px;
-        margin-left: 10px;
-      }
-
+    .ticket_combinacion {
       p {
-        margin: 0px;
-        font-family: $fuente-subtitulo;
-        font-size: 10px;
-        margin-right: 10px;
-      }
-    }
-
-    .ticket_monto {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      padding-right: 14px;
-
-      p:nth-child(1) {
-        font-size: 32px;
-        -webkit-text-stroke: 2px $color-botton;
-        color: #fff;
-        font-family: $fuente-titulo;
-        margin: 10px 0px;
-      }
-
-      p:nth-child(2) {
+        background-color: #fff;
+        font-family: $fuente-parrafo;
         font-size: 14px;
-        margin: 0px;
-        margin-bottom: 5px;
-        color: $color-botton;
-        font-family: $fuente-subtitulo;
-      }
-    }
-
-    .ticket_entero_fraccion {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      font-family: $fuente-subtitulo;
-
-      .ticket_entero {
-        padding-left: 15px;
-
-        h5 {
-          margin-top: 7px;
-          margin-bottom: 8px;
-        }
-
-        div {
-          display: flex;
-          justify-content: center;
-          margin: 0 0 15px 0;
-
-          p {
-            width: 30px;
-            height: 30px;
-            background-color: #fff;
-            font-family: $fuente-subtitulo;
-            font-size: 14px;
-            color: #000;
-            margin: 0px 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
+        color: #000;
+        margin: 0px 2px;
+        span {
+          font-family: $fuente-subtitulo;
         }
       }
 
       .ticket_fraccion {
-        padding-left: 15px;
-
-        h5 {
-          margin-top: 7px;
-          margin-bottom: 8px;
-        }
-
-        div {
-          display: flex;
-          justify-content: center;
-
-          p {
-            width: 30px;
-            height: 30px;
-            background-color: #fff;
+        p {
+          background-color: #fff;
+          font-family: $fuente-parrafo;
+          font-size: 14px;
+          color: #000;
+          margin: 0px 2px;
+          span {
+            margin-right: 5px;
             font-family: $fuente-subtitulo;
-            font-size: 14px;
-            color: #000;
-            margin: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
           }
         }
       }

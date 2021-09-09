@@ -6,67 +6,63 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-botton: #2f72b9;
 
 .fondoLoteria {
-  background-color: #2f72b9 !important; 
+  background-color: #2f72b9 !important;
 }
 
 .fondoLotto {
-  background-color: #b51f20 !important; 
+  background-color: #b51f20 !important;
 }
 
 .fondoPozo {
-  background-color: #04b865 !important; 
+  background-color: #04b865 !important;
 }
 
 .menuBox {
-    /* margin-right: 15px;
+  /* margin-right: 15px;
     padding: 0 !important; */
+  padding: 0;
+  margin: autp;
+  width: 100%;
+  .menuItem {
+    /* height: 40px; */
+    list-style: none;
+    padding: 20px 10px;
+    font-family: $fuente-subtitulo;
+    background-color: #f2f2f2;
+    padding-left: 15px;
+    margin: 0 0 4px 0;
 
-    .menuItem {
-      width: 225px;
-      /* height: 40px; */
-      list-style: none;
-      padding: 20px 10px;
+    &:nth-child(1) {
+      /* background-color: #2f72b9; */
       font-family: $fuente-subtitulo;
-      background-color: #f2f2f2;
-      padding-left: 15px;
-      margin: 0 0 4px 0;
+      /* margin: 0; */
+      height: 18px;
+      color: #fff;
+    }
 
-      &:nth-child(1) {
-        /* background-color: #2f72b9; */
-        font-family: $fuente-subtitulo;
-        /* margin: 0; */
-        height: 18px;
-        color: #fff;
-      }
-
-      &:nth-child(5) {
-        height: 13px;
-      }
-
-      select{
-
-        cursor: pointer;
-        option:first-child {
-          visibility: hidden;
-          display: none;
-        }
-      }
-
-      p {
-        font-size: 10px;
-        font-family: $fuente-parrafo;
-      }
-
-      .fechaItem {
-        width: 100%;
-        margin: auto;
-        padding: 12px 0px;
-        border: none;
-        background-color: #f2f2f2;
-        outline: none;
-
-        font-family: $fuente-parrafo;
-        font-size: 12px;
+    select {
+      cursor: pointer;
+      option:first-child {
+        visibility: hidden;
+        display: none;
       }
     }
+
+    p {
+      font-size: 12px;
+      font-family: $fuente-parrafo;
+    }
+
+    .fechaItem {
+      width: 100%;
+      margin: auto;
+      padding: 12px 0px;
+      border: none;
+      background-color: #f2f2f2;
+      outline: none;
+
+      font-family: $fuente-parrafo;
+      font-size: 12px;
+    }
   }
+}

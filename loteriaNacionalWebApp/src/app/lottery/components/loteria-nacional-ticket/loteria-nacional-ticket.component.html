@@ -2,19 +2,14 @@
     <div class="contenedor_informacion_ticket_derecho">
 
 
-        <div class="ticket_entero_fraccion">
-            <div class="ticket_entero">
-                <h5>Entero</h5>
-                <div>
-                    <p *ngFor="let number of ticketNumbers">{{number}}</p>
-                </div>
-            </div>
-            <div class="ticket_fraccion">
-                <h5>Fraccion</h5>
-                <div>
-                    <p *ngFor="let number of fraccion">{{number}}</p>
-                </div>
-            </div>
+        <div class="ticket_combinacion">
+            <p>Combinación: <span>{{ticket.combinacion}}</span></p>
+
+        </div>
+        <div class="ticket_fraccion">
+
+            <p>Fracciones: <br><span *ngFor="let number of fraccion">{{number}}<br></span></p>
+
         </div>
     </div>
 </div>

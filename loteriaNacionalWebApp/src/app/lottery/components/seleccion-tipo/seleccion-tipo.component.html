@@ -1,23 +1,20 @@
 <div class="container">
-  <a [routerLink]="linkLoteriaNacional" routerLinkActive="active">
-    <div class="contenedor_loteria">
-      <img src="assets/img/loteria nacional.png" alt="">
-      <span class="boton loteria">JUGAR</span>
-    </div>
-  </a>
+  <div class="contenedor_loteria" routerLinkActive="active">
+    <img src="assets/img/loteria nacional.png" alt="">
+    <a class="boton loteria" [routerLink]="linkLoteriaNacional" routerLinkActive="active">JUGAR
+    </a>
+  </div>
 
-  <a [routerLink]="linkLotto" routerLinkActive="active">
-    <div class="contenedor_loteria">
-      <img src="assets/img/lotto.png" alt="">
-      <span class="boton lotto">JUGAR</span>
-    </div>
-  </a>
+  <div class="contenedor_loteria" routerLinkActive="active">
+    <img src="assets/img/lotto.png" alt="">
+    <a [routerLink]="linkLotto" routerLinkActive="active" class="boton lotto">JUGAR </a>
+  </div>
 
-  <a [routerLink]="linkPozoMillonario" routerLinkActive="active">
-    <div class="contenedor_loteria">
-      <img src="assets/img/pozzo millonario.png" alt="">
-      <span class="boton pozo">JUGAR</span>
-    </div>
-  </a>
+  <div class="contenedor_loteria" routerLinkActive="active">
+    <img src="assets/img/pozzo millonario.png" alt="">
+    <a [routerLink]="linkPozoMillonario" routerLinkActive="active" class="boton pozo">JUGAR
+
+    </a>
+  </div>
 
 </div>
