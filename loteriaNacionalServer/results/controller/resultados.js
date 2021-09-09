@@ -219,38 +219,6 @@ const resultadosController = {
             return response
         }
     },
-    getResultadoGanadorLoteria: async function (sorteo, combinacion) {
-        try {
-            let sorteoAux = `${sorteo}`
-            let combinacionAux = `${combinacion}`
-            console.log(combinacionAux);
-            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
-            //let resultado = await Resultado.find(query).populate('premio');
-            let resultado = await ResultadoLoteria.find(query);
-
-            console.log(resultado);
-            console.log('Probando suerte en loteria');
-
-            if (resultado && resultado.length != 0) {
-                resultado.push(resultadoAux);
-                response = {
-                    status: true,
-                    values: resultado
-                }
-            } else {
-                response = {
-                    status: false
-                }
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
     getResultadoGanadorLotto: async function (sorteo, combinacion) {
         try {
             let sorteoAux = `${sorteo}`
@@ -283,6 +251,38 @@ const resultadosController = {
             }
             console.log(JSON.stringify(error));
             console.log(response);
+            return response
+        }
+    },
+    getResultadoGanadorLoteria: async function (sorteo, combinacion) {
+        try {
+            let sorteoAux = `${sorteo}`
+            let combinacionAux = `${combinacion}`
+            console.log(combinacionAux);
+            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
+            //let resultado = await Resultado.find(query).populate('premio');
+            let resultado = await ResultadoLoteria.find(query);
+
+            console.log(resultado);
+            console.log('Probando suerte en loteria');
+
+            if (resultado && resultado.length != 0) {
+                resultado.push(resultadoAux);
+                response = {
+                    status: true,
+                    values: resultado
+                }
+            } else {
+                response = {
+                    status: false
+                }
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
             return response
         }
     },
