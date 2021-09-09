@@ -191,9 +191,11 @@ const resultadosController = {
             return response;
         } catch (error) { throw error; }
     },
-    getResultadoGanador: async function (sorteo: string, combinacion: string) {
+    getResultadoGanador: async function (sorteo, combinacion) {
         try {
-            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
+            let sorteoAux = `${sorteo}`
+            let combinacionAux = `${combinacion}`
+            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await Resultado.find(query).lean();
             if (resultado && resultado.length != 0) {
