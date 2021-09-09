@@ -425,7 +425,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
               <MedioId>${medioId}</MedioId>
               <UsuarioId>${user}</UsuarioId>
                 <ReservaId>${reservaId}</ReservaId>
-                <Observacion>Reserva de Boletos</Observacion>
+                <Observacion>Eliminación de Boletos de reserva</Observacion>
                 <xmlNumeros>
             <RS >
           
@@ -448,9 +448,8 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
 
                 let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
-
+                console.log(errorCode);
                 if (!errorCode) {
-                    let response = [];
                     let reservaId = data.mt.o[0].ReturnValue;
                     let response = {
                         reservaId

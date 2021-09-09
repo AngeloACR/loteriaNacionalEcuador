@@ -172,7 +172,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e.toString());
+      alert(JSON.stringify(e));
     }
   }
   async removeFraccion(identificador, fraccion) {
@@ -206,7 +206,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e.toString());
+      alert(JSON.stringify(e));
     }
   }
 
@@ -233,7 +233,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e.toString());
+      alert(JSON.stringify(e));
     }
   }
 
