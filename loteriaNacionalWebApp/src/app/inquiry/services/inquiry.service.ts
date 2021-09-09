@@ -81,7 +81,7 @@ export class InquiryService {
         break;
     }
     var address = this.mySource;
-
+    console.log(endpoint);
     address = address + endpoint;
     let body = {
       sorteo,

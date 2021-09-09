@@ -151,7 +151,7 @@ export class LottoConsultaComponent implements OnInit {
         return;
       }
       let data: any = await this.inquiryService.recuperarBoletoGanador(
-        1,
+        2,
         this.sorteoGanador,
         combinaciones
       );

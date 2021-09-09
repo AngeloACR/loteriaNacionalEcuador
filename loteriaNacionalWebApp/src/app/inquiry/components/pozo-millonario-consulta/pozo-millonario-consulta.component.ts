@@ -156,7 +156,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
         return;
       }
       let data: any = await this.inquiryService.recuperarBoletoGanador(
-        1,
+        5,
         this.sorteoGanador,
         combinaciones
       );

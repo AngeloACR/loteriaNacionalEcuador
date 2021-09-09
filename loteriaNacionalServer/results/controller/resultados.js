@@ -223,14 +223,10 @@ const resultadosController = {
         try {
             let sorteoAux = `${sorteo}`
             let combinacionAux = `${combinacion}`
-            console.log(combinacionAux);
-            let query = { 'combinacion1': combinacionAux }
+            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultadoAux = await ResultadoLotto.find(query);
-            console.log(resultadoAux)
-
             let resultado = resultadoAux.filter(x => x.numeroSorteo == sorteoAux);
-            console.log(resultado);
 
             if (resultado && resultado.length != 0) {
                 response = {
@@ -258,13 +254,9 @@ const resultadosController = {
         try {
             let sorteoAux = `${sorteo}`
             let combinacionAux = `${combinacion}`
-            console.log(combinacionAux);
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoLoteria.find(query);
-
-            console.log(resultado);
-            console.log('Probando suerte en loteria');
 
             if (resultado && resultado.length != 0) {
                 resultado.push(resultadoAux);
@@ -290,14 +282,12 @@ const resultadosController = {
         try {
             let sorteoAux = `${sorteo}`
             let combinacionAux = `${combinacion}`
-            console.log(combinacionAux);
+
             let query = { 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = []
             let resultadoAux = await ResultadoPozo.find(query);
             let resultado = resultadoAux.filter(x => x.numeroSorteo == sorteoAux);
-            console.log(resultado);
-            console.log('Probando suerte en pozo');
 
             if (resultado && resultado.length != 0) {
                 response = {
