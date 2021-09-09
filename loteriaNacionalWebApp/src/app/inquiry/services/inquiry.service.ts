@@ -64,15 +64,15 @@ export class InquiryService {
     let endpoint = "/inquiry";
     switch (tipoLoteria) {
       case 1:
-        endpoint = `${endpoint}/loteriaGanador`;
+        endpoint = `${endpoint}/ganadorLoteria`;
         console.log("Recuperando boleto ganador de loteria");
         break;
       case 2:
-        endpoint = `${endpoint}/lottoGanador`;
+        endpoint = `${endpoint}/ganadorLotto`;
         console.log("Recuperando boleto ganador de lotto");
         break;
       case 5:
-        endpoint = `${endpoint}/pozoGanador`;
+        endpoint = `${endpoint}/ganadorPozo`;
         console.log("Recuperando boleto ganador de pozo millonario");
 
         break;
