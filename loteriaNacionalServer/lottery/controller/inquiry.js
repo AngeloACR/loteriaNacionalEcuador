@@ -262,8 +262,8 @@ const inquiryController = {
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                let aux = await Results.getResultadoGanadorPozo(sorteo, combinaciones[i]);
-                //let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
+                //let aux = await Results.getResultadoGanadorPozo(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
