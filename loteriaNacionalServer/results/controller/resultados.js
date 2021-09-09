@@ -229,7 +229,7 @@ const resultadosController = {
             let resultado = []
             let resultadoAux = await ResultadoLoteria.findOne(query);
             resultado.push(resultadoAux);
-            console.log(resultado);
+            console.log(resultadoAux);
             if (resultado && resultado.length != 0) {
                 response = {
                     status: true,
@@ -259,7 +259,8 @@ const resultadosController = {
             let resultadoAux = await ResultadoLotto.findOne(query);
             let resultado = []
             if (resultadoAux) resultado.push(resultadoAux);
-            console.log(resultado);
+            console.log(resultadoAux);
+
             if (resultado && resultado.length != 0) {
                 response = {
                     status: true,
@@ -290,7 +291,8 @@ const resultadosController = {
             let resultado = []
             let resultadoAux = await ResultadoPozo.findOne(query);
             resultado.push(resultadoAux);
-            console.log(resultado);
+            console.log(resultadoAux);
+
             if (resultado && resultado.length != 0) {
                 response = {
                     status: true,
