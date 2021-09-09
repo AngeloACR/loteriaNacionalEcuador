@@ -191,7 +191,7 @@ const resultadosController = {
             return response;
         } catch (error) { throw error; }
     },
-    getResultadoGanador: async function (sorteo, combinacion) {
+    getResultadoGanador: async function (sorteo: string, combinacion: string) {
         try {
             let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
             //let resultado = await Resultado.find(query).populate('premio');
@@ -657,45 +657,7 @@ const resultadosController = {
     corregirUltimosResultados: async function () {
         try {
 
-            /*             console.log("corrigiendo loteria")
-                        let resultadosLoteria = await resultadosController.getUltimoResultadoCorreccion(1);
-                        resultadosLoteria['ultimoResultadoLoteria'] = resultadosLoteria.ultimoResultado;
-                        await resultadosLoteria.save();
-            
-                        console.log("corrigiendo lotto")
-                        let resultadosLotto = await resultadosController.getUltimoResultadoCorreccion(2);
-                        let resultadoLottoAux = (await resultadosController.getResultadoById(resultadosLotto.ultimoResultado)).values;
-                        let resultadoLottoAux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(resultadoLottoAux.combinacion1, resultadosLotto.numeroSorteo)).values;
-                        resultadosLotto['ultimoResultadoLotto'] = resultadoLottoAux2._id;
-            
-                        console.log("corrigiendo lotto plus")
-                        resultadoLottoAux = (await resultadosController.getResultadoById(resultadosLotto.resultadoLottoPlus)).values;
-                        resultadoLottoAux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(resultadoLottoAux.combinacion1, resultadosLotto.numeroSorteo)).values;
-                        resultadosLotto['resultadoLottoPlus'] = resultadoLottoAux2._id;
-            
-                        console.log("corrigiendo lotto nos vemos")
-                        resultadoLottoAux = (await resultadosController.getResultadoById(resultadosLotto.resultadoNosVemosJefe)).values;
-                        resultadoLottoAux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(resultadoLottoAux.combinacion1, resultadosLotto.numeroSorteo)).values;
-                        resultadosLotto['resultadoNosVemosJefe'] = resultadoLottoAux2._id;
-            
-                        console.log("corrigiendo lottito")
-                        let resultadosLottito = [];
-                        let n = resultadosLotto.resultadosLottito.length;
-                        for (let i = 0; i < n; i++) {
-                            let resultado = resultadosLotto.resultadosLottito[i];
-                            let aux = (await resultadosController.getResultadoById(resultado)).values;
-                            let aux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(aux.combinacion1, resultadosLotto.numeroSorteo)).values;
-                            resultadosLottito.push(aux2._id);
-                        };
-                        resultadosLotto['resultadosLottito'] = resultadosLottito;
-                        await resultadosLotto.save(); */
 
-            console.log("corrigiendo pozo")
-            let resultadosPozo = await resultadosController.getUltimoResultadoCorreccion(5);
-            let resultadoPozoAux = (await resultadosController.getResultadoById(resultadosPozo.ultimoResultado)).values;
-            let resultadoPozoAux2 = (await resultadosController.getResultadoPozoByCodigoPremio(resultadoPozoAux.codigoPremio)).values;
-            resultadosPozo['ultimoResultadoPozo'] = resultadoPozoAux2._id;
-            await resultadosPozo.save();
             return 'done'
         } catch (e) {
 
