@@ -195,6 +195,7 @@ const resultadosController = {
         try {
             let sorteoAux = `${sorteo}`
             let combinacionAux = `${combinacion}`
+            console.log(combinacionAux);
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await Resultado.find(query).lean();
@@ -220,7 +221,10 @@ const resultadosController = {
     },
     getResultadoGanadorLoteria: async function (sorteo, combinacion) {
         try {
-            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
+            let sorteoAux = `${sorteo}`
+            let combinacionAux = `${combinacion}`
+            console.log(combinacionAux);
+            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoLoteria.find(query).lean();
             if (resultado && resultado.length != 0) {
@@ -244,7 +248,10 @@ const resultadosController = {
     },
     getResultadoGanadorLotto: async function (sorteo, combinacion) {
         try {
-            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
+            let sorteoAux = `${sorteo}`
+            let combinacionAux = `${combinacion}`
+            console.log(combinacionAux);
+            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoLotto.find(query).lean();
             if (resultado && resultado.length != 0) {
@@ -269,7 +276,10 @@ const resultadosController = {
     },
     getResultadoGanadorPozo: async function (sorteo, combinacion) {
         try {
-            let query = { 'numeroSorteo': sorteo, 'combinacion1': combinacion }
+            let sorteoAux = `${sorteo}`
+            let combinacionAux = `${combinacion}`
+            console.log(combinacionAux);
+            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoPozo.find(query).lean();
             if (resultado && resultado.length != 0) {
