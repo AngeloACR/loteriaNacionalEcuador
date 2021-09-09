@@ -431,9 +431,9 @@ const resultadosController = {
             return response
         }
     },
-    getResultadoPozoByCombinacionSorteo: async function (id) {
+    getResultadoPozoByCodigoPremio: async function (id) {
         try {
-            let query = { 'combinacion1': id, 'numeroSorteo': sorteo }
+            let query = { 'codigoPremio': id }
             let resultado = await ResultadoPozo.findOne(query)
             let response = {
                 status: true,
@@ -693,7 +693,7 @@ const resultadosController = {
             console.log("corrigiendo pozo")
             let resultadosPozo = await resultadosController.getUltimoResultadoCorreccion(5);
             let resultadoPozoAux = (await resultadosController.getResultadoById(resultadosPozo.ultimoResultado)).values;
-            let resultadoPozoAux2 = (await resultadosController.getResultadoPozoByCombinacionSorteo(resultadoPozoAux.combinacion1, resultadosPozo.numeroSorteo)).values;
+            let resultadoPozoAux2 = (await resultadosController.getResultadoPozoByCodigoPremio(resultadoPozoAux.codigoPremio)).values;
             resultadosPozo['ultimoResultadoPozo'] = resultadoPozoAux2._id;
             await resultadosPozo.save();
             return 'done'
