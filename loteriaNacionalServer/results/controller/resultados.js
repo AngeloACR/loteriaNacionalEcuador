@@ -227,6 +227,7 @@ const resultadosController = {
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoLoteria.find(query).lean();
+            console.log(resultado);
             if (resultado && resultado.length != 0) {
                 response = {
                     status: true,
@@ -254,6 +255,7 @@ const resultadosController = {
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoLotto.find(query).lean();
+            console.log(resultado);
             if (resultado && resultado.length != 0) {
                 response = {
                     status: true,
@@ -282,6 +284,7 @@ const resultadosController = {
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoPozo.find(query).lean();
+            console.log(resultado);
             if (resultado && resultado.length != 0) {
                 response = {
                     status: true,
