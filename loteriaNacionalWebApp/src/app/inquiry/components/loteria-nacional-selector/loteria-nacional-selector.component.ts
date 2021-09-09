@@ -14,9 +14,9 @@ export class LoteriaNacionalSelectorComponent implements OnInit {
     let data = JSON.parse(
       localStorage.getItem("loteriaNacionalUltimoResultado")
     );
-    this.ticketNumbers = data.ultimoResultado.combinacion1.split("");
+    this.ticketNumbers = data.ultimoResultadoLoteria.combinacion1.split("");
     this.ticketGanador = {
-      ticketIndex: data.ultimoResultado.codigo,
+      ticketIndex: data.ultimoResultadoLoteria.codigo,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       numeroSorteo: data.numeroSorteo,

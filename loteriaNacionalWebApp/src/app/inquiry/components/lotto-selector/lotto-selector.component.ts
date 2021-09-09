@@ -18,16 +18,16 @@ export class LottoSelectorComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit() {
     let data = JSON.parse(localStorage.getItem("lottoUltimoResultado"));
-    this.ticketNumbers = data.ultimoResultado.combinacion1.split("");
-    this.ticketNumbers2 = data.ultimoResultado.combinacion2.split("");
-    this.ticketNumbers3 = data.ultimoResultado.combinacion3.split("");
+    this.ticketNumbers = data.ultimoResultadoLotto.combinacion1.split("");
+    this.ticketNumbers2 = data.ultimoResultadoLotto.combinacion2.split("");
+    this.ticketNumbers3 = data.ultimoResultadoLotto.combinacion3.split("");
     this.ticketLottoPlus = data.resultadoLottoPlus.combinacion2; //.split("");
     this.ticketNosVemosJefe = data.resultadoNosVemosJefe.combinacion4; //.split("");
     this.ticketLottito = data.resultadosLottito.map(resultado => {
       return resultado.combinacion3; //.split("");
     });
     this.ticketGanador = {
-      ticketIndex: data.ultimoResultado.codigo,
+      ticketIndex: data.ultimoResultadoLotto.codigo,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       ticketNumbers2: this.ticketNumbers2,

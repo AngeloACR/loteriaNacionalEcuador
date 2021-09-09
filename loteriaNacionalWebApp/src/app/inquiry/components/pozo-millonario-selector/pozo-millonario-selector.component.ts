@@ -17,17 +17,17 @@ export class PozoMillonarioSelectorComponent implements OnInit {
     let data = JSON.parse(
       localStorage.getItem("pozoMillonarioUltimoResultado")
     );
-    this.ticketNumbers = data.ultimoResultado.combinacion2.match(/.{1,2}/g);
+    this.ticketNumbers = data.ultimoResultadoPozo.combinacion2.match(/.{1,2}/g);
     this.mascota = data.mascota;
     this.mascotaPath = this.inquiry.obtenerMascota(this.mascota);
 
     this.ticketGanador = {
-      ticketIndex: data.ultimoResultado.codigo,
+      ticketIndex: data.ultimoResultadoPozo.codigo,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       mascota: this.mascota,
       numeroSorteo: data.numeroSorteo,
-      codigo: data.ultimoResultado.codigo,
+      codigo: data.ultimoResultadoPozo.codigo,
       sorteo: data.sorteo
     };
   }
