@@ -17,7 +17,7 @@ lotteryRouter.get('/lottoSorteosJugadosLoteria', LotteryController.searchLottoSo
 lotteryRouter.get('/loteriaSorteosJugadosLoteria', LotteryController.searchLoteriaSorteosJugados);
 
 lotteryRouter.post('/ganadorLoteria', InquiryController.buscarLoteriaWinner);
-lotteryRouter.post('/ganadorLoto', InquiryController.buscarLottoWinner);
+lotteryRouter.post('/ganadorLotto', InquiryController.buscarLottoWinner);
 lotteryRouter.post('/ganadorPozo', InquiryController.buscarPozoWinner);
 lotteryRouter.post('/pozoPlancha', InquiryController.buscarPozoPlancha);
 lotteryRouter.post('/loteriaBoletin', InquiryController.buscarLoteriaBoletin);
