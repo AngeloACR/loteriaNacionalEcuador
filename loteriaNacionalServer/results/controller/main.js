@@ -188,6 +188,7 @@ const mainController = {
     },
     corregirUltimosResultados: async function (req, res) {
         try {
+            console.log("corrigiendoUltimosResultados")
             let response = await ResultadosController.corregirUltimosResultados();
             res.status(200).json(response);
 
