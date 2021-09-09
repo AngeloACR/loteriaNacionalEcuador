@@ -14,7 +14,6 @@ export class LoteriaNacionalTicketComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.description = this.ticket.description;
     this.ticketNumbers = this.ticket.ticketNumbers;
     this.sorteo = this.ticket.numeroSorteo;
   }

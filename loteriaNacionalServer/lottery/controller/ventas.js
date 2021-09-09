@@ -567,7 +567,40 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
+    buscarLottoBoleto: async (req, res) => {
+        try {
+            let sorteo = req.body.sorteo;
+            let tipoLoteria = 2
+            let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.jpg`
 
+            res.status(200).json(boletinAddress);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+
+    buscarLoteriaBoleto: async (req, res) => {
+        try {
+            let sorteo = req.body.sorteo;
+            let tipoLoteria = 1
+            let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.jpg`
+
+            res.status(200).json(boletinAddress);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
+
+    buscarPozoBoleto: async (req, res) => {
+        try {
+            let sorteo = req.body.sorteo;
+            let tipoLoteria = 5
+            let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.jpg`
+            res.status(200).json(boletinAddress);
+        } catch (e) {
+            res.status(400).json(e.toString());
+        }
+    },
 }
 
 module.exports = ventasController;

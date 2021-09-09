@@ -9,17 +9,32 @@ const ultimoResultadoSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Resultado',
     },
+
+    ultimoResultadoLoteria: {
+        type: Schema.Types.ObjectId,
+        ref: 'ResultadoLoteria',
+    },
+
+    ultimoResultadoLotto: {
+        type: Schema.Types.ObjectId,
+        ref: 'ResultadoLotto',
+    },
+
+    ultimoResultadoPozo: {
+        type: Schema.Types.ObjectId,
+        ref: 'ResultadoPozo',
+    },
     resultadoLottoPlus: {
         type: Schema.Types.ObjectId,
-        ref: 'Resultado',
+        ref: 'ResultadoLotto',
     },
     resultadoNosVemosJefe: {
         type: Schema.Types.ObjectId,
-        ref: 'Resultado',
+        ref: 'ResultadoLotto',
     },
     resultadosLottito: [{
         type: Schema.Types.ObjectId,
-        ref: 'Resultado',
+        ref: 'ResultadoLotto',
     }],
     numeroSorteo: {
         type: String

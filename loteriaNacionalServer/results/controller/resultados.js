@@ -397,6 +397,57 @@ const resultadosController = {
             return response
         }
     },
+    getResultadoLoteriaByCombinacion1: async function (id) {
+        try {
+            let query = { 'combinacion1': id }
+            let resultado = await ResultadoLoteria.findOne(query)
+            let response = {
+                status: true,
+                values: resultado
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    getResultadoLottoByCombinacionSorteo: async function (id, sorteo) {
+        try {
+            let query = { 'combinacion1': id, 'numeroSorteo': sorteo }
+            let resultado = await ResultadoLotto.findOne(query)
+            let response = {
+                status: true,
+                values: resultado
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+    getResultadoPozoByCombinacionSorteo: async function (id) {
+        try {
+            let query = { 'combinacion1': id, 'numeroSorteo': sorteo }
+            let resultado = await ResultadoPozo.findOne(query)
+            let response = {
+                status: true,
+                values: resultado
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
 
     getResultadoPrincipal: async function (sorteo, tipoLoteria) {
         try {
@@ -455,11 +506,14 @@ const resultadosController = {
         try {
             let query = { 'tipoLoteria': tipoLoteria }
             let resultado;
-            if (tipoLoteria != 2) {
+            if (tipoLoteria == 1) {
 
-                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('sorteo').populate('premioPrincipal');
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultadoLoteria').populate('sorteo').populate('premioPrincipal');
+            } else if (tipoLoteria == 2) {
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultadoLotto').populate('resultadoLottoPlus').populate('resultadosLottito').populate('resultadoNosVemosJefe').populate('sorteo').populate('premioPrincipal').populate('premioNosVemosJefe').populate('premioLottoPlus').populate('premioLottito');
+
             } else {
-                resultado = await UltimoResultado.findOne(query).populate('ultimoResultado').populate('resultadoLottoPlus').populate('resultadosLottito').populate('resultadoNosVemosJefe').populate('sorteo').populate('premioPrincipal').populate('premioNosVemosJefe').populate('premioLottoPlus').populate('premioLottito');
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultadoPozo').populate('sorteo').populate('premioPrincipal');
 
             }
             let response;
@@ -584,6 +638,56 @@ const resultadosController = {
             return response
         }
     },
+
+
+    getUltimoResultadoCorreccion: async function (tipoLoteria) {
+        try {
+            let query = { 'tipoLoteria': tipoLoteria }
+            let resultado = await UltimoResultado.findOne(query);
+            return resultado;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
+
+    corregirUltimosResultados: async function () {
+        let resultadosLoteria = await resultadosController.getUltimoResultadoCorreccion(1);
+        resultadosLoteria['ultimoResultadoLoteria'] = resultadosLoteria.ultimoResultado;
+        await resultadosLoteria.save();
+
+        let resultadosLotto = await resultadosController.getUltimoResultadoCorreccion(2);
+        let resultadoLottoAux = (await resultadosController.getResultadoById(resultadosLotto.ultimoResultado)).values;
+        let resultadoLottoAux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(resultadoLottoAux.combinacion1, resultadosLotto.numeroSorteo)).values;
+        resultadosLotto['ultimoResultadoLotto'] = resultadoLottoAux2._id;
+
+        resultadoLottoAux = (await resultadosController.getResultadoById(resultadosLotto.resultadoLottoPlus)).values;
+        resultadoLottoAux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(resultadoLottoAux.combinacion1, resultadosLotto.numeroSorteo)).values;
+        resultadosLotto['resultadoLottoPlus'] = resultadoLottoAux2._id;
+
+        resultadoLottoAux = (await resultadosController.getResultadoById(resultadosLotto.resultadoNosVemosJefe)).values;
+        resultadoLottoAux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(resultadoLottoAux.combinacion1, resultadosLotto.numeroSorteo)).values;
+        resultadosLotto['resultadoNosVemosJefe'] = resultadoLottoAux2._id;
+
+        let resultadosLottito = [];
+        resultadosLotto.resultadosLottito.forEach(resultado => {
+            let aux = (await resultadosController.getResultadoById(resultado)).values;
+            let aux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(aux.combinacion1, resultadosLotto.numeroSorteo)).values;
+            resultadosLottito.push(aux2._id);
+        });
+        resultadosLotto['resultadosLottito'] = resultadosLottito;
+        await resultadosLotto.save();
+
+        let resultadosPozo = await resultadosController.getUltimoResultadoCorreccion(5);
+        let resultadoPozoAux = (await resultadosController.getResultadoById(resultadosPozo.ultimoResultado)).values;
+        let resultadoPozoAux2 = (await resultadosController.getResultadoPozoByCombinacionSorteo(resultadoPozoAux.combinacion1, resultadosPozo.numeroSorteo)).values;
+        resultadosPozo['ultimoResultadoPozo'] = resultadoPozoAux2._id;
+        await resultadosPozo.save();
+
+    }
 
 
 }
