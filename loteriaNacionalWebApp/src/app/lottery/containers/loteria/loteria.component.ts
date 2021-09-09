@@ -106,10 +106,16 @@ export class LoteriaComponent implements OnInit {
       idFraccion
     );
     if (index != -1) {
-      let fraccion = this.ticketsNacional[idTicket].seleccionados[idFraccion];
+      let fraccion = this.ticketsNacional[idTicket].seleccionados[index];
       this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
+
       if (this.ticketsNacional[idTicket].seleccionados.length == 0) {
         this.removeSeleccionado(
+          this.ticketsNacional[idTicket].identificador,
+          fraccion
+        );
+      } else {
+        this.removeFraccion(
           this.ticketsNacional[idTicket].identificador,
           fraccion
         );
@@ -157,6 +163,40 @@ export class LoteriaComponent implements OnInit {
       );
 
       delete this.ticketsSeleccionados[identificador];
+
+      localStorage.setItem(
+        "seleccionadosLoteria",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e.toString());
+    }
+  }
+  async removeFraccion(identificador, fraccion) {
+    try {
+      this.loadingMessage = "Removiendo fracción del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsSeleccionados[identificador].ticket,
+        sorteo: this.sorteoSeleccionado
+      };
+
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        aux,
+        fraccion,
+        1,
+        reservaId
+      );
+
+      let index = this.ticketsSeleccionados[
+        identificador
+      ].seleccionados.indexOf(fraccion);
+      this.ticketsSeleccionados[identificador].seleccionados.splice(index, 1);
 
       localStorage.setItem(
         "seleccionadosLoteria",
