@@ -254,11 +254,10 @@ const resultadosController = {
             let sorteoAux = `${sorteo}`
             let combinacionAux = `${combinacion}`
             console.log(combinacionAux);
-            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
+            let query = { 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
             let resultadoAux = await ResultadoLotto.find(query);
-            let resultado = []
-            console.log(resultadoAux);
+            console.log(resultadoAux)
 
             let resultado = resultadoAux.filter(x => x.numeroSorteo === sorteoAux);
             console.log(resultado);
