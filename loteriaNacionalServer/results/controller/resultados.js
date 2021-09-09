@@ -675,11 +675,13 @@ const resultadosController = {
             resultadosLotto['resultadoNosVemosJefe'] = resultadoLottoAux2._id;
 
             let resultadosLottito = [];
-            resultadosLotto.resultadosLottito.forEach(resultado => {
+            let n = resultadosLotto.resultadosLottito.length;
+            for (let i = 0; i < n; i++) {
+                let resultado = resultadosLotto.resultadosLottito[i];
                 let aux = (await resultadosController.getResultadoById(resultado)).values;
                 let aux2 = (await resultadosController.getResultadoLottoByCombinacionSorteo(aux.combinacion1, resultadosLotto.numeroSorteo)).values;
                 resultadosLottito.push(aux2._id);
-            });
+            };
             resultadosLotto['resultadosLottito'] = resultadosLottito;
             await resultadosLotto.save();
 
