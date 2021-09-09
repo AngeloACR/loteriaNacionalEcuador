@@ -10,26 +10,7 @@
     loteria="$1.289.143,00">
   </app-lottery-type>
 
-  <!--     <div class="lotteryBox">
-        <img class="lotteryImg" src="../../../../assets/img/loteria nacional.png" alt="">
-        <p class="lotteryMoney">$1.485.847,00</p>
-        <p class="lotteryName">Lotería</p>
-        <a routerLink="/lottery/loteria" class="lotteryButton loteria" routerLinkActive="active">JUGAR</a>
-    </div> 
-
-    <div class="lotteryBox">
-        <img class="lotteryImg" src="../../../../assets/img/loteria nacional.png" alt="">
-        <p class="lotteryMoney">$1.355.846,00</p>
-        <p class="lotteryName">Lotería</p> 
-    <button class="lotteryButton">Jugar</button>
-    <a routerLink="/lottery/lotto" class="lotteryButton lotto" routerLinkActive="active">JUGAR</a>
 </div>
 
-<div class="lotteryBox">
-    <img class="lotteryImg" src="../../../../assets/img/pozzo millonario.png" alt="">
-    <p class="lotteryMoney">$1.289.143,00</p>
-    <p class="lotteryName">Pozo Millonario</p>
-    <button class="lotteryButton">Jugar</button>
-    <a routerLink="/lottery/pozo-millonario" class="lotteryButton pozo" routerLinkActive="active">JUGAR</a>
-</div>-->
-</div>
+
+<app-loader loader="loteria" [message]="loadingMessage" *ngIf="isLoading"></app-loader>

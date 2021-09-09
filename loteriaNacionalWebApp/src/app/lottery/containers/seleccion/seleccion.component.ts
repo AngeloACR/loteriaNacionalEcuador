@@ -12,6 +12,10 @@ export class SeleccionComponent implements OnInit {
   linkPozoMillonario: string;
   token: string;
   usuario: string;
+
+  isLoading: boolean;
+  loadingMessage: string;
+
   constructor(
     private actRoute: ActivatedRoute,
     private lottery: LotteryService
@@ -23,10 +27,17 @@ export class SeleccionComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
-    this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
-    this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;
-    let data = await this.lottery.authUser(this.token);
-    console.log(data);
+    try {
+      this.loadingMessage = "Espere mientras procesamos su información";
+      this.isLoading = true;
+      this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
+      this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
+      this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;
+      let data = await this.lottery.authUser(this.token);
+      console.log(data);
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+    }
   }
 }
