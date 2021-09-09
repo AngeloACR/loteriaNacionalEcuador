@@ -238,7 +238,6 @@ const resultadosController = {
                     status: false
                 }
             }
-            console.log(response);
             return response;
         } catch (error) {
             let response = {
