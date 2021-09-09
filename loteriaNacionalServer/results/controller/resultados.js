@@ -226,10 +226,12 @@ const resultadosController = {
             console.log(combinacionAux);
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
-            let resultado = []
-            let resultadoAux = await ResultadoLoteria.findOne(query);
-            console.log(resultadoAux);
-            if (resultadoAux) {
+            let resultado = await ResultadoLoteria.find(query);
+
+            console.log(resultado);
+            console.log('Probando suerte');
+
+            if (resultado && resultado.length != 0) {
                 resultado.push(resultadoAux);
                 response = {
                     status: true,
@@ -259,7 +261,7 @@ const resultadosController = {
             let resultadoAux = await ResultadoLotto.find(query);
             console.log(resultadoAux)
 
-            let resultado = resultadoAux.filter(x => x.numeroSorteo === sorteoAux);
+            let resultado = resultadoAux.filter(x => x.numeroSorteo == sorteoAux);
             console.log(resultado);
 
             if (resultado && resultado.length != 0) {
@@ -293,8 +295,9 @@ const resultadosController = {
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = []
             let resultadoAux = await ResultadoPozo.find(query);
-            let resultado = resultadoAux.filter(x => x.numeroSorteo === sorteoAux);
+            let resultado = resultadoAux.filter(x => x.numeroSorteo == sorteoAux);
             console.log(resultado);
+            console.log('Probando suerte');
 
             if (resultado && resultado.length != 0) {
                 response = {
