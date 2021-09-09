@@ -256,7 +256,7 @@ const resultadosController = {
             console.log(combinacionAux);
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
-            let resultadoAux = await ResultadoLotto.findOne(query);
+            let resultadoAux = await ResultadoLotto.find(query);
             let resultado = []
             console.log(resultadoAux);
 
