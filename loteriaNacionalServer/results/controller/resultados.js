@@ -260,6 +260,7 @@ const resultadosController = {
                 status: false,
                 msg: error.toString().replace("Error: ", "")
             }
+            console.log(error.toString());
             return response
         }
     },
