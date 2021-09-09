@@ -229,7 +229,7 @@ const resultadosController = {
             let resultado = await ResultadoLoteria.find(query);
 
             console.log(resultado);
-            console.log('Probando suerte');
+            console.log('Probando suerte en loteria');
 
             if (resultado && resultado.length != 0) {
                 resultado.push(resultadoAux);
@@ -297,7 +297,7 @@ const resultadosController = {
             let resultadoAux = await ResultadoPozo.find(query);
             let resultado = resultadoAux.filter(x => x.numeroSorteo == sorteoAux);
             console.log(resultado);
-            console.log('Probando suerte');
+            console.log('Probando suerte en pozo');
 
             if (resultado && resultado.length != 0) {
                 response = {
