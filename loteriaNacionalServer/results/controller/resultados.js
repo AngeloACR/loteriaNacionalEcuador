@@ -225,8 +225,7 @@ const resultadosController = {
             let combinacionAux = `${combinacion}`
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
-            let resultadoAux = await ResultadoLotto.find(query);
-            let resultado = resultadoAux.filter(x => x.numeroSorteo == sorteoAux);
+            let resultado = await ResultadoLotto.find(query);
 
             if (resultado && resultado.length != 0) {
                 response = {
@@ -281,12 +280,10 @@ const resultadosController = {
         try {
             let sorteoAux = `${sorteo}`
             let combinacionAux = `${combinacion}`
+            let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
 
-            let query = { 'combinacion1': combinacionAux }
             //let resultado = await Resultado.find(query).populate('premio');
-            let resultado = []
-            let resultadoAux = await ResultadoPozo.find(query);
-            let resultado = resultadoAux.filter(x => x.numeroSorteo == sorteoAux);
+            let resultado = await ResultadoPozo.find(query);
 
             if (resultado && resultado.length != 0) {
                 response = {
