@@ -278,7 +278,7 @@ const resultadosController = {
                 status: false,
                 msg: error.toString().replace("Error: ", "")
             }
-            console.log(error);
+            console.log(JSON.stringify(error));
             return response
         }
     },
