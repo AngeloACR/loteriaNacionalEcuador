@@ -315,80 +315,6 @@ const resultadosController = {
             return response
         }
     },
-    getResultadoByCombinacion1: async function (combinacion1) {
-        try {
-            let query = { 'combinacion1': combinacion1 }
-            let resultado = await Resultado.findOne(query)
-            if (resultado) {
-
-                response = {
-                    status: true,
-                    values: resultado
-                }
-            } else {
-                response = {
-                    status: false
-                }
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
-
-    getResultadoByCombinacion2: async function (sorteo, combinacion2) {
-        try {
-            let query = { 'sorteo': sorteo, 'combinacion2': combinacion2 }
-            let resultado = await Resultado.findOne(query)
-            if (resultado) {
-
-                response = {
-                    status: true,
-                    values: resultado
-                }
-            } else {
-                response = {
-                    status: false
-                }
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
-
-    getResultadoByCombinacion3: async function (sorteo, combinacion3) {
-        try {
-            let query = { 'sorteo': sorteo, 'combinacion3': combinacion3 }
-            let resultado = await Resultado.findOne(query)
-            if (resultado) {
-
-                response = {
-                    status: true,
-                    values: resultado
-                }
-            } else {
-                response = {
-                    status: false
-                }
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
 
     getResultadosByTipoLoteria: async function (tipoLoteria) {
         try {
@@ -424,83 +350,7 @@ const resultadosController = {
             return response
         }
     },
-    getResultadoLoteriaByCombinacion1: async function (id) {
-        try {
-            let query = { 'combinacion1': id }
-            let resultado = await ResultadoLoteria.findOne(query)
-            let response = {
-                status: true,
-                values: resultado
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
-    getResultadoLottoByCombinacionSorteo: async function (id, sorteo) {
-        try {
-            let query = { 'combinacion1': id, 'numeroSorteo': sorteo }
-            let resultado = await ResultadoLotto.findOne(query)
-            let response = {
-                status: true,
-                values: resultado
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
-    getResultadoPozoByCodigoPremio: async function (id) {
-        try {
-            let query = { 'codigoPremio': id }
-            let resultado = await ResultadoPozo.findOne(query)
-            let response = {
-                status: true,
-                values: resultado
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
 
-    getResultadoPrincipal: async function (sorteo, tipoLoteria) {
-        try {
-            let query = { 'tipoLoteria': tipoLoteria, 'codigoPremio': `${sorteo}-1` }
-            let resultado = await Resultado.findOne(query)
-            let response;
-            if (resultado && resultado.length != 0) {
-
-                response = {
-                    status: true,
-                    values: resultado
-                }
-            } else {
-                response = {
-                    status: false
-                }
-            }
-            return response;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
 
     getResultadoByCodigo: async function (sorteo, codigo) {
         try {
@@ -665,36 +515,6 @@ const resultadosController = {
             return response
         }
     },
-
-
-    getUltimoResultadoCorreccion: async function (tipoLoteria) {
-        try {
-            let query = { 'tipoLoteria': tipoLoteria }
-            let resultado = await UltimoResultado.findOne(query);
-            return resultado;
-        } catch (error) {
-            let response = {
-                status: false,
-                msg: error.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    },
-
-    corregirUltimosResultados: async function () {
-        try {
-
-
-            return 'done'
-        } catch (e) {
-
-            let response = {
-                status: false,
-                msg: e.toString().replace("Error: ", "")
-            }
-            return response
-        }
-    }
 
 
 }
