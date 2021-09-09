@@ -214,6 +214,7 @@ const resultadosController = {
                 status: false,
                 msg: error.toString().replace("Error: ", "")
             }
+            console.log(error);
             return response
         }
     },
