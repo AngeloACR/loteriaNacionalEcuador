@@ -462,6 +462,7 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
 module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user) => {
     try {
 
+        console.log("En venta de loteria 2");
 
         let client = await soap.createClientAsync(address, { envelopeKey: "s" });
         let loteriaCombinacionesXML = "";
@@ -549,6 +550,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         </i>
       </mt>`;
         /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+        console.log(message);
 
         return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {

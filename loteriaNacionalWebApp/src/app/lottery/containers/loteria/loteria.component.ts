@@ -238,6 +238,7 @@ export class LoteriaComponent implements OnInit {
         reservaId
       );
       this.lotteryService.setReservaId(response.reservasAux.reservaId[0]);
+      console.log("Agregando al carrito");
       this.lotteryService.setCarritoLoteria(this.ticketsSeleccionados);
       this.isLoading = false;
     } catch (e) {

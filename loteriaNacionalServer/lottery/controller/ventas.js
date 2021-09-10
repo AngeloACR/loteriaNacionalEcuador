@@ -588,6 +588,7 @@ const ventasController = {
             let reservaId = req.body.reservaId;
             let ordComp = "39225"
             let total = req.body.amount
+            console.log("En venta de loteria");
             let loteriaVentaResponse = await Ventas.venderBoletos(ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user);
             // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
@@ -613,7 +614,7 @@ const ventasController = {
 
             res.status(200).json(finalResponse);
         } catch (e) {
-            res.status(400).json(e.toString());
+            res.status(400).json(JSON.stringify(e));
         }
     },
     buscarLottoBoleto: async (req, res) => {
