@@ -543,13 +543,13 @@ const ventasController = {
                 let aux = {
                     "lotteryType": 2,
                     "lotteryName": "Lotto",
-                    "drawNumber": loteriaAux[id].sorteo.sorteo,
-                    "drawDate": loteriaAux[id].sorteo.fecha,
-                    "subTotal": loteriaAux[id].subtotal,
-                    "combinationC1": loteriaAux[id].ticket.combinacion1,
-                    "combinationC2": loteriaAux[id].ticket.combinacion2,
-                    "combinationC3": loteriaAux[id].ticket.combinacion3,
-                    "combinationC4": loteriaAux[id].ticket.combinacion4,
+                    "drawNumber": lottoAux[id].sorteo.sorteo,
+                    "drawDate": lottoAux[id].sorteo.fecha,
+                    "subTotal": lottoAux[id].subtotal,
+                    "combinationC1": lottoAux[id].ticket.combinacion1,
+                    "combinationC2": lottoAux[id].ticket.combinacion2,
+                    "combinationC3": lottoAux[id].ticket.combinacion3,
+                    "combinationC4": lottoAux[id].ticket.combinacion4,
                 }
                 reservationDetails.push(aux)
             }
@@ -558,12 +558,12 @@ const ventasController = {
                 let aux = {
                     "lotteryType": 5,
                     "lotteryName": "Pozo Millonario",
-                    "drawNumber": loteriaAux[id].sorteo.sorteo,
-                    "drawDate": loteriaAux[id].sorteo.fecha,
-                    "subTotal": loteriaAux[id].subtotal,
-                    "combinationC1": loteriaAux[id].ticket.combinacion1,
-                    "combinationC2": loteriaAux[id].ticket.combinacion2,
-                    "combinationC3": loteriaAux[id].ticket.combinacion3
+                    "drawNumber": pozoAux[id].sorteo.sorteo,
+                    "drawDate": pozoAux[id].sorteo.fecha,
+                    "subTotal": pozoAux[id].subtotal,
+                    "combinationC1": pozoAux[id].ticket.combinacion1,
+                    "combinationC2": pozoAux[id].ticket.combinacion2,
+                    "combinationC3": pozoAux[id].ticket.combinacion3
                 }
                 reservationDetails.push(aux)
             }

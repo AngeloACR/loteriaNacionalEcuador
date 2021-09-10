@@ -126,12 +126,13 @@ export class LottoComponent implements OnInit {
       this.loadingMessage = "Agregando boleto al carrito";
       this.isLoading = true;
 
+      let subtotal = this.sorteoSeleccionado.precio;
       let aux = {
         ticket,
-        sorteo: this.sorteoSeleccionado
+        sorteo: this.sorteoSeleccionado,
+        subtotal
       };
       this.ticketsSeleccionados[ticket.identificador] = aux;
-
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.reservarBoletos(
         this.token,

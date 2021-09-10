@@ -220,10 +220,13 @@ export class LoteriaComponent implements OnInit {
     try {
       this.loadingMessage = "Agregando boleto al carrito";
       this.isLoading = true;
-
+      let subtotal =
+        parseFloat(this.sorteoSeleccionado.precio) *
+        ticket.seleccionados.length;
       let aux = {
         ticket,
-        sorteo: this.sorteoSeleccionado
+        sorteo: this.sorteoSeleccionado,
+        subtotal
       };
       this.ticketsSeleccionados[ticket.identificador] = aux;
       console.log(aux);

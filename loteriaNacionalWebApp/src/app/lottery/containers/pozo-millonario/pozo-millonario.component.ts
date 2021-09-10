@@ -121,11 +121,13 @@ export class PozoMillonarioComponent implements OnInit {
     try {
       this.loadingMessage = "Agregando boleto al carrito";
       this.isLoading = true;
-
+      let subtotal = this.sorteoSeleccionado.precio;
       let aux = {
         ticket,
-        sorteo: this.sorteoSeleccionado
+        sorteo: this.sorteoSeleccionado,
+        subtotal
       };
+
       this.ticketsSeleccionados[ticket.identificador] = aux;
       console.log("Buscando la id de reserva");
       let reservaId = this.lotteryService.getReservaId();
