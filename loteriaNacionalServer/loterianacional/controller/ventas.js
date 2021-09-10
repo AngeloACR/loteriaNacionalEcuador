@@ -516,42 +516,40 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
             `
         }
         /*Ensure your message below looks like a valid working SOAP UI request*/
-        let message = `<mt>
-        <c>
-          <aplicacion>25</aplicacion>
-          <transaccion>15</transaccion>
-          <usuario>${user}</usuario>
-          <maquina>DireccionIpLocal</maquina>
-          <codError>0</codError>
-          <msgError />
-          <medio>${medioId}</medio>
-          <token>${lotteryToken}</token>
-          <operacion>${Date.now()}</operacion>
-        </c>
-        <i>
-          <ReservaId>${reservaId}</ReservaId>
-          <xmlVenta>
-      <VT>
-             <V total="${total}">
-             </V>
-             <FP 	 ordComp="${ordComp}" >
-              <R forCo="CVT" Total="${total}" />
-             </FP>
-          </VT>
-          </xmlVenta>
-          <xmlNumeros>
-          <RS >
-        
-            ${loteriaCombinacionesXML} 
-            ${lottoCombinacionesXML} 
-            ${pozoCombinacionesXML}
-        
-          </RS>
-              </xmlNumeros>
-          <MedioId>${medioId}</MedioId>
-          <UsuarioId>${user}</UsuarioId>
-        </i>
-      </mt>`;
+        let message = `
+        <mt>
+            <c>
+            <aplicacion>25</aplicacion>
+            <transaccion>15</transaccion>
+            <usuario>${user}</usuario>
+            <maquina>DireccionIpLocal</maquina>
+            <codError>0</codError>
+            <msgError />
+            <medio>${medioId}</medio>
+            <token>${lotteryToken}</token>
+            <operacion>${Date.now()}</operacion>
+            </c>
+            <i>
+                <ReservaId>${reservaId}</ReservaId>
+                <xmlVenta>
+                    <VT>
+                        <V total="${total}"></V>
+                        <FP ordComp="${ordComp}" >
+                            <R forCo="CVT" Total="${total}" />
+                        </FP>
+                    </VT>
+                </xmlVenta>
+                <xmlNumeros>
+                    <RS>
+                        ${loteriaCombinacionesXML} 
+                        ${lottoCombinacionesXML} 
+                        ${pozoCombinacionesXML}    
+                    </RS>
+                </xmlNumeros>
+                <MedioId>${medioId}</MedioId>
+                <UsuarioId>${user}</UsuarioId>
+            </i>
+        </mt>`;
         /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
         console.log(message);
 
