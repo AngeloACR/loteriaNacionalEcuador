@@ -594,13 +594,13 @@ const ventasController = {
             // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
             //let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
-            let exaVentaData = {
+            /* let exaVentaData = {
                 token,
                 transactionId: req.body.transactionId,
                 reserveId: req.body.reservaId,
                 ticketId: loteriaVentaResponse.ticketId,
                 amount: req.body.amount
-            }
+            } */
             //let exaVentaResponse = ventasController.sellLottery(exaVentaData)
             // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
