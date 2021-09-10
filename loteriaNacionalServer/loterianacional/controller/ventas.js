@@ -556,6 +556,12 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         console.log(message);
 
         return new Promise(async (resolve, reject) => {
+
+
+            resolve(message);
+        });
+        /* 
+        return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
                 if (err) reject(err);
                 //console.log(res);
@@ -576,7 +582,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                     reject(data.mt.c[0].msgError[0])
                 }
             });
-        });
+        }); */
 
     } catch (e) {
         console.log(e.toString());

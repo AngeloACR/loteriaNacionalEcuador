@@ -25,7 +25,7 @@ export class ShoppingCartService {
     return JSON.parse(localStorage.getItem("seleccionadosLotto"));
   }
   getCarritoPozo() {
-    JSON.parse(localStorage.getItem("seleccionadosPozo"));
+    return JSON.parse(localStorage.getItem("seleccionadosPozo"));
   }
   borrarCarrito() {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify([]));
@@ -33,9 +33,26 @@ export class ShoppingCartService {
     localStorage.setItem("seleccionadosPozo", JSON.stringify([]));
   }
   setTotal(total) {
+    /*     let loteriaAux = this.getCarritoLoteria();
+    let lottoAux = this.getCarritoLotto();
+    let pozoAux = this.getCarritoPozo();
+    let loteria = 0;
+    for (let id in loteriaAux) {
+      loteria += parseFloat(loteriaAux[id].subtotal);
+    }
+    let lotto = 0;
+    for (let id in lottoAux) {
+      lotto += parseFloat(lottoAux[id].subtotal);
+    }
+    let pozo = 0;
+    for (let id in pozoAux) {
+      pozo += parseFloat(pozoAux[id].subtotal);
+    }
+    let aux = loteria + lotto + pozo;
+    localStorage.setItem("total", JSON.stringify(aux)); */
     localStorage.setItem("total", JSON.stringify(total));
   }
   getTotal() {
-    JSON.parse(localStorage.getItem("total"));
+    return JSON.parse(localStorage.getItem("total"));
   }
 }

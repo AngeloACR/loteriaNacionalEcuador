@@ -54,7 +54,7 @@ export class PaymentService {
       reservaId
     };
     endpoint = `${endpoint}/comprarBoletos`;
-    console.log("Recuperando combinaciones de loteria");
+    console.log(body);
     var address = this.mySource;
 
     address = address + endpoint;
