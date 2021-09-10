@@ -7,7 +7,6 @@ export class ShoppingCartService {
   constructor() {}
 
   setCarritoLoteria(tickets) {
-    console.log("setting Item");
     localStorage.setItem("seleccionadosLoteria", JSON.stringify(tickets));
   }
 

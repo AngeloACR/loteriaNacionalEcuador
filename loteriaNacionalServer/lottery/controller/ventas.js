@@ -589,6 +589,10 @@ const ventasController = {
             let ordComp = "39225"
             let total = req.body.amount
             console.log("En venta de loteria");
+            console.log(total)
+            console.log(loteria)
+            console.log(lotto)
+            console.log(pozo)
             let loteriaVentaResponse = await Ventas.venderBoletos(ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user);
             // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 

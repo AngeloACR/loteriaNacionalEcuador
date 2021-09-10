@@ -878,7 +878,7 @@ export class LotteryService {
   }
 
   setCarritoLoteria(tickets) {
-    console.log("setting Item");
+    console.log(tickets);
     localStorage.setItem("seleccionadosLoteria", JSON.stringify(tickets));
   }
 
@@ -891,19 +891,13 @@ export class LotteryService {
   }
 
   getCarritoLoteria() {
-    return JSON.parse(
-      localStorage.getItem("seleccionadosLoteria")
-    );
+    return JSON.parse(localStorage.getItem("seleccionadosLoteria"));
   }
   getCarritoLotto() {
-    return JSON.parse(
-      localStorage.getItem("seleccionadosLotto")
-    );
+    return JSON.parse(localStorage.getItem("seleccionadosLotto"));
   }
   getCarritoPozo() {
-    JSON.parse(
-      localStorage.getItem("seleccionadosPozo")
-    );
+    JSON.parse(localStorage.getItem("seleccionadosPozo"));
   }
   borrarCarrito() {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify([]));
