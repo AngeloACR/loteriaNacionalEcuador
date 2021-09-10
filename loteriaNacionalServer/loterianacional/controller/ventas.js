@@ -558,10 +558,10 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
                 console.log(errorCode)
                 if (!errorCode) {
-                    let response = [];
                     //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
                     let ticketId = "365987"
                     let response = {
+                        data: data.mt.o[0]
                         ticketId
                     }
 

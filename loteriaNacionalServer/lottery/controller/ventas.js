@@ -30,7 +30,6 @@ const ventasController = {
                 "language": "en",
                 "currency": "USD"
             }
-            console.log(authData)
             let response = await Auth.authUser(authData);
             if (response['password']) delete response['password'];
             res.status(200).json(response);
@@ -82,7 +81,6 @@ const ventasController = {
                 "ticketId": req.body.ticketId,
                 "amount": req.body.amount
             }
-            console.log(data);
             let response = await Wallet.sellLottery(data);
             res.status(200).json(response);
         } catch (e) {
@@ -171,7 +169,6 @@ const ventasController = {
                 "language": "en",
                 "currency": "USD"
             }
-            console.log(authData)
             let response = await Auth.authUser(authData);
             if (response['password']) delete response['password'];
             return response;
@@ -568,6 +565,7 @@ const ventasController = {
                 }
                 reservationDetails.push(aux)
             }
+            console.log("preparando reserve data")
             let exaReservaData = {
                 token: req.body.token,
                 transactionId: req.body.reservaId,
@@ -576,6 +574,7 @@ const ventasController = {
             }
             let exaReservaResponse = ventasController.reserveLottery(exaReservaData)
             // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
+            console.log("preparando sell data")
 
             let lotteryToken = req.body.lotteryToken
             let user = req.body.user
@@ -604,7 +603,7 @@ const ventasController = {
             };
             let apiVentaResponse = ventasController.crearVenta(apiVentaData);
             let finalResponse = {
-                data: apiVentaResponse,
+                data: loteriaVentaResponse,
                 status: true
             }
 
@@ -682,6 +681,9 @@ const ventasController = {
         }
         let response = await Reservas.addReserva(element);
         return response;
+    },
+    crearVenta: async (data) => {
+        return data
     }
 }
 
