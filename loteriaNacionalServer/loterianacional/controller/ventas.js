@@ -101,7 +101,6 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token, user) =>
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
 
                 if (!errorCode) {
-                    console.log(data.mt.rs[0].r[0]);
                     let aux = data.mt.rs[0].r[0].Row;
                     let response = aux.map(sorteo => {
                         let sorteoAux = {
@@ -219,7 +218,6 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
               
             `
         }
-        console.log(loteriaCombinacionesXML)
         if (lotto.length != 0) {
             lotto.forEach(item => {
                 let combinacion = item.combinacion;
@@ -234,7 +232,6 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
               
             `
         }
-        console.log(lottoCombinacionesXML)
         if (pozo.length != 0) {
             pozo.forEach(item => {
                 let combinacion = item.combinacion;
@@ -249,7 +246,6 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
               
             `
         }
-        console.log(pozoCombinacionesXML)
         let message = {
 
             $xml: `
@@ -288,14 +284,12 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
         `
         }
 
-        console.log(message);
         return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
                 if (err) reject(err);
 
                 let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
-                console.log(errorCode);
 
                 if (!errorCode) {
                     let reservaId = data.mt.o[0].ReturnValue;
@@ -337,7 +331,6 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                         default:
                             break;
                     } */
-                    console.log(response);
                     resolve(response);
                 } else {
                     let errorMsg = data.mt.c[0].msgError[0];
@@ -448,7 +441,6 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
 
                 let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
-                console.log(errorCode);
                 if (!errorCode) {
                     let reservaId = data.mt.o[0].ReturnValue;
                     let response = {
@@ -564,7 +556,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
 
                 let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
                 let errorCode = parseInt(data.mt.c[0].codError[0]);
-
+                console.log(errorCode)
                 if (!errorCode) {
                     let response = [];
                     //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
@@ -575,6 +567,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
 
                     resolve(response);
                 } else {
+                    console.log(data.mt.c[0].msgError[0])
                     reject(data.mt.c[0].msgError[0])
                 }
             });

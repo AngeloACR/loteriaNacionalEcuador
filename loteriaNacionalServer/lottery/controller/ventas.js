@@ -526,6 +526,7 @@ const ventasController = {
             let loteriaAux = req.body.loteria;
             let lottoAux = req.body.lotto;
             let pozoAux = req.body.pozo;
+            console.log("preparando response details")
             for (id in loteriaAux) {
                 let aux = {
                     "lotteryType": 1,
