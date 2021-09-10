@@ -4,7 +4,7 @@ const Resultados = require('../../results/controller/main');
 const Sorteos = require('../../results/controller/sorteos');
 const config = require('../../config/environment');
 const Ventas = require('../../loterianacional/controller/ventas');
-const Reservas = require('../../loterianacional/controller/reservas');
+const Reservas = require('./reservas');
 const Auth = require('../../exalogic/controller/auth');
 const Wallet = require('../../exalogic/controller/wallet');
 
