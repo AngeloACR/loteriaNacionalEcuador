@@ -561,7 +561,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                     //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
                     let ticketId = "365987"
                     let response = {
-                        data: data.mt.o[0]
+                        data: data.mt.o[0],
                         ticketId
                     }
 
