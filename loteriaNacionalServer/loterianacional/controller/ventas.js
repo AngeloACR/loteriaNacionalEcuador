@@ -520,7 +520,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         <c>
           <aplicacion>25</aplicacion>
           <transaccion>15</transaccion>
-          <usuario> ${user} </usuario>
+          <usuario>${user}</usuario>
           <maquina>DireccionIpLocal</maquina>
           <codError>0</codError>
           <msgError />
@@ -555,12 +555,12 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
         console.log(message);
 
-        return new Promise(async (resolve, reject) => {
+        /* return new Promise(async (resolve, reject) => {
 
 
             resolve(message);
-        });
-        /* 
+        }); */
+
         return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
                 if (err) reject(err);
@@ -582,7 +582,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                     reject(data.mt.c[0].msgError[0])
                 }
             });
-        }); */
+        });
 
     } catch (e) {
         console.log(e.toString());

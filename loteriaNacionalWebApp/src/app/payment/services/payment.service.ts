@@ -63,6 +63,7 @@ export class PaymentService {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
+          console.log(response);
           resolve(response);
         },
         (error: any) => {
