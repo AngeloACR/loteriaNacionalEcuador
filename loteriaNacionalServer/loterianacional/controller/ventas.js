@@ -470,14 +470,17 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         let pozoCombinacionesXML = "";
         if (loteria.length != 0) {
             loteria.forEach(item => {
-                let combinacion = item.combinacion;
+                let combinacion = item.ticket.combinacion;
                 let fraccionesXML = ""
-
-                fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`
-
                 let cant = 1;
+                item.ticket.fracciones.array.forEach(element => {
 
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+                    fraccionesXML = `${fraccionesXML}<F id="${element}" />`
+                    cant += 1;
+                });
+
+
+                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
             loteriaCombinacionesXML = `
             <JG id="1">
@@ -488,9 +491,9 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         }
         if (lotto.length != 0) {
             lotto.forEach(item => {
-                let combinacion = item.combinacion;
+                let combinacion = item.ticket.combinacion;
                 let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
             lottoCombinacionesXML = `
             <JG id="2">
@@ -501,9 +504,9 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         }
         if (pozo.length != 0) {
             pozo.forEach(item => {
-                let combinacion = item.combinacion;
+                let combinacion = item.ticket.combinacion;
                 let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
             pozoCombinacionesXML = `
             <JG id="5">
