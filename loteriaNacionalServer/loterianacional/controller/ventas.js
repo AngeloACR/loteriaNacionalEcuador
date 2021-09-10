@@ -553,34 +553,34 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
         console.log(message);
 
-        /* return new Promise(async (resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
 
 
             resolve(message);
-        }); */
-
-        return new Promise(async (resolve, reject) => {
-            client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                if (err) reject(err);
-                //console.log(res);
-                let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-                let errorCode = parseInt(data.mt.c[0].codError[0]);
-                console.log(errorCode)
-                if (!errorCode) {
-                    //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
-                    let ticketId = "365987"
-                    let response = {
-                        data: data.mt.o[0],
-                        ticketId
-                    }
-
-                    resolve(response);
-                } else {
-                    console.log(data.mt.c[0].msgError[0])
-                    reject(data.mt.c[0].msgError[0])
-                }
-            });
         });
+
+        /*         return new Promise(async (resolve, reject) => {
+                    client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
+                        if (err) reject(err);
+                        //console.log(res);
+                        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
+                        let errorCode = parseInt(data.mt.c[0].codError[0]);
+                        console.log(errorCode)
+                        if (!errorCode) {
+                            //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
+                            let ticketId = "365987"
+                            let response = {
+                                data: data.mt.o[0],
+                                ticketId
+                            }
+        
+                            resolve(response);
+                        } else {
+                            console.log(data.mt.c[0].msgError[0])
+                            reject(data.mt.c[0].msgError[0])
+                        }
+                    });
+                }); */
 
     } catch (e) {
         console.log(e.toString());

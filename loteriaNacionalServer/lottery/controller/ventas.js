@@ -590,19 +590,16 @@ const ventasController = {
             let total = req.body.amount
             console.log("En venta de loteria");
             console.log(req.body)
-            console.log(loteria)
-            console.log(lotto)
-            console.log(pozo)
-            //let loteriaVentaResponse = await Ventas.venderBoletos(ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user);
+            let loteriaVentaResponse = await Ventas.venderBoletos(ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user);
             // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
-            /*  let exaVentaData = {
-                 token,
-                 transactionId: req.body.transactionId,
-                 reserveId: req.body.reservaId,
-                 ticketId: loteriaVentaResponse.ticketId,
-                 amount: req.body.amount
-             } */
+            let exaVentaData = {
+                token,
+                transactionId: req.body.transactionId,
+                reserveId: req.body.reservaId,
+                ticketId: loteriaVentaResponse.ticketId,
+                amount: req.body.amount
+            }
             //let exaVentaResponse = ventasController.sellLottery(exaVentaData)
             // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
@@ -611,7 +608,7 @@ const ventasController = {
             };
             //let apiVentaResponse = ventasController.crearVenta(apiVentaData);
             let finalResponse = {
-                data: lotto,
+                data: loteriaVentaResponse,
                 status: true
             }
 
