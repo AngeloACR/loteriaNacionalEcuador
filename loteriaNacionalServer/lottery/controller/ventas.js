@@ -605,6 +605,7 @@ const ventasController = {
             let apiVentaResponse = ventasController.crearVenta(apiVentaData);
             let finalResponse = {
                 data: apiVentaResponse,
+                status: true
             }
 
             res.status(200).json(finalResponse);

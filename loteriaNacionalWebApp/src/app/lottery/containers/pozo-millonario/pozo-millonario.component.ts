@@ -270,14 +270,17 @@ export class PozoMillonarioComponent implements OnInit {
   }
 
   async confirmarCompra() {
-    this.dismissCompras();
-
+    
+    this.isLoading = true;
+    this.loadingMessage = "Espere mientras procesamos su compra";
     let reservaId = this.lotteryService.getReservaId();
     let response = await this.paymentService.confirmarCompra(
       this.token,
       reservaId
-    );
+      );
+    this.isLoading = false;
     if (response.status) {
+        this.dismissCompras();
       this.compraFinalizada = true;
     } else {
       this.cancelarCompra();
