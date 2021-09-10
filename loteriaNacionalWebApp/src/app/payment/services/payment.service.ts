@@ -3,7 +3,7 @@ import { ShoppingCartService } from "./shopping-cart.service";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class PaymentService {
   localSource = "http://localhost:5480";
@@ -22,7 +22,7 @@ export class PaymentService {
     let user = data.user_;
     let response = {
       lotteryToken,
-      user
+      user,
     };
     return response;
   }
@@ -41,6 +41,7 @@ export class PaymentService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
+
     let endpoint = "/lottery";
     let authData = this.getAuthData();
     let body = {
@@ -51,7 +52,7 @@ export class PaymentService {
       user: authData.user,
       amount: total,
       token,
-      reservaId
+      reservaId,
     };
     endpoint = `${endpoint}/comprarBoletos`;
     console.log(body);

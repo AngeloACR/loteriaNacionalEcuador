@@ -1,7 +1,7 @@
-var xml2js = require('xml2js');
+var xml2js = require("xml2js");
 var parser = xml2js.Parser();
-var soap = require('soap');
-const config = require('../../config/environment');
+var soap = require("soap");
+const config = require("../../config/environment");
 
 const medioId = config.medioAplicatioId;
 const address = config.aplicativoAddressTest;
@@ -12,15 +12,15 @@ const usuarioClientePsd = config.usuarioAplicativoProd;
 const claveClientePsd = config.passwordAplicativoProd; */
 
 module.exports.autenticarUsuario = async () => {
-    try {
-        const medioId = config.medioAplicatioId;
-        const address = config.aplicativoAddressTest;
-        const usuarioClientePsd = config.usuarioClienteTest;
-        const claveClientePsd = config.passwordClienteTest;
-        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+  try {
+    const medioId = config.medioAplicatioId;
+    const address = config.aplicativoAddressTest;
+    const usuarioClientePsd = config.usuarioClienteTest;
+    const claveClientePsd = config.passwordClienteTest;
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-        let message = {
-            $xml: `
+    let message = {
+      $xml: `
         <PI_DatosXml>
         <![CDATA[
           <mt>
@@ -36,40 +36,44 @@ module.exports.autenticarUsuario = async () => {
               </c>
           </mt>
           ]]>
-        </PI_DatosXml>`
+        </PI_DatosXml>`,
+    };
+
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
+          let data = await parser.parseStringPromise(res.fnAutenticacionResult);
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
+
+          if (!errorCode) {
+            let response = {
+              token: data.mt.c[0].token[0],
+            };
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
+          }
         }
-
-
-        return new Promise(async (resolve, reject) => {
-            client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                if (err) reject(err);
-                let data = await parser.parseStringPromise(res.fnAutenticacionResult)
-                let errorCode = parseInt(data.mt.c[0].codError[0]);
-
-                if (!errorCode) {
-                    let response = {
-                        token: data.mt.c[0].token[0]
-                    }
-                    resolve(response);
-                } else {
-                    reject(data.mt.c[0].msgError[0])
-                }
-            });
-        });
-    } catch (e) {
-        console.log(e.toString());
-        throw e;
-    }
+      );
+    });
+  } catch (e) {
+    console.log(e.toString());
+    throw e;
+  }
 };
 
-module.exports.consultarSorteosDisponibles = async (tipoLoteria, token, user) => {
-    try {
-
-        const usuarioClientePsd = config.usuarioClienteTest;
-        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-        let message = {
-
-            $xml: `
+module.exports.consultarSorteosDisponibles = async (
+  tipoLoteria,
+  token,
+  user
+) => {
+  try {
+    const usuarioClientePsd = config.usuarioClienteTest;
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let message = {
+      $xml: `
         <PI_DatosXml>
         <![CDATA[
           <mt>
@@ -91,48 +95,58 @@ module.exports.consultarSorteosDisponibles = async (tipoLoteria, token, user) =>
           </mt>
           ]]>
         </PI_DatosXml>
-        `
-        }
+        `,
+    };
 
-        return new Promise(async (resolve, reject) => {
-            client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                if (err) reject(err);
-                let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-                let errorCode = parseInt(data.mt.c[0].codError[0]);
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-                if (!errorCode) {
-                    let aux = data.mt.rs[0].r[0].Row;
-                    let response = aux.map(sorteo => {
-                        let sorteoAux = {
-                            fecha: sorteo.$.FCadSort,
-                            cantidadDeFracciones: sorteo.$.CFrac,
-                            valorPremioPrincipal: sorteo.$.VPremio,
-                            precio: sorteo.$.PVP,
-                            sorteo: sorteo.$.SortId,
-                            nombre: sorteo.$.SortNomb
-                        }
-                        return sorteoAux;
-                    });
-                    resolve(response);
-                } else {
-                    reject(data.mt.c[0].msgError[0])
-                }
+          if (!errorCode) {
+            let aux = data.mt.rs[0].r[0].Row;
+            let response = aux.map((sorteo) => {
+              let sorteoAux = {
+                fecha: sorteo.$.FCadSort,
+                cantidadDeFracciones: sorteo.$.CFrac,
+                valorPremioPrincipal: sorteo.$.VPremio,
+                precio: sorteo.$.PVP,
+                sorteo: sorteo.$.SortId,
+                nombre: sorteo.$.SortNomb,
+              };
+              return sorteoAux;
             });
-        });
-    } catch (e) {
-        console.log(e.toString());
-        throw e;
-    }
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
+          }
+        }
+      );
+    });
+  } catch (e) {
+    console.log(e.toString());
+    throw e;
+  }
 };
 
-module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, token, combinacion, combinacionFigura, user) => {
-    try {
+module.exports.obtenerCombinacionesDisponibles = async (
+  tipoLoteria,
+  sorteo,
+  token,
+  combinacion,
+  combinacionFigura,
+  user
+) => {
+  try {
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-
-        let message = {
-
-            $xml: `
+    let message = {
+      $xml: `
         <PI_DatosXml>
         <![CDATA[
           <mt>
@@ -160,95 +174,99 @@ module.exports.obtenerCombinacionesDisponibles = async (tipoLoteria, sorteo, tok
   </mt>	
           ]]>
         </PI_DatosXml>
-        `
-        }
+        `,
+    };
 
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
 
-        return new Promise(async (resolve, reject) => {
-            client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                if (err) reject(err);
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-                let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-                let errorCode = parseInt(data.mt.c[0].codError[0]);
-
-                if (!errorCode) {
-                    let aux = data.mt.rs[0].r;
-                    let response = [];
-                    aux.forEach(aux2 => {
-                        if (aux2.Row) {
-                            aux2.Row.forEach(aux3 => {
-
-                                response.push(aux3.$)
-                            });
-                        }
-                    });
-                    resolve(response);
-                } else {
-                    reject(data.mt.c[0].msgError[0])
-                }
+          if (!errorCode) {
+            let aux = data.mt.rs[0].r;
+            let response = [];
+            aux.forEach((aux2) => {
+              if (aux2.Row) {
+                aux2.Row.forEach((aux3) => {
+                  response.push(aux3.$);
+                });
+              }
             });
-        });
-    } catch (e) {
-        console.log(e.toString());
-        throw e;
-    }
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
+          }
+        }
+      );
+    });
+  } catch (e) {
+    console.log(e.toString());
+    throw e;
+  }
 };
 
-module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reservaId, user) => {
-    try {
-
-        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-        let loteriaCombinacionesXML = "";
-        let lottoCombinacionesXML = "";
-        let pozoCombinacionesXML = "";
-        if (loteria.length != 0) {
-
-            loteria.forEach(item => {
-                let combinacion = item.combinacion;
-                let fraccionesXML = ""
-                fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`
-                let cant = 1;
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
-
-            });
-            loteriaCombinacionesXML = `
+module.exports.reservarCombinaciones = async (
+  loteria,
+  lotto,
+  pozo,
+  token,
+  reservaId,
+  user
+) => {
+  try {
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let loteriaCombinacionesXML = "";
+    let lottoCombinacionesXML = "";
+    let pozoCombinacionesXML = "";
+    if (loteria.length != 0) {
+      loteria.forEach((item) => {
+        let combinacion = item.combinacion;
+        let fraccionesXML = "";
+        fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`;
+        let cant = 1;
+        loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`;
+      });
+      loteriaCombinacionesXML = `
             <JG id="1">
             ${loteriaCombinacionesXML}
             </JG>        
               
-            `
-        }
-        if (lotto.length != 0) {
-            lotto.forEach(item => {
-                let combinacion = item.combinacion;
-                let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
-
-            });
-            lottoCombinacionesXML = `
+            `;
+    }
+    if (lotto.length != 0) {
+      lotto.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      lottoCombinacionesXML = `
             <JG id="2">
             ${lottoCombinacionesXML}
             </JG>        
               
-            `
-        }
-        if (pozo.length != 0) {
-            pozo.forEach(item => {
-                let combinacion = item.combinacion;
-                let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
-
-            });
-            pozoCombinacionesXML = `
+            `;
+    }
+    if (pozo.length != 0) {
+      pozo.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      pozoCombinacionesXML = `
             <JG id="5">
             ${pozoCombinacionesXML}
             </JG>        
               
-            `
-        }
-        let message = {
-
-            $xml: `
+            `;
+    }
+    let message = {
+      $xml: `
         <PI_DatosXml>
         <![CDATA[
   <mt>
@@ -281,22 +299,26 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
   </mt>
           ]]>
         </PI_DatosXml>
-        `
-        }
+        `,
+    };
 
-        return new Promise(async (resolve, reject) => {
-            client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                if (err) reject(err);
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
 
-                let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-                let errorCode = parseInt(data.mt.c[0].codError[0]);
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-                if (!errorCode) {
-                    let reservaId = data.mt.o[0].ReturnValue;
-                    let response = {
-                        reservaId
-                    }
-                    /* let aux = data.mt.rs[0].r[0];
+          if (!errorCode) {
+            let reservaId = data.mt.o[0].ReturnValue;
+            let response = {
+              reservaId,
+            };
+            /* let aux = data.mt.rs[0].r[0];
                     let boletosReservados = [];
                     aux.Row.forEach(boletoReservado => {
                         boletosReservados.push(boletoReservado.$);
@@ -331,75 +353,81 @@ module.exports.reservarCombinaciones = async (loteria, lotto, pozo, token, reser
                         default:
                             break;
                     } */
-                    resolve(response);
-                } else {
-                    let errorMsg = data.mt.c[0].msgError[0];
-                    console.log(errorMsg)
-                    reject(errorMsg)
-                }
-            });
-        });
-    } catch (e) {
-        console.log(e.toString());
-        throw e;
-    }
+            resolve(response);
+          } else {
+            let errorMsg = data.mt.c[0].msgError[0];
+            console.log(errorMsg);
+            reject(errorMsg);
+          }
+        }
+      );
+    });
+  } catch (e) {
+    console.log(e.toString());
+    throw e;
+  }
 };
 
-module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId, user) => {
-    try {
+module.exports.eliminarReservas = async (
+  loteria,
+  lotto,
+  pozo,
+  token,
+  reservaId,
+  user
+) => {
+  try {
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let loteriaCombinacionesXML = "";
+    let lottoCombinacionesXML = "";
+    let pozoCombinacionesXML = "";
+    if (loteria.length != 0) {
+      loteria.forEach((item) => {
+        let combinacion = item.combinacion;
+        let fraccionesXML = "";
 
-        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-        let loteriaCombinacionesXML = "";
-        let lottoCombinacionesXML = "";
-        let pozoCombinacionesXML = "";
-        if (loteria.length != 0) {
-            loteria.forEach(item => {
-                let combinacion = item.combinacion;
-                let fraccionesXML = ""
+        fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`;
 
-                fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`
+        let cant = 1;
 
-                let cant = 1;
-
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" >${fraccionesXML}</R>`
-            });
-            loteriaCombinacionesXML = `
+        loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" >${fraccionesXML}</R>`;
+      });
+      loteriaCombinacionesXML = `
             <JG id="1">
             ${loteriaCombinacionesXML}
             </JG>        
               
-            `
-        }
-        if (lotto.length != 0) {
-            lotto.forEach(item => {
-                let combinacion = item.combinacion;
-                let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" />`
-            });
-            lottoCombinacionesXML = `
+            `;
+    }
+    if (lotto.length != 0) {
+      lotto.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" />`;
+      });
+      lottoCombinacionesXML = `
             <JG id="2">
             ${lottoCombinacionesXML}
             </JG>        
               
-            `
-        }
-        if (pozo.length != 0) {
-            pozo.forEach(item => {
-                let combinacion = item.combinacion;
-                let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" />`
-            });
-            pozoCombinacionesXML = `
+            `;
+    }
+    if (pozo.length != 0) {
+      pozo.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" />`;
+      });
+      pozoCombinacionesXML = `
             <JG id="5">
             ${pozoCombinacionesXML}
             </JG>        
               
-            `
-        }
+            `;
+    }
 
-        let message = {
-
-            $xml: `
+    let message = {
+      $xml: `
         <PI_DatosXml>
         <![CDATA[
                     <mt>
@@ -431,98 +459,108 @@ module.exports.eliminarReservas = async (loteria, lotto, pozo, token, reservaId,
               </i>
             </mt>
                     ]]>
-                  </PI_DatosXml>`
-            /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+                  </PI_DatosXml>`,
+      /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    };
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
 
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
+          if (!errorCode) {
+            let reservaId = data.mt.o[0].ReturnValue;
+            let response = {
+              reservaId,
+            };
+
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
+          }
         }
-        return new Promise(async (resolve, reject) => {
-            client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                if (err) reject(err);
+      );
+    });
+  } catch (e) {
+    console.log(e.toString());
+    throw e;
+  }
+};
 
-                let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-                let errorCode = parseInt(data.mt.c[0].codError[0]);
-                if (!errorCode) {
-                    let reservaId = data.mt.o[0].ReturnValue;
-                    let response = {
-                        reservaId
-                    }
+module.exports.venderBoletos = async (
+  ordComp,
+  total,
+  loteria,
+  lotto,
+  pozo,
+  lotteryToken,
+  reservaId,
+  user
+) => {
+  try {
+    console.log("En venta de loteria 2");
 
-                    resolve(response);
-                } else {
-                    reject(data.mt.c[0].msgError[0])
-                }
-            });
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let loteriaCombinacionesXML = "";
+    let lottoCombinacionesXML = "";
+    let pozoCombinacionesXML = "";
+    if (loteria.length != 0) {
+      loteria.forEach((item) => {
+        let combinacion = item.ticket.combinacion1;
+        let fraccionesXML = "";
+        let cant = 1;
+        item.ticket.seleccionados.forEach((element) => {
+          fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
+          cant += 1;
         });
-    } catch (e) {
-        console.log(e.toString());
-        throw e;
-    }
-}
 
-module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lotteryToken, reservaId, user) => {
-    try {
-
-        console.log("En venta de loteria 2");
-
-        let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-        let loteriaCombinacionesXML = "";
-        let lottoCombinacionesXML = "";
-        let pozoCombinacionesXML = "";
-        if (loteria.length != 0) {
-            loteria.forEach(item => {
-                let combinacion = item.ticket.combinacion1;
-                let fraccionesXML = ""
-                let cant = 1;
-                item.ticket.seleccionados.forEach(element => {
-
-                    fraccionesXML = `${fraccionesXML}<F id="${element}" />`
-                    cant += 1;
-                });
-
-
-                loteriaCombinacionesXML = `
+        loteriaCombinacionesXML = `
                 ${loteriaCombinacionesXML}
-                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
-            });
-            loteriaCombinacionesXML = `
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`;
+      });
+      loteriaCombinacionesXML = `
             <JG id="1">
                 ${loteriaCombinacionesXML}
             </JG>        
               
-            `
-        }
-        if (lotto.length != 0) {
-            lotto.forEach(item => {
-                let combinacion = item.ticket.combinacion1;
-                let cant = 1;
-                lottoCombinacionesXML = `
+            `;
+    }
+    if (lotto.length != 0) {
+      lotto.forEach((item) => {
+        let combinacion = item.ticket.combinacion1;
+        let cant = 1;
+        lottoCombinacionesXML = `
                 ${lottoCombinacionesXML}
-                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
-            });
-            lottoCombinacionesXML = `
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      lottoCombinacionesXML = `
             <JG id="2">
                 ${lottoCombinacionesXML}
             </JG>        
               
-            `
-        }
-        if (pozo.length != 0) {
-            pozo.forEach(item => {
-                let combinacion = item.ticket.combinacion1;
-                let cant = 1;
-                pozoCombinacionesXML = `
+            `;
+    }
+    if (pozo.length != 0) {
+      pozo.forEach((item) => {
+        let combinacion = item.ticket.combinacion1;
+        let cant = 1;
+        pozoCombinacionesXML = `
                 ${pozoCombinacionesXML}
-                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
-            });
-            pozoCombinacionesXML = `
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      pozoCombinacionesXML = `
             <JG id="5">
                 ${pozoCombinacionesXML}
             </JG>        
               
-            `
-        }
-        /*Ensure your message below looks like a valid working SOAP UI request*/
-        let message = `
+            `;
+    }
+    /*Ensure your message below looks like a valid working SOAP UI request*/
+    let message = `
         <mt>
             <c>
             <aplicacion>25</aplicacion>
@@ -556,44 +594,43 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                 <UsuarioId>${user}</UsuarioId>
             </i>
         </mt>`;
-        /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
 
-/*         return new Promise(async (resolve, reject) => {
+    /*         return new Promise(async (resolve, reject) => {
 
 
             resolve(message);
         });
  */
-                return new Promise(async (resolve, reject) => {
-                    try{
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) resolve(message);
+          //console.log(res);
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
+          console.log(errorCode);
+          if (!errorCode) {
+            //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
+            let ticketId = "365987";
+            let response = {
+              data: data.mt.o[0],
+              ticketId,
+            };
 
-                        client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                                if (err) throw err;
-                            //console.log(res);
-                            let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-                            let errorCode = parseInt(data.mt.c[0].codError[0]);
-                            console.log(errorCode)
-                            if (!errorCode) {
-                                //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
-                                let ticketId = "365987"
-                                let response = {
-                                    data: data.mt.o[0],
-                                    ticketId
-                                }
-                                
-                                resolve(response);
-                            } else {
-                                console.log(data.mt.c[0].msgError[0])
-                                reject(data.mt.c[0].msgError[0])
-                            }
-                        });
-                    } catch(e){
-                        resolve(message)
-                    }
-                });
-
-    } catch (e) {
-        console.log(e.toString());
-        throw e;
-    }
+            resolve(response);
+          } else {
+            console.log(data.mt.c[0].msgError[0]);
+            reject(data.mt.c[0].msgError[0]);
+          }
+        }
+      );
+    });
+  } catch (e) {
+    console.log(e.toString());
+    throw e;
+  }
 };
