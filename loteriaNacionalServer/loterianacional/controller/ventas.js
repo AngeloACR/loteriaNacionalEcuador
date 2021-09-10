@@ -473,7 +473,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                 let combinacion = item.ticket.combinacion;
                 let fraccionesXML = ""
                 let cant = 1;
-                item.ticket.fracciones.forEach(element => {
+                item.ticket.seleccionados.forEach(element => {
 
                     fraccionesXML = `${fraccionesXML}<F id="${element}" />`
                     cant += 1;
