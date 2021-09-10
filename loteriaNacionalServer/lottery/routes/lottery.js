@@ -18,6 +18,7 @@ lotteryRouter.post('/reserveLottery', LotteryController.reserveLotteryHttp);
 lotteryRouter.post('/getBalance', LotteryController.getBalanceHttp);
 lotteryRouter.post('/reservarBoletos', LotteryController.reservarBoletos);
 lotteryRouter.post('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);
+lotteryRouter.post('/comprarBoletos', LotteryController.comprarBoletos);
 
 
 module.exports = lotteryRouter;
