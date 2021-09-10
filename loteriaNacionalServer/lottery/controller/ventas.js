@@ -524,6 +524,7 @@ const ventasController = {
             let lottoAux = req.body.lotto;
             let pozoAux = req.body.pozo;
             console.log("preparando response details")
+            let loteria = []
             for (id in loteriaAux) {
                 let aux = {
                     "lotteryType": 1,
@@ -535,7 +536,9 @@ const ventasController = {
                     "fractions": loteriaAux[id].ticket.seleccionados,
                 }
                 reservationDetails.push(aux)
+                loteria.push(loteriaAux[id])
             }
+            let lotto = []
             for (id in lottoAux) {
 
                 let aux = {
@@ -550,7 +553,9 @@ const ventasController = {
                     "combinationC4": lottoAux[id].ticket.combinacion4,
                 }
                 reservationDetails.push(aux)
+                lotto.push(lottoAux[id])
             }
+            let pozo = []
             for (id in pozoAux) {
 
                 let aux = {
@@ -564,6 +569,7 @@ const ventasController = {
                     "combinationC3": pozoAux[id].ticket.combinacion3
                 }
                 reservationDetails.push(aux)
+                pozo.push(pozoAux[id])
             }
             console.log("preparando reserve data")
             let exaReservaData = {
@@ -578,9 +584,7 @@ const ventasController = {
 
             let lotteryToken = req.body.lotteryToken
             let user = req.body.user
-            let loteria = req.body.loteria
-            let lotto = req.body.lotto
-            let pozo = req.body.pozo
+
             let reservaId = req.body.reservaId;
             let ordComp = "39225"
             let total = req.body.amount
