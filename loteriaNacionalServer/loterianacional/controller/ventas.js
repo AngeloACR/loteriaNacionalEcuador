@@ -574,6 +574,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         });
 
     } catch (e) {
-        res.status(400).json(e.toString());
+        console.log(e.toString());
+        throw e;
     }
 };
