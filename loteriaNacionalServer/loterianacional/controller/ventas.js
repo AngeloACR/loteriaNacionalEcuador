@@ -470,7 +470,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         let pozoCombinacionesXML = "";
         if (loteria.length != 0) {
             loteria.forEach(item => {
-                let combinacion = item.ticket.combinacion;
+                let combinacion = item.ticket.combinacion1;
                 let fraccionesXML = ""
                 let cant = 1;
                 item.ticket.seleccionados.forEach(element => {
@@ -491,7 +491,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         }
         if (lotto.length != 0) {
             lotto.forEach(item => {
-                let combinacion = item.ticket.combinacion;
+                let combinacion = item.ticket.combinacion1;
                 let cant = 1;
                 lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
@@ -504,7 +504,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         }
         if (pozo.length != 0) {
             pozo.forEach(item => {
-                let combinacion = item.ticket.combinacion;
+                let combinacion = item.ticket.combinacion1;
                 let cant = 1;
                 pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
@@ -553,13 +553,13 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
         /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
         console.log(message);
 
-        return new Promise(async (resolve, reject) => {
+        /* return new Promise(async (resolve, reject) => {
 
 
             resolve(message);
-        });
+        }); */
 
-        /* return new Promise(async (resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
                 if (err) reject(err);
                 //console.log(res);
@@ -580,7 +580,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                     reject(data.mt.c[0].msgError[0])
                 }
             });
-        }); */
+        });
 
     } catch (e) {
         console.log(e.toString());
