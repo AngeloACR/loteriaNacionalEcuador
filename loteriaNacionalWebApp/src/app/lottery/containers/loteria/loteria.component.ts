@@ -9,6 +9,7 @@ import {
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 import { LotteryService } from "../../services/lottery.service";
+import { PaymentService } from "../../../payment/services/payment.service";
 
 @Component({
   selector: "app-loteria",
@@ -37,6 +38,7 @@ export class LoteriaComponent implements OnInit {
 
   constructor(
     private lotteryService: LotteryService,
+    private paymentService: PaymentService,
     private actRoute: ActivatedRoute,
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef
@@ -283,9 +285,19 @@ export class LoteriaComponent implements OnInit {
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
-  confirmarCompra() {
+  async confirmarCompra() {
     this.dismissCompras();
-    this.compraFinalizada = true;
+
+    let reservaId = this.lotteryService.getReservaId();
+    let response = await this.paymentService.confirmarCompra(
+      this.token,
+      reservaId
+    );
+    if (response.status) {
+      this.compraFinalizada = true;
+    } else {
+      this.cancelarCompra();
+    }
   }
   cancelarCompra() {
     this.dismissCompras();

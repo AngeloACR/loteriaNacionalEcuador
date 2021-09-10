@@ -6,9 +6,6 @@ const reservaSchema = new mongoose.Schema({
         sorteo: {
             type: String
         },
-        fecha: {
-            type: String
-        },
         combinacion1: {
             type: String
         },
@@ -17,6 +14,9 @@ const reservaSchema = new mongoose.Schema({
         }]
     }],
     lotto: [{
+        sorteo: {
+            type: String
+        },
         combinacion1: {
             type: String
         },
@@ -31,6 +31,9 @@ const reservaSchema = new mongoose.Schema({
         }
     }],
     pozo: [{
+        sorteo: {
+            type: String
+        },
         combinacion1: {
             type: String
         },
@@ -42,6 +45,9 @@ const reservaSchema = new mongoose.Schema({
         }
     }],
     total: {
+        type: String
+    },
+    reservaId: {
         type: String
     },
 

@@ -885,12 +885,26 @@ export class LotteryService {
   setCarritoLotto(tickets) {
     localStorage.setItem("seleccionadosLotto", JSON.stringify(tickets));
   }
+
   setCarritoPozo(tickets) {
     localStorage.setItem("seleccionadosPozo", JSON.stringify(tickets));
   }
-  getCarritoLoteria() {}
-  getCarritoLotto() {}
-  getCarritoPozo() {}
+
+  getCarritoLoteria() {
+    return JSON.parse(
+      localStorage.getItem("seleccionadosLoteria")
+    );
+  }
+  getCarritoLotto() {
+    return JSON.parse(
+      localStorage.getItem("seleccionadosLotto")
+    );
+  }
+  getCarritoPozo() {
+    JSON.parse(
+      localStorage.getItem("seleccionadosPozo")
+    );
+  }
   borrarCarrito() {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify([]));
     localStorage.setItem("seleccionadosLotto", JSON.stringify([]));

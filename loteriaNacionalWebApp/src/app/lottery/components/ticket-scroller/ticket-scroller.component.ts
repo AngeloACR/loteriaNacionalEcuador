@@ -11,6 +11,7 @@ import {
   ticketsLotto,
   ticketsAnimales
 } from "../../interfaces/lottery.interface";
+import { ShoppingCartService } from "../../../payment/services/shopping-cart.service";
 
 @Component({
   selector: "app-ticket-scroller",
@@ -32,7 +33,7 @@ export class TicketScrollerComponent implements OnInit {
   isPozoMillonario: boolean = false;
   logoPath: string;
   total: number;
-  constructor() {}
+  constructor(private cart: ShoppingCartService) {}
 
   comprar() {
     this.emitirCompra.emit();
@@ -98,5 +99,6 @@ export class TicketScrollerComponent implements OnInit {
       total += parseFloat(ticket.sorteo.precio);
     }
     this.total = total;
+    this.cart.setTotal(this.total);
   }
 }

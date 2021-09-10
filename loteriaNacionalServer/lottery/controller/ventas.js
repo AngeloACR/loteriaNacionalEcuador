@@ -4,6 +4,7 @@ const Resultados = require('../../results/controller/main');
 const Sorteos = require('../../results/controller/sorteos');
 const config = require('../../config/environment');
 const Ventas = require('../../loterianacional/controller/ventas');
+const Reservas = require('../../loterianacional/controller/reservas');
 const Auth = require('../../exalogic/controller/auth');
 const Wallet = require('../../exalogic/controller/wallet');
 
@@ -513,16 +514,64 @@ const ventasController = {
             let exaBalanceData = { token: req.body.token };
             let balanceResponse = ventasController.getBalance(exaBalanceData)
             // if(balanceResponse.code<0) throw new Error('Balance insuficiente');
-            let apiReserveData = {
+            let apiReservaData = {
                 amount: req.body.amount,
-                reservationDetails: req.body.reservationDetails,
+                loteria: req.body.loteria,
+                lotto: req.body.lotto,
+                pozo: req.body.pozo,
+                reservaId: req.body.reservaId,
             }
             let apiReservaResponse = await ventasController.crearReserva(apiReservaData);
+            let reservationDetails = [];
+            let loteriaAux = req.body.loteria;
+            let lottoAux = req.body.lotto;
+            let pozoAux = req.body.pozo;
+            for (id in loteriaAux) {
+                let aux = {
+                    "lotteryType": 1,
+                    "lotteryName": "Loteria Nacional",
+                    "drawNumber": loteriaAux[id].sorteo.sorteo,
+                    "drawDate": loteriaAux[id].sorteo.fecha,
+                    "subTotal": loteriaAux[id].subtotal,
+                    "combinationC1": loteriaAux[id].ticket.combinacion1,
+                    "fractions": loteriaAux[id].ticket.seleccionados,
+                }
+                reservationDetails.push(aux)
+            }
+            for (id in lottoAux) {
+
+                let aux = {
+                    "lotteryType": 2,
+                    "lotteryName": "Lotto",
+                    "drawNumber": loteriaAux[id].sorteo.sorteo,
+                    "drawDate": loteriaAux[id].sorteo.fecha,
+                    "subTotal": loteriaAux[id].subtotal,
+                    "combinationC1": loteriaAux[id].ticket.combinacion1,
+                    "combinationC2": loteriaAux[id].ticket.combinacion2,
+                    "combinationC3": loteriaAux[id].ticket.combinacion3,
+                    "combinationC4": loteriaAux[id].ticket.combinacion4,
+                }
+                reservationDetails.push(aux)
+            }
+            for (id in pozoAux) {
+
+                let aux = {
+                    "lotteryType": 5,
+                    "lotteryName": "Pozo Millonario",
+                    "drawNumber": loteriaAux[id].sorteo.sorteo,
+                    "drawDate": loteriaAux[id].sorteo.fecha,
+                    "subTotal": loteriaAux[id].subtotal,
+                    "combinationC1": loteriaAux[id].ticket.combinacion1,
+                    "combinationC2": loteriaAux[id].ticket.combinacion2,
+                    "combinationC3": loteriaAux[id].ticket.combinacion3
+                }
+                reservationDetails.push(aux)
+            }
             let exaReservaData = {
                 token: req.body.token,
-                transactionId: apiReservaResponse._id,
+                transactionId: req.body.reservaId,
                 amount: req.body.amount,
-                reservationDetails: req.body.reservationDetails,
+                reservationDetails,
             }
             let exaReservaResponse = ventasController.reserveLottery(exaReservaData)
             // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
@@ -540,16 +589,11 @@ const ventasController = {
 
             let operationTimeStamp = new Date(Date.now()).toISOString().replace('T', " ").replace("Z", "");
             let exaVentaData = {
-                "command": "sellLottery",
-                "systemCode": "1",
-                "sessionToken": req.body.token,
-                "transactionId": req.body.transactionId,
-                "reserveId": req.body.reservaId,
-                "language": "en",
-                "currency": "USD",
-                "operationTimeStamp": operationTimeStamp,
-                "ticketId": loteriaVentaResponse.ticketId,
-                "amount": req.body.amount
+                token,
+                transactionId: req.body.transactionId,
+                reserveId: req.body.reservaId,
+                ticketId: loteriaVentaResponse.ticketId,
+                amount: req.body.amount
             }
             let exaVentaResponse = ventasController.sellLottery(exaVentaData)
             // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
@@ -601,6 +645,42 @@ const ventasController = {
             res.status(400).json(e.toString());
         }
     },
+    crearReserva: async (apiReservaData) => {
+        let loteriaAux = apiReservaData.loteria
+        let loteria = []
+        for (id in loteriaAux) {
+            let aux = loteriaAux[id].ticket;
+            aux['fracciones'] = loteriaAux[id].ticket.seleccionados;
+            aux['sorteo'] = loteriaAux[id].sorteo.sorteo;
+            loteria.push(aux)
+        }
+        let lottoAux = apiReservaData.lotto
+        let lotto = []
+        for (id in lottoAux) {
+            let aux = lottoAux[id];
+            aux['sorteo'] = loteriaAux[id].sorteo.sorteo;
+            lotto.push(aux)
+        }
+        let pozoAux = apiReservaData.pozo
+        let pozo = []
+        for (id in pozoAux) {
+            let aux = pozoAux[id];
+            aux['sorteo'] = loteriaAux[id].sorteo.sorteo;
+            pozo.push(aux)
+        }
+        let total = apiReservaData.amount
+        let reservaId = apiReservaData.reservaId
+        let element = {
+            loteria,
+            pozo,
+            lotto,
+            total,
+            reservaId
+
+        }
+        let response = await Reservas.addReserva(element);
+        return response;
+    }
 }
 
 module.exports = ventasController;
