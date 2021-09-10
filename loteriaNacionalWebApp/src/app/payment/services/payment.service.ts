@@ -53,7 +53,7 @@ export class PaymentService {
       token,
       reservaId
     };
-    endpoint = `${endpoint}/loteriaCombinacionesDisponibles`;
+    endpoint = `${endpoint}/comprarBoletos`;
     console.log("Recuperando combinaciones de loteria");
     var address = this.mySource;
 
