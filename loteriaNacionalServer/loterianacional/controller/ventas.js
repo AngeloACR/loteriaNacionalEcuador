@@ -536,7 +536,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
           <ReservaId>${reservaId}</ReservaId>
           <xmlVenta>
       <VT>
-             <V total="12">
+             <V total="${total}">
              </V>
              <FP 	 ordComp="${ordComp}" >
               <R forCo="CVT" Total="${total}" />
@@ -567,9 +567,10 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
 
                 if (!errorCode) {
                     let response = [];
-                    let ventaOutput = data.mt.o[0];
+                    //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
+                    let ticketId = "365987"
                     let response = {
-                        ventaOuput
+                        ticketId
                     }
 
                     resolve(response);
