@@ -568,7 +568,7 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                     try{
 
                         client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                            if (err) reject(err);
+                                if (err) throw err;
                             //console.log(res);
                             let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
                             let errorCode = parseInt(data.mt.c[0].codError[0]);
