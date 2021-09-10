@@ -480,11 +480,13 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
                 });
 
 
-                loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
+                loteriaCombinacionesXML = `
+                ${loteriaCombinacionesXML}
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`
             });
             loteriaCombinacionesXML = `
             <JG id="1">
-            ${loteriaCombinacionesXML}
+                ${loteriaCombinacionesXML}
             </JG>        
               
             `
@@ -493,11 +495,13 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
             lotto.forEach(item => {
                 let combinacion = item.ticket.combinacion1;
                 let cant = 1;
-                lottoCombinacionesXML = `${lottoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                lottoCombinacionesXML = `
+                ${lottoCombinacionesXML}
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
             lottoCombinacionesXML = `
             <JG id="2">
-            ${lottoCombinacionesXML}
+                ${lottoCombinacionesXML}
             </JG>        
               
             `
@@ -506,11 +510,13 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
             pozo.forEach(item => {
                 let combinacion = item.ticket.combinacion1;
                 let cant = 1;
-                pozoCombinacionesXML = `${pozoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
+                pozoCombinacionesXML = `
+                ${pozoCombinacionesXML}
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`
             });
             pozoCombinacionesXML = `
             <JG id="5">
-            ${pozoCombinacionesXML}
+                ${pozoCombinacionesXML}
             </JG>        
               
             `
@@ -551,36 +557,40 @@ module.exports.venderBoletos = async (ordComp, total, loteria, lotto, pozo, lott
             </i>
         </mt>`;
         /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
-        console.log(message);
 
-        return new Promise(async (resolve, reject) => {
+/*         return new Promise(async (resolve, reject) => {
 
 
             resolve(message);
         });
+ */
+                return new Promise(async (resolve, reject) => {
+                    try{
 
-        /*         return new Promise(async (resolve, reject) => {
-                    client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-                        if (err) reject(err);
-                        //console.log(res);
-                        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-                        let errorCode = parseInt(data.mt.c[0].codError[0]);
-                        console.log(errorCode)
-                        if (!errorCode) {
-                            //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
-                            let ticketId = "365987"
-                            let response = {
-                                data: data.mt.o[0],
-                                ticketId
+                        client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
+                            if (err) reject(err);
+                            //console.log(res);
+                            let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
+                            let errorCode = parseInt(data.mt.c[0].codError[0]);
+                            console.log(errorCode)
+                            if (!errorCode) {
+                                //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
+                                let ticketId = "365987"
+                                let response = {
+                                    data: data.mt.o[0],
+                                    ticketId
+                                }
+                                
+                                resolve(response);
+                            } else {
+                                console.log(data.mt.c[0].msgError[0])
+                                reject(data.mt.c[0].msgError[0])
                             }
-        
-                            resolve(response);
-                        } else {
-                            console.log(data.mt.c[0].msgError[0])
-                            reject(data.mt.c[0].msgError[0])
-                        }
-                    });
-                }); */
+                        });
+                    } catch(e){
+                        resolve(message)
+                    }
+                });
 
     } catch (e) {
         console.log(e.toString());
