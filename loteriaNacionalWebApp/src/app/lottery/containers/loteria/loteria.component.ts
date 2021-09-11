@@ -58,9 +58,8 @@ export class LoteriaComponent implements OnInit {
     this.fondo = !this.fondo;
     this.ticketsNacional[id].status = !this.ticketsNacional[id].status;
     if (!this.ticketsNacional[id].status) {
-      this.ticketsNacional[id].seleccionados = [];
       this.allFractions[id] = false;
-      this.removeSeleccionado(this.ticketsNacional[id].identificador, "");
+      this.removeSeleccionado(this.ticketsNacional[id].identificador, this.ticketsNacional[id].seleccionados);
     }
   }
 
@@ -104,55 +103,43 @@ export class LoteriaComponent implements OnInit {
   fraccionSeleccionada(idTicket: number, idFraccion: string) {
     if (this.allFractions[idTicket]) this.allFractions[idTicket] = false;
     let index =
-    this.ticketsNacional[idTicket].seleccionados.indexOf(idFraccion);
-    if(index != -1) {
+      this.ticketsNacional[idTicket].seleccionados.indexOf(idFraccion);
+    if (index != -1) {
       let fraccion = this.ticketsNacional[idTicket].seleccionados[index];
-      console.log(fraccion)
+      console.log(fraccion);
       this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
-      console.log(this.ticketsNacional[idTicket].seleccionados.length)
-      if (this.ticketsNacional[idTicket].seleccionados.length == 0) {
+      console.log(this.ticketsNacional[idTicket].seleccionados.length);
         this.removeSeleccionado(
           this.ticketsNacional[idTicket].identificador,
-          fraccion
+          [fraccion]
         );
-      } else {
-        this.removeFraccion(
-          this.ticketsNacional[idTicket].identificador,
-          fraccion
-        );
-      }
-      
     } else {
       this.ticketsNacional[idTicket].seleccionados.push(idFraccion);
-      this.pushToSeleccionado(this.ticketsNacional[idTicket]);
+      this.pushToSeleccionado(this.ticketsNacional[idTicket], [idFraccion]);
     }
   }
 
   seleccionarTodo(id: number) {
     this.changeDetectorRef.detectChanges();
     this.allFractions[id] = !this.allFractions[id];
-    this.ticketsNacional[id].seleccionados = [];
+    let fracciones = [];
     this.ticketsNacional[id].fraccionesDisponibles.forEach((element) => {
-      if (this.allFractions[id]) {
-        this.ticketsNacional[id].seleccionados.push(element);
-        this.pushToSeleccionado(this.ticketsNacional[id]);
-      } else {
-        let index = this.ticketsNacional[id].seleccionados.indexOf(element);
-        if (this.ticketsNacional[id].seleccionados.length == 0) {
-          this.removeSeleccionado(
-            this.ticketsNacional[id].identificador,
-            element
-          );
-        } else {
-          this.removeFraccion(this.ticketsNacional[id].identificador, element);
-        }
-        this.removeFraccion(this.ticketsNacional[id].identificador, element);
-      }
+      fracciones.push(element);
     });
+    if (this.allFractions[id]) {
+      this.ticketsNacional[id].seleccionados = fracciones;
+      this.pushToSeleccionado(this.ticketsNacional[id], fracciones);
+    } else {
+      this.ticketsNacional[id].seleccionados = [];
+      this.removeSeleccionado(
+            this.ticketsNacional[id].identificador,
+            fracciones
+          );
+    }
     this.changeDetectorRef.markForCheck();
   }
 
-  async removeSeleccionado(identificador, fraccion) {
+  async removeSeleccionado(identificador, fracciones) {
     try {
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
@@ -165,47 +152,20 @@ export class LoteriaComponent implements OnInit {
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         aux,
-        fraccion,
+        fracciones,
         1,
         reservaId
       );
 
-      delete this.ticketsSeleccionados[identificador];
-
-      localStorage.setItem(
-        "seleccionadosLoteria",
-        JSON.stringify(this.ticketsSeleccionados)
-      );
-
-      this.isLoading = false;
-    } catch (e) {
-      this.isLoading = false;
-      alert(JSON.stringify(e));
-    }
-  }
-  async removeFraccion(identificador, fraccion) {
-    try {
-      this.loadingMessage = "Removiendo fracción del carrito";
-      this.isLoading = true;
-      let aux = {
-        ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.sorteoSeleccionado,
-      };
-
-      let reservaId = this.lotteryService.getReservaId();
-      let response = await this.lotteryService.eliminarBoletosDeReserva(
-        this.token,
-        aux,
-        fraccion,
-        1,
-        reservaId
-      );
-
-      let index =
-        this.ticketsSeleccionados[identificador].seleccionados.indexOf(
-          fraccion
-        );
-      this.ticketsSeleccionados[identificador].seleccionados.splice(index, 1);
+      fracciones.forEach((fraccion) => {
+        let index =
+          this.ticketsSeleccionados[identificador].seleccionados.indexOf(
+            fraccion
+          );
+        this.ticketsSeleccionados[identificador].seleccionados.splice(index, 1);
+      });
+      if (this.ticketsSeleccionados[identificador].seleccionados.length == 0)
+        delete this.ticketsSeleccionados[identificador];
 
       localStorage.setItem(
         "seleccionadosLoteria",
@@ -219,7 +179,7 @@ export class LoteriaComponent implements OnInit {
     }
   }
 
-  async pushToSeleccionado(ticket) {
+  async pushToSeleccionado(ticket, fracciones) {
     try {
       this.loadingMessage = "Agregando boleto al carrito";
       this.isLoading = true;
@@ -228,6 +188,7 @@ export class LoteriaComponent implements OnInit {
         ticket.seleccionados.length;
       let aux = {
         ticket,
+        fracciones,
         sorteo: this.sorteoSeleccionado,
         subtotal,
       };

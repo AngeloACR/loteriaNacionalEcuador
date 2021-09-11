@@ -228,8 +228,10 @@ module.exports.reservarCombinaciones = async (
       loteria.forEach((item) => {
         let combinacion = item.combinacion;
         let fraccionesXML = "";
-        fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`;
-        let cant = 1;
+        item.fracciones.forEach((element) => {
+          fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
+          cant += 1;
+        });
         loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`;
       });
       loteriaCombinacionesXML = `
@@ -379,14 +381,14 @@ module.exports.eliminarReservas = async (
     let lottoCombinacionesXML = "";
     let pozoCombinacionesXML = "";
     if (loteria.length != 0) {
+
       loteria.forEach((item) => {
         let combinacion = item.combinacion;
         let fraccionesXML = "";
-
-        fraccionesXML = `${fraccionesXML}<F id="${item.fraccion}" />`;
-
-        let cant = 1;
-
+        item.fracciones.forEach((element) => {
+          fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
+          cant += 1;
+        });
         loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" >${fraccionesXML}</R>`;
       });
       loteriaCombinacionesXML = `

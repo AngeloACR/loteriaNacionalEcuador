@@ -772,10 +772,8 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.ticket.combinacion,
-            fraccion:
-              boleto.ticket.seleccionados[
-                boleto.ticket.seleccionados.length - 1
-              ],
+            fracciones:
+              boleto.fracciones,
             sorteo: boleto.sorteo
           }
         ];
@@ -815,7 +813,7 @@ export class LotteryService {
     });
   }
 
-  eliminarBoletosDeReserva(token, boleto, fraccion, tipoLoteria, reservaId) {
+  eliminarBoletosDeReserva(token, boleto, fracciones, tipoLoteria, reservaId) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
@@ -836,7 +834,7 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.ticket.combinacion,
-            fraccion,
+            fracciones,
             sorteo: boleto.sorteo
           }
         ];
