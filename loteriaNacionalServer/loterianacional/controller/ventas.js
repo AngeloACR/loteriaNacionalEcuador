@@ -228,6 +228,7 @@ module.exports.reservarCombinaciones = async (
       loteria.forEach((item) => {
         let combinacion = item.combinacion;
         let fraccionesXML = "";
+        let cant = 0;
         item.fracciones.forEach((element) => {
           fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
           cant += 1;
@@ -387,7 +388,6 @@ module.exports.eliminarReservas = async (
         let fraccionesXML = "";
         item.fracciones.forEach((element) => {
           fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
-          cant += 1;
         });
         loteriaCombinacionesXML = `${loteriaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" >${fraccionesXML}</R>`;
       });
