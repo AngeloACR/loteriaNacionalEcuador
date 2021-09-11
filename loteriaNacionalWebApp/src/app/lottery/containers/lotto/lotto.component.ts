@@ -4,7 +4,7 @@ import {
   sorteo,
   ticketsNacional,
   ticketsAnimales,
-  ticketsLotto
+  ticketsLotto,
 } from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
 import { PaymentService } from "../../../payment/services/payment.service";
@@ -13,7 +13,7 @@ import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 @Component({
   selector: "app-lotto",
   templateUrl: "./lotto.component.html",
-  styleUrls: ["./lotto.component.scss"]
+  styleUrls: ["./lotto.component.scss"],
 })
 export class LottoComponent implements OnInit {
   sorteo: sorteo[];
@@ -34,7 +34,7 @@ export class LottoComponent implements OnInit {
     private paymentService: PaymentService,
     private router: Router
   ) {
-    this.actRoute.params.subscribe(params => {
+    this.actRoute.params.subscribe((params) => {
       this.token = params["token"];
     });
   }
@@ -47,7 +47,7 @@ export class LottoComponent implements OnInit {
         localStorage.getItem("ticketsNacional")
         );*/
         this.showNumeros = false;
-        let combinacion = this.combinacionDeLaSuerte.map(element => {
+        let combinacion = this.combinacionDeLaSuerte.map((element) => {
           if (element == null || element == undefined || element == "") {
             return "_";
           } else {
@@ -96,7 +96,7 @@ export class LottoComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.sorteoSeleccionado
+        sorteo: this.sorteoSeleccionado,
       };
       let reservaId = this.lotteryService.getReservaId();
 
@@ -130,27 +130,41 @@ export class LottoComponent implements OnInit {
       let aux = {
         ticket,
         sorteo: this.sorteoSeleccionado,
-        subtotal
+        subtotal,
       };
-      this.ticketsSeleccionados[ticket.identificador] = aux;
-      let reservaId = this.lotteryService.getReservaId();
-      let response = await this.lotteryService.reservarBoletos(
-        this.token,
-        aux,
-        2,
-
-        reservaId
+      let hasBalance = await this.paymentService.hasBalance(
+        subtotal,
+        this.token
       );
+      if (hasBalance) {
+        this.ticketsSeleccionados[ticket.identificador] = aux;
+        let reservaId = this.lotteryService.getReservaId();
+        let response = await this.lotteryService.reservarBoletos(
+          this.token,
+          aux,
+          2,
 
-      this.lotteryService.setReservaId(response);
-      this.lotteryService.setCarritoLotto(this.ticketsSeleccionados);
+          reservaId
+        );
 
-      this.isLoading = false;
+        this.lotteryService.setReservaId(response);
+        this.lotteryService.setCarritoLotto(this.ticketsSeleccionados);
+
+        this.isLoading = false;
+      } else {
+        this.isLoading = false;
+        let message =
+          "Su saldo es insuficiente para agregar este boleto al carrito";
+          this.ticketsLotto.find(x => x.identificador === ticket.identificador).status = false
+          this.recargarSaldo(message);
+      }
     } catch (e) {
       this.isLoading = false;
       alert(e.toString());
     }
   }
+
+  irARecarga() {}
 
   abrirResumen() {
     this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
@@ -188,17 +202,25 @@ export class LottoComponent implements OnInit {
   async confirmarCompra() {
     this.isLoading = true;
     this.loadingMessage = "Espere mientras procesamos su compra";
-    let reservaId = this.lotteryService.getReservaId();
-    let response = await this.paymentService.confirmarCompra(
-      this.token,
-      reservaId
-    );
-    this.isLoading = false;
-    if (response.status) {
-      this.dismissCompras();
-      this.compraFinalizada = true;
+    let hasBalance = await this.paymentService.hasBalance(0, this.token);
+
+    if (hasBalance) {
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.paymentService.confirmarCompra(
+        this.token,
+        reservaId
+      );
+      this.isLoading = false;
+      if (response.status) {
+        this.dismissCompras();
+        this.compraFinalizada = true;
+      } else {
+        this.cancelarCompra();
+      }
     } else {
-      this.cancelarCompra();
+      this.isLoading = false;
+      let message = "Su saldo es insuficiente para realizar la compra";
+      this.recargarSaldo(message);
     }
   }
   cancelarCompra() {
@@ -206,7 +228,9 @@ export class LottoComponent implements OnInit {
     this.compraCancelada = true;
   }
 
-  recargarSaldo() {
+  recardaDeSaldoMessage: string;
+  recargarSaldo(message) {
+    this.recardaDeSaldoMessage = message;
     this.dismissCompras();
     this.saldoInsuficiente = true;
   }

@@ -1,15 +1,17 @@
 <div class="contenedor_informacion_ticket">
-    <div class="contenedor_informacion_ticket_derecho">
-
-        <div class="ticket_entero_fraccion">
-            <div class="ticket_entero">
-                <div>
-
-                    <p>{{mascota.nombre}} / </p>
-
-                    <p *ngFor="let number of ticketNumbers">{{number}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <p>
+      Juego: <span>Pozo Millonario</span>
+    </p>
+  
+    <p>
+      Sorteo: <span>{{ sorteoNumber }}</span>
+    </p>
+    <p>
+      Mascota: <span>{{ mascota.nombre }}</span>
+    </p>
+    <p>Combinación:</p>
+    <br />
+  
+      <p class="combinacion">{{ ticketNumbers.join(", ") }}</p>
+  </div>
+  

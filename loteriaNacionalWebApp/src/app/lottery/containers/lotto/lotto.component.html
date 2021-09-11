@@ -6,10 +6,20 @@
     (emitir)="procesaEmitir($event)">
   </app-info-loteria>
 
-  <div class="contendor_seleccion">
-    <h3>Ingresa tu numero de la suerte</h3>
+  <div class="contenedor_seleccion">
+    <div class="contenedor_select">
+      <h3>¿Como quieres comprar?</h3>
+      <select class="select_option" name="" id="">
+        <option class="option" value="">Seleccion individual</option>
+        <option class="option" value="">5 Boletos al azar</option>
+        <option class="option" value="">30 Boletos al azar</option>
+        <option class="option" value="">50 Boletos al azar</option>
+      </select>
+    </div>
     <div class="numeros_suerte">
-      <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+      <h3>Ingresa tu numero de la suerte</h3>
+      <div class="numeros">
+        <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
         [(ngModel)]="combinacionDeLaSuerte[0]">
       <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
         [(ngModel)]="combinacionDeLaSuerte[1]">
@@ -21,14 +31,9 @@
         [(ngModel)]="combinacionDeLaSuerte[4]">
       <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
         [(ngModel)]="combinacionDeLaSuerte[5]">
-      <select class="select_option" name="" id="">
-        <option class="option" value="">Seleccion individual</option>
-        <option class="option" value="">5 Boletos al azar</option>
-        <option class="option" value="">30 Boletos al azar</option>
-        <option class="option" value="">50 Boletos al azar</option>
-      </select>
-      <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
+      </div>
     </div>
+    <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
     <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
       <table>
@@ -75,6 +80,6 @@
   <app-confirmacion-de-compra (compraConfirmada)="confirmarCompra()" (compraCancelada)="cancelarCompra($event)"
     (comprarDespues)="dismissCompras()" class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
   <app-compra-finalizada (volver)="volver()" class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
-  <app-saldo-insuficiente class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
+  <app-saldo-insuficiente [message]="recargaDeSaldoMessage" (volver)="dismissCompras()" (recarga)="irARecarga()" class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
   <app-compra-cancelada class="paymentItem" [message]="cancelMessage" *ngIf="compraCancelada"></app-compra-cancelada>
 </div>

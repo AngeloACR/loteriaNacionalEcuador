@@ -1,81 +1,116 @@
 <app-seleccion-tipo></app-seleccion-tipo>
 
 <div class="contenedor_loteria" *ngIf="showComponents">
-
-  <app-info-loteria class="infoBox" titulo="Pozo Millonario" color="pozo" [sorteos]="sorteo" [loteria]=5
-    (emitir)="procesaEmitir($event)">
+  <app-info-loteria
+    class="infoBox"
+    titulo="Pozo Millonario"
+    color="pozo"
+    [sorteos]="sorteo"
+    [loteria]="5"
+    (emitir)="procesaEmitir($event)"
+  >
   </app-info-loteria>
 
   <div class="contendor_seleccion">
-    <div class="contenedor_formulario">
-      <div class="contenedor_select">
-        <h3>¿Como quieres comprar?</h3>
-        <select class="select_option" name="" id="">
-          <option class="option" value="">Seleccion individual</option>
-          <option class="option" value="">5 Boletos al azar</option>
-          <option class="option" value="">30 Boletos al azar</option>
-          <option class="option" value="">50 Boletos al azar</option>
-        </select>
-      </div>
-      <div class="numeros_suerte">
-        <h3>Ingresa tu numero de la suerte</h3>
-        <div class="numeros">
-          <input type="text" maxlength="2" name="" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[0]">
-          <input type="text" maxlength="2" name="" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[1]">
-          <input type="text" maxlength="2" name="" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[2]">
-          <input type="text" maxlength="2" name="" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[3]">
-        </div>
-      </div>
-    </div>
     <div class="contenedor_select">
-
-      <!-- <app-number-selection 
-          [animales]="arreglo_animales" 
-          (propagar)="procesaPropagar($event)">
-        </app-number-selection>  -->
-
-      <div class="select-sim" id="select-nombre">
-        Seleccione tus mascotas de la suerte
-        <div class="options">
-          <div class="option" *ngFor="let animal of seleccionAnimales; let i = index">
-            <input (click)="agregar(animal, i)" type="checkbox" [checked]="animal.status" name="nombre" [value]="animal"
-              id="nombre-{{animal.nombre}}" />
-            <label for="nombre-{{animal.nombre}}">
-              <img [src]="animal.ruta" [alt]="animal.nombre" />
-            </label>
-          </div>
-        </div>
+      <h3>¿Como quieres comprar?</h3>
+      <select class="select_option" name="" id="">
+        <option class="option" value="">Seleccion individual</option>
+        <option class="option" value="">5 Boletos al azar</option>
+        <option class="option" value="">30 Boletos al azar</option>
+        <option class="option" value="">50 Boletos al azar</option>
+      </select>
+    </div>
+    <div class="numeros_suerte">
+      <h3>Ingresa tu numero de la suerte</h3>
+      <div class="numeros">
+        <input
+          type="text"
+          maxlength="2"
+          name=""
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[0]"
+        />
+        <input
+          type="text"
+          maxlength="2"
+          name=""
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[1]"
+        />
+        <input
+          type="text"
+          maxlength="2"
+          name=""
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[2]"
+        />
+        <input
+          type="text"
+          maxlength="2"
+          name=""
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[3]"
+        />
       </div>
+      <div class="contenedor_select">
+        <!-- <app-number-selection 
+            [animales]="arreglo_animales" 
+            (propagar)="procesaPropagar($event)">
+          </app-number-selection>  -->
 
+          <h3>Selecciona tus mascotas de la suerte</h3>
+          <div class="options">
+            <div
+              class="option"
+              *ngFor="let animal of seleccionAnimales; let i = index"
+            >
+              <input
+                (click)="agregar(animal, i)"
+                type="checkbox"
+                [checked]="animal.status"
+                name="nombre"
+                [value]="animal"
+                id="nombre-{{ animal.nombre }}"
+              />
+              <label for="nombre-{{ animal.nombre }}">
+                <img [src]="animal.ruta" [alt]="animal.nombre" />
+              </label>
+            </div>
+          </div>
+        
+      </div>
     </div>
 
-    <div class="tabs_animales">
-      <p *ngFor="let animal of animalesTabs">
-        {{ animal.nombre}}
-        <span (click)="remover(animal.nombre)">x</span>
-      </p>
-    </div>
     <button class="activado" (click)="buscarNumero()">BUSCAR CARTONES</button>
 
-    <p>Si quieres cambiar tu carton, ingresa los numeros nuevamente y clic en "Buscar carton".</p>
+    <p>
+      Si quieres cambiar tu carton, ingresa los numeros nuevamente y clic en
+      "Buscar carton".
+    </p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
-
       <table *ngIf="showNumeros">
         <tbody>
-          <tr *ngFor="let ticket of ticketAnimales | paginacion:page_size:page_number; let i = index ">
+          <tr
+            *ngFor="
+              let ticket of ticketAnimales | paginacion: page_size:page_number;
+              let i = index
+            "
+          >
             <td>
-              <input type="checkbox" name="" id="" [checked]="ticket.status"
-                (click)="seleccionarTicket(page_size*(page_number-1)+i)">
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                [checked]="ticket.status"
+                (click)="seleccionarTicket(page_size * (page_number - 1) + i)"
+              />
               <div class="contenedor_seleccion_numero">
                 <div class="imagen_animal">
-                  <img [src]="obtenerAnimal(ticket.mascota)" alt="">
+                  <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
                 </div>
                 <div class="numeros">
-                  <p *ngFor="let numero of ticket.display;">{{ numero }}</p>
+                  <p *ngFor="let numero of ticket.display">{{ numero }}</p>
                 </div>
               </div>
               <!-- <app-seleccion-pozo [tickets]="ticketMascota"></app-seleccion-pozo> -->
@@ -85,11 +120,17 @@
         <hr size="2px" color="gray" />
       </table>
 
-      <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
-
+      <div
+        class="contenedor_botones"
+        style="display: flex; justify-content: center; margin-left: -8%"
+      >
         <!-- showFirstLastButtons -->
-        <mat-paginator style-paginator [length]="ticketAnimales.length" [pageSize]="page_size"
-          (page)="handlerPage($event)">
+        <mat-paginator
+          style-paginator
+          [length]="ticketAnimales.length"
+          [pageSize]="page_size"
+          (page)="handlerPage($event)"
+        >
         </mat-paginator>
       </div>
     </div>
@@ -104,19 +145,64 @@
     </div> -->
   </div>
 
-
-
-  <app-ticket-scroller class="ticketScroller" (emitirCompra)="comprar()" [ticketsLoteria]="ticketsLoteria"
-    [ticketsLotto]="ticketsLotto" [ticketsPozo]="ticketsSeleccionados" tipoLoteria="pozo">
+  <app-ticket-scroller
+    class="ticketScroller"
+    (emitirCompra)="comprar()"
+    [ticketsLoteria]="ticketsLoteria"
+    [ticketsLotto]="ticketsLotto"
+    [ticketsPozo]="ticketsSeleccionados"
+    tipoLoteria="pozo"
+  >
   </app-ticket-scroller>
-
 </div>
-<app-loader loader="pozo" [message]="loadingMessage" *ngIf="isLoading"></app-loader>
-<div class="blackBox" *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada"></div>
-<div *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada" class="paymentBox">
-  <app-confirmacion-de-compra (compraConfirmada)="confirmarCompra()" (compraCancelada)="cancelarCompra($event)"
-    (comprarDespues)="dismissCompras()" class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
-  <app-compra-finalizada (volver)="volver()" class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
-  <app-saldo-insuficiente class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
-  <app-compra-cancelada class="paymentItem" [message]="cancelMessage" *ngIf="compraCancelada"></app-compra-cancelada>
+<app-loader
+  loader="pozo"
+  [message]="loadingMessage"
+  *ngIf="isLoading"
+></app-loader>
+<div
+  class="blackBox"
+  (click)="dismissCompras()"
+  *ngIf="
+    isLoading ||
+    confirmacionDeCompra ||
+    compraFinalizada ||
+    saldoInsuficiente ||
+    compraCancelada
+  "
+></div>
+<div
+  *ngIf="
+    confirmacionDeCompra ||
+    compraFinalizada ||
+    saldoInsuficiente ||
+    compraCancelada
+  "
+  class="paymentBox"
+>
+  <app-confirmacion-de-compra
+    (compraConfirmada)="confirmarCompra()"
+    (compraCancelada)="cancelarCompra($event)"
+    (comprarDespues)="dismissCompras()"
+    class="paymentItem"
+    *ngIf="confirmacionDeCompra"
+  ></app-confirmacion-de-compra>
+  <app-compra-finalizada
+    (volver)="volver()"
+    class="paymentItem"
+    *ngIf="compraFinalizada"
+  ></app-compra-finalizada>
+  <app-saldo-insuficiente
+    [message]="recargaDeSaldoMessage"
+    (volver)="dismissCompras()"
+    (recarga)="irARecarga()"
+    class="paymentItem"
+    *ngIf="saldoInsuficiente"
+  ></app-saldo-insuficiente>
+  <app-compra-cancelada
+    class="paymentItem"
+    [message]="cancelMessage"
+    *ngIf="compraCancelada"
+  ></app-compra-cancelada>
 </div>
+)

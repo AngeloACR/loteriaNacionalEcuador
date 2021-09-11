@@ -58,6 +58,7 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   ngDoCheck() {
+    this.cart.setTotal()
     this.getTotal();
   }
 
@@ -80,7 +81,7 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   getTotal() {
-    let total = 0;
+/*     let total = 0;
     for (const key in this.ticketsLoteria) {
       let ticket = this.ticketsLoteria[key];
       let amount = parseFloat(ticket.sorteo.precio);
@@ -99,6 +100,7 @@ export class TicketScrollerComponent implements OnInit {
       total += parseFloat(ticket.sorteo.precio);
     }
     this.total = total;
-    this.cart.setTotal(this.total);
+ */    
+this.total = this.cart.getTotal();
   }
 }

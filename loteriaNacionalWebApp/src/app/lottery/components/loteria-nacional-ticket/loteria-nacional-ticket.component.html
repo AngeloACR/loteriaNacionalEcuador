@@ -1,15 +1,18 @@
 <div class="contenedor_informacion_ticket">
-    <div class="contenedor_informacion_ticket_derecho">
+  <p>
+    Juego: <span>Loterìa Nacional</span>
+  </p>
 
+  <p>
+    Sorteo: <span>{{ sorteoNumber }}</span>
+  </p>
+  <p>
+    Combinación: <span>{{ ticket.combinacion }}</span>
+  </p>
+  <p>Fracciones:</p>
+  <br />
+  <div class="fractionsBox">
 
-        <div class="ticket_combinacion">
-            <p>Combinación: <span>{{ticket.combinacion}}</span></p>
-
-        </div>
-        <div class="ticket_fraccion">
-
-            <p>Fracciones: <br><span *ngFor="let number of fraccion">{{number}}<br></span></p>
-
-        </div>
-    </div>
+    <p class="fraccion" *ngFor="let number of fraccion">{{ number }}</p>
+  </div>
 </div>

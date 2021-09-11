@@ -59,7 +59,10 @@ export class LoteriaComponent implements OnInit {
     this.ticketsNacional[id].status = !this.ticketsNacional[id].status;
     if (!this.ticketsNacional[id].status) {
       this.allFractions[id] = false;
-      this.removeSeleccionado(this.ticketsNacional[id].identificador, this.ticketsNacional[id].seleccionados);
+      this.removeSeleccionado(
+        this.ticketsNacional[id].identificador,
+        this.ticketsNacional[id].seleccionados
+      );
     }
   }
 
@@ -109,10 +112,9 @@ export class LoteriaComponent implements OnInit {
       console.log(fraccion);
       this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
       console.log(this.ticketsNacional[idTicket].seleccionados.length);
-        this.removeSeleccionado(
-          this.ticketsNacional[idTicket].identificador,
-          [fraccion]
-        );
+      this.removeSeleccionado(this.ticketsNacional[idTicket].identificador, [
+        fraccion,
+      ]);
     } else {
       this.ticketsNacional[idTicket].seleccionados.push(idFraccion);
       this.pushToSeleccionado(this.ticketsNacional[idTicket], [idFraccion]);
@@ -132,9 +134,9 @@ export class LoteriaComponent implements OnInit {
     } else {
       this.ticketsNacional[id].seleccionados = [];
       this.removeSeleccionado(
-            this.ticketsNacional[id].identificador,
-            fracciones
-          );
+        this.ticketsNacional[id].identificador,
+        fracciones
+      );
     }
     this.changeDetectorRef.markForCheck();
   }
@@ -149,23 +151,32 @@ export class LoteriaComponent implements OnInit {
       };
 
       let reservaId = this.lotteryService.getReservaId();
-      let response = await this.lotteryService.eliminarBoletosDeReserva(
-        this.token,
-        aux,
-        fracciones,
-        1,
-        reservaId
-      );
-
+      if (fracciones.length != 0) {
+        let response = await this.lotteryService.eliminarBoletosDeReserva(
+          this.token,
+          aux,
+          fracciones,
+          1,
+          reservaId
+        );
+      }
       fracciones.forEach((fraccion) => {
         let index =
-          this.ticketsSeleccionados[identificador].seleccionados.indexOf(
+          this.ticketsSeleccionados[identificador].ticket.seleccionados.indexOf(
             fraccion
           );
-        this.ticketsSeleccionados[identificador].seleccionados.splice(index, 1);
+        console.log(index);
+        this.ticketsSeleccionados[identificador].ticket.seleccionados.splice(
+          index,
+          1
+        );
       });
-      if (this.ticketsSeleccionados[identificador].seleccionados.length == 0)
+      if (
+        this.ticketsSeleccionados[identificador].ticket.seleccionados.length ==
+        0
+      ) {
         delete this.ticketsSeleccionados[identificador];
+      }
 
       localStorage.setItem(
         "seleccionadosLoteria",
@@ -192,19 +203,31 @@ export class LoteriaComponent implements OnInit {
         sorteo: this.sorteoSeleccionado,
         subtotal,
       };
-      this.ticketsSeleccionados[ticket.identificador] = aux;
-      console.log(aux);
-      let reservaId = this.lotteryService.getReservaId();
-      let response = await this.lotteryService.reservarBoletos(
-        this.token,
-        aux,
-        1,
-        reservaId
+      let hasBalance = await this.paymentService.hasBalance(
+        subtotal,
+        this.token
       );
-      this.lotteryService.setReservaId(response);
-      console.log("Agregando al carrito");
-      this.lotteryService.setCarritoLoteria(this.ticketsSeleccionados);
-      this.isLoading = false;
+      if (hasBalance) {
+        this.ticketsSeleccionados[ticket.identificador] = aux;
+        console.log(aux);
+        let reservaId = this.lotteryService.getReservaId();
+        let response = await this.lotteryService.reservarBoletos(
+          this.token,
+          aux,
+          1,
+          reservaId
+        );
+        this.lotteryService.setReservaId(response);
+        console.log("Agregando al carrito");
+        this.lotteryService.setCarritoLoteria(this.ticketsSeleccionados);
+        this.isLoading = false;
+      } else {
+        this.isLoading = false;
+        let message =
+          "Su saldo es insuficiente para agregar este boleto al carrito";
+          this.ticketsNacional.find(x => x.identificador === ticket.identificador).status = false
+          this.recargarSaldo(message);
+      }
     } catch (e) {
       this.isLoading = false;
       alert(JSON.stringify(e));
@@ -253,21 +276,31 @@ export class LoteriaComponent implements OnInit {
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
+  irARecarga() {}
+
   async confirmarCompra() {
     try {
       this.isLoading = true;
       this.loadingMessage = "Espere mientras procesamos su compra";
-      let reservaId = this.lotteryService.getReservaId();
-      let response = await this.paymentService.confirmarCompra(
-        this.token,
-        reservaId
-      );
-      this.isLoading = false;
-      if (response.status) {
-        this.dismissCompras();
-        this.compraFinalizada = true;
+      let hasBalance = await this.paymentService.hasBalance(0, this.token);
+
+      if (hasBalance) {
+        let reservaId = this.lotteryService.getReservaId();
+        let response = await this.paymentService.confirmarCompra(
+          this.token,
+          reservaId
+        );
+        this.isLoading = false;
+        if (response.status) {
+          this.dismissCompras();
+          this.compraFinalizada = true;
+        } else {
+          this.cancelarCompra();
+        }
       } else {
-        this.cancelarCompra();
+        this.isLoading = false;
+        let message = "Su saldo es insuficiente para realizar la compra";
+        this.recargarSaldo(message);
       }
     } catch (e) {
       this.isLoading = false;
@@ -280,7 +313,9 @@ export class LoteriaComponent implements OnInit {
     this.compraCancelada = true;
   }
 
-  recargarSaldo() {
+  recardaDeSaldoMessage: string;
+  recargarSaldo(message) {
+    this.recardaDeSaldoMessage = message;
     this.dismissCompras();
     this.saldoInsuficiente = true;
   }

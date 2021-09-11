@@ -7,7 +7,7 @@ import {
   ticketsAnimales,
   sorteo,
   ticketsNacional,
-  ticketsLotto
+  ticketsLotto,
 } from "../../interfaces/lottery.interface";
 import { PageEvent } from "@angular/material";
 import { ReturnStatement } from "@angular/compiler";
@@ -15,7 +15,7 @@ import { ReturnStatement } from "@angular/compiler";
 @Component({
   selector: "app-pozo-millonario",
   templateUrl: "./pozo-millonario.component.html",
-  styleUrls: ["./pozo-millonario.component.scss"]
+  styleUrls: ["./pozo-millonario.component.scss"],
 })
 export class PozoMillonarioComponent implements OnInit {
   sorteo: sorteo[];
@@ -39,7 +39,7 @@ export class PozoMillonarioComponent implements OnInit {
 
     private router: Router
   ) {
-    this.actRoute.params.subscribe(params => {
+    this.actRoute.params.subscribe((params) => {
       this.token = params["token"];
     });
   }
@@ -50,7 +50,7 @@ export class PozoMillonarioComponent implements OnInit {
       this.animalesTabs.push(this.seleccionAnimales[i]);
     } else {
       this.seleccionAnimales[i].status = false;
-      this.animalesTabs = this.animalesTabs.filter(element => {
+      this.animalesTabs = this.animalesTabs.filter((element) => {
         return element.nombre !== animal.nombre;
       });
     }
@@ -62,11 +62,11 @@ export class PozoMillonarioComponent implements OnInit {
   }
 
   remover(animal: string) {
-    this.animalesTabs = this.animalesTabs.filter(element => {
+    this.animalesTabs = this.animalesTabs.filter((element) => {
       return element.nombre !== animal;
     });
 
-    this.seleccionAnimales.forEach(element => {
+    this.seleccionAnimales.forEach((element) => {
       if (element.nombre === animal) {
         return (element.status = false);
       }
@@ -93,7 +93,7 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.sorteoSeleccionado
+        sorteo: this.sorteoSeleccionado,
       };
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
@@ -125,24 +125,36 @@ export class PozoMillonarioComponent implements OnInit {
       let aux = {
         ticket,
         sorteo: this.sorteoSeleccionado,
-        subtotal
+        subtotal,
       };
-
-      this.ticketsSeleccionados[ticket.identificador] = aux;
-      console.log("Buscando la id de reserva");
-      let reservaId = this.lotteryService.getReservaId();
-      console.log(reservaId);
-      let response = await this.lotteryService.reservarBoletos(
-        this.token,
-        aux,
-        5,
-        reservaId
+      let hasBalance = await this.paymentService.hasBalance(
+        subtotal,
+        this.token
       );
 
-      this.lotteryService.setReservaId(response);
-      this.lotteryService.setCarritoPozo(this.ticketsSeleccionados);
+      if (hasBalance) {
+        this.ticketsSeleccionados[ticket.identificador] = aux;
+        console.log("Buscando la id de reserva");
+        let reservaId = this.lotteryService.getReservaId();
+        console.log(reservaId);
+        let response = await this.lotteryService.reservarBoletos(
+          this.token,
+          aux,
+          5,
+          reservaId
+        );
 
-      this.isLoading = false;
+        this.lotteryService.setReservaId(response);
+        this.lotteryService.setCarritoPozo(this.ticketsSeleccionados);
+
+        this.isLoading = false;
+      } else {
+        this.isLoading = false;
+        let message =
+          "Su saldo es insuficiente para agregar este boleto al carrito";
+          this.ticketAnimales.find(x => x.identificador === ticket.identificador).status = false
+          this.recargarSaldo(message);
+      }
     } catch (e) {
       this.isLoading = false;
       alert(e.toString());
@@ -171,13 +183,13 @@ export class PozoMillonarioComponent implements OnInit {
         );*/
         this.showNumeros = false;
         let isHigher = false;
-        this.combinacionDeLaSuerte.forEach(number => {
+        this.combinacionDeLaSuerte.forEach((number) => {
           let aux = parseInt(number);
           if (aux > 25) {
             isHigher = true;
           }
         });
-        let combinacion = this.combinacionDeLaSuerte.map(number => {
+        let combinacion = this.combinacionDeLaSuerte.map((number) => {
           let numero = number;
           if (numero.length < 2) {
             numero = `0${numero}`;
@@ -188,7 +200,7 @@ export class PozoMillonarioComponent implements OnInit {
           }
           return numero;
         });
-        let combinacionFigura = this.animalesTabs.map(animal => {
+        let combinacionFigura = this.animalesTabs.map((animal) => {
           return animal.identificador;
         });
         combinacion.sort(this.ordenaCombinacion);
@@ -270,28 +282,38 @@ export class PozoMillonarioComponent implements OnInit {
   }
 
   async confirmarCompra() {
-    
     this.isLoading = true;
     this.loadingMessage = "Espere mientras procesamos su compra";
-    let reservaId = this.lotteryService.getReservaId();
-    let response = await this.paymentService.confirmarCompra(
-      this.token,
-      reservaId
+    let hasBalance = await this.paymentService.hasBalance(0, this.token);
+
+    if (hasBalance) {
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.paymentService.confirmarCompra(
+        this.token,
+        reservaId
       );
-    this.isLoading = false;
-    if (response.status) {
+      this.isLoading = false;
+      if (response.status) {
         this.dismissCompras();
-      this.compraFinalizada = true;
+        this.compraFinalizada = true;
+      } else {
+        this.cancelarCompra();
+      }
     } else {
-      this.cancelarCompra();
+      this.isLoading = false;
+      let message = "Su saldo es insuficiente para realizar la compra";
+      this.recargarSaldo(message);
     }
   }
   cancelarCompra() {
     this.dismissCompras();
     this.compraCancelada = true;
   }
+  irARecarga() {}
 
-  recargarSaldo() {
+  recardaDeSaldoMessage: string;
+  recargarSaldo(message) {
+    this.recardaDeSaldoMessage = message;
     this.dismissCompras();
     this.saldoInsuficiente = true;
   }
@@ -321,8 +343,8 @@ export class PozoMillonarioComponent implements OnInit {
     this.animalesTabs = JSON.parse(localStorage.getItem("animalesTabs"));
 
     //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
-    this.seleccionAnimales.forEach(element => {
-      this.animalesTabs.forEach(elemento => {
+    this.seleccionAnimales.forEach((element) => {
+      this.animalesTabs.forEach((elemento) => {
         if (elemento.nombre === element.nombre) {
           element.status = elemento.status;
         }

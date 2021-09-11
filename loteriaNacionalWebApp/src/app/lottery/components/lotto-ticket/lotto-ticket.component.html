@@ -1,32 +1,22 @@
 <div class="contenedor_informacion_ticket">
-    <div class="contenedor_informacion_ticket_derecho">
-
-
-        <div class="ticket_entero_fraccion">
-            <div class="ticket_entero">
-                <h5>Combinación Principal</h5>
-                <div>
-                    <p *ngFor="let number of ticketNumbers">{{number}}</p>
-                </div>
-            </div>
-            <div class="ticket_entero">
-                <h5>Lotto Plus</h5>
-                <div>
-                    <p>{{ticket.combinacion2}}</p>
-                </div>
-            </div>
-            <div class="ticket_entero">
-                <h5>Lottito</h5>
-                <div>
-                    <p>{{ticket.combinacion3}}</p>
-                </div>
-            </div>
-            <div class="ticket_entero">
-                <h5>Nos vemos jefe</h5>
-                <div>
-                    <p>{{ticket.combinacion4}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <p>
+      Juego: <span>Lotto</span>
+    </p>
+  
+    <p>
+      Sorteo: <span>{{ sorteoNumber }}</span>
+    </p>
+    <p>
+        Combinación principal: <span>{{ ticket.combinacion1 }}</span>
+      </p>
+      <p>
+        Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
+      </p>
+      <p>
+        Lottito: <span>{{ ticket.combinacion2 }}</span>
+      </p>
+      <p>
+        Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
+      </p>
+          </div>
+  

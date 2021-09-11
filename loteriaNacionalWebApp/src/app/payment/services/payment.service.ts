@@ -32,6 +32,33 @@ export class PaymentService {
   liberarSaldo() {}
 
   recargarSaldo() {}
+  hasBalance(subtotal, token) {
+    let cartTotal = parseFloat(this.cart.getTotal());
+    let testAmount = parseFloat(subtotal)+cartTotal;
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+    let endpoint = "/lottery";
+    let body = {
+      token
+    };
+    endpoint = `${endpoint}/getBalance`;
+    var address = this.mySource;
+
+    address = address + endpoint;
+    return new Promise<boolean>((resolve, reject) => {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          console.log(data);
+          let balance = data.balance;
+          resolve(balance>=testAmount);
+        },
+        (error: any) => {
+          reject(error);
+        }
+      );
+    });
+  }
 
   confirmarCompra(token, reservaId): Promise<any> {
     let loteria = this.cart.getCarritoLoteria();

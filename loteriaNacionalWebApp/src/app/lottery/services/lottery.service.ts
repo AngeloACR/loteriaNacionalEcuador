@@ -869,6 +869,7 @@ export class LotteryService {
           resolve(response);
         },
         (error: any) => {
+          console.log(error)
           reject(error);
         }
       );
