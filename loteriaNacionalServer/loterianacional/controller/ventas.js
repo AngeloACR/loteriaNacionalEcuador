@@ -630,7 +630,6 @@ module.exports.venderBoletos = async (
       );
     });
   } catch (e) {
-    console.log(e.toString());
     throw e;
   }
 };
