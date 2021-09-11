@@ -472,11 +472,7 @@ module.exports.eliminarReservas = async (
           );
           let errorCode = parseInt(data.mt.c[0].codError[0]);
           if (!errorCode) {
-            let reservaId = data.mt.o[0].ReturnValue;
-            let response = {
-              reservaId,
-            };
-
+            let response = data.mt.o[0].ReturnValue[0];
             resolve(response);
           } else {
             reject(data.mt.c[0].msgError[0]);
