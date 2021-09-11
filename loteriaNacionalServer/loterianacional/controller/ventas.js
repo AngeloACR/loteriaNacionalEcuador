@@ -314,10 +314,7 @@ module.exports.reservarCombinaciones = async (
           let errorCode = parseInt(data.mt.c[0].codError[0]);
 
           if (!errorCode) {
-            let reservaId = data.mt.o[0].ReturnValue;
-            let response = {
-              reservaId,
-            };
+            let reservaId = data.mt.o[0].ReturnValue[0];
             /* let aux = data.mt.rs[0].r[0];
                     let boletosReservados = [];
                     aux.Row.forEach(boletoReservado => {
@@ -353,7 +350,7 @@ module.exports.reservarCombinaciones = async (
                         default:
                             break;
                     } */
-            resolve(response);
+            resolve(reservaId);
           } else {
             let errorMsg = data.mt.c[0].msgError[0];
             console.log(errorMsg);

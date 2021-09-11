@@ -4,17 +4,18 @@ import {
   sorteo,
   ticketsNacional,
   ticketsAnimales,
-  ticketsLotto
+  ticketsLotto,
 } from "../../interfaces/lottery.interface";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 import { LotteryService } from "../../services/lottery.service";
 import { PaymentService } from "../../../payment/services/payment.service";
+import { CATCH_STACK_VAR } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-loteria",
   templateUrl: "./loteria.component.html",
-  styleUrls: ["./loteria.component.scss"]
+  styleUrls: ["./loteria.component.scss"],
 })
 export class LoteriaComponent implements OnInit {
   tickets: any;
@@ -43,7 +44,7 @@ export class LoteriaComponent implements OnInit {
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef
   ) {
-    this.actRoute.params.subscribe(params => {
+    this.actRoute.params.subscribe((params) => {
       this.token = params["token"];
     });
   }
@@ -69,7 +70,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = true;
       //if (this.sorteoSeleccionado.nombre != "default") {
       this.showNumeros = false;
-      let combinacion = this.combinacionDeLaSuerte.map(element => {
+      let combinacion = this.combinacionDeLaSuerte.map((element) => {
         element = element.toString();
         if (element == null || element == undefined || element == "") {
           return "_";
@@ -85,7 +86,7 @@ export class LoteriaComponent implements OnInit {
         ""
       );
       this.allFractions = [];
-      this.ticketsNacional.forEach(ticket => {
+      this.ticketsNacional.forEach((ticket) => {
         this.allFractions.push(false);
       });
       this.showNumeros = true; /* 
@@ -102,13 +103,13 @@ export class LoteriaComponent implements OnInit {
 
   fraccionSeleccionada(idTicket: number, idFraccion: string) {
     if (this.allFractions[idTicket]) this.allFractions[idTicket] = false;
-    let index = this.ticketsNacional[idTicket].seleccionados.indexOf(
-      idFraccion
-    );
-    if (index != -1) {
+    let index =
+    this.ticketsNacional[idTicket].seleccionados.indexOf(idFraccion);
+    if(index != -1) {
       let fraccion = this.ticketsNacional[idTicket].seleccionados[index];
+      console.log(fraccion)
       this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
-
+      console.log(this.ticketsNacional[idTicket].seleccionados.length)
       if (this.ticketsNacional[idTicket].seleccionados.length == 0) {
         this.removeSeleccionado(
           this.ticketsNacional[idTicket].identificador,
@@ -120,6 +121,7 @@ export class LoteriaComponent implements OnInit {
           fraccion
         );
       }
+      
     } else {
       this.ticketsNacional[idTicket].seleccionados.push(idFraccion);
       this.pushToSeleccionado(this.ticketsNacional[idTicket]);
@@ -130,7 +132,7 @@ export class LoteriaComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
     this.allFractions[id] = !this.allFractions[id];
     this.ticketsNacional[id].seleccionados = [];
-    this.ticketsNacional[id].fraccionesDisponibles.forEach(element => {
+    this.ticketsNacional[id].fraccionesDisponibles.forEach((element) => {
       if (this.allFractions[id]) {
         this.ticketsNacional[id].seleccionados.push(element);
         this.pushToSeleccionado(this.ticketsNacional[id]);
@@ -156,7 +158,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.sorteoSeleccionado
+        sorteo: this.sorteoSeleccionado,
       };
 
       let reservaId = this.lotteryService.getReservaId();
@@ -187,7 +189,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.sorteoSeleccionado
+        sorteo: this.sorteoSeleccionado,
       };
 
       let reservaId = this.lotteryService.getReservaId();
@@ -199,9 +201,10 @@ export class LoteriaComponent implements OnInit {
         reservaId
       );
 
-      let index = this.ticketsSeleccionados[
-        identificador
-      ].seleccionados.indexOf(fraccion);
+      let index =
+        this.ticketsSeleccionados[identificador].seleccionados.indexOf(
+          fraccion
+        );
       this.ticketsSeleccionados[identificador].seleccionados.splice(index, 1);
 
       localStorage.setItem(
@@ -226,7 +229,7 @@ export class LoteriaComponent implements OnInit {
       let aux = {
         ticket,
         sorteo: this.sorteoSeleccionado,
-        subtotal
+        subtotal,
       };
       this.ticketsSeleccionados[ticket.identificador] = aux;
       console.log(aux);
@@ -237,7 +240,7 @@ export class LoteriaComponent implements OnInit {
         1,
         reservaId
       );
-      this.lotteryService.setReservaId(response.reservasAux.reservaId[0]);
+      this.lotteryService.setReservaId(response);
       console.log("Agregando al carrito");
       this.lotteryService.setCarritoLoteria(this.ticketsSeleccionados);
       this.isLoading = false;
@@ -290,19 +293,25 @@ export class LoteriaComponent implements OnInit {
   }
 
   async confirmarCompra() {
-    this.isLoading = true;
-    this.loadingMessage = "Espere mientras procesamos su compra";
-    let reservaId = this.lotteryService.getReservaId();
-    let response = await this.paymentService.confirmarCompra(
-      this.token,
-      reservaId
-    );
-    this.isLoading = false;
-    if (response.status) {
-      this.dismissCompras();
-      this.compraFinalizada = true;
-    } else {
-      this.cancelarCompra();
+    try {
+      this.isLoading = true;
+      this.loadingMessage = "Espere mientras procesamos su compra";
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.paymentService.confirmarCompra(
+        this.token,
+        reservaId
+      );
+      this.isLoading = false;
+      if (response.status) {
+        this.dismissCompras();
+        this.compraFinalizada = true;
+      } else {
+        this.cancelarCompra();
+      }
+    } catch (e) {
+      this.isLoading = false;
+      alert(JSON.stringify(e));
+      console.log(JSON.stringify(e));
     }
   }
   cancelarCompra() {

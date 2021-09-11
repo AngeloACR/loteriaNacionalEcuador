@@ -512,7 +512,7 @@ const ventasController = {
       let pozo = req.body.pozo ? req.body.pozo : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
 
-      let reservasAux = await Ventas.reservarCombinaciones(
+      let response = await Ventas.reservarCombinaciones(
         loteria,
         lotto,
         pozo,
@@ -522,11 +522,6 @@ const ventasController = {
       );
 
       //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
-      let reserva = "";
-      response = {
-        reservasAux,
-        reserva,
-      };
       res.status(200).json(response);
     } catch (e) {
       console.log(e.toString());

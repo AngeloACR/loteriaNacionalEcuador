@@ -142,7 +142,7 @@ export class LottoComponent implements OnInit {
         reservaId
       );
 
-      this.lotteryService.setReservaId(response.reservasAux.reservaId[0]);
+      this.lotteryService.setReservaId(response);
       this.lotteryService.setCarritoLotto(this.ticketsSeleccionados);
 
       this.isLoading = false;
