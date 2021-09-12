@@ -258,7 +258,6 @@ const resultadosController = {
             let resultado = await ResultadoLoteria.find(query).lean();
             console.log(ResultadoLoteria)
             if (resultado && resultado.length != 0) {
-                resultado.push(resultadoAux);
                 response = {
                     status: true,
                     values: resultado
