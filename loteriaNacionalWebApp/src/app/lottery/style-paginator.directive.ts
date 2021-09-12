@@ -62,16 +62,18 @@ export class StylePaginatorDirective {
     //initialize next page and last page buttons
     if (this._buttons.length == 0) {
       let nodeArray =
-        this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[2]
-          .childNodes;
-
+      this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[2]
+      .childNodes;
+      
       let node = // Numero de elementos en el paginador
-        this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[0]
-          .childNodes[2];
-      /* console.log(node); */
-
+      this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[0]
+      .childNodes[2];
+      console.log(this.vr.element.nativeElement); 
+      let paginatorBox = this.vr.element.nativeElement
+      paginatorBox.class = 'paginatorBox';
+      
       /* node.style.visibility = 'hidden'; */
-      node.style.display = 'none';
+      //node.style.display = 'none';
       /* node.parentNode.removeChild(node); */
       /* this.ren.setStyle(node, "background-color", "#E3E4E5"); */
     

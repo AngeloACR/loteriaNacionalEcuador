@@ -1,9 +1,14 @@
 <app-seleccion-tipo></app-seleccion-tipo>
 
 <div class="contenedor_loteria" *ngIf="showComponents">
-
-  <app-info-loteria titulo="Lotto" class="infoBox" color="lotto" [sorteos]="sorteo" [loteria]=2
-    (emitir)="procesaEmitir($event)">
+  <app-info-loteria
+    titulo="Lotto"
+    class="infoBox"
+    color="lotto"
+    [sorteos]="sorteo"
+    [loteria]="2"
+    (emitir)="procesaEmitir($event)"
+  >
   </app-info-loteria>
 
   <div class="contenedor_seleccion">
@@ -19,30 +24,71 @@
     <div class="numeros_suerte">
       <h3>Ingresa tu numero de la suerte</h3>
       <div class="numeros">
-        <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-        [(ngModel)]="combinacionDeLaSuerte[0]">
-      <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-        [(ngModel)]="combinacionDeLaSuerte[1]">
-      <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-        [(ngModel)]="combinacionDeLaSuerte[2]">
-      <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-        [(ngModel)]="combinacionDeLaSuerte[3]">
-      <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-        [(ngModel)]="combinacionDeLaSuerte[4]">
-      <input type="text" name="" maxlength="1" onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-        [(ngModel)]="combinacionDeLaSuerte[5]">
+        <input
+          type="text"
+          name=""
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[0]"
+        />
+        <input
+          type="text"
+          name=""
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[1]"
+        />
+        <input
+          type="text"
+          name=""
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[2]"
+        />
+        <input
+          type="text"
+          name=""
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[3]"
+        />
+        <input
+          type="text"
+          name=""
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[4]"
+        />
+        <input
+          type="text"
+          name=""
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          [(ngModel)]="combinacionDeLaSuerte[5]"
+        />
       </div>
     </div>
     <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
-    <p>Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar numero"</p>
+    <p>
+      Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar
+      numero"
+    </p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
       <table>
         <tbody>
-          <tr *ngFor="let ticket of ticketsLotto | paginacion:page_size:page_number; let i = index ">
+          <tr
+            *ngFor="
+              let ticket of ticketsLotto | paginacion: page_size:page_number;
+              let i = index
+            "
+          >
             <td>
               <div class="contenedor">
-                <input type="checkbox" [checked]="ticket.status"
-                  (click)="seleccionarTicket(page_size*(page_number-1)+i)">
+                <input
+                  type="checkbox"
+                  [checked]="ticket.status"
+                  (click)="seleccionarTicket(page_size * (page_number - 1) + i)"
+                />
                 <div class="contenedor_numeros">
                   <p *ngFor="let numero of ticket.display">{{ numero }}</p>
                 </div>
@@ -54,11 +100,15 @@
         <hr size="2px" color="gray" />
       </table>
 
-
-
-      <div class="contenedor_botones" style="display: flex; justify-content: center; margin-left: -8%">
-        <mat-paginator style-paginator [length]="ticketsLotto.length" [pageSize]="page_size"
-          (page)="handlerPage($event)">
+      <div
+        class="contenedor_botones"
+      >
+        <mat-paginator
+          style-paginator
+          [length]="ticketsLotto.length"
+          [pageSize]="page_size"
+          (page)="handlerPage($event)"
+        >
         </mat-paginator>
       </div>
     </div>
@@ -68,18 +118,61 @@
     </div> -->
   </div>
 
-
-
-  <app-ticket-scroller class="ticketScroller" (emitirCompra)="comprar()" [ticketsLoteria]="ticketsLoteria"
-    [ticketsLotto]="ticketsSeleccionados" [ticketsPozo]="ticketsPozo" tipoLoteria="lotto">
+  <app-ticket-scroller
+    class="ticketScroller"
+    (emitirCompra)="comprar()"
+    [ticketsLoteria]="ticketsLoteria"
+    [ticketsLotto]="ticketsSeleccionados"
+    [ticketsPozo]="ticketsPozo"
+    tipoLoteria="lotto"
+  >
   </app-ticket-scroller>
 </div>
-<app-loader loader="lotto" [message]="loadingMessage" *ngIf="isLoading"></app-loader>
-<div class="blackBox" *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada"></div>
-<div *ngIf="confirmacionDeCompra || compraFinalizada || saldoInsuficiente || compraCancelada" class="paymentBox">
-  <app-confirmacion-de-compra (compraConfirmada)="confirmarCompra()" (compraCancelada)="cancelarCompra($event)"
-    (comprarDespues)="dismissCompras()" class="paymentItem" *ngIf="confirmacionDeCompra"></app-confirmacion-de-compra>
-  <app-compra-finalizada (volver)="volver()" class="paymentItem" *ngIf="compraFinalizada"></app-compra-finalizada>
-  <app-saldo-insuficiente [message]="recargaDeSaldoMessage" (volver)="dismissCompras()" (recarga)="irARecarga()" class="paymentItem" *ngIf="saldoInsuficiente"></app-saldo-insuficiente>
-  <app-compra-cancelada class="paymentItem" [message]="cancelMessage" *ngIf="compraCancelada"></app-compra-cancelada>
+<app-loader
+  loader="lotto"
+  [message]="loadingMessage"
+  *ngIf="isLoading"
+></app-loader>
+<div
+  class="blackBox"
+  *ngIf="
+    confirmacionDeCompra ||
+    compraFinalizada ||
+    saldoInsuficiente ||
+    compraCancelada
+  "
+></div>
+<div
+  *ngIf="
+    confirmacionDeCompra ||
+    compraFinalizada ||
+    saldoInsuficiente ||
+    compraCancelada
+  "
+  class="paymentBox"
+>
+  <app-confirmacion-de-compra
+    (compraConfirmada)="confirmarCompra()"
+    (compraCancelada)="cancelarCompra($event)"
+    (comprarDespues)="dismissCompras()"
+    class="paymentItem"
+    *ngIf="confirmacionDeCompra"
+  ></app-confirmacion-de-compra>
+  <app-compra-finalizada
+    (volver)="volver()"
+    class="paymentItem"
+    *ngIf="compraFinalizada"
+  ></app-compra-finalizada>
+  <app-saldo-insuficiente
+    [message]="recargaDeSaldoMessage"
+    (volver)="dismissCompras()"
+    (recarga)="irARecarga()"
+    class="paymentItem"
+    *ngIf="saldoInsuficiente"
+  ></app-saldo-insuficiente>
+  <app-compra-cancelada
+    class="paymentItem"
+    [message]="cancelMessage"
+    *ngIf="compraCancelada"
+  ></app-compra-cancelada>
 </div>

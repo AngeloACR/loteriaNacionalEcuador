@@ -91,6 +91,7 @@ $color-botton: #2f72b9;
         height: 250px;
         overflow-y: scroll;
         display: flex;
+        justify-content: space-evenly;
         flex-wrap: wrap;
         grid-template-columns: repeat(4, 1fr);
 
@@ -98,7 +99,8 @@ $color-botton: #2f72b9;
           /*             width: 80px;
             height: 80px;
  */
-          width: 25%;
+          width: 120px;;
+          height: 120px;;
           overflow: hidden;
           label {
             display: inline-block;
@@ -328,7 +330,7 @@ $color-botton: #2f72b9;
       width: 100%;
       display: flex;
       margin: auto;
-      justify-content: space-between;
+      justify-content: center;
 
       .desaparecer {
         opacity: 0;
