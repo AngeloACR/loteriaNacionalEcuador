@@ -182,6 +182,9 @@ const inquiryController = {
             let combinaciones = req.body.combinaciones;
             let response = [];
             let length = combinaciones.length;
+            console.log('buscanod ganador de loteria')
+            console.log(sorteo)
+            console.log(combinaciones)
             for (let i = 0; i < length; i++) {
                 let aux = await Results.getResultadoGanadorLoteria(sorteo, combinaciones[i]);
                 //let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
