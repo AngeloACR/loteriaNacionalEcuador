@@ -253,9 +253,10 @@ const resultadosController = {
             let sorteoAux = `${sorteo}`
             let combinacionAux = `${combinacion}`
             let query = { 'numeroSorteo': sorteoAux, 'combinacion1': combinacionAux }
+            console.log(query);
             //let resultado = await Resultado.find(query).populate('premio');
             let resultado = await ResultadoLoteria.find(query).lean();
-
+            console.log(ResultadoLoteria)
             if (resultado && resultado.length != 0) {
                 resultado.push(resultadoAux);
                 response = {
