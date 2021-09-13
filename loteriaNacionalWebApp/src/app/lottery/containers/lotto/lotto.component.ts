@@ -184,7 +184,6 @@ export class LottoComponent implements OnInit {
     this.compraCancelada = false;
   }
   volver() {
-    //this.lotteryService.borrarCarrito();
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
@@ -194,7 +193,8 @@ export class LottoComponent implements OnInit {
     this.confirmacionDeCompra = true;
   }
 
-  seguirComprando() {
+  finalizarCompra() {
+    this.lotteryService.borrarCarrito()
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }

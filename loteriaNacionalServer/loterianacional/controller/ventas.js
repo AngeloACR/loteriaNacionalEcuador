@@ -38,7 +38,6 @@ module.exports.autenticarUsuario = async () => {
           ]]>
         </PI_DatosXml>`,
     };
-
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(
         message,
@@ -70,7 +69,6 @@ module.exports.consultarSorteosDisponibles = async (
   user
 ) => {
   try {
-    const usuarioClientePsd = config.usuarioClienteTest;
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let message = {
       $xml: `

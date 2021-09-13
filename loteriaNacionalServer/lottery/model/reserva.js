@@ -50,6 +50,9 @@ const reservaSchema = new mongoose.Schema({
     reservaId: {
         type: String
     },
+    exaReservaId: {
+        type: String
+    },
 
 }, {
         toJSON: { virtuals: true },
