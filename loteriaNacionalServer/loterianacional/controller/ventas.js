@@ -559,7 +559,7 @@ module.exports.venderBoletos = async (
             <aplicacion>25</aplicacion>
             <transaccion>15</transaccion>
             <usuario>${user}</usuario>
-            <maquina>DireccionIpLocal</maquina>
+            <maquina>192.168.1.13</maquina>
             <codError>0</codError>
             <msgError />
             <medio>${medioId}</medio>
@@ -599,8 +599,8 @@ module.exports.venderBoletos = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) resolve(message);
-          //console.log(res);
+          if (err) reject(err);
+          console.log(res);
           let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
           );

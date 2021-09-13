@@ -301,9 +301,7 @@ const ventasController = {
         amount: data.amount,
         reservationDetails: data.reservationDetails,
       };
-      console.log(exaData);
       let response = await Wallet.reserveLottery(exaData);
-      console.log(response);
       return response;
     } catch (e) {
       throw e;
@@ -633,15 +631,17 @@ const ventasController = {
         amount: total,
         reservationDetails,
       };
-      let exaReservaResponse = ventasController.reserveLottery(exaReservaData);
+      let exaReservaResponse = await ventasController.reserveLottery(
+        exaReservaData
+      );
       // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
 
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
 
       let reservaId = req.body.reservaId;
-      let ordComp = "39225";
-      /*       let loteriaVentaResponse = await Ventas.venderBoletos(
+      let ordComp = exaReservaId;
+      let loteriaVentaResponse = await Ventas.venderBoletos(
         ordComp,
         total,
         loteria,
@@ -650,18 +650,19 @@ const ventasController = {
         lotteryToken,
         reservaId,
         user
-      ); */
+      );
       // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
+      //console.log(loteriaVentaResponse)
       let exaVentaId = Date.now();
-      /*       let exaVentaData = {
+      let exaVentaData = {
         token,
         transactionId: exaVentaId,
         reserveId: exaReservaId,
-        ticketId: loteriaVentaResponse.ticketId,
+        ticketId: ordComp,
+        //ticketId: loteriaVentaResponse.ticketId,
         amount: total,
       };
-      console.log(exaVentaData) */
-      //let exaVentaResponse = ventasController.sellLottery(exaVentaData)
+      let exaVentaResponse = await ventasController.sellLottery(exaVentaData);
       // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
       let apiVentaData = {};
