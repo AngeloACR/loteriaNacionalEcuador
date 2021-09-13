@@ -1,16 +1,28 @@
 <div class="selectionBox">
-  <app-lottery-type image="assets/img/loteria nacional.png" [link]="linkLoteriaNacional" name="loteria"
-    loteria="$800.143,00">
+  <app-lottery-type
+    image="assets/img/loteria-negro.png"
+    [link]="linkLoteriaNacional"
+    name="loteria"
+  >
   </app-lottery-type>
 
-  <app-lottery-type image="assets/img/lotto.png" [link]="linkLotto" name="lotto" loteria="$1.578.143,00">
+  <app-lottery-type
+    image="assets/img/lotto.png"
+    [link]="linkLotto"
+    name="lotto"
+  >
   </app-lottery-type>
 
-  <app-lottery-type image="assets/img/pozzo millonario.png" [link]="linkPozoMillonario" name="pozo"
-    loteria="$1.289.143,00">
+  <app-lottery-type
+    image="assets/img/pozzo millonario.png"
+    [link]="linkPozoMillonario"
+    name="pozo"
+  >
   </app-lottery-type>
-
 </div>
 
-
-<app-loader loader="loteria" [message]="loadingMessage" *ngIf="isLoading"></app-loader>
+<app-loader
+  loader="loteria"
+  [message]="loadingMessage"
+  *ngIf="isLoading"
+></app-loader>

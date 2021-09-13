@@ -31,7 +31,7 @@ export class LoteriaComponent implements OnInit {
   fondo: boolean = false;
   fracciones: number;
   showNumeros: boolean = false;
-  page_size: number = 6;
+  page_size: number = 4;
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
   token: string;
@@ -52,18 +52,6 @@ export class LoteriaComponent implements OnInit {
   handlerPage(e: PageEvent) {
     this.page_size = e.pageSize;
     this.page_number = e.pageIndex + 1;
-  }
-
-  seleccionarTicket(id: number) {
-    this.fondo = !this.fondo;
-    this.ticketsNacional[id].status = !this.ticketsNacional[id].status;
-    if (!this.ticketsNacional[id].status) {
-      this.allFractions[id] = false;
-      this.removeSeleccionado(
-        this.ticketsNacional[id].identificador,
-        this.ticketsNacional[id].seleccionados
-      );
-    }
   }
 
   async buscarNumero() {
@@ -124,10 +112,7 @@ export class LoteriaComponent implements OnInit {
   seleccionarTodo(id: number) {
     this.changeDetectorRef.detectChanges();
     this.allFractions[id] = !this.allFractions[id];
-    let fracciones = [];
-    this.ticketsNacional[id].fraccionesDisponibles.forEach((element) => {
-      fracciones.push(element);
-    });
+    let fracciones = this.ticketsNacional[id].fraccionesDisponibles;
     if (this.allFractions[id]) {
       this.ticketsNacional[id].seleccionados = fracciones;
       this.pushToSeleccionado(this.ticketsNacional[id], fracciones);
@@ -225,8 +210,16 @@ export class LoteriaComponent implements OnInit {
         this.isLoading = false;
         let message =
           "Su saldo es insuficiente para agregar este boleto al carrito";
-          this.ticketsNacional.find(x => x.identificador === ticket.identificador).status = false
-          this.recargarSaldo(message);
+        var idTicket = this.ticketsNacional.findIndex(
+          (p) => p.identificador == ticket.identificador
+        );
+        this.ticketsNacional[idTicket].seleccionados = this.ticketsNacional[idTicket].seleccionados.filter( ( el ) => !fracciones.includes( el ) );
+        fracciones.forEach((fraccion) => {
+          //this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
+        });
+        this.allFractions[idTicket] = false;
+
+        this.recargarSaldo(message);
       }
     } catch (e) {
       this.isLoading = false;
@@ -313,9 +306,9 @@ export class LoteriaComponent implements OnInit {
     this.compraCancelada = true;
   }
 
-  recardaDeSaldoMessage: string;
+  recargaDeSaldoMessage: string;
   recargarSaldo(message) {
-    this.recardaDeSaldoMessage = message;
+    this.recargaDeSaldoMessage = message;
     this.dismissCompras();
     this.saldoInsuficiente = true;
   }

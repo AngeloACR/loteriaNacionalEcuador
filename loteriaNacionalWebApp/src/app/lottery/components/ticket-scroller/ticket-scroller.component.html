@@ -7,7 +7,12 @@
     <hr size="2px" />
   </div>
   <div class="detailBox">
+    <ng-container *ngIf="!checkTicketsLoteria() && !checkTicketsLotto()  && !checkTicketsPozo()">
+      <div class="noItem">
 
+        No hay boletos en su carrito, escoja su número de la suerte y empiece a ganar con nosotros!
+      </div>
+    </ng-container>
     <ng-container *ngIf="checkTicketsLoteria()">
       <div class="scroll">
 

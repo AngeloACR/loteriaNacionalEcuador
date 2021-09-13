@@ -10,9 +10,31 @@ export class LotteryTypeComponent implements OnInit {
   @Input() link: String;
   @Input() name: String;
   @Input() loteria: String;
+  tipoLoteria: any;
   constructor() { }
 
   ngOnInit() {
+    switch (this.name) {
+      case 'loteria':
+        this.tipoLoteria = {
+          loteria: true
+        }
+        break;
+        case 'loteria':
+          this.tipoLoteria = {
+            lotto: true
+          }
+          break;
+      
+      default:
+        case 'loteria':
+          this.tipoLoteria = {
+            pozo: true
+          }
+          break;
+  
+        break;
+    }
   }
 
 }

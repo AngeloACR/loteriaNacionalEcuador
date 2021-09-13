@@ -28,11 +28,15 @@ $color-botton: #2f72b9;
     justify-content: space-evenly;
     flex-wrap: wrap;
     .fraccion {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: $fuente-subtitulo;
       margin: 4px;
       padding: 5px;
       text-align: center;
-      width: 16%;
+      width: 30px;
+      height: 30px;
       background-color: white;
       border: 1px solid black;
     }

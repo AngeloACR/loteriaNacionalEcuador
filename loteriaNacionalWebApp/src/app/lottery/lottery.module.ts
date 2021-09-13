@@ -35,7 +35,7 @@ import {
 import { StylePaginatorDirective } from "./style-paginator.directive";
 
 import { FormsModule } from "@angular/forms";
-import { CustomMatPaginatorIntl } from "./paginacion-es";
+import { getSpanishPaginatorIntl } from "./paginacion-es";
 
 @NgModule({
   declarations: [
@@ -87,8 +87,7 @@ import { CustomMatPaginatorIntl } from "./paginacion-es";
   ],
   providers: [
     {
-      provide: MatPaginatorIntl,
-      useClass: CustomMatPaginatorIntl
+      provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() 
     }
   ]
 })

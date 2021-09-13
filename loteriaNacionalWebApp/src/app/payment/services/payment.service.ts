@@ -33,6 +33,7 @@ export class PaymentService {
 
   recargarSaldo() {}
   hasBalance(subtotal, token) {
+    console.log("Asking for balance")
     let cartTotal = parseFloat(this.cart.getTotal());
     let testAmount = parseFloat(subtotal)+cartTotal;
     let headers = new HttpHeaders();
@@ -47,10 +48,13 @@ export class PaymentService {
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
+    console.log("Balance http")
+    this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           console.log(data);
-          let balance = data.balance;
+          let balance = parseFloat(data.balance);
+          console.log(balance)
+          console.log(testAmount)
           resolve(balance>=testAmount);
         },
         (error: any) => {

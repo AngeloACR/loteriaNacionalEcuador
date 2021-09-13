@@ -1,6 +1,9 @@
-<div class="lotteryBox">
-    <img class="lotteryImg" [src]="image" alt="">
-    <p *ngIf="loteria" class="lotteryMoney">{{ loteria }}</p>
-
-    <a [routerLink]="link" class="lotteryButton" [ngClass]="name" routerLinkActive="active">JUGAR</a>
-</div>
+<a
+  class="lotteryBox"
+  [routerLink]="link"
+  [ngClass]="name"
+  routerLinkActive="active"
+  [ngClass]="tipoLoteria"
+>
+  <img class="lotteryImg" [src]="image" alt="" />
+</a>

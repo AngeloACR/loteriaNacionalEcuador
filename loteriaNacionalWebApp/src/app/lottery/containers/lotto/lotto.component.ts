@@ -228,9 +228,9 @@ export class LottoComponent implements OnInit {
     this.compraCancelada = true;
   }
 
-  recardaDeSaldoMessage: string;
+  recargaDeSaldoMessage: string;
   recargarSaldo(message) {
-    this.recardaDeSaldoMessage = message;
+    this.recargaDeSaldoMessage = message;
     this.dismissCompras();
     this.saldoInsuficiente = true;
   }

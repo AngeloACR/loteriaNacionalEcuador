@@ -9,7 +9,13 @@ import {
   ViewContainerRef,
   Input,
 } from "@angular/core";
-import { MatPaginator } from "@angular/material";
+import { MatPaginator } from "@angular/material/paginator";
+interface PageObject {
+  length: number;
+  pageIndex: number;
+  pageSize: number;
+  previousPageIndex: number;
+}
 
 @Directive({
   selector: "[style-paginator]",
@@ -20,6 +26,15 @@ export class StylePaginatorDirective {
   private _rangeStart;
   private _rangeEnd;
   private _buttons = [];
+
+  get inc(): number {
+    return this._showTotalPages % 2 == 0
+      ? this.showTotalPages / 2
+      : (this.showTotalPages - 1) / 2;
+  }
+  get lastPageIndex(): number {
+    return this.matPag.getNumberOfPages() - 1;
+  }
 
   @Input()
   get showTotalPages(): number {
@@ -62,32 +77,34 @@ export class StylePaginatorDirective {
     //initialize next page and last page buttons
     if (this._buttons.length == 0) {
       let nodeArray =
-      this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[2]
-      .childNodes;
-      
-      let node = // Numero de elementos en el paginador
+        this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[2]
+          .childNodes;
+
+      /*       let node = // Numero de elementos en el paginador
       this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[0]
       .childNodes[2];
       console.log(this.vr.element.nativeElement); 
       let paginatorBox = this.vr.element.nativeElement
       paginatorBox.class = 'paginatorBox';
-      
+       */
       /* node.style.visibility = 'hidden'; */
       //node.style.display = 'none';
       /* node.parentNode.removeChild(node); */
       /* this.ren.setStyle(node, "background-color", "#E3E4E5"); */
-    
+
       setTimeout(() => {
         for (let i = 0; i < nodeArray.length; i++) {
           if (nodeArray[i].nodeName === "BUTTON") {
+            this.ren.setStyle(nodeArray[i], "color", "white");
+            this.ren.setStyle(nodeArray[i], "margin", "2px");
             if (nodeArray[i].disabled) {
               this.ren.setStyle(nodeArray[i], "background-color", "#E3E4E5");
-              this.ren.setStyle(nodeArray[i], "color", "white");
-              this.ren.setStyle(nodeArray[i], "margin", "0 4rem");
             } else {
-              this.ren.setStyle(nodeArray[i], "background-color", "#293133"); /* #04b865 */
-              this.ren.setStyle(nodeArray[i], "color", "white");
-              this.ren.setStyle(nodeArray[i], "margin", "0 4rem");
+              this.ren.setStyle(
+                nodeArray[i],
+                "background-color",
+                "#293133"
+              ); /* #04b865 */
             }
           }
         }
@@ -98,7 +115,11 @@ export class StylePaginatorDirective {
 
     for (let i = 0; i < this.matPag.getNumberOfPages(); i = i + 1) {
       if (
-        (i < this._showTotalPages && this._currentPage < this._showTotalPages && i > this._rangeStart) || (i >= this._rangeStart && i <= this._rangeEnd)) {
+        (i < this._showTotalPages &&
+          this._currentPage < this._showTotalPages &&
+          i > this._rangeStart) ||
+        (i >= this._rangeStart && i <= this._rangeEnd)
+      ) {
         this.ren.insertBefore(
           actionContainer,
           this.createButton(i, this.matPag.pageIndex),
@@ -119,8 +140,7 @@ export class StylePaginatorDirective {
 
   private createButton(i: any, pageIndex: number): any {
     const linkBtn = this.ren.createElement("mat-button");
-    this.ren.addClass(linkBtn, "mat-mini-fab");
-    this.ren.setStyle(linkBtn, "margin", "1%");
+    this.ren.setStyle(linkBtn, "display", "none");
 
     const pagingTxt = isNaN(i) ? this._pageGapTxt : +(i + 1);
     const text = this.ren.createText(pagingTxt + "");
@@ -155,6 +175,15 @@ export class StylePaginatorDirective {
     this.buildPageNumbers();
   }
 
+  /*   private initPageRange(): void {
+    const middleIndex = (this._rangeStart + this._rangeEnd) / 2;
+
+    this._rangeStart = this.calcRangeStart(middleIndex);
+    this._rangeEnd = this.calcRangeEnd(middleIndex);
+
+    this.buildPageNumbers();
+  } */
+
   private switchPage(i: number): void {
     this._currentPage = i;
     this.matPag.pageIndex = i;
@@ -162,6 +191,8 @@ export class StylePaginatorDirective {
   }
 
   public ngAfterViewInit() {
+    this._rangeStart = 0;
+    this._rangeEnd = this._showTotalPages - 1;
     this.initPageRange();
   }
 }

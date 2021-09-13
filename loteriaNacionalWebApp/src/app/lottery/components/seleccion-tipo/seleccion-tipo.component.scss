@@ -22,10 +22,9 @@ $fuente-botones: "Monstserrat SemiBold";
     align-items: center;
     width: 210px;
     height: 110px;
-    margin: 5px;
+    margin: 40px;
     padding:5px;
     border-radius: 15px;
-    background-color: #fff;
     -webkit-box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.2);
@@ -33,10 +32,12 @@ $fuente-botones: "Monstserrat SemiBold";
     img {
       width: 80%;
       margin: auto;
+      transition: width 0.3s ease;
+      background-color: transparent;
     }
 
     &:hover img{
-      width: 95%;
+      width: 90%;
 
       transition: width 0.3s ease;
     }
@@ -52,21 +53,22 @@ $fuente-botones: "Monstserrat SemiBold";
       font-size: 10px;
     }
 
-    .loteria {
-      background-color: $color-loteria;
-    }
-
-    .lotto {
-      background-color: $color-lotto;
-    }
-
-    .pozo {
-      background-color: $color-pozo;
-    }
   }
-
+  
   .active {
     display: none;
     transition: all 0.3s ease;
   }
+}
+
+.loteria {
+  background-color: $color-loteria;
+}
+
+.lotto {
+  background-color: $color-lotto;
+}
+
+.pozo {
+  background-color: $color-pozo;
 }

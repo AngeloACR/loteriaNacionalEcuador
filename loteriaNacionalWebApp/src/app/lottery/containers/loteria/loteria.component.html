@@ -60,7 +60,6 @@
           [(ngModel)]="combinacionDeLaSuerte[4]"
         />
       </div>
-
     </div>
     <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
     <p>
@@ -79,15 +78,12 @@
             <!--   -->
             <td>
               <div class="tooltip">
-                <input
-                  type="checkbox"
-                  [checked]="ticket.status"
-                  (click)="seleccionarTicket(page_size * (page_number - 1) + i)"
-                />
                 <div class="contenedor_numeros">
-                  <p *ngFor="let numero of ticket.display">{{ numero }}</p>
-                </div>
-                <span *ngIf="ticket.status">
+                  <div class="combinationBox">
+                    <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                  </div>
+                  <hr />
+
                   <div class="seleccionAll">
                     <p>Seleccionar todas las fracciones</p>
                     <input
@@ -135,18 +131,14 @@
                     </div>
                   </div>
                   <hr />
-                  <!-- <app-tool [ticket]="ticket" [fracciones]="fracciones"></app-tool> -->
-                </span>
+                </div>
               </div>
-              <!-- <app-tooltip [ticket]="tickets" [fracciones]="fracciones"></app-tooltip> -->
             </td>
           </tr>
         </tbody>
         <hr size="2px" color="gray" style="width: 100%" />
       </table>
-      <div
-        class="contenedor_botones"
-      >
+      <div class="contenedor_botones">
         <mat-paginator
           style-paginator
           [length]="ticketsNacional.length"

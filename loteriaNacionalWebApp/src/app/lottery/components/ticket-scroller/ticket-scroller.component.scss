@@ -22,9 +22,11 @@ $color-pozo: #04b865;
   overflow: hidden;
   padding: 15px;
 
+  
   .detailBox {
     overflow-y: scroll;
-    height: 40vh;
+    min-height: 20px;
+    max-height: 40vh;
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
@@ -46,6 +48,29 @@ $color-pozo: #04b865;
 
     &::-webkit-scrollbar-track {
       border-radius: 10px;
+    }
+  
+    .scroll {
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      div {
+        width: 100%;
+  
+        .ticketBox {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    }
+
+    .noItem{
+      margin: 10px;
+      text-align: center;
+      padding: 10px;
+      color: white;
     }
   }
 
@@ -75,21 +100,6 @@ $color-pozo: #04b865;
     font-size: 16px;
     font-weight: bold;
     color: white;
-  }
-  .scroll {
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    div {
-      width: 100%;
-
-      .ticketBox {
-        width: 100%;
-        margin: 10px 0;
-      }
-    }
   }
 
   .boton_comprar {

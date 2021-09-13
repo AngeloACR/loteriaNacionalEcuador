@@ -17,7 +17,6 @@ import { BrowserAnimationsModule/* , NoopAnimationsModule */ } from "@angular/pl
 /* import {MatTableModule} from '@angular/material/table'; */
 import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { CustomMatPaginatorIntl } from './lottery/paginacion-es';
 
 
 

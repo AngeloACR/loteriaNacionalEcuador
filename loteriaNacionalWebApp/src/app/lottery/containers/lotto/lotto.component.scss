@@ -9,6 +9,7 @@ $color-lotto: #b51f20;
 // Estilos del componente seleccion Lotto
 .contenedor {
   input[type="checkbox"] {
+    cursor: pointer;
     width: 100%;
     height: 100%;
     position: absolute;
