@@ -380,7 +380,6 @@ module.exports.eliminarReservas = async (
     let lottoCombinacionesXML = "";
     let pozoCombinacionesXML = "";
     if (loteria.length != 0) {
-
       loteria.forEach((item) => {
         let combinacion = item.combinacion;
         let fraccionesXML = "";
@@ -503,9 +502,9 @@ module.exports.venderBoletos = async (
     let pozoCombinacionesXML = "";
     if (loteria.length != 0) {
       loteria.forEach((item) => {
-        let combinacion = item.ticket.combinacion1;
+        let combinacion = item.ticket.combinacion;
         let fraccionesXML = "";
-        let cant = 1;
+        let cant = 0;
         item.ticket.seleccionados.forEach((element) => {
           fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
           cant += 1;
@@ -553,62 +552,60 @@ module.exports.venderBoletos = async (
             `;
     }
     /*Ensure your message below looks like a valid working SOAP UI request*/
-    let message = `
+    let message = {
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
         <mt>
-            <c>
-            <aplicacion>25</aplicacion>
-            <transaccion>15</transaccion>
-            <usuario>${user}</usuario>
-            <maquina>192.168.1.13</maquina>
-            <codError>0</codError>
-            <msgError />
-            <medio>${medioId}</medio>
-            <token>${lotteryToken}</token>
-            <operacion>${Date.now()}</operacion>
-            </c>
-            <i>
-                <ReservaId>${reservaId}</ReservaId>
-                <xmlVenta>
-                    <VT>
-                        <V total="${total}"></V>
-                        <FP ordComp="${ordComp}" >
-                            <R forCo="CVT" Total="${total}" />
-                        </FP>
-                    </VT>
-                </xmlVenta>
-                <xmlNumeros>
-                    <RS>
-                        ${loteriaCombinacionesXML} 
-                        ${lottoCombinacionesXML} 
-                        ${pozoCombinacionesXML}    
-                    </RS>
-                </xmlNumeros>
-                <MedioId>${medioId}</MedioId>
-                <UsuarioId>${user}</UsuarioId>
-            </i>
-        </mt>`;
+        <c>
+        <aplicacion>25</aplicacion>
+        <transaccion>15</transaccion>
+        <usuario>${user}</usuario>
+        <maquina>192.168.1.13</maquina>
+        <codError>0</codError>
+        <msgError />
+        <medio>${medioId}</medio>
+        <token>${lotteryToken}</token>
+        <operacion>${Date.now()}</operacion>
+        </c>
+        <i>
+        <ReservaId>${reservaId}</ReservaId>
+        <xmlVenta>
+        <VT>
+        <V total="${total}"></V>
+        <FP ordComp="${ordComp}" >
+        <R forCo="CVT" Total="${total}" />
+        </FP>
+        </VT>
+        </xmlVenta>
+        <xmlNumeros>
+        <RS>
+        ${loteriaCombinacionesXML} 
+        ${lottoCombinacionesXML} 
+        ${pozoCombinacionesXML}    
+        </RS>
+        </xmlNumeros>
+        <MedioId>${medioId}</MedioId>
+        <UsuarioId>${user}</UsuarioId>
+        </i>
+        </mt>
+      ]]>
+    </PI_DatosXml>`,
+    };ç
     /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
 
-    /*         return new Promise(async (resolve, reject) => {
-
-
-            resolve(message);
-        });
- */
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
           if (err) reject(err);
-          console.log(res);
-          let data = await parser.parseStringPromise(
+    let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
           );
           let errorCode = parseInt(data.mt.c[0].codError[0]);
           console.log(errorCode);
           if (!errorCode) {
-            //let ticketId = data.mt.o[0].xmlVentaOutput[0].VTA[0].SUE[0].COMP;
-            let ticketId = "365987";
+            let ticketId = data.mt.o[0].ReturnValue[0].VTA[0].SUE[0].COMP;
             let response = {
               data: data.mt.o[0],
               ticketId,

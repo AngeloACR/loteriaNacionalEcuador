@@ -143,6 +143,7 @@ export class InquiryService {
           "pozoMillonarioUltimoResultado",
           JSON.stringify(pozoMillonario)
         );
+        console.log(pozoMillonario)
         resolve(data);
       });
     });

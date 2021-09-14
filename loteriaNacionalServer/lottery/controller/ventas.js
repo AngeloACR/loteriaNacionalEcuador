@@ -631,9 +631,9 @@ const ventasController = {
         amount: total,
         reservationDetails,
       };
-      let exaReservaResponse = await ventasController.reserveLottery(
+      /* let exaReservaResponse = await ventasController.reserveLottery(
         exaReservaData
-      );
+      ); */
       // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
 
       let lotteryToken = req.body.lotteryToken;
@@ -652,8 +652,8 @@ const ventasController = {
         user
       );
       // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
-      //console.log(loteriaVentaResponse)
-      let exaVentaId = Date.now();
+      console.log(loteriaVentaResponse)
+/*       let exaVentaId = Date.now();
       let exaVentaData = {
         token,
         transactionId: exaVentaId,
@@ -662,7 +662,7 @@ const ventasController = {
         //ticketId: loteriaVentaResponse.ticketId,
         amount: total,
       };
-      let exaVentaResponse = await ventasController.sellLottery(exaVentaData);
+      let exaVentaResponse = await ventasController.sellLottery(exaVentaData); */
       // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
       let apiVentaData = {};

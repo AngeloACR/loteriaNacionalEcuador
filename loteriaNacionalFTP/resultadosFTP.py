@@ -199,7 +199,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             url = "https://ventas-api-prueba.loteria.com.ec/results/ultimoResultadoPozo"
             response = requests.get(url)
             resultado = response.json()
-            resultadoId = loteriaDB['resultados'].insert_one(resultado)
+            resultadoId = loteriaDB['resultadopozos'].insert_one(resultado)
             myquery = { "tipoLoteria": int(tipoLoteria) }
             data = { "$set":{
                 "ultimoResultadoPozo": ObjectId(resultadoId.inserted_id),
