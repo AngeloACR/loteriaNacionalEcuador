@@ -28,6 +28,7 @@ const ventasController = {
         language: "en",
         currency: "USD",
       };
+      console.log(authData);
       let response = await Auth.authUser(authData);
       if (response["password"]) delete response["password"];
       res.status(200).json(response);
