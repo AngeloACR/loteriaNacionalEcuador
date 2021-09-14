@@ -49,7 +49,7 @@ const authController = {
                     console.error(error)
                     reject(error);
                 })
-
+                console.log(authData)
                 req.write(authData)
                 req.end()
             })
