@@ -15,8 +15,8 @@ export class LotteryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
   //mySource = this.productionSource;
 
   sorteo: Array<sorteo>;
@@ -242,6 +242,7 @@ export class LotteryService {
     address = address + endpoint;
     console.log(body)
     return new Promise<Array<any>>((resolve, reject) => {
+      let userData = JSON.parse(localStorage.getItem('userData'));
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           console.log(data);
@@ -902,6 +903,7 @@ export class LotteryService {
   borrarCarrito() {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify([]));
     localStorage.setItem("seleccionadosLotto", JSON.stringify([]));
+    localStorage.setItem("reservaId", JSON.stringify(0));
     localStorage.setItem("seleccionadosPozo", JSON.stringify([]));
   }
 }

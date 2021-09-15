@@ -591,7 +591,7 @@ module.exports.venderBoletos = async (
         </mt>
       ]]>
     </PI_DatosXml>`,
-    };ç
+    };
     /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
 
     return new Promise(async (resolve, reject) => {
@@ -599,16 +599,22 @@ module.exports.venderBoletos = async (
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
           if (err) reject(err);
-    let data = await parser.parseStringPromise(
+          let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
           );
           let errorCode = parseInt(data.mt.c[0].codError[0]);
           console.log(errorCode);
           if (!errorCode) {
-            let ticketId = data.mt.o[0].ReturnValue[0].VTA[0].SUE[0].COMP;
+            let aux = data.mt.o[0].xmlVentaOutput[0]; //.ReturnValue[0].VTA[0].SUE[0].COMP;
+            let xmlVentaOutput = await parser.parseStringPromise(aux);
+            let ticketId = xmlVentaOutput.VTA.$.VId;
+            let instantaneas = (xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR)? xmlVentaOutput.VTA.INST[0].SOR[0].R.map((premio) => {
+                  return premio.$;
+                })
+              : "";
             let response = {
-              data: data.mt.o[0],
-              ticketId,
+              instantaneas,
+              ticketId
             };
 
             resolve(response);

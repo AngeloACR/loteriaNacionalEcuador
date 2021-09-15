@@ -302,6 +302,7 @@ const ventasController = {
         amount: data.amount,
         reservationDetails: data.reservationDetails,
       };
+      console.log(exaData)
       let response = await Wallet.reserveLottery(exaData);
       return response;
     } catch (e) {
@@ -559,21 +560,12 @@ const ventasController = {
     try {
       let exaBalanceData = { token: req.body.token };
       let exaReservaId = Date.now();
-      let apiReservaData = {
-        amount: req.body.amount,
-        loteria: req.body.loteria,
-        lotto: req.body.lotto,
-        pozo: req.body.pozo,
-        reservaId: req.body.reservaId,
-        exaReservaId,
-      };
       let token = req.body.token;
-      //let apiReservaResponse = await ventasController.crearReserva(apiReservaData);
       let reservationDetails = [];
       let loteriaAux = req.body.loteria;
       let lottoAux = req.body.lotto;
       let pozoAux = req.body.pozo;
-      let total = parseFloat(req.body.amount);
+      let total = parseFloat(req.body.amount).toFixed(2);
       let loteria = [];
 
       for (id in loteriaAux) {
@@ -584,7 +576,7 @@ const ventasController = {
           lotteryName: "Loteria Nacional",
           drawNumber: parseInt(loteriaAux[id].sorteo.sorteo),
           drawDate,
-          subTotal: parseFloat(loteriaAux[id].subtotal),
+          subTotal: parseFloat(loteriaAux[id].subtotal).toFixed(2),
           combinationC1: loteriaAux[id].ticket.combinacion,
           fractions: loteriaAux[id].ticket.seleccionados,
         };
@@ -600,7 +592,7 @@ const ventasController = {
           lotteryName: "Lotto",
           drawNumber: parseInt(lottoAux[id].sorteo.sorteo),
           drawDate,
-          subTotal: parseFloat(lottoAux[id].subtotal),
+          subTotal: parseFloat(lottoAux[id].subtotal).toFixed(2),
           combinationC1: lottoAux[id].ticket.combinacion1,
           combinationC2: lottoAux[id].ticket.combinacion2,
           combinationC3: lottoAux[id].ticket.combinacion3,
@@ -618,7 +610,7 @@ const ventasController = {
           lotteryName: "Pozo Millonario",
           drawNumber: parseInt(pozoAux[id].sorteo.sorteo),
           drawDate,
-          subTotal: parseFloat(pozoAux[id].subtotal),
+          subTotal: parseFloat(pozoAux[id].subtotal).toFixed(2),
           combinationC1: pozoAux[id].ticket.combinacion1,
           combinationC2: pozoAux[id].ticket.combinacion2,
           combinationC3: pozoAux[id].ticket.mascota,
@@ -632,9 +624,9 @@ const ventasController = {
         amount: total,
         reservationDetails,
       };
-      /* let exaReservaResponse = await ventasController.reserveLottery(
+      let exaReservaResponse = await ventasController.reserveLottery(
         exaReservaData
-      ); */
+      );
       // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
 
       let lotteryToken = req.body.lotteryToken;
@@ -653,21 +645,40 @@ const ventasController = {
         user
       );
       // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
-      console.log(loteriaVentaResponse)
-/*       let exaVentaId = Date.now();
+      console.log(loteriaVentaResponse);
+      let instantaneas = loteriaVentaResponse.instantaneas;
+      if (instantaneas != "" && instantaneas.length != 0) {
+        let total = instantaneas.reduce(function (sum, current) {
+          return sum + parseFloat(current.ConDesc);
+        }, 0);
+        let exaInstantaneaData = {
+          token,
+          amount: total,
+        };
+        //let exaInstantaneaResponse = await ventasController.addBalance(exaInstantaneaData);
+      }
+      let exaVentaId = Date.now();
       let exaVentaData = {
         token,
         transactionId: exaVentaId,
         reserveId: exaReservaId,
-        ticketId: ordComp,
-        //ticketId: loteriaVentaResponse.ticketId,
+        ticketId: loteriaVentaResponse.ticketId,
         amount: total,
       };
-      let exaVentaResponse = await ventasController.sellLottery(exaVentaData); */
+      let exaVentaResponse = await ventasController.sellLottery(exaVentaData);
       // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
 
-      let apiVentaData = {};
-      //let apiVentaResponse = ventasController.crearVenta(apiVentaData);
+      let apiVentaData = {
+        amount: req.body.amount,
+        loteria: req.body.loteria,
+        lotto: req.body.lotto,
+        pozo: req.body.pozo,
+        reservaId: req.body.reservaId,
+        ventaId: loteriaVentaResponse.ticketId,
+        exaReservaId,
+        exaVentaId,
+      };
+      let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
       let finalResponse = {
         data: req.body,
         status: true,
@@ -726,24 +737,30 @@ const ventasController = {
     let lotto = [];
     for (id in lottoAux) {
       let aux = lottoAux[id];
-      aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
+      aux["sorteo"] = lottoAux[id].sorteo.sorteo;
       lotto.push(aux);
     }
     let pozoAux = apiReservaData.pozo;
     let pozo = [];
     for (id in pozoAux) {
       let aux = pozoAux[id];
-      aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
+      aux["sorteo"] = pozoAux[id].sorteo.sorteo;
       pozo.push(aux);
     }
     let total = apiReservaData.amount;
     let reservaId = apiReservaData.reservaId;
+    let ventaId = apiReservaData.ventaId;
+    let exaReservaId = apiReservaData.exaReservaId;
+    let exaVentaId = apiReservaData.exaVentaId;
     let element = {
       loteria,
+      exaReservaId,
       pozo,
+      exaVentaId,
       lotto,
       total,
       reservaId,
+      ventaId,
     };
     let response = await Reservas.addReserva(element);
     return response;

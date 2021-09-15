@@ -11,6 +11,10 @@ const routes: Routes = [
     path: "compra_tus_juegos/:token",
     loadChildren: () =>
       import("./lottery/lottery.module").then(m => m.LotteryModule)
+  },  {
+    path: "payment",
+    loadChildren: () =>
+      import("./lottery/lottery.module").then(m => m.LotteryModule)
   },
   {
     path: "user",

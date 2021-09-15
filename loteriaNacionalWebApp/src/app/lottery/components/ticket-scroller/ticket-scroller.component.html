@@ -1,55 +1,89 @@
-<div class="contenedor_ticket"
-  [ngClass]="{'fondoLoteria': isLoteriaNacional, 'fondoLotto': isLotto, 'fondoPozo': isPozoMillonario}">
+<div
+  class="contenedor_ticket"
+  [ngClass]="{
+    fondoLoteria: isLoteriaNacional,
+    fondoLotto: isLotto,
+    fondoPozo: isPozoMillonario
+  }"
+>
   <div class="logo_ticket">
-    <img [src]="logoPath" alt="">
+    <img [src]="logoPath" alt="" />
   </div>
   <div>
     <hr size="2px" />
   </div>
-  <div class="detailBox">
-    <ng-container *ngIf="!checkTicketsLoteria() && !checkTicketsLotto()  && !checkTicketsPozo()">
-      <div class="noItem">
-
-        No hay boletos en su carrito, escoja su número de la suerte y empiece a ganar con nosotros!
-      </div>
-    </ng-container>
+  <div
+    class="detailBox"
+    *ngIf="
+      !checkTicketsLoteria() && !checkTicketsLotto() && !checkTicketsPozo()
+    "
+  >
+    <div class="noItem">
+      No hay boletos en su carrito, escoja su número de la suerte y empiece a
+      ganar con nosotros!
+    </div>
+  </div>
+  <div
+    class="detailBox"
+    *ngIf="checkTicketsLoteria() || checkTicketsLotto() || checkTicketsPozo()"
+  >
     <ng-container *ngIf="checkTicketsLoteria()">
       <div class="scroll">
-
-        <app-loteria-nacional-ticket style="width: 100%" *ngFor="let item of ticketsLoteria | keyvalue"
-          [ticket]="item.value.ticket" [sorteo]="item.value.sorteo">
+        <app-loteria-nacional-ticket
+          style="width: 100%"
+          *ngFor="let item of ticketsLoteria | keyvalue"
+          [ticket]="item.value.ticket"
+          [sorteo]="item.value.sorteo"
+        >
         </app-loteria-nacional-ticket>
       </div>
     </ng-container>
     <ng-container *ngIf="checkTicketsLotto()">
       <div class="scroll">
-
-        <app-lotto-ticket style="width: 100%" *ngFor="let item of ticketsLotto | keyvalue" [ticket]="item.value.ticket"
-          [sorteo]="item.value.sorteo">
+        <app-lotto-ticket
+          style="width: 100%"
+          *ngFor="let item of ticketsLotto | keyvalue"
+          [ticket]="item.value.ticket"
+          [sorteo]="item.value.sorteo"
+        >
         </app-lotto-ticket>
       </div>
     </ng-container>
     <ng-container *ngIf="checkTicketsPozo()">
       <div class="scroll">
-
-        <app-pozo-millonario-ticket style="width: 100%" *ngFor="let item of ticketsPozo | keyvalue"
-          [ticket]="item.value.ticket" [sorteo]="item.value.sorteo">
+        <app-pozo-millonario-ticket
+          style="width: 100%"
+          *ngFor="let item of ticketsPozo | keyvalue"
+          [ticket]="item.value.ticket"
+          [sorteo]="item.value.sorteo"
+        >
         </app-pozo-millonario-ticket>
       </div>
     </ng-container>
   </div>
-  <div>
-    <hr size="2px" />
-  </div>
-  <div class="totalsBox">
-    Total: ${{total}}
-  </div>
+  <ng-container
+    *ngIf="checkTicketsLoteria() || checkTicketsLotto() || checkTicketsPozo()"
+  >
+    <div>
+      <hr size="2px" />
+    </div>
+    <div class="totalsBox">Total: ${{ total }}</div>
 
-  <div>
-    <hr size="2px" />
-  </div>
-  <div class="boton_comprar">
-    <button (click)="comprar()" *ngIf="!isResumen"
-      [ngClass]="{'fondoLoteria': isLoteriaNacional, 'fondoLotto': isLotto, 'fondoPozo': isPozoMillonario}">COMPRAR</button>
-  </div>
+    <div>
+      <hr size="2px" />
+    </div>
+    <div class="boton_comprar">
+      <button
+        (click)="comprar()"
+        *ngIf="!isResumen"
+        [ngClass]="{
+          fondoLoteria: isLoteriaNacional,
+          fondoLotto: isLotto,
+          fondoPozo: isPozoMillonario
+        }"
+      >
+        COMPRAR
+      </button>
+    </div>
+  </ng-container>
 </div>

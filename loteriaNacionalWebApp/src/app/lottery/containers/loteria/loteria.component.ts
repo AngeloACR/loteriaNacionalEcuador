@@ -264,7 +264,7 @@ export class LoteriaComponent implements OnInit {
   }
 
   finalizarCompra() {
-    this.lotteryService.borrarCarrito()
+    this.paymentService.finalizarCompra();
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }

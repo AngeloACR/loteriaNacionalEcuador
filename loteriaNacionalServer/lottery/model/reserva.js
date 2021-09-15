@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = require('mongoose').Schema;
 
-const reservaSchema = new mongoose.Schema({
+const ventaSchema = new mongoose.Schema({
     loteria: [{
         sorteo: {
             type: String
@@ -47,7 +47,13 @@ const reservaSchema = new mongoose.Schema({
     total: {
         type: String
     },
+    ventaId: {
+        type: String
+    },
     reservaId: {
+        type: String
+    },
+    exaVentaId: {
         type: String
     },
     exaReservaId: {
@@ -68,4 +74,4 @@ const reservaSchema = new mongoose.Schema({
     justOne: true,
 }); */
 
-const Reserva = module.exports = mongoose.model("Reserva", reservaSchema);
+const Venta = module.exports = mongoose.model("Venta", ventaSchema);

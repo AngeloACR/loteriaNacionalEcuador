@@ -28,9 +28,10 @@ export class ShoppingCartService {
     return JSON.parse(localStorage.getItem("seleccionadosPozo"));
   }
   borrarCarrito() {
-    localStorage.setItem("seleccionadosLoteria", JSON.stringify([]));
-    localStorage.setItem("seleccionadosLotto", JSON.stringify([]));
-    localStorage.setItem("seleccionadosPozo", JSON.stringify([]));
+    localStorage.removeItem("seleccionadosLoteria");
+    localStorage.removeItem("seleccionadosLotto");
+    localStorage.removeItem("seleccionadosPozo");
+    localStorage.removeItem("reservaId");
   }
   setTotal() {
         let loteriaAux = this.getCarritoLoteria();

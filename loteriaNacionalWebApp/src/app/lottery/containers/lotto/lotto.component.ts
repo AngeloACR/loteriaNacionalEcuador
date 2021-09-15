@@ -155,8 +155,10 @@ export class LottoComponent implements OnInit {
         this.isLoading = false;
         let message =
           "Su saldo es insuficiente para agregar este boleto al carrito";
-          this.ticketsLotto.find(x => x.identificador === ticket.identificador).status = false
-          this.recargarSaldo(message);
+        this.ticketsLotto.find(
+          (x) => x.identificador === ticket.identificador
+        ).status = false;
+        this.recargarSaldo(message);
       }
     } catch (e) {
       this.isLoading = false;
@@ -194,7 +196,8 @@ export class LottoComponent implements OnInit {
   }
 
   finalizarCompra() {
-    this.lotteryService.borrarCarrito()
+    this.paymentService.finalizarCompra();
+
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
