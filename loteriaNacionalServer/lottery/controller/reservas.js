@@ -89,6 +89,23 @@ const reservasController = {
             return response
         }
     },
+    getCompraByVentaId: async function (id) {
+        try {
+            let query = { 'ventaId': id }
+            let reserva = await Reserva.findOne(query)
+            let response = {
+                status: true,
+                values: reserva
+            }
+            return response;
+        } catch (error) {
+            let response = {
+                status: false,
+                msg: error.toString().replace("Error: ", "")
+            }
+            return response
+        }
+    },
 
     getReservaByLotteryId: async function (id) {
         try {

@@ -1,25 +1,24 @@
 <div class="contenedor_informacion_ticket">
-    <p>
-      Juego: <span>Lotto</span>
-    </p>
-  
-    <p>
-      Sorteo: <span>{{ sorteoNumber }}</span>
-    </p>
-    <p>
-      Fecha: <span>{{ date }}</span>
-    </p>
-    <p>
-        Combinación principal: <span>{{ ticket.combinacion1 }}</span>
-      </p>
-      <p>
-        Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
-      </p>
-      <p>
-        Lottito: <span>{{ ticket.combinacion2 }}</span>
-      </p>
-      <p>
-        Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
-      </p>
-          </div>
-  
+  <p>Juego: <span>Lotto</span></p>
+
+  <p>
+    Sorteo: <span>{{ sorteoNumber }}</span>
+  </p>
+  <p>
+    Fecha: <span>{{ date }}</span>
+  </p>
+  <p>
+    Combinación principal: <span>{{ ticket.combinacion1 }}</span>
+  </p>
+  <p>
+    Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
+  </p>
+  <p>
+    Lottito: <span>{{ ticket.combinacion2 }}</span>
+  </p>
+  <p>
+    Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
+  </p>
+  <img src="assets/trash.svg" (click)="deleteTicket()" alt="">
+</div>
+

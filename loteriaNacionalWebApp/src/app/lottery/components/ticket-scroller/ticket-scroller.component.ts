@@ -4,19 +4,19 @@ import {
   OnChanges,
   Input,
   EventEmitter,
-  Output
+  Output,
 } from "@angular/core";
 import {
   ticketsNacional,
   ticketsLotto,
-  ticketsAnimales
+  ticketsAnimales,
 } from "../../interfaces/lottery.interface";
 import { ShoppingCartService } from "../../../payment/services/shopping-cart.service";
 
 @Component({
   selector: "app-ticket-scroller",
   templateUrl: "./ticket-scroller.component.html",
-  styleUrls: ["./ticket-scroller.component.scss"]
+  styleUrls: ["./ticket-scroller.component.scss"],
 })
 export class TicketScrollerComponent implements OnInit {
   @Input() logo: String;
@@ -27,6 +27,10 @@ export class TicketScrollerComponent implements OnInit {
   @Input() tipoLoteria: string;
   @Input() isResumen: boolean = false;
   @Output() emitirCompra = new EventEmitter();
+  @Output() deleteLoteriaTicket = new EventEmitter();
+  @Output() deleteLoteriaFraccion = new EventEmitter();
+  @Output() deleteLottoTicket = new EventEmitter();
+  @Output() deletePozoTicket = new EventEmitter();
 
   isLoteriaNacional: boolean = false;
   isLotto: boolean = false;
@@ -58,7 +62,7 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   ngDoCheck() {
-    this.cart.setTotal()
+    this.cart.setTotal();
     this.getTotal();
   }
 
@@ -80,27 +84,29 @@ export class TicketScrollerComponent implements OnInit {
     }
   }
 
+  deleteLoteria(ticket) {
+        this.deleteLoteriaTicket.emit(ticket.value)
+    }
+
+    deleteFraccionLoteria(ticket, fraccion) {
+      let data = {
+        ticket,
+        fraccion
+      }
+      this.deleteLoteriaFraccion.emit(data)
+  }
+
+
+  deleteLotto(ticket) {
+    this.deleteLottoTicket.emit(ticket.value)
+
+  }
+  deletePozo(ticket) {
+    this.deletePozoTicket.emit(ticket.value)
+
+  }
+
   getTotal() {
-/*     let total = 0;
-    for (const key in this.ticketsLoteria) {
-      let ticket = this.ticketsLoteria[key];
-      let amount = parseFloat(ticket.sorteo.precio);
-      ticket.ticket.seleccionados.forEach(element => {
-        total += parseFloat(ticket.sorteo.precio);
-      });
-    }
-    for (const key in this.ticketsLotto) {
-      let ticket = this.ticketsLotto[key];
-      let amount = parseFloat(ticket.sorteo.precio);
-      total += parseFloat(ticket.sorteo.precio);
-    }
-    for (const key in this.ticketsPozo) {
-      let ticket = this.ticketsPozo[key];
-      let amount = parseFloat(ticket.sorteo.precio);
-      total += parseFloat(ticket.sorteo.precio);
-    }
-    this.total = total;
- */    
-this.total = this.cart.getTotal();
+    this.total = this.cart.getTotal();
   }
 }

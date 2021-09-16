@@ -152,8 +152,10 @@ export class PozoMillonarioComponent implements OnInit {
         this.isLoading = false;
         let message =
           "Su saldo es insuficiente para agregar este boleto al carrito";
-          this.ticketAnimales.find(x => x.identificador === ticket.identificador).status = false
-          this.recargarSaldo(message);
+        this.ticketAnimales.find(
+          (x) => x.identificador === ticket.identificador
+        ).status = false;
+        this.recargarSaldo(message);
       }
     } catch (e) {
       this.isLoading = false;
@@ -359,4 +361,84 @@ export class PozoMillonarioComponent implements OnInit {
     this.isLoading = false;
     this.showComponents = true;
   }
+  async deleteLoteriaTicket(data) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fracciones = data.ticket.seleccionados;
+      console.log(data);
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsLoteria[identificador].ticket,
+        sorteo: this.sorteoSeleccionado,
+      };
+      let reservaId = this.lotteryService.getReservaId();
+      if (fracciones.length != 0) {
+        let response = await this.lotteryService.eliminarBoletosDeReserva(
+          this.token,
+          aux,
+          fracciones,
+          1,
+          reservaId
+        );
+      }
+      delete this.ticketsLoteria[identificador];
+
+      localStorage.setItem(
+        "seleccionadosLoteria",
+        JSON.stringify(this.ticketsLoteria)
+      );
+
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e);
+      alert(JSON.stringify(e));
+    }
+  }
+  async deleteLottoTicket(data) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = "";
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsLotto[identificador].ticket,
+        sorteo: this.sorteoSeleccionado,
+      };
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        aux,
+        fraccion,
+        2,
+        reservaId
+      );
+
+      delete this.ticketsLotto[identificador];
+
+      localStorage.setItem(
+        "seleccionadosLotto",
+        JSON.stringify(this.ticketsLotto)
+      );
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e);
+    }
+  }
+  async deletePozoTicket(data) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = "";
+      console.log(data);
+      this.removeSeleccionado(identificador, fraccion);
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e);
+      alert(JSON.stringify(e));
+    }
+  }
+  async deleteLoteriaFraccion(data) {}
 }

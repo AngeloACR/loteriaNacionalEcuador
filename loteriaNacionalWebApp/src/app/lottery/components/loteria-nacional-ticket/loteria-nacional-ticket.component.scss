@@ -13,6 +13,7 @@ $color-botton: #2f72b9;
   background-color: #f2f2f2;
   border-radius: 5px;
   box-sizing: border-box;
+  position:relative;
   p {
     font-family: $fuente-parrafo;
     font-size: 14px;
@@ -40,5 +41,12 @@ $color-botton: #2f72b9;
       background-color: white;
       border: 1px solid black;
     }
+  }
+  img{
+    position: absolute;
+    cursor: pointer;
+    width:10%;
+    top: 5px;
+    right: 5px;
   }
 }

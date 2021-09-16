@@ -6,7 +6,13 @@ const ventaSchema = new mongoose.Schema({
         sorteo: {
             type: String
         },
+        fecha: {
+            type: String
+        },
         combinacion1: {
+            type: String
+        },
+        subtotal: {
             type: String
         },
         fracciones: [{
@@ -15,6 +21,12 @@ const ventaSchema = new mongoose.Schema({
     }],
     lotto: [{
         sorteo: {
+            type: String
+        },
+        fecha: {
+            type: String
+        },
+        subtotal: {
             type: String
         },
         combinacion1: {
@@ -34,13 +46,19 @@ const ventaSchema = new mongoose.Schema({
         sorteo: {
             type: String
         },
+        subtotal: {
+            type: String
+        },
+        fecha: {
+            type: String
+        },
         combinacion1: {
             type: String
         },
         combinacion2: {
             type: String
         },
-        combinacion3: {
+        mascota: {
             type: String
         }
     }],

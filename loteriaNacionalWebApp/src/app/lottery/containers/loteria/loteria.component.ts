@@ -145,7 +145,9 @@ export class LoteriaComponent implements OnInit {
           reservaId
         );
       }
-      fracciones.forEach((fraccion) => {
+      this.ticketsSeleccionados[identificador].seleccionados = this.ticketsNacional[identificador].seleccionados.filter( ( el ) => !fracciones.includes( el ) );
+
+/*       fracciones.forEach((fraccion) => {
         let index =
           this.ticketsSeleccionados[identificador].ticket.seleccionados.indexOf(
             fraccion
@@ -155,7 +157,7 @@ export class LoteriaComponent implements OnInit {
           index,
           1
         );
-      });
+      }); */
       if (
         this.ticketsSeleccionados[identificador].ticket.seleccionados.length ==
         0
@@ -340,4 +342,104 @@ export class LoteriaComponent implements OnInit {
     this.isLoading = false;
     this.showComponents = true;
   }
+
+  async deleteLoteriaTicket(data){
+    try {
+      let identificador = data.ticket.identificador;
+      let fracciones = data.ticket.seleccionados;
+      console.log(data)
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsSeleccionados[identificador].ticket,
+        sorteo: this.sorteoSeleccionado,
+      };
+      let reservaId = this.lotteryService.getReservaId();
+      if (fracciones.length != 0) {
+        let response = await this.lotteryService.eliminarBoletosDeReserva(
+          this.token,
+          aux,
+          fracciones,
+          1,
+          reservaId
+        );
+      }
+        delete this.ticketsSeleccionados[identificador];
+
+      localStorage.setItem(
+        "seleccionadosLoteria",
+        JSON.stringify(this.ticketsSeleccionados)
+      );
+
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e)
+      alert(JSON.stringify(e));
+    }
+
+  }
+  async deleteLottoTicket(data){
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = ""
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsLotto[identificador].ticket,
+        sorteo: this.sorteoSeleccionado,
+      };
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        aux,
+        fraccion,
+        2,
+        reservaId
+      );
+
+      delete this.ticketsLotto[identificador];
+
+      localStorage.setItem(
+        "seleccionadosLotto",
+        JSON.stringify(this.ticketsLotto)
+      );
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e);
+    }}
+  async deletePozoTicket(data){
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = ""
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let aux = {
+        ticket: this.ticketsPozo[identificador].ticket,
+        sorteo: this.sorteoSeleccionado,
+      };
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        aux,
+        fraccion,
+        5,
+        reservaId
+      );
+
+      delete this.ticketsPozo[identificador];
+
+      localStorage.setItem(
+        "seleccionadosPozo",
+        JSON.stringify(this.ticketsPozo)
+      );
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      alert(e);
+    }    
+  }
+  async deleteLoteriaFraccion(data){}
+
 }

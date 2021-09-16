@@ -16,6 +16,7 @@ lotteryRouter.post('/sellLottery', LotteryController.sellLotteryHttp);
 lotteryRouter.post('/cancelLottery', LotteryController.cancelLotteryHttp);
 lotteryRouter.post('/reserveLottery', LotteryController.reserveLotteryHttp);
 lotteryRouter.post('/getBalance', LotteryController.getBalanceHttp);
+lotteryRouter.post('/getCompra', LotteryController.getCompra);
 lotteryRouter.post('/reservarBoletos', LotteryController.reservarBoletos);
 lotteryRouter.post('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);
 lotteryRouter.post('/comprarBoletos', LotteryController.comprarBoletos);

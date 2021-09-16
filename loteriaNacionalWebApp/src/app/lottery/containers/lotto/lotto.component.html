@@ -120,6 +120,10 @@
 
   <app-ticket-scroller
     class="ticketScroller"
+    (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+    (deleteLottoTicket)="deleteLottoTicket($event)"
+    (deletePozoTicket)="deletePozoTicket($event)"
+    (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
     (emitirCompra)="comprar()"
     [ticketsLoteria]="ticketsLoteria"
     [ticketsLotto]="ticketsSeleccionados"

@@ -26,6 +26,11 @@ export class AppComponent implements OnInit {
           let token = data.split("?token=")[1];
           this.router.navigateByUrl(`${url}/${token}`);
         }
+        if (data.includes("payment/detalle?ticketId")) {
+          let url = data.split("?ticketId=")[0];
+          let ticketId = data.split("?ticketId=")[1];
+          this.router.navigateByUrl(`${url}/${ticketId}`);
+        }        
       }
       if (event instanceof NavigationEnd) {
       }

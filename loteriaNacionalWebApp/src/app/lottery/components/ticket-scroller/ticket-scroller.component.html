@@ -32,6 +32,8 @@
         <app-loteria-nacional-ticket
           style="width: 100%"
           *ngFor="let item of ticketsLoteria | keyvalue"
+          (deleteTicket)="deleteLoteria(item)"
+          (deleteFraccion)="deleteFraccionLoteria(item, fraccion)"
           [ticket]="item.value.ticket"
           [sorteo]="item.value.sorteo"
         >
@@ -43,6 +45,7 @@
         <app-lotto-ticket
           style="width: 100%"
           *ngFor="let item of ticketsLotto | keyvalue"
+          (delete)="deleteLotto(item)"
           [ticket]="item.value.ticket"
           [sorteo]="item.value.sorteo"
         >
@@ -54,6 +57,7 @@
         <app-pozo-millonario-ticket
           style="width: 100%"
           *ngFor="let item of ticketsPozo | keyvalue"
+          (delete)="deletePozo(item)"
           [ticket]="item.value.ticket"
           [sorteo]="item.value.sorteo"
         >

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ticketsNacional, sorteo } from "../../interfaces/lottery.interface";
 
 @Component({
@@ -9,6 +9,8 @@ import { ticketsNacional, sorteo } from "../../interfaces/lottery.interface";
 export class LoteriaNacionalTicketComponent implements OnInit {
   @Input() ticket: ticketsNacional;
   @Input() sorteo: sorteo;
+  @Output() deleteTicket = new EventEmitter();
+  @Output() deleteFraccion = new EventEmitter();
   ticketIndex: string;
   date: string;
   fraccion: string[];
@@ -28,5 +30,9 @@ export class LoteriaNacionalTicketComponent implements OnInit {
       this.date = this.sorteo.fecha;
     /* console.log(JSON.parse(localStorage.getItem('loteriaTickets'))); */
     /* this.ticketNumbers = JSON.parse(localStorage.getItem('loterianumero' + ticket)); */
+  }
+
+  deleteBoleto(){
+    this.deleteTicket.emit()
   }
 }

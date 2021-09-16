@@ -13,6 +13,7 @@ $color-botton: #b51f20;
   margin: 10px 0;
   background-color: #f2f2f2;
   border-radius: 5px;
+  position: relative;
   box-sizing: border-box;
   p {
     font-family: $fuente-parrafo;
@@ -37,5 +38,12 @@ $color-botton: #b51f20;
       background-color: white;
       border: 1px solid black;
     }
+  }
+  img{
+    position: absolute;
+    cursor: pointer;
+    width:10%;
+    top: 5px;
+    right: 5px;
   }
 }

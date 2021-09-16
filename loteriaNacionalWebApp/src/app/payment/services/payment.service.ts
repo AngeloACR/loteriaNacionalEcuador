@@ -10,8 +10,8 @@ export class PaymentService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
   //mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
@@ -63,6 +63,32 @@ export class PaymentService {
       );
     });
   }
+
+  getCompra(ticketId) {
+    console.log("Asking for balance")
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/lottery";
+    let body = {
+      ticketId
+    };
+    endpoint = `${endpoint}/getCompra`;
+    var address = this.mySource;
+
+    address = address + endpoint;
+    return new Promise<boolean>((resolve, reject) => {
+    console.log("Balance http")
+    this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          resolve(data.values);
+        },
+        (error: any) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
 
   confirmarCompra(token, reservaId): Promise<any> {
     let loteria = this.cart.getCarritoLoteria();

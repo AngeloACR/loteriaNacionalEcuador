@@ -680,7 +680,7 @@ const ventasController = {
       };
       let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
       let finalResponse = {
-        data: req.body,
+        data: apiVentaResponse,
         status: true,
       };
 
@@ -728,26 +728,40 @@ const ventasController = {
     let loteriaAux = apiReservaData.loteria;
     let loteria = [];
     for (id in loteriaAux) {
-      let aux = loteriaAux[id].ticket;
+      let aux = {};
+      aux['combinacion1']= loteriaAux[id].ticket.combinacion;
       aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
+      aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
+      aux["fecha"] = loteriaAux[id].sorteo.fecha;
       aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
       loteria.push(aux);
     }
     let lottoAux = apiReservaData.lotto;
     let lotto = [];
     for (id in lottoAux) {
-      let aux = lottoAux[id];
+      let aux = {};
+      aux['combinacion1']= lottoAux[id].ticket.combinacion1;
+      aux['combinacion2']= lottoAux[id].ticket.combinacion2;
+      aux['combinacion3']= lottoAux[id].ticket.combinacion3;
+      aux['combinacion4']= lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;
+      aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
+      aux["fecha"] = lottoAux[id].sorteo.fecha;
       lotto.push(aux);
     }
     let pozoAux = apiReservaData.pozo;
     let pozo = [];
     for (id in pozoAux) {
-      let aux = pozoAux[id];
+      let aux = {};
+      aux['combinacion1']= pozoAux[id].ticket.combinacion1;
+      aux['combinacion2']= pozoAux[id].ticket.combinacion2;
+      aux['mascota']= pozoAux[id].ticket.mascota;
       aux["sorteo"] = pozoAux[id].sorteo.sorteo;
+      aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
+      aux["fecha"] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
     }
-    let total = apiReservaData.amount;
+    let total = parseFloat(apiReservaData.amount).toFixed(2);
     let reservaId = apiReservaData.reservaId;
     let ventaId = apiReservaData.ventaId;
     let exaReservaId = apiReservaData.exaReservaId;
@@ -767,6 +781,15 @@ const ventasController = {
   },
   crearVenta: async (data) => {
     return data;
+  },  
+  getCompra: async (req, res) => {
+    try {
+      let ticketId = req.body.ticketId;
+      let response = await Reservas.getCompraByVentaId(ticketId);
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
   },
 };
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ticketsAnimales, sorteo } from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
 
@@ -10,6 +10,7 @@ import { LotteryService } from "../../services/lottery.service";
 export class PozoMillonarioTicketComponent implements OnInit {
   @Input() ticket: ticketsAnimales;
   @Input() sorteo: sorteo;
+  @Output() delete = new EventEmitter();
   ticketIndex: string;
   date: string;
   ticketNumbers: string[];
@@ -36,4 +37,8 @@ export class PozoMillonarioTicketComponent implements OnInit {
   obtenerAnimal(mascota) {
     return this.lotteryService.obtenerMascota(mascota);
   }
+  deleteTicket(){
+    this.delete.emit()
+  }
+ 
 }
