@@ -608,13 +608,15 @@ module.exports.venderBoletos = async (
             let aux = data.mt.o[0].xmlVentaOutput[0]; //.ReturnValue[0].VTA[0].SUE[0].COMP;
             let xmlVentaOutput = await parser.parseStringPromise(aux);
             let ticketId = xmlVentaOutput.VTA.$.VId;
-            let instantaneas = (xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR)? xmlVentaOutput.VTA.INST[0].SOR[0].R.map((premio) => {
-                  return premio.$;
-                })
-              : "";
+            let instantaneas =
+              xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR
+                ? xmlVentaOutput.VTA.INST[0].SOR[0].R.map((premio) => {
+                    return premio.$;
+                  })
+                : "";
             let response = {
               instantaneas,
-              ticketId
+              ticketId,
             };
 
             resolve(response);

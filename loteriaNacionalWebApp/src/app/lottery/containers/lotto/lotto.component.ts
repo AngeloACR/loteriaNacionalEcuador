@@ -189,12 +189,57 @@ export class LottoComponent implements OnInit {
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
-
+  detalleCompra: any
   comprar() {
     this.dismissCompras();
+
+    let loteriaAux = this.ticketsLoteria;
+    let loteria = [];
+    for (let id in loteriaAux) {
+      let aux = {};
+      aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
+      aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
+      aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
+      aux["fecha"] = loteriaAux[id].sorteo.fecha;
+      aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
+      loteria.push(aux);
+    }
+    let lottoAux = this.ticketsSeleccionados;
+    let lotto = [];
+    for (let id in lottoAux) {
+      let aux = {};
+      aux["combinacion1"] = lottoAux[id].ticket.combinacion1;
+      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;                                                 
+      aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
+      aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
+      aux["sorteo"] = lottoAux[id].sorteo.sorteo;
+      aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
+      aux["fecha"] = lottoAux[id].sorteo.fecha;
+      lotto.push(aux);
+    }
+    let pozoAux = this.ticketsPozo;
+    let pozo = [];
+    for (let id in pozoAux) {
+      let aux = {};
+      aux["combinacion1"] = pozoAux[id].ticket.combinacion1;
+      aux["combinacion2"] = pozoAux[id].ticket.combinacion2;
+      aux["mascota"] = pozoAux[id].ticket.mascota;
+      aux["sorteo"] = pozoAux[id].sorteo.sorteo;
+      aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
+      aux["fecha"] = pozoAux[id].sorteo.fecha;
+      pozo.push(aux);
+    }
+    let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
+
+    this.detalleCompra = {
+      loteria,
+      pozo,
+      lotto,
+      amount
+    }
+
     this.confirmacionDeCompra = true;
   }
-
   finalizarCompra() {
     this.paymentService.finalizarCompra();
 

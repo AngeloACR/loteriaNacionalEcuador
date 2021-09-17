@@ -11,6 +11,7 @@ import { SaldoInsuficienteComponent } from "./components/saldo-insuficiente/sald
 import { CompraFinalizadaComponent } from "./components/compra-finalizada/compra-finalizada.component";
 import { CompraDetalleComponent } from "./containers/compra-detalle/compra-detalle.component";
 import { CompraCanceladaComponent } from "./components/compra-cancelada/compra-cancelada.component";
+import { CompraDescripcionComponent } from './components/compra-descripcion/compra-descripcion.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CompraCanceladaComponent } from "./components/compra-cancelada/compra-c
     SaldoInsuficienteComponent,
     CompraFinalizadaComponent,
     CompraDetalleComponent,
-    CompraCanceladaComponent
+    CompraCanceladaComponent,
+    CompraDescripcionComponent
   ],
   entryComponents: [
     ShoppingCartComponent,

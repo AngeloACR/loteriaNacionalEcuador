@@ -48,5 +48,10 @@ $color-botton: #2f72b9;
     width:10%;
     top: 5px;
     right: 5px;
+    transition: width 0.3s ease;
+  }
+  img:hover{
+    width:15%;
+    transition: width 0.3s ease;
   }
 }

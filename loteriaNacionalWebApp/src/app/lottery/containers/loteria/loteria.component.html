@@ -197,11 +197,13 @@
     (compraConfirmada)="confirmarCompra()"
     (compraCancelada)="cancelarCompra($event)"
     (comprarDespues)="dismissCompras()"
+  [compra]="detalleCompra"
     class="paymentItem"
     *ngIf="confirmacionDeCompra"
   ></app-confirmacion-de-compra>
   <app-compra-finalizada
     (volver)="finalizarCompra()"
+  [compra]="detalleCompra"
     class="paymentItem"
     *ngIf="compraFinalizada"
   ></app-compra-finalizada>

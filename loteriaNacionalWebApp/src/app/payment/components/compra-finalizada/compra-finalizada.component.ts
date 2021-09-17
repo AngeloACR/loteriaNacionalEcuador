@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { LotteryService } from "../../../lottery/services/lottery.service";
 
 @Component({
   selector: "app-compra-finalizada",
@@ -7,10 +8,15 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 })
 export class CompraFinalizadaComponent implements OnInit {
   @Output() volver = new EventEmitter();
+  @Input() compra: any;
+  user: any;
+  constructor(
+    private lottery: LotteryService,
+  ) {}
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = this.lottery.getAuthData().user
+  }
 
   seguirJugando() {
     this.volver.emit();

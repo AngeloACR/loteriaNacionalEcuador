@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { LotteryService } from "../../../lottery/services/lottery.service";
 
 @Component({
   selector: "app-confirmacion-de-compra",
@@ -9,10 +10,15 @@ export class ConfirmacionDeCompraComponent implements OnInit {
   @Output() compraConfirmada = new EventEmitter();
   @Output() compraCancelada = new EventEmitter();
   @Output() comprarDespues = new EventEmitter();
-  constructor() {}
+  @Input() compra: any;
+  user: any;
+  constructor(
+    private lottery: LotteryService,
+  ) {}
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.user = this.lottery.getAuthData().user
+  }
   confirmarCompra() {
     this.compraConfirmada.emit();
   }

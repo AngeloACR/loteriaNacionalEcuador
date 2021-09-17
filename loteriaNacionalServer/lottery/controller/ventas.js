@@ -83,6 +83,7 @@ const ventasController = {
         ticketId: req.body.ticketId,
         amount: req.body.amount,
       };
+
       let response = await Wallet.sellLottery(data);
       res.status(200).json(response);
     } catch (e) {
@@ -204,6 +205,7 @@ const ventasController = {
       throw e;
     }
   },
+
   sellLottery: async (data) => {
     try {
       /* {
@@ -229,6 +231,7 @@ const ventasController = {
         operationTimeStamp: operationTimeStamp,
         ticketId: data.ticketId,
         amount: data.amount,
+        prizeDetails: data.prizeDetails,
       };
       let response = await Wallet.sellLottery(exaData);
       return response;
@@ -302,7 +305,7 @@ const ventasController = {
         amount: data.amount,
         reservationDetails: data.reservationDetails,
       };
-      console.log(exaData)
+      console.log(exaData);
       let response = await Wallet.reserveLottery(exaData);
       return response;
     } catch (e) {
@@ -647,8 +650,39 @@ const ventasController = {
       // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
       console.log(loteriaVentaResponse);
       let instantaneas = loteriaVentaResponse.instantaneas;
+      let prizeDetails = [];
       if (instantaneas != "" && instantaneas.length != 0) {
-        let total = instantaneas.reduce(function (sum, current) {
+        /*
+        prizeDetails: [
+            {
+              combination: '18771',
+              fraction: '47',
+              prizeName: 'INSTANTANEA REINTEGROS',
+              subtotal: '1.00',
+            },
+            {
+              combination: '18771',
+              fraction: '88',
+              prizeName: 'INSTANTANEA REINTEGROS',
+              subtotal: '1.00',
+            }
+          ],
+          */
+         instantaneas.forEach(instantanea => {
+           
+           let prizeDetail = {
+             lotteryType: 1,
+             lotteryName: "Loteria Nacional",
+             drawNumber: "",
+             drawDate: "",
+             combinationC1: instantanea.Num,
+             fractions: [instantanea.Fra],
+             prize: instantanea.Val,
+             prizeWithDiscount: instantanea.ConDesc,
+             prizeDescription: instantanea.Prem,
+           }
+         });
+          let total = instantaneas.reduce(function (sum, current) {
           return sum + parseFloat(current.ConDesc);
         }, 0);
         let exaInstantaneaData = {
@@ -729,7 +763,7 @@ const ventasController = {
     let loteria = [];
     for (id in loteriaAux) {
       let aux = {};
-      aux['combinacion1']= loteriaAux[id].ticket.combinacion;
+      aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
       aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
       aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
       aux["fecha"] = loteriaAux[id].sorteo.fecha;
@@ -740,10 +774,10 @@ const ventasController = {
     let lotto = [];
     for (id in lottoAux) {
       let aux = {};
-      aux['combinacion1']= lottoAux[id].ticket.combinacion1;
-      aux['combinacion2']= lottoAux[id].ticket.combinacion2;
-      aux['combinacion3']= lottoAux[id].ticket.combinacion3;
-      aux['combinacion4']= lottoAux[id].ticket.combinacion4;
+      aux["combinacion1"] = lottoAux[id].ticket.combinacion1;
+      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;                                                 
+      aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
+      aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
       aux["fecha"] = lottoAux[id].sorteo.fecha;
@@ -753,9 +787,9 @@ const ventasController = {
     let pozo = [];
     for (id in pozoAux) {
       let aux = {};
-      aux['combinacion1']= pozoAux[id].ticket.combinacion1;
-      aux['combinacion2']= pozoAux[id].ticket.combinacion2;
-      aux['mascota']= pozoAux[id].ticket.mascota;
+      aux["combinacion1"] = pozoAux[id].ticket.combinacion1;
+      aux["combinacion2"] = pozoAux[id].ticket.combinacion2;
+      aux["mascota"] = pozoAux[id].ticket.mascota;
       aux["sorteo"] = pozoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
       aux["fecha"] = pozoAux[id].sorteo.fecha;
@@ -781,7 +815,7 @@ const ventasController = {
   },
   crearVenta: async (data) => {
     return data;
-  },  
+  },
   getCompra: async (req, res) => {
     try {
       let ticketId = req.body.ticketId;

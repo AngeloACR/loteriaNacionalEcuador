@@ -5,157 +5,135 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-loteria: #7c91a8;
 
-.containerCompra {
+.titleBox {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-weight: 600;
+
+  p {
+    font-family: $fuente-parrafo;
+    font-size: 14px;
+  }
+
+  a {
+    font-family: $fuente-parrafo;
+  }
+}
+
+.containerInfoBox {
+  .titleLoteryBox {
+    display: flex;
+    background-color: #f2f2f2;
+
+    h3 {
+      margin-left: 20px;
+      color: #000;
+      font-family: $fuente-subtitulo;
+      font-size: 16px;
+    }
+  }
+
+  .fondoBox {
+    justify-content: space-between;
+    background-color: $color-loteria;
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+
+  .dateClientBox {
+    width: 100%;
+
+    .infoClientBox {
+      display: flex;
+      justify-content: space-between;
+
+      p:nth-child(1) {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .dateLoteryBox {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    column-gap: 3rem;
+
+    .infoSorteoBox {
+      margin-left: 20px;
+
+      p {
+        font-weight: 500;
+        font-size: 15px;
+      }
+    }
+
+    .infoTicketBox {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      font-family: $fuente-parrafo;
+      font-size: 15px;
+
+      .dateTicketBox {
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      .numberBox {
+        text-align: center;
+      }
+
+      .montoBox {
+        text-align: right;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.totalBox {
   width: 100%;
   margin: auto;
+  margin-bottom: 70px;
 
-  .mensajeBox {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
 
-    h2 {
-      font-family: $fuente-subtitulo;
-      font-size: 35px;
-      margin: 20px 0 0 0;
-    }
+  p {
+    font-family: $fuente-parrafo;
+    color: #000;
 
-    h1 {
-      font-family: $fuente-parrafo;
-      font-size: 20px;
-      color: green;
+    span {
+      color: red;
     }
   }
+}
 
-  .titleBox {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    font-weight: 600;
+.mensajeButtonBox {
+  margin: auto;
+  margin-bottom: 20px;
 
-    p {
-      font-family: $fuente-parrafo;
-      font-size: 14px;
-    }
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    a {
-      font-family: $fuente-parrafo;
-    }
+  border: 1px solid #c3c3c3;
+
+  &:hover {
+    background-color: green;
   }
 
-  .containerInfoBox {
-    .titleLoteryBox {
-      display: flex;
-      background-color: #f2f2f2;
-
-      h3 {
-        margin-left: 20px;
-        color: #000;
-        font-family: $fuente-subtitulo;
-        font-size: 16px;
-      }
-    }
-
-    .fondoBox {
-      justify-content: space-between;
-      background-color: $color-loteria;
-      padding-left: 20px;
-      padding-right: 10px;
-    }
-
-    .dateClientBox {
-      width: 100%;
-
-      .infoClientBox {
-        display: flex;
-        justify-content: space-between;
-
-        p:nth-child(1) {
-          margin-left: 20px;
-        }
-      }
-    }
-
-    .dateLoteryBox {
-      display: grid;
-      grid-template-columns: 30% 1fr;
-      column-gap: 3rem;
-
-      .infoSorteoBox {
-        margin-left: 20px;
-
-        p {
-          font-weight: 500;
-          font-size: 15px;
-        }
-      }
-
-      .infoTicketBox {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        font-family: $fuente-parrafo;
-        font-size: 15px;
-
-        .dateTicketBox {
-          font-weight: 600;
-          font-size: 15px;
-        }
-
-        .numberBox {
-          text-align: center;
-        }
-
-        .montoBox {
-          text-align: right;
-          font-weight: 600;
-        }
-      }
-    }
+  p {
+    font-family: $fuente-botones;
+    font-size: 23px;
+    color: green;
   }
 
-  .totalBox {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 70px;
-
-    display: flex;
-    justify-content: flex-end;
-
-    p {
-      font-family: $fuente-parrafo;
-      color: #000;
-
-      span {
-        color: red;
-      }
-    }
-  }
-
-  .mensajeButtonBox {
-    margin: auto;
-    margin-bottom: 20px;
-
-    padding: 16px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid #c3c3c3;
-
-    &:hover {
-      background-color: green;
-    }
-
-    p {
-      font-family: $fuente-botones;
-      font-size: 23px;
-      color: green;
-    }
-
-    &:hover p {
-      color: white;
-    }
+  &:hover p {
+    color: white;
   }
 }
