@@ -9,19 +9,26 @@ $color-pozo: #04b865;
 
 .contenedor_ticket.fondoLoteria {
   background-color: $color-botton;
+  border: 1px solid $color-botton;
 }
 .contenedor_ticket.fondoPozo {
   background-color: $color-pozo;
+  border: 1px solid $color-pozo;
 }
 .contenedor_ticket.fondoLotto {
   background-color: $color-lotto;
+  border: 1px solid $color-lotto;
 }
 .contenedor_ticket {
   width: 100%;
   border-radius: 30px;
   overflow: hidden;
   padding: 15px;
+  background-color: white;
 
+  -webkit-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
   
   .detailBox {
     overflow-y: scroll;
@@ -70,7 +77,7 @@ $color-pozo: #04b865;
       margin: 10px;
       text-align: center;
       padding: 10px;
-      color: white;
+      color: black;
     }
   }
 
@@ -81,7 +88,7 @@ $color-pozo: #04b865;
     justify-content: center;
 
     img {
-      width: 120px;
+      height: 100px;
       margin: auto;
       margin: 15px auto;
     }
@@ -89,8 +96,6 @@ $color-pozo: #04b865;
 
   hr {
     width: 90%;
-    margin: auto;
-    color: #fff;
   }
   .totalsBox {
     height: 10vh;

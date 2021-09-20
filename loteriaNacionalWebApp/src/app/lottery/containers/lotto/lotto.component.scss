@@ -5,7 +5,6 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-lotto: #b51f20;
 
-
 // Estilos del componente seleccion Lotto
 .contenedor {
   input[type="checkbox"] {
@@ -61,7 +60,7 @@ $color-lotto: #b51f20;
 
 .contenedor_loteria {
   width: 95%;
-  margin: auto;
+  margin: 20px auto;
 
   display: flex;
   justify-content: space-evenly;
@@ -71,8 +70,6 @@ $color-lotto: #b51f20;
     max-width: 300px;
     width: 20%;
   }
-
-
 
   .contenedor_seleccion {
     width: 40%;
@@ -184,16 +181,16 @@ $color-lotto: #b51f20;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        justify-content: center;
-        margin: 10px;
+        justify-content: flex-start;
+        margin: 10px 10px 10px 0;
         input[type="text"] {
           width: 40px;
           height: 40px;
           padding: 8px 6px;
-          margin: 0 5px 0 5px;
+          margin: 0 5px 0 0;
           text-align: center;
           font-family: $fuente-subtitulo;
-          border: 1.5px solid #000;
+          border: 1.5px solid $color-lotto;
           border-radius: 2px;
           color: #000;
           -moz-appearance: textfield;
@@ -244,14 +241,14 @@ $color-lotto: #b51f20;
 
     button {
       background-color: $color-lotto;
-      padding: 10px 15px;
-      margin: 10px;
+      padding: 15px;
+      margin: 10px 0;
       width: 100%;
       border-radius: 30px;
       border: 1px solid $color-lotto;
       color: #fff;
       font-family: $fuente-botones;
-      font-size: 11px;
+      font-size: 16px;
       cursor: pointer;
 
       &:hover {
@@ -292,7 +289,6 @@ $color-lotto: #b51f20;
             text-align: center;
             border-radius: 4px;
 
-
             input[type="checkbox"] {
               width: 100%;
               height: 100%;
@@ -301,7 +297,7 @@ $color-lotto: #b51f20;
               left: 0;
               opacity: 0;
             }
-            
+
             input[type="checkbox"]:checked ~ div {
               background-color: $color-lotto;
               border-radius: 10px;
@@ -309,7 +305,7 @@ $color-lotto: #b51f20;
               transition: background-color 0.3s ease-out;
               opacity: 1;
             }
-            
+
             .contenedor_seleccion_numero {
               width: 100%;
               display: flex;
@@ -322,18 +318,18 @@ $color-lotto: #b51f20;
                 flex-direction: column;
                 justify-content: center;
                 margin: auto 8px;
-            
+
                 img {
                   width: 70px;
                   border-radius: 30px;
                 }
               }
-            
+
               .numeros {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-evenly;
-            
+
                 p {
                   display: block;
                   padding: 4px;
@@ -343,7 +339,6 @@ $color-lotto: #b51f20;
                 }
               }
             }
-            
           }
         }
       }
@@ -429,7 +424,6 @@ $color-lotto: #b51f20;
       }
     }
   }
-
 
   .ticketScroller {
     width: 25%;

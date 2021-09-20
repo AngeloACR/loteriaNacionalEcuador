@@ -10,7 +10,6 @@ $color-lotto: #b51f20;
   display: flex;
   margin: 10px auto;
   padding: 10px;
-  background-color: #f2f2f2;
   border-radius: 5px;
   box-sizing: border-box;
 
@@ -104,6 +103,10 @@ $color-lotto: #b51f20;
             height: 30px;
             background-color: #fff;
             font-family: $fuente-subtitulo;
+
+            border: 1px solid $color-lotto;
+            border-radius: 5px;
+            padding: 20px;
             font-size: 16px;
             color: #000;
             margin: 0px 2px;

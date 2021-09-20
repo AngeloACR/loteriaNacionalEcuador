@@ -12,14 +12,18 @@ $color-pozo: #04b865;
   min-width: 300px;
   padding: 15px;
   border-radius: 30px;
-  background-color: $color-pozo;
+  background-color: white;
+  -webkit-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
   margin: auto;
   .texto {
-    color: #fff;
+    color: black;
     font-family: $fuente-titulo;
-    font-size: 14px;
+    font-size: 24px;
     text-align: center;
-    margin: auto;
+    margin: 20px auto;
+
     margin-top: 5px;
   }
   .logo_ticket {
@@ -47,8 +51,7 @@ $color-pozo: #04b865;
 
   hr {
     width: 90%;
-    margin: auto;
-    color: #fff;
+    border-color: $color-pozo;
   }
 
   .scroll {
@@ -181,9 +184,9 @@ $color-pozo: #04b865;
       padding: 20px 30px;
 
       //      background-color: $color-pozo;
-      background-color: #186b76;
+      background-color: $color-pozo;
       //border: 1px solid #fff;
-      border: 1px solid #186b76;
+      border: 1px solid $color-pozo;
       border-radius: 40px;
       margin: 10px auto;
       font-family: $fuente-botones;
@@ -195,7 +198,7 @@ $color-pozo: #04b865;
       &:hover {
         background-color: #fff;
         //color: $color-pozo;
-        color: #186b76;
+        color: $color-pozo;
       }
     }
   }

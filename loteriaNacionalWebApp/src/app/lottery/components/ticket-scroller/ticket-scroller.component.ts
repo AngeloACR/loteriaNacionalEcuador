@@ -47,15 +47,15 @@ export class TicketScrollerComponent implements OnInit {
     switch (this.tipoLoteria) {
       case "loteria":
         this.isLoteriaNacional = true;
-        this.logoPath = "assets/img/loteria-amarillo.png";
+        this.logoPath = "assets/img/loteria-sombra.png";
         break;
       case "lotto":
         this.isLotto = true;
-        this.logoPath = "assets/img/lotto.png";
+        this.logoPath = "assets/img/lotto-sombra-2.png";
         break;
       case "pozo":
         this.isPozoMillonario = true;
-        this.logoPath = "assets/img/pozzo millonario.png";
+        this.logoPath = "assets/img/pozo-sombra.png";
         break;
     }
     this.getTotal();

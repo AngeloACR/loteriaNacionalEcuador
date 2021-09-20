@@ -23,7 +23,6 @@ $color-loteria: #2f72b9;
   flex-direction: column;
 
   border-radius: 20px;
-  border: 5px solid $color-loteria;
 
   .boletin_oficial {
     width: 100%;
@@ -32,12 +31,11 @@ $color-loteria: #2f72b9;
     margin: auto;
     justify-content: space-between;
     align-items: center;
-    background-color: $color-loteria;
     border-radius: 15px 15px 0 0;
 
     h1 {
-      font-size: 17px;
-      color: #fff;
+      font-size: 24px;
+      color: black;
       font-family: $fuente-parrafo;
       margin-left: 20px;
     }
@@ -66,6 +64,7 @@ $color-loteria: #2f72b9;
           border: 1px solid $color-loteria;
           padding: 10px;
 
+          background-color: white;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -83,7 +82,7 @@ $color-loteria: #2f72b9;
     }
 
     .separador {
-      width: 80%;
+      width: 95%;
       margin: auto;
     }
 
@@ -208,9 +207,6 @@ $color-loteria: #2f72b9;
             font-size: 8px;
           }
         }
-      }
-
-      .separador {
       }
 
       .consulta_boleto {

@@ -2,7 +2,7 @@
   <li class="menuItem" [ngClass]="{'fondoLoteria': fondoLoteria, 'fondoLotto': fondoLotto, 'fondoPozo': fondoPozo}">
     {{ titulo }}
   </li>
-  <li class="menuItem">Sorteo: <br>
+  <li class="menuItem">Sorteo:
     <select class="fechaItem" [(ngModel)]="seleccionado" (change)="onEmitir()">
       <option [ngValue]="sorteoDefault" selected disabled>Seleccione un sorteo</option>
       <option [ngValue]="objeto" *ngFor="let objeto of sorteos">{{objeto.nombre}}</option>

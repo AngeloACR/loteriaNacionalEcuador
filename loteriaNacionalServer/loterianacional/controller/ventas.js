@@ -119,8 +119,10 @@ module.exports.consultarSorteosDisponibles = async (
               };
               return sorteoAux;
             });
+            
             resolve(response);
           } else {
+            console.log(errorCode);
             reject(data.mt.c[0].msgError[0]);
           }
         }

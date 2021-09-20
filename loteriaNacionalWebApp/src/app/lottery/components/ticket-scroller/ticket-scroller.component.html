@@ -1,16 +1,16 @@
 <div
   class="contenedor_ticket"
-  [ngClass]="{
-    fondoLoteria: isLoteriaNacional,
-    fondoLotto: isLotto,
-    fondoPozo: isPozoMillonario
-  }"
 >
   <div class="logo_ticket">
     <img [src]="logoPath" alt="" />
   </div>
   <div>
-    <hr size="2px" />
+    <hr size="2px" 
+    [ngClass]="{
+      fondoLoteria: isLoteriaNacional,
+      fondoLotto: isLotto,
+      fondoPozo: isPozoMillonario
+    }"/>
   </div>
   <div
     class="detailBox"
@@ -69,12 +69,22 @@
     *ngIf="checkTicketsLoteria() || checkTicketsLotto() || checkTicketsPozo()"
   >
     <div>
-      <hr size="2px" />
+      <hr size="2px" 
+      [ngClass]="{
+        fondoLoteria: isLoteriaNacional,
+        fondoLotto: isLotto,
+        fondoPozo: isPozoMillonario
+      }"/>
     </div>
     <div class="totalsBox">Total: ${{ total }}</div>
 
     <div>
-      <hr size="2px" />
+      <hr size="2px" 
+      [ngClass]="{
+        fondoLoteria: isLoteriaNacional,
+        fondoLotto: isLotto,
+        fondoPozo: isPozoMillonario
+      }"/>
     </div>
     <div class="boton_comprar">
       <button

@@ -16,9 +16,8 @@ $color-pozo: #04b865;
 }
 
 %button {
-  background-color: #186b76;
-  //  background-color: $color-pozo;
-  border: 1px solid #186b76;
+  background-color: $color-pozo;
+  border: 1px solid $color-pozo;
   border-radius: 30px;
   color: #fff;
   font-family: $fuente-parrafo;
@@ -53,7 +52,6 @@ $color-pozo: #04b865;
     flex-direction: column;
 
     border-radius: 20px;
-    border: 5px solid $color-pozo;
 
     .boletin_oficial {
       width: 100%;
@@ -62,12 +60,11 @@ $color-pozo: #04b865;
       margin: auto;
       justify-content: space-between;
       align-items: center;
-      background-color: $color-pozo;
       border-radius: 15px 15px 0 0;
 
       h1 {
-        font-size: 17px;
-        color: #fff;
+        font-size: 24px;
+        color: black;
         font-family: $fuente-parrafo;
         margin-left: 20px;
       }
@@ -95,7 +92,7 @@ $color-pozo: #04b865;
             border-radius: 50%;
             border: 1px solid $color-pozo;
             padding: 10px;
-
+            background-color: white;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -113,7 +110,7 @@ $color-pozo: #04b865;
       }
 
       .separador {
-        width: 80%;
+        width: 95%;
         margin: auto;
       }
 
@@ -235,9 +232,6 @@ $color-pozo: #04b865;
               font-size: 8px;
             }
           }
-        }
-
-        .separador {
         }
 
         .consulta_boleto {

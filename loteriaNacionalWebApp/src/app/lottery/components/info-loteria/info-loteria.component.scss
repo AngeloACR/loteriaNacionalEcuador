@@ -24,9 +24,12 @@ $color-botton: #2f72b9;
   margin: autp;
   width: 100%;
   .menuItem {
-    /* height: 40px; */
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     list-style: none;
-    padding: 10px;
+    padding: 5px;
     font-size: 16px;
     font-family: $fuente-subtitulo;
     background-color: #f2f2f2;
@@ -51,13 +54,14 @@ $color-botton: #2f72b9;
 
     p {
       font-size: 14px;
+      margin: 3px 3px 3px 10px;
       font-family: $fuente-parrafo;
     }
 
     .fechaItem {
       width: 100%;
       margin: auto;
-      padding: 12px 0px;
+      padding: 4px 0px;
       border: none;
       background-color: #f2f2f2;
       outline: none;

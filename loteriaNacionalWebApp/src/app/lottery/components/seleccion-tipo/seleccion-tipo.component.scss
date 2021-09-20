@@ -9,11 +9,12 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 .container {
-  width: 80%;
+  width: 95%;
   margin: auto;
+  border-bottom: 1px solid $color-loteria;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   .contenedor_loteria {
@@ -21,8 +22,8 @@ $fuente-botones: "Monstserrat SemiBold";
     flex-direction: column;
     align-items: center;
     width: 210px;
-    height: 110px;
-    margin: 40px;
+    height: 100px;
+    margin: 40px 40px 40px 0;
     padding:5px;
     border-radius: 15px;
     -webkit-box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.2);
