@@ -1,27 +1,39 @@
 .loadBox {
   position: fixed;
-  z-index: 100;
+  z-index: 10000;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  min-width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
-}
 
-.loadIcon {
-  width: 120px;
-}
+  div {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .loadIcon {
+      width: 30%;
+          transition: width 1s ease;
+    }
+    .logoAnimado {
+      width: 60%;
+      transition: width 1s ease;
+    }
+  }
 
-.loadText {
-  font-size: 16px;
-  font-weight: bold;
-  color: #29352f;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 20px;
+  .loadText {
+    font-size: 16px;
+    font-weight: bold;
+    color: #29352f;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+  }
 }

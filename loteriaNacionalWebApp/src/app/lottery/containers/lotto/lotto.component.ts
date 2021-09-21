@@ -96,7 +96,7 @@ export class LottoComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.sorteoSeleccionado,
+        sorteo: this.ticketsSeleccionados[identificador].sorteo,
       };
       let reservaId = this.lotteryService.getReservaId();
 
@@ -319,7 +319,8 @@ export class LottoComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsLoteria[identificador].ticket,
-        sorteo: this.sorteoSeleccionado,
+        sorteo: data.sorteo,
+
       };
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
@@ -366,7 +367,8 @@ export class LottoComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsPozo[identificador].ticket,
-        sorteo: this.sorteoSeleccionado,
+        sorteo: data.sorteo,
+
       };
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(

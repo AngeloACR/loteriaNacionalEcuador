@@ -544,7 +544,7 @@ const ventasController = {
       let lotto = req.body.lotto ? req.body.lotto : [];
       let pozo = req.body.pozo ? req.body.pozo : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
-
+      console.log(req.body)
       let finalResponse = await Ventas.eliminarReservas(
         loteria,
         lotto,

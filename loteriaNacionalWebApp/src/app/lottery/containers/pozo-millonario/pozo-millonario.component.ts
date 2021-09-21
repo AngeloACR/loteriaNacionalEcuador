@@ -93,7 +93,7 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.sorteoSeleccionado,
+        sorteo: this.ticketsSeleccionados[identificador].sorteo,
       };
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
@@ -417,7 +417,8 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsLoteria[identificador].ticket,
-        sorteo: this.sorteoSeleccionado,
+        sorteo: data.sorteo,
+
       };
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
@@ -451,7 +452,8 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = true;
       let aux = {
         ticket: this.ticketsLotto[identificador].ticket,
-        sorteo: this.sorteoSeleccionado,
+        sorteo: data.sorteo,
+
       };
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
