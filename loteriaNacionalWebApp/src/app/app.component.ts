@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
         if (data.includes("compra_tus_juegos?token")) {
           let url = data.split("?token=")[0];
           let token = data.split("?token=")[1];
+          localStorage.setItem('exaToken', token)
           this.router.navigateByUrl(`${url}/${token}`);
         }
         if (data.includes("payment/detalle?ticketId")) {
