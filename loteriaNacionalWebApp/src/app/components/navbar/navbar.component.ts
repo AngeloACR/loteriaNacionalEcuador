@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    if (!this.token) this.token = "661c0ce5ccabbeb1136a";
+    //if (!this.token) this.token = "661c0ce5ccabbeb1136a";
     this.comprasLink = `/compra_tus_juegos?token=${this.token}`;
   }
 }
