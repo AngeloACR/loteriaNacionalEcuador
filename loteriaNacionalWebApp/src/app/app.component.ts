@@ -44,5 +44,7 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  async ngOnInit() {}
+  async ngOnInit() {
+    this.token = localStorage.getItem('exaToken')
+  }
 }
