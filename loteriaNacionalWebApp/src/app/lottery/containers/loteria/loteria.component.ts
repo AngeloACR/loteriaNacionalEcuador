@@ -27,6 +27,7 @@ export class LoteriaComponent implements OnInit {
   allFractions: boolean[];
   mostrar: boolean = false;
   fondo: boolean = false;
+  tipoSeleccion: number = 1;
   fracciones: number;
   showNumeros: boolean = false;
   page_size: number = 4;
@@ -77,15 +78,42 @@ export class LoteriaComponent implements OnInit {
       this.ticketsNacional.forEach((ticket) => {
         this.allFractions.push(false);
       });
-      this.showNumeros = true; /* 
+      this.showNumeros = true;
+
+      /* 
       } else {
         alert("Por favor seleccione un sorteo");
         this.showNumeros = false;
       } */
       this.isLoading = false;
+      await this.seleccionarVarios(this.tipoSeleccion);
     } catch (e) {
       this.isLoading = false;
       alert(JSON.stringify(e));
+    }
+  }
+
+  async seleccionarVarios(tipoSeleccion) {
+    console.log(tipoSeleccion);
+    if (tipoSeleccion != 1) {
+      for (let i = 0; i < tipoSeleccion; i++) {
+        let index = Math.floor(Math.random() * this.ticketsNacional.length);
+        let ticket = this.ticketsNacional[index];
+        let fraccionIndex = Math.floor(
+          Math.random() * ticket.fraccionesDisponibles.length
+        );
+        let fraccion = ticket.fraccionesDisponibles[fraccionIndex];
+        while (
+          this.ticketsNacional[index].seleccionados.indexOf(fraccion) != -1
+        ) {
+          fraccionIndex = Math.floor(
+            Math.random() * ticket.fraccionesDisponibles.length
+          );
+          fraccion = ticket.fraccionesDisponibles[fraccionIndex];
+        }
+        this.ticketsNacional[index].seleccionados.push(fraccion);
+        await this.pushToSeleccionado(ticket, [fraccion]);
+      }
     }
   }
 

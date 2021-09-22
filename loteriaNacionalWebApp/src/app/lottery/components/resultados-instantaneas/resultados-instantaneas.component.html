@@ -1,0 +1,11 @@
+<div class="resultsBox">
+
+    <div class="resultBox" *ngFor="let premio of premios">
+
+        <div class="messageBox">
+            <app-resultado-instantanea [ticket]="premio" [tipoLoteria]="premio.tipoLoteria" [isLoteriaNacional]="premio.tipoLoteria == 1">
+            </app-resultado-instantanea>
+        </div>
+
+    </div>
+</div>

@@ -230,11 +230,27 @@ export class PozoMillonarioComponent implements OnInit {
         this.showNumeros = false;
         this.isLoading = false;
       }
+      await this.seleccionarVarios(this.tipoSeleccion);
     } catch (e) {
-      alert(
-        "Parece que ha habido un problema, revise el formulario e intente de nuevo"
-      );
       this.isLoading = false;
+      alert(JSON.stringify(e));
+    }
+  }
+  tipoSeleccion: number = 1;
+
+  async seleccionarVarios(tipoSeleccion) {
+    console.log(tipoSeleccion);
+    if (tipoSeleccion != 1) {
+      let selectedIndexs = [];
+      for (let i = 0; i < tipoSeleccion; i++) {
+        let index = Math.floor(Math.random() * this.ticketAnimales.length);
+        while (selectedIndexs.indexOf(index) != -1) {
+          index = Math.floor(Math.random() * this.ticketAnimales.length);
+        }
+        let ticket = this.ticketAnimales[index];
+        await this.pushToSeleccionado(ticket);
+        selectedIndexs.push(index);
+      }
     }
   }
   sorteoSeleccionado: sorteo;
@@ -477,6 +493,8 @@ export class PozoMillonarioComponent implements OnInit {
   }
   async deletePozoTicket(data) {
     try {
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
       let identificador = data.ticket.identificador;
       let fraccion = "";
       console.log(data);

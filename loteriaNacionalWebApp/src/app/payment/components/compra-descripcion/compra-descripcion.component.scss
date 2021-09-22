@@ -3,7 +3,10 @@ $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
-$color-loteria: #7c91a8;
+$color-header: #7c91a8;
+$color-loteria: #2f72b9;
+$color-lotto: #b51f20;
+$color-pozo: #04b865;
 
 .titleBox {
   width: 80%;
@@ -22,91 +25,150 @@ $color-loteria: #7c91a8;
     font-family: $fuente-parrafo;
   }
 }
-
-.containerInfoBox {
-  .titleLoteryBox {
-    display: flex;
-    background-color: #f2f2f2;
-
-    h3 {
-      margin-left: 20px;
-      color: #000;
-      font-family: $fuente-subtitulo;
-      font-size: 16px;
-    }
-  }
-
-  .fondoBox {
-    justify-content: space-between;
-    background-color: $color-loteria;
-    padding-left: 20px;
-    padding-right: 10px;
-  }
-
-  .dateClientBox {
-    width: 100%;
-
-    .infoClientBox {
+.containerDetails {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  .containerInfoBox {
+    .titleLoteriaBox {
       display: flex;
+      background-color: $color-loteria;
+
+      padding-left: 10px;
+      padding-right: 10px;
+      h3 {
+        color: white;
+        font-family: $fuente-subtitulo;
+        font-size: 16px;
+      }
+    }
+    .titleLottoBox {
+      display: flex;
+      background-color: $color-lotto;
+
+      padding-left: 10px;
+      padding-right: 10px;
+      h3 {
+        color: white;
+        font-family: $fuente-subtitulo;
+        font-size: 16px;
+      }
+    }
+    .titlePozoBox {
+      display: flex;
+      background-color: $color-pozo;
+
+      padding-left: 10px;
+      padding-right: 10px;
+      h3 {
+        color: white;
+        font-family: $fuente-subtitulo;
+        font-size: 16px;
+      }
+    }
+
+    .titleLoteryBox {
+      display: flex;
+      background-color: $color-pozo;
+  
+      h3 {
+        color: white;
+        font-family: $fuente-parrafo;
+        font-size: 16px;
+        font-weight: normal;
+        span{
+        font-family: $fuente-subtitulo;
+        }
+      }
+    }
+    .fondoBox {
       justify-content: space-between;
-
-      p:nth-child(1) {
-        margin-left: 20px;
-      }
+      background-color: $color-header;
+      padding-left: 10px;
+      padding-right: 10px;
     }
-  }
 
-  .dateLoteryBox {
-    display: grid;
-    grid-template-columns: 30% 1fr;
-    column-gap: 3rem;
+    .dateClientBox {
+      width: 100%;
 
-    .infoSorteoBox {
-      margin-left: 20px;
+      .infoClientBox {
+        display: flex;
+        justify-content: space-between;
 
-      p {
-        font-weight: 500;
-        font-size: 15px;
+        p:nth-child(1) {
+          margin-left: 20px;
+        }
       }
     }
 
-    .infoTicketBox {
+    .dateLoteryBox {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      font-family: $fuente-parrafo;
-      font-size: 15px;
+      grid-template-columns: 30% 1fr;
+      column-gap: 3rem;
+      padding: 10px;
+      .infoSorteoBox {
+        margin-left: 20px;
 
-      .dateTicketBox {
-        font-weight: 600;
+        p {
+          font-weight: 500;
+          font-size: 15px;
+        }
+      }
+
+      .infoTicketBox {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        font-family: $fuente-parrafo;
         font-size: 15px;
-      }
 
-      .numberBox {
-        text-align: center;
-      }
+        .dateTicketBox {
+          font-weight: 600;
+          font-size: 15px;
+        }
 
-      .montoBox {
-        text-align: right;
-        font-weight: 600;
+        .numberBox {
+          text-align: center;
+        }
+
+        .montoBox {
+          text-align: right;
+          font-weight: 600;
+        }
       }
     }
+
+    .loteria {
+      border-width: 0 0 1px 0;
+      border-style: solid;
+      border-color: $color-loteria;
+    }
+    .lotto {
+      border-width: 0 0 1px 0;
+      border-style: solid;
+      border-color: $color-lotto;
+    }
+    .pozo {
+      border-width: 0 0 1px 0;
+      border-style: solid;
+      border-color: $color-pozo;
+    }
   }
-}
 
-.totalBox {
-  width: 100%;
-  margin: auto;
-  margin-bottom: 70px;
+  .totalBox {
+    width: 100%;
+    margin: auto;
+    padding: 10px;
 
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 
-  p {
-    font-family: $fuente-parrafo;
-    color: #000;
+    p {
+      font-family: $fuente-parrafo;
+      color: #000;
 
-    span {
-      color: red;
+      span {
+        color: black;
+        font-weight: bold;
+      }
     }
   }
 }

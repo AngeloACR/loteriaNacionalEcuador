@@ -59,8 +59,8 @@ export class InfoLoteriaComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
     console.log(this.seleccionado);
     this.fecha = (this.seleccionado as sorteo).fecha;
-    this.premio = (this.seleccionado as sorteo).valorPremioPrincipal;
-    this.precio = (this.seleccionado as sorteo).precio;
+    this.premio = parseFloat((this.seleccionado as sorteo).valorPremioPrincipal).toFixed(2);
+    this.precio = parseFloat((this.seleccionado as sorteo).precio).toFixed(2);
     this.emitir.emit(this.seleccionado);
     this.changeDetectorRef.markForCheck();
   }

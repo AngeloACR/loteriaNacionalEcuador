@@ -36,6 +36,8 @@ import { StylePaginatorDirective } from "./style-paginator.directive";
 
 import { FormsModule } from "@angular/forms";
 import { getSpanishPaginatorIntl } from "./paginacion-es";
+import { ResultadoInstantaneaComponent } from './components/resultado-instantanea/resultado-instantanea.component';
+import { ResultadosInstantaneasComponent } from './components/resultados-instantaneas/resultados-instantaneas.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { getSpanishPaginatorIntl } from "./paginacion-es";
     SeleccionTipoComponent,
     InfoLoteriaComponent,
     PaginatePipe,
-    StylePaginatorDirective
+    StylePaginatorDirective,
+    ResultadoInstantaneaComponent,
+    ResultadosInstantaneasComponent
   ],
   entryComponents: [
     LotteryTypeComponent,

@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { SharedModule } from "../shared/shared.module";
 
 import { PaymentRoutingModule } from "./payment-routing.module";
 import { PaymentComponent } from "./payment.component";
@@ -11,7 +12,7 @@ import { SaldoInsuficienteComponent } from "./components/saldo-insuficiente/sald
 import { CompraFinalizadaComponent } from "./components/compra-finalizada/compra-finalizada.component";
 import { CompraDetalleComponent } from "./containers/compra-detalle/compra-detalle.component";
 import { CompraCanceladaComponent } from "./components/compra-cancelada/compra-cancelada.component";
-import { CompraDescripcionComponent } from './components/compra-descripcion/compra-descripcion.component';
+import { CompraDescripcionComponent } from "./components/compra-descripcion/compra-descripcion.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { CompraDescripcionComponent } from './components/compra-descripcion/comp
     CompraFinalizadaComponent,
     CompraDetalleComponent,
     CompraCanceladaComponent,
-    CompraDescripcionComponent
+    CompraDescripcionComponent,
   ],
   entryComponents: [
     ShoppingCartComponent,
@@ -32,14 +33,14 @@ import { CompraDescripcionComponent } from './components/compra-descripcion/comp
     TotalsComponent,
     ConfirmacionDeCompraComponent,
     SaldoInsuficienteComponent,
-    CompraFinalizadaComponent
+    CompraFinalizadaComponent,
   ],
-  imports: [CommonModule, PaymentRoutingModule],
+  imports: [CommonModule, SharedModule, PaymentRoutingModule],
   exports: [
     ConfirmacionDeCompraComponent,
     CompraFinalizadaComponent,
     SaldoInsuficienteComponent,
-    CompraCanceladaComponent
-  ]
+    CompraCanceladaComponent,
+  ],
 })
 export class PaymentModule {}

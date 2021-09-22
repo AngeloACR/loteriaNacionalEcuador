@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {LotteryService} from '../../../lottery/services/lottery.service'
 
 @Component({
   selector: 'app-compra-descripcion',
@@ -8,10 +9,16 @@ import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 export class CompraDescripcionComponent implements OnInit {
   @Input() compra: any;
   @Input() user: any;
+  @Input() ticketId: any;
 
-  constructor() { }
+  constructor(private lotteryService: LotteryService) { }
 
   ngOnInit() {
+  }
+
+  nombreMascota(mascota){
+    let mascotaData = this.lotteryService.obtenerCaracteristicasDeMascota(mascota);
+    return mascotaData.nombre;
   }
 
 }

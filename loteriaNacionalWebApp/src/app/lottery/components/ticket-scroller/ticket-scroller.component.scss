@@ -34,23 +34,19 @@ $color-pozo: #04b865;
     overflow-y: scroll;
     min-height: 20px;
     max-height: 40vh;
+    padding: 0 10px;
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
 
     &::-webkit-scrollbar:vertical {
-      width: 10px;
+      width: 8px;
     }
 
-    /* &::-webkit-scrollbar-button:increment,
-      &::-webkit-scrollbar-button {
-        display: none;
-      } */
-
     &::-webkit-scrollbar-thumb {
-      background-color: #fff;
+      background-color: grey;
       border-radius: 20px;
-      border: 2px solid #fff;
+      border: 2px solid grey;
     }
 
     &::-webkit-scrollbar-track {
@@ -98,8 +94,7 @@ $color-pozo: #04b865;
     width: 90%;
   }
   .totalsBox {
-    height: 10vh;
-
+    padding: 10px;
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -110,7 +105,7 @@ $color-pozo: #04b865;
   .boton_comprar {
     width: 100%;
     margin: auto;
-    height: 20vh;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;

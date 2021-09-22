@@ -14,11 +14,11 @@
   <div class="contendor_seleccion">
     <div class="contenedor_select">
       <h3>¿Como quieres comprar?</h3>
-      <select class="select_option" name="" id="">
-        <option class="option" value="">Seleccion individual</option>
-        <option class="option" value="">5 Boletos al azar</option>
-        <option class="option" value="">30 Boletos al azar</option>
-        <option class="option" value="">50 Boletos al azar</option>
+      <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
+        <option class="option" value="1">Seleccion individual</option>
+        <option class="option" value="5">5 Boletos al azar</option>
+        <option class="option" value="30">30 Boletos al azar</option>
+        <option class="option" value="50">50 Boletos al azar</option>
       </select>
     </div>
     <div class="numeros_suerte">

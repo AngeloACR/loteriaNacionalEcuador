@@ -68,11 +68,30 @@ export class LottoComponent implements OnInit {
         this.showNumeros = false;
       }
       this.isLoading = false;
+      await this.seleccionarVarios(this.tipoSeleccion);
     } catch (e) {
       this.isLoading = false;
-      alert(e);
+      alert(JSON.stringify(e));
     }
   }
+  tipoSeleccion: number = 1;
+
+  async seleccionarVarios(tipoSeleccion) {
+    console.log(tipoSeleccion);
+    if (tipoSeleccion != 1) {
+      let selectedIndexs = [];
+      for (let i = 0; i < tipoSeleccion; i++) {
+        let index = Math.floor(Math.random() * this.ticketsLotto.length);
+        while (selectedIndexs.indexOf(index) != -1) {
+          index = Math.floor(Math.random() * this.ticketsLotto.length);
+        }
+        let ticket = this.ticketsLotto[index];
+        await this.pushToSeleccionado(ticket);
+        selectedIndexs.push(index);
+      }
+    }
+  }
+
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo;
@@ -348,6 +367,8 @@ export class LottoComponent implements OnInit {
   }
   async deleteLottoTicket(data) {
     try {
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
       let identificador = data.ticket.identificador;
       let fraccion = "";
       console.log(data);
