@@ -119,7 +119,7 @@ module.exports.consultarSorteosDisponibles = async (
               };
               return sorteoAux;
             });
-            
+
             resolve(response);
           } else {
             console.log(errorCode);
@@ -610,12 +610,26 @@ module.exports.venderBoletos = async (
             let aux = data.mt.o[0].xmlVentaOutput[0]; //.ReturnValue[0].VTA[0].SUE[0].COMP;
             let xmlVentaOutput = await parser.parseStringPromise(aux);
             let ticketId = xmlVentaOutput.VTA.$.VId;
-            let instantaneas =
+            console.log(xmlVentaOutput.VTA);
+            let instantaneas = [];
+            let instantaneasAux =
               xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR
-                ? xmlVentaOutput.VTA.INST[0].SOR[0].R.map((premio) => {
-                    return premio.$;
-                  })
+                ? xmlVentaOutput.VTA.INST[0].SOR
                 : "";
+            if (instantaneasAux != "") {
+              instantaneasAux.forEach((sorteoAux) => {
+                let sorteo = sorteoAux.$;
+
+                let premios = sorteoAux.R.map((premio) => {
+                  return premio.$;
+                });
+                let data = {
+                  sorteo,
+                  premios,
+                };
+                instantaneas.push(data);
+              });
+            }
             let response = {
               instantaneas,
               ticketId,

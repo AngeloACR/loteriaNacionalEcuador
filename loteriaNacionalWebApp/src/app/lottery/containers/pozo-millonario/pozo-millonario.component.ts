@@ -272,7 +272,7 @@ export class PozoMillonarioComponent implements OnInit {
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
-  detalleCompra: any
+  detalleCompra: any;
   comprar() {
     this.dismissCompras();
 
@@ -292,7 +292,7 @@ export class PozoMillonarioComponent implements OnInit {
     for (let id in lottoAux) {
       let aux = {};
       aux["combinacion1"] = lottoAux[id].ticket.combinacion1;
-      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;                                                 
+      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;
       aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
       aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;
@@ -318,8 +318,8 @@ export class PozoMillonarioComponent implements OnInit {
       loteria,
       pozo,
       lotto,
-      amount
-    }
+      amount,
+    };
 
     this.confirmacionDeCompra = true;
   }
@@ -344,6 +344,7 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = false;
       if (response.status) {
         this.dismissCompras();
+        this.lotteryService.borrarCarrito();
         this.compraFinalizada = true;
       } else {
         this.cancelarCompra();
@@ -418,7 +419,6 @@ export class PozoMillonarioComponent implements OnInit {
       let aux = {
         ticket: this.ticketsLoteria[identificador].ticket,
         sorteo: data.sorteo,
-
       };
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
@@ -453,7 +453,6 @@ export class PozoMillonarioComponent implements OnInit {
       let aux = {
         ticket: this.ticketsLotto[identificador].ticket,
         sorteo: data.sorteo,
-
       };
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(

@@ -544,7 +544,7 @@ const ventasController = {
       let lotto = req.body.lotto ? req.body.lotto : [];
       let pozo = req.body.pozo ? req.body.pozo : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
-      console.log(req.body)
+      console.log(req.body);
       let finalResponse = await Ventas.eliminarReservas(
         loteria,
         lotto,
@@ -651,8 +651,11 @@ const ventasController = {
       console.log(loteriaVentaResponse);
       let instantaneas = loteriaVentaResponse.instantaneas;
       let prizeDetails = [];
+      let instantaneaStatus = false;
+      let instantaneaData = {};
       if (instantaneas != "" && instantaneas.length != 0) {
-        /*
+      instantaneaStatus = true;
+      /*
         prizeDetails: [
             {
               combination: '18771',
@@ -668,28 +671,31 @@ const ventasController = {
             }
           ],
           */
-         instantaneas.forEach(instantanea => {
-           
-           let prizeDetail = {
-             lotteryType: 1,
-             lotteryName: "Loteria Nacional",
-             drawNumber: "",
-             drawDate: "",
-             combinationC1: instantanea.Num,
-             fractions: [instantanea.Fra],
-             prize: instantanea.Val,
-             prizeWithDiscount: instantanea.ConDesc,
-             prizeDescription: instantanea.Prem,
-           }
-         });
-          let total = instantaneas.reduce(function (sum, current) {
-          return sum + parseFloat(current.ConDesc);
-        }, 0);
+        let total = 0;
+        let prizeDetails = [];
+        instantaneas.forEach((instantanea) => {
+          instantanea.premios.forEach((premio) => {
+            let prizeDetail = {
+              lotteryType: instantanea.sorteo.JId,
+              lotteryName: instantanea.sorteo.JNomb,
+              drawNumber: instantanea.sorteo.Sort,
+              drawDate: instantanea.sorteo.SortNomb,
+              combinationC1: premio.Num,
+              fractions: [premio.Fra],
+              prize: parseFloat(premio.Val).toFixed(2),
+              prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
+              prizeDescription: premio.Prem,
+            };
+            prizeDetails.push(prizeDetail);
+            total += parseFloat(premio.ConDesc)
+          });
+        });
         let exaInstantaneaData = {
           token,
-          amount: total,
+          amount: parseFloat(total).toFixed(2),
         };
         //let exaInstantaneaResponse = await ventasController.addBalance(exaInstantaneaData);
+        instantaneaData = prizeDetails;
       }
       let exaVentaId = Date.now();
       let exaVentaData = {
@@ -698,6 +704,7 @@ const ventasController = {
         reserveId: exaReservaId,
         ticketId: loteriaVentaResponse.ticketId,
         amount: total,
+        prizeDetails
       };
       let exaVentaResponse = await ventasController.sellLottery(exaVentaData);
       // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
@@ -713,8 +720,13 @@ const ventasController = {
         exaVentaId,
       };
       let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
+      let instantaneaResponse = {
+        status: instantaneaStatus,
+        data: instantaneaData
+      }
       let finalResponse = {
         data: apiVentaResponse,
+        instantanea: instantaneaResponse,
         status: true,
       };
 
@@ -775,7 +787,7 @@ const ventasController = {
     for (id in lottoAux) {
       let aux = {};
       aux["combinacion1"] = lottoAux[id].ticket.combinacion1;
-      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;                                                 
+      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;
       aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
       aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;

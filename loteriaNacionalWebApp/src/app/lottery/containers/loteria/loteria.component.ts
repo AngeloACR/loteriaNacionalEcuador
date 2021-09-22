@@ -337,6 +337,7 @@ export class LoteriaComponent implements OnInit {
         this.isLoading = false;
         if (response.status) {
           this.dismissCompras();
+          this.lotteryService.borrarCarrito();
           this.compraFinalizada = true;
         } else {
           this.cancelarCompra();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input} from "@angular/core";
 
 @Component({
   selector: "app-navbar",
@@ -7,12 +7,11 @@ import { Component, OnInit } from "@angular/core";
 })
 export class NavbarComponent implements OnInit {
   ganadoresLink: String = "https://www.loteria.com.ec/ganadores";
-  token: string;
+  @Input() token: string;
   comprasLink: string;
   constructor() {}
 
   ngOnInit() {
-    this.token = localStorage.getItem("exaToken");
     if (!this.token) this.token = "661c0ce5ccabbeb1136a";
     this.comprasLink = `/compra_tus_juegos?token=${this.token}`;
   }
