@@ -38,6 +38,19 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
+  }
+  isError: boolean = false;
+  errorMessage: string;
+  openError(msg) {
+    this.errorMessage = msg;
+    this.isError = true;
+  }
+
+  closeError() {
+    this.isError = false;
   }
 }

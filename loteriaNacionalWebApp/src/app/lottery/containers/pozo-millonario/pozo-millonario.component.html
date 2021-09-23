@@ -59,26 +59,25 @@
             (propagar)="procesaPropagar($event)">
           </app-number-selection>  -->
 
-          <h3>Selecciona tus mascotas de la suerte</h3>
-          <div class="options">
-            <div
-              class="option"
-              *ngFor="let animal of seleccionAnimales; let i = index"
-            >
-              <input
-                (click)="agregar(animal, i)"
-                type="checkbox"
-                [checked]="animal.status"
-                name="nombre"
-                [value]="animal"
-                id="nombre-{{ animal.nombre }}"
-              />
-              <label for="nombre-{{ animal.nombre }}">
-                <img [src]="animal.ruta" [alt]="animal.nombre" />
-              </label>
-            </div>
+        <h3>Selecciona tus mascotas de la suerte</h3>
+        <div class="options">
+          <div
+            class="option"
+            *ngFor="let animal of seleccionAnimales; let i = index"
+          >
+            <input
+              (click)="agregar(animal, i)"
+              type="checkbox"
+              [checked]="animal.status"
+              name="nombre"
+              [value]="animal"
+              id="nombre-{{ animal.nombre }}"
+            />
+            <label for="nombre-{{ animal.nombre }}">
+              <img [src]="animal.ruta" [alt]="animal.nombre" />
+            </label>
           </div>
-        
+        </div>
       </div>
     </div>
 
@@ -120,9 +119,7 @@
         <hr size="2px" color="gray" />
       </table>
 
-      <div
-        class="contenedor_botones"
-      >
+      <div class="contenedor_botones">
         <!-- showFirstLastButtons -->
         <mat-paginator
           style-paginator
@@ -163,6 +160,12 @@
   [message]="loadingMessage"
   *ngIf="isLoading"
 ></app-loader>
+
+<app-error
+  [msg]="errorMessage"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>
 <div
   class="blackBox"
   (click)="dismissCompras()"
@@ -174,40 +177,29 @@
     compraCancelada
   "
 ></div>
-<div
-  *ngIf="
-    confirmacionDeCompra ||
-    compraFinalizada ||
-    saldoInsuficiente ||
-    compraCancelada
-  "
-  class="paymentBox"
->
-  <app-confirmacion-de-compra
-    (compraConfirmada)="confirmarCompra()"
-    (compraCancelada)="cancelarCompra($event)"
-    (comprarDespues)="dismissCompras()"
-    [compra]="detalleCompra"
-    class="paymentItem"
-    *ngIf="confirmacionDeCompra"
-  ></app-confirmacion-de-compra>
-  <app-compra-finalizada
-    (volver)="finalizarCompra()"
-    [compra]="detalleCompra"
-    class="paymentItem"
-    *ngIf="compraFinalizada"
-  ></app-compra-finalizada>
-  <app-saldo-insuficiente
-    [message]="recargaDeSaldoMessage"
-    (volver)="dismissCompras()"
-    (recarga)="irARecarga()"
-    class="paymentItem"
-    *ngIf="saldoInsuficiente"
-  ></app-saldo-insuficiente>
-  <app-compra-cancelada
-    class="paymentItem"
-    [message]="cancelMessage"
-    *ngIf="compraCancelada"
-  ></app-compra-cancelada>
-</div>
-)
+<app-confirmacion-de-compra
+  (compraConfirmada)="confirmarCompra()"
+  (compraCancelada)="cancelarCompra($event)"
+  (comprarDespues)="dismissCompras()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  *ngIf="confirmacionDeCompra"
+></app-confirmacion-de-compra>
+<app-compra-finalizada
+  (volver)="finalizarCompra()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  *ngIf="compraFinalizada"
+></app-compra-finalizada>
+<app-saldo-insuficiente
+  [message]="recargaDeSaldoMessage"
+  (volver)="dismissCompras()"
+  (recarga)="irARecarga()"
+  class="paymentItem"
+  *ngIf="saldoInsuficiente"
+></app-saldo-insuficiente>
+<app-compra-cancelada
+  class="paymentItem"
+  [message]="cancelMessage"
+  *ngIf="compraCancelada"
+></app-compra-cancelada>

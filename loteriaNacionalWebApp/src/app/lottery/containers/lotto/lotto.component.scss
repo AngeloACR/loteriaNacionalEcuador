@@ -37,25 +37,6 @@ $color-lotto: #b51f20;
   }
 }
 
-.blackBox {
-  position: fixed;
-  z-index: 8000;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.paymentBox {
-  width: 70%;
-  height: 70%;
-  position: fixed;
-  z-index: 2000;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  overflow-y: scroll;
-}
-
 // Estilos componente selecicon Lotto
 
 .contenedor_loteria {

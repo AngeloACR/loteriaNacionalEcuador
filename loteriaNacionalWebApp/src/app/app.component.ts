@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
         if (data.includes("compra_tus_juegos?token")) {
           let url = data.split("?token=")[0];
           this.token = data.split("?token=")[1];
-          localStorage.setItem('exaToken', this.token)
           this.router.navigateByUrl(`${url}/${this.token}`);
         }
         if (data.includes("payment/detalle?ticketId")) {
@@ -45,6 +44,5 @@ export class AppComponent implements OnInit {
     });
   }
   async ngOnInit() {
-    this.token = localStorage.getItem('exaToken')
   }
 }

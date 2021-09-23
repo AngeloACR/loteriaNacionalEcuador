@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+
 
 @Component({
   selector: "app-compra-cancelada",
@@ -10,4 +11,9 @@ export class CompraCanceladaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  @Output() closeBox = new EventEmitter<string>();
+  close() {
+    this.closeBox.emit("Cerrando error");
+  }
 }

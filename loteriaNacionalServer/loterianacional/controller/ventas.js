@@ -5,63 +5,8 @@ const config = require("../../config/environment");
 
 const medioId = config.medioAplicatioId;
 const address = config.aplicativoAddressTest;
-const usuarioClientePsd = config.usuarioClienteTest;
-const claveClientePsd = config.passwordClienteTest;
-/* const address = config.aplicativoAddressProd;
-const usuarioClientePsd = config.usuarioAplicativoProd;
-const claveClientePsd = config.passwordAplicativoProd; */
+/* const address = config.aplicativoAddressProd; */
 
-module.exports.autenticarUsuario = async () => {
-  try {
-    const medioId = config.medioAplicatioId;
-    const address = config.aplicativoAddressTest;
-    const usuarioClientePsd = config.usuarioClienteTest;
-    const claveClientePsd = config.passwordClienteTest;
-    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-
-    let message = {
-      $xml: `
-        <PI_DatosXml>
-        <![CDATA[
-          <mt>
-              <c>
-            <aplicacion>17</aplicacion>
-            <usuario>${usuarioClientePsd}</usuario>
-            <clave>${claveClientePsd}</clave>
-            <maquina>192.168.1.13</maquina>
-            <codError>0</codError>
-            <msgError />
-            <medio>${medioId}</medio>
-            <operacion>1234568891</operacion>
-              </c>
-          </mt>
-          ]]>
-        </PI_DatosXml>`,
-    };
-    return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(
-        message,
-        async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(err);
-          let data = await parser.parseStringPromise(res.fnAutenticacionResult);
-          let errorCode = parseInt(data.mt.c[0].codError[0]);
-
-          if (!errorCode) {
-            let response = {
-              token: data.mt.c[0].token[0],
-            };
-            resolve(response);
-          } else {
-            reject(data.mt.c[0].msgError[0]);
-          }
-        }
-      );
-    });
-  } catch (e) {
-    console.log(e.toString());
-    throw e;
-  }
-};
 
 module.exports.consultarSorteosDisponibles = async (
   tipoLoteria,
@@ -100,7 +45,7 @@ module.exports.consultarSorteosDisponibles = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(err);
+          if (err) reject(new Error(err));
           let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
           );
@@ -122,15 +67,15 @@ module.exports.consultarSorteosDisponibles = async (
 
             resolve(response);
           } else {
-            console.log(errorCode);
-            reject(data.mt.c[0].msgError[0]);
+            console.log(data.mt.c[0].msgError[0]);
+            reject(new Error(data.mt.c[0].msgError[0]));
           }
         }
       );
     });
   } catch (e) {
-    console.log(e.toString());
-    throw e;
+    console.log(e.message);
+    throw new Error(e.message);
   }
 };
 
@@ -181,7 +126,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(err);
+          if (err) reject(new Error(err));
 
           let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
@@ -200,14 +145,14 @@ module.exports.obtenerCombinacionesDisponibles = async (
             });
             resolve(response);
           } else {
-            reject(data.mt.c[0].msgError[0]);
+            reject(new Error(data.mt.c[0].msgError[0]));
           }
         }
       );
     });
   } catch (e) {
     console.log(e.toString());
-    throw e;
+    throw new Error(e.message);
   }
 };
 
@@ -309,7 +254,7 @@ module.exports.reservarCombinaciones = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(err);
+          if (err) reject(new Error(err));
 
           let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
@@ -357,14 +302,15 @@ module.exports.reservarCombinaciones = async (
           } else {
             let errorMsg = data.mt.c[0].msgError[0];
             console.log(errorMsg);
-            reject(errorMsg);
+            reject(new Error(errorMsg));
           }
         }
       );
     });
   } catch (e) {
     console.log(e.toString());
-    throw e;
+    throw new Error(e.message);
+
   }
 };
 
@@ -464,7 +410,7 @@ module.exports.eliminarReservas = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(err);
+          if (err) reject(new Error(err));
 
           let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
@@ -474,14 +420,15 @@ module.exports.eliminarReservas = async (
             let response = data.mt.o[0].ReturnValue[0];
             resolve(response);
           } else {
-            reject(data.mt.c[0].msgError[0]);
+            reject(new Error(data.mt.c[0].msgError[0]));
           }
         }
       );
     });
   } catch (e) {
     console.log(e.toString());
-    throw e;
+    throw new Error(e.message);
+
   }
 };
 
@@ -600,7 +547,7 @@ module.exports.venderBoletos = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(err);
+          if (err) reject(new Error(err));
           let data = await parser.parseStringPromise(
             res.fnEjecutaTransaccionResult
           );
@@ -638,12 +585,13 @@ module.exports.venderBoletos = async (
             resolve(response);
           } else {
             console.log(data.mt.c[0].msgError[0]);
-            reject(data.mt.c[0].msgError[0]);
+            reject(new Error(data.mt.c[0].msgError[0]));
           }
         }
       );
     });
   } catch (e) {
-    throw e;
+    console.log(e.toString())
+    throw new Error(e.message);
   }
 };

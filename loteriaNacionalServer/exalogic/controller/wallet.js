@@ -1,213 +1,204 @@
-const Ventas = require('../../loterianacional/controller/ventas');
-const config = require('../../config/environment');
-const https = require('https')
+const Ventas = require("../../loterianacional/controller/ventas");
+const config = require("../../config/environment");
+const https = require("https");
 
-let exalogicHost = config.exalogicHostTest
+let exalogicHost = config.exalogicHostTest;
 //let exalogicHost = config.exalogicHostProd
-let exalogicEndpoint = config.exalogicEndpointTest
+let exalogicEndpoint = config.exalogicEndpointTest;
 
 const walletController = {
+  reserveLottery: async (data) => {
+    try {
+      return new Promise(async (resolve, reject) => {
+        data = JSON.stringify(data);
+        const options = {
+          hostname: exalogicHost,
+          port: 443,
+          path: exalogicEndpoint,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Length": data.length,
+          },
+        };
 
+        const req = https.request(options, (res) => {
+          console.log(`statusCode: ${res.statusCode}`);
 
-    reserveLottery: async (data) => {
-        try {
-            return new Promise(async (resolve, reject) => {
+          var body = "";
 
+          res.on("data", function (chunk) {
+            body = body + chunk;
+          });
 
-                data = JSON.stringify(data);
-                const options = {
-                    hostname: exalogicHost,
-                    port: 443,
-                    path: exalogicEndpoint,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Content-Length': data.length
-                    }
-                }
+          res.on("end", function () {
+            console.log("Body :" + body);
+            if (res.statusCode != 200) {
+              reject(
+                new Error("Ocurrio un error, por favor intente más tarde")
+              );
+            } else {
+              let response = body == "" ? "" : JSON.parse(body);
+              resolve(response);
+            }
+          });
+        });
 
-                const req = https.request(options, res => {
-                    console.log(`statusCode: ${res.statusCode}`)
+        req.on("error", (error) => {
+          console.error(error);
+          reject(new Error(error));
+        });
 
-                    var body = '';
+        req.write(data);
+        req.end();
+      });
+    } catch (e) {
+      throw e;
+    }
+  },
+  sellLottery: async (data) => {
+    try {
+      return new Promise(async (resolve, reject) => {
+        data = JSON.stringify(data);
+        const options = {
+          hostname: exalogicHost,
+          port: 443,
+          path: exalogicEndpoint,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Length": data.length,
+          },
+        };
 
-                    res.on('data', function (chunk) {
-                        body = body + chunk;
-                    });
+        const req = https.request(options, (res) => {
+          console.log(`statusCode: ${res.statusCode}`);
 
-                    res.on('end', function () {
-                        console.log("Body :" + body);
-                        if (res.statusCode != 200) {
-                            reject("error")
-                        } else {
-                            let response = body == '' ? '' : JSON.parse(body);
-                            resolve(response);
-                        }
+          var body = "";
 
-                    });
-                })
+          res.on("data", function (chunk) {
+            body = body + chunk;
+          });
 
-                req.on('error', error => {
-                    console.error(error)
-                })
+          res.on("end", function () {
+            console.log("Body :" + body);
+            if (res.statusCode != 200) {
+              reject(
+                new Error("Ocurrio un error, por favor intente más tarde")
+              );
+            } else {
+              let response = body == "" ? "" : JSON.parse(body);
+              resolve(response);
+            }
+          });
+        });
 
-                req.write(data)
-                req.end()
+        req.on("error", (error) => {
+          console.error(error);
+          reject(new Error(error));
+        });
 
-            });
+        req.write(data);
+        req.end();
+      });
+    } catch (e) {
+      throw e;
+    }
+  },
+  cancelLottery: async (data) => {
+    try {
+      return new Promise(async (resolve, reject) => {
+        data = JSON.stringify(data);
+        const options = {
+          hostname: exalogicHost,
+          port: 443,
+          path: exalogicEndpoint,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Length": data.length,
+          },
+        };
 
-        } catch (e) {
-            throw e
-        }
-    },
-    sellLottery: async (data) => {
-        try {
-            return new Promise(async (resolve, reject) => {
-                data = JSON.stringify(data);
-                const options = {
-                    hostname: exalogicHost,
-                    port: 443,
-                    path: exalogicEndpoint,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Content-Length': data.length
-                    }
-                }
+        const req = https.request(options, (res) => {
+          console.log(`statusCode: ${res.statusCode}`);
 
-                const req = https.request(options, res => {
-                    console.log(`statusCode: ${res.statusCode}`)
+          var body = "";
 
-                    var body = '';
+          res.on("data", function (chunk) {
+            body = body + chunk;
+          });
 
-                    res.on('data', function (chunk) {
-                        body = body + chunk;
-                    });
+          res.on("end", function () {
+            console.log("Body :" + body);
+            if (res.statusCode != 200) {
+              reject(
+                new Error("Ocurrio un error, por favor intente más tarde")
+              );
+            } else {
+              let response = body == "" ? "" : JSON.parse(body);
+              resolve(response);
+            }
+          });
+        });
+        req.on("error", (error) => {
+          console.error(error);
+          reject(new Error(error));
+        });
 
-                    res.on('end', function () {
-                        console.log("Body :" + body);
-                        if (res.statusCode != 200) {
-                            reject("error")
-                        } else {
-                            let response = body == '' ? '' : JSON.parse(body);
-                            resolve(response);
+        req.write(data);
+        req.end();
+      });
+    } catch (e) {
+      throw e;
+    }
+  },
+  getBalance: async (data) => {
+    try {
+      return new Promise(async (resolve, reject) => {
+        data = JSON.stringify(data);
+        const options = {
+          hostname: exalogicHost,
+          port: 443,
+          path: exalogicEndpoint,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Length": data.length,
+          },
+        };
 
-                        }
+        const req = https.request(options, (res) => {
+          console.log(`statusCode: ${res.statusCode}`);
 
-                    });
-                })
+          var body = "";
 
-                req.on('error', error => {
-                    console.error(error)
-                })
+          res.on("data", function (chunk) {
+            body = body + chunk;
+          });
 
-                req.write(data)
-                req.end()
+          res.on("end", function () {
+            console.log("Body :" + body);
+            if (res.statusCode != 200) {
+              reject(
+                new Error("Ocurrio un error, por favor intente más tarde")
+              );
+            } else {
+              let response = body == "" ? "" : JSON.parse(body);
+              resolve(response);
+            }
+          });
+        });
 
+        req.on("error", (error) => {
+          console.error(error);
+          reject(new Error(error));
+        });
 
-            });
+        req.write(data);
+        req.end();
 
-        } catch (e) {
-            throw e
-        }
-    },
-    cancelLottery: async (data) => {
-        try {
-            return new Promise(async (resolve, reject) => {
-
-
-                data = JSON.stringify(data);
-                const options = {
-                    hostname: exalogicHost,
-                    port: 443,
-                    path: exalogicEndpoint,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Content-Length': data.length
-                    }
-                }
-
-                const req = https.request(options, res => {
-                    console.log(`statusCode: ${res.statusCode}`)
-
-
-                    var body = '';
-
-                    res.on('data', function (chunk) {
-                        body = body + chunk;
-                    });
-
-                    res.on('end', function () {
-                        console.log("Body :" + body);
-                        if (res.statusCode != 200) {
-                            reject("error")
-                        } else {
-                            let response = body == '' ? '' : JSON.parse(body);
-                            resolve(response);
-
-                        }
-                    })
-
-                });
-                req.on('error', error => {
-                    console.error(error)
-                })
-
-                req.write(data)
-                req.end()
-            });
-
-
-        } catch (e) {
-            throw e
-        }
-    },
-    getBalance: async (data) => {
-        try {
-            return new Promise(async (resolve, reject) => {
-
-                data = JSON.stringify(data);
-                const options = {
-                    hostname: exalogicHost,
-                    port: 443,
-                    path: exalogicEndpoint,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Content-Length': data.length
-                    }
-                }
-
-                const req = https.request(options, res => {
-                    console.log(`statusCode: ${res.statusCode}`)
-
-                    var body = '';
-
-                    res.on('data', function (chunk) {
-                        body = body + chunk;
-                    });
-
-                    res.on('end', function () {
-                        console.log("Body :" + body);
-                        if (res.statusCode != 200) {
-                            reject("error")
-                        } else {
-                            let response = body == '' ? '' : JSON.parse(body);
-                            resolve(response);
-                        }
-
-                    });
-                })
-
-                req.on('error', error => {
-                    console.error(error)
-                })
-
-                req.write(data)
-                req.end()
-
-                /*                 let response = await Ventas.autenticarUsuario();
+        /*                 let response = await Ventas.autenticarUsuario();
                                 let lotteryToken = response.token;
                                 response = {
                                     "resultCode": "0",
@@ -217,12 +208,11 @@ const walletController = {
                                 }
                                 resolve(response);
                  */
-            });
-
-        } catch (e) {
-            throw e
-        }
-    },
-}
+      });
+    } catch (e) {
+      throw e;
+    }
+  },
+};
 
 module.exports = walletController;

@@ -89,68 +89,91 @@ export class LoteriaComponent implements OnInit {
       await this.seleccionarVarios(this.tipoSeleccion);
     } catch (e) {
       this.isLoading = false;
-      alert(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
 
   async seleccionarVarios(tipoSeleccion) {
-    console.log(tipoSeleccion);
-    if (tipoSeleccion != 1) {
-      for (let i = 0; i < tipoSeleccion; i++) {
-        let index = Math.floor(Math.random() * this.ticketsNacional.length);
-        let ticket = this.ticketsNacional[index];
-        let fraccionIndex = Math.floor(
-          Math.random() * ticket.fraccionesDisponibles.length
-        );
-        let fraccion = ticket.fraccionesDisponibles[fraccionIndex];
-        while (
-          this.ticketsNacional[index].seleccionados.indexOf(fraccion) != -1
-        ) {
-          fraccionIndex = Math.floor(
+    try {
+      console.log(tipoSeleccion);
+      if (tipoSeleccion != 1) {
+        for (let i = 0; i < tipoSeleccion; i++) {
+          let index = Math.floor(Math.random() * this.ticketsNacional.length);
+          let ticket = this.ticketsNacional[index];
+          let fraccionIndex = Math.floor(
             Math.random() * ticket.fraccionesDisponibles.length
           );
-          fraccion = ticket.fraccionesDisponibles[fraccionIndex];
+          let fraccion = ticket.fraccionesDisponibles[fraccionIndex];
+          while (
+            this.ticketsNacional[index].seleccionados.indexOf(fraccion) != -1
+          ) {
+            fraccionIndex = Math.floor(
+              Math.random() * ticket.fraccionesDisponibles.length
+            );
+            fraccion = ticket.fraccionesDisponibles[fraccionIndex];
+          }
+          this.ticketsNacional[index].seleccionados.push(fraccion);
+          await this.pushToSeleccionado(ticket, [fraccion]);
         }
-        this.ticketsNacional[index].seleccionados.push(fraccion);
-        await this.pushToSeleccionado(ticket, [fraccion]);
       }
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
 
-  fraccionSeleccionada(idTicket: number, idFraccion: string) {
-    if (this.allFractions[idTicket]) this.allFractions[idTicket] = false;
-    let index =
-      this.ticketsNacional[idTicket].seleccionados.indexOf(idFraccion);
-    if (index != -1) {
-      let fraccion = this.ticketsNacional[idTicket].seleccionados[index];
-      console.log(fraccion);
-      this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
-      console.log(this.ticketsNacional[idTicket].seleccionados.length);
-      this.removeSeleccionado(this.ticketsNacional[idTicket].identificador, [
-        fraccion,
-      ]);
-    } else {
-      this.ticketsNacional[idTicket].seleccionados.push(idFraccion);
-      this.pushToSeleccionado(this.ticketsNacional[idTicket], [idFraccion]);
+  async fraccionSeleccionada(idTicket: number, idFraccion: string) {
+    try {
+      if (this.allFractions[idTicket]) this.allFractions[idTicket] = false;
+      let index =
+        this.ticketsNacional[idTicket].seleccionados.indexOf(idFraccion);
+      if (index != -1) {
+        let fraccion = this.ticketsNacional[idTicket].seleccionados[index];
+        console.log(fraccion);
+        this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
+        console.log(this.ticketsNacional[idTicket].seleccionados.length);
+        await this.removeSeleccionado(this.ticketsNacional[idTicket].identificador, [
+          fraccion,
+        ]);
+      } else {
+        this.ticketsNacional[idTicket].seleccionados.push(idFraccion);
+        await this.pushToSeleccionado(this.ticketsNacional[idTicket], [idFraccion]);
+      }
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
 
-  seleccionarTodo(id: number) {
+  async seleccionarTodo(id: number) {
+    try{
     this.changeDetectorRef.detectChanges();
     this.allFractions[id] = !this.allFractions[id];
     let fracciones = this.ticketsNacional[id].fraccionesDisponibles;
     if (this.allFractions[id]) {
       this.ticketsNacional[id].seleccionados = fracciones;
-      this.pushToSeleccionado(this.ticketsNacional[id], fracciones);
+      await this.pushToSeleccionado(this.ticketsNacional[id], fracciones);
     } else {
       this.ticketsNacional[id].seleccionados = [];
-      this.removeSeleccionado(
+      await this.removeSeleccionado(
         this.ticketsNacional[id].identificador,
         fracciones
       );
     }
     this.changeDetectorRef.markForCheck();
+  } catch (e) {
+    this.isLoading = false;
+    console.log(e.message);
+    let errorMessage = e.message;
+    this.openError(errorMessage);
   }
+}
 
   async removeSeleccionado(identificador, fracciones) {
     try {
@@ -160,9 +183,10 @@ export class LoteriaComponent implements OnInit {
         ticket: this.ticketsSeleccionados[identificador].ticket,
         sorteo: this.ticketsSeleccionados[identificador].sorteo,
       };
-
+      
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
+        console.log("1")
         let response = await this.lotteryService.eliminarBoletosDeReserva(
           this.token,
           aux,
@@ -171,28 +195,23 @@ export class LoteriaComponent implements OnInit {
           reservaId
         );
       }
-      this.ticketsSeleccionados[identificador].seleccionados =
-        this.ticketsNacional[identificador].seleccionados.filter(
+        console.log("2")
+        let ticketId = this.ticketsNacional.findIndex(
+          (p) => p.identificador == identificador
+        );
+        this.ticketsSeleccionados[identificador].seleccionados =
+        this.ticketsNacional[ticketId].seleccionados.filter(
           (el) => !fracciones.includes(el)
         );
+        console.log("3")
 
-      /*       fracciones.forEach((fraccion) => {
-        let index =
-          this.ticketsSeleccionados[identificador].ticket.seleccionados.indexOf(
-            fraccion
-          );
-        console.log(index);
-        this.ticketsSeleccionados[identificador].ticket.seleccionados.splice(
-          index,
-          1
-        );
-      }); */
       if (
         this.ticketsSeleccionados[identificador].ticket.seleccionados.length ==
         0
       ) {
         delete this.ticketsSeleccionados[identificador];
       }
+      console.log("4")
 
       localStorage.setItem(
         "seleccionadosLoteria",
@@ -202,7 +221,9 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
 
@@ -256,7 +277,9 @@ export class LoteriaComponent implements OnInit {
       }
     } catch (e) {
       this.isLoading = false;
-      alert(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
 
@@ -377,8 +400,9 @@ export class LoteriaComponent implements OnInit {
       }
     } catch (e) {
       this.isLoading = false;
-      alert(JSON.stringify(e));
-      console.log(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   cancelarCompra() {
@@ -401,24 +425,32 @@ export class LoteriaComponent implements OnInit {
   showComponents: boolean = false;
   loadingMessage: string;
   async ngOnInit() {
-    this.loadingMessage = "Cargando los sorteos disponibles";
-    this.isLoading = true;
-    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
-      this.ticketsSeleccionados = JSON.parse(
-        localStorage.getItem("seleccionadosLoteria")
-      );
+    try {
+      this.loadingMessage = "Cargando los sorteos disponibles";
+      this.isLoading = true;
+      if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
+        this.ticketsSeleccionados = JSON.parse(
+          localStorage.getItem("seleccionadosLoteria")
+        );
+      }
+      if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
+        this.ticketsLotto = JSON.parse(
+          localStorage.getItem("seleccionadosLotto")
+        );
+      }
+      if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
+        this.ticketsPozo = JSON.parse(
+          localStorage.getItem("seleccionadosPozo")
+        );
+      }
+      this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
+      this.isLoading = false;
+      this.showComponents = true;
+    } catch (e) {
+      console.log(e.message);
+      this.isLoading = false;
+      this.openError(e.message);
     }
-    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
-      this.ticketsLotto = JSON.parse(
-        localStorage.getItem("seleccionadosLotto")
-      );
-    }
-    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
-      this.ticketsPozo = JSON.parse(localStorage.getItem("seleccionadosPozo"));
-    }
-    this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
-    this.isLoading = false;
-    this.showComponents = true;
   }
 
   async deleteLoteriaTicket(data) {
@@ -450,11 +482,17 @@ export class LoteriaComponent implements OnInit {
         JSON.stringify(this.ticketsSeleccionados)
       );
 
+      let deletedIndex = this.ticketsNacional.findIndex((x) => x.identificador === identificador);
+      if(deletedIndex != -1) {
+        this.allFractions[deletedIndex] = false;
+        this.ticketsNacional[deletedIndex].seleccionados = [];
+      }
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      console.log(e);
-      alert(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   async deleteLottoTicket(data) {
@@ -486,7 +524,9 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e);
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   async deletePozoTicket(data) {
@@ -518,8 +558,21 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e);
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   async deleteLoteriaFraccion(data) {}
+
+  isError: boolean = false;
+  errorMessage: string;
+  openError(msg) {
+    this.errorMessage = msg;
+    this.isError = true;
+  }
+
+  closeError() {
+    this.isError = false;
+  }
 }

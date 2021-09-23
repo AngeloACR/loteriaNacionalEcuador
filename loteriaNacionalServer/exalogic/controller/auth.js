@@ -37,7 +37,7 @@ const authController = {
                     res.on('end', async function () {
                         console.log("Body :" + body);
                         if (res.statusCode != 200) {
-                            reject("error")
+                            reject(new Error("Ocurrio un error, por favor intente más tarde"))
                         } else {
                             let response = body == '' ? '' : JSON.parse(body);
                             resolve(response);
@@ -47,7 +47,7 @@ const authController = {
 
                 req.on('error', error => {
                     console.error(error)
-                    reject(error);
+                    reject(new Error(error));
                 })
                 console.log(authData)
                 req.write(authData)

@@ -77,12 +77,22 @@ export class PozoMillonarioComponent implements OnInit {
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
 
-  seleccionarTicket(id: string) {
-    this.ticketAnimales[id].status = !this.ticketAnimales[id].status;
-    if (!this.ticketAnimales[id].status) {
-      this.removeSeleccionado(this.ticketAnimales[id].identificador, "");
-    } else {
-      this.pushToSeleccionado(this.ticketAnimales[id]);
+  async seleccionarTicket(id: string) {
+    try {
+      this.ticketAnimales[id].status = !this.ticketAnimales[id].status;
+      if (!this.ticketAnimales[id].status) {
+        await this.removeSeleccionado(
+          this.ticketAnimales[id].identificador,
+          ""
+        );
+      } else {
+        await this.pushToSeleccionado(this.ticketAnimales[id]);
+      }
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   ticketsSeleccionados: any = {};
@@ -113,7 +123,9 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e);
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
 
@@ -159,7 +171,9 @@ export class PozoMillonarioComponent implements OnInit {
       }
     } catch (e) {
       this.isLoading = false;
-      alert(e.toString());
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
 
@@ -233,24 +247,33 @@ export class PozoMillonarioComponent implements OnInit {
       await this.seleccionarVarios(this.tipoSeleccion);
     } catch (e) {
       this.isLoading = false;
-      alert(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   tipoSeleccion: number = 1;
 
   async seleccionarVarios(tipoSeleccion) {
-    console.log(tipoSeleccion);
-    if (tipoSeleccion != 1) {
-      let selectedIndexs = [];
-      for (let i = 0; i < tipoSeleccion; i++) {
-        let index = Math.floor(Math.random() * this.ticketAnimales.length);
-        while (selectedIndexs.indexOf(index) != -1) {
-          index = Math.floor(Math.random() * this.ticketAnimales.length);
+    try {
+      console.log(tipoSeleccion);
+      if (tipoSeleccion != 1) {
+        let selectedIndexs = [];
+        for (let i = 0; i < tipoSeleccion; i++) {
+          let index = Math.floor(Math.random() * this.ticketAnimales.length);
+          while (selectedIndexs.indexOf(index) != -1) {
+            index = Math.floor(Math.random() * this.ticketAnimales.length);
+          }
+          let ticket = this.ticketAnimales[index];
+          await this.pushToSeleccionado(ticket);
+          selectedIndexs.push(index);
         }
-        let ticket = this.ticketAnimales[index];
-        await this.pushToSeleccionado(ticket);
-        selectedIndexs.push(index);
       }
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   sorteoSeleccionado: sorteo;
@@ -347,28 +370,35 @@ export class PozoMillonarioComponent implements OnInit {
   }
 
   async confirmarCompra() {
-    this.isLoading = true;
-    this.loadingMessage = "Espere mientras procesamos su compra";
-    let hasBalance = await this.paymentService.hasBalance(0, this.token);
+    try {
+      this.isLoading = true;
+      this.loadingMessage = "Espere mientras procesamos su compra";
+      let hasBalance = await this.paymentService.hasBalance(0, this.token);
 
-    if (hasBalance) {
-      let reservaId = this.lotteryService.getReservaId();
-      let response = await this.paymentService.confirmarCompra(
-        this.token,
-        reservaId
-      );
-      this.isLoading = false;
-      if (response.status) {
-        this.dismissCompras();
-        this.lotteryService.borrarCarrito();
-        this.compraFinalizada = true;
+      if (hasBalance) {
+        let reservaId = this.lotteryService.getReservaId();
+        let response = await this.paymentService.confirmarCompra(
+          this.token,
+          reservaId
+        );
+        this.isLoading = false;
+        if (response.status) {
+          this.dismissCompras();
+          this.lotteryService.borrarCarrito();
+          this.compraFinalizada = true;
+        } else {
+          this.cancelarCompra();
+        }
       } else {
-        this.cancelarCompra();
+        this.isLoading = false;
+        let message = "Su saldo es insuficiente para realizar la compra";
+        this.recargarSaldo(message);
       }
-    } else {
+    } catch (e) {
       this.isLoading = false;
-      let message = "Su saldo es insuficiente para realizar la compra";
-      this.recargarSaldo(message);
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   cancelarCompra() {
@@ -386,44 +416,51 @@ export class PozoMillonarioComponent implements OnInit {
   ticketsLoteria: any = {};
   ticketsLotto: any = {};
   async ngOnInit() {
-    this.isLoading = true;
-    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
-      this.ticketsSeleccionados = JSON.parse(
-        localStorage.getItem("seleccionadosPozo")
+    try {
+      this.isLoading = true;
+      if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
+        this.ticketsSeleccionados = JSON.parse(
+          localStorage.getItem("seleccionadosPozo")
+        );
+      }
+      if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
+        this.ticketsLoteria = JSON.parse(
+          localStorage.getItem("seleccionadosLoteria")
+        );
+      }
+      if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
+        this.ticketsLotto = JSON.parse(
+          localStorage.getItem("seleccionadosLotto")
+        );
+      }
+      this.loadingMessage = "Cargando los sorteos disponibles";
+      this.seleccionAnimales = JSON.parse(
+        localStorage.getItem("animalesSeleccionados")
       );
-    }
-    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
-      this.ticketsLoteria = JSON.parse(
-        localStorage.getItem("seleccionadosLoteria")
-      );
-    }
-    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
-      this.ticketsLotto = JSON.parse(
-        localStorage.getItem("seleccionadosLotto")
-      );
-    }
-    this.loadingMessage = "Cargando los sorteos disponibles";
-    this.seleccionAnimales = JSON.parse(
-      localStorage.getItem("animalesSeleccionados")
-    );
-    this.animalesTabs = JSON.parse(localStorage.getItem("animalesTabs"));
+      this.animalesTabs = JSON.parse(localStorage.getItem("animalesTabs"));
 
-    //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
-    this.seleccionAnimales.forEach((element) => {
-      this.animalesTabs.forEach((elemento) => {
-        if (elemento.nombre === element.nombre) {
-          element.status = elemento.status;
-        }
+      //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
+      this.seleccionAnimales.forEach((element) => {
+        this.animalesTabs.forEach((elemento) => {
+          if (elemento.nombre === element.nombre) {
+            element.status = elemento.status;
+          }
+        });
       });
-    });
-    localStorage.setItem(
-      "animalesSeleccionados",
-      JSON.stringify(this.seleccionAnimales)
-    );
+      localStorage.setItem(
+        "animalesSeleccionados",
+        JSON.stringify(this.seleccionAnimales)
+      );
 
-    this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 5);
-    this.isLoading = false;
-    this.showComponents = true;
+      this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 5);
+      this.isLoading = false;
+      this.showComponents = true;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
   }
   async deleteLoteriaTicket(data) {
     try {
@@ -456,8 +493,9 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      console.log(e);
-      alert(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   async deleteLottoTicket(data) {
@@ -488,7 +526,9 @@ export class PozoMillonarioComponent implements OnInit {
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      alert(e);
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
   async deletePozoTicket(data) {
@@ -498,13 +538,28 @@ export class PozoMillonarioComponent implements OnInit {
       let identificador = data.ticket.identificador;
       let fraccion = "";
       console.log(data);
-      this.removeSeleccionado(identificador, fraccion);
+      await this.removeSeleccionado(identificador, fraccion);
+      let deletedIndex = this.ticketAnimales.findIndex(
+        (x) => x.identificador === identificador
+      );
+      if (deletedIndex != -1) this.ticketAnimales[deletedIndex].status = false;
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
-      console.log(e);
-      alert(JSON.stringify(e));
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
   }
-  async deleteLoteriaFraccion(data) {}
+
+  isError: boolean = false;
+  errorMessage: string;
+  openError(msg) {
+    this.errorMessage = msg;
+    this.isError = true;
+  }
+
+  closeError() {
+    this.isError = false;
+  }
 }

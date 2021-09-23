@@ -7,6 +7,6 @@ import { ErrorComponent } from './components/error/error.component';
   declarations: [LoaderComponent, ErrorComponent],
   entryComponents: [LoaderComponent],
   imports: [CommonModule],
-  exports: [LoaderComponent]
+  exports: [LoaderComponent, ErrorComponent]
 })
 export class SharedModule {}

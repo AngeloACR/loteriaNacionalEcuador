@@ -26,3 +26,8 @@
   [message]="loadingMessage"
   *ngIf="isLoading"
 ></app-loader>
+<app-error
+  [msg]="errorMessage"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>

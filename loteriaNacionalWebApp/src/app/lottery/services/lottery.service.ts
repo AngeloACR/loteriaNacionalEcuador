@@ -15,8 +15,8 @@ export class LotteryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
   //mySource = this.productionSource;
 
   sorteo: Array<sorteo>;
@@ -35,8 +35,9 @@ export class LotteryService {
   getAuthData() {
     let data = JSON.parse(localStorage.getItem("userData"));
     let lotteryToken = data.lotteryToken;
-    //let user = data.user_;
     let user = data.playerDocument;
+    if(data.user_ == 'italtronicprep') user = data.user_;
+    console.log(user);
     let response = {
       lotteryToken,
       user
@@ -74,7 +75,8 @@ export class LotteryService {
                 resolve(sorteosJugados);
               },
               (error: any) => {
-                reject(error);
+                console.log(error.error.message)
+                reject(new Error(error.error.message));
               }
             );
         });
@@ -102,7 +104,7 @@ export class LotteryService {
                 resolve(sorteosJugados);
               },
               (error: any) => {
-                reject(error);
+                reject(new Error(error.error.message));
               }
             );
         });
@@ -129,7 +131,7 @@ export class LotteryService {
                 resolve(sorteosJugados);
               },
               (error: any) => {
-                reject(error);
+                reject(new Error(error.error.message));
               }
             );
         });
@@ -180,7 +182,7 @@ export class LotteryService {
               resolve(combinacionesDisponibles);
             },
             (error: any) => {
-              reject(error);
+              reject(new Error(error.error.message));
             }
           );
         });
@@ -200,7 +202,7 @@ export class LotteryService {
               resolve(combinacionesDisponibles);
             },
             (error: any) => {
-              reject(error);
+              reject(new Error(error.error.message));
             }
           );
         });
@@ -220,7 +222,7 @@ export class LotteryService {
               resolve(combinacionesDisponibles);
             },
             (error: any) => {
-              reject(error);
+              reject(new Error(error.error.message));
             }
           );
         });
@@ -251,7 +253,7 @@ export class LotteryService {
           resolve(data);
         },
         (error: any) => {
-          reject(error);
+          reject(new Error(error.error.message));
         }
       );
     });
@@ -733,7 +735,7 @@ export class LotteryService {
           resolve(response);
         },
         (error: any) => {
-          reject(error);
+          reject(new Error(error.error.message));
         }
       );
     });
@@ -810,7 +812,7 @@ export class LotteryService {
           resolve(response);
         },
         (error: any) => {
-          reject(error);
+          reject(new Error(error.error.message));
         }
       );
     });
@@ -873,7 +875,7 @@ export class LotteryService {
         },
         (error: any) => {
           console.log(error)
-          reject(error);
+          reject(new Error(error.error.message));
         }
       );
     });

@@ -100,9 +100,7 @@
         <hr size="2px" color="gray" />
       </table>
 
-      <div
-        class="contenedor_botones"
-      >
+      <div class="contenedor_botones">
         <mat-paginator
           style-paginator
           [length]="ticketsLotto.length"
@@ -137,6 +135,12 @@
   [message]="loadingMessage"
   *ngIf="isLoading"
 ></app-loader>
+
+<app-error
+  [msg]="errorMessage"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>
 <div
   class="blackBox"
   *ngIf="
@@ -146,39 +150,30 @@
     compraCancelada
   "
 ></div>
-<div
-  *ngIf="
-    confirmacionDeCompra ||
-    compraFinalizada ||
-    saldoInsuficiente ||
-    compraCancelada
-  "
-  class="paymentBox"
->
-  <app-confirmacion-de-compra
-    (compraConfirmada)="confirmarCompra()"
-    (compraCancelada)="cancelarCompra($event)"
-    (comprarDespues)="dismissCompras()"
-    [compra]="detalleCompra"
-    class="paymentItem"
-    *ngIf="confirmacionDeCompra"
-  ></app-confirmacion-de-compra>
-  <app-compra-finalizada
-    (volver)="finalizarCompra()"
-    [compra]="detalleCompra"
-    class="paymentItem"
-    *ngIf="compraFinalizada"
-  ></app-compra-finalizada>
-  <app-saldo-insuficiente
-    [message]="recargaDeSaldoMessage"
-    (volver)="dismissCompras()"
-    (recarga)="irARecarga()"
-    class="paymentItem"
-    *ngIf="saldoInsuficiente"
-  ></app-saldo-insuficiente>
-  <app-compra-cancelada
-    class="paymentItem"
-    [message]="cancelMessage"
-    *ngIf="compraCancelada"
-  ></app-compra-cancelada>
-</div>
+
+<app-confirmacion-de-compra
+  (compraConfirmada)="confirmarCompra()"
+  (compraCancelada)="cancelarCompra($event)"
+  (comprarDespues)="dismissCompras()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  *ngIf="confirmacionDeCompra"
+></app-confirmacion-de-compra>
+<app-compra-finalizada
+  (volver)="finalizarCompra()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  *ngIf="compraFinalizada"
+></app-compra-finalizada>
+<app-saldo-insuficiente
+  [message]="recargaDeSaldoMessage"
+  (volver)="dismissCompras()"
+  (recarga)="irARecarga()"
+  class="paymentItem"
+  *ngIf="saldoInsuficiente"
+></app-saldo-insuficiente>
+<app-compra-cancelada
+  class="paymentItem"
+  [message]="cancelMessage"
+  *ngIf="compraCancelada"
+></app-compra-cancelada>

@@ -33,7 +33,11 @@ const ventasController = {
       if (response["password"]) delete response["password"];
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   getBalanceHttp: async (req, res) => {
@@ -53,7 +57,11 @@ const ventasController = {
       let response = await Wallet.getBalance(data);
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   sellLotteryHttp: async (req, res) => {
@@ -87,7 +95,11 @@ const ventasController = {
       let response = await Wallet.sellLottery(data);
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   cancelLotteryHttp: async (req, res) => {
@@ -118,7 +130,11 @@ const ventasController = {
       let response = await Wallet.cancelLottery(data);
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   reserveLotteryHttp: async (req, res) => {
@@ -162,7 +178,11 @@ const ventasController = {
       let response = await Wallet.cancelLottery(data);
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   authUser: async (data) => {
@@ -182,7 +202,7 @@ const ventasController = {
       if (response["password"]) delete response["password"];
       return response;
     } catch (e) {
-      throw e;
+      throw new Error(e.message);
     }
   },
   getBalance: async (data) => {
@@ -202,10 +222,9 @@ const ventasController = {
       let response = await Wallet.getBalance(exaData);
       return response;
     } catch (e) {
-      throw e;
+      throw new Error(e.message);
     }
   },
-
   sellLottery: async (data) => {
     try {
       /* {
@@ -236,7 +255,7 @@ const ventasController = {
       let response = await Wallet.sellLottery(exaData);
       return response;
     } catch (e) {
-      throw e;
+      throw new Error(e.message);
     }
   },
   cancelLottery: async (data) => {
@@ -265,7 +284,7 @@ const ventasController = {
       let response = await Wallet.cancelLottery(exaData);
       return response;
     } catch (e) {
-      throw e;
+      throw new Error(e.message);
     }
   },
   reserveLottery: async (data) => {
@@ -309,7 +328,7 @@ const ventasController = {
       let response = await Wallet.reserveLottery(exaData);
       return response;
     } catch (e) {
-      throw e;
+      throw new Error(e.message);
     }
   },
   searchLottoSorteosDisponibles: async (req, res) => {
@@ -330,10 +349,13 @@ const ventasController = {
       );
       res.status(200).json(finalResponse);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   searchLoteriaSorteosDisponibles: async (req, res) => {
     try {
       /*             let token = req.query.token;
@@ -351,13 +373,16 @@ const ventasController = {
         lotteryToken,
         user
       );
-
       res.status(200).json(finalResponse);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      let errorstack = e.stack;
+      res.status(400).json(response);
     }
   },
-
   searchPozoSorteosDisponibles: async (req, res) => {
     try {
       /*             let token = req.query.token;
@@ -377,10 +402,13 @@ const ventasController = {
 
       res.status(200).json(finalResponse);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   searchLottoCombinacionesDisponibles: async (req, res) => {
     try {
       /* let token = req.body.token;
@@ -418,10 +446,13 @@ const ventasController = {
 
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   searchLoteriaCombinacionesDisponibles: async (req, res) => {
     try {
       /* let token = req.body.token;
@@ -459,10 +490,13 @@ const ventasController = {
       };
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   searchPozoCombinacionesDisponibles: async (req, res) => {
     try {
       /* let token = req.body.token;
@@ -500,10 +534,13 @@ const ventasController = {
 
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   reservarBoletos: async (req, res) => {
     try {
       /* let token = req.body.token;
@@ -528,11 +565,13 @@ const ventasController = {
       //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
       res.status(200).json(response);
     } catch (e) {
-      console.log(e.toString());
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   eliminarBoletosDeReserva: async (req, res) => {
     try {
       /* let token = req.body.token;
@@ -556,7 +595,11 @@ const ventasController = {
 
       res.status(200).json(finalResponse);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   comprarBoletos: async (req, res) => {
@@ -654,8 +697,8 @@ const ventasController = {
       let instantaneaStatus = false;
       let instantaneaData = {};
       if (instantaneas != "" && instantaneas.length != 0) {
-      instantaneaStatus = true;
-      /*
+        instantaneaStatus = true;
+        /*
         prizeDetails: [
             {
               combination: '18771',
@@ -687,7 +730,7 @@ const ventasController = {
               prizeDescription: premio.Prem,
             };
             prizeDetails.push(prizeDetail);
-            total += parseFloat(premio.ConDesc)
+            total += parseFloat(premio.ConDesc);
           });
         });
         let exaInstantaneaData = {
@@ -704,7 +747,7 @@ const ventasController = {
         reserveId: exaReservaId,
         ticketId: loteriaVentaResponse.ticketId,
         amount: total,
-        prizeDetails
+        prizeDetails,
       };
       let exaVentaResponse = await ventasController.sellLottery(exaVentaData);
       // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
@@ -722,8 +765,8 @@ const ventasController = {
       let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
       let instantaneaResponse = {
         status: instantaneaStatus,
-        data: instantaneaData
-      }
+        data: instantaneaData,
+      };
       let finalResponse = {
         data: apiVentaResponse,
         instantanea: instantaneaResponse,
@@ -732,8 +775,11 @@ const ventasController = {
 
       res.status(200).json(finalResponse);
     } catch (e) {
-      console.log(e);
-      res.status(400).json(JSON.stringify(e));
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   buscarLottoBoleto: async (req, res) => {
@@ -744,10 +790,13 @@ const ventasController = {
 
       res.status(200).json(boletinAddress);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   buscarLoteriaBoleto: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -756,10 +805,13 @@ const ventasController = {
 
       res.status(200).json(boletinAddress);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
-
   buscarPozoBoleto: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -767,63 +819,71 @@ const ventasController = {
       let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.jpg`;
       res.status(200).json(boletinAddress);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
   crearReserva: async (apiReservaData) => {
-    let loteriaAux = apiReservaData.loteria;
-    let loteria = [];
-    for (id in loteriaAux) {
-      let aux = {};
-      aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
-      aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
-      aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
-      aux["fecha"] = loteriaAux[id].sorteo.fecha;
-      aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
-      loteria.push(aux);
+    try {
+      let loteriaAux = apiReservaData.loteria;
+      let loteria = [];
+      for (id in loteriaAux) {
+        let aux = {};
+        aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
+        aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
+        aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
+        aux["fecha"] = loteriaAux[id].sorteo.fecha;
+        aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
+        loteria.push(aux);
+      }
+      let lottoAux = apiReservaData.lotto;
+      let lotto = [];
+      for (id in lottoAux) {
+        let aux = {};
+        aux["combinacion1"] = lottoAux[id].ticket.combinacion1;
+        aux["combinacion2"] = lottoAux[id].ticket.combinacion2;
+        aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
+        aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
+        aux["sorteo"] = lottoAux[id].sorteo.sorteo;
+        aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
+        aux["fecha"] = lottoAux[id].sorteo.fecha;
+        lotto.push(aux);
+      }
+      let pozoAux = apiReservaData.pozo;
+      let pozo = [];
+      for (id in pozoAux) {
+        let aux = {};
+        aux["combinacion1"] = pozoAux[id].ticket.combinacion1;
+        aux["combinacion2"] = pozoAux[id].ticket.combinacion2;
+        aux["mascota"] = pozoAux[id].ticket.mascota;
+        aux["sorteo"] = pozoAux[id].sorteo.sorteo;
+        aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
+        aux["fecha"] = pozoAux[id].sorteo.fecha;
+        pozo.push(aux);
+      }
+      let total = parseFloat(apiReservaData.amount).toFixed(2);
+      let reservaId = apiReservaData.reservaId;
+      let ventaId = apiReservaData.ventaId;
+      let exaReservaId = apiReservaData.exaReservaId;
+      let exaVentaId = apiReservaData.exaVentaId;
+      let element = {
+        loteria,
+        exaReservaId,
+        pozo,
+        exaVentaId,
+        lotto,
+        total,
+        reservaId,
+        ventaId,
+      };
+      let response = await Reservas.addReserva(element);
+      return response;
+    } catch (e) {
+      throw new Error(e.message);
     }
-    let lottoAux = apiReservaData.lotto;
-    let lotto = [];
-    for (id in lottoAux) {
-      let aux = {};
-      aux["combinacion1"] = lottoAux[id].ticket.combinacion1;
-      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;
-      aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
-      aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
-      aux["sorteo"] = lottoAux[id].sorteo.sorteo;
-      aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
-      aux["fecha"] = lottoAux[id].sorteo.fecha;
-      lotto.push(aux);
-    }
-    let pozoAux = apiReservaData.pozo;
-    let pozo = [];
-    for (id in pozoAux) {
-      let aux = {};
-      aux["combinacion1"] = pozoAux[id].ticket.combinacion1;
-      aux["combinacion2"] = pozoAux[id].ticket.combinacion2;
-      aux["mascota"] = pozoAux[id].ticket.mascota;
-      aux["sorteo"] = pozoAux[id].sorteo.sorteo;
-      aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
-      aux["fecha"] = pozoAux[id].sorteo.fecha;
-      pozo.push(aux);
-    }
-    let total = parseFloat(apiReservaData.amount).toFixed(2);
-    let reservaId = apiReservaData.reservaId;
-    let ventaId = apiReservaData.ventaId;
-    let exaReservaId = apiReservaData.exaReservaId;
-    let exaVentaId = apiReservaData.exaVentaId;
-    let element = {
-      loteria,
-      exaReservaId,
-      pozo,
-      exaVentaId,
-      lotto,
-      total,
-      reservaId,
-      ventaId,
-    };
-    let response = await Reservas.addReserva(element);
-    return response;
   },
   crearVenta: async (data) => {
     return data;
@@ -834,7 +894,11 @@ const ventasController = {
       let response = await Reservas.getCompraByVentaId(ticketId);
       res.status(200).json(response);
     } catch (e) {
-      res.status(400).json(e.toString());
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
 };
