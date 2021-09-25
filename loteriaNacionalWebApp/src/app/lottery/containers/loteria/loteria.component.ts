@@ -10,6 +10,7 @@ import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 import { LotteryService } from "../../services/lottery.service";
 import { PaymentService } from "../../../payment/services/payment.service";
+import { ShoppingCartService } from "../../../payment/services/shopping-cart.service";
 @Component({
   selector: "app-loteria",
   templateUrl: "./loteria.component.html",
@@ -27,7 +28,7 @@ export class LoteriaComponent implements OnInit {
   allFractions: boolean[];
   mostrar: boolean = false;
   fondo: boolean = false;
-  tipoSeleccion: number = 1;
+  tipoSeleccion: number = 96;
   fracciones: number;
   showNumeros: boolean = false;
   page_size: number = 4;
@@ -39,6 +40,7 @@ export class LoteriaComponent implements OnInit {
   constructor(
     private lotteryService: LotteryService,
     private paymentService: PaymentService,
+    private cart: ShoppingCartService,
     private actRoute: ActivatedRoute,
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef
@@ -57,7 +59,6 @@ export class LoteriaComponent implements OnInit {
     try {
       this.loadingMessage = "Buscando combinaciones disponibles";
       this.isLoading = true;
-      //if (this.sorteoSeleccionado.nombre != "default") {
       this.showNumeros = false;
       let combinacion = this.combinacionDeLaSuerte.map((element) => {
         element = element.toString();
@@ -72,7 +73,8 @@ export class LoteriaComponent implements OnInit {
         1,
         this.sorteoSeleccionado.sorteo,
         combinacion.join(""),
-        ""
+        "",
+        this.tipoSeleccion
       );
       this.allFractions = [];
       this.ticketsNacional.forEach((ticket) => {
@@ -80,13 +82,7 @@ export class LoteriaComponent implements OnInit {
       });
       this.showNumeros = true;
 
-      /* 
-      } else {
-        alert("Por favor seleccione un sorteo");
-        this.showNumeros = false;
-      } */
       this.isLoading = false;
-      await this.seleccionarVarios(this.tipoSeleccion);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -136,12 +132,15 @@ export class LoteriaComponent implements OnInit {
         console.log(fraccion);
         this.ticketsNacional[idTicket].seleccionados.splice(index, 1);
         console.log(this.ticketsNacional[idTicket].seleccionados.length);
-        await this.removeSeleccionado(this.ticketsNacional[idTicket].identificador, [
-          fraccion,
-        ]);
+        await this.removeSeleccionado(
+          this.ticketsNacional[idTicket].identificador,
+          [fraccion]
+        );
       } else {
         this.ticketsNacional[idTicket].seleccionados.push(idFraccion);
-        await this.pushToSeleccionado(this.ticketsNacional[idTicket], [idFraccion]);
+        await this.pushToSeleccionado(this.ticketsNacional[idTicket], [
+          idFraccion,
+        ]);
       }
     } catch (e) {
       this.isLoading = false;
@@ -152,28 +151,28 @@ export class LoteriaComponent implements OnInit {
   }
 
   async seleccionarTodo(id: number) {
-    try{
-    this.changeDetectorRef.detectChanges();
-    this.allFractions[id] = !this.allFractions[id];
-    let fracciones = this.ticketsNacional[id].fraccionesDisponibles;
-    if (this.allFractions[id]) {
-      this.ticketsNacional[id].seleccionados = fracciones;
-      await this.pushToSeleccionado(this.ticketsNacional[id], fracciones);
-    } else {
-      this.ticketsNacional[id].seleccionados = [];
-      await this.removeSeleccionado(
-        this.ticketsNacional[id].identificador,
-        fracciones
-      );
+    try {
+      this.changeDetectorRef.detectChanges();
+      this.allFractions[id] = !this.allFractions[id];
+      let fracciones = this.ticketsNacional[id].fraccionesDisponibles;
+      if (this.allFractions[id]) {
+        this.ticketsNacional[id].seleccionados = fracciones;
+        await this.pushToSeleccionado(this.ticketsNacional[id], fracciones);
+      } else {
+        this.ticketsNacional[id].seleccionados = [];
+        await this.removeSeleccionado(
+          this.ticketsNacional[id].identificador,
+          fracciones
+        );
+      }
+      this.changeDetectorRef.markForCheck();
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
     }
-    this.changeDetectorRef.markForCheck();
-  } catch (e) {
-    this.isLoading = false;
-    console.log(e.message);
-    let errorMessage = e.message;
-    this.openError(errorMessage);
   }
-}
 
   async removeSeleccionado(identificador, fracciones) {
     try {
@@ -183,10 +182,10 @@ export class LoteriaComponent implements OnInit {
         ticket: this.ticketsSeleccionados[identificador].ticket,
         sorteo: this.ticketsSeleccionados[identificador].sorteo,
       };
-      
+
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
-        console.log("1")
+        console.log("1");
         let response = await this.lotteryService.eliminarBoletosDeReserva(
           this.token,
           aux,
@@ -195,15 +194,15 @@ export class LoteriaComponent implements OnInit {
           reservaId
         );
       }
-        console.log("2")
-        let ticketId = this.ticketsNacional.findIndex(
-          (p) => p.identificador == identificador
-        );
-        this.ticketsSeleccionados[identificador].seleccionados =
+      console.log("2");
+      let ticketId = this.ticketsNacional.findIndex(
+        (p) => p.identificador == identificador
+      );
+      this.ticketsSeleccionados[identificador].seleccionados =
         this.ticketsNacional[ticketId].seleccionados.filter(
           (el) => !fracciones.includes(el)
         );
-        console.log("3")
+      console.log("3");
 
       if (
         this.ticketsSeleccionados[identificador].ticket.seleccionados.length ==
@@ -211,7 +210,7 @@ export class LoteriaComponent implements OnInit {
       ) {
         delete this.ticketsSeleccionados[identificador];
       }
-      console.log("4")
+      console.log("4");
 
       localStorage.setItem(
         "seleccionadosLoteria",
@@ -428,21 +427,7 @@ export class LoteriaComponent implements OnInit {
     try {
       this.loadingMessage = "Cargando los sorteos disponibles";
       this.isLoading = true;
-      if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
-        this.ticketsSeleccionados = JSON.parse(
-          localStorage.getItem("seleccionadosLoteria")
-        );
-      }
-      if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
-        this.ticketsLotto = JSON.parse(
-          localStorage.getItem("seleccionadosLotto")
-        );
-      }
-      if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
-        this.ticketsPozo = JSON.parse(
-          localStorage.getItem("seleccionadosPozo")
-        );
-      }
+      this.getCarritoTickets();
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
       this.isLoading = false;
       this.showComponents = true;
@@ -482,8 +467,10 @@ export class LoteriaComponent implements OnInit {
         JSON.stringify(this.ticketsSeleccionados)
       );
 
-      let deletedIndex = this.ticketsNacional.findIndex((x) => x.identificador === identificador);
-      if(deletedIndex != -1) {
+      let deletedIndex = this.ticketsNacional.findIndex(
+        (x) => x.identificador === identificador
+      );
+      if (deletedIndex != -1) {
         this.allFractions[deletedIndex] = false;
         this.ticketsNacional[deletedIndex].seleccionados = [];
       }
@@ -564,6 +551,81 @@ export class LoteriaComponent implements OnInit {
     }
   }
   async deleteLoteriaFraccion(data) {}
+  async deleteAllTickets() {
+    try {
+      this.loadingMessage = "Removiendo boletos del carrito";
+      this.isLoading = true;
+
+      let boletosLoteria = Object.keys(this.ticketsSeleccionados).map((key) => {
+        return {
+          ticket: this.ticketsSeleccionados[key].ticket,
+          sorteo: this.ticketsSeleccionados[key].sorteo,
+        };
+      });
+      let boletosLotto = Object.keys(this.ticketsLotto).map((key) => {
+        return {
+          ticket: this.ticketsLotto[key].ticket,
+          sorteo: this.ticketsLotto[key].sorteo,
+        };
+      });
+      let boletosPozo = Object.keys(this.ticketsPozo).map((key) => {
+        return {
+          ticket: this.ticketsPozo[key].ticket,
+          sorteo: this.ticketsPozo[key].sorteo,
+        };
+      });
+      let reservaId = this.lotteryService.getReservaId();
+      await this.lotteryService.eliminarTodosLosBoletosDeReserva(
+        this.token,
+        boletosLoteria,
+        boletosLotto,
+        boletosPozo,
+        reservaId
+      );
+
+      Object.keys(this.ticketsSeleccionados).forEach((key) => {
+        if (this.ticketsNacional && this.ticketsNacional.length != 0) {
+          let deletedIndex = this.ticketsNacional.findIndex(
+            (x) => x.identificador == key
+          );
+          if (deletedIndex != -1) {
+            this.allFractions[deletedIndex] = false;
+            this.ticketsNacional[deletedIndex].seleccionados = [];
+          }
+        }
+      });
+      this.cart.borrarCarrito();
+      this.getCarritoTickets();
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
+  }
+
+  getCarritoTickets() {
+    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
+      this.ticketsSeleccionados = JSON.parse(
+        localStorage.getItem("seleccionadosLoteria")
+      );
+    } else {
+      this.ticketsSeleccionados = {};
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
+      this.ticketsLotto = JSON.parse(
+        localStorage.getItem("seleccionadosLotto")
+      );
+    } else {
+      this.ticketsLotto = {};
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
+      this.ticketsPozo = JSON.parse(localStorage.getItem("seleccionadosPozo"));
+    } else {
+      this.ticketsPozo = {};
+    }
+  }
 
   isError: boolean = false;
   errorMessage: string;

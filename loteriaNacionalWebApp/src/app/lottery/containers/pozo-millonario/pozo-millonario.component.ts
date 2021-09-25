@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { LotteryService } from "../../services/lottery.service";
 import { PaymentService } from "../../../payment/services/payment.service";
+import { ShoppingCartService } from "../../../payment/services/shopping-cart.service";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import {
   animales,
@@ -36,6 +37,7 @@ export class PozoMillonarioComponent implements OnInit {
     private lotteryService: LotteryService,
     private actRoute: ActivatedRoute,
     private paymentService: PaymentService,
+    private cart: ShoppingCartService,
 
     private router: Router
   ) {
@@ -193,58 +195,50 @@ export class PozoMillonarioComponent implements OnInit {
     try {
       this.loadingMessage = "Buscando combinaciones disponibles";
       this.isLoading = true;
-      if (this.sorteoSeleccionado.nombre != "default") {
-        /*this.ticketsNacional = JSON.parse(
-        localStorage.getItem("ticketsNacional")
-        );*/
-        this.showNumeros = false;
-        let isHigher = false;
-        this.combinacionDeLaSuerte.forEach((number) => {
-          let aux = parseInt(number);
-          if (aux > 25) {
-            isHigher = true;
-          }
-        });
-        let combinacion = this.combinacionDeLaSuerte.map((number) => {
-          let numero = number;
-          if (numero.length < 2) {
-            numero = `0${numero}`;
-          }
-
-          if (numero == "0" || numero == "00") {
-            return "";
-          }
-          return numero;
-        });
-        let combinacionFigura = this.animalesTabs.map((animal) => {
-          return animal.identificador;
-        });
-        combinacion.sort(this.ordenaCombinacion);
-        combinacionFigura.sort(this.ordenaCombinacion);
-
-        if (isHigher) {
-          alert(
-            "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo."
-          );
-          return;
-        } else {
-          this.ticketAnimales = await this.lotteryService.obtenerTickets(
-            this.token,
-            5,
-            this.sorteoSeleccionado.sorteo,
-            combinacion.join(""),
-            combinacionFigura.join("")
-          );
+      this.showNumeros = false;
+      let isHigher = false;
+      this.combinacionDeLaSuerte.forEach((number) => {
+        let aux = parseInt(number);
+        if (aux > 25) {
+          isHigher = true;
+        }
+      });
+      let combinacion = this.combinacionDeLaSuerte.map((number) => {
+        let numero = number;
+        if (numero.length < 2) {
+          numero = `0${numero}`;
         }
 
-        this.showNumeros = true;
+        if (numero == "0" || numero == "00") {
+          return "";
+        }
+        return numero;
+      });
+      let combinacionFigura = this.animalesTabs.map((animal) => {
+        return animal.identificador;
+      });
+      combinacion.sort(this.ordenaCombinacion);
+      combinacionFigura.sort(this.ordenaCombinacion);
+
+      if (isHigher) {
         this.isLoading = false;
+        let errorMessage =
+          "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo.";
+        this.openError(errorMessage);
+        return;
       } else {
-        alert("Por favor seleccione un sorteo");
-        this.showNumeros = false;
-        this.isLoading = false;
+        this.ticketAnimales = await this.lotteryService.obtenerTickets(
+          this.token,
+          5,
+          this.sorteoSeleccionado.sorteo,
+          combinacion.join(""),
+          combinacionFigura.join(""),
+          this.tipoSeleccion
+        );
       }
-      await this.seleccionarVarios(this.tipoSeleccion);
+
+      this.showNumeros = true;
+      this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -252,7 +246,7 @@ export class PozoMillonarioComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  tipoSeleccion: number = 1;
+  tipoSeleccion: number = 96;
 
   async seleccionarVarios(tipoSeleccion) {
     try {
@@ -418,21 +412,8 @@ export class PozoMillonarioComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
-      if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
-        this.ticketsSeleccionados = JSON.parse(
-          localStorage.getItem("seleccionadosPozo")
-        );
-      }
-      if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
-        this.ticketsLoteria = JSON.parse(
-          localStorage.getItem("seleccionadosLoteria")
-        );
-      }
-      if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
-        this.ticketsLotto = JSON.parse(
-          localStorage.getItem("seleccionadosLotto")
-        );
-      }
+      this.getCarritoTickets();
+
       this.loadingMessage = "Cargando los sorteos disponibles";
       this.seleccionAnimales = JSON.parse(
         localStorage.getItem("animalesSeleccionados")
@@ -549,6 +530,79 @@ export class PozoMillonarioComponent implements OnInit {
       console.log(e.message);
       let errorMessage = e.message;
       this.openError(errorMessage);
+    }
+  }
+  async deleteAllTickets() {
+    try {
+      this.loadingMessage = "Removiendo boletos del carrito";
+      this.isLoading = true;
+      let boletosLoteria = Object.keys(this.ticketsLoteria).map((key) => {
+        return {
+          ticket: this.ticketsLoteria[key].ticket,
+          sorteo: this.ticketsLoteria[key].sorteo,
+        };
+      });
+      let boletosLotto = Object.keys(this.ticketsLotto).map((key) => {
+        return {
+          ticket: this.ticketsLotto[key].ticket,
+          sorteo: this.ticketsLotto[key].sorteo,
+        };
+      });
+      let boletosPozo = Object.keys(this.ticketsSeleccionados).map((key) => {
+        return {
+          ticket: this.ticketsSeleccionados[key].ticket,
+          sorteo: this.ticketsSeleccionados[key].sorteo,
+        };
+      });
+      let reservaId = this.lotteryService.getReservaId();
+      await this.lotteryService.eliminarTodosLosBoletosDeReserva(
+        this.token,
+        boletosLoteria,
+        boletosLotto,
+        boletosPozo,
+        reservaId
+      );
+      Object.keys(this.ticketsSeleccionados).forEach((key) => {
+        if (this.ticketAnimales && this.ticketAnimales.length != 0) {
+          let deletedIndex = this.ticketAnimales.findIndex(
+            (x) => x.identificador == key
+          );
+          if (deletedIndex != -1)
+            this.ticketAnimales[deletedIndex].status = false;
+        }
+      });
+      this.cart.borrarCarrito();
+      this.getCarritoTickets();
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
+  }
+
+  getCarritoTickets(){
+    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
+      this.ticketsLoteria = JSON.parse(
+        localStorage.getItem("seleccionadosLoteria")
+      );
+    } else {
+      this.ticketsLoteria = {}
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
+      this.ticketsLotto = JSON.parse(
+        localStorage.getItem("seleccionadosLotto")
+      );
+    } else {
+      this.ticketsLotto = {}
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
+      this.ticketsSeleccionados = JSON.parse(
+        localStorage.getItem("seleccionadosPozo")
+      );
+    } else {
+      this.ticketsSeleccionados = {}
     }
   }
 

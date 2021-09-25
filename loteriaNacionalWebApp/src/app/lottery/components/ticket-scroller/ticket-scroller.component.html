@@ -88,8 +88,13 @@
     </div>
     <div class="boton_comprar">
       <button
+      class="botonEliminar"
+      (click)="eliminar()"
+    >
+      BORRAR TODO
+    </button>
+      <button
         (click)="comprar()"
-        *ngIf="!isResumen"
         [ngClass]="{
           fondoLoteria: isLoteriaNacional,
           fondoLotto: isLotto,

@@ -8,6 +8,7 @@ import {
 } from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
 import { PaymentService } from "../../../payment/services/payment.service";
+import { ShoppingCartService } from "../../../payment/services/shopping-cart.service";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 @Component({
@@ -31,6 +32,7 @@ export class LottoComponent implements OnInit {
   constructor(
     private lotteryService: LotteryService,
     private actRoute: ActivatedRoute,
+    private cart: ShoppingCartService,
     private paymentService: PaymentService,
     private router: Router
   ) {
@@ -42,33 +44,25 @@ export class LottoComponent implements OnInit {
     try {
       this.loadingMessage = "Buscando combinaciones disponibles";
       this.isLoading = true;
-      if (this.sorteoSeleccionado.nombre != "default") {
-        /*this.ticketsNacional = JSON.parse(
-        localStorage.getItem("ticketsNacional")
-        );*/
-        this.showNumeros = false;
-        let combinacion = this.combinacionDeLaSuerte.map((element) => {
-          if (element == null || element == undefined || element == "") {
-            return "_";
-          } else {
-            return element;
-          }
-        });
-        this.ticketsLotto = await this.lotteryService.obtenerTickets(
-          this.token,
-          2,
-          this.sorteoSeleccionado.sorteo,
-          combinacion.join(""),
-          ""
-        );
+      this.showNumeros = false;
+      let combinacion = this.combinacionDeLaSuerte.map((element) => {
+        if (element == null || element == undefined || element == "") {
+          return "_";
+        } else {
+          return element;
+        }
+      });
+      this.ticketsLotto = await this.lotteryService.obtenerTickets(
+        this.token,
+        2,
+        this.sorteoSeleccionado.sorteo,
+        combinacion.join(""),
+        "",
+        this.tipoSeleccion
+      );
 
-        this.showNumeros = true;
-      } else {
-        alert("Por favor seleccione un sorteo");
-        this.showNumeros = false;
-      }
+      this.showNumeros = true;
       this.isLoading = false;
-      await this.seleccionarVarios(this.tipoSeleccion);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -76,7 +70,7 @@ export class LottoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  tipoSeleccion: number = 1;
+  tipoSeleccion: number = 96;
 
   async seleccionarVarios(tipoSeleccion) {
     try {
@@ -340,21 +334,8 @@ export class LottoComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
-      if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
-        this.ticketsSeleccionados = JSON.parse(
-          localStorage.getItem("seleccionadosLotto")
-        );
-      }
-      if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
-        this.ticketsLoteria = JSON.parse(
-          localStorage.getItem("seleccionadosLoteria")
-        );
-      }
-      if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
-        this.ticketsPozo = JSON.parse(
-          localStorage.getItem("seleccionadosPozo")
-        );
-      }
+      this.getCarritoTickets();
+
       this.loadingMessage = "Cargando los sorteos disponibles";
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
       this.isLoading = false;
@@ -454,6 +435,77 @@ export class LottoComponent implements OnInit {
       console.log(e.message);
       let errorMessage = e.message;
       this.openError(errorMessage);
+    }
+  }
+  async deleteAllTickets() {
+    try {
+      this.loadingMessage = "Removiendo boletos del carrito";
+      this.isLoading = true;
+      let boletosLoteria = Object.keys(this.ticketsLoteria).map((key) => {
+        return {
+          ticket: this.ticketsLoteria[key].ticket,
+          sorteo: this.ticketsLoteria[key].sorteo,
+        };
+      });
+      let boletosLotto = Object.keys(this.ticketsSeleccionados).map((key) => {
+        return {
+          ticket: this.ticketsSeleccionados[key].ticket,
+          sorteo: this.ticketsSeleccionados[key].sorteo,
+        };
+      });
+      let boletosPozo = Object.keys(this.ticketsPozo).map((key) => {
+        return {
+          ticket: this.ticketsPozo[key].ticket,
+          sorteo: this.ticketsPozo[key].sorteo,
+        };
+      });
+      let reservaId = this.lotteryService.getReservaId();
+      await this.lotteryService.eliminarTodosLosBoletosDeReserva(
+        this.token,
+        boletosLoteria,
+        boletosLotto,
+        boletosPozo,
+        reservaId
+      );
+      Object.keys(this.ticketsSeleccionados).forEach((key) => {
+        if (this.ticketsLotto && this.ticketsLotto.length != 0) {
+          let deletedIndex = this.ticketsLotto.findIndex(
+            (x) => x.identificador == key
+          );
+          if (deletedIndex != -1)
+            this.ticketsLotto[deletedIndex].status = false;
+        }
+      });
+      this.cart.borrarCarrito();
+      this.getCarritoTickets();
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
+  }
+
+  getCarritoTickets() {
+    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
+      this.ticketsLoteria = JSON.parse(
+        localStorage.getItem("seleccionadosLoteria")
+      );
+    } else {
+      this.ticketsLoteria = {};
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
+      this.ticketsLotto = JSON.parse(
+        localStorage.getItem("seleccionadosLotto")
+      );
+    } else {
+      this.ticketsSeleccionados = {};
+    }
+    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
+      this.ticketsPozo = JSON.parse(localStorage.getItem("seleccionadosPozo"));
+    } else {
+      this.ticketsPozo = {};
     }
   }
 

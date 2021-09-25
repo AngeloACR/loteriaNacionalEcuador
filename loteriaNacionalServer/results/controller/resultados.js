@@ -341,8 +341,8 @@ const resultadosController = {
 
     getResultadoByCodigo: async function (sorteo, codigo) {
         try {
-            let query = { 'sorteo': sorteo, 'codigo': codigo }
-            let resultado = await Resultado.findOne(query)
+            let query = { 'numeroSorteo': sorteo, 'codigo': codigo }
+            let resultado = await ResultadoPozo.findOne(query).lean()
             let response;
             if (resultado && resultado.length != 0) {
 

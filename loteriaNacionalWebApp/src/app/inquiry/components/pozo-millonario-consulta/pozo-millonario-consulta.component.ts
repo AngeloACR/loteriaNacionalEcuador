@@ -196,6 +196,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
         this.sorteoRango
       );
       this.resultados.emit(data);
+      this.dismissLoader();
       //this.router.navigateByUrl(`/pozo_millonario_boletin/${this.sorteoBoletin}`);
     } catch (e) {
       this.dismissLoader();

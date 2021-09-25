@@ -46,7 +46,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 resultado = {
                     "numeroSorteo": sorteo,
                     "combinacion1": resultadoData['C1'],
-                    "codigo": resultadoData['B'],
+                    "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
                 }
                 resultadoId = loteriaDB['resultadoloterias'].insert_one(resultado)

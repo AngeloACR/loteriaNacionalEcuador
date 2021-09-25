@@ -7,7 +7,6 @@ const medioId = config.medioAplicatioId;
 const address = config.aplicativoAddressTest;
 /* const address = config.aplicativoAddressProd; */
 
-
 module.exports.consultarSorteosDisponibles = async (
   tipoLoteria,
   token,
@@ -45,30 +44,35 @@ module.exports.consultarSorteosDisponibles = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(new Error(err));
-          let data = await parser.parseStringPromise(
-            res.fnEjecutaTransaccionResult
-          );
-          let errorCode = parseInt(data.mt.c[0].codError[0]);
+          try {
+            if (err) reject(new Error(err));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-          if (!errorCode) {
-            let aux = data.mt.rs[0].r[0].Row;
-            let response = aux.map((sorteo) => {
-              let sorteoAux = {
-                fecha: sorteo.$.FCadSort,
-                cantidadDeFracciones: sorteo.$.CFrac,
-                valorPremioPrincipal: sorteo.$.VPremio,
-                precio: sorteo.$.PVP,
-                sorteo: sorteo.$.SortId,
-                nombre: sorteo.$.SortNomb,
-              };
-              return sorteoAux;
-            });
+            if (!errorCode) {
+              let aux = data.mt.rs[0].r[0].Row;
+              let response = aux.map((sorteo) => {
+                let sorteoAux = {
+                  fecha: sorteo.$.FCadSort,
+                  cantidadDeFracciones: sorteo.$.CFrac,
+                  valorPremioPrincipal: sorteo.$.VPremio,
+                  precio: sorteo.$.PVP,
+                  sorteo: sorteo.$.SortId,
+                  nombre: sorteo.$.SortNomb,
+                };
+                return sorteoAux;
+              });
 
-            resolve(response);
-          } else {
-            console.log(data.mt.c[0].msgError[0]);
-            reject(new Error(data.mt.c[0].msgError[0]));
+              resolve(response);
+            } else {
+              console.log(data.mt.c[0].msgError[0]);
+              reject(new Error(data.mt.c[0].msgError[0]));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+            reject(new Error(errorMsg));
           }
         }
       );
@@ -85,7 +89,8 @@ module.exports.obtenerCombinacionesDisponibles = async (
   token,
   combinacion,
   combinacionFigura,
-  user
+  user,
+  tipoSeleccion
 ) => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -111,7 +116,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
     <JuegoId>${tipoLoteria}</JuegoId>
       <SorteoId>${sorteo}</SorteoId>
       <Combinacion>${combinacion}</Combinacion>
-      <Registros>96</Registros>
+      <Registros>${tipoSeleccion}</Registros>
       <UsuarioId>${user}</UsuarioId>
       <CombFigura>${combinacionFigura}</CombFigura>
       <Sugerir>True</Sugerir>
@@ -126,26 +131,31 @@ module.exports.obtenerCombinacionesDisponibles = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(new Error(err));
+          try {
+            if (err) reject(new Error(err));
 
-          let data = await parser.parseStringPromise(
-            res.fnEjecutaTransaccionResult
-          );
-          let errorCode = parseInt(data.mt.c[0].codError[0]);
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-          if (!errorCode) {
-            let aux = data.mt.rs[0].r;
-            let response = [];
-            aux.forEach((aux2) => {
-              if (aux2.Row) {
-                aux2.Row.forEach((aux3) => {
-                  response.push(aux3.$);
-                });
-              }
-            });
-            resolve(response);
-          } else {
-            reject(new Error(data.mt.c[0].msgError[0]));
+            if (!errorCode) {
+              let aux = data.mt.rs[0].r;
+              let response = [];
+              aux.forEach((aux2) => {
+                if (aux2.Row) {
+                  aux2.Row.forEach((aux3) => {
+                    response.push(aux3.$);
+                  });
+                }
+              });
+              resolve(response);
+            } else {
+              reject(new Error(data.mt.c[0].msgError[0]));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+            reject(new Error(errorMsg));
           }
         }
       );
@@ -254,16 +264,17 @@ module.exports.reservarCombinaciones = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(new Error(err));
+          try {
+            if (err) reject(new Error(err));
 
-          let data = await parser.parseStringPromise(
-            res.fnEjecutaTransaccionResult
-          );
-          let errorCode = parseInt(data.mt.c[0].codError[0]);
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-          if (!errorCode) {
-            let reservaId = data.mt.o[0].ReturnValue[0];
-            /* let aux = data.mt.rs[0].r[0];
+            if (!errorCode) {
+              let reservaId = data.mt.o[0].ReturnValue[0];
+              /* let aux = data.mt.rs[0].r[0];
                     let boletosReservados = [];
                     aux.Row.forEach(boletoReservado => {
                         boletosReservados.push(boletoReservado.$);
@@ -298,9 +309,14 @@ module.exports.reservarCombinaciones = async (
                         default:
                             break;
                     } */
-            resolve(reservaId);
-          } else {
-            let errorMsg = data.mt.c[0].msgError[0];
+              resolve(reservaId);
+            } else {
+              let errorMsg = data.mt.c[0].msgError[0];
+              console.log(errorMsg);
+              reject(new Error(errorMsg));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
             console.log(errorMsg);
             reject(new Error(errorMsg));
           }
@@ -310,7 +326,6 @@ module.exports.reservarCombinaciones = async (
   } catch (e) {
     console.log(e.toString());
     throw new Error(e.message);
-
   }
 };
 
@@ -410,17 +425,22 @@ module.exports.eliminarReservas = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(new Error(err));
+          try {
+            if (err) reject(new Error(err));
 
-          let data = await parser.parseStringPromise(
-            res.fnEjecutaTransaccionResult
-          );
-          let errorCode = parseInt(data.mt.c[0].codError[0]);
-          if (!errorCode) {
-            let response = data.mt.o[0].ReturnValue[0];
-            resolve(response);
-          } else {
-            reject(new Error(data.mt.c[0].msgError[0]));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            if (!errorCode) {
+              let response = data.mt.o[0].ReturnValue[0];
+              resolve(response);
+            } else {
+              reject(new Error(data.mt.c[0].msgError[0]));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+            reject(new Error(errorMsg));
           }
         }
       );
@@ -428,7 +448,6 @@ module.exports.eliminarReservas = async (
   } catch (e) {
     console.log(e.toString());
     throw new Error(e.message);
-
   }
 };
 
@@ -547,51 +566,56 @@ module.exports.venderBoletos = async (
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
         async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(new Error(err));
-          let data = await parser.parseStringPromise(
-            res.fnEjecutaTransaccionResult
-          );
-          let errorCode = parseInt(data.mt.c[0].codError[0]);
-          console.log(errorCode);
-          if (!errorCode) {
-            let aux = data.mt.o[0].xmlVentaOutput[0]; //.ReturnValue[0].VTA[0].SUE[0].COMP;
-            let xmlVentaOutput = await parser.parseStringPromise(aux);
-            let ticketId = xmlVentaOutput.VTA.$.VId;
-            console.log(xmlVentaOutput.VTA);
-            let instantaneas = [];
-            let instantaneasAux =
-              xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR
-                ? xmlVentaOutput.VTA.INST[0].SOR
-                : "";
-            if (instantaneasAux != "") {
-              instantaneasAux.forEach((sorteoAux) => {
-                let sorteo = sorteoAux.$;
+          try {
+            if (err) reject(new Error(err));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            console.log(errorCode);
+            if (!errorCode) {
+              let aux = data.mt.o[0].xmlVentaOutput[0]; //.ReturnValue[0].VTA[0].SUE[0].COMP;
+              let xmlVentaOutput = await parser.parseStringPromise(aux);
+              let ticketId = xmlVentaOutput.VTA.$.VId;
+              console.log(xmlVentaOutput.VTA);
+              let instantaneas = [];
+              let instantaneasAux =
+                xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR
+                  ? xmlVentaOutput.VTA.INST[0].SOR
+                  : "";
+              if (instantaneasAux != "") {
+                instantaneasAux.forEach((sorteoAux) => {
+                  let sorteo = sorteoAux.$;
 
-                let premios = sorteoAux.R.map((premio) => {
-                  return premio.$;
+                  let premios = sorteoAux.R.map((premio) => {
+                    return premio.$;
+                  });
+                  let data = {
+                    sorteo,
+                    premios,
+                  };
+                  instantaneas.push(data);
                 });
-                let data = {
-                  sorteo,
-                  premios,
-                };
-                instantaneas.push(data);
-              });
-            }
-            let response = {
-              instantaneas,
-              ticketId,
-            };
+              }
+              let response = {
+                instantaneas,
+                ticketId,
+              };
 
-            resolve(response);
-          } else {
-            console.log(data.mt.c[0].msgError[0]);
-            reject(new Error(data.mt.c[0].msgError[0]));
+              resolve(response);
+            } else {
+              console.log(data.mt.c[0].msgError[0]);
+              reject(new Error(data.mt.c[0].msgError[0]));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+            reject(new Error(errorMsg));
           }
         }
       );
     });
   } catch (e) {
-    console.log(e.toString())
+    console.log(e.toString());
     throw new Error(e.message);
   }
 };

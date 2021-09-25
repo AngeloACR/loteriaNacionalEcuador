@@ -21,6 +21,7 @@ $color-pozo: #04b865;
 }
 .contenedor_ticket {
   width: 100%;
+  min-width: 305px;
   border-radius: 30px;
   overflow: hidden;
   padding: 15px;
@@ -29,7 +30,7 @@ $color-pozo: #04b865;
   -webkit-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  
+
   .detailBox {
     overflow-y: scroll;
     min-height: 20px;
@@ -52,16 +53,16 @@ $color-pozo: #04b865;
     &::-webkit-scrollbar-track {
       border-radius: 10px;
     }
-  
+
     .scroll {
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-  
+
       div {
         width: 100%;
-  
+
         .ticketBox {
           width: 100%;
           margin: 10px 0;
@@ -69,7 +70,7 @@ $color-pozo: #04b865;
       }
     }
 
-    .noItem{
+    .noItem {
       margin: 10px;
       text-align: center;
       padding: 10px;
@@ -105,16 +106,15 @@ $color-pozo: #04b865;
   .boton_comprar {
     width: 100%;
     margin: auto;
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     button {
       width: 90%;
-      padding: 20px 30px;
+      padding: 15px;
       border-radius: 40px;
-      margin: 10px auto;
+      margin: 5px;
       font-family: $fuente-botones;
       color: #fff;
       font-size: 12px;
@@ -127,6 +127,7 @@ $color-pozo: #04b865;
       &:hover {
         background-color: #fff;
         color: $color-botton;
+        transition: background-color 0.5s ease;
       }
     }
     button.fondoLotto {
@@ -135,6 +136,7 @@ $color-pozo: #04b865;
       &:hover {
         background-color: #fff;
         color: $color-lotto;
+        transition: background-color 0.5s ease;
       }
     }
     button.fondoPozo {
@@ -143,6 +145,16 @@ $color-pozo: #04b865;
       &:hover {
         background-color: #fff;
         color: $color-pozo;
+        transition: background-color 0.5s ease;
+      }
+    }
+    .botonEliminar{
+      background-color: black;
+      border: 1px solid black;
+      &:hover {
+        background-color: #fff;
+        color: black;
+        transition: background-color 0.5s ease;
       }
     }
   }

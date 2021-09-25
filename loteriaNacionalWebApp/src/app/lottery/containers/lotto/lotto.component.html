@@ -15,7 +15,7 @@
     <div class="contenedor_select">
       <h3>¿Como quieres comprar?</h3>
       <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
-        <option class="option" value="1">Seleccion individual</option>
+        <option class="option" value="96">Seleccion individual</option>
         <option class="option" value="5">5 Boletos al azar</option>
         <option class="option" value="30">30 Boletos al azar</option>
         <option class="option" value="50">50 Boletos al azar</option>
@@ -66,9 +66,9 @@
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           [(ngModel)]="combinacionDeLaSuerte[5]"
         />
+        <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
       </div>
     </div>
-    <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
     <p>
       Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar
       numero"
@@ -123,6 +123,7 @@
     (deletePozoTicket)="deletePozoTicket($event)"
     (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
     (emitirCompra)="comprar()"
+    (eliminarTodo)="deleteAllTickets()"
     [ticketsLoteria]="ticketsLoteria"
     [ticketsLotto]="ticketsSeleccionados"
     [ticketsPozo]="ticketsPozo"

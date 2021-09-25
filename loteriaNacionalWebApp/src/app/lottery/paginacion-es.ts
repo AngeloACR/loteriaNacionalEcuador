@@ -17,7 +17,7 @@ const getRangeLabel = (page: number, pageSize: number, length: number) => {
       ? Math.min(startIndex + pageSize, length)
       : startIndex + pageSize;
 
-  const endPage = length / pageSize;
+  const endPage = Math.ceil(length / pageSize);
 
   //return `${startIndex + 1} - ${endIndex} de ${length}`;
   return `Pàgina ${page + 1} de  ${endPage}`;

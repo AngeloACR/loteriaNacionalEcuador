@@ -34,12 +34,12 @@ $color-botton: #2f72b9;
 
   .contenedor_numeros {
     width: 100%;
-    min-height: 300px;
-    max-height: 500px;
+    min-height: 200px;
+    max-height: 260px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
-    
+
     .combinationBox {
       display: flex;
       justify-content: space-around;
@@ -60,13 +60,13 @@ $color-botton: #2f72b9;
       /* padding: 0; */
       /* margin: 0; */
       text-align: left;
-      
+
       p {
         font-size: 14px;
         width: 100%;
         margin: 0;
       }
-      
+
       input[type="checkbox"] {
         width: 30px;
         height: 30px;
@@ -78,7 +78,7 @@ $color-botton: #2f72b9;
       flex-wrap: wrap;
       overflow-y: scroll;
       justify-content: center;
-      
+
       .fracciones {
         /* display: grid;
         grid-template-columns: repeat(5, auto); */
@@ -86,7 +86,7 @@ $color-botton: #2f72b9;
         height: 50px;
         display: flex;
         position: relative;
-        
+
         label {
           width: 35px;
           cursor: pointer;
@@ -131,7 +131,6 @@ $color-botton: #2f72b9;
   margin-left: -999em;
   position: absolute;
 }
-
 
 .tooltip:hover span {
   font-family: Calibri, Geneva, Tahoma, Arial, sans-serif;
@@ -225,6 +224,7 @@ $color-botton: #2f72b9;
   margin: 20px auto;
   display: flex;
   justify-content: space-evenly;
+  padding-bottom: 40px;
   .infoBox {
     min-width: 100px;
     max-width: 300px;
@@ -261,8 +261,6 @@ $color-botton: #2f72b9;
         border: 1px solid #aaa;
         box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
         border-radius: 0.3em;
-        margin: 10px;
-
         &:hover {
           border-color: #888;
         }
@@ -324,7 +322,7 @@ $color-botton: #2f72b9;
         }
       }
     }
-
+    
     .numeros_suerte {
       width: 100%;
       display: flex;
@@ -340,12 +338,12 @@ $color-botton: #2f72b9;
         width: 100%;
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: flex-start;
         margin: 10px 10px 10px 0;
         input[type="text"] {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           padding: 8px 6px;
           margin: 0 15px 0 0;
           text-align: center;
@@ -360,6 +358,24 @@ $color-botton: #2f72b9;
         input[type="text"]::-webkit-outer-spin-button {
           -webkit-appearance: none;
           margin: 0;
+        }
+        button {
+          background-color: $color-botton;
+          padding: 15px;
+          margin: 10px 0;
+          width: 100%;
+          border-radius: 30px;
+          border: 1px solid $color-botton;
+          color: #fff;
+          font-family: $fuente-botones;
+          font-size: 16px;
+          cursor: pointer;
+    
+          &:hover {
+            background-color: white;
+            color: $color-botton;
+            transition: background-color 0.4s ease;
+          }
         }
       }
     }
@@ -399,24 +415,6 @@ $color-botton: #2f72b9;
       }
     }
 
-    button {
-      background-color: $color-botton;
-      padding: 15px;
-      margin: 10px 0;
-      width: 100%;
-      border-radius: 30px;
-      border: 1px solid $color-botton;
-      color: #fff;
-      font-family: $fuente-botones;
-      font-size: 16px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: white;
-        color: $color-botton;
-        transition: background-color 0.4s ease;
-      }
-    }
 
     p {
       font-family: $fuente-botones;

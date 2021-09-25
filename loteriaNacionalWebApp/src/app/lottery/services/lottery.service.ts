@@ -4,11 +4,11 @@ import {
   ticketsAnimales,
   sorteo,
   ticketsLotto,
-  ticketsNacional
+  ticketsNacional,
 } from "../interfaces/lottery.interface";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class LotteryService {
   localSource = "http://localhost:5480";
@@ -36,11 +36,11 @@ export class LotteryService {
     let data = JSON.parse(localStorage.getItem("userData"));
     let lotteryToken = data.lotteryToken;
     let user = data.playerDocument;
-    if(data.user_ == 'italtronicprep') user = data.user_;
+    if (data.user_ == "italtronicprep") user = data.user_;
     console.log(user);
     let response = {
       lotteryToken,
-      user
+      user,
     };
     return response;
   }
@@ -63,9 +63,9 @@ export class LotteryService {
             .get(address, {
               params: {
                 lotteryToken: authData.lotteryToken,
-                user: authData.user
+                user: authData.user,
               },
-              headers: headers
+              headers: headers,
             })
             .subscribe(
               (data: any) => {
@@ -75,7 +75,7 @@ export class LotteryService {
                 resolve(sorteosJugados);
               },
               (error: any) => {
-                console.log(error.error.message)
+                console.log(error.error.message);
                 reject(new Error(error.error.message));
               }
             );
@@ -92,9 +92,9 @@ export class LotteryService {
             .get(address, {
               params: {
                 lotteryToken: authData.lotteryToken,
-                user: authData.user
+                user: authData.user,
               },
-              headers: headers
+              headers: headers,
             })
             .subscribe(
               (data: any) => {
@@ -120,9 +120,9 @@ export class LotteryService {
             .get(address, {
               params: {
                 lotteryToken: authData.lotteryToken,
-                user: authData.user
+                user: authData.user,
               },
-              headers: headers
+              headers: headers,
             })
             .subscribe(
               (data: any) => {
@@ -151,7 +151,8 @@ export class LotteryService {
     loteria,
     sorteo,
     combinacion,
-    combinacionFigura
+    combinacionFigura,
+    tipoSeleccion
   ): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
@@ -163,7 +164,8 @@ export class LotteryService {
       lotteryToken: authData.lotteryToken,
       user: authData.user,
       combinacion,
-      combinacionFigura
+      combinacionFigura,
+      tipoSeleccion,
     };
     switch (loteria) {
       case 1:
@@ -237,15 +239,15 @@ export class LotteryService {
     //let endpoint = "/inquiry";
     let endpoint = "/lottery";
     let body = {
-      token
+      token,
     };
     endpoint = `${endpoint}/auth`;
     var address = this.mySource;
 
     address = address + endpoint;
-    console.log(body)
+    console.log(body);
     return new Promise<Array<any>>((resolve, reject) => {
-      let userData = JSON.parse(localStorage.getItem('userData'));
+      let userData = JSON.parse(localStorage.getItem("userData"));
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           console.log(data);
@@ -364,182 +366,182 @@ export class LotteryService {
         ruta: "assets/mascotas/mascotas pozo millonario-Camaron.png",
         identificador: "01",
         nombre: "Camarón",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Cangrejo.png",
         identificador: "13",
         nombre: "Cangrejo",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Ballena.png",
         identificador: "10",
         nombre: "Ballena",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Condor.png",
         identificador: "14",
         nombre: "Cóndor",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Conejo.png",
         identificador: "06",
         nombre: "Conejo",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Delfin.png",
         identificador: "02",
         nombre: "Delfín",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Foca.png",
         identificador: "12",
         nombre: "Foca",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Galapago.png",
         identificador: "08",
         nombre: "Galápago",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Iguana.png",
         identificador: "15",
         nombre: "Iguana",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Llama.png",
         identificador: "04",
         nombre: "Llama",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Mono.png",
         identificador: "07",
         nombre: "Mono",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Oso.png",
         identificador: "11",
         nombre: "Oso",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Papagayo.png",
         identificador: "05",
         nombre: "Papagayo",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Perro.png",
         identificador: "03",
         nombre: "Perro",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Tucan.png",
         identificador: "09",
         nombre: "Tucán",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Caballo.png",
         identificador: "16",
         nombre: "Caballo",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Rana.png",
         identificador: "17",
         nombre: "Rana",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Tiburon.png",
         identificador: "18",
         nombre: "Tiburón",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Caracol.png",
         identificador: "19",
         nombre: "Caracol",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Oveja.png",
         identificador: "20",
         nombre: "Oveja",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Gallo.png",
         identificador: "21",
         nombre: "Gallo",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Abeja.png",
         identificador: "22",
         nombre: "Abeja",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Mariposa.png",
         identificador: "23",
         nombre: "Mariposa",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Pez.png",
         identificador: "24",
         nombre: "Pez",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Pinguino.png",
         identificador: "25",
         nombre: "Pingüino",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Cocodrilo.png",
         identificador: "26",
         nombre: "Cocodrilo",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Vaca.png",
         identificador: "27",
         nombre: "Vaca",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Chanchito.png",
         identificador: "28",
         nombre: "Chanchito",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Tigre.png",
         identificador: "29",
         nombre: "Tigre",
-        status: false
+        status: false,
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Gato.png",
         identificador: "30",
         nombre: "Gato",
-        status: false
-      }
+        status: false,
+      },
     ];
 
     localStorage.setItem(
@@ -555,155 +557,155 @@ export class LotteryService {
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Camaron.png",
         identificador: "01",
-        nombre: "Camarón"
+        nombre: "Camarón",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Cangrejo.png",
         identificador: "13",
-        nombre: "Cangrejo"
+        nombre: "Cangrejo",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Ballena.png",
         identificador: "10",
-        nombre: "Ballena"
+        nombre: "Ballena",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Condor.png",
         identificador: "14",
-        nombre: "Cóndor"
+        nombre: "Cóndor",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Conejo.png",
         identificador: "06",
-        nombre: "Conejo"
+        nombre: "Conejo",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Delfin.png",
         identificador: "02",
-        nombre: "Delfín"
+        nombre: "Delfín",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Foca.png",
         identificador: "12",
-        nombre: "Foca"
+        nombre: "Foca",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Galapago.png",
         identificador: "08",
-        nombre: "Galápago"
+        nombre: "Galápago",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Iguana.png",
         identificador: "15",
-        nombre: "Iguana"
+        nombre: "Iguana",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Llama.png",
         identificador: "04",
-        nombre: "Llama"
+        nombre: "Llama",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Mono.png",
         identificador: "07",
-        nombre: "Mono"
+        nombre: "Mono",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Oso.png",
         identificador: "11",
-        nombre: "Oso"
+        nombre: "Oso",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Papagayo.png",
         identificador: "05",
-        nombre: "Papagayo"
+        nombre: "Papagayo",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Perro.png",
         identificador: "03",
-        nombre: "Perro"
+        nombre: "Perro",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Tucan.png",
         identificador: "09",
-        nombre: "Tucán"
+        nombre: "Tucán",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Caballo.png",
         identificador: "16",
-        nombre: "Caballo"
+        nombre: "Caballo",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Rana.png",
         identificador: "17",
-        nombre: "Rana"
+        nombre: "Rana",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Tiburon.png",
         identificador: "18",
-        nombre: "Tiburón"
+        nombre: "Tiburón",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Caracol.png",
         identificador: "19",
-        nombre: "Caracol"
+        nombre: "Caracol",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Oveja.png",
         identificador: "20",
-        nombre: "Oveja"
+        nombre: "Oveja",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Gallo.png",
         identificador: "21",
-        nombre: "Gallo"
+        nombre: "Gallo",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Abeja.png",
         identificador: "22",
-        nombre: "Abeja"
+        nombre: "Abeja",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Mariposa.png",
         identificador: "23",
-        nombre: "Mariposa"
+        nombre: "Mariposa",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Pez.png",
         identificador: "24",
-        nombre: "Pez"
+        nombre: "Pez",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Pinguino.png",
         identificador: "25",
-        nombre: "Pingüino"
+        nombre: "Pingüino",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Cocodrilo.png",
         identificador: "26",
-        nombre: "Cocodrilo"
+        nombre: "Cocodrilo",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Vaca.png",
         identificador: "27",
-        nombre: "Vaca"
+        nombre: "Vaca",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Chanchito.png",
         identificador: "28",
-        nombre: "Chanchito"
+        nombre: "Chanchito",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Tigre.png",
         identificador: "29",
-        nombre: "Tigre"
+        nombre: "Tigre",
       },
       {
         ruta: "assets/mascotas/mascotas pozo millonario-Gato.png",
         identificador: "30",
-        nombre: "Gato"
-      }
+        nombre: "Gato",
+      },
     ];
-    let aux = animales.find(x => x.identificador === mascota);
+    let aux = animales.find((x) => x.identificador === mascota);
     return aux;
     /* console.log(this.animales) */
   }
@@ -725,7 +727,7 @@ export class LotteryService {
     let authData = this.getAuthData();
     let body = {
       lotteryToken: authData.lotteryToken,
-      user: authData.user
+      user: authData.user,
     };
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
@@ -769,7 +771,7 @@ export class LotteryService {
     let body = {
       lotteryToken: authData.lotteryToken,
       user: authData.user,
-      reservaId
+      reservaId,
     };
     let aux;
     switch (tipoLoteria) {
@@ -777,10 +779,9 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.ticket.combinacion,
-            fracciones:
-              boleto.fracciones,
-            sorteo: boleto.sorteo
-          }
+            fracciones: boleto.fracciones,
+            sorteo: boleto.sorteo,
+          },
         ];
         body["loteria"] = aux;
         break;
@@ -788,8 +789,8 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.ticket.combinacion1,
-            sorteo: boleto.sorteo
-          }
+            sorteo: boleto.sorteo,
+          },
         ];
         body["lotto"] = aux;
         break;
@@ -798,8 +799,8 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.ticket.combinacion1,
-            sorteo: boleto.sorteo
-          }
+            sorteo: boleto.sorteo,
+          },
         ];
         body["pozo"] = aux;
         break;
@@ -831,7 +832,7 @@ export class LotteryService {
     let body = {
       lotteryToken: authData.lotteryToken,
       user: authData.user,
-      reservaId
+      reservaId,
     };
     let aux;
     switch (tipoLoteria) {
@@ -840,8 +841,8 @@ export class LotteryService {
           {
             combinacion: boleto.ticket.combinacion,
             fracciones,
-            sorteo: boleto.sorteo
-          }
+            sorteo: boleto.sorteo,
+          },
         ];
         body["loteria"] = aux;
         break;
@@ -849,8 +850,8 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.ticket.combinacion1,
-            sorteo: boleto.sorteo
-          }
+            sorteo: boleto.sorteo,
+          },
         ];
         body["lotto"] = aux;
         break;
@@ -859,8 +860,8 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.ticket.combinacion1,
-            sorteo: boleto.sorteo
-          }
+            sorteo: boleto.sorteo,
+          },
         ];
         body["pozo"] = aux;
         break;
@@ -874,7 +875,69 @@ export class LotteryService {
           resolve(response);
         },
         (error: any) => {
-          console.log(error)
+          console.log(error);
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
+  eliminarTodosLosBoletosDeReserva(
+    token,
+    boletosLoteria,
+    boletosLotto,
+    boletosPozo,
+    reservaId
+  ) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/lottery";
+    endpoint = `${endpoint}/eliminarBoletosDeReserva`;
+    var address = this.mySource;
+
+    address = address + endpoint;
+
+    let authData = this.getAuthData();
+    let body = {
+      lotteryToken: authData.lotteryToken,
+      user: authData.user,
+      reservaId,
+    };
+    let auxLoteria = [];
+    let auxLotto = [];
+    let auxPozo = [];
+    boletosLoteria.forEach((boleto) => {
+      auxLoteria.push({
+        combinacion: boleto.ticket.combinacion,
+        fracciones: boleto.ticket.seleccionados,
+        sorteo: boleto.sorteo,
+      });
+      body["loteria"] = auxLoteria;
+    });
+    boletosLotto.forEach((boleto) => {
+      auxLotto.push({
+        combinacion: boleto.ticket.combinacion1,
+        sorteo: boleto.sorteo,
+      });
+      body["lotto"] = auxLotto;
+    });
+    boletosPozo.forEach((boleto) => {
+      auxPozo.push({
+        combinacion: boleto.ticket.combinacion1,
+        sorteo: boleto.sorteo,
+      });
+      body["pozo"] = auxPozo;
+    });
+
+    console.log(body);
+    return new Promise<any>((resolve, reject) => {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          let response: any = data;
+          console.log(response);
+          resolve(response);
+        },
+        (error: any) => {
+          console.log(error);
           reject(new Error(error.error.message));
         }
       );
@@ -904,9 +967,9 @@ export class LotteryService {
     JSON.parse(localStorage.getItem("seleccionadosPozo"));
   }
   borrarCarrito() {
-    localStorage.setItem("seleccionadosLoteria", JSON.stringify([]));
-    localStorage.setItem("seleccionadosLotto", JSON.stringify([]));
-    localStorage.setItem("reservaId", JSON.stringify(0));
-    localStorage.setItem("seleccionadosPozo", JSON.stringify([]));
+    localStorage.removeItem("seleccionadosLoteria");
+    localStorage.removeItem("seleccionadosLotto");
+    localStorage.removeItem("seleccionadosPozo");
+    localStorage.removeItem("reservaId");
   }
 }

@@ -6,15 +6,24 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-botton: #2f72b9;
 
 .fondoLoteria {
-  background-color: #2f72b9 !important;
+  border-bottom:1px solid #2f72b9 !important;
+  font-size: 30px !important;
+  color: #2f72b9;
+  font-family: $fuente-titulo;
 }
 
 .fondoLotto {
-  background-color: #b51f20 !important;
+  border-bottom:1px solid #b51f20 !important;
+  font-size: 30px !important;
+  color: #b51f20;
+  font-family: $fuente-titulo;
 }
 
 .fondoPozo {
-  background-color: #04b865 !important;
+  border-bottom:1px solid #04b865 !important;
+  font-size: 30px !important;
+  color: #04b865;
+  font-family: $fuente-titulo;
 }
 
 .menuBox {
@@ -32,16 +41,8 @@ $color-botton: #2f72b9;
     padding: 5px;
     font-size: 16px;
     font-family: $fuente-subtitulo;
-    background-color: #f2f2f2;
+    background-color: transparent;
     margin: 0 0 4px 0;
-
-    &:nth-child(1) {
-      /* background-color: #2f72b9; */
-      font-family: $fuente-subtitulo;
-      /* margin: 0; */
-      height: 40px;
-      color: #fff;
-    }
 
     select {
       cursor: pointer;

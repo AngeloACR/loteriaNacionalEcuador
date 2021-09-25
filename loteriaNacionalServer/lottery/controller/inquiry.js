@@ -185,7 +185,6 @@ const inquiryController = {
             console.log('buscanod ganador de loteria')
             for (let i = 0; i < length; i++) {
                 let aux = await Results.getResultadoGanadorLoteria(sorteo, combinaciones[i]);
-                //let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -225,7 +224,6 @@ const inquiryController = {
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
                 let aux = await Results.getResultadoGanadorLotto(sorteo, combinaciones[i]);
-                //let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -263,8 +261,7 @@ const inquiryController = {
             let response = [];
             let length = combinaciones.length;
             for (let i = 0; i < length; i++) {
-                //let aux = await Results.getResultadoGanadorPozo(sorteo, combinaciones[i]);
-                let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
+                let aux = await Results.getResultadoGanadorPozo(sorteo, combinaciones[i]);
                 if (aux.status) {
                     let n = aux.values.length;
                     for (let j = 0; j < n; j++) {
@@ -298,8 +295,9 @@ const inquiryController = {
     buscarPozoPlancha: async (req, res) => {
         try {
             let sorteo = req.body.sorteo;
-            let boletoInicial = parseInt(req.body.boletoInicial);
-            let boletoFinal = parseInt(req.body.boletoFinal);
+                let boletoInicial = parseInt(req.body.boletoInicial);
+                let boletoFinal = parseInt(req.body.boletoFinal);
+            
             let size = boletoFinal - boletoInicial + 1;
             let boletos = [...Array(size).keys()].map(i => (parseInt(i) + boletoInicial).toString());
             let response = [];
@@ -309,19 +307,23 @@ const inquiryController = {
                 if (auxResult.status) {
 
                     let combinacion = auxResult.values.combinacion1;
+                    
                     let aux = await Results.getResultadoGanadorPozo(sorteo, combinacion);
                     if (aux.status) {
-                        aux.values.forEach(boleto => {
-
+                        let n = aux.values.length;
+                        for (let j = 0; j < n; j++) {
+                            let boleto = aux.values[j];
+                            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+                            boleto['premio'] = premio.values;
                             let responseAux = {
                                 status: true,
-                                combinacion,
+                                combinacion: combinacion,
                                 sorteo,
                                 data: boleto
                             }
                             response.push(responseAux);
-                        });
-
+                        };
+    
                     } else {
                         let responseAux = {
                             status: false,

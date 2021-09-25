@@ -111,6 +111,7 @@ export class InquiryService {
       boletoInicial,
       boletoFinal
     };
+    console.log(body)
     return new Promise((resolve, reject) => {
       this.http
         .post(address, body, { headers: headers })

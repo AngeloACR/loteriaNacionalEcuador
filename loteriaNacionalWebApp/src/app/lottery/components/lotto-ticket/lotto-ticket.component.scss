@@ -45,13 +45,13 @@ $color-botton: #b51f20;
   img{
     position: absolute;
     cursor: pointer;
-    width:10%;
+    width:5%;
     top: 5px;
     right: 5px;
     transition: width 0.3s ease;
   }
   img:hover{
-    width:15%;
+    width:8%;
     transition: width 0.3s ease;
   }
 }

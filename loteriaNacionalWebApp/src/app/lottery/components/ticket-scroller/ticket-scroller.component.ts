@@ -27,6 +27,7 @@ export class TicketScrollerComponent implements OnInit {
   @Input() tipoLoteria: string;
   @Input() isResumen: boolean = false;
   @Output() emitirCompra = new EventEmitter();
+  @Output() eliminarTodo = new EventEmitter();
   @Output() deleteLoteriaTicket = new EventEmitter();
   @Output() deleteLoteriaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
@@ -41,6 +42,9 @@ export class TicketScrollerComponent implements OnInit {
 
   comprar() {
     this.emitirCompra.emit();
+  }
+  eliminar() {
+    this.eliminarTodo.emit();
   }
 
   ngOnInit() {

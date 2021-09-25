@@ -419,6 +419,7 @@ const ventasController = {
       let sorteo = req.body.sorteo;
       let combinacion = req.body.combinacion;
       let combinacionFigura = req.body.combinacionFigura;
+      let tipoSeleccion = req.body.tipoSeleccion;
 
       let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(
         2,
@@ -426,7 +427,8 @@ const ventasController = {
         lotteryToken,
         combinacion,
         combinacionFigura,
-        user
+        user,
+        tipoSeleccion
       );
       let combinaciones = combinacionesAux.map((element) => {
         let combinacion = {
@@ -463,6 +465,7 @@ const ventasController = {
       let sorteo = req.body.sorteo;
       let combinacion = req.body.combinacion;
       let combinacionFigura = req.body.combinacionFigura;
+      let tipoSeleccion = req.body.tipoSeleccion;
 
       let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(
         1,
@@ -470,7 +473,8 @@ const ventasController = {
         lotteryToken,
         combinacion,
         combinacionFigura,
-        user
+        user,
+        tipoSeleccion
       );
 
       let combinaciones = combinacionesAux.map((element) => {
@@ -507,6 +511,7 @@ const ventasController = {
       let sorteo = req.body.sorteo;
       let combinacion = req.body.combinacion;
       let combinacionFigura = req.body.combinacionFigura;
+      let tipoSeleccion = req.body.tipoSeleccion;
 
       let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(
         5,
@@ -514,7 +519,8 @@ const ventasController = {
         lotteryToken,
         combinacion,
         combinacionFigura,
-        user
+        user,
+        tipoSeleccion
       );
 
       let combinaciones = combinacionesAux.map((element) => {

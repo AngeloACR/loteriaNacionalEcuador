@@ -12,75 +12,71 @@
   </app-info-loteria>
 
   <div class="contendor_seleccion">
-    <div class="contenedor_select">
-      <h3>¿Como quieres comprar?</h3>
-      <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
-        <option class="option" value="1">Seleccion individual</option>
-        <option class="option" value="5">5 Boletos al azar</option>
-        <option class="option" value="30">30 Boletos al azar</option>
-        <option class="option" value="50">50 Boletos al azar</option>
-      </select>
-    </div>
-    <div class="numeros_suerte">
-      <h3>Ingresa tu numero de la suerte</h3>
-      <div class="numeros">
-        <input
-          type="text"
-          maxlength="2"
-          name=""
-          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-          [(ngModel)]="combinacionDeLaSuerte[0]"
-        />
-        <input
-          type="text"
-          maxlength="2"
-          name=""
-          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-          [(ngModel)]="combinacionDeLaSuerte[1]"
-        />
-        <input
-          type="text"
-          maxlength="2"
-          name=""
-          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-          [(ngModel)]="combinacionDeLaSuerte[2]"
-        />
-        <input
-          type="text"
-          maxlength="2"
-          name=""
-          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-          [(ngModel)]="combinacionDeLaSuerte[3]"
-        />
-      </div>
+    <div class="selectBox">
       <div class="contenedor_select">
-        <!-- <app-number-selection 
-            [animales]="arreglo_animales" 
-            (propagar)="procesaPropagar($event)">
-          </app-number-selection>  -->
-
-        <h3>Selecciona tus mascotas de la suerte</h3>
-        <div class="options">
-          <div
-            class="option"
-            *ngFor="let animal of seleccionAnimales; let i = index"
-          >
-            <input
-              (click)="agregar(animal, i)"
-              type="checkbox"
-              [checked]="animal.status"
-              name="nombre"
-              [value]="animal"
-              id="nombre-{{ animal.nombre }}"
-            />
-            <label for="nombre-{{ animal.nombre }}">
-              <img [src]="animal.ruta" [alt]="animal.nombre" />
-            </label>
-          </div>
+        <h3>¿Como quieres comprar?</h3>
+        <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
+          <option class="option" value="96">Seleccion individual</option>
+          <option class="option" value="5">5 Boletos al azar</option>
+          <option class="option" value="30">30 Boletos al azar</option>
+          <option class="option" value="50">50 Boletos al azar</option>
+        </select>
+      </div>
+      <div class="numeros_suerte">
+        <h3>Ingresa tu numero de la suerte</h3>
+        <div class="numeros">
+          <input
+            type="text"
+            maxlength="2"
+            name=""
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[0]"
+          />
+          <input
+            type="text"
+            maxlength="2"
+            name=""
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[1]"
+          />
+          <input
+            type="text"
+            maxlength="2"
+            name=""
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[2]"
+          />
+          <input
+            type="text"
+            maxlength="2"
+            name=""
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[3]"
+          />
         </div>
       </div>
     </div>
-
+    <div class="contenedor_select_animales">
+      <h3>Selecciona tus mascotas de la suerte</h3>
+      <div class="options">
+        <div
+          class="option"
+          *ngFor="let animal of seleccionAnimales; let i = index"
+        >
+          <input
+            (click)="agregar(animal, i)"
+            type="checkbox"
+            [checked]="animal.status"
+            name="nombre"
+            [value]="animal"
+            id="nombre-{{ animal.nombre }}"
+          />
+          <label for="nombre-{{ animal.nombre }}">
+            <img [src]="animal.ruta" [alt]="animal.nombre" />
+          </label>
+        </div>
+      </div>
+    </div>
     <button class="activado" (click)="buscarNumero()">BUSCAR CARTONES</button>
 
     <p>
@@ -144,6 +140,7 @@
   <app-ticket-scroller
     class="ticketScroller"
     (emitirCompra)="comprar()"
+    (eliminarTodo)="deleteAllTickets()"
     (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
     (deleteLottoTicket)="deleteLottoTicket($event)"
     (deletePozoTicket)="deletePozoTicket($event)"
