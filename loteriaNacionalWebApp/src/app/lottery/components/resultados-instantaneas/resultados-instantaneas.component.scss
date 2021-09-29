@@ -5,7 +5,7 @@ $fuente-botones: "Monstserrat SemiBold";
   background-color: #2f72b9;
   &:hover {
     background-color: #fff;
-    color: #2f72b9;
+    color: #2f72b9 !important;
     transition: background-color 0.5s ease;
   }
 }
@@ -14,7 +14,7 @@ $fuente-botones: "Monstserrat SemiBold";
   background-color: #b51f20;
   &:hover {
     background-color: #fff;
-    color: #b51f20;
+    color: #b51f20 !important;
     transition: background-color 0.5s ease;
   }
 }
@@ -23,7 +23,7 @@ $fuente-botones: "Monstserrat SemiBold";
   background-color: #04b865;
   &:hover {
     background-color: #fff;
-    color: #04b865;
+    color: #04b865 !important;
     transition: background-color 0.5s ease;
   }
 }
@@ -93,7 +93,7 @@ $fuente-botones: "Monstserrat SemiBold";
   display: flex;
   justify-content: center;
   align-items: center;
-
+  max-width: 300px;
   button {
     width: 90%;
     padding: 15px;
