@@ -170,15 +170,6 @@
   (closeError)="closeError()"
   *ngIf="isError"
 ></app-error>
-<div
-  class="blackBox"
-  *ngIf="
-    confirmacionDeCompra ||
-    compraFinalizada ||
-    saldoInsuficiente ||
-    compraCancelada
-  "
-></div>
 
 <app-confirmacion-de-compra
   (compraConfirmada)="confirmarCompra()"
@@ -188,6 +179,14 @@
   class="paymentItem"
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-compra>
+<app-resultados-instantaneas
+  (close)="abrirFinalizar()"
+  [resultados]="instantaneas"
+  tipoloteria="2"
+  [isLoteriaNacional]="true"
+  class="paymentItem"
+  *ngIf="isInstantaneas"
+></app-resultados-instantaneas>
 <app-compra-finalizada
   (volver)="finalizarCompra()"
   [compra]="detalleCompra"

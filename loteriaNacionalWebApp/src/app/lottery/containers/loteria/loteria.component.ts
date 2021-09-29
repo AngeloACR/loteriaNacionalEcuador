@@ -394,10 +394,10 @@ export class LoteriaComponent implements OnInit {
             this.instantaneas = response.instantanea.data;
             this.isInstantaneas = true;
           } else {
+            this.instantaneas = "";
             this.abrirFinalizar();
           }
         } else {
-          this.instantaneas = "";
           this.cancelarCompra();
         }
         this.isLoading = false;

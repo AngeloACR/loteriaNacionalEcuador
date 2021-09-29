@@ -280,6 +280,8 @@ export class LottoComponent implements OnInit {
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
+  instantaneas: any;
+  isInstantaneas: boolean = false;
   async confirmarCompra() {
     try {
       this.isLoading = true;
@@ -294,9 +296,15 @@ export class LottoComponent implements OnInit {
         );
         this.isLoading = false;
         if (response.status) {
-          this.dismissCompras();
-          this.lotteryService.borrarCarrito();
-          this.compraFinalizada = true;
+
+          if (response.instantanea.status) {
+            this.dismissCompras();
+            this.instantaneas = response.instantanea.data;
+            this.isInstantaneas = true;
+          } else {
+            this.instantaneas = "";
+            this.abrirFinalizar();
+          }
         } else {
           this.cancelarCompra();
         }
@@ -311,6 +319,11 @@ export class LottoComponent implements OnInit {
       let errorMessage = e.message;
       this.openError(errorMessage);
     }
+  }
+  abrirFinalizar() {
+    this.dismissCompras();
+    this.lotteryService.borrarCarrito();
+    this.compraFinalizada = true;
   }
   cancelarCompra() {
     this.dismissCompras();
