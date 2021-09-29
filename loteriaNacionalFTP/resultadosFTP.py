@@ -35,12 +35,15 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
             combinacion2 = ''
             combinacion3 = ''
             combinacion4 = ''
+            combinacion5 = ''
             if('C2' in resultadoData):
                 combinacion2 = resultadoData['C2']
             if('C3' in resultadoData):
                 combinacion3 = resultadoData['C3']
             if('C4' in resultadoData):
                 combinacion4 = resultadoData['C4']
+            if('C5' in resultadoData):
+                combinacion5 = resultadoData['C5']
             codigoPremio = sorteo+"-"+premioData['P']
             if (tipoLoteria == "1"):
                 resultado = {
@@ -57,7 +60,8 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "combinacion2": combinacion2,
                     "combinacion3": combinacion3,
                     "combinacion4": combinacion4,
-                    "codigo": resultadoData['B'],
+                    "combinacion5": combinacion5,
+                    "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
                 }
                 resultadoId = loteriaDB['resultadolottos'].insert_one(resultado)
@@ -67,7 +71,7 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "combinacion1": resultadoData['C1'],
                     "combinacion2": combinacion2,
                     "combinacion3": combinacion3,
-                    "codigo": resultadoData['B'],
+                    "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
                 }
                 resultadoId = loteriaDB['resultadopozos'].insert_one(resultado)                
@@ -116,6 +120,13 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     data = { "$set":{
                         "resultadoNosVemosJefe": ObjectId(resultadoId.inserted_id),
                         "codigoPremioNosVemosJefe": codigoPremio
+                    }}
+                    loteriaDB['ultimoresultados'].update_one(myquery, data)
+                elif (premioData['P'] == "26"):
+                    myquery = { "tipoLoteria": int(tipoLoteria) }
+                    data = { "$set":{
+                        "resultadoAntojito": ObjectId(resultadoId.inserted_id),
+                        "codigoPremioAntojito": codigoPremio
                     }}
                     loteriaDB['ultimoresultados'].update_one(myquery, data)
             if (tipoLoteria == "5" and premioData['P'] == "6" and not reintegroPozo):

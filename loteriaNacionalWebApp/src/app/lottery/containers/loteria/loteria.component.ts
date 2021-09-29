@@ -260,7 +260,7 @@ export class LoteriaComponent implements OnInit {
       } else {
         this.isLoading = false;
         let message =
-          "Su saldo es insuficiente para agregar este boleto al carrito";
+          "Tu saldo es insuficiente para agregar este boleto al carrito";
         var idTicket = this.ticketsNacional.findIndex(
           (p) => p.identificador == ticket.identificador
         );
@@ -304,6 +304,8 @@ export class LoteriaComponent implements OnInit {
   detalleCompra: any;
   dismissCompras() {
     this.confirmacionDeCompra = false;
+    this.isInstantaneas = false;
+
     this.compraFinalizada = false;
     this.saldoInsuficiente = false;
     this.compraCancelada = false;
@@ -372,10 +374,12 @@ export class LoteriaComponent implements OnInit {
 
   irARecarga() {}
 
+  instantaneas: any;
+  isInstantaneas: boolean = false;
   async confirmarCompra() {
     try {
       this.isLoading = true;
-      this.loadingMessage = "Espere mientras procesamos su compra";
+      this.loadingMessage = "Espera mientras procesamos tu compra";
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
 
       if (hasBalance) {
@@ -384,17 +388,22 @@ export class LoteriaComponent implements OnInit {
           this.token,
           reservaId
         );
-        this.isLoading = false;
         if (response.status) {
-          this.dismissCompras();
-          this.lotteryService.borrarCarrito();
-          this.compraFinalizada = true;
+          if (response.instantanea.status) {
+            this.dismissCompras();
+            this.instantaneas = response.instantanea.data;
+            this.isInstantaneas = true;
+          } else {
+            this.abrirFinalizar();
+          }
         } else {
+          this.instantaneas = "";
           this.cancelarCompra();
         }
+        this.isLoading = false;
       } else {
         this.isLoading = false;
-        let message = "Su saldo es insuficiente para realizar la compra";
+        let message = "Tu saldo es insuficiente para realizar la compra";
         this.recargarSaldo(message);
       }
     } catch (e) {
@@ -407,6 +416,12 @@ export class LoteriaComponent implements OnInit {
   cancelarCompra() {
     this.dismissCompras();
     this.compraCancelada = true;
+  }
+
+  abrirFinalizar() {
+    this.dismissCompras();
+    this.lotteryService.borrarCarrito();
+    this.compraFinalizada = true;
   }
 
   recargaDeSaldoMessage: string;

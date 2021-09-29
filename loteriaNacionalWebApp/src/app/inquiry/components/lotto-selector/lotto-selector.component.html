@@ -24,8 +24,11 @@
             <p>{{lottito}}</p>
         </ng-container>
 
-        <p>Nos vemos jefe:</p>
-        <p>{{ticketNosVemosJefe}}</p>
+        <p *ngIf="ticketNosVemosJefe != ''">Nos vemos jefe:</p>
+        <p *ngIf="ticketNosVemosJefe != ''">{{ticketNosVemosJefe}}</p>
+        <p *ngIf="ticketAntojito != ''
+        ">Antojito:</p>
+        <p *ngIf="ticketAntojito != ''">{{ticketNosVemosJefe}}</p>
     </div>
 
     <div>

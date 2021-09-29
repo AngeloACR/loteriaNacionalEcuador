@@ -30,18 +30,21 @@ import { PaginatePipe } from "./pipes/paginate.pipe";
 /* import { NgxPaginationModule } from 'ngx-pagination'; */
 import {
   MatPaginatorModule,
-  MatPaginatorIntl
+  MatPaginatorIntl,
 } from "@angular/material/paginator";
 import { StylePaginatorDirective } from "./style-paginator.directive";
+import { AutoTabDirective } from "./autotab.directive";
 
 import { FormsModule } from "@angular/forms";
 import { getSpanishPaginatorIntl } from "./paginacion-es";
-import { ResultadoInstantaneaComponent } from './components/resultado-instantanea/resultado-instantanea.component';
-import { ResultadosInstantaneasComponent } from './components/resultados-instantaneas/resultados-instantaneas.component';
+import { ResultadoInstantaneaComponent } from "./components/resultado-instantanea/resultado-instantanea.component";
+import { ResultadosInstantaneasComponent } from "./components/resultados-instantaneas/resultados-instantaneas.component";
 
 @NgModule({
   declarations: [
     LotteryComponent,
+
+    AutoTabDirective,
     LoteriaComponent,
     LottoComponent,
     PozoMillonarioComponent,
@@ -63,7 +66,7 @@ import { ResultadosInstantaneasComponent } from './components/resultados-instant
     PaginatePipe,
     StylePaginatorDirective,
     ResultadoInstantaneaComponent,
-    ResultadosInstantaneasComponent
+    ResultadosInstantaneasComponent,
   ],
   entryComponents: [
     LotteryTypeComponent,
@@ -77,7 +80,7 @@ import { ResultadosInstantaneasComponent } from './components/resultados-instant
     LottoConfiguradorComponent,
     LoteriaNacionalConfiguradorComponent,
     PozoMillonarioConfiguradorComponent,
-    SeleccionTipoComponent
+    SeleccionTipoComponent,
   ],
   imports: [
     CommonModule,
@@ -87,12 +90,13 @@ import { ResultadosInstantaneasComponent } from './components/resultados-instant
     MatPaginatorModule,
     SharedModule,
     PaymentModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {
-      provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() 
-    }
-  ]
+      provide: MatPaginatorIntl,
+      useValue: getSpanishPaginatorIntl(),
+    },
+  ],
 })
 export class LotteryModule {}

@@ -7,6 +7,10 @@ $color-lotto: #b51f20;
 
 // Estilos del componente seleccion Lotto
 .contenedor {
+  hr {
+    width: 100% !important;
+    margin: 0!important;
+  }
   input[type="checkbox"] {
     cursor: pointer;
     width: 100%;
@@ -19,12 +23,16 @@ $color-lotto: #b51f20;
 
   input[type="checkbox"]:checked ~ div {
     background-color: $color-lotto;
-    border-radius: 10px;
     color: #fff !important;
     transition: background-color 0.3s ease-out;
     opacity: 1;
   }
-
+  input[type="checkbox"]:checked ~ .contenedor_numeros {
+    border-radius: 10px 10px 0 0;
+  }
+  input[type="checkbox"]:checked ~ .contenedor_fracciones {
+    border-radius: 0 0 10px 10px;
+  }
   .contenedor_numeros {
     display: flex;
     justify-content: space-around;
@@ -33,6 +41,13 @@ $color-lotto: #b51f20;
       font-size: 16px;
       font-family: $fuente-titulo;
       opacity: 0.7;
+    }
+  }
+  .contenedor_fracciones{
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    p{
+      margin: 0 0 10px 0;
     }
   }
 }
@@ -185,8 +200,9 @@ $color-lotto: #b51f20;
         button {
           background-color: $color-lotto;
           padding: 15px;
-          margin: 10px 0;
+          margin: 10px auto;
           width: 100%;
+          max-width: 300px;
           border-radius: 30px;
           border: 1px solid $color-lotto;
           color: #fff;
@@ -285,6 +301,12 @@ $color-lotto: #b51f20;
               color: #fff !important;
               transition: background-color 0.3s ease-out;
               opacity: 1;
+            }
+            input[type="checkbox"]:checked ~ .contenedor_numeros {
+              border-radius: 10px 10px 0 0;
+            }
+            input[type="checkbox"]:checked ~ .contenedor_fracciones {
+              border-radius: 0 0 10px 10px;
             }
 
             .contenedor_seleccion_numero {
@@ -410,5 +432,60 @@ $color-lotto: #b51f20;
     width: 25%;
     max-width: 400px;
     min-width: 250px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .contenedor_loteria {
+    flex-direction: column;
+    .infoBox {
+      max-width: 800px;
+      width: 100%;
+    }
+  
+    .contenedor_seleccion {
+      width: 100% !important;
+      margin: 0 0 20px 0;
+  
+      .selectBox {
+        flex-wrap: wrap;
+  
+        .contenedor_select {
+          width: 100%;
+
+        }
+      }
+      
+            .numeros_suerte {
+              width: 100%;
+              margin: 0;
+              .numeros{
+              flex-wrap: wrap;
+                .activado{
+                  margin-top: 20px;
+                }
+              }
+            }
+  
+      table {
+  
+        tbody {
+          grid-template-columns: repeat(1, auto);
+  
+        }
+  
+        hr {
+          width: 97%;
+          margin: auto;
+          margin: 15px auto;
+        }
+      }
+
+    }
+  
+    .ticketScroller {
+      width: 100%;
+      max-width: 800px;
+    }
   }
 }

@@ -1,11 +1,17 @@
+<div class="blackBox" (click)="closeBox()">
+</div>
+
 <div class="resultsBox">
 
     <div class="resultBox" *ngFor="let premio of premios">
 
         <div class="messageBox">
-            <app-resultado-instantanea [ticket]="premio" [tipoLoteria]="premio.tipoLoteria" [isLoteriaNacional]="premio.tipoLoteria == 1">
+            <app-resultado-instantanea [premio]="premio" [tipoLoteria]="premio.lotteryType">
             </app-resultado-instantanea>
         </div>
 
+    </div>
+    <div class="buttonsBox">
+        <button (click)="closeBox()">Ir a resumen de compra</button>
     </div>
 </div>

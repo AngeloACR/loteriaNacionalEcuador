@@ -56,3 +56,9 @@ $color-loteria: #7c91a8;
     }
   }
 }
+@media screen and (max-width: 1000px) {
+
+  .paymentBox{
+    width: 95%;
+  }
+}

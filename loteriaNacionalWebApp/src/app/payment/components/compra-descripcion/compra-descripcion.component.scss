@@ -13,7 +13,6 @@ $color-pozo: #04b865;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
   font-weight: 600;
 
   p {
@@ -69,14 +68,14 @@ $color-pozo: #04b865;
     .titleLoteryBox {
       display: flex;
       background-color: $color-pozo;
-  
+
       h3 {
         color: white;
         font-family: $fuente-parrafo;
         font-size: 16px;
         font-weight: normal;
-        span{
-        font-family: $fuente-subtitulo;
+        span {
+          font-family: $fuente-subtitulo;
         }
       }
     }
@@ -197,5 +196,28 @@ $color-pozo: #04b865;
 
   &:hover p {
     color: white;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .containerDetails {
+    .containerInfoBox {
+      .dateLoteryBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .infoSorteoBox {
+          width: 80%;
+          margin: 0;
+        }
+        .infoTicketBox {
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+        }
+        .numberBox{
+          display: none;
+        }
+      }
+    }
   }
 }

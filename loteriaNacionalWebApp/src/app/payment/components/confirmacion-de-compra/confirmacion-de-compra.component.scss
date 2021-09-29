@@ -23,4 +23,9 @@
     background-color: rgba(155, 155, 155, 0.5);
     border: none;
   }
-  
+  @media screen and (max-width: 1000px) {
+
+    .paymentBox{
+      width: 95%;
+    }
+  }

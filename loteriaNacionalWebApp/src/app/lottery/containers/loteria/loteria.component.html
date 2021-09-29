@@ -13,59 +13,70 @@
 
   <div class="contenedor_seleccion">
     <div class="contenedor_select">
-      <h3>¿Como quieres comprar?</h3>
+      <h3>¿Cómo quieres comprar?</h3>
       <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
-        <option class="option" value="96">Seleccion individual</option>
+        <option class="option" value="96">Selección individual</option>
         <option class="option" value="5">5 Boletos al azar</option>
         <option class="option" value="30">30 Boletos al azar</option>
         <option class="option" value="50">50 Boletos al azar</option>
       </select>
     </div>
-      <div class="numeros_suerte">
-        <h3>Ingresa tu numero de la suerte</h3>
-        <div class="numeros">
-          <input
-            type="text"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte0"
-            [(ngModel)]="combinacionDeLaSuerte[0]"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte1"
-            [(ngModel)]="combinacionDeLaSuerte[1]"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte2"
-            [(ngModel)]="combinacionDeLaSuerte[2]"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte3"
-            [(ngModel)]="combinacionDeLaSuerte[3]"
-          />
-          <input
-            type="text"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte4"
-            [(ngModel)]="combinacionDeLaSuerte[4]"
-          />
-      <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
-
-        </div>
+    <div class="numeros_suerte">
+      <h3>
+        Si tienes una combinación de la suerte, un número favorito o un posible
+        ganador, ingrésalo aquí:
+      </h3>
+      <div class="numeros">
+        <input
+          #input1
+          [appAutoTab]="input2"
+          type="text"
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte0"
+          [(ngModel)]="combinacionDeLaSuerte[0]"
+        />
+        <input
+          #input2
+          [appAutoTab]="input3"
+          type="text"
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte1"
+          [(ngModel)]="combinacionDeLaSuerte[1]"
+        />
+        <input
+          #input3
+          [appAutoTab]="input4"
+          type="text"
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte2"
+          [(ngModel)]="combinacionDeLaSuerte[2]"
+        />
+        <input
+          #input4
+          [appAutoTab]="input5"
+          type="text"
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte3"
+          [(ngModel)]="combinacionDeLaSuerte[3]"
+        />
+        <input
+          #input5
+          type="text"
+          maxlength="1"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte4"
+          [(ngModel)]="combinacionDeLaSuerte[4]"
+        />
+        <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
       </div>
+    </div>
     <p>
-      Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar
-      numero"
+      Si quieres cambiar tu número, ingrésalo nuevamente y clic en "Buscar
+      número"
     </p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
       <table>
@@ -191,6 +202,14 @@
   class="paymentItem"
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-compra>
+<app-resultados-instantaneas
+  (close)="abrirFinalizar()"
+  [resultados]="instantaneas"
+  tipoloteria="1"
+  [isLoteriaNacional]="true"
+  class="paymentItem"
+  *ngIf="isInstantaneas"
+></app-resultados-instantaneas>
 <app-compra-finalizada
   (volver)="finalizarCompra()"
   [compra]="detalleCompra"

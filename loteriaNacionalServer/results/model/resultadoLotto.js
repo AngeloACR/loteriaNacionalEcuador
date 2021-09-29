@@ -14,6 +14,9 @@ const resultadoLottoSchema = new mongoose.Schema({
     combinacion4: {
         type: String,
     },
+    combinacion5: {
+        type: String,
+    },
     codigo: {
         type: Number,
     },

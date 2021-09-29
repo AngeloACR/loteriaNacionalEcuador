@@ -6,9 +6,8 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ['./resultado-instantanea.component.scss']
 })
 export class ResultadoInstantaneaComponent implements OnInit {
-  @Input() ticket: any;
+  @Input() premio: any;
   @Input() tipoLoteria: any;
-  @Input() isLoteriaNacional: boolean = false;
 
   description: String;
   nombrePremio: String;
@@ -40,8 +39,8 @@ export class ResultadoInstantaneaComponent implements OnInit {
 
         break;
     }
-    this.sorteo = this.ticket.sorteo;
-      this.valorPremio = this.ticket.prizeWithDiscount;
-      this.nombrePremio = this.ticket.prizeDescription;
+    this.sorteo = this.premio.sorteo;
+      this.valorPremio = this.premio.prizeWithDiscount;
+      this.nombrePremio = this.premio.prizeDescription;
   }
 }

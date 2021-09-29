@@ -32,6 +32,10 @@ const ultimoResultadoSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'ResultadoLotto',
     },
+    resultadoAntojito: {
+        type: Schema.Types.ObjectId,
+        ref: 'ResultadoLotto',
+    },
     resultadosLottito: [{
         type: Schema.Types.ObjectId,
         ref: 'ResultadoLotto',
@@ -52,6 +56,9 @@ const ultimoResultadoSchema = new mongoose.Schema({
         type: String
     },
     codigoPremioNosVemosJefe: {
+        type: String
+    },
+    codigoPremioAntojito: {
         type: String
     },
     codigoPremioLottito: {
@@ -84,6 +91,14 @@ ultimoResultadoSchema.virtual('premioPrincipal', {
 ultimoResultadoSchema.virtual('premioNosVemosJefe', {
     ref: 'Premio', // The model to use
     localField: 'codigoPremioNosVemosJefe', // Find people where `localField`
+    foreignField: 'codigo', // is equal to `foreignField`
+    // If `justOne` is true, 'members' will be a single doc as opposed to
+    // an array. `justOne` is false by default.
+    justOne: true,
+});
+ultimoResultadoSchema.virtual('premioAntojito', {
+    ref: 'Premio', // The model to use
+    localField: 'codigoPremioAntojito', // Find people where `localField`
     foreignField: 'codigo', // is equal to `foreignField`
     // If `justOne` is true, 'members' will be a single doc as opposed to
     // an array. `justOne` is false by default.

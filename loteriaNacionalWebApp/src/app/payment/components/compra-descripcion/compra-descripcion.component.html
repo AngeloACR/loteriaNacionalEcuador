@@ -31,7 +31,7 @@
           <p>{{ item.fracciones.length }}</p>
         </div>
         <div class="montoBox">
-          <p>${{ item.subtotal }}</p>
+          <p>{{ formatNumber(item.subtotal) }}</p>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
           <p>1</p>
         </div>
         <div class="montoBox">
-          <p>${{ item.subtotal }}</p>
+          <p>{{ formatNumber(item.subtotal) }}</p>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
           <p>1</p>
         </div>
         <div class="montoBox">
-          <p>${{ item.subtotal }}</p>
+          <p>{{ formatNumber(item.subtotal) }}</p>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@
 
   <div class="totalBox">
     <p>
-      Total: <span>${{ compra.amount }}</span>
+      Total: <span *ngIf="compra.amount">{{ formatNumber(compra.amount) }}</span><span *ngIf="compra.total">{{ formatNumber(compra.total) }}</span>
     </p>
   </div>
 </div>

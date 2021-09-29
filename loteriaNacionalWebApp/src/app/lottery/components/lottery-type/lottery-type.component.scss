@@ -12,58 +12,25 @@ $fuente-botones: "Monstserrat SemiBold";
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
-  height: 300px;
-  padding: 10px;
+  justify-content: center;
+  width: 420px;
+  height: 140px;
+  margin: 20px;
+
   border-radius: 23px;
   /* margin: auto; */
   box-shadow: 0px 0px 25px -12px #000000;
   -moz-box-shadow: 0px 0px 25px -12px #000000;
   -webkit-box-shadow: 0px 0px 25px -12px #000000;
 
-  .loteria {
-    background-color: #2f72b9;
-    border: 3px solid #2f72b9;
-  }
-
-  .lotto {
-    background-color: #b51f20;
-    border: 3px solid #b51f20;
-  }
-
-  .pozo {
-    background-color: #04b865;
-    //    background-color: #057333;
-    //  border: 3px solid #057333;
-    border: 3px solid #04b865;
-  }
-
-  .loteria:hover {
-    background-color: white;
-    color: #2f72b9;
-  }
-
-  .lotto:hover {
-    background-color: white;
-    color: #b51f20;
-  }
-
-  .pozo:hover {
-    background-color: white;
-
-    //    color: #057333;
-    color: #04b865;
-  }
-
   .lotteryImg {
     width: 50%;
     margin: auto;
-    padding: 10px;
     transition: width 0.3s ease;
   }
 
   &:hover .lotteryImg{
-    width: 80%;
+    width: 60%;
 
     transition: width 0.3s ease;
   }
@@ -75,13 +42,26 @@ $fuente-botones: "Monstserrat SemiBold";
 
 
 .loteria {
-  background-color: $color-loteria;
+  background-color: #2f72b9;
+  border: 3px solid #2f72b9;
 }
 
 .lotto {
-  background-color: $color-lotto;
+  background-color: #b51f20;
+  border: 3px solid #b51f20;
 }
 
 .pozo {
-  background-color: $color-pozo;
+  background-color: #04b865;
+  //    background-color: #057333;
+  //  border: 3px solid #057333;
+  border: 3px solid #04b865;
+}
+
+
+@media screen and (max-width: 800px) {
+  .lotteryBox{
+    width: 300px;
+    height: 100px;
+  }
 }

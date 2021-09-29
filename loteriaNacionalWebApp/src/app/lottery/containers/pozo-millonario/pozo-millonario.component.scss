@@ -162,8 +162,8 @@ $color-botton: #2f72b9;
           justify-content: flex-start;
           margin: 0 5px;
           input[type="text"] {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             padding: 8px 6px;
             margin: 0 15px 0 0;
             text-align: center;
@@ -332,9 +332,10 @@ $color-botton: #2f72b9;
       color: #fff;
       font-family: $fuente-botones;
       font-size: 16px;
-      margin: 10px 0;
+      margin: 10px auto;
       width: 100%;
-      cursor: pointer;
+          max-width: 300px;
+          cursor: pointer;
 
       &:hover {
         background-color: white;
@@ -515,5 +516,54 @@ $color-botton: #2f72b9;
     width: 25%;
     max-width: 400px;
     min-width: 250px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .contenedor_loteria {
+    flex-direction: column;
+    .infoBox {
+      max-width: 800px;
+      width: 100%;
+    }
+  
+    .contendor_seleccion {
+      width: 100%;
+      margin: 0 0 20px 0;
+  
+      .selectBox {
+        flex-wrap: wrap;
+  
+        .contenedor_select {
+          width: 100%;
+
+        }
+  
+        .numeros_suerte {
+          width: 100%;
+          margin: 0;
+        }
+      }
+  
+      table {
+  
+        tbody {
+          grid-template-columns: repeat(1, auto);
+  
+        }
+  
+        hr {
+          width: 97%;
+          margin: auto;
+          margin: 15px auto;
+        }
+      }
+
+    }
+  
+    .ticketScroller {
+      width: 100%;
+      max-width: 800px;
+    }
   }
 }

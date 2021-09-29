@@ -250,7 +250,7 @@ const ventasController = {
         operationTimeStamp: operationTimeStamp,
         ticketId: data.ticketId,
         amount: data.amount,
-        prizeDetails: data.prizeDetails,
+        instantWinDetails: data.prizeDetails,
       };
       let response = await Wallet.sellLottery(exaData);
       return response;
@@ -436,6 +436,7 @@ const ventasController = {
           combinacion2: element.Num2,
           combinacion3: element.Num3,
           combinacion4: element.Num4,
+          combinacion5: element.Num5,
           display: element.Num.split(""),
           status: false,
           identificador: Math.random(),

@@ -13,18 +13,21 @@
 
   <div class="contenedor_seleccion">
     <div class="contenedor_select">
-      <h3>¿Como quieres comprar?</h3>
+      <h3>¿Cómo quieres comprar?</h3>
       <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
-        <option class="option" value="96">Seleccion individual</option>
+        <option class="option" value="96">Selección individual</option>
         <option class="option" value="5">5 Boletos al azar</option>
         <option class="option" value="30">30 Boletos al azar</option>
         <option class="option" value="50">50 Boletos al azar</option>
       </select>
     </div>
     <div class="numeros_suerte">
-      <h3>Ingresa tu numero de la suerte</h3>
+      <h3>Si tienes una combinación de la suerte, un número favorito o un posible ganador, ingrésalo aquí:</h3>
+
       <div class="numeros">
         <input
+        #input1
+        [appAutoTab]="input2"
           type="text"
           name=""
           maxlength="1"
@@ -32,6 +35,8 @@
           [(ngModel)]="combinacionDeLaSuerte[0]"
         />
         <input
+        #input2
+        [appAutoTab]="input3"
           type="text"
           name=""
           maxlength="1"
@@ -39,6 +44,8 @@
           [(ngModel)]="combinacionDeLaSuerte[1]"
         />
         <input
+        #input3
+        [appAutoTab]="input4"
           type="text"
           name=""
           maxlength="1"
@@ -46,6 +53,8 @@
           [(ngModel)]="combinacionDeLaSuerte[2]"
         />
         <input
+        #input4
+        [appAutoTab]="input5"
           type="text"
           name=""
           maxlength="1"
@@ -53,6 +62,8 @@
           [(ngModel)]="combinacionDeLaSuerte[3]"
         />
         <input
+        #input5
+        [appAutoTab]="input6"
           type="text"
           name=""
           maxlength="1"
@@ -60,6 +71,7 @@
           [(ngModel)]="combinacionDeLaSuerte[4]"
         />
         <input
+        #input6
           type="text"
           name=""
           maxlength="1"
@@ -70,8 +82,8 @@
       </div>
     </div>
     <p>
-      Si quieres cambiar tu numero, ingresalo nuevamente y clic en "Buscar
-      numero"
+      Si quieres cambiar tu número, ingrésalo nuevamente y haz click en "Buscar
+      número"
     </p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
       <table>
@@ -91,6 +103,22 @@
                 />
                 <div class="contenedor_numeros">
                   <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                </div>
+                <hr />
+                <div class="contenedor_fracciones">
+
+                  <p>
+                    Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
+                  </p>
+                  <p>
+                    Lottito: <span>{{ ticket.combinacion2 }}</span>
+                  </p>
+                  <p *ngIf="ticket.combinacion4 != ''">
+                    Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
+                  </p>
+                  <p *ngIf="ticket.combinacion5 != ''">
+                    Antojito: <span>{{ ticket.combinacion5 }}</span>
+                  </p>
                 </div>
               </div>
               <!-- <app-seleccion-lotto [tickets]="ticket"></app-seleccion-lotto> -->

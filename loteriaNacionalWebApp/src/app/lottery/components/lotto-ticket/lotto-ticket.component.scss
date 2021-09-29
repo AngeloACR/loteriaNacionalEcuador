@@ -5,13 +5,13 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #b51f20;
 
-
 .contenedor_informacion_ticket {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin: 10px 0;
-  background-color: transparent;
+  padding: 20px;
+  background-color: $color-botton;
   border-radius: 5px;
   border-width: 1px 0;
   border-style: solid;
@@ -21,7 +21,7 @@ $color-botton: #b51f20;
   p {
     font-family: $fuente-parrafo;
     font-size: 14px;
-    color: #000;
+    color: white;
     margin: 5px;
     span {
       font-family: $fuente-subtitulo;
@@ -42,16 +42,47 @@ $color-botton: #b51f20;
       border: 1px solid black;
     }
   }
-  img{
+  img.trash {
     position: absolute;
     cursor: pointer;
-    width:5%;
-    top: 5px;
-    right: 5px;
+    width: 5%;
+    top: 20px;
+    right: 20px;
+    transition: width 0.3s ease;
+    filter: invert(99%) sepia(0%) saturate(3765%) hue-rotate(16deg)
+      brightness(119%) contrast(100%);
+  }
+  img.trash:hover {
+    width: 8%;
     transition: width 0.3s ease;
   }
-  img:hover{
-    width:8%;
-    transition: width 0.3s ease;
+  img.logoTicket {
+    position: absolute;
+    width: 30%;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .contenedor_informacion_ticket {
+    p{
+      font-size: 12px;
+    
+        }
+       img.logoTicket {
+      position: absolute;
+      width: 150px;
+      top: 132px;
+      right: 5px;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .contenedor_informacion_ticket {
+    img.logoTicket {
+      position: absolute;
+      width: 120px;
+    }
   }
 }

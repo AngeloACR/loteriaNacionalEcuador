@@ -14,21 +14,23 @@
   <div class="contendor_seleccion">
     <div class="selectBox">
       <div class="contenedor_select">
-        <h3>¿Como quieres comprar?</h3>
+        <h3>¿Cómo quieres comprar?</h3>
         <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
-          <option class="option" value="96">Seleccion individual</option>
+          <option class="option" value="96">Selección individual</option>
           <option class="option" value="5">5 Boletos al azar</option>
           <option class="option" value="30">30 Boletos al azar</option>
           <option class="option" value="50">50 Boletos al azar</option>
         </select>
       </div>
       <div class="numeros_suerte">
-        <h3>Ingresa tu numero de la suerte</h3>
+        <h3>Si tienes una combinación de la suerte, un número favorito o un posible ganador, ingrésalo aquí:</h3>
+
         <div class="numeros">
           <input
             type="text"
             maxlength="2"
             name=""
+            (input)="validate()" 
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[0]"
           />
@@ -36,6 +38,7 @@
             type="text"
             maxlength="2"
             name=""
+            (input)="validate()" 
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[1]"
           />
@@ -43,6 +46,7 @@
             type="text"
             maxlength="2"
             name=""
+            (input)="validate()" 
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[2]"
           />
@@ -50,6 +54,7 @@
             type="text"
             maxlength="2"
             name=""
+            (input)="validate()" 
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[3]"
           />
@@ -80,8 +85,8 @@
     <button class="activado" (click)="buscarNumero()">BUSCAR CARTONES</button>
 
     <p>
-      Si quieres cambiar tu carton, ingresa los numeros nuevamente y clic en
-      "Buscar carton".
+      Si quieres cambiar tu cartón, ingresa los números nuevamente y haz click en
+      "Buscar cartones".
     </p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
       <table *ngIf="showNumeros">

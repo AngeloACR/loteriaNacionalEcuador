@@ -11,13 +11,10 @@
     <div class="detailBox">
       <img src="assets/ganadorpremio.png" alt="" />
       <div class="detailText">
-        <p><span>SORTEO: </span>{{ sorteo }}</p>
-        <p><span>COMBINACIÓN: </span>{{ ticket.combinacion }}</p>
-        <p><span>PREMIO: </span>{{ nombrePremio }}</p>
-        <p><span>VALOR: </span>{{ valorPremio }}</p>
-        <p *ngIf="isLoteriaNacional">
-          <span>FRACCIÓN: </span>$ {{ ticket.fracciones }}
-        </p>
+        <p><span>SORTEO: </span>{{premio.drawNumber}}</p>
+        <p><span>COMBINACIÓN: </span>{{premio.combinationC1}}</p>
+        <p><span>PREMIO: </span>{{premio.prizeDescription}}</p>
+        <p><span>VALOR: </span>{{premio.prizeWithDiscount}}</p>
       </div>
     </div>
     <p>El valor del premio se acreditará automáticamente en tu cuenta.</p>

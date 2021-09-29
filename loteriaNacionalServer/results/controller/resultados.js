@@ -374,7 +374,7 @@ const resultadosController = {
 
                 resultado = await UltimoResultado.findOne(query).populate('ultimoResultadoLoteria').populate('sorteo').populate('premioPrincipal');
             } else if (tipoLoteria == 2) {
-                resultado = await UltimoResultado.findOne(query).populate('ultimoResultadoLotto').populate('resultadoLottoPlus').populate('resultadosLottito').populate('resultadoNosVemosJefe').populate('sorteo').populate('premioPrincipal').populate('premioNosVemosJefe').populate('premioLottoPlus').populate('premioLottito');
+                resultado = await UltimoResultado.findOne(query).populate('ultimoResultadoLotto').populate('resultadoLottoPlus').populate('resultadosLottito').populate('resultadoNosVemosJefe').populate('resultadoAntojito').populate('sorteo').populate('premioPrincipal').populate('premioNosVemosJefe').populate('premioLottoPlus').populate('premioLottito');
 
             } else {
                 resultado = await UltimoResultado.findOne(query).populate('ultimoResultadoPozo').populate('sorteo').populate('premioPrincipal');

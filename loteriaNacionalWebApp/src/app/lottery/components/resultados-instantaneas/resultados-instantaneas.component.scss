@@ -1,60 +1,114 @@
+
+$fuente-botones: "Monstserrat SemiBold";
+.backgroundLoteriaNacional {
+  border: 1px solid #2f72b9;
+  background-color: #2f72b9;
+  &:hover {
+    background-color: #fff;
+    color: #2f72b9;
+    transition: background-color 0.5s ease;
+  }
+}
+.backgroundLotto {
+  border: 1px solid #b51f20;
+  background-color: #b51f20;
+  &:hover {
+    background-color: #fff;
+    color: #b51f20;
+    transition: background-color 0.5s ease;
+  }
+}
+.backgroundPozoMillonario {
+  border: 1px solid #04b865;
+  background-color: #04b865;
+  &:hover {
+    background-color: #fff;
+    color: #04b865;
+    transition: background-color 0.5s ease;
+  }
+}
 .blackBox {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 10;
+  position: fixed;
+  z-index: 8000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: height 0.2s ease-out;
+  overflow: hidden;
+  background-color: rgba(155, 155, 155, 0.5);
+  border: none;
+}
+
+.resultsBox {
+  width: 70%;
+  height: 70%;
+  position: fixed;
+  padding: 15px;
+  z-index: 10000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.resultBox {
+  width: 100%;
+  .messageBox {
+    margin: 1px;
+    border-radius: 23px;
   }
-  
-  .resultsBox {
-    width: 40%;
-    max-height: 80%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: transparent;
-    z-index: 500;
-  }
-  
-  .resultBox {
-    width: 100%;
-    .messageBox {
-      padding: 20px;
-      margin: 1px;
-      border-radius: 23px;
-    }
-  }
-  
-  .closeBox {
-    border: 2px solid red;
-    border-radius: 500px;
-    width: 15px;
-    height: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    color: red;
+}
+
+.closeBox {
+  border: 2px solid red;
+  border-radius: 500px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: red;
+  cursor: pointer;
+  top: 5px;
+  right: 5px;
+  position: absolute;
+}
+
+.closeBox:hover {
+  background-color: red;
+  color: white;
+}
+
+.buttonsBox {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 90%;
+    padding: 15px;
+    border-radius: 40px;
+    margin: 5px;
+    font-family: $fuente-botones;
+    color: #fff;
+    font-size: 12px;
     cursor: pointer;
-    top: 5px;
-    right: 5px;
-    position: absolute;
+    transition: background-color 0.5s ease;
   }
-  
-  .closeBox:hover {
-    background-color: red;
-    color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .resultsBox {
+    width: 85%;
   }
-  
-  @media screen and (max-width: 800px) {
-    .resultsBox {
-      width: 75%;
-    }
-  }
-  
+}

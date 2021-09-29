@@ -165,7 +165,7 @@ export class PozoMillonarioComponent implements OnInit {
       } else {
         this.isLoading = false;
         let message =
-          "Su saldo es insuficiente para agregar este boleto al carrito";
+          "Tu saldo es insuficiente para agregar este boleto al carrito";
         this.ticketAnimales.find(
           (x) => x.identificador === ticket.identificador
         ).status = false;
@@ -191,18 +191,27 @@ export class PozoMillonarioComponent implements OnInit {
   ordenaCombinacion(a, b) {
     return a - b;
   }
+  validate() {
+    let isHigher = false;
+    this.combinacionDeLaSuerte.forEach((number, i) => {
+      let aux = parseInt(number);
+      if (aux > 25) {
+        let errorMessage =
+          "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo.";
+        this.openError(errorMessage);
+        this.combinacionDeLaSuerte[i] = "";
+        isHigher = true;
+      }
+    });
+    if (isHigher) {
+      return;
+    }
+  }
   async buscarNumero() {
     try {
       this.loadingMessage = "Buscando combinaciones disponibles";
       this.isLoading = true;
       this.showNumeros = false;
-      let isHigher = false;
-      this.combinacionDeLaSuerte.forEach((number) => {
-        let aux = parseInt(number);
-        if (aux > 25) {
-          isHigher = true;
-        }
-      });
       let combinacion = this.combinacionDeLaSuerte.map((number) => {
         let numero = number;
         if (numero.length < 2) {
@@ -220,22 +229,14 @@ export class PozoMillonarioComponent implements OnInit {
       combinacion.sort(this.ordenaCombinacion);
       combinacionFigura.sort(this.ordenaCombinacion);
 
-      if (isHigher) {
-        this.isLoading = false;
-        let errorMessage =
-          "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo.";
-        this.openError(errorMessage);
-        return;
-      } else {
-        this.ticketAnimales = await this.lotteryService.obtenerTickets(
-          this.token,
-          5,
-          this.sorteoSeleccionado.sorteo,
-          combinacion.join(""),
-          combinacionFigura.join(""),
-          this.tipoSeleccion
-        );
-      }
+      this.ticketAnimales = await this.lotteryService.obtenerTickets(
+        this.token,
+        5,
+        this.sorteoSeleccionado.sorteo,
+        combinacion.join(""),
+        combinacionFigura.join(""),
+        this.tipoSeleccion
+      );
 
       this.showNumeros = true;
       this.isLoading = false;
@@ -366,7 +367,7 @@ export class PozoMillonarioComponent implements OnInit {
   async confirmarCompra() {
     try {
       this.isLoading = true;
-      this.loadingMessage = "Espere mientras procesamos su compra";
+      this.loadingMessage = "Espera mientras procesamos tu compra";
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
 
       if (hasBalance) {
@@ -385,7 +386,7 @@ export class PozoMillonarioComponent implements OnInit {
         }
       } else {
         this.isLoading = false;
-        let message = "Su saldo es insuficiente para realizar la compra";
+        let message = "Tu saldo es insuficiente para realizar la compra";
         this.recargarSaldo(message);
       }
     } catch (e) {
@@ -582,27 +583,27 @@ export class PozoMillonarioComponent implements OnInit {
     }
   }
 
-  getCarritoTickets(){
+  getCarritoTickets() {
     if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
       this.ticketsLoteria = JSON.parse(
         localStorage.getItem("seleccionadosLoteria")
       );
     } else {
-      this.ticketsLoteria = {}
+      this.ticketsLoteria = {};
     }
     if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
       this.ticketsLotto = JSON.parse(
         localStorage.getItem("seleccionadosLotto")
       );
     } else {
-      this.ticketsLotto = {}
+      this.ticketsLotto = {};
     }
     if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
       this.ticketsSeleccionados = JSON.parse(
         localStorage.getItem("seleccionadosPozo")
       );
     } else {
-      this.ticketsSeleccionados = {}
+      this.ticketsSeleccionados = {};
     }
   }
 

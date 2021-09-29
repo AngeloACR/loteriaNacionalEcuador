@@ -4,18 +4,25 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class ShoppingCartService {
+
+
   constructor() {}
 
+
+  
   setCarritoLoteria(tickets) {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify(tickets));
+
   }
 
   setCarritoLotto(tickets) {
     localStorage.setItem("seleccionadosLotto", JSON.stringify(tickets));
+
   }
 
   setCarritoPozo(tickets) {
     localStorage.setItem("seleccionadosPozo", JSON.stringify(tickets));
+
   }
 
   getCarritoLoteria() {

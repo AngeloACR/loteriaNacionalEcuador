@@ -20,7 +20,7 @@ const getRangeLabel = (page: number, pageSize: number, length: number) => {
   const endPage = Math.ceil(length / pageSize);
 
   //return `${startIndex + 1} - ${endIndex} de ${length}`;
-  return `Pàgina ${page + 1} de  ${endPage}`;
+  return `Página ${page + 1} de  ${endPage}`;
 };
 
 export function getSpanishPaginatorIntl() {

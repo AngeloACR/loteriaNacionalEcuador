@@ -185,7 +185,7 @@ export class LottoComponent implements OnInit {
       } else {
         this.isLoading = false;
         let message =
-          "Su saldo es insuficiente para agregar este boleto al carrito";
+          "Tu saldo es insuficiente para agregar este boleto al carrito";
         this.ticketsLotto.find(
           (x) => x.identificador === ticket.identificador
         ).status = false;
@@ -283,7 +283,7 @@ export class LottoComponent implements OnInit {
   async confirmarCompra() {
     try {
       this.isLoading = true;
-      this.loadingMessage = "Espere mientras procesamos su compra";
+      this.loadingMessage = "Espera mientras procesamos tu compra";
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
 
       if (hasBalance) {
@@ -302,7 +302,7 @@ export class LottoComponent implements OnInit {
         }
       } else {
         this.isLoading = false;
-        let message = "Su saldo es insuficiente para realizar la compra";
+        let message = "Tu saldo es insuficiente para realizar la compra";
         this.recargarSaldo(message);
       }
     } catch (e) {
