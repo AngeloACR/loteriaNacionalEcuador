@@ -392,6 +392,7 @@ export class LoteriaComponent implements OnInit {
           if (response.instantanea.status) {
             this.dismissCompras();
             this.instantaneas = response.instantanea.data;
+            this.lotteryService.borrarCarrito();
             this.isInstantaneas = true;
           } else {
             this.instantaneas = "";
