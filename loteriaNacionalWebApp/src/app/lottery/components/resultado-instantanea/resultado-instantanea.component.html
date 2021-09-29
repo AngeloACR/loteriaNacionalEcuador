@@ -11,10 +11,11 @@
     <div class="detailBox">
       <img src="assets/ganadorpremio.png" alt="" />
       <div class="detailText">
-        <p><span>SORTEO: </span>{{premio.drawNumber}}</p>
-        <p><span>COMBINACIÓN: </span>{{premio.combinationC1}}</p>
+        <p><span>SORTEO: </span>{{premio.drawSorteo}}</p>
+        <p><span>COMBINACIÓN: </span>{{premio.combinacion}}</p>
         <p><span>PREMIO: </span>{{premio.prizeDescription}}</p>
         <p><span>VALOR: </span>{{formatNumber(premio.prizeWithDiscount)}}</p>
+        <p *ngIf="premio.fracciones.length != 0"><span>FRACCIÓN: </span>{{premio.fracciones}}</p>
       </div>
     </div>
     <p>El valor del premio se acreditará automáticamente en tu cuenta.</p>

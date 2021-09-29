@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ResultadoInstantaneaComponent implements OnInit {
   @Input() premio: any;
-  @Input() tipoLoteria: string;
+  @Input() tipoLoteria: number;
 
   description: String;
   nombrePremio: String;
@@ -18,13 +18,14 @@ export class ResultadoInstantaneaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    console.log(this.tipoLoteria)
     switch (this.tipoLoteria) {
-      case "1":
+      case 1:
         this.loteriaBackground = {
           backgroundLoteriaNacional: true
         };
         break;
-      case "2":
+      case 2:
         this.loteriaBackground = {
           backgroundLotto: true
         };

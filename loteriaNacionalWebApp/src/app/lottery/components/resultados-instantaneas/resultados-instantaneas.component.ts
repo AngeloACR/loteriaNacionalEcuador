@@ -17,13 +17,13 @@ export class ResultadosInstantaneasComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    switch (this.tipoLoteria) {
-      case "1":
+    switch (parseInt(this.tipoLoteria)) {
+      case 1:
         this.loteriaBackground = {
           backgroundLoteriaNacional: true
         };
         break;
-      case "2":
+      case 2:
         this.loteriaBackground = {
           backgroundLotto: true
         };
