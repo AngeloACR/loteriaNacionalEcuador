@@ -844,7 +844,7 @@ export class LotteryService {
     });
   }
 
-  eliminarBoletosDeReserva(token, boleto, fracciones, tipoLoteria, reservaId) {
+  eliminarBoletosDeReserva(token, boleto, sorteo, fracciones, tipoLoteria, reservaId) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
@@ -864,9 +864,9 @@ export class LotteryService {
       case 1:
         aux = [
           {
-            combinacion: boleto.ticket.combinacion,
+            combinacion: boleto.combinacion,
             fracciones,
-            sorteo: boleto.sorteo,
+            sorteo: sorteo,
           },
         ];
         body["loteria"] = aux;
@@ -874,8 +874,8 @@ export class LotteryService {
       case 2:
         aux = [
           {
-            combinacion: boleto.ticket.combinacion1,
-            sorteo: boleto.sorteo,
+            combinacion: boleto.combinacion1,
+            sorteo: sorteo,
           },
         ];
         body["lotto"] = aux;
@@ -884,8 +884,8 @@ export class LotteryService {
       default:
         aux = [
           {
-            combinacion: boleto.ticket.combinacion1,
-            sorteo: boleto.sorteo,
+            combinacion: boleto.combinacion1,
+            sorteo: sorteo,
           },
         ];
         body["pozo"] = aux;
@@ -969,32 +969,4 @@ export class LotteryService {
     });
   }
 
-  setCarritoLoteria(tickets) {
-    console.log(tickets);
-    localStorage.setItem("seleccionadosLoteria", JSON.stringify(tickets));
-  }
-
-  setCarritoLotto(tickets) {
-    localStorage.setItem("seleccionadosLotto", JSON.stringify(tickets));
-  }
-
-  setCarritoPozo(tickets) {
-    localStorage.setItem("seleccionadosPozo", JSON.stringify(tickets));
-  }
-
-  getCarritoLoteria() {
-    return JSON.parse(localStorage.getItem("seleccionadosLoteria"));
-  }
-  getCarritoLotto() {
-    return JSON.parse(localStorage.getItem("seleccionadosLotto"));
-  }
-  getCarritoPozo() {
-    JSON.parse(localStorage.getItem("seleccionadosPozo"));
-  }
-  borrarCarrito() {
-    localStorage.removeItem("seleccionadosLoteria");
-    localStorage.removeItem("seleccionadosLotto");
-    localStorage.removeItem("seleccionadosPozo");
-    localStorage.removeItem("reservaId");
-  }
 }

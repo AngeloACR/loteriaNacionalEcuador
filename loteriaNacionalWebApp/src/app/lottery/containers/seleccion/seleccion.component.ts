@@ -28,7 +28,7 @@ export class SeleccionComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.loadingMessage = "Espere mientras procesamos su información";
+      this.loadingMessage = "Espera mientras procesamos tu información";
       this.isLoading = true;
       this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
       this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;

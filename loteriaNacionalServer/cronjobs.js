@@ -17,5 +17,10 @@ module.exports.setCronJobs = function () {
     //let jobTimeC = '00 */3 * * * *'
     var jobC = new CronJob(jobTimeC, Cache.setUltimosResultados, null, true, 'America/Guayaquil');
     jobs.push(jobC)
+    let jobTimeD = '00 45 00/1 * * *'
+    //let jobTimeB = '00 */3 * * * *'
+    var jobD = new CronJob(jobTimeB, Cache.setSorteosDisponibles, null, true, 'America/Guayaquil');
+    jobs.push(jobD)
+    
     return jobs;
 }

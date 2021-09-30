@@ -2,6 +2,7 @@ const Lottery = require("../../loterianacional/controller/main");
 const Results = require("../../results/controller/resultados");
 const Resultados = require("../../results/controller/main");
 const Sorteos = require("../../results/controller/sorteos");
+const Cache = require("../../cache/controller/main");
 const config = require("../../config/environment");
 const Ventas = require("../../loterianacional/controller/ventas");
 const Reservas = require("./reservas");
@@ -252,6 +253,7 @@ const ventasController = {
         amount: data.amount,
         instantWinDetails: data.prizeDetails,
       };
+      console.log(exaData);
       let response = await Wallet.sellLottery(exaData);
       return response;
     } catch (e) {
@@ -704,47 +706,45 @@ const ventasController = {
       let instantaneaStatus = false;
       let instantaneaData = {};
       if (instantaneas != "" && instantaneas.length != 0) {
+        let loteriaSorteos = await Cache.getLoteriaSorteosDisponibles();
+        let lottoSorteos = await Cache.getLottoSorteosDisponibles();
+        let pozoSorteos = await Cache.getPozoSorteosDisponibles();
         instantaneaStatus = true;
-        /*
-        prizeDetails: [
-            {
-              combination: '18771',
-              fraction: '47',
-              prizeName: 'INSTANTANEA REINTEGROS',
-              subtotal: '1.00',
-            },
-            {
-              combination: '18771',
-              fraction: '88',
-              prizeName: 'INSTANTANEA REINTEGROS',
-              subtotal: '1.00',
-            }
-          ],
-          */
-        let total = 0;
-        let prizeDetails = [];
         instantaneas.forEach((instantanea) => {
           instantanea.premios.forEach((premio) => {
+            let sorteos;
+            let nombreLoteria;
+            let tipoLoteria = parseInt(instantanea.sorteo.JId)
+            switch (tipoLoteria) {
+              case 1:
+              nombreLoteria="Loteria Nacional"
+                sorteos = loteriaSorteos;
+                break;
+              case 2:
+              nombreLoteria="Lotto"
+              sorteos = lottoSorteos;
+
+              default:
+              nombreLoteria="Pozo Millonario"
+              sorteos = pozoSorteos;
+                break;
+            }
+            let drawDateAux = sorteos.find(sorteo => sorteo.sorteo == instantanea.sorteo.Sort).fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
             let prizeDetail = {
-              lotteryType: instantanea.sorteo.JId,
-              lotteryName: instantanea.sorteo.JNomb,
-              drawNumber: instantanea.sorteo.Sort,
-              drawDate: instantanea.sorteo.SortNomb,
+              lotteryType: tipoLoteria,
+              lotteryName: nombreLoteria,
+              drawNumber: parseInt(instantanea.sorteo.Sort),
+              drawDate,
               combinationC1: premio.Num,
-              fractions: [premio.Fra],
+              fractions: premio.Fra,
               prize: parseFloat(premio.Val).toFixed(2),
               prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
               prizeDescription: premio.Prem,
             };
             prizeDetails.push(prizeDetail);
-            total += parseFloat(premio.ConDesc);
           });
         });
-        let exaInstantaneaData = {
-          token,
-          amount: parseFloat(total).toFixed(2),
-        };
-        //let exaInstantaneaResponse = await ventasController.addBalance(exaInstantaneaData);
         instantaneaData = prizeDetails;
       }
       let exaVentaId = Date.now();

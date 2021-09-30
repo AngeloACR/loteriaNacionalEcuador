@@ -27,7 +27,7 @@ export class PozoMillonarioComponent implements OnInit {
 
   ticketAnimales: ticketsAnimales[];
 
-  page_size: number = 6;
+  page_size: number = 4;
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
   showNumeros: boolean = false;
@@ -74,7 +74,7 @@ export class PozoMillonarioComponent implements OnInit {
       }
     });
 
-    this.lotteryService.setCarritoPozo(this.ticketsSeleccionados);
+    this.cart.setCarritoPozo(this.ticketsSeleccionados);
 
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
@@ -103,14 +103,13 @@ export class PozoMillonarioComponent implements OnInit {
     try {
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
-      let aux = {
-        ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.ticketsSeleccionados[identificador].sorteo,
-      };
+      let ticket = this.ticketsSeleccionados[identificador].ticket;
+      let sorteo = this.ticketsSeleccionados[identificador].sorteo;
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
-        aux,
+        ticket,
+        sorteo,
         fraccion,
         5,
         reservaId
@@ -159,8 +158,9 @@ export class PozoMillonarioComponent implements OnInit {
         );
 
         this.lotteryService.setReservaId(response);
-        this.lotteryService.setCarritoPozo(this.ticketsSeleccionados);
+        this.cart.setCarritoPozo(this.ticketsSeleccionados);
 
+        this.cart.setCarrito(aux, 5);
         this.isLoading = false;
       } else {
         this.isLoading = false;
@@ -358,7 +358,6 @@ export class PozoMillonarioComponent implements OnInit {
     this.confirmacionDeCompra = true;
   }
 
-
   instantaneas: any;
   isInstantaneas: boolean = false;
   finalizarCompra() {
@@ -381,7 +380,6 @@ export class PozoMillonarioComponent implements OnInit {
         );
         this.isLoading = false;
         if (response.status) {
-
           if (response.instantanea.status) {
             this.dismissCompras();
             this.instantaneas = response.instantanea.data;
@@ -407,7 +405,7 @@ export class PozoMillonarioComponent implements OnInit {
   }
   abrirFinalizar() {
     this.dismissCompras();
-    this.lotteryService.borrarCarrito();
+    this.cart.borrarCarrito();
     this.compraFinalizada = true;
   }
   cancelarCompra() {
@@ -465,15 +463,15 @@ export class PozoMillonarioComponent implements OnInit {
       console.log(data);
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
-      let aux = {
-        ticket: this.ticketsLoteria[identificador].ticket,
-        sorteo: data.sorteo,
-      };
+      let ticket = this.ticketsLoteria[identificador].ticket;
+      let sorteo = data.sorteo;
+
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
         let response = await this.lotteryService.eliminarBoletosDeReserva(
           this.token,
-          aux,
+          ticket,
+          sorteo,
           fracciones,
           1,
           reservaId
@@ -500,14 +498,14 @@ export class PozoMillonarioComponent implements OnInit {
       let fraccion = "";
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
-      let aux = {
-        ticket: this.ticketsLotto[identificador].ticket,
-        sorteo: data.sorteo,
-      };
+      let ticket= this.ticketsLotto[identificador].ticket;
+       let sorteo= data.sorteo;
+      
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
-        aux,
+        ticket,
+        sorteo,
         fraccion,
         2,
         reservaId

@@ -12,7 +12,8 @@ $color-pozo: #04b865;
   flex-direction: column;
   margin: 10px 0;
   padding: 20px;
-  background-color: $color-pozo;
+  background-color: white;
+
   border-radius: 5px;
   border-width: 1px 0;
   border-style: solid;
@@ -22,7 +23,7 @@ $color-pozo: #04b865;
   p {
     font-family: $fuente-parrafo;
     font-size: 14px;
-    color: white;
+    color: black;
     margin: 5px;
     span {
       font-family: $fuente-subtitulo;
@@ -54,7 +55,6 @@ $color-pozo: #04b865;
     top: 20px;
     right: 20px;
     transition: width 0.3s ease;
-    filter: invert(99%) sepia(0%) saturate(3765%) hue-rotate(16deg) brightness(119%) contrast(100%);
     }
   img.trash:hover{
     width:8%;

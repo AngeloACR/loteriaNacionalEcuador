@@ -8,7 +8,6 @@ import { PozoMillonarioComponent } from "./containers/pozo-millonario/pozo-millo
 import { LoteriaComponent } from "./containers/loteria/loteria.component";
 import { LottoComponent } from "./containers/lotto/lotto.component";
 import { SeleccionComponent } from "./containers/seleccion/seleccion.component";
-import { ResumenComponent } from "./containers/resumen/resumen.component";
 
 import { LotteryRoutingModule } from "./lottery-routing.module";
 import { LotteryComponent } from "./lottery.component";
@@ -49,7 +48,6 @@ import { ResultadosInstantaneasComponent } from "./components/resultados-instant
     LottoComponent,
     PozoMillonarioComponent,
     SeleccionComponent,
-    ResumenComponent,
     LotteryTypeComponent,
     NumberSelectionComponent,
     TicketConfirmationComponent,

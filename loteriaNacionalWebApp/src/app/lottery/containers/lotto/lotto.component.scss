@@ -38,7 +38,7 @@ $color-lotto: #b51f20;
     justify-content: space-around;
 
     p {
-      font-size: 16px;
+      font-size: 20px !important;
       font-family: $fuente-titulo;
       opacity: 0.7;
     }
@@ -74,6 +74,9 @@ $color-lotto: #b51f20;
     display: flex;
     flex-direction: column;
 
+    .tagItem{
+      font-size: 12px;
+  }
     .contenedor_select {
       width: 100%;
       margin: 10px auto;
@@ -186,7 +189,7 @@ $color-lotto: #b51f20;
           margin: 0 15px 0 0;
           text-align: center;
           font-family: $fuente-subtitulo;
-          border: 1.5px solid $color-lotto;
+          border: 4.5px solid $color-lotto;
           border-radius: 2px;
           color: #000;
           -moz-appearance: textfield;

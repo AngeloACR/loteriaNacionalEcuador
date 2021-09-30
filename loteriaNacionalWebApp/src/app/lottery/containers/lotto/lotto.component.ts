@@ -20,7 +20,7 @@ export class LottoComponent implements OnInit {
   sorteo: sorteo[];
   combinacionDeLaSuerte: any = ["", "", "", "", "", ""];
 
-  ticketsLotto: ticketsLotto[];
+  ticketsDisponibles: ticketsLotto[];
 
   page_size: number = 6;
   page_number: number = 1;
@@ -52,7 +52,7 @@ export class LottoComponent implements OnInit {
           return element;
         }
       });
-      this.ticketsLotto = await this.lotteryService.obtenerTickets(
+      this.ticketsDisponibles = await this.lotteryService.obtenerTickets(
         this.token,
         2,
         this.sorteoSeleccionado.sorteo,
@@ -72,40 +72,19 @@ export class LottoComponent implements OnInit {
   }
   tipoSeleccion: number = 96;
 
-  async seleccionarVarios(tipoSeleccion) {
-    try {
-      console.log(tipoSeleccion);
-      if (tipoSeleccion != 1) {
-        let selectedIndexs = [];
-        for (let i = 0; i < tipoSeleccion; i++) {
-          let index = Math.floor(Math.random() * this.ticketsLotto.length);
-          while (selectedIndexs.indexOf(index) != -1) {
-            index = Math.floor(Math.random() * this.ticketsLotto.length);
-          }
-          let ticket = this.ticketsLotto[index];
-          await this.pushToSeleccionado(ticket);
-          selectedIndexs.push(index);
-        }
-      }
-    } catch (e) {
-      this.isLoading = false;
-      console.log(e.message);
-      let errorMessage = e.message;
-      this.openError(errorMessage);
-    }
-  }
-
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo;
   }
   async seleccionarTicket(id: string) {
     try {
-      this.ticketsLotto[id].status = !this.ticketsLotto[id].status;
-      if (!this.ticketsLotto[id].status) {
-        await this.removeSeleccionado(this.ticketsLotto[id].identificador, "");
+      this.ticketsDisponibles[id].status = !this.ticketsDisponibles[id].status;
+      if (!this.ticketsDisponibles[id].status) {
+        let identificador = this.ticketsDisponibles[id].identificador;
+        let ticketLotto = this.ticketsLotto[identificador]
+        await this.deleteLottoTicket(ticketLotto);
       } else {
-        await this.pushToSeleccionado(this.ticketsLotto[id]);
+        await this.pushToSeleccionado(this.ticketsDisponibles[id]);
       }
     } catch (e) {
       this.isLoading = false;
@@ -115,42 +94,10 @@ export class LottoComponent implements OnInit {
     }
   }
 
-  ticketsSeleccionados: any = {};
+  ticketsLotto: any = {};
 
   ticketsPozo: any = {};
   ticketsLoteria: any = {};
-  async removeSeleccionado(identificador, fraccion) {
-    try {
-      this.loadingMessage = "Removiendo boleto del carrito";
-      this.isLoading = true;
-      let aux = {
-        ticket: this.ticketsSeleccionados[identificador].ticket,
-        sorteo: this.ticketsSeleccionados[identificador].sorteo,
-      };
-      let reservaId = this.lotteryService.getReservaId();
-
-      let response = await this.lotteryService.eliminarBoletosDeReserva(
-        this.token,
-        aux,
-        fraccion,
-        2,
-        reservaId
-      );
-
-      delete this.ticketsSeleccionados[identificador];
-
-      localStorage.setItem(
-        "seleccionadosLotto",
-        JSON.stringify(this.ticketsSeleccionados)
-      );
-      this.isLoading = false;
-    } catch (e) {
-      this.isLoading = false;
-      console.log(e.message);
-      let errorMessage = e.message;
-      this.openError(errorMessage);
-    }
-  }
 
   async pushToSeleccionado(ticket) {
     try {
@@ -168,7 +115,7 @@ export class LottoComponent implements OnInit {
         this.token
       );
       if (hasBalance) {
-        this.ticketsSeleccionados[ticket.identificador] = aux;
+        this.ticketsLotto[ticket.identificador] = aux;
         let reservaId = this.lotteryService.getReservaId();
         let response = await this.lotteryService.reservarBoletos(
           this.token,
@@ -179,14 +126,14 @@ export class LottoComponent implements OnInit {
         );
 
         this.lotteryService.setReservaId(response);
-        this.lotteryService.setCarritoLotto(this.ticketsSeleccionados);
-
+        this.cart.setCarritoLotto(this.ticketsLotto);
+        this.cart.setCarrito(aux, 2);
         this.isLoading = false;
       } else {
         this.isLoading = false;
         let message =
           "Tu saldo es insuficiente para agregar este boleto al carrito";
-        this.ticketsLotto.find(
+        this.ticketsDisponibles.find(
           (x) => x.identificador === ticket.identificador
         ).status = false;
         this.recargarSaldo(message);
@@ -237,7 +184,7 @@ export class LottoComponent implements OnInit {
       aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
       loteria.push(aux);
     }
-    let lottoAux = this.ticketsSeleccionados;
+    let lottoAux = this.ticketsLotto;
     let lotto = [];
     for (let id in lottoAux) {
       let aux = {};
@@ -296,7 +243,6 @@ export class LottoComponent implements OnInit {
         );
         this.isLoading = false;
         if (response.status) {
-
           if (response.instantanea.status) {
             this.dismissCompras();
             this.instantaneas = response.instantanea.data;
@@ -322,7 +268,7 @@ export class LottoComponent implements OnInit {
   }
   abrirFinalizar() {
     this.dismissCompras();
-    this.lotteryService.borrarCarrito();
+    this.cart.borrarCarrito();
     this.compraFinalizada = true;
   }
   cancelarCompra() {
@@ -346,10 +292,10 @@ export class LottoComponent implements OnInit {
   loadingMessage: string;
   async ngOnInit() {
     try {
+      this.loadingMessage = "Cargando los sorteos disponibles";
       this.isLoading = true;
       this.getCarritoTickets();
 
-      this.loadingMessage = "Cargando los sorteos disponibles";
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
       this.isLoading = false;
       this.showComponents = true;
@@ -367,15 +313,14 @@ export class LottoComponent implements OnInit {
       console.log(data);
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
-      let aux = {
-        ticket: this.ticketsLoteria[identificador].ticket,
-        sorteo: data.sorteo,
-      };
+      let ticket = this.ticketsLoteria[identificador].ticket;
+      let sorteo = data.sorteo;
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
         let response = await this.lotteryService.eliminarBoletosDeReserva(
           this.token,
-          aux,
+          ticket,
+          sorteo,
           fracciones,
           1,
           reservaId
@@ -403,13 +348,30 @@ export class LottoComponent implements OnInit {
       let identificador = data.ticket.identificador;
       let fraccion = "";
       console.log(data);
-      await this.removeSeleccionado(identificador, fraccion);
+      
+      let ticket = this.ticketsLotto[identificador].ticket;
+      let sorteo = this.ticketsLotto[identificador].sorteo;
+      let reservaId = this.lotteryService.getReservaId();
 
-      let deletedIndex = this.ticketsLotto.findIndex(
-        (x) => x.identificador === identificador
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        2,
+        reservaId
       );
-      if (deletedIndex != -1) this.ticketsLotto[deletedIndex].status = false;
-      this.isLoading = false;
+
+      delete this.ticketsLotto[identificador];
+      this.cart.setCarritoLotto(this.ticketsLotto);
+      if(this.ticketsDisponibles && this.ticketsDisponibles.length){
+
+        let deletedIndex = this.ticketsDisponibles.findIndex(
+          (x) => x.identificador === identificador
+          );
+          if (deletedIndex != -1) this.ticketsDisponibles[deletedIndex].status = false;
+        }
+          this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -423,14 +385,14 @@ export class LottoComponent implements OnInit {
       let fraccion = "";
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
-      let aux = {
-        ticket: this.ticketsPozo[identificador].ticket,
-        sorteo: data.sorteo,
-      };
+      let ticket = this.ticketsPozo[identificador].ticket;
+      let sorteo = data.sorteo;
+
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
-        aux,
+        ticket,
+        sorteo,
         fraccion,
         5,
         reservaId
@@ -460,10 +422,10 @@ export class LottoComponent implements OnInit {
           sorteo: this.ticketsLoteria[key].sorteo,
         };
       });
-      let boletosLotto = Object.keys(this.ticketsSeleccionados).map((key) => {
+      let boletosLotto = Object.keys(this.ticketsLotto).map((key) => {
         return {
-          ticket: this.ticketsSeleccionados[key].ticket,
-          sorteo: this.ticketsSeleccionados[key].sorteo,
+          ticket: this.ticketsLotto[key].ticket,
+          sorteo: this.ticketsLotto[key].sorteo,
         };
       });
       let boletosPozo = Object.keys(this.ticketsPozo).map((key) => {
@@ -480,13 +442,13 @@ export class LottoComponent implements OnInit {
         boletosPozo,
         reservaId
       );
-      Object.keys(this.ticketsSeleccionados).forEach((key) => {
-        if (this.ticketsLotto && this.ticketsLotto.length != 0) {
-          let deletedIndex = this.ticketsLotto.findIndex(
+      Object.keys(this.ticketsLotto).forEach((key) => {
+        if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {
+          let deletedIndex = this.ticketsDisponibles.findIndex(
             (x) => x.identificador == key
           );
           if (deletedIndex != -1)
-            this.ticketsLotto[deletedIndex].status = false;
+            this.ticketsDisponibles[deletedIndex].status = false;
         }
       });
       this.cart.borrarCarrito();
@@ -513,7 +475,7 @@ export class LottoComponent implements OnInit {
         localStorage.getItem("seleccionadosLotto")
       );
     } else {
-      this.ticketsSeleccionados = {};
+      this.ticketsLotto = {};
     }
     if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
       this.ticketsPozo = JSON.parse(localStorage.getItem("seleccionadosPozo"));

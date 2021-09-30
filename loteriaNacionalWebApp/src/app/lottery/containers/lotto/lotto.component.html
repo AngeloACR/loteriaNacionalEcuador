@@ -81,7 +81,7 @@
         <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
       </div>
     </div>
-    <p>
+    <p class="tagItem">
       Si quieres cambiar tu número, ingrésalo nuevamente y haz click en "Buscar
       número"
     </p>
@@ -90,7 +90,7 @@
         <tbody>
           <tr
             *ngFor="
-              let ticket of ticketsLotto | paginacion: page_size:page_number;
+              let ticket of ticketsDisponibles | paginacion: page_size:page_number;
               let i = index
             "
           >
@@ -102,7 +102,8 @@
                   (click)="seleccionarTicket(page_size * (page_number - 1) + i)"
                 />
                 <div class="contenedor_numeros">
-                  <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                  <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
+                  <p>{{ ticket.combinacion1 }}</p>
                 </div>
                 <hr />
                 <div class="contenedor_fracciones">
@@ -131,7 +132,7 @@
       <div class="contenedor_botones">
         <mat-paginator
           style-paginator
-          [length]="ticketsLotto.length"
+          [length]="ticketsDisponibles.length"
           [pageSize]="page_size"
           (page)="handlerPage($event)"
         >
@@ -153,7 +154,7 @@
     (emitirCompra)="comprar()"
     (eliminarTodo)="deleteAllTickets()"
     [ticketsLoteria]="ticketsLoteria"
-    [ticketsLotto]="ticketsSeleccionados"
+    [ticketsLotto]="ticketsLotto"
     [ticketsPozo]="ticketsPozo"
     tipoLoteria="lotto"
   >

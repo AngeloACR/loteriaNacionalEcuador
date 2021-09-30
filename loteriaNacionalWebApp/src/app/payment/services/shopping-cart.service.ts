@@ -8,8 +8,33 @@ export class ShoppingCartService {
 
   constructor() {}
 
+  getReservaId() {
+    if (
+      JSON.parse(localStorage.getItem("reservaId")) &&
+      JSON.parse(localStorage.getItem("reservaId")) != ""
+    ) {
+      return JSON.parse(localStorage.getItem("reservaId"));
+    } else {
+      return 0;
+    }
+  }
 
-  
+  setReservaId(id) {
+    localStorage.setItem("reservaId", JSON.stringify(id));
+  }
+
+
+  setCarrito(ticket, tipoLoteria){
+    let carrito: any = this.getCarrito()
+    if(!carrito) carrito = []
+    ticket['identificador'] = ticket.ticket.identificador;
+    ticket['tipoLoteria']=tipoLoteria;
+    console.log(ticket);
+    carrito.push(ticket);
+    localStorage.setItem("seleccionadosCarrito", JSON.stringify(carrito));
+
+  }
+
   setCarritoLoteria(tickets) {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify(tickets));
 
@@ -17,14 +42,15 @@ export class ShoppingCartService {
 
   setCarritoLotto(tickets) {
     localStorage.setItem("seleccionadosLotto", JSON.stringify(tickets));
-
   }
 
   setCarritoPozo(tickets) {
     localStorage.setItem("seleccionadosPozo", JSON.stringify(tickets));
-
   }
 
+  getCarrito() {
+    return JSON.parse(localStorage.getItem("seleccionadosCarrito"));
+  }
   getCarritoLoteria() {
     return JSON.parse(localStorage.getItem("seleccionadosLoteria"));
   }
@@ -38,7 +64,9 @@ export class ShoppingCartService {
     localStorage.removeItem("seleccionadosLoteria");
     localStorage.removeItem("seleccionadosLotto");
     localStorage.removeItem("seleccionadosPozo");
+    localStorage.removeItem("seleccionadosCarrito");
     localStorage.removeItem("reservaId");
+    localStorage.removeItem("total");
   }
   setTotal() {
         let loteriaAux = this.getCarritoLoteria();
