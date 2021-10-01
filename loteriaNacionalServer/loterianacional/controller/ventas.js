@@ -611,7 +611,6 @@ module.exports.venderBoletos = async (
     </PI_DatosXml>`,
     };
     /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
-
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,

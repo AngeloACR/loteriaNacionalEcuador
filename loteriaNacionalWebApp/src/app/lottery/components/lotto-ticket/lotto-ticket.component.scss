@@ -17,12 +17,13 @@ $color-botton: #b51f20;
   border-width: 1px 0;
   border-style: solid;
   border-color: $color-botton;
+  background-color: $color-botton;
   position: relative;
   box-sizing: border-box;
   p {
     font-family: $fuente-parrafo;
     font-size: 14px;
-    color: black;
+    color: white;
     margin: 5px;
     span {
       font-family: $fuente-subtitulo;
@@ -46,7 +47,7 @@ $color-botton: #b51f20;
   img.trash {
     position: absolute;
     cursor: pointer;
-    width: 5%;
+    width:6%;
     top: 20px;
     right: 20px;
     transition: width 0.3s ease;
