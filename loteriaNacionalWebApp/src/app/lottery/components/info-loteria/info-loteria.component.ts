@@ -25,6 +25,7 @@ export class InfoLoteriaComponent implements OnInit {
   seleccionado: sorteo;
 
   fondoLoteria: boolean = true;
+  isLoteria: boolean = false;
   fondoLotto: boolean = false;
   fondoPozo: boolean = false;
 
@@ -37,6 +38,7 @@ export class InfoLoteriaComponent implements OnInit {
     switch (color) {
       case "loteria":
         this.fondoLoteria = true;
+        this.isLoteria = true;
         this.fondoLotto = false;
         this.fondoPozo = false;
         break;
@@ -59,9 +61,13 @@ export class InfoLoteriaComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
     console.log(this.seleccionado);
     this.fecha = (this.seleccionado as sorteo).fecha;
-    let premio = parseFloat((this.seleccionado as sorteo).valorPremioPrincipal).toFixed(2);
+    let auxPremio = (this.seleccionado as sorteo).valorPremioPrincipal;
+    let premio = parseFloat(auxPremio).toFixed(2);
     let precio = parseFloat((this.seleccionado as sorteo).precio).toFixed(2);
+    this.cantidadDeFracciones = (this.seleccionado as sorteo).cantidadDeFracciones;
     this.premio = this.lotteryService.formatNumber(premio);
+    let auxPremioFraccion = auxPremio/this.cantidadDeFracciones
+    this.premioFraccion = this.lotteryService.formatNumber(auxPremioFraccion);
     this.precio = this.lotteryService.formatNumber(precio);
     
     this.emitir.emit(this.seleccionado);
@@ -71,6 +77,8 @@ export class InfoLoteriaComponent implements OnInit {
   fecha: string = "";
   premio: string = "";
   precio: string = "";
+  cantidadDeFracciones: number;
+  premioFraccion: string = "";
 
   async ngOnInit() {
     this.getClassColor(this.color);

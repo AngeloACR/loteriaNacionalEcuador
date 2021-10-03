@@ -4,6 +4,7 @@
   [ngClass]="name"
   routerLinkActive="active"
   [ngClass]="tipoLoteria"
+  (click)="checkToken($event)"
 >
   <img class="lotteryImg" [src]="image" alt="" />
 </a>

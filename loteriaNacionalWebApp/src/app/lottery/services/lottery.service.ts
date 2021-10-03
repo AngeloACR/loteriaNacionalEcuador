@@ -272,7 +272,6 @@ export class LotteryService {
     address = address + endpoint;
     console.log(body);
     return new Promise<Array<any>>((resolve, reject) => {
-      let userData = JSON.parse(localStorage.getItem("userData"));
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           console.log(data);

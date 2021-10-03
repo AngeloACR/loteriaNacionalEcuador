@@ -19,7 +19,7 @@ $color-botton: #2f72b9;
   padding-bottom: 40px;
 
   .infoBox {
-    min-width: 100px;
+    min-width: 280px;
     max-width: 300px;
     width: 20%;
   }
@@ -47,7 +47,8 @@ $color-botton: #2f72b9;
 
         .select_option {
           width: 100%;
-          display: block;
+        cursor: pointer;
+        display: block;
           font-size: 16px;
           font-family: $fuente-parrafo;
           font-weight: 400;
@@ -141,7 +142,7 @@ $color-botton: #2f72b9;
           }
         }
       }
-
+ 
       .numeros_suerte {
         width: 50%;
         display: flex;
@@ -178,6 +179,12 @@ $color-botton: #2f72b9;
             -webkit-appearance: none;
             margin: 0;
           }
+        }
+        
+        .errorTag{
+          font-size: 14px;
+          color: red;
+          margin-top: 10px;
         }
       }
     }

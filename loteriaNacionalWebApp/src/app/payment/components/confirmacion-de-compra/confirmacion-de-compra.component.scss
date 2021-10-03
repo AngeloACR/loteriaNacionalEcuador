@@ -1,31 +1,73 @@
+$fuente-botones: "Monstserrat SemiBold";
 
 .paymentBox {
-    width: 70%;
-    height: 70%;
-    position: fixed;
-    padding: 15px;
-    z-index: 10000;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    overflow-y: scroll;
-  }
-.blackBox {
-    position: fixed;
-    z-index: 8000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: height 0.2s ease-out;
-    overflow: hidden;
-    background-color: rgba(155, 155, 155, 0.5);
-    border: none;
-  }
-  @media screen and (max-width: 1000px) {
+  width: 70%;
+  height: 70%;
+  position: fixed;
+  padding: 15px;
+  z-index: 10000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  overflow-y: scroll;
 
-    .paymentBox{
-      width: 95%;
+  .buttonBox {
+    display: flex;
+    justify-content: space-around;
+    button {
+      padding: 15px;
+      border-radius: 30px;
+      font-family: $fuente-botones;
+      font-size: 16px;
+      margin: 10px auto;
+      width: 100%;
+      max-width: 300px;
+      cursor: pointer;
+      color: #fff;
+
+      &.confirmationButton {
+        background-color: green;
+        border: 1px solid green;
+        &:hover {
+          background-color: white;
+          color: green;
+          transition: background-color 0.4s ease;
+        }
+      }
+      &.backButton {
+        background-color: red;
+        border: 1px solid red;
+        &:hover {
+          background-color: white;
+          color: red;
+          transition: background-color 0.4s ease;
+        }
+      }
     }
   }
+}
+.blackBox {
+  position: fixed;
+  z-index: 8000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: height 0.2s ease-out;
+  overflow: hidden;
+  background-color: rgba(155, 155, 155, 0.5);
+  border: none;
+}
+@media screen and (max-width: 1000px) {
+  .paymentBox {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .paymentBox {
+    .buttonBox{
+      flex-direction: column;
+    }
+  }
+}

@@ -226,7 +226,7 @@ $color-botton: #2f72b9;
   justify-content: space-evenly;
   padding-bottom: 40px;
   .infoBox {
-    min-width: 100px;
+    min-width: 280px;
     max-width: 300px;
     width: 20%;
   }
@@ -252,6 +252,7 @@ $color-botton: #2f72b9;
 
       .select_option {
         width: 100%;
+        cursor: pointer;
         display: block;
         font-size: 16px;
         font-family: $fuente-parrafo;

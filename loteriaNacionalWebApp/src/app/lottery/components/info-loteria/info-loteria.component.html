@@ -5,15 +5,25 @@
   <li class="menuItem">Sorteo:
     <select class="fechaItem" [(ngModel)]="seleccionado" (change)="onEmitir()">
       <option [ngValue]="sorteoDefault" selected disabled>Seleccione un sorteo</option>
-      <option [ngValue]="objeto" *ngFor="let objeto of sorteos">{{objeto.nombre}}</option>
+      <option [ngValue]="objeto" *ngFor="let objeto of sorteos">{{objeto.sorteo}}</option>
     </select>
   </li>
   <li class="menuItem">
     Fecha: <p>{{ fecha }}</p>
   </li>
-  <li class="menuItem">
+  <li class="menuItem" *ngIf="!isLoteria">
     Premio: <p>{{ premio }}</p>
   </li>
+  <li class="menuItem" *ngIf="isLoteria">
+    Premio al entero: <p>{{ premio }}</p>
+  </li>
+  <li class="menuItem" *ngIf="isLoteria">
+    Premio a la fracción: <p>{{ premioFraccion }}</p>
+  </li>
+  <li class="menuItem" *ngIf="isLoteria">
+    Total de fracciones: <p>{{ cantidadDeFracciones }}</p>
+  </li>
+
   <li class="menuItem">
     Precio: <p>{{ precio }}</p>
   </li>

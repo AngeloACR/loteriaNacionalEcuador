@@ -60,7 +60,8 @@ module.exports.autenticarUsuario = async () => {
 module.exports.consultarSorteosDisponibles = async (
   tipoLoteria,
   token,
-  user
+  user,
+  ip
 ) => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -73,7 +74,7 @@ module.exports.consultarSorteosDisponibles = async (
               <aplicacion>25</aplicacion>
               <transaccion>8</transaccion>
               <usuario>${user}</usuario>
-              <maquina>192.168.1.13</maquina>
+              <maquina>${ip}</maquina>
               <codError>0</codError>
               <msgError />
               <medio>${medioId}</medio>
@@ -140,7 +141,8 @@ module.exports.obtenerCombinacionesDisponibles = async (
   combinacion,
   combinacionFigura,
   user,
-  tipoSeleccion
+  tipoSeleccion,
+  ip
 ) => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -154,7 +156,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
       <aplicacion>25</aplicacion>
       <transaccion>9</transaccion>
       <usuario>${user}</usuario>
-      <maquina>192.168.1.13</maquina>
+      <maquina>${ip}</maquina>
       <codError>0</codError>
       <msgError />
       <medio>${medioId}</medio>
@@ -222,7 +224,8 @@ module.exports.reservarCombinaciones = async (
   pozo,
   token,
   reservaId,
-  user
+  user,
+  ip
 ) => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -282,7 +285,7 @@ module.exports.reservarCombinaciones = async (
     <aplicacion>25</aplicacion>
     <transaccion>12</transaccion>
     <usuario>${user}</usuario>
-    <maquina>192.168.1.13</maquina>
+    <maquina>${ip}</maquina>
     <codError>0</codError>
     <msgError />
     <medio>${medioId}</medio>
@@ -385,7 +388,8 @@ module.exports.eliminarReservas = async (
   pozo,
   token,
   reservaId,
-  user
+  user,
+  ip
 ) => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -444,7 +448,7 @@ module.exports.eliminarReservas = async (
             <aplicacion>25</aplicacion>
             <transaccion>66</transaccion>
             <usuario>${user}</usuario>
-            <maquina>192.168.1.13</maquina>
+            <maquina>${ip}</maquina>
             <codError>0</codError>
             <msgError />
             <medio>${medioId}</medio>
@@ -509,7 +513,8 @@ module.exports.venderBoletos = async (
   pozo,
   lotteryToken,
   reservaId,
-  user
+  user,
+  ip
 ) => {
   try {
     console.log("En venta de loteria 2");

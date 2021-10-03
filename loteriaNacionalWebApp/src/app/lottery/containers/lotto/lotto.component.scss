@@ -63,7 +63,7 @@ $color-lotto: #b51f20;
   padding-bottom: 40px;
 
   .infoBox {
-    min-width: 100px;
+    min-width: 280px;
     max-width: 300px;
     width: 20%;
   }
@@ -88,6 +88,7 @@ $color-lotto: #b51f20;
       }
 
       .select_option {
+        cursor: pointer;
         width: 100%;
         display: block;
         font-size: 16px;

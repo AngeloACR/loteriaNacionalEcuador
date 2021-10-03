@@ -191,21 +191,23 @@ export class PozoMillonarioComponent implements OnInit {
   ordenaCombinacion(a, b) {
     return a - b;
   }
+
+  over25Error: boolean = false;
+  over25ErrorTag: string =
+    "Las números no pueden ser mayores a 25. Por favor, tome esto en cuenta al ingresar sus números preferidos.";
+
   validate() {
     let isHigher = false;
     this.combinacionDeLaSuerte.forEach((number, i) => {
       let aux = parseInt(number);
       if (aux > 25) {
-        let errorMessage =
-          "Las números no pueden ser mayores a 25. Por favor, revise el formulario e intente de nuevo.";
-        this.openError(errorMessage);
         this.combinacionDeLaSuerte[i] = "";
-        isHigher = true;
+        this.over25Error = true;
+        setTimeout(() => {
+          this.over25Error = false;
+        }, 6000);
       }
     });
-    if (isHigher) {
-      return;
-    }
   }
   async buscarNumero() {
     try {
@@ -498,9 +500,9 @@ export class PozoMillonarioComponent implements OnInit {
       let fraccion = "";
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
-      let ticket= this.ticketsLotto[identificador].ticket;
-       let sorteo= data.sorteo;
-      
+      let ticket = this.ticketsLotto[identificador].ticket;
+      let sorteo = data.sorteo;
+
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,

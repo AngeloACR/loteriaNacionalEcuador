@@ -2,21 +2,27 @@
   <app-lottery-type
     image="assets/img/loteria-sombra-2.png"
     [link]="linkLoteriaNacional"
+    [token]="lotteryToken"
     name="loteria"
-  >
+    (authError)="authError()"
+    >
   </app-lottery-type>
 
   <app-lottery-type
     image="assets/img/lotto-sombra.png"
     [link]="linkLotto"
+    [token]="lotteryToken"
     name="lotto"
+    (authError)="authError()"
   >
   </app-lottery-type>
 
   <app-lottery-type
     image="assets/img/pozo-sombra.png"
     [link]="linkPozoMillonario"
+    [token]="lotteryToken"
     name="pozo"
+    (authError)="authError()"
   >
   </app-lottery-type>
 </div>

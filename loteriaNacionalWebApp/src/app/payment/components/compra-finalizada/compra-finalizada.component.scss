@@ -54,29 +54,23 @@ $color-loteria: #7c91a8;
   background-color: white;
   overflow-y: scroll;
   .mensajeButtonBox {
-    margin: auto;
-    margin-bottom: 20px;
-
-    padding: 16px;
+    display: block;
+    padding: 15px;
+    border-radius: 30px;
+    font-family: $fuente-botones;
+    font-size: 16px;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 300px;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid #c3c3c3;
+    color: #fff;
+    background-color: green;
+    border: 1px solid green;
 
     &:hover {
-      background-color: green;
-    }
-
-    p {
-      font-family: $fuente-botones;
-      font-size: 23px;
+      background-color: white;
       color: green;
-    }
-
-    &:hover p {
-      color: white;
+      transition: background-color 0.4s ease;
     }
   }
 }

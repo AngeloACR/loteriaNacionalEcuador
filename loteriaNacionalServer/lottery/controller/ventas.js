@@ -335,19 +335,14 @@ const ventasController = {
   },
   searchLottoSorteosDisponibles: async (req, res) => {
     try {
-      /*             let token = req.query.token;
-                        let authData = {
-                            token
-                        }
-                        let response = await ventasController.authUser(authData);
-                        let lotteryToken = response.lotteryToken;
-                        let user = response.user_;
-             */ let lotteryToken = req.query.lotteryToken;
+      let ip = req.headers['x-forwarded-for'];
+      let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
         2,
         lotteryToken,
-        user
+        user,
+        ip
       );
       res.status(200).json(finalResponse);
     } catch (e) {
@@ -360,20 +355,15 @@ const ventasController = {
   },
   searchLoteriaSorteosDisponibles: async (req, res) => {
     try {
-      /*             let token = req.query.token;
-                        let authData = {
-                            token
-                        }
-                        let response = await ventasController.authUser(authData);
-                        let lotteryToken = response.lotteryToken;
-                        let user = response.user_;
-             */
+      let ip = req.headers['x-forwarded-for'];
+
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
         1,
         lotteryToken,
-        user
+        user,
+        ip
       );
       res.status(200).json(finalResponse);
     } catch (e) {
@@ -387,19 +377,14 @@ const ventasController = {
   },
   searchPozoSorteosDisponibles: async (req, res) => {
     try {
-      /*             let token = req.query.token;
-            let authData = {
-                token
-            }
-            let response = await ventasController.authUser(authData);
-            let lotteryToken = response.lotteryToken;
-            let user = response.user_;
- */ let lotteryToken = req.query.lotteryToken;
+      let ip = req.headers['x-forwarded-for'];
+      let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
         5,
         lotteryToken,
-        user
+        user,
+        ip
       );
 
       res.status(200).json(finalResponse);
@@ -413,9 +398,7 @@ const ventasController = {
   },
   searchLottoCombinacionesDisponibles: async (req, res) => {
     try {
-      /* let token = req.body.token;
-
-            let response = await ventasController.authUser(token); */
+      let ip = req.headers['x-forwarded-for'];
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let sorteo = req.body.sorteo;
@@ -430,7 +413,8 @@ const ventasController = {
         combinacion,
         combinacionFigura,
         user,
-        tipoSeleccion
+        tipoSeleccion,
+        ip
       );
       let combinaciones = combinacionesAux.map((element) => {
         let combinacion = {
@@ -460,9 +444,8 @@ const ventasController = {
   },
   searchLoteriaCombinacionesDisponibles: async (req, res) => {
     try {
-      /* let token = req.body.token;
-
-            let response = await ventasController.authUser(token); */
+      let ip = req.headers['x-forwarded-for'];
+      console.log(ip)
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let sorteo = req.body.sorteo;
@@ -477,7 +460,8 @@ const ventasController = {
         combinacion,
         combinacionFigura,
         user,
-        tipoSeleccion
+        tipoSeleccion,
+        ip
       );
 
       let combinaciones = combinacionesAux.map((element) => {
@@ -506,9 +490,8 @@ const ventasController = {
   },
   searchPozoCombinacionesDisponibles: async (req, res) => {
     try {
-      /* let token = req.body.token;
+      let ip = req.headers['x-forwarded-for'];
 
-            let response = await ventasController.authUser(token); */
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let sorteo = req.body.sorteo;
@@ -523,7 +506,8 @@ const ventasController = {
         combinacion,
         combinacionFigura,
         user,
-        tipoSeleccion
+        tipoSeleccion,
+        ip
       );
 
       let combinaciones = combinacionesAux.map((element) => {
@@ -552,9 +536,8 @@ const ventasController = {
   },
   reservarBoletos: async (req, res) => {
     try {
-      /* let token = req.body.token;
+      let ip = req.headers['x-forwarded-for'];
 
-            let response = await ventasController.authUser(token); */
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let loteria = req.body.loteria ? req.body.loteria : [];
@@ -568,7 +551,8 @@ const ventasController = {
         pozo,
         lotteryToken,
         reservaId,
-        user
+        user,
+        ip
       );
 
       //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
@@ -583,9 +567,8 @@ const ventasController = {
   },
   eliminarBoletosDeReserva: async (req, res) => {
     try {
-      /* let token = req.body.token;
+      let ip = req.headers['x-forwarded-for'];
 
-            let response = await ventasController.authUser(token); */
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let loteria = req.body.loteria ? req.body.loteria : [];
@@ -599,7 +582,8 @@ const ventasController = {
         pozo,
         lotteryToken,
         reservaId,
-        user
+        user,
+        ip
       );
 
       res.status(200).json(finalResponse);
@@ -613,6 +597,7 @@ const ventasController = {
   },
   comprarBoletos: async (req, res) => {
     try {
+      let ip = req.headers['x-forwarded-for'];
       let exaBalanceData = { token: req.body.token };
       let exaReservaId = Date.now();
       let token = req.body.token;
@@ -697,7 +682,8 @@ const ventasController = {
         pozo,
         lotteryToken,
         reservaId,
-        user
+        user,
+        ip
       );
       // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
       console.log(loteriaVentaResponse);

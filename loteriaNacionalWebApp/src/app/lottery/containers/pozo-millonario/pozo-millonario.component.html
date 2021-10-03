@@ -59,6 +59,9 @@
             [(ngModel)]="combinacionDeLaSuerte[3]"
           />
         </div>
+        <div class="errorTag" *ngIf="over25Error">
+          {{over25ErrorTag}}
+        </div>
       </div>
     </div>
     <div class="contenedor_select_animales">
