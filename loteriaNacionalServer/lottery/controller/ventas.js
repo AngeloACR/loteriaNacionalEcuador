@@ -356,7 +356,7 @@ const ventasController = {
   searchLoteriaSorteosDisponibles: async (req, res) => {
     try {
       let ip = req.headers['x-forwarded-for'];
-
+      console.log(ip)
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
