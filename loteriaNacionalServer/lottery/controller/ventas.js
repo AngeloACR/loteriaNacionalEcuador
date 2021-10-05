@@ -29,7 +29,6 @@ const ventasController = {
         language: "en",
         currency: "USD",
       };
-      console.log(authData);
       let response = await Auth.authUser(authData);
       if (response["password"]) delete response["password"];
       res.status(200).json(response);
@@ -253,7 +252,6 @@ const ventasController = {
         amount: data.amount,
         instantWinDetails: data.prizeDetails,
       };
-      console.log(exaData);
       let response = await Wallet.sellLottery(exaData);
       return response;
     } catch (e) {
@@ -326,7 +324,6 @@ const ventasController = {
         amount: data.amount,
         reservationDetails: data.reservationDetails,
       };
-      console.log(exaData);
       let response = await Wallet.reserveLottery(exaData);
       return response;
     } catch (e) {
@@ -356,7 +353,6 @@ const ventasController = {
   searchLoteriaSorteosDisponibles: async (req, res) => {
     try {
       let ip = req.headers['x-forwarded-for'];
-      console.log(ip)
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
@@ -445,7 +441,6 @@ const ventasController = {
   searchLoteriaCombinacionesDisponibles: async (req, res) => {
     try {
       let ip = req.headers['x-forwarded-for'];
-      console.log(ip)
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let sorteo = req.body.sorteo;
@@ -575,7 +570,6 @@ const ventasController = {
       let lotto = req.body.lotto ? req.body.lotto : [];
       let pozo = req.body.pozo ? req.body.pozo : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
-      console.log(req.body);
       let finalResponse = await Ventas.eliminarReservas(
         loteria,
         lotto,
@@ -686,7 +680,6 @@ const ventasController = {
         ip
       );
       // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
-      console.log(loteriaVentaResponse);
       let instantaneas = loteriaVentaResponse.instantaneas;
       let prizeDetails = [];
       let instantaneaStatus = false;

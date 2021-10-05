@@ -306,6 +306,44 @@ export class LottoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
+
+  async deleteLoteriaFraccion(data) {
+    try {
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let identificador = data.ticket.ticket.identificador;
+      let ticket = data.ticket.ticket;
+      let sorteo = data.ticket.sorteo;
+      let fraccion = data.fraccion;
+
+      let reservaId = this.cart.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        [fraccion],
+        1,
+        reservaId
+      );
+      let index = this.ticketsLoteria[
+        identificador
+      ].ticket.seleccionados.findIndex((x) => x == fraccion);
+      this.ticketsLoteria[identificador].ticket.seleccionados.splice(index, 1);
+      if (this.ticketsLoteria[identificador].ticket.seleccionados.length == 0) {
+        delete this.ticketsLoteria[identificador];
+      }
+
+      this.cart.setCarritoLoteria(this.ticketsLoteria);
+      this.getCarritoTickets();
+
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
+  }
   async deleteLoteriaTicket(data) {
     try {
       let identificador = data.ticket.identificador;

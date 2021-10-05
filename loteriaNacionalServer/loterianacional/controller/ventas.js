@@ -118,7 +118,8 @@ module.exports.consultarSorteosDisponibles = async (
 
               resolve(response);
             } else {
-              console.log(data.mt.c[0].msgError[0]);
+            console.log(errorCode);
+            console.log(data.mt.c[0].msgError[0]);
               reject(new Error(data.mt.c[0].msgError[0]));
             }
           } catch (e) {
@@ -327,44 +328,10 @@ module.exports.reservarCombinaciones = async (
 
             if (!errorCode) {
               let reservaId = data.mt.o[0].ReturnValue[0];
-              /* let aux = data.mt.rs[0].r[0];
-                    let boletosReservados = [];
-                    aux.Row.forEach(boletoReservado => {
-                        boletosReservados.push(boletoReservado.$);
-                    });
-                    switch (tipoLoteria) {
-                        case 1:
-                            let aux2 = data.mt.rs[0].r[1];
-                            let fraccionesReservadas = [];
-                            aux2.Row.forEach(fraccionReservada => {
-                                fraccionesReservadas.push(fraccionReservada.$);
-                            });
-                            response = {
-                                reservaId,
-                                boletosReservados,
-                                fraccionesReservadas
-                            }
-                            break;
-                        case 2:
- 
-                            response = {
-                                reservaId,
-                                boletosReservados
-                            }
-                            break;
-                        case 5:
-                            response = {
-                                reservaId,
-                                boletosReservados
-                            }
-                            break;
- 
-                        default:
-                            break;
-                    } */
               resolve(reservaId);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
+              console.log(errorCode);
               console.log(errorMsg);
               reject(new Error(errorMsg));
             }
@@ -493,7 +460,9 @@ module.exports.eliminarReservas = async (
               reject(new Error(data.mt.c[0].msgError[0]));
             }
           } catch (e) {
-            let errorMsg = e.message;
+              console.log(errorCode);
+              let errorMsg = e.message;
+              console.log(errorMsg);
             reject(new Error(errorMsg));
           }
         }
@@ -517,7 +486,6 @@ module.exports.venderBoletos = async (
   ip
 ) => {
   try {
-    console.log("En venta de loteria 2");
 
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let loteriaCombinacionesXML = "";
@@ -626,12 +594,10 @@ module.exports.venderBoletos = async (
               res.fnEjecutaTransaccionResult
             );
             let errorCode = parseInt(data.mt.c[0].codError[0]);
-            console.log(errorCode);
             if (!errorCode) {
               let aux = data.mt.o[0].xmlVentaOutput[0]; //.ReturnValue[0].VTA[0].SUE[0].COMP;
               let xmlVentaOutput = await parser.parseStringPromise(aux);
               let ticketId = xmlVentaOutput.VTA.$.VId;
-              console.log(xmlVentaOutput.VTA);
               let instantaneas = [];
               let instantaneasAux =
                 xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR
@@ -658,7 +624,8 @@ module.exports.venderBoletos = async (
 
               resolve(response);
             } else {
-              console.log(data.mt.c[0].msgError[0]);
+            console.log(errorCode);
+            console.log(data.mt.c[0].msgError[0]);
               reject(new Error(data.mt.c[0].msgError[0]));
             }
           } catch (e) {

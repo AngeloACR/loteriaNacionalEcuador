@@ -23,7 +23,6 @@ const walletController = {
         };
 
         const req = https.request(options, (res) => {
-          console.log(`statusCode: ${res.statusCode}`);
 
           var body = "";
 
@@ -32,7 +31,6 @@ const walletController = {
           });
 
           res.on("end", function () {
-            console.log("Body :" + body);
             if (res.statusCode != 200) {
               reject(
                 new Error("Ocurrio un error, por favor intente más tarde")
@@ -72,7 +70,6 @@ const walletController = {
         };
 
         const req = https.request(options, (res) => {
-          console.log(`statusCode: ${res.statusCode}`);
 
           var body = "";
 
@@ -81,7 +78,6 @@ const walletController = {
           });
 
           res.on("end", function () {
-            console.log("Body :" + body);
             if (res.statusCode != 200) {
               reject(
                 new Error("Ocurrio un error, por favor intente más tarde")
@@ -121,7 +117,6 @@ const walletController = {
         };
 
         const req = https.request(options, (res) => {
-          console.log(`statusCode: ${res.statusCode}`);
 
           var body = "";
 
@@ -130,7 +125,6 @@ const walletController = {
           });
 
           res.on("end", function () {
-            console.log("Body :" + body);
             if (res.statusCode != 200) {
               reject(
                 new Error("Ocurrio un error, por favor intente más tarde")
@@ -169,7 +163,6 @@ const walletController = {
         };
 
         const req = https.request(options, (res) => {
-          console.log(`statusCode: ${res.statusCode}`);
 
           var body = "";
 
@@ -178,7 +171,6 @@ const walletController = {
           });
 
           res.on("end", function () {
-            console.log("Body :" + body);
             if (res.statusCode != 200) {
               reject(
                 new Error("Ocurrio un error, por favor intente más tarde")

@@ -32,6 +32,7 @@ export class TicketScrollerComponent implements OnInit {
   @Output() deleteLoteriaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
+  @Output() newTotal = new EventEmitter();
 
   isLoteriaNacional: boolean = false;
   isLotto: boolean = false;
@@ -51,15 +52,15 @@ export class TicketScrollerComponent implements OnInit {
     switch (this.tipoLoteria) {
       case "loteria":
         this.isLoteriaNacional = true;
-        this.logoPath = "assets/img/loteria-sombra.png";
+        this.logoPath = "assets/img/loteria-carrito.svg";
         break;
       case "lotto":
         this.isLotto = true;
-        this.logoPath = "assets/img/lotto-sombra-2.png";
+        this.logoPath = "assets/img/lotto-carrito.svg";
         break;
       case "pozo":
         this.isPozoMillonario = true;
-        this.logoPath = "assets/img/pozo-sombra.png";
+        this.logoPath = "assets/img/pozo-carrito.scg";
         break;
     }
     this.getTotal();
@@ -112,6 +113,7 @@ export class TicketScrollerComponent implements OnInit {
 
   getTotal() {
     this.total = this.formatNumber(this.cart.getTotal());
+    this.newTotal.emit(this.total)
   }
   formatNumber(number){// Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {

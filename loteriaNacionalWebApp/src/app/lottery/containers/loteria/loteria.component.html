@@ -83,7 +83,8 @@
         <tbody>
           <tr
             *ngFor="
-              let ticket of ticketsDisponibles | paginacion: page_size:page_number;
+              let ticket of ticketsDisponibles
+                | paginacion: page_size:page_number;
               let i = index
             "
           >
@@ -93,8 +94,8 @@
                 <div class="contenedor_numeros">
                   <div class="combinationBox">
                     <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
-                  <p>{{ ticket.combinacion }}</p>
-                </div>
+                    <p>{{ ticket.combinacion }}</p>
+                  </div>
                   <hr />
 
                   <div class="seleccionAll">
@@ -189,6 +190,19 @@
   [message]="loadingMessage"
   *ngIf="isLoading"
 ></app-loader>
+<app-floating-menu
+
+(emitirCompra)="comprar()"
+(eliminarTodo)="deleteAllTickets()"
+(deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+(deleteLottoTicket)="deleteLottoTicket($event)"
+(deletePozoTicket)="deletePozoTicket($event)"
+(deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+[ticketsLoteria]="ticketsLoteria"
+[ticketsLotto]="ticketsLotto"
+[ticketsPozo]="ticketsPozo"
+tipoLoteria="loteria"
+></app-floating-menu>
 <app-error
   [msg]="errorMessage"
   (closeError)="closeError()"
@@ -206,7 +220,7 @@
 <app-resultados-instantaneas
   (close)="abrirFinalizar()"
   [resultados]="instantaneas"
-  tipoLoteria=1
+  tipoLoteria="1"
   [isLoteriaNacional]="true"
   class="paymentItem"
   *ngIf="isInstantaneas"

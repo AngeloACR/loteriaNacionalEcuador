@@ -25,9 +25,7 @@ const authController = {
                         'Content-Length': authData.length
                     }
                 }
-                console.log(options)
                 const req = https.request(options, res => {
-                    console.log(`statusCode: ${res.statusCode}`)
 
                     var body = '';
                     res.on('data', function (chunk) {
@@ -35,7 +33,6 @@ const authController = {
                     });
 
                     res.on('end', async function () {
-                        console.log("Body :" + body);
                         if (res.statusCode != 200) {
                             reject(new Error("Ocurrio un error, por favor intente más tarde"))
                         } else {
@@ -49,7 +46,6 @@ const authController = {
                     console.error(error)
                     reject(new Error(error));
                 })
-                console.log(authData)
                 req.write(authData)
                 req.end()
             })

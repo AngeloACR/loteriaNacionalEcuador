@@ -38,6 +38,7 @@ import { FormsModule } from "@angular/forms";
 import { getSpanishPaginatorIntl } from "./paginacion-es";
 import { ResultadoInstantaneaComponent } from "./components/resultado-instantanea/resultado-instantanea.component";
 import { ResultadosInstantaneasComponent } from "./components/resultados-instantaneas/resultados-instantaneas.component";
+import { FloatingMenuComponent } from './components/floating-menu/floating-menu.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ResultadosInstantaneasComponent } from "./components/resultados-instant
     StylePaginatorDirective,
     ResultadoInstantaneaComponent,
     ResultadosInstantaneasComponent,
+    FloatingMenuComponent,
   ],
   entryComponents: [
     LotteryTypeComponent,
