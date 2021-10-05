@@ -32,7 +32,6 @@ export class TicketScrollerComponent implements OnInit {
   @Output() deleteLoteriaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
-  @Output() newTotal = new EventEmitter();
 
   isLoteriaNacional: boolean = false;
   isLotto: boolean = false;
@@ -113,7 +112,6 @@ export class TicketScrollerComponent implements OnInit {
 
   getTotal() {
     this.total = this.formatNumber(this.cart.getTotal());
-    this.newTotal.emit(this.total)
   }
   formatNumber(number){// Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {

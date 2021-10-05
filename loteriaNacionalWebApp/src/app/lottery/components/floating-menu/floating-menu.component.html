@@ -31,7 +31,6 @@
 <app-ticket-scroller
   *ngIf="isCart"
   class="ticketScroller"
-  (newTotal)="setTotal($event)"
   (emitirCompra)="comprar()"
   (eliminarTodo)="deleteAllTickets()"
   (deleteLoteriaTicket)="deleteLoteria($event)"
