@@ -22,7 +22,7 @@ lotteryRouter.post('/reservarBoletos', LotteryController.reservarBoletos);
 lotteryRouter.post('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);
 lotteryRouter.post('/comprarBoletos', LotteryController.comprarBoletos);
 
-lotteryRouter.post('/acreditarPremios', GanadoresController.pagarLoteriaHttp);
+lotteryRouter.get('/acreditarPremios', GanadoresController.pagarLoteriaHttp);
 
 
 module.exports = lotteryRouter;
