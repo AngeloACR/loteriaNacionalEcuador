@@ -9,6 +9,9 @@ tail -F /var/log/xferlog | while read line; do
     fi    
     if [[ $filename == *"PREM"* ]]; then
         python3 ./premiosFTP.py $filename
+    fi        
+    if [[ $filename == *"GANWEB"* ]]; then
+        python3 ./ganwebFTP.py $filename
     fi    
   fi
 done

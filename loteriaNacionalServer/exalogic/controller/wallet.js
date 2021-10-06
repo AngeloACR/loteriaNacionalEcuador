@@ -190,16 +190,54 @@ const walletController = {
         req.write(data);
         req.end();
 
-        /*                 let response = await Ventas.autenticarUsuario();
-                                let lotteryToken = response.token;
-                                response = {
-                                    "resultCode": "0",
-                                    "resultDescription": "Successful transaction",
-                                    "currency": "USD",
-                                    "balance": "30.00"
-                                }
-                                resolve(response);
-                 */
+      });
+    } catch (e) {
+      throw e;
+    }
+  },
+  payLottery: async (data) => {
+    try {
+      return new Promise(async (resolve, reject) => {
+        data = JSON.stringify(data);
+        const options = {
+          hostname: exalogicHost,
+          port: 443,
+          path: exalogicEndpoint,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Content-Length": data.length,
+          },
+        };
+
+        const req = https.request(options, (res) => {
+
+          var body = "";
+
+          res.on("data", function (chunk) {
+            body = body + chunk;
+          });
+
+          res.on("end", function () {
+            if (res.statusCode != 200) {
+              reject(
+                new Error("Ocurrio un error, por favor intente más tarde")
+              );
+            } else {
+              let response = body == "" ? "" : JSON.parse(body);
+              resolve(response);
+            }
+          });
+        });
+
+        req.on("error", (error) => {
+          console.error(error);
+          reject(new Error(error));
+        });
+
+        req.write(data);
+        req.end();
+
       });
     } catch (e) {
       throw e;
