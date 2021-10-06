@@ -83,6 +83,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
           response.push(aux)
         }
       }
+      console.log(response);
       return response;
     } catch (e) {
       throw new Error(e.message);
