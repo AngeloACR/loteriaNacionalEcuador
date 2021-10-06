@@ -35,7 +35,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
                 personaId = ganadorData['PE']
             tipoLoteria = ''
             if('J' in ganadorData):
-                tipoLoteria = ganadorData['J']
+                tipoLoteria = int(ganadorData['J'])
             numeroSorteo = ''
             if('S' in ganadorData):
                 numeroSorteo = ganadorData['S']
@@ -87,7 +87,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
 
             ganador = {
                 "personaId": personaId,
-                "tipoLoteria": int(tipoLoteria),
+                "tipoLoteria": tipoLoteria,
                 "numeroSorteo": numeroSorteo,
                 "fechaCaducidad": fechaCaducidad,
                 "combinacion1": combinacion1,
@@ -106,7 +106,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
                 "ventaId": ventaId,
                 "acreditado": False
             }
-            loteriaDB['ganadoreswebs'].insert_one(ganador)
+            ganadoreswebs.insert_one(ganador)
         url = "https://ventas-api-prueba.loteria.com.ec/lottery/acreditarPremios"
         response = requests.get(url)
         resultado = response.json()
@@ -130,7 +130,8 @@ def main():
     #db = "mongodb://localhost:27017/loteriaPruebaDB"
     db = "mongodb://localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    filepath = "/home/loterianacional/resultados" + filename
+    filepath = sys.argv[1]
+    #filepath = "/home/loterianacional/resultados" + filename
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
 
