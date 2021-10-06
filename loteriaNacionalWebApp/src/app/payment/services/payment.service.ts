@@ -20,12 +20,12 @@ export class PaymentService {
     let data = JSON.parse(localStorage.getItem("userData"));
     let lotteryToken = data.lotteryToken;
     let user = data.playerDocument;
-    let personaId = data.personaId;
+    let personalId = data.personalId;
     if(data.user_ == 'italtronicprep') user = data.user_;
     let response = {
       lotteryToken,
       user,
-      personaId
+      personalId
     };
     return response;
   }
@@ -103,14 +103,13 @@ export class PaymentService {
       pozo,
       lotteryToken: authData.lotteryToken,
       user: authData.user,
-      personaId: authData.personaId,
+      personaId: authData.personalId,
       amount: total,
       token,
       reservaId,
     };
     endpoint = `${endpoint}/comprarBoletos`;
     var address = this.mySource;
-
     address = address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
