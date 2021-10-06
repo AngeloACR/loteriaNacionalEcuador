@@ -8,6 +8,7 @@ const Ventas = require("../../loterianacional/controller/ventas");
 const Reservas = require("./reservas");
 const Auth = require("../../exalogic/controller/auth");
 const Wallet = require("../../exalogic/controller/wallet");
+const ganadoresController = require("./ganadores");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -200,7 +201,7 @@ const ventasController = {
       };
       let response = await Auth.authUser(authData);
       if (response["password"]) delete response["password"];
-      if (response["playerDocument"]) delete response["playerDocument"];
+      //if (response["playerDocument"]) delete response["playerDocument"];
       return response;
     } catch (e) {
       throw new Error(e.message);
@@ -333,7 +334,7 @@ const ventasController = {
   },
   searchLottoSorteosDisponibles: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
@@ -353,7 +354,7 @@ const ventasController = {
   },
   searchLoteriaSorteosDisponibles: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
@@ -374,7 +375,7 @@ const ventasController = {
   },
   searchPozoSorteosDisponibles: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
       let finalResponse = await Ventas.consultarSorteosDisponibles(
@@ -395,7 +396,7 @@ const ventasController = {
   },
   searchLottoCombinacionesDisponibles: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let sorteo = req.body.sorteo;
@@ -441,7 +442,7 @@ const ventasController = {
   },
   searchLoteriaCombinacionesDisponibles: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
       let sorteo = req.body.sorteo;
@@ -486,7 +487,7 @@ const ventasController = {
   },
   searchPozoCombinacionesDisponibles: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
 
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
@@ -532,7 +533,7 @@ const ventasController = {
   },
   reservarBoletos: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
 
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
@@ -563,7 +564,7 @@ const ventasController = {
   },
   eliminarBoletosDeReserva: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
 
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
@@ -592,11 +593,12 @@ const ventasController = {
   },
   comprarBoletos: async (req, res) => {
     try {
-      let ip = req.headers['x-forwarded-for'];
+      let ip = req.headers["x-forwarded-for"];
       let exaBalanceData = { token: req.body.token };
       let exaReservaId = Date.now();
       let token = req.body.token;
       let user = req.body.user;
+      let personaId = req.body.personaId;
       let reservationDetails = [];
       let loteriaAux = req.body.loteria;
       let lottoAux = req.body.lotto;
@@ -690,26 +692,33 @@ const ventasController = {
         let lottoSorteos = await Cache.getLottoSorteosDisponibles();
         let pozoSorteos = await Cache.getPozoSorteosDisponibles();
         instantaneaStatus = true;
-        instantaneas.forEach((instantanea) => {
-          instantanea.premios.forEach((premio) => {
+        for (let j = 0; j < instantaneas.length; j++) {
+          const instantanea = instantaneas[j];
+
+          for (let i = 0; i < instantanea.premios.length; i++) {
+            const premio = instantanea.premios[i];
+
             let sorteos;
             let nombreLoteria;
-            let tipoLoteria = parseInt(instantanea.sorteo.JId)
+            let tipoLoteria = parseInt(instantanea.sorteo.JId);
             switch (tipoLoteria) {
               case 1:
-              nombreLoteria="Loteria Nacional"
+                nombreLoteria = "Loteria Nacional";
                 sorteos = loteriaSorteos;
                 break;
               case 2:
-              nombreLoteria="Lotto"
-              sorteos = lottoSorteos;
+                nombreLoteria = "Lotto";
+                sorteos = lottoSorteos;
 
               default:
-              nombreLoteria="Pozo Millonario"
-              sorteos = pozoSorteos;
+                nombreLoteria = "Pozo Millonario";
+                sorteos = pozoSorteos;
                 break;
             }
-            let drawDateAux = sorteos.find(sorteo => sorteo.sorteo == instantanea.sorteo.Sort).fecha.split(" ")[0].split("/");
+            let drawDateAux = sorteos
+              .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+              .fecha.split(" ")[0]
+              .split("/");
             let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
             let prizeDetail = {
               lotteryType: tipoLoteria,
@@ -722,9 +731,25 @@ const ventasController = {
               prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
               prizeDescription: premio.Prem,
             };
+            //CREAR GANADOR AQUI
+
+            let ganador = {
+              personaId: personaId,
+              tipoLoteria: tipoLoteria,
+              numeroSorteo: parseInt(instantanea.sorteo.Sort),
+              combinacion1: premio.Num,
+              fraccion: premio.Fra,
+              descripcionPremio: premio.Prem,
+              valorPremio: premio.Val,
+              valorPremioDescuento: premio.ConDesc,
+              ventaId: loteriaVentaResponse.ticketId,
+              acreditado: true,
+            };
+            await ganadoresController.crearGanador(ganador);
+
             prizeDetails.push(prizeDetail);
-          });
-        });
+          }
+        }
         instantaneaData = prizeDetails;
       }
       let exaVentaId = Date.now();
@@ -866,7 +891,7 @@ const ventasController = {
         total,
         reservaId,
         ventaId,
-        user
+        user,
       };
       let response = await Reservas.addReserva(element);
       return response;

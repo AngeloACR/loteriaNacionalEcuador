@@ -27,6 +27,20 @@
   </app-lottery-type>
 </div>
 
+<app-floating-menu
+
+(deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+(deleteLottoTicket)="deleteLottoTicket($event)"
+(deletePozoTicket)="deletePozoTicket($event)"
+(deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+(emitirCompra)="comprar()"
+(eliminarTodo)="deleteAllTickets()"
+[ticketsLoteria]="ticketsLoteria"
+[ticketsLotto]="ticketsLotto"
+[ticketsPozo]="ticketsPozo"
+[total]="total"
+tipoLoteria="loteria"
+></app-floating-menu>
 <app-loader
   loader="loteria"
   [message]="loadingMessage"
@@ -37,3 +51,37 @@
   (closeError)="closeError()"
   *ngIf="isError"
 ></app-error>
+<app-confirmacion-de-compra
+  (compraConfirmada)="confirmarCompra()"
+  (compraCancelada)="cancelarCompra($event)"
+  (comprarDespues)="dismissCompras()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  *ngIf="confirmacionDeCompra"
+></app-confirmacion-de-compra>
+<app-resultados-instantaneas
+  (close)="abrirFinalizar()"
+  [resultados]="instantaneas"
+  tipoloteria="5"
+  [isLoteriaNacional]="true"
+  class="paymentItem"
+  *ngIf="isInstantaneas"
+></app-resultados-instantaneas>
+<app-compra-finalizada
+  (volver)="finalizarCompra()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  *ngIf="compraFinalizada"
+></app-compra-finalizada>
+<app-saldo-insuficiente
+  [message]="recargaDeSaldoMessage"
+  (volver)="dismissCompras()"
+  (recarga)="irARecarga()"
+  class="paymentItem"
+  *ngIf="saldoInsuficiente"
+></app-saldo-insuficiente>
+<app-compra-cancelada
+  class="paymentItem"
+  [message]="cancelMessage"
+  *ngIf="compraCancelada"
+></app-compra-cancelada>

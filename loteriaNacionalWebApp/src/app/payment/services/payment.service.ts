@@ -20,10 +20,12 @@ export class PaymentService {
     let data = JSON.parse(localStorage.getItem("userData"));
     let lotteryToken = data.lotteryToken;
     let user = data.playerDocument;
+    let personaId = data.personaId;
     if(data.user_ == 'italtronicprep') user = data.user_;
     let response = {
       lotteryToken,
       user,
+      personaId
     };
     return response;
   }
@@ -34,7 +36,6 @@ export class PaymentService {
 
   recargarSaldo() {}
   hasBalance(subtotal, token) {
-    console.log("Asking for balance")
     let cartTotal = parseFloat(this.cart.getTotal());
     let testAmount = parseFloat(subtotal)+cartTotal;
     let headers = new HttpHeaders();
@@ -49,13 +50,9 @@ export class PaymentService {
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
-    console.log("Balance http")
     this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-          console.log(data);
           let balance = parseFloat(data.balance);
-          console.log(balance)
-          console.log(testAmount)
           resolve(balance>=testAmount);
         },
         (error: any) => {
@@ -66,7 +63,6 @@ export class PaymentService {
   }
 
   getCompra(ticketId) {
-    console.log("Asking for balance")
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
@@ -78,7 +74,6 @@ export class PaymentService {
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
-    console.log("Balance http")
     this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           resolve(data.values);
@@ -108,21 +103,19 @@ export class PaymentService {
       pozo,
       lotteryToken: authData.lotteryToken,
       user: authData.user,
+      personaId: authData.personaId,
       amount: total,
       token,
       reservaId,
     };
     endpoint = `${endpoint}/comprarBoletos`;
-    console.log(body);
     var address = this.mySource;
 
     address = address + endpoint;
-    console.log(body);
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
-          console.log(response);
           resolve(response);
         },
         (error: any) => {

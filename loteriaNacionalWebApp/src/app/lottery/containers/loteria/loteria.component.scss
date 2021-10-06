@@ -237,9 +237,9 @@ $color-botton: #2f72b9;
     display: flex;
     flex-direction: column;
 
-    .tagItem{
+    .tagItem {
       font-size: 12px;
-  }
+    }
     .contenedor_select {
       width: 100%;
       margin: 10px auto;
@@ -326,7 +326,7 @@ $color-botton: #2f72b9;
         }
       }
     }
-    
+
     .numeros_suerte {
       width: 100%;
       display: flex;
@@ -375,7 +375,7 @@ $color-botton: #2f72b9;
           font-family: $fuente-botones;
           font-size: 16px;
           cursor: pointer;
-    
+
           &:hover {
             background-color: white;
             color: $color-botton;
@@ -419,7 +419,6 @@ $color-botton: #2f72b9;
         }
       }
     }
-
 
     p {
       font-family: $fuente-botones;
@@ -596,8 +595,7 @@ $color-botton: #2f72b9;
 }
 
 @media screen and (max-width: 1000px) {
-
-  .paymentBox{
+  .paymentBox {
     width: 95%;
   }
   .contenedor_loteria {
@@ -606,47 +604,47 @@ $color-botton: #2f72b9;
       max-width: 800px;
       width: 100%;
     }
-  
+
     .contenedor_seleccion {
       width: 100% !important;
       margin: 0 0 20px 0;
-  
+
       .selectBox {
         flex-wrap: wrap;
-  
+
         .contenedor_select {
           width: 100%;
-
         }
       }
-      
-            .numeros_suerte {
-              width: 100%;
-              margin: 0;
-              .numeros{
-              flex-wrap: wrap;
-                .activado{
-                  margin-top: 20px;
-                }
-              }
-            }
-  
+
+      .numeros_suerte {
+        width: 100%;
+        margin: 0;
+        .numeros {
+          flex-wrap: wrap;
+          justify-content: center;
+          input{
+            margin: 0 8px !important;
+          }
+          .activado {
+            margin-top: 20px;
+          }
+        }
+      }
+
       table {
-  
         tbody {
           grid-template-columns: repeat(1, auto);
-  
         }
-  
+
         hr {
           width: 97%;
           margin: auto;
           margin: 15px auto;
         }
       }
-
     }
-  
+
     .ticketScroller {
       display: none;
     }

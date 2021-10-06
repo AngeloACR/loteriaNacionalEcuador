@@ -56,6 +56,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = true;
       this.getCarritoTickets();
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
+      this.getTotal();
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {
@@ -213,6 +214,7 @@ export class LoteriaComponent implements OnInit {
         this.cart.setCarritoLoteria(this.ticketsLoteria);
         this.cart.setCarrito(aux, 1);
         this.getCarritoTickets();
+        this.getTotal();
         this.isLoading = false;
       } else {
         this.isLoading = false;
@@ -270,6 +272,10 @@ export class LoteriaComponent implements OnInit {
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
+  total: string;
+  getTotal() {
+    this.total = this.cart.getTotal();
+  }
   comprar() {
     this.dismissCompras();
 
@@ -414,6 +420,7 @@ export class LoteriaComponent implements OnInit {
 
       this.cart.setCarritoLoteria(this.ticketsLoteria);
       this.getCarritoTickets();
+      this.getTotal();
       if (this.ticketsDisponibles && this.ticketsDisponibles.length) {
         let deletedIndex = this.ticketsDisponibles.findIndex(
           (x) => x.identificador === identificador
@@ -454,6 +461,7 @@ export class LoteriaComponent implements OnInit {
 
       this.cart.setCarritoLotto(this.ticketsLotto);
       this.getCarritoTickets();
+      this.getTotal();
 
       this.isLoading = false;
     } catch (e) {
@@ -486,6 +494,7 @@ export class LoteriaComponent implements OnInit {
 
       this.cart.setCarritoPozo(this.ticketsPozo);
       this.getCarritoTickets();
+      this.getTotal();
 
       this.isLoading = false;
     } catch (e) {
@@ -523,6 +532,7 @@ export class LoteriaComponent implements OnInit {
 
       this.cart.setCarritoLoteria(this.ticketsLoteria);
       this.getCarritoTickets();
+      this.getTotal();
 
       this.isLoading = false;
     } catch (e) {
@@ -577,6 +587,7 @@ export class LoteriaComponent implements OnInit {
       });
       this.cart.borrarCarrito();
       this.getCarritoTickets();
+      this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;

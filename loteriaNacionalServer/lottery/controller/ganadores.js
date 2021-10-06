@@ -87,6 +87,15 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       throw new Error(e.message);
     }
   },
+  crearGanador: async (data) => {
+    try {
+      let ganador = new Ganadores(data);
+      let response = ganador.save();
+      return response;
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  },
 };
 
 module.exports = ganadoresController;

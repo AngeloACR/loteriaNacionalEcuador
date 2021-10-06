@@ -73,9 +73,13 @@ export class FloatingMenuComponent implements OnInit {
   deleteFraccion(e) {
     this.deleteLoteriaFraccion.emit(e);
   }
-  total: string;
+  @Input() total: string;
 
   ngDoCheck() {
+    this.total = this.cart.getTotal();
+    this.total = this.formatNumber(this.total)
+  }
+  ngOnChanges() {
     this.total = this.cart.getTotal();
     this.total = this.formatNumber(this.total)
   }

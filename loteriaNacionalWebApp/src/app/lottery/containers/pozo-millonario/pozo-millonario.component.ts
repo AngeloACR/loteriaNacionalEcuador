@@ -45,6 +45,10 @@ export class PozoMillonarioComponent implements OnInit {
       this.token = params["token"];
     });
   }
+  total: string;
+  getTotal() {
+    this.total = this.cart.getTotal();
+  }
 
   agregar(animal: animales, i: number) {
     if (this.seleccionAnimales[i].status === false) {
@@ -121,6 +125,8 @@ export class PozoMillonarioComponent implements OnInit {
         "seleccionadosPozo",
         JSON.stringify(this.ticketsSeleccionados)
       );
+      this.getCarritoTickets();
+      this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -161,6 +167,8 @@ export class PozoMillonarioComponent implements OnInit {
         this.cart.setCarritoPozo(this.ticketsSeleccionados);
 
         this.cart.setCarrito(aux, 5);
+        this.getCarritoTickets();
+        this.getTotal();
         this.isLoading = false;
       } else {
         this.isLoading = false;
@@ -428,6 +436,7 @@ export class PozoMillonarioComponent implements OnInit {
     try {
       this.isLoading = true;
       this.getCarritoTickets();
+      this.getTotal();
 
       this.loadingMessage = "Cargando los sorteos disponibles";
       this.seleccionAnimales = JSON.parse(
@@ -485,6 +494,8 @@ export class PozoMillonarioComponent implements OnInit {
         "seleccionadosLoteria",
         JSON.stringify(this.ticketsLoteria)
       );
+      this.getCarritoTickets();
+      this.getTotal();
 
       this.isLoading = false;
     } catch (e) {
@@ -519,6 +530,8 @@ export class PozoMillonarioComponent implements OnInit {
         "seleccionadosLotto",
         JSON.stringify(this.ticketsLotto)
       );
+      this.getCarritoTickets();
+      this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -556,7 +569,7 @@ export class PozoMillonarioComponent implements OnInit {
 
       this.cart.setCarritoLoteria(this.ticketsLoteria);
       this.getCarritoTickets();
-
+      this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -577,6 +590,8 @@ export class PozoMillonarioComponent implements OnInit {
         (x) => x.identificador === identificador
       );
       if (deletedIndex != -1) this.ticketAnimales[deletedIndex].status = false;
+      this.getCarritoTickets();
+      this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -626,6 +641,7 @@ export class PozoMillonarioComponent implements OnInit {
       });
       this.cart.borrarCarrito();
       this.getCarritoTickets();
+      this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
