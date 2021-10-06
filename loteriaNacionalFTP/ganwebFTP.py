@@ -40,7 +40,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
             if('S' in ganadorData):
                 numeroSorteo = ganadorData['S']
             fechaCaducidad = ''
-            if('PE' in ganadorData):
+            if('FC' in ganadorData):
                 fechaCaducidad = ganadorData['FC']
             combinacion1 = ''
             if('C' in ganadorData):
@@ -73,7 +73,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
             if('VP' in ganadorData):
                 valorPremio = ganadorData['VP']
             valorPremioDescuento = ''
-            if('N' in ganadorData):
+            if('VD' in ganadorData):
                 valorPremioDescuento = ganadorData['VD']
             tipoPremio = ''
             if('TP' in ganadorData):

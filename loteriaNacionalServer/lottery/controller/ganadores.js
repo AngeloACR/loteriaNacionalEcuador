@@ -41,6 +41,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         operationTimeStamp: operationTimeStamp,
         payLine: data.payLine,
       };
+      console.log(exaData)
       let response = await Wallet.payLottery(exaData);
       return response;
     } catch (e) {
@@ -83,7 +84,6 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
           response.push(aux)
         }
       }
-      console.log(response);
       return response;
     } catch (e) {
       throw new Error(e.message);

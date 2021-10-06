@@ -200,6 +200,7 @@ const ventasController = {
       };
       let response = await Auth.authUser(authData);
       if (response["password"]) delete response["password"];
+      if (response["playerDocument"]) delete response["playerDocument"];
       return response;
     } catch (e) {
       throw new Error(e.message);
