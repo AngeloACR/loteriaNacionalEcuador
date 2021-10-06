@@ -666,7 +666,6 @@ const ventasController = {
       // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
 
       let lotteryToken = req.body.lotteryToken;
-      let user = req.body.user;
 
       let reservaId = req.body.reservaId;
       let ordComp = exaReservaId;
