@@ -41,7 +41,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         operationTimeStamp: operationTimeStamp,
         payLine: data.payLine,
       };
-      console.log(exaData)
+      console.log(exaData);
       let response = await Wallet.payLottery(exaData);
       return response;
     } catch (e) {
@@ -61,27 +61,25 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             ganador.tipoLoteria
           }" S="${ganador.numeroSorteo}" FC="${ganador.fechaCaducidad}" C="${
             ganador.combinacion1
-          }"
-          C2="${ganador.combinacion2}" C3="${ganador.combinacion3}" F="${
+          }" C2="${ganador.combinacion2}" C3="${ganador.combinacion3}" F="${
             ganador.fraccion
           }" B="${ganador.boletoId}" P="${
             ganador.codigoPremio.split("-")[1]
-          }" N="${ganador.descripcionPremio}"
-          VP="${ganador.valorPremio}" VD="${
+          }" N="${ganador.descripcionPremio}" VP="${ganador.valorPremio}" VD="${
             ganador.valorPremioDescuento
           }" TP="${ganador.tipoPremio}" RT="${ganador.requiereTestimonio}" V="${
             ganador.ventaId
           }"/>`;
           let data = {
             payLine,
-            transactionId: Date.now()
-          }
+            transactionId: Date.now(),
+          };
           let aux = await ganadoresController.payLottery(data);
-          if(aux.resultCode >= 0){
+          if (aux.resultCode >= 0) {
             ganador.acreditado = true;
             await ganador.save();
           }
-          response.push(aux)
+          response.push(aux);
         }
       }
       return response;

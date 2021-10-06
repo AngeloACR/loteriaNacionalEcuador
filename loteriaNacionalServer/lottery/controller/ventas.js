@@ -596,6 +596,7 @@ const ventasController = {
       let exaBalanceData = { token: req.body.token };
       let exaReservaId = Date.now();
       let token = req.body.token;
+      let user = req.body.user;
       let reservationDetails = [];
       let loteriaAux = req.body.loteria;
       let lottoAux = req.body.lotto;
@@ -743,6 +744,7 @@ const ventasController = {
         amount: req.body.amount,
         loteria: req.body.loteria,
         lotto: req.body.lotto,
+        user,
         pozo: req.body.pozo,
         reservaId: req.body.reservaId,
         ventaId: loteriaVentaResponse.ticketId,
@@ -865,6 +867,7 @@ const ventasController = {
         total,
         reservaId,
         ventaId,
+        user
       };
       let response = await Reservas.addReserva(element);
       return response;
