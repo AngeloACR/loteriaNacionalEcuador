@@ -4,9 +4,9 @@ import { PaymentService } from "../../services/payment.service";
 import { LotteryService } from "../../../lottery/services/lottery.service";
 
 @Component({
-  selector: 'app-compra-detalle',
-  templateUrl: './compra-detalle.component.html',
-  styleUrls: ['./compra-detalle.component.scss']
+  selector: "app-compra-detalle",
+  templateUrl: "./compra-detalle.component.html",
+  styleUrls: ["./compra-detalle.component.scss"],
 })
 export class CompraDetalleComponent implements OnInit {
   ticketId: string;
@@ -20,12 +20,15 @@ export class CompraDetalleComponent implements OnInit {
   constructor(
     private actRoute: ActivatedRoute,
     private payment: PaymentService,
-    private lottery: LotteryService,
+    private lottery: LotteryService
   ) {
-
-    this.actRoute.params.subscribe(params => {
-      //this.ticketId = params["id"].split("-")[1];
-      this.ticketId = params["id"];
+    this.actRoute.params.subscribe((params) => {
+      let aux = params["id"];
+      if (aux.includes("-")) {
+        this.ticketId = aux.split("-")[1];
+      } else {
+        this.ticketId = params["id"];
+      }
       console.log(this.ticketId);
     });
   }
@@ -34,58 +37,63 @@ export class CompraDetalleComponent implements OnInit {
     this.loadingMessage = "Consultando el detalle de tu compra";
     this.isLoading = true;
     this.compra = await this.payment.getCompra(this.ticketId);
-    this.user = this.compra.user? this.compra.user:this.lottery.getAuthData().user
+    this.user = this.compra.user
+      ? this.compra.user
+      : this.lottery.getAuthData().user;
     this.ganador = await this.payment.getGanador(this.ticketId);
-    if(this.ganador.status){
-      let resultadosGanadores = this.ganador.values
-      this.compra.loteria.forEach(element => {
-        element['detalleGanador']=[]
+    if (this.ganador.status) {
+      let resultadosGanadores = this.ganador.values;
+      this.compra.loteria.forEach((element) => {
+        element["detalleGanador"] = [];
       });
-      this.compra.lotto.forEach(element => {
-        element['detalleGanador']=[]
+      this.compra.lotto.forEach((element) => {
+        element["detalleGanador"] = [];
       });
-      this.compra.pozo.forEach(element => {
-        element['detalleGanador']=[]
+      this.compra.pozo.forEach((element) => {
+        element["detalleGanador"] = [];
       });
       for (let i = 0; i < resultadosGanadores.length; i++) {
         const ganador = resultadosGanadores[i];
-        let ganadorIndex
+        let ganadorIndex;
         switch (ganador.tipoLoteria) {
           case 1:
             ganadorIndex = this.compra.loteria.findIndex(
-              (x) => ( x.combinacion1 == ganador.combinacion1 && x.sorteo == ganador.numeroSorteo)
+              (x) =>
+                x.combinacion1 == ganador.combinacion1 &&
+                x.sorteo == ganador.numeroSorteo
             );
-            if(ganadorIndex != -1){
-              this.compra.loteria[ganadorIndex]['hasGanador'] = true;
-              this.compra.loteria[ganadorIndex]['detalleGanador'].push(ganador);
+            if (ganadorIndex != -1) {
+              this.compra.loteria[ganadorIndex]["hasGanador"] = true;
+              this.compra.loteria[ganadorIndex]["detalleGanador"].push(ganador);
             }
             break;
-            case 2:
-            
-              ganadorIndex = this.compra.lotto.findIndex(
-                (x) => ( x.combinacion1 == ganador.combinacion1 && x.sorteo == ganador.numeroSorteo)
-              );
-              if(ganadorIndex != -1){
-                this.compra.lotto[ganadorIndex]['hasGanador'] = true;
-                this.compra.lotto[ganadorIndex]['detalleGanador'].push(ganador);
-              }
-              break;
-          
+          case 2:
+            ganadorIndex = this.compra.lotto.findIndex(
+              (x) =>
+                x.combinacion1 == ganador.combinacion1 &&
+                x.sorteo == ganador.numeroSorteo
+            );
+            if (ganadorIndex != -1) {
+              this.compra.lotto[ganadorIndex]["hasGanador"] = true;
+              this.compra.lotto[ganadorIndex]["detalleGanador"].push(ganador);
+            }
+            break;
+
           default:
             ganadorIndex = this.compra.pozo.findIndex(
-              (x) => ( x.combinacion1 == ganador.combinacion1 && x.sorteo == ganador.numeroSorteo)
+              (x) =>
+                x.combinacion1 == ganador.combinacion1 &&
+                x.sorteo == ganador.numeroSorteo
             );
-            if(ganadorIndex != -1){
-              this.compra.pozo[ganadorIndex]['hasGanador'] = true;
-              this.compra.pozo[ganadorIndex]['detalleGanador'].push(ganador);
+            if (ganadorIndex != -1) {
+              this.compra.pozo[ganadorIndex]["hasGanador"] = true;
+              this.compra.pozo[ganadorIndex]["detalleGanador"].push(ganador);
             }
-          break;
+            break;
         }
-        
       }
     }
     this.compraReady = true;
     this.isLoading = false;
   }
-
 }
