@@ -42,28 +42,32 @@
           <p>{{ formatNumber(item.subtotal) }}</p>
         </div>
       </div>
-      <ng-container *ngIf="item.hasGanador">
-        <div class="dateTicketBox">
+      <div class="ganadorBox" *ngIf="item.hasGanador">
+        <div class="ganadorTitleBox">
           <p>BOLETO GANADOR</p>
         </div>
-        <div class="ganadorBox" *ngFor="let ganador of item.ganador">
-          <div class="numberBox">
-            <p>
-              Valor del premio: {{ formatNumber(ganador.valorPremio) }}
-              <br />Desc. 14%:
-              {{
-                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
-              }}
-              <br />Valor del premio con descuento:
-              {{ formatNumber(ganador.valorPremioDescuento) }}
-              <br />Descripción: {{ ganador.detallePremio }}
-            </p>
-          </div>
-          <div class="montoBox">
-            <p>{{ formatNumber(item.subtotal) }}</p>
-          </div>
+        <div class="ganadorHeaderBox">
+          <p class="ganadorFraccion">Fracción</p>
+          <p>Valor del premio</p>
+          <p>Desc. 14%</p>
+          <p>Valor del premio con descuento</p>
+          <p>Descripción del premio</p>
         </div>
-      </ng-container>
+        <div
+          class="ganadorDetailsBox"
+          *ngFor="let ganador of item.detalleGanador"
+        >
+        <p class="ganadorFraccion">{{ ganador.fraccion }}</p>
+          <p>{{ formatNumber(ganador.valorPremio) }}</p>
+          <p>
+            {{
+              formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
+            }}
+          </p>
+          <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>
+          <p>{{ ganador.descripcionPremio }}</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -92,28 +96,30 @@
           <p>{{ formatNumber(item.subtotal) }}</p>
         </div>
       </div>
-      <ng-container *ngIf="item.hasGanador">
-        <div class="dateTicketBox">
+      <div class="ganadorBox" *ngIf="item.hasGanador">
+        <div class="ganadorTitleBox">
           <p>BOLETO GANADOR</p>
         </div>
-        <div class="ganadorBox" *ngFor="let ganador of item.ganador">
-          <div class="numberBox">
-            <p>
-              Valor del premio: {{ formatNumber(ganador.valorPremio) }}
-              <br />Desc. 14%:
-              {{
-                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
-              }}
-              <br />Valor del premio con descuento:
-              {{ formatNumber(ganador.valorPremioDescuento) }}
-              <br />Descripción: {{ ganador.detallePremio }}
-            </p>
-          </div>
-          <div class="montoBox">
-            <p>{{ formatNumber(item.subtotal) }}</p>
-          </div>
+        <div class="ganadorHeaderBox">
+          <p>Valor del premio</p>
+          <p>Desc. 14%</p>
+          <p>Valor del premio con descuento</p>
+          <p>Descripción del premio</p>
         </div>
-      </ng-container>
+        <div
+          class="ganadorDetailsBox"
+          *ngFor="let ganador of item.detalleGanador"
+        >
+          <p>{{ formatNumber(ganador.valorPremio) }}</p>
+          <p>
+            {{
+              formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
+            }}
+          </p>
+          <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>
+          <p>{{ ganador.descripcionPremio }}</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -141,28 +147,30 @@
           <p>{{ formatNumber(item.subtotal) }}</p>
         </div>
       </div>
-      <ng-container *ngIf="item.hasGanador">
-        <div class="dateTicketBox">
+      <div class="ganadorBox" *ngIf="item.hasGanador">
+        <div class="ganadorTitleBox">
           <p>BOLETO GANADOR</p>
         </div>
-        <div class="ganadorBox" *ngFor="let ganador of item.ganador">
-          <div class="numberBox">
-            <p>
-              Valor del premio: {{ formatNumber(ganador.valorPremio) }}
-              <br />Desc. 14%:
-              {{
-                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
-              }}
-              <br />Valor del premio con descuento:
-              {{ formatNumber(ganador.valorPremioDescuento) }}
-              <br />Descripción: {{ ganador.detallePremio }}
-            </p>
-          </div>
-          <div class="montoBox">
-            <p>{{ formatNumber(item.subtotal) }}</p>
-          </div>
+        <div class="ganadorHeaderBox">
+          <p>Valor del premio</p>
+          <p>Desc. 14%</p>
+          <p>Valor del premio con descuento</p>
+          <p>Descripción del premio</p>
         </div>
-      </ng-container>
+        <div
+          class="ganadorDetailsBox"
+          *ngFor="let ganador of item.detalleGanador"
+        >
+          <p>{{ formatNumber(ganador.valorPremio) }}</p>
+          <p>
+            {{
+              formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
+            }}
+          </p>
+          <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>
+          <p>{{ ganador.descripcionPremio }}</p>
+        </div>
+      </div>
     </div>
   </div>
 

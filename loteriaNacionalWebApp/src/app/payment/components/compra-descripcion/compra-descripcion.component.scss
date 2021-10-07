@@ -100,12 +100,17 @@ $color-pozo: #04b865;
     }
 
     .dateLoteryBox {
-      display: grid;
+      /*       display: grid;
       grid-template-columns: 30% 1fr;
       column-gap: 3rem;
+ */
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
       padding: 10px;
       .infoSorteoBox {
-        margin-left: 20px;
+        width: 30%;
 
         p {
           font-weight: 500;
@@ -114,23 +119,70 @@ $color-pozo: #04b865;
       }
 
       .infoTicketBox {
-        display: grid;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        /*         display: grid;
         grid-template-columns: repeat(3, 1fr);
+ */
         font-family: $fuente-parrafo;
         font-size: 15px;
 
         .dateTicketBox {
+          width: 60%;
           font-weight: 600;
           font-size: 15px;
         }
 
         .numberBox {
+          width: 15%;
           text-align: center;
         }
 
         .montoBox {
+          width: 15%;
           text-align: right;
           font-weight: 600;
+        }
+      }
+      .ganadorBox {
+        display: flex;
+        width: 95%;
+        flex-direction: column;
+        align-items: center;
+        .ganadorTitleBox {
+          p {
+            font-size: 16px;
+            font-family: $fuente-titulo;
+          }
+        }
+        .ganadorHeaderBox {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          p {
+            width: 20%;
+            font-size: 14px;
+            font-family: $fuente-titulo;
+          }
+          .ganadorFraccion{
+            width: 10%;
+          }
+        }
+        .ganadorDetailsBox {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          p {
+            width: 20%;
+            font-size: 14px;
+            font-family: $fuente-parrafo;
+          }
+          .ganadorFraccion{
+            width: 15%;
+          }
         }
       }
     }
@@ -213,10 +265,31 @@ $color-pozo: #04b865;
           display: flex;
           flex-direction: column;
           width: 80%;
+
+          .dateTicketBox {
+            width: 100%;
+          }
+
+          .numberBox {
+            display: none;
+          }
+          .montoBox {
+            width: 100%;
+          }
         }
-        .numberBox{
-          display: none;
+        .ganadorBox {
+          .ganadorHeaderBox {
+            p {
+              font-size: 12px;
+            }
+          }
+          .ganadorDetailsBox {
+            p {
+              font-size: 12px;
+            }
+          }
         }
+  
       }
     }
   }
