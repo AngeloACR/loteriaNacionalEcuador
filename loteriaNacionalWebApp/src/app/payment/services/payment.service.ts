@@ -85,7 +85,28 @@ export class PaymentService {
     });
   }
 
+  getGanador(ticketId) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/lottery";
+    let body = {
+      ticketId
+    };
+    endpoint = `${endpoint}/getGanador`;
+    var address = this.mySource;
 
+    address = address + endpoint;
+    return new Promise<boolean>((resolve, reject) => {
+    this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          resolve(data.values);
+        },
+        (error: any) => {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
   confirmarCompra(token, reservaId): Promise<any> {
     let loteria = this.cart.getCarritoLoteria();
     let lotto = this.cart.getCarritoLotto();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { PageEvent } from "@angular/material";
 import {
   sorteo,
@@ -33,6 +33,7 @@ export class LottoComponent implements OnInit {
     private lotteryService: LotteryService,
     private actRoute: ActivatedRoute,
     private cart: ShoppingCartService,
+    private changeDetectorRef: ChangeDetectorRef,
     private paymentService: PaymentService,
     private router: Router
   ) {
@@ -42,7 +43,10 @@ export class LottoComponent implements OnInit {
   }
   total: string;
   getTotal() {
+    this.changeDetectorRef.detectChanges();
+    
     this.total = this.cart.getTotal();
+    this.changeDetectorRef.markForCheck();
   }
   async buscarNumero() {
     try {
@@ -133,8 +137,8 @@ export class LottoComponent implements OnInit {
         this.cart.setCarritoLotto(this.ticketsLotto);
         this.cart.setCarrito(aux, 2);
         this.getCarritoTickets();
-        this.getTotal();
-        this.isLoading = false;
+    this.getTotal();
+    this.isLoading = false;
       } else {
         this.isLoading = false;
         let message =

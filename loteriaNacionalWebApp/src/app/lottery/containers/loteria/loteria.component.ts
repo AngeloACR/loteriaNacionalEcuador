@@ -273,9 +273,13 @@ export class LoteriaComponent implements OnInit {
   }
 
   total: string;
-  getTotal() {
+  getTotal(){
+  this.changeDetectorRef.detectChanges();
+    
     this.total = this.cart.getTotal();
+    this.changeDetectorRef.markForCheck();
   }
+
   comprar() {
     this.dismissCompras();
 

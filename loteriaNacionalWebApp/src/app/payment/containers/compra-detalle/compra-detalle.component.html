@@ -1,3 +1,9 @@
 <ng-container *ngIf="compraReady">
 <app-compra-descripcion [compra]="compra" [user]="user" [ticketId]="ticketId"></app-compra-descripcion>
 </ng-container>
+
+<app-loader
+  loader="loteria"
+  [message]="loadingMessage"
+  *ngIf="isLoading"
+></app-loader>

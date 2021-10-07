@@ -41,7 +41,6 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         operationTimeStamp: operationTimeStamp,
         payLine: data.payLine,
       };
-      console.log(exaData);
       let response = await Wallet.payLottery(exaData);
       return response;
     } catch (e) {
@@ -94,6 +93,32 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       return response;
     } catch (e) {
       throw new Error(e.message);
+    }
+  },
+  getGanador: async (req, res) => {
+    try {
+      let ticketId = req.body.ticketId;
+      let query = {"ventaId": ticketId};
+      let ganador = Ganadores.find(query);
+      let response;
+      if(ganador && ganador.length){
+        response = {
+          status: true,
+          values: ganador
+        }
+      } else{
+        response = {
+          status: false
+        }
+      }
+      res.status(200).json(response);
+
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
     }
   },
 };

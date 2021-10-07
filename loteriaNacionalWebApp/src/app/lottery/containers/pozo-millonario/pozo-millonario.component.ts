@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+
 import { LotteryService } from "../../services/lottery.service";
 import { PaymentService } from "../../../payment/services/payment.service";
 import { ShoppingCartService } from "../../../payment/services/shopping-cart.service";
@@ -39,15 +40,19 @@ export class PozoMillonarioComponent implements OnInit {
     private paymentService: PaymentService,
     private cart: ShoppingCartService,
 
-    private router: Router
-  ) {
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
+    ) {
     this.actRoute.params.subscribe((params) => {
       this.token = params["token"];
     });
   }
   total: string;
   getTotal() {
+    this.changeDetectorRef.detectChanges();
+    
     this.total = this.cart.getTotal();
+    this.changeDetectorRef.markForCheck();
   }
 
   agregar(animal: animales, i: number) {
