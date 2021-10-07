@@ -99,7 +99,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
     try {
       let ticketId = req.body.ticketId;
       let query = {"ventaId": ticketId};
-      let ganador = Ganadores.find(query);
+      let ganador = await Ganadores.find(query);
       let response;
       if(ganador && ganador.length){
         response = {

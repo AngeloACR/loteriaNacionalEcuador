@@ -86,6 +86,7 @@ export class PaymentService {
   }
 
   getGanador(ticketId) {
+    ticketId = ticketId.toString();
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
@@ -99,7 +100,7 @@ export class PaymentService {
     return new Promise<boolean>((resolve, reject) => {
     this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-          resolve(data.values);
+          resolve(data);
         },
         (error: any) => {
           reject(new Error(error.error.message));
