@@ -49,6 +49,7 @@ tipoLoteria="loteria"
 <app-error
   [msg]="errorMessage"
   (closeError)="closeError()"
+  [title]="errorTitle"
   *ngIf="isError"
 ></app-error>
 <app-confirmacion-de-compra

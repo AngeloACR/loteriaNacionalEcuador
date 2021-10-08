@@ -35,7 +35,7 @@ $color-botton: #2f72b9;
   .contenedor_numeros {
     width: 100%;
     min-height: 200px;
-    max-height: 260px;
+    max-height: 270px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -45,7 +45,7 @@ $color-botton: #2f72b9;
       justify-content: space-around;
       align-items: center;
       p {
-        font-size: 20px;
+        font-size: 35px;
         font-family: $fuente-titulo;
         opacity: 0.7;
       }
@@ -64,7 +64,7 @@ $color-botton: #2f72b9;
       p {
         font-size: 14px;
         width: 100%;
-        margin: 0;
+        margin: 10px;
       }
 
       input[type="checkbox"] {

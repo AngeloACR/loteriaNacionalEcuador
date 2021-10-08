@@ -59,7 +59,7 @@ export class TicketScrollerComponent implements OnInit {
         break;
       case "pozo":
         this.isPozoMillonario = true;
-        this.logoPath = "assets/img/pozo-carrito.scg";
+        this.logoPath = "assets/img/pozo-carrito.svg";
         break;
     }
     this.getTotal();

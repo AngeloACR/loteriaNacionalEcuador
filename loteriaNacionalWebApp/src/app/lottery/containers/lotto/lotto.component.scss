@@ -38,7 +38,8 @@ $color-lotto: #b51f20;
     justify-content: space-around;
 
     p {
-      font-size: 20px !important;
+      font-size: 35px !important;
+      margin: 10px;
       font-family: $fuente-titulo;
       opacity: 0.7;
     }
@@ -352,7 +353,7 @@ $color-lotto: #b51f20;
       hr {
         width: 97%;
         margin: auto;
-        margin: 15px auto;
+        margin: 10px;
       }
     }
 
@@ -482,7 +483,7 @@ $color-lotto: #b51f20;
         hr {
           width: 97%;
           margin: auto;
-          margin: 15px auto;
+          margin: 10px auto;
         }
       }
     }

@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 })
 export class ErrorComponent implements OnInit {
   @Input() msg: string;
+  @Input() title: string = "ERROR";
   @Output() closeError = new EventEmitter<string>();
 
   constructor() {}

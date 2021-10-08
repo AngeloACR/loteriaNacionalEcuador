@@ -15,7 +15,7 @@ export class SeleccionComponent implements OnInit {
   token: string;
   lotteryToken: string;
   usuario: string;
-
+  errorTitle: string;
   isLoading: boolean;
   loadingMessage: string;
 
@@ -56,7 +56,8 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      this.openError(errorMessage);
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
     }
   }
 
@@ -182,7 +183,8 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      this.openError(errorMessage);
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
     }
   }
 
@@ -238,7 +240,8 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      this.openError(errorMessage);
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
     }
   }
   async deleteLottoTicket(data) {
@@ -273,7 +276,8 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      this.openError(errorMessage);
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
     }
   }
  
@@ -311,7 +315,8 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      this.openError(errorMessage);
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
     }
   }
   async deletePozoTicket(data) {
@@ -346,7 +351,8 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      this.openError(errorMessage);
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
     }
   }
   async deleteAllTickets() {
@@ -387,7 +393,8 @@ export class SeleccionComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      this.openError(errorMessage);
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
     }
   }
 
@@ -416,12 +423,13 @@ export class SeleccionComponent implements OnInit {
   }
 
   authError(){
-      this.openError("Por favor, para poder comprar su boleto preferido, deberá iniciar sesión en su cuenta")
+      this.openError("Por favor, para poder comprar su boleto preferido, deberá iniciar sesión en su cuenta", "Aviso")
   }
 
   isError: boolean = false;
   errorMessage: string;
-  openError(msg) {
+  openError(msg, title) {
+    this.errorTitle = title.toUpperCase();
     this.errorMessage = msg;
     this.isError = true;
   }

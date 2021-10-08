@@ -4,7 +4,7 @@ import {
   Event,
   NavigationStart,
   NavigationEnd,
-  NavigationError
+  NavigationError,
 } from "@angular/router";
 
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +12,7 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
   title = "loteriaNacionalWeb";
@@ -29,12 +29,16 @@ export class AppComponent implements OnInit {
           this.token = data.split("?token=")[1];
           this.router.navigateByUrl(`${url}/${this.token}`);
         }
-        if (data.includes("payment/detalle?ticketId")) {
+        if (data.includes("payment/detalle")) {
           this.isDetail = true;
-          let url = data.split("?ticketId=")[0];
-          let ticketId = data.split("?ticketId=")[1];
-          this.router.navigateByUrl(`${url}/${ticketId}`);
-        }        
+          let url;
+          let ticketId;
+          if (data.includes("?ticketId")) {
+            url = data.split("?ticketId=")[0];
+            ticketId = data.split("?ticketId=")[1];
+            this.router.navigateByUrl(`${url}/${ticketId}`);
+          }
+        }
       }
       if (event instanceof NavigationEnd) {
       }
@@ -43,6 +47,5 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  async ngOnInit() {
-  }
+  async ngOnInit() {}
 }

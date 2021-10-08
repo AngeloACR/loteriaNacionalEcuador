@@ -16,6 +16,18 @@ const ganadoresController = require("./ganadores");
 //let sourceBoletos = config.sourceBoletosTest;
 let sourceBoletos = config.sourceBoletosProd;
 
+function getCurrentTimeStamp() {
+  let date = new Date(Date.now()).toLocaleString("es-EC", {
+    timeZone: "America/Bogota",
+  });
+  let a = date.split(/\D/);
+  let y = a[2];
+  let m = a[1].length === 2 ? a[1] : `0${a[1]}`;
+  let d = a[0].length === 2 ? a[0] : `0${a[0]}`;
+  let n = `${y}-${d}-${m} ${a[3]}:${a[4]}:${a[5]}.000`;
+  return n;
+}
+
 const ventasController = {
   authUserHttp: async (req, res) => {
     try {
@@ -75,10 +87,13 @@ const ventasController = {
                 "ticketId": "13565132"
                 "transactionId": "2223846696262170"
             } */
-      let operationTimeStamp = new Date(Date.now())
+      /* let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
         .replace("Z", "");
+ */
+
+      let operationTimeStamp = getCurrentTimeStamp();
 
       let data = {
         command: "sellLottery",
@@ -113,10 +128,12 @@ const ventasController = {
                 "amount": "30.00",
                 "transactionId": "2223846696262170"
             } */
-      let operationTimeStamp = new Date(Date.now())
+      /*       let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
-        .replace("Z", "");
+        .replace("Z", ""); */
+      let operationTimeStamp = getCurrentTimeStamp();
+
       let data = {
         command: "cancelLottery",
         systemCode: "1",
@@ -160,10 +177,12 @@ const ventasController = {
             }
             
             */
-      let operationTimeStamp = new Date(Date.now())
+      /*       let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
-        .replace("Z", "");
+        .replace("Z", ""); */
+      let operationTimeStamp = getCurrentTimeStamp();
+
       let data = {
         command: "reserveLottery",
         systemCode: "1",
@@ -236,10 +255,11 @@ const ventasController = {
                 "ticketId": "13565132"
                 "transactionId": "2223846696262170"
             } */
-      let operationTimeStamp = new Date(Date.now())
+      /*       let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
-        .replace("Z", "");
+        .replace("Z", ""); */
+      let operationTimeStamp = getCurrentTimeStamp();
 
       let exaData = {
         command: "sellLottery",
@@ -268,10 +288,12 @@ const ventasController = {
                 "amount": "30.00",
                 "transactionId": "2223846696262170"
             } */
-      let operationTimeStamp = new Date(Date.now())
+      /*       let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
-        .replace("Z", "");
+        .replace("Z", ""); */
+      let operationTimeStamp = getCurrentTimeStamp();
+
       let exaData = {
         command: "cancelLottery",
         systemCode: "1",
@@ -311,10 +333,12 @@ const ventasController = {
             }
             
             */
-      let operationTimeStamp = new Date(Date.now())
+      /*       let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
-        .replace("Z", "");
+        .replace("Z", ""); */
+      let operationTimeStamp = getCurrentTimeStamp();
+
       let exaData = {
         command: "reserveLottery",
         systemCode: "1",

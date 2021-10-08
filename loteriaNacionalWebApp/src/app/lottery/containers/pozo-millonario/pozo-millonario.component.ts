@@ -207,7 +207,7 @@ export class PozoMillonarioComponent implements OnInit {
 
   over25Error: boolean = false;
   over25ErrorTag: string =
-    "Las números no pueden ser mayores a 25. Por favor, tome esto en cuenta al ingresar sus números preferidos.";
+    "Los números no pueden ser mayores a 25. Por favor, toma esto en cuenta al ingresar tus números preferidos.";
 
   validate() {
     let isHigher = false;

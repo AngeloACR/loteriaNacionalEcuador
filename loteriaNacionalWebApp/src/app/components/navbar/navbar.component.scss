@@ -19,7 +19,9 @@ nav {
       justify-content: flex-start;
       padding: 0;
       margin: 0;
-
+      .compraItem{
+        display: none;
+      }
       li {
         list-style: none;
         font-family: $fuente-subtitulo;
@@ -47,7 +49,11 @@ nav {
   nav {
     .navbar_contenedor {
       .navbar_links {
-        li {
+
+/*       .compraItem{
+        display: block;
+      }
+ */        li {
           font-size: 10px;
         }
       }

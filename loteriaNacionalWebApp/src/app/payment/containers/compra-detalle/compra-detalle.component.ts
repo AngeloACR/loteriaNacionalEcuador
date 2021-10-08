@@ -27,7 +27,7 @@ export class CompraDetalleComponent implements OnInit {
       if (aux.includes("-")) {
         this.ticketId = aux.split("-")[1];
       } else {
-        this.ticketId = params["id"];
+        this.ticketId = aux;
       }
       console.log(this.ticketId);
     });

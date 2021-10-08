@@ -41,8 +41,8 @@ $fuente-botones: "Monstserrat SemiBold";
 }
 
 .resultsBox {
-  width: 70%;
-  height: 70%;
+  width: 40%;
+  max-height: 80%;
   position: fixed;
   padding: 15px;
   z-index: 10000;
@@ -61,6 +61,7 @@ $fuente-botones: "Monstserrat SemiBold";
 .resultBox {
   width: 100%;
   .messageBox {
+    padding: 20px;
     margin: 1px;
     border-radius: 23px;
   }
@@ -109,6 +110,6 @@ $fuente-botones: "Monstserrat SemiBold";
 
 @media screen and (max-width: 1000px) {
   .resultsBox {
-    width: 85%;
+    width: 75%;
   }
 }
