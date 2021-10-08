@@ -423,7 +423,7 @@ export class SeleccionComponent implements OnInit {
   }
 
   authError(){
-      this.openError("Por favor, para poder comprar su boleto preferido, deberá iniciar sesión en su cuenta", "Aviso")
+      this.openError("Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta", "Aviso")
   }
 
   isError: boolean = false;
