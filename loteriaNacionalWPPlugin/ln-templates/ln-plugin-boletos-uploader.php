@@ -12,7 +12,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
             <p>CARGA DE BOLETOS</p>
         </div>
         <div class="instructionsBox">
-            <p>- El nombre de los archivos de boletos debe empezar con una "B" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: T5943.jpg, T2256.jpg, T16626.jpg</p>
+            <p>- El nombre de los archivos de boletos debe empezar con una "B" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: B5943.jpg, B2256.jpg, B16626.jpg</p>
             <p>- Los códigos de los juegos son: </p>
             <p class="codeTag">- 1 para Loteria Nacional</p>
             <p class="codeTag">- 2 para Lotto</p>
@@ -28,13 +28,13 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
                     <label>
                         <img id="pc" src="<?php echo $pcIconPath; ?>" alt="">
                         <input type="file" name="clientFile" id="file" accept="image/*" multiple />
-                        <p class="uploadTag">Cargar boletines</p>
+                        <p class="uploadTag">Cargar boletos</p>
                     </label>
                 </div>
             </form>
         </div>
 
-        <div id="boletinesBox" class="uploadedBoletines">
+        <div id="boletosBox" class="uploadedBoletos">
         </div>
     </div>
 </div>
@@ -104,7 +104,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
         cursor: pointer;
     }
 
-    .uploadedBoletines {
+    .uploadedBoletos {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -149,7 +149,29 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
         background-color: white;
         color: #d91887;
     }
+.loaderBox{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100000;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.loaderBox img{
+    width: 250px
+}
+
+.loaderBox p{
+    margin: 0;
+    padding: 20px;
+}
     @media only screen and (max-width: 800px) {}
 </style>
 <script>
@@ -157,10 +179,10 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
     var pcUpload = document.getElementById("file");
 
 
-    let pcUploadLink = "<?php echo $src . "/wp-admin/admin-ajax.php?action=uploadBoletines"; ?>";
+    let pcUploadLink = "<?php echo $src . "/wp-admin/admin-ajax.php?action=uploadBoletos"; ?>";
 
 
-    showBoletines();
+    showBoletos();
 
     pcUpload.addEventListener("change", function() {
         var fileList = pcUpload.files; // The <input type="file" /> field
@@ -182,7 +204,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
             if (ajax.readyState == 4) {
                 if (ajax.status == 200) {
                     let response = JSON.parse(ajax.responseText);
-                    showBoletines();
+                    showBoletos();
                     setLocalStorage();
                     console.log(response);
                     dismissLoader()
@@ -203,7 +225,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
 
     function setLocalStorage() {}
 
-    function showBoletines() {}
+    function showBoletos() {}
 
     function getUploadLink() {
         let link = `${pcUploadLink}&contentType=false&processData=false`;

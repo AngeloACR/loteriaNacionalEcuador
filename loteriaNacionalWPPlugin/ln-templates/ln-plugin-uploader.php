@@ -150,6 +150,31 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
         color: #d91887;
     }
 
+.loaderBox{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100000;
+   background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loaderBox img{
+    width: 250px
+}
+
+.loaderBox p{
+    margin: 0;
+    padding: 20px;
+}
+
+
     @media only screen and (max-width: 800px) {}
 </style>
 <script>

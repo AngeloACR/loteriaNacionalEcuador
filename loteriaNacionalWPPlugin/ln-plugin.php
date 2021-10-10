@@ -181,8 +181,8 @@ function ln_plugin_boletin_menu_content()
 	require_once LN_PLUGIN_PLUGIN_DIR . 'ln-templates/ln-plugin-uploader.php';
 }
 
-add_action('wp_ajax_nopriv_uploadBoletines', 'uploadBoletos');
-add_action('wp_ajax_uploadBoletines', 'uploadBoletos');
+add_action('wp_ajax_nopriv_uploadBoletos', 'uploadBoletos');
+add_action('wp_ajax_uploadBoletos', 'uploadBoletos');
 
 function uploadBoletos()
 {
@@ -219,7 +219,8 @@ function uploadBoletos()
 			}
 			$targetFile = $documentFolder . $filename;
 			move_uploaded_file($file["tmp_name"], $targetFile);
-			$host = "ventas.loteria.com.ec";
+			$host = "ventas-prueba.loteria.com.ec";
+			//$host = "ventas.loteria.com.ec";
 			$port = 2226;
 			$timeout = 360;
 			$user = "loterianacional";
