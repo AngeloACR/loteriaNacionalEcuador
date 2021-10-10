@@ -35,7 +35,7 @@ $color-botton: #2f72b9;
   .contenedor_numeros {
     width: 100%;
     min-height: 200px;
-    max-height: 270px;
+    max-height: 300px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -48,6 +48,7 @@ $color-botton: #2f72b9;
         font-size: 35px;
         font-family: $fuente-titulo;
         opacity: 0.7;
+        margin: 10px;
       }
     }
     .seleccionAll {
