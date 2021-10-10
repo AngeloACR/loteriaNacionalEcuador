@@ -13,6 +13,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
         </div>
         <div class="instructionsBox">
             <p>- El nombre de los archivos de boletin debe empezar con una "T" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: T5943.jpg, T2256.jpg, T16626.jpg</p>
+            <p>- Las imagenes de los boletines deben estar en formato JPG. Esto es mandantorio porque de lo contrario, no podrán ser visualizadas en la plataforma web. </p>
             <p>- Los códigos de los juegos son: </p>
             <p class="codeTag">- 1 para Loteria Nacional</p>
             <p class="codeTag">- 2 para Lotto</p>
@@ -27,7 +28,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
                 <div class="form-group">
                     <label>
                         <img id="pc" src="<?php echo $pcIconPath; ?>" alt="">
-                        <input type="file" name="clientFile" id="file" accept="image/*" multiple />
+                        <input type="file" name="clientFile" id="file" accept="image/jpeg" />
                         <p class="uploadTag">Cargar boletines</p>
                     </label>
                 </div>

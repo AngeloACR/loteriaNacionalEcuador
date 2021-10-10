@@ -26,4 +26,8 @@ lotteryRouter.get('/acreditarPremios', GanadoresController.pagarLoteriaHttp);
 lotteryRouter.post('/getGanador', GanadoresController.getGanador);
 
 
+lotteryRouter.post('/loteriaBoleto', LotteryController.buscarLoteriaBoleto);
+lotteryRouter.post('/lottoBoleto', LotteryController.buscarLottoBoleto);
+lotteryRouter.post('/pozoBoleto', LotteryController.buscarPozoBoleto);
+
 module.exports = lotteryRouter;

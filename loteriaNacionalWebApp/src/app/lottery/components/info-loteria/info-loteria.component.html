@@ -27,4 +27,7 @@
   <li class="menuItem">
     Precio: <p>{{ precio }}</p>
   </li>
+  <li class="menuImage">
+    <img *ngIf="boleto && boleto.length" [src]="boleto" alt="">
+  </li>
 </ul>

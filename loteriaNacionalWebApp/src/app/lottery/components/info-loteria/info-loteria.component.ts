@@ -23,7 +23,7 @@ export class InfoLoteriaComponent implements OnInit {
   @Output() emitir = new EventEmitter<sorteo>();
 
   seleccionado: sorteo;
-
+  boleto: string;
   fondoLoteria: boolean = true;
   isLoteria: boolean = false;
   fondoLotto: boolean = false;
@@ -57,8 +57,9 @@ export class InfoLoteriaComponent implements OnInit {
     }
   }
 
-  onEmitir() {
+  async onEmitir() {
     this.changeDetectorRef.detectChanges();
+    this.boleto = "";
     console.log(this.seleccionado);
     this.fecha = (this.seleccionado as sorteo).fecha;
     let auxPremio = (this.seleccionado as sorteo).valorPremioPrincipal;
@@ -69,8 +70,11 @@ export class InfoLoteriaComponent implements OnInit {
     let auxPremioFraccion = auxPremio/this.cantidadDeFracciones
     this.premioFraccion = this.lotteryService.formatNumber(auxPremioFraccion);
     this.precio = this.lotteryService.formatNumber(precio);
-    
     this.emitir.emit(this.seleccionado);
+    this.boleto = await this.lotteryService.obtenerImagenBoleto(
+      5,
+      this.seleccionado.sorteo
+    );
     this.changeDetectorRef.markForCheck();
   }
 

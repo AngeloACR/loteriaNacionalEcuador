@@ -258,6 +258,49 @@ export class LotteryService {
     }
   }
 
+
+  obtenerImagenBoleto(tipoLoteria, sorteo) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    let endpoint = "/lottery";
+    switch (tipoLoteria) {
+      case 1:
+        endpoint = `${endpoint}/loteriaBoleto`;
+        console.log("Recuperando boleto de loteria");
+        break;
+      case 2:
+        endpoint = `${endpoint}/lottoBoleto`;
+        console.log("Recuperando boleto de lotto");
+        break;
+      case 5:
+        endpoint = `${endpoint}/pozoBoleto`;
+        console.log("Recuperando boleto de pozo millonario");
+
+        break;
+
+      default:
+        break;
+    }
+    var address = this.mySource;
+
+    address = address + endpoint;
+    let body = {
+      sorteo
+    };
+
+        
+    return new Promise<string>((resolve, reject) => {
+      this.http
+        .post(address, body, { headers: headers })
+        .subscribe((data: any) => {
+          let boletin = data;
+          console.log(boletin);
+          resolve(boletin);
+        });
+    });
+  }
+
+
   authUser(token): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");

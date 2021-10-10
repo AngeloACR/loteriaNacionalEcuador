@@ -823,7 +823,7 @@ const ventasController = {
     try {
       let sorteo = req.body.sorteo;
       let tipoLoteria = 2;
-      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.jpg`;
+      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
 
       res.status(200).json(boletinAddress);
     } catch (e) {
@@ -838,7 +838,7 @@ const ventasController = {
     try {
       let sorteo = req.body.sorteo;
       let tipoLoteria = 1;
-      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.jpg`;
+      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
 
       res.status(200).json(boletinAddress);
     } catch (e) {
@@ -853,7 +853,7 @@ const ventasController = {
     try {
       let sorteo = req.body.sorteo;
       let tipoLoteria = 5;
-      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.jpg`;
+      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
       res.status(200).json(boletinAddress);
     } catch (e) {
       let response = {
