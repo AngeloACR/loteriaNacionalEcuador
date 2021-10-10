@@ -28,6 +28,7 @@ export class InfoLoteriaComponent implements OnInit {
   isLoteria: boolean = false;
   fondoLotto: boolean = false;
   fondoPozo: boolean = false;
+  tipoLoteria: number;
 
   constructor(
     private lotteryService: LotteryService,
@@ -37,6 +38,7 @@ export class InfoLoteriaComponent implements OnInit {
   getClassColor(color: string) {
     switch (color) {
       case "loteria":
+      this.tipoLoteria = 1;
         this.fondoLoteria = true;
         this.isLoteria = true;
         this.fondoLotto = false;
@@ -44,13 +46,15 @@ export class InfoLoteriaComponent implements OnInit {
         break;
 
       case "lotto":
-        this.fondoLotto = true;
+      this.tipoLoteria = 2;
+      this.fondoLotto = true;
         this.fondoLoteria = false;
         this.fondoPozo = false;
         break;
 
       case "pozo":
-        this.fondoPozo = true;
+      this.tipoLoteria = 5;
+      this.fondoPozo = true;
         this.fondoLotto = false;
         this.fondoLoteria = false;
         break;
@@ -72,7 +76,7 @@ export class InfoLoteriaComponent implements OnInit {
     this.precio = this.lotteryService.formatNumber(precio);
     this.emitir.emit(this.seleccionado);
     this.boleto = await this.lotteryService.obtenerImagenBoleto(
-      5,
+      this.tipoLoteria,
       this.seleccionado.sorteo
     );
     this.changeDetectorRef.markForCheck();
