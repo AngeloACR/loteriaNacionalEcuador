@@ -52,6 +52,18 @@ $color-botton: #2f72b9;
         display: none;
       }
     }
+    .menuImage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      padding: 5px;
+      background-color: transparent;
+      img{
+        width: 40%;
+      }
+      
+      }
 
     p {
       font-size: 14px;
