@@ -75,6 +75,8 @@
           #input5
           type="text"
           maxlength="1"
+          inputmode="numeric"
+          pattern="[0-9]*"
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           name="combinacionDeLaSuerte4"
           [(ngModel)]="combinacionDeLaSuerte[4]"
