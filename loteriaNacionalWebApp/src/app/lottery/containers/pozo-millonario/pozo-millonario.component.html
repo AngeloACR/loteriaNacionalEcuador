@@ -23,44 +23,55 @@
         </select>
       </div>
       <div class="numeros_suerte">
-        <h3>Si tienes una combinación de la suerte, un número favorito o un posible ganador, ingrésalo aquí:</h3>
+        <h3>
+          Si tienes una combinación de la suerte, un número favorito o un
+          posible ganador, ingrésalo aquí:
+        </h3>
 
         <div class="numeros">
           <input
             type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
             maxlength="2"
             name=""
-            (input)="validate()" 
+            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[0]"
           />
           <input
             type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
             maxlength="2"
             name=""
-            (input)="validate()" 
+            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[1]"
           />
           <input
             type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
             maxlength="2"
             name=""
-            (input)="validate()" 
+            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[2]"
           />
           <input
             type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
             maxlength="2"
             name=""
-            (input)="validate()" 
+            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
             [(ngModel)]="combinacionDeLaSuerte[3]"
           />
         </div>
         <div class="errorTag" *ngIf="over25Error">
-          {{over25ErrorTag}}
+          {{ over25ErrorTag }}
         </div>
       </div>
     </div>
@@ -88,8 +99,8 @@
     <button class="activado" (click)="buscarNumero()">BUSCAR CARTONES</button>
 
     <p class="tagItem">
-      Si quieres cambiar tu cartón, ingresa los números nuevamente y haz click en
-      "Buscar cartones".
+      Si quieres cambiar tu cartón, ingresa los números nuevamente y haz click
+      en "Buscar cartones".
     </p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
       <table *ngIf="showNumeros">
@@ -161,18 +172,17 @@
   </app-ticket-scroller>
 </div>
 <app-floating-menu
-
-(emitirCompra)="comprar()"
-(eliminarTodo)="deleteAllTickets()"
-(deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-(deleteLottoTicket)="deleteLottoTicket($event)"
-(deletePozoTicket)="deletePozoTicket($event)"
-(deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-[ticketsLoteria]="ticketsLoteria"
-[ticketsLotto]="ticketsLotto"
-[ticketsPozo]="ticketsSeleccionados"
-[total]="total"
-tipoLoteria="pozo"
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozo]="ticketsSeleccionados"
+  [total]="total"
+  tipoLoteria="pozo"
 ></app-floating-menu>
 <app-loader
   loader="pozo"

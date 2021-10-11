@@ -89,16 +89,22 @@ const reservasController = {
       return response;
     }
   },
-  getCompraByVentaId: async function (id) {
+  getCompraByVentaId: async function (id, accountId) {
     try {
       let query = { ventaId: id };
       let reserva = await Reserva.findOne(query);
       let response;
       if (reserva) {
-        response = {
-          status: true,
-          values: reserva,
-        };
+        if (accountId == reserva.accountId) {
+          response = {
+            status: true,
+            values: reserva,
+          };
+        } else {
+          response = {
+            status: false,
+          };
+        }
       } else {
         response = {
           status: false,

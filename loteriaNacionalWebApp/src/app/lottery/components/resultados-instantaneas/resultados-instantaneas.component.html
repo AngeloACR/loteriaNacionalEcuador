@@ -5,13 +5,13 @@
 
     <div class="resultBox" *ngFor="let premio of premios">
 
-        <div class="messageBox">
+        <div class="messageBox" [ngClass]="loteriaBackground">
             <app-resultado-instantanea [premio]="premio" [tipoLoteria]="premio.tipoLoteria">
             </app-resultado-instantanea>
         </div>
 
     </div>
     <div class="buttonsBox">
-        <button  [ngClass]="loteriaBackground" (click)="closeBox()">Ir a resumen de compra</button>
+        <button  [ngClass]="loteriaBackgroundButton" (click)="closeBox()">Ir a resumen de compra</button>
     </div>
 </div>

@@ -159,3 +159,14 @@ $color-pozo: #04b865;
     }
   }
 }
+@media screen and (max-width: 1000px) {
+  .contenedor_ticket {
+    .logo_ticket {
+      img {
+        height: 10vh;
+      }
+    }
+  
+  }
+  
+}

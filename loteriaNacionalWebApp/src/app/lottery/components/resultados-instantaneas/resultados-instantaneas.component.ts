@@ -14,6 +14,7 @@ export class ResultadosInstantaneasComponent implements OnInit {
   @Input() isPozoMillonario: boolean = false;
   @Output() close = new EventEmitter();
   loteriaBackground: any;
+  loteriaBackgroundButton: any;
   constructor() {}
 
   ngOnInit() {
@@ -22,10 +23,16 @@ export class ResultadosInstantaneasComponent implements OnInit {
         this.loteriaBackground = {
           backgroundLoteriaNacional: true
         };
+        this.loteriaBackgroundButton = {
+          backgroundLoteriaNacionalButton: true
+        };
         break;
       case 2:
         this.loteriaBackground = {
           backgroundLotto: true
+        };
+        this.loteriaBackgroundButton = {
+          backgroundLottoButton: true
         };
   
         break;
@@ -33,6 +40,9 @@ export class ResultadosInstantaneasComponent implements OnInit {
       default:
         this.loteriaBackground = {
           backgroundPozoMillonario: true
+        };
+        this.loteriaBackgroundButton = {
+          backgroundPozoMillonarioButton: true
         };
   
         break;

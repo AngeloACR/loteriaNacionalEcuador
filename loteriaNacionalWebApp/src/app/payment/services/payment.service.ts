@@ -21,11 +21,13 @@ export class PaymentService {
     let lotteryToken = data.lotteryToken;
     let user = data.playerDocument;
     let personalId = data.personalId;
-    if(data.user_ == 'italtronicprep') user = data.user_;
+    let accountId = data.accountId;
+    if (data.user_ == "italtronicprep") user = data.user_;
     let response = {
       lotteryToken,
       user,
-      personalId
+      personalId,
+      accountId
     };
     return response;
   }
@@ -37,23 +39,23 @@ export class PaymentService {
   recargarSaldo() {}
   hasBalance(subtotal, token) {
     let cartTotal = parseFloat(this.cart.getTotal());
-    let testAmount = parseFloat(subtotal)+cartTotal;
+    let testAmount = parseFloat(subtotal) + cartTotal;
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
     let endpoint = "/lottery";
     let body = {
-      token
+      token,
     };
     endpoint = `${endpoint}/getBalance`;
     var address = this.mySource;
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
-    this.http.post(address, body, { headers: headers }).subscribe(
+      this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let balance = parseFloat(data.balance);
-          resolve(balance>=testAmount);
+          resolve(balance >= testAmount);
         },
         (error: any) => {
           reject(new Error(error.error.message));
@@ -62,22 +64,23 @@ export class PaymentService {
     });
   }
 
-  getCompra(ticketId) {
+  getCompra(ticketId, accountId) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
     let body = {
-      ticketId
+      ticketId,
+      accountId,
     };
     endpoint = `${endpoint}/getCompra`;
     var address = this.mySource;
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
-    this.http.post(address, body, { headers: headers }).subscribe(
+      this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-          if(!data.status){
-            reject(new Error('No se pudo encontrar la compra solicitada'))
+          if (!data.status) {
+            reject(new Error("No se pudo encontrar la compra solicitada"));
           }
           resolve(data.values);
         },
@@ -94,14 +97,14 @@ export class PaymentService {
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
     let body = {
-      ticketId
+      ticketId,
     };
     endpoint = `${endpoint}/getGanador`;
     var address = this.mySource;
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
-    this.http.post(address, body, { headers: headers }).subscribe(
+      this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           resolve(data);
         },
@@ -129,6 +132,7 @@ export class PaymentService {
       lotteryToken: authData.lotteryToken,
       user: authData.user,
       personaId: authData.personalId,
+      accountId: authData.accountId,
       amount: total,
       token,
       reservaId,
@@ -150,14 +154,14 @@ export class PaymentService {
   }
   cancelarCompra() {}
   finalizarCompra() {
-    this.cart.borrarCarrito()
+    this.cart.borrarCarrito();
   }
   getTotal() {
     let total = JSON.parse(localStorage.getItem("total"));
-    if(total){
-      return total
-    } else{
-      return 0
+    if (total) {
+      return total;
+    } else {
+      return 0;
     }
   }
 }

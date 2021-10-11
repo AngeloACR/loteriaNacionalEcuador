@@ -22,58 +22,73 @@
       </select>
     </div>
     <div class="numeros_suerte">
-      <h3>Si tienes una combinación de la suerte, un número favorito o un posible ganador, ingrésalo aquí:</h3>
+      <h3>
+        Si tienes una combinación de la suerte, un número favorito o un posible
+        ganador, ingrésalo aquí:
+      </h3>
 
       <div class="numeros">
         <input
-        #input1
-        [appAutoTab]="input2"
+          #input1
+          [appAutoTab]="input2"
           type="text"
           name=""
+          inputmode="numeric"
+          pattern="[0-9]*"
           maxlength="1"
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           [(ngModel)]="combinacionDeLaSuerte[0]"
         />
         <input
-        #input2
-        [appAutoTab]="input3"
+          #input2
+          [appAutoTab]="input3"
           type="text"
           name=""
+          inputmode="numeric"
+          pattern="[0-9]*"
           maxlength="1"
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           [(ngModel)]="combinacionDeLaSuerte[1]"
         />
         <input
-        #input3
-        [appAutoTab]="input4"
+          #input3
+          [appAutoTab]="input4"
           type="text"
           name=""
+          inputmode="numeric"
+          pattern="[0-9]*"
           maxlength="1"
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           [(ngModel)]="combinacionDeLaSuerte[2]"
         />
         <input
-        #input4
-        [appAutoTab]="input5"
+          #input4
+          [appAutoTab]="input5"
           type="text"
           name=""
+          inputmode="numeric"
+          pattern="[0-9]*"
           maxlength="1"
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           [(ngModel)]="combinacionDeLaSuerte[3]"
         />
         <input
-        #input5
-        [appAutoTab]="input6"
+          #input5
+          [appAutoTab]="input6"
           type="text"
           name=""
+          inputmode="numeric"
+          pattern="[0-9]*"
           maxlength="1"
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           [(ngModel)]="combinacionDeLaSuerte[4]"
         />
         <input
-        #input6
+          #input6
           type="text"
           name=""
+          inputmode="numeric"
+          pattern="[0-9]*"
           maxlength="1"
           onInput="this.value=this.value.replace(/[^0-9]/g,'');"
           [(ngModel)]="combinacionDeLaSuerte[5]"
@@ -90,7 +105,8 @@
         <tbody>
           <tr
             *ngFor="
-              let ticket of ticketsDisponibles | paginacion: page_size:page_number;
+              let ticket of ticketsDisponibles
+                | paginacion: page_size:page_number;
               let i = index
             "
           >
@@ -107,7 +123,6 @@
                 </div>
                 <hr />
                 <div class="contenedor_fracciones">
-
                   <p>
                     Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
                   </p>
@@ -161,18 +176,17 @@
   </app-ticket-scroller>
 </div>
 <app-floating-menu
-
-(deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-(deleteLottoTicket)="deleteLottoTicket($event)"
-(deletePozoTicket)="deletePozoTicket($event)"
-(deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-(emitirCompra)="comprar()"
-(eliminarTodo)="deleteAllTickets()"
-[ticketsLoteria]="ticketsLoteria"
-[ticketsLotto]="ticketsLotto"
-[ticketsPozo]="ticketsPozo"
-[total]="total"
-tipoLoteria="lotto"
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozo]="ticketsPozo"
+  [total]="total"
+  tipoLoteria="lotto"
 ></app-floating-menu>
 <app-loader
   loader="lotto"

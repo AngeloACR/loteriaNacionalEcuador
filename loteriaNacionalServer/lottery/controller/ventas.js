@@ -622,6 +622,7 @@ const ventasController = {
       let exaReservaId = Date.now();
       let token = req.body.token;
       let user = req.body.user;
+      let accountId = req.body.accountId;
       let personaId = req.body.personaId;
       let reservationDetails = [];
       let loteriaAux = req.body.loteria;
@@ -798,6 +799,7 @@ const ventasController = {
         ventaId: loteriaVentaResponse.ticketId,
         exaReservaId,
         exaVentaId,
+        accountId
       };
       let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
       let instantaneaResponse = {
@@ -907,6 +909,7 @@ const ventasController = {
       let exaReservaId = apiReservaData.exaReservaId;
       let exaVentaId = apiReservaData.exaVentaId;
       let user = apiReservaData.user;
+      let useraccountId = apiReservaData.accountId;
       let element = {
         loteria,
         exaReservaId,
@@ -917,6 +920,7 @@ const ventasController = {
         reservaId,
         ventaId,
         user,
+        accountId
       };
       let response = await Reservas.addReserva(element);
       return response;
@@ -930,7 +934,8 @@ const ventasController = {
   getCompra: async (req, res) => {
     try {
       let ticketId = req.body.ticketId;
-      let response = await Reservas.getCompraByVentaId(ticketId);
+      let accountId = req.body.accountId;
+      let response = await Reservas.getCompraByVentaId(ticketId, accountId);
       res.status(200).json(response);
     } catch (e) {
       let response = {

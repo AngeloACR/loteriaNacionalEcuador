@@ -68,6 +68,9 @@ const ventaSchema = new mongoose.Schema({
     user: {
         type: String
     },
+    accountId: {
+        type: String
+    },
     ventaId: {
         type: String
     },

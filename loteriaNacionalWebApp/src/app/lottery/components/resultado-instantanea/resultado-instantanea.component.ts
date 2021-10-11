@@ -14,31 +14,9 @@ export class ResultadoInstantaneaComponent implements OnInit {
   descripcionDescuento: String;
   sorteo: Number;
   valorPremio: string;
-  loteriaBackground: any;
   constructor() {}
 
   ngOnInit() {
-    console.log(this.tipoLoteria)
-    switch (this.tipoLoteria) {
-      case 1:
-        this.loteriaBackground = {
-          backgroundLoteriaNacional: true
-        };
-        break;
-      case 2:
-        this.loteriaBackground = {
-          backgroundLotto: true
-        };
-
-        break;
-
-      default:
-        this.loteriaBackground = {
-          backgroundPozoMillonario: true
-        };
-
-        break;
-    }
     this.sorteo = this.premio.sorteo;
       this.valorPremio = this.formatNumber(parseFloat(this.premio.prizeWithDiscount));
       this.nombrePremio = this.premio.prizeDescription;

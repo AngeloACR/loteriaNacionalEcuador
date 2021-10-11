@@ -10,6 +10,7 @@ import { LotteryService } from "../../../lottery/services/lottery.service";
 })
 export class CompraDetalleComponent implements OnInit {
   ticketId: string;
+  accountId: string;
   compra: any;
   ganador: any;
   compraReady: boolean = false;
@@ -24,11 +25,8 @@ export class CompraDetalleComponent implements OnInit {
   ) {
     this.actRoute.params.subscribe((params) => {
       let aux = params["id"];
-      if (aux.includes("-")) {
+        this.accountId = aux.split("-")[0];
         this.ticketId = aux.split("-")[1];
-      } else {
-        this.ticketId = aux;
-      }
       console.log(this.ticketId);
     });
   }
@@ -37,7 +35,7 @@ export class CompraDetalleComponent implements OnInit {
     try{
     this.loadingMessage = "Consultando el detalle de tu compra";
     this.isLoading = true;
-    this.compra = await this.payment.getCompra(this.ticketId);
+    this.compra = await this.payment.getCompra(this.ticketId, this.accountId);
     this.user = this.compra.user
       ? this.compra.user
       : this.lottery.getAuthData().user;
