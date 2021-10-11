@@ -909,7 +909,7 @@ const ventasController = {
       let exaReservaId = apiReservaData.exaReservaId;
       let exaVentaId = apiReservaData.exaVentaId;
       let user = apiReservaData.user;
-      let useraccountId = apiReservaData.accountId;
+      let accountId = apiReservaData.accountId;
       let element = {
         loteria,
         exaReservaId,
