@@ -34,6 +34,7 @@ export class CompraDetalleComponent implements OnInit {
   }
 
   async ngOnInit() {
+    try{
     this.loadingMessage = "Consultando el detalle de tu compra";
     this.isLoading = true;
     this.compra = await this.payment.getCompra(this.ticketId);
@@ -95,5 +96,21 @@ export class CompraDetalleComponent implements OnInit {
     }
     this.compraReady = true;
     this.isLoading = false;
+
+  } catch (e) {
+    console.log(e.message);
+    this.isLoading = false;
+    this.openError(e.message);
+  }
+}
+  isError: boolean = false;
+  errorMessage: string;
+  openError(msg) {
+    this.errorMessage = msg;
+    this.isError = true;
+  }
+
+  closeError() {
+    this.isError = false;
   }
 }

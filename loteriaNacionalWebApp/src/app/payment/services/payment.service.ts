@@ -76,6 +76,9 @@ export class PaymentService {
     return new Promise<boolean>((resolve, reject) => {
     this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
+          if(!data.status){
+            reject(new Error('No se pudo encontrar la compra solicitada'))
+          }
           resolve(data.values);
         },
         (error: any) => {

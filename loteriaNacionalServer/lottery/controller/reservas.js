@@ -93,10 +93,18 @@ const reservasController = {
         try {
             let query = { 'ventaId': id }
             let reserva = await Reserva.findOne(query)
-            let response = {
-                status: true,
-                values: reserva
+            let response
+            if(reserva && reserva.length){
+
+                response = {
+                    status: true,
+                    values: reserva
+                }
+            }else{
+                response = {
+                status: false
             }
+        }
             return response;
         } catch (error) {
             let response = {
