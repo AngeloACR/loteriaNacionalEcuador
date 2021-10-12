@@ -56,7 +56,7 @@ export class FloatingMenuComponent implements OnInit, OnChanges {
   }
 
   comprar() {
-    this.isCart = false;
+    this.toggleBox();
     this.emitirCompra.emit();
   }
   deleteAllTickets() {
