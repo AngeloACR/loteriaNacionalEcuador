@@ -1,6 +1,7 @@
 var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
+const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicatioId;
@@ -9,11 +10,12 @@ const address = config.aplicativoAddressTest;
 
 module.exports.autenticarUsuario = async () => {
   try {
+    loteriaVentasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-    
+
     const usuarioClientePsd = config.usuarioAplicativoTest;
     const claveClientePsd = config.passwordAplicativoTest;
-/*     const usuarioClientePsd = config.usuarioAplicativoProd;
+    /*     const usuarioClientePsd = config.usuarioAplicativoProd;
     const claveClientePsd = config.passwordAplicativoProd; */
     let message = {
       $xml: `
@@ -32,25 +34,37 @@ module.exports.autenticarUsuario = async () => {
             </c>
         </mt>
         ]]>
-      </PI_DatosXml>`
-    }
-
+      </PI_DatosXml>`,
+    };
 
     return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-        if (err) reject(err);
-        let data = await parser.parseStringPromise(res.fnAutenticacionResult)
-        let errorCode = parseInt(data.mt.c[0].codError[0]);
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
+          let data = await parser.parseStringPromise(res.fnAutenticacionResult);
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-        if (!errorCode) {
-          let response = {
-            token: data.mt.c[0].token[0]
+          if (!errorCode) {
+            let response = {
+              token: data.mt.c[0].token[0],
+            };
+            let logData = {
+              data: message,
+              loteriaResponse: rawResponse,
+              customResponse: response,
+            };
+            loteriaVentasLogger.info("autenticarUsuario.loteria", JSON.stringify(logData));
+            resolve(response);
+          } else {
+            let errorMessage = data.mt.c[0].msgError[0];
+            loteriaVentasLogger.error("autenticarUsuario.error", {
+              message: `${errorCode}-${errorMessage}`,
+            });
+            reject(new Error(errorMessage));
           }
-          resolve(response);
-        } else {
-          reject(data.mt.c[0].msgError[0])
         }
-      });
+      );
     });
   } catch (e) {
     console.log(e.toString());
@@ -64,6 +78,7 @@ module.exports.consultarSorteosDisponibles = async (
   ip
 ) => {
   try {
+    loteriaVentasLogger.silly("consultarSorteosDisponibles");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let message = {
       $xml: `
@@ -116,21 +131,41 @@ module.exports.consultarSorteosDisponibles = async (
                 return sorteoAux;
               });
 
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info(
+                "consultarSorteosDisponibles.loteria",
+                logData
+              );
               resolve(response);
             } else {
-            console.log(errorCode);
-            console.log(data.mt.c[0].msgError[0]);
-              reject(new Error(data.mt.c[0].msgError[0]));
+              let errorMessage = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("consultarSorteosDisponibles.loteria.error", {
+                message: `${errorCode}-${errorMessage}`,
+              });
+              reject(new Error(errorMessage));
             }
           } catch (e) {
             let errorMsg = e.message;
+
+            loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
+              message: errorMsg,
+            });            
             reject(new Error(errorMsg));
           }
         }
       );
     });
   } catch (e) {
-    console.log(e.message);
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
+      message: errorMsg,
+    });            
+
     throw new Error(e.message);
   }
 };
@@ -146,6 +181,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
   ip
 ) => {
   try {
+    loteriaVentasLogger.silly("obtenerCombinacionesDisponibles");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -202,19 +238,40 @@ module.exports.obtenerCombinacionesDisponibles = async (
                   });
                 }
               });
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info(
+                "obtenerCombinacionesDisponibles.loteria",
+                logData
+              );
               resolve(response);
             } else {
-              reject(new Error(data.mt.c[0].msgError[0]));
+              let errorMessage = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("obtenerCombinacionesDisponibles.loteria.error", {
+                message: `${errorCode}-${errorMessage}`,
+              });
+              reject(new Error(errorMessage));
             }
           } catch (e) {
             let errorMsg = e.message;
+            loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
+              message: errorMsg,
+            });            
             reject(new Error(errorMsg));
           }
         }
       );
     });
   } catch (e) {
-    console.log(e.toString());
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
+      message: errorMsg,
+    });            
+
     throw new Error(e.message);
   }
 };
@@ -229,6 +286,7 @@ module.exports.reservarCombinaciones = async (
   ip
 ) => {
   try {
+    loteriaVentasLogger.silly("reservarCombinaciones");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let loteriaCombinacionesXML = "";
     let lottoCombinacionesXML = "";
@@ -328,23 +386,41 @@ module.exports.reservarCombinaciones = async (
 
             if (!errorCode) {
               let reservaId = data.mt.o[0].ReturnValue[0];
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: reservaId,
+              };
+              loteriaVentasLogger.info(
+                "reservarCombinaciones.loteria",
+                logData
+              );
               resolve(reservaId);
             } else {
-              let errorMsg = data.mt.c[0].msgError[0];
-              console.log(errorCode);
-              console.log(errorMsg);
-              reject(new Error(errorMsg));
+              let errorMessage = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("reservarCombinaciones.loteria.error", {
+                message: `${errorCode}-${errorMessage}`,
+              });
+              reject(new Error(errorMessage));
             }
           } catch (e) {
             let errorMsg = e.message;
-            console.log(errorMsg);
+
+            loteriaVentasLogger.error("eliminarReservas.error", {
+              message: errorMsg,
+            });
             reject(new Error(errorMsg));
           }
         }
       );
     });
   } catch (e) {
-    console.log(e.toString());
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("reservarCombinaciones.error", {
+      message: errorMsg,
+    });            
+
     throw new Error(e.message);
   }
 };
@@ -359,6 +435,7 @@ module.exports.eliminarReservas = async (
   ip
 ) => {
   try {
+    loteriaVentasLogger.silly("eliminarReservas");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let loteriaCombinacionesXML = "";
     let lottoCombinacionesXML = "";
@@ -455,21 +532,38 @@ module.exports.eliminarReservas = async (
             let errorCode = parseInt(data.mt.c[0].codError[0]);
             if (!errorCode) {
               let response = data.mt.o[0].ReturnValue[0];
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info("eliminarReservas.loteria", JSON.stringify(logData));
               resolve(response);
             } else {
-              reject(new Error(data.mt.c[0].msgError[0]));
+              let errorMessage = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("eliminarReservas.loteria.error", {
+                message: `${errorCode}-${errorMessage}`,
+              });
+              reject(new Error(errorMessage));
             }
           } catch (e) {
-              console.log(errorCode);
-              let errorMsg = e.message;
-              console.log(errorMsg);
+            let errorMsg = e.message;
+
+            loteriaVentasLogger.error("eliminarReservas.error", {
+              message: errorMsg,
+            });
             reject(new Error(errorMsg));
           }
         }
       );
     });
   } catch (e) {
-    console.log(e.toString());
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("eliminarReservas.error", {
+      message: errorMsg,
+    });            
+
     throw new Error(e.message);
   }
 };
@@ -486,6 +580,7 @@ module.exports.venderBoletos = async (
   ip
 ) => {
   try {
+    loteriaVentasLogger.silly("venderBoletos");
 
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let loteriaCombinacionesXML = "";
@@ -622,21 +717,39 @@ module.exports.venderBoletos = async (
                 ticketId,
               };
 
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info("venderBoletos.loteria", JSON.stringify(logData));
               resolve(response);
             } else {
-            console.log(errorCode);
-            console.log(data.mt.c[0].msgError[0]);
-              reject(new Error(data.mt.c[0].msgError[0]));
+
+              let errorMessage = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("venderBoletos.loteria.error", {
+                message: `${errorCode}-${errorMessage}`,
+              });
+              reject(new Error(errorMessage));
             }
           } catch (e) {
             let errorMsg = e.message;
+
+            loteriaVentasLogger.error("venderBoletos.error", {
+              message: errorMsg,
+            });
             reject(new Error(errorMsg));
           }
         }
       );
     });
   } catch (e) {
-    console.log(e.toString());
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("venderBoletos.error", {
+      message: errorMsg,
+    });            
+
     throw new Error(e.message);
   }
 };

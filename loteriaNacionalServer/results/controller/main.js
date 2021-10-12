@@ -56,8 +56,8 @@ const mainController = {
                 codigoPremio,
                 combinacionGanadora: "2"
             }
-            ResultadosController.updateUltimoResultado(resultado)
-            res.status(200).json(resultado);
+            let response = await ResultadosController.updateUltimoResultado(resultado)
+            res.status(200).json(response);
 
         } catch (e) {
             res.status(400).json(e.toString());

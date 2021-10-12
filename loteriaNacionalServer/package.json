@@ -9,19 +9,20 @@
   },
   "dependencies": {
     "async": "^2.6.0",
+    "bluebird": "*",
     "body-parser": "*",
     "compression": "^1.7.0",
     "cors": "*",
+    "cron": "*",
     "express": "*",
+    "ftp-srv": "*",
     "helmet": "^3.9.0",
     "mongoose": "*",
+    "node-schedule": "*",
     "redis": "*",
     "soap": "*",
-    "node-schedule": "*",
-    "xml2js": "*",
-    "bluebird": "*",
-    "ftp-srv": "*",
-    "cron": "*"
+    "winston": "^3.3.3",
+    "xml2js": "*"
   },
   "keywords": [
     "loteria",

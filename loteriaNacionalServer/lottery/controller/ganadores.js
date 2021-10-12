@@ -1,5 +1,6 @@
 const Wallet = require("../../exalogic/controller/wallet");
 const Ganadores = require("../model/ganadoresWeb");
+const { apiVentasLogger } = require("../../config/logging");
 
 /*************************** ACREDITACION DE PREMIOS ************************/
 
@@ -28,6 +29,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             }
             
             */
+      apiVentasLogger.silly("payLottery");
       let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
@@ -42,13 +44,24 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         payLine: data.payLine,
       };
       let response = await Wallet.payLottery(exaData);
+      let logData = {
+        data: exaData,
+        response,
+        function: "Wallet.payLottery",
+      };
+      apiVentasLogger.info("payLottery.exalogic", JSON.stringify(logData));
       return response;
     } catch (e) {
+      apiVentasLogger.error("payLottery.error", {
+        message: e.message,
+      });
       throw new Error(e.message);
     }
   },
   pagarLoteria: async () => {
     try {
+      apiVentasLogger.silly("pagarLoteria");
+
       let ganadores = await Ganadores.find();
       let length = ganadores.length;
       let response = [];
@@ -81,8 +94,17 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
           response.push(aux);
         }
       }
+      let logData = {
+        data: exaData,
+        response,
+        function: "ganadoresController.payLottery",
+      };
+      apiVentasLogger.info("pagarLoteria.api", JSON.stringify(logData));
       return response;
     } catch (e) {
+      apiVentasLogger.error("pagarLoteria.error", {
+        message: e.message,
+      });
       throw new Error(e.message);
     }
   },
@@ -98,21 +120,20 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
   getGanador: async (req, res) => {
     try {
       let ticketId = req.body.ticketId;
-      let query = {"ventaId": ticketId};
+      let query = { ventaId: ticketId };
       let ganador = await Ganadores.find(query);
       let response;
-      if(ganador && ganador.length){
+      if (ganador && ganador.length) {
         response = {
           status: true,
-          values: ganador
-        }
-      } else{
+          values: ganador,
+        };
+      } else {
         response = {
-          status: false
-        }
+          status: false,
+        };
       }
       res.status(200).json(response);
-
     } catch (e) {
       let response = {
         status: "error",

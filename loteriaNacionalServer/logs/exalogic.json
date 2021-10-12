@@ -1,0 +1,29 @@
+{"component":"exalogic","level":"error","message":"getBalance.exalogic.error getaddrinfo EAI_AGAIN www.loteria.com.ec","timestamp":"2021-10-12 01:53:31"}
+{"component":"exalogic","data":"{\"command\":\"getBalance\",\"systemCode\":\"1\",\"sessionToken\":\"4d1c0cf9cef1ee11ce8c\",\"language\":\"en\",\"currency\":\"USD\"}","level":"info","message":"getBalance.exalogic","response":{"balance":243056.5,"currency":"USD","resultCode":0,"resultDescription":"RESULT OK"},"timestamp":"2021-10-12 01:54:40"}
+{"component":"exalogic","data":"{\"command\":\"getBalance\",\"systemCode\":\"1\",\"sessionToken\":\"4d1c0cf9cef1ee11ce8c\",\"language\":\"en\",\"currency\":\"USD\"}","level":"info","message":"getBalance.exalogic","response":{"balance":243056.5,"currency":"USD","resultCode":0,"resultDescription":"RESULT OK"},"timestamp":"2021-10-12 01:56:46"}
+{"component":"exalogic","data":"{\"command\":\"getBalance\",\"systemCode\":\"1\",\"sessionToken\":\"4d1c0cf9cef1ee11ce8c\",\"language\":\"en\",\"currency\":\"USD\"}","level":"info","message":"getBalance.exalogic","response":{"balance":243056.5,"currency":"USD","resultCode":0,"resultDescription":"RESULT OK"},"timestamp":"2021-10-12 01:56:50"}
+{"component":"exalogic","data":"{\"command\":\"getBalance\",\"systemCode\":\"1\",\"sessionToken\":\"4d1c0cf9cef1ee11ce8c\",\"language\":\"en\",\"currency\":\"USD\"}","level":"info","message":"getBalance.exalogic","response":{"balance":243056.5,"currency":"USD","resultCode":0,"resultDescription":"RESULT OK"},"timestamp":"2021-10-12 01:56:53"}
+{"component":"exalogic","data":"{\"command\":\"getBalance\",\"systemCode\":\"1\",\"sessionToken\":\"4d1c0cf9cef1ee11ce8c\",\"language\":\"en\",\"currency\":\"USD\"}","level":"info","message":"getBalance.exalogic","response":{"balance":243056.5,"currency":"USD","resultCode":0,"resultDescription":"RESULT OK"},"timestamp":"2021-10-12 01:56:56"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:58:52"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:58:56"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:01"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:04"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:06"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:13"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:17"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:20"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:22"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:26"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:28"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:31"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 01:59:34"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:01:33"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:01:37"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:01:43"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:01:45"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:01:51"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:01:53"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:01:55"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:02:00"}
+{"component":"exalogic","level":"info","message":"getBalance.exalogic","timestamp":"2021-10-12 02:02:12"}
+{"component":"exalogic","level":"info","message":"reserveLottery.exalogic","timestamp":"2021-10-12 02:02:19"}

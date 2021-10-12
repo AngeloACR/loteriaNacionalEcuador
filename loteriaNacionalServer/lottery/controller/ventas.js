@@ -9,6 +9,7 @@ const Reservas = require("./reservas");
 const Auth = require("../../exalogic/controller/auth");
 const Wallet = require("../../exalogic/controller/wallet");
 const ganadoresController = require("./ganadores");
+const { apiVentasLogger } = require("../../config/logging");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -205,8 +206,10 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+
   authUser: async (data) => {
     try {
+      apiVentasLogger.silly("authUser");
       let token = data.token;
       /* {
                 "token": "661c0ce5ccabbeb1136a"
@@ -220,14 +223,21 @@ const ventasController = {
       };
       let response = await Auth.authUser(authData);
       if (response["password"]) delete response["password"];
-      //if (response["playerDocument"]) delete response["playerDocument"];
+      let logData = {
+        data: authData,
+        response,
+        function: "Auth.authUser",
+      };
+      apiVentasLogger.info("authUser.exalogic", JSON.stringify(logData));
       return response;
     } catch (e) {
+      apiVentasLogger.error("authData.error", { message: e.message });
       throw new Error(e.message);
     }
   },
   getBalance: async (data) => {
     try {
+      apiVentasLogger.silly("getBalance");
       let token = data.token;
       /* {
     "token": "661c0ce5ccabbeb1136a"
@@ -241,13 +251,21 @@ const ventasController = {
         currency: "USD",
       };
       let response = await Wallet.getBalance(exaData);
+      let logData = {
+        data: exaData,
+        response,
+        function: "Wallet.getBalance",
+      };
+      apiVentasLogger.info("getBalance.exalogic", JSON.stringify(logData));
       return response;
     } catch (e) {
+      apiVentasLogger.error("getBalance.error", { message: e.message });
       throw new Error(e.message);
     }
   },
   sellLottery: async (data) => {
     try {
+      apiVentasLogger.silly("sellLottery");
       /* {
                 "token": "661c0ce5ccabbeb1136a"
                 "reserveId": 123564987,
@@ -275,13 +293,22 @@ const ventasController = {
         instantWinDetails: data.prizeDetails,
       };
       let response = await Wallet.sellLottery(exaData);
+
+      let logData = {
+        data: exaData,
+        response,
+        function: "Wallet.sellLottery",
+      };
+      apiVentasLogger.info("sellLottery.exalogic", JSON.stringify(logData));
       return response;
     } catch (e) {
+      apiVentasLogger.error("sellLottery.error", { message: e.message });
       throw new Error(e.message);
     }
   },
   cancelLottery: async (data) => {
     try {
+      apiVentasLogger.silly("cancelLottery");
       /* {
                 "token": "661c0ce5ccabbeb1136a"
                 "reserveId": 123564987,
@@ -306,13 +333,21 @@ const ventasController = {
         amount: data.amount,
       };
       let response = await Wallet.cancelLottery(exaData);
+      let logData = {
+        data: exaData,
+        response,
+        function: "Wallet.cancelLottery",
+      };
+      apiVentasLogger.info("cancelLottery.exalogic", JSON.stringify(logData));
       return response;
     } catch (e) {
+      apiVentasLogger.error("cancelLottery.error", { message: e.message });
       throw new Error(e.message);
     }
   },
   reserveLottery: async (data) => {
     try {
+      apiVentasLogger.silly("reserveLottery");
       /*
             {
                 "token": "661c0ce5ccabbeb1136a",
@@ -351,13 +386,22 @@ const ventasController = {
         reservationDetails: data.reservationDetails,
       };
       let response = await Wallet.reserveLottery(exaData);
+      let logData = {
+        data: exaData,
+        response,
+        function: "Wallet.cancelLottery",
+      };
+      apiVentasLogger.info("cancelLottery.exalogic", JSON.stringify(logData));
       return response;
     } catch (e) {
+      apiVentasLogger.error("reserveLottery.error", { message: e.message });
       throw new Error(e.message);
     }
   },
+
   searchLottoSorteosDisponibles: async (req, res) => {
     try {
+      apiVentasLogger.silly("searchLottoSorteosDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
@@ -367,8 +411,22 @@ const ventasController = {
         user,
         ip
       );
+      let logData = {
+        data: {
+          tipoLoteria: 2,
+          lotteryToken,
+          user,
+          ip,
+        },
+        response: finalResponse,
+        function: "Ventas.consultaSorteosDisponibles",
+      };
+      apiVentasLogger.info("searchLottoSorteosDisponibles.loteria", JSON.stringify(logData));
       res.status(200).json(finalResponse);
     } catch (e) {
+      apiVentasLogger.error("searchLottoSorteosDisponibles.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -378,6 +436,7 @@ const ventasController = {
   },
   searchLoteriaSorteosDisponibles: async (req, res) => {
     try {
+      apiVentasLogger.silly("searchLoteriaSorteosDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
@@ -387,17 +446,31 @@ const ventasController = {
         user,
         ip
       );
+      let logData = {
+        data: {
+          tipoLoteria: 1,
+          lotteryToken,
+          user,
+          ip,
+        },
+        response: finalResponse,
+        function: "Ventas.consultaSorteosDisponibles",
+      };
+      apiVentasLogger.info("searchLoteriaSorteosDisponibles.loteria", JSON.stringify(logData));
       res.status(200).json(finalResponse);
     } catch (e) {
+      apiVentasLogger.error("searchLoteriaSorteosDisponibles.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
       };
-      let errorstack = e.stack;
       res.status(400).json(response);
     }
   },
   searchPozoSorteosDisponibles: async (req, res) => {
+    apiVentasLogger.silly("searchPozoSorteosDisponibles");
     try {
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
@@ -408,9 +481,23 @@ const ventasController = {
         user,
         ip
       );
+      let logData = {
+        data: {
+          tipoLoteria: 5,
+          lotteryToken,
+          user,
+          ip,
+        },
+        response: finalResponse,
+        function: "Ventas.consultaSorteosDisponibles",
+      };
+      apiVentasLogger.info("searchPozoSorteosDisponibles.loteria", JSON.stringify(logData));
 
       res.status(200).json(finalResponse);
     } catch (e) {
+      apiVentasLogger.error("searchPozoSorteosDisponibles.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -418,8 +505,10 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+
   searchLottoCombinacionesDisponibles: async (req, res) => {
     try {
+      apiVentasLogger.silly("searchLottoCombinacionesDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
@@ -451,12 +540,33 @@ const ventasController = {
         };
         return combinacion;
       });
+
+      let logData = {
+        data: {
+          tipoLoteria: 2,
+          lotteryToken,
+          combinacion,
+          combinacionFigura,
+          tipoSeleccion,
+          user,
+          ip,
+        },
+        response: combinaciones,
+        function: "Ventas.obtenerCombinacionesDisponibles",
+      };
+      apiVentasLogger.info(
+        "searchLottoCombinacionesDisponibles.loteria",
+        logData
+      );
       response = {
         combinaciones,
       };
 
       res.status(200).json(response);
     } catch (e) {
+      apiVentasLogger.error("searchLottoCombinacionesDisponibles.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -466,6 +576,7 @@ const ventasController = {
   },
   searchLoteriaCombinacionesDisponibles: async (req, res) => {
     try {
+      apiVentasLogger.silly("searchLoteriaCombinacionesDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
@@ -497,11 +608,31 @@ const ventasController = {
         return combinacion;
       });
 
+      let logData = {
+        data: {
+          tipoLoteria: 1,
+          lotteryToken,
+          combinacion,
+          combinacionFigura,
+          tipoSeleccion,
+          user,
+          ip,
+        },
+        response: combinaciones,
+        function: "Ventas.obtenerCombinacionesDisponibles",
+      };
+      apiVentasLogger.info(
+        "searchLoteriaCombinacionesDisponibles.loteria",
+        logData
+      );
       response = {
         combinaciones,
       };
       res.status(200).json(response);
     } catch (e) {
+      apiVentasLogger.error("searchLoteriaCombinacionesDisponibles.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -511,6 +642,7 @@ const ventasController = {
   },
   searchPozoCombinacionesDisponibles: async (req, res) => {
     try {
+      apiVentasLogger.silly("searchPozoCombinacionesDisponibles");
       let ip = req.headers["x-forwarded-for"];
 
       let lotteryToken = req.body.lotteryToken;
@@ -542,12 +674,33 @@ const ventasController = {
         };
         return combinacion;
       });
+
+      let logData = {
+        data: {
+          tipoLoteria: 2,
+          lotteryToken,
+          combinacion,
+          combinacionFigura,
+          tipoSeleccion,
+          user,
+          ip,
+        },
+        response: combinaciones,
+        function: "Ventas.obtenerCombinacionesDisponibles",
+      };
+      apiVentasLogger.info(
+        "searchPozoCombinacionesDisponibles.loteria",
+        logData
+      );
       response = {
         combinaciones,
       };
 
       res.status(200).json(response);
     } catch (e) {
+      apiVentasLogger.error("searchPozoCombinacionesDisponibles.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -555,8 +708,10 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+
   reservarBoletos: async (req, res) => {
     try {
+      apiVentasLogger.silly("reservarBoletos");
       let ip = req.headers["x-forwarded-for"];
 
       let lotteryToken = req.body.lotteryToken;
@@ -576,9 +731,26 @@ const ventasController = {
         ip
       );
 
+      let logData = {
+        data: {
+          loteria,
+          lotto,
+          pozo,
+          lotteryToken,
+          reservaId,
+          user,
+          ip,
+        },
+        response,
+        function: "Ventas.reservarCombinaciones",
+      };
+      apiVentasLogger.info("reservarBoletos.loteria", JSON.stringify(logData));
       //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
       res.status(200).json(response);
     } catch (e) {
+      apiVentasLogger.error("reservarBoletos.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -588,6 +760,7 @@ const ventasController = {
   },
   eliminarBoletosDeReserva: async (req, res) => {
     try {
+      apiVentasLogger.silly("eliminarBoletosDeReserva");
       let ip = req.headers["x-forwarded-for"];
 
       let lotteryToken = req.body.lotteryToken;
@@ -606,8 +779,25 @@ const ventasController = {
         ip
       );
 
+      let logData = {
+        data: {
+          loteria,
+          lotto,
+          pozo,
+          lotteryToken,
+          reservaId,
+          user,
+          ip,
+        },
+        response: finalResponse,
+        function: "Ventas.eliminarReservas",
+      };
+      apiVentasLogger.info("eliminarBoletosDeReserva.loteria", JSON.stringify(logData));
       res.status(200).json(finalResponse);
     } catch (e) {
+      apiVentasLogger.error("eliminarBoletosDeReserva.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -617,6 +807,7 @@ const ventasController = {
   },
   comprarBoletos: async (req, res) => {
     try {
+      apiVentasLogger.silly("comprarBoletos");
       let ip = req.headers["x-forwarded-for"];
       let exaBalanceData = { token: req.body.token };
       let exaReservaId = Date.now();
@@ -690,6 +881,13 @@ const ventasController = {
       let exaReservaResponse = await ventasController.reserveLottery(
         exaReservaData
       );
+
+      let logData = {
+        data: exaReservaData,
+        response: exaReservaResponse,
+        function: "ventasController.reserveLottery",
+      };
+      apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
       // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
 
       let lotteryToken = req.body.lotteryToken;
@@ -708,6 +906,22 @@ const ventasController = {
         ip
       );
       // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
+      logData = {
+        data: {
+          ordComp,
+          total,
+          loteria,
+          lotto,
+          pozo,
+          lotteryToken,
+          reservaId,
+          user,
+          ip,
+        },
+        response: loteriaVentaResponse,
+        function: "Ventas.venderBoletos",
+      };
+      apiVentasLogger.info("comprarBoletos.loteria", JSON.stringify(logData));
       let instantaneas = loteriaVentaResponse.instantaneas;
       let prizeDetails = [];
       let instantaneaStatus = false;
@@ -771,7 +985,12 @@ const ventasController = {
               acreditado: true,
             };
             await ganadoresController.crearGanador(ganador);
-
+            logData = {
+              data: ganador,
+              response: loteriaVentaResponse,
+              function: "ganadoresController.crearGanador",
+            };
+            apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
             prizeDetails.push(prizeDetail);
           }
         }
@@ -788,7 +1007,12 @@ const ventasController = {
       };
       let exaVentaResponse = await ventasController.sellLottery(exaVentaData);
       // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
-
+      logData = {
+        data: exaVentaData,
+        response: exaVentaResponse,
+        function: "ventasController.sellLottery",
+      };
+      apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
       let apiVentaData = {
         amount: req.body.amount,
         loteria: req.body.loteria,
@@ -799,9 +1023,15 @@ const ventasController = {
         ventaId: loteriaVentaResponse.ticketId,
         exaReservaId,
         exaVentaId,
-        accountId
+        accountId,
       };
       let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
+      logData = {
+        data: apiVentaData,
+        response: apiVentaResponse,
+        function: "ventasController.crearReserva",
+      };
+      apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
       let instantaneaResponse = {
         status: instantaneaStatus,
         data: instantaneaData,
@@ -814,6 +1044,9 @@ const ventasController = {
 
       res.status(200).json(finalResponse);
     } catch (e) {
+      apiVentasLogger.error("comprarBoletos.error", {
+        message: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,
@@ -821,6 +1054,7 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+
   buscarLottoBoleto: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -865,6 +1099,7 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+
   crearReserva: async (apiReservaData) => {
     try {
       let loteriaAux = apiReservaData.loteria;
@@ -920,7 +1155,7 @@ const ventasController = {
         reservaId,
         ventaId,
         user,
-        accountId
+        accountId,
       };
       let response = await Reservas.addReserva(element);
       return response;

@@ -138,7 +138,7 @@ const resultadosController = {
     updateUltimoResultado: async function (element) {
         try {
             let tipoLoteria = element.tipoLoteria;
-            let resultado = await resultadosController.addResultado(element);
+            let resultado = await resultadosController.addResultadoPozo(element);
             let resultadoId = resultado.values._id;
             let query = { 'tipoLoteria': tipoLoteria }
             let ultimoResultado = await UltimoResultado.findOne(query)
