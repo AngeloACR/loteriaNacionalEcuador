@@ -73,7 +73,7 @@ export class LotteryService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/cache";
+    let endpoint = "/lottery";
     let authData = this.getAuthData();
     switch (loteria) {
       case 1:
