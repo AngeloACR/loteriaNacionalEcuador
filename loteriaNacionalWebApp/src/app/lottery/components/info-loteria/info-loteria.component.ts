@@ -75,8 +75,6 @@ export class InfoLoteriaComponent implements OnInit {
     let precio = parseFloat((this.seleccionado as sorteo).precio).toFixed(2);
     this.cantidadDeFracciones = (this.seleccionado as sorteo).cantidadDeFracciones;
     this.premio = this.lotteryService.formatNumber(premio);
-    let auxPremioFraccion = auxPremio/this.cantidadDeFracciones
-    this.premioFraccion = this.lotteryService.formatNumber(auxPremioFraccion);
     this.precio = this.lotteryService.formatNumber(precio);
     this.emitir.emit(this.seleccionado);
     this.boleto = await this.lotteryService.obtenerImagenBoleto(
@@ -91,7 +89,6 @@ export class InfoLoteriaComponent implements OnInit {
   premio: string = "";
   precio: string = "";
   cantidadDeFracciones: number;
-  premioFraccion: string = "";
 
   async ngOnInit() {
     this.getClassColor(this.color);
