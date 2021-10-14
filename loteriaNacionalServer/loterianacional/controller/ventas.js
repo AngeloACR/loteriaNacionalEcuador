@@ -5,8 +5,8 @@ const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicatioId;
-const address = config.aplicativoAddressTest;
-//const address = config.aplicativoAddressProd;
+//const address = config.aplicativoAddressTest;
+const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
