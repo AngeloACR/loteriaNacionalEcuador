@@ -16,7 +16,7 @@
         Seleccione un sorteo
       </option>
       <option [ngValue]="objeto" *ngFor="let objeto of sorteos">
-        {{ objeto.sorteo - objeto.fecha }}
+        {{ objeto.sorteo}} - {{objeto.fecha }}
       </option>
     </select>
   </li>
@@ -30,7 +30,7 @@
   </li>
   <li class="menuItem" *ngIf="isLoteria">
     Premio al entero:
-    <p>{{ premio*cantidadDeFracciones }}</p>
+    <p>{{ premio*parseInt(cantidadDeFracciones) }}</p>
   </li>
   <li class="menuItem" *ngIf="isLoteria">
     Premio a la fracción:
