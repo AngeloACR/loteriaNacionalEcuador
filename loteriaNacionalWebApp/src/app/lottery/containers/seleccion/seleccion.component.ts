@@ -41,7 +41,6 @@ export class SeleccionComponent implements OnInit {
       this.loadingMessage = "Espera mientras procesamos tu información";
       this.isLoading = true;
       let data = await this.lottery.authUser(this.token);
-      console.log(data);
       this.lotteryToken = data.lotteryToken;
       if(this.lotteryToken){
         this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
@@ -209,7 +208,6 @@ export class SeleccionComponent implements OnInit {
     try {
       let identificador = data.ticket.identificador;
       let fracciones = data.ticket.seleccionados;
-      console.log(data);
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
       let ticket = this.ticketsLoteria[identificador].ticket;

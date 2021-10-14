@@ -62,7 +62,6 @@ export class LotteryService {
     let lotteryToken = data.lotteryToken;
     let user = data.playerDocument;
     if (data.user_ == "italtronicprep") user = data.user_;
-    console.log(user);
     let response = {
       lotteryToken,
       user,
@@ -79,7 +78,6 @@ export class LotteryService {
     switch (loteria) {
       case 1:
         endpoint = `${endpoint}/loteriaSorteosDisponibles`;
-        console.log("Recuperando sorteos de loteria");
         var address = this.mySource;
 
         address = address + endpoint;
@@ -95,12 +93,10 @@ export class LotteryService {
             .subscribe(
               (data: any) => {
                 let sorteosJugados: Array<sorteo> = data;
-                console.log(sorteosJugados);
                 sorteosJugados.sort(this.ordenaSorteos);
                 resolve(sorteosJugados);
               },
               (error: any) => {
-                console.log(error.error.message);
                 reject(new Error(error.error.message));
               }
             );
@@ -108,7 +104,6 @@ export class LotteryService {
         break;
       case 2:
         endpoint = `${endpoint}/lottoSorteosDisponibles`;
-        console.log("Recuperando sorteos de lotto");
         var address = this.mySource;
 
         address = address + endpoint;
@@ -124,7 +119,6 @@ export class LotteryService {
             .subscribe(
               (data: any) => {
                 let sorteosJugados: Array<sorteo> = data;
-                console.log(sorteosJugados);
                 sorteosJugados.sort(this.ordenaSorteos);
                 resolve(sorteosJugados);
               },
@@ -136,7 +130,6 @@ export class LotteryService {
         break;
       case 5:
         endpoint = `${endpoint}/pozoSorteosDisponibles`;
-        console.log("Recuperando sorteos de pozo millonario");
         var address = this.mySource;
 
         address = address + endpoint;
@@ -195,17 +188,14 @@ export class LotteryService {
     switch (loteria) {
       case 1:
         endpoint = `${endpoint}/loteriaCombinacionesDisponibles`;
-        console.log("Recuperando combinaciones de loteria");
         var address = this.mySource;
 
         address = address + endpoint;
-        console.log(body);
         return new Promise<Array<ticketsNacional>>((resolve, reject) => {
           this.http.post(address, body, { headers: headers }).subscribe(
             (data: any) => {
               let combinacionesDisponibles: Array<ticketsNacional> =
                 data.combinaciones;
-              console.log(combinacionesDisponibles);
               resolve(combinacionesDisponibles);
             },
             (error: any) => {
@@ -216,7 +206,6 @@ export class LotteryService {
         break;
       case 2:
         endpoint = `${endpoint}/lottoCombinacionesDisponibles`;
-        console.log("Recuperando combinaciones de lotto");
         var address = this.mySource;
 
         address = address + endpoint;
@@ -225,7 +214,6 @@ export class LotteryService {
             (data: any) => {
               let combinacionesDisponibles: Array<ticketsLotto> =
                 data.combinaciones;
-              console.log(combinacionesDisponibles);
               resolve(combinacionesDisponibles);
             },
             (error: any) => {
@@ -236,7 +224,6 @@ export class LotteryService {
         break;
       case 5:
         endpoint = `${endpoint}/pozoCombinacionesDisponibles`;
-        console.log("Recuperando combinaciones de pozo millonario");
         var address = this.mySource;
 
         address = address + endpoint;
@@ -245,7 +232,6 @@ export class LotteryService {
             (data: any) => {
               let combinacionesDisponibles: Array<ticketsAnimales> =
                 data.combinaciones;
-              console.log(combinacionesDisponibles);
               resolve(combinacionesDisponibles);
             },
             (error: any) => {
@@ -266,15 +252,12 @@ export class LotteryService {
     switch (tipoLoteria) {
       case 1:
         endpoint = `${endpoint}/loteriaBoleto`;
-        console.log("Recuperando boleto de loteria");
         break;
       case 2:
         endpoint = `${endpoint}/lottoBoleto`;
-        console.log("Recuperando boleto de lotto");
         break;
       case 5:
         endpoint = `${endpoint}/pozoBoleto`;
-        console.log("Recuperando boleto de pozo millonario");
 
         break;
 
@@ -293,9 +276,8 @@ export class LotteryService {
       this.http
         .post(address, body, { headers: headers })
         .subscribe((data: any) => {
-          let boletin = data;
-          console.log(boletin);
-          resolve(boletin);
+          let boleto = data;
+          resolve(boleto);
         });
     });
   }
@@ -313,11 +295,9 @@ export class LotteryService {
     var address = this.mySource;
 
     address = address + endpoint;
-    console.log(body);
     return new Promise<Array<any>>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-          console.log(data);
           localStorage.setItem("userData", JSON.stringify(data));
           resolve(data);
         },
@@ -616,7 +596,6 @@ export class LotteryService {
       JSON.stringify(this.animales)
     );
 
-    /* console.log(this.animales) */
   }
 
   obtenerCaracteristicasDeMascota(mascota) {
@@ -774,7 +753,6 @@ export class LotteryService {
     ];
     let aux = animales.find((x) => x.identificador === mascota);
     return aux;
-    /* console.log(this.animales) */
   }
   obtenerAnimalesTabs() {
     this.animalesTabs = [];
@@ -787,7 +765,6 @@ export class LotteryService {
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
     endpoint = `${endpoint}/reservarBoletos`;
-    console.log("Reservando boletos de loteria");
     var address = this.mySource;
 
     address = address + endpoint;
@@ -800,7 +777,6 @@ export class LotteryService {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
-          console.log(response);
           resolve(response);
         },
         (error: any) => {
@@ -830,7 +806,6 @@ export class LotteryService {
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/lottery";
     endpoint = `${endpoint}/reservarBoletos`;
-    console.log("Reservando boletos de loteria");
     var address = this.mySource;
 
     address = address + endpoint;
@@ -876,7 +851,6 @@ export class LotteryService {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
-          console.log(response);
           resolve(response);
         },
         (error: any) => {
@@ -933,16 +907,13 @@ export class LotteryService {
         body["pozo"] = aux;
         break;
     }
-    console.log(body);
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
-          console.log(response);
           resolve(response);
         },
         (error: any) => {
-          console.log(error);
           reject(new Error(error.error.message));
         }
       );
@@ -995,16 +966,13 @@ export class LotteryService {
       body["pozo"] = auxPozo;
     });
 
-    console.log(body);
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
-          console.log(response);
           resolve(response);
         },
         (error: any) => {
-          console.log(error);
           reject(new Error(error.error.message));
         }
       );

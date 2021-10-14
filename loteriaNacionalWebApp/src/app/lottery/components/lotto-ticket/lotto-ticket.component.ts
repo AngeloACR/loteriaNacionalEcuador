@@ -26,8 +26,6 @@ export class LottoTicketComponent implements OnInit {
     this.ticketNumbers = this.ticket.display;
     this.sorteoNumber = this.sorteo.sorteo;
     this.date = this.sorteo.fecha;
-    /* console.log(JSON.parse(localStorage.getItem('loteriaTickets'))); */
-    /* this.ticketNumbers = JSON.parse(localStorage.getItem('loterianumero' + ticket)); */
   }
   deleteTicket(){
     this.delete.emit()

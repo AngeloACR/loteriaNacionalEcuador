@@ -27,7 +27,6 @@ export class CompraDetalleComponent implements OnInit {
       let aux = params["id"];
         this.accountId = aux.split("-")[0];
         this.ticketId = aux.split("-")[1];
-      console.log(this.ticketId);
     });
   }
 

@@ -50,7 +50,6 @@ export class ShoppingCartService {
     if (!carrito) carrito = [];
     ticket["identificador"] = ticket.ticket.identificador;
     ticket["tipoLoteria"] = tipoLoteria;
-    console.log(ticket);
     let addIndex = carrito.findIndex(
       (x) =>
         x.identificador === ticket.identificador

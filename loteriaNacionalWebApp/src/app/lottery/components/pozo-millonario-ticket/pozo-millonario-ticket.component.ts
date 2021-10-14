@@ -30,8 +30,6 @@ export class PozoMillonarioTicketComponent implements OnInit {
     this.mascota = this.lotteryService.obtenerCaracteristicasDeMascota(
       this.ticket.mascota
     );
-    /* console.log(JSON.parse(localStorage.getItem('loteriaTickets'))); */
-    /* this.ticketNumbers = JSON.parse(localStorage.getItem('loterianumero' + ticket)); */
   }
 
   obtenerAnimal(mascota) {

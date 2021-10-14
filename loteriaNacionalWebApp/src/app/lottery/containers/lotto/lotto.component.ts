@@ -96,8 +96,10 @@ export class LottoComponent implements OnInit {
         if (count <= 1000) {
           await this.pushToSeleccionado(this.ticketsDisponibles[id]);
         } else {
-          this.ticketsDisponibles[id].status = false;
-          let errorMessage =
+    this.changeDetectorRef.detectChanges();
+    this.ticketsDisponibles[id].status = false;
+    this.changeDetectorRef.markForCheck();
+    let errorMessage =
             "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
           this.openError(errorMessage);
         }
@@ -367,7 +369,6 @@ export class LottoComponent implements OnInit {
     try {
       let identificador = data.ticket.identificador;
       let fracciones = data.ticket.seleccionados;
-      console.log(data);
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
       let ticket = this.ticketsLoteria[identificador].ticket;
@@ -404,7 +405,6 @@ export class LottoComponent implements OnInit {
       this.isLoading = true;
       let identificador = data.ticket.identificador;
       let fraccion = "";
-      console.log(data);
 
       let ticket = this.ticketsLotto[identificador].ticket;
       let sorteo = this.ticketsLotto[identificador].sorteo;

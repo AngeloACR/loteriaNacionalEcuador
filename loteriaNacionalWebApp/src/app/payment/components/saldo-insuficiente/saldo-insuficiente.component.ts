@@ -12,7 +12,6 @@ export class SaldoInsuficienteComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  console.log(this.message)
   }
 
   cerrar(){

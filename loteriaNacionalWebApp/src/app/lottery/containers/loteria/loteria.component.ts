@@ -129,7 +129,9 @@ export class LoteriaComponent implements OnInit {
 
   async fraccionSeleccionada(idTicket: number, fraccion: string) {
     try {
+      this.changeDetectorRef.detectChanges();
       if (this.allFractions[idTicket]) this.allFractions[idTicket] = false;
+      this.changeDetectorRef.markForCheck();
       let index =
         this.ticketsDisponibles[idTicket].seleccionados.indexOf(fraccion);
 
@@ -144,13 +146,18 @@ export class LoteriaComponent implements OnInit {
         //this.ticketsDisponibles[idTicket].seleccionados.splice(index, 1);
       } else {
         let count = this.cart.getCount() + 1;
-        if (count <= 1000) {
+          this.changeDetectorRef.detectChanges();
           this.ticketsDisponibles[idTicket].seleccionados.push(fraccion);
+          this.changeDetectorRef.markForCheck();
+          if (count <= 1000) {
           await this.pushToSeleccionado(this.ticketsDisponibles[idTicket], [
             fraccion,
           ]);
         } else {
-          this.ticketsDisponibles[idTicket].seleccionados.slice(index, 1);
+          this.changeDetectorRef.detectChanges();
+          this.ticketsDisponibles[idTicket].seleccionados.pop();
+          this.changeDetectorRef.markForCheck();
+          
           let errorMessage =
             "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
           this.openError(errorMessage);
@@ -168,6 +175,7 @@ export class LoteriaComponent implements OnInit {
     try {
       this.changeDetectorRef.detectChanges();
       this.allFractions[id] = !this.allFractions[id];
+      this.changeDetectorRef.markForCheck();
       let fracciones = [...this.ticketsDisponibles[id].fraccionesDisponibles];
       if (this.allFractions[id]) {
         let count = this.cart.getCount() + fracciones.length;
@@ -178,7 +186,9 @@ export class LoteriaComponent implements OnInit {
             fracciones
           );
         } else {
-          this.allFractions[id]=false;
+          this.changeDetectorRef.detectChanges();
+          this.allFractions[id] = false;
+          this.changeDetectorRef.markForCheck();
           let errorMessage =
             "Incluir los boletos excede el límite de compra. Si quieres escoger estos boletos, por favor elimina algunos de tu carrito.";
           this.openError(errorMessage);
@@ -188,7 +198,6 @@ export class LoteriaComponent implements OnInit {
         await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
         this.ticketsDisponibles[id].seleccionados = [];
       }
-      this.changeDetectorRef.markForCheck();
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -218,7 +227,6 @@ export class LoteriaComponent implements OnInit {
       );
       if (hasBalance) {
         this.ticketsLoteria[ticket.identificador] = aux;
-        console.log(aux);
         let reservaId = this.cart.getReservaId();
         let response = await this.lotteryService.reservarBoletos(
           this.token,
@@ -418,10 +426,8 @@ export class LoteriaComponent implements OnInit {
 
   async deleteLoteriaTicket(data) {
     try {
-      console.log(data);
       let identificador = data.ticket.identificador;
       let fracciones = data.ticket.seleccionados;
-      console.log(data);
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
       let sorteo = this.ticketsLoteria[identificador].sorteo;
@@ -462,7 +468,6 @@ export class LoteriaComponent implements OnInit {
   }
   async deleteLottoTicket(data) {
     try {
-      console.log(data);
       let identificador = data.ticket.identificador;
       let fraccion = "";
       this.loadingMessage = "Removiendo boleto del carrito";

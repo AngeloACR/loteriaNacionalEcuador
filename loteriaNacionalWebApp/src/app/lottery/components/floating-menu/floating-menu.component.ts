@@ -80,12 +80,10 @@ export class FloatingMenuComponent implements OnInit, OnChanges {
   ngDoCheck() {
     this.total = this.cart.getTotal();
     this.total = this.formatNumber(this.total)
-    console.log(this.total)
   }
   ngOnChanges() {
     this.total = this.cart.getTotal();
     this.total = this.formatNumber(this.total)
-    console.log(this.total)
   }
 
   formatNumber(number){// Create our number formatter.

@@ -90,7 +90,9 @@ export class PozoMillonarioComponent implements OnInit {
 
   async seleccionarTicket(id: string) {
     try {
+      this.changeDetectorRef.detectChanges();
       this.ticketsDisponibles[id].status = !this.ticketsDisponibles[id].status;
+      this.changeDetectorRef.markForCheck();
       if (!this.ticketsDisponibles[id].status) {
         let identificador = this.ticketsDisponibles[id].identificador;
         let ticketPozo = this.ticketsPozo[identificador];
@@ -100,8 +102,10 @@ export class PozoMillonarioComponent implements OnInit {
         if (count <= 1000) {
           await this.pushToSeleccionado(this.ticketsDisponibles[id]);
         } else {
-          this.ticketsDisponibles[id].status = false;
-          let errorMessage =
+      this.changeDetectorRef.detectChanges();
+      this.ticketsDisponibles[id].status = false;
+      this.changeDetectorRef.markForCheck();
+      let errorMessage =
             "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
           this.openError(errorMessage);
         }
@@ -132,9 +136,7 @@ export class PozoMillonarioComponent implements OnInit {
 
       if (hasBalance) {
         this.ticketsPozo[ticket.identificador] = aux;
-        console.log("Buscando la id de reserva");
         let reservaId = this.lotteryService.getReservaId();
-        console.log(reservaId);
         let response = await this.lotteryService.reservarBoletos(
           this.token,
           aux,
@@ -240,7 +242,6 @@ export class PozoMillonarioComponent implements OnInit {
 
   async seleccionarVarios(tipoSeleccion) {
     try {
-      console.log(tipoSeleccion);
       if (tipoSeleccion != 1) {
         let selectedIndexs = [];
         for (let i = 0; i < tipoSeleccion; i++) {
@@ -454,7 +455,6 @@ export class PozoMillonarioComponent implements OnInit {
     try {
       let identificador = data.ticket.identificador;
       let fracciones = data.ticket.seleccionados;
-      console.log(data);
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
       let ticket = this.ticketsLoteria[identificador].ticket;
