@@ -32,7 +32,17 @@ export class ShoppingCartService {
   }
   getCount() {
     let carrito = this.getCarrito();
-    return carrito.length;
+    let count = 0;
+    if(carrito && carrito.length){
+      carrito.forEach(item => {
+        if(item.tipoLoteria == 1){
+          count+=item.ticket.seleccionados.length;
+        }else{
+          count+=1;
+        }
+      });
+    }
+    return count;
   }
 
   setCarrito(ticket, tipoLoteria) {
