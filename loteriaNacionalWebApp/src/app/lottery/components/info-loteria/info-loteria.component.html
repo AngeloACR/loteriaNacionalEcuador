@@ -1,33 +1,51 @@
 <ul class="menuBox">
-  <li class="menuItem" [ngClass]="{'fondoLoteria': fondoLoteria, 'fondoLotto': fondoLotto, 'fondoPozo': fondoPozo}">
+  <li
+    class="menuItem"
+    [ngClass]="{
+      fondoLoteria: fondoLoteria,
+      fondoLotto: fondoLotto,
+      fondoPozo: fondoPozo
+    }"
+  >
     {{ titulo }}
   </li>
-  <li class="menuItem">Sorteo:
+  <li class="menuItem">
+    Sorteo:
     <select class="fechaItem" [(ngModel)]="seleccionado" (change)="onEmitir()">
-      <option [ngValue]="sorteoDefault" selected disabled>Seleccione un sorteo</option>
-      <option [ngValue]="objeto" *ngFor="let objeto of sorteos">{{objeto.sorteo}}</option>
+      <option [ngValue]="sorteoDefault" selected disabled>
+        Seleccione un sorteo
+      </option>
+      <option [ngValue]="objeto" *ngFor="let objeto of sorteos">
+        {{ objeto.sorteo }}
+      </option>
     </select>
   </li>
   <li class="menuItem">
-    Fecha: <p>{{ fecha }}</p>
+    Fecha:
+    <p>{{ fecha }}</p>
   </li>
   <li class="menuItem" *ngIf="!isLoteria">
-    Premio: <p>{{ premio }}</p>
+    Premio:
+    <p>{{ premio }}</p>
   </li>
   <li class="menuItem" *ngIf="isLoteria">
-    Premio al entero: <p>{{ premio }}</p>
+    Premio al entero:
+    <p>{{ premio }}</p>
   </li>
   <li class="menuItem" *ngIf="isLoteria">
-    Premio a la fracción: <p>{{ premioFraccion }}</p>
+    Premio a la fracción:
+    <p>{{ premioFraccion }}</p>
   </li>
   <li class="menuItem" *ngIf="isLoteria">
-    Total de fracciones: <p>{{ cantidadDeFracciones }}</p>
+    Total de fracciones:
+    <p>{{ cantidadDeFracciones }}</p>
   </li>
 
   <li class="menuItem">
-    Precio: <p>{{ precio }}</p>
+    Precio:
+    <p>{{ precio }}</p>
   </li>
-  <li class="menuImage">
-    <img *ngIf="boleto && boleto.length" [src]="boleto" alt="">
+  <li class="menuImage" *ngIf="!imgNotFound">
+    <img [src]="boleto" alt="" (error)="handleImgError()" />
   </li>
 </ul>

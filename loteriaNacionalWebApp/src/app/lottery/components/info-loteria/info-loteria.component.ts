@@ -28,6 +28,7 @@ export class InfoLoteriaComponent implements OnInit {
   isLoteria: boolean = false;
   fondoLotto: boolean = false;
   fondoPozo: boolean = false;
+  imgNotFound: boolean = true;
   tipoLoteria: number;
 
   constructor(
@@ -61,6 +62,10 @@ export class InfoLoteriaComponent implements OnInit {
     }
   }
 
+  handleImgError() {
+    this.imgNotFound = true;
+  }
+
   async onEmitir() {
     this.changeDetectorRef.detectChanges();
     this.boleto = "";
@@ -78,6 +83,7 @@ export class InfoLoteriaComponent implements OnInit {
       this.tipoLoteria,
       this.seleccionado.sorteo
     );
+    this.imgNotFound = false;
     this.changeDetectorRef.markForCheck();
   }
 
