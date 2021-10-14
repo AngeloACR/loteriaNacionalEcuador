@@ -43,7 +43,7 @@ const walletController = {
                 data,
                 response,
               };
-              exalogicLogger.info("reserveLottery.exalogic", JSON.stringify(logData));
+              exalogicLogger.info("reserveLottery.exalogic", logData);
               resolve(response);
             }
           });
@@ -52,7 +52,7 @@ const walletController = {
         req.on("error", (error) => {
 
           exalogicLogger.error("reserveLottery.exalogic.error", {
-            message: error.message,
+            errorMessage: error.message,
           });
           reject(new Error(error));
         });
@@ -99,7 +99,7 @@ const walletController = {
                 data,
                 response,
               };
-              exalogicLogger.info("sellLottery.exalogic", JSON.stringify(logData));
+              exalogicLogger.info("sellLottery.exalogic", logData);
               resolve(response);
             }
           });
@@ -108,7 +108,7 @@ const walletController = {
         req.on("error", (error) => {
 
           exalogicLogger.error("sellLottery.exalogic.error", {
-            message: error.message,
+            errorMessage: error.message,
           });
           reject(new Error(error));
         });
@@ -155,14 +155,14 @@ const walletController = {
                 data,
                 response,
               };
-              exalogicLogger.info("cancelLottery.exalogic", JSON.stringify(logData));
+              exalogicLogger.info("cancelLottery.exalogic", logData);
               resolve(response);
             }
           });
         });
         req.on("error", (error) => {
           exalogicLogger.error("cancelLottery.exalogic.error", {
-            message: error.message,
+            errorMessage: error.message,
           });
           reject(new Error(error));
         });
@@ -209,7 +209,7 @@ const walletController = {
                 data,
                 response,
               };
-              exalogicLogger.info("getBalance.exalogic", JSON.stringify(logData));
+              exalogicLogger.info("getBalance.exalogic", logData);
               resolve(response);
             }
           });
@@ -217,7 +217,7 @@ const walletController = {
 
         req.on("error", (error) => {
           exalogicLogger.error("getBalance.exalogic.error", {
-            message: error.message,
+            errorMessage: error.message,
           });
           reject(new Error(error));
         });
@@ -267,7 +267,7 @@ const walletController = {
               data,
               response,
             };
-            exalogicLogger.info("payLottery.exalogic", JSON.stringify(logData));
+            exalogicLogger.info("payLottery.exalogic", logData);
               resolve(response);
             }
           });
@@ -275,7 +275,7 @@ const walletController = {
 
         req.on("error", (error) => {
           exalogicLogger.error("payLottery.exalogic.error", {
-            message: error.message,
+            errorMessage: error.message,
           });
           reject(new Error(error));
         });

@@ -134,10 +134,6 @@ export class LoteriaComponent implements OnInit {
         this.ticketsDisponibles[idTicket].seleccionados.indexOf(fraccion);
 
       if (index != -1) {
-        /*         await this.removeSeleccionado(
-          idTicket,
-          [fraccion]
-          ); */
         let identificador = this.ticketsDisponibles[idTicket].identificador;
         let ticketLoteria = this.ticketsLoteria[identificador];
         let aux = {
@@ -147,10 +143,17 @@ export class LoteriaComponent implements OnInit {
         await this.deleteLoteriaFraccion(aux);
         //this.ticketsDisponibles[idTicket].seleccionados.splice(index, 1);
       } else {
-        this.ticketsDisponibles[idTicket].seleccionados.push(fraccion);
-        await this.pushToSeleccionado(this.ticketsDisponibles[idTicket], [
-          fraccion,
-        ]);
+        let count = this.cart.getCount() + 1;
+        if (count <= 1000) {
+          this.ticketsDisponibles[idTicket].seleccionados.push(fraccion);
+          await this.pushToSeleccionado(this.ticketsDisponibles[idTicket], [
+            fraccion,
+          ]);
+        } else {
+          let errorMessage =
+            "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
+          this.openError(errorMessage);
+        }
       }
     } catch (e) {
       this.isLoading = false;
@@ -166,8 +169,18 @@ export class LoteriaComponent implements OnInit {
       this.allFractions[id] = !this.allFractions[id];
       let fracciones = [...this.ticketsDisponibles[id].fraccionesDisponibles];
       if (this.allFractions[id]) {
-        this.ticketsDisponibles[id].seleccionados = fracciones;
-        await this.pushToSeleccionado(this.ticketsDisponibles[id], fracciones);
+        let count = this.cart.getCount() + fracciones.length;
+        if (count <= 1000) {
+          this.ticketsDisponibles[id].seleccionados = fracciones;
+          await this.pushToSeleccionado(
+            this.ticketsDisponibles[id],
+            fracciones
+          );
+        } else {
+          let errorMessage =
+            "Incluir los boletos excede el límite de compra. Si quieres escoger estos boletos, por favor elimina algunos de tu carrito.";
+          this.openError(errorMessage);
+        }
       } else {
         let identificador = this.ticketsDisponibles[id].identificador;
         await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
@@ -186,6 +199,8 @@ export class LoteriaComponent implements OnInit {
     try {
       this.loadingMessage = "Agregando boleto al carrito";
       this.isLoading = true;
+      let subtotalTest =
+        parseFloat(this.sorteoSeleccionado.precio) * fracciones.length;
       let subtotal =
         parseFloat(this.sorteoSeleccionado.precio) *
         ticket.seleccionados.length;
@@ -196,7 +211,7 @@ export class LoteriaComponent implements OnInit {
         subtotal,
       };
       let hasBalance = await this.paymentService.hasBalance(
-        subtotal,
+        subtotalTest,
         this.token
       );
       if (hasBalance) {
@@ -273,9 +288,9 @@ export class LoteriaComponent implements OnInit {
   }
 
   total: string;
-  getTotal(){
-  this.changeDetectorRef.detectChanges();
-    
+  getTotal() {
+    this.changeDetectorRef.detectChanges();
+
     this.total = this.cart.getTotal();
     this.changeDetectorRef.markForCheck();
   }
@@ -423,6 +438,7 @@ export class LoteriaComponent implements OnInit {
       delete this.ticketsLoteria[identificador];
 
       this.cart.setCarritoLoteria(this.ticketsLoteria);
+      this.cart.removeFromCart(ticket, 1);
       this.getCarritoTickets();
       this.getTotal();
       if (this.ticketsDisponibles && this.ticketsDisponibles.length) {
@@ -464,6 +480,7 @@ export class LoteriaComponent implements OnInit {
       delete this.ticketsLotto[identificador];
 
       this.cart.setCarritoLotto(this.ticketsLotto);
+      this.cart.removeFromCart(ticket, 2);
       this.getCarritoTickets();
       this.getTotal();
 
@@ -477,11 +494,10 @@ export class LoteriaComponent implements OnInit {
   }
   async deletePozoTicket(data) {
     try {
-      console.log(data);
-      let identificador = data.ticket.identificador;
-      let fraccion = "";
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
+      let identificador = data.ticket.identificador;
+      let fraccion = "";
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = data.sorteo;
       let reservaId = this.cart.getReservaId();
@@ -497,6 +513,7 @@ export class LoteriaComponent implements OnInit {
       delete this.ticketsPozo[identificador];
 
       this.cart.setCarritoPozo(this.ticketsPozo);
+      this.cart.removeFromCart(ticket, 5);
       this.getCarritoTickets();
       this.getTotal();
 

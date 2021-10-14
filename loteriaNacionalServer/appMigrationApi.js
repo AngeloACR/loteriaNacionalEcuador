@@ -2,7 +2,7 @@ const db = require('./database');
 const migrationServer = require('./migrationServer');
 const config = require('./config/environment');
 
-// https://www.nginx.com/blog/nginx-caching-guide/
+
 const connection = db.initConnect();
 
 const migrationPort = config.migrationPort;

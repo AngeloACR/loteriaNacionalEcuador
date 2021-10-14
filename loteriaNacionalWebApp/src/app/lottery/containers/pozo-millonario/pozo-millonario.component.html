@@ -107,7 +107,7 @@
         <tbody>
           <tr
             *ngFor="
-              let ticket of ticketAnimales | paginacion: page_size:page_number;
+              let ticket of ticketsDisponibles | paginacion: page_size:page_number;
               let i = index
             "
           >
@@ -138,7 +138,7 @@
         <!-- showFirstLastButtons -->
         <mat-paginator
           style-paginator
-          [length]="ticketAnimales.length"
+          [length]="ticketsDisponibles.length"
           [pageSize]="page_size"
           (page)="handlerPage($event)"
         >
@@ -166,7 +166,7 @@
     (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
     [ticketsLoteria]="ticketsLoteria"
     [ticketsLotto]="ticketsLotto"
-    [ticketsPozo]="ticketsSeleccionados"
+    [ticketsPozo]="ticketsPozo"
     tipoLoteria="pozo"
   >
   </app-ticket-scroller>
@@ -180,7 +180,7 @@
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
-  [ticketsPozo]="ticketsSeleccionados"
+  [ticketsPozo]="ticketsPozo"
   [total]="total"
   tipoLoteria="pozo"
 ></app-floating-menu>

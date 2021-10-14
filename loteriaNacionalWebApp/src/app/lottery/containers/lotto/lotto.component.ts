@@ -44,7 +44,7 @@ export class LottoComponent implements OnInit {
   total: string;
   getTotal() {
     this.changeDetectorRef.detectChanges();
-    
+
     this.total = this.cart.getTotal();
     this.changeDetectorRef.markForCheck();
   }
@@ -92,7 +92,14 @@ export class LottoComponent implements OnInit {
         let ticketLotto = this.ticketsLotto[identificador];
         await this.deleteLottoTicket(ticketLotto);
       } else {
-        await this.pushToSeleccionado(this.ticketsDisponibles[id]);
+        let count = this.cart.getCount() + 1;
+        if (count <= 1000) {
+          await this.pushToSeleccionado(this.ticketsDisponibles[id]);
+        } else {
+          let errorMessage =
+            "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
+          this.openError(errorMessage);
+        }
       }
     } catch (e) {
       this.isLoading = false;
@@ -137,8 +144,8 @@ export class LottoComponent implements OnInit {
         this.cart.setCarritoLotto(this.ticketsLotto);
         this.cart.setCarrito(aux, 2);
         this.getCarritoTickets();
-    this.getTotal();
-    this.isLoading = false;
+        this.getTotal();
+        this.isLoading = false;
       } else {
         this.isLoading = false;
         let message =
@@ -377,11 +384,9 @@ export class LottoComponent implements OnInit {
       }
       delete this.ticketsLoteria[identificador];
 
-      localStorage.setItem(
-        "seleccionadosLoteria",
-        JSON.stringify(this.ticketsLoteria)
-      );
+      this.cart.setCarritoLoteria(this.ticketsLoteria);
 
+      this.cart.removeFromCart(ticket, 1);
       this.getCarritoTickets();
       this.getTotal();
       this.isLoading = false;
@@ -415,6 +420,7 @@ export class LottoComponent implements OnInit {
 
       delete this.ticketsLotto[identificador];
       this.cart.setCarritoLotto(this.ticketsLotto);
+      this.cart.removeFromCart(ticket, 2);
       if (this.ticketsDisponibles && this.ticketsDisponibles.length) {
         let deletedIndex = this.ticketsDisponibles.findIndex(
           (x) => x.identificador === identificador
@@ -453,10 +459,9 @@ export class LottoComponent implements OnInit {
 
       delete this.ticketsPozo[identificador];
 
-      localStorage.setItem(
-        "seleccionadosPozo",
-        JSON.stringify(this.ticketsPozo)
-      );
+      this.cart.setCarritoPozo(this.ticketsPozo);
+      this.cart.removeFromCart(ticket, 5);
+
       this.getCarritoTickets();
       this.getTotal();
       this.isLoading = false;

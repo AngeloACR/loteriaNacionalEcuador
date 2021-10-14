@@ -12,7 +12,7 @@ const ganadoresController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -49,11 +49,11 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         response,
         function: "Wallet.payLottery",
       };
-      apiVentasLogger.info("payLottery.exalogic", JSON.stringify(logData));
+      apiVentasLogger.info("payLottery.exalogic", logData);
       return response;
     } catch (e) {
       apiVentasLogger.error("payLottery.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       throw new Error(e.message);
     }
@@ -95,15 +95,15 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         }
       }
       let logData = {
-        data: exaData,
+        data,
         response,
         function: "ganadoresController.payLottery",
       };
-      apiVentasLogger.info("pagarLoteria.api", JSON.stringify(logData));
+      apiVentasLogger.info("pagarLoteria.api", logData);
       return response;
     } catch (e) {
       apiVentasLogger.error("pagarLoteria.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       throw new Error(e.message);
     }
@@ -137,7 +137,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }

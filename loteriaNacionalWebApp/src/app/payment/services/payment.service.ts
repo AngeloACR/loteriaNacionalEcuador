@@ -37,6 +37,7 @@ export class PaymentService {
   liberarSaldo() {}
 
   recargarSaldo() {}
+
   hasBalance(subtotal, token) {
     let cartTotal = parseFloat(this.cart.getTotal());
     let testAmount = parseFloat(subtotal) + cartTotal;
@@ -55,7 +56,8 @@ export class PaymentService {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let balance = parseFloat(data.balance);
-          resolve(balance >= testAmount);
+          let hasBalance = balance >= testAmount
+          resolve(hasBalance);
         },
         (error: any) => {
           reject(new Error(error.error.message));

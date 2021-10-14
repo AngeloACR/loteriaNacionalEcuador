@@ -1,12 +1,20 @@
 import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ShoppingCartService {
-
-
   constructor() {}
+
+  removeFromCart(ticket, tipoLoteria) {
+    let carrito = this.getCarrito();
+    let deletedIndex = carrito.findIndex(
+      (x) =>
+        x.identificador === ticket.identificador && x.tipoLoteria == tipoLoteria
+    );
+    carrito.splice(deletedIndex, 1);
+    localStorage.setItem("seleccionadosCarrito", JSON.stringify(carrito));
+  }
 
   getReservaId() {
     if (
@@ -22,22 +30,31 @@ export class ShoppingCartService {
   setReservaId(id) {
     localStorage.setItem("reservaId", JSON.stringify(id));
   }
+  getCount() {
+    let carrito = this.getCarrito();
+    return carrito.length;
+  }
 
-
-  setCarrito(ticket, tipoLoteria){
-    let carrito: any = this.getCarrito()
-    if(!carrito) carrito = []
-    ticket['identificador'] = ticket.ticket.identificador;
-    ticket['tipoLoteria']=tipoLoteria;
+  setCarrito(ticket, tipoLoteria) {
+    let carrito: any = this.getCarrito();
+    if (!carrito) carrito = [];
+    ticket["identificador"] = ticket.ticket.identificador;
+    ticket["tipoLoteria"] = tipoLoteria;
     console.log(ticket);
-    carrito.push(ticket);
+    let addIndex = carrito.findIndex(
+      (x) =>
+        x.identificador === ticket.identificador
+    );
+    if (tipoLoteria == 1 && addIndex != -1) {
+      carrito[addIndex] = ticket;
+    } else {
+      carrito.push(ticket);
+    }
     localStorage.setItem("seleccionadosCarrito", JSON.stringify(carrito));
-
   }
 
   setCarritoLoteria(tickets) {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify(tickets));
-
   }
 
   setCarritoLotto(tickets) {
@@ -69,7 +86,7 @@ export class ShoppingCartService {
     localStorage.removeItem("total");
   }
   setTotal() {
-        let loteriaAux = this.getCarritoLoteria();
+    let loteriaAux = this.getCarritoLoteria();
     let lottoAux = this.getCarritoLotto();
     let pozoAux = this.getCarritoPozo();
     let loteria = 0;
@@ -90,10 +107,10 @@ export class ShoppingCartService {
   }
   getTotal() {
     let total = JSON.parse(localStorage.getItem("total"));
-    if(total){
-      return total
-    } else{
-      return 0
+    if (total) {
+      return total;
+    } else {
+      return 0;
     }
   }
 }

@@ -38,6 +38,7 @@ export class TicketScrollerComponent implements OnInit {
   isPozoMillonario: boolean = false;
   logoPath: string;
   total: any;
+  seleccionadosCarrito: any;
   constructor(private cart: ShoppingCartService) {}
 
   comprar() {
@@ -48,6 +49,8 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seleccionadosCarrito = this.cart.getCarrito()
+    this.seleccionadosCarrito = this.seleccionadosCarrito? this.seleccionadosCarrito.reverse(): [];
     switch (this.tipoLoteria) {
       case "loteria":
         this.isLoteriaNacional = true;
@@ -66,6 +69,8 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   ngDoCheck() {
+    this.seleccionadosCarrito = this.cart.getCarrito()
+    this.seleccionadosCarrito = this.seleccionadosCarrito? this.seleccionadosCarrito.reverse(): [];
     this.cart.setTotal();
     this.getTotal();
   }
@@ -89,7 +94,7 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   deleteLoteria(ticket) {
-        this.deleteLoteriaTicket.emit(ticket.value)
+        this.deleteLoteriaTicket.emit(ticket)
     }
 
     deleteFraccionLoteria(ticket, fraccion) {
@@ -102,11 +107,11 @@ export class TicketScrollerComponent implements OnInit {
 
 
   deleteLotto(ticket) {
-    this.deleteLottoTicket.emit(ticket.value)
+    this.deleteLottoTicket.emit(ticket)
 
   }
   deletePozo(ticket) {
-    this.deletePozoTicket.emit(ticket.value)
+    this.deletePozoTicket.emit(ticket)
 
   }
 

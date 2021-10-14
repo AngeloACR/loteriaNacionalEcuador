@@ -219,8 +219,8 @@ function uploadBoletos()
 			}
 			$targetFile = $documentFolder . $filename;
 			move_uploaded_file($file["tmp_name"], $targetFile);
-			$host = "ventas-prueba.loteria.com.ec";
-			//$host = "ventas.loteria.com.ec";
+			//$host = "ventas-prueba.loteria.com.ec";
+			$host = "ventas.loteria.com.ec";
 			$port = 2226;
 			$timeout = 360;
 			$user = "loterianacional";

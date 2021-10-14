@@ -6,7 +6,7 @@ const config = require("../../config/environment");
 
 const medioId = config.medioAplicatioId;
 const address = config.aplicativoAddressTest;
-/* const address = config.aplicativoAddressProd; */
+//const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
@@ -54,7 +54,7 @@ module.exports.autenticarUsuario = async () => {
               loteriaResponse: rawResponse,
               customResponse: response,
             };
-            loteriaVentasLogger.info("autenticarUsuario.loteria", JSON.stringify(logData));
+            loteriaVentasLogger.info("autenticarUsuario.loteria", logData);
             resolve(response);
           } else {
             let errorMessage = data.mt.c[0].msgError[0];
@@ -152,7 +152,7 @@ module.exports.consultarSorteosDisponibles = async (
             let errorMsg = e.message;
 
             loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
-              message: errorMsg,
+              errorMessage: errorMsg,
             });            
             reject(new Error(errorMsg));
           }
@@ -163,7 +163,7 @@ module.exports.consultarSorteosDisponibles = async (
     let errorMsg = e.message;
 
     loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
-      message: errorMsg,
+      errorMessage: errorMsg,
     });            
 
     throw new Error(e.message);
@@ -258,7 +258,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
           } catch (e) {
             let errorMsg = e.message;
             loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
-              message: errorMsg,
+              errorMessage: errorMsg,
             });            
             reject(new Error(errorMsg));
           }
@@ -269,7 +269,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
     let errorMsg = e.message;
 
     loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
-      message: errorMsg,
+      errorMessage: errorMsg,
     });            
 
     throw new Error(e.message);
@@ -407,7 +407,7 @@ module.exports.reservarCombinaciones = async (
             let errorMsg = e.message;
 
             loteriaVentasLogger.error("eliminarReservas.error", {
-              message: errorMsg,
+              errorMessage: errorMsg,
             });
             reject(new Error(errorMsg));
           }
@@ -418,7 +418,7 @@ module.exports.reservarCombinaciones = async (
     let errorMsg = e.message;
 
     loteriaVentasLogger.error("reservarCombinaciones.error", {
-      message: errorMsg,
+      errorMessage: errorMsg,
     });            
 
     throw new Error(e.message);
@@ -537,7 +537,7 @@ module.exports.eliminarReservas = async (
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaVentasLogger.info("eliminarReservas.loteria", JSON.stringify(logData));
+              loteriaVentasLogger.info("eliminarReservas.loteria", logData);
               resolve(response);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
@@ -550,7 +550,7 @@ module.exports.eliminarReservas = async (
             let errorMsg = e.message;
 
             loteriaVentasLogger.error("eliminarReservas.error", {
-              message: errorMsg,
+              errorMessage: errorMsg,
             });
             reject(new Error(errorMsg));
           }
@@ -561,7 +561,7 @@ module.exports.eliminarReservas = async (
     let errorMsg = e.message;
 
     loteriaVentasLogger.error("eliminarReservas.error", {
-      message: errorMsg,
+      errorMessage: errorMsg,
     });            
 
     throw new Error(e.message);
@@ -722,7 +722,7 @@ module.exports.venderBoletos = async (
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaVentasLogger.info("venderBoletos.loteria", JSON.stringify(logData));
+              loteriaVentasLogger.info("venderBoletos.loteria", logData);
               resolve(response);
             } else {
 
@@ -736,7 +736,7 @@ module.exports.venderBoletos = async (
             let errorMsg = e.message;
 
             loteriaVentasLogger.error("venderBoletos.error", {
-              message: errorMsg,
+              errorMessage: errorMsg,
             });
             reject(new Error(errorMsg));
           }
@@ -747,7 +747,7 @@ module.exports.venderBoletos = async (
     let errorMsg = e.message;
 
     loteriaVentasLogger.error("venderBoletos.error", {
-      message: errorMsg,
+      errorMessage: errorMsg,
     });            
 
     throw new Error(e.message);

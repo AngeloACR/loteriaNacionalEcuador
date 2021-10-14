@@ -49,7 +49,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -73,7 +73,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -114,7 +114,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -151,7 +151,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -201,7 +201,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -228,10 +228,10 @@ const ventasController = {
         response,
         function: "Auth.authUser",
       };
-      apiVentasLogger.info("authUser.exalogic", JSON.stringify(logData));
+      apiVentasLogger.info("authUser.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("authData.error", { message: e.message });
+      apiVentasLogger.error("authData.error", { errorMessage: e.message });
       throw new Error(e.message);
     }
   },
@@ -256,10 +256,10 @@ const ventasController = {
         response,
         function: "Wallet.getBalance",
       };
-      apiVentasLogger.info("getBalance.exalogic", JSON.stringify(logData));
+      apiVentasLogger.info("getBalance.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("getBalance.error", { message: e.message });
+      apiVentasLogger.error("getBalance.error", { errorMessage: e.message });
       throw new Error(e.message);
     }
   },
@@ -299,10 +299,10 @@ const ventasController = {
         response,
         function: "Wallet.sellLottery",
       };
-      apiVentasLogger.info("sellLottery.exalogic", JSON.stringify(logData));
+      apiVentasLogger.info("sellLottery.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("sellLottery.error", { message: e.message });
+      apiVentasLogger.error("sellLottery.error", { errorMessage: e.message });
       throw new Error(e.message);
     }
   },
@@ -338,10 +338,10 @@ const ventasController = {
         response,
         function: "Wallet.cancelLottery",
       };
-      apiVentasLogger.info("cancelLottery.exalogic", JSON.stringify(logData));
+      apiVentasLogger.info("cancelLottery.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("cancelLottery.error", { message: e.message });
+      apiVentasLogger.error("cancelLottery.error", { errorMessage: e.message });
       throw new Error(e.message);
     }
   },
@@ -391,10 +391,10 @@ const ventasController = {
         response,
         function: "Wallet.cancelLottery",
       };
-      apiVentasLogger.info("cancelLottery.exalogic", JSON.stringify(logData));
+      apiVentasLogger.info("cancelLottery.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("reserveLottery.error", { message: e.message });
+      apiVentasLogger.error("reserveLottery.error", { errorMessage: e.message });
       throw new Error(e.message);
     }
   },
@@ -421,15 +421,15 @@ const ventasController = {
         response: finalResponse,
         function: "Ventas.consultaSorteosDisponibles",
       };
-      apiVentasLogger.info("searchLottoSorteosDisponibles.loteria", JSON.stringify(logData));
+      apiVentasLogger.info("searchLottoSorteosDisponibles.loteria", logData);
       res.status(200).json(finalResponse);
     } catch (e) {
       apiVentasLogger.error("searchLottoSorteosDisponibles.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -456,15 +456,15 @@ const ventasController = {
         response: finalResponse,
         function: "Ventas.consultaSorteosDisponibles",
       };
-      apiVentasLogger.info("searchLoteriaSorteosDisponibles.loteria", JSON.stringify(logData));
+      apiVentasLogger.info("searchLoteriaSorteosDisponibles.loteria", logData);
       res.status(200).json(finalResponse);
     } catch (e) {
       apiVentasLogger.error("searchLoteriaSorteosDisponibles.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -491,16 +491,16 @@ const ventasController = {
         response: finalResponse,
         function: "Ventas.consultaSorteosDisponibles",
       };
-      apiVentasLogger.info("searchPozoSorteosDisponibles.loteria", JSON.stringify(logData));
+      apiVentasLogger.info("searchPozoSorteosDisponibles.loteria", logData);
 
       res.status(200).json(finalResponse);
     } catch (e) {
       apiVentasLogger.error("searchPozoSorteosDisponibles.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -565,11 +565,11 @@ const ventasController = {
       res.status(200).json(response);
     } catch (e) {
       apiVentasLogger.error("searchLottoCombinacionesDisponibles.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -631,11 +631,11 @@ const ventasController = {
       res.status(200).json(response);
     } catch (e) {
       apiVentasLogger.error("searchLoteriaCombinacionesDisponibles.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -699,11 +699,11 @@ const ventasController = {
       res.status(200).json(response);
     } catch (e) {
       apiVentasLogger.error("searchPozoCombinacionesDisponibles.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -744,16 +744,16 @@ const ventasController = {
         response,
         function: "Ventas.reservarCombinaciones",
       };
-      apiVentasLogger.info("reservarBoletos.loteria", JSON.stringify(logData));
+      apiVentasLogger.info("reservarBoletos.loteria", logData);
       //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
       res.status(200).json(response);
     } catch (e) {
       apiVentasLogger.error("reservarBoletos.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -792,15 +792,15 @@ const ventasController = {
         response: finalResponse,
         function: "Ventas.eliminarReservas",
       };
-      apiVentasLogger.info("eliminarBoletosDeReserva.loteria", JSON.stringify(logData));
+      apiVentasLogger.info("eliminarBoletosDeReserva.loteria", logData);
       res.status(200).json(finalResponse);
     } catch (e) {
       apiVentasLogger.error("eliminarBoletosDeReserva.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -887,7 +887,7 @@ const ventasController = {
         response: exaReservaResponse,
         function: "ventasController.reserveLottery",
       };
-      apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
+      apiVentasLogger.info("comprarBoletos.api", logData);
       // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
 
       let lotteryToken = req.body.lotteryToken;
@@ -921,7 +921,7 @@ const ventasController = {
         response: loteriaVentaResponse,
         function: "Ventas.venderBoletos",
       };
-      apiVentasLogger.info("comprarBoletos.loteria", JSON.stringify(logData));
+      apiVentasLogger.info("comprarBoletos.loteria", logData);
       let instantaneas = loteriaVentaResponse.instantaneas;
       let prizeDetails = [];
       let instantaneaStatus = false;
@@ -990,7 +990,7 @@ const ventasController = {
               response: loteriaVentaResponse,
               function: "ganadoresController.crearGanador",
             };
-            apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
+            apiVentasLogger.info("comprarBoletos.api", logData);
             prizeDetails.push(prizeDetail);
           }
         }
@@ -1012,7 +1012,7 @@ const ventasController = {
         response: exaVentaResponse,
         function: "ventasController.sellLottery",
       };
-      apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
+      apiVentasLogger.info("comprarBoletos.api", logData);
       let apiVentaData = {
         amount: req.body.amount,
         loteria: req.body.loteria,
@@ -1031,7 +1031,7 @@ const ventasController = {
         response: apiVentaResponse,
         function: "ventasController.crearReserva",
       };
-      apiVentasLogger.info("comprarBoletos.api", JSON.stringify(logData));
+      apiVentasLogger.info("comprarBoletos.api", logData);
       let instantaneaResponse = {
         status: instantaneaStatus,
         data: instantaneaData,
@@ -1045,11 +1045,11 @@ const ventasController = {
       res.status(200).json(finalResponse);
     } catch (e) {
       apiVentasLogger.error("comprarBoletos.error", {
-        message: e.message,
+        errorMessage: e.message,
       });
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -1065,7 +1065,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -1080,7 +1080,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -1094,7 +1094,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }
@@ -1175,7 +1175,7 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        message: e.message,
+        errorMessage: e.message,
       };
       res.status(400).json(response);
     }

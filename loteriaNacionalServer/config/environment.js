@@ -11,8 +11,10 @@ module.exports = {
   lotteryPort: 5480,
   migrationPort: 5000,
   host: "localhost",
+
   exalogicHostTest: "www.loteria.com.ec",
   exalogicEndpointTest: "/lotery_api/XReceiver",
+  
   exalogicHostProd: "www.loteria.com.ec",
   exalogicEndpointProd: "/lotery_api/XReceiver",
 
@@ -31,15 +33,17 @@ module.exports = {
   aplicativoAddressTest: "serviciomt-prep.wsdl",
   aplicativoAddressProd: "serviciomt-prod.wsdl",
 
-  // DATABASE DATA
+  // MONGO DATABASE DATA
   prodDB: "mongodb://localhost:27017/loteriaDB",
-  testDB: "mongodb://localhost:27017/loteriaPruebaDB",
-  mysqlPort: "3306",
+  testDB: "mongodb://localhost:27017/loteriaDB",
+
+  
+/*   mysqlPort: "3306",
   mysqlUser: "serverUser",
   mysqlPass: "",
   dbName: "LoteriaNacional",
   connectionLimit: 100,
-
+ */
   // STATIC FILES PATHS
   sourceBoletinesTest: "https://ventas-api-prueba.loteria.com.ec/boletines/",
   sourceBoletinesProd: "https://ventas-api.loteria.com.ec/boletines/",
@@ -58,8 +62,8 @@ module.exports = {
   ftpPassMin: 10520,
   ftpPassMax: 10521,
   ftpUserTest: "test",
-  ftpUserProd: "loterianacional",
   ftpPassTest: "test",
+  ftpUserProd: "loterianacional",
   ftpPassProd: "$lnftp123..$",
   ftpResultadosPath: "/uploads/resultados",
   ftpBoletinesPath: "/uploads/boletines",

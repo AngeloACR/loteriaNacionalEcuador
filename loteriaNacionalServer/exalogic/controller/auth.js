@@ -42,7 +42,7 @@ const authController = {
                 data: authData,
                 response,
               };
-              exalogicLogger.info("authUser.exalogic", JSON.stringify(logData));
+              exalogicLogger.info("authUser.exalogic", logData);
               resolve(response);
             }
           });
@@ -50,7 +50,7 @@ const authController = {
 
         req.on("error", (error) => {
           exalogicLogger.error("authUser.exalogic.error", {
-            message: error.message,
+            errorMessage: error.message,
           });
           reject(new Error(error));
         });
