@@ -147,7 +147,8 @@ module.exports.consultarSorteosDisponibles = async (
               loteriaVentasLogger.error(
                 "consultarSorteosDisponibles.loteria.error",
                 {
-                  message: `${errorCode}-${errorMessage}`,
+                  data: message,
+                  errorMessage: `${errorCode}-${errorMessage}`,
                 }
               );
               reject(new Error(errorMessage));
@@ -257,7 +258,8 @@ module.exports.obtenerCombinacionesDisponibles = async (
               loteriaVentasLogger.error(
                 "obtenerCombinacionesDisponibles.loteria.error",
                 {
-                  message: `${errorCode}-${errorMessage}`,
+                  data: message,
+                  errorMessage: `${errorCode}-${errorMessage}`,
                 }
               );
               reject(new Error(errorMessage));
@@ -406,7 +408,8 @@ module.exports.reservarCombinaciones = async (
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
               loteriaVentasLogger.error("reservarCombinaciones.loteria.error", {
-                message: `${errorCode}-${errorMessage}`,
+                data: message,
+                errorMessage: `${errorCode}-${errorMessage}`,
               });
               reject(new Error(errorMessage));
             }
@@ -557,7 +560,8 @@ module.exports.eliminarReservas = async (
             let errorMsg = e.message;
 
             loteriaVentasLogger.error("eliminarReservas.error", {
-              errorMessage: errorMsg,
+              data: message,
+              errorMessage: `${errorCode}-${errorMessage}`,
             });
             reject(new Error(errorMsg));
           }
@@ -734,7 +738,8 @@ module.exports.venderBoletos = async (
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
               loteriaVentasLogger.error("venderBoletos.loteria.error", {
-                message: `${errorCode}-${errorMessage}`,
+                data: message,
+                errorMessage: `${errorCode}-${errorMessage}`,
               });
               reject(new Error(errorMessage));
             }
