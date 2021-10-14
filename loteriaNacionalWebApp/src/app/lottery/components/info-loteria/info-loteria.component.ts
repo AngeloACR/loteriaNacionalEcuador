@@ -74,6 +74,8 @@ export class InfoLoteriaComponent implements OnInit {
     let premio = parseFloat(auxPremio).toFixed(2);
     let precio = parseFloat((this.seleccionado as sorteo).precio).toFixed(2);
     this.cantidadDeFracciones = (this.seleccionado as sorteo).cantidadDeFracciones;
+    let auxPremioLoteria = (parseFloat(premio)*this.cantidadDeFracciones)
+    this.premioLoteria = this.lotteryService.formatNumber(auxPremioLoteria);
     this.premio = this.lotteryService.formatNumber(premio);
     this.precio = this.lotteryService.formatNumber(precio);
     this.emitir.emit(this.seleccionado);
@@ -87,6 +89,7 @@ export class InfoLoteriaComponent implements OnInit {
 
   fecha: string = "";
   premio: string = "";
+  premioLoteria: string = "";
   precio: string = "";
   cantidadDeFracciones: number;
 

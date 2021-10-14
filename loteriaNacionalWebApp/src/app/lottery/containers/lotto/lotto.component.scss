@@ -56,7 +56,7 @@ $color-lotto: #b51f20;
 // Estilos componente selecicon Lotto
 
 .contenedor_loteria {
-  width: 95%;
+  width: 98%;
   margin: 20px auto;
 
   display: flex;
@@ -65,12 +65,13 @@ $color-lotto: #b51f20;
 
   .infoBox {
     min-width: 280px;
-    max-width: 300px;
-    width: 20%;
+    max-width: 340px;
+    width: 25%;
   }
 
   .contenedor_seleccion {
-    width: 40%;
+    max-width: 620px;
+    width: 45%;
     margin-right: 15px;
     display: flex;
     flex-direction: column;

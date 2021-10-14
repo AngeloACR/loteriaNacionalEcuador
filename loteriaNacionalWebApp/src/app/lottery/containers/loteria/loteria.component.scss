@@ -221,19 +221,20 @@ $color-botton: #2f72b9;
 // Estilos de component tooltip
 
 .contenedor_loteria {
-  width: 95%;
+  width: 98%;
   margin: 20px auto;
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 40px;
   .infoBox {
     min-width: 280px;
-    max-width: 300px;
-    width: 20%;
+    max-width: 340px;
+    width: 25%;
   }
 
   .contenedor_seleccion {
-    width: 40%;
+    width: 45%;
+    max-width: 620px;
     margin-right: 15px;
     display: flex;
     flex-direction: column;
