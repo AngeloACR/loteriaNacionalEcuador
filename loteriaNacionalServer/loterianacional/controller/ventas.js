@@ -122,7 +122,7 @@ module.exports.consultarSorteosDisponibles = async (
               let aux = data.mt.rs[0].r[0].Row;
               let response = aux.map((sorteo) => {
                 let sorteoAux = {
-                  fecha: sorteo.$.FCadSort,
+                  fecha: sorteo.$.FSort,
                   cantidadDeFracciones: sorteo.$.CFrac,
                   valorPremioPrincipal: sorteo.$.VPremio,
                   precio: sorteo.$.PVP,
