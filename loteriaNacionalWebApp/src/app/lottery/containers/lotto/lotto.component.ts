@@ -96,6 +96,7 @@ export class LottoComponent implements OnInit {
         if (count <= 1000) {
           await this.pushToSeleccionado(this.ticketsDisponibles[id]);
         } else {
+          this.ticketsDisponibles[id].status = false;
           let errorMessage =
             "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
           this.openError(errorMessage);

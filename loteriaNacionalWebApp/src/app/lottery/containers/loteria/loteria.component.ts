@@ -150,6 +150,7 @@ export class LoteriaComponent implements OnInit {
             fraccion,
           ]);
         } else {
+          this.ticketsDisponibles[idTicket].seleccionados.slice(index, 1);
           let errorMessage =
             "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
           this.openError(errorMessage);
@@ -177,6 +178,7 @@ export class LoteriaComponent implements OnInit {
             fracciones
           );
         } else {
+          this.allFractions[id]=false;
           let errorMessage =
             "Incluir los boletos excede el límite de compra. Si quieres escoger estos boletos, por favor elimina algunos de tu carrito.";
           this.openError(errorMessage);
