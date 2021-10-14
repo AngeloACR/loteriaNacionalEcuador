@@ -12,8 +12,8 @@ module.exports = {
   migrationPort: 5000,
   host: "localhost",
 
-  exalogicHostTest: "www.loteria.com.ec",
-  exalogicEndpointTest: "/lotery_api/XReceiver",
+  exalogicHostTest: "test.loteria.com.ec",
+  exalogicEndpointTest: "/testlotery_api/XReceiver",
   
   exalogicHostProd: "www.loteria.com.ec",
   exalogicEndpointProd: "/lotery_api/XReceiver",

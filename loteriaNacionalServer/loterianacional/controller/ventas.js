@@ -13,10 +13,11 @@ module.exports.autenticarUsuario = async () => {
     loteriaVentasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-    const usuarioClientePsd = config.usuarioAplicativoTest;
+    /* const usuarioClientePsd = config.usuarioAplicativoTest;
     const claveClientePsd = config.passwordAplicativoTest;
-    /*     const usuarioClientePsd = config.usuarioAplicativoProd;
-    const claveClientePsd = config.passwordAplicativoProd; */
+     */
+    const usuarioClientePsd = config.usuarioAplicativoProd;
+    const claveClientePsd = config.passwordAplicativoProd;
     let message = {
       $xml: `
       <PI_DatosXml>
@@ -143,9 +144,12 @@ module.exports.consultarSorteosDisponibles = async (
               resolve(response);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
-              loteriaVentasLogger.error("consultarSorteosDisponibles.loteria.error", {
-                message: `${errorCode}-${errorMessage}`,
-              });
+              loteriaVentasLogger.error(
+                "consultarSorteosDisponibles.loteria.error",
+                {
+                  message: `${errorCode}-${errorMessage}`,
+                }
+              );
               reject(new Error(errorMessage));
             }
           } catch (e) {
@@ -153,7 +157,7 @@ module.exports.consultarSorteosDisponibles = async (
 
             loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
               errorMessage: errorMsg,
-            });            
+            });
             reject(new Error(errorMsg));
           }
         }
@@ -164,7 +168,7 @@ module.exports.consultarSorteosDisponibles = async (
 
     loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
       errorMessage: errorMsg,
-    });            
+    });
 
     throw new Error(e.message);
   }
@@ -250,16 +254,19 @@ module.exports.obtenerCombinacionesDisponibles = async (
               resolve(response);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
-              loteriaVentasLogger.error("obtenerCombinacionesDisponibles.loteria.error", {
-                message: `${errorCode}-${errorMessage}`,
-              });
+              loteriaVentasLogger.error(
+                "obtenerCombinacionesDisponibles.loteria.error",
+                {
+                  message: `${errorCode}-${errorMessage}`,
+                }
+              );
               reject(new Error(errorMessage));
             }
           } catch (e) {
             let errorMsg = e.message;
             loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
               errorMessage: errorMsg,
-            });            
+            });
             reject(new Error(errorMsg));
           }
         }
@@ -270,7 +277,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
 
     loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
       errorMessage: errorMsg,
-    });            
+    });
 
     throw new Error(e.message);
   }
@@ -419,7 +426,7 @@ module.exports.reservarCombinaciones = async (
 
     loteriaVentasLogger.error("reservarCombinaciones.error", {
       errorMessage: errorMsg,
-    });            
+    });
 
     throw new Error(e.message);
   }
@@ -562,7 +569,7 @@ module.exports.eliminarReservas = async (
 
     loteriaVentasLogger.error("eliminarReservas.error", {
       errorMessage: errorMsg,
-    });            
+    });
 
     throw new Error(e.message);
   }
@@ -725,7 +732,6 @@ module.exports.venderBoletos = async (
               loteriaVentasLogger.info("venderBoletos.loteria", logData);
               resolve(response);
             } else {
-
               let errorMessage = data.mt.c[0].msgError[0];
               loteriaVentasLogger.error("venderBoletos.loteria.error", {
                 message: `${errorCode}-${errorMessage}`,
@@ -748,7 +754,7 @@ module.exports.venderBoletos = async (
 
     loteriaVentasLogger.error("venderBoletos.error", {
       errorMessage: errorMsg,
-    });            
+    });
 
     throw new Error(e.message);
   }
