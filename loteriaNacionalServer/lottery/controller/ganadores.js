@@ -73,7 +73,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             ganador.tipoLoteria
           }" S="${ganador.numeroSorteo}" FC="${ganador.fechaCaducidad}" C="${
             ganador.combinacion1
-          }" C2="${ganador.combinacion2}" C3="${ganador.combinacion3}" F="${
+          }" C2="${ganador.combinacion2}" C3="${ganador.combinacion3}" C4="${ganador.combinacion4}" C5="${ganador.combinacion5}" F="${
             ganador.fraccion
           }" B="${ganador.boletoId}" P="${
             ganador.codigoPremio.split("-")[1]
