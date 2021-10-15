@@ -14,8 +14,8 @@ const { apiVentasLogger } = require("../../config/logging");
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletos = config.sourceBoletosLocal;
-let sourceBoletos = config.sourceBoletosTest;
-//let sourceBoletos = config.sourceBoletosProd;
+//let sourceBoletos = config.sourceBoletosTest;
+let sourceBoletos = config.sourceBoletosProd;
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
@@ -107,6 +107,7 @@ const ventasController = {
         operationTimeStamp: operationTimeStamp,
         ticketId: req.body.ticketId,
         amount: req.body.amount,
+        instantWinDetails: data.prizeDetails,
       };
 
       let response = await Wallet.sellLottery(data);
@@ -968,7 +969,7 @@ const ventasController = {
               fractions: premio.Fra,
               prize: parseFloat(premio.Val).toFixed(2),
               prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
-              prizeDescription: premio.Prem,
+              prizeDescription: premio.Prem.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
             };
             //CREAR GANADOR AQUI
 

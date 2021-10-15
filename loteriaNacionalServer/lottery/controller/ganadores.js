@@ -77,7 +77,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             ganador.fraccion
           }" B="${ganador.boletoId}" P="${
             ganador.codigoPremio.split("-")[1]
-          }" N="${ganador.descripcionPremio}" VP="${ganador.valorPremio}" VD="${
+          }" N="${ganador.descripcionPremio.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}" VP="${ganador.valorPremio}" VD="${
             ganador.valorPremioDescuento
           }" TP="${ganador.tipoPremio}" RT="${ganador.requiereTestimonio}" V="${
             ganador.ventaId
