@@ -5,19 +5,19 @@ const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicatioId;
-//const address = config.aplicativoAddressTest;
-const address = config.aplicativoAddressProd;
+const address = config.aplicativoAddressTest;
+//const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
     loteriaVentasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-    /* const usuarioClientePsd = config.usuarioAplicativoTest;
+    const usuarioClientePsd = config.usuarioAplicativoTest;
     const claveClientePsd = config.passwordAplicativoTest;
-     */
-    const usuarioClientePsd = config.usuarioAplicativoProd;
-    const claveClientePsd = config.passwordAplicativoProd;
+    
+/*     const usuarioClientePsd = config.usuarioAplicativoProd;
+    const claveClientePsd = config.passwordAplicativoProd; */
     let message = {
       $xml: `
       <PI_DatosXml>

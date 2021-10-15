@@ -189,13 +189,3 @@ const mainController = {
 }
 
 module.exports = mainController
-
-/* 	"objects" : 6742429,
-	"avgObjSize" : 202.45296613431154,
-    "dataSize" : 1.27127836458385,
-
-    	"objects" : 6742362,
-	"avgObjSize" : 202.45314713152453,
-	"dataSize" : 1.2712668683379889,
-
- */
