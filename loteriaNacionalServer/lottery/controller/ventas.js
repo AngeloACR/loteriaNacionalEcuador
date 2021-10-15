@@ -86,7 +86,8 @@ const ventasController = {
                 "reserveId": 123564987,
                 "amount": "30.00"
                 "ticketId": "13565132"
-                "transactionId": "2223846696262170"
+                "transactionId": "2223846696262170",
+                prizeDetails: []
             } */
       /* let operationTimeStamp = new Date(Date.now())
         .toISOString()
@@ -107,7 +108,7 @@ const ventasController = {
         operationTimeStamp: operationTimeStamp,
         ticketId: req.body.ticketId,
         amount: req.body.amount,
-        instantWinDetails: data.prizeDetails,
+        instantWinDetails: req.body.prizeDetails,
       };
 
       let response = await Wallet.sellLottery(data);
