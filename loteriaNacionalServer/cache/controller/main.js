@@ -22,6 +22,7 @@ const cacheController = {
     try {
       await cacheController.setUltimosResultados();
       await cacheController.setSorteos();
+      await cacheController.setSorteosDisponibles();
       let response = "Done";
       res.status(200).json(response);
     } catch (e) {
