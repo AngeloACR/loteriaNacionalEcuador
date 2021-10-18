@@ -3,6 +3,7 @@ export interface sorteo {
   cantidadDeFracciones: number;
   valorPremioPrincipal: any;
   precio: string;
+  dia: string;
   sorteo: string;
   nombre: string;
 }

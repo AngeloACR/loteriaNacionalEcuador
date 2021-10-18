@@ -128,6 +128,7 @@ module.exports.consultarSorteosDisponibles = async (
                   precio: sorteo.$.PVP,
                   sorteo: sorteo.$.SortId,
                   nombre: sorteo.$.SortNomb,
+                  dia: sorteo.$.SortNombSal.split(" ")[2],
                 };
                 return sorteoAux;
               });

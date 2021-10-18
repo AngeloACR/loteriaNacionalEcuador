@@ -108,6 +108,7 @@ export class InfoLoteriaComponent implements OnInit {
       fecha: "",
       valorPremioPrincipal: "",
       precio: "",
+      dia: "",
       cantidadDeFracciones: 0,
       sorteo: "",
     };
