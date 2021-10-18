@@ -40,8 +40,11 @@
     Total de fracciones:
     <p>{{ cantidadDeFracciones }}</p>
   </li>
-
-  <li class="menuItem">
+  <li class="menuItem" *ngIf="isLoteria">
+    Precio de fracción:
+    <p>{{ precio }}</p>
+  </li>
+  <li class="menuItem" *ngIf="!isLoteria">
     Precio:
     <p>{{ precio }}</p>
   </li>

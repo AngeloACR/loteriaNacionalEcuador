@@ -4,7 +4,7 @@ import {
   OnInit,
   EventEmitter,
   Output,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from "@angular/core";
 import { sorteo } from "../../interfaces/lottery.interface";
 import { LotteryService } from "../../services/lottery.service";
@@ -12,7 +12,7 @@ import { LotteryService } from "../../services/lottery.service";
 @Component({
   selector: "app-info-loteria",
   templateUrl: "./info-loteria.component.html",
-  styleUrls: ["./info-loteria.component.scss"]
+  styleUrls: ["./info-loteria.component.scss"],
 })
 export class InfoLoteriaComponent implements OnInit {
   @Input() titulo: string;
@@ -39,7 +39,7 @@ export class InfoLoteriaComponent implements OnInit {
   getClassColor(color: string) {
     switch (color) {
       case "loteria":
-      this.tipoLoteria = 1;
+        this.tipoLoteria = 1;
         this.fondoLoteria = true;
         this.isLoteria = true;
         this.fondoLotto = false;
@@ -47,15 +47,15 @@ export class InfoLoteriaComponent implements OnInit {
         break;
 
       case "lotto":
-      this.tipoLoteria = 2;
-      this.fondoLotto = true;
+        this.tipoLoteria = 2;
+        this.fondoLotto = true;
         this.fondoLoteria = false;
         this.fondoPozo = false;
         break;
 
       case "pozo":
-      this.tipoLoteria = 5;
-      this.fondoPozo = true;
+        this.tipoLoteria = 5;
+        this.fondoPozo = true;
         this.fondoLotto = false;
         this.fondoLoteria = false;
         break;
@@ -73,10 +73,12 @@ export class InfoLoteriaComponent implements OnInit {
     let auxPremio = (this.seleccionado as sorteo).valorPremioPrincipal;
     let premio = parseFloat(auxPremio).toFixed(2);
     let precio = parseFloat((this.seleccionado as sorteo).precio).toFixed(2);
-    this.cantidadDeFracciones = (this.seleccionado as sorteo).cantidadDeFracciones;
-    let auxPremioLoteria = (parseFloat(premio)*this.cantidadDeFracciones)
-    this.premioLoteria = this.lotteryService.formatNumber(auxPremioLoteria);
-    this.premio = this.lotteryService.formatNumber(premio);
+    this.cantidadDeFracciones = (
+      this.seleccionado as sorteo
+    ).cantidadDeFracciones;
+    let auxPremioLoteria = parseInt(premio) * this.cantidadDeFracciones;
+    this.premioLoteria = this.lotteryService.formatNumber(auxPremioLoteria).split(".")[0];
+    this.premio = this.lotteryService.formatNumber(premio).split(".")[0];
     this.precio = this.lotteryService.formatNumber(precio);
     this.emitir.emit(this.seleccionado);
     this.boleto = await this.lotteryService.obtenerImagenBoleto(
@@ -107,7 +109,7 @@ export class InfoLoteriaComponent implements OnInit {
       valorPremioPrincipal: "",
       precio: "",
       cantidadDeFracciones: 0,
-      sorteo: ""
+      sorteo: "",
     };
     //this.seleccionado = this.sorteoDefault;
     this.seleccionado = this.sorteos[0];
