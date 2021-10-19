@@ -109,7 +109,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
             ganadoreswebs.insert_one(ganador)
         #url = "https://ventas-api-prueba.loteria.com.ec/lottery/acreditarPremios"
         url = "https://ventas-api.loteria.com.ec/lottery/acreditarPremios"
-        response = requests.get(url)
+        response = requests.post(url, json={"sorteo": numeroSorteo})
         resultado = response.json()
         closeConnect(connection)
         status = True

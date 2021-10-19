@@ -69,7 +69,7 @@ export class InfoLoteriaComponent implements OnInit {
   async onEmitir() {
     this.changeDetectorRef.detectChanges();
     this.boleto = "";
-    this.fecha = (this.seleccionado as sorteo).fecha;
+    this.fecha = (this.seleccionado as sorteo).fecha.split(" ")[0];
     let auxPremio = (this.seleccionado as sorteo).valorPremioPrincipal;
     let premio = parseFloat(auxPremio).toFixed(2);
     let precio = parseFloat((this.seleccionado as sorteo).precio).toFixed(2);
