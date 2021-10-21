@@ -10,9 +10,9 @@ export class PaymentService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  mySource = this.localSource;
+  //mySource = this.localSource;
   //mySource = this.testSource;
-  //mySource = this.productionSource;
+  mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
 
