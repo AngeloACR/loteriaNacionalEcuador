@@ -2,6 +2,8 @@ const Ventas = require("../../loterianacional/controller/ventas");
 const config = require("../../config/environment");
 const https = require("https");
 const { exalogicLogger } = require("../../config/logging");
+var {exalogicError} = require("../../errors/customError");
+
 
 /* let exalogicHost = config.exalogicHostTest;
 let exalogicEndpoint = config.exalogicEndpointTest; */
@@ -56,14 +58,14 @@ const walletController = {
           exalogicLogger.error("reserveLottery.exalogic.error", {
             errorMessage: error.message,
           });
-          reject(new Error(error));
+          reject(new exalogicError(error, 'exalogic', 'handler'));
         });
 
         req.write(data);
         req.end();
       });
     } catch (e) {
-      throw e;
+     throw new exalogicError(e, 'exalogic', 'handler')
     }
   },
   sellLottery: async (data) => {
@@ -112,14 +114,14 @@ const walletController = {
           exalogicLogger.error("sellLottery.exalogic.error", {
             errorMessage: error.message,
           });
-          reject(new Error(error));
+          reject(new exalogicError(error, 'exalogic', 'handler'));
         });
 
         req.write(data);
         req.end();
       });
     } catch (e) {
-      throw e;
+     throw new exalogicError(e, 'exalogic', 'handler')
     }
   },
   cancelLottery: async (data) => {
@@ -166,14 +168,14 @@ const walletController = {
           exalogicLogger.error("cancelLottery.exalogic.error", {
             errorMessage: error.message,
           });
-          reject(new Error(error));
+          reject(new exalogicError(error, 'exalogic', 'handler'));
         });
 
         req.write(data);
         req.end();
       });
     } catch (e) {
-      throw e;
+     throw new exalogicError(e, 'exalogic', 'handler')
     }
   },
   getBalance: async (data) => {
@@ -221,7 +223,7 @@ const walletController = {
           exalogicLogger.error("getBalance.exalogic.error", {
             errorMessage: error.message,
           });
-          reject(new Error(error));
+          reject(new exalogicError(error, 'exalogic', 'handler'));
         });
 
         req.write(data);
@@ -229,7 +231,7 @@ const walletController = {
 
       });
     } catch (e) {
-      throw e;
+     throw new exalogicError(e, 'exalogic', 'handler')
     }
   },
   payLottery: async (data) => {
@@ -279,7 +281,7 @@ const walletController = {
           exalogicLogger.error("payLottery.exalogic.error", {
             errorMessage: error.message,
           });
-          reject(new Error(error));
+          reject(new exalogicError(error, 'exalogic', 'handler'));
         });
 
         req.write(data);
@@ -287,7 +289,7 @@ const walletController = {
 
       });
     } catch (e) {
-      throw e;
+     throw new exalogicError(e, 'exalogic', 'handler')
     }
   },
 };

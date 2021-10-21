@@ -8,8 +8,7 @@ const ganadoresController = {
   pagarLoteriaHttp: async (req, res) => {
     try {
       let sorteo = req.body.sorteo
-      console.log(sorteo);
-      //let response = await ganadoresController.pagarLoteria(sorteo);
+      let response = await ganadoresController.pagarLoteria(sorteo);
       res.status(200).json(response);
     } catch (e) {
       let response = {
@@ -67,6 +66,11 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       let ganadores = await Ganadores.find(query);
       let length = ganadores.length;
       let response = [];
+      let logData = {
+        data: [],
+        response: [],
+        function: "ganadoresController.payLottery",
+      };
       for (let i = 0; i < length; i++) {
         const ganador = ganadores[i];
 
@@ -94,13 +98,10 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             await ganador.save();
           }
           response.push(aux);
+          logData.data.push(data);
+          logData.response.push(response);
         }
       }
-      let logData = {
-        data,
-        response,
-        function: "ganadoresController.payLottery",
-      };
       apiVentasLogger.info("pagarLoteria.api", logData);
       return response;
     } catch (e) {

@@ -12,7 +12,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
             <p>CARGA DE BOLETOS</p>
         </div>
         <div class="instructionsBox">
-            <p>- El nombre de los archivos de boletos debe empezar con una "B" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: B5943.jpg, B2256.jpg, B16626.jpg</p>
+            <p>- El nombre de los archivos de boletos debe empezar con una "B" seguido del código de la lotería correspondiente, y seguido finalmente por el número del sorteo. Ejemplo de nombre de archivo: B5943.png, B2256.png, B16626.png</p>
             <p>- Las imagenes de los boletos deben estar en formato PNG. Esto es mandantorio porque de lo contrario, no podrán ser visualizadas en la plataforma web. </p>
             <p>- Los códigos de los juegos son: </p>
             <p class="codeTag">- 1 para Loteria Nacional</p>

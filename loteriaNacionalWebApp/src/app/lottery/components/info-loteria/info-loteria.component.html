@@ -16,7 +16,7 @@
         Seleccione un sorteo
       </option>
       <option [ngValue]="objeto" *ngFor="let objeto of sorteos">
-        <span>{{objeto.dia}}</span> - {{ objeto.sorteo}} - {{objeto.fecha }}
+        <span>{{objeto.dia}}</span> - {{ objeto.sorteo}} - {{objeto.fecha.split(" ")[0] }}
       </option>
     </select>
   </li>

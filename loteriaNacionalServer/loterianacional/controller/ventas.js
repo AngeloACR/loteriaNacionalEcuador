@@ -1,6 +1,9 @@
 var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
+var {loteriaError} = require("../../errors/customError");
+
+
 const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
@@ -152,7 +155,7 @@ module.exports.consultarSorteosDisponibles = async (
                   errorMessage: `${errorCode}-${errorMessage}`,
                 }
               );
-              reject(new Error(errorMessage));
+              reject(new loteriaError(errorMessage, "loteria", "consultarSorteosDisponibles"));
             }
           } catch (e) {
             let errorMsg = e.message;
@@ -160,7 +163,7 @@ module.exports.consultarSorteosDisponibles = async (
             loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
               errorMessage: errorMsg,
             });
-            reject(new Error(errorMsg));
+            reject(new loteriaError(errorMsg, "loteria", "consultarSorteosDisponibles"));;
           }
         }
       );
@@ -172,7 +175,7 @@ module.exports.consultarSorteosDisponibles = async (
       errorMessage: errorMsg,
     });
 
-    throw new Error(e.message);
+    throw new loteriaError(errorMsg, "loteria", "consultarSorteosDisponibles");
   }
 };
 
@@ -263,14 +266,14 @@ module.exports.obtenerCombinacionesDisponibles = async (
                   errorMessage: `${errorCode}-${errorMessage}`,
                 }
               );
-              reject(new Error(errorMessage));
-            }
+            reject(new loteriaError(errorMessage, "loteria", "obtenerCombinacionesDisponibles"));;
+          }
           } catch (e) {
             let errorMsg = e.message;
             loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
               errorMessage: errorMsg,
             });
-            reject(new Error(errorMsg));
+            reject(new loteriaError(errorMsg, "loteria", "obtenerCombinacionesDisponibles"));;
           }
         }
       );
@@ -282,7 +285,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
       errorMessage: errorMsg,
     });
 
-    throw new Error(e.message);
+    throw new loteriaError(errorMsg, "loteria", "consultarSorteosDisponibles");
   }
 };
 
@@ -412,15 +415,15 @@ module.exports.reservarCombinaciones = async (
                 data: message,
                 errorMessage: `${errorCode}-${errorMessage}`,
               });
-              reject(new Error(errorMessage));
+            reject(new loteriaError(errorMessage, "loteria", "reservarCombinaciones"));;
             }
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriaVentasLogger.error("eliminarReservas.error", {
+            loteriaVentasLogger.error("reservarCombinaciones.error", {
               errorMessage: errorMsg,
             });
-            reject(new Error(errorMsg));
+            reject(new loteriaError(errorMsg, "loteria", "reservarCombinaciones"));;
           }
         }
       );
@@ -432,7 +435,7 @@ module.exports.reservarCombinaciones = async (
       errorMessage: errorMsg,
     });
 
-    throw new Error(e.message);
+    throw new loteriaError(errorMsg, "loteria", "reservarCombinaciones");
   }
 };
 
@@ -555,16 +558,16 @@ module.exports.eliminarReservas = async (
               loteriaVentasLogger.error("eliminarReservas.loteria.error", {
                 message: `${errorCode}-${errorMessage}`,
               });
-              reject(new Error(errorMessage));
-            }
+            reject(new loteriaError(errorMessage, "loteria", "eliminarReservas"));;
+          }
           } catch (e) {
             let errorMsg = e.message;
 
             loteriaVentasLogger.error("eliminarReservas.error", {
               data: message,
-              errorMessage: `${errorCode}-${errorMessage}`,
+              errorMessage: `${errorCode}-${errorMsg}`,
             });
-            reject(new Error(errorMsg));
+            reject(new loteriaError(errorMsg, "loteria", "eliminarReservas"));;
           }
         }
       );
@@ -576,7 +579,7 @@ module.exports.eliminarReservas = async (
       errorMessage: errorMsg,
     });
 
-    throw new Error(e.message);
+    throw new loteriaError(errorMsg, "loteria", "eliminarReservas");
   }
 };
 
@@ -750,7 +753,7 @@ module.exports.venderBoletos = async (
             loteriaVentasLogger.error("venderBoletos.error", {
               errorMessage: errorMsg,
             });
-            reject(new Error(errorMsg));
+            reject(new loteriaError(errorMsg, "loteria", "venderBoletos"));;
           }
         }
       );
@@ -762,6 +765,6 @@ module.exports.venderBoletos = async (
       errorMessage: errorMsg,
     });
 
-    throw new Error(e.message);
+    throw new loteriaError(errorMsg, "loteria", "venderBoletos");
   }
 };

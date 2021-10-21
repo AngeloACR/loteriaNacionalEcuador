@@ -1,6 +1,8 @@
 const Ventas = require("../../loterianacional/controller/ventas");
 const config = require("../../config/environment");
 const https = require("https");
+var {exalogicError} = require("../../errors/customError");
+const helper = require("../helper")
 const { exalogicLogger } = require("../../config/logging");
 
 /* let exalogicHost = config.exalogicHostTest;
@@ -10,57 +12,64 @@ let exalogicHost = config.exalogicHostProd
 let exalogicEndpoint = config.exalogicEndpointProd;
 
 const authController = {
-  authUser: async (authData) => {
+  authUserHttp: async (req, res) => {
     try {
-      exalogicLogger.silly("authUser");
-      return new Promise(async (resolve, reject) => {
-        //await authController.logoutUser();
-
-        authData = JSON.stringify(authData);
-        const options = {
-          hostname: exalogicHost,
-          port: 443,
-          path: exalogicEndpoint,
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Content-Length": authData.length,
-          },
-        };
-        const req = https.request(options, (res) => {
-          var body = "";
-          res.on("data", function (chunk) {
-            body = body + chunk;
-          });
-
-          res.on("end", async function () {
-            if (res.statusCode != 200) {
-              reject(
-                new Error("Ocurrio un error, por favor intente más tarde")
-              );
-            } else {
-              let response = body == "" ? "" : JSON.parse(body);
-              let logData = {
-                data: authData,
-                response,
-              };
-              exalogicLogger.info("authUser.exalogic", logData);
-              resolve(response);
-            }
-          });
-        });
-
-        req.on("error", (error) => {
-          exalogicLogger.error("authUser.exalogic.error", {
-            errorMessage: error.message,
-          });
-          reject(new Error(error));
-        });
-        req.write(authData);
-        req.end();
-      });
+      /* {
+        "token": "661c0ce5ccabbeb1136a"
+      } */
+      let token = req.body.token;
+      let response = await authController.authUser(token)
+      res.status(200).json(response);
     } catch (e) {
-      throw e;
+      exalogicLogger.error("authDataHttp.error", { errorMessage: e.message, errorData: e.data });
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  authUser: async (data) => {
+    try {
+      /* {
+                "token": "661c0ce5ccabbeb1136a"
+            } */
+      let token = data;
+      let authData = {
+        command: "checkToken",
+        systemCode: "1",
+        sessionToken: token,
+        language: "en",
+        currency: "USD",
+      };
+      let response = await helper.exalogicRequest(authData);
+      if (response["password"]) delete response["password"];
+      if(parseInt(response.resultCode) > 0){
+        
+        let logData = {
+          data: authData,
+          response,
+          function: "Auth.authUser",
+        };
+        exalogicLogger.info("authUser.exalogic", logData);
+        return response;
+      } else{
+        let errorData = {
+          input: data,
+          output: response,
+          function: "authData"
+        }
+        throw new exalogicError(response.resultDescription, 'exalogic', errorData)
+      }
+    
+    } catch (e) {
+      let errorData = {
+        input: e,
+        output: "",
+        function: "authData"
+      }
+      exalogicLogger.error("authData.error", { errorMessage: e.message });
+        throw new exalogicError(e.message, 'exalogic', errorData)
     }
   },
   logoutUser: async () => {

@@ -15,9 +15,9 @@ export class LotteryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
+  mySource = this.localSource;
   //mySource = this.testSource;
-  mySource = this.productionSource;
+  //mySource = this.productionSource;
 
   sorteo: Array<sorteo>;
 
@@ -73,8 +73,8 @@ export class LotteryService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/cache";
-    let authData = this.getAuthData();
+    let endpoint = "/lottery";
+    let authData = this.getAuthData();loteria
     switch (loteria) {
       case 1:
         endpoint = `${endpoint}/loteriaSorteosDisponibles`;
@@ -287,11 +287,11 @@ export class LotteryService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/lottery";
+    let endpoint = "/exalogic";
     let body = {
       token,
     };
-    endpoint = `${endpoint}/auth`;
+    endpoint = `${endpoint}/authUser`;
     var address = this.mySource;
 
     address = address + endpoint;

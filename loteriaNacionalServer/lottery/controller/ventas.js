@@ -10,6 +10,8 @@ const Auth = require("../../exalogic/controller/auth");
 const Wallet = require("../../exalogic/controller/wallet");
 const ganadoresController = require("./ganadores");
 const { apiVentasLogger } = require("../../config/logging");
+var {apiError} = require("../../errors/customError");
+
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -32,10 +34,10 @@ function getCurrentTimeStamp() {
 const ventasController = {
   authUserHttp: async (req, res) => {
     try {
-      let token = req.body.token;
       /* {
-                "token": "661c0ce5ccabbeb1136a"
-            } */
+        "token": "661c0ce5ccabbeb1136a"
+      } */
+      let token = req.body.token;
       let authData = {
         command: "checkToken",
         systemCode: "1",
@@ -49,9 +51,41 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
+    }
+  },
+  authUser: async (data) => {
+    try {
+      /* {
+                "token": "661c0ce5ccabbeb1136a"
+            } */
+      apiVentasLogger.silly("authUser");
+      let token = data.token;
+      let authData = {
+        command: "checkToken",
+        systemCode: "1",
+        sessionToken: token,
+        language: "en",
+        currency: "USD",
+      };
+      let response = await Auth.authUser(authData);
+      if (response["password"]) delete response["password"];
+      let logData = {
+        data: authData,
+        response,
+        function: "Auth.authUser",
+      };
+      apiVentasLogger.info("authUser.exalogic", logData);
+      return response;
+    
+    } catch (e) {
+      apiVentasLogger.error("authData.error", { errorMessage: e.message });
+      throw new Error(e.message);
     }
   },
   getBalanceHttp: async (req, res) => {
@@ -73,7 +107,10 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -116,7 +153,10 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -153,7 +193,10 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -203,40 +246,15 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
   },
 
-  authUser: async (data) => {
-    try {
-      apiVentasLogger.silly("authUser");
-      let token = data.token;
-      /* {
-                "token": "661c0ce5ccabbeb1136a"
-            } */
-      let authData = {
-        command: "checkToken",
-        systemCode: "1",
-        sessionToken: token,
-        language: "en",
-        currency: "USD",
-      };
-      let response = await Auth.authUser(authData);
-      if (response["password"]) delete response["password"];
-      let logData = {
-        data: authData,
-        response,
-        function: "Auth.authUser",
-      };
-      apiVentasLogger.info("authUser.exalogic", logData);
-      return response;
-    } catch (e) {
-      apiVentasLogger.error("authData.error", { errorMessage: e.message });
-      throw new Error(e.message);
-    }
-  },
   getBalance: async (data) => {
     try {
       apiVentasLogger.silly("getBalance");
@@ -403,7 +421,6 @@ const ventasController = {
 
   searchLottoSorteosDisponibles: async (req, res) => {
     try {
-      apiVentasLogger.silly("searchLottoSorteosDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
@@ -413,17 +430,6 @@ const ventasController = {
         user,
         ip
       );
-      let logData = {
-        data: {
-          tipoLoteria: 2,
-          lotteryToken,
-          user,
-          ip,
-        },
-        response: finalResponse,
-        function: "Ventas.consultaSorteosDisponibles",
-      };
-      apiVentasLogger.info("searchLottoSorteosDisponibles.loteria", logData);
       res.status(200).json(finalResponse);
     } catch (e) {
       apiVentasLogger.error("searchLottoSorteosDisponibles.error", {
@@ -431,14 +437,16 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
   },
   searchLoteriaSorteosDisponibles: async (req, res) => {
     try {
-      apiVentasLogger.silly("searchLoteriaSorteosDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
       let user = req.query.user;
@@ -448,17 +456,6 @@ const ventasController = {
         user,
         ip
       );
-      let logData = {
-        data: {
-          tipoLoteria: 1,
-          lotteryToken,
-          user,
-          ip,
-        },
-        response: finalResponse,
-        function: "Ventas.consultaSorteosDisponibles",
-      };
-      apiVentasLogger.info("searchLoteriaSorteosDisponibles.loteria", logData);
       res.status(200).json(finalResponse);
     } catch (e) {
       apiVentasLogger.error("searchLoteriaSorteosDisponibles.error", {
@@ -466,13 +463,15 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
   },
   searchPozoSorteosDisponibles: async (req, res) => {
-    apiVentasLogger.silly("searchPozoSorteosDisponibles");
     try {
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.query.lotteryToken;
@@ -483,17 +482,6 @@ const ventasController = {
         user,
         ip
       );
-      let logData = {
-        data: {
-          tipoLoteria: 5,
-          lotteryToken,
-          user,
-          ip,
-        },
-        response: finalResponse,
-        function: "Ventas.consultaSorteosDisponibles",
-      };
-      apiVentasLogger.info("searchPozoSorteosDisponibles.loteria", logData);
 
       res.status(200).json(finalResponse);
     } catch (e) {
@@ -502,7 +490,10 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -510,7 +501,6 @@ const ventasController = {
 
   searchLottoCombinacionesDisponibles: async (req, res) => {
     try {
-      apiVentasLogger.silly("searchLottoCombinacionesDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
@@ -543,23 +533,6 @@ const ventasController = {
         return combinacion;
       });
 
-      let logData = {
-        data: {
-          tipoLoteria: 2,
-          lotteryToken,
-          combinacion,
-          combinacionFigura,
-          tipoSeleccion,
-          user,
-          ip,
-        },
-        response: combinaciones,
-        function: "Ventas.obtenerCombinacionesDisponibles",
-      };
-      apiVentasLogger.info(
-        "searchLottoCombinacionesDisponibles.loteria",
-        logData
-      );
       response = {
         combinaciones,
       };
@@ -571,14 +544,16 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
   },
   searchLoteriaCombinacionesDisponibles: async (req, res) => {
     try {
-      apiVentasLogger.silly("searchLoteriaCombinacionesDisponibles");
       let ip = req.headers["x-forwarded-for"];
       let lotteryToken = req.body.lotteryToken;
       let user = req.body.user;
@@ -610,23 +585,6 @@ const ventasController = {
         return combinacion;
       });
 
-      let logData = {
-        data: {
-          tipoLoteria: 1,
-          lotteryToken,
-          combinacion,
-          combinacionFigura,
-          tipoSeleccion,
-          user,
-          ip,
-        },
-        response: combinaciones,
-        function: "Ventas.obtenerCombinacionesDisponibles",
-      };
-      apiVentasLogger.info(
-        "searchLoteriaCombinacionesDisponibles.loteria",
-        logData
-      );
       response = {
         combinaciones,
       };
@@ -637,14 +595,16 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
   },
   searchPozoCombinacionesDisponibles: async (req, res) => {
     try {
-      apiVentasLogger.silly("searchPozoCombinacionesDisponibles");
       let ip = req.headers["x-forwarded-for"];
 
       let lotteryToken = req.body.lotteryToken;
@@ -677,23 +637,6 @@ const ventasController = {
         return combinacion;
       });
 
-      let logData = {
-        data: {
-          tipoLoteria: 2,
-          lotteryToken,
-          combinacion,
-          combinacionFigura,
-          tipoSeleccion,
-          user,
-          ip,
-        },
-        response: combinaciones,
-        function: "Ventas.obtenerCombinacionesDisponibles",
-      };
-      apiVentasLogger.info(
-        "searchPozoCombinacionesDisponibles.loteria",
-        logData
-      );
       response = {
         combinaciones,
       };
@@ -705,7 +648,10 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -747,7 +693,6 @@ const ventasController = {
         function: "Ventas.reservarCombinaciones",
       };
       apiVentasLogger.info("reservarBoletos.loteria", logData);
-      //let reserva = await Ventas.reservarCombinaciones(5, sorteo, combinaciones, token);
       res.status(200).json(response);
     } catch (e) {
       apiVentasLogger.error("reservarBoletos.error", {
@@ -755,7 +700,10 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -802,7 +750,10 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -1051,7 +1002,10 @@ const ventasController = {
       });
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -1067,7 +1021,10 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -1082,7 +1039,10 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -1096,7 +1056,10 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
@@ -1177,7 +1140,10 @@ const ventasController = {
     } catch (e) {
       let response = {
         status: "error",
-        errorMessage: e.message,
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+
       };
       res.status(400).json(response);
     }
