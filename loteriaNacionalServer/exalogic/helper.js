@@ -11,7 +11,7 @@ let exalogicEndpoint = config.exalogicEndpointProd;
 
 module.exports.exalogicRequest = async (data) => {
   try {
-    exalogicLogger.silly("authUser");
+    exalogicLogger.silly("exalogicRequest");
     return new Promise(async (resolve, reject) => {
       try {
         //await authController.logoutUser();
@@ -70,7 +70,7 @@ module.exports.exalogicRequest = async (data) => {
           };
           reject(new exalogicError(error.message, "exalogic", errorData));
         });
-        req.write(data);
+        req.write(aux);
         req.end();
       } catch (e) {
         let errorData = {

@@ -96,10 +96,10 @@ export class LottoComponent implements OnInit {
         if (count <= 1000) {
           await this.pushToSeleccionado(this.ticketsDisponibles[id]);
         } else {
-    this.changeDetectorRef.detectChanges();
-    this.ticketsDisponibles[id].status = false;
-    this.changeDetectorRef.markForCheck();
-    let errorMessage =
+          this.changeDetectorRef.detectChanges();
+          this.ticketsDisponibles[id].status = false;
+          this.changeDetectorRef.markForCheck();
+          let errorMessage =
             "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
           this.openError(errorMessage);
         }
@@ -322,9 +322,14 @@ export class LottoComponent implements OnInit {
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
-      let errorMessage = e.message;
+      let errorMessage =
+        "Ha ocurrido un error obteniendo los sorteos disponibles. Por favor, verifique si tiene la sesión iniciada e intente de nuevo.";
       this.openError(errorMessage);
     }
+  }
+
+  obtenerAntojito(antojito) {
+    return this.lotteryService.obtenerCaracteristicasDeAntojito(antojito).ruta;
   }
 
   async deleteLoteriaFraccion(data) {

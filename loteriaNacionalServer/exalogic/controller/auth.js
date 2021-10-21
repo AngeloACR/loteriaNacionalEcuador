@@ -1,6 +1,5 @@
 const Ventas = require("../../loterianacional/controller/ventas");
 const config = require("../../config/environment");
-const https = require("https");
 var {exalogicError} = require("../../errors/customError");
 const helper = require("../helper")
 const { exalogicLogger } = require("../../config/logging");
@@ -21,7 +20,7 @@ const authController = {
       let response = await authController.authUser(token)
       res.status(200).json(response);
     } catch (e) {
-      exalogicLogger.error("authDataHttp.error", { errorMessage: e.message, errorData: e.data });
+      exalogicLogger.error("authUserHttp.error", { errorMessage: e.message, errorData: e.data });
       let response = {
         status: "error",
         message: e.message,
@@ -44,7 +43,7 @@ const authController = {
       };
       let response = await helper.exalogicRequest(authData);
       if (response["password"]) delete response["password"];
-      if(parseInt(response.resultCode) > 0){
+      if(parseInt(response.resultCode) >= 0){
         
         let logData = {
           data: authData,
@@ -57,7 +56,7 @@ const authController = {
         let errorData = {
           input: data,
           output: response,
-          function: "authData"
+          function: "authUser"
         }
         throw new exalogicError(response.resultDescription, 'exalogic', errorData)
       }
@@ -66,9 +65,9 @@ const authController = {
       let errorData = {
         input: e,
         output: "",
-        function: "authData"
+        function: "authUser"
       }
-      exalogicLogger.error("authData.error", { errorMessage: e.message });
+      exalogicLogger.error("authUser.error", { errorMessage: e.message, errorData: e.data });
         throw new exalogicError(e.message, 'exalogic', errorData)
     }
   },

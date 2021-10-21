@@ -20,7 +20,7 @@
     Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
   </p>
   <p *ngIf="ticket.combinacion5 && ticket.combinacion5 != ''">
-    Antojito: <span>{{ ticket.combinacion5 }}</span>
+    Antojito: <span>{{ antojito.nombre }}</span>
   </p>
   <img src="assets/trash.svg" class="trash" (click)="deleteTicket()" alt="">
   <img class="logoTicket" src="assets/img/lotto-sombra.png" alt="">

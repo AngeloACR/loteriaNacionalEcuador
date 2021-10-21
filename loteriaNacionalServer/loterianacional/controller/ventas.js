@@ -1,8 +1,7 @@
 var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
-var {loteriaError} = require("../../errors/customError");
-
+var { loteriaError } = require("../../errors/customError");
 
 const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
@@ -16,9 +15,9 @@ module.exports.autenticarUsuario = async () => {
     loteriaVentasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-/*     const usuarioClientePsd = config.usuarioAplicativoTest;
+    /*     const usuarioClientePsd = config.usuarioAplicativoTest;
     const claveClientePsd = config.passwordAplicativoTest; */
-    
+
     const usuarioClientePsd = config.usuarioAplicativoProd;
     const claveClientePsd = config.passwordAplicativoProd;
     let message = {
@@ -65,6 +64,7 @@ module.exports.autenticarUsuario = async () => {
             loteriaVentasLogger.error("autenticarUsuario.error", {
               message: `${errorCode}-${errorMessage}`,
             });
+            let errorData = {};
             reject(new Error(errorMessage));
           }
         }
@@ -155,7 +155,13 @@ module.exports.consultarSorteosDisponibles = async (
                   errorMessage: `${errorCode}-${errorMessage}`,
                 }
               );
-              reject(new loteriaError(errorMessage, "loteria", "consultarSorteosDisponibles"));
+              reject(
+                new loteriaError(
+                  errorMessage,
+                  "loteria",
+                  "consultarSorteosDisponibles"
+                )
+              );
             }
           } catch (e) {
             let errorMsg = e.message;
@@ -163,7 +169,13 @@ module.exports.consultarSorteosDisponibles = async (
             loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
               errorMessage: errorMsg,
             });
-            reject(new loteriaError(errorMsg, "loteria", "consultarSorteosDisponibles"));;
+            reject(
+              new loteriaError(
+                errorMsg,
+                "loteria",
+                "consultarSorteosDisponibles"
+              )
+            );
           }
         }
       );
@@ -266,14 +278,25 @@ module.exports.obtenerCombinacionesDisponibles = async (
                   errorMessage: `${errorCode}-${errorMessage}`,
                 }
               );
-            reject(new loteriaError(errorMessage, "loteria", "obtenerCombinacionesDisponibles"));;
-          }
+
+              let errorData = {
+                input: message,
+                output: errorCode,
+                function: "obtenerCombinacionesDisponibles",
+              };
+              reject(new loteriaError(errorMessage, "loteria", errorData));
+            }
           } catch (e) {
             let errorMsg = e.message;
             loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
               errorMessage: errorMsg,
             });
-            reject(new loteriaError(errorMsg, "loteria", "obtenerCombinacionesDisponibles"));;
+            let errorData = {
+              input: e,
+              output: "",
+              function: "obtenerCombinacionesDisponibles",
+            };
+            reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -284,8 +307,13 @@ module.exports.obtenerCombinacionesDisponibles = async (
     loteriaVentasLogger.error("obtenerCombinacionesDisponibles.error", {
       errorMessage: errorMsg,
     });
+    let errorData = {
+      input: e,
+      output: "",
+      function: "obtenerCombinacionesDisponibles",
+    };
 
-    throw new loteriaError(errorMsg, "loteria", "consultarSorteosDisponibles");
+    throw new loteriaError(errorMsg, "loteria", errorData);
   }
 };
 
@@ -415,7 +443,13 @@ module.exports.reservarCombinaciones = async (
                 data: message,
                 errorMessage: `${errorCode}-${errorMessage}`,
               });
-            reject(new loteriaError(errorMessage, "loteria", "reservarCombinaciones"));;
+              let errorData = {
+                input: message,
+                output: errorCode,
+                function: "reservarCombinaciones",
+              };
+
+              reject(new loteriaError(errorMessage, "loteria", errorData));
             }
           } catch (e) {
             let errorMsg = e.message;
@@ -423,7 +457,13 @@ module.exports.reservarCombinaciones = async (
             loteriaVentasLogger.error("reservarCombinaciones.error", {
               errorMessage: errorMsg,
             });
-            reject(new loteriaError(errorMsg, "loteria", "reservarCombinaciones"));;
+            let errorData = {
+              input: e,
+              output: "",
+              function: "reservarCombinaciones",
+            };
+
+            reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -434,8 +474,13 @@ module.exports.reservarCombinaciones = async (
     loteriaVentasLogger.error("reservarCombinaciones.error", {
       errorMessage: errorMsg,
     });
+    let errorData = {
+      input: e,
+      output: "",
+      function: "reservarCombinaciones",
+    };
 
-    throw new loteriaError(errorMsg, "loteria", "reservarCombinaciones");
+    throw new loteriaError(errorMsg, "loteria", "errorData");
   }
 };
 
@@ -558,16 +603,26 @@ module.exports.eliminarReservas = async (
               loteriaVentasLogger.error("eliminarReservas.loteria.error", {
                 message: `${errorCode}-${errorMessage}`,
               });
-            reject(new loteriaError(errorMessage, "loteria", "eliminarReservas"));;
-          }
+              let errorData = {
+                input: message,
+                output: errorCode,
+                function: "eliminarReservas",
+              };
+
+              reject(new loteriaError(errorMessage, "loteria", errorData));
+            }
           } catch (e) {
             let errorMsg = e.message;
 
             loteriaVentasLogger.error("eliminarReservas.error", {
               data: message,
               errorMessage: `${errorCode}-${errorMsg}`,
-            });
-            reject(new loteriaError(errorMsg, "loteria", "eliminarReservas"));;
+            });let errorData = {
+              input: e,
+              output: "",
+              function: "eliminarReservas",
+            };
+            reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -578,8 +633,12 @@ module.exports.eliminarReservas = async (
     loteriaVentasLogger.error("eliminarReservas.error", {
       errorMessage: errorMsg,
     });
-
-    throw new loteriaError(errorMsg, "loteria", "eliminarReservas");
+    let errorData = {
+      input: e,
+      output: "",
+      function: "eliminarReservas",
+    };
+    throw new loteriaError(errorMsg, "loteria", errorData);
   }
 };
 
@@ -745,7 +804,12 @@ module.exports.venderBoletos = async (
                 data: message,
                 errorMessage: `${errorCode}-${errorMessage}`,
               });
-              reject(new Error(errorMessage));
+              let errorData = {
+                input: message,
+                output: errorCode,
+                function: "venderBoletos",
+              };
+              reject(new loteriaError(errorMsg, "loteria", errorData));
             }
           } catch (e) {
             let errorMsg = e.message;
@@ -753,7 +817,13 @@ module.exports.venderBoletos = async (
             loteriaVentasLogger.error("venderBoletos.error", {
               errorMessage: errorMsg,
             });
-            reject(new loteriaError(errorMsg, "loteria", "venderBoletos"));;
+            let errorData = {
+              input: e,
+              output: "",
+              function: "venderBoletos",
+            };
+
+            reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -765,6 +835,11 @@ module.exports.venderBoletos = async (
       errorMessage: errorMsg,
     });
 
-    throw new loteriaError(errorMsg, "loteria", "venderBoletos");
+    let errorData = {
+      input: e,
+      output: "",
+      function: "venderBoletos",
+    };
+    throw new loteriaError(errorMsg, "loteria", errorData);
   }
 };

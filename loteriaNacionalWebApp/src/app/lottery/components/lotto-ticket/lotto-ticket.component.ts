@@ -1,6 +1,7 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ticketsLotto, sorteo } from "../../interfaces/lottery.interface";
+import { LotteryService } from "../../services/lottery.service";
 
 @Component({
   selector: "app-lotto-ticket",
@@ -18,14 +19,19 @@ export class LottoTicketComponent implements OnInit {
 
   objeto: any;
   numero: any;
+  antojito: any;
+  constructor(private lotteryService: LotteryService) {}
 
-  constructor() {}
 
   async ngOnInit() {
     this.ticketIndex = this.ticket.combinacion1;
     this.ticketNumbers = this.ticket.display;
     this.sorteoNumber = this.sorteo.sorteo;
     this.date = this.sorteo.fecha;
+
+    this.antojito = this.lotteryService.obtenerCaracteristicasDeAntojito(
+      this.ticket.combinacion5
+    );
   }
   deleteTicket(){
     this.delete.emit()

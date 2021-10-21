@@ -10,9 +10,9 @@ export class PaymentService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
+  mySource = this.localSource;
   //mySource = this.testSource;
-  mySource = this.productionSource;
+  //mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
 
@@ -44,7 +44,7 @@ export class PaymentService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/lottery";
+    let endpoint = "/exalogic";
     let body = {
       token,
     };
@@ -149,7 +149,8 @@ export class PaymentService {
           resolve(response);
         },
         (error: any) => {
-          reject(new Error(error.error.message));
+          //reject(new Error(error.error.message));
+          reject(new Error("Ha ocurrido un error procesando la compra. Por favor, intente de nuevo."));
         }
       );
     });
