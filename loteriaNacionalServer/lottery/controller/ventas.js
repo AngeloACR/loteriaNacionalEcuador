@@ -16,8 +16,8 @@ var {apiError} = require("../../errors/customError");
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletos = config.sourceBoletosLocal;
-let sourceBoletos = config.sourceBoletosTest;
-//let sourceBoletos = config.sourceBoletosProd;
+//let sourceBoletos = config.sourceBoletosTest;
+let sourceBoletos = config.sourceBoletosProd;
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
