@@ -799,10 +799,10 @@ module.exports.venderBoletos = async (
               loteriaVentasLogger.info("venderBoletos.loteria", logData);
               resolve(response);
             } else {
-              let errorMessage = data.mt.c[0].msgError[0];
+              let errorMsg = data.mt.c[0].msgError[0];
               loteriaVentasLogger.error("venderBoletos.loteria.error", {
                 data: message,
-                errorMessage: `${errorCode}-${errorMessage}`,
+                errorMessage: `${errorCode}-${errorMsg}`,
               });
               let errorData = {
                 input: message,

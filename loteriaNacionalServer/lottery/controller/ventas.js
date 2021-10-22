@@ -838,7 +838,7 @@ const ventasController = {
       let logData = {
         data: exaReservaData,
         response: exaReservaResponse,
-        function: "ventasController.reserveLottery",
+        function: "Wallet.reserveLottery",
       };
       apiVentasLogger.info("comprarBoletos.api", logData);
       // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
@@ -964,7 +964,7 @@ const ventasController = {
       logData = {
         data: exaVentaData,
         response: exaVentaResponse,
-        function: "ventasController.sellLottery",
+        function: "Wallet.sellLottery",
       };
       apiVentasLogger.info("comprarBoletos.api", logData);
       let apiVentaData = {

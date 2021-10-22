@@ -116,10 +116,10 @@ export class PaymentService {
       );
     });
   }
-  confirmarCompra(token, reservaId): Promise<any> {
-    let loteria = this.cart.getCarritoLoteria();
-    let lotto = this.cart.getCarritoLotto();
-    let pozo = this.cart.getCarritoPozo();
+  async confirmarCompra(token, reservaId): Promise<any> {
+    let loteria = await this.cart.getCarritoLoteria();
+    let lotto = await this.cart.getCarritoLotto();
+    let pozo = await this.cart.getCarritoPozo();
     let total = this.cart.getTotal();
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");

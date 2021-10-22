@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ShoppingCartService} from './services/shopping-cart.service'
 
 @Component({
   selector: 'app-payment',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cart: ShoppingCartService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.cart.setTotal()
   }
 
 }

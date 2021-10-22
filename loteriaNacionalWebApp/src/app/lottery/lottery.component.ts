@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ShoppingCartService} from '../payment/services/shopping-cart.service'
 
 @Component({
   selector: 'app-lottery',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LotteryComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private cart: ShoppingCartService) { }
+
+  async ngOnInit() {
+    await this.cart.setTotal()
   }
 
 }
