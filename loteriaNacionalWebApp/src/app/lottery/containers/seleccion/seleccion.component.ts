@@ -40,16 +40,18 @@ export class SeleccionComponent implements OnInit {
     try {
       this.loadingMessage = "Espera mientras procesamos tu información";
       this.isLoading = true;
-      let data = await this.lottery.authUser(this.token);
-      this.lotteryToken = data.lotteryToken;
-      if(this.lotteryToken){
-        this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
-        this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
-        this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;  
+      if(this.token){
+        let data = await this.lottery.authUser(this.token);
+        this.lotteryToken = data.lotteryToken;
+        if(this.lotteryToken){
+          this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
+          this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
+          this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;  
+        }
+        
+        await this.getCarritoTickets();
+        this.getTotal();
       }
-
-      this.getCarritoTickets();
-      this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -226,11 +228,9 @@ export class SeleccionComponent implements OnInit {
       }
       delete this.ticketsLoteria[identificador];
 
-      localStorage.setItem(
-        "seleccionadosLoteria",
-        JSON.stringify(this.ticketsLoteria)
-      );
-      this.getCarritoTickets();
+      await this.cart.setCarritoLoteria(this.ticketsLoteria);
+
+      await this.getCarritoTickets();
       this.getTotal();
 
       this.isLoading = false;
@@ -263,11 +263,9 @@ export class SeleccionComponent implements OnInit {
 
       delete this.ticketsLotto[identificador];
 
-      localStorage.setItem(
-        "seleccionadosLotto",
-        JSON.stringify(this.ticketsLotto)
-      );
-      this.getCarritoTickets();
+      await this.cart.setCarritoLotto(this.ticketsLotto);
+
+      await this.getCarritoTickets();
       this.getTotal();
       this.isLoading = false;
     } catch (e) {
@@ -305,8 +303,8 @@ export class SeleccionComponent implements OnInit {
         delete this.ticketsLoteria[identificador];
       }
 
-      this.cart.setCarritoLoteria(this.ticketsLoteria);
-      this.getCarritoTickets();
+      await this.cart.setCarritoLoteria(this.ticketsLoteria);
+      await this.getCarritoTickets();
       this.getTotal();
       this.isLoading = false;
     } catch (e) {
@@ -338,11 +336,9 @@ export class SeleccionComponent implements OnInit {
 
       delete this.ticketsPozo[identificador];
 
-      localStorage.setItem(
-        "seleccionadosPozo",
-        JSON.stringify(this.ticketsPozo)
-      );
-      this.getCarritoTickets();
+      await this.cart.setCarritoPozo(this.ticketsPozo);
+
+      await this.getCarritoTickets();
       this.getTotal();
       this.isLoading = false;
     } catch (e) {
@@ -384,7 +380,7 @@ export class SeleccionComponent implements OnInit {
         reservaId
       );
       this.cart.borrarCarrito();
-      this.getCarritoTickets();
+      await this.getCarritoTickets();
       this.getTotal();
       this.isLoading = false;
     } catch (e) {
@@ -396,28 +392,13 @@ export class SeleccionComponent implements OnInit {
     }
   }
 
-  getCarritoTickets() {
-    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
-      this.ticketsLoteria = JSON.parse(
-        localStorage.getItem("seleccionadosLoteria")
-      );
-    } else {
-      this.ticketsLoteria = {};
-    }
-    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
-      this.ticketsLotto = JSON.parse(
-        localStorage.getItem("seleccionadosLotto")
-      );
-    } else {
-      this.ticketsLotto = {};
-    }
-    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
-      this.ticketsPozo = JSON.parse(
-        localStorage.getItem("seleccionadosPozo")
-      );
-    } else {
-      this.ticketsPozo = {};
-    }
+  async getCarritoTickets() {
+    this.ticketsLoteria = await this.cart.getCarritoLoteria();
+    if (!this.ticketsLoteria) this.ticketsLoteria = {};
+    this.ticketsLotto = await this.cart.getCarritoLotto();
+    if (!this.ticketsLotto) this.ticketsLotto = {};
+    this.ticketsPozo = await this.cart.getCarritoPozo();
+    if (!this.ticketsPozo) this.ticketsPozo = {};
   }
 
   authError(){

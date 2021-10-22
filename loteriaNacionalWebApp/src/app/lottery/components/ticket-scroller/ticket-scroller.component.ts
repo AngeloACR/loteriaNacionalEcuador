@@ -68,10 +68,10 @@ export class TicketScrollerComponent implements OnInit {
     this.getTotal();
   }
 
-  ngDoCheck() {
+  async ngDoCheck() {
     this.seleccionadosCarrito = this.cart.getCarrito()
     this.seleccionadosCarrito = this.seleccionadosCarrito? this.seleccionadosCarrito.reverse(): [];
-    this.cart.setTotal();
+    //await this.cart.setTotal();
     this.getTotal();
   }
 

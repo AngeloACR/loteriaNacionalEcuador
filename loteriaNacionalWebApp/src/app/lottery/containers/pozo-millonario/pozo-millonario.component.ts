@@ -72,7 +72,7 @@ export class PozoMillonarioComponent implements OnInit {
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
 
-  remover(animal: string) {
+  async remover(animal: string) {
     this.animalesTabs = this.animalesTabs.filter((element) => {
       return element.nombre !== animal;
     });
@@ -83,7 +83,7 @@ export class PozoMillonarioComponent implements OnInit {
       }
     });
 
-    this.cart.setCarritoPozo(this.ticketsPozo);
+    await this.cart.setCarritoPozo(this.ticketsPozo);
 
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
@@ -145,11 +145,11 @@ export class PozoMillonarioComponent implements OnInit {
         );
 
         this.lotteryService.setReservaId(response);
-        this.cart.setCarritoPozo(this.ticketsPozo);
+        await this.cart.setCarritoPozo(this.ticketsPozo);
 
         this.cart.setCarrito(aux, 5);
-        this.getCarritoTickets();
-        this.getTotal();
+        await this.getCarritoTickets();
+        //this.getTotal();
         this.isLoading = false;
       } else {
         this.isLoading = false;
@@ -419,8 +419,8 @@ export class PozoMillonarioComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
-      this.getCarritoTickets();
-      this.getTotal();
+      await this.getCarritoTickets();
+      //this.getTotal();
 
       this.loadingMessage = "Cargando los sorteos disponibles";
       this.seleccionAnimales = JSON.parse(
@@ -474,10 +474,10 @@ export class PozoMillonarioComponent implements OnInit {
       delete this.ticketsLoteria[identificador];
 
       this.cart.removeFromCart(ticket, 5);
-      this.cart.setCarritoLoteria(this.ticketsLoteria);
+      await this.cart.setCarritoLoteria(this.ticketsLoteria);
 
-      this.getCarritoTickets();
-      this.getTotal();
+      await this.getCarritoTickets();
+      //this.getTotal();
 
       this.isLoading = false;
     } catch (e) {
@@ -508,10 +508,10 @@ export class PozoMillonarioComponent implements OnInit {
 
       delete this.ticketsLotto[identificador];
 
-      this.cart.setCarritoLotto(this.ticketsLotto);
+      await this.cart.setCarritoLotto(this.ticketsLotto);
       this.cart.removeFromCart(ticket, 2);
-      this.getCarritoTickets();
-      this.getTotal();
+      await this.getCarritoTickets();
+      //this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -547,10 +547,10 @@ export class PozoMillonarioComponent implements OnInit {
         delete this.ticketsLoteria[identificador];
       }
 
-      this.cart.setCarritoLoteria(this.ticketsLoteria);
+      await this.cart.setCarritoLoteria(this.ticketsLoteria);
       this.cart.removeFromCart(ticket, 1);
-      this.getCarritoTickets();
-      this.getTotal();
+      await this.getCarritoTickets();
+      //this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -579,7 +579,7 @@ export class PozoMillonarioComponent implements OnInit {
 
       delete this.ticketsPozo[identificador];
 
-      this.cart.setCarritoPozo(this.ticketsPozo);
+      await this.cart.setCarritoPozo(this.ticketsPozo);
       if (this.ticketsDisponibles && this.ticketsDisponibles.length) {
         let deletedIndex = this.ticketsDisponibles.findIndex(
           (x) => x.identificador === identificador
@@ -588,8 +588,8 @@ export class PozoMillonarioComponent implements OnInit {
           this.ticketsDisponibles[deletedIndex].status = false;
       }
       this.cart.removeFromCart(ticket, 5);
-      this.getCarritoTickets();
-      this.getTotal();
+      await this.getCarritoTickets();
+      //this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -638,8 +638,8 @@ export class PozoMillonarioComponent implements OnInit {
         }
       });
       this.cart.borrarCarrito();
-      this.getCarritoTickets();
-      this.getTotal();
+      await this.getCarritoTickets();
+      //this.getTotal();
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -649,26 +649,13 @@ export class PozoMillonarioComponent implements OnInit {
     }
   }
 
-  getCarritoTickets() {
-    if (JSON.parse(localStorage.getItem("seleccionadosLoteria"))) {
-      this.ticketsLoteria = JSON.parse(
-        localStorage.getItem("seleccionadosLoteria")
-      );
-    } else {
-      this.ticketsLoteria = {};
-    }
-    if (JSON.parse(localStorage.getItem("seleccionadosLotto"))) {
-      this.ticketsLotto = JSON.parse(
-        localStorage.getItem("seleccionadosLotto")
-      );
-    } else {
-      this.ticketsLotto = {};
-    }
-    if (JSON.parse(localStorage.getItem("seleccionadosPozo"))) {
-      this.ticketsPozo = JSON.parse(localStorage.getItem("seleccionadosPozo"));
-    } else {
-      this.ticketsPozo = {};
-    }
+  async getCarritoTickets() {
+    this.ticketsLoteria = await this.cart.getCarritoLoteria();
+    if (!this.ticketsLoteria) this.ticketsLoteria = {};
+    this.ticketsLotto = await this.cart.getCarritoLotto();
+    if (!this.ticketsLotto) this.ticketsLotto = {};
+    this.ticketsPozo = await this.cart.getCarritoPozo();
+    if (!this.ticketsPozo) this.ticketsPozo = {};
   }
 
   isError: boolean = false;

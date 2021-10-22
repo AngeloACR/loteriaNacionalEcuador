@@ -28,6 +28,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
         #loteriaDB = connection['loteriaPruebaDB']
         loteriaDB = connection['loteriaDB']
         ganadoreswebs = loteriaDB['ganadoreswebs']
+
         for x in ganadoresNuevos:
             ganadorData = x.attrib
             personaId = ''
@@ -84,7 +85,14 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
             ventaId = ''
             if('V' in ganadorData):
                 ventaId = ganadorData['V']
-
+            query = {
+                "personaId": personaId,
+                "numeroSorteo": numeroSorteo,
+                "combinacion1": combinacion1,
+                "fraccion": fraccion,
+                "codigoPremio": codigoPremio,
+            }
+            ganadorAux = ganadoreswebs.find_one(query)
             ganador = {
                 "personaId": personaId,
                 "tipoLoteria": tipoLoteria,
@@ -103,10 +111,15 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
                 "valorPremioDescuento": valorPremioDescuento,
                 "tipoPremio": tipoPremio,
                 "requiereTestimonio": requiereTestimonio,
-                "ventaId": ventaId,
-                "acreditado": False
+                "ventaId": ventaId
             }
-            ganadoreswebs.insert_one(ganador)
+            if not ganadorAux:
+                ganador['acreditado']=False
+                ganadoreswebs.insert_one(ganador)
+            else:
+                updateQuery = {"$set": ganador}
+                ganadoreswebs.update_one(query, updateQuery)
+
         #url = "https://ventas-api-prueba.loteria.com.ec/lottery/acreditarPremios"
         url = "https://ventas-api.loteria.com.ec/lottery/acreditarPremios"
         response = requests.post(url, json={"sorteo": numeroSorteo})

@@ -930,6 +930,7 @@ const ventasController = {
               tipoLoteria: tipoLoteria,
               numeroSorteo: parseInt(instantanea.sorteo.Sort),
               combinacion1: premio.Num,
+              codigoPremio: `${parseInt(instantanea.sorteo.Sort)}-INSTANTANEA`,
               fraccion: premio.Fra,
               descripcionPremio: premio.Prem,
               valorPremio: premio.Val,

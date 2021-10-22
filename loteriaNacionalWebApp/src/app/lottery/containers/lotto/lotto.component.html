@@ -186,10 +186,22 @@
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozo]="ticketsPozo"
+  tipoLoteria="lotto"
+></app-floating-menu>
+<!-- <app-floating-menu
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozo]="ticketsPozo"
   [total]="total"
   tipoLoteria="lotto"
 ></app-floating-menu>
-<app-loader
+ --><app-loader
   loader="lotto"
   [message]="loadingMessage"
   *ngIf="isLoading"
