@@ -16,8 +16,8 @@ var {apiError} = require("../../errors/customError");
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletos = config.sourceBoletosLocal;
-//let sourceBoletos = config.sourceBoletosTest;
-let sourceBoletos = config.sourceBoletosProd;
+let sourceBoletos = config.sourceBoletosTest;
+//let sourceBoletos = config.sourceBoletosProd;
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
@@ -831,7 +831,7 @@ const ventasController = {
         amount: total,
         reservationDetails,
       };
-      let exaReservaResponse = await ventasController.reserveLottery(
+      let exaReservaResponse = await Wallet.reserveLottery(
         exaReservaData
       );
 
@@ -959,7 +959,7 @@ const ventasController = {
         amount: total,
         prizeDetails,
       };
-      let exaVentaResponse = await ventasController.sellLottery(exaVentaData);
+      let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
       // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
       logData = {
         data: exaVentaData,
