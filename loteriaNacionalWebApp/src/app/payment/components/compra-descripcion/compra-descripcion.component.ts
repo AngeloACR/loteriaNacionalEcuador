@@ -19,6 +19,10 @@ export class CompraDescripcionComponent implements OnInit {
   nombreMascota(mascota){
     let mascotaData = this.lotteryService.obtenerCaracteristicasDeMascota(mascota);
     return mascotaData.nombre;
+  }  
+  nombreAntojito(antojito){
+    let antojitoData = this.lotteryService.obtenerCaracteristicasDeAntojito(antojito);
+    return antojitoData.nombre;
   }
   formatNumber(number){// Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {

@@ -5,6 +5,9 @@ import { Injectable } from "@angular/core";
 })
 export class ShoppingCartService {
   total: any = 0;
+  ticketsLoteria: any = {};
+  ticketsLotto: any = {};
+  ticketsPozo: any = {};
   constructor() {}
 
   removeFromCart(ticket, tipoLoteria) {

@@ -16,8 +16,8 @@ var {apiError} = require("../../errors/customError");
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletos = config.sourceBoletosLocal;
-let sourceBoletos = config.sourceBoletosTest;
-//let sourceBoletos = config.sourceBoletosProd;
+//let sourceBoletos = config.sourceBoletosTest;
+let sourceBoletos = config.sourceBoletosProd;
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
@@ -804,6 +804,7 @@ const ventasController = {
           combinationC2: lottoAux[id].ticket.combinacion2,
           combinationC3: lottoAux[id].ticket.combinacion3,
           combinationC4: lottoAux[id].ticket.combinacion4,
+          combinationC5: lottoAux[id].ticket.combinacion5,
         };
         reservationDetails.push(aux);
         lotto.push(lottoAux[id]);
@@ -1087,6 +1088,7 @@ const ventasController = {
         aux["combinacion2"] = lottoAux[id].ticket.combinacion2;
         aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
         aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
+        aux["combinacion5"] = lottoAux[id].ticket.combinacion5;
         aux["sorteo"] = lottoAux[id].sorteo.sorteo;
         aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
         aux["fecha"] = lottoAux[id].sorteo.fecha;

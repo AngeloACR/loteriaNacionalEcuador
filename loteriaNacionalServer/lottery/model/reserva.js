@@ -40,6 +40,9 @@ const ventaSchema = new mongoose.Schema({
         },
         combinacion4: {
             type: String
+        },
+        combinacion5: {
+            type: String
         }
     }],
     pozo: [{

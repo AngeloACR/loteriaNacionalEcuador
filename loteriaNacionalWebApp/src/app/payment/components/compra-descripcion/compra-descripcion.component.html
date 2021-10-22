@@ -128,6 +128,10 @@
           Nos Vemos Jefe:
           <span>{{ item.combinacion4 }}</span>
         </p>
+        <p *ngIf="item.combinacion5 && item.combinacion5 != ''">
+          Nos Vemos Jefe:
+          <span>{{ nombreAntojito(item.combinacion5) }}</span>
+        </p>
       </div>
       <div class="numberBox">
         <p>Cantidad: <span>1</span></p>
