@@ -12,7 +12,11 @@ export class LotteryComponent implements OnInit {
   constructor(private cart: ShoppingCartService) { }
 
   async ngOnInit() {
-    await this.cart.setTotal()
+/*     await this.cart.setTotal()
+    this.cart.ticketsLoteria = await this.cart.getCarritoLoteria()
+    this.cart.ticketsLotto = await this.cart.getCarritoLotto()
+    this.cart.ticketsPozo = await this.cart.getCarritoPozo()
+    this.cart.ticketsCarrito = await this.cart.getCarrito() */
   }
 
 }

@@ -11,7 +11,7 @@ export class PaymentComponent implements OnInit {
   constructor(private cart: ShoppingCartService) { }
 
   async ngOnInit() {
-    await this.cart.setTotal()
+    //await this.cart.setTotal()
   }
 
 }

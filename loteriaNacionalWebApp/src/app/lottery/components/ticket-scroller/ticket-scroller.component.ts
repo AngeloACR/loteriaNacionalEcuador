@@ -48,9 +48,11 @@ export class TicketScrollerComponent implements OnInit {
     this.eliminarTodo.emit();
   }
 
-  ngOnInit() {
-    this.seleccionadosCarrito = this.cart.getCarrito()
-    this.seleccionadosCarrito = this.seleccionadosCarrito? this.seleccionadosCarrito.reverse(): [];
+  async ngOnInit() {
+    this.seleccionadosCarrito = this.cart.ticketsCarrito;
+    //this.seleccionadosCarrito = (await this.cart.getCarrito()).carrito
+    this.seleccionadosCarrito = this.seleccionadosCarrito.length != 0? this.seleccionadosCarrito.reverse(): [];
+    //this.seleccionadosCarrito = this.seleccionadosCarrito? this.seleccionadosCarrito.reverse(): [];
     switch (this.tipoLoteria) {
       case "loteria":
         this.isLoteriaNacional = true;
@@ -69,8 +71,9 @@ export class TicketScrollerComponent implements OnInit {
   }
 
   async ngDoCheck() {
-    this.seleccionadosCarrito = this.cart.getCarrito()
-    this.seleccionadosCarrito = this.seleccionadosCarrito? this.seleccionadosCarrito.reverse(): [];
+    //this.seleccionadosCarrito = (await this.cart.getCarrito()).carrito
+    this.seleccionadosCarrito = this.cart.getCarritoLocal();
+    this.seleccionadosCarrito = this.seleccionadosCarrito.length != 0? this.seleccionadosCarrito.reverse(): [];
     //await this.cart.setTotal();
     this.getTotal();
   }

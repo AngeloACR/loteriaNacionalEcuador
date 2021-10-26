@@ -2,67 +2,22 @@ const mongoose = require('mongoose');
 const Schema = require('mongoose').Schema;
 
 const carritoSchema = new mongoose.Schema({
-    loteria: [{
-        sorteo: {
-            type: String
-        },
-        fecha: {
-            type: String
-        },
-        combinacion1: {
-            type: String
-        },
-        subtotal: {
-            type: String
-        },
-        fracciones: [{
-            type: String
-        }]
-    }],
-    lotto: [{
-        sorteo: {
-            type: String
-        },
-        fecha: {
-            type: String
-        },
-        subtotal: {
-            type: String
-        },
-        combinacion1: {
-            type: String
-        },
-        combinacion2: {
-            type: String
-        },
-        combinacion3: {
-            type: String
-        },
-        combinacion4: {
-            type: String
-        }
-    }],
-    pozo: [{
-        sorteo: {
-            type: String
-        },
-        subtotal: {
-            type: String
-        },
-        fecha: {
-            type: String
-        },
-        combinacion1: {
-            type: String
-        },
-        combinacion2: {
-            type: String
-        },
-        mascota: {
-            type: String
-        }
+    loteria: {
+        type: Schema.Types.Mixed
+    },
+    lotto: {
+        type: Schema.Types.Mixed
+    },
+    pozo: {
+        type: Schema.Types.Mixed
+    },
+    carrito: [{
+        type: Schema.Types.Mixed
     }],
     total: {
+        type: String
+    },
+    reservaId: {
         type: String
     },
     user: {

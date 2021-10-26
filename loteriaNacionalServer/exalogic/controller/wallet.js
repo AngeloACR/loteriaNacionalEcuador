@@ -6,11 +6,11 @@ const helper = require("../helper")
 var {exalogicError} = require("../../errors/customError");
 
 
-/* let exalogicHost = config.exalogicHostTest;
-let exalogicEndpoint = config.exalogicEndpointTest; */
+let exalogicHost = config.exalogicHostTest;
+let exalogicEndpoint = config.exalogicEndpointTest;
 
-let exalogicHost = config.exalogicHostProd
-let exalogicEndpoint = config.exalogicEndpointProd;
+/* let exalogicHost = config.exalogicHostProd
+let exalogicEndpoint = config.exalogicEndpointProd; */
 
 // const walletController = {
 //   reserveLottery: async (data) => {

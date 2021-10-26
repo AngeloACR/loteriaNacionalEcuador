@@ -12,7 +12,7 @@ import { ShoppingCartService } from "../../../payment/services/shopping-cart.ser
   templateUrl: "./floating-menu.component.html",
   styleUrls: ["./floating-menu.component.scss"],
 })
-export class FloatingMenuComponent implements OnInit, OnChanges {
+export class FloatingMenuComponent implements OnInit {
   isToggled: boolean = false;
   @Input() ticketsLoteria: any;
   @Input() ticketsLotto: any;
@@ -75,16 +75,16 @@ export class FloatingMenuComponent implements OnInit, OnChanges {
     this.deleteLoteriaFraccion.emit(e);
   }
     
-  @Input() total: string
+  total: string
 
   ngDoCheck() {
     this.total = this.cart.getTotal();
     this.total = this.formatNumber(this.total)
   }
-  ngOnChanges() {
+  /*ngOnChanges() {
     this.total = this.cart.getTotal();
     this.total = this.formatNumber(this.total)
-  }
+  } */
 
   formatNumber(number){// Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {

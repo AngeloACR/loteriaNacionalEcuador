@@ -50,7 +50,7 @@ export class SeleccionComponent implements OnInit {
         }
         
         await this.getCarritoTickets();
-        this.getTotal();
+        //this.getTotal();
       }
       this.isLoading = false;
     } catch (e) {
@@ -165,7 +165,7 @@ export class SeleccionComponent implements OnInit {
           if (response.instantanea.status) {
             this.dismissCompras();
             this.instantaneas = response.instantanea.data;
-            this.cart.borrarCarrito();
+            await this.cart.borrarCarrito();
             this.isInstantaneas = true;
           } else {
             this.instantaneas = "";
@@ -194,9 +194,9 @@ export class SeleccionComponent implements OnInit {
     this.compraCancelada = true;
   }
 
-  abrirFinalizar() {
+  async abrirFinalizar() {
     this.dismissCompras();
-    this.cart.borrarCarrito();
+    await this.cart.borrarCarrito();
     this.compraFinalizada = true;
   }
 
@@ -379,7 +379,7 @@ export class SeleccionComponent implements OnInit {
         boletosPozo,
         reservaId
       );
-      this.cart.borrarCarrito();
+      await this.cart.borrarCarrito();
       await this.getCarritoTickets();
       this.getTotal();
       this.isLoading = false;
@@ -393,13 +393,12 @@ export class SeleccionComponent implements OnInit {
   }
 
   async getCarritoTickets() {
-    this.ticketsLoteria = await this.cart.getCarritoLoteria();
-    if (!this.ticketsLoteria) this.ticketsLoteria = {};
-    this.ticketsLotto = await this.cart.getCarritoLotto();
-    if (!this.ticketsLotto) this.ticketsLotto = {};
-    this.ticketsPozo = await this.cart.getCarritoPozo();
-    if (!this.ticketsPozo) this.ticketsPozo = {};
+    let carrito = await this.cart.buscarCarrito()
+    this.ticketsLoteria = carrito.loteria;
+    this.ticketsLotto = carrito.lotto;
+    this.ticketsPozo = carrito.pozo;
   }
+
 
   authError(){
       this.openError("Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta", "Aviso")
