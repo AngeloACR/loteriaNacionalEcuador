@@ -2,7 +2,7 @@ const redis = require("redis");
 const { promisifyAll } = require("bluebird");
 
 promisifyAll(redis);
-
+let timeout = 60*5;
 const carritoController = {
   getClient: () => {
     const client = redis.createClient({
@@ -30,7 +30,7 @@ const carritoController = {
         `carrito-${carritoAux.user}`,
         JSON.stringify(carritoAux)
       );
-      await client.expireAsync(`carrito-${carritoAux.user}`, 60*40);
+      await client.expireAsync(`carrito-${carritoAux.user}`, timeout);
       let response = await client.getAsync(`carrito-${carritoAux.user}`);
       client.quit();
       res.status(200).json(JSON.parse(response));
@@ -58,7 +58,7 @@ const carritoController = {
           user,
         };
         await client.setAsync(`carrito-${user}`, JSON.stringify(carrito));
-        await client.expireAsync(`carrito-${user}`, 60*40);
+        await client.expireAsync(`carrito-${user}`, timeout);
         response = await client.getAsync(`carrito-${user}`);
       }
       client.quit();
