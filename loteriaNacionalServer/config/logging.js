@@ -15,11 +15,15 @@ module.exports.apiVentasLogger = createLogger({
     new transports.File({
       filename: "logs/api-ventas.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/api-ventas-error.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "error",
     }),
   ],
@@ -38,11 +42,15 @@ module.exports.apiConsultasLogger = createLogger({
     new transports.File({
       filename: "logs/api-consultas.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/api-consultas-error.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "error",
     }),
   ],
@@ -61,11 +69,15 @@ module.exports.loteriaVentasLogger = createLogger({
     new transports.File({
       filename: "logs/loteria-ventas.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/loteria-ventas-error.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "error",
     }),
   ],
@@ -82,12 +94,16 @@ module.exports.loteriaConsultasLogger = createLogger({
   transports: [
     new transports.File({
       filename: "logs/loteria-consultas.json",
+      maxSize: "10m",
+      maxFiles: 4,
       level: "info",
       prettyPrint: true,
     }),
     new transports.File({
       filename: "logs/loteria-consultas-error.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "error",
     }),
   ],
@@ -105,11 +121,15 @@ module.exports.exalogicLogger = createLogger({
     new transports.File({
       filename: "logs/exalogic.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/exalogic-error.json",
       prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
       level: "error",
     }),
   ],

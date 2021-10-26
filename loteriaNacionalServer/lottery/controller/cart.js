@@ -1,4 +1,3 @@
-const Carrito = require("../model/carrito");
 const redis = require("redis");
 const { promisifyAll } = require("bluebird");
 

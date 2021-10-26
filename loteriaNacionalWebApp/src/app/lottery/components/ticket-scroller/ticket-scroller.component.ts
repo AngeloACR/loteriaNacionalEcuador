@@ -1,16 +1,10 @@
 import {
   Component,
   OnInit,
-  OnChanges,
   Input,
   EventEmitter,
   Output,
 } from "@angular/core";
-import {
-  ticketsNacional,
-  ticketsLotto,
-  ticketsAnimales,
-} from "../../interfaces/lottery.interface";
 import { ShoppingCartService } from "../../../payment/services/shopping-cart.service";
 
 @Component({

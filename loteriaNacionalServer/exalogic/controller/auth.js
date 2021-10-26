@@ -4,11 +4,11 @@ var {exalogicError} = require("../../errors/customError");
 const helper = require("../helper")
 const { exalogicLogger } = require("../../config/logging");
 
-let exalogicHost = config.exalogicHostTest;
-let exalogicEndpoint = config.exalogicEndpointTest;
+/* let exalogicHost = config.exalogicHostTest;
+let exalogicEndpoint = config.exalogicEndpointTest; */
 
-/* let exalogicHost = config.exalogicHostProd
-let exalogicEndpoint = config.exalogicEndpointProd; */
+let exalogicHost = config.exalogicHostProd
+let exalogicEndpoint = config.exalogicEndpointProd;
 
 const authController = {
   authUserHttp: async (req, res) => {
