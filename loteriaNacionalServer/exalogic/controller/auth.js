@@ -45,12 +45,12 @@ const authController = {
       if (response["password"]) delete response["password"];
       if(parseInt(response.resultCode) >= 0){
         
-        let logData = {
+/*         let logData = {
           data: authData,
           response,
           function: "Auth.authUser",
         };
-        exalogicLogger.info("authUser.exalogic", logData);
+        exalogicLogger.info("authUser.exalogic", logData); */
         return response;
       } else{
         let errorData = {

@@ -55,7 +55,7 @@ export class LoteriaComponent implements OnInit {
       this.loadingMessage = "Cargando los sorteos disponibles";
       this.isLoading = true;
       await this.getCarritoTickets();
-      this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1)
+      this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {
@@ -66,7 +66,7 @@ export class LoteriaComponent implements OnInit {
   }
 
   async getCarritoTickets() {
-    let carrito = await this.cart.buscarCarrito()
+    let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
     this.ticketsPozo = carrito.pozo;
@@ -75,6 +75,7 @@ export class LoteriaComponent implements OnInit {
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo;
+    this.showNumeros = false;
   }
 
   async buscarNumero() {
@@ -138,6 +139,9 @@ export class LoteriaComponent implements OnInit {
           fraccion,
         };
         await this.deleteLoteriaFraccion(aux);
+        this.changeDetectorRef.detectChanges();
+        this.ticketsDisponibles[idTicket].seleccionados.pop();
+        this.changeDetectorRef.markForCheck();
         //this.ticketsDisponibles[idTicket].seleccionados.splice(index, 1);
       } else {
         let count = (await this.cart.getCount()) + 1;
@@ -545,14 +549,21 @@ export class LoteriaComponent implements OnInit {
         1,
         reservaId
       );
-      let index = this.ticketsLoteria[
+      let indexA = this.ticketsLoteria[
         identificador
       ].ticket.seleccionados.findIndex((x) => x == fraccion);
-      this.ticketsLoteria[identificador].ticket.seleccionados.splice(index, 1);
+      this.ticketsLoteria[identificador].ticket.seleccionados.splice(indexA, 1);
+      let indexB = this.ticketsLoteria[
+        identificador
+      ].fracciones.findIndex((x) => x == fraccion);
+      this.ticketsLoteria[identificador].fracciones.splice(indexB, 1);
       if (this.ticketsLoteria[identificador].ticket.seleccionados.length == 0) {
+        await this.cart.removeFromCart(this.ticketsLoteria[identificador], 1);
         delete this.ticketsLoteria[identificador];
+      } else {
+        await this.cart.setCarrito(this.ticketsLoteria[identificador], 1);4
       }
-
+      
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       await this.getCarritoTickets();
       //this.getTotal();

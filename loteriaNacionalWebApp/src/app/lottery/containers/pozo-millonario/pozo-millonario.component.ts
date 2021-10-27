@@ -98,14 +98,14 @@ export class PozoMillonarioComponent implements OnInit {
         let ticketPozo = this.ticketsPozo[identificador];
         await this.deletePozoTicket(ticketPozo);
       } else {
-        let count = await this.cart.getCount() + 1;
+        let count = (await this.cart.getCount()) + 1;
         if (count <= 1000) {
           await this.pushToSeleccionado(this.ticketsDisponibles[id]);
         } else {
-      this.changeDetectorRef.detectChanges();
-      this.ticketsDisponibles[id].status = false;
-      this.changeDetectorRef.markForCheck();
-      let errorMessage =
+          this.changeDetectorRef.detectChanges();
+          this.ticketsDisponibles[id].status = false;
+          this.changeDetectorRef.markForCheck();
+          let errorMessage =
             "Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.";
           this.openError(errorMessage);
         }
@@ -265,9 +265,7 @@ export class PozoMillonarioComponent implements OnInit {
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo;
-    this.ticketsDisponibles = JSON.parse(
-      localStorage.getItem("ticketsAnimales")
-    );
+    this.showNumeros = false;
   }
   isLoading: boolean;
   showComponents: boolean = false;
@@ -507,7 +505,7 @@ export class PozoMillonarioComponent implements OnInit {
 
       delete this.ticketsLotto[identificador];
 
-      this.cart.removeFromCart(ticket, 2);
+      await this.cart.removeFromCart(ticket, 2);
       await this.cart.setCarritoLotto(this.ticketsLotto);
       await this.getCarritoTickets();
       //this.getTotal();
@@ -546,7 +544,7 @@ export class PozoMillonarioComponent implements OnInit {
         delete this.ticketsLoteria[identificador];
       }
 
-      this.cart.removeFromCart(ticket, 1);
+      await this.cart.removeFromCart(ticket, 1);
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       await this.getCarritoTickets();
       //this.getTotal();
@@ -578,7 +576,7 @@ export class PozoMillonarioComponent implements OnInit {
 
       delete this.ticketsPozo[identificador];
 
-      this.cart.removeFromCart(ticket, 5);
+      await this.cart.removeFromCart(ticket, 5);
       await this.cart.setCarritoPozo(this.ticketsPozo);
       if (this.ticketsDisponibles && this.ticketsDisponibles.length) {
         let deletedIndex = this.ticketsDisponibles.findIndex(
@@ -649,12 +647,11 @@ export class PozoMillonarioComponent implements OnInit {
   }
 
   async getCarritoTickets() {
-    let carrito = await this.cart.buscarCarrito()
+    let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
     this.ticketsPozo = carrito.pozo;
   }
-
 
   isError: boolean = false;
   errorMessage: string;

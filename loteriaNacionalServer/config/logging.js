@@ -29,6 +29,33 @@ module.exports.apiVentasLogger = createLogger({
   ],
 });
 
+module.exports.apiGanadoresLogger = createLogger({
+  defaultMeta: { component: "api-ganadores" },
+  format: combine(
+    timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    json()
+  ),
+
+  transports: [
+    new transports.File({
+      filename: "logs/api-ganadores.json",
+      prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
+      level: "info",
+    }),
+    new transports.File({
+      filename: "logs/api-ganadores-error.json",
+      prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
+      level: "error",
+    }),
+  ],
+});
+
 module.exports.apiConsultasLogger = createLogger({
   defaultMeta: { component: "api-ventas" },
   format: combine(

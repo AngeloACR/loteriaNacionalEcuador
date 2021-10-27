@@ -1,6 +1,6 @@
 const Wallet = require("../../exalogic/controller/wallet");
 const Ganadores = require("../model/ganadoresWeb");
-const { apiVentasLogger } = require("../../config/logging");
+const { apiGanadoresLogger } = require("../../config/logging");
 
 /*************************** ACREDITACION DE PREMIOS ************************/
 
@@ -92,7 +92,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             payLine,
             transactionId: Date.now(),
           };
-          let aux = await ganadoresController.payLottery(data);
+          let aux = await Wallet.payLottery(data);
           if (aux.resultCode >= 0) {
             ganador.acreditado = true;
             await ganador.save();

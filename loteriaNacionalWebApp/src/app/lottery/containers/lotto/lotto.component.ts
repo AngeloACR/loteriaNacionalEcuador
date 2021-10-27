@@ -83,6 +83,7 @@ export class LottoComponent implements OnInit {
   sorteoSeleccionado: sorteo;
   procesaEmitir(sorteo) {
     this.sorteoSeleccionado = sorteo;
+    this.showNumeros = false;
   }
   async seleccionarTicket(id: string) {
     try {

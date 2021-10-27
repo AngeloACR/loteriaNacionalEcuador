@@ -656,6 +656,47 @@ let response = await walletController.getBalance(req.body)
   },
   payLottery: async (data) => {
     try {
+      /*
+            {
+                "transactionId": "2223846696262170",
+                "payLine": :"<R PE="236891" J="5" S="935" FC="2021-10-05 23:59" C="0523945"
+C2="02,03,04,05,06,09,10,11,13,15,17,18,24,25" C3="15" F="0" B="501659" P="6" N="MASCOTA - REINTEGRO"
+VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
+            }
+            
+            */
+      apiVentasLogger.silly("payLottery");
+      let operationTimeStamp = getCurrentTimeStamp();
+      /*       let operationTimeStamp = new Date(Date.now())
+        .toISOString()
+        .replace("T", " ")
+        .replace("Z", "");
+ */      let exaData = {
+        command: "payTicketLottery",
+        systemCode: "1",
+        transactionId: data.transactionId,
+        language: "en",
+        currency: "USD",
+        operationTimeStamp: operationTimeStamp,
+        payLine: data.payLine,
+      };
+      let response = await helper.exalogicRequest(exaData);
+      let logData = {
+        data: exaData,
+        response,
+        function: "Wallet.payLottery",
+      };
+      apiVentasLogger.info("payLottery.exalogic", logData);
+      return response;
+    } catch (e) {
+      apiVentasLogger.error("payLottery.error", {
+        errorMessage: e.message,
+      });
+      throw new Error(e.message);
+    }
+  },
+/*   payLottery: async (data) => {
+    try {
     exalogicLogger.silly("payLottery");
 
       return new Promise(async (resolve, reject) => {
@@ -711,7 +752,7 @@ let response = await walletController.getBalance(req.body)
     } catch (e) {
      throw new exalogicError(e, 'exalogic', 'handler')
     }
-  },
+  }, */
 };
 
 module.exports = walletController;

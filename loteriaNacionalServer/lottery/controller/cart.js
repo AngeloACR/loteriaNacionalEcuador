@@ -2,7 +2,7 @@ const redis = require("redis");
 const { promisifyAll } = require("bluebird");
 
 promisifyAll(redis);
-let timeout = 60*5;
+let timeout = 60*40;
 const carritoController = {
   getClient: () => {
     const client = redis.createClient({
