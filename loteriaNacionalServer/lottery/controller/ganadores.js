@@ -30,7 +30,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             }
             
             */
-      apiVentasLogger.silly("payLottery");
+      apiGanadoresLogger.silly("payLottery");
       let operationTimeStamp = new Date(Date.now())
         .toISOString()
         .replace("T", " ")
@@ -50,10 +50,10 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         response,
         function: "Wallet.payLottery",
       };
-      apiVentasLogger.info("payLottery.exalogic", logData);
+      apiGanadoresLogger.info("payLottery.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("payLottery.error", {
+      apiGanadoresLogger.error("payLottery.error", {
         errorMessage: e.message,
       });
       throw new Error(e.message);
@@ -61,7 +61,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
   },
   pagarLoteria: async (sorteo) => {
     try {
-      apiVentasLogger.silly("pagarLoteria");
+      apiGanadoresLogger.silly("pagarLoteria");
       let query = {'numeroSorteo': `${sorteo}`}
       let ganadores = await Ganadores.find(query);
       let length = ganadores.length;
@@ -69,7 +69,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       let logData = {
         data: [],
         response: [],
-        function: "ganadoresController.payLottery",
+        function: "ganadoresController.pagarLoteria",
       };
       for (let i = 0; i < length; i++) {
         const ganador = ganadores[i];
@@ -102,10 +102,10 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         }
       }
       logData.response = response;
-      apiVentasLogger.info("pagarLoteria.api", logData);
+      apiGanadoresLogger.info("pagarLoteria.api", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("pagarLoteria.error", {
+      apiGanadoresLogger.error("pagarLoteria.error", {
         errorMessage: e.message,
       });
       throw new Error(e.message);
