@@ -5,7 +5,6 @@ const { exalogicLogger } = require("../../config/logging");
 const helper = require("../helper");
 var { exalogicError } = require("../../errors/customError");
 
-
 // const walletController = {
 //   reserveLottery: async (data) => {
 //     try {
@@ -695,7 +694,8 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         .toISOString()
         .replace("T", " ")
         .replace("Z", "");
- */ let exaData = {
+ */
+      let exaData = {
         command: "payTicketLottery",
         systemCode: "1",
         transactionId: data.transactionId,
