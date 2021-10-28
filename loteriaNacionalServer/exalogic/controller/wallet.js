@@ -2,14 +2,13 @@ const Ventas = require("../../loterianacional/controller/ventas");
 const config = require("../../config/environment");
 const https = require("https");
 const { exalogicLogger } = require("../../config/logging");
-const helper = require("../helper")
-var {exalogicError} = require("../../errors/customError");
-
+const helper = require("../helper");
+var { exalogicError } = require("../../errors/customError");
 
 /* let exalogicHost = config.exalogicHostTest;
 let exalogicEndpoint = config.exalogicEndpointTest; */
 
-let exalogicHost = config.exalogicHostProd
+let exalogicHost = config.exalogicHostProd;
 let exalogicEndpoint = config.exalogicEndpointProd;
 
 // const walletController = {
@@ -307,23 +306,24 @@ function getCurrentTimeStamp() {
   return n;
 }
 const walletController = {
-
   getBalanceHttp: async (req, res) => {
     try {
       let token = req.body.token;
       /* {
     "token": "661c0ce5ccabbeb1136a"
 } */
-let response = await walletController.getBalance(req.body)
+      let response = await walletController.getBalance(req.body);
       res.status(200).json(response);
     } catch (e) {
-      exalogicLogger.error("getBalanceHttp.error", { errorMessage: e.message, errorData: e.data });
+      exalogicLogger.error("getBalanceHttp.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
       let response = {
         status: "error",
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -344,7 +344,7 @@ let response = await walletController.getBalance(req.body)
         currency: "USD",
       };
       let response = await helper.exalogicRequest(exaData);
-      if(parseInt(response.resultCode) >= 0){
+      if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
@@ -352,23 +352,29 @@ let response = await walletController.getBalance(req.body)
         };
         exalogicLogger.info("getBalance.exalogic", logData);
         return response;
-      } else{
+      } else {
         let errorData = {
           input: data,
           output: response,
-          function: "getBalance"
-        }
-        throw new exalogicError(response.resultDescription, 'exalogic', errorData)
+          function: "getBalance",
+        };
+        throw new exalogicError(
+          response.resultDescription,
+          "exalogic",
+          errorData
+        );
       }
     } catch (e) {
-      exalogicLogger.error("getBalance.error", { errorMessage: e.message, errorData: e.data });
-            let errorData = {
+      exalogicLogger.error("getBalance.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
+      let errorData = {
         input: e,
         output: "",
-        function: "getBalance"
-      }
+        function: "getBalance",
+      };
       throw new exalogicError(e.message, "exalogic", errorData);
-
     }
   },
   sellLotteryHttp: async (req, res) => {
@@ -388,17 +394,18 @@ let response = await walletController.getBalance(req.body)
         .replace("Z", "");
  */
 
-
-        let response = await walletController.sellLottery(req.body)
+      let response = await walletController.sellLottery(req.body);
       res.status(200).json(response);
     } catch (e) {
-      exalogicLogger.error("sellLotteryHttp.error", { errorMessage: e.message, errorData: e.data });
+      exalogicLogger.error("sellLotteryHttp.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
       let response = {
         status: "error",
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -418,16 +425,18 @@ let response = await walletController.getBalance(req.body)
         .replace("T", " ")
         .replace("Z", ""); */
 
-        let response = await walletController.cancelLottery(req.body)
+      let response = await walletController.cancelLottery(req.body);
       res.status(200).json(response);
     } catch (e) {
-      exalogicLogger.error("cancelLotteryHttp.error", { errorMessage: e.message, errorData: e.data });
+      exalogicLogger.error("cancelLotteryHttp.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
       let response = {
         status: "error",
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -458,17 +467,19 @@ let response = await walletController.getBalance(req.body)
         .toISOString()
         .replace("T", " ")
         .replace("Z", ""); */
-        let response = await walletController.reserveLottery(req.body)
+      let response = await walletController.reserveLottery(req.body);
 
       res.status(200).json(response);
     } catch (e) {
-      exalogicLogger.error("reserveLotteryHttp.error", { errorMessage: e.message, errorData: e.data });
+      exalogicLogger.error("reserveLotteryHttp.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
       let response = {
         status: "error",
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -505,7 +516,7 @@ let response = await walletController.getBalance(req.body)
       };
       let response = await helper.exalogicRequest(exaData);
 
-      if(parseInt(response.resultCode) >= 0){
+      if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
@@ -513,23 +524,29 @@ let response = await walletController.getBalance(req.body)
         };
         exalogicLogger.info("sellLottery.exalogic", logData);
         return response;
-      } else{
+      } else {
         let errorData = {
           input: data,
           output: response,
-          function: "sellLottery"
-        }
-        throw new exalogicError(response.resultDescription, 'exalogic', errorData)
+          function: "sellLottery",
+        };
+        throw new exalogicError(
+          response.resultDescription,
+          "exalogic",
+          errorData
+        );
       }
     } catch (e) {
-      exalogicLogger.error("sellLottery.error", { errorMessage: e.message, errorData: e.data });
-            let errorData = {
+      exalogicLogger.error("sellLottery.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
+      let errorData = {
         input: e,
         output: "",
-        function: "sellLottery"
-      }
+        function: "sellLottery",
+      };
       throw new exalogicError(e.message, "exalogic", errorData);
-
     }
   },
   cancelLottery: async (data) => {
@@ -559,7 +576,7 @@ let response = await walletController.getBalance(req.body)
         amount: data.amount,
       };
       let response = await helper.exalogicRequest(exaData);
-      if(parseInt(response.resultCode) >= 0){
+      if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
@@ -567,23 +584,29 @@ let response = await walletController.getBalance(req.body)
         };
         exalogicLogger.info("cancelLottery.exalogic", logData);
         return response;
-      } else{
+      } else {
         let errorData = {
           input: data,
           output: response,
-          function: "cancelLottery"
-        }
-        throw new exalogicError(response.resultDescription, 'exalogic', errorData)
+          function: "cancelLottery",
+        };
+        throw new exalogicError(
+          response.resultDescription,
+          "exalogic",
+          errorData
+        );
       }
     } catch (e) {
-      exalogicLogger.error("cancelLottery.error", { errorMessage: e.message, errorData: e.data });
-            let errorData = {
+      exalogicLogger.error("cancelLottery.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
+      let errorData = {
         input: e,
         output: "",
-        function: "cancelLottery"
-      }
+        function: "cancelLottery",
+      };
       throw new exalogicError(e.message, "exalogic", errorData);
-
     }
   },
   reserveLottery: async (data) => {
@@ -627,7 +650,7 @@ let response = await walletController.getBalance(req.body)
         reservationDetails: data.reservationDetails,
       };
       let response = await helper.exalogicRequest(exaData);
-      if(parseInt(response.resultCode) >= 0){
+      if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
@@ -635,23 +658,29 @@ let response = await walletController.getBalance(req.body)
         };
         exalogicLogger.info("reserveLottery.exalogic", logData);
         return response;
-      } else{
+      } else {
         let errorData = {
           input: data,
           output: response,
-          function: "reserveLottery"
-        }
-        throw new exalogicError(response.resultDescription, 'exalogic', errorData)
+          function: "reserveLottery",
+        };
+        throw new exalogicError(
+          response.resultDescription,
+          "exalogic",
+          errorData
+        );
       }
     } catch (e) {
-      exalogicLogger.error("reserveLottery.error", { errorMessage: e.message, errorData: e.data });
-            let errorData = {
+      exalogicLogger.error("reserveLottery.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
+      let errorData = {
         input: e,
         output: "",
-        function: "reserveLottery"
-      }
+        function: "reserveLottery",
+      };
       throw new exalogicError(e.message, "exalogic", errorData);
-
     }
   },
   payLottery: async (data) => {
@@ -671,7 +700,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         .toISOString()
         .replace("T", " ")
         .replace("Z", "");
- */      let exaData = {
+ */ let exaData = {
         command: "payTicketLottery",
         systemCode: "1",
         transactionId: data.transactionId,
@@ -695,7 +724,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       throw new Error(e.message);
     }
   },
-/*   payLottery: async (data) => {
+  /*   payLottery: async (data) => {
     try {
     exalogicLogger.silly("payLottery");
 

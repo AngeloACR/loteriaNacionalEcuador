@@ -99,9 +99,9 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
           }
           response.push(aux);
           logData.data.push(data);
-          logData.response.push(response);
         }
       }
+      logData.response = response;
       apiVentasLogger.info("pagarLoteria.api", logData);
       return response;
     } catch (e) {
