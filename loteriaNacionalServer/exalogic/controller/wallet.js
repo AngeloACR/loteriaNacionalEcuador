@@ -689,7 +689,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             }
             
             */
-      apiVentasLogger.silly("payLottery");
+      exalogicLogger.silly("payLottery");
       let operationTimeStamp = getCurrentTimeStamp();
       /*       let operationTimeStamp = new Date(Date.now())
         .toISOString()
@@ -710,10 +710,10 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         response,
         function: "Wallet.payLottery",
       };
-      apiVentasLogger.info("payLottery.exalogic", logData);
+      exalogicLogger.info("payLottery.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("payLottery.error", {
+      exalogicLogger.error("payLottery.error", {
         errorMessage: e.message,
       });
       throw new Error(e.message);
