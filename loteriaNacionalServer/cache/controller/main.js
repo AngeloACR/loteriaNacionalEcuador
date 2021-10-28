@@ -116,8 +116,8 @@ const cacheController = {
   setSorteosDisponibles: async () => {
     try {
       let lotteryToken = (await Ventas.autenticarUsuario()).token;
-      //let user = config.usuarioAplicativoTest;
-      let user = config.usuarioAplicativoProd;
+      let user = config.usuarioAplicativoTest;
+      //let user = config.usuarioAplicativoProd;
       let client = cacheController.getClient();
       let loteriaSorteos = await Ventas.consultarSorteosDisponibles(
         1,
