@@ -228,6 +228,7 @@ export class PozoMillonarioComponent implements OnInit {
         this.tipoSeleccion
       );
 
+      this.combinacionDeLaSuerte = ["", "", "", ""];
       this.showNumeros = true;
       this.isLoading = false;
     } catch (e) {

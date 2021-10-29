@@ -69,6 +69,7 @@ export class LottoComponent implements OnInit {
         this.tipoSeleccion
       );
 
+      this.combinacionDeLaSuerte = ["", "", "", "", "", ""];
       this.showNumeros = true;
       this.isLoading = false;
     } catch (e) {
@@ -93,7 +94,7 @@ export class LottoComponent implements OnInit {
         let ticketLotto = this.ticketsLotto[identificador];
         await this.deleteLottoTicket(ticketLotto);
       } else {
-        let count = await this.cart.getCount() + 1;
+        let count = (await this.cart.getCount()) + 1;
         if (count <= 1000) {
           await this.pushToSeleccionado(this.ticketsDisponibles[id]);
         } else {
@@ -531,12 +532,11 @@ export class LottoComponent implements OnInit {
   }
 
   async getCarritoTickets() {
-    let carrito = await this.cart.buscarCarrito()
+    let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
     this.ticketsPozo = carrito.pozo;
   }
-
 
   isError: boolean = false;
   errorMessage: string;

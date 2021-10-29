@@ -48,3 +48,29 @@
   background-color: rgba(155, 155, 155, 0.5);
   border: none;
 }
+
+
+@media screen and (max-width: 1000px) {
+
+  .loadBox {
+    width: 75%;
+  
+    div {
+      height: auto;
+      .loadIcon {
+        width: 50%;
+        height: auto;
+      }
+      .loadLogo {
+        width: 100%;
+        height: auto;
+      }
+    }
+  
+    .loadText {
+      white-space: normal;
+    }
+  }
+    
+
+}

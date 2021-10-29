@@ -108,6 +108,7 @@ export class LoteriaComponent implements OnInit {
         this.allFractions.push(false);
       });
 
+      this.combinacionDeLaSuerte = ["", "", "", "", ""];
       this.showNumeros = true;
       this.isLoading = false;
     } catch (e) {
@@ -140,9 +141,9 @@ export class LoteriaComponent implements OnInit {
         };
         await this.deleteLoteriaFraccion(aux);
         this.changeDetectorRef.detectChanges();
-        this.ticketsDisponibles[idTicket].seleccionados.pop();
+        //this.ticketsDisponibles[idTicket].seleccionados.pop();
+        this.ticketsDisponibles[idTicket].seleccionados.splice(index, 1);
         this.changeDetectorRef.markForCheck();
-        //this.ticketsDisponibles[idTicket].seleccionados.splice(index, 1);
       } else {
         let count = (await this.cart.getCount()) + 1;
         this.changeDetectorRef.detectChanges();
@@ -175,11 +176,20 @@ export class LoteriaComponent implements OnInit {
       this.changeDetectorRef.detectChanges();
       this.allFractions[id] = !this.allFractions[id];
       this.changeDetectorRef.markForCheck();
-      let fracciones = [...this.ticketsDisponibles[id].fraccionesDisponibles];
+      //      let fracciones = [...this.ticketsDisponibles[id].fraccionesDisponibles];
+      let fracciones = [
+        ...this.ticketsDisponibles[id].fraccionesDisponibles.filter(
+          (x) => !this.ticketsDisponibles[id].seleccionados.includes(x)
+        ),
+      ];
       if (this.allFractions[id]) {
-        let count = (await this.cart.getCount()) + fracciones.length;
+        let count =
+          (await this.cart.getCount()) +
+          (fracciones.length -
+            this.ticketsDisponibles[id].seleccionados.length);
         if (count <= 1000) {
-          this.ticketsDisponibles[id].seleccionados = fracciones;
+          this.ticketsDisponibles[id].seleccionados =
+            this.ticketsDisponibles[id].seleccionados.concat(fracciones);
           await this.pushToSeleccionado(
             this.ticketsDisponibles[id],
             fracciones
@@ -553,17 +563,18 @@ export class LoteriaComponent implements OnInit {
         identificador
       ].ticket.seleccionados.findIndex((x) => x == fraccion);
       this.ticketsLoteria[identificador].ticket.seleccionados.splice(indexA, 1);
-      let indexB = this.ticketsLoteria[
-        identificador
-      ].fracciones.findIndex((x) => x == fraccion);
+      let indexB = this.ticketsLoteria[identificador].fracciones.findIndex(
+        (x) => x == fraccion
+      );
       this.ticketsLoteria[identificador].fracciones.splice(indexB, 1);
       if (this.ticketsLoteria[identificador].ticket.seleccionados.length == 0) {
         await this.cart.removeFromCart(this.ticketsLoteria[identificador], 1);
         delete this.ticketsLoteria[identificador];
       } else {
-        await this.cart.setCarrito(this.ticketsLoteria[identificador], 1);4
+        await this.cart.setCarrito(this.ticketsLoteria[identificador], 1);
+        this.ticketsLoteria[identificador].subtotal -= parseFloat(sorteo.precio);
       }
-      
+
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       await this.getCarritoTickets();
       //this.getTotal();
