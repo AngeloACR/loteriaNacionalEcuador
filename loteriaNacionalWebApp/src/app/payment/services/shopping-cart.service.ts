@@ -17,8 +17,8 @@ export class ShoppingCartService {
   productionSource = "https://ventas-api.loteria.com.ec";
   
   //mySource = this.localSource;
-  mySource = this.testSource;
-  //mySource = this.productionSource;
+  //mySource = this.testSource;
+  mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
 
