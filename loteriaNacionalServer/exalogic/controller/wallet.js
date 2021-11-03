@@ -481,6 +481,7 @@ const walletController = {
 
   sellLottery: async (data) => {
     try {
+      throw new Error("error")
       exalogicLogger.silly("sellLottery");
       /* {
                 "token": "661c0ce5ccabbeb1136a"
