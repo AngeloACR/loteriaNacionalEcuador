@@ -509,13 +509,13 @@ const walletController = {
         instantWinDetails: data.prizeDetails,
       };
       let response = await helper.exalogicRequest(exaData);
+      response['status'] = true;
 
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
           function: "Wallet.sellLottery",
-          status: true,
         };
         exalogicLogger.info("sellLottery.exalogic", logData);
         return response;
@@ -575,12 +575,12 @@ const walletController = {
         amount: data.amount,
       };
       let response = await helper.exalogicRequest(exaData);
+      response['status'] = true;
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
           function: "cancelLottery",
-          status: true,
         };
         exalogicLogger.info("cancelLottery.exalogic", logData);
         return response;
@@ -655,12 +655,12 @@ const walletController = {
         reservationDetails: data.reservationDetails,
       };
       let response = await helper.exalogicRequest(exaData);
+      response['status'] = true;
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
           function: "Wallet.reserveLottery",
-          status: true,
         };
         exalogicLogger.info("reserveLottery.exalogic", logData);
         return response;
