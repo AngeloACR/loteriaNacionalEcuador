@@ -616,6 +616,7 @@ const walletController = {
   },
   reserveLottery: async (data) => {
     try {
+      throw new Error('Error')
       exalogicLogger.silly("reserveLottery");
       /*
             {
