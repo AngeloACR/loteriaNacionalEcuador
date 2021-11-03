@@ -10,7 +10,7 @@ module.exports.exalogicSellError = async (
   ip
 ) => {
   try {
-    let loteriaCancelResponse = await Ventas.cancelarVenta(
+/*     let loteriaCancelResponse = await Ventas.cancelarVenta(
       lotteryToken,
       reservaId,
       user,
@@ -93,7 +93,7 @@ module.exports.exalogicSellError = async (
     throw new Error(
       "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
     );
-  } catch (e) {
+ */  } catch (e) {
     logData = {
       data: e.message,
     };
