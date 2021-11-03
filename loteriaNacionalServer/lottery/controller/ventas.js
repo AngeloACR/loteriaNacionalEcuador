@@ -774,7 +774,7 @@ const ventasController = {
         status: "Pendiente",
       };
       let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
-      logData = {
+      let logData = {
         data: apiVentaData,
         response: apiVentaResponse,
         function: "ventasController.crearReserva",
@@ -856,7 +856,7 @@ const ventasController = {
         exaReservaId
       );
 
-      let logData = {
+      logData = {
         data: exaReservaData,
         response: exaReservaResponse,
         function: "Wallet.reserveLottery",
