@@ -1,6 +1,6 @@
 const Ventas = require("../loterianacional/controller/ventas");
 const Wallet = require("../exalogic/controller/wallet");
-var { errorHandler } = require("../../errors/customError");
+var { errorHandlerLogger } = require("../config/logging");
 
 module.exports.exalogicSellError = async (
   exaVentaData,
@@ -27,7 +27,7 @@ module.exports.exalogicSellError = async (
       loteriaCancelResponse,
       function: "Ventas.cancelarVenta",
     };
-    exalogicLogger.info("exalogicSellError", logData);
+    errorHandlerLogger.info("exalogicSellError", logData);
     let j = 0;
     while (!loteriaCancelResponse.status || j != 3) {
       await Ventas.cancelarVenta(
@@ -48,7 +48,7 @@ module.exports.exalogicSellError = async (
         loteriaCancelResponse,
         function: "Ventas.cancelarVenta",
       };
-      exalogicLogger.info("exalogicSellError", logData);
+      errorHandlerLogger.info("exalogicSellError", logData);
     }
     let exaCancelId = Date.now();
     let exaCancelData = {
@@ -66,7 +66,7 @@ module.exports.exalogicSellError = async (
       exaCancelResponse,
       function: "Wallet.cancelLottery",
     };
-    exalogicLogger.info("exalogicSellError", logData);
+    errorHandlerLogger.info("exalogicSellError", logData);
     let i = 0;
     while (!exaCancelResponse.status || i != 3) {
       await Wallet.cancelLottery(exaCancelData);
@@ -78,7 +78,7 @@ module.exports.exalogicSellError = async (
         exaCancelResponse,
         function: "Wallet.cancelLottery",
       };
-      exalogicLogger.info("exalogicSellError", logData);
+      errorHandlerLogger.info("exalogicSellError", logData);
     }
     if (j == 3 && !loteriaCancelResponse.status) {
       throw new Error(
@@ -97,7 +97,7 @@ module.exports.exalogicSellError = async (
     logData = {
       data: e.message,
     };
-    exalogicLogger.error("exalogicSellError", logData);
+    errorHandlerLogger.error("exalogicSellError", logData);
   }
 };
 module.exports.loteriaSellError = async (exaReservaData) => {
