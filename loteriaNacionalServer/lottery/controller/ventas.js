@@ -847,8 +847,9 @@ const ventasController = {
       };
 
       let exaReservaResponse = await Wallet.reserveLottery(exaReservaData);
-      if (!exaReservaResponse.status)
+      if (!exaReservaResponse.status) {
         await errorHandler.exalogicReserveError(exaReservaData);
+      }
 
       let reservaStatusResponse = await ventasController.actualizarVentaStatus(
         venta._id,
@@ -876,9 +877,9 @@ const ventasController = {
         user,
         ip
       );
-      if (!loteriaVentaResponse.status)
+      if (!loteriaVentaResponse.status) {
         await errorHandler.loteriaSellError(exaReservaData);
-
+      }
       logData = {
         data: {
           ordComp,
@@ -992,8 +993,15 @@ const ventasController = {
         prizeDetails,
       };
       let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
-      if (!exaVentaResponse.status)
-        await errorHandler.exalogicSellError(exaVentaData, reservaId, lotteryToken, user, ip);
+      if (!exaVentaResponse.status) {
+        await errorHandler.exalogicSellError(
+          exaVentaData,
+          reservaId,
+          lotteryToken,
+          user,
+          ip
+        );
+      }
       logData = {
         data: exaVentaData,
         response: exaVentaResponse,
