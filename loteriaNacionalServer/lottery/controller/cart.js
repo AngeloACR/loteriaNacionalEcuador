@@ -96,6 +96,7 @@ const carritoController = {
         user,
       };
       await client.setAsync(`carrito-${user}`, JSON.stringify(carrito));
+      await client.expireAsync(`carrito-${user}`, timeout);
 
       let response = await client.getAsync(`carrito-${user}`);
       client.quit();

@@ -617,7 +617,8 @@ module.exports.eliminarReservas = async (
             loteriaVentasLogger.error("eliminarReservas.error", {
               data: message,
               errorMessage: `${errorCode}-${errorMsg}`,
-            });let errorData = {
+            });
+            let errorData = {
               input: e,
               output: "",
               function: "eliminarReservas",
@@ -789,6 +790,7 @@ module.exports.venderBoletos = async (
               let response = {
                 instantaneas,
                 ticketId,
+                status: true,
               };
 
               let logData = {
@@ -805,11 +807,13 @@ module.exports.venderBoletos = async (
                 errorMessage: `${errorCode}-${errorMsg}`,
               });
               let errorData = {
+                status: false,
                 input: message,
                 output: errorCode,
                 function: "venderBoletos",
               };
-              reject(new loteriaError(errorMsg, "loteria", errorData));
+              resolve(errorData);
+              //              reject(new loteriaError(errorMsg, "loteria", errorData));
             }
           } catch (e) {
             let errorMsg = e.message;
@@ -818,12 +822,14 @@ module.exports.venderBoletos = async (
               errorMessage: errorMsg,
             });
             let errorData = {
+              status: false,
               input: e,
               output: "",
               function: "venderBoletos",
             };
+            resolve(errorData);
 
-            reject(new loteriaError(errorMsg, "loteria", errorData));
+            //reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -836,21 +842,17 @@ module.exports.venderBoletos = async (
     });
 
     let errorData = {
+      status: false,
       input: e,
       output: "",
       function: "venderBoletos",
     };
-    throw new loteriaError(errorMsg, "loteria", errorData);
+    return errorData;
+    //throw new loteriaError(errorMsg, "loteria", errorData);
   }
 };
 
-module.exports.cancelarVenta = async (
-  token,
-  reservaId,
-  user,
-  motivo,
-  ip
-) => {
+module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
   try {
     loteriaVentasLogger.silly("cancelarVenta");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -892,7 +894,9 @@ module.exports.cancelarVenta = async (
             );
             let errorCode = parseInt(data.mt.c[0].codError[0]);
             if (!errorCode) {
-              let response = "Success"
+              let response = {
+                status: true,
+              };
               resolve(response);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
@@ -900,12 +904,14 @@ module.exports.cancelarVenta = async (
                 message: `${errorCode}-${errorMessage}`,
               });
               let errorData = {
+                status: false,
                 input: message,
                 output: errorCode,
                 function: "cancelarVenta",
               };
 
-              reject(new loteriaError(errorMessage, "loteria", errorData));
+              resolve(errorData);
+              //reject(new loteriaError(errorMessage, "loteria", errorData));
             }
           } catch (e) {
             let errorMsg = e.message;
@@ -913,12 +919,15 @@ module.exports.cancelarVenta = async (
             loteriaVentasLogger.error("cancelarVenta.error", {
               data: message,
               errorMessage: `${errorCode}-${errorMsg}`,
-            });let errorData = {
+            });
+            let errorData = {
+              status: false,
               input: e,
               output: "",
               function: "cancelarVenta",
             };
-            reject(new loteriaError(errorMsg, "loteria", errorData));
+            resolve(errorData);
+            //reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -930,11 +939,12 @@ module.exports.cancelarVenta = async (
       errorMessage: errorMsg,
     });
     let errorData = {
+      status: false,
       input: e,
       output: "",
       function: "cancelarVenta",
     };
-    throw new loteriaError(errorMsg, "loteria", errorData);
+    return errorData;
+    //throw new loteriaError(errorMsg, "loteria", errorData);
   }
 };
-

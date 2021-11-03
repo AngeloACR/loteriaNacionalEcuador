@@ -1,7 +1,3 @@
-const Lottery = require("../../loterianacional/controller/main");
-const Results = require("../../results/controller/resultados");
-const Resultados = require("../../results/controller/main");
-const Sorteos = require("../../results/controller/sorteos");
 const Cache = require("../../cache/controller/main");
 const config = require("../../config/environment");
 const Ventas = require("../../loterianacional/controller/ventas");
@@ -10,8 +6,8 @@ const Auth = require("../../exalogic/controller/auth");
 const Wallet = require("../../exalogic/controller/wallet");
 const ganadoresController = require("./ganadores");
 const { apiVentasLogger } = require("../../config/logging");
-var {apiError} = require("../../errors/customError");
-
+var { apiError } = require("../../errors/customError");
+var errorHandler = require("../../errors/errorHandler");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -54,7 +50,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -82,7 +77,6 @@ const ventasController = {
       };
       apiVentasLogger.info("authUser.exalogic", logData);
       return response;
-    
     } catch (e) {
       apiVentasLogger.error("authData.error", { errorMessage: e.message });
       throw new Error(e.message);
@@ -110,7 +104,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -156,7 +149,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -196,7 +188,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -249,7 +240,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -414,7 +404,9 @@ const ventasController = {
       apiVentasLogger.info("cancelLottery.exalogic", logData);
       return response;
     } catch (e) {
-      apiVentasLogger.error("reserveLottery.error", { errorMessage: e.message });
+      apiVentasLogger.error("reserveLottery.error", {
+        errorMessage: e.message,
+      });
       throw new Error(e.message);
     }
   },
@@ -440,7 +432,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -466,7 +457,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -493,7 +483,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -547,7 +536,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -598,7 +586,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -651,7 +638,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -703,7 +689,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -753,7 +738,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -762,19 +746,48 @@ const ventasController = {
     try {
       apiVentasLogger.silly("comprarBoletos");
       let ip = req.headers["x-forwarded-for"];
-      let exaBalanceData = { token: req.body.token };
-      let exaReservaId = Date.now();
+
       let token = req.body.token;
+      let lotteryToken = req.body.lotteryToken;
+
       let user = req.body.user;
       let accountId = req.body.accountId;
       let personaId = req.body.personaId;
-      let reservationDetails = [];
+
       let loteriaAux = req.body.loteria;
       let lottoAux = req.body.lotto;
       let pozoAux = req.body.pozo;
-      let total = parseFloat(req.body.amount).toFixed(2);
-      let loteria = [];
 
+      let total = parseFloat(req.body.amount).toFixed(2);
+
+      let reservaId = req.body.reservaId;
+
+      /* CARGA DE COMPRA EN DB */
+      let apiVentaData = {
+        amount: total,
+        loteria: loteriaAux,
+        lotto: lottoAux,
+        user,
+        pozo: pozoAux,
+        reservaId: reservaId,
+        accountId,
+        status: "Pendiente",
+      };
+      let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
+      logData = {
+        data: apiVentaData,
+        response: apiVentaResponse,
+        function: "ventasController.crearReserva",
+      };
+      apiVentasLogger.info("comprarBoletos.api", logData);
+
+      let venta = apiVentaResponse.values;
+
+      /* RESERVA CON EXALOGIC */
+      let exaReservaId = Date.now();
+      let reservationDetails = [];
+
+      let loteria = [];
       for (id in loteriaAux) {
         let drawDateAux = loteriaAux[id].sorteo.fecha.split(" ")[0].split("/");
         let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
@@ -832,8 +845,15 @@ const ventasController = {
         amount: total,
         reservationDetails,
       };
-      let exaReservaResponse = await Wallet.reserveLottery(
-        exaReservaData
+
+      let exaReservaResponse = await Wallet.reserveLottery(exaReservaData);
+      if (!exaReservaResponse.status)
+        await errorHandler.exalogicReserveError(exaReservaData);
+
+      let reservaStatusResponse = await ventasController.actualizarVentaStatus(
+        venta._id,
+        "Reservada",
+        exaReservaId
       );
 
       let logData = {
@@ -842,11 +862,8 @@ const ventasController = {
         function: "Wallet.reserveLottery",
       };
       apiVentasLogger.info("comprarBoletos.api", logData);
-      // if(exaReservaResponse.code<0) throw new Error('No se pudo reservar saldo, por favor intente de nuevo');
 
-      let lotteryToken = req.body.lotteryToken;
-
-      let reservaId = req.body.reservaId;
+      /* VENTA EN LOTERIA */
       let ordComp = exaReservaId;
       let loteriaVentaResponse = await Ventas.venderBoletos(
         ordComp,
@@ -859,7 +876,9 @@ const ventasController = {
         user,
         ip
       );
-      // if(loteriaVentaResponse.status<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
+      if (!loteriaVentaResponse.status)
+        await errorHandler.loteriaSellError(exaReservaData);
+
       logData = {
         data: {
           ordComp,
@@ -876,6 +895,15 @@ const ventasController = {
         function: "Ventas.venderBoletos",
       };
       apiVentasLogger.info("comprarBoletos.loteria", logData);
+      let ventaLoteriaStatusResponse =
+        await ventasController.actualizarVentaStatus(
+          venta._id,
+          "Procesada",
+          loteriaVentaResponse.ticketId
+        );
+
+      /* VENTA EN EXALOGIC */
+
       let instantaneas = loteriaVentaResponse.instantaneas;
       let prizeDetails = [];
       let instantaneaStatus = false;
@@ -922,9 +950,11 @@ const ventasController = {
               fractions: premio.Fra,
               prize: parseFloat(premio.Val).toFixed(2),
               prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
-              prizeDescription: premio.Prem.normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
+              prizeDescription: premio.Prem.normalize("NFD").replace(
+                /[\u0300-\u036f]/g,
+                ""
+              ),
             };
-            //CREAR GANADOR AQUI
 
             let ganador = {
               personaId: personaId,
@@ -951,6 +981,7 @@ const ventasController = {
         }
         instantaneaData = prizeDetails;
       }
+
       let exaVentaId = Date.now();
       let exaVentaData = {
         token,
@@ -961,32 +992,23 @@ const ventasController = {
         prizeDetails,
       };
       let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
-      // if(exaVentaResponse.code<0) throw new Error('No se pudo procesar la compra, por favor intente de nuevo');
+      if (!exaVentaResponse.status)
+        await errorHandler.exalogicSellError(exaVentaData, reservaId, lotteryToken, user, ip);
       logData = {
         data: exaVentaData,
         response: exaVentaResponse,
         function: "Wallet.sellLottery",
       };
       apiVentasLogger.info("comprarBoletos.api", logData);
-      let apiVentaData = {
-        amount: req.body.amount,
-        loteria: req.body.loteria,
-        lotto: req.body.lotto,
-        user,
-        pozo: req.body.pozo,
-        reservaId: req.body.reservaId,
-        ventaId: loteriaVentaResponse.ticketId,
-        exaReservaId,
-        exaVentaId,
-        accountId,
-      };
-      let apiVentaResponse = await ventasController.crearReserva(apiVentaData);
-      logData = {
-        data: apiVentaData,
-        response: apiVentaResponse,
-        function: "ventasController.crearReserva",
-      };
-      apiVentasLogger.info("comprarBoletos.api", logData);
+
+      let ventaExalogicStatusResponse =
+        await ventasController.actualizarVentaStatus(
+          venta._id,
+          "Completada",
+          exaVentaId
+        );
+
+      /* RESPUESTA DE API */
       let instantaneaResponse = {
         status: instantaneaStatus,
         data: instantaneaData,
@@ -1007,7 +1029,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -1026,7 +1047,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -1044,7 +1064,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -1061,7 +1080,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }
@@ -1113,6 +1131,7 @@ const ventasController = {
       let exaVentaId = apiReservaData.exaVentaId;
       let user = apiReservaData.user;
       let accountId = apiReservaData.accountId;
+      let status = apiReservaData.status;
       let element = {
         loteria,
         exaReservaId,
@@ -1124,6 +1143,7 @@ const ventasController = {
         ventaId,
         user,
         accountId,
+        status,
       };
       let response = await Reservas.addReserva(element);
       return response;
@@ -1131,8 +1151,23 @@ const ventasController = {
       throw new Error(e.message);
     }
   },
-  crearVenta: async (data) => {
-    return data;
+  actualizarVentaStatus: async (id, status, value) => {
+    let venta = (await Reservas.getCompraById(id)).values;
+    switch (status) {
+      case "Reservada":
+        venta["exaReservaId"] = value;
+        break;
+      case "Procesada":
+        venta["ventaId"] = value;
+
+        break;
+
+      default:
+        venta["exaVentaId"] = value;
+        break;
+    }
+    let response = await venta.save();
+    return response;
   },
   getCompra: async (req, res) => {
     try {
@@ -1146,7 +1181,6 @@ const ventasController = {
         message: e.message,
         code: e.code,
         handler: e.handler,
-
       };
       res.status(400).json(response);
     }

@@ -72,9 +72,9 @@ const reservasController = {
     }
   },
 
-  getReservaById: async function (id) {
+  getCompraById: async function (id) {
     try {
-      let query = { _id: id };
+      let query = { "_id": id };
       let reserva = await Reserva.findOne(query);
       let response = {
         status: true,

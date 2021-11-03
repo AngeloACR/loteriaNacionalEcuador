@@ -68,6 +68,9 @@ const ventaSchema = new mongoose.Schema({
     total: {
         type: String
     },
+    status: {
+        type: String
+    },
     user: {
         type: String
     },

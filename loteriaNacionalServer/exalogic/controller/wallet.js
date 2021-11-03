@@ -515,6 +515,7 @@ const walletController = {
           data: exaData,
           response,
           function: "Wallet.sellLottery",
+          status: true,
         };
         exalogicLogger.info("sellLottery.exalogic", logData);
         return response;
@@ -523,12 +524,14 @@ const walletController = {
           input: data,
           output: response,
           function: "sellLottery",
+          status: false,
         };
-        throw new exalogicError(
+        return errorData;
+        /* throw new exalogicError(
           response.resultDescription,
           "exalogic",
           errorData
-        );
+        ); */
       }
     } catch (e) {
       exalogicLogger.error("sellLottery.error", {
@@ -539,8 +542,10 @@ const walletController = {
         input: e,
         output: "",
         function: "sellLottery",
+        status: false,
       };
-      throw new exalogicError(e.message, "exalogic", errorData);
+      return errorData;
+      //throw new exalogicError(e.message, "exalogic", errorData);
     }
   },
   cancelLottery: async (data) => {
@@ -575,6 +580,7 @@ const walletController = {
           data: exaData,
           response,
           function: "cancelLottery",
+          status: true,
         };
         exalogicLogger.info("cancelLottery.exalogic", logData);
         return response;
@@ -583,12 +589,15 @@ const walletController = {
           input: data,
           output: response,
           function: "cancelLottery",
+          status: false,
         };
-        throw new exalogicError(
+        return errorData;
+
+        /*         throw new exalogicError(
           response.resultDescription,
           "exalogic",
           errorData
-        );
+        ); */
       }
     } catch (e) {
       exalogicLogger.error("cancelLottery.error", {
@@ -599,8 +608,10 @@ const walletController = {
         input: e,
         output: "",
         function: "cancelLottery",
+        status: false,
       };
-      throw new exalogicError(e.message, "exalogic", errorData);
+      return errorData;
+      //throw new exalogicError(e.message, "exalogic", errorData);
     }
   },
   reserveLottery: async (data) => {
@@ -649,6 +660,7 @@ const walletController = {
           data: exaData,
           response,
           function: "Wallet.reserveLottery",
+          status: true,
         };
         exalogicLogger.info("reserveLottery.exalogic", logData);
         return response;
@@ -657,12 +669,14 @@ const walletController = {
           input: data,
           output: response,
           function: "reserveLottery",
+          status: false,
         };
-        throw new exalogicError(
+        return errorData;
+        /* throw new exalogicError(
           response.resultDescription,
           "exalogic",
           errorData
-        );
+        ); */
       }
     } catch (e) {
       exalogicLogger.error("reserveLottery.error", {
@@ -673,8 +687,10 @@ const walletController = {
         input: e,
         output: "",
         function: "reserveLottery",
+        status: false,
       };
-      throw new exalogicError(e.message, "exalogic", errorData);
+      return errorData;
+      //throw new exalogicError(e.message, "exalogic", errorData);
     }
   },
   payLottery: async (data) => {
