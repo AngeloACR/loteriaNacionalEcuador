@@ -1162,6 +1162,7 @@ const ventasController = {
   actualizarVentaStatus: async (id, status, value) => {
     try {
       let venta = (await Reservas.getCompraById(id)).values;
+      venta.status = status
       switch (status) {
         case "Reservada":
           venta["exaReservaId"] = value;
