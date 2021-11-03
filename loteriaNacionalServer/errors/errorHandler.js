@@ -98,6 +98,10 @@ module.exports.exalogicSellError = async (
       data: e.message,
     };
     errorHandlerLogger.error("exalogicSellError", logData);
+
+    throw new Error(
+        "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
+      );
   }
 };
 module.exports.loteriaSellError = async (exaReservaData) => {
