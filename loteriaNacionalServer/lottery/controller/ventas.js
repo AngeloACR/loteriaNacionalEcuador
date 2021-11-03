@@ -1160,22 +1160,40 @@ const ventasController = {
     }
   },
   actualizarVentaStatus: async (id, status, value) => {
-    let venta = (await Reservas.getCompraById(id)).values;
-    switch (status) {
-      case "Reservada":
-        venta["exaReservaId"] = value;
-        break;
-      case "Procesada":
-        venta["ventaId"] = value;
+    try {
+      let venta = (await Reservas.getCompraById(id)).values;
+      switch (status) {
+        case "Reservada":
+          venta["exaReservaId"] = value;
+          break;
+        case "Procesada":
+          venta["ventaId"] = value;
 
-        break;
+          break;
 
-      default:
-        venta["exaVentaId"] = value;
-        break;
+        default:
+          venta["exaVentaId"] = value;
+          break;
+      }
+      let response = await venta.save();
+
+      logData = {
+        data: {
+          id,
+          status,
+          value,
+        },
+        response,
+      };
+      apiVentasLogger.info("actualizarVentasStatus.loteria", logData);
+      return response;
+    } catch (e) {
+
+      apiVentasLogger.error("comprarBoletos.error", {
+        errorMessage: e.message,
+      });
+      throw new Error(e.message)
     }
-    let response = await venta.save();
-    return response;
   },
   getCompra: async (req, res) => {
     try {
