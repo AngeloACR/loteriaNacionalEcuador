@@ -1,5 +1,6 @@
 const Ventas = require("../loterianacional/controller/ventas");
 const Wallet = require("../exalogic/controller/wallet");
+var { errorHandler } = require("../../errors/customError");
 
 module.exports.exalogicSellError = async (
   exaVentaData,
@@ -8,50 +9,96 @@ module.exports.exalogicSellError = async (
   user,
   ip
 ) => {
-  let loteriaCancelResponse = await Ventas.cancelarVenta(
-    lotteryToken,
-    reservaId,
-    user,
-    "Error de comunicación con Exalogic",
-    ip
-  );
-  let j = 0;
-  while (!loteriaCancelResponse.status || j != 3) {
-    await Ventas.cancelarVenta(
+  try {
+    let loteriaCancelResponse = await Ventas.cancelarVenta(
       lotteryToken,
       reservaId,
       user,
       "Error de comunicación con Exalogic",
       ip
     );
-    j++;
-  }
-  let exaCancelId = Date.now();
-  let exaCancelData = {
-    token: exaVentaData.token,
-    transactionId: exaCancelId,
-    reserveId: exaVentaData.reserveId,
-    amount: exaVentaData.amount,
-  };
-  let exaCancelResponse = await Wallet.cancelLottery(exaCancelData);
-  let i = 0;
-  while (!exaCancelResponse.status || i != 3) {
-    await Wallet.cancelLottery(exaCancelData);
-    i++;
-  }
-  if (j == 3 && !loteriaCancelResponse.status) {
+    let logData = {
+      data: {
+        exaVentaData,
+        reservaId,
+        lotteryToken,
+        user,
+      },
+      loteriaCancelResponse,
+      function: "Ventas.cancelarVenta",
+    };
+    exalogicLogger.info("exalogicSellError", logData);
+    let j = 0;
+    while (!loteriaCancelResponse.status || j != 3) {
+      await Ventas.cancelarVenta(
+        lotteryToken,
+        reservaId,
+        user,
+        "Error de comunicación con Exalogic",
+        ip
+      );
+      j++;
+      logData = {
+        data: {
+          exaVentaData,
+          reservaId,
+          lotteryToken,
+          user,
+        },
+        loteriaCancelResponse,
+        function: "Ventas.cancelarVenta",
+      };
+      exalogicLogger.info("exalogicSellError", logData);
+    }
+    let exaCancelId = Date.now();
+    let exaCancelData = {
+      token: exaVentaData.token,
+      transactionId: exaCancelId,
+      reserveId: exaVentaData.reserveId,
+      amount: exaVentaData.amount,
+    };
+    let exaCancelResponse = await Wallet.cancelLottery(exaCancelData);
+
+    logData = {
+      data: {
+        exaCancelData,
+      },
+      exaCancelResponse,
+      function: "Wallet.cancelLottery",
+    };
+    exalogicLogger.info("exalogicSellError", logData);
+    let i = 0;
+    while (!exaCancelResponse.status || i != 3) {
+      await Wallet.cancelLottery(exaCancelData);
+      i++;
+      logData = {
+        data: {
+          exaCancelData,
+        },
+        exaCancelResponse,
+        function: "Wallet.cancelLottery",
+      };
+      exalogicLogger.info("exalogicSellError", logData);
+    }
+    if (j == 3 && !loteriaCancelResponse.status) {
+      throw new Error(
+        "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
+      );
+    }
+    if (i == 3 && !exaCancelResponse.status) {
+      throw new Error(
+        "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
+      );
+    }
     throw new Error(
-      "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
+      "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
     );
+  } catch (e) {
+    logData = {
+      data: e.message,
+    };
+    exalogicLogger.error("exalogicSellError", logData);
   }
-  if (i == 3 && !exaCancelResponse.status) {
-    throw new Error(
-      "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
-    );
-  }
-  throw new Error(
-    "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
-  );
 };
 module.exports.loteriaSellError = async (exaReservaData) => {
   let exaCancelId = Date.now();

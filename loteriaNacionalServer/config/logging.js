@@ -1,7 +1,25 @@
 const { createLogger, format, transports, config } = require("winston");
 const { combine, timestamp, json } = format;
 const environment = require("./environment");
+module.exports.errorHandlerLogger = createLogger({
+  defaultMeta: { component: "error-handler" },
+  format: combine(
+    timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    json()
+  ),
 
+  transports: [
+    new transports.File({
+      filename: "logs/error-handler.json",
+      prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
+      level: "info",
+    }),
+  ],
+});
 module.exports.apiVentasLogger = createLogger({
   defaultMeta: { component: "api-ventas" },
   format: combine(
