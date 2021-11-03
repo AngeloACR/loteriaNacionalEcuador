@@ -17,7 +17,13 @@ module.exports.exalogicSellError = async (
   );
   let j = 0;
   while (!loteriaCancelResponse.status || j != 3) {
-    await Wallet.cancelLottery(exaCancelData);
+    await Ventas.cancelarVenta(
+      lotteryToken,
+      reservaId,
+      user,
+      "Error de comunicación con Exalogic",
+      ip
+    );
     j++;
   }
   let exaCancelId = Date.now();
