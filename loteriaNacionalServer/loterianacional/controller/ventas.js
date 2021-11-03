@@ -655,7 +655,6 @@ module.exports.venderBoletos = async (
   ip
 ) => {
   try {
-    throw new Error("Error");
     loteriaVentasLogger.silly("venderBoletos");
 
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
