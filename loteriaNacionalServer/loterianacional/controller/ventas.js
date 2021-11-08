@@ -870,12 +870,12 @@ module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
           <msgError />
           <medio>${medioId}</medio>
           <token>${token}</token>
-          <operacion>1234567890</operacion>
+          <operacion>${Date.now()}</operacion>
           </c>
           <i>
           <ReservaId>${reservaId}</ReservaId>
           <MotivoAnulacion>${motivo}</MotivoAnulacion>
-          <UsuarioId>UsuarioCliente</UsuarioId>
+          <UsuarioId>${user}</UsuarioId>s
           </i>
           </mt>  
                     ]]>
