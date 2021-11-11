@@ -1,16 +1,44 @@
 <div class="iframeBox">
-  <iframe id="diviSlide" name="diviSlide" [src]="link | safe" [title]="title" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe
+    id="diviSlide"
+    name="diviSlide"
+    [src]="link | safe"
+    [title]="title"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  >
   </iframe>
 </div>
 <div class="selectionBox" *ngIf="infoReady">
-
-  <app-loteria-nacional-selector class="selectorBox"></app-loteria-nacional-selector>
+  <app-loteria-nacional-selector
+    class="selectorBox"
+  ></app-loteria-nacional-selector>
   <app-lotto-selector class="selectorBox"></app-lotto-selector>
-  <app-pozo-millonario-selector class="selectorBox"></app-pozo-millonario-selector>
+  <app-pozo-millonario-selector
+    class="selectorBox"
+  ></app-pozo-millonario-selector>
+  <div class="selectorBox">
+    <iframe
+      id="bet593"
+      name="bet593"
+      [src]="link593 | safe"
+      title="Selector BET953"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
+  </div>
 </div>
 <div class="iframeBox2">
-  <iframe id="newsBox" [src]="linkNews | safe" [title]="title" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+  <iframe
+    id="newsBox"
+    [src]="linkNews | safe"
+    [title]="title"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  >
   </iframe>
 </div>

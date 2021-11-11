@@ -200,6 +200,39 @@ export class ShoppingCartService {
     });
   }
 
+
+  async validarCarrito() {
+    return new Promise<any>(async (resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers = headers.append("Content-Type", "application/json");
+      //let endpoint = "/inquiry";
+      let endpoint = "/cart";
+      let user = JSON.parse(localStorage.getItem("userData")).playerDocument;
+      let token = JSON.parse(localStorage.getItem("userData")).lotteryToken;
+      let reservaId = JSON.parse(localStorage.getItem("reservaId"));
+
+      let body = {
+        user,
+        token,
+        reservaId
+      };
+      endpoint = `${endpoint}/validar`;
+      var address = this.mySource;
+      address = address + endpoint;
+      this.http.post(address, body, { headers: headers }).subscribe(
+        async (data: any) => {
+          if(!data.status){
+            reject(new Error(data.message));
+          }
+          resolve(data);
+        },
+        (error: any) => {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
+
   async getCarrito() {
     return new Promise<any>(async (resolve, reject) => {
       let carritoDB = await this.buscarCarrito();

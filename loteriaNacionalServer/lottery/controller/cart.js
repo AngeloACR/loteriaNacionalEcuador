@@ -1,4 +1,5 @@
 const redis = require("redis");
+const reservas = require("../../loterianacional/controller/reservas");
 const { promisifyAll } = require("bluebird");
 
 promisifyAll(redis);
@@ -105,6 +106,29 @@ const carritoController = {
       throw new Error(e.message);
     }
   },
+  validar: async (req, res) => {
+    try {
+      let user = req.body.user;
+      let token = req.body.token;
+      let reservaId = req.body.reservaId;
+      let client = carritoController.getClient();
+      let ip = req.headers["x-forwarded-for"];
+      let cacheCart = await client.getAsync(`carrito-${user}`);
+      if (!cacheCart) {
+        throw new Error('Su carrito esta vacio')
+      }
+      client.quit();
+      let loteriaCart = await reservas.validarReserva(token, reservaId, user, ip)
+      res.status(200).json(JSON.parse(response));
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  
 };
 
 module.exports = carritoController;

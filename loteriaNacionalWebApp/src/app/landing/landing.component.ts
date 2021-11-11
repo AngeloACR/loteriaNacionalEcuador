@@ -10,6 +10,7 @@ export class LandingComponent implements OnInit {
   //link: string = "https://contenidos-prueba.loteria.com.ec/divi-slide";
   //linkNews: string = "https://contenidos-prueba.loteria.com.ec/newsletter";
   link: string = "https://contenidos.loteria.com.ec/divi-slide";
+  link593: string = "https://contenidos.loteria.com.ec/bet593";
   linkNews: string = "https://contenidos.loteria.com.ec/newsletter";
   title: string = "sliderLoteria";
   infoReady: boolean = false;

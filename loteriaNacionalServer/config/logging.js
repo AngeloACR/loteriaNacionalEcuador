@@ -127,6 +127,33 @@ module.exports.loteriaVentasLogger = createLogger({
     }),
   ],
 });
+
+module.exports.loteriaReservasLogger = createLogger({
+  defaultMeta: { component: "loteria" },
+  format: combine(
+    timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    json()
+  ),
+
+  transports: [
+    new transports.File({
+      filename: "logs/loteria-reservas.json",
+      prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
+      level: "info",
+    }),
+    new transports.File({
+      filename: "logs/loteria-reservas-error.json",
+      prettyPrint: true,
+      maxSize: "10m",
+      maxFiles: 4,
+      level: "error",
+    }),
+  ],
+});
 module.exports.loteriaConsultasLogger = createLogger({
   defaultMeta: { component: "loteria-consulta" },
   format: combine(
