@@ -35,7 +35,6 @@ export class LoteriaNacionalBoletinComponent implements OnInit {
   }
 
   handleImgError() {
-    console.log("Img not found");
     this.imgNotFound = true;
   }
 
