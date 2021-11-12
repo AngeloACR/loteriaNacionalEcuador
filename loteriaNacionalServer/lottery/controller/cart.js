@@ -3,7 +3,7 @@ const reservas = require("../../loterianacional/controller/reservas");
 const { promisifyAll } = require("bluebird");
 
 promisifyAll(redis);
-let timeout = 60*40;
+let timeout = 60 * 40;
 const carritoController = {
   getClient: () => {
     const client = redis.createClient({
@@ -114,11 +114,52 @@ const carritoController = {
       let client = carritoController.getClient();
       let ip = req.headers["x-forwarded-for"];
       let cacheCart = await client.getAsync(`carrito-${user}`);
-      if (!cacheCart) {
-        throw new Error('Su carrito esta vacio')
-      }
+      let loteriaCacheLength = Object.keys(cacheCart.loteria).length;
+      let lottoCacheLength = Object.keys(cacheCart.lotto).length;
+      let pozoCacheLength = Object.keys(cacheCart.pozo).length;
+      let carritoCacheLength = cacheCart.carrito.length;
+      let carritoCacheAux =
+        loteriaCacheLength + lottoCacheLength + pozoCacheLength;
+
       client.quit();
-      let loteriaCart = await reservas.validarReserva(token, reservaId, user, ip)
+      let loteriaCart = await reservas.validarReserva(
+        token,
+        reservaId,
+        user,
+        ip
+      );
+      let loteriaLoteriaLength = Object.keys(loteriaCart.loteria).length;
+      let lottoLoteriaLength = Object.keys(loteriaCart.lotto).length;
+      let pozoLoteriaLength = Object.keys(loteriaCart.pozo).length;
+      let carritoLoteriaLength = loteriaCart.carrito.length;
+      let carritoLoteriaAux =
+        loteriaLoteriaLength + lottoLoteriaLength + pozoLoteriaLength;
+      if (carritoCacheLength != carritoLoteriaLength) {
+      }
+      if (carritoCacheAux != carritoLoteriaAux) {
+        if (loteriaCacheLength != loteriaLoteriaLength) {
+          if (loteriaCacheLength > loteriaLoteriaLength) {
+              //reservar en loteria
+          } else {
+              //agregar al carrito
+
+          }
+        }
+        if (lottoCacheLength != lottoLoteriaLength) {
+          if (lottoCacheLength > lottLoteriaLength) {
+          } else {
+
+          }
+      
+        }
+        if (pozoCacheLength != pozoLoteriaLength) {
+          if (pozoCacheLength > pozoLoteriaLength) {
+          } else {
+
+          }
+
+        }
+      }
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       let response = {
@@ -128,7 +169,6 @@ const carritoController = {
       res.status(400).json(response);
     }
   },
-  
 };
 
 module.exports = carritoController;
