@@ -7,19 +7,19 @@ const { loteriarReservasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicatioId;
-//const address = config.aplicativoAddressTest;
-const address = config.aplicativoAddressProd;
+const address = config.aplicativoAddressTest;
+//const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
     loteriarReservasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-   /*  const usuarioClientePsd = config.usuarioAplicativoTest;
-    const claveClientePsd = config.passwordAplicativoTest; */
+    const usuarioClientePsd = config.usuarioAplicativoTest;
+    const claveClientePsd = config.passwordAplicativoTest;
 
-    const usuarioClientePsd = config.usuarioAplicativoProd;
-    const claveClientePsd = config.passwordAplicativoProd;
+    /* const usuarioClientePsd = config.usuarioAplicativoProd;
+    const claveClientePsd = config.passwordAplicativoProd; */
     let message = {
       $xml: `
       <PI_DatosXml>
@@ -447,7 +447,19 @@ module.exports.validarReservas = async (
             );
             let errorCode = parseInt(data.mt.c[0].codError[0]);
             if (!errorCode) {
-              let response = data.mt.o[0].ReturnValue[0];
+              let reserva = data.mt.o[0];
+              let loteria = [];
+              let lotto = [];
+              let pozo = [];
+              
+              
+              let carrito = loteria.concat(lotto).concat(pozo);
+              let response = {
+                loteria,
+                lotto,
+                pozo,
+                carrito
+              }
               let logData = {
                 data: message,
                 loteriaResponse: rawResponse,
