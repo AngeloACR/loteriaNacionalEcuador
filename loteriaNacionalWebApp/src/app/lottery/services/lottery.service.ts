@@ -64,7 +64,39 @@ export class LotteryService {
     };
     return response;
   }
+  obtenerDescuentos() {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+    let endpoint = "/lottery";
+    let authData = this.getAuthData();
 
+        endpoint = `${endpoint}/getDescuentos`;
+        var address = this.mySource;
+
+        address = address + endpoint;
+        return new Promise<Array<sorteo>>((resolve, reject) => {
+          this.http
+            .get(address, {
+              params: {
+                lotteryToken: authData.lotteryToken,
+                user: authData.user,
+              },
+              headers: headers,
+            })
+            .subscribe(
+              (data: any) => {
+                let descuentos: Array<any> = data;
+                resolve(descuentos);
+              },
+              (error: any) => {
+                reject(new Error(error.error.message));
+              }
+            );
+        });
+
+    
+  }
   obtenerSorteo(token, loteria: number) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");

@@ -190,6 +190,115 @@ module.exports.consultarSorteosDisponibles = async (
     throw new loteriaError(errorMsg, "loteria", "consultarSorteosDisponibles");
   }
 };
+module.exports.consultarDescuentos = async (token, user, ip) => {
+  try {
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let message = {
+      $xml: `
+        <PI_DatosXml>
+        <![CDATA[
+          <mt>
+            <c>
+              <aplicacion>25</aplicacion>
+              <transaccion>119</transaccion>
+              <usuario>${user}</usuario>
+              <maquina>${ip}</maquina>
+              <codError>0</codError>
+              <msgError />
+              <medio>${medioId}</medio>
+              <token>${token}</token>
+              <operacion>${Date.now()}</operacion>
+            </c>
+            <i>
+          <JuegoId>0</JuegoId>
+          <SorteoId>0</SorteoId>
+            </i>
+          </mt>
+          ]]>
+        </PI_DatosXml>
+        `,
+    };
+
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          try {
+            if (err) reject(new Error(err));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+
+            if (!errorCode) {
+              let aux = data.mt.rs[0].r[0].Row;
+              let response = aux.map((descuento) => {
+                let inicioAux = descuento.$.FechaInicio;
+                let finAux = descuento.$.FechaFin;
+                let currentDate = new Date(Date.now()).toLocaleString("es-EC", {
+                  timeZone: "America/Bogota",
+                });
+
+                let descuentoAux = {
+                  tipoLoteria: descuento.$.JuegoId,
+                  sorteo: descuento.$.SorteoId,
+                  fechainicio: descuento.$.FechaInicio,
+                  fechaFin: descuento.$.FechaFin,
+                  valorConDescuento: descuento.$.ValorPorBoleto,
+                  cantidad: descuento.$.CantidadBoletos,
+                  nombre: descuento.$.Nombre,
+                  descripcion: descuento.$.Descripcion,
+                  operacion: descuento.$.Operacion,
+                  valorSinDescuento: descuento.$.PrecioVenta,
+                };
+                return descuentoAux;
+              });
+
+              resolve(response);
+            } else {
+              let errorMessage = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error(
+                "consultarSorteosDisponibles.loteria.error",
+                {
+                  data: message,
+                  errorMessage: `${errorCode}-${errorMessage}`,
+                }
+              );
+              reject(
+                new loteriaError(
+                  errorMessage,
+                  "loteria",
+                  "consultarSorteosDisponibles"
+                )
+              );
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+
+            loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
+              errorMessage: errorMsg,
+            });
+            reject(
+              new loteriaError(
+                errorMsg,
+                "loteria",
+                "consultarSorteosDisponibles"
+              )
+            );
+          }
+        }
+      );
+    });
+  } catch (e) {
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
+      errorMessage: errorMsg,
+    });
+
+    throw new loteriaError(errorMsg, "loteria", "consultarSorteosDisponibles");
+  }
+};
 
 module.exports.obtenerCombinacionesDisponibles = async (
   tipoLoteria,
