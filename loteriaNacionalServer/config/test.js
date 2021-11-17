@@ -22,7 +22,7 @@ module.exports = {
   usuarioCliente: "italtronicprep",
   passwordCliente: "12345678",
 
-  medioAplicatioId: 17,
+  medioAplicativoId: 17,
 
   aplicativoAddressTest: "serviciomt-prep.wsdl",
   aplicativoAddressProd: "serviciomt-prod.wsdl",

@@ -6,7 +6,7 @@ var { loteriaError } = require("../../errors/customError");
 const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
-const medioId = config.medioAplicatioId;
+const medioId = config.medioAplicativoId;
 const address = config.aplicativoAddressTest;
 //const address = config.aplicativoAddressProd;
 

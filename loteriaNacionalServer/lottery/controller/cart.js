@@ -114,9 +114,13 @@ const carritoController = {
       let client = carritoController.getClient();
       let ip = req.headers["x-forwarded-for"];
       let cacheCart = await client.getAsync(`carrito-${user}`);
-      let loteriaCacheLength = Object.keys(cacheCart.loteria).length;
-      let lottoCacheLength = Object.keys(cacheCart.lotto).length;
-      let pozoCacheLength = Object.keys(cacheCart.pozo).length;
+      let loteriaCache = Object.values(cacheCart.loteria);
+      let lottoCache = Object.values(cacheCart.lotto);
+      let pozoCache = Object.values(cacheCart.pozo);
+
+      let loteriaCacheLength = loteriaCache.length;
+      let lottoCacheLength = lottoCache.length;
+      let pozoCacheLength = pozoCache.length;
       let carritoCacheLength = cacheCart.carrito.length;
       let carritoCacheAux =
         loteriaCacheLength + lottoCacheLength + pozoCacheLength;
@@ -128,38 +132,203 @@ const carritoController = {
         user,
         ip
       );
-      let loteriaLoteriaLength = Object.keys(loteriaCart.loteria).length;
-      let lottoLoteriaLength = Object.keys(loteriaCart.lotto).length;
-      let pozoLoteriaLength = Object.keys(loteriaCart.pozo).length;
+      let loteriaLoteriaLength = loteriaCart.loteria.length;
+      let lottoLoteriaLength = loteriaCart.lotto.length;
+      let pozoLoteriaLength = loteriaCart.pozo.length;
       let carritoLoteriaLength = loteriaCart.carrito.length;
       let carritoLoteriaAux =
         loteriaLoteriaLength + lottoLoteriaLength + pozoLoteriaLength;
-      if (carritoCacheLength != carritoLoteriaLength) {
+      /*      if (carritoCacheLength != carritoLoteriaLength) {
+        if (carritoCacheLength > carritoLoteriaLength) {
+          for (let i = 0; i < carritoCacheLength; i++) {
+            let item = cacheCart.carrito[i];
+            let index = loteriaCart.carrito.findIndex(
+              (boleto) => boleto.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              //Reservar en loteria
+            }
+          }
+        } else {
+          for (let i = 0; i < carritoLoteriaLength; i++) {
+            let item = loteriaCart.carrito[i];
+            let index = cacheCart.carrito.findIndex(
+              (boleto) => boleto.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              //Agregar al carrito
+            }
+          }
+        }
+      } */
+      if (loteriaCacheLength != loteriaLoteriaLength) {
+        if (loteriaCacheLength > loteriaLoteriaLength) {
+          for (let i = 0; i < loteriaCacheLength; i++) {
+            let item = loteriaCache[i];
+            let index = loteriaCart.loteria.findIndex(
+              (loteria) => loteria.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              let boleto = [
+                {
+                  combinacion: item.combinacion,
+                  fracciones: item.seleccionados,
+                  sorteo: item.sorteo,
+                },
+              ];
+              await reservas.reservarCombinaciones(
+                boleto,
+                [],
+                [],
+                token,
+                reservaId,
+                user,
+                ip
+              );
+
+              //Reservar en loteria
+            }
+          }
+        } else {
+          for (let i = 0; i < loteriaLoteriaLength; i++) {
+            let item = loteriaCart.loteria[i];
+            let index = loteriaCache.findIndex(
+              (loteria) => loteria.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              //Agregar al carrito
+            }
+          }
+        }
+      } else {
+        for (let i = 0; i < loteriaCacheLength; i++) {
+          let item = loteriaCache[i];
+          let index = loteriaCart.loteria.findIndex(
+            (loteria) => loteria.combinacion == item.combinacion
+          );
+          if (index != -1) {
+            let loteriaItem = loteriaCart.loteria[i];
+            let cacheLength = item.seleccionados.length;
+            let loteriaLength = loteriaItem.seleccionados.length;
+            if (loteriaLength != cacheLength) {
+              if (cacheLength > loteriaLength) {
+                for (let i = 0; i < cacheLength; i++) {
+                  let itemB = itemB.seleccionados[i];
+                  let indexB = loteriaItem.seleccionados.indexOf(itemB);
+                  if (indexB == -1) {
+                    let boleto = [
+                      {
+                        combinacion: item.combinacion,
+                        fracciones: item.seleccionados,
+                        sorteo: item.sorteo,
+                      },
+                    ];
+                    await reservas.reservarCombinaciones(
+                      boleto,
+                      [],
+                      [],
+                      token,
+                      reservaId,
+                      user,
+                      ip
+                    );
+                    //Reservar en loteria
+                  }
+                }
+              } else {
+                for (let i = 0; i < lottoLoteriaLength; i++) {
+                  let itemB = loteriaItem.seleccionados[i];
+                  let indexB = itemB.seleccionados.indexOf(itemB);
+                  if (indexB == -1) {
+                    //Agregar al carrito
+                  }
+                }
+              }
+            }
+          }
+        }
+        //Chequeo de fracciones.
       }
-      if (carritoCacheAux != carritoLoteriaAux) {
-        if (loteriaCacheLength != loteriaLoteriaLength) {
-          if (loteriaCacheLength > loteriaLoteriaLength) {
-              //reservar en loteria
-          } else {
-              //agregar al carrito
+      if (lottoCacheLength != lottoLoteriaLength) {
+        if (lottoCacheLength > lottLoteriaLength) {
+          for (let i = 0; i < lottoCacheLength; i++) {
+            let item = lottoCache[i];
+            let index = loteriaCart.lotto.findIndex(
+              (lotto) => lotto.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              await reservas.reservarCombinaciones();
+              let boleto = [
+                {
+                  combinacion: item.combinacion,
+                  sorteo: item.sorteo,
+                },
+              ];
+              await reservas.reservarCombinaciones(
+                [],
+                boleto,
+                [],
+                token,
+                reservaId,
+                user,
+                ip
+              );
 
+              //Reservar en loteria
+            }
           }
-        }
-        if (lottoCacheLength != lottoLoteriaLength) {
-          if (lottoCacheLength > lottLoteriaLength) {
-          } else {
-
+        } else {
+          for (let i = 0; i < lottoLoteriaLength; i++) {
+            let item = loteriaCart.lotto[i];
+            let index = lottoCache.findIndex(
+              (lotto) => lotto.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              //Agregar al carrito
+            }
           }
-      
-        }
-        if (pozoCacheLength != pozoLoteriaLength) {
-          if (pozoCacheLength > pozoLoteriaLength) {
-          } else {
-
-          }
-
         }
       }
+      if (pozoCacheLength != pozoLoteriaLength) {
+        if (pozoCacheLength > pozoLoteriaLength) {
+          for (let i = 0; i < pozoCacheLength; i++) {
+            let item = pozoCache[i];
+            let index = loteriaCart.pozo.findIndex(
+              (pozo) => pozo.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              let boleto = [
+                {
+                  combinacion: item.combinacion,
+                  sorteo: item.sorteo,
+                },
+              ];
+              await reservas.reservarCombinaciones(
+                [],
+                [],
+                boleto,
+                token,
+                reservaId,
+                user,
+                ip
+              );
+
+              //Reservar en loteria
+            }
+          }
+        } else {
+          for (let i = 0; i < pozoLoteriaLength; i++) {
+            let item = loteriaCart.pozo[i];
+            let index = pozoCache.findIndex(
+              (pozo) => pozo.combinacion == item.combinacion
+            );
+            if (index == -1) {
+              //Agregar al carrito
+            }
+          }
+        }
+      }
+
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       let response = {

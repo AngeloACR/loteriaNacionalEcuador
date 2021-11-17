@@ -28,7 +28,7 @@ module.exports = {
   usuarioAplicativoProd: "sitiowebprodrsd",
   passwordAplicativoProd: "$13w8p707R6o",
 
-  medioAplicatioId: 17,
+  medioAplicativoId: 17,
 
   aplicativoAddressTest: "serviciomt-prep.wsdl",
   aplicativoAddressProd: "serviciomt-prod.wsdl",

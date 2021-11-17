@@ -6,75 +6,10 @@ var { loteriaError } = require("../../errors/customError");
 const { loteriarReservasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
-const medioId = config.medioAplicatioId;
+const medioId = config.medioAplicativoId;
 const address = config.aplicativoAddressTest;
 //const address = config.aplicativoAddressProd;
 
-module.exports.autenticarUsuario = async () => {
-  try {
-    loteriarReservasLogger.silly("autenticarUsuario");
-    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-
-    const usuarioClientePsd = config.usuarioAplicativoTest;
-    const claveClientePsd = config.passwordAplicativoTest;
-
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;
-    const claveClientePsd = config.passwordAplicativoProd; */
-    let message = {
-      $xml: `
-      <PI_DatosXml>
-      <![CDATA[
-        <mt>
-            <c>
-          <aplicacion>17</aplicacion>
-          <usuario>${usuarioClientePsd}</usuario>
-          <clave>${claveClientePsd}</clave>
-          <maquina>192.168.1.13</maquina>
-          <codError>0</codError>
-          <msgError />
-          <medio>${medioId}</medio>
-          <operacion>1234568891</operacion>
-            </c>
-        </mt>
-        ]]>
-      </PI_DatosXml>`,
-    };
-
-    return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(
-        message,
-        async function (err, res, rawResponse, soapHeader, rawRequest) {
-          if (err) reject(err);
-          let data = await parser.parseStringPromise(res.fnAutenticacionResult);
-          let errorCode = parseInt(data.mt.c[0].codError[0]);
-
-          if (!errorCode) {
-            let response = {
-              token: data.mt.c[0].token[0],
-            };
-            let logData = {
-              data: message,
-              loteriaResponse: rawResponse,
-              customResponse: response,
-            };
-            loteriarReservasLogger.info("autenticarUsuario.loteria", logData);
-            resolve(response);
-          } else {
-            let errorMessage = data.mt.c[0].msgError[0];
-            loteriarReservasLogger.error("autenticarUsuario.error", {
-              message: `${errorCode}-${errorMessage}`,
-            });
-            let errorData = {};
-            reject(new Error(errorMessage));
-          }
-        }
-      );
-    });
-  } catch (e) {
-    console.log(e.toString());
-    throw e;
-  }
-};
 module.exports.reservarCombinaciones = async (
   loteria,
   lotto,

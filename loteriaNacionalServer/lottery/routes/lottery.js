@@ -11,16 +11,10 @@ lotteryRouter.get('/pozoSorteosDisponibles', LotteryController.searchPozoSorteos
 lotteryRouter.get('/lottoSorteosDisponibles', LotteryController.searchLottoSorteosDisponibles);
 lotteryRouter.get('/loteriaSorteosDisponibles', LotteryController.searchLoteriaSorteosDisponibles);
 
-
-lotteryRouter.post('/auth', LotteryController.authUserHttp);
-lotteryRouter.post('/sellLottery', LotteryController.sellLotteryHttp);
-lotteryRouter.post('/cancelLottery', LotteryController.cancelLotteryHttp);
-lotteryRouter.post('/reserveLottery', LotteryController.reserveLotteryHttp);
-lotteryRouter.post('/getBalance', LotteryController.getBalanceHttp);
-lotteryRouter.post('/getCompra', LotteryController.getCompra);
 lotteryRouter.post('/reservarBoletos', LotteryController.reservarBoletos);
 lotteryRouter.post('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);
 lotteryRouter.post('/comprarBoletos', LotteryController.comprarBoletos);
+lotteryRouter.post('/getCompra', LotteryController.getCompra);
 
 lotteryRouter.post('/acreditarPremios', GanadoresController.pagarLoteriaHttp);
 lotteryRouter.post('/getGanador', GanadoresController.getGanador);

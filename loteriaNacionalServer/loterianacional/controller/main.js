@@ -6,7 +6,7 @@ const config = require('../../config/environment');
 
 
 
-const medioId = config.medioAplicatioId;
+const medioId = config.medioAplicativoId;
 
 const address = config.aplicativoAddressTest;
 const usuarioClientePsd = config.usuarioAplicativoTest;
