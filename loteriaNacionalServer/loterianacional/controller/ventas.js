@@ -233,11 +233,20 @@ module.exports.consultarDescuentos = async (token, user, ip) => {
             if (!errorCode) {
               let aux = data.mt.rs[0].r[0].Row;
               let response = aux.map((descuento) => {
+                //AGREGAR VALIDACION DE FECHA
                 let inicioAux = descuento.$.FechaInicio;
+                let inicioFechaAux = inicioAux.split(" ")[0].split("/");
+                let inicioHoraAux = inicioAux.split(" ")[1];
+                inicioAux = `${inicioFechaAux[2]}-${inicioFechaAux[1]}-${inicioFechaAux[0]}T${inicioHoraAux}Z`;
+
                 let finAux = descuento.$.FechaFin;
-                let currentDate = new Date(Date.now()).toLocaleString("es-EC", {
-                  timeZone: "America/Bogota",
-                });
+                let finFechaAux = finAux.split(" ")[0].split("/");
+                let finHoraAux = finAux.split(" ")[1];
+                finAux = `${finFechaAux[2]}-${finFechaAux[1]}-${finFechaAux[0]}T${finHoraAux}Z`;
+
+                let currentDate = Date.now();
+                let inicioDate = new Date(inicioAux).getTime();
+                let finDate = new Date(finAux).getTime();
 
                 let descuentoAux = {
                   tipoLoteria: descuento.$.JuegoId,
@@ -251,7 +260,9 @@ module.exports.consultarDescuentos = async (token, user, ip) => {
                   operacion: descuento.$.Operacion,
                   valorSinDescuento: descuento.$.PrecioVenta,
                 };
-                return descuentoAux;
+                if (finDate >= currentDate && currentDate >= inicioDate) {
+                  return descuentoAux;
+                }
               });
 
               resolve(response);

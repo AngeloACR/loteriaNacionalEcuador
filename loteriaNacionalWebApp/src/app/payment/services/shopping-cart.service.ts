@@ -15,12 +15,92 @@ export class ShoppingCartService {
   localSource = "http://localhost:5480";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
-  
+
   //mySource = this.localSource;
   mySource = this.testSource;
   //mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
+
+  async elimidarDescuento(precio, tipoLoteria){
+    switch (tipoLoteria) {
+      case 1:
+        let loteria = this.getLoteriaLocal();
+        for (let id in loteria) {
+          loteria[id].subtotal = loteria[id].ticket.seleccionados.length*parseFloat(precio);
+        };
+        this.setLoteriaLocal(loteria);
+        break;
+        case 2:
+        let lotto = this.getLottoLocal();
+        for (let id in lotto) {
+          lotto[id].subtotal = parseFloat(precio);
+        };
+        this.setLottoLocal(lotto);
+        break;
+
+      default:
+        let pozo = this.getPozoLocal();
+        for (let id in lotto) {
+          pozo[id].subtotal = parseFloat(precio);
+        };
+        this.setPozoLocal(pozo);
+        break;
+    }
+    await this.setTotal();
+    await this.actualizarCarrito();
+  }
+
+
+  async calcularDescuento(descuento) {
+    let precioConDescuento = descuento.valorConDescuento
+    switch (descuento.tipoLoteria) {
+      case "1":
+        let loteria = this.getLoteriaLocal();
+        for (let id in loteria) {
+          loteria[id].subtotal = loteria[id].ticket.seleccionados.length*parseFloat(precioConDescuento);
+        };
+        this.setLoteriaLocal(loteria);
+        break;
+        case "2":
+        let lotto = this.getLottoLocal();
+        for (let id in lotto) {
+          lotto[id].subtotal = parseFloat(precioConDescuento);
+        };
+        this.setLottoLocal(lotto);
+        break;
+
+      default:
+        let pozo = this.getPozoLocal();
+        for (let id in lotto) {
+          pozo[id].subtotal = parseFloat(precioConDescuento);
+        };
+        this.setPozoLocal(pozo);
+        break;
+    }
+    await this.setTotal();
+    await this.actualizarCarrito();
+  }
+
+  async contarBoletos(sorteo, tipoLoteria) {
+    let aux = this.getCarritoLocal();
+    let boletos = aux.filter(
+      (item) => item.sorteo.sorteo == sorteo && item.tipoLoteria == tipoLoteria
+    );
+    let conteo;
+    switch (tipoLoteria) {
+      case 1:
+        conteo = boletos.reduce((total, value) => {
+          return total + value.ticket.seleccionados.length;
+        }, 0);
+        break;
+
+      default:
+        conteo = boletos.length;
+        break;
+    }
+    return conteo;
+  }
 
   async removeFromCart(ticket, tipoLoteria) {
     let carrito = await this.getCarrito();
@@ -185,12 +265,22 @@ export class ShoppingCartService {
       address = address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         async (data: any) => {
+          let reservaId = this.getReservaId();
+          if (data.carrito.length == 0) {
+            this.borrarCarrito();
+            data.carrito = [];
+            data.loteria = {};
+            data.lotto = {};
+            data.pozo = {};
+            data.reservaId = 0;
+          }
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);
           this.setPozoLocal(data.pozo);
           this.setReservaId(data.reservaId);
           await this.setTotal();
+
           resolve(data);
         },
         (error: any) => {
@@ -200,8 +290,7 @@ export class ShoppingCartService {
     });
   }
 
-
-  async validarCarrito() {
+  async validarCarrito(reservaId) {
     return new Promise<any>(async (resolve, reject) => {
       let headers = new HttpHeaders();
       headers = headers.append("Content-Type", "application/json");
@@ -209,19 +298,19 @@ export class ShoppingCartService {
       let endpoint = "/cart";
       let user = JSON.parse(localStorage.getItem("userData")).playerDocument;
       let token = JSON.parse(localStorage.getItem("userData")).lotteryToken;
-      let reservaId = JSON.parse(localStorage.getItem("reservaId"));
 
       let body = {
         user,
         token,
-        reservaId
+        reservaId,
       };
       endpoint = `${endpoint}/validar`;
       var address = this.mySource;
       address = address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
-        async (data: any) => {
-          if(!data.status){
+        (data: any) => {
+          console.log(data);
+          if (!data.status) {
             reject(new Error(data.message));
           }
           resolve(data);

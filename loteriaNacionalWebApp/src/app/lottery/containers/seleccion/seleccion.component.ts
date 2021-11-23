@@ -6,7 +6,7 @@ import { ShoppingCartService } from "../../../payment/services/shopping-cart.ser
 @Component({
   selector: "app-seleccion",
   templateUrl: "./seleccion.component.html",
-  styleUrls: ["./seleccion.component.scss"]
+  styleUrls: ["./seleccion.component.scss"],
 })
 export class SeleccionComponent implements OnInit {
   linkLotto: any = [];
@@ -31,7 +31,7 @@ export class SeleccionComponent implements OnInit {
 
     private router: Router
   ) {
-    this.actRoute.params.subscribe(params => {
+    this.actRoute.params.subscribe((params) => {
       this.token = params["token"];
     });
   }
@@ -40,15 +40,15 @@ export class SeleccionComponent implements OnInit {
     try {
       this.loadingMessage = "Espera mientras procesamos tu información";
       this.isLoading = true;
-      if(this.token){
+      if (this.token) {
         let data = await this.lottery.authUser(this.token);
         this.lotteryToken = data.lotteryToken;
-        if(this.lotteryToken){
+        if (this.lotteryToken) {
           this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
           this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
-          this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;  
+          this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;
         }
-        
+
         await this.getCarritoTickets();
         //this.getTotal();
       }
@@ -157,22 +157,25 @@ export class SeleccionComponent implements OnInit {
 
       if (hasBalance) {
         let reservaId = this.cart.getReservaId();
-        let response = await this.paymentService.confirmarCompra(
-          this.token,
-          reservaId
-        );
-        if (response.status) {
-          if (response.instantanea.status) {
-            this.dismissCompras();
-            this.instantaneas = response.instantanea.data;
-            await this.cart.borrarCarrito();
-            this.isInstantaneas = true;
+        let cartValidation = await this.cart.validarCarrito(reservaId);
+        if (cartValidation) {
+          let response = await this.paymentService.confirmarCompra(
+            this.token,
+            reservaId
+          );
+          if (response.status) {
+            if (response.instantanea.status) {
+              this.dismissCompras();
+              this.instantaneas = response.instantanea.data;
+              await this.cart.borrarCarrito();
+              this.isInstantaneas = true;
+            } else {
+              this.instantaneas = "";
+              this.abrirFinalizar();
+            }
           } else {
-            this.instantaneas = "";
-            this.abrirFinalizar();
+            this.cancelarCompra();
           }
-        } else {
-          this.cancelarCompra();
         }
         this.isLoading = false;
       } else {
@@ -276,7 +279,7 @@ export class SeleccionComponent implements OnInit {
       this.openError(errorMessage, errorTitle);
     }
   }
- 
+
   async deleteLoteriaFraccion(data) {
     try {
       this.loadingMessage = "Removiendo boleto del carrito";
@@ -393,15 +396,17 @@ export class SeleccionComponent implements OnInit {
   }
 
   async getCarritoTickets() {
-    let carrito = await this.cart.buscarCarrito()
+    let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
     this.ticketsPozo = carrito.pozo;
   }
 
-
-  authError(){
-      this.openError("Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta", "Aviso")
+  authError() {
+    this.openError(
+      "Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta",
+      "Aviso"
+    );
   }
 
   isError: boolean = false;

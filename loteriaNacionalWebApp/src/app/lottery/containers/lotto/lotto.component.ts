@@ -106,6 +106,7 @@ export class LottoComponent implements OnInit {
           this.openError(errorMessage);
         }
       }
+      await this.setDescuento(2);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -259,23 +260,27 @@ export class LottoComponent implements OnInit {
 
       if (hasBalance) {
         let reservaId = this.lotteryService.getReservaId();
-        let response = await this.paymentService.confirmarCompra(
-          this.token,
-          reservaId
-        );
-        this.isLoading = false;
-        if (response.status) {
-          if (response.instantanea.status) {
-            this.dismissCompras();
-            this.instantaneas = response.instantanea.data;
-            this.isInstantaneas = true;
+        let cartValidation = await this.cart.validarCarrito(reservaId);
+        if (cartValidation) {
+          let response = await this.paymentService.confirmarCompra(
+            this.token,
+            reservaId
+          );
+          this.isLoading = false;
+          if (response.status) {
+            if (response.instantanea.status) {
+              this.dismissCompras();
+              this.instantaneas = response.instantanea.data;
+              this.isInstantaneas = true;
+            } else {
+              this.instantaneas = "";
+              this.abrirFinalizar();
+            }
           } else {
-            this.instantaneas = "";
-            this.abrirFinalizar();
+            this.cancelarCompra();
           }
-        } else {
-          this.cancelarCompra();
         }
+        this.isLoading = false;
       } else {
         this.isLoading = false;
         let message = "Tu saldo es insuficiente para realizar la compra";
@@ -312,6 +317,7 @@ export class LottoComponent implements OnInit {
   isLoading: boolean;
   showComponents: boolean = false;
   loadingMessage: string;
+  descuentos: any;
   async ngOnInit() {
     try {
       this.loadingMessage = "Cargando los sorteos disponibles";
@@ -319,6 +325,7 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
+      this.descuentos = await this.lotteryService.obtenerDescuentos()
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {
@@ -330,6 +337,21 @@ export class LottoComponent implements OnInit {
     }
   }
 
+  async setDescuento(tipoLoteria){
+    let descuentos = this.descuentos.filter(
+      (element: any) => parseInt(element.tipoLoteria) == tipoLoteria
+    );
+    for (let index = 0; index < descuentos.length; index++) {
+      const element = descuentos[index];
+      let conteo = await this.cart.contarBoletos(element.sorteo, tipoLoteria);
+      if(conteo >= parseInt(element.cantidad)){
+        await this.cart.calcularDescuento(element);
+      }else {
+        await this.cart.elimidarDescuento(this.sorteoSeleccionado.precio, tipoLoteria)  
+      }
+      await this.getCarritoTickets();
+    }
+  }
   obtenerAntojito(antojito) {
     return this.lotteryService.obtenerCaracteristicasDeAntojito(antojito).ruta;
   }
@@ -364,6 +386,7 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
 
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -398,6 +421,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -436,9 +460,10 @@ export class LottoComponent implements OnInit {
         if (deletedIndex != -1)
           this.ticketsDisponibles[deletedIndex].status = false;
       }
-      this.isLoading = false;
       await this.getCarritoTickets();
       //this.getTotal();
+      await this.setDescuento(2);
+      this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -472,6 +497,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
+      await this.setDescuento(5);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;

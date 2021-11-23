@@ -32,17 +32,6 @@ export class LotteryService {
 
   }
 
-  timeout: number = 30*60*1000;
-  checkTimeout: any;
-  updateTimeout(){
-    this.checkTimeout = setInterval(
-      this.timeoutEvent, this.timeout
-    )
-  }
-
-  timeoutEvent(){
-    
-  }
 
   formatNumber(number){// Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {

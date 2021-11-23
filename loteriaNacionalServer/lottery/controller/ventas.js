@@ -263,8 +263,8 @@ const ventasController = {
     try {
       let ip = req.headers["x-forwarded-for"];
 
-      let lotteryToken = req.body.lotteryToken;
-      let user = req.body.user;
+      let lotteryToken = req.query.lotteryToken;
+      let user = req.query.user;
 
       let response = await Ventas.consultarDescuentos(lotteryToken, user, ip);
 

@@ -3,7 +3,7 @@ const reservas = require("../../loterianacional/controller/reservas");
 const { promisifyAll } = require("bluebird");
 
 promisifyAll(redis);
-let timeout = 60 * 40;
+let timeout = 60*40;
 const carritoController = {
   getClient: () => {
     const client = redis.createClient({
@@ -108,15 +108,41 @@ const carritoController = {
   },
   validar: async (req, res) => {
     try {
+      let flag = true;
       let user = req.body.user;
       let token = req.body.token;
       let reservaId = req.body.reservaId;
       let client = carritoController.getClient();
       let ip = req.headers["x-forwarded-for"];
-      let cacheCart = await client.getAsync(`carrito-${user}`);
-      let loteriaCache = Object.values(cacheCart.loteria);
-      let lottoCache = Object.values(cacheCart.lotto);
-      let pozoCache = Object.values(cacheCart.pozo);
+      let cacheCart = JSON.parse(await client.getAsync(`carrito-${user}`));
+      let loteriaCache;
+      let lottoCache;
+      let pozoCache;
+      if (
+        Object.keys(cacheCart.loteria).length !== 0 &&
+        Object.getPrototypeOf(cacheCart.loteria) === Object.prototype
+      ) {
+        loteriaCache = Object.values(cacheCart.loteria);
+      } else {
+        loteriaCache = [];
+      }
+
+      if (
+        Object.keys(cacheCart.lotto).length !== 0 &&
+        Object.getPrototypeOf(cacheCart.lotto) === Object.prototype
+      ) {
+        lottoCache = Object.values(cacheCart.lotto);
+      } else {
+        lottoCache = [];
+      }
+      if (
+        Object.keys(cacheCart.pozo).length !== 0 &&
+        Object.getPrototypeOf(cacheCart.pozo) === Object.prototype
+      ) {
+        pozoCache = Object.values(cacheCart.pozo);
+      } else {
+        pozoCache = [];
+      }
 
       let loteriaCacheLength = loteriaCache.length;
       let lottoCacheLength = lottoCache.length;
@@ -125,8 +151,7 @@ const carritoController = {
       let carritoCacheAux =
         loteriaCacheLength + lottoCacheLength + pozoCacheLength;
 
-      client.quit();
-      let loteriaCart = await reservas.validarReserva(
+      let loteriaCart = await reservas.validarReservas(
         token,
         reservaId,
         user,
@@ -143,7 +168,7 @@ const carritoController = {
           for (let i = 0; i < carritoCacheLength; i++) {
             let item = cacheCart.carrito[i];
             let index = loteriaCart.carrito.findIndex(
-              (boleto) => boleto.combinacion == item.combinacion
+              (boleto) => boleto.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               //Reservar en loteria
@@ -153,7 +178,7 @@ const carritoController = {
           for (let i = 0; i < carritoLoteriaLength; i++) {
             let item = loteriaCart.carrito[i];
             let index = cacheCart.carrito.findIndex(
-              (boleto) => boleto.combinacion == item.combinacion
+              (boleto) => boleto.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               //Agregar al carrito
@@ -162,16 +187,17 @@ const carritoController = {
         }
       } */
       if (loteriaCacheLength != loteriaLoteriaLength) {
+        flag = false;
         if (loteriaCacheLength > loteriaLoteriaLength) {
           for (let i = 0; i < loteriaCacheLength; i++) {
             let item = loteriaCache[i];
             let index = loteriaCart.loteria.findIndex(
-              (loteria) => loteria.combinacion == item.combinacion
+              (loteria) => loteria.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               let boleto = [
                 {
-                  combinacion: item.combinacion,
+                  combinacion: item.ticket.combinacion,
                   fracciones: item.seleccionados,
                   sorteo: item.sorteo,
                 },
@@ -193,7 +219,7 @@ const carritoController = {
           for (let i = 0; i < loteriaLoteriaLength; i++) {
             let item = loteriaCart.loteria[i];
             let index = loteriaCache.findIndex(
-              (loteria) => loteria.combinacion == item.combinacion
+              (loteria) => loteria.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               //Agregar al carrito
@@ -204,22 +230,23 @@ const carritoController = {
         for (let i = 0; i < loteriaCacheLength; i++) {
           let item = loteriaCache[i];
           let index = loteriaCart.loteria.findIndex(
-            (loteria) => loteria.combinacion == item.combinacion
+            (loteria) => loteria.combinacion == item.ticket.combinacion
           );
           if (index != -1) {
-            let loteriaItem = loteriaCart.loteria[i];
-            let cacheLength = item.seleccionados.length;
-            let loteriaLength = loteriaItem.seleccionados.length;
+            let loteriaItem = loteriaCart.loteria[index];
+            let cacheLength = item.ticket.seleccionados.length;
+            let loteriaLength = loteriaItem.fracciones.length;
             if (loteriaLength != cacheLength) {
+              flag = false;
               if (cacheLength > loteriaLength) {
-                for (let i = 0; i < cacheLength; i++) {
-                  let itemB = itemB.seleccionados[i];
-                  let indexB = loteriaItem.seleccionados.indexOf(itemB);
+                for (let j = 0; j < cacheLength; j++) {
+                  let itemB = item.ticket.seleccionados[j];
+                  let indexB = loteriaItem.fracciones.indexOf(itemB);
                   if (indexB == -1) {
                     let boleto = [
                       {
-                        combinacion: item.combinacion,
-                        fracciones: item.seleccionados,
+                        combinacion: item.ticket.combinacion,
+                        fracciones: [itemB],
                         sorteo: item.sorteo,
                       },
                     ];
@@ -250,17 +277,18 @@ const carritoController = {
         //Chequeo de fracciones.
       }
       if (lottoCacheLength != lottoLoteriaLength) {
+        flag = false;
         if (lottoCacheLength > lottLoteriaLength) {
           for (let i = 0; i < lottoCacheLength; i++) {
             let item = lottoCache[i];
             let index = loteriaCart.lotto.findIndex(
-              (lotto) => lotto.combinacion == item.combinacion
+              (lotto) => lotto.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               await reservas.reservarCombinaciones();
               let boleto = [
                 {
-                  combinacion: item.combinacion,
+                  combinacion: item.ticket.combinacion,
                   sorteo: item.sorteo,
                 },
               ];
@@ -281,7 +309,7 @@ const carritoController = {
           for (let i = 0; i < lottoLoteriaLength; i++) {
             let item = loteriaCart.lotto[i];
             let index = lottoCache.findIndex(
-              (lotto) => lotto.combinacion == item.combinacion
+              (lotto) => lotto.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               //Agregar al carrito
@@ -290,16 +318,17 @@ const carritoController = {
         }
       }
       if (pozoCacheLength != pozoLoteriaLength) {
+        flag = false;
         if (pozoCacheLength > pozoLoteriaLength) {
           for (let i = 0; i < pozoCacheLength; i++) {
             let item = pozoCache[i];
             let index = loteriaCart.pozo.findIndex(
-              (pozo) => pozo.combinacion == item.combinacion
+              (pozo) => pozo.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               let boleto = [
                 {
-                  combinacion: item.combinacion,
+                  combinacion: item.ticket.combinacion,
                   sorteo: item.sorteo,
                 },
               ];
@@ -320,7 +349,7 @@ const carritoController = {
           for (let i = 0; i < pozoLoteriaLength; i++) {
             let item = loteriaCart.pozo[i];
             let index = pozoCache.findIndex(
-              (pozo) => pozo.combinacion == item.combinacion
+              (pozo) => pozo.combinacion == item.ticket.combinacion
             );
             if (index == -1) {
               //Agregar al carrito
@@ -328,8 +357,15 @@ const carritoController = {
           }
         }
       }
-
-      res.status(200).json(JSON.parse(response));
+      client.quit();
+      let message = flag
+        ? ""
+        : "Ha ocurrido un problema con tu carrito. Por favor, verifica tus boletos e intenta de nuevo.";
+      let response = {
+        status: flag,
+        message,
+      };
+      res.status(200).json(response);
     } catch (e) {
       let response = {
         status: "error",
