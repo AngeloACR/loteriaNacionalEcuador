@@ -853,6 +853,41 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+  corregirTransaccion: async(req, res) =>{
+    try {
+      let data = req.body.data;
+      let response = [];
+      for (let index = 0; index < data.length; index++) {
+        const element = data[index];
+        
+        let reservaId = element.reservaId;
+        let token = element.token;
+        let ventaData = await Reservas.getCompraByExaReservaId(reservaId);
+        if(ventaData.status){
+          let venta = ventaData.values;
+          let saldoData = await Wallet.getBalance({token})
+          response.push({venta, saldoData});
+/*           let exaCancelId = Date.now();
+          let exaCancelData = {
+            token: token,
+            transactionId: exaCancelId,
+            reserveId: exaReservaData.transactionId,
+            amount: exaReservaData.amount,
+          };
+          let exaCancelResponse = await Wallet.cancelLottery(exaCancelData); */
+        }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  }
 };
 
 module.exports = ventasController;

@@ -74,7 +74,7 @@ const reservasController = {
 
   getCompraById: async function (id) {
     try {
-      let query = { "_id": id };
+      let query = { _id: id };
       let reserva = await Reserva.findOne(query);
       let response = {
         status: true,
@@ -119,7 +119,30 @@ const reservasController = {
       return response;
     }
   },
-
+  getCompraByExaReservaId: async function (id) {
+    try {
+      let query = { "exaReservaId": id };
+      let reserva = await Reserva.findOne(query);
+      let response;
+      if (reserva) {
+        response = {
+          status: true,
+          values: reserva,
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
   getReservaByLotteryId: async function (id) {
     try {
       let query = { reservaId: id };
