@@ -837,7 +837,7 @@ module.exports.venderBoletos = async (
     let venta = totalConDesc
       ? `<V total="${total}" totalConDesc="${totalConDesc}"></V>`
       : `<V total="${total}"></V>`;
-    let totalVenta = totalConDesc ? totalConDesc : total;
+    //let totalVenta = totalConDesc ? totalConDesc : total;
     let message = {
       $xml: `
       <PI_DatosXml>
@@ -860,7 +860,7 @@ module.exports.venderBoletos = async (
         <VT>
         ${venta}
         <FP ordComp="${ordComp}" >
-        <R forCo="CVT" Total="${totalVenta}" />
+        <R forCo="CVT" Total="${total}" />
         </FP>
         </VT>
         </xmlVenta>

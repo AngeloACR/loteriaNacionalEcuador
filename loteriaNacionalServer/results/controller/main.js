@@ -133,7 +133,19 @@ const mainController = {
       return response;
     }
   },
-  actualizarUltimosResultados: async function (req, res) {
+  actualizarUltimosResultadosHttp: async function (req, res) {
+    try {
+      let response = await mainController.actualizarUltimosResultados()
+      res.status(200).json(response);
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      res.status(400).json(error.toString());
+    }
+  },
+  actualizarUltimosResultados: async function () {
     try {
       let data = await Lottery.autenticarUsuario();
       let token = data.token;
@@ -226,13 +238,13 @@ const mainController = {
         }
       }
       await resultadosController.updateUltimoResultado(ultimoResultadoPozo);
-      res.status(200).json(response);
+      return response;
     } catch (error) {
       let response = {
         status: false,
         msg: error.toString().replace("Error: ", ""),
       };
-      res.status(400).json(error.toString());
+      throw new Error(error.message);
     }
   },
   parseResultadosHttp: async function (req, res) {
