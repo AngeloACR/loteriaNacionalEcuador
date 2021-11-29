@@ -181,19 +181,19 @@ const mainController = {
       };
       for (let index = 0; index < lotto.length; index++) {
         const resultado = lotto[index];
+        ultimoResultadoLotto.numeroSorteo = resultado.sorteo;
         if (resultado.codigoPremio.includes("-1")) {
           ultimoResultadoLotto.combinacion1 = resultado.combinacion;
           ultimoResultadoLotto.codigoPremioPrincipal = resultado.codigoPremio;
         } else if (resultado.codigoPremio.includes("-23")) {
           ultimoResultadoLotto.resultadoLottoPlus.combinacion2 =
             resultado.combinacion;
-          ultimoResultadoLotto.codigoPremioLottoPlus =
-            resultado.codigoPremio;
+          ultimoResultadoLotto.codigoPremioLottoPlus = resultado.codigoPremio;
         } else if (resultado.codigoPremio.includes("-24")) {
           ultimoResultadoLotto.resultadoLottito.push({
             combinacion3: resultado.combinacion,
           });
-          ultimoResultadoLotto.codigoPremioLottito = resultado.codigoPremio
+          ultimoResultadoLotto.codigoPremioLottito = resultado.codigoPremio;
         } else if (resultado.codigoPremio.includes("-25")) {
           ultimoResultadoLotto.resultadoNosVemosJefe.combinacion4 =
             resultado.combinacion;
@@ -202,8 +202,7 @@ const mainController = {
         } else if (resultado.codigoPremio.includes("-26")) {
           ultimoResultadoLotto.resultadoAntojito.combinacion5 =
             resultado.combinacion;
-          ultimoResultadoLotto.codigoPremioAntojito =
-            resultado.codigoPremio;
+          ultimoResultadoLotto.codigoPremioAntojito = resultado.codigoPremio;
         }
       }
       await resultadosController.updateUltimoResultado(ultimoResultadoLotto);
@@ -212,16 +211,18 @@ const mainController = {
         combinacion2: "",
         codigoPremio: "",
         mascota: "",
+        numeroSorteo: "",
       };
       for (let index = 0; index < pozoMillonario.length; index++) {
         const resultado = pozoMillonario[index];
+        ultimoResultadoPozo.numeroSorteo = resultado.sorteo;
         if (resultado.codigoPremio.includes("-1")) {
           ultimoResultadoPozo.combinacion2 = resultado.combinacion;
           ultimoResultadoPozo.codigoPremioPrincipal = resultado.codigoPremio;
         } else if (resultado.codigoPremio.includes("-6")) {
           ultimoResultadoPozo.mascota = resultado.combinacion;
-          if(resultado.combinacion.length == 1) ultimoResultadoPozo.mascota = `0${resultado.combinacion}`;
-
+          if (resultado.combinacion.length == 1)
+            ultimoResultadoPozo.mascota = `0${resultado.combinacion}`;
         }
       }
       await resultadosController.updateUltimoResultado(ultimoResultadoPozo);
