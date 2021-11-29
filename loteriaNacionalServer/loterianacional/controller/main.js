@@ -1,20 +1,15 @@
-var xml2js = require('xml2js');
+var xml2js = require("xml2js");
 var parser = xml2js.Parser();
-var soap = require('soap');
-const config = require('../../config/environment');
-
-
-
-
+var soap = require("soap");
+const config = require("../../config/environment");
 const medioId = config.medioAplicativoId;
 
-const address = config.aplicativoAddressTest;
+/* const address = config.aplicativoAddressTest;
 const usuarioClientePsd = config.usuarioAplicativoTest;
-const claveClientePsd = config.passwordAplicativoTest;
-/* const address = config.aplicativoAddressProd;
+const claveClientePsd = config.passwordAplicativoTest; */
+const address = config.aplicativoAddressProd;
 const usuarioClientePsd = config.usuarioAplicativoProd;
-const claveClientePsd = config.passwordAplicativoProd; */
-
+const claveClientePsd = config.passwordAplicativoProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
@@ -37,25 +32,27 @@ module.exports.autenticarUsuario = async () => {
             </c>
         </mt>
         ]]>
-      </PI_DatosXml>`
-    }
-
+      </PI_DatosXml>`,
+    };
 
     return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-        if (err) reject(err);
-        let data = await parser.parseStringPromise(res.fnAutenticacionResult)
-        let errorCode = parseInt(data.mt.c[0].codError[0]);
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
+          let data = await parser.parseStringPromise(res.fnAutenticacionResult);
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-        if (!errorCode) {
-          let response = {
-            token: data.mt.c[0].token[0]
+          if (!errorCode) {
+            let response = {
+              token: data.mt.c[0].token[0],
+            };
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
           }
-          resolve(response);
-        } else {
-          reject(data.mt.c[0].msgError[0])
         }
-      });
+      );
     });
   } catch (e) {
     console.log(e.toString());
@@ -63,13 +60,16 @@ module.exports.autenticarUsuario = async () => {
   }
 };
 
-module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion, token) => {
+module.exports.consultarBoletoGanador = async (
+  tipoLoteria,
+  sorteo,
+  combinacion,
+  token
+) => {
   try {
-
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
-
       $xml: `
       <PI_DatosXml>
       <![CDATA[
@@ -93,44 +93,48 @@ module.exports.consultarBoletoGanador = async (tipoLoteria, sorteo, combinacion,
       </mt>
         ]]>
       </PI_DatosXml>
-      `
-    }
-
+      `,
+    };
 
     return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-        if (err) reject(err);
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
 
-        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-        let errorCode = parseInt(data.mt.c[0].codError[0]);
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
 
-        if (!errorCode) {
-          let aux = data.mt.rs[0].r;
+          if (!errorCode) {
+            let aux = data.mt.rs[0].r;
 
-          let response;
-          if (aux != "" && aux.length != 0) {
-            aux = data.mt.rs[0].r[0].Row[0].$;
+            let response;
+            if (aux != "" && aux.length != 0) {
+              aux = data.mt.rs[0].r[0].Row[0].$;
 
-            response = {
-              status: true,
-              combinacion,
-              sorteo,
-              data: aux
+              response = {
+                status: true,
+                combinacion,
+                sorteo,
+                data: aux,
+              };
+            } else {
+              aux = data.mt.rs[0].r;
+              response = {
+                status: false,
+                sorteo,
+                combinacion,
+                data: aux,
+              };
             }
+            resolve(response);
           } else {
-            aux = data.mt.rs[0].r;
-            response = {
-              status: false,
-              sorteo,
-              combinacion,
-              data: aux
-            }
+            reject(data.mt.c[0].msgError[0]);
           }
-          resolve(response);
-        } else {
-          reject(data.mt.c[0].msgError[0])
         }
-      });
+      );
     });
   } catch (e) {
     console.log(e.toString());
@@ -143,7 +147,6 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
-
       $xml: `
       <PI_DatosXml>
       <![CDATA[
@@ -167,23 +170,41 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
     </mt>
         ]]>
       </PI_DatosXml>
-      `
-    }
+      `,
+    };
 
     return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-        if (err) reject(err);
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
 
-        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-        let errorCode = parseInt(data.mt.c[0].codError[0]);
-
-        if (!errorCode) {
-          let response = data.mt.rs[0].r[0].Row[0].$;
-          resolve(response);
-        } else {
-          reject(data.mt.c[0].msgError[0])
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
+          if (!errorCode) {
+            if(data.mt.rs[0].r[0] == '') return [];
+            let response = data.mt.rs[0].r[0].Row.map((data) => {
+              let resultado = {
+                tipoLoteria: data.$.JId,
+                nombreLoteria: data.$.JNom,
+                sorteo: data.$.SortId,
+                fechaSorteo: data.$.FSort,
+                combinacion: data.$.Comb,
+                primeraSuerte: data.$.PriSue,
+                descripcionPremio: data.$.DesPre,
+                valorPremio: data.$.ValPre,
+                codigoPremio: `${data.$.SortId}-${data.$.Prem}`,
+              };
+              return resultado;
+            });
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
+          }
         }
-      });
+      );
     });
   } catch (e) {
     console.log(e.toString());
@@ -193,11 +214,9 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
 
 module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
   try {
-
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
-
       $xml: `
       <PI_DatosXml>
       <![CDATA[
@@ -220,23 +239,28 @@ module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
       </mt>
         ]]>
       </PI_DatosXml>
-      `
-    }
+      `,
+    };
     return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(message, async function (err, res, rawResponse, soapHeader, rawRequest) {
-        if (err) reject(err);
-        let data = await parser.parseStringPromise(res.fnEjecutaTransaccionResult)
-        let errorCode = parseInt(data.mt.c[0].codError[0]);
-        if (!errorCode) {
-          let aux = data.mt.rs[0].r[0].Row;
-          let response = aux.map(sorteo => {
-            return sorteo.$;
-          });
-          resolve(response);
-        } else {
-          reject(data.mt.c[0].msgError[0])
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
+          let data = await parser.parseStringPromise(
+            res.fnEjecutaTransaccionResult
+          );
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
+          if (!errorCode) {
+            let aux = data.mt.rs[0].r[0].Row;
+            let response = aux.map((sorteo) => {
+              return sorteo.$;
+            });
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
+          }
         }
-      });
+      );
     });
   } catch (e) {
     console.log(e.toString());

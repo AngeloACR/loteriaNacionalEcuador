@@ -32,6 +32,7 @@ export class TicketScrollerComponent implements OnInit {
   isPozoMillonario: boolean = false;
   logoPath: string;
   total: any;
+  totalConDesc: any;
   seleccionadosCarrito: any;
   constructor(private cart: ShoppingCartService) {}
 
@@ -62,6 +63,10 @@ export class TicketScrollerComponent implements OnInit {
         break;
     }
     this.getTotal();
+  }
+
+  hasDiscount(total){
+    return parseInt(total.replace("$", ""));
   }
 
   async ngDoCheck() {
@@ -114,6 +119,7 @@ export class TicketScrollerComponent implements OnInit {
 
   getTotal() {
     this.total = this.formatNumber(this.cart.getTotal());
+    this.totalConDesc = this.formatNumber(this.cart.getTotalConDesc());
   }
   formatNumber(number){// Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {

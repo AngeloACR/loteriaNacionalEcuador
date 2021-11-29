@@ -10,6 +10,7 @@ const lottery = require('./lottery/routes/lottery');
 const exalogic = require('./exalogic/routes/main');
 const results = require('./results/routes/results');
 const cart = require('./lottery/routes/cart');
+const raspas = require('./lottery/routes/raspa');
 const cache = require('./cache/routes/main');
 
 module.exports.init = function (port) {
@@ -47,6 +48,7 @@ module.exports.init = function (port) {
   app.use('/exalogic', exalogic);
   app.use('/results', results);
   app.use('/cart', cart);
+  app.use('/raspas', raspas);
   app.use('/cache', cache);
 
   return app

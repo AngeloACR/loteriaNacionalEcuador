@@ -398,6 +398,7 @@ const ventasController = {
       let pozoAux = req.body.pozo;
 
       let total = parseFloat(req.body.amount).toFixed(2);
+      let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
 
       let reservaId = req.body.reservaId;
 
@@ -508,6 +509,7 @@ const ventasController = {
       let loteriaVentaResponse = await Ventas.venderBoletos(
         ordComp,
         total,
+        totalConDesc,
         loteria,
         lotto,
         pozo,

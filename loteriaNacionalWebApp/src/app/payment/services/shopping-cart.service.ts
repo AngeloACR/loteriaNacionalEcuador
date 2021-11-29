@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 })
 export class ShoppingCartService {
   total: any = 0;
+  totalConDesc: any = 0;
   ticketsLoteria: any = {};
   ticketsLotto: any = {};
   ticketsPozo: any = {};
@@ -22,32 +23,32 @@ export class ShoppingCartService {
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
 
-  async elimidarDescuento(precio, tipoLoteria){
+  async eliminarDescuento(tipoLoteria){
     switch (tipoLoteria) {
       case 1:
         let loteria = this.getLoteriaLocal();
         for (let id in loteria) {
-          loteria[id].subtotal = loteria[id].ticket.seleccionados.length*parseFloat(precio);
+          loteria[id].subtotalConDesc = 0;
         };
         this.setLoteriaLocal(loteria);
         break;
         case 2:
         let lotto = this.getLottoLocal();
         for (let id in lotto) {
-          lotto[id].subtotal = parseFloat(precio);
+          lotto[id].subtotalConDesc = 0;
         };
         this.setLottoLocal(lotto);
         break;
 
       default:
         let pozo = this.getPozoLocal();
-        for (let id in lotto) {
-          pozo[id].subtotal = parseFloat(precio);
+        for (let id in pozo) {
+          pozo[id].subtotalConDesc = 0;
         };
         this.setPozoLocal(pozo);
         break;
     }
-    await this.setTotal();
+    await this.setTotalConDesc();
     await this.actualizarCarrito();
   }
 
@@ -58,27 +59,27 @@ export class ShoppingCartService {
       case "1":
         let loteria = this.getLoteriaLocal();
         for (let id in loteria) {
-          loteria[id].subtotal = loteria[id].ticket.seleccionados.length*parseFloat(precioConDescuento);
+          loteria[id].subtotalConDesc = loteria[id].ticket.seleccionados.length*parseFloat(precioConDescuento);
         };
         this.setLoteriaLocal(loteria);
         break;
         case "2":
         let lotto = this.getLottoLocal();
         for (let id in lotto) {
-          lotto[id].subtotal = parseFloat(precioConDescuento);
+          lotto[id].subtotalConDesc = parseFloat(precioConDescuento);
         };
         this.setLottoLocal(lotto);
         break;
 
       default:
         let pozo = this.getPozoLocal();
-        for (let id in lotto) {
-          pozo[id].subtotal = parseFloat(precioConDescuento);
+        for (let id in pozo) {
+          pozo[id].subtotalConDesc = parseFloat(precioConDescuento);
         };
         this.setPozoLocal(pozo);
         break;
     }
-    await this.setTotal();
+    await this.setTotalConDesc();
     await this.actualizarCarrito();
   }
 
@@ -386,6 +387,32 @@ export class ShoppingCartService {
       );
     });
   }
+  async setTotalConDesc() {
+    return new Promise<any>(async (resolve, reject) => {
+      //await this.buscarCarrito();
+      let loteriaAux = this.getLoteriaLocal();
+      let lottoAux = this.getLottoLocal();
+      let pozoAux = this.getPozoLocal();
+      let loteriaConDesc = 0;
+      for (let id in loteriaAux) {
+        loteriaConDesc += parseFloat(loteriaAux[id].subtotalConDesc);
+      }
+      let lottoConDesc = 0;
+      for (let id in lottoAux) {
+        lottoConDesc += parseFloat(lottoAux[id].subtotalConDesc);
+      }
+      let pozoConDesc = 0;
+      for (let id in pozoAux) {
+        pozoConDesc += parseFloat(pozoAux[id].subtotalConDesc);
+      }
+      let auxConDesc = loteriaConDesc + lottoConDesc + pozoConDesc;
+      
+      this.totalConDesc = auxConDesc;
+      localStorage.setItem("totalConDesc", JSON.stringify(auxConDesc));
+      resolve("Done");
+    });
+  }
+
   async setTotal() {
     return new Promise<any>(async (resolve, reject) => {
       //await this.buscarCarrito();
@@ -405,15 +432,24 @@ export class ShoppingCartService {
         pozo += parseFloat(pozoAux[id].subtotal);
       }
       let aux = loteria + lotto + pozo;
+      
       this.total = aux;
       localStorage.setItem("total", JSON.stringify(aux));
-      //localStorage.setItem("total", JSON.stringify(total));
       resolve("Done");
     });
   }
   getTotal() {
     //return this.total;
     let total = JSON.parse(localStorage.getItem("total"));
+    if (total) {
+      return total;
+    } else {
+      return 0;
+    }
+  }
+  getTotalConDesc() {
+    //return this.total;
+    let total = JSON.parse(localStorage.getItem("totalConDesc"));
     if (total) {
       return total;
     } else {

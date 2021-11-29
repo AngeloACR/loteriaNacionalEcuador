@@ -1,124 +1,168 @@
-const mongoose = require('mongoose');
-const Schema = require('mongoose').Schema;
+const mongoose = require("mongoose");
+const Schema = require("mongoose").Schema;
 
-const ultimoResultadoSchema = new mongoose.Schema({
+const ultimoResultadoSchema = new mongoose.Schema(
+  {
     tipoLoteria: {
-        type: Number,
+      type: Number,
     },
     ultimoResultado: {
-        type: Schema.Types.ObjectId,
-        ref: 'Resultado',
+      type: Schema.Types.ObjectId,
+      ref: "Resultado",
     },
 
+    /*     ultimoResultadoLoteria: {
+      type: Schema.Types.ObjectId,
+      ref: "ResultadoLoteria",
+    },
+ */
     ultimoResultadoLoteria: {
-        type: Schema.Types.ObjectId,
-        ref: 'ResultadoLoteria',
+      combinacion1: {
+        type: String,
+      }
     },
 
+    /*     ultimoResultadoLotto: {
+      type: Schema.Types.ObjectId,
+      ref: "ResultadoLotto",
+    },
+ */
     ultimoResultadoLotto: {
-        type: Schema.Types.ObjectId,
-        ref: 'ResultadoLotto',
+      combinacion1: {
+        type: String,
+      }
     },
-
+    /*    ultimoResultadoPozo: {
+        type: Schema.Types.ObjectId,
+        ref: "ResultadoPozo",
+      }, */
     ultimoResultadoPozo: {
-        type: Schema.Types.ObjectId,
-        ref: 'ResultadoPozo',
+      combinacion2: {
+        type: String,
+      }
     },
-    resultadoLottoPlus: {
+    /*     resultadoLottoPlus: {
         type: Schema.Types.ObjectId,
-        ref: 'ResultadoLotto',
+        ref: "ResultadoLotto",
+      },
+      resultadoNosVemosJefe: {
+        type: Schema.Types.ObjectId,
+        ref: "ResultadoLotto",
+      },
+      resultadoAntojito: {
+        type: Schema.Types.ObjectId,
+        ref: "ResultadoLotto",
+      },
+      resultadosLottito: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "ResultadoLotto",
+        },
+      ], */
+    resultadoLottoPlus: {
+      combinacion2: {
+        type: String,
+      },
     },
     resultadoNosVemosJefe: {
-        type: Schema.Types.ObjectId,
-        ref: 'ResultadoLotto',
+      combinacion4: {
+        type: String,
+      },
     },
     resultadoAntojito: {
-        type: Schema.Types.ObjectId,
-        ref: 'ResultadoLotto',
+      combinacion5: {
+        type: String,
+      },
     },
-    resultadosLottito: [{
-        type: Schema.Types.ObjectId,
-        ref: 'ResultadoLotto',
-    }],
+    resultadosLottito: [
+      {
+        combinacion3: {
+          type: String,
+        },
+      },
+    ],
     numeroSorteo: {
-        type: String
+      type: String,
     },
     indexLottito: {
-        type: Number
+      type: Number,
     },
     codigoPremioPrincipal: {
-        type: String
+      type: String,
     },
     mascota: {
-        type: String
+      type: String,
     },
     codigoPremioLottoPlus: {
-        type: String
+      type: String,
     },
     codigoPremioNosVemosJefe: {
-        type: String
+      type: String,
     },
     codigoPremioAntojito: {
-        type: String
+      type: String,
     },
     codigoPremioLottito: {
-        type: String
-    }
-}, {
-        toJSON: { virtuals: true },
-        toObject: { virtuals: true },
-    });
+      type: String,
+    },
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
 
-ultimoResultadoSchema.virtual('sorteo', {
-    ref: 'Sorteo', // The model to use
-    localField: 'numeroSorteo', // Find people where `localField`
-    foreignField: 'sorteo', // is equal to `foreignField`
-    // If `justOne` is true, 'members' will be a single doc as opposed to
-    // an array. `justOne` is false by default.
-    justOne: true,
-});
-
-
-
-ultimoResultadoSchema.virtual('premioPrincipal', {
-    ref: 'Premio', // The model to use
-    localField: 'codigoPremioPrincipal', // Find people where `localField`
-    foreignField: 'codigo', // is equal to `foreignField`
-    // If `justOne` is true, 'members' will be a single doc as opposed to
-    // an array. `justOne` is false by default.
-    justOne: true,
-});
-ultimoResultadoSchema.virtual('premioNosVemosJefe', {
-    ref: 'Premio', // The model to use
-    localField: 'codigoPremioNosVemosJefe', // Find people where `localField`
-    foreignField: 'codigo', // is equal to `foreignField`
-    // If `justOne` is true, 'members' will be a single doc as opposed to
-    // an array. `justOne` is false by default.
-    justOne: true,
-});
-ultimoResultadoSchema.virtual('premioAntojito', {
-    ref: 'Premio', // The model to use
-    localField: 'codigoPremioAntojito', // Find people where `localField`
-    foreignField: 'codigo', // is equal to `foreignField`
-    // If `justOne` is true, 'members' will be a single doc as opposed to
-    // an array. `justOne` is false by default.
-    justOne: true,
-});
-ultimoResultadoSchema.virtual('premioLottoPlus', {
-    ref: 'Premio', // The model to use
-    localField: 'codigoPremioLottoPlus', // Find people where `localField`
-    foreignField: 'codigo', // is equal to `foreignField`
-    // If `justOne` is true, 'members' will be a single doc as opposed to
-    // an array. `justOne` is false by default.
-    justOne: true,
-});
-ultimoResultadoSchema.virtual('premioLottito', {
-    ref: 'Premio', // The model to use
-    localField: 'codigoPremioLottito', // Find people where `localField`
-    foreignField: 'codigo', // is equal to `foreignField`
-    // If `justOne` is true, 'members' will be a single doc as opposed to
-    // an array. `justOne` is false by default.
-    justOne: true,
+ultimoResultadoSchema.virtual("sorteo", {
+  ref: "Sorteo", // The model to use
+  localField: "numeroSorteo", // Find people where `localField`
+  foreignField: "sorteo", // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: true,
 });
 
-const UltimoResultado = module.exports = mongoose.model("UltimoResultado", ultimoResultadoSchema);
+ultimoResultadoSchema.virtual("premioPrincipal", {
+  ref: "Premio", // The model to use
+  localField: "codigoPremioPrincipal", // Find people where `localField`
+  foreignField: "codigo", // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: true,
+});
+ultimoResultadoSchema.virtual("premioNosVemosJefe", {
+  ref: "Premio", // The model to use
+  localField: "codigoPremioNosVemosJefe", // Find people where `localField`
+  foreignField: "codigo", // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: true,
+});
+ultimoResultadoSchema.virtual("premioAntojito", {
+  ref: "Premio", // The model to use
+  localField: "codigoPremioAntojito", // Find people where `localField`
+  foreignField: "codigo", // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: true,
+});
+ultimoResultadoSchema.virtual("premioLottoPlus", {
+  ref: "Premio", // The model to use
+  localField: "codigoPremioLottoPlus", // Find people where `localField`
+  foreignField: "codigo", // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: true,
+});
+ultimoResultadoSchema.virtual("premioLottito", {
+  ref: "Premio", // The model to use
+  localField: "codigoPremioLottito", // Find people where `localField`
+  foreignField: "codigo", // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc as opposed to
+  // an array. `justOne` is false by default.
+  justOne: true,
+});
+
+const UltimoResultado = (module.exports = mongoose.model(
+  "UltimoResultado",
+  ultimoResultadoSchema
+));

@@ -347,7 +347,7 @@ export class LottoComponent implements OnInit {
       if(conteo >= parseInt(element.cantidad)){
         await this.cart.calcularDescuento(element);
       }else {
-        await this.cart.elimidarDescuento(this.sorteoSeleccionado.precio, tipoLoteria)  
+        await this.cart.eliminarDescuento(tipoLoteria)  
       }
       await this.getCarritoTickets();
     }

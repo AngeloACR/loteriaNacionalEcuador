@@ -766,6 +766,7 @@ module.exports.eliminarReservas = async (
 module.exports.venderBoletos = async (
   ordComp,
   total,
+  totalConDesc,
   loteria,
   lotto,
   pozo,
@@ -833,6 +834,10 @@ module.exports.venderBoletos = async (
             `;
     }
     /*Ensure your message below looks like a valid working SOAP UI request*/
+    let venta = totalConDesc
+      ? `<V total="${total}" totalConDesc="${totalConDesc}"></V>`
+      : `<V total="${total}"></V>`;
+    let totalVenta = totalConDesc ? totalConDesc : total;
     let message = {
       $xml: `
       <PI_DatosXml>
@@ -842,7 +847,7 @@ module.exports.venderBoletos = async (
         <aplicacion>25</aplicacion>
         <transaccion>15</transaccion>
         <usuario>${user}</usuario>
-        <maquina>192.168.1.13</maquina>
+        <maquina>${ip}</maquina>
         <codError>0</codError>
         <msgError />
         <medio>${medioId}</medio>
@@ -853,9 +858,9 @@ module.exports.venderBoletos = async (
         <ReservaId>${reservaId}</ReservaId>
         <xmlVenta>
         <VT>
-        <V total="${total}"></V>
+        ${venta}
         <FP ordComp="${ordComp}" >
-        <R forCo="CVT" Total="${total}" />
+        <R forCo="CVT" Total="${totalVenta}" />
         </FP>
         </VT>
         </xmlVenta>

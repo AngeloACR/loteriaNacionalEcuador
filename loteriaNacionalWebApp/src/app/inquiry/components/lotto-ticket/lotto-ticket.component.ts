@@ -10,8 +10,6 @@ export class LottoTicketComponent implements OnInit {
 
   description: String;
   ticketNumbers: Number[];
-  ticketNumbers2: Number[];
-  ticketNumbers3: Number[];
   numeroSorteo: Number;
   sorteo: any;
   constructor() {}
@@ -19,8 +17,6 @@ export class LottoTicketComponent implements OnInit {
   ngOnInit() {
     this.description = this.ticket.description;
     this.ticketNumbers = this.ticket.ticketNumbers;
-    this.ticketNumbers2 = this.ticket.ticketNumbers2;
-    this.ticketNumbers3 = this.ticket.ticketNumbers3;
 
     this.sorteo = this.ticket.sorteo;
     this.numeroSorteo = this.ticket.numeroSorteo;

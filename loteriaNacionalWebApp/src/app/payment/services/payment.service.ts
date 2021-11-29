@@ -121,6 +121,7 @@ export class PaymentService {
     let lotto = await this.cart.getCarritoLotto();
     let pozo = await this.cart.getCarritoPozo();
     let total = this.cart.getTotal();
+    let totalConDesc = this.cart.getTotalConDesc();
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
@@ -136,6 +137,7 @@ export class PaymentService {
       personaId: authData.personalId,
       accountId: authData.accountId,
       amount: total,
+      amountConDesc: totalConDesc,
       token,
       reservaId,
     };

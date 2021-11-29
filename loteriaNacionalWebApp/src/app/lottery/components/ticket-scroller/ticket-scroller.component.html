@@ -162,6 +162,7 @@
       />
     </div>
     <div class="totalsBox">Total: {{ total }}</div>
+    <div *ngIf="hasDiscount(totalConDesc)" class="totalsBox">Total con descuento: {{ totalConDesc }}</div>
 
     <div>
       <hr
