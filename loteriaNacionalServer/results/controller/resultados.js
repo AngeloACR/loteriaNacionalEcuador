@@ -145,7 +145,7 @@ const resultadosController = {
       let ultimoResultado = await UltimoResultado.findOne(query);
       if(!ultimoResultado) ultimoResultado = new UltimoResultado(query);
       ultimoResultado.numeroSorteo = element.numeroSorteo;
-      ultimoResultado.codigoPremioPrincipal = element.codigoPremio;
+      ultimoResultado.codigoPremioPrincipal = element.codigoPremioPrincipal;
 
       switch (tipoLoteria) {
         case "1":
