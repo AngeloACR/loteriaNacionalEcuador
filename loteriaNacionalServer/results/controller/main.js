@@ -173,7 +173,7 @@ const mainController = {
         resultadoAntojito: {
           combinacion5: "",
         },
-        resultadoLottito: [],
+        resultadosLottito: [],
         resultadoNosVemosJefe: {
           combinacion4: "",
         },
@@ -190,7 +190,7 @@ const mainController = {
             resultado.combinacion;
           ultimoResultadoLotto.codigoPremioLottoPlus = resultado.codigoPremio;
         } else if (resultado.codigoPremio.includes("-24")) {
-          ultimoResultadoLotto.resultadoLottito.push({
+          ultimoResultadoLotto.resultadosLottito.push({
             combinacion3: resultado.combinacion,
           });
           ultimoResultadoLotto.codigoPremioLottito = resultado.codigoPremio;
