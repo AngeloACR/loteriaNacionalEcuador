@@ -165,7 +165,7 @@ export class LoteriaComponent implements OnInit {
           this.openError(errorMessage);
         }
       }
-      await this.setDescuento(1);
+      //await this.setDescuento(1);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -225,7 +225,7 @@ export class LoteriaComponent implements OnInit {
         let identificador = this.ticketsDisponibles[id].identificador;
         await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
         this.ticketsDisponibles[id].seleccionados = [];
-      }      await this.setDescuento(1);
+      }      //await this.setDescuento(1);
 
 
     } catch (e) {
@@ -493,7 +493,7 @@ export class LoteriaComponent implements OnInit {
           this.ticketsDisponibles[deletedIndex].seleccionados = [];
         }
       }
-      await this.setDescuento(1);
+      //await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -526,7 +526,7 @@ export class LoteriaComponent implements OnInit {
       await this.cart.removeFromCart(ticket, 2);
       await this.cart.setCarritoLotto(this.ticketsLotto);
       //this.getTotal();
-      await this.setDescuento(2);
+      //await this.setDescuento(2);
 
       this.isLoading = false;
     } catch (e) {
@@ -561,7 +561,7 @@ export class LoteriaComponent implements OnInit {
       await this.cart.setCarritoPozo(this.ticketsPozo);
       //this.getTotal();
 
-      await this.setDescuento(5);
+      //await this.setDescuento(5);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -610,7 +610,7 @@ export class LoteriaComponent implements OnInit {
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       //this.getTotal();
 
-      await this.setDescuento(1);
+      //await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
