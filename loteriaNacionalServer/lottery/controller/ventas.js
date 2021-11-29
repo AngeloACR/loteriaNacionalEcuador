@@ -853,52 +853,79 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
-  corregirTransaccion: async(req, res) =>{
+  corregirTransaccion: async (req, res) => {
     try {
       let data = req.body.data;
       let response = [];
       for (let index = 0; index < data.length; index++) {
         const element = data[index];
-        
+
         let reservaId = element.reservaId;
         let token = element.token;
+        let reservationDetails = element.reservationDetails;
         let ventaData = await Reservas.getCompraByExaReservaId(reservaId);
-        if(ventaData.status){
+        if (ventaData.status) {
           let venta = ventaData.values;
-          let saldoData = await Wallet.getBalance({token})
+          let saldoData = await Wallet.getBalance({ token });
           let loteria = venta.loteria;
           let total = 0;
           for (let index = 0; index < loteria.length; index++) {
             const boleto = loteria[index];
-            total += parseFloat(boleto.subtotal)
+            total += parseFloat(boleto.subtotal);
           }
           let lotto = venta.lotto;
           for (let index = 0; index < lotto.length; index++) {
             const boleto = lotto[index];
-            total += parseFloat(boleto.subtotal)
-            
+            total += parseFloat(boleto.subtotal);
           }
           let pozo = venta.pozo;
           for (let index = 0; index < pozo.length; index++) {
             const boleto = pozo[index];
-            total += parseFloat(boleto.subtotal)
-            
+            total += parseFloat(boleto.subtotal);
           }
-          if(total <= saldoData.balance){
-
-            response.push({hasBalance: true, reservaId, total});
-          }else{
-            response.push({hasBalance: false, reservaId, total});
-
+          if (total <= saldoData.balance) {
+            let exaCancelId = Date.now();
+            let exaCancelData = {
+              token: token,
+              transactionId: exaCancelId,
+              reserveId: exaReservaData.transactionId,
+              amount: exaReservaData.amount,
+            };
+            //let exaCancelResponse = await Wallet.cancelLottery(exaCancelData);
+            let exaReservaId = Date.now();
+            let exaReservaData = {
+              token,
+              transactionId: exaReservaId,
+              amount: total,
+              reservationDetails,
+            };
+            /* let exaReservaResponse = await Wallet.reserveLottery(
+              exaReservaData
+            ); */
+            let exaVentaId = Date.now();
+            let exaVentaData = {
+              token,
+              transactionId: exaVentaId,
+              reserveId: exaReservaId,
+              ticketId: venta.ventaId,
+              amount: total,
+              prizeDetails: [],
+            };
+            //let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
+            response.push({
+              hasBalance: true,
+              exaReservaId: reservaId,
+              ventaId: venta.ventaId,
+              total,
+            });
+          } else {
+            response.push({
+              hasBalance: false,
+              reservaId,
+              ventaId: venta.ventaId,
+              total,
+            });
           }
-/*           let exaCancelId = Date.now();
-          let exaCancelData = {
-            token: token,
-            transactionId: exaCancelId,
-            reserveId: exaReservaData.transactionId,
-            amount: exaReservaData.amount,
-          };
-          let exaCancelResponse = await Wallet.cancelLottery(exaCancelData); */
         }
       }
       res.status(200).json(response);
@@ -911,7 +938,7 @@ const ventasController = {
       };
       res.status(400).json(response);
     }
-  }
+  },
 };
 
 module.exports = ventasController;
