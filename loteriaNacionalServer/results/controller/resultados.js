@@ -149,12 +149,12 @@ const resultadosController = {
 
       switch (tipoLoteria) {
         case "1":
-          ultimoResultado.ultimoResultadoLoteria.combinacion1 =
-            element.combinacion1;
+          ultimoResultado.ultimoResultadoLoteria = {
+            combinacion1: element.combinacion1}
           break;
         case "2":
-          ultimoResultado.ultimoResultadoLotto.combinacion1 =
-            element.combinacion1;
+          ultimoResultado.ultimoResultadoLotto = {
+            combinacion1: element.combinacion1}
           ultimoResultado.resultadoLottoPlus = element.resultadoLottoPlus;
           ultimoResultado.resultadosLottito = element.resultadosLottito;
           ultimoResultado.resultadoNosVemosJefe = element.resultadoNosVemosJefe;
@@ -167,8 +167,8 @@ const resultadosController = {
           break;
 
         default:
-          ultimoResultado.ultimoResultadoPozo.combinacion2 =
-            element.combinacion2;
+          ultimoResultado.ultimoResultadoPozo = {
+            combinacion2: element.combinacion2}
           ultimoResultado.mascota = element.mascota;
           break;
       }
