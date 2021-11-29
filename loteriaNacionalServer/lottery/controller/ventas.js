@@ -866,7 +866,26 @@ const ventasController = {
         if(ventaData.status){
           let venta = ventaData.values;
           let saldoData = await Wallet.getBalance({token})
-          response.push({venta, saldoData});
+          let loteria = venta.loteria;
+          let total = 0;
+          for (let index = 0; index < loteria.length; index++) {
+            const boleto = loteria[index];
+            total += parseFloat(boleto.subtotal)
+          }
+          let lotto = venta.lotto;
+          for (let index = 0; index < lotto.length; index++) {
+            const boleto = lotto[index];
+            total += parseFloat(boleto.subtotal)
+            
+          }
+          let pozo = venta.pozo;
+          for (let index = 0; index < pozo.length; index++) {
+            const boleto = pozo[index];
+            total += parseFloat(boleto.subtotal)
+            
+          }
+          if(total <= balance)
+          response.push(total);
 /*           let exaCancelId = Date.now();
           let exaCancelData = {
             token: token,
