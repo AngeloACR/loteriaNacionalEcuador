@@ -908,9 +908,6 @@ const ventasController = {
               transactionId: exaVentaId,
               reserveId: exaReservaId,
               ticketId: venta.ventaId,
-              exaReservaResponse,
-              exaVentaResponse,
-              exaCancelReponse,
               amount: parseFloat(total).toFixed(2),
               prizeDetails: [],
             };
@@ -919,6 +916,9 @@ const ventasController = {
               hasBalance: true,
               exaReservaId: reservaId,
               ventaId: venta.ventaId,
+              exaReservaResponse,
+              exaVentaResponse,
+              exaCancelReponse,
               total,
             });
           } else {
