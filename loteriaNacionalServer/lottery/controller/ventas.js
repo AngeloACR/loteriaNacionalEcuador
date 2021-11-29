@@ -884,7 +884,7 @@ const ventasController = {
             total += parseFloat(boleto.subtotal)
             
           }
-          if(total <= balance)
+          if(total <= saldoData.balance)
           response.push(total);
 /*           let exaCancelId = Date.now();
           let exaCancelData = {
