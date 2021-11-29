@@ -401,10 +401,10 @@ const ventasController = {
       let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
 
       let reservaId = req.body.reservaId;
-
+      let totalVenta = totalConDesc? totalConDesc : total;
       /* CARGA DE COMPRA EN DB */
       let apiVentaData = {
-        amount: total,
+        amount: totalVenta,
         loteria: loteriaAux,
         lotto: lottoAux,
         user,
@@ -482,7 +482,7 @@ const ventasController = {
       let exaReservaData = {
         token,
         transactionId: exaReservaId,
-        amount: total,
+        amount: totalVenta,
         reservationDetails,
       };
 
@@ -630,7 +630,7 @@ const ventasController = {
         transactionId: exaVentaId,
         reserveId: exaReservaId,
         ticketId: loteriaVentaResponse.ticketId,
-        amount: total,
+        amount: totalVenta,
         prizeDetails,
       };
       let exaVentaResponse = await Wallet.sellLottery(exaVentaData);

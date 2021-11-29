@@ -364,6 +364,7 @@ export class ShoppingCartService {
     localStorage.removeItem("seleccionadosCarrito");
     localStorage.removeItem("reservaId");
     localStorage.removeItem("total");
+    localStorage.removeItem("totalConDesc");
     return new Promise<any>(async (resolve, reject) => {
       let headers = new HttpHeaders();
       headers = headers.append("Content-Type", "application/json");
