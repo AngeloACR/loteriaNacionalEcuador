@@ -891,7 +891,7 @@ const ventasController = {
               reserveId: reservaId,
               amount: parseFloat(total).toFixed(2),
             };
-            //let exaCancelResponse = await Wallet.cancelLottery(exaCancelData);
+            let exaCancelResponse = await Wallet.cancelLottery(exaCancelData);
             let exaReservaId = Date.now();
             let exaReservaData = {
               token,
@@ -899,19 +899,22 @@ const ventasController = {
               amount: parseFloat(total).toFixed(2),
               reservationDetails,
             };
-            /* let exaReservaResponse = await Wallet.reserveLottery(
+             let exaReservaResponse = await Wallet.reserveLottery(
               exaReservaData
-            ); */
+            ); 
             let exaVentaId = Date.now();
             let exaVentaData = {
               token,
               transactionId: exaVentaId,
               reserveId: exaReservaId,
               ticketId: venta.ventaId,
+              exaReservaResponse,
+              exaVentaResponse,
+              exaCancelReponse,
               amount: parseFloat(total).toFixed(2),
               prizeDetails: [],
             };
-            //let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
+            let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
             response.push({
               hasBalance: true,
               exaReservaId: reservaId,
