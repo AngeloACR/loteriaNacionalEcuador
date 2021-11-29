@@ -888,15 +888,15 @@ const ventasController = {
             let exaCancelData = {
               token: token,
               transactionId: exaCancelId,
-              reserveId: exaReservaData.transactionId,
-              amount: exaReservaData.amount,
+              reserveId: reservaId,
+              amount: parseFloat(total).toFixed(2),
             };
             //let exaCancelResponse = await Wallet.cancelLottery(exaCancelData);
             let exaReservaId = Date.now();
             let exaReservaData = {
               token,
               transactionId: exaReservaId,
-              amount: total,
+              amount: parseFloat(total).toFixed(2),
               reservationDetails,
             };
             /* let exaReservaResponse = await Wallet.reserveLottery(
@@ -908,7 +908,7 @@ const ventasController = {
               transactionId: exaVentaId,
               reserveId: exaReservaId,
               ticketId: venta.ventaId,
-              amount: total,
+              amount: parseFloat(total).toFixed(2),
               prizeDetails: [],
             };
             //let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
