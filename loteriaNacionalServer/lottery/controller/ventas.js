@@ -918,7 +918,7 @@ const ventasController = {
               ventaId: venta.ventaId,
               exaReservaResponse,
               exaVentaResponse,
-              exaCancelReponse,
+              exaCancelResponse,
               total,
             });
           } else {
