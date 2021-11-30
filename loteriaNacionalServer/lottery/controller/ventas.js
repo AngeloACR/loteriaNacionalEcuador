@@ -955,7 +955,7 @@ const ventasController = {
         let newTotal = parseFloat(element.total).toFixed(2);
         let response = []
         if (element.hasBalance) {
-          let ventaData = await Reservas.updatetCompraByExaReservaId(
+          let ventaData = await Reservas.updateCompraByExaReservaId(
             reservaId,
             newReservaId,
             newVentaId,
