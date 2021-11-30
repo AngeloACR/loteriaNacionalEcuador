@@ -145,6 +145,36 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       res.status(400).json(response);
     }
   },
+  getGanadores: async (req, res) => {
+    try {
+      let data = req.body.data;
+      let response = [];
+      for (let index = 0; index < data.length; index++) {
+        const element = data[index];
+
+        let ventaId = element.ventaId;
+      let query = { ventaId: ventaId };
+      let ganadorData = await Ganadores.find(query);
+      let ganadorFlag = (ganadorData && ganadorData.length);  
+      let info = {
+          isGanador: ganadorFlag,
+          detalles: ganadorData,
+          ventaId,
+          reservaId: element.reservaId
+        }
+        response.push(info);
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
 };
 
 module.exports = ganadoresController;

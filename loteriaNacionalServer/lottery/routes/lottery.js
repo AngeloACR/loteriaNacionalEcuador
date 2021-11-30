@@ -21,6 +21,7 @@ lotteryRouter.post('/corregirVenta', LotteryController.corregirVenta);
 
 lotteryRouter.post('/acreditarPremios', GanadoresController.pagarLoteriaHttp);
 lotteryRouter.post('/getGanador', GanadoresController.getGanador);
+lotteryRouter.post('/getGanadores', GanadoresController.getGanadores);
 
 
 lotteryRouter.post('/loteriaBoleto', LotteryController.buscarLoteriaBoleto);
