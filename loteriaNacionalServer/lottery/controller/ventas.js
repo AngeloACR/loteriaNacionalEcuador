@@ -961,8 +961,8 @@ const ventasController = {
             newVentaId,
             newTotal
           );
+          response.push(ventaData)
         }
-        response.push(ventaData)
       }
       res.status(200).json(response);
     } catch (e) {
