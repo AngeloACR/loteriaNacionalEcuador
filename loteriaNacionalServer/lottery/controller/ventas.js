@@ -949,19 +949,19 @@ const ventasController = {
       for (let index = 0; index < data.length; index++) {
         const element = data[index];
 
-        let reservaId = element.reservaId;
-        let newReservaId = element.exaReservaResponse.transactionId;
-        let newVentaId = element.exaVentaResponse.transactionId;
-        let newTotal = parseFloat(element.total).toFixed(2);
-        let response = []
         if (element.hasBalance) {
+          let reservaId = element.reservaId;
+          let newReservaId = element.exaReservaResponse.transactionId;
+          let newVentaId = element.exaVentaResponse.transactionId;
+          let newTotal = parseFloat(element.total).toFixed(2);
+          let response = [];
           let ventaData = await Reservas.updateCompraByExaReservaId(
             reservaId,
             newReservaId,
             newVentaId,
             newTotal
           );
-          response.push(ventaData)
+          response.push(ventaData);
         }
       }
       res.status(200).json(response);
