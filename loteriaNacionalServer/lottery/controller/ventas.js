@@ -899,9 +899,9 @@ const ventasController = {
               amount: parseFloat(total).toFixed(2),
               reservationDetails,
             };
-             let exaReservaResponse = await Wallet.reserveLottery(
+            let exaReservaResponse = await Wallet.reserveLottery(
               exaReservaData
-            ); 
+            );
             let exaVentaId = Date.now();
             let exaVentaData = {
               token,
@@ -930,6 +930,39 @@ const ventasController = {
             });
           }
         }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  corregirVenta: async (req, res) => {
+    try {
+      let data = req.body.data;
+      let response = [];
+      for (let index = 0; index < data.length; index++) {
+        const element = data[index];
+
+        let reservaId = element.reservaId;
+        let newReservaId = element.exaReservaResponse.transactionId;
+        let newVentaId = element.exaVentaResponse.transactionId;
+        let newTotal = parseFloat(element.total).toFixed(2);
+        let response = []
+        if (element.hasBalance) {
+          let ventaData = await Reservas.updatetCompraByExaReservaId(
+            reservaId,
+            newReservaId,
+            newVentaId,
+            newTotal
+          );
+        }
+        response.push(ventaData)
       }
       res.status(200).json(response);
     } catch (e) {

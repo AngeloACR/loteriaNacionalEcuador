@@ -143,6 +143,34 @@ const reservasController = {
       return response;
     }
   },
+  updateCompraByExaReservaId: async function (id, newReservaId, newVentaId, total) {
+    try {
+      let query = { "exaReservaId": id };
+      let reserva = await Reserva.findOne(query);
+      let response;
+      if (reserva) {
+        reserva.exaReservaId = newReservaId;
+        reserva.exaVentaId = newVentaId;
+        reserva.total = total;
+        reserva = await reserva.save();
+        response = {
+          status: true,
+          values: reserva,
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
   getReservaByLotteryId: async function (id) {
     try {
       let query = { reservaId: id };
