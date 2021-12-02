@@ -7,8 +7,8 @@ const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicativoId;
-//const address = config.aplicativoAddressTest;
-const address = config.aplicativoAddressProd;
+const address = config.aplicativoAddressTest;
+//const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
@@ -232,7 +232,8 @@ module.exports.consultarDescuentos = async (token, user, ip) => {
 
             if (!errorCode) {
               let aux = data.mt.rs[0].r[0].Row;
-              let response = aux.map((descuento) => {
+              let response = [];
+              aux.forEach((descuento) => {
                 //AGREGAR VALIDACION DE FECHA
                 let inicioAux = descuento.$.FechaInicio;
                 let inicioFechaAux = inicioAux.split(" ")[0].split("/");
@@ -261,7 +262,7 @@ module.exports.consultarDescuentos = async (token, user, ip) => {
                   valorSinDescuento: descuento.$.PrecioVenta,
                 };
                 if (finDate >= currentDate && currentDate >= inicioDate) {
-                  return descuentoAux;
+                  response.push(descuentoAux);
                 }
               });
 

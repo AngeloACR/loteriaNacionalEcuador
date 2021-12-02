@@ -57,7 +57,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = true;
       await this.getCarritoTickets();
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
-      //this.descuentos = await this.lotteryService.obtenerDescuentos()
+      this.descuentos = await this.lotteryService.obtenerDescuentos()
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {
@@ -165,7 +165,7 @@ export class LoteriaComponent implements OnInit {
           this.openError(errorMessage);
         }
       }
-      //await this.setDescuento(1);
+      await this.setDescuento(1);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -184,10 +184,11 @@ export class LoteriaComponent implements OnInit {
       if(conteo >= parseInt(element.cantidad)){
         await this.cart.calcularDescuento(element);
       }else {
-        await this.cart.eliminarDescuento(tipoLoteria)  
+        await this.cart.eliminarDescuento(element, tipoLoteria)  
       }
       await this.getCarritoTickets();
     }
+    await this.cart.setTotalConDesc();
   }
 
   async seleccionarTodo(id: number) {
@@ -225,7 +226,7 @@ export class LoteriaComponent implements OnInit {
         let identificador = this.ticketsDisponibles[id].identificador;
         await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
         this.ticketsDisponibles[id].seleccionados = [];
-      }      //await this.setDescuento(1);
+      }      await this.setDescuento(1);
 
 
     } catch (e) {
@@ -347,6 +348,8 @@ export class LoteriaComponent implements OnInit {
       aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
       aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
       aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(loteriaAux[id].subtotalConDesc).toFixed(2);
+      aux["tieneDescuento"] = loteriaAux[id].tieneDescuento;
       aux["fecha"] = loteriaAux[id].sorteo.fecha;
       aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
       loteria.push(aux);
@@ -361,6 +364,8 @@ export class LoteriaComponent implements OnInit {
       aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(lottoAux[id].subtotalConDesc).toFixed(2);
+      aux["tieneDescuento"] = lottoAux[id].tieneDescuento;
       aux["fecha"] = lottoAux[id].sorteo.fecha;
       lotto.push(aux);
     }
@@ -373,16 +378,20 @@ export class LoteriaComponent implements OnInit {
       aux["mascota"] = pozoAux[id].ticket.mascota;
       aux["sorteo"] = pozoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(pozoAux[id].subtotalConDesc).toFixed(2);
+      aux["tieneDescuento"] = pozoAux[id].tieneDescuento;
       aux["fecha"] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
     }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
+    let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
     this.detalleCompra = {
       loteria,
       pozo,
       lotto,
       amount,
+      amountConDesc
     };
 
     this.confirmacionDeCompra = true;
@@ -493,7 +502,7 @@ export class LoteriaComponent implements OnInit {
           this.ticketsDisponibles[deletedIndex].seleccionados = [];
         }
       }
-      //await this.setDescuento(1);
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -526,7 +535,7 @@ export class LoteriaComponent implements OnInit {
       await this.cart.removeFromCart(ticket, 2);
       await this.cart.setCarritoLotto(this.ticketsLotto);
       //this.getTotal();
-      //await this.setDescuento(2);
+      await this.setDescuento(2);
 
       this.isLoading = false;
     } catch (e) {
@@ -561,7 +570,7 @@ export class LoteriaComponent implements OnInit {
       await this.cart.setCarritoPozo(this.ticketsPozo);
       //this.getTotal();
 
-      //await this.setDescuento(5);
+      await this.setDescuento(5);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -610,7 +619,7 @@ export class LoteriaComponent implements OnInit {
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       //this.getTotal();
 
-      //await this.setDescuento(1);
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;

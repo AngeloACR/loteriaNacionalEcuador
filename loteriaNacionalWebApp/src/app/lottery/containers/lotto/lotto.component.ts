@@ -106,7 +106,7 @@ export class LottoComponent implements OnInit {
           this.openError(errorMessage);
         }
       }
-      //await this.setDescuento(2);
+      await this.setDescuento(2);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -203,6 +203,9 @@ export class LottoComponent implements OnInit {
       aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
       aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
       aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(loteriaAux[id].subtotalConDesc).toFixed(2);
+      aux["tieneDescuento"] = loteriaAux[id].tieneDescuento;
+
       aux["fecha"] = loteriaAux[id].sorteo.fecha;
       aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
       loteria.push(aux);
@@ -217,6 +220,8 @@ export class LottoComponent implements OnInit {
       aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(lottoAux[id].subtotalConDesc).toFixed(2);
+      aux["tieneDescuento"] = lottoAux[id].tieneDescuento;
       aux["fecha"] = lottoAux[id].sorteo.fecha;
       lotto.push(aux);
     }
@@ -229,16 +234,20 @@ export class LottoComponent implements OnInit {
       aux["mascota"] = pozoAux[id].ticket.mascota;
       aux["sorteo"] = pozoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(pozoAux[id].subtotalConDesc).toFixed(2);
+      aux["tieneDescuento"] = pozoAux[id].tieneDescuento;
       aux["fecha"] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
     }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
+    let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
     this.detalleCompra = {
       loteria,
       pozo,
       lotto,
       amount,
+      amountConDesc
     };
 
     this.confirmacionDeCompra = true;
@@ -325,7 +334,7 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
-      //this.descuentos = await this.lotteryService.obtenerDescuentos()
+      this.descuentos = await this.lotteryService.obtenerDescuentos()
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {
@@ -347,10 +356,12 @@ export class LottoComponent implements OnInit {
       if(conteo >= parseInt(element.cantidad)){
         await this.cart.calcularDescuento(element);
       }else {
-        await this.cart.eliminarDescuento(tipoLoteria)  
+        await this.cart.eliminarDescuento(element, tipoLoteria)  
       }
       await this.getCarritoTickets();
     }
+    await this.cart.setTotalConDesc();
+
   }
   obtenerAntojito(antojito) {
     return this.lotteryService.obtenerCaracteristicasDeAntojito(antojito).ruta;
@@ -386,7 +397,7 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
 
-      //await this.setDescuento(1);
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -421,7 +432,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      //await this.setDescuento(1);
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -462,7 +473,7 @@ export class LottoComponent implements OnInit {
       }
       await this.getCarritoTickets();
       //this.getTotal();
-      //await this.setDescuento(2);
+      await this.setDescuento(2);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -497,7 +508,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      //await this.setDescuento(5);
+      await this.setDescuento(5);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;

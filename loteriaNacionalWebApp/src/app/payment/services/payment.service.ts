@@ -11,8 +11,8 @@ export class PaymentService {
   productionSource = "https://ventas-api.loteria.com.ec";
 
   //mySource = this.localSource;
-  //mySource = this.testSource;
-  mySource = this.productionSource;
+  mySource = this.testSource;
+  //mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
 
@@ -27,7 +27,7 @@ export class PaymentService {
       lotteryToken,
       user,
       personalId,
-      accountId
+      accountId,
     };
     return response;
   }
@@ -56,7 +56,7 @@ export class PaymentService {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let balance = parseFloat(data.balance);
-          let hasBalance = balance >= testAmount
+          let hasBalance = balance >= testAmount;
           resolve(hasBalance);
         },
         (error: any) => {
@@ -138,6 +138,7 @@ export class PaymentService {
       accountId: authData.accountId,
       amount: total,
       amountConDesc: totalConDesc,
+      hasDescuento: !(total == totalConDesc),
       token,
       reservaId,
     };
@@ -152,7 +153,11 @@ export class PaymentService {
         },
         (error: any) => {
           //reject(new Error(error.error.message));
-          reject(new Error("Ha ocurrido un error procesando la compra. Por favor, intente de nuevo."));
+          reject(
+            new Error(
+              "Ha ocurrido un error procesando la compra. Por favor, intente de nuevo."
+            )
+          );
         }
       );
     });

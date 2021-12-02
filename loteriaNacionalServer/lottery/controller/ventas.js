@@ -12,8 +12,8 @@ var errorHandler = require("../../errors/errorHandler");
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletos = config.sourceBoletosLocal;
-//let sourceBoletos = config.sourceBoletosTest;
-let sourceBoletos = config.sourceBoletosProd;
+let sourceBoletos = config.sourceBoletosTest;
+//let sourceBoletos = config.sourceBoletosProd;
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
@@ -398,14 +398,16 @@ const ventasController = {
       let pozoAux = req.body.pozo;
 
       let total = parseFloat(req.body.amount).toFixed(2);
+      let hasDescuento = req.body.hasDescuento;
       let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
 
       let reservaId = req.body.reservaId;
-      //let totalVenta = totalConDesc? totalConDesc : total;
-      let totalVenta = total;
+      let totalVenta = hasDescuento ? totalConDesc : total;
+      //let totalVenta = total;
       /* CARGA DE COMPRA EN DB */
       let apiVentaData = {
-        amount: totalVenta,
+        amount: total,
+        amountConDesc: totalConDesc,
         loteria: loteriaAux,
         lotto: lottoAux,
         user,
@@ -744,6 +746,10 @@ const ventasController = {
         aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
         aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
         aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
+        aux["tieneDescuento"] = loteriaAux[id].tieneDescuento;
+        aux["subtotalConDesc"] = parseFloat(
+          loteriaAux[id].subtotalConDesc
+        ).toFixed(2);
         aux["fecha"] = loteriaAux[id].sorteo.fecha;
         aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
         loteria.push(aux);
@@ -759,6 +765,10 @@ const ventasController = {
         aux["combinacion5"] = lottoAux[id].ticket.combinacion5;
         aux["sorteo"] = lottoAux[id].sorteo.sorteo;
         aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
+        aux["tieneDescuento"] = lottoAux[id].tieneDescuento;
+        aux["subtotalConDesc"] = parseFloat(
+          lottoAux[id].subtotalConDesc
+        ).toFixed(2);
         aux["fecha"] = lottoAux[id].sorteo.fecha;
         lotto.push(aux);
       }
@@ -771,10 +781,15 @@ const ventasController = {
         aux["mascota"] = pozoAux[id].ticket.mascota;
         aux["sorteo"] = pozoAux[id].sorteo.sorteo;
         aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
+        aux["tieneDescuento"] = pozoAux[id].tieneDescuento;
+        aux["subtotalConDesc"] = parseFloat(
+          pozoAux[id].subtotalConDesc
+        ).toFixed(2);
         aux["fecha"] = pozoAux[id].sorteo.fecha;
         pozo.push(aux);
       }
       let total = parseFloat(apiReservaData.amount).toFixed(2);
+      let totalConDesc = parseFloat(apiReservaData.amountConDesc).toFixed(2);
       let reservaId = apiReservaData.reservaId;
       let ventaId = apiReservaData.ventaId;
       let exaReservaId = apiReservaData.exaReservaId;
@@ -789,6 +804,7 @@ const ventasController = {
         exaVentaId,
         lotto,
         total,
+        totalConDesc,
         reservaId,
         ventaId,
         user,

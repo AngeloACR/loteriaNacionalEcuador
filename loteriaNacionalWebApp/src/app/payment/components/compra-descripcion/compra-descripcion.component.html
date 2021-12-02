@@ -43,6 +43,9 @@
         <p>
           Total: <span>{{ formatNumber(item.subtotal) }}</span>
         </p>
+        <p *ngIf="item.tieneDescuento">
+          Total con descuento: <span>{{ formatNumber(item.subtotalConDesc) }}</span>
+        </p>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox loteriaColor">
@@ -140,6 +143,9 @@
         <p>
           Total: <span>{{ formatNumber(item.subtotal) }}</span>
         </p>
+        <p *ngIf="item.tieneDescuento">
+          Total con descuento: <span>{{ formatNumber(item.subtotalConDesc) }}</span>
+        </p>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox lottoColor">
@@ -224,6 +230,9 @@
         <p>
           Total: <span>{{ formatNumber(item.subtotal) }}</span>
         </p>
+        <p *ngIf="item.tieneDescuento">
+          Total con descuento: <span>{{ formatNumber(item.subtotalConDesc) }}</span>
+        </p>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox pozoColor">
@@ -280,6 +289,10 @@
     <p>
       Total: <span *ngIf="compra.amount">{{ formatNumber(compra.amount) }}</span
       ><span *ngIf="compra.total">{{ formatNumber(compra.total) }}</span>
+    </p>
+    <p *ngIf="(compra.amountConDesc && compra.amount != compra.amountConDesc) || (compra.totalConDesc && compra.total != compra.totalConDesc)">
+      Total con descuento: <span *ngIf="compra.amountConDesc">{{ formatNumber(compra.amountConDesc) }}</span
+      ><span *ngIf="compra.totalConDesc">{{ formatNumber(compra.totalConDesc) }}</span>
     </p>
   </div>
 </div>

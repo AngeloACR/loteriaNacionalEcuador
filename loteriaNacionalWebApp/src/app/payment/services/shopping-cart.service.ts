@@ -18,68 +18,87 @@ export class ShoppingCartService {
   productionSource = "https://ventas-api.loteria.com.ec";
 
   //mySource = this.localSource;
-  //mySource = this.testSource;
-  mySource = this.productionSource;
+  mySource = this.testSource;
+  //mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
 
-  async eliminarDescuento(tipoLoteria){
+  async eliminarDescuento(element, tipoLoteria) {
+    let sorteo = element.sorteo;
     switch (tipoLoteria) {
       case 1:
         let loteria = this.getLoteriaLocal();
         for (let id in loteria) {
-          loteria[id].subtotalConDesc = 0;
-        };
+          if (loteria[id].sorteo.sorteo == sorteo) {
+            loteria[id].tieneDescuento = false;
+            loteria[id].subtotalConDesc = 0;
+          }
+        }
         this.setLoteriaLocal(loteria);
         break;
-        case 2:
+      case 2:
         let lotto = this.getLottoLocal();
         for (let id in lotto) {
-          lotto[id].subtotalConDesc = 0;
-        };
+          if (lotto[id].sorteo.sorteo == sorteo) {
+            lotto[id].tieneDescuento = false;
+            lotto[id].subtotalConDesc = 0;
+          }
+        }
         this.setLottoLocal(lotto);
         break;
 
       default:
         let pozo = this.getPozoLocal();
         for (let id in pozo) {
-          pozo[id].subtotalConDesc = 0;
-        };
+          if (pozo[id].sorteo.sorteo == sorteo) {
+            pozo[id].tieneDescuento = false;
+            pozo[id].subtotalConDesc = 0;
+          }
+        }
         this.setPozoLocal(pozo);
         break;
     }
-    await this.setTotalConDesc();
     await this.actualizarCarrito();
   }
 
-
   async calcularDescuento(descuento) {
-    let precioConDescuento = descuento.valorConDescuento
+    let precioConDescuento = descuento.valorConDescuento;
+    let sorteo = descuento.sorteo;
     switch (descuento.tipoLoteria) {
       case "1":
         let loteria = this.getLoteriaLocal();
         for (let id in loteria) {
-          loteria[id].subtotalConDesc = loteria[id].ticket.seleccionados.length*parseFloat(precioConDescuento);
-        };
+          if (loteria[id].sorteo.sorteo == sorteo) {
+            loteria[id].tieneDescuento = true;
+            loteria[id].subtotalConDesc =
+              loteria[id].ticket.seleccionados.length *
+              parseFloat(precioConDescuento);
+          }
+        }
         this.setLoteriaLocal(loteria);
         break;
-        case "2":
+      case "2":
         let lotto = this.getLottoLocal();
         for (let id in lotto) {
-          lotto[id].subtotalConDesc = parseFloat(precioConDescuento);
-        };
+          if (lotto[id].sorteo.sorteo == sorteo) {
+            lotto[id].tieneDescuento = true;
+            lotto[id].subtotalConDesc = parseFloat(precioConDescuento);
+          }
+        }
         this.setLottoLocal(lotto);
         break;
 
       default:
         let pozo = this.getPozoLocal();
         for (let id in pozo) {
-          pozo[id].subtotalConDesc = parseFloat(precioConDescuento);
-        };
+          if (pozo[id].sorteo.sorteo == sorteo) {
+            pozo[id].tieneDescuento = true;
+            pozo[id].subtotalConDesc = parseFloat(precioConDescuento);
+          }
+        }
         this.setPozoLocal(pozo);
         break;
     }
-    await this.setTotalConDesc();
     await this.actualizarCarrito();
   }
 
@@ -396,18 +415,30 @@ export class ShoppingCartService {
       let pozoAux = this.getPozoLocal();
       let loteriaConDesc = 0;
       for (let id in loteriaAux) {
-        loteriaConDesc += parseFloat(loteriaAux[id].subtotalConDesc);
+        if (loteriaAux[id].tieneDescuento) {
+          loteriaConDesc += parseFloat(loteriaAux[id].subtotalConDesc);
+        } else {
+          loteriaConDesc += parseFloat(loteriaAux[id].subtotal);
+        }
       }
       let lottoConDesc = 0;
       for (let id in lottoAux) {
-        lottoConDesc += parseFloat(lottoAux[id].subtotalConDesc);
+        if (lottoAux[id].tieneDescuento) {
+          lottoConDesc += parseFloat(lottoAux[id].subtotalConDesc);
+        } else {
+          lottoConDesc += parseFloat(lottoAux[id].subtotal);
+        }
       }
       let pozoConDesc = 0;
       for (let id in pozoAux) {
-        pozoConDesc += parseFloat(pozoAux[id].subtotalConDesc);
+        if (pozoAux[id].tieneDescuento) {
+          pozoConDesc += parseFloat(pozoAux[id].subtotalConDesc);
+        } else {
+          pozoConDesc += parseFloat(pozoAux[id].subtotal);
+        }
       }
       let auxConDesc = loteriaConDesc + lottoConDesc + pozoConDesc;
-      
+
       this.totalConDesc = auxConDesc;
       localStorage.setItem("totalConDesc", JSON.stringify(auxConDesc));
       resolve("Done");
@@ -433,7 +464,7 @@ export class ShoppingCartService {
         pozo += parseFloat(pozoAux[id].subtotal);
       }
       let aux = loteria + lotto + pozo;
-      
+
       this.total = aux;
       localStorage.setItem("total", JSON.stringify(aux));
       resolve("Done");

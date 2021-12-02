@@ -1,99 +1,133 @@
-const mongoose = require('mongoose');
-const Schema = require('mongoose').Schema;
+const mongoose = require("mongoose");
+const Schema = require("mongoose").Schema;
 
-const ventaSchema = new mongoose.Schema({
-    loteria: [{
+const ventaSchema = new mongoose.Schema(
+  {
+    loteria: [
+      {
         sorteo: {
-            type: String
+          type: String,
         },
         fecha: {
-            type: String
+          type: String,
         },
         combinacion1: {
-            type: String
+          type: String,
         },
         subtotal: {
-            type: String
+          type: String,
         },
-        fracciones: [{
-            type: String
-        }]
-    }],
-    lotto: [{
+        subtotalConDesc: {
+          type: String,
+        },
+        tieneDescuento: {
+          type: Boolean,
+        },
+
+        fracciones: [
+          {
+            type: String,
+          },
+        ],
+      },
+    ],
+    lotto: [
+      {
         sorteo: {
-            type: String
+          type: String,
         },
         fecha: {
-            type: String
+          type: String,
         },
         subtotal: {
-            type: String
+          type: String,
         },
+        subtotalConDesc: {
+          type: String,
+        },
+        tieneDescuento: {
+          type: Boolean,
+        },
+
         combinacion1: {
-            type: String
+          type: String,
         },
         combinacion2: {
-            type: String
+          type: String,
         },
         combinacion3: {
-            type: String
+          type: String,
         },
         combinacion4: {
-            type: String
+          type: String,
         },
         combinacion5: {
-            type: String
-        }
-    }],
-    pozo: [{
+          type: String,
+        },
+      },
+    ],
+    pozo: [
+      {
         sorteo: {
-            type: String
+          type: String,
         },
         subtotal: {
-            type: String
+          type: String,
         },
         fecha: {
-            type: String
+          type: String,
         },
         combinacion1: {
-            type: String
+          type: String,
         },
         combinacion2: {
-            type: String
+          type: String,
         },
+        subtotalConDesc: {
+          type: String,
+        },
+        tieneDescuento: {
+          type: Boolean,
+        },
+
         mascota: {
-            type: String
-        }
-    }],
+          type: String,
+        },
+      },
+    ],
     total: {
-        type: String
+      type: String,
+    },
+    totalConDesc: {
+      type: String,
     },
     status: {
-        type: String
+      type: String,
     },
     user: {
-        type: String
+      type: String,
     },
     accountId: {
-        type: String
+      type: String,
     },
     ventaId: {
-        type: String
+      type: String,
     },
     reservaId: {
-        type: String
+      type: String,
     },
     exaVentaId: {
-        type: String
+      type: String,
     },
     exaReservaId: {
-        type: String
+      type: String,
     },
-
-}, {
-        toJSON: { virtuals: true },
-        toObject: { virtuals: true },
-    });
+  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
 
 /* resultadoSchema.virtual('premio', {
     ref: 'Premio', // The model to use
@@ -104,4 +138,4 @@ const ventaSchema = new mongoose.Schema({
     justOne: true,
 }); */
 
-const Venta = module.exports = mongoose.model("Venta", ventaSchema);
+const Venta = (module.exports = mongoose.model("Venta", ventaSchema));
