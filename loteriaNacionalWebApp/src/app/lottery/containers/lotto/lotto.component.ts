@@ -106,7 +106,7 @@ export class LottoComponent implements OnInit {
           this.openError(errorMessage);
         }
       }
-      await this.setDescuento(2);
+      //await this.setDescuento(2);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -397,7 +397,7 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
 
-      await this.setDescuento(1);
+      //await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -432,7 +432,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      await this.setDescuento(1);
+      //await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -473,7 +473,7 @@ export class LottoComponent implements OnInit {
       }
       await this.getCarritoTickets();
       //this.getTotal();
-      await this.setDescuento(2);
+      //await this.setDescuento(2);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -508,7 +508,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      await this.setDescuento(5);
+      //await this.setDescuento(5);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;

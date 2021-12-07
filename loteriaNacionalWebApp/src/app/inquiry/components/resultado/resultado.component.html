@@ -32,23 +32,19 @@
   <div *ngIf="!ticket.resultado.status" class="resultadoDetalles">
     <p><span>Démosle otro intento,</span> ¡hoy no has ganado!</p>
     <br />
-    <p>
-      Puede que el próximo boleto si sea el de la suerte
-      <span>¡Seguro te toca!</span>
-    </p>
+    <p>Esta vez tu boleto no tiene premio.</p>
     <br />
     <div class="detailBox">
-      <img src="assets/perdedorpremio.png" alt="" />
       <div class="detailText">
         <p><span>SORTEO: </span>{{ sorteo }}</p>
         <p><span>COMBINACIÓN: </span>{{ ticket.combinacion }}</p>
       </div>
     </div>
+    <p>¡Sigue intentándolo!</p>
+    <br />
     <p>
-      Cómpralo en tu <span>Punto de la suerte</span> más cercano, descúbrelo
-      <a href="https://www.loteria.com.ec/puntos-de-la-suerte" target="_parent"
-        >aquí</a
-      >
+      Gracias a tu compra contribuyes a la obra social de la Junta de
+      Beneficencia de Guayaquil.
     </p>
   </div>
 </div>

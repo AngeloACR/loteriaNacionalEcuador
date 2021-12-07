@@ -110,7 +110,7 @@ export class PozoMillonarioComponent implements OnInit {
           this.openError(errorMessage);
         }
       }
-      await this.setDescuento(5);
+      //await this.setDescuento(5);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -508,7 +508,7 @@ export class PozoMillonarioComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      await this.setDescuento(1);
+      //await this.setDescuento(1);
 
       this.isLoading = false;
     } catch (e) {
@@ -543,7 +543,7 @@ export class PozoMillonarioComponent implements OnInit {
       await this.cart.setCarritoLotto(this.ticketsLotto);
       await this.getCarritoTickets();
       //this.getTotal();
-      await this.setDescuento(2);
+      //await this.setDescuento(2);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -583,7 +583,7 @@ export class PozoMillonarioComponent implements OnInit {
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       await this.getCarritoTickets();
       //this.getTotal();
-      await this.setDescuento(1);
+      //await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -623,7 +623,7 @@ export class PozoMillonarioComponent implements OnInit {
       }
       await this.getCarritoTickets();
       //this.getTotal();
-      await this.setDescuento(5);
+      //await this.setDescuento(5);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
