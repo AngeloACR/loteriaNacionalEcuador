@@ -454,7 +454,7 @@ export class PozoMillonarioComponent implements OnInit {
       );
 
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 5);
-      this.descuentos = await this.lotteryService.obtenerDescuentos()
+      //this.descuentos = await this.lotteryService.obtenerDescuentos()
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {

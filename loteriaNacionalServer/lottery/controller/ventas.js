@@ -402,8 +402,8 @@ const ventasController = {
       let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
 
       let reservaId = req.body.reservaId;
-      let totalVenta = hasDescuento ? totalConDesc : total;
-      //let totalVenta = total;
+      //let totalVenta = hasDescuento ? totalConDesc : total;
+      let totalVenta = total;
       /* CARGA DE COMPRA EN DB */
       let apiVentaData = {
         amount: total,

@@ -835,11 +835,13 @@ module.exports.venderBoletos = async (
             `;
     }
     /*Ensure your message below looks like a valid working SOAP UI request*/
-    let venta = totalConDesc
+/*     let venta = totalConDesc
       ? `<V total="${total}" totalConDesc="${totalConDesc}"></V>`
       : `<V total="${total}"></V>`;
-    //let totalVenta = totalConDesc ? totalConDesc : total;
-    let message = {
+ */    
+      let venta = `<V total="${total}"></V>`;
+
+      let message = {
       $xml: `
       <PI_DatosXml>
       <![CDATA[
