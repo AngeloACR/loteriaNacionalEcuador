@@ -210,7 +210,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         ganador.personaId,
         ip
       );
-      let ordenId = await Ventas.agregarOrdenPago(
+/*       let ordenId = await Ventas.agregarOrdenPago(
         ganador.ventaId,
         ganador.tipoLoteria,
         ganador.numeroSorteo,
@@ -222,7 +222,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         numeroDeTransaccion,
         cliente,
         ip
-      );
+      ); */
       let logData = {
         data: [],
         response: [],
