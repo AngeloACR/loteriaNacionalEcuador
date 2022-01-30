@@ -5,7 +5,7 @@ const config = require('./config/environment');
 const cronjobs = require('./cronjobs');
 
 // https://www.nginx.com/blog/nginx-caching-guide/
-const connection = db.initConnect();
+const connection = await db.initConnect();
 
 const lotteryPort = config.lotteryPort;
 const lotteryApp = lotteryServer.init(lotteryPort);
