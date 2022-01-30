@@ -40,7 +40,7 @@ module.exports = {
   aplicativoAddressProd: "serviciomt-prod.wsdl",
 
   // MONGO DATABASE DATA
-  prodDB: "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB",
+  prodDB: "mongodb://loterianacional:%24lndatabase123..%24@localhost:27017/loteriaDB",
   testDB: "mongodb://localhost:27017/loteriaDB",
 
   
