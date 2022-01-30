@@ -7,7 +7,7 @@ const Sorteos = require("./results/controller/sorteos");
 const Premios = require("./results/controller/premios");
 const Resultados = require("./results/controller/resultados");
 
-module.exports.initConnect = function () {
+module.exports.initConnect = async function () {
   // Connect to Database
   mongoose.connect(
     myDB /*, { useUnifiedTopology: true, useNewUrlParser: true }*/
