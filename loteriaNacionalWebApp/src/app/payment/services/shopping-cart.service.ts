@@ -17,9 +17,9 @@ export class ShoppingCartService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
+  mySource = this.localSource;
   //mySource = this.testSource;
-  mySource = this.productionSource;
+  //mySource = this.productionSource;
 
   constructor(private cart: ShoppingCartService, private http: HttpClient) {}
 
@@ -329,11 +329,10 @@ export class ShoppingCartService {
       address = address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-          console.log(data);
-          if (!data.status) {
+/*           if (!data.status) {
             reject(new Error(data.message));
           }
-          resolve(data);
+ */          resolve(data);
         },
         (error: any) => {
           reject(new Error(error.error.message));

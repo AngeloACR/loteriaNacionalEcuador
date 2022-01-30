@@ -3,7 +3,7 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -12,7 +12,7 @@ import { InquiryService } from "../../services/inquiry.service";
 @Component({
   selector: "app-pozo-millonario-consulta",
   templateUrl: "./pozo-millonario-consulta.component.html",
-  styleUrls: ["./pozo-millonario-consulta.component.scss"]
+  styleUrls: ["./pozo-millonario-consulta.component.scss"],
 })
 export class PozoMillonarioConsultaComponent implements OnInit {
   sorteosJugados: any;
@@ -21,7 +21,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
   boletoInicial: any;
   boletoFinal: any;
   sorteoRango: any;
-  combinacionesAux: any;
+  combinacionesAux: any = "";
 
   maxDigits: number = 7;
   numbers: Array<any> = [];
@@ -132,6 +132,10 @@ export class PozoMillonarioConsultaComponent implements OnInit {
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
+      if (!this.combinacionesAux.length)
+        throw new Error(
+          "Por favor, escribe al menos una combinación que quieras consultar"
+        );
       let aux = this.combinacionesAux;
       if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
         aux = this.combinacionesAux.slice(0, -2);
@@ -152,7 +156,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
       });
       if (this.sorteoGanador == "default") {
         this.dismissLoader();
-        alert("Por favor seleccione un sorteo");
+        this.openError("Por favor, selecciona un sorteo");
         return;
       }
       let data: any = await this.inquiryService.recuperarBoletoGanador(
@@ -165,16 +169,15 @@ export class PozoMillonarioConsultaComponent implements OnInit {
       this.dismissLoader();
     } catch (e) {
       this.dismissLoader();
-      alert(
-        "Ocurrio un error consultando los resultados, por favor intente de nuevo"
-      );
+      this.openError(e.message);
       console.log(e);
     }
   }
 
   async buscarBoletin() {
     if (this.sorteoBoletin == "default") {
-      alert("Por favor seleccione un sorteo");
+      this.openError("Por favor, selecciona un sorteo");
+
       return;
     }
     this.router.navigateByUrl(
@@ -187,9 +190,15 @@ export class PozoMillonarioConsultaComponent implements OnInit {
       console.log("Buscando por rango");
       if (this.sorteoRango == "default") {
         this.dismissLoader();
-        alert("Por favor seleccione un sorteo");
+        this.openError("Por favor, selecciona un sorteo");
+
         return;
       }
+      if (!this.boletoInicial.length)
+        throw new Error("Por favor, escribe el número inicial del rango");
+      if (!this.boletoFinal.length)
+        throw new Error("Por favor, escribe el número final del rango");
+
       let data = await this.inquiryService.recuperarBoletoGanadorPorPlancha(
         this.boletoInicial,
         this.boletoFinal,
@@ -200,10 +209,19 @@ export class PozoMillonarioConsultaComponent implements OnInit {
       //this.router.navigateByUrl(`/pozo_millonario_boletin/${this.sorteoBoletin}`);
     } catch (e) {
       this.dismissLoader();
-      alert(
-        "Ocurrio un error consultando los resultados, por favor intente de nuevo"
-      );
+      this.openError(e.message);
       console.log(e);
     }
+  }
+
+  isError: boolean = false;
+  errorMessage: string;
+  openError(msg) {
+    this.errorMessage = msg;
+    this.isError = true;
+  }
+
+  closeError() {
+    this.isError = false;
   }
 }

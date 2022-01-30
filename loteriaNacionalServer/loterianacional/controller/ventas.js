@@ -7,19 +7,19 @@ const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicativoId;
-//const address = config.aplicativoAddressTest;
-const address = config.aplicativoAddressProd;
+const address = config.aplicativoAddressTest;
+//const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
     loteriaVentasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-    /* const usuarioClientePsd = config.usuarioAplicativoTest;
+    const usuarioClientePsd = config.usuarioAplicativoTest;
     const claveClientePsd = config.passwordAplicativoTest;
- */
-    const usuarioClientePsd = config.usuarioAplicativoProd;
-    const claveClientePsd = config.passwordAplicativoProd;
+
+    /* const usuarioClientePsd = config.usuarioAplicativoProd;
+    const claveClientePsd = config.passwordAplicativoProd; */
     let message = {
       $xml: `
       <PI_DatosXml>
@@ -835,13 +835,13 @@ module.exports.venderBoletos = async (
             `;
     }
     /*Ensure your message below looks like a valid working SOAP UI request*/
-/*     let venta = totalConDesc
+    /*     let venta = totalConDesc
       ? `<V total="${total}" totalConDesc="${totalConDesc}"></V>`
       : `<V total="${total}"></V>`;
- */    
-      let venta = `<V total="${total}"></V>`;
+ */
+    let venta = `<V total="${total}"></V>`;
 
-      let message = {
+    let message = {
       $xml: `
       <PI_DatosXml>
       <![CDATA[
@@ -1071,6 +1071,249 @@ module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
       input: e,
       output: "",
       function: "cancelarVenta",
+    };
+    return errorData;
+    //throw new loteriaError(errorMsg, "loteria", errorData);
+  }
+};
+
+module.exports.agregarOrdenPago = async (
+  ventaId,
+  tipoJuego,
+  sorteo,
+  boletoId,
+  premioId,
+  total,
+  lotteryToken,
+  numeroDeRetiro,
+  numeroDeTransaccion,
+  cliente,
+  ip
+) => {
+  try {
+    loteriaVentasLogger.silly("agregarOrdenDePago");
+    const usuarioClientePsd = config.usuarioAplicativoTest;
+
+    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let orden = `<R ReTest="0" Valor="${total}" JId="${tipoJuego}" Sort="${sorteo}" BolId="${boletoId}" PremId="${premioId}" VId="${ventaId}" TPrem="ESP" NuReti="${numeroDeRetiro}" NuTranWeb="${numeroDeTransaccion}" />`;
+    //let orden = `<R ReTest="0" Valor="${total}" TPrem="ESP" NuReti="${numeroDeRetiro}" NuTranWeb="${numeroDeTransaccion}" />`;
+
+    let message = {
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
+        <mt>
+        <c>
+        <aplicacion>25</aplicacion>
+        <transaccion>82</transaccion>
+        <usuario>${usuarioClientePsd}</usuario>
+        <maquina>${ip}</maquina>
+        <codError>0</codError>
+        <msgError />
+        <medio>${medioId}</medio>
+        <token>${lotteryToken}</token>
+        <operacion>${Date.now()}</operacion>
+        </c>
+        <i>
+          <MedioId>${medioId}</MedioId>
+          <UsuarioId>${cliente}</UsuarioId>   
+          <xmlOrdenPago>
+            <OPA>
+              ${orden}
+            </OPA>
+          </xmlOrdenPago> 
+        </i>
+        </mt>
+      ]]>
+    </PI_DatosXml>`,
+    };
+    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          try {
+            if (err) reject(new Error(err));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            if (!errorCode) {
+              //let ordenDePagoId = data.mt.o[0].ReturnValue[0];
+/*               let response = {
+                ordenDePagoId,
+                status: true,
+              }; */
+              let response = {
+                data: data.mt
+              };
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info("agregarOrdenDePago.loteria", logData);
+              resolve(response);
+            } else {
+              let errorMsg = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("agregarOrdenDePago.loteria.error", {
+                data: message,
+                errorMessage: `${errorCode}-${errorMsg}`,
+              });
+              let errorData = {
+                status: false,
+                input: message,
+                output: errorCode,
+                function: "agregarOrdenDePago",
+              };
+              resolve(errorData);
+              //              reject(new loteriaError(errorMsg, "loteria", errorData));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+
+            loteriaVentasLogger.error("agregarOrdenDePago.error", {
+              errorMessage: errorMsg,
+            });
+            let errorData = {
+              status: false,
+              input: e,
+              output: "",
+              function: "agregarOrdenDePago",
+            };
+            resolve(errorData);
+
+            //reject(new loteriaError(errorMsg, "loteria", errorData));
+          }
+        }
+      );
+    });
+  } catch (e) {
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("agregarOrdenDePago.error", {
+      errorMessage: errorMsg,
+    });
+
+    let errorData = {
+      status: false,
+      input: e,
+      output: "",
+      function: "agregarOrdenDePago",
+    };
+    return errorData;
+    //throw new loteriaError(errorMsg, "loteria", errorData);
+  }
+};
+
+module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
+  try {
+    loteriaVentasLogger.silly("consultarDatosUsuario");
+    const usuarioClientePsd = config.usuarioAplicativoTest;
+
+    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+
+    let message = {
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
+        <mt>
+        <c>
+        <aplicacion>25</aplicacion>
+        <transaccion>4</transaccion>
+        <usuario>${usuarioClientePsd}</usuario>
+        <maquina>${ip}</maquina>
+        <codError>0</codError>
+        <msgError />
+        <medio>${medioId}</medio>
+        <token>${lotteryToken}</token>
+        <operacion>${Date.now()}</operacion>
+        </c>
+        <i>
+          <PersonaId>${cliente}</PersonaId>
+        </i>
+        </mt>
+      ]]>
+    </PI_DatosXml>`,
+    };
+    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          try {
+            if (err) reject(new Error(err));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            if (!errorCode) {
+              let datosUsuario = data.mt.rs[0].r[0].Row[0];
+              let response = {
+                nombre: `${datosUsuario.$.PrimerNombre} ${datosUsuario.$.ApellidoPaterno}`,
+                identificacion: datosUsuario.$.Identificacion,
+                correo: data.mt.rs[0].r[2].Row[1].$.Descripcion,
+                status: true,
+              };
+
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info(
+                "consultarDatosUsuario.loteria",
+                logData
+              );
+              resolve(response);
+            } else {
+              let errorMsg = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("consultarDatosUsuario.loteria.error", {
+                data: message,
+                errorMessage: `${errorCode}-${errorMsg}`,
+              });
+              let errorData = {
+                status: false,
+                input: message,
+                output: errorCode,
+                function: "consultarDatosUsuario",
+              };
+              resolve(errorData);
+              //              reject(new loteriaError(errorMsg, "loteria", errorData));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+
+            loteriaVentasLogger.error("consultarDatosUsuario.error", {
+              errorMessage: errorMsg,
+            });
+            let errorData = {
+              status: false,
+              input: e,
+              output: "",
+              function: "consultarDatosUsuario",
+            };
+            resolve(errorData);
+
+            //reject(new loteriaError(errorMsg, "loteria", errorData));
+          }
+        }
+      );
+    });
+  } catch (e) {
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("consultarDatosUsuario.error", {
+      errorMessage: errorMsg,
+    });
+
+    let errorData = {
+      status: false,
+      input: e,
+      output: "",
+      function: "consultarDatosUsuario",
     };
     return errorData;
     //throw new loteriaError(errorMsg, "loteria", errorData);

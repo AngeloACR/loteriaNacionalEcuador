@@ -10,9 +10,9 @@ export class InquiryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
+  mySource = this.localSource;
   //mySource = this.testSource;
-  mySource = this.productionSource;
+  //mySource = this.productionSource;
 
   constructor(private http: HttpClient) {}
 
@@ -95,6 +95,9 @@ export class InquiryService {
           let boletoGanador = data;
           console.log(boletoGanador);
           resolve(boletoGanador);
+        },
+        (error: any) => {
+          reject(new Error(error.error.message));
         });
     });
   }

@@ -13,6 +13,7 @@ import {
 } from "../../interfaces/lottery.interface";
 import { PageEvent } from "@angular/material";
 import { ReturnStatement } from "@angular/compiler";
+import { faWindowRestore } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-pozo-millonario",
@@ -376,7 +377,7 @@ export class PozoMillonarioComponent implements OnInit {
       if (hasBalance) {
         let reservaId = this.lotteryService.getReservaId();
         let cartValidation = await this.cart.validarCarrito(reservaId);
-        if (cartValidation) {
+        if (cartValidation.status) {
           let response = await this.paymentService.confirmarCompra(
             this.token,
             reservaId
@@ -394,6 +395,8 @@ export class PozoMillonarioComponent implements OnInit {
           } else {
             this.cancelarCompra();
           }
+        } else{
+          this.openValidationError(cartValidation.message);
         }
         this.isLoading = false;
       } else {
@@ -655,13 +658,13 @@ export class PozoMillonarioComponent implements OnInit {
         };
       });
       let reservaId = this.lotteryService.getReservaId();
-      await this.lotteryService.eliminarTodosLosBoletosDeReserva(
+/*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
         this.token,
         boletosLoteria,
         boletosLotto,
         boletosPozo,
         reservaId
-      );
+      ); */
       Object.keys(this.ticketsPozo).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {
           let deletedIndex = this.ticketsDisponibles.findIndex(
@@ -699,5 +702,18 @@ export class PozoMillonarioComponent implements OnInit {
 
   closeError() {
     this.isError = false;
+  }
+
+  isValidationError: boolean = false;
+  validationErrorMessage: string;
+  openValidationError(msg) {
+    this.validationErrorMessage = msg;
+    this.isValidationError = true;
+  }
+
+  closeValidationError() {
+    this.isValidationError = false;
+    this.validationErrorMessage = "";
+    window.location.reload();
   }
 }

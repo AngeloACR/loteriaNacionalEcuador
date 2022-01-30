@@ -207,6 +207,11 @@
   (closeError)="closeError()"
   *ngIf="isError"
 ></app-error>
+<app-error
+  [msg]="validationErrorMessage"
+  (closeError)="closeValidationError()"
+  *ngIf="isValidationError"
+></app-error>
 <app-confirmacion-de-compra
   (compraConfirmada)="confirmarCompra()"
   (compraCancelada)="cancelarCompra($event)"

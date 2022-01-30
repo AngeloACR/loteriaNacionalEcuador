@@ -7,8 +7,8 @@ const { loteriaReservasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicativoId;
-//const address = config.aplicativoAddressTest;
-const address = config.aplicativoAddressProd;
+const address = config.aplicativoAddressTest;
+//const address = config.aplicativoAddressProd;
 
 module.exports.reservarCombinaciones = async (
   loteria,
@@ -382,13 +382,15 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
             if (!errorCode) {
               let reserva = data.mt.rs[0];
               let detalles = reserva.r[0].Row;
-              let fracciones = reserva.r[2].Row.map((element) => {
-                let response = {
-                  id: element.$.Id,
-                  fraccion: element.$.Fra,
-                };
-                return response;
-              });
+              let fracciones = reserva.r[2]
+                ? reserva.r[2].Row.map((element) => {
+                    let response = {
+                      id: element.$.Id,
+                      fraccion: element.$.Fra,
+                    };
+                    return response;
+                  })
+                : [];
               let boletos = reserva.r[1].Row.map((element) => {
                 let id = element.$.Id;
                 //Manejador de fracciones
@@ -398,6 +400,10 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
                   tipoLoteria: parseInt(element.$.JId),
                   sorteo: element.$.Sort,
                   combinacion: element.$.Num,
+                  combinacion2: element.$.Num2,
+                  combinacion3: element.$.Num3,
+                  combinacion4: element.$.Num4,
+                  combinacion5: element.$.Num5,
                   cantidadFracciones: element.$.Cant,
                   fracciones: fraccionesAux,
                   cantidadReservados: element.$.Resrv,

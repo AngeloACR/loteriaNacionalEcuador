@@ -12,6 +12,9 @@ const GanadoresWebSchema = new mongoose.Schema(
     fraccion: {
       type: String,
     },
+    ordenDePagoId: {
+      type: String,
+    },
     boletoId: {
       type: String,
     },

@@ -23,6 +23,10 @@ lotteryRouter.post('/acreditarPremios', GanadoresController.pagarLoteriaHttp);
 lotteryRouter.post('/getGanador', GanadoresController.getGanador);
 lotteryRouter.post('/getGanadores', GanadoresController.getGanadores);
 
+lotteryRouter.get('/pruebaCorreo', GanadoresController.pruebaCorreo);
+lotteryRouter.get('/pruebaConsulta', GanadoresController.pruebaConsulta);
+lotteryRouter.get('/pruebaOrden', GanadoresController.pruebaOrden);
+
 
 lotteryRouter.post('/loteriaBoleto', LotteryController.buscarLoteriaBoleto);
 lotteryRouter.post('/lottoBoleto', LotteryController.buscarLottoBoleto);

@@ -12,6 +12,12 @@ module.exports = {
   migrationPort: 5000,
   host: "localhost",
 
+  mailjetKey1: 'b4ca63161564f363c152cb38c11fe8cd',
+  mailjetKey2: 'a4568d6735f54dc085d3ac3e2ab572eb',
+
+  emailRemitentePrueba: "angelocrincoli91@gmail.com",
+  nombreRemitentePrueba: "Angelo",
+
   exalogicHostTest: "test.loteria.com.ec",
   exalogicEndpointTest: "/testlotery_api/XReceiver",
   
@@ -34,7 +40,7 @@ module.exports = {
   aplicativoAddressProd: "serviciomt-prod.wsdl",
 
   // MONGO DATABASE DATA
-  prodDB: "mongodb://localhost:27017/loteriaDB",
+  prodDB: "mongodb://loterianacional:$lndatabase123..$:27017/loteriaDB",
   testDB: "mongodb://localhost:27017/loteriaDB",
 
   

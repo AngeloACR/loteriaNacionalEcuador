@@ -12,6 +12,7 @@
     "bluebird": "*",
     "body-parser": "*",
     "compression": "^1.7.0",
+    "node-mailjet": "*",
     "cors": "*",
     "cron": "*",
     "express": "*",

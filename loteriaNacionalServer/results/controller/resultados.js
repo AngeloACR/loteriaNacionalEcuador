@@ -143,18 +143,20 @@ const resultadosController = {
       //let resultadoId = resultado.values._id;
       let query = { tipoLoteria: parseInt(tipoLoteria) };
       let ultimoResultado = await UltimoResultado.findOne(query);
-      if(!ultimoResultado) ultimoResultado = new UltimoResultado(query);
+      if (!ultimoResultado) ultimoResultado = new UltimoResultado(query);
       ultimoResultado.numeroSorteo = element.numeroSorteo;
       ultimoResultado.codigoPremioPrincipal = element.codigoPremioPrincipal;
 
       switch (tipoLoteria) {
         case "1":
           ultimoResultado.ultimoResultadoLoteria = {
-            combinacion1: element.combinacion1}
+            combinacion1: element.combinacion1,
+          };
           break;
         case "2":
           ultimoResultado.ultimoResultadoLotto = {
-            combinacion1: element.combinacion1}
+            combinacion1: element.combinacion1,
+          };
           ultimoResultado.resultadoLottoPlus = element.resultadoLottoPlus;
           ultimoResultado.resultadosLottito = element.resultadosLottito;
           ultimoResultado.resultadoNosVemosJefe = element.resultadoNosVemosJefe;
@@ -168,7 +170,8 @@ const resultadosController = {
 
         default:
           ultimoResultado.ultimoResultadoPozo = {
-            combinacion2: element.combinacion2}
+            combinacion2: element.combinacion2,
+          };
           ultimoResultado.mascota = element.mascota;
           break;
       }
@@ -315,6 +318,81 @@ const resultadosController = {
         response = {
           status: true,
           values: resultado,
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+
+  getResultadosLotto: async function (sorteo) {
+    try {
+      let sorteoAux = `${sorteo}`;
+      let query = { numeroSorteo: sorteoAux };
+      let response;
+
+      let resultados = await ResultadoLotto.find(query).lean();
+
+      if (resultados && resultados.length != 0) {
+        response = {
+          status: true,
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      console.log(JSON.stringify(error));
+      console.log(response);
+      return response;
+    }
+  },
+  getResultadosLoteria: async function (sorteo) {
+    try {
+      let sorteoAux = `${sorteo}`;
+      let query = { numeroSorteo: sorteoAux };
+      let response;
+      let resultado = await ResultadoLoteria.find(query).lean();
+      if (resultado && resultado.length != 0) {
+        response = true;
+      } else {
+        response = false;
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+  getResultadosPozo: async function (sorteo) {
+    try {
+      let sorteoAux = `${sorteo}`;
+      let query = { numeroSorteo: sorteoAux };
+
+      let resultado = await ResultadoPozo.find(query).lean();
+      let response;
+
+      if (resultado && resultado.length != 0) {
+        response = {
+          status: true,
         };
       } else {
         response = {

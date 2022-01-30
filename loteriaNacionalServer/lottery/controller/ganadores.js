@@ -1,15 +1,81 @@
 const Wallet = require("../../exalogic/controller/wallet");
+const Ventas = require("../../loterianacional/controller/ventas");
+const Correos = require("../../correos/ganadores");
 const Ganadores = require("../model/ganadoresWeb");
 const { apiGanadoresLogger } = require("../../config/logging");
+const ipTool = require("ip");
 
 /*************************** ACREDITACION DE PREMIOS ************************/
 
 const ganadoresController = {
   pagarLoteriaHttp: async (req, res) => {
     try {
-      let sorteo = req.body.sorteo
+      let sorteo = req.body.sorteo;
       let response = await ganadoresController.pagarLoteria(sorteo);
       res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        errorMessage: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  pruebaCorreo: async (req, res) => {
+    try {
+      let response = await Correos.sendEmail(
+        "angeloCrincoli91@gmail.com",
+        "Angelo",
+        941
+      );
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        errorMessage: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  pruebaConsulta: async (req, res) => {
+    try {
+      let lotteryToken = (await Ventas.autenticarUsuario()).token;
+      let response = await Ventas.consultarDatosUsuario(
+        lotteryToken,
+        993,
+        "192.168.1.1"
+      );
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        errorMessage: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  pruebaOrden: async (req, res) => {
+    try {
+      let lotteryToken = (await Ventas.autenticarUsuario()).token;
+      let datos = await Ventas.consultarDatosUsuario(
+        lotteryToken,
+        43011,
+        "192.168.1.1"
+      );
+      let ordenId = await Ventas.agregarOrdenPago(
+        "743771",
+        "1",
+        "6691",
+        "1105018",
+        "1",
+        "200000.000000",
+        lotteryToken,
+        Date.now(),
+        Date.now(),
+        datos.identificacion,
+        "192.168.1.1"
+      );
+      res.status(200).json(ordenId);
     } catch (e) {
       let response = {
         status: "error",
@@ -62,7 +128,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
   pagarLoteria: async (sorteo) => {
     try {
       apiGanadoresLogger.silly("pagarLoteria");
-      let query = {'numeroSorteo': `${sorteo}`}
+      let query = { numeroSorteo: `${sorteo}` };
       let ganadores = await Ganadores.find(query);
       let length = ganadores.length;
       let response = [];
@@ -79,15 +145,19 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             ganador.tipoLoteria
           }" S="${ganador.numeroSorteo}" FC="${ganador.fechaCaducidad}" C="${
             ganador.combinacion1
-          }" C2="${ganador.combinacion2}" C3="${ganador.combinacion3}" C4="${ganador.combinacion4}" C5="${ganador.combinacion5}" F="${
-            ganador.fraccion
-          }" B="${ganador.boletoId}" P="${
+          }" C2="${ganador.combinacion2}" C3="${ganador.combinacion3}" C4="${
+            ganador.combinacion4
+          }" C5="${ganador.combinacion5}" F="${ganador.fraccion}" B="${
+            ganador.boletoId
+          }" P="${
             ganador.codigoPremio.split("-")[1]
-          }" N="${ganador.descripcionPremio.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}" VP="${ganador.valorPremio}" VD="${
-            ganador.valorPremioDescuento
-          }" TP="${ganador.tipoPremio}" RT="${ganador.requiereTestimonio}" V="${
-            ganador.ventaId
-          }"/>`;
+          }" N="${ganador.descripcionPremio
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")}" VP="${
+            ganador.valorPremio
+          }" VD="${ganador.valorPremioDescuento}" TP="${
+            ganador.tipoPremio
+          }" RT="${ganador.requiereTestimonio}" V="${ganador.ventaId}"/>`;
           let data = {
             payLine,
             transactionId: Date.now(),
@@ -95,11 +165,18 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
           let aux = await Wallet.payLottery(data);
           if (aux.resultCode >= 0) {
             ganador.acreditado = true;
-            await ganador.save();
           }
           response.push(aux);
           logData.data.push(data);
+        } else if (ganador.tipoPremio == "ESP") {
+          let ordenResponse = await ganadoresController.procesarPremioEspecies(
+            ganador
+          );
+
+          ganador.ordenDePagoId = ordenResponse.ordenId;
+          response.push(ordenResponse);
         }
+        await ganador.save();
       }
       logData.response = response;
       apiGanadoresLogger.info("pagarLoteria.api", logData);
@@ -117,6 +194,75 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       let response = await ganador.save();
       return response;
     } catch (e) {
+      throw new Error(e.message);
+    }
+  },
+  procesarPremioEspecies: async (ganador) => {
+    try {
+      apiGanadoresLogger.silly("procesarPremioEspecies");
+
+      let lotteryToken = (await Ventas.autenticarUsuario()).token;
+      let numeroDeRetiro = Date.now(); //EVALUAR PONER ESTE NUMERO COMO CORRELATIVO
+      let numeroDeTransaccion = Date.now();
+      let ip = ipTool.address();
+      let cliente = await Ventas.consultarDatosUsuario(
+        lotteryToken,
+        ganador.personaId,
+        ip
+      );
+      let ordenId = await Ventas.agregarOrdenPago(
+        ganador.ventaId,
+        ganador.tipoLoteria,
+        ganador.numeroSorteo,
+        ganador.boletoId,
+        ganador.codigoPremio.split("-")[1],
+        ganador.valorPremio,
+        lotteryToken,
+        numeroDeRetiro,
+        numeroDeTransaccion,
+        cliente,
+        ip
+      );
+      let logData = {
+        data: [],
+        response: [],
+        function: "procesarPremioEspecies.pagarLoteria",
+      };
+      let data = {
+        ventaId: ganador.ventaId,
+        tipoLoteria: ganador.tipoLoteria,
+        numeroSorteo: ganador.numeroSorteo,
+        boletoId: ganador.boletoId,
+        codigoPremio: ganador.codigoPremio,
+        personaId: ganador.personaId,
+        valorPremio: ganador.valorPremio,
+        ordenId,
+        cliente: cliente.identificacion,
+        transactionId: Date.now(),
+      };
+
+      /* GENERAR CORREO */
+      let correoResponse = await Correos.sendEmail(
+        cliente.correo,
+        cliente.nombre,
+        941
+      );
+
+      let aux = {
+        ordenId,
+        cliente,
+      };
+      logData.response.push(aux);
+      logData.data.push(data);
+      apiGanadoresLogger.info("procesarPremioEspecies.api", logData);
+      return {
+        ordenId,
+        cliente,
+      };
+    } catch (e) {
+      apiGanadoresLogger.error("procesarPremioEspecies.error", {
+        errorMessage: e.message,
+      });
       throw new Error(e.message);
     }
   },
@@ -153,15 +299,15 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         const element = data[index];
 
         let ventaId = element.ventaId;
-      let query = { ventaId: ventaId };
-      let ganadorData = await Ganadores.find(query);
-      let ganadorFlag = (ganadorData && ganadorData.length);  
-      let info = {
+        let query = { ventaId: ventaId };
+        let ganadorData = await Ganadores.find(query);
+        let ganadorFlag = ganadorData && ganadorData.length;
+        let info = {
           isGanador: ganadorFlag,
           detalles: ganadorData,
           ventaId,
-          reservaId: element.reservaId
-        }
+          reservaId: element.reservaId,
+        };
         response.push(info);
       }
       res.status(200).json(response);

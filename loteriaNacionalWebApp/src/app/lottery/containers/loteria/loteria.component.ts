@@ -174,17 +174,17 @@ export class LoteriaComponent implements OnInit {
     }
   }
 
-  async setDescuento(tipoLoteria){
+  async setDescuento(tipoLoteria) {
     let descuentos = this.descuentos.filter(
       (element: any) => parseInt(element.tipoLoteria) == tipoLoteria
     );
     for (let index = 0; index < descuentos.length; index++) {
       const element = descuentos[index];
       let conteo = await this.cart.contarBoletos(element.sorteo, tipoLoteria);
-      if(conteo >= parseInt(element.cantidad)){
+      if (conteo >= parseInt(element.cantidad)) {
         await this.cart.calcularDescuento(element);
-      }else {
-        await this.cart.eliminarDescuento(element, tipoLoteria)  
+      } else {
+        await this.cart.eliminarDescuento(element, tipoLoteria);
       }
       await this.getCarritoTickets();
     }
@@ -226,9 +226,7 @@ export class LoteriaComponent implements OnInit {
         let identificador = this.ticketsDisponibles[id].identificador;
         await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
         this.ticketsDisponibles[id].seleccionados = [];
-      }      //await this.setDescuento(1);
-
-
+      } //await this.setDescuento(1);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -271,6 +269,8 @@ export class LoteriaComponent implements OnInit {
 
         await this.cart.setCarrito(aux, 1);
         await this.cart.setCarritoLoteria(this.ticketsLoteria);
+        await this.getCarritoTickets();
+
         //this.getTotal();
 
         this.isLoading = false;
@@ -348,7 +348,9 @@ export class LoteriaComponent implements OnInit {
       aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
       aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
       aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
-      aux["subtotalConDesc"] = parseFloat(loteriaAux[id].subtotalConDesc).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(
+        loteriaAux[id].subtotalConDesc
+      ).toFixed(2);
       aux["tieneDescuento"] = loteriaAux[id].tieneDescuento;
       aux["fecha"] = loteriaAux[id].sorteo.fecha;
       aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
@@ -364,7 +366,9 @@ export class LoteriaComponent implements OnInit {
       aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
-      aux["subtotalConDesc"] = parseFloat(lottoAux[id].subtotalConDesc).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(lottoAux[id].subtotalConDesc).toFixed(
+        2
+      );
       aux["tieneDescuento"] = lottoAux[id].tieneDescuento;
       aux["fecha"] = lottoAux[id].sorteo.fecha;
       lotto.push(aux);
@@ -378,7 +382,9 @@ export class LoteriaComponent implements OnInit {
       aux["mascota"] = pozoAux[id].ticket.mascota;
       aux["sorteo"] = pozoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
-      aux["subtotalConDesc"] = parseFloat(pozoAux[id].subtotalConDesc).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(pozoAux[id].subtotalConDesc).toFixed(
+        2
+      );
       aux["tieneDescuento"] = pozoAux[id].tieneDescuento;
       aux["fecha"] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
@@ -391,7 +397,7 @@ export class LoteriaComponent implements OnInit {
       pozo,
       lotto,
       amount,
-      amountConDesc
+      amountConDesc,
     };
 
     this.confirmacionDeCompra = true;
@@ -414,7 +420,7 @@ export class LoteriaComponent implements OnInit {
       if (hasBalance) {
         let reservaId = this.cart.getReservaId();
         let cartValidation = await this.cart.validarCarrito(reservaId);
-        if (cartValidation) {
+        if (cartValidation.status) {
           let response = await this.paymentService.confirmarCompra(
             this.token,
             reservaId
@@ -432,6 +438,8 @@ export class LoteriaComponent implements OnInit {
           } else {
             this.cancelarCompra();
           }
+        } else {
+          this.openValidationError(cartValidation.message);
         }
         this.isLoading = false;
       } else {
@@ -653,13 +661,13 @@ export class LoteriaComponent implements OnInit {
         };
       });
       let reservaId = this.cart.getReservaId();
-      await this.lotteryService.eliminarTodosLosBoletosDeReserva(
+      /*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
         this.token,
         boletosLoteria,
         boletosLotto,
         boletosPozo,
         reservaId
-      );
+      ); */
 
       Object.keys(this.ticketsLoteria).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {
@@ -692,5 +700,17 @@ export class LoteriaComponent implements OnInit {
 
   closeError() {
     this.isError = false;
+  }
+  isValidationError: boolean = false;
+  validationErrorMessage: string;
+  openValidationError(msg) {
+    this.validationErrorMessage = msg;
+    this.isValidationError = true;
+  }
+
+  closeValidationError() {
+    this.isValidationError = false;
+    this.validationErrorMessage = "";
+    window.location.reload();
   }
 }

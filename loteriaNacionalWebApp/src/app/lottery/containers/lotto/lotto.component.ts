@@ -147,9 +147,9 @@ export class LottoComponent implements OnInit {
         );
 
         this.lotteryService.setReservaId(response);
-        await this.cart.setCarrito(aux, 2);
+/*         await this.cart.setCarrito(aux, 2);
         await this.cart.setCarritoLotto(this.ticketsLotto);
-        await this.getCarritoTickets();
+        await this.getCarritoTickets(); */
         //this.getTotal();
         this.isLoading = false;
       } else {
@@ -270,7 +270,7 @@ export class LottoComponent implements OnInit {
       if (hasBalance) {
         let reservaId = this.lotteryService.getReservaId();
         let cartValidation = await this.cart.validarCarrito(reservaId);
-        if (cartValidation) {
+        if (cartValidation.status) {
           let response = await this.paymentService.confirmarCompra(
             this.token,
             reservaId
@@ -288,6 +288,8 @@ export class LottoComponent implements OnInit {
           } else {
             this.cancelarCompra();
           }
+        } else{
+          this.openValidationError(cartValidation.message);
         }
         this.isLoading = false;
       } else {
@@ -540,13 +542,13 @@ export class LottoComponent implements OnInit {
         };
       });
       let reservaId = this.lotteryService.getReservaId();
-      await this.lotteryService.eliminarTodosLosBoletosDeReserva(
+/*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
         this.token,
         boletosLoteria,
         boletosLotto,
         boletosPozo,
         reservaId
-      );
+      ); */
       Object.keys(this.ticketsLotto).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {
           let deletedIndex = this.ticketsDisponibles.findIndex(
@@ -584,5 +586,17 @@ export class LottoComponent implements OnInit {
 
   closeError() {
     this.isError = false;
+  }
+  isValidationError: boolean = false;
+  validationErrorMessage: string;
+  openValidationError(msg) {
+    this.validationErrorMessage = msg;
+    this.isValidationError = true;
+  }
+
+  closeValidationError() {
+    this.isValidationError = false;
+    this.validationErrorMessage = "";
+    window.location.reload();
   }
 }

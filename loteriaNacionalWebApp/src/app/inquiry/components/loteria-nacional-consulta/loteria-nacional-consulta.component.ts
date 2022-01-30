@@ -3,7 +3,7 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -12,13 +12,13 @@ import { InquiryService } from "../../services/inquiry.service";
 @Component({
   selector: "app-loteria-nacional-consulta",
   templateUrl: "./loteria-nacional-consulta.component.html",
-  styleUrls: ["./loteria-nacional-consulta.component.scss"]
+  styleUrls: ["./loteria-nacional-consulta.component.scss"],
 })
 export class LoteriaNacionalConsultaComponent implements OnInit {
   sorteosJugados: any;
   sorteoGanador: any;
   sorteoBoletin: any;
-  combinacionesAux: any;
+  combinacionesAux: any = "";
   characterCount: number = 0;
   previousLength: number = 0;
 
@@ -128,6 +128,7 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
+      if(!this.combinacionesAux.length) throw new Error("Por favor, escribe al menos una combinación que quieras consultar")
       let aux = this.combinacionesAux;
       if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
         aux = this.combinacionesAux.slice(0, -2);
@@ -148,7 +149,8 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
       });
       if (this.sorteoGanador == "default") {
         this.dismissLoader();
-        alert("Por favor seleccione un sorteo");
+        this.openError("Por favor, selecciona un sorteo");
+
         return;
       }
       let data: any = await this.inquiryService.recuperarBoletoGanador(
@@ -160,21 +162,32 @@ export class LoteriaNacionalConsultaComponent implements OnInit {
       this.dismissLoader();
     } catch (e) {
       this.dismissLoader();
-      alert(
-        "Ocurrio un error consultando los resultados, por favor intente de nuevo"
-      );
+      this.openError(e.message);
+
       console.log(e);
     }
   }
 
   async buscarBoletin() {
     if (this.sorteoBoletin == "default") {
-      alert("Por favor seleccione un sorteo");
+      this.openError("Por favor, selecciona un sorteo");
+
       return;
     }
 
     this.router.navigateByUrl(
       `/resultados/loteria_boletin/${this.sorteoBoletin}`
     );
+  }
+
+  isError: boolean = false;
+  errorMessage: string;
+  openError(msg) {
+    this.errorMessage = msg;
+    this.isError = true;
+  }
+
+  closeError() {
+    this.isError = false;
   }
 }

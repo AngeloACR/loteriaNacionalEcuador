@@ -12,8 +12,8 @@ var errorHandler = require("../../errors/errorHandler");
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletos = config.sourceBoletosLocal;
-//let sourceBoletos = config.sourceBoletosTest;
-let sourceBoletos = config.sourceBoletosProd;
+let sourceBoletos = config.sourceBoletosTest;
+//let sourceBoletos = config.sourceBoletosProd;
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
@@ -284,6 +284,7 @@ const ventasController = {
   },
   reservarBoletos: async (req, res) => {
     try {
+      //return res.status(200).json("409976");
       apiVentasLogger.silly("reservarBoletos");
       let ip = req.headers["x-forwarded-for"];
 
