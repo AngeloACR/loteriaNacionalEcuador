@@ -210,7 +210,8 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         ganador.personaId,
         ip
       );
-/*       let ordenId = await Ventas.agregarOrdenPago(
+      let ordenId = "941";
+      /*       let ordenId = await Ventas.agregarOrdenPago(
         ganador.ventaId,
         ganador.tipoLoteria,
         ganador.numeroSorteo,
@@ -245,7 +246,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       let correoResponse = await Correos.sendEmail(
         cliente.correo,
         cliente.nombre,
-        941
+        ordenId
       );
 
       let aux = {
