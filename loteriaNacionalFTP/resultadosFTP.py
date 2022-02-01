@@ -99,7 +99,7 @@ def sendResult(message):
 
 def main():
     #db = "mongodb://localhost:27017/loteriaPruebaDB"
-    db = "mongodb://localhost:27017/loteriaDB"
+    db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
