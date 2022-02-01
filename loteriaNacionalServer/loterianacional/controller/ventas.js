@@ -1254,7 +1254,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
               let response = {
                 nombre: `${datosUsuario.$.PrimerNombre} ${datosUsuario.$.ApellidoPaterno}`,
                 identificacion: datosUsuario.$.Identificacion,
-                correo: data.mt.rs[0].r[2].Row[1].$.Descripcion,
+                correo: data.mt.rs[0].r[2].Row[2].$.Descripcion,
                 status: true,
               };
 
