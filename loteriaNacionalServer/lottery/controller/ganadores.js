@@ -42,7 +42,7 @@ const ganadoresController = {
       let lotteryToken = (await Ventas.autenticarUsuario()).token;
       let response = await Ventas.consultarDatosUsuario(
         lotteryToken,
-        43011,
+        993,
         "192.168.1.1"
       );
       res.status(200).json(response);
