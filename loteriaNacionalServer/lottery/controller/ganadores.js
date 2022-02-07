@@ -40,9 +40,9 @@ const ganadoresController = {
   pruebaConsulta: async (req, res) => {
     try {
       let lotteryToken = (await Ventas.autenticarUsuario()).token;
-      let response = await Ventas.consultarDatosUsuario(
+      let response = await Ventas.consultarDatosUsuario2(
         lotteryToken,
-        993,
+        "0915693667",
         "192.168.1.1"
       );
       res.status(200).json(response);
@@ -56,6 +56,7 @@ const ganadoresController = {
   },
   pruebaOrden: async (req, res) => {
     try {
+
       let lotteryToken = (await Ventas.autenticarUsuario()).token;
       let datos = await Ventas.consultarDatosUsuario(
         lotteryToken,
@@ -63,16 +64,15 @@ const ganadoresController = {
         "192.168.1.1"
       );
       let ordenId = await Ventas.agregarOrdenPago(
-        "743771",
+        "754405",
         "1",
-        "6691",
-        "1105018",
-        "1",
-        "200000.000000",
+        "6710",
+        "1488865",
+        "39",
         lotteryToken,
         Date.now(),
         Date.now(),
-        datos.identificacion,
+        "0915693667",
         "192.168.1.1"
       );
       res.status(200).json(ordenId);
@@ -210,8 +210,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         ganador.personaId,
         ip
       );
-      let ordenId = "941";
-      /*       let ordenId = await Ventas.agregarOrdenPago(
+      let ordenId = await Ventas.agregarOrdenPago(
         ganador.ventaId,
         ganador.tipoLoteria,
         ganador.numeroSorteo,
@@ -221,9 +220,9 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         lotteryToken,
         numeroDeRetiro,
         numeroDeTransaccion,
-        cliente,
+        cliente.identificacion,
         ip
-      ); */
+      );
       let logData = {
         data: [],
         response: [],

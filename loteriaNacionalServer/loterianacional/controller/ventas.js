@@ -1077,13 +1077,13 @@ module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
   }
 };
 
+
 module.exports.agregarOrdenPago = async (
   ventaId,
   tipoJuego,
   sorteo,
   boletoId,
   premioId,
-  total,
   lotteryToken,
   numeroDeRetiro,
   numeroDeTransaccion,
@@ -1096,8 +1096,8 @@ module.exports.agregarOrdenPago = async (
 
     /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-    let orden = `<R ReTest="0" Valor="${total}" JId="${tipoJuego}" Sort="${sorteo}" BolId="${boletoId}" PremId="${premioId}" VId="${ventaId}" TPrem="ESP" NuReti="${numeroDeRetiro}" NuTranWeb="${numeroDeTransaccion}" />`;
-    //let orden = `<R ReTest="0" Valor="${total}" TPrem="ESP" NuReti="${numeroDeRetiro}" NuTranWeb="${numeroDeTransaccion}" />`;
+    let orden = `<R ReTest="0" JId="${tipoJuego}" Sort="${sorteo}" BolId="${boletoId}" PremId="${premioId}" VId="${ventaId}" TPrem="ESP"/>`;
+    //let orden = `<R ReTest="0" TPrem="ESP" NuReti="${numeroDeRetiro}" NuTranWeb="${numeroDeTransaccion}" />`;
 
     let message = {
       $xml: `
@@ -1140,15 +1140,15 @@ module.exports.agregarOrdenPago = async (
             );
             let errorCode = parseInt(data.mt.c[0].codError[0]);
             if (!errorCode) {
-              //let ordenDePagoId = data.mt.o[0].ReturnValue[0];
-/*               let response = {
+              let ordenDePagoId = data.mt.o[0].ReturnValue[0];
+              let response = {
                 ordenDePagoId,
                 status: true,
-              }; */
-              let response = {
-                data: data.mt
               };
-              let logData = {
+              /* let response = {
+                data: data.mt,
+              };
+               */let logData = {
                 data: message,
                 loteriaResponse: rawResponse,
                 customResponse: response,
@@ -1251,10 +1251,13 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
             let errorCode = parseInt(data.mt.c[0].codError[0]);
             if (!errorCode) {
               let datosUsuario = data.mt.rs[0].r[0].Row[0];
+              let correo = data.mt.rs[0].r[2].Row.filter((o) =>
+                o.$.Descripcion.includes("@")
+              )[0].$.Descripcion;
               let response = {
                 nombre: `${datosUsuario.$.PrimerNombre} ${datosUsuario.$.ApellidoPaterno}`,
                 identificacion: datosUsuario.$.Identificacion,
-                correo: data.mt.rs[0].r[2].Row[2].$.Descripcion,
+                correo,
                 status: true,
               };
 
@@ -1314,6 +1317,126 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
       input: e,
       output: "",
       function: "consultarDatosUsuario",
+    };
+    return errorData;
+    //throw new loteriaError(errorMsg, "loteria", errorData);
+  }
+};
+
+module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
+  try {
+    loteriaVentasLogger.silly("consultarDatosUsuario2");
+    const usuarioClientePsd = config.usuarioAplicativoTest;
+
+    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+
+    let message = {
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
+        <mt>
+        <c>
+        <aplicacion>25</aplicacion>
+        <transaccion>110</transaccion>
+        <usuario>${usuarioClientePsd}</usuario>
+        <maquina>${ip}</maquina>
+        <codError>0</codError>
+        <msgError />
+        <medio>${medioId}</medio>
+        <token>${lotteryToken}</token>
+        <operacion>${Date.now()}</operacion>
+        </c>
+        <i>
+        <UsuarioId>${cliente}</UsuarioId>
+        <MedioId>${medioId}</MedioId>
+        </i>
+        </mt>
+      ]]>
+    </PI_DatosXml>`,
+    };
+    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          try {
+            if (err) reject(new Error(err));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            if (!errorCode) {
+              let datosUsuario = data.mt.rs[0].r[0].Row[0];
+              let correo = data.mt.rs[0].r[2].Row.filter((o) =>
+                o.$.Descripcion.includes("@")
+              )[0].$.Descripcion;
+              let response = {
+                nombre: `${datosUsuario.$.PrimerNombre} ${datosUsuario.$.ApellidoPaterno}`,
+                identificacion: datosUsuario.$.Identificacion,
+                correo,
+                status: true,
+              };
+
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info(
+                "consultarDatosUsuario2.loteria",
+                logData
+              );
+              resolve(response);
+            } else {
+              let errorMsg = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error(
+                "consultarDatosUsuario2.loteria.error",
+                {
+                  data: message,
+                  errorMessage: `${errorCode}-${errorMsg}`,
+                }
+              );
+              let errorData = {
+                status: false,
+                input: message,
+                output: errorCode,
+                function: "consultarDatosUsuario2",
+              };
+              resolve(errorData);
+              //              reject(new loteriaError(errorMsg, "loteria", errorData));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+
+            loteriaVentasLogger.error("consultarDatosUsuario2.error", {
+              errorMessage: errorMsg,
+            });
+            let errorData = {
+              status: false,
+              input: e,
+              output: "",
+              function: "consultarDatosUsuario2",
+            };
+            resolve(errorData);
+
+            //reject(new loteriaError(errorMsg, "loteria", errorData));
+          }
+        }
+      );
+    });
+  } catch (e) {
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("consultarDatosUsuario2.error", {
+      errorMessage: errorMsg,
+    });
+
+    let errorData = {
+      status: false,
+      input: e,
+      output: "",
+      function: "consultarDatosUsuario2",
     };
     return errorData;
     //throw new loteriaError(errorMsg, "loteria", errorData);

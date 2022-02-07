@@ -147,9 +147,9 @@ export class LottoComponent implements OnInit {
         );
 
         this.lotteryService.setReservaId(response);
-/*         await this.cart.setCarrito(aux, 2);
+        await this.cart.setCarrito(aux, 2);
         await this.cart.setCarritoLotto(this.ticketsLotto);
-        await this.getCarritoTickets(); */
+        await this.getCarritoTickets();
         //this.getTotal();
         this.isLoading = false;
       } else {
