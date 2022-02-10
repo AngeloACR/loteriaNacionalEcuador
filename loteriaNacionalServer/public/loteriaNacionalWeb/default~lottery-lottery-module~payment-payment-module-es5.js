@@ -250,9 +250,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
-        this.productionSource = "https://ventas-api.loteria.com.ec"; //mySource = this.localSource;
-
-        this.mySource = this.testSource;
+        this.productionSource = "https://ventas-api.loteria.com.ec";
+        this.mySource = this.localSource;
         this.obtenerAnimalesSelecionados();
         this.obtenerAnimalesTabs();
       }
