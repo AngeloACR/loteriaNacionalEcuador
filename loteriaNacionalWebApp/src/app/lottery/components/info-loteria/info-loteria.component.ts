@@ -30,7 +30,6 @@ export class InfoLoteriaComponent implements OnInit {
   fondoPozo: boolean = false;
   imgNotFound: boolean = true;
   tipoLoteria: number;
-  fondoMillonaria: boolean = false;
 
   constructor(
     private lotteryService: LotteryService,
@@ -44,14 +43,12 @@ export class InfoLoteriaComponent implements OnInit {
         this.fondoLoteria = true;
         this.isLoteria = true;
         this.fondoLotto = false;
-        this.fondoMillonaria = false;
         this.fondoPozo = false;
         break;
 
       case "lotto":
         this.tipoLoteria = 2;
         this.fondoLotto = true;
-        this.fondoMillonaria = false;
         this.fondoLoteria = false;
         this.fondoPozo = false;
         break;
@@ -59,15 +56,6 @@ export class InfoLoteriaComponent implements OnInit {
       case "pozo":
         this.tipoLoteria = 5;
         this.fondoPozo = true;
-        this.fondoLotto = false;
-        this.fondoMillonaria = false;
-        this.fondoLoteria = false;
-        break;
-
-      case "millonaria":
-        this.tipoLoteria = 14;
-        this.fondoMillonaria = true;
-        this.fondoPozo = false;
         this.fondoLotto = false;
         this.fondoLoteria = false;
         break;
@@ -89,9 +77,7 @@ export class InfoLoteriaComponent implements OnInit {
       this.seleccionado as sorteo
     ).cantidadDeFracciones;
     let auxPremioLoteria = parseInt(premio) * this.cantidadDeFracciones;
-    this.premioLoteria = this.lotteryService
-      .formatNumber(auxPremioLoteria)
-      .split(".")[0];
+    this.premioLoteria = this.lotteryService.formatNumber(auxPremioLoteria).split(".")[0];
     this.premio = this.lotteryService.formatNumber(premio).split(".")[0];
     this.precio = this.lotteryService.formatNumber(precio);
     this.emitir.emit(this.seleccionado);

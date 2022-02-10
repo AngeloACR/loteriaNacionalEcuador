@@ -22,22 +22,19 @@ export class LotteryTypeComponent implements OnInit {
           loteria: true,
         };
         break;
-      case "lotto":
+      case "loteria":
         this.tipoLoteria = {
           lotto: true,
         };
         break;
 
-      case "pozo":
+      default:
+      case "loteria":
         this.tipoLoteria = {
           pozo: true,
         };
         break;
 
-      default:
-        this.tipoLoteria = {
-          millonaria: true,
-        };
         break;
     }
   }

@@ -10,7 +10,6 @@ export class SeleccionTipoComponent implements OnInit {
   linkLotto: string;
   linkLoteriaNacional: string;
   linkPozoMillonario: string;
-  linkLaMillonaria: string;
   token: string;
   usuario: string;
   constructor(private actRoute: ActivatedRoute) {
@@ -23,6 +22,5 @@ export class SeleccionTipoComponent implements OnInit {
     this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
     this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
     this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;
-    this.linkLaMillonaria = `/compra_tus_juegos/millonario/${this.token}`;
   }
 }

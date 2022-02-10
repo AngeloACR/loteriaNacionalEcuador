@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "app-resultados-instantaneas",
-  templateUrl: "./resultados-instantaneas.component.html",
-  styleUrls: ["./resultados-instantaneas.component.scss"],
+  selector: 'app-resultados-instantaneas',
+  templateUrl: './resultados-instantaneas.component.html',
+  styleUrls: ['./resultados-instantaneas.component.scss']
 })
 export class ResultadosInstantaneasComponent implements OnInit {
   @Input() resultados: any;
@@ -21,42 +21,33 @@ export class ResultadosInstantaneasComponent implements OnInit {
     switch (parseInt(this.tipoLoteria)) {
       case 1:
         this.loteriaBackground = {
-          backgroundLoteriaNacional: true,
+          backgroundLoteriaNacional: true
         };
         this.loteriaBackgroundButton = {
-          backgroundLoteriaNacionalButton: true,
+          backgroundLoteriaNacionalButton: true
         };
         break;
       case 2:
         this.loteriaBackground = {
-          backgroundLotto: true,
+          backgroundLotto: true
         };
         this.loteriaBackgroundButton = {
-          backgroundLottoButton: true,
+          backgroundLottoButton: true
         };
-
+  
         break;
-      case 14:
-        this.loteriaBackground = {
-          backgroundMillonaria: true,
-        };
-        this.loteriaBackgroundButton = {
-          backgroundMillonariaButton: true,
-        };
-
-        break;
-
+  
       default:
         this.loteriaBackground = {
-          backgroundPozoMillonario: true,
+          backgroundPozoMillonario: true
         };
         this.loteriaBackgroundButton = {
-          backgroundPozoMillonarioButton: true,
+          backgroundPozoMillonarioButton: true
         };
-
+  
         break;
     }
-    this.resultados.forEach((resultado) => {
+    this.resultados.forEach(resultado => {
       let ticket = {
         tipoLoteria: parseInt(resultado.lotteryType),
         lotteryName: resultado.lotteryName,
@@ -67,11 +58,12 @@ export class ResultadosInstantaneasComponent implements OnInit {
         prize: resultado.prize,
         prizeWithDiscount: resultado.prizeWithDiscount,
         prizeDescription: resultado.prizeDescription,
-      };
+};
       this.premios.push(ticket);
     });
   }
   closeBox() {
     this.close.emit("");
   }
+  
 }

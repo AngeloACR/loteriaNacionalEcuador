@@ -25,14 +25,6 @@
     (authError)="authError()"
   >
   </app-lottery-type>
-  <app-lottery-type
-    image="assets/img/millonaria-sombra.png"
-    [link]="linkMillonaria"
-    [token]="lotteryToken"
-    name="millonaria"
-    (authError)="authError()"
-  >
-  </app-lottery-type>
 </div>
 
 <app-floating-menu
@@ -40,14 +32,12 @@
 (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
 (deleteLottoTicket)="deleteLottoTicket($event)"
 (deletePozoTicket)="deletePozoTicket($event)"
-(deleteMillonariaTicket)="deleteMillonariaTicket($event)"
 (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
 (emitirCompra)="comprar()"
 (eliminarTodo)="deleteAllTickets()"
 [ticketsLoteria]="ticketsLoteria"
 [ticketsLotto]="ticketsLotto"
 [ticketsPozo]="ticketsPozo"
-[ticketsMillonaria]="ticketsMillonaria"
 tipoLoteria="loteria"
 ></app-floating-menu>
 <app-loader

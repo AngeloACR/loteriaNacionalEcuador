@@ -8,12 +8,104 @@
       [ngClass]="{
         fondoLoteria: isLoteriaNacional,
         fondoLotto: isLotto,
-        fondoPozo: isPozoMillonario,
-        fondoMillonaria: isLaMillonario
+        fondoPozo: isPozoMillonario
       }"
     />
   </div>
- <div
+  <!--   <div
+    class="detailBox"
+    *ngIf="
+      !checkTicketsLoteria() && !checkTicketsLotto() && !checkTicketsPozo()
+    "
+  >
+    <div class="noItem">
+      No hay boletos en tu carrito, escoge tu número de la suerte y empieza a
+      ganar con nosotros!
+    </div>
+  </div>
+  <div
+    class="detailBox"
+    *ngIf="checkTicketsLoteria() || checkTicketsLotto() || checkTicketsPozo()"
+  >
+    <ng-container *ngIf="checkTicketsLoteria()">
+      <div class="scroll">
+        <app-loteria-nacional-ticket
+          style="width: 100%"
+          *ngFor="let item of ticketsLoteria | keyvalue"
+          (deleteTicket)="deleteLoteria(item)"
+          (deleteFraccion)="deleteFraccionLoteria(item, fraccion)"
+          [ticket]="item.value.ticket"
+          [sorteo]="item.value.sorteo"
+        >
+        </app-loteria-nacional-ticket>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="checkTicketsLotto()">
+      <div class="scroll">
+        <app-lotto-ticket
+          style="width: 100%"
+          *ngFor="let item of ticketsLotto | keyvalue"
+          (delete)="deleteLotto(item)"
+          [ticket]="item.value.ticket"
+          [sorteo]="item.value.sorteo"
+        >
+        </app-lotto-ticket>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="checkTicketsPozo()">
+      <div class="scroll">
+        <app-pozo-millonario-ticket
+          style="width: 100%"
+          *ngFor="let item of ticketsPozo | keyvalue"
+          (delete)="deletePozo(item)"
+          [ticket]="item.value.ticket"
+          [sorteo]="item.value.sorteo"
+        >
+        </app-pozo-millonario-ticket>
+      </div>
+    </ng-container>
+  </div>
+  <ng-container
+    *ngIf="checkTicketsLoteria() || checkTicketsLotto() || checkTicketsPozo()"
+  >
+    <div>
+      <hr size="2px" 
+      [ngClass]="{
+        fondoLoteria: isLoteriaNacional,
+        fondoLotto: isLotto,
+        fondoPozo: isPozoMillonario
+      }"/>
+    </div>
+    <div class="totalsBox">Total: {{ total }}</div>
+
+    <div>
+      <hr size="2px" 
+      [ngClass]="{
+        fondoLoteria: isLoteriaNacional,
+        fondoLotto: isLotto,
+        fondoPozo: isPozoMillonario
+      }"/>
+    </div>
+    <div class="boton_comprar">
+      <button
+      class="botonEliminar"
+      (click)="eliminar()"
+    >
+      BORRAR TODO
+    </button>
+      <button
+        (click)="comprar()"
+        [ngClass]="{
+          fondoLoteria: isLoteriaNacional,
+          fondoLotto: isLotto,
+          fondoPozo: isPozoMillonario
+        }"
+      >
+        COMPRAR
+      </button>
+    </div>
+  </ng-container> -->
+  <div
     class="detailBox"
     *ngIf="!(seleccionadosCarrito && seleccionadosCarrito.length)"
   >
@@ -53,19 +145,11 @@
           [sorteo]="item.sorteo"
         >
         </app-pozo-millonario-ticket>
-        <app-pozo-millonario-ticket
-          style="width: 100%"
-          *ngIf="item.tipoLoteria == 14"
-          (delete)="deleteMillonaria(item)"
-          [ticket]="item.ticket"
-          [sorteo]="item.sorteo"
-        >
-        </app-pozo-millonario-ticket>
       </ng-container>
     </div>
   </div>
   <ng-container
-    *ngIf="checkTicketsLoteria() || checkTicketsLotto() || checkTicketsPozo() || checkTicketsLaMillonaria()"
+    *ngIf="checkTicketsLoteria() || checkTicketsLotto() || checkTicketsPozo()"
   >
     <div>
       <hr
@@ -73,8 +157,7 @@
         [ngClass]="{
           fondoLoteria: isLoteriaNacional,
           fondoLotto: isLotto,
-          fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
+          fondoPozo: isPozoMillonario
         }"
       />
     </div>
@@ -87,8 +170,7 @@
         [ngClass]="{
           fondoLoteria: isLoteriaNacional,
           fondoLotto: isLotto,
-          fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
+          fondoPozo: isPozoMillonario
         }"
       />
     </div>
@@ -99,8 +181,7 @@
         [ngClass]="{
           fondoLoteria: isLoteriaNacional,
           fondoLotto: isLotto,
-          fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
+          fondoPozo: isPozoMillonario
         }"
       >
         COMPRAR
