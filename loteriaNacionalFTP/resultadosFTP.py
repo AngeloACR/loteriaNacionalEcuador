@@ -80,6 +80,15 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigoPremio": codigoPremio
                 }
                 resultadoId = loteriaDB['resultadopozos'].insert_one(resultado)
+            if (tipoLoteria == "14"):
+                resultado = {
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                    "combinacion2": combinacion2,
+                    "codigo": int(resultadoData['B']),
+                    "codigoPremio": codigoPremio
+                }
+                resultadoId = loteriaDB['resultadomillonarias'].insert_one(resultado)
 
         closeConnect(connection)
         status = True

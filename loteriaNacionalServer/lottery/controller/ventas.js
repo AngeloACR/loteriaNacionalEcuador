@@ -104,6 +104,32 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+  searchMillonariaSorteosDisponibles: async (req, res) => {
+    try {
+      let ip = req.headers["x-forwarded-for"];
+      let lotteryToken = req.query.lotteryToken;
+      let user = req.query.user;
+      let finalResponse = await Ventas.consultarSorteosDisponibles(
+        14,
+        lotteryToken,
+        user,
+        ip
+      );
+
+      res.status(200).json(finalResponse);
+    } catch (e) {
+      apiVentasLogger.error("searchMillonariaSorteosDisponibles.error", {
+        errorMessage: e.message,
+      });
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
 
   searchLottoCombinacionesDisponibles: async (req, res) => {
     try {
@@ -259,6 +285,60 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+  searchMillonariaCombinacionesDisponibles: async (req, res) => {
+    try {
+      let ip = req.headers["x-forwarded-for"];
+
+      let lotteryToken = req.body.lotteryToken;
+      let user = req.body.user;
+      let sorteo = req.body.sorteo;
+      let combinacion = req.body.combinacion;
+      let combinacionFigura = req.body.combinacionFigura;
+      let tipoSeleccion = req.body.tipoSeleccion;
+
+      let combinacionesAux = await Ventas.obtenerCombinacionesDisponibles(
+        14,
+        sorteo,
+        lotteryToken,
+        combinacion,
+        combinacionFigura,
+        user,
+        tipoSeleccion,
+        ip
+      );
+
+      let combinaciones = combinacionesAux.map((element) => {
+        let combinacion = {
+          mascota: element.Fig,
+          combinacion1: element.Num,
+          combinacion2: element.Num2,
+          fraccionesDisponibles: element.Fra.split(","),
+          seleccionados: [],
+          display: element.Num.split(","),
+          status: false,
+          identificador: Math.random(),
+        };
+        return combinacion;
+      });
+
+      response = {
+        combinaciones,
+      };
+
+      res.status(200).json(response);
+    } catch (e) {
+      apiVentasLogger.error("searchMillonariaCombinacionesDisponibles.error", {
+        errorMessage: e.message,
+      });
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
   getDescuentos: async (req, res) => {
     try {
       let ip = req.headers["x-forwarded-for"];
@@ -293,12 +373,14 @@ const ventasController = {
       let loteria = req.body.loteria ? req.body.loteria : [];
       let lotto = req.body.lotto ? req.body.lotto : [];
       let pozo = req.body.pozo ? req.body.pozo : [];
+      let millonaria = req.body.millonaria ? req.body.millonaria : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
 
       let response = await Ventas.reservarCombinaciones(
         loteria,
         lotto,
         pozo,
+        millonaria,
         lotteryToken,
         reservaId,
         user,
@@ -310,6 +392,7 @@ const ventasController = {
           loteria,
           lotto,
           pozo,
+          millonaria,
           lotteryToken,
           reservaId,
           user,
@@ -343,11 +426,13 @@ const ventasController = {
       let loteria = req.body.loteria ? req.body.loteria : [];
       let lotto = req.body.lotto ? req.body.lotto : [];
       let pozo = req.body.pozo ? req.body.pozo : [];
+      let millonaria = req.body.millonaria ? req.body.millonaria : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
       let finalResponse = await Ventas.eliminarReservas(
         loteria,
         lotto,
         pozo,
+        millonaria,
         lotteryToken,
         reservaId,
         user,
@@ -359,6 +444,7 @@ const ventasController = {
           loteria,
           lotto,
           pozo,
+          millonaria,
           lotteryToken,
           reservaId,
           user,
@@ -397,6 +483,7 @@ const ventasController = {
       let loteriaAux = req.body.loteria;
       let lottoAux = req.body.lotto;
       let pozoAux = req.body.pozo;
+      let millonariaAux = req.body.millonaria;
 
       let total = parseFloat(req.body.amount).toFixed(2);
       let hasDescuento = req.body.hasDescuento;
@@ -411,6 +498,7 @@ const ventasController = {
         amountConDesc: totalConDesc,
         loteria: loteriaAux,
         lotto: lottoAux,
+        millonaria: millonariaAux,
         user,
         pozo: pozoAux,
         reservaId: reservaId,
@@ -483,6 +571,25 @@ const ventasController = {
         reservationDetails.push(aux);
         pozo.push(pozoAux[id]);
       }
+      let millonaria = [];
+      for (id in millonariaAux) {
+        let drawDateAux = millonariaAux[id].sorteo.fecha
+          .split(" ")[0]
+          .split("/");
+        let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+        let aux = {
+          lotteryType: 14,
+          lotteryName: "La Millonaria",
+          drawNumber: parseInt(millonariaAux[id].sorteo.sorteo),
+          drawDate,
+          subTotal: parseFloat(millonariaAux[id].subtotal).toFixed(2),
+          combinationC1: millonariaAux[id].ticket.combinacion1,
+          combinationC2: millonariaAux[id].ticket.combinacion2,
+          fractions: millonariaAux[id].ticket.seleccionados,
+        };
+        reservationDetails.push(aux);
+        millonaria.push(millonariaAux[id]);
+      }
       let exaReservaData = {
         token,
         transactionId: exaReservaId,
@@ -517,6 +624,7 @@ const ventasController = {
         loteria,
         lotto,
         pozo,
+        millonaria,
         lotteryToken,
         reservaId,
         user,
@@ -532,6 +640,7 @@ const ventasController = {
           loteria,
           lotto,
           pozo,
+          millonaria,
           lotteryToken,
           reservaId,
           user,
@@ -558,6 +667,7 @@ const ventasController = {
         let loteriaSorteos = await Cache.getLoteriaSorteosDisponibles();
         let lottoSorteos = await Cache.getLottoSorteosDisponibles();
         let pozoSorteos = await Cache.getPozoSorteosDisponibles();
+        let millonariaSorteos = await Cache.getMillonariaSorteosDisponibles();
         instantaneaStatus = true;
         for (let j = 0; j < instantaneas.length; j++) {
           const instantanea = instantaneas[j];
@@ -576,10 +686,15 @@ const ventasController = {
               case 2:
                 nombreLoteria = "Lotto";
                 sorteos = lottoSorteos;
+                break;
 
-              default:
+              case 5:
                 nombreLoteria = "Pozo Millonario";
                 sorteos = pozoSorteos;
+                break;
+              case 14:
+                nombreLoteria = "La Millonaria";
+                sorteos = millonariaSorteos;
                 break;
             }
             let drawDateAux = sorteos
@@ -704,6 +819,23 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+  buscarMillonariaBoleto: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let tipoLoteria = 14;
+      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
+
+      res.status(200).json(boletinAddress);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
   buscarLoteriaBoleto: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -789,6 +921,22 @@ const ventasController = {
         aux["fecha"] = pozoAux[id].sorteo.fecha;
         pozo.push(aux);
       }
+      let millonariaAux = apiReservaData.millonaria;
+      let millonaria = [];
+      for (id in millonariaAux) {
+        let aux = {};
+        aux["combinacion1"] = millonariaAux[id].ticket.combinacion1;
+        aux["combinacion2"] = millonariaAux[id].ticket.combinacion2;
+        aux["fracciones"] = millonariaAux[id].ticket.seleccionados;
+        aux["sorteo"] = millonariaAux[id].sorteo.sorteo;
+        aux["subtotal"] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
+        aux["tieneDescuento"] = millonariaAux[id].tieneDescuento;
+        aux["subtotalConDesc"] = parseFloat(
+          millonariaAux[id].subtotalConDesc
+        ).toFixed(2);
+        aux["fecha"] = millonariaAux[id].sorteo.fecha;
+        pozo.push(aux);
+      }
       let total = parseFloat(apiReservaData.amount).toFixed(2);
       let totalConDesc = parseFloat(apiReservaData.amountConDesc).toFixed(2);
       let reservaId = apiReservaData.reservaId;
@@ -804,6 +952,7 @@ const ventasController = {
         pozo,
         exaVentaId,
         lotto,
+        millonaria,
         total,
         totalConDesc,
         reservaId,

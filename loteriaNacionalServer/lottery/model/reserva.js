@@ -31,6 +31,37 @@ const ventaSchema = new mongoose.Schema(
         ],
       },
     ],
+    millonaria: [
+      {
+        sorteo: {
+          type: String,
+        },
+        fecha: {
+          type: String,
+        },
+        combinacion1: {
+          type: String,
+        },
+        combinacion2: {
+          type: String,
+        },
+        subtotal: {
+          type: String,
+        },
+        subtotalConDesc: {
+          type: String,
+        },
+        tieneDescuento: {
+          type: Boolean,
+        },
+
+        fracciones: [
+          {
+            type: String,
+          },
+        ],
+      },
+    ],
     lotto: [
       {
         sorteo: {
