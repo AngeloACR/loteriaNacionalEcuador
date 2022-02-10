@@ -28,6 +28,7 @@ export class LottoComponent implements OnInit {
   showNumeros: boolean = false;
   token: string;
   usuario: string;
+  ticketsMillonaria: any;
 
   constructor(
     private lotteryService: LotteryService,
@@ -203,7 +204,9 @@ export class LottoComponent implements OnInit {
       aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
       aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
       aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
-      aux["subtotalConDesc"] = parseFloat(loteriaAux[id].subtotalConDesc).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(
+        loteriaAux[id].subtotalConDesc
+      ).toFixed(2);
       aux["tieneDescuento"] = loteriaAux[id].tieneDescuento;
 
       aux["fecha"] = loteriaAux[id].sorteo.fecha;
@@ -220,7 +223,9 @@ export class LottoComponent implements OnInit {
       aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
       aux["sorteo"] = lottoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
-      aux["subtotalConDesc"] = parseFloat(lottoAux[id].subtotalConDesc).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(lottoAux[id].subtotalConDesc).toFixed(
+        2
+      );
       aux["tieneDescuento"] = lottoAux[id].tieneDescuento;
       aux["fecha"] = lottoAux[id].sorteo.fecha;
       lotto.push(aux);
@@ -234,21 +239,41 @@ export class LottoComponent implements OnInit {
       aux["mascota"] = pozoAux[id].ticket.mascota;
       aux["sorteo"] = pozoAux[id].sorteo.sorteo;
       aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
-      aux["subtotalConDesc"] = parseFloat(pozoAux[id].subtotalConDesc).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(pozoAux[id].subtotalConDesc).toFixed(
+        2
+      );
       aux["tieneDescuento"] = pozoAux[id].tieneDescuento;
       aux["fecha"] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
+    }
+    let millonariaAux = this.ticketsMillonaria;
+    let millonaria = [];
+    for (let id in millonariaAux) {
+      let aux = {};
+      aux["combinacion1"] = millonariaAux[id].ticket.combinacion1;
+      aux["combinacion2"] = millonariaAux[id].ticket.combinacion2;
+      aux["fracciones"] = millonariaAux[id].ticket.seleccionados;
+      aux["subtotal"] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(
+        millonariaAux[id].subtotalConDesc
+      ).toFixed(2);
+      aux["tieneDescuento"] = millonariaAux[id].tieneDescuento;
+      aux["fecha"] = millonariaAux[id].sorteo.fecha;
+      aux["sorteo"] = millonariaAux[id].sorteo.sorteo;
+      millonaria.push(aux);
     }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
     let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
     this.detalleCompra = {
       loteria,
-      pozo,
+      millonaria,
       lotto,
+      pozo,
       amount,
-      amountConDesc
+      amountConDesc,
     };
+
 
     this.confirmacionDeCompra = true;
   }
@@ -288,7 +313,7 @@ export class LottoComponent implements OnInit {
           } else {
             this.cancelarCompra();
           }
-        } else{
+        } else {
           this.openValidationError(cartValidation.message);
         }
         this.isLoading = false;
@@ -348,22 +373,21 @@ export class LottoComponent implements OnInit {
     }
   }
 
-  async setDescuento(tipoLoteria){
+  async setDescuento(tipoLoteria) {
     let descuentos = this.descuentos.filter(
       (element: any) => parseInt(element.tipoLoteria) == tipoLoteria
     );
     for (let index = 0; index < descuentos.length; index++) {
       const element = descuentos[index];
       let conteo = await this.cart.contarBoletos(element.sorteo, tipoLoteria);
-      if(conteo >= parseInt(element.cantidad)){
+      if (conteo >= parseInt(element.cantidad)) {
         await this.cart.calcularDescuento(element);
-      }else {
-        await this.cart.eliminarDescuento(element, tipoLoteria)  
+      } else {
+        await this.cart.eliminarDescuento(element, tipoLoteria);
       }
       await this.getCarritoTickets();
     }
     await this.cart.setTotalConDesc();
-
   }
   obtenerAntojito(antojito) {
     return this.lotteryService.obtenerCaracteristicasDeAntojito(antojito).ruta;
@@ -435,6 +459,41 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
       //await this.setDescuento(1);
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
+  }
+  async deleteMillonariaTicket(data) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fracciones = data.ticket.seleccionados;
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let ticket = this.ticketsMillonaria[identificador].ticket;
+      let sorteo = data.sorteo;
+      let reservaId = this.lotteryService.getReservaId();
+      if (fracciones.length != 0) {
+        let response = await this.lotteryService.eliminarBoletosDeReserva(
+          this.token,
+          ticket,
+          sorteo,
+          fracciones,
+          14,
+          reservaId
+        );
+      }
+      delete this.ticketsMillonaria[identificador];
+
+      await this.cart.removeFromCart(ticket, 1);
+      await this.cart.setCarritoMillonaria(this.ticketsMillonaria);
+
+      await this.getCarritoTickets();
+      //this.getTotal();
+      //await this.setDescuento(14);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -542,7 +601,7 @@ export class LottoComponent implements OnInit {
         };
       });
       let reservaId = this.lotteryService.getReservaId();
-/*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
+      /*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
         this.token,
         boletosLoteria,
         boletosLotto,
@@ -574,9 +633,9 @@ export class LottoComponent implements OnInit {
     let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
+    this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
   }
-
   isError: boolean = false;
   errorMessage: string;
   openError(msg) {

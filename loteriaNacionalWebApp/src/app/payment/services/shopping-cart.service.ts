@@ -10,6 +10,7 @@ export class ShoppingCartService {
   ticketsLoteria: any = {};
   ticketsLotto: any = {};
   ticketsPozo: any = {};
+  ticketsMillonaria: any = {};
   ticketsCarrito: any = [];
   reservaId: any = 0;
 
@@ -47,7 +48,7 @@ export class ShoppingCartService {
         this.setLottoLocal(lotto);
         break;
 
-      default:
+      case 5:
         let pozo = this.getPozoLocal();
         for (let id in pozo) {
           if (pozo[id].sorteo.sorteo == sorteo) {
@@ -56,6 +57,16 @@ export class ShoppingCartService {
           }
         }
         this.setPozoLocal(pozo);
+        break;
+      case 14:
+        let millonaria = this.getMillonariaLocal();
+        for (let id in millonaria) {
+          if (millonaria[id].sorteo.sorteo == sorteo) {
+            millonaria[id].tieneDescuento = false;
+            millonaria[id].subtotalConDesc = 0;
+          }
+        }
+        this.setMillonariaLocal(pozo);
         break;
     }
     await this.actualizarCarrito();
@@ -88,7 +99,7 @@ export class ShoppingCartService {
         this.setLottoLocal(lotto);
         break;
 
-      default:
+      case "5":
         let pozo = this.getPozoLocal();
         for (let id in pozo) {
           if (pozo[id].sorteo.sorteo == sorteo) {
@@ -97,6 +108,16 @@ export class ShoppingCartService {
           }
         }
         this.setPozoLocal(pozo);
+        break;
+      case "14":
+        let millonaria = this.getMillonariaLocal();
+        for (let id in millonaria) {
+          if (millonaria[id].sorteo.sorteo == sorteo) {
+            millonaria[id].tieneDescuento = true;
+            millonaria[id].subtotalConDesc = parseFloat(precioConDescuento);
+          }
+        }
+        this.setMillonariaLocal(pozo);
         break;
     }
     await this.actualizarCarrito();
@@ -110,6 +131,11 @@ export class ShoppingCartService {
     let conteo;
     switch (tipoLoteria) {
       case 1:
+        conteo = boletos.reduce((total, value) => {
+          return total + value.ticket.seleccionados.length;
+        }, 0);
+        break;
+      case 14:
         conteo = boletos.reduce((total, value) => {
           return total + value.ticket.seleccionados.length;
         }, 0);
@@ -168,7 +194,7 @@ export class ShoppingCartService {
     let addIndex = carrito.findIndex(
       (x) => x.identificador === ticket.identificador
     );
-    if (tipoLoteria == 1 && addIndex != -1) {
+    if ((tipoLoteria == 1 || tipoLoteria == 14) && addIndex != -1) {
       carrito[addIndex] = ticket;
     } else {
       carrito.push(ticket);
@@ -189,6 +215,7 @@ export class ShoppingCartService {
         loteria: this.getLoteriaLocal(),
         lotto: this.getLottoLocal(),
         pozo: this.getPozoLocal(),
+        millonaria: this.getMillonariaLocal(),
         carrito: this.getCarritoLocal(),
         total: this.getTotal(),
         reservaId: this.getReservaId(),
@@ -211,6 +238,15 @@ export class ShoppingCartService {
   async setCarritoLoteria(tickets) {
     return new Promise<any>(async (resolve, reject) => {
       localStorage.setItem("seleccionadosLoteria", JSON.stringify(tickets));
+      //this.ticketsLoteria = tickets;
+      await this.setTotal();
+      await this.actualizarCarrito();
+      resolve("Done");
+    });
+  }
+  async setCarritoMillonaria(tickets) {
+    return new Promise<any>(async (resolve, reject) => {
+      localStorage.setItem("seleccionadosMillonaria", JSON.stringify(tickets));
       //this.ticketsLoteria = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
@@ -244,6 +280,9 @@ export class ShoppingCartService {
   setLoteriaLocal(data) {
     localStorage.setItem("seleccionadosLoteria", JSON.stringify(data));
   }
+  setMillonariaLocal(data) {
+    localStorage.setItem("seleccionadosMillonaria", JSON.stringify(data));
+  }
   setLottoLocal(data) {
     localStorage.setItem("seleccionadosLotto", JSON.stringify(data));
   }
@@ -261,6 +300,9 @@ export class ShoppingCartService {
   }
   getLoteriaLocal() {
     return JSON.parse(localStorage.getItem("seleccionadosLoteria"));
+  }
+  getMillonariaLocal() {
+    return JSON.parse(localStorage.getItem("seleccionadosMillonaria"));
   }
   getLottoLocal() {
     return JSON.parse(localStorage.getItem("seleccionadosLotto"));
@@ -292,11 +334,13 @@ export class ShoppingCartService {
             data.loteria = {};
             data.lotto = {};
             data.pozo = {};
+            data.millonaria = {};
             data.reservaId = 0;
           }
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);
+          this.setMillonariaLocal(data.millonaria);
           this.setPozoLocal(data.pozo);
           this.setReservaId(data.reservaId);
           await this.setTotal();
@@ -329,10 +373,10 @@ export class ShoppingCartService {
       address = address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
-/*           if (!data.status) {
+          /*           if (!data.status) {
             reject(new Error(data.message));
           }
- */          resolve(data);
+ */ resolve(data);
         },
         (error: any) => {
           reject(new Error(error.error.message));
@@ -369,17 +413,26 @@ export class ShoppingCartService {
       //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
     });
   }
+  async getCarritoMillonaria() {
+    return new Promise<any>(async (resolve, reject) => {
+      let carritoDB = await this.buscarCarrito();
+      resolve(carritoDB.millonaria);
+      //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
+    });
+  }
   async borrarCarrito() {
     this.ticketsCarrito = [];
     this.ticketsLoteria = {};
     this.ticketsLotto = {};
     this.ticketsPozo = {};
+    this.ticketsMillonaria = {};
     this.reservaId = 0;
     this.total = 0;
     localStorage.removeItem("seleccionadosLoteria");
     localStorage.removeItem("seleccionadosLotto");
     localStorage.removeItem("seleccionadosPozo");
     localStorage.removeItem("seleccionadosCarrito");
+    localStorage.removeItem("seleccionadosMillonaria");
     localStorage.removeItem("reservaId");
     localStorage.removeItem("total");
     localStorage.removeItem("totalConDesc");
@@ -412,6 +465,7 @@ export class ShoppingCartService {
       let loteriaAux = this.getLoteriaLocal();
       let lottoAux = this.getLottoLocal();
       let pozoAux = this.getPozoLocal();
+      let millonariaAux = this.getMillonariaLocal();
       let loteriaConDesc = 0;
       for (let id in loteriaAux) {
         if (loteriaAux[id].tieneDescuento) {
@@ -436,7 +490,16 @@ export class ShoppingCartService {
           pozoConDesc += parseFloat(pozoAux[id].subtotal);
         }
       }
-      let auxConDesc = loteriaConDesc + lottoConDesc + pozoConDesc;
+      let millonariaConDesc = 0;
+      for (let id in millonariaAux) {
+        if (millonariaAux[id].tieneDescuento) {
+          millonariaConDesc += parseFloat(millonariaAux[id].subtotalConDesc);
+        } else {
+          millonariaConDesc += parseFloat(millonariaAux[id].subtotal);
+        }
+      }
+      let auxConDesc =
+        loteriaConDesc + lottoConDesc + pozoConDesc + millonariaConDesc;
 
       this.totalConDesc = auxConDesc;
       localStorage.setItem("totalConDesc", JSON.stringify(auxConDesc));
@@ -450,6 +513,7 @@ export class ShoppingCartService {
       let loteriaAux = this.getLoteriaLocal();
       let lottoAux = this.getLottoLocal();
       let pozoAux = this.getPozoLocal();
+      let millonariaAux = this.getMillonariaLocal();
       let loteria = 0;
       for (let id in loteriaAux) {
         loteria += parseFloat(loteriaAux[id].subtotal);
@@ -462,7 +526,11 @@ export class ShoppingCartService {
       for (let id in pozoAux) {
         pozo += parseFloat(pozoAux[id].subtotal);
       }
-      let aux = loteria + lotto + pozo;
+      let millonaria = 0;
+      for (let id in millonariaAux) {
+        millonaria += parseFloat(millonariaAux[id].subtotal);
+      }
+      let aux = loteria + lotto + pozo + millonaria;
 
       this.total = aux;
       localStorage.setItem("total", JSON.stringify(aux));

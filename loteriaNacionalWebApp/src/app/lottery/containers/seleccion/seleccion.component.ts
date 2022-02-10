@@ -9,9 +9,10 @@ import { ShoppingCartService } from "../../../payment/services/shopping-cart.ser
   styleUrls: ["./seleccion.component.scss"],
 })
 export class SeleccionComponent implements OnInit {
-  linkLotto: any = [];
-  linkLoteriaNacional: any = [];
-  linkPozoMillonario: any = [];
+  linkLotto: string = "";
+  linkLoteriaNacional: string = "";
+  linkPozoMillonario: string = "";
+  linkMillonaria: string = "";
   token: string;
   lotteryToken: string;
   usuario: string;
@@ -23,6 +24,7 @@ export class SeleccionComponent implements OnInit {
   ticketsLotto: any;
   ticketsLoteria: any;
   ticketsCarrito: any;
+  ticketsMillonaria: any;
   constructor(
     private actRoute: ActivatedRoute,
     private lottery: LotteryService,
@@ -47,6 +49,7 @@ export class SeleccionComponent implements OnInit {
           this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
           this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
           this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;
+          this.linkMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
         }
 
         await this.getCarritoTickets();
@@ -129,13 +132,32 @@ export class SeleccionComponent implements OnInit {
       aux["fecha"] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
     }
+    let millonariaAux = this.ticketsMillonaria;
+    let millonaria = [];
+    for (let id in millonariaAux) {
+      let aux = {};
+      aux["combinacion1"] = millonariaAux[id].ticket.combinacion1;
+      aux["combinacion2"] = millonariaAux[id].ticket.combinacion2;
+      aux["fracciones"] = millonariaAux[id].ticket.seleccionados;
+      aux["subtotal"] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
+      aux["subtotalConDesc"] = parseFloat(
+        millonariaAux[id].subtotalConDesc
+      ).toFixed(2);
+      aux["tieneDescuento"] = millonariaAux[id].tieneDescuento;
+      aux["fecha"] = millonariaAux[id].sorteo.fecha;
+      aux["sorteo"] = millonariaAux[id].sorteo.sorteo;
+      millonaria.push(aux);
+    }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
+    let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
     this.detalleCompra = {
       loteria,
-      pozo,
+      millonaria,
       lotto,
+      pozo,
       amount,
+      amountConDesc,
     };
 
     this.confirmacionDeCompra = true;
@@ -209,6 +231,42 @@ export class SeleccionComponent implements OnInit {
     this.saldoInsuficiente = true;
   }
 
+  async deleteMillonariaTicket(data) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fracciones = data.ticket.seleccionados;
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let ticket = this.ticketsMillonaria[identificador].ticket;
+      let sorteo = data.sorteo;
+      let reservaId = this.lottery.getReservaId();
+      if (fracciones.length != 0) {
+        let response = await this.lottery.eliminarBoletosDeReserva(
+          this.token,
+          ticket,
+          sorteo,
+          fracciones,
+          14,
+          reservaId
+        );
+      }
+      delete this.ticketsMillonaria[identificador];
+
+      await this.cart.removeFromCart(ticket, 1);
+      await this.cart.setCarritoMillonaria(this.ticketsMillonaria);
+
+      await this.getCarritoTickets();
+      //this.getTotal();
+      //await this.setDescuento(14);
+      this.isLoading = false;
+    } catch (e) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
+    }
+  }
   async deleteLoteriaTicket(data) {
     try {
       let identificador = data.ticket.identificador;
@@ -375,13 +433,13 @@ export class SeleccionComponent implements OnInit {
         };
       });
       let reservaId = this.lottery.getReservaId();
-      await this.lottery.eliminarTodosLosBoletosDeReserva(
+/*       await this.lottery.eliminarTodosLosBoletosDeReserva(
         this.token,
         boletosLoteria,
         boletosLotto,
         boletosPozo,
         reservaId
-      );
+      ); */
       await this.cart.borrarCarrito();
       await this.getCarritoTickets();
       this.getTotal();

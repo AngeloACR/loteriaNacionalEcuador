@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { LaMillonariaComponent } from "./containers/la-millonaria/la-millonaria.component";
 import { LoteriaComponent } from "./containers/loteria/loteria.component";
 import { LottoComponent } from "./containers/lotto/lotto.component";
 import { PozoMillonarioComponent } from "./containers/pozo-millonario/pozo-millonario.component";
@@ -13,6 +14,7 @@ const routes: Routes = [
     component: LotteryComponent,
     children: [
       { path: "loteria/:token", component: LoteriaComponent },
+      { path: "millonaria/:token", component: LaMillonariaComponent },
       { path: "lotto/:token", component: LottoComponent },
       {
         path: "pozo-millonario/:token",

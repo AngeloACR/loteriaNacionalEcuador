@@ -4,7 +4,7 @@
   <app-info-loteria
     class="infoBox"
     titulo="Pozo Millonario"
-    color="pozo"
+    color="millonaria"
     [sorteos]="sorteo"
     [loteria]="5"
     (emitir)="procesaEmitir($event)"
@@ -30,68 +30,71 @@
 
         <div class="numeros">
           <input
+            #input1
+            [appAutoTab]="input2"
             type="text"
+            maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
-            maxlength="2"
-            name=""
-            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            name="combinacionDeLaSuerte0"
             [(ngModel)]="combinacionDeLaSuerte[0]"
           />
           <input
+            #input2
+            [appAutoTab]="input3"
             type="text"
+            maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
-            maxlength="2"
-            name=""
-            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            name="combinacionDeLaSuerte1"
             [(ngModel)]="combinacionDeLaSuerte[1]"
           />
           <input
+            #input3
+            [appAutoTab]="input4"
             type="text"
+            maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
-            maxlength="2"
-            name=""
-            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            name="combinacionDeLaSuerte2"
             [(ngModel)]="combinacionDeLaSuerte[2]"
           />
           <input
+            #input4
             type="text"
+            maxlength="1"
             inputmode="numeric"
             pattern="[0-9]*"
-            maxlength="2"
-            name=""
-            (input)="validate()"
             onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            name="combinacionDeLaSuerte3"
             [(ngModel)]="combinacionDeLaSuerte[3]"
           />
-        </div>
-        <div class="errorTag" *ngIf="over25Error">
-          {{ over25ErrorTag }}
+          <button class="activado" (click)="buscarNumero()">
+            BUSCAR NUMERO
+          </button>
         </div>
       </div>
     </div>
     <div class="contenedor_select_animales">
-      <h3>Selecciona tus mascotas de la suerte</h3>
+      <h3>Selecciona tus series de la suerte</h3>
       <div class="options">
         <div
           class="option"
-          *ngFor="let animal of seleccionAnimales; let i = index"
+          *ngFor="let serie of seleccionSeries; let i = index"
         >
           <input
-            (click)="agregar(animal, i)"
+            (click)="agregar(serie, i)"
             type="checkbox"
-            [checked]="animal.status"
+            [checked]="serie.status"
             name="nombre"
-            [value]="animal"
-            id="nombre-{{ animal.nombre }}"
+            [value]="serie"
+            id="nombre-{{ serie.nombre }}"
           />
-          <label for="nombre-{{ animal.nombre }}">
-            <img [src]="animal.ruta" [alt]="animal.nombre" />
+          <label for="nombre-{{ serie.nombre }}">
+            <img [src]="serie.ruta" [alt]="serie.nombre" />
           </label>
         </div>
       </div>
@@ -170,7 +173,7 @@
     [ticketsMillonaria]="ticketsMillonaria"
     [ticketsLotto]="ticketsLotto"
     [ticketsPozo]="ticketsPozo"
-    tipoLoteria="pozo"
+    tipoLoteria="millonaria"
   >
   </app-ticket-scroller>
 </div>
@@ -180,13 +183,13 @@
   (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
   (deleteLottoTicket)="deleteLottoTicket($event)"
   (deletePozoTicket)="deletePozoTicket($event)"
-  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
   (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozo]="ticketsPozo"
   [ticketsMillonaria]="ticketsMillonaria"
-  tipoLoteria="pozo"
+  tipoLoteria="millonaria"
 ></app-floating-menu
 ><!-- 
 <app-floating-menu
@@ -203,7 +206,7 @@
   tipoLoteria="pozo"
 ></app-floating-menu> -->
 <app-loader
-  loader="pozo"
+  loader="millonaria"
   [message]="loadingMessage"
   *ngIf="isLoading"
 ></app-loader>
@@ -229,7 +232,7 @@
 <app-resultados-instantaneas
   (close)="abrirFinalizar()"
   [resultados]="instantaneas"
-  tipoLoteria="5"
+  tipoLoteria="14"
   [isLoteriaNacional]="true"
   class="paymentItem"
   *ngIf="isInstantaneas"

@@ -40,3 +40,13 @@ export interface ticketsAnimales {
   status: boolean;
   identificador: string;
 }
+export interface ticketsMillonaria {
+  mascota: string;
+  combinacion1: string;
+  combinacion2: string;
+  fraccionesDisponibles: string[];
+  seleccionados: string[];
+  display?: Array<string>;
+  status: boolean;
+  identificador: string;
+}

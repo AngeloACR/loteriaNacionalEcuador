@@ -124,17 +124,17 @@
                 <hr />
                 <div class="contenedor_fracciones">
                   <p>
-                    Lotto Plus:  <span>{{ ticket.combinacion3 }}</span>
+                    Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
                   </p>
                   <p>
-                    Lottito:  <span>{{ ticket.combinacion2 }}</span>
+                    Lottito: <span>{{ ticket.combinacion2 }}</span>
                   </p>
                   <p *ngIf="ticket.combinacion4 != ''">
-                    Nos vemos Jefe:  <span>{{ ticket.combinacion4 }}</span>
+                    Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
                   </p>
                   <p *ngIf="ticket.combinacion5 && ticket.combinacion5 != ''">
-                    Antojito:  <img [src]="obtenerAntojito(ticket.combinacion5)" alt="" />
-
+                    Antojito:
+                    <img [src]="obtenerAntojito(ticket.combinacion5)" alt="" />
                   </p>
                 </div>
               </div>
@@ -167,10 +167,12 @@
     (deleteLottoTicket)="deleteLottoTicket($event)"
     (deletePozoTicket)="deletePozoTicket($event)"
     (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+    (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
     (emitirCompra)="comprar()"
     (eliminarTodo)="deleteAllTickets()"
     [ticketsLoteria]="ticketsLoteria"
     [ticketsLotto]="ticketsLotto"
+    [ticketsMillonaria]="ticketsMillonaria"
     [ticketsPozo]="ticketsPozo"
     tipoLoteria="lotto"
   >
@@ -181,11 +183,13 @@
   (deleteLottoTicket)="deleteLottoTicket($event)"
   (deletePozoTicket)="deletePozoTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   (emitirCompra)="comprar()"
   (eliminarTodo)="deleteAllTickets()"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozo]="ticketsPozo"
+  [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="lotto"
 ></app-floating-menu>
 <!-- <app-floating-menu
@@ -217,7 +221,6 @@
   (closeError)="closeValidationError()"
   *ngIf="isValidationError"
 ></app-error>
-
 
 <app-confirmacion-de-compra
   (compraConfirmada)="confirmarCompra()"

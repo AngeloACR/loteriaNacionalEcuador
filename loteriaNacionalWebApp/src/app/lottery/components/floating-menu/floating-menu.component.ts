@@ -15,6 +15,7 @@ import { ShoppingCartService } from "../../../payment/services/shopping-cart.ser
 export class FloatingMenuComponent implements OnInit {
   isToggled: boolean = false;
   @Input() ticketsLoteria: any;
+  @Input() ticketsMillonaria: any;
   @Input() ticketsLotto: any;
   @Input() ticketsPozo: any;
   @Input() tickets: any;
@@ -25,6 +26,7 @@ export class FloatingMenuComponent implements OnInit {
   @Output() deleteLoteriaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
+  @Output() deleteMillonariaTicket = new EventEmitter();
   constructor(
     private cart: ShoppingCartService
     ) {
@@ -71,6 +73,9 @@ export class FloatingMenuComponent implements OnInit {
   deletePozo(e) {
     this.deletePozoTicket.emit(e);
   }
+  deleteMillonaria(e) {
+    this.deleteMillonariaTicket.emit(e);
+  }
   deleteFraccion(e) {
     this.deleteLoteriaFraccion.emit(e);
   }
@@ -81,10 +86,6 @@ export class FloatingMenuComponent implements OnInit {
     this.total = this.cart.getTotal();
     this.total = this.formatNumber(this.total)
   }
-  /*ngOnChanges() {
-    this.total = this.cart.getTotal();
-    this.total = this.formatNumber(this.total)
-  } */
 
   formatNumber(number){// Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {

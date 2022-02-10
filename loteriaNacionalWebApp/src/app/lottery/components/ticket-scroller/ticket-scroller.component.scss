@@ -6,6 +6,7 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-botton: #2f72b9;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
+$color-millonaria: #04b865;
 
 .contenedor_ticket.fondoLoteria {
   background-color: $color-botton;
@@ -18,6 +19,10 @@ $color-pozo: #04b865;
 .contenedor_ticket.fondoLotto {
   background-color: $color-lotto;
   border: 1px solid $color-lotto;
+}
+.contenedor_ticket.fondoMillonaria {
+  background-color: $color-millonaria;
+  border: 1px solid $color-millonaria;
 }
 .contenedor_ticket {
   width: 100%;
@@ -145,6 +150,15 @@ $color-pozo: #04b865;
       &:hover {
         background-color: #fff;
         color: $color-pozo;
+        transition: background-color 0.5s ease;
+      }
+    }
+    button.fondoMillonaria {
+      background-color: $color-millonaria;
+      border: 1px solid $color-millonaria;
+      &:hover {
+        background-color: #fff;
+        color: $color-millonaria;
         transition: background-color 0.5s ease;
       }
     }
