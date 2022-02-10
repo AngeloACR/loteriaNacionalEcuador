@@ -7,7 +7,6 @@ $color-header: #7c91a8;
 $color-loteria: #2f72b9;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
-$color-millonaria: #04b865;
 
 .titleBox {
   width: 100%;
@@ -60,19 +59,6 @@ $color-millonaria: #04b865;
     .titlePozoBox {
       display: flex;
       background-color: $color-pozo;
-
-      padding-left: 10px;
-      padding-right: 10px;
-      border-radius: 12px;
-      h3 {
-        color: white;
-        font-family: $fuente-subtitulo;
-        font-size: 16px;
-      }
-    }
-    .titleMillonariaBox {
-      display: flex;
-      background-color: $color-millonaria;
 
       padding-left: 10px;
       padding-right: 10px;
@@ -202,9 +188,6 @@ $color-millonaria: #04b865;
         &.pozoColor {
           color: $color-pozo;
         }
-        &.milloanriaColor {
-          color: $color-millonaria;
-        }
         p {
           font-size: 20px;
           font-family: $fuente-titulo;
@@ -240,9 +223,6 @@ $color-millonaria: #04b865;
           }
           &.pozoBackground {
             background-color: $color-pozo;
-          }
-          &.millonariaBackground {
-            background-color: $color-millonaria;
           }
           p {
             width: 20%;
@@ -295,11 +275,6 @@ $color-millonaria: #04b865;
       border-width: 0 0 1px 0;
       border-style: solid;
       border-color: $color-pozo;
-    }
-    .millonaria {
-      border-width: 0 0 1px 0;
-      border-style: solid;
-      border-color: $color-millonaria;
     }
   }
 
@@ -410,9 +385,6 @@ $color-millonaria: #04b865;
             }
             &.pozoBackground {
               background-color: $color-pozo;
-            }
-            &.millonariaBackground {
-              background-color: $color-millonaria;
             }
             p {
               color: white;
