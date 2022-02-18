@@ -130,6 +130,33 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+  searchMillonariaSeries: async (req, res) => {
+    try {
+      let ip = req.headers["x-forwarded-for"];
+      let lotteryToken = req.query.lotteryToken;
+      let user = req.query.user;
+      let sorteo = req.query.sorteo;
+      let finalResponse = await Ventas.recuperarSeriesLaMillonaria(
+        lotteryToken,
+        user,
+        sorteo,
+        ip
+      );
+
+      res.status(200).json(finalResponse);
+    } catch (e) {
+      apiVentasLogger.error("searchMillonariaSorteosDisponibles.error", {
+        errorMessage: e.message,
+      });
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
 
   searchLottoCombinacionesDisponibles: async (req, res) => {
     try {

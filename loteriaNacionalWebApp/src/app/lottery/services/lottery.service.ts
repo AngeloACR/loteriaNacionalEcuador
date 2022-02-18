@@ -16,8 +16,8 @@ export class LotteryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
   //mySource = this.productionSource;
 
   sorteo: Array<sorteo>;
@@ -198,6 +198,41 @@ export class LotteryService {
 
         break;
     }
+  }
+  obtenerSeries(sorteo) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+    let endpoint = "/lottery/getSeries";
+    let authData = this.getAuthData();
+    var address = this.mySource;
+    console.log(sorteo)
+    address = address + endpoint;
+    return new Promise<Array<any>>((resolve, reject) => {
+      this.http
+        .get(address, {
+          params: {
+            lotteryToken: authData.lotteryToken,
+            user: authData.user,
+            sorteo
+          },
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            let aux = data.map(element => {
+              return { 
+                serie: element,
+                status: false,
+              }
+            });
+            resolve(aux);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
   }
 
   ordenaSorteos(a, b) {

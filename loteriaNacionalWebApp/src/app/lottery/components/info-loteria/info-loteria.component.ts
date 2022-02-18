@@ -117,16 +117,6 @@ export class InfoLoteriaComponent implements OnInit {
   sorteoDefault: sorteo;
   setSorteoDefault() {
     this.changeDetectorRef.detectChanges();
-    this.sorteoDefault = {
-      nombre: "default",
-      fecha: "",
-      valorPremioPrincipal: "",
-      precio: "",
-      dia: "",
-      cantidadDeFracciones: 0,
-      sorteo: "",
-    };
-    //this.seleccionado = this.sorteoDefault;
     this.seleccionado = this.sorteos[0];
     this.changeDetectorRef.markForCheck();
     this.onEmitir();

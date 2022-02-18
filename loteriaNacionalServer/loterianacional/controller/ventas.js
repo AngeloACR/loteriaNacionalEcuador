@@ -1352,6 +1352,7 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
         <i>
         <UsuarioId>${cliente}</UsuarioId>
         <MedioId>${medioId}</MedioId>
+        <ClienteId>5</ClienteId>
         </i>
         </mt>
       ]]>
@@ -1447,13 +1448,12 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
 
 module.exports.recuperarSeriesLaMillonaria = async (
   lotteryToken,
+  user,
   sorteo,
   ip
 ) => {
   try {
     loteriaVentasLogger.silly("recuperarSeriesLaMillonaria");
-    const usuarioClientePsd = config.usuarioAplicativoTest;
-
     /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
@@ -1465,7 +1465,7 @@ module.exports.recuperarSeriesLaMillonaria = async (
   <c>
     <aplicacion>25</aplicacion>
     <transaccion>113</transaccion>
-    <usuario>${usuarioClientePsd}</usuario>
+    <usuario>${user}</usuario>
     <maquina>${ip}</maquina>
     <codError>0</codError>
     <msgError />
@@ -1477,6 +1477,8 @@ module.exports.recuperarSeriesLaMillonaria = async (
     <JuegoId>14</JuegoId>
     <SorteoId>${sorteo}</SorteoId>
   </i>
+  </mt>
+  
       ]]>
     </PI_DatosXml>`,
     };
@@ -1505,7 +1507,7 @@ module.exports.recuperarSeriesLaMillonaria = async (
                 "recuperarSeriesLaMillonaria.loteria",
                 logData
               );
-              resolve(response);
+              resolve(series);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
               loteriaVentasLogger.error(

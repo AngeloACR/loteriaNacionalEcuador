@@ -12,6 +12,7 @@ lotteryRouter.get('/millonariaSorteosDisponibles', LotteryController.searchMillo
 lotteryRouter.get('/pozoSorteosDisponibles', LotteryController.searchPozoSorteosDisponibles);
 lotteryRouter.get('/lottoSorteosDisponibles', LotteryController.searchLottoSorteosDisponibles);
 lotteryRouter.get('/loteriaSorteosDisponibles', LotteryController.searchLoteriaSorteosDisponibles);
+lotteryRouter.get('/getSeries', LotteryController.searchMillonariaSeries);
 
 lotteryRouter.post('/reservarBoletos', LotteryController.reservarBoletos);
 lotteryRouter.post('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);

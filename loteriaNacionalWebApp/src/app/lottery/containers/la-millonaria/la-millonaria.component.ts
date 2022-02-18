@@ -300,6 +300,7 @@ export class LaMillonariaComponent implements OnInit {
         this.allFractions.push(false);
       });
 
+      this.seleccionSeries = await this.lotteryService.obtenerSeries(this.sorteoSeleccionado.sorteo)
       this.combinacionDeLaSuerte = ["", "", "", ""];
       this.showNumeros = true;
       this.isLoading = false;
@@ -508,12 +509,8 @@ export class LaMillonariaComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
 
-      this.loadingMessage = "Cargando los sorteos disponibles";
-      this.seleccionSeries = JSON.parse(
-        localStorage.getItem("seriesSeleccionadas")
-      );
       this.seriesTabs = JSON.parse(localStorage.getItem("seriesTabs"));
-
+      
       //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
       this.seleccionSeries.forEach((element) => {
         this.seriesTabs.forEach((elemento) => {
@@ -521,13 +518,14 @@ export class LaMillonariaComponent implements OnInit {
             element.status = elemento.status;
           }
         });
-      });
+      }); 
       localStorage.setItem(
         "seriesSeleccionadas",
         JSON.stringify(this.seleccionSeries)
-      );
-
-      this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 14);
+        );
+        
+        this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 14);
+        this.seleccionSeries = await this.lotteryService.obtenerSeries(this.sorteo[0].sorteo)
       //this.descuentos = await this.lotteryService.obtenerDescuentos()
       this.isLoading = false;
       this.showComponents = true;

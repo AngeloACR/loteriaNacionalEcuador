@@ -3,7 +3,7 @@
 <div class="contenedor_loteria" *ngIf="showComponents">
   <app-info-loteria
     class="infoBox"
-    titulo="Pozo Millonario"
+    titulo="La Millonaria"
     color="millonaria"
     [sorteos]="sorteo"
     [loteria]="5"
@@ -12,70 +12,65 @@
   </app-info-loteria>
 
   <div class="contendor_seleccion">
-    <div class="selectBox">
-      <div class="contenedor_select">
-        <h3>¿Cómo quieres comprar?</h3>
-        <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
-          <option class="option" value="96">Selección individual</option>
-          <option class="option" value="5">5 Boletos al azar</option>
-          <option class="option" value="30">30 Boletos al azar</option>
-          <option class="option" value="50">50 Boletos al azar</option>
-        </select>
-      </div>
-      <div class="numeros_suerte">
-        <h3>
-          Si tienes una combinación de la suerte, un número favorito o un
-          posible ganador, ingrésalo aquí:
-        </h3>
-
-        <div class="numeros">
-          <input
-            #input1
-            [appAutoTab]="input2"
-            type="text"
-            maxlength="1"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte0"
-            [(ngModel)]="combinacionDeLaSuerte[0]"
-          />
-          <input
-            #input2
-            [appAutoTab]="input3"
-            type="text"
-            maxlength="1"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte1"
-            [(ngModel)]="combinacionDeLaSuerte[1]"
-          />
-          <input
-            #input3
-            [appAutoTab]="input4"
-            type="text"
-            maxlength="1"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte2"
-            [(ngModel)]="combinacionDeLaSuerte[2]"
-          />
-          <input
-            #input4
-            type="text"
-            maxlength="1"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            name="combinacionDeLaSuerte3"
-            [(ngModel)]="combinacionDeLaSuerte[3]"
-          />
-          <button class="activado" (click)="buscarNumero()">
-            BUSCAR NUMERO
-          </button>
-        </div>
+    <div class="contenedor_select">
+      <h3>¿Cómo quieres comprar?</h3>
+      <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
+        <option class="option" value="96">Selección individual</option>
+        <option class="option" value="5">5 Boletos al azar</option>
+        <option class="option" value="30">30 Boletos al azar</option>
+        <option class="option" value="50">50 Boletos al azar</option>
+      </select>
+    </div>
+    <div class="numeros_suerte">
+      <h3>
+        Si tienes una combinación de la suerte, un número favorito o un posible
+        ganador, ingrésalo aquí:
+      </h3>
+      <div class="numeros">
+        <input
+          #input1
+          [appAutoTab]="input2"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte0"
+          [(ngModel)]="combinacionDeLaSuerte[0]"
+        />
+        <input
+          #input2
+          [appAutoTab]="input3"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte1"
+          [(ngModel)]="combinacionDeLaSuerte[1]"
+        />
+        <input
+          #input3
+          [appAutoTab]="input4"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte2"
+          [(ngModel)]="combinacionDeLaSuerte[2]"
+        />
+        <input
+          #input4
+          [appAutoTab]="input5"
+          type="text"
+          maxlength="1"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+          name="combinacionDeLaSuerte3"
+          [(ngModel)]="combinacionDeLaSuerte[3]"
+        />
       </div>
     </div>
     <div class="contenedor_select_animales">
@@ -89,21 +84,22 @@
             (click)="agregar(serie, i)"
             type="checkbox"
             [checked]="serie.status"
-            name="nombre"
+            name="serie"
             [value]="serie"
-            id="nombre-{{ serie.nombre }}"
+            id="serie-{{ serie.serie }}"
           />
-          <label for="nombre-{{ serie.nombre }}">
-            <img [src]="serie.ruta" [alt]="serie.nombre" />
+          <label for="serie-{{ serie.serie }}">
+            <p>{{serie.serie}}</p>
           </label>
         </div>
       </div>
     </div>
     <button class="activado" (click)="buscarNumero()">BUSCAR CARTONES</button>
 
+
     <p class="tagItem">
-      Si quieres cambiar tu cartón, ingresa los números nuevamente y haz click
-      en "Buscar cartones".
+      Si quieres cambiar tu número, ingrésalo nuevamente y haz click en "Buscar
+      número"
     </p>
     <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
       <table *ngIf="showNumeros">
