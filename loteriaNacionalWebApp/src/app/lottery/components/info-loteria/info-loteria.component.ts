@@ -66,6 +66,8 @@ export class InfoLoteriaComponent implements OnInit {
 
       case "millonaria":
         this.tipoLoteria = 14;
+        this.isLoteria = true;
+
         this.fondoMillonaria = true;
         this.fondoPozo = false;
         this.fondoLotto = false;

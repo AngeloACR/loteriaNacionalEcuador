@@ -31,6 +31,7 @@ const carritoController = {
         loteria: req.body.loteria,
         lotto: req.body.lotto,
         pozo: req.body.pozo,
+        millonaria: req.body.millonaria,
         carrito: req.body.carrito,
         total: req.body.total,
         reservaId: req.body.reservaId,
@@ -56,6 +57,7 @@ const carritoController = {
           loteria: {},
           lotto: {},
           pozo: {},
+          millonaria: {},
           carrito: [],
           total: 0,
           reservaId: 0,
@@ -94,6 +96,7 @@ const carritoController = {
         loteria: {},
         lotto: {},
         pozo: {},
+        millonaria: {},
         carrito: [],
         total: 0,
         reservaId: 0,
@@ -122,6 +125,7 @@ const carritoController = {
       let loteriaCache;
       let lottoCache;
       let pozoCache;
+      let millonariaCache;
       if (
         Object.keys(cacheCart.loteria).length !== 0 &&
         Object.getPrototypeOf(cacheCart.loteria) === Object.prototype
@@ -146,6 +150,14 @@ const carritoController = {
         pozoCache = Object.values(cacheCart.pozo);
       } else {
         pozoCache = [];
+      }
+      if (
+        Object.keys(cacheCart.millonaria).length !== 0 &&
+        Object.getPrototypeOf(cacheCart.millonaria) === Object.prototype
+      ) {
+        millonariaCache = Object.values(cacheCart.millonaria);
+      } else {
+        millonariaCache = [];
       }
 
       let loteriaCart = await reservas.validarReservas(
@@ -177,6 +189,7 @@ const carritoController = {
         ];
         await reservas.reservarCombinaciones(
           boleto,
+          [],
           [],
           [],
           token,
@@ -268,6 +281,7 @@ const carritoController = {
           boleto,
           [],
           [],
+          [],
           token,
           reservaId,
           user,
@@ -339,6 +353,8 @@ const carritoController = {
         cacheCart.total += parseFloat(sorteo.precio) * seleccionados.length;
         await carritoController.updateCart(cacheCart);
       }
+
+
       /* VALIDACIÓN DE LOTTO */
 
       let auxLotto1 = lottoCache.filter((item) => {
@@ -363,6 +379,7 @@ const carritoController = {
           //await Ventas.reservarCombinaciones(
           [],
           boleto,
+          [],
           [],
           token,
           reservaId,
@@ -435,6 +452,7 @@ const carritoController = {
           [],
           [],
           boleto,
+          [],
           token,
           reservaId,
           user,
@@ -479,6 +497,199 @@ const carritoController = {
         cacheCart.total += parseFloat(boleto.subtotal);
         await carritoController.updateCart(cacheCart);
       }
+
+      /* VALIDACIÓN DE LA MILLONARIA */
+
+      let auxMillonaria1 = millonariaCache.filter((item) => {
+        let index = loteriaCart.millonaria.findIndex(
+          (millonaria) => millonaria.combinacion == item.ticket.combinacion1
+        );
+        if (index == -1) {
+          return true;
+        }
+        return false;
+      });
+      for (let i = 0; i < auxMillonaria1.length; i++) {
+        let item = auxMillonaria1[i];
+        let boleto = [
+          {
+            combinacion: item.ticket.combinacion1,
+            combinacion2: item.ticket.combinacion2,
+            fracciones: item.ticket.seleccionados,
+            sorteo: item.sorteo,
+          },
+        ];
+        await reservas.reservarCombinaciones(
+          [],
+          [],
+          [],
+          boleto,
+          token,
+          reservaId,
+          user,
+          ip
+        );
+      }
+      let auxMillonaria2 = loteriaCart.millonaria.filter((item) => {
+        let index = millonariaCache.findIndex(
+          (millonaria) => 
+          item.combinacion == millonaria.ticket.combinacion1
+        );
+        if (index == -1) {
+          return true;
+        }
+        return false;
+      });
+      for (let i = 0; i < auxMillonaria2.length; i++) {
+        let item = auxMillonaria2[i];
+        let identificador = Math.random();
+        let millonariaSorteos = await Cache.getMillonariaSorteosDisponibles();
+        let sorteo = millonariaSorteos.filter((millonaria) => {
+          if (millonaria.sorteo == item.sorteo) {
+            return true;
+          }
+          return false;
+        })[0];
+        let seleccionados = item.fracciones.map((fraccion) => {
+          return fraccion.fraccion;
+        });
+        let boleto = {
+          identificador,
+          ticket: {
+            
+            combinacion1: item.combinacion,
+            combinacion2: item.combinacion2,
+            display: item.combinacion.split(""),
+            identificador,
+            seleccionados,
+          },
+          sorteo,
+          subtotal: parseFloat(sorteo.precio) * seleccionados.length,
+          tipoLoteria: 14,
+        };
+        cacheCart.millonaria[identificador] = boleto;
+        cacheCart.carrito.push(boleto);
+        cacheCart.total += parseFloat(boleto.subtotal);
+        await carritoController.updateCart(cacheCart);
+      }
+      let seleccionadosProblemaMillonaria;
+      let auxMillonariaFracciones1 = millonariaCache.reduce(function (
+        filtered,
+        item
+      ) {
+        let index = loteriaCart.millonaria.findIndex(
+          (millonaria) => millonaria.combinacion == item.ticket.combinacion1
+        );
+        let flag = false;
+        if (index != -1) {
+          seleccionadosProblemaMillonaria = item.ticket.seleccionados.filter(
+            (fraccion) => {
+              let indexB = loteriaCart.millonaria[index].fracciones.findIndex(
+                (millonaria) => millonaria.fraccion == fraccion
+              );
+              if (indexB == -1) {
+                flag = true;
+                return true;
+              }
+              return false;
+            }
+          );
+          if (flag) {
+            filtered.push(item);
+          }
+        }
+
+        return filtered;
+      },
+      []);
+
+      for (let i = 0; i < auxMillonariaFracciones1.length; i++) {
+        let item = auxMillonariaFracciones1[i];
+        let boleto = [
+          {
+            combinacion: item.ticket.combinacion,
+            combinacion2: item.ticket.combinacion2,
+            fracciones: seleccionadosProblemaMillonaria,
+            sorteo: item.sorteo,
+          },
+        ];
+        await reservas.reservarCombinaciones(
+          [],
+          [],
+          [],
+          boleto,
+          token,
+          reservaId,
+          user,
+          ip
+        );
+      }
+      let auxMillonariaFracciones2 = loteriaCart.millonaria.reduce(function (
+        filtered,
+        item
+      ) {
+        let index = millonariaCache.findIndex(
+          (millonaria) => millonaria.ticket.combinacion1 == item.combinacion
+        );
+        if (index != -1) {
+          let flag = false;
+          let seleccionados = [];
+          let identificador;
+          item.fracciones = item.fracciones.filter((fraccion) => {
+            let indexB = millonariaCache[index].ticket.seleccionados.findIndex(
+              (loteria) => loteria == fraccion.fraccion
+            );
+            if (indexB == -1) {
+              flag = true;
+              seleccionados.push(fraccion.fraccion);
+              identificador = millonariaCache[index].identificador;
+              return true;
+            }
+            return false;
+          });
+          if (flag) {
+            item.fracciones = item.fracciones.map((data) => {
+              return data.fraccion;
+            });
+            item["seleccionados"] = seleccionados;
+            item["identificador"] = identificador;
+            item["index"] = index;
+            filtered.push(item);
+          }
+        }
+        return filtered;
+      },
+      []);
+
+      for (let i = 0; i < auxMillonariaFracciones2.length; i++) {
+        let item = auxMillonariaFracciones2[i];
+        let identificador = item.identificador;
+        let index = item.index;
+        let millonariaSorteos = await Cache.getMillonariaSorteosDisponibles();
+        let sorteo = millonariaSorteos.filter((millonaria) => {
+          if (millonaria.sorteo == item.sorteo) {
+            return true;
+          }
+          return false;
+        })[0];
+        let seleccionados = item.seleccionados;
+        millonariaCache[index].ticket.seleccionados =
+        millonariaCache[index].ticket.seleccionados.concat(seleccionados);
+        millonariaCache[index].fracciones =
+        millonariaCache[index].fracciones.concat(seleccionados);
+        millonariaCache[index].subtotal +=
+          parseFloat(sorteo.precio) * seleccionados.length;
+        cacheCart.millonaria[identificador] = millonariaCache[index];
+
+        let indexC = cacheCart.carrito.findIndex(
+          (carrito) =>
+            carrito.ticket.combinacion == millonariaCache[index].ticket.combinacion
+        );
+        cacheCart.carrito[indexC] = millonariaCache[index];
+        cacheCart.total += parseFloat(sorteo.precio) * seleccionados.length;
+        await carritoController.updateCart(cacheCart);
+      }
+
       client.quit();
       if (
         auxLoteria1.length ||
@@ -488,8 +699,12 @@ const carritoController = {
         auxLotto1.length ||
         auxLotto2.length ||
         auxPozo1.length ||
-        auxPozo2.length
-      ) {
+        auxPozo2.length||
+        auxMillonaria1.length ||
+        auxMillonaria2.length ||
+        auxMillonariaFracciones1.length ||
+        auxMillonariaFracciones2.length
+        ) {
         flag = false;
       }
       let message = flag

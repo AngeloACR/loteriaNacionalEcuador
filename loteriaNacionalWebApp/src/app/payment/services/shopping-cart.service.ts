@@ -66,7 +66,7 @@ export class ShoppingCartService {
             millonaria[id].subtotalConDesc = 0;
           }
         }
-        this.setMillonariaLocal(pozo);
+        this.setMillonariaLocal(millonaria);
         break;
     }
     await this.actualizarCarrito();
@@ -117,7 +117,7 @@ export class ShoppingCartService {
             millonaria[id].subtotalConDesc = parseFloat(precioConDescuento);
           }
         }
-        this.setMillonariaLocal(pozo);
+        this.setMillonariaLocal(millonaria);
         break;
     }
     await this.actualizarCarrito();

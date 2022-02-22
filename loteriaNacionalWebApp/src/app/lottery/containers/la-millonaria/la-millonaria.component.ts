@@ -64,14 +64,13 @@ export class LaMillonariaComponent implements OnInit {
     } else {
       this.seleccionSeries[i].status = false;
       this.seriesTabs = this.seriesTabs.filter((element) => {
-        return element.nombre !== serie.nombre;
+        return element.serie !== serie.serie;
       });
     }
     localStorage.setItem(
       "seriesSeleccionadas",
       JSON.stringify(this.seleccionSeries)
     );
-    localStorage.setItem("seriesTabs", JSON.stringify(this.seriesTabs));
   }
 
   async fraccionSeleccionada(idTicket: number, fraccion: string) {
@@ -134,7 +133,6 @@ export class LaMillonariaComponent implements OnInit {
 
     await this.cart.setCarritoMillonaria(this.ticketsMillonaria);
 
-    localStorage.setItem("seriesTabs", JSON.stringify(this.seriesTabs));
   }
 
   ticketsMillonaria: any = {};
@@ -281,7 +279,7 @@ export class LaMillonariaComponent implements OnInit {
         }
       });
       let combinacionFigura = this.seriesTabs.map((serie) => {
-        return serie.identificador;
+        return serie.serie;
       });
       combinacion.sort(this.ordenaCombinacion);
       combinacionFigura.sort(this.ordenaCombinacion);
@@ -508,8 +506,6 @@ export class LaMillonariaComponent implements OnInit {
       this.isLoading = true;
       await this.getCarritoTickets();
       //this.getTotal();
-
-      this.seriesTabs = JSON.parse(localStorage.getItem("seriesTabs"));
       
       //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
       this.seleccionSeries.forEach((element) => {
@@ -723,10 +719,12 @@ export class LaMillonariaComponent implements OnInit {
   }
   async deleteMillonariaTicket(data) {
     try {
+      await this.getCarritoTickets();
+
       this.loadingMessage = "Removiendo boleto del carrito";
       this.isLoading = true;
       let identificador = data.ticket.identificador;
-      let fraccion = "";
+      let fracciones = data.ticket.seleccionados;
       let ticket = this.ticketsMillonaria[identificador].ticket;
       let sorteo = this.ticketsMillonaria[identificador].sorteo;
       let reservaId = this.lotteryService.getReservaId();
@@ -734,7 +732,7 @@ export class LaMillonariaComponent implements OnInit {
         this.token,
         ticket,
         sorteo,
-        fraccion,
+        fracciones,
         14,
         reservaId
       );

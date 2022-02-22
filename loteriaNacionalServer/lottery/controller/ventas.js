@@ -336,7 +336,6 @@ const ventasController = {
 
       let combinaciones = combinacionesAux.map((element) => {
         let combinacion = {
-          mascota: element.Fig,
           combinacion1: element.Num,
           combinacion2: element.Num2,
           fraccionesDisponibles: element.Fra.split(","),
@@ -498,7 +497,7 @@ const ventasController = {
   comprarBoletos: async (req, res) => {
     try {
       apiVentasLogger.silly("comprarBoletos");
-      let ip = req.headers["x-forwarded-for"];
+      let ip = req.headers["x-forwarded-for"]? req.headers["x-forwarded-for"]:req.socket.remoteAddress;
 
       let token = req.body.token;
       let lotteryToken = req.body.lotteryToken;

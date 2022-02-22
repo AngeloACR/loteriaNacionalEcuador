@@ -41,7 +41,6 @@ export interface ticketsAnimales {
   identificador: string;
 }
 export interface ticketsMillonaria {
-  mascota: string;
   combinacion1: string;
   combinacion2: string;
   fraccionesDisponibles: string[];

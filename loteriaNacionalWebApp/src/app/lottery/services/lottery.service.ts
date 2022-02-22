@@ -323,7 +323,7 @@ export class LotteryService {
         var address = this.mySource;
 
         address = address + endpoint;
-        return new Promise<Array<ticketsAnimales>>((resolve, reject) => {
+        return new Promise<Array<ticketsMillonaria>>((resolve, reject) => {
           this.http.post(address, body, { headers: headers }).subscribe(
             (data: any) => {
               let combinacionesDisponibles: Array<ticketsMillonaria> =
@@ -1029,8 +1029,11 @@ export class LotteryService {
         break;
       case 14:
         aux = [
+        
           {
             combinacion: boleto.ticket.combinacion1,
+            combinacion2: boleto.ticket.combinacion2,
+            fracciones: boleto.fracciones,
             sorteo: boleto.sorteo,
           },
         ];
@@ -1107,6 +1110,8 @@ export class LotteryService {
         aux = [
           {
             combinacion: boleto.combinacion1,
+            combinacion2: boleto.combinacion2,
+            fracciones,
             sorteo: sorteo,
           },
         ];

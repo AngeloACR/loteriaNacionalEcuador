@@ -53,14 +53,15 @@
           [sorteo]="item.sorteo"
         >
         </app-pozo-millonario-ticket>
-        <app-pozo-millonario-ticket
+        <app-la-millonaria-ticket
           style="width: 100%"
           *ngIf="item.tipoLoteria == 14"
-          (delete)="deleteMillonaria(item)"
+          (deleteTicket)="deleteMillonaria(item)"
+          (deleteFraccion)="deleteFraccionMillonaria(item, fraccion)"
           [ticket]="item.ticket"
           [sorteo]="item.sorteo"
         >
-        </app-pozo-millonario-ticket>
+        </app-la-millonaria-ticket>
       </ng-container>
     </div>
   </div>

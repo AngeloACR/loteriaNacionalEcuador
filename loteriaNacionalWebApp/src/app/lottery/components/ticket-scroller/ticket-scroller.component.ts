@@ -19,6 +19,7 @@ export class TicketScrollerComponent implements OnInit {
   @Output() eliminarTodo = new EventEmitter();
   @Output() deleteLoteriaTicket = new EventEmitter();
   @Output() deleteLoteriaFraccion = new EventEmitter();
+  @Output() deleteMillonariaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
   @Output() deleteMillonariaTicket = new EventEmitter();
@@ -105,7 +106,7 @@ export class TicketScrollerComponent implements OnInit {
 
   checkTicketsLaMillonaria() {
     if (this.ticketsMillonaria) {
-      return Object.keys(this.ticketsPozo).length != 0;
+      return Object.keys(this.ticketsMillonaria).length != 0;
     }
   }
 
@@ -119,6 +120,13 @@ export class TicketScrollerComponent implements OnInit {
       fraccion,
     };
     this.deleteLoteriaFraccion.emit(data);
+  }
+  deleteFraccionMillonaria(ticket, fraccion) {
+    let data = {
+      ticket,
+      fraccion,
+    };
+    this.deleteMillonariaFraccion.emit(data);
   }
 
   deleteLotto(ticket) {
