@@ -57,6 +57,16 @@ export class ShoppingCartService {
         }
         this.setPozoLocal(pozo);
         break;
+      case 14:
+        let millonaria = this.getMillonariaLocal();
+        for (let id in millonaria) {
+          if (millonaria[id].sorteo.sorteo == sorteo) {
+            millonaria[id].tieneDescuento = false;
+            millonaria[id].subtotalConDesc = 0;
+          }
+        }
+        this.setMillonariaLocal(millonaria);
+        break;
     }
     await this.actualizarCarrito();
   }
@@ -97,6 +107,16 @@ export class ShoppingCartService {
           }
         }
         this.setPozoLocal(pozo);
+        break;
+      case "14":
+        let millonaria = this.getMillonariaLocal();
+        for (let id in millonaria) {
+          if (millonaria[id].sorteo.sorteo == sorteo) {
+            millonaria[id].tieneDescuento = true;
+            millonaria[id].subtotalConDesc = parseFloat(precioConDescuento);
+          }
+        }
+        this.setMillonariaLocal(millonaria);
         break;
     }
     await this.actualizarCarrito();

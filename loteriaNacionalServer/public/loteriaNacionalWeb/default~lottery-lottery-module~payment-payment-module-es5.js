@@ -41,7 +41,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"titleBox\">\n  <p>A continuacion un resumen de tu compra:</p>\n</div>\n<div class=\"containerDetails\">\n  <div class=\"containerInfoBox\">\n    <div class=\"titleLoteryBox\">\n      <h3>\n        Usuario: <span>{{ user }}</span>\n      </h3>\n      <h3 *ngIf=\"ticketId\">\n        Número de Orden: <span>{{ ticketId }}</span>\n      </h3>\n    </div>\n  </div>\n  <div class=\"containerInfoBox\" *ngIf=\"compra.loteria.length != 0\">\n    <div class=\"titleLoteriaBox\">\n      <h3>LOTERÍA NACIONAL</h3>\n    </div>\n    <div *ngFor=\"let item of compra.loteria\" class=\"dateLoteryBox loteria\">\n      <div class=\"infoSorteoBox\">\n        <p>\n          Sorteo: <span>{{ item.sorteo }}</span>\n        </p>\n        <p>\n          Fecha del sorteo: <span>{{ item.fecha }}</span>\n        </p>\n      </div>\n      <div class=\"dateTicketBox\">\n        <p>\n          Combinación: <span>{{ item.combinacion1 }}</span>\n        </p>\n        <p>\n          Fracciones seleccionadas:\n          <span>{{ item.fracciones.join(\", \") }}</span>\n        </p>\n      </div>\n      <div class=\"numberBox\">\n        <p>\n          Cantidad: <span>{{ item.fracciones.length }}</span>\n        </p>\n      </div>\n      <div class=\"montoBox\">\n        <p>\n          Total: <span>{{ formatNumber(item.subtotal) }}</span>\n        </p>\n        <p *ngIf=\"item.tieneDescuento\">\n          Total con descuento: <span>{{ formatNumber(item.subtotalConDesc) }}</span>\n        </p>\n      </div>\n      <ng-container *ngIf=\"item.hasGanador\">\n        <div class=\"ganadorTitleBox loteriaColor\">\n          <p>Boleto ganador</p>\n        </div>\n        <div class=\"ganadorBox\">\n          <div class=\"ganadorHeaderBox loteriaBackground\">\n            <p class=\"ganadorFraccion\">FRACCIÓN</p>\n            <p>VALOR DEL PREMIO</p>\n            <p>DESCUENTO 14%</p>\n            <p>VALOR DEL PREMIO CON DESCUENTO</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n          </div>\n          <div\n            class=\"ganadorDetailsBox\"\n            *ngFor=\"let ganador of item.detalleGanador\"\n          >\n            <p class=\"ganadorFraccion\">{{ ganador.fraccion }}</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n        <div\n          class=\"ganadorBoxMobile\"\n          *ngFor=\"let ganador of item.detalleGanador; let i = index\"\n        >\n          <div class=\"ganadorHeaderBox loteriaBackground\">\n            <p>Premio {{ i + 1 }}</p>\n          </div>\n          <div class=\"ganadorDetailsBox\">\n            <p>FRACCIÓN</p>\n            <p>{{ ganador.fraccion }}</p>\n            <p>VALOR DEL PREMIO</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>DESCUENTO 14%</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>VALOR DEL PREMIO CON DESC.</p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n\n  <div class=\"containerInfoBox\" *ngIf=\"compra.lotto.length != 0\">\n    <div class=\"titleLottoBox\">\n      <h3>LOTTO</h3>\n    </div>\n    <div *ngFor=\"let item of compra.lotto\" class=\"dateLoteryBox lotto\">\n      <div class=\"infoSorteoBox\">\n        <p>\n          Sorteo: <span>{{ item.sorteo }}</span>\n        </p>\n        <p>\n          Fecha del sorteo: <span>{{ item.fecha }}</span>\n        </p>\n      </div>\n      <!--       <div class=\"infoTicketBox\">\n      </div> -->\n      <div class=\"dateTicketBox\">\n        <p>\n          Combinación: <span>{{ item.combinacion1 }}</span>\n        </p>\n        <p>\n          LottoPlus: <span>{{ item.combinacion3 }}</span>\n        </p>\n        <p>\n          Lottito: <span>{{ item.combinacion2 }}</span>\n        </p>\n        <p>\n          Nos Vemos Jefe:\n          <span>{{ item.combinacion4 }}</span>\n        </p>\n        <p *ngIf=\"item.combinacion5 && item.combinacion5 != ''\">\n          Antojito:\n          <span>{{ nombreAntojito(item.combinacion5) }}</span>\n        </p>\n      </div>\n      <div class=\"numberBox\">\n        <p>Cantidad: <span>1</span></p>\n      </div>\n      <div class=\"montoBox\">\n        <p>\n          Total: <span>{{ formatNumber(item.subtotal) }}</span>\n        </p>\n        <p *ngIf=\"item.tieneDescuento\">\n          Total con descuento: <span>{{ formatNumber(item.subtotalConDesc) }}</span>\n        </p>\n      </div>\n      <ng-container *ngIf=\"item.hasGanador\">\n        <div class=\"ganadorTitleBox lottoColor\">\n          <p>Boleto ganador</p>\n        </div>\n        <div class=\"ganadorBox\">\n          <div class=\"ganadorHeaderBox lottoBackground\">\n            <p>VALOR DEL PREMIO</p>\n            <p>DESCUENTO 14%</p>\n            <p>VALOR DEL PREMIO CON DESCUENTO</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n          </div>\n          <div\n            class=\"ganadorDetailsBox\"\n            *ngFor=\"let ganador of item.detalleGanador\"\n          >\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n        <div\n          class=\"ganadorBoxMobile\"\n          *ngFor=\"let ganador of item.detalleGanador; let i = index\"\n        >\n          <div class=\"ganadorHeaderBox lottoBackground\">\n            <p>Premio {{ i + 1 }}</p>\n          </div>\n          <div class=\"ganadorDetailsBox\">\n            <p>VALOR DEL PREMIO</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>DESCUENTO 14%</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>VALOR DEL PREMIO CON DESC.</p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n\n  <div class=\"containerInfoBox\" *ngIf=\"compra.pozo.length != 0\">\n    <div class=\"titlePozoBox\">\n      <h3>POZO MILLONARIO</h3>\n    </div>\n    <div *ngFor=\"let item of compra.pozo\" class=\"dateLoteryBox pozo\">\n      <div class=\"infoSorteoBox\">\n        <p>\n          Sorteo: <span>{{ item.sorteo }}</span>\n        </p>\n        <p>\n          Fecha del sorteo: <span>{{ item.fecha }}</span>\n        </p>\n      </div>\n      <div class=\"dateTicketBox\">\n        <p>\n          Boleto: <span>{{ item.combinacion1 }}</span>\n        </p>\n        <p>\n          Mascota: <span>{{ nombreMascota(item.mascota) }}</span>\n        </p>\n        <p>\n          Combinación:\n          <span>{{ item.combinacion2 }}</span>\n        </p>\n      </div>\n      <div class=\"numberBox\">\n        <p>Cantidad: <span>1</span></p>\n      </div>\n      <div class=\"montoBox\">\n        <p>\n          Total: <span>{{ formatNumber(item.subtotal) }}</span>\n        </p>\n        <p *ngIf=\"item.tieneDescuento\">\n          Total con descuento: <span>{{ formatNumber(item.subtotalConDesc) }}</span>\n        </p>\n      </div>\n      <ng-container *ngIf=\"item.hasGanador\">\n        <div class=\"ganadorTitleBox pozoColor\">\n          <p>Boleto ganador</p>\n        </div>\n        <div class=\"ganadorBox\">\n          <div class=\"ganadorHeaderBox pozoBackground\">\n            <p>VALOR DEL PREMIO</p>\n            <p>DESCUENTO 14%</p>\n            <p>VALOR DEL PREMIO CON DESCUENTO</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n          </div>\n          <div\n            class=\"ganadorDetailsBox\"\n            *ngFor=\"let ganador of item.detalleGanador\"\n          >\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n        <div\n          class=\"ganadorBoxMobile\"\n          *ngFor=\"let ganador of item.detalleGanador; let i = index\"\n        >\n          <div class=\"ganadorHeaderBox pozoBackground\">\n            <p>Premio {{ i + 1 }}</p>\n          </div>\n          <div class=\"ganadorDetailsBox\">\n            <p>VALOR DEL PREMIO</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>DESCUENTO 14%</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>VALOR DEL PREMIO CON DESC.</p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n\n  <div class=\"totalBox\">\n    <p>\n      Total: <span *ngIf=\"compra.amount\">{{ formatNumber(compra.amount) }}</span\n      ><span *ngIf=\"compra.total\">{{ formatNumber(compra.total) }}</span>\n    </p>\n    <p *ngIf=\"(compra.amountConDesc && compra.amount != compra.amountConDesc) || (compra.totalConDesc && compra.total != compra.totalConDesc)\">\n      Total con descuento: <span *ngIf=\"compra.amountConDesc\">{{ formatNumber(compra.amountConDesc) }}</span\n      ><span *ngIf=\"compra.totalConDesc\">{{ formatNumber(compra.totalConDesc) }}</span>\n    </p>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"titleBox\">\n  <p>A continuacion un resumen de tu compra:</p>\n</div>\n<div class=\"containerDetails\">\n  <div class=\"containerInfoBox\">\n    <div class=\"titleLoteryBox\">\n      <h3>\n        Usuario: <span>{{ user }}</span>\n      </h3>\n      <h3 *ngIf=\"ticketId\">\n        Número de Orden: <span>{{ ticketId }}</span>\n      </h3>\n    </div>\n  </div>\n  <div class=\"containerInfoBox\" *ngIf=\"compra.loteria.length != 0\">\n    <div class=\"titleLoteriaBox\">\n      <h3>LOTERÍA NACIONAL</h3>\n    </div>\n    <div *ngFor=\"let item of compra.loteria\" class=\"dateLoteryBox loteria\">\n      <div class=\"infoSorteoBox\">\n        <p>\n          Sorteo: <span>{{ item.sorteo }}</span>\n        </p>\n        <p>\n          Fecha del sorteo: <span>{{ item.fecha }}</span>\n        </p>\n      </div>\n      <div class=\"dateTicketBox\">\n        <p>\n          Combinación: <span>{{ item.combinacion1 }}</span>\n        </p>\n        <p>\n          Fracciones seleccionadas:\n          <span>{{ item.fracciones.join(\", \") }}</span>\n        </p>\n      </div>\n      <div class=\"numberBox\">\n        <p>\n          Cantidad: <span>{{ item.fracciones.length }}</span>\n        </p>\n      </div>\n      <div class=\"montoBox\">\n        <p>\n          Total: <span>{{ formatNumber(item.subtotal) }}</span>\n        </p>\n        <p *ngIf=\"item.tieneDescuento\">\n          Total con descuento:\n          <span>{{ formatNumber(item.subtotalConDesc) }}</span>\n        </p>\n      </div>\n      <ng-container *ngIf=\"item.hasGanador\">\n        <div class=\"ganadorTitleBox loteriaColor\">\n          <p>Boleto ganador</p>\n        </div>\n        <div class=\"ganadorBox\">\n          <div class=\"ganadorHeaderBox loteriaBackground\">\n            <p class=\"ganadorFraccion\">FRACCIÓN</p>\n            <p>VALOR DEL PREMIO</p>\n            <p>DESCUENTO 14%</p>\n            <p>VALOR DEL PREMIO CON DESCUENTO</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n          </div>\n          <div\n            class=\"ganadorDetailsBox\"\n            *ngFor=\"let ganador of item.detalleGanador\"\n          >\n            <p class=\"ganadorFraccion\">{{ ganador.fraccion }}</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n        <div\n          class=\"ganadorBoxMobile\"\n          *ngFor=\"let ganador of item.detalleGanador; let i = index\"\n        >\n          <div class=\"ganadorHeaderBox loteriaBackground\">\n            <p>Premio {{ i + 1 }}</p>\n          </div>\n          <div class=\"ganadorDetailsBox\">\n            <p>FRACCIÓN</p>\n            <p>{{ ganador.fraccion }}</p>\n            <p>VALOR DEL PREMIO</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>DESCUENTO 14%</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>VALOR DEL PREMIO CON DESC.</p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n\n  <div class=\"containerInfoBox\" *ngIf=\"compra.lotto.length != 0\">\n    <div class=\"titleLottoBox\">\n      <h3>LOTTO</h3>\n    </div>\n    <div *ngFor=\"let item of compra.lotto\" class=\"dateLoteryBox lotto\">\n      <div class=\"infoSorteoBox\">\n        <p>\n          Sorteo: <span>{{ item.sorteo }}</span>\n        </p>\n        <p>\n          Fecha del sorteo: <span>{{ item.fecha }}</span>\n        </p>\n      </div>\n      <!--       <div class=\"infoTicketBox\">\n      </div> -->\n      <div class=\"dateTicketBox\">\n        <p>\n          Combinación: <span>{{ item.combinacion1 }}</span>\n        </p>\n        <p>\n          LottoPlus: <span>{{ item.combinacion3 }}</span>\n        </p>\n        <p>\n          Lottito: <span>{{ item.combinacion2 }}</span>\n        </p>\n        <p>\n          Nos Vemos Jefe:\n          <span>{{ item.combinacion4 }}</span>\n        </p>\n        <p *ngIf=\"item.combinacion5 && item.combinacion5 != ''\">\n          Antojito:\n          <span>{{ nombreAntojito(item.combinacion5) }}</span>\n        </p>\n      </div>\n      <div class=\"numberBox\">\n        <p>Cantidad: <span>1</span></p>\n      </div>\n      <div class=\"montoBox\">\n        <p>\n          Total: <span>{{ formatNumber(item.subtotal) }}</span>\n        </p>\n        <p *ngIf=\"item.tieneDescuento\">\n          Total con descuento:\n          <span>{{ formatNumber(item.subtotalConDesc) }}</span>\n        </p>\n      </div>\n      <ng-container *ngIf=\"item.hasGanador\">\n        <div class=\"ganadorTitleBox lottoColor\">\n          <p>Boleto ganador</p>\n        </div>\n        <div class=\"ganadorBox\">\n          <div class=\"ganadorHeaderBox lottoBackground\">\n            <p>VALOR DEL PREMIO</p>\n            <p>DESCUENTO 14%</p>\n            <p>VALOR DEL PREMIO CON DESCUENTO</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n          </div>\n          <div\n            class=\"ganadorDetailsBox\"\n            *ngFor=\"let ganador of item.detalleGanador\"\n          >\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n        <div\n          class=\"ganadorBoxMobile\"\n          *ngFor=\"let ganador of item.detalleGanador; let i = index\"\n        >\n          <div class=\"ganadorHeaderBox lottoBackground\">\n            <p>Premio {{ i + 1 }}</p>\n          </div>\n          <div class=\"ganadorDetailsBox\">\n            <p>VALOR DEL PREMIO</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>DESCUENTO 14%</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>VALOR DEL PREMIO CON DESC.</p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n\n  <div class=\"containerInfoBox\" *ngIf=\"compra.pozo.length != 0\">\n    <div class=\"titlePozoBox\">\n      <h3>POZO MILLONARIO</h3>\n    </div>\n    <div *ngFor=\"let item of compra.pozo\" class=\"dateLoteryBox pozo\">\n      <div class=\"infoSorteoBox\">\n        <p>\n          Sorteo: <span>{{ item.sorteo }}</span>\n        </p>\n        <p>\n          Fecha del sorteo: <span>{{ item.fecha }}</span>\n        </p>\n      </div>\n      <div class=\"dateTicketBox\">\n        <p>\n          Boleto: <span>{{ item.combinacion1 }}</span>\n        </p>\n        <p>\n          Mascota: <span>{{ nombreMascota(item.mascota) }}</span>\n        </p>\n        <p>\n          Combinación:\n          <span>{{ item.combinacion2 }}</span>\n        </p>\n      </div>\n      <div class=\"numberBox\">\n        <p>Cantidad: <span>1</span></p>\n      </div>\n      <div class=\"montoBox\">\n        <p>\n          Total: <span>{{ formatNumber(item.subtotal) }}</span>\n        </p>\n        <p *ngIf=\"item.tieneDescuento\">\n          Total con descuento:\n          <span>{{ formatNumber(item.subtotalConDesc) }}</span>\n        </p>\n      </div>\n      <ng-container *ngIf=\"item.hasGanador\">\n        <div class=\"ganadorTitleBox pozoColor\">\n          <p>Boleto ganador</p>\n        </div>\n        <div class=\"ganadorBox\">\n          <div class=\"ganadorHeaderBox pozoBackground\">\n            <p>VALOR DEL PREMIO</p>\n            <p>DESCUENTO 14%</p>\n            <p>VALOR DEL PREMIO CON DESCUENTO</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n          </div>\n          <div\n            class=\"ganadorDetailsBox\"\n            *ngFor=\"let ganador of item.detalleGanador\"\n          >\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n        <div\n          class=\"ganadorBoxMobile\"\n          *ngFor=\"let ganador of item.detalleGanador; let i = index\"\n        >\n          <div class=\"ganadorHeaderBox pozoBackground\">\n            <p>Premio {{ i + 1 }}</p>\n          </div>\n          <div class=\"ganadorDetailsBox\">\n            <p>VALOR DEL PREMIO</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>DESCUENTO 14%</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>VALOR DEL PREMIO CON DESC.</p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n\n  <div class=\"containerInfoBox\" *ngIf=\"compra.millonaria.length != 0\">\n    <div class=\"titlePozoBox\">\n      <h3>LA MILLONARIA</h3>\n    </div>\n    <div\n      *ngFor=\"let item of compra.millonaria\"\n      class=\"dateLoteryBox millonaria\"\n    >\n      <div class=\"infoSorteoBox\">\n        <p>\n          Sorteo: <span>{{ item.sorteo }}</span>\n        </p>\n        <p>\n          Fecha del sorteo: <span>{{ item.fecha }}</span>\n        </p>\n      </div>\n      <div class=\"dateTicketBox\">\n        <p>\n          Combinación: <span>{{ item.combinacion1 }}</span>\n        </p>\n        <p>\n          Serie: <span>{{ item.combinacion2 }}</span>\n        </p>\n\n        <p>\n          Fracciones seleccionadas:\n          <span>{{ item.fracciones.join(\", \") }}</span>\n        </p>\n      </div>\n      <div class=\"numberBox\">\n        <p>Cantidad: <span>1</span></p>\n      </div>\n      <div class=\"montoBox\">\n        <p>\n          Total: <span>{{ formatNumber(item.subtotal) }}</span>\n        </p>\n        <p *ngIf=\"item.tieneDescuento\">\n          Total con descuento:\n          <span>{{ formatNumber(item.subtotalConDesc) }}</span>\n        </p>\n      </div>\n      <ng-container *ngIf=\"item.hasGanador\">\n        <div class=\"ganadorTitleBox millonariaColor\">\n          <p>Boleto ganador</p>\n        </div>\n        <div class=\"ganadorBox\">\n          <div class=\"ganadorHeaderBox millonariaBackground\">\n            <p>VALOR DEL PREMIO</p>\n            <p>DESCUENTO 14%</p>\n            <p>VALOR DEL PREMIO CON DESCUENTO</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n          </div>\n          <div\n            class=\"ganadorDetailsBox\"\n            *ngFor=\"let ganador of item.detalleGanador\"\n          >\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n        <div\n          class=\"ganadorBoxMobile\"\n          *ngFor=\"let ganador of item.detalleGanador; let i = index\"\n        >\n          <div class=\"ganadorHeaderBox pozoBackground\">\n            <p>Premio {{ i + 1 }}</p>\n          </div>\n          <div class=\"ganadorDetailsBox\">\n            <p>VALOR DEL PREMIO</p>\n            <p>{{ formatNumber(ganador.valorPremio) }}</p>\n            <p>DESCUENTO 14%</p>\n            <p>\n              {{\n                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)\n              }}\n            </p>\n            <p>VALOR DEL PREMIO CON DESC.</p>\n            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>\n            <p>DESCRIPCIÓN DEL PREMIO</p>\n            <p>{{ ganador.descripcionPremio }}</p>\n          </div>\n        </div>\n      </ng-container>\n    </div>\n  </div>\n\n  <div class=\"totalBox\">\n    <p>\n      Total: <span *ngIf=\"compra.amount\">{{ formatNumber(compra.amount) }}</span\n      ><span *ngIf=\"compra.total\">{{ formatNumber(compra.total) }}</span>\n    </p>\n    <p\n      *ngIf=\"\n        (compra.amountConDesc && compra.amount != compra.amountConDesc) ||\n        (compra.totalConDesc && compra.total != compra.totalConDesc)\n      \"\n    >\n      Total con descuento:\n      <span *ngIf=\"compra.amountConDesc\">{{\n        formatNumber(compra.amountConDesc)\n      }}</span\n      ><span *ngIf=\"compra.totalConDesc\">{{\n        formatNumber(compra.totalConDesc)\n      }}</span>\n    </p>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -250,9 +250,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
-        this.productionSource = "https://ventas-api.loteria.com.ec"; //mySource = this.localSource;
-
-        this.mySource = this.testSource;
+        this.productionSource = "https://ventas-api.loteria.com.ec";
+        this.mySource = this.localSource;
         this.obtenerAnimalesSelecionados();
         this.obtenerAnimalesTabs();
       }
@@ -260,9 +259,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(LotteryService, [{
         key: "formatNumber",
         value: function formatNumber(number) {
-          var formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD'
+          // Create our number formatter.
+          var formatter = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
           });
           return formatter.format(number);
         }
@@ -381,7 +381,62 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 });
               });
               break;
+
+            case 14:
+              endpoint = "".concat(endpoint, "/millonariaSorteosDisponibles");
+              var address = this.mySource;
+              address = address + endpoint;
+              return new Promise(function (resolve, reject) {
+                _this2.http.get(address, {
+                  params: {
+                    lotteryToken: authData.lotteryToken,
+                    user: authData.user
+                  },
+                  headers: headers
+                }).subscribe(function (data) {
+                  var sorteosJugados = data;
+                  sorteosJugados.sort(_this2.ordenaSorteos);
+                  resolve(sorteosJugados);
+                }, function (error) {
+                  reject(new Error(error.error.message));
+                });
+              });
+              break;
           }
+        }
+      }, {
+        key: "obtenerSeries",
+        value: function obtenerSeries(sorteo) {
+          var _this3 = this;
+
+          var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
+          headers = headers.append("Content-Type", "application/json"); //let endpoint = "/inquiry";
+
+          var endpoint = "/lottery/getSeries";
+          var authData = this.getAuthData();
+          var address = this.mySource;
+          console.log(sorteo);
+          address = address + endpoint;
+          return new Promise(function (resolve, reject) {
+            _this3.http.get(address, {
+              params: {
+                lotteryToken: authData.lotteryToken,
+                user: authData.user,
+                sorteo: sorteo
+              },
+              headers: headers
+            }).subscribe(function (data) {
+              var aux = data.map(function (element) {
+                return {
+                  serie: element,
+                  status: false
+                };
+              });
+              resolve(aux);
+            }, function (error) {
+              reject(new Error(error.error.message));
+            });
+          });
         }
       }, {
         key: "ordenaSorteos",
@@ -393,7 +448,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "obtenerTickets",
         value: function obtenerTickets(token, loteria, sorteo, combinacion, combinacionFigura, tipoSeleccion) {
-          var _this3 = this;
+          var _this4 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json"); //let endpoint = "/inquiry";
@@ -415,7 +470,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var address = this.mySource;
               address = address + endpoint;
               return new Promise(function (resolve, reject) {
-                _this3.http.post(address, body, {
+                _this4.http.post(address, body, {
                   headers: headers
                 }).subscribe(function (data) {
                   var combinacionesDisponibles = data.combinaciones;
@@ -431,7 +486,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var address = this.mySource;
               address = address + endpoint;
               return new Promise(function (resolve, reject) {
-                _this3.http.post(address, body, {
+                _this4.http.post(address, body, {
                   headers: headers
                 }).subscribe(function (data) {
                   var combinacionesDisponibles = data.combinaciones;
@@ -447,7 +502,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var address = this.mySource;
               address = address + endpoint;
               return new Promise(function (resolve, reject) {
-                _this3.http.post(address, body, {
+                _this4.http.post(address, body, {
+                  headers: headers
+                }).subscribe(function (data) {
+                  var combinacionesDisponibles = data.combinaciones;
+                  resolve(combinacionesDisponibles);
+                }, function (error) {
+                  reject(new Error(error.error.message));
+                });
+              });
+              break;
+
+            case 14:
+              endpoint = "".concat(endpoint, "/millonariaCombinacionesDisponibles");
+              var address = this.mySource;
+              address = address + endpoint;
+              return new Promise(function (resolve, reject) {
+                _this4.http.post(address, body, {
                   headers: headers
                 }).subscribe(function (data) {
                   var combinacionesDisponibles = data.combinaciones;
@@ -462,7 +533,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "obtenerImagenBoleto",
         value: function obtenerImagenBoleto(tipoLoteria, sorteo) {
-          var _this4 = this;
+          var _this5 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json");
@@ -482,6 +553,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               break;
 
             default:
+              endpoint = "".concat(endpoint, "/millonariaBoleto");
               break;
           }
 
@@ -491,7 +563,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             sorteo: sorteo
           };
           return new Promise(function (resolve, reject) {
-            _this4.http.post(address, body, {
+            _this5.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               var boleto = data;
@@ -502,7 +574,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "authUser",
         value: function authUser(token) {
-          var _this5 = this;
+          var _this6 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json"); //let endpoint = "/inquiry";
@@ -515,7 +587,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var address = this.mySource;
           address = address + endpoint;
           return new Promise(function (resolve, reject) {
-            _this5.http.post(address, body, {
+            _this6.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               localStorage.setItem("userData", JSON.stringify(data));
@@ -1024,7 +1096,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "comprarBoletos",
         value: function comprarBoletos(token, boletos, tipoLoteria) {
-          var _this6 = this;
+          var _this7 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json");
@@ -1038,7 +1110,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             user: authData.user
           };
           return new Promise(function (resolve, reject) {
-            _this6.http.post(address, body, {
+            _this7.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               var response = data;
@@ -1065,7 +1137,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "reservarBoletos",
         value: function reservarBoletos(token, boleto, tipoLoteria, reservaId) {
-          var _this7 = this;
+          var _this8 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json");
@@ -1099,17 +1171,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               body["lotto"] = aux;
               break;
 
-            default:
+            case 5:
               aux = [{
                 combinacion: boleto.ticket.combinacion1,
                 sorteo: boleto.sorteo
               }];
               body["pozo"] = aux;
               break;
+
+            case 14:
+              aux = [{
+                combinacion: boleto.ticket.combinacion1,
+                combinacion2: boleto.ticket.combinacion2,
+                fracciones: boleto.fracciones,
+                sorteo: boleto.sorteo
+              }];
+              body["millonaria"] = aux;
+              break;
           }
 
           return new Promise(function (resolve, reject) {
-            _this7.http.post(address, body, {
+            _this8.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               var response = data;
@@ -1122,7 +1204,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "eliminarBoletosDeReserva",
         value: function eliminarBoletosDeReserva(token, boleto, sorteo, fracciones, tipoLoteria, reservaId) {
-          var _this8 = this;
+          var _this9 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json");
@@ -1156,17 +1238,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               body["lotto"] = aux;
               break;
 
-            default:
+            case 5:
               aux = [{
                 combinacion: boleto.combinacion1,
                 sorteo: sorteo
               }];
               body["pozo"] = aux;
               break;
+
+            case 14:
+              aux = [{
+                combinacion: boleto.combinacion1,
+                combinacion2: boleto.combinacion2,
+                fracciones: fracciones,
+                sorteo: sorteo
+              }];
+              body["millonaria"] = aux;
+              break;
           }
 
           return new Promise(function (resolve, reject) {
-            _this8.http.post(address, body, {
+            _this9.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               var response = data;
@@ -1178,8 +1270,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "eliminarTodosLosBoletosDeReserva",
-        value: function eliminarTodosLosBoletosDeReserva(token, boletosLoteria, boletosLotto, boletosPozo, reservaId) {
-          var _this9 = this;
+        value: function eliminarTodosLosBoletosDeReserva(token, boletosLoteria, boletosLotto, boletosPozo, boletosMillonaria, reservaId) {
+          var _this10 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json");
@@ -1196,6 +1288,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var auxLoteria = [];
           var auxLotto = [];
           var auxPozo = [];
+          var auxMillonaria = [];
           boletosLoteria.forEach(function (boleto) {
             auxLoteria.push({
               combinacion: boleto.ticket.combinacion,
@@ -1218,8 +1311,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             });
             body["pozo"] = auxPozo;
           });
+          boletosMillonaria.forEach(function (boleto) {
+            auxMillonaria.push({
+              combinacion: boleto.ticket.combinacion1,
+              sorteo: boleto.sorteo
+            });
+            body["millonaria"] = auxMillonaria;
+          });
           return new Promise(function (resolve, reject) {
-            _this9.http.post(address, body, {
+            _this10.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               var response = data;
@@ -1348,7 +1448,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".titleBox {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-weight: 600;\n  border-bottom: 1px solid #2f72b9;\n  margin-bottom: 23px;\n}\n.titleBox p {\n  font-family: \"Monstserrat Bold\";\n  font-size: 23px;\n  color: #2f72b9;\n  margin: 2px;\n}\n.titleBox a {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails {\n  margin-bottom: 20px;\n}\n.containerDetails .containerInfoBox .titleLoteriaBox {\n  display: flex;\n  background-color: #2f72b9;\n  padding-left: 10px;\n  padding-right: 10px;\n  border-radius: 12px;\n}\n.containerDetails .containerInfoBox .titleLoteriaBox h3 {\n  color: white;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n}\n.containerDetails .containerInfoBox .titleLottoBox {\n  display: flex;\n  background-color: #b51f20;\n  padding-left: 10px;\n  padding-right: 10px;\n  border-radius: 12px;\n}\n.containerDetails .containerInfoBox .titleLottoBox h3 {\n  color: white;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n}\n.containerDetails .containerInfoBox .titlePozoBox {\n  display: flex;\n  background-color: #04b865;\n  padding-left: 10px;\n  padding-right: 10px;\n  border-radius: 12px;\n}\n.containerDetails .containerInfoBox .titlePozoBox h3 {\n  color: white;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n}\n.containerDetails .containerInfoBox .titleLoteryBox {\n  display: flex;\n  justify-content: space-between;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.containerDetails .containerInfoBox .titleLoteryBox h3 {\n  font-size: 16px;\n  font-family: \"Monstserrat SemiBold\";\n  font-weight: normal;\n  margin: 8px;\n}\n.containerDetails .containerInfoBox .titleLoteryBox h3 span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateClientBox {\n  width: 100%;\n}\n.containerDetails .containerInfoBox .dateClientBox .infoClientBox {\n  display: flex;\n  justify-content: space-between;\n}\n.containerDetails .containerInfoBox .dateClientBox .infoClientBox p:nth-child(1) {\n  margin-left: 20px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox {\n  /*       display: grid;\n       grid-template-columns: 30% 1fr;\n       column-gap: 3rem;\n  */\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  padding: 23px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox:nth-last-child(1) {\n  border: none !important;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox {\n  width: 30%;\n  border-right: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox {\n  width: 42%;\n  font-weight: 600;\n  font-size: 15px;\n  border-right: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .numberBox {\n  width: 12%;\n  text-align: center;\n  border-right: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .numberBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .numberBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .montoBox {\n  width: 12%;\n  text-align: right;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .montoBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .montoBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoTicketBox {\n  display: flex;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  /*         display: grid;\n         grid-template-columns: repeat(3, 1fr);\n  */\n  font-family: \"Monstserrat Regular\";\n  font-size: 15px;\n  border-right: 1px solid black;\n  width: 70%;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox {\n  align-self: flex-start;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox.loteriaColor {\n  color: #2f72b9;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox.lottoColor {\n  color: #b51f20;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox.pozoColor {\n  color: #04b865;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox p {\n  font-size: 20px;\n  font-family: \"Monstserrat Bold\";\n  margin: 15px 0 8px 0;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile {\n  display: none;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox {\n  display: flex;\n  width: 100%;\n  flex-direction: column;\n  align-items: center;\n  border-radius: 12px;\n  margin-bottom: 20px;\n  box-shadow: 5px 0px 18px 3px rgba(0, 0, 0, 0.3);\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 12px 12px 0 0;\n  width: 100%;\n  min-height: 40px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox.loteriaBackground {\n  background-color: #2f72b9;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox.lottoBackground {\n  background-color: #b51f20;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox.pozoBackground {\n  background-color: #04b865;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox p {\n  width: 20%;\n  font-size: 14px;\n  font-family: \"Monstserrat Bold\";\n  text-align: center;\n  margin: 5px 0;\n  color: white;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox .ganadorFraccion {\n  width: 10%;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  width: 100%;\n  min-height: 40px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox p {\n  width: 20%;\n  font-size: 14px;\n  font-family: \"Monstserrat Bold\";\n  text-align: center;\n  margin: 5px 0;\n  border-bottom: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox:nth-last-child(1) p {\n  border: none;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox .ganadorFraccion {\n  width: 10%;\n  text-align: center;\n}\n.containerDetails .containerInfoBox .loteria {\n  border-width: 0 0 1px 0;\n  border-style: solid;\n  border-color: #2f72b9;\n}\n.containerDetails .containerInfoBox .lotto {\n  border-width: 0 0 1px 0;\n  border-style: solid;\n  border-color: #b51f20;\n}\n.containerDetails .containerInfoBox .pozo {\n  border-width: 0 0 1px 0;\n  border-style: solid;\n  border-color: #04b865;\n}\n.containerDetails .totalBox {\n  width: 100%;\n  margin: auto;\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\n.containerDetails .totalBox p {\n  color: #000;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .totalBox p span {\n  color: black;\n  font-family: \"Monstserrat Regular\";\n}\n.mensajeButtonBox {\n  margin: auto;\n  margin-bottom: 20px;\n  padding: 16px;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid #c3c3c3;\n}\n.mensajeButtonBox:hover {\n  background-color: green;\n}\n.mensajeButtonBox p {\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 23px;\n  color: green;\n}\n.mensajeButtonBox:hover p {\n  color: white;\n}\n@media screen and (max-width: 1000px) {\n  .containerDetails .containerInfoBox .dateLoteryBox {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    align-items: center;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox {\n    width: 100%;\n    margin: 0;\n    border: none;\n    border-bottom: 1px solid black;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox {\n    width: 100%;\n    border: none;\n    border-bottom: 1px solid black;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .numberBox {\n    width: 50%;\n    border: none;\n    text-align: left;\n    margin-bottom: 20px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .montoBox {\n    width: 50%;\n    margin-bottom: 20px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox {\n    width: 100%;\n    border-bottom: 1px solid black;\n    margin-bottom: 10px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBox {\n    display: none;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile {\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    border-radius: 12px;\n    margin-bottom: 10px;\n    box-shadow: 5px 0px 18px 3px rgba(0, 0, 0, 0.3);\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox {\n    width: 100%;\n    border-radius: 12px 12px 0 0;\n    padding: 10px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox.loteriaBackground {\n    background-color: #2f72b9;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox.lottoBackground {\n    background-color: #b51f20;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox.pozoBackground {\n    background-color: #04b865;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox p {\n    color: white;\n    font-weight: bold;\n    font-size: 16px;\n    margin: 0;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox {\n    display: flex;\n    justify-content: space-between;\n    flex-wrap: wrap;\n    padding: 20px;\n    border-radius: 0 0 12px 12px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p {\n    font-size: 12px;\n    font-weight: bold;\n    width: 50%;\n    border-bottom: 1px solid black;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-child(even) {\n    text-align: right;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-child(odd) {\n    text-align: left;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-last-child(1), .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-last-child(2) {\n    border: none;\n  }\n}\n@media screen and (max-width: 1000px) {\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p {\n    font-size: 10px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FuZ2Vsb2Fjci9Qcm95ZWN0b3MvbG90ZXJpYU5hY2lvbmFsL2FwcC9sb3RlcmlhTmFjaW9uYWxXZWJBcHAvc3JjL2FwcC9wYXltZW50L2NvbXBvbmVudHMvY29tcHJhLWRlc2NyaXBjaW9uL2NvbXByYS1kZXNjcmlwY2lvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvcGF5bWVudC9jb21wb25lbnRzL2NvbXByYS1kZXNjcmlwY2lvbi9jb21wcmEtZGVzY3JpcGNpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBVUE7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGdDQUFBO0VBQ0EsbUJBQUE7QUNURjtBRFVFO0VBQ0UsK0JBbkJZO0VBb0JaLGVBQUE7RUFDQSxjQWZZO0VBZ0JaLFdBQUE7QUNSSjtBRFdFO0VBQ0Usa0NBeEJhO0FDZWpCO0FEWUE7RUFDRSxtQkFBQTtBQ1RGO0FEV0k7RUFDRSxhQUFBO0VBQ0EseUJBNUJVO0VBOEJWLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtBQ1ZOO0FEV007RUFDRSxZQUFBO0VBQ0EsbUNBeENXO0VBeUNYLGVBQUE7QUNUUjtBRFlJO0VBQ0UsYUFBQTtFQUNBLHlCQXhDUTtFQTBDUixrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7QUNYTjtBRFlNO0VBQ0UsWUFBQTtFQUNBLG1DQXJEVztFQXNEWCxlQUFBO0FDVlI7QURhSTtFQUNFLGFBQUE7RUFDQSx5QkFwRE87RUFzRFAsa0JBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDWk47QURhTTtFQUNFLFlBQUE7RUFDQSxtQ0FsRVc7RUFtRVgsZUFBQTtBQ1hSO0FEZUk7RUFDRSxhQUFBO0VBQ0EsOEJBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDYk47QURlTTtFQUNFLGVBQUE7RUFDQSxtQ0EvRVc7RUFnRlgsbUJBQUE7RUFDQSxXQUFBO0FDYlI7QURjUTtFQUNFLGtDQWxGTztBQ3NFakI7QURnQkk7RUFDRSxXQUFBO0FDZE47QURnQk07RUFDRSxhQUFBO0VBQ0EsOEJBQUE7QUNkUjtBRGdCUTtFQUNFLGlCQUFBO0FDZFY7QURtQkk7RUFDRTs7O0dBQUE7RUFJQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxlQUFBO0VBQ0EsOEJBQUE7RUFDQSxhQUFBO0FDakJOO0FEa0JNO0VBQ0UsdUJBQUE7QUNoQlI7QURrQk07RUFDRSxVQUFBO0VBQ0EsNkJBQUE7QUNoQlI7QURpQlE7RUFDRSxnQkFBQTtFQUNBLGVBQUE7RUFDQSwrQkF4SE07QUN5R2hCO0FEZ0JVO0VBQ0Usa0NBeEhLO0FDMEdqQjtBRGtCTTtFQUNFLFVBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSw2QkFBQTtBQ2hCUjtBRGlCUTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLCtCQXRJTTtBQ3VIaEI7QURnQlU7RUFDRSxrQ0F0SUs7QUN3SGpCO0FEbUJNO0VBQ0UsVUFBQTtFQUNBLGtCQUFBO0VBQ0EsNkJBQUE7QUNqQlI7QURrQlE7RUFDRSxnQkFBQTtFQUNBLGVBQUE7RUFDQSwrQkFwSk07QUNvSWhCO0FEaUJVO0VBQ0Usa0NBcEpLO0FDcUlqQjtBRG9CTTtFQUNFLFVBQUE7RUFDQSxpQkFBQTtBQ2xCUjtBRG1CUTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLCtCQWpLTTtBQ2dKaEI7QURrQlU7RUFDRSxrQ0FqS0s7QUNpSmpCO0FEb0JNO0VBQ0UsYUFBQTtFQUNBLDZCQUFBO0VBQ0EsdUJBQUE7RUFDQTs7R0FBQTtFQUdBLGtDQTVLUztFQTZLVCxlQUFBO0VBQ0EsNkJBQUE7RUFDQSxVQUFBO0FDbEJSO0FEb0JNO0VBQ0Usc0JBQUE7QUNsQlI7QURtQlE7RUFDRSxjQWhMTTtBQytKaEI7QURtQlE7RUFDRSxjQWxMSTtBQ2lLZDtBRG1CUTtFQUNFLGNBcExHO0FDbUtiO0FEbUJRO0VBQ0UsZUFBQTtFQUNBLCtCQWhNTTtFQWlNTixvQkFBQTtBQ2pCVjtBRHFCTTtFQUNFLGFBQUE7QUNuQlI7QURxQk07RUFDRSxhQUFBO0VBQ0EsV0FBQTtFQUNBLHNCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0VBR0EsK0NBQUE7QUNuQlI7QURvQlE7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSw2QkFBQTtFQUNBLDRCQUFBO0VBQ0EsV0FBQTtFQUNBLGdCQUFBO0FDbEJWO0FEbUJVO0VBQ0UseUJBcE5JO0FDbU1oQjtBRG1CVTtFQUNFLHlCQXRORTtBQ3FNZDtBRG1CVTtFQUNFLHlCQXhOQztBQ3VNYjtBRG1CVTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0EsK0JBck9JO0VBc09KLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLFlBQUE7QUNqQlo7QURtQlU7RUFDRSxVQUFBO0FDakJaO0FEb0JRO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsNkJBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7QUNsQlY7QURtQlU7RUFDRSxVQUFBO0VBQ0EsZUFBQTtFQUNBLCtCQXZQSTtFQXdQSixrQkFBQTtFQUNBLGFBQUE7RUFDQSw4QkFBQTtBQ2pCWjtBRG1CVTtFQUNFLFlBQUE7QUNqQlo7QURtQlU7RUFDRSxVQUFBO0VBQ0Esa0JBQUE7QUNqQlo7QUR1Qkk7RUFDRSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBcFFVO0FDK09oQjtBRHVCSTtFQUNFLHVCQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkF4UVE7QUNtUGQ7QUR1Qkk7RUFDRSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBNVFPO0FDdVBiO0FEeUJFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBRUEsYUFBQTtFQUNBLHNCQUFBO0VBQ0EseUJBQUE7RUFDQSxxQkFBQTtBQ3hCSjtBRDBCSTtFQUNFLFdBQUE7RUFDQSwrQkFwU1U7QUM0UWhCO0FEMEJNO0VBQ0UsWUFBQTtFQUNBLGtDQXRTUztBQzhRakI7QUQ4QkE7RUFDRSxZQUFBO0VBQ0EsbUJBQUE7RUFFQSxhQUFBO0VBQ0EsZUFBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0VBRUEseUJBQUE7QUM3QkY7QUQrQkU7RUFDRSx1QkFBQTtBQzdCSjtBRGdDRTtFQUNFLG1DQTVUYTtFQTZUYixlQUFBO0VBQ0EsWUFBQTtBQzlCSjtBRGlDRTtFQUNFLFlBQUE7QUMvQko7QURrQ0E7RUFHTTtJQUNFLGFBQUE7SUFDQSxtQkFBQTtJQUNBLGVBQUE7SUFDQSxtQkFBQTtFQ2pDTjtFRGtDTTtJQUNFLFdBQUE7SUFDQSxTQUFBO0lBQ0EsWUFBQTtJQUNBLDhCQUFBO0VDaENSO0VEa0NNO0lBQ0UsV0FBQTtJQUNBLFlBQUE7SUFDQSw4QkFBQTtFQ2hDUjtFRG1DTTtJQUNFLFVBQUE7SUFDQSxZQUFBO0lBQ0EsZ0JBQUE7SUFDQSxtQkFBQTtFQ2pDUjtFRG1DTTtJQUNFLFVBQUE7SUFDQSxtQkFBQTtFQ2pDUjtFRG1DTTtJQUNFLFdBQUE7SUFDQSw4QkFBQTtJQUNBLG1CQUFBO0VDakNSO0VEbUNNO0lBQ0UsYUFBQTtFQ2pDUjtFRG1DTTtJQUNFLGFBQUE7SUFDQSxzQkFBQTtJQUNBLFdBQUE7SUFDQSxtQkFBQTtJQUNBLG1CQUFBO0lBR0EsK0NBQUE7RUNqQ1I7RURrQ1E7SUFDRSxXQUFBO0lBQ0EsNEJBQUE7SUFDQSxhQUFBO0VDaENWO0VEaUNVO0lBQ0UseUJBdFhFO0VDdVZkO0VEaUNVO0lBQ0UseUJBeFhBO0VDeVZaO0VEaUNVO0lBQ0UseUJBMVhEO0VDMlZYO0VEaUNVO0lBQ0UsWUFBQTtJQUNBLGlCQUFBO0lBQ0EsZUFBQTtJQUNBLFNBQUE7RUMvQlo7RURrQ1E7SUFDRSxhQUFBO0lBQ0EsOEJBQUE7SUFDQSxlQUFBO0lBQ0EsYUFBQTtJQUNBLDRCQUFBO0VDaENWO0VEaUNVO0lBQ0UsZUFBQTtJQUNBLGlCQUFBO0lBQ0EsVUFBQTtJQUNBLDhCQUFBO0VDL0JaO0VEZ0NZO0lBQ0UsaUJBQUE7RUM5QmQ7RURnQ1k7SUFDRSxnQkFBQTtFQzlCZDtFRGdDWTtJQUVFLFlBQUE7RUMvQmQ7QUFDRjtBRHVDQTtFQU1ZO0lBQ0UsZUFBQTtFQzFDWjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvcGF5bWVudC9jb21wb25lbnRzL2NvbXByYS1kZXNjcmlwY2lvbi9jb21wcmEtZGVzY3JpcGNpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkZnVlbnRlLXRpdHVsbzogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG4kZnVlbnRlLXN1YnRpdHVsbzogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuJGZ1ZW50ZS1wYXJyYWZvOiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbiRmdWVudGUtYm90b25lczogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuXG4kY29sb3ItaGVhZGVyOiAjN2M5MWE4O1xuJGNvbG9yLWxvdGVyaWE6ICMyZjcyYjk7XG4kY29sb3ItbG90dG86ICNiNTFmMjA7XG4kY29sb3ItcG96bzogIzA0Yjg2NTtcblxuLnRpdGxlQm94IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICRjb2xvci1sb3RlcmlhO1xuICBtYXJnaW4tYm90dG9tOiAyM3B4O1xuICBwIHtcbiAgICBmb250LWZhbWlseTogJGZ1ZW50ZS10aXR1bG87XG4gICAgZm9udC1zaXplOiAyM3B4O1xuICAgIGNvbG9yOiAkY29sb3ItbG90ZXJpYTtcbiAgICBtYXJnaW46IDJweDtcbiAgfVxuXG4gIGEge1xuICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXBhcnJhZm87XG4gIH1cbn1cbi5jb250YWluZXJEZXRhaWxzIHtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgLmNvbnRhaW5lckluZm9Cb3gge1xuICAgIC50aXRsZUxvdGVyaWFCb3gge1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1sb3RlcmlhO1xuXG4gICAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICAgICAgYm9yZGVyLXJhZGl1czogMTJweDtcbiAgICAgIGgzIHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgIH1cbiAgICB9XG4gICAgLnRpdGxlTG90dG9Cb3gge1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1sb3R0bztcblxuICAgICAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICAgICAgcGFkZGluZy1yaWdodDogMTBweDtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gICAgICBoMyB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtc3VidGl0dWxvO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICB9XG4gICAgfVxuICAgIC50aXRsZVBvem9Cb3gge1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xuXG4gICAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICAgICAgYm9yZGVyLXJhZGl1czogMTJweDtcbiAgICAgIGgzIHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAudGl0bGVMb3RlcnlCb3gge1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICAgIHBhZGRpbmctbGVmdDogMTBweDtcbiAgICAgIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG5cbiAgICAgIGgzIHtcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gICAgICAgIG1hcmdpbjogOHB4O1xuICAgICAgICBzcGFuIHtcbiAgICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1wYXJyYWZvO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICAgIC5kYXRlQ2xpZW50Qm94IHtcbiAgICAgIHdpZHRoOiAxMDAlO1xuXG4gICAgICAuaW5mb0NsaWVudEJveCB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcblxuICAgICAgICBwOm50aC1jaGlsZCgxKSB7XG4gICAgICAgICAgbWFyZ2luLWxlZnQ6IDIwcHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG5cbiAgICAuZGF0ZUxvdGVyeUJveCB7XG4gICAgICAvKiAgICAgICBkaXNwbGF5OiBncmlkO1xuICAgICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAzMCUgMWZyO1xuICAgICAgY29sdW1uLWdhcDogM3JlbTtcbiAqL1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgICBwYWRkaW5nOiAyM3B4O1xuICAgICAgJjpudGgtbGFzdC1jaGlsZCgxKSB7XG4gICAgICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50O1xuICAgICAgfVxuICAgICAgLmluZm9Tb3J0ZW9Cb3gge1xuICAgICAgICB3aWR0aDogMzAlO1xuICAgICAgICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgcCB7XG4gICAgICAgICAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgICAgICAgICBmb250LXNpemU6IDE1cHg7XG4gICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtdGl0dWxvO1xuICAgICAgICAgIHNwYW4ge1xuICAgICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICAgIC5kYXRlVGlja2V0Qm94IHtcbiAgICAgICAgd2lkdGg6IDQyJTtcbiAgICAgICAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgICAgICAgZm9udC1zaXplOiAxNXB4O1xuICAgICAgICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgcCB7XG4gICAgICAgICAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgICAgICAgICBmb250LXNpemU6IDE1cHg7XG4gICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtdGl0dWxvO1xuICAgICAgICAgIHNwYW4ge1xuICAgICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLm51bWJlckJveCB7XG4gICAgICAgIHdpZHRoOiAxMiU7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgYmxhY2s7XG4gICAgICAgIHAge1xuICAgICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG4gICAgICAgICAgZm9udC1zaXplOiAxNXB4O1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcbiAgICAgICAgICBzcGFuIHtcbiAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXBhcnJhZm87XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC5tb250b0JveCB7XG4gICAgICAgIHdpZHRoOiAxMiU7XG4gICAgICAgIHRleHQtYWxpZ246IHJpZ2h0O1xuICAgICAgICBwIHtcbiAgICAgICAgICBmb250LXdlaWdodDogNTAwO1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTVweDtcbiAgICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS10aXR1bG87XG4gICAgICAgICAgc3BhbiB7XG4gICAgICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1wYXJyYWZvO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgLmluZm9UaWNrZXRCb3gge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcbiAgICAgICAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG4gICAgICAgIC8qICAgICAgICAgZGlzcGxheTogZ3JpZDtcbiAgICAgICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiByZXBlYXQoMywgMWZyKTtcbiAqL1xuICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1wYXJyYWZvO1xuICAgICAgICBmb250LXNpemU6IDE1cHg7XG4gICAgICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xuICAgICAgICB3aWR0aDogNzAlO1xuICAgICAgfVxuICAgICAgLmdhbmFkb3JUaXRsZUJveCB7XG4gICAgICAgIGFsaWduLXNlbGY6IGZsZXgtc3RhcnQ7XG4gICAgICAgICYubG90ZXJpYUNvbG9yIHtcbiAgICAgICAgICBjb2xvcjogJGNvbG9yLWxvdGVyaWE7XG4gICAgICAgIH1cbiAgICAgICAgJi5sb3R0b0NvbG9yIHtcbiAgICAgICAgICBjb2xvcjogJGNvbG9yLWxvdHRvO1xuICAgICAgICB9XG4gICAgICAgICYucG96b0NvbG9yIHtcbiAgICAgICAgICBjb2xvcjogJGNvbG9yLXBvem87XG4gICAgICAgIH1cbiAgICAgICAgcCB7XG4gICAgICAgICAgZm9udC1zaXplOiAyMHB4O1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcbiAgICAgICAgICBtYXJnaW46IDE1cHggMCA4cHggMDtcbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAuZ2FuYWRvckJveE1vYmlsZSB7XG4gICAgICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgICB9XG4gICAgICAuZ2FuYWRvckJveCB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4O1xuICAgICAgICBtYXJnaW4tYm90dG9tOiAyMHB4O1xuICAgICAgICAtd2Via2l0LWJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICAgICAgICAtbW96LWJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICAgICAgICBib3gtc2hhZG93OiA1cHggMHB4IDE4cHggM3B4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgLmdhbmFkb3JIZWFkZXJCb3gge1xuICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4IDEycHggMCAwO1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgIG1pbi1oZWlnaHQ6IDQwcHg7XG4gICAgICAgICAgJi5sb3RlcmlhQmFja2dyb3VuZCB7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkY29sb3ItbG90ZXJpYTtcbiAgICAgICAgICB9XG4gICAgICAgICAgJi5sb3R0b0JhY2tncm91bmQge1xuICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdHRvO1xuICAgICAgICAgIH1cbiAgICAgICAgICAmLnBvem9CYWNrZ3JvdW5kIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xuICAgICAgICAgIH1cbiAgICAgICAgICBwIHtcbiAgICAgICAgICAgIHdpZHRoOiAyMCU7XG4gICAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS10aXR1bG87XG4gICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICBtYXJnaW46IDVweCAwO1xuICAgICAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICAgIH1cbiAgICAgICAgICAuZ2FuYWRvckZyYWNjaW9uIHtcbiAgICAgICAgICAgIHdpZHRoOiAxMCU7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5nYW5hZG9yRGV0YWlsc0JveCB7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgIG1pbi1oZWlnaHQ6IDQwcHg7XG4gICAgICAgICAgcCB7XG4gICAgICAgICAgICB3aWR0aDogMjAlO1xuICAgICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtdGl0dWxvO1xuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgICAgbWFyZ2luOiA1cHggMDtcbiAgICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgICB9XG4gICAgICAgICAgJjpudGgtbGFzdC1jaGlsZCgxKSBwIHtcbiAgICAgICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmdhbmFkb3JGcmFjY2lvbiB7XG4gICAgICAgICAgICB3aWR0aDogMTAlO1xuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cblxuICAgIC5sb3RlcmlhIHtcbiAgICAgIGJvcmRlci13aWR0aDogMCAwIDFweCAwO1xuICAgICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICAgIGJvcmRlci1jb2xvcjogJGNvbG9yLWxvdGVyaWE7XG4gICAgfVxuICAgIC5sb3R0byB7XG4gICAgICBib3JkZXItd2lkdGg6IDAgMCAxcHggMDtcbiAgICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgICBib3JkZXItY29sb3I6ICRjb2xvci1sb3R0bztcbiAgICB9XG4gICAgLnBvem8ge1xuICAgICAgYm9yZGVyLXdpZHRoOiAwIDAgMXB4IDA7XG4gICAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgICAgYm9yZGVyLWNvbG9yOiAkY29sb3ItcG96bztcbiAgICB9XG4gIH1cblxuICAudG90YWxCb3gge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbjogYXV0bztcbiAgICBwYWRkaW5nOiAxMHB4O1xuXG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xuXG4gICAgcCB7XG4gICAgICBjb2xvcjogIzAwMDtcbiAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcblxuICAgICAgc3BhbiB7XG4gICAgICAgIGNvbG9yOiBibGFjaztcbiAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cblxuLm1lbnNhamVCdXR0b25Cb3gge1xuICBtYXJnaW46IGF1dG87XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG5cbiAgcGFkZGluZzogMTZweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcblxuICBib3JkZXI6IDFweCBzb2xpZCAjYzNjM2MzO1xuXG4gICY6aG92ZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xuICB9XG5cbiAgcCB7XG4gICAgZm9udC1mYW1pbHk6ICRmdWVudGUtYm90b25lcztcbiAgICBmb250LXNpemU6IDIzcHg7XG4gICAgY29sb3I6IGdyZWVuO1xuICB9XG5cbiAgJjpob3ZlciBwIHtcbiAgICBjb2xvcjogd2hpdGU7XG4gIH1cbn1cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xuICAuY29udGFpbmVyRGV0YWlscyB7XG4gICAgLmNvbnRhaW5lckluZm9Cb3gge1xuICAgICAgLmRhdGVMb3RlcnlCb3gge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICAgICAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIC5pbmZvU29ydGVvQm94IHtcbiAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgfVxuICAgICAgICAuZGF0ZVRpY2tldEJveCB7XG4gICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgfVxuXG4gICAgICAgIC5udW1iZXJCb3gge1xuICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgICAgICAgfVxuICAgICAgICAubW9udG9Cb3gge1xuICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgICAgICAgfVxuICAgICAgICAuZ2FuYWRvclRpdGxlQm94IHtcbiAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgYmxhY2s7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgICAgICAgfVxuICAgICAgICAuZ2FuYWRvckJveCB7XG4gICAgICAgICAgZGlzcGxheTogbm9uZTtcbiAgICAgICAgfVxuICAgICAgICAuZ2FuYWRvckJveE1vYmlsZSB7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgICAgICAgICAtd2Via2l0LWJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICAgICAgICAgIC1tb3otYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgICAgYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgICAgLmdhbmFkb3JIZWFkZXJCb3gge1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4IDEycHggMCAwO1xuICAgICAgICAgICAgcGFkZGluZzogMTBweDtcbiAgICAgICAgICAgICYubG90ZXJpYUJhY2tncm91bmQge1xuICAgICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkY29sb3ItbG90ZXJpYTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgICYubG90dG9CYWNrZ3JvdW5kIHtcbiAgICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdHRvO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgJi5wb3pvQmFja2dyb3VuZCB7XG4gICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgcCB7XG4gICAgICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgICAuZ2FuYWRvckRldGFpbHNCb3gge1xuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICAgICAgICAgIGZsZXgtd3JhcDogd3JhcDtcbiAgICAgICAgICAgIHBhZGRpbmc6IDIwcHg7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAwIDAgMTJweCAxMnB4O1xuICAgICAgICAgICAgcCB7XG4gICAgICAgICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgICAgICAgJjpudGgtY2hpbGQoZXZlbikge1xuICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IHJpZ2h0O1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICY6bnRoLWNoaWxkKG9kZCkge1xuICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgJjpudGgtbGFzdC1jaGlsZCgxKSxcbiAgICAgICAgICAgICAgJjpudGgtbGFzdC1jaGlsZCgyKSB7XG4gICAgICAgICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDAwcHgpIHtcbiAgLmNvbnRhaW5lckRldGFpbHMge1xuICAgIC5jb250YWluZXJJbmZvQm94IHtcbiAgICAgIC5kYXRlTG90ZXJ5Qm94IHtcbiAgICAgICAgLmdhbmFkb3JCb3hNb2JpbGUge1xuICAgICAgICAgIC5nYW5hZG9yRGV0YWlsc0JveCB7XG4gICAgICAgICAgICBwIHtcbiAgICAgICAgICAgICAgZm9udC1zaXplOiAxMHB4O1xuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIiwiLnRpdGxlQm94IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMyZjcyYjk7XG4gIG1hcmdpbi1ib3R0b206IDIzcHg7XG59XG4udGl0bGVCb3ggcCB7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbiAgZm9udC1zaXplOiAyM3B4O1xuICBjb2xvcjogIzJmNzJiOTtcbiAgbWFyZ2luOiAycHg7XG59XG4udGl0bGVCb3ggYSB7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbn1cblxuLmNvbnRhaW5lckRldGFpbHMge1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnRpdGxlTG90ZXJpYUJveCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyZjcyYjk7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogMTJweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC50aXRsZUxvdGVyaWFCb3ggaDMge1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC50aXRsZUxvdHRvQm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I1MWYyMDtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMnB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnRpdGxlTG90dG9Cb3ggaDMge1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC50aXRsZVBvem9Cb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDRiODY1O1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEycHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAudGl0bGVQb3pvQm94IGgzIHtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuICBmb250LXNpemU6IDE2cHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAudGl0bGVMb3RlcnlCb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC50aXRsZUxvdGVyeUJveCBoMyB7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgbWFyZ2luOiA4cHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAudGl0bGVMb3RlcnlCb3ggaDMgc3BhbiB7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlQ2xpZW50Qm94IHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUNsaWVudEJveCAuaW5mb0NsaWVudEJveCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlQ2xpZW50Qm94IC5pbmZvQ2xpZW50Qm94IHA6bnRoLWNoaWxkKDEpIHtcbiAgbWFyZ2luLWxlZnQ6IDIwcHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCB7XG4gIC8qICAgICAgIGRpc3BsYXk6IGdyaWQ7XG4gICAgICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiAzMCUgMWZyO1xuICAgICAgIGNvbHVtbi1nYXA6IDNyZW07XG4gICovXG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBwYWRkaW5nOiAyM3B4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3g6bnRoLWxhc3QtY2hpbGQoMSkge1xuICBib3JkZXI6IG5vbmUgIWltcG9ydGFudDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5pbmZvU29ydGVvQm94IHtcbiAgd2lkdGg6IDMwJTtcbiAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgYmxhY2s7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuaW5mb1NvcnRlb0JveCBwIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuaW5mb1NvcnRlb0JveCBwIHNwYW4ge1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZGF0ZVRpY2tldEJveCB7XG4gIHdpZHRoOiA0MiU7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgYmxhY2s7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZGF0ZVRpY2tldEJveCBwIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZGF0ZVRpY2tldEJveCBwIHNwYW4ge1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAubnVtYmVyQm94IHtcbiAgd2lkdGg6IDEyJTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCBibGFjaztcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5udW1iZXJCb3ggcCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLm51bWJlckJveCBwIHNwYW4ge1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAubW9udG9Cb3gge1xuICB3aWR0aDogMTIlO1xuICB0ZXh0LWFsaWduOiByaWdodDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5tb250b0JveCBwIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAubW9udG9Cb3ggcCBzcGFuIHtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmluZm9UaWNrZXRCb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcbiAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG4gIC8qICAgICAgICAgZGlzcGxheTogZ3JpZDtcbiAgICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDMsIDFmcik7XG4gICovXG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCBibGFjaztcbiAgd2lkdGg6IDcwJTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yVGl0bGVCb3gge1xuICBhbGlnbi1zZWxmOiBmbGV4LXN0YXJ0O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JUaXRsZUJveC5sb3RlcmlhQ29sb3Ige1xuICBjb2xvcjogIzJmNzJiOTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yVGl0bGVCb3gubG90dG9Db2xvciB7XG4gIGNvbG9yOiAjYjUxZjIwO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JUaXRsZUJveC5wb3pvQ29sb3Ige1xuICBjb2xvcjogIzA0Yjg2NTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yVGl0bGVCb3ggcCB7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xuICBtYXJnaW46IDE1cHggMCA4cHggMDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAgd2lkdGg6IDEwMCU7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG4gIC13ZWJraXQtYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gIC1tb3otYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gIGJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3ggLmdhbmFkb3JIZWFkZXJCb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgYm9yZGVyLXJhZGl1czogMTJweCAxMnB4IDAgMDtcbiAgd2lkdGg6IDEwMCU7XG4gIG1pbi1oZWlnaHQ6IDQwcHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckhlYWRlckJveC5sb3RlcmlhQmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyZjcyYjk7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckhlYWRlckJveC5sb3R0b0JhY2tncm91bmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjUxZjIwO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3ggLmdhbmFkb3JIZWFkZXJCb3gucG96b0JhY2tncm91bmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDRiODY1O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3ggLmdhbmFkb3JIZWFkZXJCb3ggcCB7XG4gIHdpZHRoOiAyMCU7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbjogNXB4IDA7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94IC5nYW5hZG9ySGVhZGVyQm94IC5nYW5hZG9yRnJhY2Npb24ge1xuICB3aWR0aDogMTAlO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3ggLmdhbmFkb3JEZXRhaWxzQm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIHdpZHRoOiAxMDAlO1xuICBtaW4taGVpZ2h0OiA0MHB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3ggLmdhbmFkb3JEZXRhaWxzQm94IHAge1xuICB3aWR0aDogMjAlO1xuICBmb250LXNpemU6IDE0cHg7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW46IDVweCAwO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgYmxhY2s7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckRldGFpbHNCb3g6bnRoLWxhc3QtY2hpbGQoMSkgcCB7XG4gIGJvcmRlcjogbm9uZTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94IC5nYW5hZG9yRGV0YWlsc0JveCAuZ2FuYWRvckZyYWNjaW9uIHtcbiAgd2lkdGg6IDEwJTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmxvdGVyaWEge1xuICBib3JkZXItd2lkdGg6IDAgMCAxcHggMDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiAjMmY3MmI5O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmxvdHRvIHtcbiAgYm9yZGVyLXdpZHRoOiAwIDAgMXB4IDA7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci1jb2xvcjogI2I1MWYyMDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5wb3pvIHtcbiAgYm9yZGVyLXdpZHRoOiAwIDAgMXB4IDA7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci1jb2xvcjogIzA0Yjg2NTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC50b3RhbEJveCB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW46IGF1dG87XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gIGFsaWduLWl0ZW1zOiBmbGV4LWVuZDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC50b3RhbEJveCBwIHtcbiAgY29sb3I6ICMwMDA7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbn1cbi5jb250YWluZXJEZXRhaWxzIC50b3RhbEJveCBwIHNwYW4ge1xuICBjb2xvcjogYmxhY2s7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbn1cblxuLm1lbnNhamVCdXR0b25Cb3gge1xuICBtYXJnaW46IGF1dG87XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG4gIHBhZGRpbmc6IDE2cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNjM2MzYzM7XG59XG4ubWVuc2FqZUJ1dHRvbkJveDpob3ZlciB7XG4gIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xufVxuLm1lbnNhamVCdXR0b25Cb3ggcCB7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4gIGZvbnQtc2l6ZTogMjNweDtcbiAgY29sb3I6IGdyZWVuO1xufVxuLm1lbnNhamVCdXR0b25Cb3g6aG92ZXIgcCB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTAwMHB4KSB7XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gICAgZmxleC13cmFwOiB3cmFwO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmluZm9Tb3J0ZW9Cb3gge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbjogMDtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIGJsYWNrO1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5kYXRlVGlja2V0Qm94IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIGJsYWNrO1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5udW1iZXJCb3gge1xuICAgIHdpZHRoOiA1MCU7XG4gICAgYm9yZGVyOiBub25lO1xuICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAubW9udG9Cb3gge1xuICAgIHdpZHRoOiA1MCU7XG4gICAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvclRpdGxlQm94IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgYmxhY2s7XG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCB7XG4gICAgZGlzcGxheTogbm9uZTtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICAgIC1tb3otYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JIZWFkZXJCb3gge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJvcmRlci1yYWRpdXM6IDEycHggMTJweCAwIDA7XG4gICAgcGFkZGluZzogMTBweDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckhlYWRlckJveC5sb3RlcmlhQmFja2dyb3VuZCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzJmNzJiOTtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckhlYWRlckJveC5sb3R0b0JhY2tncm91bmQge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNiNTFmMjA7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JIZWFkZXJCb3gucG96b0JhY2tncm91bmQge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMwNGI4NjU7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JIZWFkZXJCb3ggcCB7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICBtYXJnaW46IDA7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JEZXRhaWxzQm94IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgcGFkZGluZzogMjBweDtcbiAgICBib3JkZXItcmFkaXVzOiAwIDAgMTJweCAxMnB4O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIC5nYW5hZG9yRGV0YWlsc0JveCBwIHtcbiAgICBmb250LXNpemU6IDEycHg7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgYmxhY2s7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JEZXRhaWxzQm94IHA6bnRoLWNoaWxkKGV2ZW4pIHtcbiAgICB0ZXh0LWFsaWduOiByaWdodDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckRldGFpbHNCb3ggcDpudGgtY2hpbGQob2RkKSB7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckRldGFpbHNCb3ggcDpudGgtbGFzdC1jaGlsZCgxKSwgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JEZXRhaWxzQm94IHA6bnRoLWxhc3QtY2hpbGQoMikge1xuICAgIGJvcmRlcjogbm9uZTtcbiAgfVxufVxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTAwMHB4KSB7XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIC5nYW5hZG9yRGV0YWlsc0JveCBwIHtcbiAgICBmb250LXNpemU6IDEwcHg7XG4gIH1cbn0iXX0= */";
+    __webpack_exports__["default"] = ".titleBox {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-weight: 600;\n  border-bottom: 1px solid #2f72b9;\n  margin-bottom: 23px;\n}\n.titleBox p {\n  font-family: \"Monstserrat Bold\";\n  font-size: 23px;\n  color: #2f72b9;\n  margin: 2px;\n}\n.titleBox a {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails {\n  margin-bottom: 20px;\n}\n.containerDetails .containerInfoBox .titleLoteriaBox {\n  display: flex;\n  background-color: #2f72b9;\n  padding-left: 10px;\n  padding-right: 10px;\n  border-radius: 12px;\n}\n.containerDetails .containerInfoBox .titleLoteriaBox h3 {\n  color: white;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n}\n.containerDetails .containerInfoBox .titleLottoBox {\n  display: flex;\n  background-color: #b51f20;\n  padding-left: 10px;\n  padding-right: 10px;\n  border-radius: 12px;\n}\n.containerDetails .containerInfoBox .titleLottoBox h3 {\n  color: white;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n}\n.containerDetails .containerInfoBox .titlePozoBox {\n  display: flex;\n  background-color: #04b865;\n  padding-left: 10px;\n  padding-right: 10px;\n  border-radius: 12px;\n}\n.containerDetails .containerInfoBox .titlePozoBox h3 {\n  color: white;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n}\n.containerDetails .containerInfoBox .titleMillonariaBox {\n  display: flex;\n  background-color: #04b865;\n  padding-left: 10px;\n  padding-right: 10px;\n  border-radius: 12px;\n}\n.containerDetails .containerInfoBox .titleMillonariaBox h3 {\n  color: white;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n}\n.containerDetails .containerInfoBox .titleLoteryBox {\n  display: flex;\n  justify-content: space-between;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.containerDetails .containerInfoBox .titleLoteryBox h3 {\n  font-size: 16px;\n  font-family: \"Monstserrat SemiBold\";\n  font-weight: normal;\n  margin: 8px;\n}\n.containerDetails .containerInfoBox .titleLoteryBox h3 span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateClientBox {\n  width: 100%;\n}\n.containerDetails .containerInfoBox .dateClientBox .infoClientBox {\n  display: flex;\n  justify-content: space-between;\n}\n.containerDetails .containerInfoBox .dateClientBox .infoClientBox p:nth-child(1) {\n  margin-left: 20px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox {\n  /*       display: grid;\n       grid-template-columns: 30% 1fr;\n       column-gap: 3rem;\n  */\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  padding: 23px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox:nth-last-child(1) {\n  border: none !important;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox {\n  width: 30%;\n  border-right: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox {\n  width: 42%;\n  font-weight: 600;\n  font-size: 15px;\n  border-right: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .numberBox {\n  width: 12%;\n  text-align: center;\n  border-right: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .numberBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .numberBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .montoBox {\n  width: 12%;\n  text-align: right;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .montoBox p {\n  font-weight: 500;\n  font-size: 15px;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .montoBox p span {\n  font-family: \"Monstserrat Regular\";\n}\n.containerDetails .containerInfoBox .dateLoteryBox .infoTicketBox {\n  display: flex;\n  justify-content: space-evenly;\n  align-items: flex-start;\n  /*         display: grid;\n         grid-template-columns: repeat(3, 1fr);\n  */\n  font-family: \"Monstserrat Regular\";\n  font-size: 15px;\n  border-right: 1px solid black;\n  width: 70%;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox {\n  align-self: flex-start;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox.loteriaColor {\n  color: #2f72b9;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox.lottoColor {\n  color: #b51f20;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox.pozoColor {\n  color: #04b865;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox.milloanriaColor {\n  color: #04b865;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox p {\n  font-size: 20px;\n  font-family: \"Monstserrat Bold\";\n  margin: 15px 0 8px 0;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile {\n  display: none;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox {\n  display: flex;\n  width: 100%;\n  flex-direction: column;\n  align-items: center;\n  border-radius: 12px;\n  margin-bottom: 20px;\n  box-shadow: 5px 0px 18px 3px rgba(0, 0, 0, 0.3);\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  border-radius: 12px 12px 0 0;\n  width: 100%;\n  min-height: 40px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox.loteriaBackground {\n  background-color: #2f72b9;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox.lottoBackground {\n  background-color: #b51f20;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox.pozoBackground {\n  background-color: #04b865;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox.millonariaBackground {\n  background-color: #04b865;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox p {\n  width: 20%;\n  font-size: 14px;\n  font-family: \"Monstserrat Bold\";\n  text-align: center;\n  margin: 5px 0;\n  color: white;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorHeaderBox .ganadorFraccion {\n  width: 10%;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  width: 100%;\n  min-height: 40px;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox p {\n  width: 20%;\n  font-size: 14px;\n  font-family: \"Monstserrat Bold\";\n  text-align: center;\n  margin: 5px 0;\n  border-bottom: 1px solid black;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox:nth-last-child(1) p {\n  border: none;\n}\n.containerDetails .containerInfoBox .dateLoteryBox .ganadorBox .ganadorDetailsBox .ganadorFraccion {\n  width: 10%;\n  text-align: center;\n}\n.containerDetails .containerInfoBox .loteria {\n  border-width: 0 0 1px 0;\n  border-style: solid;\n  border-color: #2f72b9;\n}\n.containerDetails .containerInfoBox .lotto {\n  border-width: 0 0 1px 0;\n  border-style: solid;\n  border-color: #b51f20;\n}\n.containerDetails .containerInfoBox .pozo {\n  border-width: 0 0 1px 0;\n  border-style: solid;\n  border-color: #04b865;\n}\n.containerDetails .containerInfoBox .millonaria {\n  border-width: 0 0 1px 0;\n  border-style: solid;\n  border-color: #04b865;\n}\n.containerDetails .totalBox {\n  width: 100%;\n  margin: auto;\n  padding: 10px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\n.containerDetails .totalBox p {\n  color: #000;\n  font-family: \"Monstserrat Bold\";\n}\n.containerDetails .totalBox p span {\n  color: black;\n  font-family: \"Monstserrat Regular\";\n}\n.mensajeButtonBox {\n  margin: auto;\n  margin-bottom: 20px;\n  padding: 16px;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 1px solid #c3c3c3;\n}\n.mensajeButtonBox:hover {\n  background-color: green;\n}\n.mensajeButtonBox p {\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 23px;\n  color: green;\n}\n.mensajeButtonBox:hover p {\n  color: white;\n}\n@media screen and (max-width: 1000px) {\n  .containerDetails .containerInfoBox .dateLoteryBox {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    align-items: center;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .infoSorteoBox {\n    width: 100%;\n    margin: 0;\n    border: none;\n    border-bottom: 1px solid black;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .dateTicketBox {\n    width: 100%;\n    border: none;\n    border-bottom: 1px solid black;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .numberBox {\n    width: 50%;\n    border: none;\n    text-align: left;\n    margin-bottom: 20px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .montoBox {\n    width: 50%;\n    margin-bottom: 20px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorTitleBox {\n    width: 100%;\n    border-bottom: 1px solid black;\n    margin-bottom: 10px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBox {\n    display: none;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile {\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    border-radius: 12px;\n    margin-bottom: 10px;\n    box-shadow: 5px 0px 18px 3px rgba(0, 0, 0, 0.3);\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox {\n    width: 100%;\n    border-radius: 12px 12px 0 0;\n    padding: 10px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox.loteriaBackground {\n    background-color: #2f72b9;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox.lottoBackground {\n    background-color: #b51f20;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox.pozoBackground {\n    background-color: #04b865;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox.millonariaBackground {\n    background-color: #04b865;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorHeaderBox p {\n    color: white;\n    font-weight: bold;\n    font-size: 16px;\n    margin: 0;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox {\n    display: flex;\n    justify-content: space-between;\n    flex-wrap: wrap;\n    padding: 20px;\n    border-radius: 0 0 12px 12px;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p {\n    font-size: 12px;\n    font-weight: bold;\n    width: 50%;\n    border-bottom: 1px solid black;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-child(even) {\n    text-align: right;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-child(odd) {\n    text-align: left;\n  }\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-last-child(1), .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p:nth-last-child(2) {\n    border: none;\n  }\n}\n@media screen and (max-width: 1000px) {\n  .containerDetails .containerInfoBox .dateLoteryBox .ganadorBoxMobile .ganadorDetailsBox p {\n    font-size: 10px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FuZ2Vsb2Fjci9Qcm95ZWN0b3MvbG90ZXJpYU5hY2lvbmFsL2FwcC9sb3RlcmlhTmFjaW9uYWxXZWJBcHAvc3JjL2FwcC9wYXltZW50L2NvbXBvbmVudHMvY29tcHJhLWRlc2NyaXBjaW9uL2NvbXByYS1kZXNjcmlwY2lvbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvcGF5bWVudC9jb21wb25lbnRzL2NvbXByYS1kZXNjcmlwY2lvbi9jb21wcmEtZGVzY3JpcGNpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBV0E7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGdDQUFBO0VBQ0EsbUJBQUE7QUNWRjtBRFdFO0VBQ0UsK0JBcEJZO0VBcUJaLGVBQUE7RUFDQSxjQWhCWTtFQWlCWixXQUFBO0FDVEo7QURZRTtFQUNFLGtDQXpCYTtBQ2VqQjtBRGFBO0VBQ0UsbUJBQUE7QUNWRjtBRFlJO0VBQ0UsYUFBQTtFQUNBLHlCQTdCVTtFQStCVixrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7QUNYTjtBRFlNO0VBQ0UsWUFBQTtFQUNBLG1DQXpDVztFQTBDWCxlQUFBO0FDVlI7QURhSTtFQUNFLGFBQUE7RUFDQSx5QkF6Q1E7RUEyQ1Isa0JBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0FDWk47QURhTTtFQUNFLFlBQUE7RUFDQSxtQ0F0RFc7RUF1RFgsZUFBQTtBQ1hSO0FEY0k7RUFDRSxhQUFBO0VBQ0EseUJBckRPO0VBdURQLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtBQ2JOO0FEY007RUFDRSxZQUFBO0VBQ0EsbUNBbkVXO0VBb0VYLGVBQUE7QUNaUjtBRGVJO0VBQ0UsYUFBQTtFQUNBLHlCQWpFYTtFQW1FYixrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7QUNkTjtBRGVNO0VBQ0UsWUFBQTtFQUNBLG1DQWhGVztFQWlGWCxlQUFBO0FDYlI7QURpQkk7RUFDRSxhQUFBO0VBQ0EsOEJBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDZk47QURpQk07RUFDRSxlQUFBO0VBQ0EsbUNBN0ZXO0VBOEZYLG1CQUFBO0VBQ0EsV0FBQTtBQ2ZSO0FEZ0JRO0VBQ0Usa0NBaEdPO0FDa0ZqQjtBRGtCSTtFQUNFLFdBQUE7QUNoQk47QURrQk07RUFDRSxhQUFBO0VBQ0EsOEJBQUE7QUNoQlI7QURrQlE7RUFDRSxpQkFBQTtBQ2hCVjtBRHFCSTtFQUNFOzs7R0FBQTtFQUlBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLGVBQUE7RUFDQSw4QkFBQTtFQUNBLGFBQUE7QUNuQk47QURvQk07RUFDRSx1QkFBQTtBQ2xCUjtBRG9CTTtFQUNFLFVBQUE7RUFDQSw2QkFBQTtBQ2xCUjtBRG1CUTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLCtCQXRJTTtBQ3FIaEI7QURrQlU7RUFDRSxrQ0F0SUs7QUNzSGpCO0FEb0JNO0VBQ0UsVUFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLDZCQUFBO0FDbEJSO0FEbUJRO0VBQ0UsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsK0JBcEpNO0FDbUloQjtBRGtCVTtFQUNFLGtDQXBKSztBQ29JakI7QURxQk07RUFDRSxVQUFBO0VBQ0Esa0JBQUE7RUFDQSw2QkFBQTtBQ25CUjtBRG9CUTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLCtCQWxLTTtBQ2dKaEI7QURtQlU7RUFDRSxrQ0FsS0s7QUNpSmpCO0FEc0JNO0VBQ0UsVUFBQTtFQUNBLGlCQUFBO0FDcEJSO0FEcUJRO0VBQ0UsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsK0JBL0tNO0FDNEpoQjtBRG9CVTtFQUNFLGtDQS9LSztBQzZKakI7QURzQk07RUFDRSxhQUFBO0VBQ0EsNkJBQUE7RUFDQSx1QkFBQTtFQUNBOztHQUFBO0VBR0Esa0NBMUxTO0VBMkxULGVBQUE7RUFDQSw2QkFBQTtFQUNBLFVBQUE7QUNwQlI7QURzQk07RUFDRSxzQkFBQTtBQ3BCUjtBRHFCUTtFQUNFLGNBOUxNO0FDMktoQjtBRHFCUTtFQUNFLGNBaE1JO0FDNktkO0FEcUJRO0VBQ0UsY0FsTUc7QUMrS2I7QURxQlE7RUFDRSxjQXBNUztBQ2lMbkI7QURxQlE7RUFDRSxlQUFBO0VBQ0EsK0JBak5NO0VBa05OLG9CQUFBO0FDbkJWO0FEdUJNO0VBQ0UsYUFBQTtBQ3JCUjtBRHVCTTtFQUNFLGFBQUE7RUFDQSxXQUFBO0VBQ0Esc0JBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7RUFHQSwrQ0FBQTtBQ3JCUjtBRHNCUTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLDZCQUFBO0VBQ0EsNEJBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7QUNwQlY7QURxQlU7RUFDRSx5QkFyT0k7QUNrTmhCO0FEcUJVO0VBQ0UseUJBdk9FO0FDb05kO0FEcUJVO0VBQ0UseUJBek9DO0FDc05iO0FEcUJVO0VBQ0UseUJBM09PO0FDd05uQjtBRHFCVTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0EsK0JBelBJO0VBMFBKLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLFlBQUE7QUNuQlo7QURxQlU7RUFDRSxVQUFBO0FDbkJaO0FEc0JRO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsNkJBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7QUNwQlY7QURxQlU7RUFDRSxVQUFBO0VBQ0EsZUFBQTtFQUNBLCtCQTNRSTtFQTRRSixrQkFBQTtFQUNBLGFBQUE7RUFDQSw4QkFBQTtBQ25CWjtBRHFCVTtFQUNFLFlBQUE7QUNuQlo7QURxQlU7RUFDRSxVQUFBO0VBQ0Esa0JBQUE7QUNuQlo7QUR5Qkk7RUFDRSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBeFJVO0FDaVFoQjtBRHlCSTtFQUNFLHVCQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkE1UlE7QUNxUWQ7QUR5Qkk7RUFDRSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBaFNPO0FDeVFiO0FEeUJJO0VBQ0UsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFCQXBTYTtBQzZRbkI7QUQyQkU7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFFQSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSx5QkFBQTtFQUNBLHFCQUFBO0FDMUJKO0FENEJJO0VBQ0UsV0FBQTtFQUNBLCtCQTdUVTtBQ21TaEI7QUQ0Qk07RUFDRSxZQUFBO0VBQ0Esa0NBL1RTO0FDcVNqQjtBRGdDQTtFQUNFLFlBQUE7RUFDQSxtQkFBQTtFQUVBLGFBQUE7RUFDQSxlQUFBO0VBQ0EsYUFBQTtFQUNBLHVCQUFBO0VBQ0EsbUJBQUE7RUFFQSx5QkFBQTtBQy9CRjtBRGlDRTtFQUNFLHVCQUFBO0FDL0JKO0FEa0NFO0VBQ0UsbUNBclZhO0VBc1ZiLGVBQUE7RUFDQSxZQUFBO0FDaENKO0FEbUNFO0VBQ0UsWUFBQTtBQ2pDSjtBRG9DQTtFQUdNO0lBQ0UsYUFBQTtJQUNBLG1CQUFBO0lBQ0EsZUFBQTtJQUNBLG1CQUFBO0VDbkNOO0VEb0NNO0lBQ0UsV0FBQTtJQUNBLFNBQUE7SUFDQSxZQUFBO0lBQ0EsOEJBQUE7RUNsQ1I7RURvQ007SUFDRSxXQUFBO0lBQ0EsWUFBQTtJQUNBLDhCQUFBO0VDbENSO0VEcUNNO0lBQ0UsVUFBQTtJQUNBLFlBQUE7SUFDQSxnQkFBQTtJQUNBLG1CQUFBO0VDbkNSO0VEcUNNO0lBQ0UsVUFBQTtJQUNBLG1CQUFBO0VDbkNSO0VEcUNNO0lBQ0UsV0FBQTtJQUNBLDhCQUFBO0lBQ0EsbUJBQUE7RUNuQ1I7RURxQ007SUFDRSxhQUFBO0VDbkNSO0VEcUNNO0lBQ0UsYUFBQTtJQUNBLHNCQUFBO0lBQ0EsV0FBQTtJQUNBLG1CQUFBO0lBQ0EsbUJBQUE7SUFHQSwrQ0FBQTtFQ25DUjtFRG9DUTtJQUNFLFdBQUE7SUFDQSw0QkFBQTtJQUNBLGFBQUE7RUNsQ1Y7RURtQ1U7SUFDRSx5QkEvWUU7RUM4V2Q7RURtQ1U7SUFDRSx5QkFqWkE7RUNnWFo7RURtQ1U7SUFDRSx5QkFuWkQ7RUNrWFg7RURtQ1U7SUFDRSx5QkFyWks7RUNvWGpCO0VEbUNVO0lBQ0UsWUFBQTtJQUNBLGlCQUFBO0lBQ0EsZUFBQTtJQUNBLFNBQUE7RUNqQ1o7RURvQ1E7SUFDRSxhQUFBO0lBQ0EsOEJBQUE7SUFDQSxlQUFBO0lBQ0EsYUFBQTtJQUNBLDRCQUFBO0VDbENWO0VEbUNVO0lBQ0UsZUFBQTtJQUNBLGlCQUFBO0lBQ0EsVUFBQTtJQUNBLDhCQUFBO0VDakNaO0VEa0NZO0lBQ0UsaUJBQUE7RUNoQ2Q7RURrQ1k7SUFDRSxnQkFBQTtFQ2hDZDtFRGtDWTtJQUVFLFlBQUE7RUNqQ2Q7QUFDRjtBRHlDQTtFQU1ZO0lBQ0UsZUFBQTtFQzVDWjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvcGF5bWVudC9jb21wb25lbnRzL2NvbXByYS1kZXNjcmlwY2lvbi9jb21wcmEtZGVzY3JpcGNpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkZnVlbnRlLXRpdHVsbzogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG4kZnVlbnRlLXN1YnRpdHVsbzogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuJGZ1ZW50ZS1wYXJyYWZvOiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbiRmdWVudGUtYm90b25lczogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuXG4kY29sb3ItaGVhZGVyOiAjN2M5MWE4O1xuJGNvbG9yLWxvdGVyaWE6ICMyZjcyYjk7XG4kY29sb3ItbG90dG86ICNiNTFmMjA7XG4kY29sb3ItcG96bzogIzA0Yjg2NTtcbiRjb2xvci1taWxsb25hcmlhOiAjMDRiODY1O1xuXG4udGl0bGVCb3gge1xuICB3aWR0aDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBmb250LXdlaWdodDogNjAwO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgJGNvbG9yLWxvdGVyaWE7XG4gIG1hcmdpbi1ib3R0b206IDIzcHg7XG4gIHAge1xuICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcbiAgICBmb250LXNpemU6IDIzcHg7XG4gICAgY29sb3I6ICRjb2xvci1sb3RlcmlhO1xuICAgIG1hcmdpbjogMnB4O1xuICB9XG5cbiAgYSB7XG4gICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgfVxufVxuLmNvbnRhaW5lckRldGFpbHMge1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xuICAuY29udGFpbmVySW5mb0JveCB7XG4gICAgLnRpdGxlTG90ZXJpYUJveCB7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdGVyaWE7XG5cbiAgICAgIHBhZGRpbmctbGVmdDogMTBweDtcbiAgICAgIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gICAgICBib3JkZXItcmFkaXVzOiAxMnB4O1xuICAgICAgaDMge1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXN1YnRpdHVsbztcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgfVxuICAgIH1cbiAgICAudGl0bGVMb3R0b0JveCB7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdHRvO1xuXG4gICAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICAgICAgYm9yZGVyLXJhZGl1czogMTJweDtcbiAgICAgIGgzIHtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgIH1cbiAgICB9XG4gICAgLnRpdGxlUG96b0JveCB7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLXBvem87XG5cbiAgICAgIHBhZGRpbmctbGVmdDogMTBweDtcbiAgICAgIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gICAgICBib3JkZXItcmFkaXVzOiAxMnB4O1xuICAgICAgaDMge1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXN1YnRpdHVsbztcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgfVxuICAgIH1cbiAgICAudGl0bGVNaWxsb25hcmlhQm94IHtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkY29sb3ItbWlsbG9uYXJpYTtcblxuICAgICAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICAgICAgcGFkZGluZy1yaWdodDogMTBweDtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gICAgICBoMyB7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtc3VidGl0dWxvO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICB9XG4gICAgfVxuXG4gICAgLnRpdGxlTG90ZXJ5Qm94IHtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gICAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuXG4gICAgICBoMyB7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtc3VidGl0dWxvO1xuICAgICAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgICAgICBtYXJnaW46IDhweDtcbiAgICAgICAgc3BhbiB7XG4gICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgICAuZGF0ZUNsaWVudEJveCB7XG4gICAgICB3aWR0aDogMTAwJTtcblxuICAgICAgLmluZm9DbGllbnRCb3gge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG5cbiAgICAgICAgcDpudGgtY2hpbGQoMSkge1xuICAgICAgICAgIG1hcmdpbi1sZWZ0OiAyMHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuXG4gICAgLmRhdGVMb3RlcnlCb3gge1xuICAgICAgLyogICAgICAgZGlzcGxheTogZ3JpZDtcbiAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMzAlIDFmcjtcbiAgICAgIGNvbHVtbi1nYXA6IDNyZW07XG4gKi9cbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgZmxleC13cmFwOiB3cmFwO1xuICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgICAgcGFkZGluZzogMjNweDtcbiAgICAgICY6bnRoLWxhc3QtY2hpbGQoMSkge1xuICAgICAgICBib3JkZXI6IG5vbmUgIWltcG9ydGFudDtcbiAgICAgIH1cbiAgICAgIC5pbmZvU29ydGVvQm94IHtcbiAgICAgICAgd2lkdGg6IDMwJTtcbiAgICAgICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgYmxhY2s7XG4gICAgICAgIHAge1xuICAgICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG4gICAgICAgICAgZm9udC1zaXplOiAxNXB4O1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcbiAgICAgICAgICBzcGFuIHtcbiAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXBhcnJhZm87XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG4gICAgICAuZGF0ZVRpY2tldEJveCB7XG4gICAgICAgIHdpZHRoOiA0MiU7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgICAgIGZvbnQtc2l6ZTogMTVweDtcbiAgICAgICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgYmxhY2s7XG4gICAgICAgIHAge1xuICAgICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG4gICAgICAgICAgZm9udC1zaXplOiAxNXB4O1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcbiAgICAgICAgICBzcGFuIHtcbiAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXBhcnJhZm87XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC5udW1iZXJCb3gge1xuICAgICAgICB3aWR0aDogMTIlO1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xuICAgICAgICBwIHtcbiAgICAgICAgICBmb250LXdlaWdodDogNTAwO1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTVweDtcbiAgICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS10aXR1bG87XG4gICAgICAgICAgc3BhbiB7XG4gICAgICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1wYXJyYWZvO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAubW9udG9Cb3gge1xuICAgICAgICB3aWR0aDogMTIlO1xuICAgICAgICB0ZXh0LWFsaWduOiByaWdodDtcbiAgICAgICAgcCB7XG4gICAgICAgICAgZm9udC13ZWlnaHQ6IDUwMDtcbiAgICAgICAgICBmb250LXNpemU6IDE1cHg7XG4gICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtdGl0dWxvO1xuICAgICAgICAgIHNwYW4ge1xuICAgICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICAgIC5pbmZvVGlja2V0Qm94IHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1ldmVubHk7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBmbGV4LXN0YXJ0O1xuICAgICAgICAvKiAgICAgICAgIGRpc3BsYXk6IGdyaWQ7XG4gICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDMsIDFmcik7XG4gKi9cbiAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICAgICAgZm9udC1zaXplOiAxNXB4O1xuICAgICAgICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgd2lkdGg6IDcwJTtcbiAgICAgIH1cbiAgICAgIC5nYW5hZG9yVGl0bGVCb3gge1xuICAgICAgICBhbGlnbi1zZWxmOiBmbGV4LXN0YXJ0O1xuICAgICAgICAmLmxvdGVyaWFDb2xvciB7XG4gICAgICAgICAgY29sb3I6ICRjb2xvci1sb3RlcmlhO1xuICAgICAgICB9XG4gICAgICAgICYubG90dG9Db2xvciB7XG4gICAgICAgICAgY29sb3I6ICRjb2xvci1sb3R0bztcbiAgICAgICAgfVxuICAgICAgICAmLnBvem9Db2xvciB7XG4gICAgICAgICAgY29sb3I6ICRjb2xvci1wb3pvO1xuICAgICAgICB9XG4gICAgICAgICYubWlsbG9hbnJpYUNvbG9yIHtcbiAgICAgICAgICBjb2xvcjogJGNvbG9yLW1pbGxvbmFyaWE7XG4gICAgICAgIH1cbiAgICAgICAgcCB7XG4gICAgICAgICAgZm9udC1zaXplOiAyMHB4O1xuICAgICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcbiAgICAgICAgICBtYXJnaW46IDE1cHggMCA4cHggMDtcbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAuZ2FuYWRvckJveE1vYmlsZSB7XG4gICAgICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgICB9XG4gICAgICAuZ2FuYWRvckJveCB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4O1xuICAgICAgICBtYXJnaW4tYm90dG9tOiAyMHB4O1xuICAgICAgICAtd2Via2l0LWJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICAgICAgICAtbW96LWJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICAgICAgICBib3gtc2hhZG93OiA1cHggMHB4IDE4cHggM3B4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICAgICAgLmdhbmFkb3JIZWFkZXJCb3gge1xuICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4IDEycHggMCAwO1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgIG1pbi1oZWlnaHQ6IDQwcHg7XG4gICAgICAgICAgJi5sb3RlcmlhQmFja2dyb3VuZCB7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkY29sb3ItbG90ZXJpYTtcbiAgICAgICAgICB9XG4gICAgICAgICAgJi5sb3R0b0JhY2tncm91bmQge1xuICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdHRvO1xuICAgICAgICAgIH1cbiAgICAgICAgICAmLnBvem9CYWNrZ3JvdW5kIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xuICAgICAgICAgIH1cbiAgICAgICAgICAmLm1pbGxvbmFyaWFCYWNrZ3JvdW5kIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1taWxsb25hcmlhO1xuICAgICAgICAgIH1cbiAgICAgICAgICBwIHtcbiAgICAgICAgICAgIHdpZHRoOiAyMCU7XG4gICAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS10aXR1bG87XG4gICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICBtYXJnaW46IDVweCAwO1xuICAgICAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICAgIH1cbiAgICAgICAgICAuZ2FuYWRvckZyYWNjaW9uIHtcbiAgICAgICAgICAgIHdpZHRoOiAxMCU7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIC5nYW5hZG9yRGV0YWlsc0JveCB7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgIG1pbi1oZWlnaHQ6IDQwcHg7XG4gICAgICAgICAgcCB7XG4gICAgICAgICAgICB3aWR0aDogMjAlO1xuICAgICAgICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgICAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtdGl0dWxvO1xuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgICAgbWFyZ2luOiA1cHggMDtcbiAgICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgICB9XG4gICAgICAgICAgJjpudGgtbGFzdC1jaGlsZCgxKSBwIHtcbiAgICAgICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmdhbmFkb3JGcmFjY2lvbiB7XG4gICAgICAgICAgICB3aWR0aDogMTAlO1xuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cblxuICAgIC5sb3RlcmlhIHtcbiAgICAgIGJvcmRlci13aWR0aDogMCAwIDFweCAwO1xuICAgICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICAgIGJvcmRlci1jb2xvcjogJGNvbG9yLWxvdGVyaWE7XG4gICAgfVxuICAgIC5sb3R0byB7XG4gICAgICBib3JkZXItd2lkdGg6IDAgMCAxcHggMDtcbiAgICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgICBib3JkZXItY29sb3I6ICRjb2xvci1sb3R0bztcbiAgICB9XG4gICAgLnBvem8ge1xuICAgICAgYm9yZGVyLXdpZHRoOiAwIDAgMXB4IDA7XG4gICAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgICAgYm9yZGVyLWNvbG9yOiAkY29sb3ItcG96bztcbiAgICB9XG4gICAgLm1pbGxvbmFyaWEge1xuICAgICAgYm9yZGVyLXdpZHRoOiAwIDAgMXB4IDA7XG4gICAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgICAgYm9yZGVyLWNvbG9yOiAkY29sb3ItbWlsbG9uYXJpYTtcbiAgICB9XG4gIH1cblxuICAudG90YWxCb3gge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbjogYXV0bztcbiAgICBwYWRkaW5nOiAxMHB4O1xuXG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xuXG4gICAgcCB7XG4gICAgICBjb2xvcjogIzAwMDtcbiAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcblxuICAgICAgc3BhbiB7XG4gICAgICAgIGNvbG9yOiBibGFjaztcbiAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cblxuLm1lbnNhamVCdXR0b25Cb3gge1xuICBtYXJnaW46IGF1dG87XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG5cbiAgcGFkZGluZzogMTZweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcblxuICBib3JkZXI6IDFweCBzb2xpZCAjYzNjM2MzO1xuXG4gICY6aG92ZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xuICB9XG5cbiAgcCB7XG4gICAgZm9udC1mYW1pbHk6ICRmdWVudGUtYm90b25lcztcbiAgICBmb250LXNpemU6IDIzcHg7XG4gICAgY29sb3I6IGdyZWVuO1xuICB9XG5cbiAgJjpob3ZlciBwIHtcbiAgICBjb2xvcjogd2hpdGU7XG4gIH1cbn1cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xuICAuY29udGFpbmVyRGV0YWlscyB7XG4gICAgLmNvbnRhaW5lckluZm9Cb3gge1xuICAgICAgLmRhdGVMb3RlcnlCb3gge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICAgICAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIC5pbmZvU29ydGVvQm94IHtcbiAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgfVxuICAgICAgICAuZGF0ZVRpY2tldEJveCB7XG4gICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgfVxuXG4gICAgICAgIC5udW1iZXJCb3gge1xuICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgICAgICAgfVxuICAgICAgICAubW9udG9Cb3gge1xuICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgICAgICAgfVxuICAgICAgICAuZ2FuYWRvclRpdGxlQm94IHtcbiAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgYmxhY2s7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgICAgICAgfVxuICAgICAgICAuZ2FuYWRvckJveCB7XG4gICAgICAgICAgZGlzcGxheTogbm9uZTtcbiAgICAgICAgfVxuICAgICAgICAuZ2FuYWRvckJveE1vYmlsZSB7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDEycHg7XG4gICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgICAgICAgICAtd2Via2l0LWJveC1zaGFkb3c6IDVweCAwcHggMThweCAzcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICAgICAgICAgIC1tb3otYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgICAgYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgICAgICAgLmdhbmFkb3JIZWFkZXJCb3gge1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAxMnB4IDEycHggMCAwO1xuICAgICAgICAgICAgcGFkZGluZzogMTBweDtcbiAgICAgICAgICAgICYubG90ZXJpYUJhY2tncm91bmQge1xuICAgICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkY29sb3ItbG90ZXJpYTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgICYubG90dG9CYWNrZ3JvdW5kIHtcbiAgICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdHRvO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgJi5wb3pvQmFja2dyb3VuZCB7XG4gICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgJi5taWxsb25hcmlhQmFja2dyb3VuZCB7XG4gICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1taWxsb25hcmlhO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgcCB7XG4gICAgICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICAgICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgICAuZ2FuYWRvckRldGFpbHNCb3gge1xuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICAgICAgICAgIGZsZXgtd3JhcDogd3JhcDtcbiAgICAgICAgICAgIHBhZGRpbmc6IDIwcHg7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiAwIDAgMTJweCAxMnB4O1xuICAgICAgICAgICAgcCB7XG4gICAgICAgICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICAgICAgICAgICAgJjpudGgtY2hpbGQoZXZlbikge1xuICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IHJpZ2h0O1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICY6bnRoLWNoaWxkKG9kZCkge1xuICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgJjpudGgtbGFzdC1jaGlsZCgxKSxcbiAgICAgICAgICAgICAgJjpudGgtbGFzdC1jaGlsZCgyKSB7XG4gICAgICAgICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuICB9XG59XG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDAwcHgpIHtcbiAgLmNvbnRhaW5lckRldGFpbHMge1xuICAgIC5jb250YWluZXJJbmZvQm94IHtcbiAgICAgIC5kYXRlTG90ZXJ5Qm94IHtcbiAgICAgICAgLmdhbmFkb3JCb3hNb2JpbGUge1xuICAgICAgICAgIC5nYW5hZG9yRGV0YWlsc0JveCB7XG4gICAgICAgICAgICBwIHtcbiAgICAgICAgICAgICAgZm9udC1zaXplOiAxMHB4O1xuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIiwiLnRpdGxlQm94IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMyZjcyYjk7XG4gIG1hcmdpbi1ib3R0b206IDIzcHg7XG59XG4udGl0bGVCb3ggcCB7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbiAgZm9udC1zaXplOiAyM3B4O1xuICBjb2xvcjogIzJmNzJiOTtcbiAgbWFyZ2luOiAycHg7XG59XG4udGl0bGVCb3ggYSB7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbn1cblxuLmNvbnRhaW5lckRldGFpbHMge1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnRpdGxlTG90ZXJpYUJveCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyZjcyYjk7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogMTJweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC50aXRsZUxvdGVyaWFCb3ggaDMge1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC50aXRsZUxvdHRvQm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I1MWYyMDtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMnB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnRpdGxlTG90dG9Cb3ggaDMge1xuICBjb2xvcjogd2hpdGU7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC50aXRsZVBvem9Cb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDRiODY1O1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEycHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAudGl0bGVQb3pvQm94IGgzIHtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuICBmb250LXNpemU6IDE2cHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAudGl0bGVNaWxsb25hcmlhQm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzA0Yjg2NTtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMnB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnRpdGxlTWlsbG9uYXJpYUJveCBoMyB7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcbiAgZm9udC1zaXplOiAxNnB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnRpdGxlTG90ZXJ5Qm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmctcmlnaHQ6IDEwcHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAudGl0bGVMb3RlcnlCb3ggaDMge1xuICBmb250LXNpemU6IDE2cHg7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIG1hcmdpbjogOHB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnRpdGxlTG90ZXJ5Qm94IGgzIHNwYW4ge1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUNsaWVudEJveCB7XG4gIHdpZHRoOiAxMDAlO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVDbGllbnRCb3ggLmluZm9DbGllbnRCb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUNsaWVudEJveCAuaW5mb0NsaWVudEJveCBwOm50aC1jaGlsZCgxKSB7XG4gIG1hcmdpbi1sZWZ0OiAyMHB4O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3gge1xuICAvKiAgICAgICBkaXNwbGF5OiBncmlkO1xuICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogMzAlIDFmcjtcbiAgICAgICBjb2x1bW4tZ2FwOiAzcmVtO1xuICAqL1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBmbGV4LXdyYXA6IHdyYXA7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgcGFkZGluZzogMjNweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94Om50aC1sYXN0LWNoaWxkKDEpIHtcbiAgYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuaW5mb1NvcnRlb0JveCB7XG4gIHdpZHRoOiAzMCU7XG4gIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmluZm9Tb3J0ZW9Cb3ggcCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmluZm9Tb3J0ZW9Cb3ggcCBzcGFuIHtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmRhdGVUaWNrZXRCb3gge1xuICB3aWR0aDogNDIlO1xuICBmb250LXdlaWdodDogNjAwO1xuICBmb250LXNpemU6IDE1cHg7XG4gIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIGJsYWNrO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmRhdGVUaWNrZXRCb3ggcCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmRhdGVUaWNrZXRCb3ggcCBzcGFuIHtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLm51bWJlckJveCB7XG4gIHdpZHRoOiAxMiU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgYmxhY2s7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAubnVtYmVyQm94IHAge1xuICBmb250LXdlaWdodDogNTAwO1xuICBmb250LXNpemU6IDE1cHg7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5udW1iZXJCb3ggcCBzcGFuIHtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLm1vbnRvQm94IHtcbiAgd2lkdGg6IDEyJTtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAubW9udG9Cb3ggcCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLm1vbnRvQm94IHAgc3BhbiB7XG4gIGZvbnQtZmFtaWx5OiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5pbmZvVGlja2V0Qm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1ldmVubHk7XG4gIGFsaWduLWl0ZW1zOiBmbGV4LXN0YXJ0O1xuICAvKiAgICAgICAgIGRpc3BsYXk6IGdyaWQ7XG4gICAgICAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xuICAqL1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG4gIGZvbnQtc2l6ZTogMTVweDtcbiAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgYmxhY2s7XG4gIHdpZHRoOiA3MCU7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvclRpdGxlQm94IHtcbiAgYWxpZ24tc2VsZjogZmxleC1zdGFydDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yVGl0bGVCb3gubG90ZXJpYUNvbG9yIHtcbiAgY29sb3I6ICMyZjcyYjk7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvclRpdGxlQm94LmxvdHRvQ29sb3Ige1xuICBjb2xvcjogI2I1MWYyMDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yVGl0bGVCb3gucG96b0NvbG9yIHtcbiAgY29sb3I6ICMwNGI4NjU7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvclRpdGxlQm94Lm1pbGxvYW5yaWFDb2xvciB7XG4gIGNvbG9yOiAjMDRiODY1O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JUaXRsZUJveCBwIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG4gIG1hcmdpbjogMTVweCAwIDhweCAwO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUge1xuICBkaXNwbGF5OiBub25lO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICB3aWR0aDogMTAwJTtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYm9yZGVyLXJhZGl1czogMTJweDtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgLXdlYmtpdC1ib3gtc2hhZG93OiA1cHggMHB4IDE4cHggM3B4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgLW1vei1ib3gtc2hhZG93OiA1cHggMHB4IDE4cHggM3B4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckhlYWRlckJveCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICBib3JkZXItcmFkaXVzOiAxMnB4IDEycHggMCAwO1xuICB3aWR0aDogMTAwJTtcbiAgbWluLWhlaWdodDogNDBweDtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94IC5nYW5hZG9ySGVhZGVyQm94LmxvdGVyaWFCYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzJmNzJiOTtcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94IC5nYW5hZG9ySGVhZGVyQm94LmxvdHRvQmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiNTFmMjA7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckhlYWRlckJveC5wb3pvQmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwNGI4NjU7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckhlYWRlckJveC5taWxsb25hcmlhQmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwNGI4NjU7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckhlYWRlckJveCBwIHtcbiAgd2lkdGg6IDIwJTtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBmb250LWZhbWlseTogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luOiA1cHggMDtcbiAgY29sb3I6IHdoaXRlO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3ggLmdhbmFkb3JIZWFkZXJCb3ggLmdhbmFkb3JGcmFjY2lvbiB7XG4gIHdpZHRoOiAxMCU7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckRldGFpbHNCb3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgd2lkdGg6IDEwMCU7XG4gIG1pbi1oZWlnaHQ6IDQwcHg7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveCAuZ2FuYWRvckRldGFpbHNCb3ggcCB7XG4gIHdpZHRoOiAyMCU7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbjogNXB4IDA7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbn1cbi5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94IC5nYW5hZG9yRGV0YWlsc0JveDpudGgtbGFzdC1jaGlsZCgxKSBwIHtcbiAgYm9yZGVyOiBub25lO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3ggLmdhbmFkb3JEZXRhaWxzQm94IC5nYW5hZG9yRnJhY2Npb24ge1xuICB3aWR0aDogMTAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAubG90ZXJpYSB7XG4gIGJvcmRlci13aWR0aDogMCAwIDFweCAwO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItY29sb3I6ICMyZjcyYjk7XG59XG4uY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAubG90dG8ge1xuICBib3JkZXItd2lkdGg6IDAgMCAxcHggMDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiAjYjUxZjIwO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLnBvem8ge1xuICBib3JkZXItd2lkdGg6IDAgMCAxcHggMDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiAjMDRiODY1O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLm1pbGxvbmFyaWEge1xuICBib3JkZXItd2lkdGg6IDAgMCAxcHggMDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiAjMDRiODY1O1xufVxuLmNvbnRhaW5lckRldGFpbHMgLnRvdGFsQm94IHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1hcmdpbjogYXV0bztcbiAgcGFkZGluZzogMTBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLnRvdGFsQm94IHAge1xuICBjb2xvcjogIzAwMDtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xufVxuLmNvbnRhaW5lckRldGFpbHMgLnRvdGFsQm94IHAgc3BhbiB7XG4gIGNvbG9yOiBibGFjaztcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xufVxuXG4ubWVuc2FqZUJ1dHRvbkJveCB7XG4gIG1hcmdpbjogYXV0bztcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgcGFkZGluZzogMTZweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYm9yZGVyOiAxcHggc29saWQgI2MzYzNjMztcbn1cbi5tZW5zYWplQnV0dG9uQm94OmhvdmVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XG59XG4ubWVuc2FqZUJ1dHRvbkJveCBwIHtcbiAgZm9udC1mYW1pbHk6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcbiAgZm9udC1zaXplOiAyM3B4O1xuICBjb2xvcjogZ3JlZW47XG59XG4ubWVuc2FqZUJ1dHRvbkJveDpob3ZlciBwIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDAwcHgpIHtcbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3gge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuaW5mb1NvcnRlb0JveCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWFyZ2luOiAwO1xuICAgIGJvcmRlcjogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgYmxhY2s7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmRhdGVUaWNrZXRCb3gge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJvcmRlcjogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgYmxhY2s7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLm51bWJlckJveCB7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBtYXJnaW4tYm90dG9tOiAyMHB4O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5tb250b0JveCB7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBtYXJnaW4tYm90dG9tOiAyMHB4O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yVGl0bGVCb3gge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94IHtcbiAgICBkaXNwbGF5OiBub25lO1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYm9yZGVyLXJhZGl1czogMTJweDtcbiAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICAgIC13ZWJraXQtYm94LXNoYWRvdzogNXB4IDBweCAxOHB4IDNweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgLW1vei1ib3gtc2hhZG93OiA1cHggMHB4IDE4cHggM3B4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgICBib3gtc2hhZG93OiA1cHggMHB4IDE4cHggM3B4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckhlYWRlckJveCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYm9yZGVyLXJhZGl1czogMTJweCAxMnB4IDAgMDtcbiAgICBwYWRkaW5nOiAxMHB4O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIC5nYW5hZG9ySGVhZGVyQm94LmxvdGVyaWFCYWNrZ3JvdW5kIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMmY3MmI5O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIC5nYW5hZG9ySGVhZGVyQm94LmxvdHRvQmFja2dyb3VuZCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2I1MWYyMDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckhlYWRlckJveC5wb3pvQmFja2dyb3VuZCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzA0Yjg2NTtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckhlYWRlckJveC5taWxsb25hcmlhQmFja2dyb3VuZCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzA0Yjg2NTtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckhlYWRlckJveCBwIHtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICAgIG1hcmdpbjogMDtcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckRldGFpbHNCb3gge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgIGZsZXgtd3JhcDogd3JhcDtcbiAgICBwYWRkaW5nOiAyMHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDAgMCAxMnB4IDEycHg7XG4gIH1cbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JEZXRhaWxzQm94IHAge1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICB3aWR0aDogNTAlO1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgfVxuICAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckRldGFpbHNCb3ggcDpudGgtY2hpbGQoZXZlbikge1xuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIC5nYW5hZG9yRGV0YWlsc0JveCBwOm50aC1jaGlsZChvZGQpIHtcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICB9XG4gIC5jb250YWluZXJEZXRhaWxzIC5jb250YWluZXJJbmZvQm94IC5kYXRlTG90ZXJ5Qm94IC5nYW5hZG9yQm94TW9iaWxlIC5nYW5hZG9yRGV0YWlsc0JveCBwOm50aC1sYXN0LWNoaWxkKDEpLCAuY29udGFpbmVyRGV0YWlscyAuY29udGFpbmVySW5mb0JveCAuZGF0ZUxvdGVyeUJveCAuZ2FuYWRvckJveE1vYmlsZSAuZ2FuYWRvckRldGFpbHNCb3ggcDpudGgtbGFzdC1jaGlsZCgyKSB7XG4gICAgYm9yZGVyOiBub25lO1xuICB9XG59XG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDAwcHgpIHtcbiAgLmNvbnRhaW5lckRldGFpbHMgLmNvbnRhaW5lckluZm9Cb3ggLmRhdGVMb3RlcnlCb3ggLmdhbmFkb3JCb3hNb2JpbGUgLmdhbmFkb3JEZXRhaWxzQm94IHAge1xuICAgIGZvbnQtc2l6ZTogMTBweDtcbiAgfVxufSJdfQ== */";
     /***/
   },
 
@@ -2059,7 +2159,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var CompraDetalleComponent = /*#__PURE__*/function () {
       function CompraDetalleComponent(actRoute, payment, lottery) {
-        var _this10 = this;
+        var _this11 = this;
 
         _classCallCheck(this, CompraDetalleComponent);
 
@@ -2070,8 +2170,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.isError = false;
         this.actRoute.params.subscribe(function (params) {
           var aux = params["id"];
-          _this10.accountId = aux.split("-")[0];
-          _this10.ticketId = aux.split("-")[1];
+          _this11.accountId = aux.split("-")[0];
+          _this11.ticketId = aux.split("-")[1];
         });
       }
 
@@ -2079,7 +2179,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "ngOnInit",
         value: function ngOnInit() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this11 = this;
+            var _this12 = this;
 
             var resultadosGanadores, _loop, i;
 
@@ -2120,40 +2220,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                         switch (ganador.tipoLoteria) {
                           case 1:
-                            ganadorIndex = _this11.compra.loteria.findIndex(function (x) {
+                            ganadorIndex = _this12.compra.loteria.findIndex(function (x) {
                               return x.combinacion1 == ganador.combinacion1 && x.sorteo == ganador.numeroSorteo;
                             });
 
                             if (ganadorIndex != -1) {
-                              _this11.compra.loteria[ganadorIndex]["hasGanador"] = true;
+                              _this12.compra.loteria[ganadorIndex]["hasGanador"] = true;
 
-                              _this11.compra.loteria[ganadorIndex]["detalleGanador"].push(ganador);
+                              _this12.compra.loteria[ganadorIndex]["detalleGanador"].push(ganador);
                             }
 
                             break;
 
                           case 2:
-                            ganadorIndex = _this11.compra.lotto.findIndex(function (x) {
+                            ganadorIndex = _this12.compra.lotto.findIndex(function (x) {
                               return x.combinacion1 == ganador.combinacion1 && x.sorteo == ganador.numeroSorteo;
                             });
 
                             if (ganadorIndex != -1) {
-                              _this11.compra.lotto[ganadorIndex]["hasGanador"] = true;
+                              _this12.compra.lotto[ganadorIndex]["hasGanador"] = true;
 
-                              _this11.compra.lotto[ganadorIndex]["detalleGanador"].push(ganador);
+                              _this12.compra.lotto[ganadorIndex]["detalleGanador"].push(ganador);
                             }
 
                             break;
 
                           default:
-                            ganadorIndex = _this11.compra.pozo.findIndex(function (x) {
+                            ganadorIndex = _this12.compra.pozo.findIndex(function (x) {
                               return x.combinacion1 == ganador.combinacion1 && x.sorteo == ganador.numeroSorteo;
                             });
 
                             if (ganadorIndex != -1) {
-                              _this11.compra.pozo[ganadorIndex]["hasGanador"] = true;
+                              _this12.compra.pozo[ganadorIndex]["hasGanador"] = true;
 
-                              _this11.compra.pozo[ganadorIndex]["detalleGanador"].push(ganador);
+                              _this12.compra.pozo[ganadorIndex]["detalleGanador"].push(ganador);
                             }
 
                             break;
@@ -2564,6 +2664,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/@angular/common/fesm2015/http.js");
 
     var PaymentService = /*#__PURE__*/function () {
+      //mySource = this.testSource;
       //mySource = this.productionSource;
       function PaymentService(cart, http) {
         _classCallCheck(this, PaymentService);
@@ -2572,9 +2673,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
-        this.productionSource = "https://ventas-api.loteria.com.ec"; //mySource = this.localSource;
-
-        this.mySource = this.testSource;
+        this.productionSource = "https://ventas-api.loteria.com.ec";
+        this.mySource = this.localSource;
       }
 
       _createClass(PaymentService, [{
@@ -2606,7 +2706,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "hasBalance",
         value: function hasBalance(subtotal, token) {
-          var _this12 = this;
+          var _this13 = this;
 
           var cartTotal = parseFloat(this.cart.getTotal());
           var testAmount = parseFloat(subtotal) + cartTotal;
@@ -2621,7 +2721,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var address = this.mySource;
           address = address + endpoint;
           return new Promise(function (resolve, reject) {
-            _this12.http.post(address, body, {
+            _this13.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               var balance = parseFloat(data.balance);
@@ -2635,7 +2735,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getCompra",
         value: function getCompra(ticketId, accountId) {
-          var _this13 = this;
+          var _this14 = this;
 
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
           headers = headers.append("Content-Type", "application/json");
@@ -2648,7 +2748,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var address = this.mySource;
           address = address + endpoint;
           return new Promise(function (resolve, reject) {
-            _this13.http.post(address, body, {
+            _this14.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               if (!data.status) {
@@ -2664,7 +2764,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getGanador",
         value: function getGanador(ticketId) {
-          var _this14 = this;
+          var _this15 = this;
 
           ticketId = ticketId.toString();
           var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
@@ -2677,7 +2777,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var address = this.mySource;
           address = address + endpoint;
           return new Promise(function (resolve, reject) {
-            _this14.http.post(address, body, {
+            _this15.http.post(address, body, {
               headers: headers
             }).subscribe(function (data) {
               resolve(data);
@@ -2690,9 +2790,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "confirmarCompra",
         value: function confirmarCompra(token, reservaId) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            var _this15 = this;
+            var _this16 = this;
 
-            var loteria, lotto, pozo, total, totalConDesc, headers, endpoint, authData, body, address;
+            var loteria, lotto, pozo, millonaria, total, totalConDesc, headers, endpoint, authData, body, address;
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
                 switch (_context3.prev = _context3.next) {
@@ -2712,6 +2812,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                   case 8:
                     pozo = _context3.sent;
+                    _context3.next = 11;
+                    return this.cart.getCarritoMillonaria();
+
+                  case 11:
+                    millonaria = _context3.sent;
                     total = this.cart.getTotal();
                     totalConDesc = this.cart.getTotalConDesc();
                     headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]();
@@ -2723,6 +2828,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       loteria: loteria,
                       lotto: lotto,
                       pozo: pozo,
+                      millonaria: millonaria,
                       lotteryToken: authData.lotteryToken,
                       user: authData.user,
                       personaId: authData.personalId,
@@ -2737,7 +2843,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     address = this.mySource;
                     address = address + endpoint;
                     return _context3.abrupt("return", new Promise(function (resolve, reject) {
-                      _this15.http.post(address, body, {
+                      _this16.http.post(address, body, {
                         headers: headers
                       }).subscribe(function (data) {
                         var response = data;
@@ -2748,7 +2854,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       });
                     }));
 
-                  case 20:
+                  case 23:
                   case "end":
                     return _context3.stop();
                 }
@@ -2844,6 +2950,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.ticketsLoteria = {};
         this.ticketsLotto = {};
         this.ticketsPozo = {};
+        this.ticketsMillonaria = {};
         this.ticketsCarrito = [];
         this.reservaId = 0;
         this.localSource = "http://localhost:5480";
@@ -2857,7 +2964,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "eliminarDescuento",
         value: function eliminarDescuento(element, tipoLoteria) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-            var sorteo, loteria, id, lotto, _id, pozo, _id2;
+            var sorteo, loteria, id, lotto, _id, pozo, _id2, millonaria, _id3;
 
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
@@ -2865,7 +2972,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   case 0:
                     sorteo = element.sorteo;
                     _context4.t0 = tipoLoteria;
-                    _context4.next = _context4.t0 === 1 ? 4 : _context4.t0 === 2 ? 8 : 12;
+                    _context4.next = _context4.t0 === 1 ? 4 : _context4.t0 === 2 ? 8 : _context4.t0 === 5 ? 12 : _context4.t0 === 14 ? 16 : 20;
                     break;
 
                   case 4:
@@ -2879,7 +2986,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                     this.setLoteriaLocal(loteria);
-                    return _context4.abrupt("break", 16);
+                    return _context4.abrupt("break", 20);
 
                   case 8:
                     lotto = this.getLottoLocal();
@@ -2892,7 +2999,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                     this.setLottoLocal(lotto);
-                    return _context4.abrupt("break", 16);
+                    return _context4.abrupt("break", 20);
 
                   case 12:
                     pozo = this.getPozoLocal();
@@ -2905,13 +3012,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                     this.setPozoLocal(pozo);
-                    return _context4.abrupt("break", 16);
+                    return _context4.abrupt("break", 20);
 
                   case 16:
-                    _context4.next = 18;
+                    millonaria = this.getMillonariaLocal();
+
+                    for (_id3 in millonaria) {
+                      if (millonaria[_id3].sorteo.sorteo == sorteo) {
+                        millonaria[_id3].tieneDescuento = false;
+                        millonaria[_id3].subtotalConDesc = 0;
+                      }
+                    }
+
+                    this.setMillonariaLocal(millonaria);
+                    return _context4.abrupt("break", 20);
+
+                  case 20:
+                    _context4.next = 22;
                     return this.actualizarCarrito();
 
-                  case 18:
+                  case 22:
                   case "end":
                     return _context4.stop();
                 }
@@ -2923,7 +3043,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "calcularDescuento",
         value: function calcularDescuento(descuento) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-            var precioConDescuento, sorteo, loteria, id, lotto, _id3, pozo, _id4;
+            var precioConDescuento, sorteo, loteria, id, lotto, _id4, pozo, _id5, millonaria, _id6;
 
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
@@ -2932,7 +3052,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     precioConDescuento = descuento.valorConDescuento;
                     sorteo = descuento.sorteo;
                     _context5.t0 = descuento.tipoLoteria;
-                    _context5.next = _context5.t0 === "1" ? 5 : _context5.t0 === "2" ? 9 : 13;
+                    _context5.next = _context5.t0 === "1" ? 5 : _context5.t0 === "2" ? 9 : _context5.t0 === "5" ? 13 : _context5.t0 === "14" ? 17 : 21;
                     break;
 
                   case 5:
@@ -2946,39 +3066,52 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     }
 
                     this.setLoteriaLocal(loteria);
-                    return _context5.abrupt("break", 17);
+                    return _context5.abrupt("break", 21);
 
                   case 9:
                     lotto = this.getLottoLocal();
 
-                    for (_id3 in lotto) {
-                      if (lotto[_id3].sorteo.sorteo == sorteo) {
-                        lotto[_id3].tieneDescuento = true;
-                        lotto[_id3].subtotalConDesc = parseFloat(precioConDescuento);
+                    for (_id4 in lotto) {
+                      if (lotto[_id4].sorteo.sorteo == sorteo) {
+                        lotto[_id4].tieneDescuento = true;
+                        lotto[_id4].subtotalConDesc = parseFloat(precioConDescuento);
                       }
                     }
 
                     this.setLottoLocal(lotto);
-                    return _context5.abrupt("break", 17);
+                    return _context5.abrupt("break", 21);
 
                   case 13:
                     pozo = this.getPozoLocal();
 
-                    for (_id4 in pozo) {
-                      if (pozo[_id4].sorteo.sorteo == sorteo) {
-                        pozo[_id4].tieneDescuento = true;
-                        pozo[_id4].subtotalConDesc = parseFloat(precioConDescuento);
+                    for (_id5 in pozo) {
+                      if (pozo[_id5].sorteo.sorteo == sorteo) {
+                        pozo[_id5].tieneDescuento = true;
+                        pozo[_id5].subtotalConDesc = parseFloat(precioConDescuento);
                       }
                     }
 
                     this.setPozoLocal(pozo);
-                    return _context5.abrupt("break", 17);
+                    return _context5.abrupt("break", 21);
 
                   case 17:
-                    _context5.next = 19;
+                    millonaria = this.getMillonariaLocal();
+
+                    for (_id6 in millonaria) {
+                      if (millonaria[_id6].sorteo.sorteo == sorteo) {
+                        millonaria[_id6].tieneDescuento = true;
+                        millonaria[_id6].subtotalConDesc = parseFloat(precioConDescuento);
+                      }
+                    }
+
+                    this.setMillonariaLocal(millonaria);
+                    return _context5.abrupt("break", 21);
+
+                  case 21:
+                    _context5.next = 23;
                     return this.actualizarCarrito();
 
-                  case 19:
+                  case 23:
                   case "end":
                     return _context5.stop();
                 }
@@ -3000,23 +3133,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       return item.sorteo.sorteo == sorteo && item.tipoLoteria == tipoLoteria;
                     });
                     _context6.t0 = tipoLoteria;
-                    _context6.next = _context6.t0 === 1 ? 5 : 7;
+                    _context6.next = _context6.t0 === 1 ? 5 : _context6.t0 === 14 ? 7 : 9;
                     break;
 
                   case 5:
                     conteo = boletos.reduce(function (total, value) {
                       return total + value.ticket.seleccionados.length;
                     }, 0);
-                    return _context6.abrupt("break", 9);
+                    return _context6.abrupt("break", 11);
 
                   case 7:
-                    conteo = boletos.length;
-                    return _context6.abrupt("break", 9);
+                    conteo = boletos.reduce(function (total, value) {
+                      return total + value.ticket.seleccionados.length;
+                    }, 0);
+                    return _context6.abrupt("break", 11);
 
                   case 9:
+                    conteo = boletos.length;
+                    return _context6.abrupt("break", 11);
+
+                  case 11:
                     return _context6.abrupt("return", conteo);
 
-                  case 10:
+                  case 12:
                   case "end":
                     return _context6.stop();
                 }
@@ -3122,7 +3261,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       return x.identificador === ticket.identificador;
                     });
 
-                    if (tipoLoteria == 1 && addIndex != -1) {
+                    if ((tipoLoteria == 1 || tipoLoteria == 14) && addIndex != -1) {
                       carrito[addIndex] = ticket;
                     } else {
                       carrito.push(ticket);
@@ -3142,10 +3281,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "actualizarCarrito",
         value: function actualizarCarrito() {
-          var _this16 = this;
+          var _this17 = this;
 
           return new Promise(function (resolve, reject) {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this16, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this17, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
               var headers, endpoint, user, body, address;
               return regeneratorRuntime.wrap(function _callee10$(_context10) {
                 while (1) {
@@ -3160,6 +3299,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                         loteria: this.getLoteriaLocal(),
                         lotto: this.getLottoLocal(),
                         pozo: this.getPozoLocal(),
+                        millonaria: this.getMillonariaLocal(),
                         carrito: this.getCarritoLocal(),
                         total: this.getTotal(),
                         reservaId: this.getReservaId(),
@@ -3189,14 +3329,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "setCarritoLoteria",
         value: function setCarritoLoteria(tickets) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
-            var _this17 = this;
+            var _this18 = this;
 
             return regeneratorRuntime.wrap(function _callee12$(_context12) {
               while (1) {
                 switch (_context12.prev = _context12.next) {
                   case 0:
                     return _context12.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this17, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this18, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
                         return regeneratorRuntime.wrap(function _callee11$(_context11) {
                           while (1) {
                             switch (_context11.prev = _context11.next) {
@@ -3231,22 +3371,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "setCarritoLotto",
-        value: function setCarritoLotto(tickets) {
+        key: "setCarritoMillonaria",
+        value: function setCarritoMillonaria(tickets) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
-            var _this18 = this;
+            var _this19 = this;
 
             return regeneratorRuntime.wrap(function _callee14$(_context14) {
               while (1) {
                 switch (_context14.prev = _context14.next) {
                   case 0:
                     return _context14.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this18, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this19, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
                         return regeneratorRuntime.wrap(function _callee13$(_context13) {
                           while (1) {
                             switch (_context13.prev = _context13.next) {
                               case 0:
-                                localStorage.setItem("seleccionadosLotto", JSON.stringify(tickets)); //this.ticketsLotto = tickets;
+                                localStorage.setItem("seleccionadosMillonaria", JSON.stringify(tickets)); //this.ticketsLoteria = tickets;
 
                                 _context13.next = 3;
                                 return this.setTotal();
@@ -3276,22 +3416,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "setCarritoPozo",
-        value: function setCarritoPozo(tickets) {
+        key: "setCarritoLotto",
+        value: function setCarritoLotto(tickets) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
-            var _this19 = this;
+            var _this20 = this;
 
             return regeneratorRuntime.wrap(function _callee16$(_context16) {
               while (1) {
                 switch (_context16.prev = _context16.next) {
                   case 0:
                     return _context16.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this19, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this20, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
                         return regeneratorRuntime.wrap(function _callee15$(_context15) {
                           while (1) {
                             switch (_context15.prev = _context15.next) {
                               case 0:
-                                localStorage.setItem("seleccionadosPozo", JSON.stringify(tickets)); //this.ticketsPozo = tickets;
+                                localStorage.setItem("seleccionadosLotto", JSON.stringify(tickets)); //this.ticketsLotto = tickets;
 
                                 _context15.next = 3;
                                 return this.setTotal();
@@ -3321,6 +3461,51 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
+        key: "setCarritoPozo",
+        value: function setCarritoPozo(tickets) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+            var _this21 = this;
+
+            return regeneratorRuntime.wrap(function _callee18$(_context18) {
+              while (1) {
+                switch (_context18.prev = _context18.next) {
+                  case 0:
+                    return _context18.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this21, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+                        return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                          while (1) {
+                            switch (_context17.prev = _context17.next) {
+                              case 0:
+                                localStorage.setItem("seleccionadosPozo", JSON.stringify(tickets)); //this.ticketsPozo = tickets;
+
+                                _context17.next = 3;
+                                return this.setTotal();
+
+                              case 3:
+                                _context17.next = 5;
+                                return this.actualizarCarrito();
+
+                              case 5:
+                                resolve("Done");
+
+                              case 6:
+                              case "end":
+                                return _context17.stop();
+                            }
+                          }
+                        }, _callee17, this);
+                      }));
+                    }));
+
+                  case 1:
+                  case "end":
+                    return _context18.stop();
+                }
+              }
+            }, _callee18);
+          }));
+        }
+      }, {
         key: "setCarritoLocal",
         value: function setCarritoLocal(data) {
           localStorage.setItem("seleccionadosCarrito", JSON.stringify(data));
@@ -3329,6 +3514,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "setLoteriaLocal",
         value: function setLoteriaLocal(data) {
           localStorage.setItem("seleccionadosLoteria", JSON.stringify(data));
+        }
+      }, {
+        key: "setMillonariaLocal",
+        value: function setMillonariaLocal(data) {
+          localStorage.setItem("seleccionadosMillonaria", JSON.stringify(data));
         }
       }, {
         key: "setLottoLocal",
@@ -3357,6 +3547,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return JSON.parse(localStorage.getItem("seleccionadosLoteria"));
         }
       }, {
+        key: "getMillonariaLocal",
+        value: function getMillonariaLocal() {
+          return JSON.parse(localStorage.getItem("seleccionadosMillonaria"));
+        }
+      }, {
         key: "getLottoLocal",
         value: function getLottoLocal() {
           return JSON.parse(localStorage.getItem("seleccionadosLotto"));
@@ -3369,21 +3564,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "buscarCarrito",
         value: function buscarCarrito() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-            var _this20 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+            var _this22 = this;
 
-            return regeneratorRuntime.wrap(function _callee19$(_context19) {
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
               while (1) {
-                switch (_context19.prev = _context19.next) {
+                switch (_context21.prev = _context21.next) {
                   case 0:
-                    return _context19.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this20, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
-                        var _this21 = this;
+                    return _context21.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this22, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+                        var _this23 = this;
 
                         var headers, endpoint, user, body, address;
-                        return regeneratorRuntime.wrap(function _callee18$(_context18) {
+                        return regeneratorRuntime.wrap(function _callee20$(_context20) {
                           while (1) {
-                            switch (_context18.prev = _context18.next) {
+                            switch (_context20.prev = _context20.next) {
                               case 0:
                                 headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
                                 headers = headers.append("Content-Type", "application/json"); //let endpoint = "/inquiry";
@@ -3399,11 +3594,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                 this.http.post(address, body, {
                                   headers: headers
                                 }).subscribe(function (data) {
-                                  return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this21, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+                                  return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this23, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
                                     var reservaId;
-                                    return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                                    return regeneratorRuntime.wrap(function _callee19$(_context19) {
                                       while (1) {
-                                        switch (_context17.prev = _context17.next) {
+                                        switch (_context19.prev = _context19.next) {
                                           case 0:
                                             reservaId = this.getReservaId();
 
@@ -3413,26 +3608,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                               data.loteria = {};
                                               data.lotto = {};
                                               data.pozo = {};
+                                              data.millonaria = {};
                                               data.reservaId = 0;
                                             }
 
                                             this.setCarritoLocal(data.carrito);
                                             this.setLoteriaLocal(data.loteria);
                                             this.setLottoLocal(data.lotto);
+                                            this.setMillonariaLocal(data.millonaria);
                                             this.setPozoLocal(data.pozo);
                                             this.setReservaId(data.reservaId);
-                                            _context17.next = 9;
+                                            _context19.next = 10;
                                             return this.setTotal();
 
-                                          case 9:
+                                          case 10:
                                             resolve(data);
 
-                                          case 10:
+                                          case 11:
                                           case "end":
-                                            return _context17.stop();
+                                            return _context19.stop();
                                         }
                                       }
-                                    }, _callee17, this);
+                                    }, _callee19, this);
                                   }));
                                 }, function (error) {
                                   reject(new Error(error.error.message));
@@ -3440,37 +3637,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                               case 9:
                               case "end":
-                                return _context18.stop();
+                                return _context20.stop();
                             }
                           }
-                        }, _callee18, this);
+                        }, _callee20, this);
                       }));
                     }));
 
                   case 1:
                   case "end":
-                    return _context19.stop();
+                    return _context21.stop();
                 }
               }
-            }, _callee19);
+            }, _callee21);
           }));
         }
       }, {
         key: "validarCarrito",
         value: function validarCarrito(reservaId) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
-            var _this22 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
+            var _this24 = this;
 
-            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+            return regeneratorRuntime.wrap(function _callee23$(_context23) {
               while (1) {
-                switch (_context21.prev = _context21.next) {
+                switch (_context23.prev = _context23.next) {
                   case 0:
-                    return _context21.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this22, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+                    return _context23.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this24, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
                         var headers, endpoint, user, token, body, address;
-                        return regeneratorRuntime.wrap(function _callee20$(_context20) {
+                        return regeneratorRuntime.wrap(function _callee22$(_context22) {
                           while (1) {
-                            switch (_context20.prev = _context20.next) {
+                            switch (_context22.prev = _context22.next) {
                               case 0:
                                 headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
                                 headers = headers.append("Content-Type", "application/json"); //let endpoint = "/inquiry";
@@ -3490,56 +3687,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                                   headers: headers
                                 }).subscribe(function (data) {
                                   /*           if (!data.status) {
-                                              reject(new Error(data.message));
-                                            }
-                                   */
+                                    reject(new Error(data.message));
+                                  }
+                                  */
                                   resolve(data);
                                 }, function (error) {
                                   reject(new Error(error.error.message));
                                 });
 
                               case 10:
-                              case "end":
-                                return _context20.stop();
-                            }
-                          }
-                        }, _callee20, this);
-                      }));
-                    }));
-
-                  case 1:
-                  case "end":
-                    return _context21.stop();
-                }
-              }
-            }, _callee21);
-          }));
-        }
-      }, {
-        key: "getCarrito",
-        value: function getCarrito() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
-            var _this23 = this;
-
-            return regeneratorRuntime.wrap(function _callee23$(_context23) {
-              while (1) {
-                switch (_context23.prev = _context23.next) {
-                  case 0:
-                    return _context23.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this23, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee22() {
-                        var carritoDB;
-                        return regeneratorRuntime.wrap(function _callee22$(_context22) {
-                          while (1) {
-                            switch (_context22.prev = _context22.next) {
-                              case 0:
-                                _context22.next = 2;
-                                return this.buscarCarrito();
-
-                              case 2:
-                                carritoDB = _context22.sent;
-                                resolve(carritoDB.carrito); //resolve(JSON.parse(localStorage.getItem("seleccionadosCarrito")));
-
-                              case 4:
                               case "end":
                                 return _context22.stop();
                             }
@@ -3557,17 +3713,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "getCarritoLoteria",
-        value: function getCarritoLoteria() {
+        key: "getCarrito",
+        value: function getCarrito() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
-            var _this24 = this;
+            var _this25 = this;
 
             return regeneratorRuntime.wrap(function _callee25$(_context25) {
               while (1) {
                 switch (_context25.prev = _context25.next) {
                   case 0:
                     return _context25.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this24, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this25, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee24() {
                         var carritoDB;
                         return regeneratorRuntime.wrap(function _callee24$(_context24) {
                           while (1) {
@@ -3578,7 +3734,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                               case 2:
                                 carritoDB = _context24.sent;
-                                resolve(carritoDB.loteria); //resolve(JSON.parse(localStorage.getItem("seleccionadosLoteria")));
+                                resolve(carritoDB.carrito); //resolve(JSON.parse(localStorage.getItem("seleccionadosCarrito")));
 
                               case 4:
                               case "end":
@@ -3598,17 +3754,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "getCarritoLotto",
-        value: function getCarritoLotto() {
+        key: "getCarritoLoteria",
+        value: function getCarritoLoteria() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
-            var _this25 = this;
+            var _this26 = this;
 
             return regeneratorRuntime.wrap(function _callee27$(_context27) {
               while (1) {
                 switch (_context27.prev = _context27.next) {
                   case 0:
                     return _context27.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this25, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this26, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
                         var carritoDB;
                         return regeneratorRuntime.wrap(function _callee26$(_context26) {
                           while (1) {
@@ -3619,7 +3775,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                               case 2:
                                 carritoDB = _context26.sent;
-                                resolve(carritoDB.lotto); //resolve(JSON.parse(localStorage.getItem("seleccionadosLotto")));
+                                resolve(carritoDB.loteria); //resolve(JSON.parse(localStorage.getItem("seleccionadosLoteria")));
 
                               case 4:
                               case "end":
@@ -3639,17 +3795,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "getCarritoPozo",
-        value: function getCarritoPozo() {
+        key: "getCarritoLotto",
+        value: function getCarritoLotto() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee29() {
-            var _this26 = this;
+            var _this27 = this;
 
             return regeneratorRuntime.wrap(function _callee29$(_context29) {
               while (1) {
                 switch (_context29.prev = _context29.next) {
                   case 0:
                     return _context29.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this26, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this27, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
                         var carritoDB;
                         return regeneratorRuntime.wrap(function _callee28$(_context28) {
                           while (1) {
@@ -3660,7 +3816,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                               case 2:
                                 carritoDB = _context28.sent;
-                                resolve(carritoDB.pozo); //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
+                                resolve(carritoDB.lotto); //resolve(JSON.parse(localStorage.getItem("seleccionadosLotto")));
 
                               case 4:
                               case "end":
@@ -3680,34 +3836,118 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }));
         }
       }, {
-        key: "borrarCarrito",
-        value: function borrarCarrito() {
+        key: "getCarritoPozo",
+        value: function getCarritoPozo() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee31() {
-            var _this27 = this;
+            var _this28 = this;
 
             return regeneratorRuntime.wrap(function _callee31$(_context31) {
               while (1) {
                 switch (_context31.prev = _context31.next) {
                   case 0:
+                    return _context31.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this28, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee30() {
+                        var carritoDB;
+                        return regeneratorRuntime.wrap(function _callee30$(_context30) {
+                          while (1) {
+                            switch (_context30.prev = _context30.next) {
+                              case 0:
+                                _context30.next = 2;
+                                return this.buscarCarrito();
+
+                              case 2:
+                                carritoDB = _context30.sent;
+                                resolve(carritoDB.pozo); //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
+
+                              case 4:
+                              case "end":
+                                return _context30.stop();
+                            }
+                          }
+                        }, _callee30, this);
+                      }));
+                    }));
+
+                  case 1:
+                  case "end":
+                    return _context31.stop();
+                }
+              }
+            }, _callee31);
+          }));
+        }
+      }, {
+        key: "getCarritoMillonaria",
+        value: function getCarritoMillonaria() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee33() {
+            var _this29 = this;
+
+            return regeneratorRuntime.wrap(function _callee33$(_context33) {
+              while (1) {
+                switch (_context33.prev = _context33.next) {
+                  case 0:
+                    return _context33.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this29, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee32() {
+                        var carritoDB;
+                        return regeneratorRuntime.wrap(function _callee32$(_context32) {
+                          while (1) {
+                            switch (_context32.prev = _context32.next) {
+                              case 0:
+                                _context32.next = 2;
+                                return this.buscarCarrito();
+
+                              case 2:
+                                carritoDB = _context32.sent;
+                                resolve(carritoDB.millonaria); //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
+
+                              case 4:
+                              case "end":
+                                return _context32.stop();
+                            }
+                          }
+                        }, _callee32, this);
+                      }));
+                    }));
+
+                  case 1:
+                  case "end":
+                    return _context33.stop();
+                }
+              }
+            }, _callee33);
+          }));
+        }
+      }, {
+        key: "borrarCarrito",
+        value: function borrarCarrito() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee35() {
+            var _this30 = this;
+
+            return regeneratorRuntime.wrap(function _callee35$(_context35) {
+              while (1) {
+                switch (_context35.prev = _context35.next) {
+                  case 0:
                     this.ticketsCarrito = [];
                     this.ticketsLoteria = {};
                     this.ticketsLotto = {};
                     this.ticketsPozo = {};
+                    this.ticketsMillonaria = {};
                     this.reservaId = 0;
                     this.total = 0;
                     localStorage.removeItem("seleccionadosLoteria");
                     localStorage.removeItem("seleccionadosLotto");
                     localStorage.removeItem("seleccionadosPozo");
                     localStorage.removeItem("seleccionadosCarrito");
+                    localStorage.removeItem("seleccionadosMillonaria");
                     localStorage.removeItem("reservaId");
                     localStorage.removeItem("total");
                     localStorage.removeItem("totalConDesc");
-                    return _context31.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this27, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee30() {
+                    return _context35.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this30, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee34() {
                         var headers, endpoint, user, body, address;
-                        return regeneratorRuntime.wrap(function _callee30$(_context30) {
+                        return regeneratorRuntime.wrap(function _callee34$(_context34) {
                           while (1) {
-                            switch (_context30.prev = _context30.next) {
+                            switch (_context34.prev = _context34.next) {
                               case 0:
                                 headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();
                                 headers = headers.append("Content-Type", "application/json"); //let endpoint = "/inquiry";
@@ -3730,43 +3970,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                               case 9:
                               case "end":
-                                return _context30.stop();
+                                return _context34.stop();
                             }
                           }
-                        }, _callee30, this);
+                        }, _callee34, this);
                       }));
                     }));
 
-                  case 14:
+                  case 16:
                   case "end":
-                    return _context31.stop();
+                    return _context35.stop();
                 }
               }
-            }, _callee31, this);
+            }, _callee35, this);
           }));
         }
       }, {
         key: "setTotalConDesc",
         value: function setTotalConDesc() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee33() {
-            var _this28 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee37() {
+            var _this31 = this;
 
-            return regeneratorRuntime.wrap(function _callee33$(_context33) {
+            return regeneratorRuntime.wrap(function _callee37$(_context37) {
               while (1) {
-                switch (_context33.prev = _context33.next) {
+                switch (_context37.prev = _context37.next) {
                   case 0:
-                    return _context33.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this28, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee32() {
-                        var loteriaAux, lottoAux, pozoAux, loteriaConDesc, id, lottoConDesc, _id5, pozoConDesc, _id6, auxConDesc;
+                    return _context37.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this31, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee36() {
+                        var loteriaAux, lottoAux, pozoAux, millonariaAux, loteriaConDesc, id, lottoConDesc, _id7, pozoConDesc, _id8, millonariaConDesc, _id9, auxConDesc;
 
-                        return regeneratorRuntime.wrap(function _callee32$(_context32) {
+                        return regeneratorRuntime.wrap(function _callee36$(_context36) {
                           while (1) {
-                            switch (_context32.prev = _context32.next) {
+                            switch (_context36.prev = _context36.next) {
                               case 0:
                                 //await this.buscarCarrito();
                                 loteriaAux = this.getLoteriaLocal();
                                 lottoAux = this.getLottoLocal();
                                 pozoAux = this.getPozoLocal();
+                                millonariaAux = this.getMillonariaLocal();
                                 loteriaConDesc = 0;
 
                                 for (id in loteriaAux) {
@@ -3779,68 +4020,79 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                                 lottoConDesc = 0;
 
-                                for (_id5 in lottoAux) {
-                                  if (lottoAux[_id5].tieneDescuento) {
-                                    lottoConDesc += parseFloat(lottoAux[_id5].subtotalConDesc);
+                                for (_id7 in lottoAux) {
+                                  if (lottoAux[_id7].tieneDescuento) {
+                                    lottoConDesc += parseFloat(lottoAux[_id7].subtotalConDesc);
                                   } else {
-                                    lottoConDesc += parseFloat(lottoAux[_id5].subtotal);
+                                    lottoConDesc += parseFloat(lottoAux[_id7].subtotal);
                                   }
                                 }
 
                                 pozoConDesc = 0;
 
-                                for (_id6 in pozoAux) {
-                                  if (pozoAux[_id6].tieneDescuento) {
-                                    pozoConDesc += parseFloat(pozoAux[_id6].subtotalConDesc);
+                                for (_id8 in pozoAux) {
+                                  if (pozoAux[_id8].tieneDescuento) {
+                                    pozoConDesc += parseFloat(pozoAux[_id8].subtotalConDesc);
                                   } else {
-                                    pozoConDesc += parseFloat(pozoAux[_id6].subtotal);
+                                    pozoConDesc += parseFloat(pozoAux[_id8].subtotal);
                                   }
                                 }
 
-                                auxConDesc = loteriaConDesc + lottoConDesc + pozoConDesc;
+                                millonariaConDesc = 0;
+
+                                for (_id9 in millonariaAux) {
+                                  if (millonariaAux[_id9].tieneDescuento) {
+                                    millonariaConDesc += parseFloat(millonariaAux[_id9].subtotalConDesc);
+                                  } else {
+                                    millonariaConDesc += parseFloat(millonariaAux[_id9].subtotal);
+                                  }
+                                }
+
+                                auxConDesc = loteriaConDesc + lottoConDesc + pozoConDesc + millonariaConDesc;
                                 this.totalConDesc = auxConDesc;
                                 localStorage.setItem("totalConDesc", JSON.stringify(auxConDesc));
                                 resolve("Done");
 
-                              case 13:
+                              case 16:
                               case "end":
-                                return _context32.stop();
+                                return _context36.stop();
                             }
                           }
-                        }, _callee32, this);
+                        }, _callee36, this);
                       }));
                     }));
 
                   case 1:
                   case "end":
-                    return _context33.stop();
+                    return _context37.stop();
                 }
               }
-            }, _callee33);
+            }, _callee37);
           }));
         }
       }, {
         key: "setTotal",
         value: function setTotal() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee35() {
-            var _this29 = this;
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee39() {
+            var _this32 = this;
 
-            return regeneratorRuntime.wrap(function _callee35$(_context35) {
+            return regeneratorRuntime.wrap(function _callee39$(_context39) {
               while (1) {
-                switch (_context35.prev = _context35.next) {
+                switch (_context39.prev = _context39.next) {
                   case 0:
-                    return _context35.abrupt("return", new Promise(function (resolve, reject) {
-                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this29, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee34() {
-                        var loteriaAux, lottoAux, pozoAux, loteria, id, lotto, _id7, pozo, _id8, aux;
+                    return _context39.abrupt("return", new Promise(function (resolve, reject) {
+                      return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this32, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee38() {
+                        var loteriaAux, lottoAux, pozoAux, millonariaAux, loteria, id, lotto, _id10, pozo, _id11, millonaria, _id12, aux;
 
-                        return regeneratorRuntime.wrap(function _callee34$(_context34) {
+                        return regeneratorRuntime.wrap(function _callee38$(_context38) {
                           while (1) {
-                            switch (_context34.prev = _context34.next) {
+                            switch (_context38.prev = _context38.next) {
                               case 0:
                                 //await this.buscarCarrito();
                                 loteriaAux = this.getLoteriaLocal();
                                 lottoAux = this.getLottoLocal();
                                 pozoAux = this.getPozoLocal();
+                                millonariaAux = this.getMillonariaLocal();
                                 loteria = 0;
 
                                 for (id in loteriaAux) {
@@ -3849,36 +4101,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                                 lotto = 0;
 
-                                for (_id7 in lottoAux) {
-                                  lotto += parseFloat(lottoAux[_id7].subtotal);
+                                for (_id10 in lottoAux) {
+                                  lotto += parseFloat(lottoAux[_id10].subtotal);
                                 }
 
                                 pozo = 0;
 
-                                for (_id8 in pozoAux) {
-                                  pozo += parseFloat(pozoAux[_id8].subtotal);
+                                for (_id11 in pozoAux) {
+                                  pozo += parseFloat(pozoAux[_id11].subtotal);
                                 }
 
-                                aux = loteria + lotto + pozo;
+                                millonaria = 0;
+
+                                for (_id12 in millonariaAux) {
+                                  millonaria += parseFloat(millonariaAux[_id12].subtotal);
+                                }
+
+                                aux = loteria + lotto + pozo + millonaria;
                                 this.total = aux;
                                 localStorage.setItem("total", JSON.stringify(aux));
                                 resolve("Done");
 
-                              case 13:
+                              case 16:
                               case "end":
-                                return _context34.stop();
+                                return _context38.stop();
                             }
                           }
-                        }, _callee34, this);
+                        }, _callee38, this);
                       }));
                     }));
 
                   case 1:
                   case "end":
-                    return _context35.stop();
+                    return _context39.stop();
                 }
               }
-            }, _callee35);
+            }, _callee39);
           }));
         }
       }, {

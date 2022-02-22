@@ -6,10 +6,13 @@ const GanadoresController = require('../controller/ganadores');
 lotteryRouter.post('/loteriaCombinacionesDisponibles', LotteryController.searchLoteriaCombinacionesDisponibles);
 lotteryRouter.post('/lottoCombinacionesDisponibles', LotteryController.searchLottoCombinacionesDisponibles);
 lotteryRouter.post('/pozoCombinacionesDisponibles', LotteryController.searchPozoCombinacionesDisponibles);
+lotteryRouter.post('/millonariaCombinacionesDisponibles', LotteryController.searchMillonariaCombinacionesDisponibles);
 
+lotteryRouter.get('/millonariaSorteosDisponibles', LotteryController.searchMillonariaSorteosDisponibles);
 lotteryRouter.get('/pozoSorteosDisponibles', LotteryController.searchPozoSorteosDisponibles);
 lotteryRouter.get('/lottoSorteosDisponibles', LotteryController.searchLottoSorteosDisponibles);
 lotteryRouter.get('/loteriaSorteosDisponibles', LotteryController.searchLoteriaSorteosDisponibles);
+lotteryRouter.get('/getSeries', LotteryController.searchMillonariaSeries);
 
 lotteryRouter.post('/reservarBoletos', LotteryController.reservarBoletos);
 lotteryRouter.post('/eliminarBoletosDeReserva', LotteryController.eliminarBoletosDeReserva);
@@ -31,5 +34,6 @@ lotteryRouter.get('/pruebaOrden', GanadoresController.pruebaOrden);
 lotteryRouter.post('/loteriaBoleto', LotteryController.buscarLoteriaBoleto);
 lotteryRouter.post('/lottoBoleto', LotteryController.buscarLottoBoleto);
 lotteryRouter.post('/pozoBoleto', LotteryController.buscarPozoBoleto);
+lotteryRouter.post('/millonariaBoleto', LotteryController.buscarMillonariaBoleto);
 
 module.exports = lotteryRouter;

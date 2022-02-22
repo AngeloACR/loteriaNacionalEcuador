@@ -57,6 +57,20 @@ export class InfoLoteriaComponent implements OnInit {
         this.tipoLoteria = 5;
         this.fondoPozo = true;
         this.fondoLotto = false;
+<<<<<<< HEAD
+=======
+        this.fondoMillonaria = false;
+        this.fondoLoteria = false;
+        break;
+
+      case "millonaria":
+        this.tipoLoteria = 14;
+        this.isLoteria = true;
+
+        this.fondoMillonaria = true;
+        this.fondoPozo = false;
+        this.fondoLotto = false;
+>>>>>>> la-millonaria
         this.fondoLoteria = false;
         break;
     }
@@ -103,16 +117,6 @@ export class InfoLoteriaComponent implements OnInit {
   sorteoDefault: sorteo;
   setSorteoDefault() {
     this.changeDetectorRef.detectChanges();
-    this.sorteoDefault = {
-      nombre: "default",
-      fecha: "",
-      valorPremioPrincipal: "",
-      precio: "",
-      dia: "",
-      cantidadDeFracciones: 0,
-      sorteo: "",
-    };
-    //this.seleccionado = this.sorteoDefault;
     this.seleccionado = this.sorteos[0];
     this.changeDetectorRef.markForCheck();
     this.onEmitir();

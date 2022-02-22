@@ -97,6 +97,20 @@ const cacheController = {
       res.status(400).json(e.toString());
     }
   },
+  getMillonariaSorteos: async (req, res) => {
+    try {
+      let client = cacheController.getClient();
+      let response = await client.getAsync("millonariaSorteos");
+      if (response == "") {
+        await cacheController.setSorteos();
+        response = await client.getAsync("millonariaSorteos");
+      }
+      client.quit();
+      res.status(200).json(JSON.parse(response));
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
 
   setSorteos: async () => {
     try {
@@ -107,6 +121,8 @@ const cacheController = {
       await client.setAsync("lottoSorteos", JSON.stringify(lottoSorteos));
       let pozoSorteos = await Sorteos.getSorteos(5);
       await client.setAsync("pozoSorteos", JSON.stringify(pozoSorteos));
+      let millonariaSorteos = await Sorteos.getSorteos(14);
+      await client.setAsync("millonariaSorteos", JSON.stringify(millonariaSorteos));
 
       client.quit();
     } catch (e) {
@@ -137,6 +153,12 @@ const cacheController = {
         user
       );
       await client.setAsync("pozoSorteosDisponibles", JSON.stringify(pozoSorteos));
+      let millonariaSorteos = await Ventas.consultarSorteosDisponibles(
+        14,
+        lotteryToken,
+        user
+      );
+      await client.setAsync("millonariaSorteosDisponibles", JSON.stringify(millonariaSorteos));
 
       client.quit();
     } catch (e) {
@@ -185,6 +207,20 @@ const cacheController = {
       res.status(400).json(e.toString());
     }
   },
+  getMillonariaSorteosDisponiblesHttp: async (req, res) => {
+    try {
+      let client = cacheController.getClient();
+      let response = await client.getAsync("millonariaSorteosDisponibles");
+      if (response == "") {
+        await cacheController.setSorteos();
+        response = await client.getAsync("millonariaSorteosDisponibles");
+      }
+      client.quit();
+      res.status(200).json(JSON.parse(response));
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
   getLoteriaSorteosDisponibles: async () => {
     try {
       let client = cacheController.getClient();
@@ -220,6 +256,20 @@ const cacheController = {
       if (!response) {
         await cacheController.setSorteosDisponibles();
         response = await client.getAsync("pozoSorteosDisponibles");
+      }
+      client.quit();
+      return JSON.parse(response);
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  },
+  getMillonariaSorteosDisponibles: async () => {
+    try {
+      let client = cacheController.getClient();
+      let response = await client.getAsync("millonariaSorteosDisponibles");
+      if (!response) {
+        await cacheController.setSorteosDisponibles();
+        response = await client.getAsync("millonariaSorteosDisponibles");
       }
       client.quit();
       return JSON.parse(response);

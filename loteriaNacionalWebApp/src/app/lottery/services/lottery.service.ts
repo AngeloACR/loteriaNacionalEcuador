@@ -15,8 +15,8 @@ export class LotteryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
-  mySource = this.testSource;
+  mySource = this.localSource;
+  //mySource = this.testSource;
   //mySource = this.productionSource;
 
   sorteo: Array<sorteo>;
@@ -174,6 +174,41 @@ export class LotteryService {
         break;
     }
   }
+  obtenerSeries(sorteo) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+    let endpoint = "/lottery/getSeries";
+    let authData = this.getAuthData();
+    var address = this.mySource;
+    console.log(sorteo)
+    address = address + endpoint;
+    return new Promise<Array<any>>((resolve, reject) => {
+      this.http
+        .get(address, {
+          params: {
+            lotteryToken: authData.lotteryToken,
+            user: authData.user,
+            sorteo
+          },
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            let aux = data.map(element => {
+              return { 
+                serie: element,
+                status: false,
+              }
+            });
+            resolve(aux);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
+  }
 
   ordenaSorteos(a, b) {
     let a1 = a["sorteo"];
@@ -248,6 +283,25 @@ export class LotteryService {
           this.http.post(address, body, { headers: headers }).subscribe(
             (data: any) => {
               let combinacionesDisponibles: Array<ticketsAnimales> =
+                data.combinaciones;
+              resolve(combinacionesDisponibles);
+            },
+            (error: any) => {
+              reject(new Error(error.error.message));
+            }
+          );
+        });
+
+        break;
+      case 14:
+        endpoint = `${endpoint}/millonariaCombinacionesDisponibles`;
+        var address = this.mySource;
+
+        address = address + endpoint;
+        return new Promise<Array<ticketsMillonaria>>((resolve, reject) => {
+          this.http.post(address, body, { headers: headers }).subscribe(
+            (data: any) => {
+              let combinacionesDisponibles: Array<ticketsMillonaria> =
                 data.combinaciones;
               resolve(combinacionesDisponibles);
             },
@@ -949,6 +1003,18 @@ export class LotteryService {
         ];
         body["pozo"] = aux;
         break;
+      case 14:
+        aux = [
+        
+          {
+            combinacion: boleto.ticket.combinacion1,
+            combinacion2: boleto.ticket.combinacion2,
+            fracciones: boleto.fracciones,
+            sorteo: boleto.sorteo,
+          },
+        ];
+        body["millonaria"] = aux;
+        break;
     }
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
@@ -1009,9 +1075,17 @@ export class LotteryService {
         ];
         body["pozo"] = aux;
         break;
+          {
+            combinacion: boleto.combinacion1,
+            combinacion2: boleto.combinacion2,
+            fracciones,
+            sorteo: sorteo,
+          },
+        ];
+        body["millonaria"] = aux;
+        break;
     }
     return new Promise<any>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           let response: any = data;
           resolve(response);

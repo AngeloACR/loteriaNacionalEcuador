@@ -10,179 +10,6 @@ const config = require("../../config/environment");
 //let sourceBoletines = config.sourceBoletinesLocal;
 //let sourceBoletines = config.sourceBoletinesTest;
 let sourceBoletines = config.sourceBoletinesProd;
-const inquiryLotteryController = {
-  searchLoteriaWinner: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      let sorteo = req.body.sorteo;
-      let combinaciones = req.body.combinaciones;
-      response = [];
-      let length = combinaciones.length;
-      for (let i = 0; i < length; i++) {
-        let aux = await Lottery.consultarBoletoGanador(
-          1,
-          sorteo,
-          combinaciones[i],
-          token
-        );
-        response.push(aux);
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchLottoWinner: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      let sorteo = req.body.sorteo;
-      let combinaciones = req.body.combinaciones;
-      response = [];
-      let length = combinaciones.length;
-      for (let i = 0; i < length; i++) {
-        let aux = await Lottery.consultarBoletoGanador(
-          2,
-          sorteo,
-          combinaciones[i],
-          token
-        );
-        response.push(aux);
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchPozoWinner: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      let sorteo = req.body.sorteo;
-      let combinaciones = req.body.combinaciones;
-      response = [];
-      let length = combinaciones.length;
-      for (let i = 0; i < length; i++) {
-        let aux = await Lottery.consultarBoletoGanador(
-          5,
-          sorteo,
-          combinaciones[i],
-          token
-        );
-        response.push(aux);
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchLottoBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 2;
-      let boletinAddress = `http://admin-loteria.gustavoliver.com/boletines/boletin-${tipoLoteria}${sorteo}.jpg`;
-      res.status(200).json(boletinAddress);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchLoteriaBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 1;
-      let boletinAddress = `http://admin-loteria.gustavoliver.com/boletines/boletin-${tipoLoteria}${sorteo}.jpg`;
-
-      res.status(200).json(boletinAddress);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchPozoBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 5;
-      let boletinAddress = `http://admin-loteria.gustavoliver.com/boletines/boletin-${tipoLoteria}${sorteo}.jpg`;
-      res.status(200).json(boletinAddress);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchLoteriaUltimosResultados: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      response = await Lottery.consultarUltimosResultados(1, token);
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchLottoUltimosResultados: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      response = await Lottery.consultarUltimosResultados(2, token);
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchPozoUltimosResultados: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      response = await Lottery.consultarUltimosResultados(5, token);
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchLottoSorteosJugados: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      response = await Lottery.consultarSorteosJugados(2, token);
-
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchLoteriaSorteosJugados: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      response = await Lottery.consultarSorteosJugados(1, token);
-
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  searchPozoSorteosJugados: async (req, res) => {
-    try {
-      let response = await Lottery.autenticarUsuario();
-      let token = response.token;
-      response = await Lottery.consultarSorteosJugados(5, token);
-
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-};
 
 const inquiryController = {
   validateSorteo: async (sorteo, tipoLoteria) => {
@@ -354,6 +181,53 @@ const inquiryController = {
     }
   },
 
+  buscarMillonariaWinner: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let combinaciones = req.body.combinaciones;
+      let response = [];
+      let length = combinaciones.length;
+      await inquiryController.validateSorteo(sorteo, 14);
+      for (let i = 0; i < length; i++) {
+        let aux = await Results.getResultadoGanadorMillonaria(
+          sorteo,
+          combinaciones[i]
+        );
+        if (aux.status) {
+          let n = aux.values.length;
+          for (let j = 0; j < n; j++) {
+            let boleto = aux.values[j];
+            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+            boleto["premio"] = premio.values;
+            let responseAux = {
+              status: true,
+              combinacion: combinaciones[i],
+              sorteo,
+              data: boleto,
+            };
+            response.push(responseAux);
+          }
+        } else {
+          let responseAux = {
+            status: false,
+            combinacion: combinaciones[i],
+            sorteo,
+          };
+          response.push(responseAux);
+        }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+
   buscarPozoPlancha: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -444,6 +318,17 @@ const inquiryController = {
     }
   },
 
+  buscarMillonariaBoletin: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let tipoLoteria = 14;
+      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
+      res.status(200).json(boletinAddress);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
   buscarLoteriaUltimosResultados: async (req, res) => {
     try {
       response = await Lottery.consultarUltimosResultados(1, token);
@@ -465,6 +350,16 @@ const inquiryController = {
   buscarPozoUltimosResultados: async (req, res) => {
     try {
       response = await Lottery.consultarUltimosResultados(5, token);
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+
+  buscarMillonariaUltimosResultados: async (req, res) => {
+    try {
+      response = await Lottery.consultarUltimosResultados(14, token);
       res.status(200).json(response);
     } catch (e) {
       res.status(400).json(e.toString());
@@ -500,6 +395,16 @@ const inquiryController = {
     }
   },
 
+  buscarMillonariaSorteosJugados: async (req, res) => {
+    try {
+      response = await Sorteos.getSorteos(14);
+
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
   buscarResultadoPrueba: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -525,7 +430,6 @@ const inquiryController = {
 
 const mainInquiryController = {
   inquiryController,
-  inquiryLotteryController,
 };
 
 module.exports = mainInquiryController;

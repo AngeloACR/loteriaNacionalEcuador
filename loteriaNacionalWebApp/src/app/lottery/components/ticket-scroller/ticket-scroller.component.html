@@ -145,6 +145,18 @@
           [sorteo]="item.sorteo"
         >
         </app-pozo-millonario-ticket>
+<<<<<<< HEAD
+=======
+        <app-la-millonaria-ticket
+          style="width: 100%"
+          *ngIf="item.tipoLoteria == 14"
+          (deleteTicket)="deleteMillonaria(item)"
+          (deleteFraccion)="deleteFraccionMillonaria(item, fraccion)"
+          [ticket]="item.ticket"
+          [sorteo]="item.sorteo"
+        >
+        </app-la-millonaria-ticket>
+>>>>>>> la-millonaria
       </ng-container>
     </div>
   </div>

@@ -83,6 +83,10 @@ const mainController = {
         5,
         token
       );
+      let sorteosLaMillonaria = await Lottery.consultarSorteosJugados(
+        14,
+        token
+      );
 
       response = [];
       let lottoResponse = await SorteosController.setSorteos(2, sorteosLotto);
@@ -97,6 +101,11 @@ const mainController = {
         sorteosPozoMillonario
       );
       response.push(pozoMillonarioResponse);
+      let laMillonariaResponse = await SorteosController.setSorteos(
+        14,
+        sorteosLaMillonaria
+      );
+      response.push(laMillonariaResponse);
       let responseAux = {
         status: true,
         values: response,
@@ -118,10 +127,13 @@ const mainController = {
       let lottoResponse = await ResultadosController.getUltimoResultado(2);
       let pozoMillonarioResponse =
         await ResultadosController.getUltimoResultado(5);
+        let laMillonariaResponse =
+          await ResultadosController.getUltimoResultado(14);
       let response = {
         loteriaNacional: loteriaNacionalResponse.values,
         lotto: lottoResponse.values,
         pozoMillonario: pozoMillonarioResponse.values,
+        laMillonaria: laMillonariaResponse.values,
       };
 
       return response;
@@ -152,10 +164,12 @@ const mainController = {
       let loteria = await Lottery.consultarUltimosResultados(1, token);
       let lotto = await Lottery.consultarUltimosResultados(2, token);
       let pozoMillonario = await Lottery.consultarUltimosResultados(5, token);
+      let laMillonaria = await Lottery.consultarUltimosResultados(14, token);
       let response = {
         loteria,
         lotto,
         pozoMillonario,
+        laMillonaria,
       };
       let ultimoResultadoLoteria = {};
       for (let index = 0; index < loteria.length; index++) {
