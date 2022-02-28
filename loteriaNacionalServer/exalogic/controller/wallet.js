@@ -13,7 +13,8 @@ function getCurrentTimeStamp() {
   let y = a[2];
   let m = a[1].length === 2 ? a[1] : `0${a[1]}`;
   let d = a[0].length === 2 ? a[0] : `0${a[0]}`;
-  let n = `${y}-${d}-${m} ${a[3]}:${a[4]}:${a[5]}.000`;
+  let n = `${y}-${d}-${m} ${a[4]}:${a[5]}:${a[6]}.000`;
+  //let n = `${y}-${m}-${d} ${a[3]}:${a[4]}:${a[5]}.000`;
   return n;
 }
 const walletController = {
