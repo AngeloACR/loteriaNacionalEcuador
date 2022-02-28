@@ -7,19 +7,19 @@ const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicativoId;
-const address = config.aplicativoAddressTest;
-//const address = config.aplicativoAddressProd;
+//const address = config.aplicativoAddressTest;
+const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
     loteriaVentasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-    const usuarioClientePsd = config.usuarioAplicativoTest;
-    const claveClientePsd = config.passwordAplicativoTest;
+    /* const usuarioClientePsd = config.usuarioAplicativoTest;
+    const claveClientePsd = config.passwordAplicativoTest; */
 
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;
-    const claveClientePsd = config.passwordAplicativoProd; */
+    const usuarioClientePsd = config.usuarioAplicativoProd;
+    const claveClientePsd = config.passwordAplicativoProd;
     let message = {
       $xml: `
       <PI_DatosXml>
@@ -1092,9 +1092,9 @@ module.exports.agregarOrdenPago = async (
 ) => {
   try {
     loteriaVentasLogger.silly("agregarOrdenDePago");
-    const usuarioClientePsd = config.usuarioAplicativoTest;
+    //const usuarioClientePsd = config.usuarioAplicativoTest;
 
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
+    const usuarioClientePsd = config.usuarioAplicativoProd;
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let orden = `<R ReTest="0" JId="${tipoJuego}" Sort="${sorteo}" BolId="${boletoId}" PremId="${premioId}" VId="${ventaId}" TPrem="ESP"/>`;
     //let orden = `<R ReTest="0" TPrem="ESP" NuReti="${numeroDeRetiro}" NuTranWeb="${numeroDeTransaccion}" />`;
@@ -1210,9 +1210,9 @@ module.exports.agregarOrdenPago = async (
 module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
   try {
     loteriaVentasLogger.silly("consultarDatosUsuario");
-    const usuarioClientePsd = config.usuarioAplicativoTest;
+    //const usuarioClientePsd = config.usuarioAplicativoTest;
 
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
+    const usuarioClientePsd = config.usuarioAplicativoProd;
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {

@@ -43,9 +43,9 @@ module.exports = {
   aplicativoAddressProd: "serviciomt-prod.wsdl",
 
   // MONGO DATABASE DATA
-  prodDB: "mongodb://loterianacional:%24lndatabase123..%24@ventas-prueba.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
-  testDB: "mongodb://localhost:27017/loteriaDB",
-
+  testDB: "mongodb://loterianacional:%24lndatabase123..%24@ventas-prueba.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
+  prodDB: "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
+  
   
 /*   mysqlPort: "3306",
   mysqlUser: "serverUser",

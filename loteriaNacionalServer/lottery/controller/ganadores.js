@@ -169,12 +169,12 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
           response.push(aux);
           logData.data.push(data);
         } else if (ganador.tipoPremio == "ESP") {
-          let ordenResponse = await ganadoresController.procesarPremioEspecies(
+          /* let ordenResponse = await ganadoresController.procesarPremioEspecies(
             ganador
           );
 
           ganador.ordenDePagoId = ordenResponse.ordenId;
-          response.push(ordenResponse);
+          response.push(ordenResponse); */
         }
         await ganador.save();
       }
