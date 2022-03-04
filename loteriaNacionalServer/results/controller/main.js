@@ -135,7 +135,7 @@ const mainController = {
   },
   actualizarUltimosResultadosHttp: async function (req, res) {
     try {
-      let response = await mainController.actualizarUltimosResultados()
+      let response = await mainController.actualizarUltimosResultados();
       res.status(200).json(response);
     } catch (error) {
       let response = {
@@ -309,7 +309,24 @@ const mainController = {
           ) {
             console.log(`I should be deleting this sorteo: ${sorteo.sorteo}`);
             outdatedSorteos.push(sorteo.sorteo);
-            await ResultadosController.deleteResultadosBySorteo(sorteo.sorteo);
+            switch (sorteo.tipoLoteria) {
+              case 1:
+                await ResultadosController.deleteResultadosLoteriaBySorteo(
+                  sorteo.sorteo
+                );
+                break;
+              case 2:
+                await ResultadosController.deleteResultadosLottoBySorteo(
+                  sorteo.sorteo
+                );
+                break;
+
+              case 5:
+                await ResultadosController.deleteResultadosPozoBySorteo(
+                  sorteo.sorteo
+                );
+                break;
+            }
             await PremiosController.deletePremiosBySorteo(sorteo.sorteo);
             await SorteosController.deleteSorteo(sorteo.sorteo);
           }

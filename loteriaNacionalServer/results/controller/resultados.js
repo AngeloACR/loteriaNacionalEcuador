@@ -49,12 +49,132 @@ const resultadosController = {
       return response;
     }
   },
+  deleteResultadosLoteriaBySorteo: async function (sorteo) {
+    try {
+      let response = await resultadosController.getResultadosLoteriaBySorteo(sorteo);
+      let resultados = response.values;
+      response = [];
+      let n = resultados.length;
+      console.log("About to delete resultados");
+      for (let i = 0; i < n; i++) {
+        let resultado = resultados[i];
+        let deleteRes = await resultado.remove();
+
+        response.push({
+          status: true,
+          values: deleteRes,
+        });
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+  deleteResultadosLottoBySorteo: async function (sorteo) {
+    try {
+      let response = await resultadosController.getResultadosLottoBySorteo(sorteo);
+      let resultados = response.values;
+      response = [];
+      let n = resultados.length;
+      console.log("About to delete resultados");
+      for (let i = 0; i < n; i++) {
+        let resultado = resultados[i];
+        let deleteRes = await resultado.remove();
+
+        response.push({
+          status: true,
+          values: deleteRes,
+        });
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+  deleteResultadosPozoBySorteo: async function (sorteo) {
+    try {
+      let response = await resultadosController.getResultadosPozoBySorteo(sorteo);
+      let resultados = response.values;
+      response = [];
+      let n = resultados.length;
+      console.log("About to delete resultados");
+      for (let i = 0; i < n; i++) {
+        let resultado = resultados[i];
+        let deleteRes = await resultado.remove();
+
+        response.push({
+          status: true,
+          values: deleteRes,
+        });
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
 
   getResultadosBySorteo: async function (sorteo) {
     try {
       sorteo = `${sorteo}`;
       const query = { numeroSorteo: sorteo };
       let resultados = await Resultado.find(query);
+      let response = {
+        status: true,
+        values: resultados,
+      };
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getResultadosLoteriaBySorteo: async function (sorteo) {
+    try {
+      sorteo = `${sorteo}`;
+      const query = { numeroSorteo: sorteo };
+      let resultados = await ResultadoLoteria.find(query);
+      let response = {
+        status: true,
+        values: resultados,
+      };
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getResultadosLottoBySorteo: async function (sorteo) {
+    try {
+      sorteo = `${sorteo}`;
+      const query = { numeroSorteo: sorteo };
+      let resultados = await ResultadoLotto.find(query);
+      let response = {
+        status: true,
+        values: resultados,
+      };
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getResultadosPozoBySorteo: async function (sorteo) {
+    try {
+      sorteo = `${sorteo}`;
+      const query = { numeroSorteo: sorteo };
+      let resultados = await ResultadoPozo.find(query);
       let response = {
         status: true,
         values: resultados,
