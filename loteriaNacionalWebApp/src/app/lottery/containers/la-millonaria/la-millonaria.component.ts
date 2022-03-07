@@ -281,7 +281,6 @@ export class LaMillonariaComponent implements OnInit {
       let combinacionFigura = this.seriesTabs.map((serie) => {
         return serie.serie;
       });
-      combinacion.sort(this.ordenaCombinacion);
       combinacionFigura.sort(this.ordenaCombinacion);
 
       this.ticketsDisponibles = await this.lotteryService.obtenerTickets(
