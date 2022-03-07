@@ -299,6 +299,7 @@ export class LaMillonariaComponent implements OnInit {
       });
 
       this.seleccionSeries = await this.lotteryService.obtenerSeries(this.sorteoSeleccionado.sorteo)
+      this.seriesTabs = [];
       this.combinacionDeLaSuerte = ["", "", "", ""];
       this.showNumeros = true;
       this.isLoading = false;

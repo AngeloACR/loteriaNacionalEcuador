@@ -2,7 +2,7 @@
 $color-loteria: #2f72b9;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
-//$color-pozo: #057333;
+$color-millonaria: #2f72b9;
 $fuente-titulo: "Monstserrat Bold";
 $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
@@ -53,16 +53,12 @@ $fuente-botones: "Monstserrat SemiBold";
 
 .pozo {
   background-color: #04b865;
-  //    background-color: #057333;
-  //  border: 3px solid #057333;
   border: 3px solid #04b865;
 }
 
 .millonaria {
-  background-color: #04b865;
-  //    background-color: #057333;
-  //  border: 3px solid #057333;
-  border: 3px solid #04b865;
+  background-color: #2f72b9;
+  border: 3px solid #2f72b9;
 }
 
 

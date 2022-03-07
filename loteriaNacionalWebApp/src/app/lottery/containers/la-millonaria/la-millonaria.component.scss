@@ -3,9 +3,8 @@ $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
-$color-millonaria: #04b865;
+$color-millonaria: #2f72b9;
 //$color-millonaria: #057333;
-
 
 $color-botton: #2f72b9;
 
@@ -181,7 +180,6 @@ $color-botton: #2f72b9;
     display: flex;
     flex-direction: column;
 
-
     .contenedor_select {
       width: 100%;
       margin: 10px auto;
@@ -233,6 +231,7 @@ $color-botton: #2f72b9;
           width: 25%;
           overflow: hidden;
           label {
+            cursor: pointer;
             display: inline-block;
             width: 100%;
             padding: 5px;
@@ -399,6 +398,7 @@ $color-botton: #2f72b9;
             width: 100%;
             padding: 5px;
             background-color: transparent;
+            cursor: pointer;
             img {
               background-color: transparent;
               cursor: pointer;
@@ -477,8 +477,8 @@ $color-botton: #2f72b9;
       font-size: 16px;
       margin: 10px auto;
       width: 100%;
-          max-width: 300px;
-          cursor: pointer;
+      max-width: 300px;
+      cursor: pointer;
 
       &:hover {
         background-color: white;
@@ -491,8 +491,8 @@ $color-botton: #2f72b9;
       font-family: $fuente-botones;
       font-size: 16px;
     }
-    .tagItem{
-        font-size: 12px;
+    .tagItem {
+      font-size: 12px;
     }
     table {
       width: auto;
@@ -669,47 +669,42 @@ $color-botton: #2f72b9;
       max-width: 800px;
       width: 100%;
     }
-  
+
     .contendor_seleccion {
       width: 100%;
       margin: 0 0 20px 0;
-  
+
       .selectBox {
         flex-wrap: wrap;
-  
+
         .contenedor_select {
           width: 100%;
-
         }
-  
+
         .numeros_suerte {
           width: 100%;
           margin: 0;
-          .numeros{
+          .numeros {
             justify-content: center;
           }
         }
       }
-  
+
       table {
-  
         tbody {
           grid-template-columns: repeat(1, auto);
-  
         }
-  
+
         hr {
           width: 97%;
           margin: auto;
           margin: 15px auto;
         }
       }
-
     }
-  
+
     .ticketScroller {
       display: none;
-
     }
   }
 }

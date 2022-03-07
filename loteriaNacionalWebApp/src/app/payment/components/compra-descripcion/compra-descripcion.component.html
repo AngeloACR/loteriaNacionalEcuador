@@ -289,7 +289,7 @@
   </div>
 
   <div class="containerInfoBox" *ngIf="compra.millonaria.length != 0">
-    <div class="titlePozoBox">
+    <div class="titleMillonariaBox">
       <h3>LA MILLONARIA</h3>
     </div>
     <div
@@ -358,7 +358,7 @@
           class="ganadorBoxMobile"
           *ngFor="let ganador of item.detalleGanador; let i = index"
         >
-          <div class="ganadorHeaderBox pozoBackground">
+          <div class="ganadorHeaderBox millonariaBackground">
             <p>Premio {{ i + 1 }}</p>
           </div>
           <div class="ganadorDetailsBox">

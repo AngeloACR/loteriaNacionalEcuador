@@ -372,7 +372,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
 
             if (!errorCode) {
               let aux = data.mt.rs[0].r;
-              let response = [];
+              let response = []; 
               aux.forEach((aux2) => {
                 if (aux2.Row) {
                   aux2.Row.forEach((aux3) => {

@@ -961,7 +961,7 @@ const ventasController = {
           millonariaAux[id].subtotalConDesc
         ).toFixed(2);
         aux["fecha"] = millonariaAux[id].sorteo.fecha;
-        pozo.push(aux);
+        millonaria.push(aux);
       }
       let total = parseFloat(apiReservaData.amount).toFixed(2);
       let totalConDesc = parseFloat(apiReservaData.amountConDesc).toFixed(2);
@@ -972,7 +972,7 @@ const ventasController = {
       let user = apiReservaData.user;
       let accountId = apiReservaData.accountId;
       let status = apiReservaData.status;
-      let element = {
+      let element = { 
         loteria,
         exaReservaId,
         pozo,
