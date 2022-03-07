@@ -502,7 +502,7 @@ const carritoController = {
 
       let auxMillonaria1 = millonariaCache.filter((item) => {
         let index = loteriaCart.millonaria.findIndex(
-          (millonaria) => millonaria.combinacion == item.ticket.combinacion1
+          (millonaria) => (millonaria.combinacion == item.ticket.combinacion1 && millonaria.combinacion2 == item.ticket.combinacion2)
         );
         if (index == -1) {
           return true;
@@ -533,7 +533,7 @@ const carritoController = {
       let auxMillonaria2 = loteriaCart.millonaria.filter((item) => {
         let index = millonariaCache.findIndex(
           (millonaria) => 
-          item.combinacion == millonaria.ticket.combinacion1
+          (item.combinacion == millonaria.ticket.combinacion1 && item.combinacion2 == millonaria.ticket.combinacion2)
         );
         if (index == -1) {
           return true;
