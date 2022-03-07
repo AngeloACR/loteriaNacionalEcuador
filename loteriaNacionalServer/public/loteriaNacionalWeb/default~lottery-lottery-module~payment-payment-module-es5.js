@@ -250,8 +250,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
-        this.productionSource = "https://ventas-api.loteria.com.ec";
-        this.mySource = this.localSource;
+        this.productionSource = "https://ventas-api.loteria.com.ec"; //mySource = this.localSource;
+
+        this.mySource = this.testSource;
         this.obtenerAnimalesSelecionados();
         this.obtenerAnimalesTabs();
       }
@@ -2680,7 +2681,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/@angular/common/fesm2015/http.js");
 
     var PaymentService = /*#__PURE__*/function () {
-      //mySource = this.testSource;
       //mySource = this.productionSource;
       function PaymentService(cart, http) {
         _classCallCheck(this, PaymentService);
@@ -2689,8 +2689,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.http = http;
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
-        this.productionSource = "https://ventas-api.loteria.com.ec";
-        this.mySource = this.localSource;
+        this.productionSource = "https://ventas-api.loteria.com.ec"; //mySource = this.localSource;
+
+        this.mySource = this.testSource;
       }
 
       _createClass(PaymentService, [{
@@ -2955,7 +2956,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/@angular/common/fesm2015/http.js");
 
     var ShoppingCartService = /*#__PURE__*/function () {
-      //mySource = this.testSource;
       //mySource = this.productionSource;
       function ShoppingCartService(cart, http) {
         _classCallCheck(this, ShoppingCartService);
@@ -2972,8 +2972,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.reservaId = 0;
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
-        this.productionSource = "https://ventas-api.loteria.com.ec";
-        this.mySource = this.localSource;
+        this.productionSource = "https://ventas-api.loteria.com.ec"; //mySource = this.localSource;
+
+        this.mySource = this.testSource;
       }
 
       _createClass(ShoppingCartService, [{
