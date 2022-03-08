@@ -12,6 +12,7 @@ export class ResultadosInstantaneasComponent implements OnInit {
   @Input() isLoteriaNacional: boolean = false;
   @Input() isLotto: boolean = false;
   @Input() isPozoMillonario: boolean = false;
+  @Input() isLaMillonaria: boolean = false;
   @Output() close = new EventEmitter();
   loteriaBackground: any;
   loteriaBackgroundButton: any;
@@ -63,6 +64,7 @@ export class ResultadosInstantaneasComponent implements OnInit {
         sorteo: resultado.drawNumber,
         drawDate: resultado.drawDate,
         combinacion: resultado.combinationC1,
+        combinacion2: resultado.combinationC2,
         fracciones: resultado.fractions,
         prize: resultado.prize,
         prizeWithDiscount: resultado.prizeWithDiscount,

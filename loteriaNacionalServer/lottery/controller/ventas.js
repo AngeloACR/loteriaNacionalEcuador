@@ -497,7 +497,9 @@ const ventasController = {
   comprarBoletos: async (req, res) => {
     try {
       apiVentasLogger.silly("comprarBoletos");
-      let ip = req.headers["x-forwarded-for"]? req.headers["x-forwarded-for"]:req.socket.remoteAddress;
+      let ip = req.headers["x-forwarded-for"]
+        ? req.headers["x-forwarded-for"]
+        : req.socket.remoteAddress;
 
       let token = req.body.token;
       let lotteryToken = req.body.lotteryToken;
@@ -742,7 +744,7 @@ const ventasController = {
                 ""
               ),
             };
-
+            if (premio.Num2) prizeDetail["combinationC2"] = premio.Num2;
             let ganador = {
               personaId: personaId,
               tipoLoteria: tipoLoteria,
@@ -972,7 +974,7 @@ const ventasController = {
       let user = apiReservaData.user;
       let accountId = apiReservaData.accountId;
       let status = apiReservaData.status;
-      let element = { 
+      let element = {
         loteria,
         exaReservaId,
         pozo,
