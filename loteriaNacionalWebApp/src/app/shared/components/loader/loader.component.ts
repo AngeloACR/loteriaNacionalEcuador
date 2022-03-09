@@ -24,7 +24,7 @@ export class LoaderComponent implements OnInit {
         //this.logoPath = "assets/pozoLoader.gif";
         break;
       case "millonaria":
-        this.logoPath = "assets/img/millonaria-sombra.png";
+        this.logoPath = "assets/img/la-millonaria-sombra-2.png";
         //this.logoPath = "assets/pozoLoader.gif";
         break;
       default:
