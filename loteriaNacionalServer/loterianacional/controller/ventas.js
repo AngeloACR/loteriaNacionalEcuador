@@ -372,7 +372,7 @@ module.exports.obtenerCombinacionesDisponibles = async (
 
             if (!errorCode) {
               let aux = data.mt.rs[0].r;
-              let response = []; 
+              let response = [];
               aux.forEach((aux2) => {
                 if (aux2.Row) {
                   aux2.Row.forEach((aux3) => {
@@ -1572,38 +1572,33 @@ module.exports.recuperarSeriesLaMillonaria = async (
               );
               resolve(series);
             } else {
-              let errorMsg = data.mt.c[0].msgError[0];
+              let errorMessage = data.mt.c[0].msgError[0];
               loteriaVentasLogger.error(
                 "recuperarSeriesLaMillonaria.loteria.error",
                 {
                   data: message,
-                  errorMessage: `${errorCode}-${errorMsg}`,
+                  errorMessage: `${errorCode}-${errorMessage}`,
                 }
               );
+
               let errorData = {
-                status: false,
                 input: message,
                 output: errorCode,
                 function: "recuperarSeriesLaMillonaria",
               };
-              reject(errorData);
-              //              reject(new loteriaError(errorMsg, "loteria", errorData));
+              reject(new loteriaError(errorMessage, "loteria", errorData));
             }
           } catch (e) {
             let errorMsg = e.message;
-
             loteriaVentasLogger.error("recuperarSeriesLaMillonaria.error", {
               errorMessage: errorMsg,
             });
             let errorData = {
-              status: false,
               input: e,
               output: "",
               function: "recuperarSeriesLaMillonaria",
             };
-            reject(errorData);
-
-            //reject(new loteriaError(errorMsg, "loteria", errorData));
+            reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -1614,14 +1609,12 @@ module.exports.recuperarSeriesLaMillonaria = async (
     loteriaVentasLogger.error("recuperarSeriesLaMillonaria.error", {
       errorMessage: errorMsg,
     });
-
     let errorData = {
-      status: false,
       input: e,
       output: "",
       function: "recuperarSeriesLaMillonaria",
     };
-    return errorData;
-    //throw new loteriaError(errorMsg, "loteria", errorData);
+
+    throw new loteriaError(errorMsg, "loteria", errorData);
   }
 };

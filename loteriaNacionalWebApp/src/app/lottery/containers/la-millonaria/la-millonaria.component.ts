@@ -57,10 +57,21 @@ export class LaMillonariaComponent implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
-  agregar(serie, i: number) {
+  agregar(event, serie, i: number) {
     if (this.seleccionSeries[i].status === false) {
-      this.seleccionSeries[i].status = true;
-      this.seriesTabs.push(this.seleccionSeries[i]);
+      if(this.seriesTabs.length < 4){
+        
+        this.seleccionSeries[i].status = true;
+        this.seriesTabs.push(this.seleccionSeries[i]);
+      } else{
+        event.preventDefault();
+        this.openError('Solo puedes seleccionar un máximo de 4 series.')
+        this.changeDetectorRef.detectChanges();
+        this.seleccionSeries[i].status = false;
+        this.changeDetectorRef.markForCheck();
+        
+      }
+      
     } else {
       this.seleccionSeries[i].status = false;
       this.seriesTabs = this.seriesTabs.filter((element) => {
@@ -132,7 +143,6 @@ export class LaMillonariaComponent implements OnInit {
     });
 
     await this.cart.setCarritoMillonaria(this.ticketsMillonaria);
-
   }
 
   ticketsMillonaria: any = {};
@@ -297,7 +307,9 @@ export class LaMillonariaComponent implements OnInit {
         this.allFractions.push(false);
       });
 
-      this.seleccionSeries = await this.lotteryService.obtenerSeries(this.sorteoSeleccionado.sorteo)
+      this.seleccionSeries = await this.lotteryService.obtenerSeries(
+        this.sorteoSeleccionado.sorteo
+      );
       this.seriesTabs = [];
       this.combinacionDeLaSuerte = ["", "", "", ""];
       this.showNumeros = true;
@@ -312,10 +324,18 @@ export class LaMillonariaComponent implements OnInit {
   tipoSeleccion: number = 96;
 
   sorteoSeleccionado: sorteo;
-  procesaEmitir(sorteo) {
+  async procesaEmitir(sorteo) {
+    this.loadingMessage = "Cargando la información del sorteo";
+    this.isLoading = true;
     this.sorteoSeleccionado = sorteo;
     this.showNumeros = false;
+    this.seleccionSeries = [];
+    this.seleccionSeries = await this.lotteryService.obtenerSeries(
+      this.sorteoSeleccionado.sorteo
+    );
+    this.isLoading = false;
   }
+
   isLoading: boolean;
   showComponents: boolean = false;
   loadingMessage: string;
@@ -506,7 +526,7 @@ export class LaMillonariaComponent implements OnInit {
       this.isLoading = true;
       await this.getCarritoTickets();
       //this.getTotal();
-      
+
       //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
       this.seleccionSeries.forEach((element) => {
         this.seriesTabs.forEach((elemento) => {
@@ -514,14 +534,17 @@ export class LaMillonariaComponent implements OnInit {
             element.status = elemento.status;
           }
         });
-      }); 
+      });
       localStorage.setItem(
         "seriesSeleccionadas",
         JSON.stringify(this.seleccionSeries)
-        );
-        
-        this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 14);
-        this.seleccionSeries = await this.lotteryService.obtenerSeries(this.sorteo[0].sorteo)
+      );
+
+      this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 14);
+      this.seleccionSeries = [];
+      this.seleccionSeries = await this.lotteryService.obtenerSeries(
+        this.sorteo[0].sorteo
+      );
       //this.descuentos = await this.lotteryService.obtenerDescuentos()
       this.isLoading = false;
       this.showComponents = true;

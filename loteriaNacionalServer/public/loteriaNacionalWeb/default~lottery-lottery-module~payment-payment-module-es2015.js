@@ -152,8 +152,7 @@ let LotteryService = class LotteryService {
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
         this.productionSource = "https://ventas-api.loteria.com.ec";
-        //mySource = this.localSource;
-        this.mySource = this.testSource;
+        this.mySource = this.localSource;
         this.obtenerAnimalesSelecionados();
         this.obtenerAnimalesTabs();
     }
@@ -2040,6 +2039,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let PaymentService = class PaymentService {
+    //mySource = this.testSource;
     //mySource = this.productionSource;
     constructor(cart, http) {
         this.cart = cart;
@@ -2047,8 +2047,7 @@ let PaymentService = class PaymentService {
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
         this.productionSource = "https://ventas-api.loteria.com.ec";
-        //mySource = this.localSource;
-        this.mySource = this.testSource;
+        this.mySource = this.localSource;
     }
     getAuthData() {
         let data = JSON.parse(localStorage.getItem("userData"));
@@ -2221,6 +2220,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ShoppingCartService = class ShoppingCartService {
+    //mySource = this.testSource;
     //mySource = this.productionSource;
     constructor(cart, http) {
         this.cart = cart;
@@ -2236,8 +2236,7 @@ let ShoppingCartService = class ShoppingCartService {
         this.localSource = "http://localhost:5480";
         this.testSource = "https://ventas-api-prueba.loteria.com.ec";
         this.productionSource = "https://ventas-api.loteria.com.ec";
-        //mySource = this.localSource;
-        this.mySource = this.testSource;
+        this.mySource = this.localSource;
     }
     eliminarDescuento(element, tipoLoteria) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
