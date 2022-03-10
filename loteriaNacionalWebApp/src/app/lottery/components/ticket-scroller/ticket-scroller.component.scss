@@ -6,7 +6,7 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-botton: #2f72b9;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
-$color-millonaria: #04b865;
+$color-millonaria: black;
 
 .contenedor_ticket.fondoLoteria {
   background-color: $color-botton;
@@ -155,9 +155,10 @@ $color-millonaria: #04b865;
     }
     button.fondoMillonaria {
       background-color: $color-millonaria;
+      color: #fbd208;
       border: 1px solid $color-millonaria;
       &:hover {
-        background-color: #fff;
+        background-color: #fbd208;
         color: $color-millonaria;
         transition: background-color 0.5s ease;
       }

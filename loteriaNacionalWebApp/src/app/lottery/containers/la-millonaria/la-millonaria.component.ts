@@ -59,19 +59,16 @@ export class LaMillonariaComponent implements OnInit {
 
   agregar(event, serie, i: number) {
     if (this.seleccionSeries[i].status === false) {
-      if(this.seriesTabs.length < 4){
-        
+      if (this.seriesTabs.length < 4) {
         this.seleccionSeries[i].status = true;
         this.seriesTabs.push(this.seleccionSeries[i]);
-      } else{
+      } else {
         event.preventDefault();
-        this.openError('Solo puedes seleccionar un máximo de 4 series.')
+        this.openError("Solo puedes seleccionar un máximo de 4 series.");
         this.changeDetectorRef.detectChanges();
         this.seleccionSeries[i].status = false;
         this.changeDetectorRef.markForCheck();
-        
       }
-      
     } else {
       this.seleccionSeries[i].status = false;
       this.seriesTabs = this.seriesTabs.filter((element) => {
@@ -524,6 +521,10 @@ export class LaMillonariaComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
+
+      if (this.token) {
+        let data = await this.lotteryService.authUser(this.token);
+      }
       await this.getCarritoTickets();
       //this.getTotal();
 

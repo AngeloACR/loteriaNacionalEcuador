@@ -459,6 +459,9 @@ export class PozoMillonarioComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
+      if (this.token) {
+        let data = await this.lotteryService.authUser(this.token);
+      }
       await this.getCarritoTickets();
       //this.getTotal();
 

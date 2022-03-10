@@ -637,7 +637,7 @@ const carritoController = {
           let identificador;
           item.fracciones = item.fracciones.filter((fraccion) => {
             let indexB = millonariaCache[index].ticket.seleccionados.findIndex(
-              (loteria) => loteria == fraccion.fraccion
+              (millonaria) => millonaria == fraccion.fraccion
             );
             if (indexB == -1) {
               flag = true;

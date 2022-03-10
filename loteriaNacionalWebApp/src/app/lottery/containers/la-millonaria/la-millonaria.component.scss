@@ -3,10 +3,10 @@ $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
-$color-millonaria: #2f72b9;
+$color-millonaria: black;
 //$color-millonaria: #057333;
 
-$color-botton: #2f72b9;
+$color-botton: black;
 
 .tooltip {
   margin: auto;
@@ -110,7 +110,7 @@ $color-botton: #2f72b9;
 
         .checkbox:checked + label {
           background-color: $color-botton;
-          color: #000;
+          color: white;
         }
       }
     }
@@ -312,13 +312,13 @@ $color-botton: #2f72b9;
           max-width: 300px;
           border-radius: 30px;
           border: 1px solid $color-botton;
-          color: #fff;
+          color: #fbd208;
           font-family: $fuente-botones;
           font-size: 16px;
           cursor: pointer;
 
           &:hover {
-            background-color: white;
+            background-color: #fbd208;
             color: $color-botton;
             transition: background-color 0.4s ease;
           }
@@ -425,7 +425,7 @@ $color-botton: #2f72b9;
             text-align: center;
           }
           &:checked + label {
-            background-color: $color-millonaria;
+            background-color: #fbd208;
             border-radius: 15px;
             transition: background-color 0.3s ease;
           }
@@ -472,7 +472,7 @@ $color-botton: #2f72b9;
       padding: 15px;
       border-radius: 30px;
       border: 1px solid $color-millonaria;
-      color: #fff;
+      color: #fbd208;
       font-family: $fuente-botones;
       font-size: 16px;
       margin: 10px auto;
@@ -481,7 +481,7 @@ $color-botton: #2f72b9;
       cursor: pointer;
 
       &:hover {
-        background-color: white;
+        background-color: #fbd208;
         color: $color-millonaria;
         transition: background-color 0.4s ease;
       }
@@ -636,7 +636,7 @@ $color-botton: #2f72b9;
 
       button {
         width: 220px;
-        background-color: #fff;
+        background-color: #fbd208;
         padding: 20px 17px;
         border-radius: 30px;
         border: 1px solid $color-millonaria;
@@ -648,7 +648,7 @@ $color-botton: #2f72b9;
         &:hover {
           background-color: $color-millonaria;
           border: 1px solid transparent;
-          color: #fff;
+          color: #fbd208;
           transition: background-color 0.4s ease;
         }
       }

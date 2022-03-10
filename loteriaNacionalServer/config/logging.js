@@ -1,5 +1,5 @@
 const { createLogger, format, transports, config } = require("winston");
-const { combine, timestamp, json } = format;
+const { combine, timestamp, prettyPrint } = format;
 const environment = require("./environment");
 module.exports.errorHandlerLogger = createLogger({
   defaultMeta: { component: "error-handler" },
@@ -7,14 +7,14 @@ module.exports.errorHandlerLogger = createLogger({
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
 
   transports: [
     new transports.File({
       filename: "logs/error-handler.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "info",
     }),
@@ -26,21 +26,21 @@ module.exports.apiVentasLogger = createLogger({
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
 
   transports: [
     new transports.File({
       filename: "logs/api-ventas.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/api-ventas-error.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "error",
     }),
@@ -53,21 +53,21 @@ module.exports.apiGanadoresLogger = createLogger({
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
 
   transports: [
     new transports.File({
       filename: "logs/api-ganadores.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/api-ganadores-error.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "error",
     }),
@@ -80,21 +80,21 @@ module.exports.apiConsultasLogger = createLogger({
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
 
   transports: [
     new transports.File({
       filename: "logs/api-consultas.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/api-consultas-error.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "error",
     }),
@@ -107,21 +107,21 @@ module.exports.loteriaVentasLogger = createLogger({
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
 
   transports: [
     new transports.File({
       filename: "logs/loteria-ventas.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/loteria-ventas-error.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "error",
     }),
@@ -134,39 +134,39 @@ module.exports.loteriaReservasLogger = createLogger({
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
 
   transports: [
     new transports.File({
       filename: "logs/loteria-reservas.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/loteria-reservas-error.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxSize: "10485760",
       maxFiles: 4,
       level: "error",
     }),
   ],
 });
-module.exports.loteriaConsultasLogger = createLogger({
+module.exports.loteriaConsultasLogger = createLogger({  
   defaultMeta: { component: "loteria-consulta" },
   format: combine(
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
-
+    
   transports: [
     new transports.File({
       filename: "logs/loteria-consultas.json",
-      maxSize: "10m",
+      maxsize: "10485760",
       maxFiles: 4,
       level: "info",
       prettyPrint: true,
@@ -174,7 +174,7 @@ module.exports.loteriaConsultasLogger = createLogger({
     new transports.File({
       filename: "logs/loteria-consultas-error.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxsize: "10485760",
       maxFiles: 4,
       level: "error",
     }),
@@ -186,21 +186,21 @@ module.exports.exalogicLogger = createLogger({
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
     }),
-    json()
+    prettyPrint()
   ),
 
   transports: [
     new transports.File({
       filename: "logs/exalogic.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxsize: "10485760",
       maxFiles: 4,
       level: "info",
     }),
     new transports.File({
       filename: "logs/exalogic-error.json",
       prettyPrint: true,
-      maxSize: "10m",
+      maxsize: "10485760",
       maxFiles: 4,
       level: "error",
     }),

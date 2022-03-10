@@ -5,10 +5,16 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #2f72b9;
 
-.fondoLoteria, .fondoMillonaria {
+.fondoLoteria {
   border-bottom:1px solid #2f72b9 !important;
   font-size: 30px !important;
   color: #2f72b9;
+  font-family: $fuente-titulo;
+}
+.fondoMillonaria {
+  border-bottom:1px solid black !important;
+  font-size: 30px !important;
+  color: black;
   font-family: $fuente-titulo;
 }
 
