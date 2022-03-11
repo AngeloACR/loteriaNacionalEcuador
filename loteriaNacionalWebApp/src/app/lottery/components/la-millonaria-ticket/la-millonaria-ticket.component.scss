@@ -3,7 +3,7 @@ $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
-$color-botton: black;
+$color-botton: #b51f20;
 
 .contenedor_informacion_ticket {
   width: 100%;
@@ -63,8 +63,8 @@ $color-botton: black;
   }
   img.logoTicket{
     position: absolute;
-    width:30%;
-    top: 110px;
+    width:40%;
+    top: 130px;
     right: 5px;
     }
 }
@@ -87,8 +87,8 @@ $color-botton: black;
   .contenedor_informacion_ticket {
     img.logoTicket {
       position: absolute;
-      width: 120px;
-      top: 100px;
+      width: 140px;
+      top: 120px;
     }
   }
 }

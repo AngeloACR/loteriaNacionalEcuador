@@ -1,7 +1,7 @@
 $color-loteria: #2f72b9;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
-$color-millonaria: black;
+$color-millonaria: #b51f20;
 //$color-pozo: #057333;
 
 $fuente-titulo: "Monstserrat Bold";
@@ -29,6 +29,13 @@ $fuente-botones: "Monstserrat SemiBold";
     -webkit-box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 0px 18px -1px rgba(0, 0, 0, 0.2);
+
+    &.millonaria img{
+      width: 110px;
+    }
+    &.millonaria:hover img{
+      width: 120px;
+    }
 
     img {
       width: 70px;

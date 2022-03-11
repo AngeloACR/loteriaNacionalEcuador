@@ -65,7 +65,7 @@ export class TicketScrollerComponent implements OnInit {
 
       case "millonaria":
         this.isLaMillonaria = true;
-        this.logoPath = "assets/img/loteria-carrito.svg";
+        this.logoPath = "assets/img/lotto-carrito.svg";
         break;
     }
     this.getTotal();

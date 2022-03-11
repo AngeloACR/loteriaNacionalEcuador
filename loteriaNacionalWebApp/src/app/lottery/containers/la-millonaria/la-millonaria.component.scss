@@ -3,10 +3,10 @@ $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
-$color-millonaria: black;
+$color-millonaria: #b51f20;
 //$color-millonaria: #057333;
 
-$color-botton: black;
+$color-botton: #b51f20;
 
 .tooltip {
   margin: auto;
@@ -312,13 +312,13 @@ $color-botton: black;
           max-width: 300px;
           border-radius: 30px;
           border: 1px solid $color-botton;
-          color: #fbd208;
+          color: white;
           font-family: $fuente-botones;
           font-size: 16px;
           cursor: pointer;
 
           &:hover {
-            background-color: #fbd208;
+            background-color: white;
             color: $color-botton;
             transition: background-color 0.4s ease;
           }
@@ -425,7 +425,7 @@ $color-botton: black;
             text-align: center;
           }
           &:checked + label {
-            background-color: #fbd208;
+            background-color: #b51f20;
             border-radius: 15px;
             transition: background-color 0.3s ease;
           }
@@ -472,7 +472,7 @@ $color-botton: black;
       padding: 15px;
       border-radius: 30px;
       border: 1px solid $color-millonaria;
-      color: #fbd208;
+      color: white;
       font-family: $fuente-botones;
       font-size: 16px;
       margin: 10px auto;
@@ -481,7 +481,7 @@ $color-botton: black;
       cursor: pointer;
 
       &:hover {
-        background-color: #fbd208;
+        background-color: white;
         color: $color-millonaria;
         transition: background-color 0.4s ease;
       }
@@ -636,7 +636,7 @@ $color-botton: black;
 
       button {
         width: 220px;
-        background-color: #fbd208;
+        background-color: white;
         padding: 20px 17px;
         border-radius: 30px;
         border: 1px solid $color-millonaria;
@@ -648,7 +648,7 @@ $color-botton: black;
         &:hover {
           background-color: $color-millonaria;
           border: 1px solid transparent;
-          color: #fbd208;
+          color: white;
           transition: background-color 0.4s ease;
         }
       }
