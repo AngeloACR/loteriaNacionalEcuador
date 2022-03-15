@@ -1,5 +1,5 @@
 <ng-container
-  *ngIf="lottery.getAuthData().user == '0915030217'; else notAllowed"
+  *ngIf="lotteryService.getAuthData().user == '0915030217'; else notAllowed"
 >
   <app-seleccion-tipo></app-seleccion-tipo>
 
