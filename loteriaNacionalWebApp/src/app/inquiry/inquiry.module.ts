@@ -107,6 +107,7 @@ import { ResultadosLaMillonariaComponent } from './containers/resultados-la-mill
     LottoSelectorComponent,
     LoteriaNacionalSelectorComponent,
     PozoMillonarioSelectorComponent,
+    LaMillonariaSelectorComponent,
     LottoTicketComponent,
     LoteriaNacionalTicketComponent,
     PozoMillonarioTicketComponent
