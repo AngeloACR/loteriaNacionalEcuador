@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="container_consulta">
+      <div class="boletin_oficial">
+        <h1>Consultas</h1>
+      </div>
+      <div class="cuerpo_boletin">
+        <div class="explicacion">
+          <div class="content_explicacion">
+            <p class="icono">1</p>
+            <p>Ingresa la combinación principal de tu boleto.</p>
+          </div>
+          <div class="content_explicacion">
+            <p class="icono">2</p>
+            <p>Luego Elige la fecha del sorteo.</p>
+          </div>
+          <div class="content_explicacion">
+            <p class="icono">!</p>
+            <p>
+              Los boletos a consultar deben corresponder a la misma fecha y puedes
+              revisar de los ultimos 3 meses.
+            </p>
+          </div>
+        </div>
+        <div class="separador">
+          <hr />
+        </div>
+        <div class="consulta_boleto">
+          <h3 class="">Consulta por Boleto y Sorteo</h3>
+  
+          <form action="" class="formulario">
+            <div class="input">
+              <div class="input_content">
+                <label for="">Ingresa numero(s) de boleto(s):</label>
+                <input
+                  name="combinaciones"
+                  type="text"
+                  (keydown)="preventArrow($event)"
+                  (click)="moveCursorToEnd($event)"
+                  (focus)="moveCursorToEnd($event)"
+                  (input)="validateField()"
+                  [(ngModel)]="combinacionesAux"
+                />
+              </div>
+              <p>
+                Ingresa los 6 dígitos de la combinación principal de tu boleto.
+                Puedes consultar varios boletos a la vez, separados por coma.
+                Ejemplo: 123445, 678978 (6 digitos)
+              </p>
+            </div>
+  
+            <div class="input">
+              <div class="input_content">
+                <label for="">Selecciona el numero del sorteo:</label>
+                <select
+                  name="sorteoGanador"
+                  id="sorteoGanador"
+                  placeholder=""
+                  [(ngModel)]="sorteoGanador"
+                >
+                  <option value="default" selected disabled>
+                    Seleccione un sorteo
+                  </option>
+                  <option
+                    *ngFor="let option of sorteosJugados"
+                    [value]="option.sorteo"
+                  >
+                    N° {{ option.sorteo }} - {{ option.fecha }}
+                  </option>
+                </select>
+              </div>
+  
+              <button (click)="buscarBoletoGanador()">VER RESULTADOS</button>
+            </div>
+          </form>
+        </div>
+  
+        <div class="separador">
+          <hr />
+        </div>
+  
+        <div class="consulta_boleto espacio">
+          <h3 class="">Consulta por Boletin de Resultados</h3>
+          <form action="" class="formulario">
+            <div class="input">
+              <div class="input_content">
+                <label for="">Selecciona el numero del sorteo:</label>
+                <select
+                  name="sorteoBoletin"
+                  id="sorteoBoletin"
+                  placeholder=""
+                  [(ngModel)]="sorteoBoletin"
+                >
+                  <option value="default" selected disabled>
+                    Seleccione un sorteo
+                  </option>
+                  <option
+                    *ngFor="let option of sorteosJugados"
+                    [value]="option.sorteo"
+                  >
+                    N° {{ option.sorteo }} - {{ option.fecha }}
+                  </option>
+                </select>
+              </div>
+              <button (click)="buscarBoletin()">VER RESULTADOS</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-loader
+    loader="lotto"
+    [message]="loadingMessage"
+    *ngIf="isLoading"
+  ></app-loader>
+  
+  <app-error
+    [msg]="errorMessage"
+    (closeError)="closeError()"
+    *ngIf="isError"
+  ></app-error>
+  

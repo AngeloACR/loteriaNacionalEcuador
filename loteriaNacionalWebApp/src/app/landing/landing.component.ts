@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { InquiryService } from "../inquiry/services/inquiry.service";
+import { LotteryService } from "../lottery/services/lottery.service";
 @Component({
   selector: "app-landing",
   templateUrl: "./landing.component.html",
@@ -14,7 +15,7 @@ export class LandingComponent implements OnInit {
   linkNews: string = "https://contenidos.loteria.com.ec/newsletter";
   title: string = "sliderLoteria";
   infoReady: boolean = false;
-  constructor(private inquiry: InquiryService) {}
+  constructor(private inquiry: InquiryService, private lottery: LotteryService) {}
   async ngOnInit() {
     await this.inquiry.recuperarUltimosResultados();
     this.infoReady = true;

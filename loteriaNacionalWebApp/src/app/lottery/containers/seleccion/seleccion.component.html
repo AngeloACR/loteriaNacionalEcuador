@@ -5,7 +5,7 @@
     [token]="lotteryToken"
     name="loteria"
     (authError)="authError()"
-    >
+  >
   </app-lottery-type>
 
   <app-lottery-type
@@ -26,6 +26,7 @@
   >
   </app-lottery-type>
   <app-lottery-type
+    *ngIf="lottery.getAuthData().user == '0915030217'"
     image="assets/img/millonaria-sombra.png"
     [link]="linkMillonaria"
     [token]="lotteryToken"
@@ -36,18 +37,18 @@
 </div>
 
 <app-floating-menu
-(deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-(deleteLottoTicket)="deleteLottoTicket($event)"
-(deletePozoTicket)="deletePozoTicket($event)"
-(deleteMillonariaTicket)="deleteMillonariaTicket($event)"
-(deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-(emitirCompra)="comprar()"
-(eliminarTodo)="deleteAllTickets()"
-[ticketsLoteria]="ticketsLoteria"
-[ticketsLotto]="ticketsLotto"
-[ticketsPozo]="ticketsPozo"
-[ticketsMillonaria]="ticketsMillonaria"
-tipoLoteria="loteria"
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozo]="ticketsPozo"
+  [ticketsMillonaria]="ticketsMillonaria"
+  tipoLoteria="loteria"
 ></app-floating-menu>
 <app-loader
   loader="loteria"

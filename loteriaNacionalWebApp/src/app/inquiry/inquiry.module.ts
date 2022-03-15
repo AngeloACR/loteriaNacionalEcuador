@@ -34,6 +34,13 @@ import { ResultadosPozoMillonarioComponent } from "./containers/resultados-pozo-
 import { ResultadosComponent } from "./components/resultados/resultados.component";
 import { ResultadoComponent } from "./components/resultado/resultado.component";
 import { RaspasComponent } from './containers/raspas/raspas.component';
+import { LaMillonariaBoletinComponent } from './components/la-millonaria-boletin/la-millonaria-boletin.component';
+import { LaMillonariaConsultaComponent } from './components/la-millonaria-consulta/la-millonaria-consulta.component';
+import { LaMillonariaSelectorComponent } from './components/la-millonaria-selector/la-millonaria-selector.component';
+import { LaMillonariaTicketComponent } from './components/la-millonaria-ticket/la-millonaria-ticket.component';
+import { BoletinLaMillonariaComponent } from './containers/boletin-la-millonaria/boletin-la-millonaria.component';
+import { ConsultaLaMillonariaComponent } from './containers/consulta-la-millonaria/consulta-la-millonaria.component';
+import { ResultadosLaMillonariaComponent } from './containers/resultados-la-millonaria/resultados-la-millonaria.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +70,14 @@ import { RaspasComponent } from './containers/raspas/raspas.component';
     SeleccionTipoComponent,
     ResultadosComponent,
     ResultadoComponent,
-    RaspasComponent
+    RaspasComponent,
+    LaMillonariaBoletinComponent,
+    LaMillonariaConsultaComponent,
+    LaMillonariaSelectorComponent,
+    LaMillonariaTicketComponent,
+    BoletinLaMillonariaComponent,
+    ConsultaLaMillonariaComponent,
+    ResultadosLaMillonariaComponent
   ],
   entryComponents: [
     LottoConsultaComponent,

@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 @Component({
   selector: "app-resultados",
   templateUrl: "./resultados.component.html",
-  styleUrls: ["./resultados.component.scss"]
+  styleUrls: ["./resultados.component.scss"],
 })
 export class ResultadosComponent implements OnInit {
   @Input() resultados: any;
@@ -20,30 +20,36 @@ export class ResultadosComponent implements OnInit {
     switch (this.tipoLoteria) {
       case "1":
         this.loteriaBackground = {
-          backgroundLoteriaNacional: true
+          backgroundLoteriaNacional: true,
         };
         break;
       case "2":
         this.loteriaBackground = {
-          backgroundLotto: true
+          backgroundLotto: true,
         };
 
         break;
 
-      default:
+      case "5":
         this.loteriaBackground = {
-          backgroundPozoMillonario: true
+          backgroundPozoMillonario: true,
+        };
+
+        break;
+      case "14":
+        this.loteriaBackground = {
+          backgroundLotto: true,
         };
 
         break;
     }
-    this.resultados.forEach(resultado => {
+    this.resultados.forEach((resultado) => {
       let description;
       let ticket = {
         sorteo: resultado.sorteo,
         description,
         combinacion: resultado.combinacion,
-        resultado
+        resultado,
       };
       this.tickets.push(ticket);
     });

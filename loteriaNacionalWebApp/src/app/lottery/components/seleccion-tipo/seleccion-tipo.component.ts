@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
+import { LotteryService } from "../../services/lottery.service";
 
 @Component({
   selector: "app-seleccion-tipo",
@@ -13,7 +14,8 @@ export class SeleccionTipoComponent implements OnInit {
   linkLaMillonaria: string;
   token: string;
   usuario: string;
-  constructor(private actRoute: ActivatedRoute) {
+
+  constructor(private actRoute: ActivatedRoute, private lottery: LotteryService) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
     });

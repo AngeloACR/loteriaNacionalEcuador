@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LotteryService } from 'src/app/lottery/services/lottery.service';
 
 @Component({
   selector: 'app-seleccion',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeleccionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lottery: LotteryService) { }
 
   ngOnInit() {
   }

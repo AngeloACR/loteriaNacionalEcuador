@@ -1,0 +1,19 @@
+<div class="contenedor_ticket">
+    <div class="logo_ticket">
+        <img src="../../../../assets/img/millonaria-sombra.png" alt="">
+    </div>
+    <div>
+        <hr size="2px" />
+    </div>
+    <div class="scroll">
+        <app-la-millonaria-ticket [ticket]="ticketGanador"></app-la-millonaria-ticket>
+    </div>
+    <div>
+        <hr size="2px" style="margin: 18px auto;" />
+    </div>
+
+    <div class="boton_comprar">
+        <button (click)="verUltimoBoletin()">VER BOLETIN</button>
+        <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
+    </div>
+</div>

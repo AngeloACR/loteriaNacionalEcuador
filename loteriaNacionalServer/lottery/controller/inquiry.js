@@ -24,8 +24,12 @@ const inquiryController = {
 
           break;
 
-        default:
+        case 5:
           status = await Results.getResultadosPozo(sorteo);
+
+          break;
+        case 14:
+          status = await Results.getResultadosMillonaria(sorteo);
 
           break;
       }
@@ -355,7 +359,6 @@ const inquiryController = {
       res.status(400).json(e.toString());
     }
   },
-
 
   buscarMillonariaUltimosResultados: async (req, res) => {
     try {

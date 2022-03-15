@@ -1,6 +1,13 @@
 <div class="selectionBox">
-
-    <app-loteria-nacional-selector class="selectorBox"></app-loteria-nacional-selector>
-    <app-lotto-selector class="selectorBox"></app-lotto-selector>
-    <app-pozo-millonario-selector class="selectorBox"></app-pozo-millonario-selector>
+  <app-loteria-nacional-selector
+    class="selectorBox"
+  ></app-loteria-nacional-selector>
+  <app-lotto-selector class="selectorBox"></app-lotto-selector>
+  <app-pozo-millonario-selector
+    class="selectorBox"
+  ></app-pozo-millonario-selector>
+  <app-la-millonaria-selector
+    *ngIf="lottery.getAuthData().user == '0915030217'"
+    class="selectorBox"
+  ></app-la-millonaria-selector>
 </div>
