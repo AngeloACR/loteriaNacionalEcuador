@@ -355,8 +355,13 @@ const resultadosController = {
   getResultadoGanadorMillonaria: async function (sorteo, combinacion) {
     try {
       let sorteoAux = `${sorteo}`;
-      let combinacionAux = `${combinacion}`;
-      let query = { numeroSorteo: sorteoAux, combinacion1: combinacionAux };
+      let combinacionAux = `${combinacion.principal}`;
+      let serieAux = `${combinacion.serie}`;
+      let query = {
+        numeroSorteo: sorteoAux,
+        combinacion1: combinacionAux,
+        combinacion2: serieAux,
+      };
 
       //let resultado = await Resultado.find(query).populate('premio');
       let resultado = await ResultadoMillonaria.find(query).lean();

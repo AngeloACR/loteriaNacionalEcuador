@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-la-millonaria-ticket',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./la-millonaria-ticket.component.scss']
 })
 export class LaMillonariaTicketComponent implements OnInit {
+  @Input() ticket: any;
 
-  constructor() { }
+  description: String;
+  ticketNumbers: Number[];
+  sorteo: Number;
+  constructor() {}
 
   ngOnInit() {
+    this.ticketNumbers = this.ticket.ticketNumbers;
+    this.sorteo = this.ticket.numeroSorteo;
   }
-
 }
