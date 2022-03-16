@@ -44,7 +44,10 @@ export class LotteryService {
 
   getAuthData() {
     let data = JSON.parse(localStorage.getItem("userData"));
-    let response;
+    let response = {
+      user: "",
+      lotteryToken: ""
+    };
     if (data) {
       let lotteryToken = data.lotteryToken;
       let user = data.playerDocument;
