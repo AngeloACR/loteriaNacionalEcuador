@@ -19,8 +19,8 @@ export class PozoMillonarioConsultaComponent implements OnInit {
   sorteoGanador: any;
   sorteoBoletin: any;
   boletoInicial: any;
-  boletoFinal: any;
-  sorteoRango: any;
+  boletoFinal: any = "";
+  sorteoRango: any = "";
   combinacionesAux: any = "";
 
   maxDigits: number = 7;
