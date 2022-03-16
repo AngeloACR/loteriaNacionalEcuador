@@ -44,13 +44,16 @@ export class LotteryService {
 
   getAuthData() {
     let data = JSON.parse(localStorage.getItem("userData"));
-    let lotteryToken = data.lotteryToken;
-    let user = data.playerDocument;
-    if (data.user_ == "italtronicprep") user = data.user_;
-    let response = {
-      lotteryToken,
-      user,
-    };
+    let response;
+    if (data) {
+      let lotteryToken = data.lotteryToken;
+      let user = data.playerDocument;
+      if (data.user_ == "italtronicprep") user = data.user_;
+      response = {
+        lotteryToken,
+        user,
+      };
+    }
     return response;
   }
   obtenerDescuentos() {
@@ -206,7 +209,7 @@ export class LotteryService {
     let endpoint = "/lottery/getSeries";
     let authData = this.getAuthData();
     var address = this.mySource;
-    console.log(sorteo)
+    console.log(sorteo);
     address = address + endpoint;
     return new Promise<Array<any>>((resolve, reject) => {
       this.http
@@ -214,17 +217,17 @@ export class LotteryService {
           params: {
             lotteryToken: authData.lotteryToken,
             user: authData.user,
-            sorteo
+            sorteo,
           },
           headers: headers,
         })
         .subscribe(
           (data: any) => {
-            let aux = data.map(element => {
-              return { 
+            let aux = data.map((element) => {
+              return {
                 serie: element,
                 status: false,
-              }
+              };
             });
             resolve(aux);
           },
@@ -1029,7 +1032,6 @@ export class LotteryService {
         break;
       case 14:
         aux = [
-        
           {
             combinacion: boleto.ticket.combinacion1,
             combinacion2: boleto.ticket.combinacion2,
