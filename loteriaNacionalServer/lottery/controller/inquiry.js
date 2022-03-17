@@ -8,8 +8,8 @@ const config = require("../../config/environment");
 /*************************** CONSULTA DE RESULTADOS************************/
 
 //let sourceBoletines = config.sourceBoletinesLocal;
-//let sourceBoletines = config.sourceBoletinesTest;
-let sourceBoletines = config.sourceBoletinesProd;
+let sourceBoletines = config.sourceBoletinesTest;
+//let sourceBoletines = config.sourceBoletinesProd;
 
 const inquiryController = {
   validateSorteo: async (sorteo, tipoLoteria) => {

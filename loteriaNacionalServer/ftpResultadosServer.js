@@ -3,10 +3,10 @@ const ResultadosController = require('./results/controller/main')
 const config = require('./config/environment');
 
 
-//const ftpUser = config.ftpUserTest;
-//const ftpPass = config.ftpPassTest;
-const ftpUser = config.ftpUserProd;
-const ftpPass = config.ftpPassProd;
+/* const ftpUser = config.ftpUserTest;
+const ftpPass = config.ftpPassTest; */
+/* const ftpUser = config.ftpUserProd;
+const ftpPass = config.ftpPassProd; */
 
 const ftpPath = `${__dirname}${config.ftpResultadosPath}`;
 

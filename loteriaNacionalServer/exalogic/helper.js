@@ -3,12 +3,12 @@ var { exalogicError } = require("../errors/customError");
 const config = require("../config/environment");
 const { exalogicLogger } = require("../config/logging");
 
-/* let exalogicHost = config.exalogicHostTest;
-let exalogicEndpoint = config.exalogicEndpointTest; */
+let exalogicHost = config.exalogicHostTest;
+let exalogicEndpoint = config.exalogicEndpointTest;
 
-let exalogicHost = config.exalogicHostProd;
+/* let exalogicHost = config.exalogicHostProd;
 let exalogicEndpoint = config.exalogicEndpointProd;
-
+ */
 module.exports.exalogicRequest = async (data) => {
   try {
     exalogicLogger.silly("exalogicRequest");

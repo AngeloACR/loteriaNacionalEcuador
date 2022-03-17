@@ -122,8 +122,8 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
 
         #url = "http://localhost:5480/lottery/acreditarPremios"
         
-        #url = "https://ventas-api-prueba.loteria.com.ec/lottery/acreditarPremios"
-        url = "https://ventas-api.loteria.com.ec/lottery/acreditarPremios"
+        url = "https://ventas-api-prueba.loteria.com.ec/lottery/acreditarPremios"
+        #url = "https://ventas-api.loteria.com.ec/lottery/acreditarPremios"
         response = requests.post(url, json={"sorteo": numeroSorteo})
         resultado = response.json()
         closeConnect(connection)
@@ -146,8 +146,8 @@ def main():
     #db = "mongodb://localhost:27017/loteriaDB"
     db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    #filepath = "/home/loterianacional/resultados" + filename
-    filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
+    filepath = "/home/loterianacional/resultados" + filename
+    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
 

@@ -2,11 +2,11 @@ const FtpSrv = require('ftp-srv');
 const config = require('./config/environment');
 const path = require("path");
 
-//const ftpUser = config.ftpUserTest;
-//const ftpPass = config.ftpPassTest;
+const ftpUser = config.ftpUserTest;
+const ftpPass = config.ftpPassTest;
 
-const ftpUser = config.ftpUserProd;
-const ftpPass = config.ftpPassProd;
+/* const ftpUser = config.ftpUserProd;
+const ftpPass = config.ftpPassProd; */
 
 const ftpPath = `${__dirname}${config.ftpBoletinesPath}`;
 
@@ -21,8 +21,8 @@ var fs = require('fs');
 module.exports.init = function (ftpHost, ftpPort) {
 
     const ftpUrl = `ftp://${ftpHost}:${ftpPort}`;
-    let sslPath = config.sslPath;
-    //let sslPath = config.sslPathTest;
+    //let sslPath = config.sslPath;
+    let sslPath = config.sslPathTest;
     const keyPath = path.join(sslPath, config.keyFile);
     const certPath = path.join(sslPath, config.certFile);
     const reqPath = path.join(sslPath, config.reqFile);
