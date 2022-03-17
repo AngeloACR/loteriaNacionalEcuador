@@ -110,8 +110,8 @@ def main():
     #db = "mongodb://localhost:27017/loteriaDB"
     db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB?replicaSet=backuptest"
     filename = sys.argv[1]
-    #filepath = "/home/loterianacional/resultados" + filename
-    filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/La millonaria prueba" + filename
+    filepath = "/home/loterianacional/resultados" + filename
+    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/La millonaria prueba" + filename
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
 
