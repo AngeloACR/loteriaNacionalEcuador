@@ -184,7 +184,7 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
           );
           let errorCode = parseInt(data.mt.c[0].codError[0]);
           if (!errorCode) {
-            if(data.mt.rs[0].r[0] == '') return [];
+            if (data.mt.rs[0].r[0] == "") return [];
             let response = data.mt.rs[0].r[0].Row.map((data) => {
               let resultado = {
                 tipoLoteria: data.$.JId,
@@ -251,7 +251,7 @@ module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
           );
           let errorCode = parseInt(data.mt.c[0].codError[0]);
           if (!errorCode) {
-            let aux = data.mt.rs[0].r[0].Row;
+            let aux = data.mt.rs[0].r[0] != "" ? data.mt.rs[0].r[0].Row : [];
             let response = aux.map((sorteo) => {
               return sorteo.$;
             });
