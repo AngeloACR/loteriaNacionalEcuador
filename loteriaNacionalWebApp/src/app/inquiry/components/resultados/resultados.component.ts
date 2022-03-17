@@ -51,6 +51,9 @@ export class ResultadosComponent implements OnInit {
         combinacion: resultado.combinacion,
         resultado,
       };
+      if(this.tipoLoteria == "14"){
+        ticket['serie'] = resultado.serie
+      }
       this.tickets.push(ticket);
     });
   }

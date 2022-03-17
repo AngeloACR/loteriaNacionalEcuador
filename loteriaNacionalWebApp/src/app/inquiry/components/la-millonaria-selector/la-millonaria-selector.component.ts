@@ -9,16 +9,19 @@ import { Router } from "@angular/router";
 export class LaMillonariaSelectorComponent implements OnInit {
   ticketGanador: any;
   ticketNumbers: String[];
+  serieNumbers: String[];
   constructor(private router: Router) {}
   ngOnInit() {
     let data = JSON.parse(
       localStorage.getItem("laMillonariaUltimoResultado")
     );
-    this.ticketNumbers = data.ultimoResultadoLoteria.combinacion1.split("");
+    this.ticketNumbers = data.ultimoResultadoMillonaria.combinacion1.split("");
+    this.serieNumbers = data.ultimoResultadoMillonaria.combinacion2.split("");
     this.ticketGanador = {
-      ticketIndex: data.ultimoResultadoLoteria.codigo,
+      ticketIndex: data.ultimoResultadoMillonaria.codigo,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
+      serieNumbers: this.serieNumbers,
       numeroSorteo: data.numeroSorteo,
       sorteo: data.sorteo
     };

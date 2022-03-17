@@ -205,7 +205,8 @@ const inquiryController = {
             boleto["premio"] = premio.values;
             let responseAux = {
               status: true,
-              combinacion: combinaciones[i],
+              combinacion: combinaciones[i].principal,
+              serie: combinaciones[i].serie,
               sorteo,
               data: boleto,
             };
@@ -214,7 +215,8 @@ const inquiryController = {
         } else {
           let responseAux = {
             status: false,
-            combinacion: combinaciones[i],
+            combinacion: combinaciones[i].principal,
+            serie: combinaciones[i].serie,
             sorteo,
           };
           response.push(responseAux);

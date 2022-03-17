@@ -187,13 +187,19 @@ const resultadosController = {
           ultimoResultado.codigoPremioAntojito = element.codigoPremioAntojito;
           break;
 
-        default:
-          ultimoResultado.ultimoResultadoPozo = {
-            combinacion2: element.combinacion2,
-          };
-          ultimoResultado.mascota = element.mascota;
-          break;
-      }
+          case "5":
+            ultimoResultado.ultimoResultadoPozo = {
+              combinacion2: element.combinacion2,
+            };
+            ultimoResultado.mascota = element.mascota;
+            break;
+            case "14":
+              ultimoResultado.ultimoResultadoMillonaria = {
+                combinacion1: element.combinacion1,
+                combinacion2: element.combinacion2,
+              };
+              break;
+            }
       ultimoResultado = await ultimoResultado.save();
       let response = {
         status: true,
@@ -362,7 +368,7 @@ const resultadosController = {
         combinacion1: combinacionAux,
         combinacion2: serieAux,
       };
-
+      let response;
       //let resultado = await Resultado.find(query).populate('premio');
       let resultado = await ResultadoMillonaria.find(query).lean();
 
@@ -562,7 +568,11 @@ const resultadosController = {
           .populate("premioNosVemosJefe")
           .populate("premioLottoPlus")
           .populate("premioLottito");
-      } else {
+      } else if (tipoLoteria == 5)  {
+        resultado = await UltimoResultado.findOne(query)
+          .populate("sorteo")
+          .populate("premioPrincipal");
+      } else if (tipoLoteria == 14)  {
         resultado = await UltimoResultado.findOne(query)
           .populate("sorteo")
           .populate("premioPrincipal");

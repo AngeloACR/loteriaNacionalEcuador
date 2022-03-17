@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class InquiryService {
   today = new Date();
@@ -32,6 +32,11 @@ export class InquiryService {
         break;
       case 5:
         endpoint = `${endpoint}/pozoSorteosJugados`;
+        console.log("Recuperando sorteos de pozo millonario");
+
+        break;
+      case 14:
+        endpoint = `${endpoint}/millonariaSorteosJugados`;
         console.log("Recuperando sorteos de pozo millonario");
 
         break;
@@ -71,34 +76,38 @@ export class InquiryService {
         endpoint = `${endpoint}/ganadorLotto`;
         console.log("Recuperando boleto ganador de lotto");
         break;
-      case 5:
-        endpoint = `${endpoint}/ganadorPozo`;
-        console.log("Recuperando boleto ganador de pozo millonario");
-
-        break;
+        case 5:
+          endpoint = `${endpoint}/ganadorPozo`;
+          console.log("Recuperando boleto ganador de pozo millonario");
+  
+          break;
+          case 14:
+            endpoint = `${endpoint}/ganadorMillonaria`;
+            console.log("Recuperando boleto ganador de la millonaria");
+    
+            break;
 
       default:
         break;
     }
     var address = this.mySource;
-    console.log(endpoint);
     address = address + endpoint;
     let body = {
       sorteo,
-      combinaciones
+      combinaciones,
     };
     console.log(body);
     return new Promise((resolve, reject) => {
-      this.http
-        .post(address, body, { headers: headers })
-        .subscribe((data: any[]) => {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any[]) => {
           let boletoGanador = data;
           console.log(boletoGanador);
           resolve(boletoGanador);
         },
         (error: any) => {
           reject(new Error(error.error.message));
-        });
+        }
+      );
     });
   }
 
@@ -112,9 +121,9 @@ export class InquiryService {
     let body = {
       sorteo,
       boletoInicial,
-      boletoFinal
+      boletoFinal,
     };
-    console.log(body)
+    console.log(body);
     return new Promise((resolve, reject) => {
       this.http
         .post(address, body, { headers: headers })
@@ -138,6 +147,7 @@ export class InquiryService {
         let loteriaNacional = data.loteriaNacional;
         let lotto = data.lotto;
         let pozoMillonario = data.pozoMillonario;
+        let laMillonaria = data.laMillonaria;
         localStorage.setItem(
           "loteriaNacionalUltimoResultado",
           JSON.stringify(loteriaNacional)
@@ -147,7 +157,10 @@ export class InquiryService {
           "pozoMillonarioUltimoResultado",
           JSON.stringify(pozoMillonario)
         );
-        console.log(pozoMillonario)
+        localStorage.setItem(
+          "laMillonariaUltimoResultado",
+          JSON.stringify(laMillonaria)
+        );
         resolve(data);
       });
     });
@@ -179,7 +192,7 @@ export class InquiryService {
 
     address = address + endpoint;
     let body = {
-      sorteo
+      sorteo,
     };
 
     return new Promise((resolve, reject) => {

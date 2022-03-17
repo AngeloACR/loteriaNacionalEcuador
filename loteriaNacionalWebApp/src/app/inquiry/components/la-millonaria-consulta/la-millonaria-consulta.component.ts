@@ -17,7 +17,8 @@ export class LaMillonariaConsultaComponent implements OnInit {
   sorteosJugados: any;
   sorteoGanador: any;
   sorteoBoletin: any;
-  combinacionesAux: any = "";
+  combinacion: any = "";
+  serie: any = "";
   maxDigits: number = 4;
   numbers: Array<any> = [];
   previousLength: number = 0;
@@ -43,23 +44,30 @@ export class LaMillonariaConsultaComponent implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
-  validateField() {
+  validateCombinacion() {
     this.changeDetectorRef.detectChanges();
-    this.validate();
+    let reg = /[^0-9]/g;
+    this.combinacion = this.combinacion.replace(reg,"");
+    this.changeDetectorRef.markForCheck();
+  }
+  validateSerie() {
+    this.changeDetectorRef.detectChanges();
+    let reg = /[^0-9]/g;
+    this.serie = this.serie.replace(reg,"");
     this.changeDetectorRef.markForCheck();
   }
 
   validate() {
     let reg = /[^0-9]/g;
-    let currentLength = this.combinacionesAux.length;
+    let currentLength = this.combinacion.length;
     let addComma = false;
     if (this.previousLength > currentLength) {
-      if (this.combinacionesAux[currentLength - 1] == ",") {
-        this.combinacionesAux = this.combinacionesAux.slice(0, -1);
+      if (this.combinacion[currentLength - 1] == ",") {
+        this.combinacion = this.combinacion.slice(0, -1);
         this.cameFromBackspace = true;
       }
     } else {
-      this.numbers = this.combinacionesAux.split(", ");
+      this.numbers = this.combinacion.split(", ");
       if (this.cameFromBackspace) {
         let lastNumber = this.numbers[this.numbers.length - 1];
         let auxLength = lastNumber.length;
@@ -68,7 +76,7 @@ export class LaMillonariaConsultaComponent implements OnInit {
         this.numbers.push(number);
         this.cameFromBackspace = false;
       }
-      this.combinacionesAux = "";
+      this.combinacion = "";
       let numbersLength = this.numbers.length;
       let lastNumberAux = this.numbers[numbersLength - 1];
       lastNumberAux = lastNumberAux.replace(reg, "");
@@ -82,13 +90,13 @@ export class LaMillonariaConsultaComponent implements OnInit {
       numbersLength = this.numbers.length;
       this.numbers.forEach((number, index) => {
         number = number.replace(reg, "");
-        this.combinacionesAux = `${this.combinacionesAux}${number}`;
+        this.combinacion = `${this.combinacion}${number}`;
         if (number.length == this.maxDigits && index != numbersLength - 1) {
-          this.combinacionesAux = `${this.combinacionesAux}, `;
+          this.combinacion = `${this.combinacion}, `;
         }
       });
     }
-    this.previousLength = this.combinacionesAux.length;
+    this.previousLength = this.combinacion.length;
   }
 
   isLoading: boolean = false;
@@ -127,10 +135,10 @@ export class LaMillonariaConsultaComponent implements OnInit {
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
-      if(!this.combinacionesAux.length) throw new Error("Por favor, escribe al menos una combinación que quieras consultar")
-      let aux = this.combinacionesAux;
-      if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
-        aux = this.combinacionesAux.slice(0, -2);
+      if(!this.combinacion.length) throw new Error("Por favor, escribe la combinación que quieras consultar")
+/*       let aux = this.combinacion;
+      if (this.combinacion[this.combinacion.length - 1] == " ") {
+        aux = this.combinacion.slice(0, -2);
       }
 
       let combinaciones: Array<any> = aux.split(", ");
@@ -146,18 +154,18 @@ export class LaMillonariaConsultaComponent implements OnInit {
           return combinacion;
         }
       });
-      if (this.sorteoGanador == "default") {
+ */      if (this.sorteoGanador == "default") {
         this.dismissLoader();
         this.openError("Por favor, selecciona un sorteo");
 
         return;
       }
+      let combinaciones = [{principal: this.combinacion, serie: this.serie}]
       let data: any = await this.inquiryService.recuperarBoletoGanador(
-        2,
+        14,
         this.sorteoGanador,
         combinaciones
       );
-      console.log(data);
       this.resultados.emit(data);
       this.dismissLoader();
     } catch (e) {
@@ -175,7 +183,7 @@ export class LaMillonariaConsultaComponent implements OnInit {
       return;
     }
     this.router.navigateByUrl(
-      `/resultados/lotto_boletin/${this.sorteoBoletin}`
+      `/resultados/millonaria_boletin/${this.sorteoBoletin}`
     );
   }
 

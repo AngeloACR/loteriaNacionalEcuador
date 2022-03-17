@@ -41,6 +41,15 @@ const ultimoResultadoSchema = new mongoose.Schema(
         type: String,
       }
     },
+    ultimoResultadoMillonaria: {
+      combinacion1: {
+        type: String,
+      },
+      combinacion2: {
+        type: String,
+      }
+
+    },
     /*     resultadoLottoPlus: {
         type: Schema.Types.ObjectId,
         ref: "ResultadoLotto",

@@ -11,6 +11,8 @@ import { ConsultaPozoMillonarioComponent } from "./containers/consulta-pozo-mill
 import { ConsultaLoteriaNacionalComponent } from "./containers/consulta-loteria-nacional/consulta-loteria-nacional.component";
 
 import { InquiryComponent } from "./inquiry.component";
+import { ConsultaLaMillonariaComponent } from "./containers/consulta-la-millonaria/consulta-la-millonaria.component";
+import { BoletinLaMillonariaComponent } from "./containers/boletin-la-millonaria/boletin-la-millonaria.component";
 
 const routes: Routes = [
   {
@@ -26,8 +28,13 @@ const routes: Routes = [
         path: "pozo_millonario_boletin/:sorteo",
         component: BoletinPozoMillonarioComponent
       },
+      {
+        path: "millonaria_boletin/:sorteo",
+        component: BoletinLaMillonariaComponent
+      },
       { path: "loteria_consulta", component: ConsultaLoteriaNacionalComponent },
       { path: "lotto_consulta", component: ConsultaLottoComponent },
+      { path: "millonaria_consulta", component: ConsultaLaMillonariaComponent },
       { path: "ultimos_resultados", component: SeleccionComponent },
       { path: "raspas", component: RaspasComponent },
       {

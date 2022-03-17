@@ -10,11 +10,13 @@ export class LaMillonariaTicketComponent implements OnInit {
 
   description: String;
   ticketNumbers: Number[];
+  serieNumbers: Number[];
   sorteo: Number;
   constructor() {}
 
   ngOnInit() {
     this.ticketNumbers = this.ticket.ticketNumbers;
+    this.serieNumbers = this.ticket.serieNumbers;
     this.sorteo = this.ticket.numeroSorteo;
   }
 }

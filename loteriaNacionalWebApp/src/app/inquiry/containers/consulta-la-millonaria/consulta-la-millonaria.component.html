@@ -1,1 +1,11 @@
-<p>consulta-la-millonaria works!</p>
+<div class="container">
+    <app-la-millonaria-consulta class="consultaBox" (resultados)="toggleResultados($event)">
+    </app-la-millonaria-consulta>
+    <app-la-millonaria-selector class="selectorBox"></app-la-millonaria-selector>
+
+    <div class="modalBox" *ngIf="showResultados">
+        <app-resultados tipoLoteria="14" [isLoteriaNacional]="true" (close)="closeBox()" *ngIf="showResultados"
+            [resultados]="resultados">
+        </app-resultados>
+    </div>
+</div>

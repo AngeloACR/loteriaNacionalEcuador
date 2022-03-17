@@ -171,6 +171,21 @@ const mainController = {
         pozoMillonario,
         laMillonaria,
       };
+      let ultimoResultadoMillonaria = {};
+      for (let index = 0; index < laMillonaria.length; index++) {
+        const resultado = laMillonaria[index];
+        if (resultado.codigoPremio.includes("-1")) {
+          ultimoResultadoMillonaria = {
+            tipoLoteria: "14",
+
+            codigoPremioPrincipal: resultado.codigoPremio,
+            combinacion1: resultado.combinacion,
+            combinacion2: resultado.serie,
+            numeroSorteo: resultado.sorteo,
+          };
+        }
+      }
+      await resultadosController.updateUltimoResultado(ultimoResultadoMillonaria);
       let ultimoResultadoLoteria = {};
       for (let index = 0; index < loteria.length; index++) {
         const resultado = loteria[index];

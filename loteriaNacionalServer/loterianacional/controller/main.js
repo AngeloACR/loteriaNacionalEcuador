@@ -184,8 +184,9 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
           );
           let errorCode = parseInt(data.mt.c[0].codError[0]);
           if (!errorCode) {
-            if (data.mt.rs[0].r[0] == "") return [];
-            let response = data.mt.rs[0].r[0].Row.map((data) => {
+            let response = [];
+            if (data.mt.rs[0].r[0] == "") resolve(response);
+            response = data.mt.rs[0].r[0].Row.map((data) => {
               let resultado = {
                 tipoLoteria: data.$.JId,
                 nombreLoteria: data.$.JNom,
@@ -197,6 +198,7 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
                 valorPremio: data.$.ValPre,
                 codigoPremio: `${data.$.SortId}-${data.$.Prem}`,
               };
+              if(resultado.tipoLoteria == "14") resultado['serie'] = data.$.Comb2
               return resultado;
             });
             resolve(response);
