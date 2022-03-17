@@ -47,7 +47,7 @@ module.exports = {
   //prodDB: "mongodb://localhost:27017/loteriaDB",
   prodDB: "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
   //prodDB: "mongodb://loterianacional:%24lndatabase123..%24@localhost:27017/loteriaDB",
-  testDB: "mongodb://loterianacional:%24lndatabase123..%24@localhost:27017/loteriaDB?replicaSet=backup",
+  testDB: "mongodb://loterianacional:%24lndatabase123..%24@localhost:27017/loteriaDB?replicaSet=backuptest",
   
 /*   mysqlPort: "3306",
   mysqlUser: "serverUser",
