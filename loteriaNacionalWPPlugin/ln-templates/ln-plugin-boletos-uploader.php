@@ -18,6 +18,7 @@ $loaderPath = $home . "/wp-content/plugins/lnPlugin/assets/loader.gif";
             <p class="codeTag">- 1 para Loteria Nacional</p>
             <p class="codeTag">- 2 para Lotto</p>
             <p class="codeTag">- 5 para Pozo Millonario</p>
+            <p class="codeTag">- 14 para La Millonaria</p>
             <p>- Es importante seguir el protocolo descrito, de lo contrario los archivos no se cargarán correctamente y los usuarios de la plataforma web no podrán visualizarlos.</p>
         </div>
 

@@ -91,6 +91,9 @@ export class InfoLoteriaComponent implements OnInit {
       this.seleccionado as sorteo
     ).cantidadDeFracciones;
     let auxPremioLoteria = parseInt(premio) * this.cantidadDeFracciones;
+    if(this.tipoLoteria == 14){
+    auxPremioLoteria = Math.ceil(parseInt(premio) * this.cantidadDeFracciones/10)*10;
+    }
     this.premioLoteria = this.lotteryService
       .formatNumber(auxPremioLoteria)
       .split(".")[0];

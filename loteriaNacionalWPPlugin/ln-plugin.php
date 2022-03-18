@@ -101,6 +101,10 @@ function uploadBoletines()
 
 			$tipoImagen = $filename[0];
 			$tipoLoteria = $filename[1];
+			if ($filename[2] == "4"){
+				$tipoLoteria = $tipoLoteria.$filename[2];
+			}
+
 			if ($tipoImagen == "T") {
 				$documentFolder = $boletinesPath;
 			} else {
@@ -199,6 +203,9 @@ function uploadBoletos()
 
 			$tipoImagen = $filename[0];
 			$tipoLoteria = $filename[1];
+			if ($filename[2] == "4"){
+				$tipoLoteria = $tipoLoteria.$filename[2];
+			}
 			if ($tipoImagen == "B") {
 				$documentFolder = $boletosPath;
 			} else {
