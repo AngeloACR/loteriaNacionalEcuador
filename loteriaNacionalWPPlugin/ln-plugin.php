@@ -111,7 +111,7 @@ function uploadBoletines()
 
 				break;
 			}
-			if ($tipoLoteria != "1" && $tipoLoteria != "2" && $tipoLoteria != "5") {
+			if ($tipoLoteria != "1" && $tipoLoteria != "2" && $tipoLoteria != "5" && $tipoLoteria != "14") {
 				$response = array(
 					'status' => false,
 					'message' => 'El tipo de lotería indicado no coincide con ninguno de los de Loteria Nacional'
@@ -209,7 +209,7 @@ function uploadBoletos()
 
 				break;
 			}
-			if ($tipoLoteria != "1" && $tipoLoteria != "2" && $tipoLoteria != "5") {
+			if ($tipoLoteria != "1" && $tipoLoteria != "2" && $tipoLoteria != "5" && $tipoLoteria != "14") {
 				$response = array(
 					'status' => false,
 					'message' => 'El tipo de lotería indicado no coincide con ninguno de los de Loteria Nacional'

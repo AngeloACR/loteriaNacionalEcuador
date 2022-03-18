@@ -120,6 +120,18 @@ const mainController = {
     }
   },
 
+  getUltimosResultadosHttp: async function (req, res) {
+    try {
+      let response = await mainController.getUltimosResultados();
+      res.status(200).json(response);
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      res.status(400).json(error.toString());
+    }
+  },
   getUltimosResultados: async function () {
     try {
       let loteriaNacionalResponse =
@@ -127,8 +139,9 @@ const mainController = {
       let lottoResponse = await ResultadosController.getUltimoResultado(2);
       let pozoMillonarioResponse =
         await ResultadosController.getUltimoResultado(5);
-        let laMillonariaResponse =
-          await ResultadosController.getUltimoResultado(14);
+      let laMillonariaResponse = await ResultadosController.getUltimoResultado(
+        14
+      );
       let response = {
         loteriaNacional: loteriaNacionalResponse.values,
         lotto: lottoResponse.values,
@@ -147,7 +160,7 @@ const mainController = {
   },
   actualizarUltimosResultadosHttp: async function (req, res) {
     try {
-      let response = await mainController.actualizarUltimosResultados()
+      let response = await mainController.actualizarUltimosResultados();
       res.status(200).json(response);
     } catch (error) {
       let response = {
@@ -185,7 +198,9 @@ const mainController = {
           };
         }
       }
-      await resultadosController.updateUltimoResultado(ultimoResultadoMillonaria);
+      await resultadosController.updateUltimoResultado(
+        ultimoResultadoMillonaria
+      );
       let ultimoResultadoLoteria = {};
       for (let index = 0; index < loteria.length; index++) {
         const resultado = loteria[index];
