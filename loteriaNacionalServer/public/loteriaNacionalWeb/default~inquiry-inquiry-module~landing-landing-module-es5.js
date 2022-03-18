@@ -381,7 +381,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"resultBox\">\n  <a routerLink=\"/resultados/ultimos_resultados\" routerLinkActive=\"active\"\n    >ULTIMOS RESULTADOS</a\n  >\n  <a routerLink=\"/resultados/loteria_consulta\" routerLinkActive=\"active loteria\"\n    >LOTERIA NACIONAL</a\n  >\n  <a routerLink=\"/resultados/lotto_consulta\" routerLinkActive=\"active lotto\"\n    >LOTTO</a\n  >\n  <a\n    routerLink=\"/resultados/pozo_millonario_consulta\"\n    routerLinkActive=\"active pozo\"\n    >POZO MILLONARIO</a\n  >\n  <a\n    *ngIf=\"false\"\n    routerLink=\"/resultados/millonaria_consulta\"\n    routerLinkActive=\"active millonaria\"\n    >LA MILLONARIA</a\n  >\n  <hr />\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"resultBox\">\n  <a routerLink=\"/resultados/ultimos_resultados\" routerLinkActive=\"active\"\n    >ULTIMOS RESULTADOS</a\n  >\n  <a routerLink=\"/resultados/loteria_consulta\" routerLinkActive=\"active loteria\"\n    >LOTERIA NACIONAL</a\n  >\n  <a routerLink=\"/resultados/lotto_consulta\" routerLinkActive=\"active lotto\"\n    >LOTTO</a\n  >\n  <a\n    routerLink=\"/resultados/pozo_millonario_consulta\"\n    routerLinkActive=\"active pozo\"\n    >POZO MILLONARIO</a\n  >\n  <a\n    routerLink=\"/resultados/millonaria_consulta\"\n    routerLinkActive=\"active millonaria\"\n    >LA MILLONARIA</a\n  >\n  <hr />\n</div>\n";
     /***/
   },
 
@@ -661,7 +661,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"selectionBox\">\n  <app-loteria-nacional-selector\n    class=\"selectorBox\"\n  ></app-loteria-nacional-selector>\n  <app-lotto-selector class=\"selectorBox\"></app-lotto-selector>\n  <app-pozo-millonario-selector\n    class=\"selectorBox\"\n  ></app-pozo-millonario-selector>\n  <app-la-millonaria-selector\n  *ngIf=\"false\"\n    class=\"selectorBox\"\n  ></app-la-millonaria-selector>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"selectionBox\">\n  <app-loteria-nacional-selector\n    class=\"selectorBox\"\n  ></app-loteria-nacional-selector>\n  <app-lotto-selector class=\"selectorBox\"></app-lotto-selector>\n  <app-pozo-millonario-selector\n    class=\"selectorBox\"\n  ></app-pozo-millonario-selector>\n  <app-la-millonaria-selector\n    class=\"selectorBox\"\n  ></app-la-millonaria-selector>\n</div>\n";
     /***/
   },
 
