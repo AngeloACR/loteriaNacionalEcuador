@@ -27,7 +27,7 @@ export class LaMillonariaBoletinComponent implements OnInit {
     this.triggerLoader();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.boletinImagen = await this.inquiryService.obtenerBoletin(
-      1,
+      14,
       this.sorteo
     );
     this.showBox = true;
