@@ -186,6 +186,7 @@ export class InquiryService {
         break;
 
       default:
+        endpoint = `${endpoint}/millonariaBoletin`;
         break;
     }
     var address = this.mySource;
