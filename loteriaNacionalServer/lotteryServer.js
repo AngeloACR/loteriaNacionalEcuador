@@ -52,7 +52,7 @@ module.exports.init = function (port) {
   app.use('/cart', cart);
   app.use('/raspas', raspas);
   app.use('/cache', cache);
-  app.use('/heapdump', heapdump);
+  //app.use('/heapdump', heapdump);
 
   return app
 }
