@@ -4,7 +4,7 @@ const { promisifyAll } = require("bluebird");
 const Ventas = require("../../loterianacional/controller/ventas");
 const Cache = require("../../cache/controller/main");
 
-promisifyAll(redis);
+promisifyAll(redis.RedisClient.prototype);
 let timeout = 60 * 40;
 const carritoController = {
   getClient: () => {

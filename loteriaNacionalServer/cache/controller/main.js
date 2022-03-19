@@ -5,7 +5,7 @@ const config = require("../../config/environment");
 const redis = require("redis");
 const { promisifyAll } = require("bluebird");
 
-promisifyAll(redis);
+promisifyAll(redis.RedisClient.prototype);
 
 const cacheController = {
   getClient: () => {
