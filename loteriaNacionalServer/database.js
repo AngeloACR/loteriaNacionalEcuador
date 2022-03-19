@@ -9,9 +9,7 @@ const Resultados = require("./results/controller/resultados");
 
 module.exports.initConnect = function () {
   // Connect to Database
-  mongoose.connect(
-    myDB , {/*  useUnifiedTopology: true,  */useNewUrlParser: true }
-  );
+  mongoose.connect(myDB, { useUnifiedTopology: true, useNewUrlParser: true });
 
   // On Connection
   mongoose.connection.on("connected", () => {
