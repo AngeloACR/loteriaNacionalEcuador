@@ -12,7 +12,7 @@ const results = require('./results/routes/results');
 const cart = require('./lottery/routes/cart');
 const raspas = require('./lottery/routes/raspa');
 const cache = require('./cache/routes/main');
-//const heapdump = require('./heapdump/routes/main');
+const heapdump = require('./heapdump/routes/main');
 
 module.exports.init = function (port) {
   app.set('port', (port));
@@ -52,7 +52,7 @@ module.exports.init = function (port) {
   app.use('/cart', cart);
   app.use('/raspas', raspas);
   app.use('/cache', cache);
-  //app.use('/heapdump', heapdump);
+  app.use('/heapdump', heapdump);
 
   return app
 }
