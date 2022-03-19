@@ -5,13 +5,14 @@ const config = require("../../config/environment");
 const redis = require("redis");
 const { promisifyAll } = require("bluebird");
 
-promisifyAll(redis.RedisClient.prototype);
+//promisifyAll(redis);
 
 const cacheController = {
   getClient: () => {
     const client = redis.createClient({
       port: 6379,
     });
+    promisifyAll(client);
 
     client.on("error", (error) => {
       console.error(error);
