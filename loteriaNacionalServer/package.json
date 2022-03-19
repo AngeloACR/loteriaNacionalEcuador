@@ -22,6 +22,7 @@
     "node-schedule": "*",
     "redis": "*",
     "soap": "*",
+    "heapdump": "*",
     "winston": "^3.3.3",
     "xml2js": "*"
   },
