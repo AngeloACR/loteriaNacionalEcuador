@@ -6,3 +6,7 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 sudo service mongod start
 sudo service mongod status
+
+mongod --dbpath /var/lib/mongo --keyFile backup.key --logpath /var/log/mongodb/mongod.log --replSet backup --bind_ip localhost,ventas.loteria.com.ec --fork
+
+mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork
