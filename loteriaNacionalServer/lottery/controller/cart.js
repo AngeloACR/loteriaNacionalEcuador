@@ -1,17 +1,16 @@
 const redis = require("redis");
 const reservas = require("../../loterianacional/controller/reservas");
-const { promisifyAll } = require("bluebird");
+const bluebird = require("bluebird");
 const Ventas = require("../../loterianacional/controller/ventas");
 const Cache = require("../../cache/controller/main");
 
-//promisifyAll(redis);
+bluebird.promisifyAll(redis);
 let timeout = 60 * 40;
 const carritoController = {
   getClient: () => {
     const client = redis.createClient({
       port: 6379,
     });
-    promisifyAll(client);
 
     client.on("error", (error) => {
       console.error(error);
