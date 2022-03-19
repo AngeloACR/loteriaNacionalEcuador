@@ -19,10 +19,11 @@ const carritoController = {
   },
   updateCart: async (carrito) => {
     let client = carritoController.getClient();
-    await client.setAsync(`carrito-${carrito.user}`, JSON.stringify(carrito));
-    await client.expireAsync(`carrito-${carrito.user}`, timeout);
-    let response = await client.getAsync(`carrito-${carrito.user}`);
-    client.quit();
+      await client.connect();
+      await client.set(`carrito-${carrito.user}`, JSON.stringify(carrito));
+    await client.expire(`carrito-${carrito.user}`, timeout);
+    let response = await client.get(`carrito-${carrito.user}`);
+    await client.quit();
     return response;
   },
   actualizarCarrito: async (req, res) => {
@@ -51,7 +52,8 @@ const carritoController = {
     try {
       let user = req.body.user;
       let client = carritoController.getClient();
-      let response = await client.getAsync(`carrito-${user}`);
+      await client.connect();
+      let response = await client.get(`carrito-${user}`);
       if (!response) {
         let carrito = {
           loteria: {},
@@ -63,11 +65,11 @@ const carritoController = {
           reservaId: 0,
           user,
         };
-        await client.setAsync(`carrito-${user}`, JSON.stringify(carrito));
-        await client.expireAsync(`carrito-${user}`, timeout);
-        response = await client.getAsync(`carrito-${user}`);
+        await client.set(`carrito-${user}`, JSON.stringify(carrito));
+        await client.expire(`carrito-${user}`, timeout);
+        response = await client.get(`carrito-${user}`);
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       let response = {
@@ -92,6 +94,7 @@ const carritoController = {
   borrarCarrito: async (user) => {
     try {
       let client = carritoController.getClient();
+      await client.connect();
       let carrito = {
         loteria: {},
         lotto: {},
@@ -102,11 +105,11 @@ const carritoController = {
         reservaId: 0,
         user,
       };
-      await client.setAsync(`carrito-${user}`, JSON.stringify(carrito));
-      await client.expireAsync(`carrito-${user}`, timeout);
+      await client.set(`carrito-${user}`, JSON.stringify(carrito));
+      await client.expire(`carrito-${user}`, timeout);
 
-      let response = await client.getAsync(`carrito-${user}`);
-      client.quit();
+      let response = await client.get(`carrito-${user}`);
+      await client.quit();
       return JSON.parse(response);
     } catch (e) {
       throw new Error(e.message);
@@ -119,9 +122,10 @@ const carritoController = {
       let token = req.body.token;
       let reservaId = req.body.reservaId;
       let client = carritoController.getClient();
+      await client.connect();
       let ip = req.headers["x-forwarded-for"];
 
-      let cacheCart = JSON.parse(await client.getAsync(`carrito-${user}`));
+      let cacheCart = JSON.parse(await client.get(`carrito-${user}`));
       let loteriaCache;
       let lottoCache;
       let pozoCache;
@@ -690,7 +694,7 @@ const carritoController = {
         await carritoController.updateCart(cacheCart);
       }
 
-      client.quit();
+      await client.quit();
       if (
         auxLoteria1.length ||
         auxLoteria2.length ||

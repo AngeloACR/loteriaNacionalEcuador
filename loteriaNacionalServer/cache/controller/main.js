@@ -2,10 +2,10 @@ const Resultados = require("../../results/controller/main");
 const Sorteos = require("../../results/controller/sorteos");
 const Ventas = require("../../loterianacional/controller/ventas");
 const config = require("../../config/environment");
-const redis = require("redis");
 const bluebird = require("bluebird");
+const redis = require("redis");
 
-bluebird.promisifyAll(redis);
+
 
 const cacheController = {
   getClient: () => {
@@ -32,12 +32,13 @@ const cacheController = {
   getUltimosResultados: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("ultimosResultados");
+      await client.connect();
+      let response = await client.get("ultimosResultados");
       if (response == "") {
         await cacheController.setUltimosResultados();
-        response = await client.getAsync("ultimosResultados");
+        response = await client.get("ultimosResultados");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -48,8 +49,9 @@ const cacheController = {
     try {
       let client = cacheController.getClient();
       let response = await Resultados.getUltimosResultados();
-      await client.setAsync("ultimosResultados", JSON.stringify(response));
-      client.quit();
+      await client.connect();
+      await client.set("ultimosResultados", JSON.stringify(response));
+      await client.quit();
     } catch (e) {
       console.log(e.toString());
     }
@@ -58,12 +60,13 @@ const cacheController = {
   getLoteriaSorteos: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("loteriaSorteos");
+      await client.connect();
+      let response = await client.get("loteriaSorteos");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("loteriaSorteos");
+        response = await client.get("loteriaSorteos");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -72,12 +75,13 @@ const cacheController = {
   getLottoSorteos: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("lottoSorteos");
+      await client.connect();
+      let response = await client.get("lottoSorteos");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("lottoSorteos");
+        response = await client.get("lottoSorteos");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -86,12 +90,13 @@ const cacheController = {
   getPozoSorteos: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("pozoSorteos");
+      await client.connect();
+      let response = await client.get("pozoSorteos");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("pozoSorteos");
+        response = await client.get("pozoSorteos");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -100,12 +105,13 @@ const cacheController = {
   getMillonariaSorteos: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("millonariaSorteos");
+      await client.connect();
+      let response = await client.get("millonariaSorteos");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("millonariaSorteos");
+        response = await client.get("millonariaSorteos");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -116,15 +122,16 @@ const cacheController = {
     try {
       let client = cacheController.getClient();
       let loteriaSorteos = await Sorteos.getSorteos(1);
-      await client.setAsync("loteriaSorteos", JSON.stringify(loteriaSorteos));
+      await client.connect();
+      await client.set("loteriaSorteos", JSON.stringify(loteriaSorteos));
       let lottoSorteos = await Sorteos.getSorteos(2);
-      await client.setAsync("lottoSorteos", JSON.stringify(lottoSorteos));
+      await client.set("lottoSorteos", JSON.stringify(lottoSorteos));
       let pozoSorteos = await Sorteos.getSorteos(5);
-      await client.setAsync("pozoSorteos", JSON.stringify(pozoSorteos));
+      await client.set("pozoSorteos", JSON.stringify(pozoSorteos));
       let millonariaSorteos = await Sorteos.getSorteos(14);
-      await client.setAsync("millonariaSorteos", JSON.stringify(millonariaSorteos));
+      await client.set("millonariaSorteos", JSON.stringify(millonariaSorteos));
 
-      client.quit();
+      await client.quit();
     } catch (e) {
       console.log(e.toString());
     }
@@ -135,32 +142,33 @@ const cacheController = {
       //let user = config.usuarioAplicativoTest;
       let user = config.usuarioAplicativoProd;
       let client = cacheController.getClient();
+      await client.connect();
       let loteriaSorteos = await Ventas.consultarSorteosDisponibles(
         1,
         lotteryToken,
         user
       );
-      await client.setAsync("loteriaSorteosDisponibles", JSON.stringify(loteriaSorteos));
+      await client.set("loteriaSorteosDisponibles", JSON.stringify(loteriaSorteos));
       let lottoSorteos = await Ventas.consultarSorteosDisponibles(
         2,
         lotteryToken,
         user
       );
-      await client.setAsync("lottoSorteosDisponibles", JSON.stringify(lottoSorteos));
+      await client.set("lottoSorteosDisponibles", JSON.stringify(lottoSorteos));
       let pozoSorteos = await Ventas.consultarSorteosDisponibles(
         5,
         lotteryToken,
         user
       );
-      await client.setAsync("pozoSorteosDisponibles", JSON.stringify(pozoSorteos));
+      await client.set("pozoSorteosDisponibles", JSON.stringify(pozoSorteos));
       let millonariaSorteos = await Ventas.consultarSorteosDisponibles(
         14,
         lotteryToken,
         user
       );
-      await client.setAsync("millonariaSorteosDisponibles", JSON.stringify(millonariaSorteos));
+      await client.set("millonariaSorteosDisponibles", JSON.stringify(millonariaSorteos));
 
-      client.quit();
+      await client.quit();
     } catch (e) {
       console.log(e.toString());
     }
@@ -168,12 +176,13 @@ const cacheController = {
   getLoteriaSorteosDisponiblesHttp: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("loteriaSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("loteriaSorteosDisponibles");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("loteriaSorteosDisponibles");
+        response = await client.get("loteriaSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -182,12 +191,13 @@ const cacheController = {
   getLottoSorteosDisponiblesHttp: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("lottoSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("lottoSorteosDisponibles");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("lottoSorteosDisponibles");
+        response = await client.get("lottoSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -196,12 +206,13 @@ const cacheController = {
   getPozoSorteosDisponiblesHttp: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("pozoSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("pozoSorteosDisponibles");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("pozoSorteosDisponibles");
+        response = await client.get("pozoSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -210,12 +221,13 @@ const cacheController = {
   getMillonariaSorteosDisponiblesHttp: async (req, res) => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("millonariaSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("millonariaSorteosDisponibles");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.getAsync("millonariaSorteosDisponibles");
+        response = await client.get("millonariaSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       res.status(200).json(JSON.parse(response));
     } catch (e) {
       res.status(400).json(e.toString());
@@ -224,12 +236,13 @@ const cacheController = {
   getLoteriaSorteosDisponibles: async () => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("loteriaSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("loteriaSorteosDisponibles");
       if (!response) {
         await cacheController.setSorteosDisponibles();
-        response = await client.getAsync("loteriaSorteosDisponibles");
+        response = await client.get("loteriaSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       return JSON.parse(response);
     } catch (e) {
       throw new Error(e.message);
@@ -238,12 +251,13 @@ const cacheController = {
   getLottoSorteosDisponibles: async () => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("lottoSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("lottoSorteosDisponibles");
       if (!response) {
         await cacheController.setSorteosDisponibles();
-        response = await client.getAsync("lottoSorteosDisponibles");
+        response = await client.get("lottoSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       return JSON.parse(response);
     } catch (e) {
       throw new Error(e.message);
@@ -252,12 +266,13 @@ const cacheController = {
   getPozoSorteosDisponibles: async () => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("pozoSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("pozoSorteosDisponibles");
       if (!response) {
         await cacheController.setSorteosDisponibles();
-        response = await client.getAsync("pozoSorteosDisponibles");
+        response = await client.get("pozoSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       return JSON.parse(response);
     } catch (e) {
       throw new Error(e.message);
@@ -266,12 +281,13 @@ const cacheController = {
   getMillonariaSorteosDisponibles: async () => {
     try {
       let client = cacheController.getClient();
-      let response = await client.getAsync("millonariaSorteosDisponibles");
+      await client.connect();
+      let response = await client.get("millonariaSorteosDisponibles");
       if (!response) {
         await cacheController.setSorteosDisponibles();
-        response = await client.getAsync("millonariaSorteosDisponibles");
+        response = await client.get("millonariaSorteosDisponibles");
       }
-      client.quit();
+      await client.quit();
       return JSON.parse(response);
     } catch (e) {
       throw new Error(e.message);
