@@ -47,6 +47,26 @@ module.exports.apiVentasLogger = createLogger({
   ],
 });
 
+module.exports.heapLogger = createLogger({
+  defaultMeta: { component: "Heapdump" },
+  format: combine(
+    timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    prettyPrint()
+  ),
+
+  transports: [
+    new transports.File({
+      filename: "logs/heapdump.json",
+      prettyPrint: true,
+      maxSize: "10485760",
+      maxFiles: 4,
+      level: "info",
+    }),
+  ],
+});
+
 module.exports.apiGanadoresLogger = createLogger({
   defaultMeta: { component: "api-ganadores" },
   format: combine(
@@ -154,7 +174,7 @@ module.exports.loteriaReservasLogger = createLogger({
     }),
   ],
 });
-module.exports.loteriaConsultasLogger = createLogger({  
+module.exports.loteriaConsultasLogger = createLogger({
   defaultMeta: { component: "loteria-consulta" },
   format: combine(
     timestamp({
@@ -162,7 +182,7 @@ module.exports.loteriaConsultasLogger = createLogger({
     }),
     prettyPrint()
   ),
-    
+
   transports: [
     new transports.File({
       filename: "logs/loteria-consultas.json",
