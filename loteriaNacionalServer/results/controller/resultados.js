@@ -187,19 +187,19 @@ const resultadosController = {
           ultimoResultado.codigoPremioAntojito = element.codigoPremioAntojito;
           break;
 
-          case "5":
-            ultimoResultado.ultimoResultadoPozo = {
-              combinacion2: element.combinacion2,
-            };
-            ultimoResultado.mascota = element.mascota;
-            break;
-            case "14":
-              ultimoResultado.ultimoResultadoMillonaria = {
-                combinacion1: element.combinacion1,
-                combinacion2: element.combinacion2,
-              };
-              break;
-            }
+        case "5":
+          ultimoResultado.ultimoResultadoPozo = {
+            combinacion2: element.combinacion2,
+          };
+          ultimoResultado.mascota = element.mascota;
+          break;
+        case "14":
+          ultimoResultado.ultimoResultadoMillonaria = {
+            combinacion1: element.combinacion1,
+            combinacion2: element.combinacion2,
+          };
+          break;
+      }
       ultimoResultado = await ultimoResultado.save();
       let response = {
         status: true,
@@ -366,17 +366,25 @@ const resultadosController = {
       let query = {
         numeroSorteo: sorteoAux,
         combinacion1: combinacionAux,
-        combinacion2: serieAux,
       };
       let response;
       //let resultado = await Resultado.find(query).populate('premio');
       let resultado = await ResultadoMillonaria.find(query).lean();
 
       if (resultado && resultado.length != 0) {
-        response = {
-          status: true,
-          values: resultado,
-        };
+        let resultado2 = resultado.filter((item) => {
+          return serieAux == item.combinacion2;
+        });
+        if (resultado2 && resultado2.length != 0) {
+          response = {
+            status: true,
+            values: resultado,
+          };
+        } else {
+          response = {
+            status: false,
+          };
+        }
       } else {
         response = {
           status: false,
@@ -568,11 +576,11 @@ const resultadosController = {
           .populate("premioNosVemosJefe")
           .populate("premioLottoPlus")
           .populate("premioLottito");
-      } else if (tipoLoteria == 5)  {
+      } else if (tipoLoteria == 5) {
         resultado = await UltimoResultado.findOne(query)
           .populate("sorteo")
           .populate("premioPrincipal");
-      } else if (tipoLoteria == 14)  {
+      } else if (tipoLoteria == 14) {
         resultado = await UltimoResultado.findOne(query)
           .populate("sorteo")
           .populate("premioPrincipal");

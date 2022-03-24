@@ -1169,6 +1169,34 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+  ventasProblema: async (req, res) => {
+    try {
+      let response = await Reservas.getCompraByStatus("Procesada");
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  ventasProblema2: async (req, res) => {
+    try {
+      let response = await Reservas.getComprasProblema2(req.body.user);
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
 };
 
 module.exports = ventasController;

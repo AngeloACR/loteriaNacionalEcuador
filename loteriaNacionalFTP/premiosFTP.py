@@ -48,7 +48,18 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
                 "valorFraccionConDescuento": valorFraccionConDescuento,
                 "descripcionDescuento": descripcionDescuento
             }
-            loteriaDB['premios'].insert_one(premio)
+
+            query = {
+                "tipoLoteria": int(tipoLoteria),
+                "codigoPremio": codigo,
+            }
+            premiosAux = premios.count_documents(query)
+            if not premiosAux:
+                loteriaDB['premios'].insert_one(premio)
+            else:
+                updateQuery = {"$set": premio}
+                loteriaDB['premios'].update_one(query, updateQuery)
+
         closeConnect(connection)
         status = True
         return status

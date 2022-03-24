@@ -55,8 +55,18 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
                 }
-                resultadoId = loteriaDB['resultadoloterias'].insert_one(
-                    resultado)
+
+                query = {
+                    "tipoLoteria": int(tipoLoteria),
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                }
+                resultadosAux = loteriaDB['resultadoloterias'].find(query)
+                if not resultadosAux:
+                    loteriaDB['resultadoloterias'].insert_one(resultado)
+                else:
+                    updateQuery = {"$set": resultado}
+                    loteriaDB['resultadoloterias'].update_one(query, updateQuery)
             if (tipoLoteria == "2"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -68,8 +78,17 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
                 }
-                resultadoId = loteriaDB['resultadolottos'].insert_one(
-                    resultado)
+                query = {
+                    "tipoLoteria": int(tipoLoteria),
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                }
+                resultadosAux = loteriaDB['resultadolottos'].find(query)
+                if not resultadosAux:
+                    loteriaDB['resultadolottos'].insert_one(resultado)
+                else:
+                    updateQuery = {"$set": resultado}
+                    loteriaDB['resultadolottos'].update_one(query, updateQuery)
             if (tipoLoteria == "5"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -79,7 +98,17 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
                 }
-                resultadoId = loteriaDB['resultadopozos'].insert_one(resultado)
+                query = {
+                    "tipoLoteria": int(tipoLoteria),
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                }
+                resultadosAux = loteriaDB['resultadopozos'].count_documents(query)
+                if not resultadosAux:
+                    loteriaDB['resultadopozos'].insert_one(resultado)
+                else:
+                    updateQuery = {"$set": resultado}
+                    loteriaDB['resultadopozos'].update_one(query, updateQuery)
             if (tipoLoteria == "14"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -87,8 +116,19 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "combinacion2": combinacion2,
                     "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
+                    }
+                query = {
+                    "tipoLoteria": int(tipoLoteria),
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                    "combinacion2": combinacion2,
                 }
-                resultadoId = loteriaDB['resultadomillonarias'].insert_one(resultado)
+                resultadosAux = loteriaDB['resultadomillonarias'].count_documents(query)
+                if not resultadosAux:
+                    loteriaDB['resultadomillonarias'].insert_one(resultado)
+                else:
+                    updateQuery = {"$set": resultado}
+                    loteriaDB['resultadomillonarias'].update_one(query, updateQuery)
 
         closeConnect(connection)
         status = True
@@ -107,11 +147,11 @@ def sendResult(message):
 
 
 def main():
-    #db = "mongodb://localhost:27017/loteriaDB"
-    db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
+    db = "mongodb://localhost:27017/loteriaDB"
+    #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    filepath = "/home/loterianacional/resultados" + filename
-    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/La millonaria prueba" + filename
+    #filepath = "/home/loterianacional/resultados" + filename
+    filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores" + filename
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
 

@@ -238,7 +238,7 @@ let LotteryService = class LotteryService {
     ordenaSorteos(a, b) {
         let a1 = a["sorteo"];
         let b1 = b["sorteo"];
-        return b1 - a1;
+        return a1 - b1;
     }
     obtenerTickets(token, loteria, sorteo, combinacion, combinacionFigura, tipoSeleccion) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();

@@ -293,7 +293,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ordenaSorteos(a, b) {
           var a1 = a["sorteo"];
           var b1 = b["sorteo"];
-          return b1 - a1;
+          return a1 - b1;
         }
       }, {
         key: "obtenerTickets",

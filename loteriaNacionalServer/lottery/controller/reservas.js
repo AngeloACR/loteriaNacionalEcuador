@@ -1,4 +1,5 @@
 const Reserva = require("../model/reserva");
+var ObjectId = require("mongodb").ObjectID;
 
 const reservasController = {
   deleteReserva: async function (id) {
@@ -119,9 +120,80 @@ const reservasController = {
       return response;
     }
   },
+  getCompraByStatus: async function (status) {
+    try {
+      let query = { status };
+      let ventas = await Reserva.find(query).sort({ date: -1 });
+      let response;
+      if (ventas && ventas.length) {
+        response = {
+          status: true,
+          values: ventas.map((venta) => {
+            let aux = {
+              createdAt: ObjectId(venta._id).getTimestamp(),
+              total: venta.total,
+              exaReservaId: venta.exaReservaId,
+              exaVentaId: venta.exaVentaId,
+              ventaId: venta.ventaId,
+              accountId: venta.accountId,
+            };
+            return aux;
+          }),
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+  getComprasProblema2: async function (user) {
+    try {
+      let query = { user };
+      let ventas = await Reserva.find(query).sort({ date: -1 }).lean();
+      let response;
+      if (ventas && ventas.length) {
+        response = {
+          status: true,
+          values: ventas
+            /*             .filter((venta) => {
+              return venta.lotto.combinacion1 == sorteo;
+            }) */
+            .map((venta) => {
+              let aux = {
+                createdAt: ObjectId(venta._id).getTimestamp(),
+                total: venta.total,
+                exaReservaId: venta.exaReservaId,
+                exaVentaId: venta.exaVentaId,
+                ventaId: venta.ventaId,
+              };
+              return aux;
+            }),
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
   getCompraByExaReservaId: async function (id) {
     try {
-      let query = { "exaReservaId": id };
+      let query = { exaReservaId: id };
       let reserva = await Reserva.findOne(query);
       let response;
       if (reserva) {
@@ -143,9 +215,14 @@ const reservasController = {
       return response;
     }
   },
-  updateCompraByExaReservaId: async function (id, newReservaId, newVentaId, total) {
+  updateCompraByExaReservaId: async function (
+    id,
+    newReservaId,
+    newVentaId,
+    total
+  ) {
     try {
-      let query = { "exaReservaId": id };
+      let query = { exaReservaId: id };
       let reserva = await Reserva.findOne(query);
       let response;
       if (reserva) {

@@ -1,0 +1,110 @@
+{
+  "status": true,
+  "values": [
+      { //NOT FOUND 
+          "createdAt": "2022-03-01T15:31:44.000Z",
+          "total": "2.00",
+          "exaReservaId": "1646148713013",
+          "ventaId": "3306042",
+          "accountId": "45143"
+      },
+      {
+          "createdAt": "2022-03-02T02:43:51.000Z",
+          "total": "0.50",
+          "exaReservaId": "1646189083831",
+          "ventaId": "3306386",
+          "accountId": "95697"
+      },
+      { //NOT FOUND
+          "createdAt": "2022-03-02T15:57:37.000Z",
+          "total": "5.00",
+          "exaReservaId": "1646236677317",
+          "ventaId": "3306590",
+          "accountId": "52428"
+      },
+      {//NOT FOUND
+          "createdAt": "2022-03-02T16:05:12.000Z",
+          "total": "6.00",
+          "exaReservaId": "1646237190381",
+          "ventaId": "3306604",
+          "accountId": "52428"
+      },
+      { //NOT FOUND
+          "createdAt": "2022-03-02T16:20:48.000Z",
+          "total": "1.00",
+          "exaReservaId": "1646238197236",
+          "ventaId": "3306629",
+          "accountId": "15153"
+      }, 
+      { //NOT FOUND
+          "createdAt": "2022-03-02T20:13:14.000Z",
+          "total": "4.00",
+          "exaReservaId": "1646252024166",
+          "ventaId": "3306929",
+          "accountId": "177434"
+      },
+      {
+          "createdAt": "2022-03-02T20:36:43.000Z",
+          "total": "10.00",
+          "exaReservaId": "1646253404594",
+          "ventaId": "3306961",
+          "accountId": "2170"
+      },
+      { //NOT FOUND
+          "createdAt": "2022-03-03T16:51:48.000Z",
+          "total": "2.00",
+          "exaReservaId": "1646326311631",
+          "ventaId": "3307576",
+          "accountId": "9364"
+      },
+      { //NOT FOUND
+          "createdAt": "2022-03-03T17:28:44.000Z",
+          "total": "2.00",
+          "exaReservaId": "1646328526520",
+          "ventaId": "3307628",
+          "accountId": "5427"
+      },
+      {
+          "createdAt": "2022-03-18T20:12:09.000Z",
+          "total": "2.00",
+          "exaReservaId": "1647634331763",
+          "ventaId": "3328784",
+          "accountId": "560"
+      },
+      {
+          "createdAt": "2022-03-18T20:57:33.000Z",
+          "total": "4.00",
+          "exaReservaId": "1647637053122",
+          "ventaId": "3328828",
+          "accountId": "156642"
+      },
+      {
+          "createdAt": "2022-03-18T21:05:10.000Z",
+          "total": "2.00",
+          "exaReservaId": "1647637510309",
+          "ventaId": "3328837",
+          "accountId": "26091"
+      },
+      {
+          "createdAt": "2022-03-19T00:16:17.000Z",
+          "total": "1.00",
+          "exaReservaId": "1647648977969",
+          "ventaId": "3329003",
+          "accountId": "121461"
+      },
+      {
+          "createdAt": "2022-03-20T18:04:05.000Z",
+          "total": "2.00",
+          "exaReservaId": "1647799445894",
+          "ventaId": "3339768",
+          "accountId": "36295"
+      },
+      {
+          "createdAt": "2022-03-21T15:38:54.000Z",
+          "total": "4.00",
+          "exaReservaId": "1647877137643",
+          "ventaId": "3340192",
+          "accountId": "92769"
+      }
+  ]
+}

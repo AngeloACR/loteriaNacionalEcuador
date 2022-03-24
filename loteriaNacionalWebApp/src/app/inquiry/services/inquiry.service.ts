@@ -10,9 +10,9 @@ export class InquiryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  mySource = this.localSource;
+  //mySource = this.localSource;
   //mySource = this.testSource;
-  //mySource = this.productionSource;
+  mySource = this.productionSource;
 
   constructor(private http: HttpClient) {}
 
@@ -60,7 +60,7 @@ export class InquiryService {
   ordenaSorteos(a, b) {
     let a1 = a["sorteo"];
     let b1 = b["sorteo"];
-    return b1 - a1;
+    return a1 - b1;
   }
 
   recuperarBoletoGanador(tipoLoteria, sorteo, combinaciones) {

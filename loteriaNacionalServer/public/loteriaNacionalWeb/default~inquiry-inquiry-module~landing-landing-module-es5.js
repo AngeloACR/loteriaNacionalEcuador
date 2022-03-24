@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"boletin_oficial\">\n    <h1>Boletín Oficial</h1>\n  </div>\n  <div class=\"container_loteria_nacional\" *ngIf=\"showBox\">\n    <img [src]=boletinImagen *ngIf=\"!imgNotFound\" (error)=\"handleImgError();\"\n      alt=\"Imagen del boletin de loteria nacional\">\n    <div class=\"boletinNotFound\" *ngIf=\"imgNotFound\">\n      <p>Parece que aun no se ha cargado el boletín de este sorteo. Mientras el equipo de Lotería Nacional se encarga de\n        esto, paséate por <a href=\"https://www.loteria.com.ec/casino\" target=\"_parent\">nuestros juegos online</a> y\n        disfruta de\n        todos los juegos que tenemos para ti.</p>\n    </div>\n  \n  </div>\n  <app-loader loader=\"loteria\" [message]=\"loadingMessage\" *ngIf=\"isLoading\"></app-loader>";
+    __webpack_exports__["default"] = "<div class=\"boletin_oficial\">\n    <h1>Boletín Oficial</h1>\n  </div>\n  <div class=\"container_loteria_nacional\" *ngIf=\"showBox\">\n    <img [src]=boletinImagen *ngIf=\"!imgNotFound\" (error)=\"handleImgError();\"\n      alt=\"Imagen del boletin de loteria nacional\">\n    <div class=\"boletinNotFound\" *ngIf=\"imgNotFound\">\n      <p>Parece que aun no se ha cargado el boletín de este sorteo. Mientras el equipo de Lotería Nacional se encarga de\n        esto, paséate por <a href=\"https://www.loteria.com.ec/casino\" target=\"_parent\">nuestros juegos online</a> y\n        disfruta de\n        todos los juegos que tenemos para ti.</p>\n    </div>\n  \n  </div>\n  <app-loader loader=\"millonaria\" [message]=\"loadingMessage\" *ngIf=\"isLoading\"></app-loader>";
     /***/
   },
 
@@ -5715,7 +5715,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function ordenaSorteos(a, b) {
           var a1 = a["sorteo"];
           var b1 = b["sorteo"];
-          return b1 - a1;
+          return a1 - b1;
         }
       }, {
         key: "recuperarBoletoGanador",

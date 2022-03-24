@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"boletin_oficial\">\n    <h1>Boletín Oficial</h1>\n  </div>\n  <div class=\"container_loteria_nacional\" *ngIf=\"showBox\">\n    <img [src]=boletinImagen *ngIf=\"!imgNotFound\" (error)=\"handleImgError();\"\n      alt=\"Imagen del boletin de loteria nacional\">\n    <div class=\"boletinNotFound\" *ngIf=\"imgNotFound\">\n      <p>Parece que aun no se ha cargado el boletín de este sorteo. Mientras el equipo de Lotería Nacional se encarga de\n        esto, paséate por <a href=\"https://www.loteria.com.ec/casino\" target=\"_parent\">nuestros juegos online</a> y\n        disfruta de\n        todos los juegos que tenemos para ti.</p>\n    </div>\n  \n  </div>\n  <app-loader loader=\"loteria\" [message]=\"loadingMessage\" *ngIf=\"isLoading\"></app-loader>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"boletin_oficial\">\n    <h1>Boletín Oficial</h1>\n  </div>\n  <div class=\"container_loteria_nacional\" *ngIf=\"showBox\">\n    <img [src]=boletinImagen *ngIf=\"!imgNotFound\" (error)=\"handleImgError();\"\n      alt=\"Imagen del boletin de loteria nacional\">\n    <div class=\"boletinNotFound\" *ngIf=\"imgNotFound\">\n      <p>Parece que aun no se ha cargado el boletín de este sorteo. Mientras el equipo de Lotería Nacional se encarga de\n        esto, paséate por <a href=\"https://www.loteria.com.ec/casino\" target=\"_parent\">nuestros juegos online</a> y\n        disfruta de\n        todos los juegos que tenemos para ti.</p>\n    </div>\n  \n  </div>\n  <app-loader loader=\"millonaria\" [message]=\"loadingMessage\" *ngIf=\"isLoading\"></app-loader>");
 
 /***/ }),
 
@@ -3461,7 +3461,7 @@ let InquiryService = class InquiryService {
     ordenaSorteos(a, b) {
         let a1 = a["sorteo"];
         let b1 = b["sorteo"];
-        return b1 - a1;
+        return a1 - b1;
     }
     recuperarBoletoGanador(tipoLoteria, sorteo, combinaciones) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]();

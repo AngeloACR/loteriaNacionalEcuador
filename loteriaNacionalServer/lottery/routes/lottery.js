@@ -36,4 +36,8 @@ lotteryRouter.post('/lottoBoleto', LotteryController.buscarLottoBoleto);
 lotteryRouter.post('/pozoBoleto', LotteryController.buscarPozoBoleto);
 lotteryRouter.post('/millonariaBoleto', LotteryController.buscarMillonariaBoleto);
 
+lotteryRouter.get('/ventasProblema', LotteryController.ventasProblema);
+lotteryRouter.post('/ventasProblema2', LotteryController.ventasProblema2);
+
+
 module.exports = lotteryRouter;
