@@ -41,7 +41,7 @@ module.exports.init = function (port) {
 
   app.use('/boletines', express.static('uploads/boletines'));
   app.use('/boletos', express.static('uploads/boletos'));
-  app.use('/logs', express.static('logs'));
+  //app.use('/logs', express.static('logs'));
 
   //Adding routes
 
