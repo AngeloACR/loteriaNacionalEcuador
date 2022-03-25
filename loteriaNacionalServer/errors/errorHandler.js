@@ -114,7 +114,7 @@ module.exports.loteriaSellError = async (exaReservaData) => {
   };
   let exaCancelResponse = await Wallet.cancelLottery(exaCancelData);
   let i = 0;
-  while (!exaCancelResponse.status || i != 3) {
+  while (!exaCancelResponse.status && i != 3) {
     await Wallet.cancelLottery(exaCancelData);
     i++;
   }

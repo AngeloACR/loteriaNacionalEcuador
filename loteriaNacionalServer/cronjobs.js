@@ -22,7 +22,7 @@ module.exports.setCronJobs = function () {
     var jobD = new CronJob(jobTimeD, Cache.setSorteosDisponibles, null, true, 'America/Guayaquil');
     jobs.push(jobD)
     let jobTimeE = '00 20 00/1 * * *'
-    //let jobTimeB = '00 */3 * * * *'
+    //let jobTimeE = '00 */3 * * * *'
     var jobE = new CronJob(jobTimeE, Resultados.actualizarUltimosResultados, null, true, 'America/Guayaquil');
     jobs.push(jobE)
     

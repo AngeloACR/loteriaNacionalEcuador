@@ -1197,6 +1197,28 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
+  recuperarDatosDeVentas: async (req, res) => {
+    try {
+      let data = req.body.data;
+      let response = [];
+      let acumulado = 0;
+      for (let index = 0; index < data.length; index++) {
+        const reservaId = data[index];
+        let ventaData = await Reservas.getCompraByExaReservaId(reservaId);
+        response.push(ventaData);
+        acumulado = ventaData.status? acumulado+parseFloat(ventaData.values.total): acumulado;
+      }
+      res.status(200).json({acumulado, data: response});
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
 };
 
 module.exports = ventasController;

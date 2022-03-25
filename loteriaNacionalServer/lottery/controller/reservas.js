@@ -194,16 +194,24 @@ const reservasController = {
   getCompraByExaReservaId: async function (id) {
     try {
       let query = { exaReservaId: id };
-      let reserva = await Reserva.findOne(query);
+      let venta = await Reserva.findOne(query);
       let response;
-      if (reserva) {
+      if (venta) {
         response = {
           status: true,
-          values: reserva,
+          values: {
+            createdAt: ObjectId(venta._id).getTimestamp(),
+            total: venta.total,
+            status: venta.status,
+            exaReservaId: venta.exaReservaId,
+            exaVentaId: venta.exaVentaId,
+            ventaId: venta.ventaId,
+          },
         };
       } else {
         response = {
           status: false,
+          exaReservaId: id
         };
       }
       return response;
