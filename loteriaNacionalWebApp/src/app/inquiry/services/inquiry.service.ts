@@ -60,7 +60,7 @@ export class InquiryService {
   ordenaSorteos(a, b) {
     let a1 = a["sorteo"];
     let b1 = b["sorteo"];
-    return a1 - b1;
+    return b1 - a1;
   }
 
   recuperarBoletoGanador(tipoLoteria, sorteo, combinaciones) {

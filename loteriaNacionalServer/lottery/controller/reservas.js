@@ -206,6 +206,7 @@ const reservasController = {
             exaReservaId: venta.exaReservaId,
             exaVentaId: venta.exaVentaId,
             ventaId: venta.ventaId,
+            id: venta._id
           },
         };
       } else {

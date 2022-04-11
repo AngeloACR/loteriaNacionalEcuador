@@ -29,6 +29,7 @@ lotteryRouter.post('/getGanadores', GanadoresController.getGanadores);
 lotteryRouter.get('/pruebaCorreo', GanadoresController.pruebaCorreo);
 lotteryRouter.get('/pruebaConsulta', GanadoresController.pruebaConsulta);
 lotteryRouter.get('/pruebaOrden', GanadoresController.pruebaOrden);
+lotteryRouter.get('/corregirGanadores', GanadoresController.corregirGanadores);
 
 
 lotteryRouter.post('/loteriaBoleto', LotteryController.buscarLoteriaBoleto);
@@ -39,6 +40,7 @@ lotteryRouter.post('/millonariaBoleto', LotteryController.buscarMillonariaBoleto
 lotteryRouter.get('/ventasProblema', LotteryController.ventasProblema);
 lotteryRouter.post('/ventasProblema2', LotteryController.ventasProblema2);
 lotteryRouter.post('/recuperarVentas', LotteryController.recuperarDatosDeVentas);
+lotteryRouter.post('/repararVentas', LotteryController.resolverVentasDeDescuadre);
 
 
 module.exports = lotteryRouter;

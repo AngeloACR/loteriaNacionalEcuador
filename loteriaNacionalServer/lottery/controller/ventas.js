@@ -1206,9 +1206,11 @@ const ventasController = {
         const reservaId = data[index];
         let ventaData = await Reservas.getCompraByExaReservaId(reservaId);
         response.push(ventaData);
-        acumulado = ventaData.status? acumulado+parseFloat(ventaData.values.total): acumulado;
+        acumulado = ventaData.status
+          ? acumulado + parseFloat(ventaData.values.total)
+          : acumulado;
       }
-      res.status(200).json({acumulado, data: response});
+      res.status(200).json({ acumulado, data: response });
     } catch (e) {
       let response = {
         status: "error",
@@ -1218,6 +1220,110 @@ const ventasController = {
       };
       res.status(400).json(response);
     }
+  },/* 
+  resolverVentasDeDescuadre: async (req, res) => {
+
+    let data = req.body.data;
+    let response = [];
+    for (let i = 0; i < data.length; i++) {
+      let item = data[i];
+      let exaReservaId = item.exaReservaId;
+      let venta = await Reservas.getCompraByExaReservaId(exaReservaId)
+      response.push(venta);
+    }
+    res.status(200).json(response);
+  }, */
+  resolverVentasDeDescuadre: async (req, res) => {
+
+    let data = req.body.data;
+    let response = [];
+    for (let i = 0; i < data.length; i++) {
+      let item = data[i];
+      let ticketId = item.ticketId;
+      let token = item.token;
+      let exaReservaId = item.exaReservaId;
+      let totalVenta = item.totalVenta;
+      let instantaneas = item.instantaneas;
+      let prizeDetails = [];
+      let instantaneaStatus = false;
+      let instantaneaData = {};
+      if (instantaneas != "" && instantaneas.length != 0) {
+        instantaneaStatus = true;
+        for (let j = 0; j < instantaneas.length; j++) {
+          const instantanea = instantaneas[j];
+
+          for (let i = 0; i < instantanea.premios.length; i++) {
+            const premio = instantanea.premios[i];
+            let nombreLoteria;
+            let tipoLoteria = parseInt(instantanea.sorteo.JId);
+            let drawDate = instantanea.drawDate;
+            let prizeDetail = {
+              lotteryType: tipoLoteria,
+              lotteryName: nombreLoteria,
+              drawNumber: parseInt(instantanea.sorteo.Sort),
+              drawDate,
+              combinationC1: premio.Num,
+              fractions: premio.Fra,
+              prize: parseFloat(premio.Val).toFixed(2),
+              prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
+              prizeDescription: premio.Prem.normalize("NFD").replace(
+                /[\u0300-\u036f]/g,
+                ""
+              ),
+            };
+            if (premio.Num2) prizeDetail["combinationC2"] = premio.Num2;
+            let ganador = {
+              personaId: item.personaId,
+              tipoLoteria: tipoLoteria,
+              numeroSorteo: parseInt(instantanea.sorteo.Sort),
+              combinacion1: premio.Num,
+              codigoPremio: `${parseInt(instantanea.sorteo.Sort)}-INSTANTANEA`,
+              fraccion: premio.Fra,
+              descripcionPremio: premio.Prem,
+              valorPremio: premio.Val,
+              valorPremioDescuento: premio.ConDesc,
+              ventaId: ticketId,
+              acreditado: true,
+            };
+            await ganadoresController.crearGanador(ganador);
+            prizeDetails.push(prizeDetail);
+          }
+        }
+        instantaneaData = prizeDetails;
+      }
+
+      let exaVentaId = Date.now();
+      let exaVentaData = {
+        token,
+        transactionId: exaVentaId,
+        reserveId: exaReservaId,
+        ticketId: ticketId,
+        amount: totalVenta,
+        prizeDetails,
+      };
+      let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
+      let venta = await Reservas.getCompraByExaReservaId(exaReservaId);
+      let ventaExalogicStatusResponse =
+        await ventasController.actualizarVentaStatus(
+          venta.values.id,
+          "Completada",
+          exaVentaId
+        );
+
+  
+      let instantaneaResponse = {
+        status: instantaneaStatus,
+        data: instantaneaData,
+      };
+      let finalResponse = {
+        exaReservaId,
+        data: exaVentaResponse,
+        instantanea: instantaneaResponse,
+        status: true,
+      };
+      response.push(finalResponse);
+    }
+    res.status(200).json(response);
   },
 };
 

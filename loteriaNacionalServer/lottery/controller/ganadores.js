@@ -56,7 +56,6 @@ const ganadoresController = {
   },
   pruebaOrden: async (req, res) => {
     try {
-
       let lotteryToken = (await Ventas.autenticarUsuario()).token;
       let datos = await Ventas.consultarDatosUsuario(
         lotteryToken,
@@ -311,6 +310,39 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         response.push(info);
       }
       res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  corregirGanadores: async (req, res) => {
+    try {
+      let queryB = { acreditado: false, numeroSorteo: "2690" };
+      let queryC = { acreditado: false, numeroSorteo: "2691" };
+      let queryD = { acreditado: false, numeroSorteo: "2692" };
+
+      let ganadoresB = await Ganadores.updateMany(queryB, {
+        $set: {
+          "combinacion2": "",
+        },
+      });
+      let ganadoresC = await Ganadores.updateMany(queryC, {
+        $set: {
+          "combinacion2": "",
+        },
+      });
+      let ganadoresD = await Ganadores.updateMany(queryD, {
+        $set: {
+          "combinacion2": "",
+        },
+      });
+
+      res.status(200).json({ ganadoresB, ganadoresC, ganadoresD });
     } catch (e) {
       let response = {
         status: "error",
