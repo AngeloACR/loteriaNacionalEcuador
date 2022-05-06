@@ -130,7 +130,7 @@ const cacheController = {
       await client.set("pozoSorteos", JSON.stringify(pozoSorteos));
       let millonariaSorteos = await Sorteos.getSorteos(14);
       await client.set("millonariaSorteos", JSON.stringify(millonariaSorteos));
-
+      let aux = JSON.stringify(millonariaSorteos)
       await client.quit();
     } catch (e) {
       console.log(e.toString());
@@ -139,8 +139,8 @@ const cacheController = {
   setSorteosDisponibles: async () => {
     try {
       let lotteryToken = (await Ventas.autenticarUsuario()).token;
-      //let user = config.usuarioAplicativoTest;
-      let user = config.usuarioAplicativoProd;
+      let user = config.usuarioAplicativoTest;
+      //let user = config.usuarioAplicativoProd;
       let client = cacheController.getClient();
       await client.connect();
       let loteriaSorteos = await Ventas.consultarSorteosDisponibles(

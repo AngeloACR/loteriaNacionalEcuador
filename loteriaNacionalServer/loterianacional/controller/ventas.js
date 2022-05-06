@@ -7,19 +7,19 @@ const { loteriaVentasLogger } = require("../../config/logging");
 const config = require("../../config/environment");
 
 const medioId = config.medioAplicativoId;
-//const address = config.aplicativoAddressTest;
-const address = config.aplicativoAddressProd;
+const address = config.aplicativoAddressTest;
+//const address = config.aplicativoAddressProd;
 
 module.exports.autenticarUsuario = async () => {
   try {
     loteriaVentasLogger.silly("autenticarUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
-    /* const usuarioClientePsd = config.usuarioAplicativoTest;
-    const claveClientePsd = config.passwordAplicativoTest; */
+    const usuarioClientePsd = config.usuarioAplicativoTest;
+    const claveClientePsd = config.passwordAplicativoTest;
 
-    const usuarioClientePsd = config.usuarioAplicativoProd;
-    const claveClientePsd = config.passwordAplicativoProd;
+    /* const usuarioClientePsd = config.usuarioAplicativoProd;
+    const claveClientePsd = config.passwordAplicativoProd; */
     let message = {
       $xml: `
       <PI_DatosXml>
@@ -62,6 +62,7 @@ module.exports.autenticarUsuario = async () => {
           } else {
             let errorMessage = data.mt.c[0].msgError[0];
             loteriaVentasLogger.error("autenticarUsuario.error", {
+              data: message,
               message: `${errorCode}-${errorMessage}`,
             });
             let errorData = {};
@@ -1557,6 +1558,23 @@ module.exports.recuperarSeriesLaMillonaria = async (
             );
             let errorCode = parseInt(data.mt.c[0].codError[0]);
             if (!errorCode) {
+              if (data.mt.rs[0].r == "") {
+                let errorMessage = "No hay series disponibles para este sorteo";
+                loteriaVentasLogger.error(
+                  "recuperarSeriesLaMillonaria.loteria.error",
+                  {
+                    data: message,
+                    errorMessage,
+                  }
+                );
+
+                let errorData = {
+                  input: message,
+                  output: errorCode,
+                  function: "recuperarSeriesLaMillonaria",
+                };
+                reject(new loteriaError(errorMessage, "loteria", errorData));
+              }
               let series = data.mt.rs[0].r[0].Row.map((row) => {
                 return row.$.Serie;
               });

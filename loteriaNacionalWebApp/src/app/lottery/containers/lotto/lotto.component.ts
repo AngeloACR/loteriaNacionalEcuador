@@ -107,7 +107,7 @@ export class LottoComponent implements OnInit {
           this.openError(errorMessage);
         }
       }
-      //await this.setDescuento(2);
+      await this.setDescuento(2);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -364,7 +364,7 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 2);
-      //this.descuentos = await this.lotteryService.obtenerDescuentos()
+      this.descuentos = await this.lotteryService.obtenerDescuentos()
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {
@@ -426,7 +426,7 @@ export class LottoComponent implements OnInit {
       await this.getCarritoTickets();
       //this.getTotal();
 
-      //await this.setDescuento(1);
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -461,7 +461,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      //await this.setDescuento(1);
+      await this.setDescuento(1);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -496,7 +496,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      //await this.setDescuento(14);
+      await this.setDescuento(14);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -537,7 +537,7 @@ export class LottoComponent implements OnInit {
       }
       await this.getCarritoTickets();
       //this.getTotal();
-      //await this.setDescuento(2);
+      await this.setDescuento(2);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
@@ -572,7 +572,7 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
       //this.getTotal();
-      //await this.setDescuento(5);
+      await this.setDescuento(5);
       this.isLoading = false;
     } catch (e) {
       this.isLoading = false;
