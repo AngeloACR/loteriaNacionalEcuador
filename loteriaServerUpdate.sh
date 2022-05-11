@@ -6,8 +6,9 @@ cd loteriaNacionalServerNew/
 touch database.js
 mkdir environments
 mkdir webServer
-mkdir auth
-mkdir wallet
+mkdir alboran
+mkdir psdLoteria
+mkdir cache
 mkdir ftp
 mkdir consultas
 mkdir ganadores
@@ -23,11 +24,35 @@ cd environments
 cd ../ftp
     touch boletinesServer.json
     touch boletosServer.json
+    touch logging.js
+    touch errors.js
+
 cd ../correos
     touch ganadores.json
+cd ../psdLoteriaNacional
+    touch auth.js
+    touch ventas.js
+    touch consultas.js
+    touch reservas.js
+    touch sorteos.js
+cd ../alboran
+    touch auth.js
+    touch wallet.js
+    touch prize.js
 
-cd ../auth
-    touch authServer.js
+    touch logging.js
+    touch errors.js
+
+
+cd ../helpers
+    touch main.js
+
+    touch logging.js
+    touch errors.js
+    touch cronjobs.js
+cd ../cache
+    touch cacheServer.js
+    touch cacheApp.js
 
     touch logging.js
     touch errors.js
@@ -54,67 +79,11 @@ cd ../auth
         touch index.js
         touch main.js
 
-
-cd ../../helpers
-    touch helpersServer.js
-
-    touch logging.js
-    touch errors.js
-    touch cronjobs.js
-
-    mkdir controller
-    mkdir models
-    mkdir routes
-    mkdir middlewares
-
-    cd controller
-        touch index.js
-        touch main.js
-
-    cd ../models
-        touch index.js
-        touch main.js
-        
-    cd ../routes
-        touch index.js
-        touch main.js
-
-    cd ../middlewares
-        touch index.js
-        touch main.js
-
-
-cd ../../wallet
-    touch walletServer.js
-
-    touch logging.js
-    touch errors.js
-    touch cronjobs.js
-
-    mkdir controller
-    mkdir models
-    mkdir routes
-    mkdir middlewares
-
-    cd controller
-        touch index.js
-        touch main.js
-
-    cd ../models
-        touch index.js
-        touch main.js
-        
-    cd ../routes
-        touch index.js
-        touch main.js
-
-    cd ../middlewares
-        touch index.js
-        touch main.js
 
 
 cd ../../ganadores
     touch ganadoresServer.js
+    touch ganadoresApp.js
 
     touch logging.js
     touch errors.js
@@ -124,11 +93,6 @@ cd ../../ganadores
     mkdir models
     mkdir routes
     mkdir middlewares
-    mkdir psd
-
-    cd psd
-        touch index.js
-        touch main.js
 
     cd controller
         touch index.js
@@ -149,10 +113,7 @@ cd ../../ganadores
 
 cd ../../ventas
     touch ventasServer.js
-    mkdir psd
-    cd psd
-        touch index.js
-        touch main.js
+    touch ventasApp.js
 
     touch logging.js
     touch errors.js
@@ -166,7 +127,6 @@ cd ../../ventas
     cd controller
         touch index.js
         touch main.js
-        touch cache.js
 
     cd ../models
         touch index.js
@@ -175,7 +135,7 @@ cd ../../ventas
     cd ../routes
         touch index.js
         touch main.js
-        touch cache.js
+        
 
 
     cd ../middlewares
@@ -185,6 +145,7 @@ cd ../../ventas
 
 cd ../../reservas
     touch reservasServer.js
+    touch reservasApp.js
 
     touch logging.js
     touch errors.js
@@ -203,7 +164,7 @@ cd ../../reservas
     cd controller
         touch index.js
         touch main.js
-        touch cache.js
+        
 
     cd ../models
         touch index.js
@@ -212,7 +173,7 @@ cd ../../reservas
     cd ../routes
         touch index.js
         touch main.js
-        touch cache.js
+        
 
 
     cd ../middlewares
@@ -230,26 +191,22 @@ cd ../../consultas
     mkdir lotto
     mkdir pozoMillonario
     mkdir laMillonaria
-    mkdir psd
-    cd psd
-        touch index.js
-        touch main.js
 
     cd ./loteriaNacional
         touch loteriaNacionalServer.js
+        touch loteriaNacionalApp.js
         mkdir controller
         mkdir models
         mkdir routes
         mkdir middlewares
         touch logging.js
         touch errors.js
-        touch database.js
         touch cronjobs.js
 
         cd controller
             touch index.js
             touch main.js
-            touch cache.js
+            
 
         cd ../models
             touch index.js
@@ -260,7 +217,7 @@ cd ../../consultas
         cd ../routes
             touch index.js
             touch main.js
-            touch cache.js
+            
 
         cd ../middlewares
             touch index.js
@@ -268,9 +225,9 @@ cd ../../consultas
 
     cd ../lotto
         touch lottoServer.js
+        touch lottoApp.js
         touch logging.js
         touch errors.js
-        touch database.js
         touch cronjobs.js
         mkdir controller
         mkdir models
@@ -280,9 +237,7 @@ cd ../../consultas
         cd controller
             touch index.js
             touch main.js
-            touch cache.js
-
-            touch resultado.js
+            
         cd ../models
             touch index.js
             touch main.js
@@ -291,7 +246,7 @@ cd ../../consultas
             
         cd ../routes
             touch index.js
-            touch cache.js
+            
             touch main.js
 
         cd ../middlewares
@@ -300,9 +255,9 @@ cd ../../consultas
 
     cd ../pozoMillonario
         touch pozoMillonarioServer.js
+        touch pozoMillonarioApp.js
         touch logging.js
         touch errors.js
-        touch database.js
         touch cronjobs.js
         mkdir controller
         mkdir models
@@ -312,7 +267,7 @@ cd ../../consultas
         cd controller
             touch index.js
             touch main.js
-            touch cache.js
+            
 
         cd ../models
             touch index.js
@@ -323,7 +278,7 @@ cd ../../consultas
         cd ../routes
             touch index.js
             touch main.js
-            touch cache.js
+            
 
         cd ../middlewares
             touch index.js
@@ -334,6 +289,7 @@ cd ../../consultas
         touch errors.js
         touch cronjobs.js
         touch laMillonariaServer.js
+        touch laMillonariaApp.js
         mkdir controller
         mkdir models
         mkdir routes
@@ -343,7 +299,7 @@ cd ../../consultas
             touch index.js
             touch main.js
 
-            touch cache.js
+            
         cd ../models
             touch index.js
             touch main.js
@@ -353,7 +309,7 @@ cd ../../consultas
         cd ../routes
             touch index.js
             touch main.js
-            touch cache.js
+            
 
         cd ../middlewares
             touch index.js

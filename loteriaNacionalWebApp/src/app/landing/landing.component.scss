@@ -6,7 +6,7 @@ $fuente-botones: "Monstserrat SemiBold";
 
   iframe {
     width: 100%;
-    height: 16vw;
+    height: 17vw;
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
@@ -54,8 +54,8 @@ $fuente-botones: "Monstserrat SemiBold";
       -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
       box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
 
-      iframe{
-        width:100%;
+      iframe {
+        width: 100%;
         height: 610px !important;
       }
       .boton_comprar {
@@ -91,7 +91,32 @@ $fuente-botones: "Monstserrat SemiBold";
   }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 778px) {
+  .iframeBox {
+    iframe {
+      height: 73vw;
+    }
+  }
+
+  .selectionBox {
+    width: 95%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+    .selectorBox {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .iframeBox {
+    iframe {
+      height: 84vw;
+    }
+  }
   .selectionBox {
     width: 95%;
     flex-direction: column;
