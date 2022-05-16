@@ -14,7 +14,7 @@ export class ShoppingCartService {
   ticketsCarrito: any = [];
   reservaId: any = 0;
 
-  localSource = "http://localhost:5480";
+  localSource = "http://localhost:200";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
@@ -207,8 +207,8 @@ export class ShoppingCartService {
     return new Promise<any>(async (resolve, reject) => {
       let headers = new HttpHeaders();
       headers = headers.append("Content-Type", "application/json");
-      //let endpoint = "/inquiry";
-      let endpoint = "/cart";
+      let address = "/reservas";
+      let endpoint = "/cache";
       let user = JSON.parse(localStorage.getItem("userData")).playerDocument;
 
       let body = {
@@ -222,8 +222,7 @@ export class ShoppingCartService {
         user,
       };
       endpoint = `${endpoint}/actualizarCarrito`;
-      var address = this.mySource;
-      address = address + endpoint;
+      address = this.mySource + address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           resolve("Done");
@@ -315,16 +314,15 @@ export class ShoppingCartService {
     return new Promise<any>(async (resolve, reject) => {
       let headers = new HttpHeaders();
       headers = headers.append("Content-Type", "application/json");
-      //let endpoint = "/inquiry";
-      let endpoint = "/cart";
+      let address = "/reservas";
+      let endpoint = "/cache";
       let user = JSON.parse(localStorage.getItem("userData")).playerDocument;
 
       let body = {
         user,
       };
       endpoint = `${endpoint}/getCarrito`;
-      var address = this.mySource;
-      address = address + endpoint;
+      address = this.mySource + address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         async (data: any) => {
           let reservaId = this.getReservaId();
@@ -358,8 +356,8 @@ export class ShoppingCartService {
     return new Promise<any>(async (resolve, reject) => {
       let headers = new HttpHeaders();
       headers = headers.append("Content-Type", "application/json");
-      //let endpoint = "/inquiry";
-      let endpoint = "/cart";
+      let address = "/reservas";
+      let endpoint = "/cache";
       let user = JSON.parse(localStorage.getItem("userData")).playerDocument;
       let token = JSON.parse(localStorage.getItem("userData")).lotteryToken;
 
@@ -369,8 +367,7 @@ export class ShoppingCartService {
         reservaId,
       };
       endpoint = `${endpoint}/validar`;
-      var address = this.mySource;
-      address = address + endpoint;
+      address = this.mySource + address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           /*           if (!data.status) {
@@ -439,16 +436,15 @@ export class ShoppingCartService {
     return new Promise<any>(async (resolve, reject) => {
       let headers = new HttpHeaders();
       headers = headers.append("Content-Type", "application/json");
-      //let endpoint = "/inquiry";
-      let endpoint = "/cart";
+      let address = "/reservas";
+      let endpoint = "/cache";
       let user = JSON.parse(localStorage.getItem("userData")).playerDocument;
 
       let body = {
         user,
       };
       endpoint = `${endpoint}/borrarCarrito`;
-      var address = this.mySource;
-      address = address + endpoint;
+      address = this.mySource + address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
           resolve("Done");

@@ -42,198 +42,6 @@ const inquiryController = {
       throw new Error(e.message);
     }
   },
-
-  buscarLoteriaWinner: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let combinaciones = req.body.combinaciones;
-      let response = [];
-      let length = combinaciones.length;
-      await inquiryController.validateSorteo(sorteo, 1);
-      for (let i = 0; i < length; i++) {
-        let aux = await Results.getResultadoGanadorLoteria(
-          sorteo,
-          combinaciones[i]
-        );
-        if (aux.status) {
-          let n = aux.values.length;
-          for (let j = 0; j < n; j++) {
-            let boleto = aux.values[j];
-            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-            boleto["premio"] = premio.values;
-
-            let responseAux = {
-              status: true,
-              combinacion: combinaciones[i],
-              sorteo,
-              data: boleto,
-            };
-            response.push(responseAux);
-          }
-        } else {
-          let responseAux = {
-            status: false,
-            combinacion: combinaciones[i],
-            sorteo,
-          };
-          response.push(responseAux);
-        }
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
-    }
-  },
-
-  buscarLottoWinner: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let combinaciones = req.body.combinaciones;
-      let response = [];
-      let length = combinaciones.length;
-      await inquiryController.validateSorteo(sorteo, 2);
-      for (let i = 0; i < length; i++) {
-        let aux = await Results.getResultadoGanadorLotto(
-          sorteo,
-          combinaciones[i]
-        );
-        if (aux.status) {
-          let n = aux.values.length;
-          for (let j = 0; j < n; j++) {
-            let boleto = aux.values[j];
-            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-            boleto["premio"] = premio.values;
-            let responseAux = {
-              status: true,
-              combinacion: combinaciones[i],
-              sorteo,
-              data: boleto,
-            };
-            response.push(responseAux);
-          }
-        } else {
-          let responseAux = {
-            status: false,
-            combinacion: combinaciones[i],
-            sorteo,
-          };
-          response.push(responseAux);
-        }
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
-    }
-  },
-
-  buscarPozoWinner: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let combinaciones = req.body.combinaciones;
-      let response = [];
-      let length = combinaciones.length;
-      await inquiryController.validateSorteo(sorteo, 5);
-      for (let i = 0; i < length; i++) {
-        let aux = await Results.getResultadoGanadorPozo(
-          sorteo,
-          combinaciones[i]
-        );
-        if (aux.status) {
-          let n = aux.values.length;
-          for (let j = 0; j < n; j++) {
-            let boleto = aux.values[j];
-            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-            boleto["premio"] = premio.values;
-            let responseAux = {
-              status: true,
-              combinacion: combinaciones[i],
-              sorteo,
-              data: boleto,
-            };
-            response.push(responseAux);
-          }
-        } else {
-          let responseAux = {
-            status: false,
-            combinacion: combinaciones[i],
-            sorteo,
-          };
-          response.push(responseAux);
-        }
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
-    }
-  },
-
-  buscarMillonariaWinner: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let combinaciones = req.body.combinaciones;
-      let response = [];
-      let length = combinaciones.length;
-      await inquiryController.validateSorteo(sorteo, 14);
-      for (let i = 0; i < length; i++) {
-        let aux = await Results.getResultadoGanadorMillonaria(
-          sorteo,
-          combinaciones[i]
-        );
-        if (aux.status) {
-          let n = aux.values.length;
-          for (let j = 0; j < n; j++) {
-            let boleto = aux.values[j];
-            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-            boleto["premio"] = premio.values;
-            let responseAux = {
-              status: true,
-              combinacion: combinaciones[i].principal,
-              serie: combinaciones[i].serie,
-              sorteo,
-              data: boleto,
-            };
-            response.push(responseAux);
-          }
-        } else {
-          let responseAux = {
-            status: false,
-            combinacion: combinaciones[i].principal,
-            serie: combinaciones[i].serie,
-            sorteo,
-          };
-          response.push(responseAux);
-        }
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
-    }
-  },
-
   buscarPozoPlancha: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -289,13 +97,205 @@ const inquiryController = {
     }
   },
 
-  buscarLottoBoletin: async (req, res) => {
+  buscarPozoWinner: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
-      let tipoLoteria = 2;
+      let combinaciones = req.body.combinaciones;
+      let response = [];
+      let length = combinaciones.length;
+      await inquiryController.validateSorteo(sorteo, 5);
+      for (let i = 0; i < length; i++) {
+        let aux = await Results.getResultadoGanadorPozo(
+          sorteo,
+          combinaciones[i]
+        );
+        if (aux.status) {
+          let n = aux.values.length;
+          for (let j = 0; j < n; j++) {
+            let boleto = aux.values[j];
+            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+            boleto["premio"] = premio.values;
+            let responseAux = {
+              status: true,
+              combinacion: combinaciones[i],
+              sorteo,
+              data: boleto,
+            };
+            response.push(responseAux);
+          }
+        } else {
+          let responseAux = {
+            status: false,
+            combinacion: combinaciones[i],
+            sorteo,
+          };
+          response.push(responseAux);
+        }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  
+  buscarPozoBoletin: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let tipoLoteria = 5;
       let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
-
       res.status(200).json(boletinAddress);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+  buscarPozoUltimosResultados: async (req, res) => {
+    try {
+      response = await Lottery.consultarUltimosResultados(5, token);
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+  buscarPozoSorteosJugados: async (req, res) => {
+    try {
+      response = await Sorteos.getSorteos(5);
+
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+  buscarMillonariaBoletin: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let tipoLoteria = 14;
+      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
+      res.status(200).json(boletinAddress);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+  buscarMillonariaWinner: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let combinaciones = req.body.combinaciones;
+      let response = [];
+      let length = combinaciones.length;
+      await inquiryController.validateSorteo(sorteo, 14);
+      for (let i = 0; i < length; i++) {
+        let aux = await Results.getResultadoGanadorMillonaria(
+          sorteo,
+          combinaciones[i]
+        );
+        if (aux.status) {
+          let n = aux.values.length;
+          for (let j = 0; j < n; j++) {
+            let boleto = aux.values[j];
+            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+            boleto["premio"] = premio.values;
+            let responseAux = {
+              status: true,
+              combinacion: combinaciones[i].principal,
+              serie: combinaciones[i].serie,
+              sorteo,
+              data: boleto,
+            };
+            response.push(responseAux);
+          }
+        } else {
+          let responseAux = {
+            status: false,
+            combinacion: combinaciones[i].principal,
+            serie: combinaciones[i].serie,
+            sorteo,
+          };
+          response.push(responseAux);
+        }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+
+  buscarMilloriaSorteosJugados: async (req, res) => {
+    try {
+      response = await Sorteos.getSorteos(14);
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+
+  buscarLoteriaWinner: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let combinaciones = req.body.combinaciones;
+      let response = [];
+      let length = combinaciones.length;
+      await inquiryController.validateSorteo(sorteo, 1);
+      for (let i = 0; i < length; i++) {
+        let aux = await Results.getResultadoGanadorLoteria(
+          sorteo,
+          combinaciones[i]
+        );
+        if (aux.status) {
+          let n = aux.values.length;
+          for (let j = 0; j < n; j++) {
+            let boleto = aux.values[j];
+            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+            boleto["premio"] = premio.values;
+
+            let responseAux = {
+              status: true,
+              combinacion: combinaciones[i],
+              sorteo,
+              data: boleto,
+            };
+            response.push(responseAux);
+          }
+        } else {
+          let responseAux = {
+            status: false,
+            combinacion: combinaciones[i],
+            sorteo,
+          };
+          response.push(responseAux);
+        }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+
+  buscarLoteriaSorteosJugados: async (req, res) => {
+    try {
+      response = await Sorteos.getSorteos(1);
+      res.status(200).json(response);
     } catch (e) {
       res.status(400).json(e.toString());
     }
@@ -313,28 +313,6 @@ const inquiryController = {
     }
   },
 
-  buscarPozoBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 5;
-      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
-      res.status(200).json(boletinAddress);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  buscarMillonariaBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 14;
-      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
-      res.status(200).json(boletinAddress);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
   buscarLoteriaUltimosResultados: async (req, res) => {
     try {
       response = await Lottery.consultarUltimosResultados(1, token);
@@ -344,27 +322,69 @@ const inquiryController = {
     }
   },
 
+  buscarLottoWinner: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let combinaciones = req.body.combinaciones;
+      let response = [];
+      let length = combinaciones.length;
+      await inquiryController.validateSorteo(sorteo, 2);
+      for (let i = 0; i < length; i++) {
+        let aux = await Results.getResultadoGanadorLotto(
+          sorteo,
+          combinaciones[i]
+        );
+        if (aux.status) {
+          let n = aux.values.length;
+          for (let j = 0; j < n; j++) {
+            let boleto = aux.values[j];
+            let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+            boleto["premio"] = premio.values;
+            let responseAux = {
+              status: true,
+              combinacion: combinaciones[i],
+              sorteo,
+              data: boleto,
+            };
+            response.push(responseAux);
+          }
+        } else {
+          let responseAux = {
+            status: false,
+            combinacion: combinaciones[i],
+            sorteo,
+          };
+          response.push(responseAux);
+        }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+
+
+  buscarLottoBoletin: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let tipoLoteria = 2;
+      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
+
+      res.status(200).json(boletinAddress);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
   buscarLottoUltimosResultados: async (req, res) => {
     try {
       response = await Lottery.consultarUltimosResultados(2, token);
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  buscarPozoUltimosResultados: async (req, res) => {
-    try {
-      response = await Lottery.consultarUltimosResultados(5, token);
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  buscarMillonariaUltimosResultados: async (req, res) => {
-    try {
-      response = await Lottery.consultarUltimosResultados(14, token);
       res.status(200).json(response);
     } catch (e) {
       res.status(400).json(e.toString());
@@ -381,34 +401,9 @@ const inquiryController = {
     }
   },
 
-  buscarLoteriaSorteosJugados: async (req, res) => {
-    try {
-      response = await Sorteos.getSorteos(1);
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
 
-  buscarPozoSorteosJugados: async (req, res) => {
-    try {
-      response = await Sorteos.getSorteos(5);
 
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
 
-  buscarMillonariaSorteosJugados: async (req, res) => {
-    try {
-      response = await Sorteos.getSorteos(14);
-
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
 
   buscarResultadoPrueba: async (req, res) => {
     try {

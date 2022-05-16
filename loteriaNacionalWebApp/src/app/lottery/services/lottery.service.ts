@@ -12,7 +12,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
   providedIn: "root",
 })
 export class LotteryService {
-  localSource = "http://localhost:5480";
+  localSource = "http://localhost:200";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
@@ -46,7 +46,7 @@ export class LotteryService {
     let data = JSON.parse(localStorage.getItem("userData"));
     let response = {
       user: "",
-      lotteryToken: ""
+      lotteryToken: "",
     };
     if (data) {
       let lotteryToken = data.lotteryToken;
@@ -63,13 +63,12 @@ export class LotteryService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/lottery";
+
+    let address = "/ventas";
+    let endpoint = "/getDescuentos";
     let authData = this.getAuthData();
 
-    endpoint = `${endpoint}/getDescuentos`;
-    var address = this.mySource;
-
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise<Array<sorteo>>((resolve, reject) => {
       this.http
         .get(address, {
@@ -94,126 +93,53 @@ export class LotteryService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/cache";
+    let address = "";
+    let endpoint = `/cache/sorteosDisponibles`;
     let authData = this.getAuthData();
     switch (loteria) {
       case 1:
-        endpoint = `${endpoint}/loteriaSorteosDisponibles`;
-        var address = this.mySource;
+        address = "/loteria";
 
-        address = address + endpoint;
-        return new Promise<Array<sorteo>>((resolve, reject) => {
-          this.http
-            .get(address, {
-              params: {
-                lotteryToken: authData.lotteryToken,
-                user: authData.user,
-              },
-              headers: headers,
-            })
-            .subscribe(
-              (data: any) => {
-                let sorteosJugados: Array<sorteo> = data;
-                sorteosJugados.sort(this.ordenaSorteos);
-                resolve(sorteosJugados);
-              },
-              (error: any) => {
-                reject(new Error(error.error.message));
-              }
-            );
-        });
         break;
       case 2:
-        endpoint = `${endpoint}/lottoSorteosDisponibles`;
-        var address = this.mySource;
-
-        address = address + endpoint;
-        return new Promise<Array<sorteo>>((resolve, reject) => {
-          this.http
-            .get(address, {
-              params: {
-                lotteryToken: authData.lotteryToken,
-                user: authData.user,
-              },
-              headers: headers,
-            })
-            .subscribe(
-              (data: any) => {
-                let sorteosJugados: Array<sorteo> = data;
-                sorteosJugados.sort(this.ordenaSorteos);
-                resolve(sorteosJugados);
-              },
-              (error: any) => {
-                reject(new Error(error.error.message));
-              }
-            );
-        });
+        address = "/lotto";
         break;
       case 5:
-        endpoint = `${endpoint}/pozoSorteosDisponibles`;
-        var address = this.mySource;
-
-        address = address + endpoint;
-        return new Promise<Array<sorteo>>((resolve, reject) => {
-          this.http
-            .get(address, {
-              params: {
-                lotteryToken: authData.lotteryToken,
-                user: authData.user,
-              },
-              headers: headers,
-            })
-            .subscribe(
-              (data: any) => {
-                let sorteosJugados: Array<sorteo> = data;
-                sorteosJugados.sort(this.ordenaSorteos);
-                resolve(sorteosJugados);
-              },
-              (error: any) => {
-                reject(new Error(error.error.message));
-              }
-            );
-        });
-
+        address = "/pozo";
         break;
       case 14:
-        endpoint = `${endpoint}/millonariaSorteosDisponibles`;
-        var address = this.mySource;
-
-        address = address + endpoint;
-        return new Promise<Array<sorteo>>((resolve, reject) => {
-          this.http
-            .get(address, {
-              params: {
-                lotteryToken: authData.lotteryToken,
-                user: authData.user,
-              },
-              headers: headers,
-            })
-            .subscribe(
-              (data: any) => {
-                let sorteosJugados: Array<sorteo> = data;
-                sorteosJugados.sort(this.ordenaSorteos);
-                resolve(sorteosJugados);
-              },
-              (error: any) => {
-                reject(new Error(error.error.message));
-              }
-            );
-        });
-
+        address = "/millonaria";
         break;
     }
+    address = this.mySource + address + endpoint;
+    return new Promise<Array<sorteo>>((resolve, reject) => {
+      this.http
+        .get(address, {
+          params: {
+            lotteryToken: authData.lotteryToken,
+            user: authData.user,
+          },
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            let sorteosDisponibles: Array<sorteo> = data;
+            sorteosDisponibles.sort(this.ordenaSorteos);
+            resolve(sorteosDisponibles);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
   }
   obtenerSeries(sorteo) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    //let endpoint = "/inquiry";
-    let endpoint = "/lottery/getSeries";
+    let address = "/millonaria";
+    let endpoint = "/getSeries";
     let authData = this.getAuthData();
-    var address = this.mySource;
-    console.log(sorteo);
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise<Array<any>>((resolve, reject) => {
       this.http
         .get(address, {
@@ -257,8 +183,8 @@ export class LotteryService {
   ): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    //let endpoint = "/inquiry";
-    let endpoint = "/lottery";
+    let address = "";
+    let endpoint = "";
     let authData = this.getAuthData();
     let body = {
       sorteo,
@@ -268,12 +194,12 @@ export class LotteryService {
       combinacionFigura,
       tipoSeleccion,
     };
+    endpoint = `${endpoint}/combinacionesDisponibles`;
     switch (loteria) {
       case 1:
-        endpoint = `${endpoint}/loteriaCombinacionesDisponibles`;
-        var address = this.mySource;
+        address = "/loteria";
 
-        address = address + endpoint;
+        address = this.mySource + address + endpoint;
         return new Promise<Array<ticketsNacional>>((resolve, reject) => {
           this.http.post(address, body, { headers: headers }).subscribe(
             (data: any) => {
@@ -288,10 +214,9 @@ export class LotteryService {
         });
         break;
       case 2:
-        endpoint = `${endpoint}/lottoCombinacionesDisponibles`;
-        var address = this.mySource;
+        address = "/lotto";
 
-        address = address + endpoint;
+        address = this.mySource + address + endpoint;
         return new Promise<Array<ticketsLotto>>((resolve, reject) => {
           this.http.post(address, body, { headers: headers }).subscribe(
             (data: any) => {
@@ -306,10 +231,10 @@ export class LotteryService {
         });
         break;
       case 5:
-        endpoint = `${endpoint}/pozoCombinacionesDisponibles`;
-        var address = this.mySource;
+        address = "/pozo";
+        endpoint = `${endpoint}/combinacionesDisponibles`;
 
-        address = address + endpoint;
+        address = this.mySource + address + endpoint;
         return new Promise<Array<ticketsAnimales>>((resolve, reject) => {
           this.http.post(address, body, { headers: headers }).subscribe(
             (data: any) => {
@@ -325,10 +250,10 @@ export class LotteryService {
 
         break;
       case 14:
-        endpoint = `${endpoint}/millonariaCombinacionesDisponibles`;
-        var address = this.mySource;
+        address = "/millonaria";
+        endpoint = `${endpoint}/combinacionesDisponibles`;
 
-        address = address + endpoint;
+        address = this.mySource + address + endpoint;
         return new Promise<Array<ticketsMillonaria>>((resolve, reject) => {
           this.http.post(address, body, { headers: headers }).subscribe(
             (data: any) => {
@@ -347,54 +272,24 @@ export class LotteryService {
   }
 
   obtenerImagenBoleto(tipoLoteria, sorteo) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/lottery";
-    switch (tipoLoteria) {
-      case 1:
-        endpoint = `${endpoint}/loteriaBoleto`;
-        break;
-      case 2:
-        endpoint = `${endpoint}/lottoBoleto`;
-        break;
-      case 5:
-        endpoint = `${endpoint}/pozoBoleto`;
-
-        break;
-
-      default:
-        endpoint = `${endpoint}/millonariaBoleto`;
-        break;
-    }
-    var address = this.mySource;
-
-    address = address + endpoint;
-    let body = {
-      sorteo,
-    };
-
+    let sourceBoletos = `${this.mySource}/uploads/boletos/`;
     return new Promise<string>((resolve, reject) => {
-      this.http
-        .post(address, body, { headers: headers })
-        .subscribe((data: any) => {
-          let boleto = data;
-          resolve(boleto);
-        });
+      let boletoAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
+      resolve(boletoAddress);
     });
   }
 
   authUser(token): Promise<any> {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    //let endpoint = "/inquiry";
-    let endpoint = "/exalogic";
+    let address = "/auth";
+
+    let endpoint = "/";
     let body = {
       token,
     };
-    endpoint = `${endpoint}/authUser`;
-    var address = this.mySource;
 
-    address = address + endpoint;
+    address = this.mySource +  address + endpoint;
     return new Promise<Array<any>>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
@@ -947,32 +842,6 @@ export class LotteryService {
     localStorage.setItem("animalesTabs", JSON.stringify(this.animalesTabs));
   }
 
-  comprarBoletos(token, boletos, tipoLoteria) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/lottery";
-    endpoint = `${endpoint}/reservarBoletos`;
-    var address = this.mySource;
-
-    address = address + endpoint;
-    let authData = this.getAuthData();
-    let body = {
-      lotteryToken: authData.lotteryToken,
-      user: authData.user,
-    };
-    return new Promise<any>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let response: any = data;
-          resolve(response);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
-  }
-
   getReservaId() {
     if (
       JSON.parse(localStorage.getItem("reservaId")) &&
@@ -991,11 +860,10 @@ export class LotteryService {
   reservarBoletos(token, boleto, tipoLoteria, reservaId) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/lottery";
-    endpoint = `${endpoint}/reservarBoletos`;
-    var address = this.mySource;
+    let address = "/reservas";
+    let endpoint = "/reservarBoletos";
 
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     let authData = this.getAuthData();
     let body = {
       lotteryToken: authData.lotteryToken,
@@ -1068,11 +936,10 @@ export class LotteryService {
   ) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/lottery";
-    endpoint = `${endpoint}/eliminarBoletosDeReserva`;
-    var address = this.mySource;
+    let address = "/reservas";
+    let endpoint = "/eliminarBoletosDeReserva";
 
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
 
     let authData = this.getAuthData();
     let body = {
@@ -1145,11 +1012,10 @@ export class LotteryService {
   ) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/lottery";
-    endpoint = `${endpoint}/eliminarBoletosDeReserva`;
-    var address = this.mySource;
+    let address = "/reservas";
+    let endpoint = "/eliminarBoletosDeReserva";
 
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
 
     let authData = this.getAuthData();
     let body = {

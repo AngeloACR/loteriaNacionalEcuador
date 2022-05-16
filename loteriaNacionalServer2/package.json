@@ -1,0 +1,35 @@
+{
+  "name": "loteria_nacional_server",
+  "version": "1.0.0",
+  "description": "Servidor de Loteria Nacional Ecuador, contendra principalmente una Api para interactuar con el servidor de loteria, otra para contactar al servidor de la plataforma de juegos, y una para interactuar con las aplicaciones web y movil.",
+  "main": "appLotteryApi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node appLotteryApi.js"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "bluebird": "*",
+    "body-parser": "*",
+    "compression": "^1.7.0",
+    "node-mailjet": "*",
+    "cors": "*",
+    "cron": "*",
+    "express": "*",
+    "ftp-srv": "*",
+    "helmet": "^3.9.0",
+    "mongoose": "*",
+    "node-schedule": "*",
+    "redis": "4.0.4",
+    "soap": "*",
+    "winston": "^3.3.3",
+    "xml2js": "*"
+  },
+  "keywords": [
+    "loteria",
+    "servidor",
+    "ecuador"
+  ],
+  "author": "Tecnobunker",
+  "license": "ISC"
+}

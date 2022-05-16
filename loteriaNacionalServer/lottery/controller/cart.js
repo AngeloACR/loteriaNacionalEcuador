@@ -1,6 +1,6 @@
 const redis = require("redis");
-const reservas = require("../../loterianacional/controller/reservas");
 const bluebird = require("bluebird");
+const reservas = require("../../loterianacional/controller/reservas");
 const Ventas = require("../../loterianacional/controller/ventas");
 const Cache = require("../../cache/controller/main");
 

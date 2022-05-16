@@ -6,13 +6,13 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 })
 export class InquiryService {
   today = new Date();
-  localSource = "http://localhost:5480";
+  localSource = "http://localhost:200";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
+  mySource = this.localSource;
   //mySource = this.testSource;
-  mySource = this.productionSource;
+  //mySource = this.productionSource;
 
   constructor(private http: HttpClient) {}
 
@@ -20,23 +20,28 @@ export class InquiryService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/cache";
+    var address = "";
+    let endpoint = "";
     switch (tipoLoteria) {
       case 1:
-        endpoint = `${endpoint}/loteriaSorteosJugados`;
+        address = "/loteria";
+        endpoint = `${endpoint}/sorteosJugados`;
         console.log("Recuperando sorteos de loteria");
         break;
       case 2:
-        endpoint = `${endpoint}/lottoSorteosJugados`;
+        address = "/lotto";
+        endpoint = `${endpoint}/sorteosJugados`;
         console.log("Recuperando sorteos de lotto");
         break;
       case 5:
-        endpoint = `${endpoint}/pozoSorteosJugados`;
+        address = "/pozo";
+        endpoint = `${endpoint}/sorteosJugados`;
         console.log("Recuperando sorteos de pozo millonario");
 
         break;
       case 14:
-        endpoint = `${endpoint}/millonariaSorteosJugados`;
+        address = "/millonaria";
+        endpoint = `${endpoint}/sorteosJugados`;
         console.log("Recuperando sorteos de pozo millonario");
 
         break;
@@ -44,9 +49,8 @@ export class InquiryService {
       default:
         break;
     }
-    var address = this.mySource;
 
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise((resolve, reject) => {
       this.http.get(address, { headers: headers }).subscribe((data: any) => {
         let sorteosJugados = data.values;
@@ -66,32 +70,36 @@ export class InquiryService {
   recuperarBoletoGanador(tipoLoteria, sorteo, combinaciones) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry";
+    let endpoint = "";
+    let address = "";
     switch (tipoLoteria) {
       case 1:
-        endpoint = `${endpoint}/ganadorLoteria`;
+        address = "/loteria";
+        endpoint = `${endpoint}/ganador`;
         console.log("Recuperando boleto ganador de loteria");
         break;
       case 2:
-        endpoint = `${endpoint}/ganadorLotto`;
+        address = "/lotto";
+        endpoint = `${endpoint}/ganador`;
         console.log("Recuperando boleto ganador de lotto");
         break;
-        case 5:
-          endpoint = `${endpoint}/ganadorPozo`;
-          console.log("Recuperando boleto ganador de pozo millonario");
-  
-          break;
-          case 14:
-            endpoint = `${endpoint}/ganadorMillonaria`;
-            console.log("Recuperando boleto ganador de la millonaria");
-    
-            break;
+      case 5:
+        address = "/pozo";
+        endpoint = `${endpoint}/ganador`;
+        console.log("Recuperando boleto ganador de pozo millonario");
+
+        break;
+      case 14:
+        address = "/millonaria";
+        endpoint = `${endpoint}/ganador`;
+        console.log("Recuperando boleto ganador de la millonaria");
+
+        break;
 
       default:
         break;
     }
-    var address = this.mySource;
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     let body = {
       sorteo,
       combinaciones,
@@ -114,10 +122,11 @@ export class InquiryService {
   recuperarBoletoGanadorPorPlancha(boletoInicial, boletoFinal, sorteo) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry/pozoPlancha";
-    var address = this.mySource;
+    let address = "/pozo";
 
-    address = address + endpoint;
+    let endpoint = "/plancha";
+
+    address = this.mySource + address + endpoint;
     let body = {
       sorteo,
       boletoInicial,
@@ -135,41 +144,75 @@ export class InquiryService {
     });
   }
 
-  recuperarUltimosResultados() {
+  async recuperarUltimosResultados() {
+    let loterias = ["/loteria", "/lotto", "/pozo", "/millonaria"];
+    let response = {};
+    for (let i = 0; i < loterias.length; i) {
+      let aux: any = await this.getUltimoResultado(loterias[i]);
+      response[aux.tipo] = aux.data;
+    }
+    return response;
+  }
+
+  getUltimoResultado(address) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    //let endpoint = "/inquiry/ultimosResultados";
-    let endpoint = "/cache/ultimosResultados";
-    var address = this.mySource;
-    address = address + endpoint;
+    let endpoint = "/ultimoResultado";
+    address = this.mySource + address + endpoint;
     return new Promise((resolve, reject) => {
       this.http.get(address, { headers: headers }).subscribe((data: any) => {
-        let loteriaNacional = data.loteriaNacional;
-        let lotto = data.lotto;
-        let pozoMillonario = data.pozoMillonario;
-        let laMillonaria = data.laMillonaria;
-        localStorage.setItem(
-          "loteriaNacionalUltimoResultado",
-          JSON.stringify(loteriaNacional)
-        );
-        localStorage.setItem("lottoUltimoResultado", JSON.stringify(lotto));
-        localStorage.setItem(
-          "pozoMillonarioUltimoResultado",
-          JSON.stringify(pozoMillonario)
-        );
-        localStorage.setItem(
-          "laMillonariaUltimoResultado",
-          JSON.stringify(laMillonaria)
-        );
-        resolve(data);
+        let response;
+        switch (address) {
+          case "/loteria":
+            let loteriaNacional = data.loteriaNacional;
+            localStorage.setItem(
+              "loteriaNacionalUltimoResultado",
+              JSON.stringify(loteriaNacional)
+            );
+
+            response = { tipo: "loteriaNacional", data: loteriaNacional };
+            break;
+          case "/lotto":
+            let lotto = data.lotto;
+            localStorage.setItem("lottoUltimoResultado", JSON.stringify(lotto));
+            response = { tipo: "lotto", data: lotto };
+            break;
+          case "/pozo":
+            let pozoMillonario = data.pozoMillonario;
+            localStorage.setItem(
+              "pozoMillonarioUltimoResultado",
+              JSON.stringify(pozoMillonario)
+            );
+            response = { tipo: "pozoMillonari", data: pozoMillonario };
+            break;
+          case "/millonaria":
+            let laMillonaria = data.laMillonaria;
+            localStorage.setItem(
+              "laMillonariaUltimoResultado",
+              JSON.stringify(laMillonaria)
+            );
+            response = { tipo: "laMillonaria", data: laMillonaria };
+            break;
+
+          default:
+            break;
+        }
+        resolve(response);
       });
     });
   }
 
+  ultimoResultadoMillonaria() {}
+
+  ultimoResultadoLoteria() {}
+
+  ultimoResultadoLotto() {}
+
   obtenerBoletin(tipoLoteria, sorteo) {
-    let headers = new HttpHeaders();
+    let sourceBoletines = `${this.mySource}/uploads/boletines/`;
+    /*  let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/inquiry";
+    let endpoint = "/uploads";
     switch (tipoLoteria) {
       case 1:
         endpoint = `${endpoint}/loteriaBoletin`;
@@ -191,19 +234,22 @@ export class InquiryService {
     }
     var address = this.mySource;
 
-    address = address + endpoint;
+    address = mySource + address + endpoint;
     let body = {
       sorteo,
     };
-
+ */
     return new Promise((resolve, reject) => {
-      this.http
+      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
+      /*       this.http
         .post(address, body, { headers: headers })
         .subscribe((data: any) => {
           let boletin = data;
           console.log(boletin);
           resolve(boletin);
         });
+ */
+      resolve(boletinAddress);
     });
   }
 

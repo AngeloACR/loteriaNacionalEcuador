@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
   providedIn: "root",
 })
 export class PaymentService {
-  localSource = "http://localhost:5480";
+  localSource = "http://localhost:200";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
@@ -44,12 +44,13 @@ export class PaymentService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
-    let endpoint = "/exalogic";
+
+    let address = "http://127.0.0.1:8500";
+    let endpoint = "";
     let body = {
       token,
     };
     endpoint = `${endpoint}/getBalance`;
-    var address = this.mySource;
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
@@ -69,13 +70,13 @@ export class PaymentService {
   getCompra(ticketId, accountId) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/lottery";
+    let address = "http://127.0.0.1:4000";
+    let endpoint = "";
     let body = {
       ticketId,
       accountId,
     };
     endpoint = `${endpoint}/getCompra`;
-    var address = this.mySource;
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
@@ -97,12 +98,12 @@ export class PaymentService {
     ticketId = ticketId.toString();
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/lottery";
+    let address = "http://127.0.0.1:7500";
+    let endpoint = "";
     let body = {
       ticketId,
     };
     endpoint = `${endpoint}/getGanador`;
-    var address = this.mySource;
 
     address = address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
@@ -125,9 +126,8 @@ export class PaymentService {
     let totalConDesc = this.cart.getTotalConDesc();
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    //let endpoint = "/inquiry";
-
-    let endpoint = "/lottery";
+    let address = "/ventas";
+    let endpoint = "";
     let authData = this.getAuthData();
     let body = {
       loteria,
@@ -145,7 +145,6 @@ export class PaymentService {
       reservaId,
     };
     endpoint = `${endpoint}/comprarBoletos`;
-    var address = this.mySource;
     address = address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(

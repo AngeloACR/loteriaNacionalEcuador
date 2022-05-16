@@ -1,9 +1,9 @@
 #!/bin/bash
 
-sudo mv ./proxy_params /etc/nginx/
+sudo cp ./proxy_params /etc/nginx/
 sudo rm /etc/nginx/nginx.conf
-sudo mv ./nginx.conf /etc/nginx/
-sudo mv ./ventas-api.conf /etc/nginx/conf.d/
-sudo mv ./ventas.conf /etc/nginx/conf.d/
-sudo mv ./contenidos.conf /etc/nginx/conf.d/
+sudo cp ./nginx.conf /etc/nginx/
+sudo cp ./ventas-api.conf /etc/nginx/conf.d/
+sudo cp ./ventas.conf /etc/nginx/conf.d/
+sudo cp ./contenidos.conf /etc/nginx/conf.d/
 sudo service nginx start
