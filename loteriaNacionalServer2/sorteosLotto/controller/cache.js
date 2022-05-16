@@ -3,7 +3,7 @@ const Sorteos = require("../models/sorteo");
 const psdAuth = require("../../psdLoteria/auth");
 const psdSorteos = require("../../psdLoteria/sorteos");
 const redis = require("../../cache");
-const config = require("../../environments/local");
+const config = require("../../environments/test");
 
 const cacheController = {
   getUltimoResultado: async (req, res) => {

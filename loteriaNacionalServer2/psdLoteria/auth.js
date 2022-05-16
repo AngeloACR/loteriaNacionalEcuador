@@ -4,7 +4,7 @@ var soap = require("soap");
 var {loteriaError} = require("./errors");
 
 const { loteriaVentasLogger } = require("./logging");
-const config = require("../environments/local");
+const config = require("../environments/test");
 
 const usuarioClientePsd = config.usuarioAplicativo;
 const claveClientePsd = config.passwordAplicativo;

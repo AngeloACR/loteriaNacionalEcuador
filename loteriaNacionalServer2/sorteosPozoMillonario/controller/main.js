@@ -4,7 +4,7 @@ const psdVentas = require("../../psdLoteria/ventas");
 const Results = require("../models/main");
 const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
-const config = require("../../environments/local");
+const config = require("../../environments/test");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 

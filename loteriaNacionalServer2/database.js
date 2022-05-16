@@ -1,4 +1,4 @@
-const config = require("./environments/local");
+const config = require("./environments/test");
 const mongoose = require("mongoose");
 const myDB = config.dbAddress;
 
