@@ -2,7 +2,7 @@
 
 mkdir -p /etc/nginx/api_conf.d
 
-#cp ./api_gateway.conf /etc/nginx/conf.d/api_gateway.conf
+cp ./api_gateway.conf /etc/nginx/conf.d/api_gateway.conf
 cp ./api_backends.conf /etc/nginx/api_backends.conf
 cp ./sorteosLoteria_api.conf /etc/nginx/api_conf.d/sorteosLoteria_api.conf
 cp ./sorteosLotto_api.conf /etc/nginx/api_conf.d/sorteosLotto_api.conf
