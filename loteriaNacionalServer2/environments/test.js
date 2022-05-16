@@ -94,8 +94,8 @@ module.exports = {
   ftpBoletosPath: "/uploads/boletos",
 
   //SSL DATA
-  sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",
-  sslPathTest: "/etc/letsencrypt/live/ventas-prueba.loteria.com.ec/",
+  //sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",
+  sslPath: "/etc/letsencrypt/live/ventas-prueba.loteria.com.ec/",
   keyFile: "privkey.pem",
   certFile: "fullchain.pem",
   reqFile: "request.pem",
