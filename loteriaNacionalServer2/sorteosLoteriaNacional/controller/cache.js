@@ -11,7 +11,7 @@ const cacheController = {
       let client = redis.getClient();
       await client.connect();
       let response = await client.get("ultimoResultadoLoteria");
-      if (response == "") {
+      if (response == ""|| !response) {
         await cacheController.setUltimoResultado();
         response = await client.get("ultimoResultadoLoteria");
       }
@@ -40,7 +40,7 @@ const cacheController = {
       let client = redis.getClient();
       await client.connect();
       let response = await client.get("loteriaSorteos");
-      if (response == "") {
+      if (response == "" || !response) {
         await cacheController.setSorteos();
         response = await client.get("loteriaSorteos");
       }

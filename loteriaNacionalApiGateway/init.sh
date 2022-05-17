@@ -4,10 +4,10 @@ mkdir -p /etc/nginx/api_conf.d
 
 cp ./api_gateway.conf /etc/nginx/conf.d/api_gateway.conf
 cp ./api_backends.conf /etc/nginx/api_backends.conf
-cp ./sorteosLoteria_api.conf /etc/nginx/api_conf.d/sorteosLoteria_api.conf
-cp ./sorteosLotto_api.conf /etc/nginx/api_conf.d/sorteosLotto_api.conf
-cp ./sorteosPozoMillonario_api.conf /etc/nginx/api_conf.d/sorteosPozoMillonario_api.conf
-cp ./sorteosLaMillonaria_api.conf /etc/nginx/api_conf.d/sorteosLaMillonaria_api.conf
+cp ./loteria_api.conf /etc/nginx/api_conf.d/loteria_api.conf
+cp ./lotto_api.conf /etc/nginx/api_conf.d/lotto_api.conf
+cp ./pozoMillonario_api.conf /etc/nginx/api_conf.d/pozoMillonario_api.conf
+cp ./laMillonaria_api.conf /etc/nginx/api_conf.d/laMillonaria_api.conf
 cp ./ganadores_api.conf /etc/nginx/api_conf.d/ganadores_api.conf
 cp ./reservas_api.conf /etc/nginx/api_conf.d/reservas_api.conf
 cp ./ventas_api.conf /etc/nginx/api_conf.d/ventas_api.conf

@@ -30,6 +30,9 @@ module.exports.init = function (port) {
   // Cors Middleware
   app.use(cors());
   
+  //Adding routes
+  app.use("/", routes);
+  app.use("/cache", cache);
   app.use(helmet());
   app.use((req, res, next) => {
     res.removeHeader("X-Frame-Options");
@@ -51,9 +54,6 @@ module.exports.init = function (port) {
   // Body Parser Middleware
   app.use(bodyParser.json());
 
-  //Adding routes
-  app.use("/", routes);
-  app.use("/cache", cache);
-
+  
   return app;
 };
