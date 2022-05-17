@@ -7,6 +7,8 @@ const redis = require("../../cache");
 
 const cacheController = {
   updateCart: async (carrito) => {
+
+    let timeout = 60 * 40;
     let client = redis.getClient();
     await client.connect();
     await client.set(`carrito-${carrito.user}`, JSON.stringify(carrito));
@@ -40,6 +42,7 @@ const cacheController = {
   getCarrito: async (req, res) => {
     try {
       let user = req.body.user;
+    let timeout = 60 * 40;
       let client = redis.getClient();
       await client.connect();
       let response = await client.get(`carrito-${user}`);
@@ -82,7 +85,8 @@ const cacheController = {
   },
   borrarCarrito: async (user) => {
     try {
-      let client = redis.getClient();
+    let timeout = 60 * 40;
+    let client = redis.getClient();
       await client.connect();
       let carrito = {
         loteria: {},

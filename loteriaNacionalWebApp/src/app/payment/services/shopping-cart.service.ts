@@ -14,7 +14,7 @@ export class ShoppingCartService {
   ticketsCarrito: any = [];
   reservaId: any = 0;
 
-  localSource = "http://localhost:200";
+  localSource = "http://localhost:100";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 

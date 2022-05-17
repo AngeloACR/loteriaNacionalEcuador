@@ -2,12 +2,13 @@ var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
 var {loteriaError} = require("./errors");
+const path = require( 'path' )
 
-const { loteriaVentasLogger } = require("./logging");
+const { loteriaSorteosLogger } = require("./logging");
 const config = require("../environments/test");
 
 const medioId = config.medioAplicativoId;
-const address = config.aplicativoAddress;
+const address = path.join( __dirname, config.aplicativoAddress );
 
 module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
   try {
@@ -72,7 +73,7 @@ module.exports.consultarSorteosDisponibles = async (
   ip
 ) => {
   try {
-    loteriaVentasLogger.silly("consultarSorteosDisponibles");
+    loteriaSorteosLogger.silly("consultarSorteosDisponibles");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let message = {
       $xml: `
@@ -131,14 +132,14 @@ module.exports.consultarSorteosDisponibles = async (
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaVentasLogger.info(
+              loteriaSorteosLogger.info(
                 "consultarSorteosDisponibles.loteria",
                 logData
               );
               resolve(response);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
-              loteriaVentasLogger.error(
+              loteriaSorteosLogger.error(
                 "consultarSorteosDisponibles.loteria.error",
                 {
                   data: message,
@@ -156,7 +157,7 @@ module.exports.consultarSorteosDisponibles = async (
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
+            loteriaSorteosLogger.error("consultarSorteosDisponibles.error", {
               errorMessage: errorMsg,
             });
             reject(
@@ -173,7 +174,7 @@ module.exports.consultarSorteosDisponibles = async (
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriaVentasLogger.error("consultarSorteosDisponibles.error", {
+    loteriaSorteosLogger.error("consultarSorteosDisponibles.error", {
       errorMessage: errorMsg,
     });
 

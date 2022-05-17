@@ -80,3 +80,29 @@ module.exports.loteriaConsultasLogger = createLogger({
     }),
   ],
 });
+module.exports.loteriaSorteosLogger = createLogger({
+  defaultMeta: { component: "loteria-sorteo" },
+  format: combine(
+    timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    prettyPrint()
+  ),
+
+  transports: [
+    new transports.File({
+      filename: "logs/loteria-sorteos.json",
+      maxsize: "10485760",
+      maxFiles: 10,
+      level: "info",
+      prettyPrint: true,
+    }),
+    new transports.File({
+      filename: "logs/loteria-sorteos-error.json",
+      prettyPrint: true,
+      maxsize: "10485760",
+      maxFiles: 10,
+      level: "error",
+    }),
+  ],
+});

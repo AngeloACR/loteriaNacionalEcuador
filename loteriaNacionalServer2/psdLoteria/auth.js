@@ -1,15 +1,15 @@
 var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
+const path = require( 'path' )
 var {loteriaError} = require("./errors");
-
 const { loteriaVentasLogger } = require("./logging");
 const config = require("../environments/test");
 
 const usuarioClientePsd = config.usuarioAplicativo;
 const claveClientePsd = config.passwordAplicativo;
 const medioId = config.medioAplicativoId;
-const address = config.aplicativoAddress;
+const address = path.join( __dirname, config.aplicativoAddress );
 
 module.exports.autenticarUsuario = async () => {
   try {

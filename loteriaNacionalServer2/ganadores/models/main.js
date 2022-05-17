@@ -96,16 +96,15 @@ GanadoresWebSchema.virtual("sorteo", {
 });
 
 GanadoresWebSchema.statics = {
-  crearGanador: async (data) => {
+  crearGanador: async function (data)  {
     try {
-      let ganador = new this(data);
-      let response = await ganador.save();
-      return response;
+      let ganador = await this.create(data);
+      return ganador;
     } catch (e) {
       throw new Error(e.message);
     }
   },
-  getGanador: async (ventaId) => {
+  getGanador: async function (ventaId) {
     try {
       let query = { ventaId };
       let ganador = await this.find(query);
@@ -125,7 +124,7 @@ GanadoresWebSchema.statics = {
       throw e;
     }
   },
-  getGanadores: async (data) => {
+  getGanadores: async function (data) {
     try {
       let response = [];
       for (let index = 0; index < data.length; index++) {

@@ -4,10 +4,11 @@ var soap = require("soap");
 const { loteriaVentasLogger } = require("./logging");
 const config = require("../environments/test");
 var {loteriaError} = require("./errors");
+const path = require( 'path' )
 
 const medioId = config.medioAplicativoId;
 
-const address = config.aplicativoAddress;
+const address = path.join( __dirname, config.aplicativoAddress );
 const usuarioClientePsd = config.usuarioAplicativo;
 
 

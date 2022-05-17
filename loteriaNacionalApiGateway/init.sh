@@ -16,4 +16,6 @@ cp ./wallet_api.conf /etc/nginx/api_conf.d/wallet_api.conf
 cp ./helper_api.conf /etc/nginx/api_conf.d/helper_api.conf
 cp ./uploads_api.conf /etc/nginx/api_conf.d/uploads_api.conf
 cp ./cors /etc/nginx/cors
+
+
 sudo service nginx restart

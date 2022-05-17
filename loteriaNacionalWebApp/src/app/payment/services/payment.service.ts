@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
   providedIn: "root",
 })
 export class PaymentService {
-  localSource = "http://localhost:200";
+  localSource = "http://localhost:100";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
@@ -45,14 +45,14 @@ export class PaymentService {
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
 
-    let address = "http://127.0.0.1:8500";
+    let address = "/wallet";
     let endpoint = "";
     let body = {
       token,
     };
     endpoint = `${endpoint}/getBalance`;
 
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
@@ -70,7 +70,7 @@ export class PaymentService {
   getCompra(ticketId, accountId) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let address = "http://127.0.0.1:4000";
+    let address = "/ventas";
     let endpoint = "";
     let body = {
       ticketId,
@@ -78,7 +78,7 @@ export class PaymentService {
     };
     endpoint = `${endpoint}/getCompra`;
 
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
@@ -98,14 +98,14 @@ export class PaymentService {
     ticketId = ticketId.toString();
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let address = "http://127.0.0.1:7500";
+    let address = "/ganadores";
     let endpoint = "";
     let body = {
       ticketId,
     };
     endpoint = `${endpoint}/getGanador`;
 
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise<boolean>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
@@ -145,7 +145,7 @@ export class PaymentService {
       reservaId,
     };
     endpoint = `${endpoint}/comprarBoletos`;
-    address = address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {

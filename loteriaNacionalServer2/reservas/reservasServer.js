@@ -26,17 +26,33 @@ module.exports.init = function (port) {
 
   //App compression
   app.use(compression());
-  app.use(helmet());
-
+  
   // Cors Middleware
   app.use(cors());
-
+  
   // Body Parser Middleware
   app.use(bodyParser.json());
-
+  
   //Adding routes
+  app.use(helmet());
   app.use("/", routes);
   app.use("/cache", cache);
-
+  app.use((req, res, next) => {
+    res.removeHeader("X-Frame-Options");
+    next();
+  });
+  app.use(
+    helmet.contentSecurityPolicy({
+      useDefaults: true,
+      directives: {
+        "frame-ancestors": [
+          "'self'",
+          "https://localhost",
+          "https://*.loteria.com.ec",
+          "http://*.mongibello.tech",
+        ],
+      },
+    })
+  );
   return app;
 };

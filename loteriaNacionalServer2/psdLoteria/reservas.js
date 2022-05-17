@@ -2,13 +2,13 @@ var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
 var {loteriaError} = require("./errors");
+const path = require( 'path' )
 
 const { loteriaReservasLogger } = require("./logging");
 const config = require("../environments/test");
 
 const medioId = config.medioAplicativoId;
-const address = config.aplicativoAddressTest;
-//const address = config.aplicativoAddressProd;
+const address = path.join( __dirname, config.aplicativoAddress );
 
 module.exports.reservarCombinaciones = async (
   loteria,
@@ -21,7 +21,7 @@ module.exports.reservarCombinaciones = async (
   ip
 ) => {
   try {
-    loteriaVentasLogger.silly("reservarCombinaciones");
+    loteriaReservasLogger.silly("reservarCombinaciones");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let loteriaCombinacionesXML = "";
     let lottoCombinacionesXML = "";
@@ -147,14 +147,14 @@ module.exports.reservarCombinaciones = async (
                 loteriaResponse: rawResponse,
                 customResponse: reservaId,
               };
-              loteriaVentasLogger.info(
+              loteriaReservasLogger.info(
                 "reservarCombinaciones.loteria",
                 logData
               );
               resolve(reservaId);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
-              loteriaVentasLogger.error("reservarCombinaciones.loteria.error", {
+              loteriaReservasLogger.error("reservarCombinaciones.loteria.error", {
                 data: message,
                 errorMessage: `${errorCode}-${errorMessage}`,
               });
@@ -169,7 +169,7 @@ module.exports.reservarCombinaciones = async (
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriaVentasLogger.error("reservarCombinaciones.error", {
+            loteriaReservasLogger.error("reservarCombinaciones.error", {
               errorMessage: errorMsg,
             });
             let errorData = {
@@ -186,7 +186,7 @@ module.exports.reservarCombinaciones = async (
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriaVentasLogger.error("reservarCombinaciones.error", {
+    loteriaReservasLogger.error("reservarCombinaciones.error", {
       errorMessage: errorMsg,
     });
     let errorData = {
@@ -210,7 +210,7 @@ module.exports.eliminarReservas = async (
   ip
 ) => {
   try {
-    loteriaVentasLogger.silly("eliminarReservas");
+    loteriaReservasLogger.silly("eliminarReservas");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let loteriaCombinacionesXML = "";
     let lottoCombinacionesXML = "";
@@ -330,11 +330,11 @@ module.exports.eliminarReservas = async (
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaVentasLogger.info("eliminarReservas.loteria", logData);
+              loteriaReservasLogger.info("eliminarReservas.loteria", logData);
               resolve(response);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
-              loteriaVentasLogger.error("eliminarReservas.loteria.error", {
+              loteriaReservasLogger.error("eliminarReservas.loteria.error", {
                 message: `${errorCode}-${errorMessage}`,
               });
               let errorData = {
@@ -348,7 +348,7 @@ module.exports.eliminarReservas = async (
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriaVentasLogger.error("eliminarReservas.error", {
+            loteriaReservasLogger.error("eliminarReservas.error", {
               data: message,
               errorMessage: `${errorCode}-${errorMsg}`,
             });
@@ -365,7 +365,7 @@ module.exports.eliminarReservas = async (
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriaVentasLogger.error("eliminarReservas.error", {
+    loteriaReservasLogger.error("eliminarReservas.error", {
       errorMessage: errorMsg,
     });
     let errorData = {

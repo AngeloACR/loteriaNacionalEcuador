@@ -4,7 +4,7 @@ const CachePozo = require("../../sorteosPozoMillonario/controller/cache");
 const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache");
 const psdVentas = require("../../psdLoteria/ventas");
 const Ventas = require("../models/main");
-const Wallet = require("../../wallet/controller/main"); // COMUNICAR POR gRPC
+const Wallet = require("../../exalogic/wallet"); // COMUNICAR POR gRPC
 const Ganadores = require("../../ganadores/models/main"); // COMUNICAR POR gRPC
 const { ventasLogger } = require("../logging");
 var errorHandler = require("../errors").errorHandler;
@@ -475,7 +475,7 @@ const ventasController = {
   actualizarVentaStatus: async (id, status, value) => {
     try {
       let venta = (await Ventas.getVentaById(id)).values;
-      venta.status = status;
+      venta['status'] = status;
       switch (status) {
         case "Reservada":
           venta["exaReservaId"] = value;

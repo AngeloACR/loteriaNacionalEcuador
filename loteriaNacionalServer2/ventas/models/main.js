@@ -146,11 +146,10 @@ VentaSchema.statics = {
 
   addVenta: async function (element) {
     try {
-      let newVenta = new this(element);
-      let venta = await newVenta.save();
+      let newVenta = await this.create(element);
       let response = {
         status: true,
-        values: venta,
+        values: newVenta,
       };
       return response;
     } catch (error) {
@@ -166,7 +165,7 @@ VentaSchema.statics = {
   getVentasByTipoLoteria: async function (tipoLoteria) {
     try {
       const query = { tipoLoteria: tipoLoteria };
-      let ventas = await Venta.find(query);
+      let ventas = await this.find(query);
       let response = {
         status: true,
         values: ventas,
@@ -180,7 +179,7 @@ VentaSchema.statics = {
   getVentaById: async function (id) {
     try {
       let query = { _id: id };
-      let venta = await Venta.findOne(query);
+      let venta = await this.findOne(query);
       let response = {
         status: true,
         values: venta,
@@ -197,7 +196,7 @@ VentaSchema.statics = {
   getVentaByVentaId: async function (id, accountId) {
     try {
       let query = { ventaId: id };
-      let venta = await Venta.findOne(query);
+      let venta = await this.findOne(query);
       let response;
       if (venta) {
         if (accountId == venta.accountId) {
@@ -227,7 +226,7 @@ VentaSchema.statics = {
   getVentaByStatus: async function (status) {
     try {
       let query = { status };
-      let ventas = await Venta.find(query).sort({ date: -1 });
+      let ventas = await this.find(query).sort({ date: -1 });
       let response;
       if (ventas && ventas.length) {
         response = {
@@ -261,7 +260,7 @@ VentaSchema.statics = {
   getVentaByExaReservaId: async function (id) {
     try {
       let query = { exaReservaId: id };
-      let venta = await Venta.findOne(query);
+      let venta = await this.findOne(query);
       let response;
       if (venta) {
         response = {
@@ -299,7 +298,7 @@ VentaSchema.statics = {
   ) {
     try {
       let query = { exaReservaId: id };
-      let venta = await Venta.findOne(query);
+      let venta = await this.findOne(query);
       let response;
       if (venta) {
         venta.exaReservaId = newReservaId;
@@ -327,7 +326,7 @@ VentaSchema.statics = {
   getVentaByReservaId: async function (id) {
     try {
       let query = { reservaId: id };
-      let venta = await Venta.findOne(query);
+      let venta = await this.findOne(query);
       let response = {
         status: true,
         values: venta,

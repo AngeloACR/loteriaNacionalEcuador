@@ -2,12 +2,13 @@ var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
 var {loteriaError} = require("./errors");
+const path = require( 'path' )
 
 const { loteriaVentasLogger } = require("./logging");
 const config = require("../environments/test");
 
 const medioId = config.medioAplicativoId;
-const address = config.aplicativoAddress;
+const address = path.join( __dirname, config.aplicativoAddress );
 
 
 module.exports.consultarDescuentos = async (token, user, ip) => {

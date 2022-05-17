@@ -12,7 +12,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
   providedIn: "root",
 })
 export class LotteryService {
-  localSource = "http://localhost:200";
+  localSource = "http://localhost:100";
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
@@ -232,7 +232,6 @@ export class LotteryService {
         break;
       case 5:
         address = "/pozo";
-        endpoint = `${endpoint}/combinacionesDisponibles`;
 
         address = this.mySource + address + endpoint;
         return new Promise<Array<ticketsAnimales>>((resolve, reject) => {
@@ -251,7 +250,6 @@ export class LotteryService {
         break;
       case 14:
         address = "/millonaria";
-        endpoint = `${endpoint}/combinacionesDisponibles`;
 
         address = this.mySource + address + endpoint;
         return new Promise<Array<ticketsMillonaria>>((resolve, reject) => {
@@ -289,7 +287,7 @@ export class LotteryService {
       token,
     };
 
-    address = this.mySource +  address + endpoint;
+address = this.mySource +  address + endpoint;
     return new Promise<Array<any>>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
