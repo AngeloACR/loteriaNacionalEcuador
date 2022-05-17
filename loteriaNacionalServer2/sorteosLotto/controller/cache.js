@@ -1,4 +1,4 @@
-const Resultados = require("./main");
+const psdResultados = require("../../psdLoteria/resultados");
 const Sorteos = require("../models/sorteo");
 const psdAuth = require("../../psdLoteria/auth");
 const psdSorteos = require("../../psdLoteria/sorteos");
@@ -25,7 +25,8 @@ const cacheController = {
   setUltimoResultado: async () => {
     try {
       let client = redis.getClient();
-      let response = await Resultados.buscarUltimosResultados();
+      let token = (await psdAuth.autenticarUsuario()).token;
+      let response = await psdResultados.consultarUltimosResultados(2,token);
       await client.connect();
       await client.set("ultimoResultadoLotto", JSON.stringify(response));
       await client.quit();

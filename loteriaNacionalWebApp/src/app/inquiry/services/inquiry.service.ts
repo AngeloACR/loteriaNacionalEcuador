@@ -10,7 +10,7 @@ export class InquiryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  //mySource = this.localSource;
+  //SmySource = this.localSource;
   mySource = this.testSource;
   //mySource = this.productionSource;
 
@@ -157,48 +157,56 @@ export class InquiryService {
   getUltimoResultado(address) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
-    let endpoint = "/ultimoResultado";
+    let endpoint = "/cache/ultimoResultado";
     address = this.mySource + address + endpoint;
     return new Promise((resolve, reject) => {
-      this.http.get(address, { headers: headers }).subscribe((data: any) => {
-        let response;
-        switch (address) {
-          case "/loteria":
-            let loteriaNacional = data.loteriaNacional;
-            localStorage.setItem(
-              "loteriaNacionalUltimoResultado",
-              JSON.stringify(loteriaNacional)
-            );
+      this.http.get(address, { headers: headers }).subscribe(
+        (data: any) => {
+          let response;
+          switch (address) {
+            case "/loteria":
+              let loteriaNacional = data.loteriaNacional;
+              localStorage.setItem(
+                "loteriaNacionalUltimoResultado",
+                JSON.stringify(loteriaNacional)
+              );
 
-            response = { tipo: "loteriaNacional", data: loteriaNacional };
-            break;
-          case "/lotto":
-            let lotto = data.lotto;
-            localStorage.setItem("lottoUltimoResultado", JSON.stringify(lotto));
-            response = { tipo: "lotto", data: lotto };
-            break;
-          case "/pozo":
-            let pozoMillonario = data.pozoMillonario;
-            localStorage.setItem(
-              "pozoMillonarioUltimoResultado",
-              JSON.stringify(pozoMillonario)
-            );
-            response = { tipo: "pozoMillonari", data: pozoMillonario };
-            break;
-          case "/millonaria":
-            let laMillonaria = data.laMillonaria;
-            localStorage.setItem(
-              "laMillonariaUltimoResultado",
-              JSON.stringify(laMillonaria)
-            );
-            response = { tipo: "laMillonaria", data: laMillonaria };
-            break;
+              response = { tipo: "loteriaNacional", data: loteriaNacional };
+              break;
+            case "/lotto":
+              let lotto = data.lotto;
+              localStorage.setItem(
+                "lottoUltimoResultado",
+                JSON.stringify(lotto)
+              );
+              response = { tipo: "lotto", data: lotto };
+              break;
+            case "/pozo":
+              let pozoMillonario = data.pozoMillonario;
+              localStorage.setItem(
+                "pozoMillonarioUltimoResultado",
+                JSON.stringify(pozoMillonario)
+              );
+              response = { tipo: "pozoMillonari", data: pozoMillonario };
+              break;
+            case "/millonaria":
+              let laMillonaria = data.laMillonaria;
+              localStorage.setItem(
+                "laMillonariaUltimoResultado",
+                JSON.stringify(laMillonaria)
+              );
+              response = { tipo: "laMillonaria", data: laMillonaria };
+              break;
 
-          default:
-            break;
+            default:
+              break;
+          }
+          resolve(response);
+        },
+        (error: any) => {
+          reject(new Error(error.error.message));
         }
-        resolve(response);
-      });
+      );
     });
   }
 

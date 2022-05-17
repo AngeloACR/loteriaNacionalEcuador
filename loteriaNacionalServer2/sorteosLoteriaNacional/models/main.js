@@ -185,7 +185,5 @@ resultadoLoteriaSchema.statics = {
       }
     },
   
-
-  
   };
 module.exports = db.model("ResultadoLoteria", resultadoLoteriaSchema);
