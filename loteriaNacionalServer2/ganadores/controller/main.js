@@ -159,7 +159,7 @@ const ganadoresController = {
   getGanador: async (req, res) => {
     try {
       let ticketId = req.body.ticketId;
-      let response = Ganadores.getGanador(ticketId);
+      let response = await Ganadores.getGanador(ticketId);
       res.status(200).json(response);
     } catch (e) {
       let response = {
