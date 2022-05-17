@@ -153,6 +153,13 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
               if(resultado.tipoLoteria == "14") resultado['serie'] = data.$.Comb2
               return resultado;
             });
+            loteriaConsultasLogger.info(
+              "consultarUltimosResultados.loteria",
+              {
+                data,
+                response,
+              }
+            );
             resolve(response);
           } else {
             reject(data.mt.c[0].msgError[0]);
