@@ -46,7 +46,7 @@ module.exports = {
 
   // MONGO DATABASE DATA
   //dbAddress: "mongodb://localhost:27017/loteriaDB",
-  dbAddress: "mongodb://localhost:27017/loteriaDB",
+  dbAddress: "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backuptest",
   //dbAddress: "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
 
   //MAILJET DATA
@@ -66,14 +66,6 @@ module.exports = {
     dbName: "LoteriaNacional",
     connectionLimit: 100,
    */
-  // STATIC FILES PATHS
-  //sourceBoletines: "http://localhost:5480/boletines/",
-  sourceBoletines: "https://ventas-api-prueba.loteria.com.ec/boletines/",
-  //sourceBoletines: "https://ventas-api.loteria.com.ec/boletines/",
-
-  //sourceBoletos: "http://localhost:5480/boletos/",
-  sourceBoletos: "https://ventas-api.loteria.com.ec/boletos/",
-  //sourceBoletos: "https://ventas-api-prueba.loteria.com.ec/boletos/",
 
   // FTP DATA
   //ftpHost: "localhost",
