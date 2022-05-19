@@ -582,22 +582,22 @@ const mainController = {
       let responseG = [];
       let responseH = [];
       for (let i = 0; i < auxE.length; i++) {
-        let queryE = { sorteo: auxE[i].sorteo };
+        let queryE = { codigo: auxE[i].codigo };
         responseE.push(
           await PremiosLoteria.updateOne(
             queryE,
             {
               $set: {
-                numeroSorteo: auxE.numeroSorteo,
-                codigo: auxE.codigo,
-                nombre: auxE.nombre,
-                tipoPremio: auxE.tipoPremio,
-                primeraSuerte: auxE.primeraSuerte,
-                valorPremio: auxE.valorPremio,
-                valorPremioConDescuento: auxE.valorPremioConDescuento,
-                valorFraccion: auxE.valorFraccion,
-                valorFraccionConDescuento: auxE.valorFraccionConDescuento ,
-                descripcionDescuento: auxE.descripcionDescuento ,
+                numeroSorteo: auxE[i].numeroSorteo,
+                codigo: auxE[i].codigo,
+                nombre: auxE[i].nombre,
+                tipoPremio: auxE[i].tipoPremio,
+                primeraSuerte: auxE[i].primeraSuerte,
+                valorPremio: auxE[i].valorPremio,
+                valorPremioConDescuento: auxE[i].valorPremioConDescuento,
+                valorFraccion: auxE[i].valorFraccion,
+                valorFraccionConDescuento: auxE[i].valorFraccionConDescuento ,
+                descripcionDescuento: auxE[i].descripcionDescuento ,
               },
             },
             { upsert: true } // Make this update into an upsert
@@ -605,22 +605,22 @@ const mainController = {
         );
       }
       for (let i = 0; i < auxF.length; i++) {
-        let queryF = { sorteo: auxF[i].sorteo };
+        let queryF = { codigo: auxF[i].codigo };
         responseF.push(
           await PremiosLotto.updateOne(
             queryF,
             {
               $set: {
-                numeroSorteo: auxF.numeroSorteo,
-                codigo: auxF.codigo,
-                nombre: auxF.nombre,
-                tipoPremio: auxF.tipoPremio,
-                primeraSuerte: auxF.primeraSuerte,
-                valorPremio: auxF.valorPremio,
-                valorPremioConDescuento: auxF.valorPremioConDescuento,
-                valorFraccion: auxF.valorFraccion,
-                valorFraccionConDescuento: auxF.valorFraccionConDescuento ,
-                descripcionDescuento: auxF.descripcionDescuento ,
+                numeroSorteo: auxF[i].numeroSorteo,
+                codigo: auxF[i].codigo,
+                nombre: auxF[i].nombre,
+                tipoPremio: auxF[i].tipoPremio,
+                primeraSuerte: auxF[i].primeraSuerte,
+                valorPremio: auxF[i].valorPremio,
+                valorPremioConDescuento: auxF[i].valorPremioConDescuento,
+                valorFraccion: auxF[i].valorFraccion,
+                valorFraccionConDescuento: auxF[i].valorFraccionConDescuento ,
+                descripcionDescuento: auxF[i].descripcionDescuento ,
               },
             },
             { upsert: true } // Make this update into an upsert
@@ -628,22 +628,22 @@ const mainController = {
         );
       }
       for (let i = 0; i < auxG.length; i++) {
-        let queryG = { sorteo: auxG[i].sorteo };
+        let queryG = { codigo: auxG[i].codigo };
         responseG.push(
           await PremiosPozoMillonario.updateOne(
             queryG,
             {
               $set: {
-                numeroSorteo: auxG.numeroSorteo,
-                codigo: auxG.codigo,
-                nombre: auxG.nombre,
-                tipoPremio: auxG.tipoPremio,
-                primeraSuerte: auxG.primeraSuerte,
-                valorPremio: auxG.valorPremio,
-                valorPremioConDescuento: auxG.valorPremioConDescuento,
-                valorFraccion: auxG.valorFraccion,
-                valorFraccionConDescuento: auxG.valorFraccionConDescuento ,
-                descripcionDescuento: auxG.descripcionDescuento ,
+                numeroSorteo: auxG[i].numeroSorteo,
+                codigo: auxG[i].codigo,
+                nombre: auxG[i].nombre,
+                tipoPremio: auxG[i].tipoPremio,
+                primeraSuerte: auxG[i].primeraSuerte,
+                valorPremio: auxG[i].valorPremio,
+                valorPremioConDescuento: auxG[i].valorPremioConDescuento,
+                valorFraccion: auxG[i].valorFraccion,
+                valorFraccionConDescuento: auxG[i].valorFraccionConDescuento ,
+                descripcionDescuento: auxG[i].descripcionDescuento ,
               },
             },
             { upsert: true } // Make this update into an upsert
@@ -651,22 +651,22 @@ const mainController = {
         );
       }
       for (let i = 0; i < auxH.length; i++) {
-        let queryH = { sorteo: auxH[i].sorteo };
+        let queryH = { codigo: auxH[i].codigo };
         responseH.push(
           await PremiosLaMillonaria.updateOne(
             queryH,
             {
               $set: {
-                numeroSorteo: auxH.numeroSorteo,
-                codigo: auxH.codigo,
-                nombre: auxH.nombre,
-                tipoPremio: auxH.tipoPremio,
-                primeraSuerte: auxH.primeraSuerte,
-                valorPremio: auxH.valorPremio,
-                valorPremioConDescuento: auxH.valorPremioConDescuento,
-                valorFraccion: auxH.valorFraccion,
-                valorFraccionConDescuento: auxH.valorFraccionConDescuento ,
-                descripcionDescuento: auxH.descripcionDescuento ,
+                numeroSorteo: auxH[i].numeroSorteo,
+                codigo: auxH[i].codigo,
+                nombre: auxH[i].nombre,
+                tipoPremio: auxH[i].tipoPremio,
+                primeraSuerte: auxH[i].primeraSuerte,
+                valorPremio: auxH[i].valorPremio,
+                valorPremioConDescuento: auxH[i].valorPremioConDescuento,
+                valorFraccion: auxH[i].valorFraccion,
+                valorFraccionConDescuento: auxH[i].valorFraccionConDescuento ,
+                descripcionDescuento: auxH[i].descripcionDescuento ,
               },
             },
             { upsert: true } // Make this update into an upsert
