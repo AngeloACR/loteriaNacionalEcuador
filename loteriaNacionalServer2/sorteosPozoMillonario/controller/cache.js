@@ -45,9 +45,9 @@ const cacheController = {
         response = await client.get("pozoSorteos");
       }
       await client.quit();
-      res.status(200).json(JSON.parse(response));
+      return response;
     } catch (e) {
-      res.status(400).json(e.toString());
+      console.log(e.toString());
     }
   },
 
