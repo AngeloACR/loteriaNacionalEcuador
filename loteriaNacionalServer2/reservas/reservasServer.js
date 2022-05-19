@@ -35,8 +35,6 @@ module.exports.init = function (port) {
   
   //Adding routes
   app.use(helmet());
-  app.use("/", routes);
-  app.use("/cache", cache);
   app.use((req, res, next) => {
     res.removeHeader("X-Frame-Options");
     next();
@@ -53,6 +51,8 @@ module.exports.init = function (port) {
         ],
       },
     })
-  );
-  return app;
-};
+    );
+    app.use("/", routes);
+    app.use("/cache", cache);
+    return app;
+  };
