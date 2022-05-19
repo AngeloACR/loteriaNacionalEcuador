@@ -3,9 +3,6 @@ const db = require("../database").db;
 
 const premioSchema = new mongoose.Schema(
   {
-    tipoLoteria: {
-      type: Number,
-    },
     numeroSorteo: {
       type: String,
     },

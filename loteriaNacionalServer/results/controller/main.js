@@ -10,11 +10,17 @@ const UltimosResultadosLoteria = require("../../../loteriaNacionalServer2/sorteo
 const UltimosResultadosLotto = require("../../../loteriaNacionalServer2/sorteosLotto/models/ultimoResultado");
 const UltimosResultadosPozoMillonario = require("../../../loteriaNacionalServer2/sorteosPozoMillonario/models/ultimoResultado");
 const UltimosResultadosLaMillonaria = require("../../../loteriaNacionalServer2/sorteosLaMillonaria/models/ultimoResultado");
+
 const Sorteos = require("../model/sorteo");
 const SorteosLoteria = require("../../../loteriaNacionalServer2/sorteosLoteriaNacional/models/sorteo");
 const SorteosLotto = require("../../../loteriaNacionalServer2/sorteosLotto/models/sorteo");
 const SorteosPozoMillonario = require("../../../loteriaNacionalServer2/sorteosPozoMillonario/models/sorteo");
 const SorteosLaMillonaria = require("../../../loteriaNacionalServer2/sorteosLaMillonaria/models/sorteo");
+const Premios = require("../model/premios");
+const PremiosLoteria = require("../../../loteriaNacionalServer2/sorteosLoteriaNacional/models/premio");
+const PremiosLotto = require("../../../loteriaNacionalServer2/sorteosLotto/models/premio");
+const PremiosPozoMillonario = require("../../../loteriaNacionalServer2/sorteosPozoMillonario/models/premio");
+const PremiosLaMillonaria = require("../../../loteriaNacionalServer2/sorteosLaMillonaria/models/premio");
 
 var fs = require("fs");
 const ultimoResultado = require("../model/ultimoResultado");
@@ -405,11 +411,21 @@ const mainController = {
       };
 
       let lotto = {
-        ultimoResultadoLotto: { combinacion1: auxB.ultimoResultadoLotto.combinacion1 },
-        resultadoLottoPlus: {combinacion2: auxB.resultadoLottoPlus.combinacion2},
-        resultadosLottito: auxB.resultadosLottito.map(item=> {return {combinacion3: item.combinacion3}}),
-        resultadoNosVemosJefe: {combinacion4: auxB.resultadoNosVemosJefe.combinacion4},
-        resultadoAntojito: {combinacion5: auxB.resultadoAntojito.combinacion5},
+        ultimoResultadoLotto: {
+          combinacion1: auxB.ultimoResultadoLotto.combinacion1,
+        },
+        resultadoLottoPlus: {
+          combinacion2: auxB.resultadoLottoPlus.combinacion2,
+        },
+        resultadosLottito: auxB.resultadosLottito.map((item) => {
+          return { combinacion3: item.combinacion3 };
+        }),
+        resultadoNosVemosJefe: {
+          combinacion4: auxB.resultadoNosVemosJefe.combinacion4,
+        },
+        resultadoAntojito: {
+          combinacion5: auxB.resultadoAntojito.combinacion5,
+        },
         codigoPremioLottoPlus: auxB.codigoPremioLottoPlus,
         codigoPremioLottito: auxB.codigoPremioLottito,
         codigoPremioNosVemosJefe: auxB.codigoPremioNosVemosJefe,
@@ -459,20 +475,22 @@ const mainController = {
       let responseH = [];
       for (let i = 0; i < auxE.length; i++) {
         let queryE = { sorteo: auxE[i].sorteo };
-        responseE.push( await SorteosLoteria.updateOne(
-          queryE,
-          {
-            $set: {
-              sorteo: auxE[i].sorteo,
-              precio: auxE[i].precio,
-              fecha: auxE[i].fecha,
-              cantidadDeFracciones: auxE[i].cantidadDeFracciones,
-              valorPremioPrincipal: auxE[i].valorPremioPrincipal,
-              nombre: auxE[i].nombre,
+        responseE.push(
+          await SorteosLoteria.updateOne(
+            queryE,
+            {
+              $set: {
+                sorteo: auxE[i].sorteo,
+                precio: auxE[i].precio,
+                fecha: auxE[i].fecha,
+                cantidadDeFracciones: auxE[i].cantidadDeFracciones,
+                valorPremioPrincipal: auxE[i].valorPremioPrincipal,
+                nombre: auxE[i].nombre,
+              },
             },
-          },
-          { upsert: true } // Make this update into an upsert
-        ));
+            { upsert: true } // Make this update into an upsert
+          )
+        );
       }
       for (let i = 0; i < auxF.length; i++) {
         let queryF = { sorteo: auxF[i].sorteo };
@@ -495,37 +513,165 @@ const mainController = {
       }
       for (let i = 0; i < auxG.length; i++) {
         let queryG = { sorteo: auxG[i].sorteo };
-        responseG.push( await SorteosPozoMillonario.updateOne(
-          queryG,
-          {
-            $set: {
-              sorteo: auxG[i].sorteo,
-              precio: auxG[i].precio,
-              fecha: auxG[i].fecha,
-              cantidadDeFracciones: auxG[i].cantidadDeFracciones,
-              valorPremioPrincipal: auxG[i].valorPremioPrincipal,
-              nombre: auxG[i].nombre,
+        responseG.push(
+          await SorteosPozoMillonario.updateOne(
+            queryG,
+            {
+              $set: {
+                sorteo: auxG[i].sorteo,
+                precio: auxG[i].precio,
+                fecha: auxG[i].fecha,
+                cantidadDeFracciones: auxG[i].cantidadDeFracciones,
+                valorPremioPrincipal: auxG[i].valorPremioPrincipal,
+                nombre: auxG[i].nombre,
+              },
             },
-          },
-          { upsert: true } // Make this update into an upsert
-        ));
+            { upsert: true } // Make this update into an upsert
+          )
+        );
       }
       for (let i = 0; i < auxH.length; i++) {
         let queryH = { sorteo: auxH[i].sorteo };
-        responseH.push( await SorteosLaMillonaria.updateOne(
-          queryH,
-          {
-            $set: {
-              sorteo: auxH[i].sorteo,
-              precio: auxH[i].precio,
-              fecha: auxH[i].fecha,
-              cantidadDeFracciones: auxH[i].cantidadDeFracciones,
-              valorPremioPrincipal: auxH[i].valorPremioPrincipal,
-              nombre: auxH[i].nombre,
+        responseH.push(
+          await SorteosLaMillonaria.updateOne(
+            queryH,
+            {
+              $set: {
+                sorteo: auxH[i].sorteo,
+                precio: auxH[i].precio,
+                fecha: auxH[i].fecha,
+                cantidadDeFracciones: auxH[i].cantidadDeFracciones,
+                valorPremioPrincipal: auxH[i].valorPremioPrincipal,
+                nombre: auxH[i].nombre,
+              },
             },
-          },
-          { upsert: true } // Make this update into an upsert
-        ));
+            { upsert: true } // Make this update into an upsert
+          )
+        );
+      }
+
+      res.status(200).json({
+        responseA,
+        responseB,
+        responseC,
+        responseD,
+        responseE,
+        responseF,
+        responseG,
+        responseH,
+      });
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  parsePremios: async (req, res) => {
+    try {
+      let auxE = await Premios.find({ tipoLoteria: 1 });
+      let auxF = await Premios.find({ tipoLoteria: 2 });
+      let auxG = await Premios.find({ tipoLoteria: 5 });
+      let auxH = await Premios.find({ tipoLoteria: 14 });
+
+      let responseE = [];
+      let responseF = [];
+      let responseG = [];
+      let responseH = [];
+      for (let i = 0; i < auxE.length; i++) {
+        let queryE = { sorteo: auxE[i].sorteo };
+        responseE.push(
+          await PremiosLoteria.updateOne(
+            queryE,
+            {
+              $set: {
+                numeroSorteo: auxE.numeroSorteo,
+                codigo: auxE.codigo,
+                nombre: auxE.nombre,
+                tipoPremio: auxE.tipoPremio,
+                primeraSuerte: auxE.primeraSuerte,
+                valorPremio: auxE.valorPremio,
+                valorPremioConDescuento: auxE.valorPremioConDescuento,
+                valorFraccion: auxE.valorFraccion,
+                valorFraccionConDescuento: auxE.valorFraccionConDescuento ,
+                descripcionDescuento: auxE.descripcionDescuento ,
+              },
+            },
+            { upsert: true } // Make this update into an upsert
+          )
+        );
+      }
+      for (let i = 0; i < auxF.length; i++) {
+        let queryF = { sorteo: auxF[i].sorteo };
+        responseF.push(
+          await PremiosLotto.updateOne(
+            queryF,
+            {
+              $set: {
+                numeroSorteo: auxF.numeroSorteo,
+                codigo: auxF.codigo,
+                nombre: auxF.nombre,
+                tipoPremio: auxF.tipoPremio,
+                primeraSuerte: auxF.primeraSuerte,
+                valorPremio: auxF.valorPremio,
+                valorPremioConDescuento: auxF.valorPremioConDescuento,
+                valorFraccion: auxF.valorFraccion,
+                valorFraccionConDescuento: auxF.valorFraccionConDescuento ,
+                descripcionDescuento: auxF.descripcionDescuento ,
+              },
+            },
+            { upsert: true } // Make this update into an upsert
+          )
+        );
+      }
+      for (let i = 0; i < auxG.length; i++) {
+        let queryG = { sorteo: auxG[i].sorteo };
+        responseG.push(
+          await PremiosPozoMillonario.updateOne(
+            queryG,
+            {
+              $set: {
+                numeroSorteo: auxG.numeroSorteo,
+                codigo: auxG.codigo,
+                nombre: auxG.nombre,
+                tipoPremio: auxG.tipoPremio,
+                primeraSuerte: auxG.primeraSuerte,
+                valorPremio: auxG.valorPremio,
+                valorPremioConDescuento: auxG.valorPremioConDescuento,
+                valorFraccion: auxG.valorFraccion,
+                valorFraccionConDescuento: auxG.valorFraccionConDescuento ,
+                descripcionDescuento: auxG.descripcionDescuento ,
+              },
+            },
+            { upsert: true } // Make this update into an upsert
+          )
+        );
+      }
+      for (let i = 0; i < auxH.length; i++) {
+        let queryH = { sorteo: auxH[i].sorteo };
+        responseH.push(
+          await PremiosLaMillonaria.updateOne(
+            queryH,
+            {
+              $set: {
+                numeroSorteo: auxH.numeroSorteo,
+                codigo: auxH.codigo,
+                nombre: auxH.nombre,
+                tipoPremio: auxH.tipoPremio,
+                primeraSuerte: auxH.primeraSuerte,
+                valorPremio: auxH.valorPremio,
+                valorPremioConDescuento: auxH.valorPremioConDescuento,
+                valorFraccion: auxH.valorFraccion,
+                valorFraccionConDescuento: auxH.valorFraccionConDescuento ,
+                descripcionDescuento: auxH.descripcionDescuento ,
+              },
+            },
+            { upsert: true } // Make this update into an upsert
+          )
+        );
       }
 
       res.status(200).json({
