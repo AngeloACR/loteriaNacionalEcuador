@@ -16,7 +16,7 @@
         <p *ngIf="tipoLoteria == 14"><span>SERIE: </span>{{ ticket.serie }}</p>
         <p><span>PREMIO: </span>{{ nombrePremio }}</p>
         <p><span>ENTERO: </span>{{ valorPremio }}</p>
-        <p *ngIf="tipoLoteria == 1">
+        <p *ngIf="tipoLoteria == 1 || tipoLoteria == 14">
           <span>FRACCIÓN: </span>{{ valorFraccion }}
         </p>
         <p *ngIf="descripcionDescuento != ''">Aplican descuentos en premios</p>
