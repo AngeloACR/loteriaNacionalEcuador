@@ -406,10 +406,10 @@ const mainController = {
 
       let lotto = {
         ultimoResultadoLotto: { combinacion1: auxB.ultimoResultadoLotto.combinacion1 },
-        resultadoLottoPlus: auxB.resultadoLottoPlus,
-        resultadosLottito: auxB.resultadosLottito,
-        resultadoNosVemosJefe: auxB.resultadoNosVemosJefe,
-        resultadoAntojito: auxB.resultadoAntojito,
+        resultadoLottoPlus: {combinacion2: auxB.resultadoLottoPlus.combinacion2},
+        resultadosLottito: auxB.resultadosLottito.map(item=> {return {combinacion3: item.combinacion3}}),
+        resultadoNosVemosJefe: {combinacion4: auxB.resultadoNosVemosJefe.combinacion4},
+        resultadoAntojito: {combinacion5: auxB.resultadoAntojito.combinacion5},
         codigoPremioLottoPlus: auxB.codigoPremioLottoPlus,
         codigoPremioLottito: auxB.codigoPremioLottito,
         codigoPremioNosVemosJefe: auxB.codigoPremioNosVemosJefe,

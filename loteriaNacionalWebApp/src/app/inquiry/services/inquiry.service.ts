@@ -147,7 +147,7 @@ export class InquiryService {
   async recuperarUltimosResultados() {
     let loterias = ["/loteria", "/lotto", "/pozo", "/millonaria"];
     let response = {};
-    for (let i = 0; i < loterias.length; i) {
+    for (let i = 0; i < loterias.length; i++) {
       let aux: any = await this.getUltimoResultado(loterias[i]);
       if(aux){
         response[aux.tipo] = aux.data;
@@ -160,14 +160,14 @@ export class InquiryService {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     let endpoint = "/cache/ultimoResultado";
-    address = this.mySource + address + endpoint;
+    let auxAddress = this.mySource + address + endpoint;
     return new Promise((resolve, reject) => {
-      this.http.get(address, { headers: headers }).subscribe(
+      this.http.get(auxAddress, { headers: headers }).subscribe(
         (data: any) => {
           let response;
           switch (address) {
             case "/loteria":
-              let loteriaNacional = data.loteriaNacional;
+              let loteriaNacional = data;
               localStorage.setItem(
                 "loteriaNacionalUltimoResultado",
                 JSON.stringify(loteriaNacional)
@@ -176,7 +176,7 @@ export class InquiryService {
               response = { tipo: "loteriaNacional", data: loteriaNacional };
               break;
             case "/lotto":
-              let lotto = data.lotto;
+              let lotto = data;
               localStorage.setItem(
                 "lottoUltimoResultado",
                 JSON.stringify(lotto)
@@ -184,7 +184,7 @@ export class InquiryService {
               response = { tipo: "lotto", data: lotto };
               break;
             case "/pozo":
-              let pozoMillonario = data.pozoMillonario;
+              let pozoMillonario = data;
               localStorage.setItem(
                 "pozoMillonarioUltimoResultado",
                 JSON.stringify(pozoMillonario)
@@ -192,7 +192,7 @@ export class InquiryService {
               response = { tipo: "pozoMillonari", data: pozoMillonario };
               break;
             case "/millonaria":
-              let laMillonaria = data.laMillonaria;
+              let laMillonaria = data;
               localStorage.setItem(
                 "laMillonariaUltimoResultado",
                 JSON.stringify(laMillonaria)
