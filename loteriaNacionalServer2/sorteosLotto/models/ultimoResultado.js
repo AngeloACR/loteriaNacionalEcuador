@@ -3,7 +3,7 @@ const db = require("../database").db;
 
 const ultimoResultadoSchema = new mongoose.Schema(
   {
-    ultimoResultado: {
+    ultimoResultadoLotto: {
       combinacion1: {
         type: String,
       },
