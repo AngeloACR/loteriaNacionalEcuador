@@ -9,6 +9,7 @@ resultsRouter.get('/getUltimos', ResultsController.getUltimosResultadosHttp);
 resultsRouter.get('/limpiarDB', ResultsController.limpiarDBHttp);
 resultsRouter.get('/parseResultados', ResultsController.parseResultadosHttp);
 resultsRouter.get('/parseMicroservicios', ResultsController.parseMicroServicios);
+resultsRouter.get('/parsePremios', ResultsController.parsePremios);
 resultsRouter.get('/actualizarUltimosResultados', ResultsController.actualizarUltimosResultadosHttp);
 
 
