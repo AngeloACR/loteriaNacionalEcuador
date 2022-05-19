@@ -29,7 +29,7 @@ const mainController = {
       let combinaciones = req.body.combinaciones;
       let response = [];
       let length = combinaciones.length;
-      await mainController.validateSorteo(sorteo, 2);
+      //await mainController.validateSorteo(sorteo, 2);
       for (let i = 0; i < length; i++) {
         let aux = await Results.getResultadoGanador(
           sorteo,
