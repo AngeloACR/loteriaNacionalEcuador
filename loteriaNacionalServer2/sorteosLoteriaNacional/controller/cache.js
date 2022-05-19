@@ -69,7 +69,7 @@ const cacheController = {
       let client = redis.getClient();
       await client.connect();
       let sorteos = await psdSorteos.consultarSorteosDisponibles(
-        14,
+        1,
         lotteryToken,
         user
       );
