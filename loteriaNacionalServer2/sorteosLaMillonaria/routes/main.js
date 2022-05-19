@@ -8,8 +8,6 @@ mainRouter.post(
 );
 mainRouter.get("/sorteosDisponibles", mainController.searchSorteosDisponibles);
 mainRouter.get("/getSeries", mainController.searchSeries);
-
-mainRouter.get("/ultimosResultados", mainController.buscarUltimosResultados);
 mainRouter.post("/ganador", mainController.buscarWinner);
 
 module.exports = mainRouter;

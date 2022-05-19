@@ -128,12 +128,12 @@ resultadoMillonariaSchema.statics = {
 
       if (resultado && resultado.length != 0) {
         let resultado2 = resultado.filter((item) => {
-          return serieAux == item.combinacion2;
+          return (serieAux == item.combinacion2);
         });
         if (resultado2 && resultado2.length != 0) {
           response = {
             status: true,
-            values: resultado,
+            values: resultado2,
           };
         } else {
           response = {

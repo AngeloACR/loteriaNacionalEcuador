@@ -26,16 +26,6 @@ const mainController = {
       throw new Error(e.message);
     }
   },
-  buscarBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 14;
-      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
-      res.status(200).json(boletinAddress);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
   searchSorteosDisponibles: async (req, res) => {
     try {
       let ip = req.headers["x-forwarded-for"];
@@ -80,23 +70,6 @@ const mainController = {
       apiVentasLogger.error("searchSorteosDisponibles.error", {
         errorMessage: e.message,
       });
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
-    }
-  },
-  buscarBoleto: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 14;
-      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
-
-      res.status(200).json(boletinAddress);
-    } catch (e) {
       let response = {
         status: "error",
         message: e.message,
@@ -215,14 +188,6 @@ const mainController = {
     }
   },
 
-  buscarUltimosResultados: async (req, res) => {
-    try {
-      response = await psdResultados.consultarUltimosResultados(14, token);
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
 };
 
 module.exports = mainController;
