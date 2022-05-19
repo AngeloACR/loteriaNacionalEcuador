@@ -675,10 +675,6 @@ const mainController = {
       }
 
       res.status(200).json({
-        responseA,
-        responseB,
-        responseC,
-        responseD,
         responseE,
         responseF,
         responseG,

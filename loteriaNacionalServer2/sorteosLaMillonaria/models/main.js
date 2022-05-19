@@ -124,7 +124,7 @@ resultadoMillonariaSchema.statics = {
       };
       let response;
       //let resultado = await Resultado.find(query).populate('premio');
-      let resultado = await ResultadoMillonaria.find(query).lean();
+      let resultado = await this.find(query).lean();
 
       if (resultado && resultado.length != 0) {
         let resultado2 = resultado.filter((item) => {
@@ -192,47 +192,6 @@ resultadoMillonariaSchema.statics = {
       let resultado = await this.findOne(query).lean();
       let response;
       if (resultado && resultado.length != 0) {
-        response = {
-          status: true,
-          values: resultado,
-        };
-      } else {
-        response = {
-          status: false,
-        };
-      }
-      return response;
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  getUltimoResultado: async function (tipoLoteria) {
-    try {
-      let query = { tipoLoteria: tipoLoteria };
-      let resultado;
-      if (tipoLoteria == 1) {
-        resultado = await UltimoResultado.findOne(query)
-          .populate("sorteo")
-          .populate("premioPrincipal");
-      } else if (tipoLoteria == 2) {
-        resultado = await UltimoResultado.findOne(query)
-          .populate("sorteo")
-          .populate("premioPrincipal")
-          .populate("premioNosVemosJefe")
-          .populate("premioLottoPlus")
-          .populate("premioLottito");
-      } else if (tipoLoteria == 5) {
-        resultado = await UltimoResultado.findOne(query)
-          .populate("sorteo")
-          .populate("premioPrincipal");
-      } else if (tipoLoteria == 14) {
-        resultado = await UltimoResultado.findOne(query)
-          .populate("sorteo")
-          .populate("premioPrincipal");
-      }
-      let response;
-      if (resultado) {
         response = {
           status: true,
           values: resultado,
