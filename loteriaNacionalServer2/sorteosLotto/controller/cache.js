@@ -44,7 +44,7 @@ const cacheController = {
         response = await client.get("lottoSorteos");
       }
       await client.quit();
-      return response;
+      return JSON.parse(response);
     } catch (e) {
       console.log(e.toString());
     }
