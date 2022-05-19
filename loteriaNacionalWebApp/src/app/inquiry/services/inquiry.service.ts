@@ -21,7 +21,7 @@ export class InquiryService {
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
     var address = "";
-    let endpoint = "";
+    let endpoint = "/cache";
     switch (tipoLoteria) {
       case 1:
         address = "/loteria";
@@ -149,7 +149,9 @@ export class InquiryService {
     let response = {};
     for (let i = 0; i < loterias.length; i) {
       let aux: any = await this.getUltimoResultado(loterias[i]);
-      response[aux.tipo] = aux.data;
+      if(aux){
+        response[aux.tipo] = aux.data;
+      }
     }
     return response;
   }

@@ -3,9 +3,6 @@ const db = require("../database").db;
 
 const ultimoResultadoSchema = new mongoose.Schema(
   {
-    tipoLoteria: {
-      type: Number,
-    },
     ultimoResultadoMillonaria: {
       combinacion1: {
         type: String,
@@ -44,4 +41,53 @@ ultimoResultadoSchema.virtual("premioPrincipal", {
   // an array. `justOne` is false by default.
   justOne: true,
 });
-module.exports = db.model("UltimoResultado", ultimoResultadoSchema);
+
+ultimoResultadoSchema.statics = {
+  actualizar: async function () {
+    try {
+      let response = await psdAuth.autenticarUsuario();
+      let token = response.token;
+
+      let psdUltimosResultados = await psdResultados.consultarUltimosResultados(
+        1,
+        token
+      );
+      if (psdUltimosResultados && psdUltimosResultados.length) {
+        let ultimoResultado = this.findOne();
+        for (let index = 0; index < psdUltimosResultados.length; index++) {
+          const resultado = psdUltimosResultados[index];
+          if (resultado.codigoPremio.includes("-1")) {
+            ultimoResultado.ultimoResultadoMillonaria.combinacion1 =
+              resultado.combinacion;
+            ultimoResultado.codigoPremioPrincipal = resultado.codigoPremio;
+            ultimoResultado.ultimoResultadoMillonaria.combinacion2 =
+              resultado.serie;
+            ultimoResultado.numeroSorteo = resultado.sorteo;
+          }
+        }
+
+        response = await ultimoResultado.save();
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+  get: async function () {
+    try {
+      return await this.findOne().lean();
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+};
+
+module.exports = db.model("UltimoResultadoMillonaria", ultimoResultadoSchema);

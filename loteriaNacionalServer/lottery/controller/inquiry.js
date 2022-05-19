@@ -234,15 +234,24 @@ const inquiryController = {
     }
   },
 
-  buscarMilloriaSorteosJugados: async (req, res) => {
+  buscarMillonariaSorteosJugados: async (req, res) => {
     try {
-      response = await Sorteos.getSorteos(14);
+      response = await Sorteos.getSorteos(1);
       res.status(200).json(response);
     } catch (e) {
       res.status(400).json(e.toString());
     }
   },
 
+
+  buscarMillonariaUltimosResultados: async (req, res) => {
+    try {
+      response = await Lottery.consultarUltimosResultados(4, token);
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
 
   buscarLoteriaWinner: async (req, res) => {
     try {

@@ -3,10 +3,7 @@ const db = require("../database").db;
 
 const ultimoResultadoSchema = new mongoose.Schema(
   {
-    tipoLoteria: {
-      type: Number,
-    },
-    ultimoResultadoLotto: {
+    ultimoResultado: {
       combinacion1: {
         type: String,
       },
@@ -110,5 +107,69 @@ ultimoResultadoSchema.virtual("premioLottito", {
   // an array. `justOne` is false by default.
   justOne: true,
 });
+
+ultimoResultadoSchema.statics = {
+  actualizar: async function () {
+    try {
+      let response = await psdAuth.autenticarUsuario();
+      let token = response.token;
+
+      let psdUltimosResultados = await psdResultados.consultarUltimosResultados(
+        1,
+        token
+      );
+      if (psdUltimosResultados && psdUltimosResultados.length) {
+        let ultimoResultado = this.findOne();
+        for (let index = 0; index < psdUltimosResultados.length; index++) {
+          const resultado = psdUltimosResultados[index];
+
+          ultimoResultado.numeroSorteo = resultado.sorteo;
+          if (resultado.codigoPremio.includes("-1")) {
+            ultimoResultado.ultimoResultadoLotto.combinacion1 =
+              resultado.combinacion;
+            ultimoResultado.codigoPremioPrincipal = resultado.codigoPremio;
+          } else if (resultado.codigoPremio.includes("-23")) {
+            ultimoResultado.resultadoLottoPlus.combinacion2 =
+              resultado.combinacion;
+            ultimoResultado.codigoPremioLottoPlus = resultado.codigoPremio;
+          } else if (resultado.codigoPremio.includes("-24")) {
+            ultimoResultado.resultadosLottito.push({
+              combinacion3: resultado.combinacion,
+            });
+            ultimoResultado.codigoPremioLottito = resultado.codigoPremio;
+          } else if (resultado.codigoPremio.includes("-25")) {
+            ultimoResultado.resultadoNosVemosJefe.combinacion4 =
+              resultado.combinacion;
+            ultimoResultado.codigoPremioNosVemosJefe = resultado.codigoPremio;
+          } else if (resultado.codigoPremio.includes("-26")) {
+            ultimoResultado.resultadoAntojito.combinacion5 =
+              resultado.combinacion;
+            ultimoResultado.codigoPremioAntojito = resultado.codigoPremio;
+          }
+        }
+
+        response = await ultimoResultado.save();
+      }
+      return response;
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+  get: async function () {
+    try {
+      return await this.findOne().lean();
+    } catch (error) {
+      let response = {
+        status: false,
+        msg: error.toString().replace("Error: ", ""),
+      };
+      return response;
+    }
+  },
+};
 
 module.exports = db.model("UltimoResultadoLotto", ultimoResultadoSchema);

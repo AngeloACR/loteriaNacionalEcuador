@@ -8,9 +8,6 @@ const sorteoSchema = new mongoose.Schema({
         type: String
     },
 
-    tipoLoteria: {
-        type: Number,
-    },
     precio: {
         type: Number,
     },
@@ -25,9 +22,6 @@ const sorteoSchema = new mongoose.Schema({
     },
     nombre: {
         type: String,
-    },
-    ultimoSorteo: {
-        type: Boolean,
     },
 
 })
@@ -120,7 +114,7 @@ sorteoSchema.statics = {
             token
           );
     
-          let aux = await this.setSorteos(
+          let aux = await this.setSorteosJugados(
             sorteos
           );
           response = {

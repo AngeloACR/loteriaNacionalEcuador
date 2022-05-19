@@ -9,7 +9,6 @@ mainRouter.post(
 mainRouter.get("/sorteosDisponibles", mainController.searchSorteosDisponibles);
 mainRouter.get("/getSeries", mainController.searchSeries);
 
-mainRouter.get("/sorteosJugados", mainController.buscarSorteosJugados);
 mainRouter.get("/ultimosResultados", mainController.buscarUltimosResultados);
 mainRouter.post("/ganador", mainController.buscarWinner);
 

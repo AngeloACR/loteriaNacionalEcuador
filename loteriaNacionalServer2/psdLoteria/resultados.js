@@ -3,14 +3,13 @@ var parser = xml2js.Parser();
 var soap = require("soap");
 const { loteriaConsultasLogger } = require("./logging");
 const config = require("../environments/test");
-var {loteriaError} = require("./errors");
-const path = require( 'path' )
+var { loteriaError } = require("./errors");
+const path = require("path");
 
 const medioId = config.medioAplicativoId;
 
-const address = path.join( __dirname, config.aplicativoAddress );
+const address = path.join(__dirname, config.aplicativoAddress);
 const usuarioClientePsd = config.usuarioAplicativo;
-
 
 module.exports.consultarBoletoGanador = async (
   tipoLoteria,
@@ -138,28 +137,26 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
           if (!errorCode) {
             let response = [];
             if (data.mt.rs[0].r[0] == "") resolve(response);
-            response = data.mt.rs[0].r[0].Row.map((data) => {
-              let resultado = {
-                tipoLoteria: data.$.JId,
-                nombreLoteria: data.$.JNom,
-                sorteo: data.$.SortId,
-                fechaSorteo: data.$.FSort,
-                combinacion: data.$.Comb,
-                primeraSuerte: data.$.PriSue,
-                descripcionPremio: data.$.DesPre,
-                valorPremio: data.$.ValPre,
-                codigoPremio: `${data.$.SortId}-${data.$.Prem}`,
-              };
-              if(resultado.tipoLoteria == "14") resultado['serie'] = data.$.Comb2
-              return resultado;
+              response = data.mt.rs[0].r[0].Row.map((data) => {
+                let resultado = {
+                  tipoLoteria: data.$.JId,
+                  nombreLoteria: data.$.JNom,
+                  sorteo: data.$.SortId,
+                  fechaSorteo: data.$.FSort,
+                  combinacion: data.$.Comb,
+                  primeraSuerte: data.$.PriSue,
+                  descripcionPremio: data.$.DesPre,
+                  valorPremio: data.$.ValPre,
+                  codigoPremio: `${data.$.SortId}-${data.$.Prem}`,
+                };
+                if (resultado.tipoLoteria == "14")
+                  resultado["serie"] = data.$.Comb2;
+                return resultado;
+              });
+            loteriaConsultasLogger.info("consultarUltimosResultados.loteria", {
+              data,
+              response,
             });
-            loteriaConsultasLogger.info(
-              "consultarUltimosResultados.loteria",
-              {
-                data,
-                response,
-              }
-            );
             resolve(response);
           } else {
             reject(data.mt.c[0].msgError[0]);

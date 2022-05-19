@@ -8,10 +8,6 @@ const config = require("../../environments/test");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
-//let sourceBoletines = config.sourceBoletinesLocal;
-let sourceBoletines = config.sourceBoletinesTest;
-//let sourceBoletines = config.sourceBoletinesProd;
-
 const mainController = {
   validateSorteo: async (sorteo) => {
     try {
@@ -77,20 +73,8 @@ const mainController = {
 
   buscarSorteosJugados: async (req, res) => {
     try {
-      response = await Sorteos.getSorteos(1);
+      response = await Sorteos.getSorteos();
       res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-
-  buscarBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 1;
-      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
-
-      res.status(200).json(boletinAddress);
     } catch (e) {
       res.status(400).json(e.toString());
     }
@@ -171,23 +155,6 @@ const mainController = {
       apiVentasLogger.error("searchCombinacionesDisponibles.error", {
         errorMessage: e.message,
       });
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
-    }
-  },
-  buscarBoleto: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 1;
-      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
-
-      res.status(200).json(boletinAddress);
-    } catch (e) {
       let response = {
         status: "error",
         message: e.message,

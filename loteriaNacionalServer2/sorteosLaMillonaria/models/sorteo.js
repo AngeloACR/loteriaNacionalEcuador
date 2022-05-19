@@ -23,9 +23,6 @@ const sorteoSchema = new mongoose.Schema({
   nombre: {
     type: String,
   },
-  ultimoSorteo: {
-    type: Boolean,
-  },
 });
 
 sorteoSchema.statics = {
@@ -116,7 +113,7 @@ sorteoSchema.statics = {
         token
       );
 
-      let aux = await this.setSorteos(
+      let aux = await this.setSorteosJugados(
         sorteos
       );
       response = {

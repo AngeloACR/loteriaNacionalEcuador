@@ -1,4 +1,4 @@
-const psdResultados = require("../../psdLoteria/resultados");
+const UltimosResultados = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
 const psdAuth = require("../../psdLoteria/auth");
 const psdSorteos = require("../../psdLoteria/sorteos");
@@ -25,9 +25,8 @@ const cacheController = {
   setUltimoResultado: async () => {
     try {
       let client = redis.getClient();
-      let token = (await psdAuth.autenticarUsuario()).token;
-      let response = await psdResultados.consultarUltimosResultados(14,token);
-  await client.connect();
+      let response = await UltimosResultados.get();
+      await client.connect();
       await client.set("ultimoResultadoLaMillonaria", JSON.stringify(response));
       await client.quit();
     } catch (e) {
@@ -113,5 +112,27 @@ const cacheController = {
       throw new Error(e.message);
     }
   },
+  actualizarHttp: async (req, res) => {
+    try {
+       await cacheController.actualizar();
+      res.status(200).json("Done");
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+  actualizar: async () => {
+    try {
+      await cacheController.setSorteosDisponibles();
+
+      await cacheController.setUltimoResultado();
+
+      await cacheController.setSorteos();
+
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  },
+
 };
 module.exports = cacheController;

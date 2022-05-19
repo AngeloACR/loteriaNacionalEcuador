@@ -7,10 +7,6 @@ const sorteoSchema = new mongoose.Schema({
     sorteo: {
         type: String
     },
-
-    tipoLoteria: {
-        type: Number,
-    },
     precio: {
         type: Number,
     },
@@ -25,9 +21,6 @@ const sorteoSchema = new mongoose.Schema({
     },
     nombre: {
         type: String,
-    },
-    ultimoSorteo: {
-        type: Boolean,
     },
 
 })
@@ -49,11 +42,10 @@ sorteoSchema.statics = {
   
     addSorteo: async function (element) {
       try {
-        let newSorteo = new this(element);
-        let sorteo = await newSorteo.save();
+        let newSorteo = new this.create(element);
         let response = {
           status: true,
-          values: sorteo,
+          values: newSorteo,
         };
         return response;
       } catch (error) {
@@ -120,7 +112,7 @@ sorteoSchema.statics = {
             token
           );
     
-          let aux = await this.setSorteos(
+          let aux = await this.setSorteosJugados(
             sorteos
           );
           response = {
@@ -142,12 +134,11 @@ sorteoSchema.statics = {
         let length = sorteos.length;
         for (let i = 0; i < length; i++) {
           const sorteo = sorteos[i];
-          let auxSorteo = await this.getSorteoByNumber(
-            parseInt(sorteo.SortId)
-          );
+          let query = { sorteo: sorteo.SortId };
+          let auxSorteo = await this.findOne(query);
           if (!auxSorteo.status) {
             let data = {
-              sorteo: sosorteosControllerrteo.SortId,
+              sorteo: sorteo.SortId,
               nombre: sorteo.SortNomb,
               precio: sorteo.PVP,
               fecha: sorteo.FSort,

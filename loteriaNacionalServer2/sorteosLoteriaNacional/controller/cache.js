@@ -1,5 +1,5 @@
-const psdResultados = require("../../psdLoteria/resultados");
 const Sorteos = require("../models/sorteo");
+const UltimosResultados = require("../models/ultimoResultado");
 const psdAuth = require("../../psdLoteria/auth");
 const psdSorteos = require("../../psdLoteria/sorteos");
 const redis = require("../../cache");
@@ -11,7 +11,7 @@ const cacheController = {
       let client = redis.getClient();
       await client.connect();
       let response = await client.get("ultimoResultadoLoteria");
-      if (response == ""|| !response) {
+      if (response == "" || !response) {
         await cacheController.setUltimoResultado();
         response = await client.get("ultimoResultadoLoteria");
       }
@@ -25,8 +25,7 @@ const cacheController = {
   setUltimoResultado: async () => {
     try {
       let client = redis.getClient();
-      let token = (await psdAuth.autenticarUsuario()).token;
-      let response = await psdResultados.consultarUltimosResultados(1,token);
+      let response = await UltimosResultados.get();
       await client.connect();
       await client.set("ultimoResultadoLoteria", JSON.stringify(response));
       await client.quit();
@@ -109,6 +108,27 @@ const cacheController = {
       }
       await client.quit();
       return JSON.parse(response);
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  },
+  actualizarHttp: async (req, res) => {
+    try {
+       await cacheController.actualizar();
+      res.status(200).json("Done");
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+
+  actualizar: async () => {
+    try {
+      await cacheController.setSorteosDisponibles();
+
+      await cacheController.setUltimoResultado();
+
+      await cacheController.setSorteos();
+
     } catch (e) {
       throw new Error(e.message);
     }

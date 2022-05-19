@@ -8,6 +8,7 @@ resultsRouter.get('/agregarUltimoResultadoPozo', ResultsController.agregarUltimo
 resultsRouter.get('/getUltimos', ResultsController.getUltimosResultadosHttp);
 resultsRouter.get('/limpiarDB', ResultsController.limpiarDBHttp);
 resultsRouter.get('/parseResultados', ResultsController.parseResultadosHttp);
+resultsRouter.get('/parseMicroservicios', ResultsController.parseMicroServicios);
 resultsRouter.get('/actualizarUltimosResultados', ResultsController.actualizarUltimosResultadosHttp);
 
 

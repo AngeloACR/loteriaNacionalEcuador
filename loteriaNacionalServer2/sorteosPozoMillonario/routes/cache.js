@@ -8,6 +8,6 @@ mainRouter.get(
   "/sorteosDisponibles",
   cacheController.getSorteosDisponiblesHttp
 );
-//mainRouter.get('/actualizarCache', CacheController.actualizarCache);
+mainRouter.get('/actualizar', cacheController.actualizarHttp);
 
 module.exports = mainRouter;

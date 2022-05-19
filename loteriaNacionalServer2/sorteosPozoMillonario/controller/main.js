@@ -8,10 +8,6 @@ const config = require("../../environments/test");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
-//let sourceBoletines = config.sourceBoletinesLocal;
-let sourceBoletines = config.sourceBoletinesTest;
-//let sourceBoletines = config.sourceBoletinesProd;
-
 const mainController = {
   validateSorteo: async (sorteo) => {
     try {
@@ -125,17 +121,6 @@ const mainController = {
         handler: e.handler,
       };
       res.status(400).json(response);
-    }
-  },
-
-  buscarBoletin: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 5;
-      let boletinAddress = `${sourceBoletines}T${tipoLoteria}${sorteo}.jpg`;
-      res.status(200).json(boletinAddress);
-    } catch (e) {
-      res.status(400).json(e.toString());
     }
   },
 
