@@ -112,7 +112,7 @@ resultadoMillonariaSchema.statics = {
       throw error;
     }
   },
-  
+
   getResultadoGanador: async function (sorteo, combinacion) {
     try {
       let sorteoAux = `${sorteo}`;
@@ -121,25 +121,16 @@ resultadoMillonariaSchema.statics = {
       let query = {
         numeroSorteo: sorteoAux,
         combinacion1: combinacionAux,
-        combinacion2: serieAux
+        combinacion2: serieAux,
       };
       let response;
       let resultado = await this.find(query).lean();
 
       if (resultado && resultado.length != 0) {
-/*         let resultado2 = resultado.filter((item) => {
-          return (serieAux == item.combinacion2);
-        });
- */        if (resultado2 && resultado2.length != 0) {
-          response = {
-            status: true,
-            values: resultado2,
-          };
-        } else {
-          response = {
-            status: false,
-          };
-        }
+        response = {
+          status: true,
+          values: resultado1,
+        };
       } else {
         response = {
           status: false,
@@ -206,10 +197,12 @@ resultadoMillonariaSchema.statics = {
       throw error;
     }
   },
-
 };
 
-
-resultadoMillonariaSchema.index({ numeroSorteo: 1, combinacion1: 1, combinacion2: 1 }); // schema level
+resultadoMillonariaSchema.index({
+  numeroSorteo: 1,
+  combinacion1: 1,
+  combinacion2: 1,
+}); // schema level
 
 module.exports = db.model("ResultadoMillonaria", resultadoMillonariaSchema);
