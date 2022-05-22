@@ -109,7 +109,6 @@ resultadoLoteriaSchema.statics = {
       try {
         let sorteoAux = `${sorteo}`;
         let combinacionAux = `${combinacion}`;
-        console.log(combinacionAux);
         let query = { numeroSorteo: sorteoAux, combinacion1: combinacionAux };
         //let resultado = await Resultado.find(query).populate('premio');
         let resultado = await this.find(query).lean();
