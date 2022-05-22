@@ -10,6 +10,7 @@ const config = require("../environments/test");
 const medioId = config.medioAplicativoId;
 const address = path.join( __dirname, config.aplicativoAddress );
 
+const usuarioClientePsd = config.usuarioAplicativo;
 module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });

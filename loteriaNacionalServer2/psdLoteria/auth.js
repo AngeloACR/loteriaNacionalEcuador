@@ -63,9 +63,6 @@ module.exports.autenticarUsuario = async () => {
 module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
   try {
     loteriaVentasLogger.silly("consultarDatosUsuario");
-    const usuarioClientePsd = config.usuarioAplicativoTest;
-
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -179,9 +176,6 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
 module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
   try {
     loteriaVentasLogger.silly("consultarDatosUsuario2");
-    const usuarioClientePsd = config.usuarioAplicativoTest;
-
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {

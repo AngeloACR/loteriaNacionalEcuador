@@ -611,9 +611,7 @@ module.exports.agregarOrdenPago = async (
 ) => {
   try {
     loteriaVentasLogger.silly("agregarOrdenDePago");
-    const usuarioClientePsd = config.usuarioAplicativoTest;
-
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
+    const usuarioClientePsd = config.usuarioAplicativo;
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
     let orden = `<R ReTest="0" JId="${tipoJuego}" Sort="${sorteo}" BolId="${boletoId}" PremId="${premioId}" VId="${ventaId}" TPrem="ESP"/>`;
     //let orden = `<R ReTest="0" TPrem="ESP" NuReti="${numeroDeRetiro}" NuTranWeb="${numeroDeTransaccion}" />`;
@@ -735,7 +733,6 @@ module.exports.recuperarSeriesLaMillonaria = async (
 ) => {
   try {
     loteriaVentasLogger.silly("recuperarSeriesLaMillonaria");
-    /* const usuarioClientePsd = config.usuarioAplicativoProd;*/
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
