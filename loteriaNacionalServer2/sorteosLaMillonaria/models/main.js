@@ -129,7 +129,7 @@ resultadoMillonariaSchema.statics = {
       if (resultado && resultado.length != 0) {
         response = {
           status: true,
-          values: resultado1,
+          values: resultado,
         };
       } else {
         response = {
