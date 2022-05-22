@@ -186,4 +186,6 @@ resultadoLoteriaSchema.statics = {
     },
   
   };
+resultadoLoteriaSchema.index({ numeroSorteo: 1, combinacion1: 1 }); // schema level
+
 module.exports = db.model("ResultadoLoteria", resultadoLoteriaSchema);

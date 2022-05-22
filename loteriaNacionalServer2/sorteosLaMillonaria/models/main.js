@@ -121,16 +121,16 @@ resultadoMillonariaSchema.statics = {
       let query = {
         numeroSorteo: sorteoAux,
         combinacion1: combinacionAux,
+        combinacion2: serieAux
       };
       let response;
-      //let resultado = await Resultado.find(query).populate('premio');
       let resultado = await this.find(query).lean();
 
       if (resultado && resultado.length != 0) {
-        let resultado2 = resultado.filter((item) => {
+/*         let resultado2 = resultado.filter((item) => {
           return (serieAux == item.combinacion2);
         });
-        if (resultado2 && resultado2.length != 0) {
+ */        if (resultado2 && resultado2.length != 0) {
           response = {
             status: true,
             values: resultado2,
@@ -208,5 +208,8 @@ resultadoMillonariaSchema.statics = {
   },
 
 };
+
+
+resultadoMillonariaSchema.index({ numeroSorteo: 1, combinacion1: 1, combinacion2: 1 }); // schema level
 
 module.exports = db.model("ResultadoMillonaria", resultadoMillonariaSchema);
