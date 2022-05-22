@@ -1,0 +1,46 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 172.81.117.113 (be patient)
+
+
+Server Software:        
+Server Hostname:        172.81.117.113
+Server Port:            5500
+
+Document Path:          /ganador
+Document Length:        73 bytes
+
+Concurrency Level:      10
+Time taken for tests:   5.169 seconds
+Complete requests:      300
+Failed requests:        0
+Non-2xx responses:      300
+Total transferred:      255000 bytes
+Total body sent:        57600
+HTML transferred:       21900 bytes
+Requests per second:    58.04 [#/sec] (mean)
+Time per request:       172.300 [ms] (mean)
+Time per request:       17.230 [ms] (mean, across all concurrent requests)
+Transfer rate:          48.18 [Kbytes/sec] received
+                        10.88 kb/s sent
+                        59.06 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       68   74   6.0     73      98
+Processing:    70   89  18.5     85     202
+Waiting:       70   86  15.4     82     186
+Total:        139  164  20.6    158     282
+
+Percentage of the requests served within a certain time (ms)
+  50%    158
+  66%    168
+  75%    172
+  80%    176
+  90%    185
+  95%    198
+  98%    241
+  99%    267
+ 100%    282 (longest request)
