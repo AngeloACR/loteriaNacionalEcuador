@@ -10,7 +10,6 @@ module.exports.init = function () {
     serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
     socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
     useUnifiedTopology: true,
-    useCreateIndex: true,
     useNewUrlParser: true,
     family: 4, // Use IPv4, skip trying IPv6
   };
