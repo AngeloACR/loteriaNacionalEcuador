@@ -25,6 +25,7 @@ const resultadoPozoSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+    autoIndex: true,
   }
 );
 
@@ -120,8 +121,7 @@ resultadoPozoSchema.statics = {
       let sorteoAux = `${sorteo}`;
       let combinacionAux = `${combinacion}`;
       let query = { numeroSorteo: sorteoAux, combinacion1: combinacionAux };
-      //let resultado = await Resultado.find(query).populate('premio');
-      let resultado = await this.find(query).lean();
+      let resultado = await this.find(query).explain()//.lean().select('combinacion1 numeroSorteo codigoPremio');
       if (resultado && resultado.length != 0) {
         response = {
           status: true,

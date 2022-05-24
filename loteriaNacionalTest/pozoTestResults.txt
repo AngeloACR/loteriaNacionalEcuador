@@ -2,45 +2,44 @@ This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking 172.81.117.113 (be patient)
+Benchmarking localhost (be patient)
 
 
 Server Software:        
-Server Hostname:        172.81.117.113
+Server Hostname:        localhost
 Server Port:            6500
 
 Document Path:          /ganador
-Document Length:        73 bytes
+Document Length:        57 bytes
 
-Concurrency Level:      10
-Time taken for tests:   5.008 seconds
-Complete requests:      300
+Concurrency Level:      5
+Time taken for tests:   830.040 seconds
+Complete requests:      199
 Failed requests:        0
-Non-2xx responses:      300
-Total transferred:      255000 bytes
-Total body sent:        57900
-HTML transferred:       21900 bytes
-Requests per second:    59.91 [#/sec] (mean)
-Time per request:       166.917 [ms] (mean)
-Time per request:       16.692 [ms] (mean, across all concurrent requests)
-Transfer rate:          49.73 [Kbytes/sec] received
-                        11.29 kb/s sent
-                        61.02 kb/s total
+Total transferred:      164175 bytes
+Total body sent:        39576
+HTML transferred:       11343 bytes
+Requests per second:    0.24 [#/sec] (mean)
+Time per request:       20855.274 [ms] (mean)
+Time per request:       4171.055 [ms] (mean, across all concurrent requests)
+Transfer rate:          0.19 [Kbytes/sec] received
+                        0.05 kb/s sent
+                        0.24 kb/s total
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:       68   75   6.5     73     104
-Processing:    70   84  10.3     82     122
-Waiting:       69   82   9.2     81     122
-Total:        139  159  13.8    157     212
+Connect:        0    0   0.0      0       0
+Processing:  8318 20340 4635.4  20208   39928
+Waiting:     8317 20340 4635.3  20208   39928
+Total:       8318 20340 4635.4  20208   39928
 
 Percentage of the requests served within a certain time (ms)
-  50%    157
-  66%    163
-  75%    168
-  80%    172
-  90%    177
-  95%    184
-  98%    196
-  99%    199
- 100%    212 (longest request)
+  50%  20187
+  66%  22623
+  75%  23409
+  80%  24095
+  90%  25917
+  95%  28623
+  98%  30990
+  99%  33343
+ 100%  39928 (longest request)

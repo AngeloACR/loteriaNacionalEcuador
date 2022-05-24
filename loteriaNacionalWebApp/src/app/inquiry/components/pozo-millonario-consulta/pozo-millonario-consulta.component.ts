@@ -194,7 +194,7 @@ export class PozoMillonarioConsultaComponent implements OnInit {
 
         return;
       }
-      if (!this.boletoInicial.length)
+      if (!(this.boletoInicial && this.boletoInicial.length))
         throw new Error("Por favor, escribe el número inicial del rango");
       if (!this.boletoFinal.length)
         throw new Error("Por favor, escribe el número final del rango");

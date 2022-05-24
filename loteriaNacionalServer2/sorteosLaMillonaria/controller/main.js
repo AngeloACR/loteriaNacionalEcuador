@@ -5,12 +5,14 @@ const Results = require("../models/main");
 const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/test");
-
+Results.on('index', function(err) {
+  if (err) {
+      console.error('User index error: %s', err);
+  } else {
+      console.info('User indexing complete');
+  }
+});
 /*************************** CONSULTA DE RESULTADOS************************/
-
-//let sourceBoletines = config.sourceBoletinesLocal;
-let sourceBoletines = config.sourceBoletinesTest;
-//let sourceBoletines = config.sourceBoletinesProd;
 
 const mainController = {
   validateSorteo: async (sorteo) => {

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const db = require("../database").db;
-
 const resultadoLottoSchema = new mongoose.Schema(
   {
     combinacion1: {
@@ -31,6 +30,7 @@ const resultadoLottoSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+    autoIndex:true
   }
 );
 
@@ -124,8 +124,8 @@ resultadoLottoSchema.statics = {
     try {
       let sorteoAux = `${sorteo}`;
       let combinacionAux = `${combinacion}`;
-      console.log(combinacionAux);
       let query = { numeroSorteo: sorteoAux, combinacion1: combinacionAux };
+
       let resultado = await this.find(query).lean().select('combinacion1 numeroSorteo codigoPremio');
       if (resultado && resultado.length != 0) {
         response = {

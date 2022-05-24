@@ -22,6 +22,7 @@ const resultadoMillonariaSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+    autoIndex: true,
   }
 );
 
@@ -58,7 +59,7 @@ resultadoMillonariaSchema.statics = {
   },
   deleteResultadosBySorteo: async function (sorteo) {
     try {
-      let query = { _id: id };
+      let query = { numeroSorteo: `${sorteo}` };
       let deleteRes = await this.remove(query);
 
       let response = {
@@ -86,11 +87,10 @@ resultadoMillonariaSchema.statics = {
   },
   addResultado: async function (element) {
     try {
-      let newResultado = new thisResusorteoltado(element);
-      let resultado = await newResultado.save();
+      let newResultado = new this.create(element);
       let response = {
         status: true,
-        values: resultado,
+        values: newResultado,
       };
       return response;
     } catch (error) {
@@ -124,7 +124,7 @@ resultadoMillonariaSchema.statics = {
         combinacion2: serieAux,
       };
       let response;
-      let resultado = await this.find(query).lean();
+      let resultado = await this.find(query).lean().select('combinacion1 combinacion2 numeroSorteo codigoPremio');
 
       if (resultado && resultado.length != 0) {
         response = {
