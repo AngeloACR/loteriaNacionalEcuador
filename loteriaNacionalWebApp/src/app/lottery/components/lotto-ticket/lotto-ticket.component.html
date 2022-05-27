@@ -10,13 +10,13 @@
   <p>
     Combinación principal: <span>{{ ticket.combinacion1 }}</span>
   </p>
-  <p>
+  <p *ngIf="ticket.combinacion3 != ''">
     Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
   </p>
-  <p>
+  <p *ngIf="ticket.combinacion2 != ''">
     Lottito: <span>{{ ticket.combinacion2 }}</span>
   </p>
-  <p>
+  <p *ngIf="ticket.combinacion4 != ''">
     Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
   </p>
   <p *ngIf="ticket.combinacion5 && ticket.combinacion5 != ''">

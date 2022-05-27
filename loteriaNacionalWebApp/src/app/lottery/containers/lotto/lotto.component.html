@@ -123,10 +123,10 @@
                 </div>
                 <hr />
                 <div class="contenedor_fracciones">
-                  <p>
+                  <p *ngIf="ticket.combinacion3 != ''">
                     Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
                   </p>
-                  <p>
+                  <p *ngIf="ticket.combinacion2 != ''">
                     Lottito: <span>{{ ticket.combinacion2 }}</span>
                   </p>
                   <p *ngIf="ticket.combinacion4 != ''">
