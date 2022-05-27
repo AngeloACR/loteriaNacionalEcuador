@@ -13,10 +13,12 @@
       <div class="detailText">
         <p><span>SORTEO: </span>{{ premio.sorteo }}</p>
         <p><span>COMBINACIÓN: </span>{{ premio.combinacion }}</p>
-        <p *ngIf="premio.combinacion2"><span>SERIE: </span>{{ premio.combinacion2 }}</p>
+        <p *ngIf="tipoLoteria == 14">
+          <span>SERIE: </span>{{ premio.combinacion2 }}
+        </p>
         <p><span>PREMIO: </span>{{ premio.prizeDescription }}</p>
         <p><span>VALOR: </span>{{ formatNumber(premio.prizeWithDiscount) }}</p>
-        <p *ngIf="premio.fracciones.length != 0">
+        <p *ngIf="premio.fracciones && premio.fracciones.length != 0">
           <span>FRACCIÓN: </span>{{ premio.fracciones }}
         </p>
       </div>
