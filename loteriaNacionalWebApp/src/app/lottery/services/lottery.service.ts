@@ -16,8 +16,8 @@ export class LotteryService {
   testSource = "https://ventas-api-prueba.loteria.com.ec";
   productionSource = "https://ventas-api.loteria.com.ec";
 
-  mySource = this.localSource;
-  //mySource = this.testSource;
+  //mySource = this.localSource;
+  mySource = this.testSource;
   //mySource = this.productionSource;
 
   sorteo: Array<sorteo>;
