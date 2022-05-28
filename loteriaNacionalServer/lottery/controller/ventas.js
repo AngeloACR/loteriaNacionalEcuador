@@ -797,7 +797,7 @@ const ventasController = {
               response: loteriaVentaResponse,
               function: "ganadoresController.crearGanador",
             };
-            ventasLogger.info("comprarBoletos.api", logData);
+            apiVentasLogger.info("comprarBoletos.api", logData);
             prizeDetails.push(prizeDetail);
           }
         }
