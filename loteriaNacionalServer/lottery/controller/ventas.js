@@ -1275,6 +1275,7 @@ const ventasController = {
       let token = item.token;
       let exaReservaId = item.exaReservaId;
       let totalVenta = item.totalVenta;
+      let personaId = item.personaId;
       let instantaneas = item.instantaneas;
       let prizeDetails = [];
       let instantaneaStatus = false;
@@ -1330,14 +1331,14 @@ const ventasController = {
                 prizeDetail[
                   "drawDate"
                 ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-                let item = reservationDetails.find(
+                let itemAux = reservationDetails.find(
                   (element) =>
                     prizeDetail.combinationC1 == element.combinationC1
                 );
-                prizeDetail["combinationC2"] = item.combinationC2;
-                prizeDetail["combinationC3"] = item.combinationC3;
-                prizeDetail["combinationC4"] = item.combinationC4;
-                prizeDetail["combinationC5"] = item.combinationC5;
+                prizeDetail["combinationC2"] = itemAux.combinationC2;
+                prizeDetail["combinationC3"] = itemAux.combinationC3;
+                prizeDetail["combinationC4"] = itemAux.combinationC4;
+                prizeDetail["combinationC5"] = itemAux.combinationC5;
                 break;
 
               case 5:
