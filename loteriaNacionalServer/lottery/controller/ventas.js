@@ -1374,16 +1374,10 @@ const ventasController = {
               descripcionPremio: premio.Prem,
               valorPremio: premio.Val,
               valorPremioDescuento: premio.ConDesc,
-              ventaId: loteriaVentaResponse.ticketId,
+              ventaId: ticketId,
               acreditado: true,
             };
             await ganadoresController.crearGanador(ganador);
-            logData = {
-              data: ganador,
-              response: loteriaVentaResponse,
-              function: "ganadoresController.crearGanador",
-            };
-            ventasLogger.info("comprarBoletos.api", logData);
             prizeDetails.push(prizeDetail);
           }
         }
