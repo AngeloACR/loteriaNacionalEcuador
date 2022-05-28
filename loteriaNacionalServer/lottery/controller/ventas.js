@@ -1280,6 +1280,10 @@ const ventasController = {
       let instantaneaStatus = false;
       let instantaneaData = {};
       if (instantaneas != "" && instantaneas.length != 0) {
+        let loteriaSorteos = await Cache.getLoteriaSorteosDisponibles();
+        let lottoSorteos = await Cache.getLottoSorteosDisponibles();
+        let pozoSorteos = await Cache.getPozoSorteosDisponibles();
+        let millonariaSorteos = await Cache.getMillonariaSorteosDisponibles();
         instantaneaStatus = true;
         for (let j = 0; j < instantaneas.length; j++) {
           const instantanea = instantaneas[j];
