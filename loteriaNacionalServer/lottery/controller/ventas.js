@@ -788,11 +788,11 @@ const ventasController = {
               ventaId: loteriaVentaResponse.ticketId,
               acreditado: true,
             };
-            await Ganadores.crearGanador(ganador);
+            await ganadoresController.crearGanador(ganador);
             logData = {
               data: ganador,
               response: loteriaVentaResponse,
-              function: "Ganadores.crearGanador",
+              function: "ganadoresController.crearGanador",
             };
             ventasLogger.info("comprarBoletos.api", logData);
             prizeDetails.push(prizeDetail);
