@@ -121,29 +121,29 @@ ultimoResultadoSchema.statics = {
         token
       );
       if (psdUltimosResultados && psdUltimosResultados.length) {
-        let ultimoResultado = this.findOne();
+        let ultimoResultado = await this.findOne();
         for (let index = 0; index < psdUltimosResultados.length; index++) {
           const resultado = psdUltimosResultados[index];
 
           ultimoResultado.numeroSorteo = resultado.sorteo;
-          if (resultado.codigoPremio.includes("-1")) {
+          if (resultado.descripcionPremio.toLowerCase().includes("primera")) {
             ultimoResultado.ultimoResultadoLotto.combinacion1 =
               resultado.combinacion;
             ultimoResultado.codigoPremioPrincipal = resultado.codigoPremio;
-          } else if (resultado.codigoPremio.includes("-23")) {
+          } else if (resultado.descripcionPremio.toLowerCase().includes("lotto plus")) {
             ultimoResultado.resultadoLottoPlus.combinacion2 =
               resultado.combinacion;
             ultimoResultado.codigoPremioLottoPlus = resultado.codigoPremio;
-          } else if (resultado.codigoPremio.includes("-24")) {
+          } else if (resultado.descripcionPremio.toLowerCase().includes("lottito")) {
             ultimoResultado.resultadosLottito.push({
               combinacion3: resultado.combinacion,
             });
             ultimoResultado.codigoPremioLottito = resultado.codigoPremio;
-          } else if (resultado.codigoPremio.includes("-25")) {
+          } else if (resultado.descripcionPremio.toLowerCase().includes("jefe")) {
             ultimoResultado.resultadoNosVemosJefe.combinacion4 =
               resultado.combinacion;
             ultimoResultado.codigoPremioNosVemosJefe = resultado.codigoPremio;
-          } else if (resultado.codigoPremio.includes("-26")) {
+          } else if (resultado.descripcionPremio.toLowerCase().includes("antojitos")) {
             ultimoResultado.resultadoAntojito.combinacion5 =
               resultado.combinacion;
             ultimoResultado.codigoPremioAntojito = resultado.codigoPremio;

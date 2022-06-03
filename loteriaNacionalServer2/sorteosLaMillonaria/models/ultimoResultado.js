@@ -55,7 +55,7 @@ ultimoResultadoSchema.statics = {
         token
       );
       if (psdUltimosResultados && psdUltimosResultados.length) {
-        let ultimoResultado = this.findOne();
+        let ultimoResultado = await this.findOne();
         for (let index = 0; index < psdUltimosResultados.length; index++) {
           const resultado = psdUltimosResultados[index];
           if (resultado.codigoPremio.includes("-1")) {
