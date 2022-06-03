@@ -33,8 +33,8 @@ module.exports.init = function (port) {
 
 
   // Static files
-  app.use("/boletines", express.static("uploads/boletines"));
-  app.use("/boletos", express.static("uploads/boletos"));
+  app.use("/boletines", express.static("boletines"));
+  app.use("/boletos", express.static("boletos"));
   
 
   return app;
