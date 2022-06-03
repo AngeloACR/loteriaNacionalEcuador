@@ -1,7 +1,7 @@
 <div class="container">
     <app-lotto-consulta class="consultaBox" (resultados)="toggleResultados($event)">
     </app-lotto-consulta>
-    <app-lotto-selector class="selectorBox"></app-lotto-selector>
+    <app-lotto-selector *ngIf="false" class="selectorBox"></app-lotto-selector>
     <div class="modalBox" *ngIf="showResultados">
         <app-resultados tipoLoteria="2" (close)="closeBox()" *ngIf="showResultados" [resultados]="resultados">
         </app-resultados>
