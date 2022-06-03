@@ -1,3 +1,5 @@
+const psdAuth = require("../../psdLoteria/auth");
+const psdResultados = require("../../psdLoteria/resultados");
 const mongoose = require("mongoose");
 const db = require("../database").db;
 
@@ -49,7 +51,7 @@ ultimoResultadoSchema.statics = {
       let token = response.token;
 
       let psdUltimosResultados = await psdResultados.consultarUltimosResultados(
-        1,
+        14,
         token
       );
       if (psdUltimosResultados && psdUltimosResultados.length) {

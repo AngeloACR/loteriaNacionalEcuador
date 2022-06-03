@@ -7,5 +7,6 @@ mainRouter.get('/sorteosDisponibles', mainController.searchSorteosDisponibles);
 
 mainRouter.post('/ganador', mainController.buscarWinner);
 mainRouter.get('/ultimosResultados', mainController.buscarUltimosResultados);
+mainRouter.get('/actualizarUltimoResultado', mainController.actualizarUltimoResultado);
 
 module.exports = mainRouter;

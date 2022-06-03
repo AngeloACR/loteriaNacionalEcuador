@@ -2,6 +2,7 @@ const psdResultados = require("../../psdLoteria/resultados");
 const psdSorteos = require("../../psdLoteria/sorteos");
 const psdVentas = require("../../psdLoteria/ventas");
 const Results = require("../models/main");
+const UltimoResultado = require("../models/ultimoResultado");
 const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/production");
@@ -186,6 +187,19 @@ const mainController = {
       let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
 
       res.status(200).json(boletinAddress);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },  actualizarUltimoResultado: async (req, res) => {
+    try {
+      let response = await UltimoResultado.actualizar();
+      res.status(200).json(response);
     } catch (e) {
       let response = {
         status: "error",

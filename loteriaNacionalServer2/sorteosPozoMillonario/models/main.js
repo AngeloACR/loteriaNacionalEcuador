@@ -121,7 +121,7 @@ resultadoPozoSchema.statics = {
       let sorteoAux = `${sorteo}`;
       let combinacionAux = `${combinacion}`;
       let query = { numeroSorteo: sorteoAux, combinacion1: combinacionAux };
-      let resultado = await this.find(query).explain()//.lean().select('combinacion1 numeroSorteo codigoPremio');
+      let resultado = await this.find(query).lean().select('combinacion1 numeroSorteo codigoPremio');
       if (resultado && resultado.length != 0) {
         response = {
           status: true,
