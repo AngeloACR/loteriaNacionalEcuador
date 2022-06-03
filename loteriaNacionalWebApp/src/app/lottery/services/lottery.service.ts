@@ -60,6 +60,7 @@ export class LotteryService {
     return response;
   }
   obtenerDescuentos() {
+    return
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
