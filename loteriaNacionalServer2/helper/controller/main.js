@@ -465,10 +465,10 @@ const helperController = {
   },
   parseMicroServicios: async (req, res) => {
     try {
-      let auxA = await db.model("UltimoResultado").findOne({ tipoLoteria: 1 }).lean();
-      let auxB = await db.model("UltimoResultado").findOne({ tipoLoteria: 2 }).lean();
-      let auxC = await db.model("UltimoResultado").findOne({ tipoLoteria: 5 }).lean();
-      let auxD = await db.model("UltimoResultado").findOne({ tipoLoteria: 14 }).lean();
+      let auxA = await UltimosResultados.findOne({ tipoLoteria: 1 }).lean();
+      let auxB = await UltimosResultados.findOne({ tipoLoteria: 2 }).lean();
+      let auxC = await UltimosResultados.findOne({ tipoLoteria: 5 }).lean();
+      let auxD = await UltimosResultados.findOne({ tipoLoteria: 14 }).lean();
 
       let queryA = { numeroSorteo: auxA.numeroSorteo };
       let queryB = { numeroSorteo: auxB.numeroSorteo };
