@@ -73,6 +73,7 @@ export class ShoppingCartService {
   }
 
   async calcularDescuento(descuento) {
+    return
     let precioConDescuento = descuento.valorConDescuento;
     let sorteo = descuento.sorteo;
     switch (descuento.tipoLoteria) {
