@@ -1,4 +1,4 @@
-const config = require("../environments/test");
+const config = require("../environments/production");
 const mailjet = require("node-mailjet").connect(
   config.mailjetKey1,
   config.mailjetKey2

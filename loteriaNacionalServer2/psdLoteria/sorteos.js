@@ -5,7 +5,7 @@ var {loteriaError} = require("./errors");
 const path = require( 'path' )
 
 const { loteriaSorteosLogger } = require("./logging");
-const config = require("../environments/test");
+const config = require("../environments/production");
 
 const medioId = config.medioAplicativoId;
 const address = path.join( __dirname, config.aplicativoAddress );
@@ -123,6 +123,10 @@ module.exports.consultarSorteosDisponibles = async (
                   precio: sorteo.$.PVP,
                   sorteo: sorteo.$.SortId,
                   nombre: sorteo.$.SortNomb,
+                  combinacion2: sorteo.$.NomComb2,
+                  combinacion3: sorteo.$.NomComb3,
+                  combinacion4: sorteo.$.NomComb4,
+                  combinacion5: sorteo.$.NomComb5,
                   dia: sorteo.$.SortNombSal.split(" ")[2],
                 };
                 return sorteoAux;

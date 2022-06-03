@@ -11,16 +11,16 @@
     Combinación principal: <span>{{ ticket.combinacion1 }}</span>
   </p>
   <p *ngIf="ticket.combinacion3 != ''">
-    Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
+    {{sorteo.combinacion3}}: <span>{{ ticket.combinacion3 }}</span>
   </p>
   <p *ngIf="ticket.combinacion2 != ''">
-    Lottito: <span>{{ ticket.combinacion2 }}</span>
+    {{sorteo.combinacion2}}: <span>{{ ticket.combinacion2 }}</span>
   </p>
   <p *ngIf="ticket.combinacion4 != ''">
-    Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
+    {{sorteo.combinacion4}}: <span>{{ ticket.combinacion4 }}</span>
   </p>
   <p *ngIf="ticket.combinacion5 && ticket.combinacion5 != ''">
-    Antojito: <span>{{ antojito.nombre }}</span>
+    {{sorteo.combinacion5}}: <span>{{ antojito.nombre }}</span>
   </p>
   <img src="assets/trash.svg" class="trash" (click)="deleteTicket()" alt="">
   <img class="logoTicket" src="assets/img/lotto-sombra.png" alt="">

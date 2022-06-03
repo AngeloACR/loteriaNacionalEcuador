@@ -15,7 +15,7 @@ export class SeleccionTipoComponent implements OnInit {
   token: string;
   usuario: string;
 
-  constructor(private actRoute: ActivatedRoute, private lottery: LotteryService) {
+  constructor(private actRoute: ActivatedRoute, public lottery: LotteryService) {
     this.actRoute.params.subscribe(params => {
       this.token = params["token"];
     });

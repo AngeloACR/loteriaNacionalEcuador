@@ -124,16 +124,16 @@
                 <hr />
                 <div class="contenedor_fracciones">
                   <p *ngIf="ticket.combinacion3 != ''">
-                    Lotto Plus: <span>{{ ticket.combinacion3 }}</span>
+                    {{sorteoSeleccionado.combinacion3}}: <span>{{ ticket.combinacion3 }}</span>
                   </p>
                   <p *ngIf="ticket.combinacion2 != ''">
-                    Lottito: <span>{{ ticket.combinacion2 }}</span>
+                    {{sorteoSeleccionado.combinacion2}}: <span>{{ ticket.combinacion2 }}</span>
                   </p>
                   <p *ngIf="ticket.combinacion4 != ''">
-                    Nos vemos Jefe: <span>{{ ticket.combinacion4 }}</span>
+                    {{sorteoSeleccionado.combinacion4}}: <span>{{ ticket.combinacion4 }}</span>
                   </p>
                   <p *ngIf="ticket.combinacion5 && ticket.combinacion5 != ''">
-                    Antojito:
+                    {{sorteoSeleccionado.combinacion5}}:
                     <img [src]="obtenerAntojito(ticket.combinacion5)" alt="" />
                   </p>
                 </div>

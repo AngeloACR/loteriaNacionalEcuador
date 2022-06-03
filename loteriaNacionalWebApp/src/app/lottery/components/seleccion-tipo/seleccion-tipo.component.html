@@ -3,7 +3,7 @@
     <img src="assets/img/loteria-sombra-2.png">
   </a>
 
-  <a class="contenedor_loteria lotto"  [routerLink]="linkLotto" routerLinkActive="active">
+  <a class="contenedor_loteria lotto" *ngIf="lottery.getAuthData().user=='0915030217'" [routerLink]="linkLotto" routerLinkActive="active">
     <img src="assets/img/lotto-sombra.png" alt="">
   </a>
 

@@ -27,7 +27,7 @@ export class SeleccionComponent implements OnInit {
   ticketsMillonaria: any;
   constructor(
     private actRoute: ActivatedRoute,
-    private lottery: LotteryService,
+    public lottery: LotteryService,
     private paymentService: PaymentService,
     private cart: ShoppingCartService,
 
