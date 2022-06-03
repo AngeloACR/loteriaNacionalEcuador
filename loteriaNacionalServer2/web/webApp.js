@@ -2,7 +2,7 @@ const webServer = require("./webServer");
 const config = require("../environments/production");
 
 const webPort = config.webPort;
-const webFolder = "./public/loteriaNacionalWeb";
+const webFolder = "./public/";
 const webPath = webFolder + "/index.html";
 const webApp = webServer.init(webFolder, webPath, webPort);
 
