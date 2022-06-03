@@ -536,7 +536,7 @@ const helperController = {
         { upsert: true } // Make this update into an upsert
       );
 
-      /*       let auxE = await db.model("Sorteos").findOne({ tipoLoteria: 1 });
+      let auxE = await db.model("Sorteos").findOne({ tipoLoteria: 1 });
       let auxF = await db.model("Sorteos").findOne({ tipoLoteria: 2 });
       let auxG = await db.model("Sorteos").findOne({ tipoLoteria: 5 });
       let auxH = await db.model("Sorteos").findOne({ tipoLoteria: 14 });
@@ -567,15 +567,15 @@ const helperController = {
         { upsert: true } // Make this update into an upsert
       );
 
- */ res.status(200).json({
+      res.status(200).json({
         responseA,
         responseB,
         responseC,
         responseD,
-        /* responseE,
+        responseE,
         responseF,
         responseG,
-        responseH, */
+        responseH,
       });
     } catch (e) {
       let response = {
