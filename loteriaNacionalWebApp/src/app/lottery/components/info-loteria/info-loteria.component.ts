@@ -37,6 +37,13 @@ export class InfoLoteriaComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
+  edsonGuard(objeto) {
+    return (
+      (objeto.dia.toLowerCase() !="martes" &&
+        objeto.dia.toLowerCase() !='sábado') ||
+      this.lotteryService.getAuthData().user == "0915030217"
+    );
+  }
   getClassColor(color: string) {
     switch (color) {
       case "loteria":
@@ -91,8 +98,9 @@ export class InfoLoteriaComponent implements OnInit {
       this.seleccionado as sorteo
     ).cantidadDeFracciones;
     let auxPremioLoteria = parseInt(premio) * this.cantidadDeFracciones;
-    if(this.tipoLoteria == 14){
-    auxPremioLoteria = Math.ceil(parseInt(premio) * this.cantidadDeFracciones/10)*10;
+    if (this.tipoLoteria == 14) {
+      auxPremioLoteria =
+        Math.ceil((parseInt(premio) * this.cantidadDeFracciones) / 10) * 10;
     }
     this.premioLoteria = this.lotteryService
       .formatNumber(auxPremioLoteria)
@@ -116,10 +124,17 @@ export class InfoLoteriaComponent implements OnInit {
 
   async ngOnInit() {
     this.getClassColor(this.color);
+    this.filterSorteos();
     this.setSorteoDefault(); /* 
     this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);*/
   }
   sorteoDefault: sorteo;
+  filterSorteos(){
+    this.sorteos = this.sorteos.filter(sorteo => {
+    return this.edsonGuard(sorteo)       
+    });
+  }
+
   setSorteoDefault() {
     this.changeDetectorRef.detectChanges();
     this.seleccionado = this.sorteos[0];

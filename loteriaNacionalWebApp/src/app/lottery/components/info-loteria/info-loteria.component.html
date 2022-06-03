@@ -16,16 +16,21 @@
       <option [ngValue]="sorteoDefault" selected disabled>
         Seleccione un sorteo
       </option>
-      <option [ngValue]="objeto" *ngFor="let objeto of sorteos">
-        <span>{{objeto.dia}}</span> - {{ objeto.sorteo}} - {{objeto.fecha.split(" ")[0] }}
-      </option>
+
+      <ng-container  *ngFor="let objeto of sorteos">
+      <option [ngValue]="objeto">
+          <span>{{ objeto.dia }}</span> - {{ objeto.sorteo }} -
+          {{ objeto.fecha.split(" ")[0] }}
+        </option>
+      </ng-container>
     </select>
   </li>
-<!--   <li class="menuItem">
+  <!--   <li class="menuItem">
     Fecha:
     <p>{{ fecha }}</p>
   </li>
- -->  <li class="menuItem" *ngIf="!isLoteria">
+ -->
+  <li class="menuItem" *ngIf="!isLoteria">
     Premio:
     <p>{{ premio }}</p>
   </li>
