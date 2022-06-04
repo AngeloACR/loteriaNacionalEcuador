@@ -8,6 +8,12 @@ const SorteosLoteria = require("../../sorteosLoteriaNacional/models/sorteo");
 const SorteosLotto = require("../../sorteosLotto/models/sorteo");
 const SorteosPozoMillonario = require("../../sorteosPozoMillonario/models/sorteo");
 const SorteosLaMillonaria = require("../../sorteosLaMillonaria/models/sorteo");
+const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache"); // COMUNICAR POR gRPC
+const CacheLotto = require("../../sorteosLotto/controller/cache"); // COMUNICAR POR gRPC
+const CachePozo = require("../../sorteosPozoMillonario/controller/cache"); // COMUNICAR POR gRPC
+const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache"); // COMUNICAR POR gRPC
+const Ganadores = require("../../ganadores/models/main"); // COMUNICAR POR gRPC
+const ventasController = require("../../ventas/controller/main"); // COMUNICAR POR gRPC
 
 const { helperLogger } = require("../logging");
 const ipTool = require("ip");
@@ -215,22 +221,25 @@ const helperController = {
       let instantaneaStatus = false;
       let instantaneaData = {};
       if (instantaneas != "" && instantaneas.length != 0) {
+        let loteriaSorteos = await CacheLoteria.getSorteosDisponibles();
+        let lottoSorteos = await CacheLotto.getSorteosDisponibles();
+        let pozoSorteos = await CachePozo.getSorteosDisponibles();
+        let millonariaSorteos = await CacheLaMillonaria.getSorteosDisponibles();
         instantaneaStatus = true;
         for (let j = 0; j < instantaneas.length; j++) {
           const instantanea = instantaneas[j];
 
           for (let i = 0; i < instantanea.premios.length; i++) {
             const premio = instantanea.premios[i];
+
             let nombreLoteria;
             let tipoLoteria = parseInt(instantanea.sorteo.JId);
-            let drawDate = instantanea.drawDate;
+
             let prizeDetail = {
               lotteryType: tipoLoteria,
-              lotteryName: nombreLoteria,
               drawNumber: parseInt(instantanea.sorteo.Sort),
-              drawDate,
               combinationC1: premio.Num,
-              fractions: premio.Fra,
+              lotteryName: nombreLoteria,
               prize: parseFloat(premio.Val).toFixed(2),
               prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
               prizeDescription: premio.Prem.normalize("NFD").replace(
@@ -238,9 +247,62 @@ const helperController = {
                 ""
               ),
             };
-            if (premio.Num2) prizeDetail["combinationC2"] = premio.Num2;
+
+            let drawDateAux;
+            switch (tipoLoteria) {
+              case 1:
+                prizeDetail["lotteryName"] = "Loteria Nacional";
+                drawDateAux = loteriaSorteos
+                  .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                  .fecha.split(" ")[0]
+                  .split("/");
+                prizeDetail[
+                  "drawDate"
+                ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+                prizeDetail["fractions"] = premio.Fra;
+
+                break;
+              case 2:
+                prizeDetail["lotteryName"] = "Lotto";
+                drawDateAux = lottoSorteos
+                  .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                  .fecha.split(" ")[0]
+                  .split("/");
+                prizeDetail[
+                  "drawDate"
+                ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+                let item = reservationDetails.find(element => prizeDetail.combinationC1 == element.combinationC1);
+                prizeDetail['combinationC2'] = item.combinationC2
+                prizeDetail['combinationC3'] = item.combinationC3
+                prizeDetail['combinationC4'] = item.combinationC4
+                prizeDetail['combinationC5'] = item.combinationC5
+                break;
+
+              case 5:
+                prizeDetail["lotteryName"] = "Pozo Millonario";
+                drawDateAux = pozoSorteos
+                  .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                  .fecha.split(" ")[0]
+                  .split("/");
+                prizeDetail[
+                  "drawDate"
+                ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+                break;
+              case 14:
+                prizeDetail["lotteryName"] = "La Millonaria";
+                drawDateAux = millonariaSorteos
+                  .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                  .fecha.split(" ")[0]
+                  .split("/");
+                prizeDetail[
+                  "drawDate"
+                ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+                prizeDetail["fractions"] = premio.Fra;
+                prizeDetail["combinationC2"] = premio.Num2;
+                break;
+            }
             let ganador = {
-              personaId: item.personaId,
+              personaId: personaId,
               tipoLoteria: tipoLoteria,
               numeroSorteo: parseInt(instantanea.sorteo.Sort),
               combinacion1: premio.Num,
@@ -249,10 +311,10 @@ const helperController = {
               descripcionPremio: premio.Prem,
               valorPremio: premio.Val,
               valorPremioDescuento: premio.ConDesc,
-              ventaId: ticketId,
+              ventaId: loteriaVentaResponse.ticketId,
               acreditado: true,
             };
-            await ganadoresController.crearGanador(ganador);
+            await Ganadores.crearGanador(ganador);
             prizeDetails.push(prizeDetail);
           }
         }
