@@ -93,8 +93,8 @@ module.exports = {
     ftpUser: "loterianacional",
     ftpPass: "$lnftp123..$",
     
-    ftpBoletinesPath: "/uploads/boletines",
-    ftpBoletosPath: "/uploads/boletos",
+    ftpBoletinesPath: "/root/loteriaNacionalEcuador/loteriaNacionalServer2/uploads/boletines",
+    ftpBoletosPath: "/root/loteriaNacionalEcuador/loteriaNacionalServer2/uploads/boletos",
   
     //SSL DATA
     sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",

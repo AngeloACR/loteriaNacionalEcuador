@@ -6,7 +6,7 @@ const path = require("path");
 const ftpUser = config.ftpUser;
 const ftpPass = config.ftpPass;
 
-const ftpPath = `${__dirname}${config.ftpBoletinesPath}`;
+const ftpPath = `${config.ftpBoletinesPath}`;
 
 const ftpPassMin = config.ftpPassMin;
 const ftpPassMax = config.ftpPassMax;

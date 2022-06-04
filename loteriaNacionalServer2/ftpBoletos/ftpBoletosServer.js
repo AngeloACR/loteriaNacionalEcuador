@@ -5,7 +5,7 @@ const path = require("path");
 const ftpUser = config.ftpUser;
 const ftpPass = config.ftpPass;
 
-const ftpPath = `${__dirname}${config.ftpBoletosPath}`;
+const ftpPath = `${config.ftpBoletosPath}`;
 
 
 const ftpPassMin = config.ftpPassMin;
