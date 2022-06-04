@@ -377,7 +377,6 @@ export class LottoComponent implements OnInit {
   }
 
   async setDescuento(tipoLoteria) {
-    return
     let descuentos = this.descuentos.filter(
       (element: any) => parseInt(element.tipoLoteria) == tipoLoteria
     );

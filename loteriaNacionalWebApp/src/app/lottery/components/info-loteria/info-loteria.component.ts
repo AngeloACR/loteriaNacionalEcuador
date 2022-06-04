@@ -37,13 +37,6 @@ export class InfoLoteriaComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
-  edsonGuard(objeto) {
-    return (
-      (objeto.dia.toLowerCase() !="martes" &&
-        objeto.dia.toLowerCase() !='sábado') ||
-      this.lotteryService.getAuthData().user == "0915030217"
-    );
-  }
   getClassColor(color: string) {
     switch (color) {
       case "loteria":
@@ -124,16 +117,10 @@ export class InfoLoteriaComponent implements OnInit {
 
   async ngOnInit() {
     this.getClassColor(this.color);
-    this.filterSorteos();
     this.setSorteoDefault(); /* 
     this.sorteo = await this.lotteryService.obtenerSorteo(this.loteria);*/
   }
   sorteoDefault: sorteo;
-  filterSorteos(){
-    this.sorteos = this.sorteos.filter(sorteo => {
-    return this.edsonGuard(sorteo)       
-    });
-  }
 
   setSorteoDefault() {
     this.changeDetectorRef.detectChanges();
