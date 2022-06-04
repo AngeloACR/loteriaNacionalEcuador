@@ -216,6 +216,7 @@ const helperController = {
       let token = item.token;
       let exaReservaId = item.exaReservaId;
       let totalVenta = item.totalVenta;
+      let personaId = item.personaId;
       let instantaneas = item.instantaneas;
       let reservationDetails = item.reservationDetails;
       let prizeDetails = [];
