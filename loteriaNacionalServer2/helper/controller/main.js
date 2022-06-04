@@ -12,6 +12,7 @@ const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache"); /
 const CacheLotto = require("../../sorteosLotto/controller/cache"); // COMUNICAR POR gRPC
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache"); // COMUNICAR POR gRPC
 const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache"); // COMUNICAR POR gRPC
+const Wallet = require("../../exalogic/wallet"); // COMUNICAR POR gRPC
 const Ganadores = require("../../ganadores/models/main"); // COMUNICAR POR gRPC
 const ventasController = require("../../ventas/controller/main"); // COMUNICAR POR gRPC
 
@@ -214,6 +215,7 @@ const helperController = {
       let item = data[i];
       let ticketId = item.ticketId;
       let token = item.token;
+      let ventaId = item.ventaId;
       let exaReservaId = item.exaReservaId;
       let totalVenta = item.totalVenta;
       let personaId = item.personaId;
@@ -222,7 +224,7 @@ const helperController = {
       let prizeDetails = [];
       let instantaneaStatus = false;
       let instantaneaData = {};
-      if (instantaneas != "" && instantaneas.length != 0) {
+ /*      if (instantaneas != "" && instantaneas.length != 0) {
         let loteriaSorteos = await CacheLoteria.getSorteosDisponibles();
         let lottoSorteos = await CacheLotto.getSorteosDisponibles();
         let pozoSorteos = await CachePozo.getSorteosDisponibles();
@@ -313,7 +315,7 @@ const helperController = {
               descripcionPremio: premio.Prem,
               valorPremio: premio.Val,
               valorPremioDescuento: premio.ConDesc,
-              ventaId: loteriaVentaResponse.ticketId,
+              ventaId: ticketId,
               acreditado: true,
             };
             await Ganadores.crearGanador(ganador);
@@ -322,7 +324,8 @@ const helperController = {
         }
         instantaneaData = prizeDetails;
       }
-
+ */
+      
       let exaVentaId = Date.now();
       let exaVentaData = {
         token,
@@ -333,10 +336,10 @@ const helperController = {
         prizeDetails,
       };
       let exaVentaResponse = await Wallet.sellLottery(exaVentaData);
-      let venta = await Reservas.getCompraByExaReservaId(exaReservaId);
+
       let ventaExalogicStatusResponse =
         await ventasController.actualizarVentaStatus(
-          venta.values.id,
+          ventaId,
           "Completada",
           exaVentaId
         );
