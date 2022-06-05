@@ -124,6 +124,10 @@ ultimoResultadoSchema.statics = {
         let ultimoResultado = await this.findOne();
         for (let index = 0; index < psdUltimosResultados.length; index++) {
           const resultado = psdUltimosResultados[index];
+          ultimoResultado.resultadoLottoPlus.combinacion2 = '';
+          ultimoResultado.resultadosLottito = [];
+          ultimoResultado.resultadoNosVemosJefe.combinacion4 = ''
+          ultimoResultado.resultadoAntojito.combinacion5 = ''
 
           ultimoResultado.numeroSorteo = resultado.sorteo;
           if (resultado.descripcionPremio.toLowerCase().includes("primera")) {
