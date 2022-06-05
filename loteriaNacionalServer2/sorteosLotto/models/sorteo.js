@@ -145,7 +145,7 @@ sorteoSchema.statics = {
         let auxSorteo = await this.getSorteoByNumber(parseInt(sorteo.SortId));
         if (!auxSorteo.status) {
           let data = {
-            sorteo: sosorteosControllerrteo.SortId,
+            sorteo: sorteo.SortId,
             nombre: sorteo.SortNomb,
             precio: sorteo.PVP,
             fecha: sorteo.FSort,

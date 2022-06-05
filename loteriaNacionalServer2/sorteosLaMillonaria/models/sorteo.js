@@ -140,7 +140,7 @@ sorteoSchema.statics = {
         );
         if (!auxSorteo.status) {
           let data = {
-            sorteo: sosorteosControllerrteo.SortId,
+            sorteo: sorteo.SortId,
             nombre: sorteo.SortNomb,
             precio: sorteo.PVP,
             fecha: sorteo.FSort,
