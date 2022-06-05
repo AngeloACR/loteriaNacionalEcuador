@@ -1,4 +1,4 @@
-const authServer = require("./authServer");
+const authServer = require("./codigosPromocionalesServer");
 const config = require("../environments/test");
 const cronjobs = require("./cronjobs");
 

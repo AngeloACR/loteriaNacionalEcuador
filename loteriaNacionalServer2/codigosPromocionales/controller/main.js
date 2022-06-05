@@ -1,17 +1,31 @@
-const exalogicAuth = require("../../exalogic/auth");
-const { authLogger } = require("../logging");
+const psdAuth = require("../../psdLoteria/auth");
+const CodigoPromocional = require("../models/main");
+const { codigosPromocionalesLogger } = require("../logging");
 
 const mainController = {
-  generate: async (req, res) => {
+  setCode: async (req, res) => {
     try {
-      /* {
-        "token": "661c0ce5ccabbeb1136a"
-      } */
-      let token = req.body.token;
-      let response = await exalogicAuth.authUser(token);
+      let ip = req.headers["x-forwarded-for"];
+      let lotteryToken = req.body.lotteryToken;
+      let user = req.body.user;
+      let ventaId = req.body.ventaId;
+      let codigo = await CodigoPromocional.generate();
+      let userData = await psdAuth.consultarDatosUsuario(
+        lotteryToken,
+        user,
+        ip
+      );
+      let codigoPromocional = await CodigoPromocional.addCodigo({
+        codigo,
+        ventaId,
+        cedula: userData.cedula,
+        correo: userData.correo,
+        telefono: userData.telefono
+      })
+      let response = { code, userData };
       res.status(200).json(response);
     } catch (e) {
-      authLogger.error("authUser.error", {
+      codigosPromocionalesLogger.error("generate.error", {
         errorMessage: e.message,
         errorData: e.data,
       });
