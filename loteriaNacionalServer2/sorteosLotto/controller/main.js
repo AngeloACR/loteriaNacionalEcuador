@@ -7,7 +7,6 @@ const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/production");
 
-
 /*************************** CONSULTA DE RESULTADOS************************/
 
 const mainController = {
@@ -33,10 +32,7 @@ const mainController = {
       let length = combinaciones.length;
       //await mainController.validateSorteo(sorteo, 2);
       for (let i = 0; i < length; i++) {
-        let aux = await Results.getResultadoGanador(
-          sorteo,
-          combinaciones[i]
-        );
+        let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
         if (aux.status) {
           let n = aux.values.length;
           for (let j = 0; j < n; j++) {
@@ -196,7 +192,8 @@ const mainController = {
       };
       res.status(400).json(response);
     }
-  },  actualizarUltimoResultado: async (req, res) => {
+  },
+  actualizarUltimoResultado: async (req, res) => {
     try {
       let response = await UltimoResultado.actualizar();
       res.status(200).json(response);
@@ -208,6 +205,30 @@ const mainController = {
         handler: e.handler,
       };
       res.status(400).json(response);
+    }
+  },
+  cronActualizarUltimoResultado: async () => {
+    try {
+      await UltimoResultado.actualizar();
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+    }
+  },
+  cronActualizarSorteosJugados: async () => {
+    try {
+      await Sorteos.actualizarSorteosJugados();
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
     }
   },
 };

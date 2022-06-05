@@ -5,11 +5,11 @@ const Results = require("../models/main");
 const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/production");
-Results.on('index', function(err) {
+Results.on("index", function (err) {
   if (err) {
-      console.error('User index error: %s', err);
+    console.error("User index error: %s", err);
   } else {
-      console.info('User indexing complete');
+    console.info("User indexing complete");
   }
 });
 /*************************** CONSULTA DE RESULTADOS************************/
@@ -190,6 +190,30 @@ const mainController = {
     }
   },
 
+  cronActualizarUltimoResultado: async () => {
+    try {
+      await UltimoResultado.actualizar();
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+    }
+  },
+  cronActualizarSorteosJugados: async () => {
+    try {
+      await Sorteos.actualizarSorteosJugados();
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+    }
+  },
 };
 
 module.exports = mainController;

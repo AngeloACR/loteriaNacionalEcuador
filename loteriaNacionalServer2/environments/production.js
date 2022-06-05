@@ -59,24 +59,7 @@ module.exports = {
   
     emailRemitentePrueba: "admin@ibereffect.com",
     nombreRemitentePrueba: "Asistencia Loteria",
-  
-  
 
-    
-  /*   mysqlPort: "3306",
-    mysqlUser: "serverUser",
-    mysqlPass: "",
-    dbName: "LoteriaNacional",
-    connectionLimit: 100,
-   */
-    // STATIC FILES PATHS
-    //sourceBoletines: "http://localhost:5480/boletines/",
-    //sourceBoletines: "https://ventas-api-prueba.loteria.com.ec/boletines/",
-    sourceBoletines: "https://ventas-api.loteria.com.ec/boletines/",
-    
-    //sourceBoletos: "http://localhost:5480/boletos/",
-    //sourceBoletos: "https://ventas-api-prueba.loteria.com.ec/boletos/",
-    sourceBoletos: "https://ventas-api.loteria.com.ec/boletos/",
   
     // FTP DATA
     //ftpHost: "localhost",
