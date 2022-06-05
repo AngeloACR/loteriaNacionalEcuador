@@ -4,7 +4,7 @@ const Controller = require("./controller/main");
 module.exports.setCronJobs = function () {
   let jobs = [];
   //let jobTimeA = '00 * * * * *'
-  let jobTimeA = '00 35 00/1 * * *'
+  let jobTimeA = '00 58 00/1 * * *'
   var jobA = new CronJob(jobTimeA, Controller.cronActualizarSorteosJugados, null, true, 'America/Guayaquil');
   jobs.push(jobA)
   let jobTimeB = '00 40 00/1 * * *'
