@@ -42,7 +42,7 @@ sorteoSchema.statics = {
   
     addSorteo: async function (element) {
       try {
-        let newSorteo = new this.create(element);
+        let newSorteo = await this.create(element);
         let response = {
           status: true,
           values: newSorteo,
@@ -136,7 +136,7 @@ sorteoSchema.statics = {
           const sorteo = sorteos[i];
           let query = { sorteo: sorteo.SortId };
           let auxSorteo = await this.findOne(query);
-          if (!auxSorteo.status) {
+          if (!auxSorteo) {
             let data = {
               sorteo: sorteo.SortId,
               nombre: sorteo.SortNomb,

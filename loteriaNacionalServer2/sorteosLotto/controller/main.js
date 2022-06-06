@@ -193,20 +193,6 @@ const mainController = {
       res.status(400).json(response);
     }
   },
-  actualizarUltimoResultado: async (req, res) => {
-    try {
-      let response = await UltimoResultado.actualizar();
-      res.status(200).json(response);
-    } catch (e) {
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
-    }
-  },
   cronActualizarUltimoResultado: async () => {
     try {
       await UltimoResultado.actualizar();
@@ -229,6 +215,35 @@ const mainController = {
         code: e.code,
         handler: e.handler,
       };
+    }
+  },
+  actualizarUltimoResultado: async (req, res) => {
+    try {      
+      let response = await UltimoResultado.actualizar();
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+
+  actualizarSorteosJugados: async (req, res) => {
+    try {      
+      let response = await Sorteos.actualizarSorteosJugados();
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
     }
   },
 };
