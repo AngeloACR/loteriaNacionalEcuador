@@ -161,7 +161,42 @@ VentaSchema.statics = {
       return response;
     }
   },
+  actualizarStatus: async (id, status, value) => {
+    try {
+      let venta = (await this.getVentaById(id)).values;
+      venta["status"] = status;
+      switch (status) {
+        case "Reservada":
+          venta["exaReservaId"] = value;
+          break;
+        case "Procesada":
+          venta["ventaId"] = value;
 
+          break;
+
+        default:
+          venta["exaVentaId"] = value;
+          break;
+      }
+      let response = await venta.save();
+
+/*       logData = {
+        data: {
+          id,
+          status,
+          value,
+        },
+        response,
+      };
+      ventasLogger.info("actualizarStatus.loteria", logData); */
+      return response;
+    } catch (e) {
+      ventasLogger.error("comprarBoletos.error", {
+        errorMessage: e.message,
+      });
+      throw new Error(e.message);
+    }
+  },
   getVentasByTipoLoteria: async function (tipoLoteria) {
     try {
       const query = { tipoLoteria: tipoLoteria };
