@@ -1,4 +1,4 @@
-const psdAuth = require("../../psdLoteria/auth");
+const psdAuth = require("../../psdLoteria/codigosPromocionales");
 const UltimosResultadosLoteria = require("../../sorteosLoteriaNacional/models/ultimoResultado");
 const UltimosResultadosLotto = require("../../sorteosLotto/models/ultimoResultado");
 const UltimosResultadosPozoMillonario = require("../../sorteosPozoMillonario/models/ultimoResultado");
@@ -387,10 +387,12 @@ const helperController = {
   pruebaConsulta: async (req, res) => {
     try {
       let lotteryToken = (await psdAuth.autenticarUsuario()).token;
-      let response = await psdAuth.consultarDatosUsuario2(
+      let personaId = req.body.personaId;
+      let ip = req.headers["x-forwarded-for"];
+      let response = await psdAuth.consultarDatosUsuario(
         lotteryToken,
-        "0915693667",
-        "192.168.1.1"
+        personaId,
+        ip
       );
       res.status(200).json(response);
     } catch (e) {

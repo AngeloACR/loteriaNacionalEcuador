@@ -4,12 +4,12 @@ var soap = require("soap");
 const path = require("path");
 var { loteriaError } = require("./errors");
 const { loteriasAuthLogger } = require("./logging");
-const config = require("../environments/test");
+const config = require("../environments/production");
 
-const usuarioClientePsd = config.usuarioAplicativo;
-const claveClientePsd = config.passwordAplicativo;
+const usuarioClientePsd = "sitiowebprodrsd";
+const claveClientePsd = "$13w8p707R6o";
 const medioId = config.medioAplicativoId;
-const address = path.join(__dirname, config.aplicativoAddress);
+const address = path.join(__dirname, "serviciomt-prod.wsdl");
 
 module.exports.autenticarUsuario = async () => {
   try {
