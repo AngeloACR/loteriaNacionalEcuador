@@ -20,7 +20,6 @@ def closeConnect(connection):
 def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
     try:
         connection = connectDB(db)
-        #loteriaDB = connection['loteriaPruebaDB']
         loteriaDB = connection['loteriaDB']
         premios = loteriaDB['premios']
         for x in premiosNuevos:
@@ -53,12 +52,15 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
                 "tipoLoteria": int(tipoLoteria),
                 "codigoPremio": codigo,
             }
-            premiosAux = premios.count_documents(query)
-            if not premiosAux:
-                loteriaDB['premios'].insert_one(premio)
-            else:
-                updateQuery = {"$set": premio}
-                loteriaDB['premios'].update_one(query, updateQuery)
+            updateQuery = {"$set": premio}
+            if (tipoLoteria == "1"):
+                loteriaDB['premioloterias'].update_one(query, updateQuery, True)
+            if (tipoLoteria == "2"):
+                loteriaDB['premiolottos'].update_one(query, updateQuery, True)
+            if (tipoLoteria == "5"):
+                loteriaDB['premiopozos'].update_one(query, updateQuery, True)
+            if (tipoLoteria == "14"):
+                loteriaDB['premiolamillonarias'].update_one(query, updateQuery, True)
 
         closeConnect(connection)
         status = True
@@ -79,7 +81,7 @@ def main():
     db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
     filepath = "/home/loterianacional/resultados" + filename
-    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/La millonaria prueba" + filename
+    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores" + filename
     file = open(filepath, encoding="iso-8859-1")
     content = file.read()
     file.close()

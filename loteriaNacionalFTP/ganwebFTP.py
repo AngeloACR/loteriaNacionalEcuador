@@ -25,7 +25,6 @@ def closeConnect(connection):
 def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
     try:
         connection = connectDB(db)
-        #loteriaDB = connection['loteriaPruebaDB']
         loteriaDB = connection['loteriaDB']
         ganadoreswebs = loteriaDB['ganadoreswebs']
 
