@@ -409,10 +409,7 @@ const ventasController = {
       let venta = apiVentaResponse.values;
 
       let reservaStatusResponse = await ventasController.reservarSaldoExalogic(
-        loteriaAux,
-        lottoAux,
-        pozoAux,
-        millonariaAux,
+        reservationDetails,
         venta,
         token,
         totalVenta
