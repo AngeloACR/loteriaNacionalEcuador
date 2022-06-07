@@ -614,14 +614,14 @@ const ventasController = {
       let ticketId = req.body.ticketId;
       let accountId = req.body.accountId;
       let personaId = req.body.personaId;
-      let codigoPromocionalResponse = await CodigosPromocionales.getCode(
+/*       let codigoPromocionalResponse = await CodigosPromocionales.getCode(
         personaId,
         ticketId,
         ip
       );
-
+ */
       let response = await Ventas.getVentaByVentaId(ticketId, accountId);
-      response['codigoPromocional'] = codigoPromocionalResponse;
+      //response['codigoPromocional'] = codigoPromocionalResponse;
       res.status(200).json(response);
     } catch (e) {
       let response = {
