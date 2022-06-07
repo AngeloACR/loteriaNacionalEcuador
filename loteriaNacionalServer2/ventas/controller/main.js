@@ -41,87 +41,14 @@ const ventasController = {
     }
   },
   reservarSaldoExalogic: async (
-    loteriaAux,
-    lottoAux,
-    pozoAux,
-    millonariaAux,
+    reservationDetails,
     venta,
     token,
     totalVenta
   ) => {
     /* RESERVA CON EXALOGIC */
     let exaReservaId = Date.now();
-    let reservationDetails = [];
 
-    let loteria = [];
-    for (id in loteriaAux) {
-      let drawDateAux = loteriaAux[id].sorteo.fecha.split(" ")[0].split("/");
-      let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-      let aux = {
-        lotteryType: 1,
-        lotteryName: "Loteria Nacional",
-        drawNumber: parseInt(loteriaAux[id].sorteo.sorteo),
-        drawDate,
-        subTotal: parseFloat(loteriaAux[id].subtotal).toFixed(2),
-        combinationC1: loteriaAux[id].ticket.combinacion,
-        fractions: loteriaAux[id].ticket.seleccionados,
-      };
-      reservationDetails.push(aux);
-      loteria.push(loteriaAux[id]);
-    }
-    let lotto = [];
-    for (id in lottoAux) {
-      let drawDateAux = lottoAux[id].sorteo.fecha.split(" ")[0].split("/");
-      let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-      let aux = {
-        lotteryType: 2,
-        lotteryName: "Lotto",
-        drawNumber: parseInt(lottoAux[id].sorteo.sorteo),
-        drawDate,
-        subTotal: parseFloat(lottoAux[id].subtotal).toFixed(2),
-        combinationC1: lottoAux[id].ticket.combinacion1,
-        combinationC2: lottoAux[id].ticket.combinacion2,
-        combinationC3: lottoAux[id].ticket.combinacion3,
-        combinationC4: lottoAux[id].ticket.combinacion4,
-        combinationC5: lottoAux[id].ticket.combinacion5,
-      };
-      reservationDetails.push(aux);
-      lotto.push(lottoAux[id]);
-    }
-    let pozo = [];
-    for (id in pozoAux) {
-      let drawDateAux = pozoAux[id].sorteo.fecha.split(" ")[0].split("/");
-      let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-      let aux = {
-        lotteryType: 5,
-        lotteryName: "Pozo Millonario",
-        drawNumber: parseInt(pozoAux[id].sorteo.sorteo),
-        drawDate,
-        subTotal: parseFloat(pozoAux[id].subtotal).toFixed(2),
-        combinationC1: pozoAux[id].ticket.combinacion1,
-        combinationC2: pozoAux[id].ticket.combinacion2,
-        combinationC3: pozoAux[id].ticket.mascota,
-      };
-      reservationDetails.push(aux);
-      pozo.push(pozoAux[id]);
-    }
-    let millonaria = [];
-    for (id in millonariaAux) {
-      let drawDateAux = millonariaAux[id].sorteo.fecha.split(" ")[0].split("/");
-      let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-      let aux = {
-        lotteryType: 14,
-        lotteryName: "La Millonaria",
-        drawNumber: parseInt(millonariaAux[id].sorteo.sorteo),
-        drawDate,
-        subTotal: parseFloat(millonariaAux[id].subtotal).toFixed(2),
-        combinationC1: millonariaAux[id].ticket.combinacion1,
-        combinationC2: millonariaAux[id].ticket.combinacion2,
-        fractions: millonariaAux[id].ticket.seleccionados,
-      };
-      reservationDetails.push(aux);
-      millonaria.push(millonariaAux[id]);
-    }
     let exaReservaData = {
       token,
       transactionId: exaReservaId,
@@ -386,7 +313,77 @@ const ventasController = {
       let lottoAux = req.body.lotto;
       let pozoAux = req.body.pozo;
       let millonariaAux = req.body.millonaria;
+      let reservationDetails = [];
 
+      let loteria = [];
+      for (id in loteriaAux) {
+        let drawDateAux = loteriaAux[id].sorteo.fecha.split(" ")[0].split("/");
+        let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+        let aux = {
+          lotteryType: 1,
+          lotteryName: "Loteria Nacional",
+          drawNumber: parseInt(loteriaAux[id].sorteo.sorteo),
+          drawDate,
+          subTotal: parseFloat(loteriaAux[id].subtotal).toFixed(2),
+          combinationC1: loteriaAux[id].ticket.combinacion,
+          fractions: loteriaAux[id].ticket.seleccionados,
+        };
+        reservationDetails.push(aux);
+        loteria.push(loteriaAux[id]);
+      }
+      let lotto = [];
+      for (id in lottoAux) {
+        let drawDateAux = lottoAux[id].sorteo.fecha.split(" ")[0].split("/");
+        let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+        let aux = {
+          lotteryType: 2,
+          lotteryName: "Lotto",
+          drawNumber: parseInt(lottoAux[id].sorteo.sorteo),
+          drawDate,
+          subTotal: parseFloat(lottoAux[id].subtotal).toFixed(2),
+          combinationC1: lottoAux[id].ticket.combinacion1,
+          combinationC2: lottoAux[id].ticket.combinacion2,
+          combinationC3: lottoAux[id].ticket.combinacion3,
+          combinationC4: lottoAux[id].ticket.combinacion4,
+          combinationC5: lottoAux[id].ticket.combinacion5,
+        };
+        reservationDetails.push(aux);
+        lotto.push(lottoAux[id]);
+      }
+      let pozo = [];
+      for (id in pozoAux) {
+        let drawDateAux = pozoAux[id].sorteo.fecha.split(" ")[0].split("/");
+        let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+        let aux = {
+          lotteryType: 5,
+          lotteryName: "Pozo Millonario",
+          drawNumber: parseInt(pozoAux[id].sorteo.sorteo),
+          drawDate,
+          subTotal: parseFloat(pozoAux[id].subtotal).toFixed(2),
+          combinationC1: pozoAux[id].ticket.combinacion1,
+          combinationC2: pozoAux[id].ticket.combinacion2,
+          combinationC3: pozoAux[id].ticket.mascota,
+        };
+        reservationDetails.push(aux);
+        pozo.push(pozoAux[id]);
+      }
+      let millonaria = [];
+      for (id in millonariaAux) {
+        let drawDateAux = millonariaAux[id].sorteo.fecha.split(" ")[0].split("/");
+        let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+        let aux = {
+          lotteryType: 14,
+          lotteryName: "La Millonaria",
+          drawNumber: parseInt(millonariaAux[id].sorteo.sorteo),
+          drawDate,
+          subTotal: parseFloat(millonariaAux[id].subtotal).toFixed(2),
+          combinationC1: millonariaAux[id].ticket.combinacion1,
+          combinationC2: millonariaAux[id].ticket.combinacion2,
+          fractions: millonariaAux[id].ticket.seleccionados,
+        };
+        reservationDetails.push(aux);
+        millonaria.push(millonariaAux[id]);
+      }
       let total = parseFloat(req.body.amount).toFixed(2);
       let hasDescuento = req.body.hasDescuento;
       let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
