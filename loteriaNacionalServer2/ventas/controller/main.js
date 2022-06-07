@@ -87,6 +87,7 @@ const ventasController = {
     lotteryToken,
     reservaId,
     user,
+    venta,
     ip
   ) => {
     let ordComp = exaReservaId;
@@ -427,6 +428,7 @@ const ventasController = {
         lotteryToken,
         reservaId,
         user,
+        venta,
         ip
       );
       let exaVentaResponse = await ventasController.ventaExalogic(
