@@ -164,7 +164,9 @@ VentaSchema.statics = {
   },
   actualizarStatus: async (id, status, value) => {
     try {
-      let venta = (await this.getVentaById(id)).values;
+      
+      let query = { _id: id };
+      let venta = await this.findOne(query);
       venta["status"] = status;
       switch (status) {
         case "Reservada":
