@@ -31,7 +31,7 @@ const mainController = {
         );
         codeAux.push(codigoPromocional);
       }
-      let response = { codigos: codeAux };
+      let response = codeAux ;
       return response;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {
