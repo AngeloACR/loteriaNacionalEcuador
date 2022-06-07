@@ -150,7 +150,7 @@ const ventasController = {
   },
   venderPSD: async (
     exaReservaId,
-    ordComp,
+
     total,
     totalConDesc,
     loteria,
@@ -420,7 +420,6 @@ const ventasController = {
       /* VENTA EN LOTERIA */
       let loteriaVentaResponse = await ventasController.ventaPSD(
         exaReservaId,
-        ordComp,
         total,
         totalConDesc,
         loteria,
