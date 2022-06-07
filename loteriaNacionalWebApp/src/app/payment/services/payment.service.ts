@@ -93,13 +93,13 @@ export class PaymentService {
       );
     });
   }
-  getCodigosPromocionales(ticketId) {
+  getCodigosPromocionales(ventaId) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     let address = "/codigosPromocionales";
     let endpoint = "";
     let body = {
-      ticketId,
+      ventaId,
     };
     endpoint = `${endpoint}/getCodes`;
 
