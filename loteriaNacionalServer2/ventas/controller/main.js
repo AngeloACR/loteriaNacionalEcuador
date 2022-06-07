@@ -67,7 +67,7 @@ const ventasController = {
       exaReservaId
     );
 
-    logData = {
+    let logData = {
       data: exaReservaData,
       response: exaReservaResponse,
       function: "Wallet.reserveLottery",
@@ -107,7 +107,7 @@ const ventasController = {
     if (!loteriaVentaResponse.status) {
       await errorHandler.loteriaSellError(exaReservaData);
     }
-    logData = {
+    let logData = {
       data: {
         ordComp,
         total,
@@ -246,7 +246,7 @@ const ventasController = {
             acreditado: true,
           };
           await Ganadores.crearGanador(ganador);
-          logData = {
+          let logData = {
             data: ganador,
             response: loteriaVentaResponse,
             function: "Ganadores.crearGanador",
@@ -592,7 +592,7 @@ const ventasController = {
       }
       let response = await venta.save();
 
-      logData = {
+      let logData = {
         data: {
           id,
           status,
