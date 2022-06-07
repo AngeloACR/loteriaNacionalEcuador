@@ -56,16 +56,17 @@ const ganadoresController = {
           }" VD="${ganador.valorPremioDescuento}" TP="${
             ganador.tipoPremio
           }" RT="${ganador.requiereTestimonio}" V="${ganador.ventaId}"/>`;
+          let data = {
+            payLine,
+            transactionId: Date.now(),
+          };
           let aux = await exalogicPrize.payLottery(data);
           if (aux.resultCode >= 0) {
             ganador.acreditado = true;
           }
           response.push(aux);
 
-          let data = {
-            payLine,
-            transactionId: Date.now(),
-          };
+
           logData.data.push(data);
         } else if (ganador.tipoPremio == "ESP") {
           let ordenResponse = await ganadoresController.procesarPremioEspecies(
