@@ -621,7 +621,7 @@ const ventasController = {
       );
  */
       let response = await Ventas.getVentaByVentaId(ticketId, accountId);
-      //response['codigoPromocional'] = codigoPromocionalResponse;
+      /*response['codigoPromocional'] = codigoPromocionalResponse;*/
       res.status(200).json(response);
     } catch (e) {
       let response = {

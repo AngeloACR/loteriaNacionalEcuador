@@ -109,7 +109,7 @@ codigosPromocionalesSchema.statics = {
   getCodes: async function (ventaId) {
     try {
       let query = { ventaId };
-      let response = await this.findOne(query);
+      let response = await this.find(query);
       return response;
     } catch (error) {
       throw error;
