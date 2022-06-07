@@ -1,5 +1,6 @@
 const db = require("../database").db;
 const mongoose = require("mongoose");
+const { ventasLogger } = require("../logging");
 
 /* CONSIDERAR AGREGAR REFERENCIAS */
 
