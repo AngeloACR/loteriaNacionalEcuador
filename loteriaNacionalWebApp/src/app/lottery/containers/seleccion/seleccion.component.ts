@@ -19,7 +19,7 @@ export class SeleccionComponent implements OnInit {
   errorTitle: string;
   isLoading: boolean;
   loadingMessage: string;
-
+  codigoPromocional: any = [];
   ticketsPozo: any;
   ticketsLotto: any;
   ticketsLoteria: any;
@@ -189,7 +189,7 @@ export class SeleccionComponent implements OnInit {
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
-              await this.cart.borrarCarrito();
+              this.codigoPromocional = response.codigoPromocional;
               this.isInstantaneas = true;
             } else {
               this.instantaneas = "";

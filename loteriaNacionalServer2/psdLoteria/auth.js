@@ -3,7 +3,7 @@ var parser = xml2js.Parser();
 var soap = require("soap");
 const path = require("path");
 var { loteriaError } = require("./errors");
-const { loteriasAuthLogger } = require("./logging");
+const { loteriaAuthLogger } = require("./logging");
 const config = require("../environments/test");
 
 const usuarioClientePsd = config.usuarioAplicativo;
@@ -62,7 +62,7 @@ module.exports.autenticarUsuario = async () => {
 
 module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
   try {
-    loteriasAuthLogger.silly("consultarDatosUsuario");
+    loteriaAuthLogger.silly("consultarDatosUsuario");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -126,14 +126,14 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriasAuthLogger.info(
+              loteriaAuthLogger.info(
                 "consultarDatosUsuario.loteria",
                 logData
               );
               resolve(response);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
-              loteriasAuthLogger.error("consultarDatosUsuario.loteria.error", {
+              loteriaAuthLogger.error("consultarDatosUsuario.loteria.error", {
                 data: message,
                 errorMessage: `${errorCode}-${errorMsg}`,
               });
@@ -149,7 +149,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriasAuthLogger.error("consultarDatosUsuario.error", {
+            loteriaAuthLogger.error("consultarDatosUsuario.error", {
               errorMessage: errorMsg,
             });
             let errorData = {
@@ -168,7 +168,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriasAuthLogger.error("consultarDatosUsuario.error", {
+    loteriaAuthLogger.error("consultarDatosUsuario.error", {
       errorMessage: errorMsg,
     });
 
@@ -185,7 +185,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
 
 module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
   try {
-    loteriasAuthLogger.silly("consultarDatosUsuario2");
+    loteriaAuthLogger.silly("consultarDatosUsuario2");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -241,14 +241,14 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriasAuthLogger.info(
+              loteriaAuthLogger.info(
                 "consultarDatosUsuario2.loteria",
                 logData
               );
               resolve(response);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
-              loteriasAuthLogger.error(
+              loteriaAuthLogger.error(
                 "consultarDatosUsuario2.loteria.error",
                 {
                   data: message,
@@ -267,7 +267,7 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriasAuthLogger.error("consultarDatosUsuario2.error", {
+            loteriaAuthLogger.error("consultarDatosUsuario2.error", {
               errorMessage: errorMsg,
             });
             let errorData = {
@@ -286,7 +286,7 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriasAuthLogger.error("consultarDatosUsuario2.error", {
+    loteriaAuthLogger.error("consultarDatosUsuario2.error", {
       errorMessage: errorMsg,
     });
 

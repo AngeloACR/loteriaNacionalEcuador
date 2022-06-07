@@ -25,6 +25,7 @@ export class PozoMillonarioComponent implements OnInit {
   combinacionDeLaSuerte: string[] = ["", "", "", ""];
 
   seleccionAnimales: animales[];
+  codigoPromocional: any = [];
   animalesTabs: animales[] = [];
 
   ticketsDisponibles: ticketsAnimales[];
@@ -412,6 +413,7 @@ export class PozoMillonarioComponent implements OnInit {
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
+              this.codigoPromocional = response.codigoPromocional;
               this.isInstantaneas = true;
             } else {
               this.instantaneas = "";

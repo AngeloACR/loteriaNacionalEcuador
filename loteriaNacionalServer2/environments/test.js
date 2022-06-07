@@ -20,6 +20,7 @@ module.exports = {
   walletPort: 8500,
   uploadsPort: 9000,
   helperPort: 9500,
+  codigosPromocionalesPort: 10000,
 
   host: "localhost",
 

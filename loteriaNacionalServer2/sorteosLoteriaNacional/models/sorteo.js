@@ -42,7 +42,7 @@ sorteoSchema.statics = {
   
     addSorteo: async function (element) {
       try {
-        let newSorteo = new this.create(element);
+        let newSorteo = await this.create(element);
         let response = {
           status: true,
           values: newSorteo,

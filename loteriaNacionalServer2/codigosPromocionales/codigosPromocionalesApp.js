@@ -1,12 +1,12 @@
-const authServer = require("./codigosPromocionalesServer");
+const codigosPromocionalesServer = require("./codigosPromocionalesServer");
 const config = require("../environments/test");
 const cronjobs = require("./cronjobs");
 
-const authPort = config.authPort;
-const authApp = authServer.init(authPort);
+const codigosPromocionalesPort = config.codigosPromocionalesPort;
+const codigosPromocionalesApp = codigosPromocionalesServer.init(codigosPromocionalesPort);
 
-authApp.listen(authPort, () => {
-  console.log("Server running at: " + authPort);
+codigosPromocionalesApp.listen(codigosPromocionalesPort, () => {
+  console.log("Server running at: " + codigosPromocionalesPort);
   console.log(
     `Heapdump enabled. Run "kill -USR2 ${process.pid}" or send a request to "/heapdump" to generate a heapdump.`
   );

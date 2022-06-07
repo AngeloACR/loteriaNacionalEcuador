@@ -33,19 +33,6 @@ module.exports.init = function (port) {
     res.removeHeader("X-Frame-Options");
     next();
   });
-  app.use(
-    helmet.contentSecurityPolicy({
-      useDefaults: true,
-      directives: {
-        "frame-ancestors": [
-          "'self'",
-          "https://localhost",
-          "https://*.loteria.com.ec",
-          "http://*.mongibello.tech",
-        ],
-      },
-    })
-  );
 
 
 
