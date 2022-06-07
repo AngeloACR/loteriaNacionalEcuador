@@ -146,7 +146,7 @@ const ventasController = {
       function: "Wallet.reserveLottery",
     };
     ventasLogger.info("reservaSaldoExalogic.api", logData);
-    return reservaStatusResponse;
+    return exaReservaResponse;
   },
   venderPSD: async (
     exaReservaId,
@@ -420,6 +420,7 @@ const ventasController = {
         token,
         totalVenta
       );
+      let exaReservaId = reservaStatusResponse.transactionId;
       /* VENTA EN LOTERIA */
       let loteriaVentaResponse = await ventasController.ventaPSD(
         exaReservaId,
