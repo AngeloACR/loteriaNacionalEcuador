@@ -415,7 +415,10 @@ const ventasController = {
         loteriaAux,
         lottoAux,
         pozoAux,
-        millonariaAux
+        millonariaAux,
+        venta,
+        token,
+        totalVenta
       );
       /* VENTA EN LOTERIA */
       let loteriaVentaResponse = await ventasController.ventaPSD(
