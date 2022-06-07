@@ -8,6 +8,7 @@ const codigosPromocionalesSchema = new mongoose.Schema(
     },
     ventaId: {
       type: String,
+      index: true
     },
     cedula: {
       type: String,
@@ -131,6 +132,6 @@ codigosPromocionalesSchema.statics = {
     }
   },
 };
-codigosPromocionalesSchema.index({ asignado: 1, codigo: 1 }); // schema level
+codigosPromocionalesSchema.index({ asignado: 1, ventaId: 1 }); // schema level
 
 module.exports = db.model("CodigosPromocionales", codigosPromocionalesSchema);
