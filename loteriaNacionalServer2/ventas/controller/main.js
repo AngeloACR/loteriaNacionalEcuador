@@ -75,7 +75,7 @@ const ventasController = {
     ventasLogger.info("reservaSaldoExalogic.api", logData);
     return exaReservaResponse;
   },
-  venderPSD: async (
+  ventaPSD: async (
     exaReservaId,
 
     total,
