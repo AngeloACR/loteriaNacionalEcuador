@@ -122,7 +122,7 @@ codigosPromocionalesSchema.statics = {
       throw error;
     }
   },
-  updateCode: async function (codigo, ventaId, cedula, correo, telefono) {
+  updateCode: async function (codigos, ventaId, cedula, correo, telefono) {
     try {
       let updatedCodes = [];
       for (let i = 0; i < codigos.length; i++) {
