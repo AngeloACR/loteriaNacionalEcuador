@@ -96,7 +96,7 @@ codigosPromocionalesSchema.statics = {
     try {
       let query = { asignado: false };
       //let count = await this.count(query);
-
+      
       // Get a random entry
       //var random = Math.floor(Math.random() * count);
 
@@ -104,6 +104,7 @@ codigosPromocionalesSchema.statics = {
       //let response = await this.findOne(query).skip(random).lean();
       let response = await this.aggregate([
         { $match: query },
+        { $limit: 10000 },
         { $sample: { size: nCodigos } },
       ])
       .map((data) => data.codigo)
