@@ -8,7 +8,7 @@ const codigosPromocionalesSchema = new mongoose.Schema(
     },
     ventaId: {
       type: String,
-      index: true
+      index: true,
     },
     cedula: {
       type: String,
@@ -22,7 +22,7 @@ const codigosPromocionalesSchema = new mongoose.Schema(
     asignado: {
       type: Boolean,
       default: false,
-      index: true
+      index: true,
     },
   },
   {
@@ -92,17 +92,22 @@ codigosPromocionalesSchema.statics = {
       throw error;
     }
   },
-  getCode: async function () {
+  getCode: async function (nCodigos) {
     try {
       let query = { asignado: false };
-      let count = await this.count(query);
+      //let count = await this.count(query);
 
       // Get a random entry
-      var random = Math.floor(Math.random() * count);
+      //var random = Math.floor(Math.random() * count);
 
       // Again query all users but only fetch one offset by our random #
-      let response = await this.findOne(query).skip(random).lean();
-      return response.codigo;
+      //let response = await this.findOne(query).skip(random).lean();
+      let response = await this.aggregate([
+        { $match: query },
+        { $sample: { size: nCodigos } },
+      ])
+      .map((data) => data.codigo)
+      return response;
     } catch (error) {
       throw error;
     }
@@ -118,15 +123,22 @@ codigosPromocionalesSchema.statics = {
   },
   updateCode: async function (codigo, ventaId, cedula, correo, telefono) {
     try {
-      let query = { codigo };
-      let response = await this.findOne(query);
-      response.ventaId = ventaId;
-      response.cedula = cedula;
-      response.correo = correo;
-      response.telefono = telefono;
-      response.asignado = true;
-      let updatedCode = await response.save()
-      return updatedCode;
+      let updatedCodes = [];
+      for (let i = 0; i < codigos.length; i++) {
+        let response = [];
+        const codigo = codigos[i];
+        let query = { codigo };
+  
+        let aux = await this.findOne(query);
+        aux.ventaId = ventaId;
+        aux.cedula = cedula;
+        aux.correo = correo;
+        aux.telefono = telefono;
+        aux.asignado = true;
+        let updatedCode = await aux.save();
+        updatedCodes.push(updatedCode);
+      }
+      return updatedCodes;
     } catch (error) {
       throw error;
     }

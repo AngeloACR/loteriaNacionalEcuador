@@ -19,20 +19,17 @@ const mainController = {
       } else if (totalVenta >= 15) {
         cantidadDeCodigos = 5;
       }
-      let codeAux = [];
+      let codigos = await CodigoPromocional.getCode(cantidadDeCodigos);
+      let codigosPromocionales = await CodigoPromocional.updateCode(
+        codigos,
+        ventaId,
+        userData.cedula,
+        userData.correo,
+        userData.telefono,
+      );
       for (let i = 0; i < cantidadDeCodigos; i++) {
-        let codigo = await CodigoPromocional.getCode();
-        let codigoPromocional = await CodigoPromocional.updateCode(
-          codigo,
-          ventaId,
-          userData.cedula,
-          userData.correo,
-          userData.telefono,
-        );
-        codeAux.push(codigoPromocional);
       }
-      let response = codeAux ;
-      return response;
+      return codigosPromocionales;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {
         errorMessage: e.message,
