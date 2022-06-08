@@ -102,12 +102,12 @@ codigosPromocionalesSchema.statics = {
 
       // Again query all users but only fetch one offset by our random #
       //let response = await this.findOne(query).skip(random).lean();
-      let response = await this.aggregate([
+      let response = (await this.aggregate([
         { $match: query },
         { $limit: 10000 },
         { $sample: { size: nCodigos } },
-      ])
-      .map((data) => data.codigo)
+        { $unset: ["asignado","_id"] },
+      ])).map((data) => data.codigo)
       return response;
     } catch (error) {
       throw error;
