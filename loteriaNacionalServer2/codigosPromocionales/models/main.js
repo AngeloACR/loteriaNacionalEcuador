@@ -104,7 +104,7 @@ codigosPromocionalesSchema.statics = {
       //let response = await this.findOne(query).skip(random).lean();
       let response = (await this.aggregate([
         { $match: query },
-        { $limit: 10000 },
+        { $limit: 50000 },
         { $sample: { size: nCodigos } },
         { $unset: ["asignado","_id"] },
       ])).map((data) => data.codigo)
