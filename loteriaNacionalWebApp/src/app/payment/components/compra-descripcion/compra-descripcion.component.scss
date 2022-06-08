@@ -89,11 +89,12 @@ $color-millonaria: #b51f20;
       justify-content: space-between;
       padding-left: 10px;
       padding-right: 10px;
-      &.codigos{
+      &.codigos {
         flex-direction: column;
       }
-      &.codigo{
-        flex-direction: row;
+      &.codigo {
+        padding: 5px;
+        margin: 5px;  
       }
       h3 {
         font-size: 16px;
