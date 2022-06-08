@@ -3,6 +3,7 @@ const psdSorteos = require("../../psdLoteria/sorteos");
 const psdVentas = require("../../psdLoteria/ventas");
 const Results = require("../models/main");
 const Premios = require("../models/premio");
+const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/test");
 Results.on("index", function (err) {
@@ -224,12 +225,25 @@ const mainController = {
       res.status(400).json(response);
     }
   },
-  buscarBoleto: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let tipoLoteria = 5;
-      let boletinAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
-      res.status(200).json(boletinAddress);
+  actualizarUltimoResultado: async (req, res) => {
+    try {      
+      let response = await UltimoResultado.actualizar();
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+
+  actualizarSorteosJugados: async (req, res) => {
+    try {      
+      let response = await Sorteos.actualizarSorteosJugados();
+      res.status(200).json(response);
     } catch (e) {
       let response = {
         status: "error",

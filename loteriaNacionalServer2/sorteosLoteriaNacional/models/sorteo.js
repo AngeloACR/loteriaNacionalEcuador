@@ -136,7 +136,7 @@ sorteoSchema.statics = {
           const sorteo = sorteos[i];
           let query = { sorteo: sorteo.SortId };
           let auxSorteo = await this.findOne(query);
-          if (!auxSorteo.status) {
+          if (!auxSorteo) {
             let data = {
               sorteo: sorteo.SortId,
               nombre: sorteo.SortNomb,

@@ -6,8 +6,8 @@ const mailjet = require("node-mailjet").connect(
   config.mailjetKey2
 );
 
-module.exports.sendEmail = async (emailGanador, nombreGanador, ordenDePago) => {
-  let htmlAddress = path.join(__dirname, "/plantillas/ganadorpremioespecie.html");
+module.exports.sendEmail = async (email, nombre, codigos) => {
+  let htmlAddress = path.join(__dirname, "/plantillas/agradecimientopromoiphone.html");
   let htmlTemplate = await fs.promises.readFile(htmlAddress, "utf8");
   return new Promise(async (resolve, reject) => {
     const request = mailjet.post("send", { version: "v3.1" }).request({
@@ -19,15 +19,22 @@ module.exports.sendEmail = async (emailGanador, nombreGanador, ordenDePago) => {
           },
           To: [
             {
-              Email: emailGanador,
-              Name: nombreGanador,
+              Email: email,
+              Name: nombre,
             },
           ],
-          Subject: "Greetings from Mailjet.",
-          TextPart: "My first Mailjet email",
-          /* CREAR PLANTILLA PARA CORREO DE GANADORES EN ESPECIASs */
+          Variables: {
+            nombre: nombre,
+            codigo1: codigos[0],
+            codigo2: codigos[1],
+            codigo3: codigos[2],
+            codigo4: codigos[3],
+            codigo5: codigos[4],
+          },
+          TemplateLanguage: true,
+          Subject: "Participa en el sorteo por un Iphone 13 pro.",
           HTMLPart: htmlTemplate,
-          CustomID: "AppGettingStartedTest",
+          CustomID: "SorteoIphone",
         },
       ],
     });

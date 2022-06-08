@@ -54,11 +54,10 @@ sorteoSchema.statics = {
 
   addSorteo: async function (element) {
     try {
-      let newSorteo = new this(element);
-      let sorteo = await newSorteo.save();
+      let newSorteo = await this.create(element);
       let response = {
         status: true,
-        values: sorteo,
+        values: newSorteo,
       };
       return response;
     } catch (error) {
@@ -136,14 +135,16 @@ sorteoSchema.statics = {
       return response;
     }
   },
+
   setSorteosJugados: async function (sorteos) {
     try {
       let response = [];
       let length = sorteos.length;
       for (let i = 0; i < length; i++) {
         const sorteo = sorteos[i];
-        let auxSorteo = await this.getSorteoByNumber(parseInt(sorteo.SortId));
-        if (!auxSorteo.status) {
+        let query = { sorteo: sorteo.SortId };
+        let auxSorteo = await this.findOne(query);
+        if (!auxSorteo) {
           let data = {
             sorteo: sorteo.SortId,
             nombre: sorteo.SortNomb,
