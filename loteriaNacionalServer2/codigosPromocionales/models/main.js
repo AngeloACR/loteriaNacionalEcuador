@@ -126,7 +126,6 @@ codigosPromocionalesSchema.statics = {
     try {
       let updatedCodes = [];
       for (let i = 0; i < codigos.length; i++) {
-        let response = [];
         const codigo = codigos[i];
         let query = { codigo };
   
