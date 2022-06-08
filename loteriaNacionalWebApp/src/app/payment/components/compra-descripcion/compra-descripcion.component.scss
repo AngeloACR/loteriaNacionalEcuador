@@ -83,12 +83,6 @@ $color-millonaria: #b51f20;
         font-size: 16px;
       }
     }
-    .codigo {
-      span {
-        padding: 5px;
-        margin: 5px;
-      }
-    }
     .titleLoteryBox {
       display: flex;
       justify-content: space-between;
@@ -96,6 +90,14 @@ $color-millonaria: #b51f20;
       padding-right: 10px;
       &.codigos {
         flex-direction: column;
+        margin-bottom: 20px;
+        .codigo {
+          span {
+            padding: 5px;
+            margin: 5px;
+          }
+        }
+    
       }
       
       h3 {
