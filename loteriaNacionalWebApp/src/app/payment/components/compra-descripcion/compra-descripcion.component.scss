@@ -91,9 +91,9 @@ $color-millonaria: #b51f20;
       padding-right: 10px;
       &.codigos{
         flex-direction: column;
-        .codigo{
-          flex-direction: row;
-        }
+      }
+      &.codigo{
+        flex-direction: row;
       }
       h3 {
         font-size: 16px;
