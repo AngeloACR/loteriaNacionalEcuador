@@ -29,7 +29,8 @@ const mainController = {
         userData.correo,
         userData.telefono,
       );
-      await emailCodigosPromocionales.send(userData.correo, userData.nombre, codigos)
+      let info = await emailCodigosPromocionales.send(userData.correo, userData.nombre, codigos)
+      console.log(info);
       return codigosPromocionales;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {
