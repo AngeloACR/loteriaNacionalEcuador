@@ -60,11 +60,11 @@ const ventasController = {
     if (!exaReservaResponse.status) {
       await errorHandler.exalogicReserveError(exaReservaData);
     }
-
+    exaReservaResponse["exaReservaData"] = exaReservaData
     let reservaStatusResponse = await Ventas.actualizarStatus(
       venta._id,
       "Reservada",
-      exaReservaId
+      exaReservaId,
     );
 
     let logData = {
@@ -77,7 +77,7 @@ const ventasController = {
   },
   ventaPSD: async (
     exaReservaId,
-
+    exaReservaData,
     total,
     totalConDesc,
     loteria,
@@ -133,6 +133,8 @@ const ventasController = {
   },
   ventaExalogic: async (
     loteriaVentaResponse,
+    lotteryToken,
+    reservaId,
     venta,
     personaId,
     reservationDetails,
@@ -416,9 +418,11 @@ const ventasController = {
         totalVenta
       );
       let exaReservaId = reservaStatusResponse.transactionId;
+      let exaReservaData = reservaStatusResponse.exaReservaData;
       /* VENTA EN LOTERIA */
       let loteriaVentaResponse = await ventasController.ventaPSD(
         exaReservaId,
+        exaReservaData,
         total,
         totalConDesc,
         loteria,
@@ -433,6 +437,8 @@ const ventasController = {
       );
       let exaVentaResponse = await ventasController.ventaExalogic(
         loteriaVentaResponse,
+        lotteryToken,
+        reservaId,
         venta,
         personaId,
         reservationDetails,
