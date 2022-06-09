@@ -1,12 +1,7 @@
-const email = require("./codigoPromocional");
+const codigosPromocionales = require("../codigosPromocionales/controller/main");
 
-email.sendEmail( "angelocrincoli91@gmail.com","Angelo", [
-  "0000001",
-  "0200001",
-  "1000001",
-  "0004001",
-  "0000050",
-]).then((data) => {
-
-    console.log(data);
-});
+codigosPromocionales.setCode("9.00", "43011", "37584", "192.168.0.1").then((data) =>{
+  console.log(data);
+}).catch((err) =>{
+  console.log(err)
+})

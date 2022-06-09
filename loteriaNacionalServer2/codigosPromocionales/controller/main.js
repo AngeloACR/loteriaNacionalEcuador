@@ -21,7 +21,6 @@ const mainController = {
         cantidadDeCodigos = 5;
       }
       let codigos = await CodigoPromocional.getCode(cantidadDeCodigos);
-      if(cantidadDeCodigos == 1) codigos = [codigos];
       let codigosPromocionales = await CodigoPromocional.updateCode(
         codigos,
         ventaId,
