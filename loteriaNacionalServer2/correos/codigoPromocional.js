@@ -7,9 +7,15 @@ const mailjet = require("node-mailjet").connect(
 );
 
 module.exports.send = async (email, nombre, codigos) => {
-  let htmlAddress = path.join(__dirname, "/plantillas/agradecimientopromoiphone.html");
+  let htmlAddress = path.join(
+    __dirname,
+    "/plantillas/agradecimientopromoiphone.html"
+  );
   let htmlTemplate = await fs.promises.readFile(htmlAddress, "utf8");
   return new Promise(async (resolve, reject) => {
+    while (codigos.length !== 5) {
+      codigos.push("");
+    }
     const request = mailjet.post("send", { version: "v3.1" }).request({
       Messages: [
         {
