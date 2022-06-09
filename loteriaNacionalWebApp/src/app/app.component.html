@@ -1,3 +1,4 @@
 <app-navbar *ngIf="!isDetail"></app-navbar>
 <router-outlet></router-outlet>
 <app-footer *ngIf="!isDetail"></app-footer>
+<app-popup-promo (closePromo)="closePromo()" *ngIf="showPromo"></app-popup-promo>
