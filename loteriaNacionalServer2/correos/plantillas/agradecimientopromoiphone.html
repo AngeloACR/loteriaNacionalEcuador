@@ -37,18 +37,19 @@
 	<p>Código(s) con que participas:</p>
 	<p><h3>
 		<strong>{{var:codigo1}}</strong><br>
-		{% if var:codigo2 %}
+		{% if var:codigo2 != "" %}
 			  <strong>{{var:codigo2}}</strong><br>
 		{% endif %}
-		{% if var:codigo3 %}
+		{% if var:codigo3 != "" %}
 		<strong>{{var:codigo3}}</strong><br>
 		{% endif %}
-		{% if var:codigo4 %}
+		{% if var:codigo4 != "" %}
 		<strong>{{var:codigo4}}</strong><br>
 		{% endif %}
-		{% if var:codigo5 %}
-		<strong>{{var:codigo5}}</strong></h3></p>
+		{% if var:codigo5 != "" %}
+		<strong>{{var:codigo5}}</strong>
 		{% endif %}
+	</h3></p>
 		<p>	  Cualquier inquietud no dudes en comunicarte con nuestro chat o correo electr&oacute;nico <a href="mailto:ayuda@loteria.com.ec">ayuda@loteria.com.ec</a></p>
 <p>Un gran saludo del Equipo&nbsp;Loteria Nacional. </p>
 <p><img src="https://ventas-api-prueba.loteria.com.ec/uploads/correos/BANNERAGRADECIMIENTO-700.jpg" alt="Loteria Nacional"/></p>
