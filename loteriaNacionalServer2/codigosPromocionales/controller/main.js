@@ -1,5 +1,6 @@
 const psdAuth = require("../../psdLoteria/auth");
 const CodigoPromocional = require("../models/main");
+const emailCodigosPromocionales = require("../../correos/codigoPromocional");
 const { codigosPromocionalesLogger } = require("../logging");
 
 const mainController = {
@@ -27,8 +28,7 @@ const mainController = {
         userData.correo,
         userData.telefono,
       );
-      for (let i = 0; i < cantidadDeCodigos; i++) {
-      }
+      await emailCodigosPromocionales.send(userData.correo, userData.nombre, codigos)
       return codigosPromocionales;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {

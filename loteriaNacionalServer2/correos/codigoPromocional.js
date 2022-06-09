@@ -6,7 +6,7 @@ const mailjet = require("node-mailjet").connect(
   config.mailjetKey2
 );
 
-module.exports.sendEmail = async (email, nombre, codigos) => {
+module.exports.send = async (email, nombre, codigos) => {
   let htmlAddress = path.join(__dirname, "/plantillas/agradecimientopromoiphone.html");
   let htmlTemplate = await fs.promises.readFile(htmlAddress, "utf8");
   return new Promise(async (resolve, reject) => {
