@@ -84,8 +84,8 @@ module.exports = {
   //ftpPass: "$lnftp123..$",
 
   ftpBoletinesPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
-  ftpBoletosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/uploads/boletos",
-  imgCorreosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/uploads/correos",
+  ftpBoletosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
+  imgCorreosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
 
   //SSL DATA
   //sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",
