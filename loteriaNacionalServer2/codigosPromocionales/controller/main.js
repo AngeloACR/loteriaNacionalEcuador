@@ -13,11 +13,11 @@ const mainController = {
         ip
       );
       let cantidadDeCodigos = 0;
-      if (totalVenta >= 5 && totalVenta < 10) {
+      if (totalVenta >= 5.00 && totalVenta < 10.00) {
         cantidadDeCodigos = 1;
-      } else if (totalVenta >= 10 && totalVenta < 15) {
+      } else if (totalVenta >= 10.00 && totalVenta < 15.00) {
         cantidadDeCodigos = 3;
-      } else if (totalVenta >= 15) {
+      } else if (totalVenta >= 15.00) {
         cantidadDeCodigos = 5;
       }
       let codigos = await CodigoPromocional.getCode(cantidadDeCodigos);
