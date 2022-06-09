@@ -133,7 +133,6 @@ const ventasController = {
   },
   ventaExalogic: async (
     loteriaVentaResponse,
-    lotteryToken,
     reservaId,
     venta,
     personaId,
@@ -437,7 +436,6 @@ const ventasController = {
       );
       let exaVentaResponse = await ventasController.ventaExalogic(
         loteriaVentaResponse,
-        lotteryToken,
         reservaId,
         venta,
         personaId,
