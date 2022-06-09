@@ -6,7 +6,7 @@ const mailjet = require("node-mailjet").connect(
   config.mailjetKey2
 );
 
-module.exports.send = async (email, nombre, codigos) => {
+module.exports.send = async (email, nombre, ventaId, codigos) => {
   let htmlAddress = path.join(
     __dirname,
     "/plantillas/agradecimientopromoiphone.html"
@@ -31,6 +31,7 @@ module.exports.send = async (email, nombre, codigos) => {
           ],
           Variables: {
             nombre: nombre,
+            ventaId: ventaId,
             codigo1: codigos[0],
             codigo2: codigos[1],
             codigo3: codigos[2],
