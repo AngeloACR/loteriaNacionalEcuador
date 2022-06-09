@@ -186,10 +186,10 @@ export class SeleccionComponent implements OnInit {
             reservaId
           );
           if (response.status) {
+            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
-              this.codigoPromocional = response.codigoPromocional;
               this.isInstantaneas = true;
             } else {
               this.instantaneas = "";
