@@ -13,12 +13,15 @@ const mainController = {
         ip
       );
       let cantidadDeCodigos = 0;
-      if (totalVenta >= 5.00 && totalVenta < 10.00) {
+      if (totalVenta >= 5.0 && totalVenta < 10.0) {
         cantidadDeCodigos = 1;
-      } else if (totalVenta >= 10.00 && totalVenta < 15.00) {
+      } else if (totalVenta >= 10.0 && totalVenta < 15.0) {
         cantidadDeCodigos = 3;
-      } else if (totalVenta >= 15.00) {
+      } else if (totalVenta >= 15.0) {
         cantidadDeCodigos = 5;
+      }
+      if (!cantidadDeCodigos) {
+        return [];
       }
       let codigos = await CodigoPromocional.getCode(cantidadDeCodigos);
       let codigosPromocionales = await CodigoPromocional.updateCode(
@@ -26,9 +29,14 @@ const mainController = {
         ventaId,
         userData.cedula,
         userData.correo,
-        userData.telefono,
+        userData.telefono
       );
-      let info = await emailCodigosPromocionales.send(userData.correo, userData.nombre, ventaId, codigos)
+      let info = await emailCodigosPromocionales.send(
+        userData.correo,
+        userData.nombre,
+        ventaId,
+        codigos
+      );
       console.log(info);
       return codigosPromocionales;
     } catch (e) {
@@ -59,7 +67,7 @@ const mainController = {
   },
   getCodes: async (req, res) => {
     try {
-      let ventaId = req.body.ventaId
+      let ventaId = req.body.ventaId;
       let response = await CodigoPromocional.getCodes(ventaId);
       res.status(200).json(response);
     } catch (e) {
@@ -75,7 +83,12 @@ const mainController = {
   setCodeHttp: async (req, res) => {
     try {
       let ip = req.headers["x-forwarded-for"];
-      let response = await mainController.setCode(req.body.totalVenta,req.body.personaId,req.body.ventaId, ip);
+      let response = await mainController.setCode(
+        req.body.totalVenta,
+        req.body.personaId,
+        req.body.ventaId,
+        ip
+      );
       res.status(200).json(response);
     } catch (e) {
       let response = {
