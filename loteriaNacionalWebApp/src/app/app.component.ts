@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   token: string;
   faCoffee = faCoffee;
   isDetail: boolean = false;
-  showPromo: boolean = true;
+  showPromo: boolean = false;
   constructor(private router: Router) {
     this.isDetail = false;
     this.router.events.subscribe((event: Event) => {
@@ -30,7 +30,10 @@ export class AppComponent implements OnInit {
           this.token = data.split("?token=")[1];
           this.router.navigateByUrl(`${url}/${this.token}`);
         }
-        if (data.includes("payment/detalle")) {
+        if (data.includes("inicio")) {
+          this.showPromo = true;
+        }
+          if (data.includes("payment/detalle")) {
           this.isDetail = true;
           let url;
           let ticketId;
