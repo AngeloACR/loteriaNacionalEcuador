@@ -1,0 +1,56 @@
+.Ipad,
+.Mobile {
+  display: none;
+}
+
+.Desktop {
+  max-width: 100%;
+}
+
+.modal{
+
+    z-index: 500000;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    cursor: pointer;
+}
+
+.blackBox {
+    position: fixed;
+    z-index: 8000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: height 0.2s ease-out;
+    overflow: hidden;
+    background-color: rgba(155, 155, 155, 0.5);
+    border: none;
+  }
+  
+  
+  
+@media (max-width: 1240px) {
+  .Desktop,
+  .Mobile {
+    display: none;
+  }
+  .Ipad {
+    display: block;
+    width: 96vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .Desktop,
+  .Ipad {
+    display: none;
+  }
+  .Mobile {
+    display: block;
+    max-width: 100%;
+  }
+}

@@ -17,12 +17,13 @@ import { BrowserAnimationsModule/* , NoopAnimationsModule */ } from "@angular/pl
 /* import {MatTableModule} from '@angular/material/table'; */
 import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { PopupPromoComponent } from './components/popup-promo/popup-promo.component';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent],
+  declarations: [AppComponent, NavbarComponent, FooterComponent, PopupPromoComponent],
   imports: [
     BrowserModule,
     /* NgxPaginationModule, */

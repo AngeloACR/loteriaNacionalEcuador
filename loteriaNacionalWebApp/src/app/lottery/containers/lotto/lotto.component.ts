@@ -21,7 +21,7 @@ export class LottoComponent implements OnInit {
   combinacionDeLaSuerte: any = ["", "", "", "", "", ""];
 
   ticketsDisponibles: ticketsLotto[];
-
+  codigoPromocional: any [];
   page_size: number = 6;
   page_number: number = 1;
   pageSizeOptions: [5, 10, 20, 100];
@@ -302,6 +302,7 @@ export class LottoComponent implements OnInit {
           );
           this.isLoading = false;
           if (response.status) {
+            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

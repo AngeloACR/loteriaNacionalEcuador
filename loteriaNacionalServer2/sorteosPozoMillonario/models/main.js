@@ -90,11 +90,10 @@ resultadoPozoSchema.statics = {
   },
   addResultado: async function (element) {
     try {
-      let newResultado = new thisResusorteoltado(element);
-      let resultado = await newResultado.save();
+      let newResultado = new this.create(element);
       let response = {
         status: true,
-        values: resultado,
+        values: newResultado,
       };
       return response;
     } catch (error) {

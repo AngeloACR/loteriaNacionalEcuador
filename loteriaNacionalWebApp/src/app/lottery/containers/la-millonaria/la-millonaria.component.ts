@@ -454,7 +454,7 @@ export class LaMillonariaComponent implements OnInit {
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
-
+  codigoPromocional: any = [];
   async confirmarCompra() {
     try {
       this.isLoading = true;
@@ -471,6 +471,7 @@ export class LaMillonariaComponent implements OnInit {
           );
           this.isLoading = false;
           if (response.status) {
+            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

@@ -8,6 +8,7 @@ import {LotteryService} from '../../../lottery/services/lottery.service'
 })
 export class CompraDescripcionComponent implements OnInit {
   @Input() compra: any;
+  @Input() codigosPromocionales: any;
   @Input() user: any;
   @Input() ticketId: any;
 

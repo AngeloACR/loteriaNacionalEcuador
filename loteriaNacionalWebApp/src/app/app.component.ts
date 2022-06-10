@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   token: string;
   faCoffee = faCoffee;
   isDetail: boolean = false;
+  showPromo: boolean = true;
   constructor(private router: Router) {
     this.isDetail = false;
     this.router.events.subscribe((event: Event) => {
@@ -48,4 +49,7 @@ export class AppComponent implements OnInit {
     });
   }
   async ngOnInit() {}
+  closePromo() {
+    this.showPromo = false;
+  }
 }

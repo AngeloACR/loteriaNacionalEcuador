@@ -1,17 +1,21 @@
 const config = require("../environments/production");
+const fs = require("fs");
+const path = require("path");
 const mailjet = require("node-mailjet").connect(
   config.mailjetKey1,
   config.mailjetKey2
 );
 
 module.exports.sendEmail = async (emailGanador, nombreGanador, ordenDePago) => {
+  let htmlAddress = path.join(__dirname, "/plantillas/ganadorpremioespecie.html");
+  let htmlTemplate = await fs.promises.readFile(htmlAddress, "utf8");
   return new Promise(async (resolve, reject) => {
     const request = mailjet.post("send", { version: "v3.1" }).request({
       Messages: [
         {
           From: {
-            Email: config.emailRemitentePrueba,
-            Name: config.nombreRemitentePrueba,
+            Email: config.emailRemitente,
+            Name: config.nombreRemitente,
           },
           To: [
             {
@@ -22,7 +26,7 @@ module.exports.sendEmail = async (emailGanador, nombreGanador, ordenDePago) => {
           Subject: "Greetings from Mailjet.",
           TextPart: "My first Mailjet email",
           /* CREAR PLANTILLA PARA CORREO DE GANADORES EN ESPECIASs */
-          HTMLPart: `<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you! El numero de la orden de pago es ${ordenDePago}`,
+          HTMLPart: htmlTemplate,
           CustomID: "AppGettingStartedTest",
         },
       ],

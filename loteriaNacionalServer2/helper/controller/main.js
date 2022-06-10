@@ -1,3 +1,4 @@
+const psdAuth = require("../../psdLoteria/codigosPromocionales");
 const UltimosResultadosLoteria = require("../../sorteosLoteriaNacional/models/ultimoResultado");
 const UltimosResultadosLotto = require("../../sorteosLotto/models/ultimoResultado");
 const UltimosResultadosPozoMillonario = require("../../sorteosPozoMillonario/models/ultimoResultado");
@@ -195,19 +196,7 @@ const helperController = {
       };
       res.status(400).json(response);
     }
-  } /* 
-    resolverVentasDeDescuadre: async (req, res) => {
-  
-      let data = req.body.data;
-      let response = [];
-      for (let i = 0; i < data.length; i++) {
-        let item = data[i];
-        let exaReservaId = item.exaReservaId;
-        let venta = await Reservas.getCompraByExaReservaId(exaReservaId)
-        response.push(venta);
-      }
-      res.status(200).json(response);
-    }, */,
+  },
   resolverVentasDeDescuadre: async (req, res) => {
     let data = req.body.data;
     let response = [];
@@ -224,7 +213,7 @@ const helperController = {
       let prizeDetails = [];
       let instantaneaStatus = false;
       let instantaneaData = {};
- /*      if (instantaneas != "" && instantaneas.length != 0) {
+      if (instantaneas != "" && instantaneas.length != 0) {
         let loteriaSorteos = await CacheLoteria.getSorteosDisponibles();
         let lottoSorteos = await CacheLotto.getSorteosDisponibles();
         let pozoSorteos = await CachePozo.getSorteosDisponibles();
@@ -324,7 +313,7 @@ const helperController = {
         }
         instantaneaData = prizeDetails;
       }
- */
+ 
       
       let exaVentaId = Date.now();
       let exaVentaData = {
@@ -397,11 +386,13 @@ const helperController = {
   },
   pruebaConsulta: async (req, res) => {
     try {
-      let lotteryToken = (await Ventas.autenticarUsuario()).token;
-      let response = await Ventas.consultarDatosUsuario2(
+      let lotteryToken = (await psdAuth.autenticarUsuario()).token;
+      let personaId = req.body.personaId;
+      let ip = req.headers["x-forwarded-for"];
+      let response = await psdAuth.consultarDatosUsuario(
         lotteryToken,
-        "0915693667",
-        "192.168.1.1"
+        personaId,
+        ip
       );
       res.status(200).json(response);
     } catch (e) {

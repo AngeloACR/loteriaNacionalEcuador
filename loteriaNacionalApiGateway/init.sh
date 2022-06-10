@@ -15,6 +15,7 @@ cp ./auth_api.conf /etc/nginx/api_conf.d/auth_api.conf
 cp ./wallet_api.conf /etc/nginx/api_conf.d/wallet_api.conf
 cp ./helper_api.conf /etc/nginx/api_conf.d/helper_api.conf
 cp ./uploads_api.conf /etc/nginx/api_conf.d/uploads_api.conf
+cp ./codigos_promocionales_api.conf /etc/nginx/api_conf.d/codigos_promocionales_api.conf
 cp ./cors /etc/nginx/cors
 
 

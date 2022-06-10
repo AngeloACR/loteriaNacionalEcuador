@@ -5,7 +5,7 @@ const mainController = require("../controller/main");
 
 mainRouter.get('/corregirGanadores', mainController.corregirGanadores);
 mainRouter.get('/pruebaCorreo', mainController.pruebaCorreo);
-mainRouter.get('/pruebaConsulta', mainController.pruebaConsulta);
+mainRouter.post('/pruebaConsulta', mainController.pruebaConsulta);
 mainRouter.get('/pruebaOrden', mainController.pruebaOrden);
 
 mainRouter.post('/corregirTransaccion', mainController.corregirTransaccion);

@@ -433,7 +433,7 @@ export class LoteriaComponent implements OnInit {
   }
 
   irARecarga() {}
-
+codigoPromocional: any = [];
   async confirmarCompra() {
     try {
       this.isLoading = true;
@@ -449,10 +449,10 @@ export class LoteriaComponent implements OnInit {
             reservaId
           );
           if (response.status) {
+            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
-              await this.cart.borrarCarrito();
               this.isInstantaneas = true;
             } else {
               this.instantaneas = "";

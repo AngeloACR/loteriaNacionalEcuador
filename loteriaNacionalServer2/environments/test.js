@@ -20,6 +20,7 @@ module.exports = {
   walletPort: 8500,
   uploadsPort: 9000,
   helperPort: 9500,
+  codigosPromocionalesPort: 10000,
 
   host: "localhost",
 
@@ -51,14 +52,14 @@ module.exports = {
 
   //MAILJET DATA
 
-  mailjetKey1Angelo: "b4ca63161564f363c152cb38c11fe8cd",
-  mailjetKey2Angelo: "a4568d6735f54dc085d3ac3e2ab572eb",
+  mailjetKey1: "8febfe565d8db8ce66731679afa25b36",
+  mailjetKey2: "215166a9f7868b68eb49c954edd0d869",
 
-  mailjetKey1: "3bab0fb6541b67dcc6432ec78e61cf4a",
-  mailjetKey2: "ed376525e47bbc67f419af0aa6b6ea1b",
+  //mailjetKey1: "3bab0fb6541b67dcc6432ec78e61cf4a",
+  //mailjetKey2: "ed376525e47bbc67f419af0aa6b6ea1b",
 
-  emailRemitentePrueba: "admin@ibereffect.com",
-  nombreRemitentePrueba: "Asistencia Loteria",
+  emailRemitente: "ayuda@loteria.com.ec",
+  nombreRemitente: "Asistencia Loteria",
 
   /*   mysqlPort: "3306",
     mysqlUser: "serverUser",
@@ -82,8 +83,9 @@ module.exports = {
   //ftpUser: "loterianacional",
   //ftpPass: "$lnftp123..$",
 
-  ftpBoletinesPath: "/uploads/boletines",
-  ftpBoletosPath: "/uploads/boletos",
+  ftpBoletinesPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
+  ftpBoletosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
+  imgCorreosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
 
   //SSL DATA
   //sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",

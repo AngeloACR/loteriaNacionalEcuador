@@ -51,14 +51,15 @@ module.exports = {
     
     //MAILJET DATA
 
-    mailjetKey1Angelo: 'b4ca63161564f363c152cb38c11fe8cd',
-    mailjetKey2Angelo: 'a4568d6735f54dc085d3ac3e2ab572eb',
-    
-    mailjetKey1: '3bab0fb6541b67dcc6432ec78e61cf4a',
-    mailjetKey2: 'ed376525e47bbc67f419af0aa6b6ea1b',
+
+    mailjetKey1: "b4ca63161564f363c152cb38c11fe8cd",
+    mailjetKey2: "a4568d6735f54dc085d3ac3e2ab572eb",
   
-    emailRemitentePrueba: "admin@ibereffect.com",
-    nombreRemitentePrueba: "Asistencia Loteria",
+    //mailjetKey1: "3bab0fb6541b67dcc6432ec78e61cf4a",
+    //mailjetKey2: "ed376525e47bbc67f419af0aa6b6ea1b",
+
+    emailRemitente: "ayuda@loteria.com.ec",
+    nombreRemitente: "Asistencia Loteria",
 
   
     // FTP DATA
