@@ -52,8 +52,9 @@ module.exports = {
     //MAILJET DATA
 
 
-    mailjetKey1: "b4ca63161564f363c152cb38c11fe8cd",
-    mailjetKey2: "a4568d6735f54dc085d3ac3e2ab572eb",
+
+    mailjetKey1: "8febfe565d8db8ce66731679afa25b36",
+    mailjetKey2: "215166a9f7868b68eb49c954edd0d869",
   
     //mailjetKey1: "3bab0fb6541b67dcc6432ec78e61cf4a",
     //mailjetKey2: "ed376525e47bbc67f419af0aa6b6ea1b",
