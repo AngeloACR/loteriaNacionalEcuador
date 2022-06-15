@@ -156,9 +156,9 @@ const mainController = {
     try {
       let ip = req.headers["x-forwarded-for"];
       let response = await mainController.getCodeCsv();
-
-      res.set({"Content-Disposition":`attachment; filename=Lista de códigos al${getCurrentTimeStamp()}.txt`});
-      res.send(response.values.join(""));
+      res.set({"Access-Control-Expose-Headers": "content-disposition"})
+      res.set({"Content-Disposition":`attachment; filename=Lista de códigos al ${getCurrentTimeStamp()}.txt;modification-date=${getCurrentTimeStamp()};`});
+      res.send(response.values.join("\r\n"));
     } catch (e) {
       let response = {
         status: "error",

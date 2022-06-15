@@ -5,6 +5,7 @@ import {
   HttpParams,
   HttpResponse,
 } from "@angular/common/http";
+import { Observable } from "rxjs/internal/Observable";
 
 @Injectable({
   providedIn: "root",
@@ -42,25 +43,35 @@ export class CodigosPromocionalesService {
         );
     });
   }
-  obtenerTxt() {
-    let address = "/codigosPromocionales";
+  /*   obtenerTxt() {
+    let address = "";
     let endpoint = "/getTxt";
     address = this.mySource + address + endpoint;
     return new Promise((resolve, reject) => {
       this.http
-        .get(address, {
+        .get<Blob>(address, {
           observe: "response",
           responseType: "blob" as "json",
         })
         .subscribe(
           (data: HttpResponse<Blob>) => {
-            let contentDisposition = data.headers.get("Content-Disposition");
+            let contentDisposition = data.headers.get("content-disposition");
             resolve(data.body);
           },
           (error: any) => {
             reject(new Error(error.error.message));
           }
         );
+    });
+  } */
+
+  obtenerTxt(): Observable<HttpResponse<Blob>>  {
+    let address = "";
+    let endpoint = "/getTxt";
+    address = this.mySource + address + endpoint;
+    return this.http.get<Blob>(address, {
+      observe: "response",
+      responseType: "blob" as "json",
     });
   }
 }
