@@ -20,7 +20,30 @@ export class CodigosPromocionalesService {
     //let endpoint = "/inquiry";
 
     let address = "/codigosPromocionales";
-    let endpoint = "/getCodigosCsv";
+    let endpoint = "/getCodCsv";
+    address = this.mySource + address + endpoint;
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(address, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
+  }
+  obtenerTxt() {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+
+    let address = "/codigosPromocionales";
+    let endpoint = "/getTxt";
     address = this.mySource + address + endpoint;
     return new Promise((resolve, reject) => {
       this.http

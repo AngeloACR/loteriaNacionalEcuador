@@ -11,7 +11,13 @@ export class CodigosPromocionalesComponent implements OnInit {
   constructor(private codigosService: CodigosPromocionalesService) { }
 
   async ngOnInit() {
-    this.codigos = await this.codigosService.obtenerCodigos()
+    //this.codigos = (await this.codigosService.obtenerCodigos() as any).values
   }
+
+  async generarTxt(){
+    this.codigos = await this.codigosService.obtenerTxt()
+
+  }
+
 
 }

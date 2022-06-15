@@ -152,6 +152,21 @@ const mainController = {
       res.status(400).json(response);
     }
   },
+  getText: async (req, res) => {
+    try {
+      let ip = req.headers["x-forwarded-for"];
+      let response = await mainController.getCodeCsv();
+      res.set("Content-Type","text/plain");
+      res.status(200);
+      res.send(text[response]);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
 };
 
 module.exports = mainController;
