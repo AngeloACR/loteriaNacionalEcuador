@@ -4,7 +4,7 @@ const mainController = require('../controller/main');
 
 lotteryRouter.get('/', mainController.populate);
 lotteryRouter.get('/getCodeCsv', mainController.getCodeCsvHttp);
-lotteryRouter.get('/getText', mainController.getText);
+lotteryRouter.get('/getTxt', mainController.getTxt);
 lotteryRouter.post('/setCode', mainController.setCodeHttp);
 lotteryRouter.post('/getCodes', mainController.getCodes);
 
