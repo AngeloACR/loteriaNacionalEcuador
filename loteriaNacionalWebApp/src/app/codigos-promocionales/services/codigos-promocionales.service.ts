@@ -66,7 +66,7 @@ export class CodigosPromocionalesService {
   } */
 
   obtenerTxt(): Observable<HttpResponse<Blob>>  {
-    let address = "";
+    let address = "/codigosPromocionales";
     let endpoint = "/getTxt";
     address = this.mySource + address + endpoint;
     return this.http.get<Blob>(address, {
