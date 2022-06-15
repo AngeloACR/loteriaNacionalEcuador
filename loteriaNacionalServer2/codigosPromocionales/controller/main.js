@@ -152,7 +152,7 @@ const mainController = {
       res.status(400).json(response);
     }
   },
-  getText: async (req, res) => {
+  getTxt: async (req, res) => {
     try {
       let ip = req.headers["x-forwarded-for"];
       let response = await mainController.getCodeCsv();
