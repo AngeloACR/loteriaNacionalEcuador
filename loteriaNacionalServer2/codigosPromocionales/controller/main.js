@@ -158,7 +158,7 @@ const mainController = {
       let response = await mainController.getCodeCsv();
 
       res.set({"Content-Disposition":`attachment; filename=\"Lista de códigos al${getCurrentTimeStamp()}\"`});
-      res.send(response);
+      res.send(response.join(""));
     } catch (e) {
       let response = {
         status: "error",
