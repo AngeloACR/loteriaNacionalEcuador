@@ -1,5 +1,6 @@
 const psdAuth = require("../../psdLoteria/auth");
 const CodigoPromocional = require("../models/main");
+const Ventas = require("../../ventas/models/main");
 const emailCodigosPromocionales = require("../../correos/codigoPromocional");
 const { codigosPromocionalesLogger } = require("../logging");
 
@@ -27,9 +28,10 @@ const mainController = {
       let codigosPromocionales = await CodigoPromocional.updateCode(
         codigos,
         ventaId,
-        userData.cedula,
+        userData.identificacion,
         userData.correo,
-        userData.telefono
+        userData.telefono,
+        userData.nombre
       );
       let info = await emailCodigosPromocionales.send(
         userData.correo,
@@ -89,6 +91,58 @@ const mainController = {
         req.body.ventaId,
         ip
       );
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  getCodeCsv: async () => {
+    try {
+      let response = await CodigoPromocional.getCodigosCSV();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+  restoreCedulas: async () => {
+    try {
+      let lotteryToken = (await psdAuth.autenticarUsuario()).token;
+      let codigos = await CodigoPromocional.find({ asignado: true });
+
+      /*let venta = await Ventas.findOne({ ventaId: codigos[182].ventaId });
+       let aux = await psdAuth.consultarDatosUsuario2(
+        lotteryToken,
+        venta.user,
+        "192.168.1.1"
+      );
+      return aux; */
+      let data = [];
+      for (let i = 0; i < codigos.length; i++) {
+        const codigo = codigos[i];
+        let venta = await Ventas.findOne({ ventaId: codigo.ventaId });
+        let aux = await psdAuth.consultarDatosUsuario2(
+          lotteryToken,
+          venta.user,
+          "192.168.1.1"
+        );
+        codigo.cedula = venta.user;
+        codigo.nombre = aux.nombre;
+        await codigo.save();
+        data.push(aux);
+      }
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getCodeCsvHttp: async (req, res) => {
+    try {
+      let ip = req.headers["x-forwarded-for"];
+      let response = await mainController.getCodeCsv();
       res.status(200).json(response);
     } catch (e) {
       let response = {

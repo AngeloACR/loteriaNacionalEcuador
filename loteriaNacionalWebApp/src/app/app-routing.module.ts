@@ -31,6 +31,13 @@ const routes: Routes = [
     loadChildren: () =>
       import("./inquiry/inquiry.module").then((m) => m.InquiryModule),
   },
+  {
+    path: "codigosPromocionales",
+    loadChildren: () =>
+      import("./codigos-promocionales/codigos-promocionales.module").then(
+        (m) => m.CodigosPromocionalesModule
+      ),
+  },
 ];
 
 @NgModule({

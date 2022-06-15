@@ -196,7 +196,7 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
           <c>
           <aplicacion>25</aplicacion>
           <transaccion>110</transaccion>
-          <usuario>${cliente}</usuario>
+          <usuario>${usuarioClientePsd}</usuario>
           <maquina>${ip}</maquina>
           <codError>0</codError>
           <msgError />
@@ -220,19 +220,20 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
         async function (err, res, rawResponse, soapHeader, rawRequest) {
           try {
             if (err) reject(new Error(err));
-            let data = await parser.parseStringPromise(
+            let dataAux = await parser.parseStringPromise(
               res.fnEjecutaTransaccionResult
             );
-            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            let errorCode = parseInt(dataAux.mt.c[0].codError[0]);
+            let data = await parser.parseStringPromise(
+              dataAux.mt.o[0].xmlPersona[0]
+            )
             if (!errorCode) {
-              let datosUsuario = data.mt.rs[0].r[0].Row[0];
-              let correo = data.mt.rs[0].r[2].Row.filter((o) =>
+/*               let correo = data.mt.rs[0].r[2].Row.filter((o) =>
                 o.$.Descripcion.includes("@")
               )[0].$.Descripcion;
+ */              
               let response = {
-                nombre: `${datosUsuario.$.PrimerNombre} ${datosUsuario.$.ApellidoPaterno}`,
-                identificacion: datosUsuario.$.Identificacion,
-                correo,
+                nombre: `${data.PE.R[0].$.pNomb} ${data.PE.R[0].$.apePat}`.toUpperCase(),
                 status: true,
               };
 
