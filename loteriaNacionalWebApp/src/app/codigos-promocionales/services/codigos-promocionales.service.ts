@@ -1,5 +1,10 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpResponse,
+} from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
@@ -38,21 +43,19 @@ export class CodigosPromocionalesService {
     });
   }
   obtenerTxt() {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    //let endpoint = "/inquiry";
-
     let address = "/codigosPromocionales";
     let endpoint = "/getTxt";
     address = this.mySource + address + endpoint;
     return new Promise((resolve, reject) => {
       this.http
         .get(address, {
-          headers: headers,
+          observe: "response",
+          responseType: "blob" as "json",
         })
         .subscribe(
-          (data: any) => {
-            resolve(data);
+          (data: HttpResponse<Blob>) => {
+            let contentDisposition = data.headers.get("Content-Disposition");
+            resolve(data.body);
           },
           (error: any) => {
             reject(new Error(error.error.message));

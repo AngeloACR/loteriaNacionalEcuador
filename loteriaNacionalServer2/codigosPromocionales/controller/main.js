@@ -157,7 +157,7 @@ const mainController = {
       let ip = req.headers["x-forwarded-for"];
       let response = await mainController.getCodeCsv();
 
-      res.set({"Content-Disposition":`attachment; filename=\"Lista de códigos al${getCurrentTimeStamp()}.txt\"`});
+      res.setHeader({"Content-Disposition":`attachment; filename=\"Lista de códigos al${getCurrentTimeStamp()}.txt\"`});
       res.send(response.values.join(""));
     } catch (e) {
       let response = {
