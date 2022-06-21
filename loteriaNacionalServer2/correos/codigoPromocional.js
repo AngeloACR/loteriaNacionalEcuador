@@ -1,4 +1,4 @@
-const config = require("../environments/test");
+const config = require("../environments/production");
 const fs = require("fs");
 const path = require("path");
 const mailjet = require("node-mailjet").connect(

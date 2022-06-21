@@ -25,7 +25,10 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         let data = decodeURIComponent(event.url);
-        if (data.includes("compra_tus_juegos?token")) {
+    if (data.includes("inicio")) {
+      this.showPromo = true;
+    }
+    if (data.includes("compra_tus_juegos?token")) {
           let url = data.split("?token=")[0];
           this.token = data.split("?token=")[1];
           this.router.navigateByUrl(`${url}/${this.token}`);

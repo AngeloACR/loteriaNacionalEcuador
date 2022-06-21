@@ -1,16 +1,20 @@
 <div class="blackBox" (click)="close()"></div>
 <div id="myModal" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
+    <div class="modal-header">
+      <button class="close" aria-label="Close" (click)="close()"></button>
+    </div>
+
     <div class="modal-content">
       <div class="modal-body">
-        <a target="_blank" href="https://www.loteria.com.ec/compra-tus-boletos">
+        <a target="_parent" href="https://www.loteria.com.ec/compra-tus-boletos">
           <img
             src="assets/BANNERWEB-POPUP.jpg"
             class="Desktop"
             (click)="close()"
           />
         </a>
-        <a target="_blank" href="https://www.loteria.com.ec/compra-tus-boletos">
+        <a target="_parent" href="https://www.loteria.com.ec/compra-tus-boletos">
           <img
             src="assets/BANNERWEB-600X450.jpg"
             style="max-width: 100%"
@@ -18,7 +22,7 @@
             (click)="close()"
           />
         </a>
-        <a target="_blank" href="https://www.loteria.com.ec/compra-tus-boletos">
+        <a target="_parent" href="https://www.loteria.com.ec/compra-tus-boletos">
           <img
             src="assets/BANNERPOPUPMOBILE-480X710.jpg"
             (click)="close()"

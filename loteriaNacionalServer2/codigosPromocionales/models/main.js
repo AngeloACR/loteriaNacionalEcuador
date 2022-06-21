@@ -6,6 +6,9 @@ const codigosPromocionalesSchema = new mongoose.Schema(
     codigo: {
       type: String,
     },
+    nombre: {
+      type: String,
+    },
     ventaId: {
       type: String,
       index: true,
@@ -79,7 +82,7 @@ codigosPromocionalesSchema.statics = {
       resultados = resultados.map((resultado) => {
         return `${resultado.codigo},${resultado.codigo},${
           resultado.cedula
-        },${resultado.nombre.toUpperCase()},${resultado.correo},${
+        },${resultado.nombre},${resultado.correo},${
           resultado.telefono
         },SITIO WEB`;
       });
@@ -96,18 +99,20 @@ codigosPromocionalesSchema.statics = {
     try {
       let query = { asignado: false };
       //let count = await this.count(query);
-      
+
       // Get a random entry
       //var random = Math.floor(Math.random() * count);
 
       // Again query all users but only fetch one offset by our random #
       //let response = await this.findOne(query).skip(random).lean();
-      let response = (await this.aggregate([
-        { $match: query },
-        { $limit: 50000 },
-        { $sample: { size: nCodigos } },
-        { $unset: ["asignado","_id"] },
-      ])).map((data) => data.codigo)
+      let response = (
+        await this.aggregate([
+          { $match: query },
+          { $limit: 50000 },
+          { $sample: { size: nCodigos } },
+          { $unset: ["asignado", "_id"] },
+        ])
+      ).map((data) => data.codigo);
       return response;
     } catch (error) {
       throw error;
@@ -122,16 +127,24 @@ codigosPromocionalesSchema.statics = {
       throw error;
     }
   },
-  updateCode: async function (codigos, ventaId, cedula, correo, telefono) {
+  updateCode: async function (
+    codigos,
+    ventaId,
+    cedula,
+    correo,
+    telefono,
+    nombre
+  ) {
     try {
       let updatedCodes = [];
       for (let i = 0; i < codigos.length; i++) {
         const codigo = codigos[i];
         let query = { codigo };
-  
+
         let aux = await this.findOne(query);
         aux.ventaId = ventaId;
         aux.cedula = cedula;
+        aux.nombre = nombre;
         aux.correo = correo;
         aux.telefono = telefono;
         aux.asignado = true;
