@@ -1,5 +1,5 @@
 const https = require("https");
-var {alboranError} = require("./errors");
+var { alboranError } = require("./errors");
 const config = require("../environments/test");
 const { alboranLogger } = require("./logging");
 
@@ -13,6 +13,7 @@ module.exports.alboranRequest = async (data, endpoint) => {
     return new Promise(async (resolve, reject) => {
       try {
         //await authController.logoutUser();
+        process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
         let aux = JSON.stringify(data);
         const options = {

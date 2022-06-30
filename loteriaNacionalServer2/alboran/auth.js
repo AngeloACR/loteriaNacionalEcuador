@@ -25,7 +25,7 @@ const authController = {
         return response;
       } else{
         let errorData = {
-          input: data,
+          input: authData,
           output: response,
           function: "authUser"
         }
