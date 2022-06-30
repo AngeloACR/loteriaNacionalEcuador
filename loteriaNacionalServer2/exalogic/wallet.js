@@ -1,6 +1,6 @@
-const { exalogicLogger } = require("./logging");
+const { alboranLogger } = require("./logging");
 const helper = require("./helper");
-var { exalogicError } = require("./errors");
+var { alboranError } = require("./errors");
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
@@ -15,29 +15,24 @@ function getCurrentTimeStamp() {
   return n;
 }
 const walletController = {
-  getBalance: async (data) => {
+  getBalance: async (sessionToken) => {
     try {
-      exalogicLogger.silly("getBalance");
-      let token = data.token;
+      alboranLogger.silly("getBalance");
       /* {
     "token": "661c0ce5ccabbeb1136a"
 } */
 
       let exaData = {
-        command: "getBalance",
-        systemCode: "1",
-        sessionToken: token,
-        language: "en",
-        currency: "USD",
+        sessionToken,
       };
-      let response = await helper.exalogicRequest(exaData);
+      let response = await helper.alboranRequest(exaData);
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,
           response,
           function: "getBalance",
         };
-        exalogicLogger.info("getBalance.exalogic", logData);
+        alboranLogger.info("getBalance.alboran", logData);
         return response;
       } else {
         let errorData = {
@@ -45,14 +40,14 @@ const walletController = {
           output: response,
           function: "getBalance",
         };
-        throw new exalogicError(
+        throw new alboranError(
           response.resultDescription,
-          "exalogic",
+          "alboran",
           errorData
         );
       }
     } catch (e) {
-      exalogicLogger.error("getBalance.error", {
+      alboranLogger.error("getBalance.error", {
         errorMessage: e.message,
         errorData: e.data,
       });
@@ -61,13 +56,13 @@ const walletController = {
         output: "",
         function: "getBalance",
       };
-      throw new exalogicError(e.message, "exalogic", errorData);
+      throw new alboranError(e.message, "alboran", errorData);
     }
   },
 
   sellLottery: async (data) => {
     try {
-      exalogicLogger.silly("sellLottery");
+      alboranLogger.silly("sellLottery");
       /* {
                 "token": "661c0ce5ccabbeb1136a"
                 "reserveId": 123564987,
@@ -82,19 +77,16 @@ const walletController = {
       let operationTimeStamp = getCurrentTimeStamp();
 
       let exaData = {
-        command: "sellLottery",
-        systemCode: "1",
         sessionToken: data.token,
         transactionId: data.transactionId,
         reserveId: data.reserveId,
-        language: "en",
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
         ticketId: data.ticketId,
         amount: data.amount,
-        instantWinDetails: data.prizeDetails,
+        instantWinDetails: data.instantWinDetails,
       };
-      let response = await helper.exalogicRequest(exaData);
+      let response = await helper.alboranRequest(exaData);
       response["status"] = true;
 
       if (parseInt(response.resultCode) >= 0) {
@@ -103,7 +95,7 @@ const walletController = {
           response,
           function: "Wallet.sellLottery",
         };
-        exalogicLogger.info("sellLottery.exalogic", logData);
+        alboranLogger.info("sellLottery.alboran", logData);
         return response;
       } else {
         let errorData = {
@@ -113,14 +105,14 @@ const walletController = {
           status: false,
         };
         return errorData;
-        /* throw new exalogicError(
+        /* throw new alboranError(
           response.resultDescription,
-          "exalogic",
+          "alboran",
           errorData
         ); */
       }
     } catch (e) {
-      exalogicLogger.error("sellLottery.error", {
+      alboranLogger.error("sellLottery.error", {
         errorMessage: e.message,
         errorData: e.data,
       });
@@ -131,12 +123,12 @@ const walletController = {
         status: false,
       };
       return errorData;
-      //throw new exalogicError(e.message, "exalogic", errorData);
+      //throw new alboranError(e.message, "alboran", errorData);
     }
   },
   cancelLottery: async (data) => {
     try {
-      exalogicLogger.silly("cancelLottery");
+      alboranLogger.silly("cancelLottery");
       /* {
                 "token": "661c0ce5ccabbeb1136a"
                 "reserveId": 123564987,
@@ -150,17 +142,14 @@ const walletController = {
       let operationTimeStamp = getCurrentTimeStamp();
 
       let exaData = {
-        command: "cancelLottery",
-        systemCode: "1",
         sessionToken: data.token,
         transactionId: data.transactionId,
         reserveId: data.reserveId,
-        language: "en",
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
         amount: data.amount,
       };
-      let response = await helper.exalogicRequest(exaData);
+      let response = await helper.alboranRequest(exaData);
       response["status"] = true;
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
@@ -168,7 +157,7 @@ const walletController = {
           response,
           function: "cancelLottery",
         };
-        exalogicLogger.info("cancelLottery.exalogic", logData);
+        alboranLogger.info("cancelLottery.alboran", logData);
         return response;
       } else {
         let errorData = {
@@ -179,14 +168,14 @@ const walletController = {
         };
         return errorData;
 
-        /*         throw new exalogicError(
+        /*         throw new alboranError(
           response.resultDescription,
-          "exalogic",
+          "alboran",
           errorData
         ); */
       }
     } catch (e) {
-      exalogicLogger.error("cancelLottery.error", {
+      alboranLogger.error("cancelLottery.error", {
         errorMessage: e.message,
         errorData: e.data,
       });
@@ -197,12 +186,12 @@ const walletController = {
         status: false,
       };
       return errorData;
-      //throw new exalogicError(e.message, "exalogic", errorData);
+      //throw new alboranError(e.message, "alboran", errorData);
     }
   },
   reserveLottery: async (data) => {
     try {
-      exalogicLogger.silly("reserveLottery");
+      alboranLogger.silly("reserveLottery");
       /*
             {
                 "token": "661c0ce5ccabbeb1136a",
@@ -240,7 +229,7 @@ const walletController = {
         amount: data.amount,
         reservationDetails: data.reservationDetails,
       };
-      let response = await helper.exalogicRequest(exaData);
+      let response = await helper.alboranRequest(exaData);
       response["status"] = true;
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
@@ -248,7 +237,7 @@ const walletController = {
           response,
           function: "Wallet.reserveLottery",
         };
-        exalogicLogger.info("reserveLottery.exalogic", logData);
+        alboranLogger.info("reserveLottery.alboran", logData);
         return response;
       } else {
         let errorData = {
@@ -258,14 +247,14 @@ const walletController = {
           status: false,
         };
         return errorData;
-        /* throw new exalogicError(
+        /* throw new alboranError(
           response.resultDescription,
-          "exalogic",
+          "alboran",
           errorData
         ); */
       }
     } catch (e) {
-      exalogicLogger.error("reserveLottery.error", {
+      alboranLogger.error("reserveLottery.error", {
         errorMessage: e.message,
         errorData: e.data,
       });
@@ -276,7 +265,7 @@ const walletController = {
         status: false,
       };
       return errorData;
-      //throw new exalogicError(e.message, "exalogic", errorData);
+      //throw new alboranError(e.message, "alboran", errorData);
     }
   },
 };

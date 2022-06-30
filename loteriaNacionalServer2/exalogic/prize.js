@@ -1,6 +1,6 @@
-const { exalogicLogger } = require("./logging");
+const { alboranLogger } = require("./logging");
 const helper = require("./helper");
-var {exalogicError} = require("./errors");
+var {alboranError} = require("./errors");
 
 function getCurrentTimeStamp() {
   let date = new Date(Date.now()).toLocaleString("es-EC", {
@@ -26,7 +26,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             }
             
             */
-      exalogicLogger.silly("payLottery");
+      alboranLogger.silly("payLottery");
       let operationTimeStamp = getCurrentTimeStamp();
       /*       let operationTimeStamp = new Date(Date.now())
         .toISOString()
@@ -42,16 +42,16 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         operationTimeStamp: operationTimeStamp,
         payLine: data.payLine,
       };
-      let response = await helper.exalogicRequest(exaData);
+      let response = await helper.alboranRequest(exaData);
       let logData = {
         data: exaData,
         response,
         function: "Wallet.payLottery",
       };
-      exalogicLogger.info("payLottery.exalogic", logData);
+      alboranLogger.info("payLottery.alboran", logData);
       return response;
     } catch (e) {
-      exalogicLogger.error("payLottery.error", {
+      alboranLogger.error("payLottery.error", {
         errorMessage: e.message,
       });
       throw new Error(e.message);
