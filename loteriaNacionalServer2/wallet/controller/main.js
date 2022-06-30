@@ -1,5 +1,6 @@
 const { walletLogger } = require("../logging");
 const exalogicWallet = require("../../exalogic/wallet");
+const alboranWallet = require("../../alboran/wallet");
 
 const walletController = {
   getBalance: async (req, res) => {
@@ -8,7 +9,8 @@ const walletController = {
       /* {
     "token": "661c0ce5ccabbeb1136a"
 } */
-      let response = await exalogicWallet.getBalance(req.body);
+      //let response = await exalogicWallet.getBalance(req.body);
+      let response = await alboranWallet.getBalance(req.body);
       res.status(200).json(response);
     } catch (e) {
       walletLogger.error("getBalance.error", {

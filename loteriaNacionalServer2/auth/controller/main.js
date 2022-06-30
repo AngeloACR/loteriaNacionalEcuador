@@ -1,4 +1,5 @@
 const exalogicAuth = require("../../exalogic/auth");
+const alboranAuth = require("../../alboran/auth");
 const { authLogger } = require("../logging");
 
 const mainController = {
@@ -8,7 +9,8 @@ const mainController = {
         "token": "661c0ce5ccabbeb1136a"
       } */
       let token = req.body.token;
-      let response = await exalogicAuth.authUser(token);
+      //let response = await exalogicAuth.authUser(token);
+      let response = await alboranAuth.authUser(token);
       res.status(200).json(response);
     } catch (e) {
       authLogger.error("authUser.error", {

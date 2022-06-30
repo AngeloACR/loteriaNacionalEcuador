@@ -24,13 +24,9 @@ const walletController = {
 } */
 
       let exaData = {
-        command: "getBalance",
-        systemCode: "1",
         sessionToken: token,
-        language: "en",
-        currency: "USD",
       };
-      let response = await helper.alboranRequest(exaData);
+      let response = await helper.alboranRequest(exaData, "/GetBalance");
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
           data: exaData,

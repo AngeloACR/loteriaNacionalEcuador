@@ -4,9 +4,10 @@ const config = require("../environments/test");
 const { alboranLogger } = require("./logging");
 
 let alboranHost = config.alboranHost;
+let alboranPort = config.alboranPort;
 let alboranEndpoint = config.alboranEndpoint;
 
-module.exports.alboranRequest = async (data) => {
+module.exports.alboranRequest = async (data, endpoint) => {
   try {
     alboranLogger.silly("alboranRequest");
     return new Promise(async (resolve, reject) => {
@@ -16,8 +17,8 @@ module.exports.alboranRequest = async (data) => {
         let aux = JSON.stringify(data);
         const options = {
           hostname: alboranHost,
-          port: 443,
-          path: alboranEndpoint,
+          port: alboranPort,
+          path: `${alboranEndpoint}${endpoint}`,
           method: "POST",
           headers: {
             "Content-Type": "application/json",

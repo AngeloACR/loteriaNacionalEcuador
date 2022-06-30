@@ -12,7 +12,7 @@ const authController = {
       let authData = {
         sessionToken,
       };
-      let response = await helper.alboranRequest(authData);
+      let response = await helper.alboranRequest(authData, "/CheckToken");
       if (response["password"]) delete response["password"];
       if(parseInt(response.resultCode) >= 0){
         
