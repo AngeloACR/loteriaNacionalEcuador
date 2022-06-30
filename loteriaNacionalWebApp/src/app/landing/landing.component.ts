@@ -8,11 +8,9 @@ import { LotteryService } from "../lottery/services/lottery.service";
   styleUrls: ["./landing.component.scss"]
 })
 export class LandingComponent implements OnInit {
-  //link: string = "https://contenidos-prueba.loteria.com.ec/divi-slide";
-  //linkNews: string = "https://contenidos-prueba.loteria.com.ec/newsletter";
-  link: string = "https://contenidos.loteria.com.ec/slide-new";
-  link593: string = "https://contenidos.loteria.com.ec/bet593";
-  linkNews: string = "https://contenidos.loteria.com.ec/newsletter";
+  link: string = "https://blog.loteria.com.ec/contenido/slide-new";
+  link593: string = "https://blog.loteria.com.ec/contenido/bet593";
+  linkNews: string = "https://blog.loteria.com.ec/contenido/newsletter";
   title: string = "sliderLoteria";
   infoReady: boolean = false;
   constructor(private inquiry: InquiryService, private lottery: LotteryService) {}
