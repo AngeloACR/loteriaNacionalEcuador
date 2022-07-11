@@ -13,86 +13,92 @@
     </app-detalle-sorteo>
 
     <div class="contenedor_seleccion">
-      <div class="contenedor_select">
-        <h3>¿Cómo quieres comprar?</h3>
-        <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
-          <option class="option" value="96">Selección individual</option>
-          <option class="option" value="5">5 Boletos al azar</option>
-          <option class="option" value="30">30 Boletos al azar</option>
-          <option class="option" value="50">50 Boletos al azar</option>
-        </select>
-      </div>
-      <div class="numeros_suerte">
-        <h3>
-          Ingresa tu número de la suerte:
-        </h3>
+      <div class="selectBox">
+        <div class="contenedor_select">
+          <h3>¿Cómo quieres comprar?</h3>
+          <select
+            class="select_option"
+            name=""
+            id=""
+            [(ngModel)]="tipoSeleccion"
+          >
+            <option class="option" value="96">Selección individual</option>
+            <option class="option" value="5">5 Boletos al azar</option>
+            <option class="option" value="30">30 Boletos al azar</option>
+            <option class="option" value="50">50 Boletos al azar</option>
+          </select>
+        </div>
+        <div class="numeros_suerte">
+          <h3>Ingresa tu número de la suerte:</h3>
 
-        <div class="numeros">
-          <input
-            #input1
-            [appAutoTab]="input2"
-            type="text"
-            name=""
-            inputmode="numeric"
-            pattern="[0-9]*"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[0]"
-          />
-          <input
-            #input2
-            [appAutoTab]="input3"
-            type="text"
-            name=""
-            inputmode="numeric"
-            pattern="[0-9]*"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[1]"
-          />
-          <input
-            #input3
-            [appAutoTab]="input4"
-            type="text"
-            name=""
-            inputmode="numeric"
-            pattern="[0-9]*"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[2]"
-          />
-          <input
-            #input4
-            [appAutoTab]="input5"
-            type="text"
-            name=""
-            inputmode="numeric"
-            pattern="[0-9]*"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[3]"
-          />
-          <input
-            #input5
-            [appAutoTab]="input6"
-            type="text"
-            name=""
-            inputmode="numeric"
-            pattern="[0-9]*"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[4]"
-          />
-          <input
-            #input6
-            type="text"
-            name=""
-            inputmode="numeric"
-            pattern="[0-9]*"
-            maxlength="1"
-            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
-            [(ngModel)]="combinacionDeLaSuerte[5]"
-          />
+          <div class="numeros">
+            <input
+              #input1
+              [appAutoTab]="input2"
+              type="text"
+              name=""
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="1"
+              onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+              [(ngModel)]="combinacionDeLaSuerte[0]"
+            />
+            <input
+              #input2
+              [appAutoTab]="input3"
+              type="text"
+              name=""
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="1"
+              onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+              [(ngModel)]="combinacionDeLaSuerte[1]"
+            />
+            <input
+              #input3
+              [appAutoTab]="input4"
+              type="text"
+              name=""
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="1"
+              onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+              [(ngModel)]="combinacionDeLaSuerte[2]"
+            />
+            <input
+              #input4
+              [appAutoTab]="input5"
+              type="text"
+              name=""
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="1"
+              onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+              [(ngModel)]="combinacionDeLaSuerte[3]"
+            />
+            <input
+              #input5
+              [appAutoTab]="input6"
+              type="text"
+              name=""
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="1"
+              onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+              [(ngModel)]="combinacionDeLaSuerte[4]"
+            />
+            <input
+              #input6
+              type="text"
+              name=""
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="1"
+              onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+              [(ngModel)]="combinacionDeLaSuerte[5]"
+            />
+          </div>
+
           <button class="activado" (click)="buscarNumero()">
             BUSCAR NUMERO
           </button>
