@@ -1,0 +1,129 @@
+$color-botton: #28abe2;
+$fuente-subtitulo: "Monstserrat SemiBold";
+
+.floatingBox {
+  display: none;
+}
+
+.toggleBox {
+  display: none;
+}
+
+.totalBox {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .floatingBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: $color-botton;
+    width: 60px;
+    height: 60px;
+    z-index: 10000;
+    border-radius: 80px;
+    box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+
+    .carrito {
+      width: 30px;
+      opacity: 1;
+      transition: opacity ease-in 0.3s;
+    }
+    .cerrar {
+      width: 0;
+      opacity: 0;
+      transition: opacity ease-in 0.3s;
+    }
+
+    .carritoDisplay {
+      width: 0;
+      opacity: 0;
+      transition: opacity ease-in 0.3s;
+    }
+    .cerrarDisplay {
+      width: 25px;
+      opacity: 1;
+      transition: opacity ease-in 0.3s;
+    }
+  }
+  .toggleBox {
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    bottom: 80px;
+    left: 2.5%;
+    padding: 20px 30px;
+    z-index: 10000;
+    box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    .itemBox {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-decoration: none;
+      color: black;
+      font-family: $fuente-subtitulo;
+      font-size: 14px;
+      .totalCartBox {
+        font-size: 14px;
+        color: white;
+        background-color: $color-botton;
+        border-radius: 10px;
+        margin-left: auto;
+        padding: 6px;
+      }
+      img {
+        width: 30px;
+        margin-right: 10px;
+      }
+      p {
+        font-family: $fuente-subtitulo;
+        font-size: 14px;
+      }
+      &:nth-child(2) {
+        border-width: 1px 0;
+        border-style: solid;
+        border-color: black;
+      }
+    }
+  }
+  .ticketScroller {
+    position: fixed;
+    z-index: 9500;
+    width: 95%;
+    left: 2.5%;
+    top: 40px;
+    max-width: 800px;
+  }
+  .totalBox {
+    position: fixed;
+    display: block;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 10px;
+    bottom: 25px;
+    left: 70px;
+    margin: 0 5px;
+    padding: 6px 15px;
+    opacity: 1;
+    box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    -webkit-box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 0px 10px 50px -16px rgba(0, 0, 0, 0.51);
+    transition: opacity ease-in 0.3s;
+
+    &.carritoDisplay {
+      opacity: 0;
+      transition: opacity ease-in 0.3s;
+    }
+  }
+}

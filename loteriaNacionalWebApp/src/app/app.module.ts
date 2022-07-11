@@ -12,18 +12,25 @@ import { FormsModule } from "@angular/forms";
 //Anexando fontAwesome
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-import { BrowserAnimationsModule/* , NoopAnimationsModule */ } from "@angular/platform-browser/animations";
+import {
+  BrowserAnimationsModule /* , NoopAnimationsModule */,
+} from "@angular/platform-browser/animations";
 
 /* import {MatTableModule} from '@angular/material/table'; */
-import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { PopupPromoComponent } from './components/popup-promo/popup-promo.component';
-
-
-
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from "@angular/material/paginator";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { PopupPromoComponent } from "./components/popup-promo/popup-promo.component";
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, PopupPromoComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    PopupPromoComponent,
+  ],
   imports: [
     BrowserModule,
     /* NgxPaginationModule, */
@@ -34,15 +41,10 @@ import { PopupPromoComponent } from './components/popup-promo/popup-promo.compon
     /* NoopAnimationsModule, */
     FormsModule,
 
-
     MatPaginatorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
-  exports: [
-    MatPaginatorModule,
-    MatFormFieldModule, 
-    FormsModule
-  ],
+  exports: [MatPaginatorModule, MatFormFieldModule, FormsModule],
   providers: [
     /* {
       provide: MatPaginatorIntl, 
@@ -50,6 +52,6 @@ import { PopupPromoComponent } from './components/popup-promo/popup-promo.compon
     } */
   ],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

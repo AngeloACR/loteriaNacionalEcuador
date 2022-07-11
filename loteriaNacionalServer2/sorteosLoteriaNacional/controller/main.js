@@ -127,7 +127,6 @@ const mainController = {
       let combinacion = req.body.combinacion;
       let combinacionFigura = req.body.combinacionFigura;
       let tipoSeleccion = req.body.tipoSeleccion;
-
       let combinacionesAux = await psdVentas.obtenerCombinacionesDisponibles(
         1,
         sorteo,

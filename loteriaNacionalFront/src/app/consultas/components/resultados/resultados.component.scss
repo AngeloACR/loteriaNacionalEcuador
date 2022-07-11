@@ -1,0 +1,76 @@
+
+.blackBox {
+    position: fixed;
+    z-index: 8000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: height 0.2s ease-out;
+    overflow: hidden;
+    background-color: rgba(155, 155, 155, 0.5);
+    border: none;
+  }
+  .resultsBox {
+    width: 40%;
+    max-height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: transparent;
+    z-index: 10000;
+  }
+  
+  .resultBox {
+    width: 100%;
+    .messageBox {
+      padding: 20px;
+      margin: 1px;
+      border-radius: 23px;
+    }
+  }
+  
+  .closeBox {
+    border: 2px solid red;
+    border-radius: 500px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: red;
+    cursor: pointer;
+    top: 5px;
+    right: 5px;
+    position: absolute;
+  }
+  
+  .closeBox:hover {
+    background-color: red;
+    color: white;
+  }
+  
+  .backgroundLoteriaNacional {
+    background-color: #28AAE1;
+  }
+  .backgroundLotto {
+    background-color: #b51f20;
+  }
+  .backgroundPozoMillonario {
+    background-color: #04b865;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .resultsBox {
+      width: 75%;
+    }
+  }
+  

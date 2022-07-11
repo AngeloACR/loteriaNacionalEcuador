@@ -1,0 +1,69 @@
+<div class="container" [ngClass]="homeClass">
+  <a
+    style="display: none"
+    [routerLink]="linkLoteriaNacional"
+    routerLinkActive="title loteria"
+  >
+    LOTERIA NACIONAL
+  </a>
+
+  <a
+    style="display: none"
+    [routerLink]="linkLotto"
+    routerLinkActive="title lotto"
+  >
+    LOTTO
+  </a>
+
+  <a
+    style="display: none"
+    [routerLink]="linkPozoMillonario"
+    routerLinkActive="title pozo"
+  >
+    POZO MILLONARIO
+  </a>
+
+  <a
+    style="display: none"
+    [routerLink]="linkLaMillonaria"
+    routerLinkActive="title millonaria"
+  >
+    LA MILLONARIA
+  </a>
+
+  <a
+    class="contenedor_loteria loteria"
+    [routerLink]="linkLoteriaNacional"
+    routerLinkActive="active"
+  >
+    <img src="assets/img/loteria-sombra-2.png" />
+    Jugar
+  </a>
+
+  <a
+    class="contenedor_loteria lotto"
+    [routerLink]="linkLotto"
+    routerLinkActive="active"
+  >
+    <img src="assets/img/lotto-sombra.png" alt="" />
+    Jugar
+  </a>
+
+  <a
+    class="contenedor_loteria pozo"
+    [routerLink]="linkPozoMillonario"
+    routerLinkActive="active"
+  >
+    <img src="assets/img/pozo-sombra.png" alt="" />
+    Jugar
+  </a>
+
+  <a
+    class="contenedor_loteria millonaria"
+    [routerLink]="linkLaMillonaria"
+    routerLinkActive="active"
+  >
+    <img src="assets/img/millonaria-sombra.png" alt="" />
+    Jugar
+  </a>
+</div>

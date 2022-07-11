@@ -1,0 +1,12 @@
+<div class="blackBox" (click)="cerrar()"></div>
+
+<div class="logBox">
+  <div class="closeButton">
+    <button class="closeB" (click)="cerrar()">X</button>
+  </div>
+  <p class="errorHeader">AVISO</p>
+  <p class="errorContent">{{ message }}</p>
+  <button type="button" class="formButton" (click)="cerrar()">
+    <p>VOLVER</p>
+  </button>
+</div>

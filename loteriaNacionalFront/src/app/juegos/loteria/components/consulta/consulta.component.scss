@@ -1,0 +1,78 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-loteria: #35aee2;
+
+%input {
+  padding: 13px 0px;
+  padding-left: 6px;
+  color: #977474;
+  background-color: white;
+  border: none;
+  border-left: 4px solid $color-loteria;
+}
+
+.container_consulta {
+  .cuerpo_boletin {
+    h1 {
+      color: $color-loteria;
+    }
+
+    .explicacion {
+      .content_explicacion {
+        .icono {
+          color: $color-loteria;
+          border: 2px solid $color-loteria;
+        }
+      }
+    }
+
+    .consulta_boleto {
+      h3 {
+        color: $color-loteria;
+      }
+      .formulario {
+        .input {
+          .input_content {
+            input[type="text"] {
+              /* Rectangle 38 */
+              @extend %input;
+            }
+
+            input[type="date"] {
+              @extend %input;
+            }
+
+            select {
+              @extend %input;
+            }
+          }
+
+          button {
+            /* Rectangle 6 */
+
+            background-color: $color-loteria;
+            border: 1px solid $color-loteria;
+            &:hover {
+              color: $color-loteria;
+            }
+          }
+        }
+        button {
+          background-color: $color-loteria;
+          border: 1px solid $color-loteria;
+
+          &:hover {
+            color: $color-loteria;
+          }
+        }
+      }
+    }
+  }
+
+  .pie_boletin {
+    background-color: $color-loteria;
+  }
+}

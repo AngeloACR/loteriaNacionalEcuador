@@ -11,6 +11,52 @@ const claveClientePsd = config.passwordAplicativo;
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
 
+module.exports.authTest = async () => {
+  try {
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+
+    let message = {
+      $xml: `
+        <PI_DatosXml>
+        <![CDATA[
+          <mt>
+              <c>
+            <aplicacion>17</aplicacion>
+            <usuario>0951234566</usuario>
+            <clave>Pass1234!</clave>
+            <maquina>192.168.1.13</maquina>
+            <codError>0</codError>
+            <msgError />
+            <medio>${medioId}</medio>
+            <operacion>1234568891</operacion>
+              </c>
+          </mt>
+          ]]>
+        </PI_DatosXml>`,
+    };
+
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnAutenticacion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          if (err) reject(err);
+          let data = await parser.parseStringPromise(res.fnAutenticacionResult);
+          let errorCode = parseInt(data.mt.c[0].codError[0]);
+
+          if (!errorCode) {
+            let response = data.mt.c[0].token[0];
+            resolve(response);
+          } else {
+            reject(data.mt.c[0].msgError[0]);
+          }
+        }
+      );
+    });
+  } catch (e) {
+    console.log(e.toString());
+    throw e;
+  }
+};
 module.exports.autenticarUsuario = async () => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
@@ -110,9 +156,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
                   ? o.$.TipoContactoCodigoNombre.toLowerCase().includes("móvil")
                   : false
               );
-              telefono = telefono.length
-                ? telefono[0].$.Descripcion
-                : "";
+              telefono = telefono.length ? telefono[0].$.Descripcion : "";
               let response = {
                 nombre: `${datosUsuario.$.PrimerNombre} ${datosUsuario.$.ApellidoPaterno}`,
                 identificacion: datosUsuario.$.Identificacion,
@@ -126,10 +170,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaAuthLogger.info(
-                "consultarDatosUsuario.loteria",
-                logData
-              );
+              loteriaAuthLogger.info("consultarDatosUsuario.loteria", logData);
               resolve(response);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
@@ -226,14 +267,15 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
             let errorCode = parseInt(dataAux.mt.c[0].codError[0]);
             let data = await parser.parseStringPromise(
               dataAux.mt.o[0].xmlPersona[0]
-            )
+            );
             if (!errorCode) {
-/*               let correo = data.mt.rs[0].r[2].Row.filter((o) =>
+              /*               let correo = data.mt.rs[0].r[2].Row.filter((o) =>
                 o.$.Descripcion.includes("@")
               )[0].$.Descripcion;
- */              
+ */
               let response = {
-                nombre: `${data.PE.R[0].$.pNomb} ${data.PE.R[0].$.apePat}`.toUpperCase(),
+                nombre:
+                  `${data.PE.R[0].$.pNomb} ${data.PE.R[0].$.apePat}`.toUpperCase(),
                 status: true,
               };
 
@@ -242,20 +284,14 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaAuthLogger.info(
-                "consultarDatosUsuario2.loteria",
-                logData
-              );
+              loteriaAuthLogger.info("consultarDatosUsuario2.loteria", logData);
               resolve(response);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
-              loteriaAuthLogger.error(
-                "consultarDatosUsuario2.loteria.error",
-                {
-                  data: message,
-                  errorMessage: `${errorCode}-${errorMsg}`,
-                }
-              );
+              loteriaAuthLogger.error("consultarDatosUsuario2.loteria.error", {
+                data: message,
+                errorMessage: `${errorCode}-${errorMsg}`,
+              });
               let errorData = {
                 status: false,
                 input: message,

@@ -7,7 +7,6 @@ import {
   NavigationError,
 } from "@angular/router";
 
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-root",
@@ -17,7 +16,6 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 export class AppComponent implements OnInit {
   title = "loteriaNacionalWeb";
   token: string;
-  faCoffee = faCoffee;
   isDetail: boolean = false;
   showPromo: boolean = false;
   constructor(private router: Router) {

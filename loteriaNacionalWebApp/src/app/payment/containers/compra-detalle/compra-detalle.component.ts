@@ -18,7 +18,7 @@ export class CompraDetalleComponent implements OnInit {
   user: string;
 
   isLoading: boolean;
-  loadingMessage: string;
+  loadingMessage: string; 
   constructor(
     private actRoute: ActivatedRoute,
     private payment: PaymentService,

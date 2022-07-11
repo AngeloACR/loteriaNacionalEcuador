@@ -1,0 +1,16 @@
+<div class="container">
+  <pozo-consulta class="consultaBox" (resultados)="toggleResultados($event)">
+  </pozo-consulta>
+  <pozo-ultimo-resultado class="selectorBox"></pozo-ultimo-resultado>
+
+  <div class="modalBox" *ngIf="showResultados">
+    <consultas-resultados
+      tipoLoteria="14"
+      [isLoteriaNacional]="true"
+      (close)="closeBox()"
+      *ngIf="showResultados"
+      [resultados]="resultados"
+    >
+    </consultas-resultados>
+  </div>
+</div>

@@ -38,9 +38,9 @@ import { FormsModule } from "@angular/forms";
 import { getSpanishPaginatorIntl } from "./paginacion-es";
 import { ResultadoInstantaneaComponent } from "./components/resultado-instantanea/resultado-instantanea.component";
 import { ResultadosInstantaneasComponent } from "./components/resultados-instantaneas/resultados-instantaneas.component";
-import { FloatingMenuComponent } from './components/floating-menu/floating-menu.component';
-import { LaMillonariaComponent } from './containers/la-millonaria/la-millonaria.component';
-import { LaMillonariaTicketComponent } from './components/la-millonaria-ticket/la-millonaria-ticket.component';
+import { FloatingMenuComponent } from "./components/floating-menu/floating-menu.component";
+import { LaMillonariaComponent } from "./containers/la-millonaria/la-millonaria.component";
+import { LaMillonariaTicketComponent } from "./components/la-millonaria-ticket/la-millonaria-ticket.component";
 
 @NgModule({
   declarations: [
@@ -89,7 +89,6 @@ import { LaMillonariaTicketComponent } from './components/la-millonaria-ticket/l
   imports: [
     CommonModule,
     LotteryRoutingModule,
-    /* NgxPaginationModule, */
 
     MatPaginatorModule,
     SharedModule,

@@ -1,0 +1,25 @@
+<div class="contenedor_informacion_ticket">
+  <div class="contenedor_informacion_ticket_derecho">
+    <div class="ticket_titulo">
+      <!-- <img src="../../../../assets/img/pozzo millonario.png" alt="">-->
+
+      <div>
+        <p>Sorteo N° {{ ticket.numeroSorteo }}</p>
+        <p *ngIf="ticket.sorteo">{{ ticket.sorteo.fecha }}</p>
+      </div>
+    </div>
+    <div class="ticket_monto">
+      <p>NÚMEROS GANADORES</p>
+    </div>
+    <div class="ticket_entero_fraccion">
+      <div class="ticket_entero">
+        <div>
+          <p *ngFor="let number of ticketNumbers">{{ number }}</p>
+        </div>
+      </div>
+      <div class="texto_premios">
+        <img [src]="mascotaPath" [alt]="mascota" />
+      </div>
+    </div>
+  </div>
+</div>

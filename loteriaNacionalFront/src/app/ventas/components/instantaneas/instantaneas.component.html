@@ -1,0 +1,17 @@
+<div class="blackBox" (click)="closeBox()">
+</div>
+
+<div class="resultsBox">
+
+    <div class="resultBox" *ngFor="let premio of premios">
+
+        <div class="messageBox" [ngClass]="loteriaBackground">
+            <app-instantanea [premio]="premio" [tipoLoteria]="premio!.tipoLoteria">
+            </app-instantanea>
+        </div>
+
+    </div>
+    <div class="buttonsBox">
+        <button  [ngClass]="loteriaBackgroundButton" (click)="closeBox()">Ir a resumen de compra</button>
+    </div>
+</div>

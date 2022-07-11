@@ -1,7 +1,7 @@
 #!/bin/bash
 ng new loteriaNacionalFront --style scss --routing true --force
 
-cd loteriaNacionalFrontcashproApp/
+cd loteriaNacionalFront/
 
 ng generate module public --route public --module app.module
 ng generate module consultas --route consulta --module app.module

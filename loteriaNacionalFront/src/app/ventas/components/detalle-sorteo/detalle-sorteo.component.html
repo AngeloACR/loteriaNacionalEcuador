@@ -1,0 +1,64 @@
+<div class="menuBox">
+  <div class="menuInfo">
+    <div class="menuSorteo">
+      <div class="menuItem">
+        Sorteo:
+        <select
+          class="fechaItem"
+          [(ngModel)]="seleccionado"
+          (change)="onEmitir()"
+        >
+          <option [ngValue]="sorteoDefault" selected disabled>
+            Seleccione un sorteo
+          </option>
+
+          <ng-container *ngFor="let objeto of sorteos">
+            <option [ngValue]="objeto">
+              <span>{{ objeto.dia }}</span> - {{ objeto.sorteo }} -
+              {{ objeto.fecha.split(" ")[0] }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+      <div class="menuItem">
+        Fecha:
+        <p>{{ fecha }}</p>
+      </div>
+      <div class="menuItem">
+        Hora:
+        <p>{{ hora }}</p>
+      </div>
+
+      <div class="menuItem" *ngIf="!isLoteria">
+        Precio:
+        <p>{{ precio }}</p>
+      </div>
+
+      <div class="menuItem" *ngIf="isLoteria">
+        Precio de fracción:
+        <p>{{ precio }}</p>
+      </div>
+    </div>
+    <div class="menuPremio">
+      <div class="menuItem" *ngIf="!isLoteria">
+        Premio:
+        <p>{{ premio }}</p>
+      </div>
+      <div class="menuItem" *ngIf="isLoteria">
+        Premio al entero:
+        <p>{{ premioLoteria }}</p>
+      </div>
+      <div class="menuItem" *ngIf="isLoteria">
+        Premio a la fracción:
+        <p>{{ premio }}</p>
+      </div>
+      <div class="menuItem" *ngIf="isLoteria">
+        Total de fracciones:
+        <p>{{ cantidadDeFracciones }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="menuImage" *ngIf="!imgNotFound">
+    <img [src]="boleto" alt="" (error)="handleImgError()" />
+  </div>
+</div>

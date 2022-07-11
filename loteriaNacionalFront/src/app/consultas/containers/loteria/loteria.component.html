@@ -1,0 +1,11 @@
+<div class="container">
+    <loteria-consulta class="consultaBox" (resultados)="toggleResultados($event)">
+    </loteria-consulta>
+    <loteria-ultimo-resultado class="selectorBox"></loteria-ultimo-resultado>
+
+    <div class="modalBox" *ngIf="showResultados">
+        <consultas-resultados tipoLoteria="1" [isLoteriaNacional]="true" (close)="closeBox()" *ngIf="showResultados"
+            [resultados]="resultados">
+        </consultas-resultados>
+    </div>
+</div>

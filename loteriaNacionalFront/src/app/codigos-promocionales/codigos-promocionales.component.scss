@@ -1,0 +1,25 @@
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-botton: #28AAE1;
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+  height: 30px;
+  padding: 5px 50px;
+  outline: none;
+  font-family: $fuente-botones;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  background-color: $color-botton;
+  border: 1px solid $color-botton;
+  &:hover {
+    background-color: #fff;
+    color: $color-botton;
+    transition: background-color 0.5s ease;
+  }
+}

@@ -1,0 +1,140 @@
+$color-loteria: #28aae1;
+$color-lotto: #b51f20;
+$color-pozo: #04b865;
+$color-millonaria: #b51f20;
+//$color-pozo: #057333;
+
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+.container {
+  width: 95%;
+  margin: auto;
+  border-bottom: 1px solid $color-loteria;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .contenedor_loteria {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 20%;
+    height: 50px;
+    margin: 20px 20px 20px 0;
+    box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);
+    border-radius: 45.5px;
+    font-family: "Helvetica";
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+
+    color: #ffffff;
+
+    &.millonaria img {
+      width: 110px;
+    }
+    &.millonaria:hover img {
+      width: 120px;
+    }
+
+    img {
+      width: 70px;
+      margin: 0;
+      transition: width  0.3s ease;
+      background-color: transparent;
+    }
+
+    &:hover img {
+      width: 80px;
+
+      transition: width 0.3s ease;
+    }
+    .boton {
+      padding: 5px 10px;
+      border-radius: 30px;
+      position: relative;
+      bottom: 0px;
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      font-family: $fuente-botones;
+      font-size: 10px;
+    }
+  }
+
+  &.home {
+    .contenedor_loteria {
+      width: 24%;
+      height: 92px;
+      font-size: 25px;
+
+      img {
+        width: 30%;
+      }
+
+      &:hover img {
+        width: 34%;
+      }
+    }
+  }
+  .active {
+    display: none;
+    transition: all 0.3s ease;
+  }
+  .title{
+
+    display: block !important;
+    font-family: "Helvetica";
+    font-style: italic;
+    width: 25%;
+    font-weight: 700;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: none !important;
+    margin-right: 20px;
+    &.loteria {
+      border-bottom: 2px solid $color-loteria;
+    }
+    
+    &.lotto {
+      border-bottom: 2px solid $color-lotto;
+    }
+    
+    &.pozo {
+      border-bottom: 2px solid $color-pozo;
+    }
+    
+    &.millonaria {
+      border-bottom: 2px solid $color-millonaria;
+    }
+    
+  }
+}
+
+.loteria {
+  color: $color-loteria;
+  background-color: $color-loteria;
+}
+
+.lotto {
+  color: $color-lotto;
+  background-color: $color-lotto;
+}
+
+.pozo {
+  color: $color-pozo;
+  background-color: $color-pozo;
+}
+
+.millonaria {
+  color: $color-millonaria;
+  background-color: $color-millonaria;
+}

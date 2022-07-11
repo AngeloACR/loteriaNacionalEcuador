@@ -1,0 +1,97 @@
+$fuente-botones: "Monstserrat SemiBold";
+
+.selectionBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  .selectorBox {
+    display: flex;
+    width: 30%;
+    .innerBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 90%;
+      padding: 15px;
+      max-width: 400px;
+      min-width: 320px;
+      margin: 20px auto;
+      border-radius: 30px;
+      background-color: white;
+      -webkit-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+      box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+
+      iframe {
+        width: 100%;
+        height: 610px !important;
+      }
+      .boton_comprar {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          text-decoration: none;
+          width: 90%;
+          padding: 20px 30px;
+          background-color: #11118d;
+          border: 1px solid #11118d;
+          border-radius: 40px;
+          text-align: center;
+          margin: 10px auto;
+          font-family: $fuente-botones;
+          color: #fff;
+          font-size: 12px;
+          cursor: pointer;
+          transition: background-color 0.5s ease;
+
+          &:hover {
+            background-color: #fff;
+            color: #11118d;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 778px) {
+  .iframeBox {
+    iframe {
+      height: 73vw;
+    }
+  }
+
+  .selectionBox {
+    width: 95%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+    .selectorBox {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .selectionBox {
+    width: 95%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+    .selectorBox {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}

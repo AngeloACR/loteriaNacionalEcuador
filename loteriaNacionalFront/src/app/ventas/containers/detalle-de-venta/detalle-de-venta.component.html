@@ -1,0 +1,19 @@
+<ng-container *ngIf="compraReady">
+  <app-descripcion-de-venta
+    [compra]="compra"
+    [codigosPromocionales]="codigosPromocionales"
+    [user]="user"
+    [ticketId]="ticketId"
+  ></app-descripcion-de-venta>
+</ng-container>
+
+<app-loader
+  loader="loteria"
+  [message]="loadingMessage!"
+  *ngIf="isLoading"
+></app-loader>
+<app-error
+  [msg]="errorMessage!"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>

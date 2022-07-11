@@ -1,0 +1,272 @@
+<ventas-menu-header></ventas-menu-header>
+
+<div class="contenedor_loteria" *ngIf="showComponents">
+  <div class="ventasBox">
+    <app-detalle-sorteo
+      titulo="Lotto"
+      class="infoBox"
+      color="lotto"
+      [sorteos]="sorteo"
+      [loteria]="2"
+      (emitir)="procesaEmitir($event)"
+    >
+    </app-detalle-sorteo>
+
+    <div class="contenedor_seleccion">
+      <div class="contenedor_select">
+        <h3>¿Cómo quieres comprar?</h3>
+        <select class="select_option" name="" id="" [(ngModel)]="tipoSeleccion">
+          <option class="option" value="96">Selección individual</option>
+          <option class="option" value="5">5 Boletos al azar</option>
+          <option class="option" value="30">30 Boletos al azar</option>
+          <option class="option" value="50">50 Boletos al azar</option>
+        </select>
+      </div>
+      <div class="numeros_suerte">
+        <h3>
+          Ingresa tu número de la suerte:
+        </h3>
+
+        <div class="numeros">
+          <input
+            #input1
+            [appAutoTab]="input2"
+            type="text"
+            name=""
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[0]"
+          />
+          <input
+            #input2
+            [appAutoTab]="input3"
+            type="text"
+            name=""
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[1]"
+          />
+          <input
+            #input3
+            [appAutoTab]="input4"
+            type="text"
+            name=""
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[2]"
+          />
+          <input
+            #input4
+            [appAutoTab]="input5"
+            type="text"
+            name=""
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[3]"
+          />
+          <input
+            #input5
+            [appAutoTab]="input6"
+            type="text"
+            name=""
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[4]"
+          />
+          <input
+            #input6
+            type="text"
+            name=""
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="1"
+            onInput="this.value=this.value.replace(/[^0-9]/g,'');"
+            [(ngModel)]="combinacionDeLaSuerte[5]"
+          />
+          <button class="activado" (click)="buscarNumero()">
+            BUSCAR NUMERO
+          </button>
+        </div>
+      </div>
+      <p class="tagItem">
+        Si quieres cambiar tu número, ingrésalo nuevamente y haz click en
+        "Buscar número"
+      </p>
+      <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
+        <table>
+          <tbody>
+            <tr
+              *ngFor="
+                let ticket of ticketsDisponibles
+                  | paginacion: page_size:page_number;
+                let i = index
+              "
+            >
+              <td>
+                <div class="contenedor">
+                  <input
+                    type="checkbox"
+                    [checked]="ticket.status"
+                    (click)="
+                      seleccionarTicket(page_size! * (page_number! - 1) + i)
+                    "
+                  />
+                  <div class="contenedor_numeros">
+                    <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
+                    <p>{{ ticket!.combinacion1 }}</p>
+                  </div>
+                  <hr />
+                  <div class="contenedor_fracciones">
+                    <p *ngIf="ticket!.combinacion3 != ''">
+                      {{ sorteoSeleccionado!.combinacion3 }}:
+                      <span>{{ ticket!.combinacion3 }}</span>
+                    </p>
+                    <p *ngIf="ticket!.combinacion2 != ''">
+                      {{ sorteoSeleccionado!.combinacion2 }}:
+                      <span>{{ ticket!.combinacion2 }}</span>
+                    </p>
+                    <p *ngIf="ticket!.combinacion4 != ''">
+                      {{ sorteoSeleccionado!.combinacion4 }}:
+                      <span>{{ ticket!.combinacion4 }}</span>
+                    </p>
+                    <p
+                      *ngIf="ticket!.combinacion5 && ticket!.combinacion5 != ''"
+                    >
+                      {{ sorteoSeleccionado!.combinacion5 }}:
+                      <img
+                        [src]="obtenerAntojito(ticket!.combinacion5)"
+                        alt=""
+                      />
+                    </p>
+                  </div>
+                </div>
+                <!-- <app-seleccion-lotto [tickets]="ticket"></app-seleccion-lotto> -->
+              </td>
+            </tr>
+          </tbody>
+          <hr size="2px" color="gray" />
+        </table>
+
+        <div class="contenedor_botones">
+          <mat-paginator
+            style-paginator
+            [length]="ticketsDisponibles.length"
+            [pageSize]="page_size"
+            (page)="handlerPage($event)"
+          >
+          </mat-paginator>
+        </div>
+      </div>
+      <!-- 
+    <div class="boton_boleto"> <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
+
+    </div> -->
+    </div>
+  </div>
+
+  <app-carrito
+    class="ticketScroller"
+    (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+    (deleteLottoTicket)="deleteLottoTicket($event)"
+    (deletePozoTicket)="deletePozoTicket($event)"
+    (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+    (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+    (emitirCompra)="comprar()"
+    (eliminarTodo)="deleteAllTickets()"
+    [ticketsLoteria]="ticketsLoteria"
+    [ticketsLotto]="ticketsLotto"
+    [ticketsMillonaria]="ticketsMillonaria"
+    [ticketsPozo]="ticketsPozo"
+    tipoLoteria="lotto"
+  >
+  </app-carrito>
+</div>
+<app-floating-menu
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozo]="ticketsPozo"
+  [ticketsMillonaria]="ticketsMillonaria"
+  tipoLoteria="lotto"
+></app-floating-menu>
+<!-- <app-floating-menu
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozo]="ticketsPozo"
+  [total]="total"
+  tipoLoteria="lotto"
+></app-floating-menu>
+ --><app-loader
+  loader="lotto"
+  [message]="loadingMessage!"
+  *ngIf="isLoading"
+></app-loader>
+
+<app-error
+  [msg]="errorMessage!"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>
+<app-error
+  [msg]="validationErrorMessage!"
+  (closeError)="closeValidationError()"
+  *ngIf="isValidationError"
+></app-error>
+
+<app-confirmacion-de-venta
+  (compraConfirmada)="confirmarCompra()"
+  (compraCancelada)="cancelarCompra()"
+  (comprarDespues)="dismissCompras()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  *ngIf="confirmacionDeCompra"
+></app-confirmacion-de-venta>
+<app-instantaneas
+  (close)="abrirFinalizar()"
+  [resultados]="instantaneas"
+  tipoLoteria="2"
+  [isLoteriaNacional]="true"
+  class="paymentItem"
+  *ngIf="isInstantaneas"
+></app-instantaneas>
+<app-venta-finalizada
+  (volver)="finalizarCompra()"
+  [compra]="detalleCompra"
+  [codigosPromocionales]="codigoPromocional"
+  class="paymentItem"
+  *ngIf="compraFinalizada"
+></app-venta-finalizada>
+<app-saldo-insuficiente
+  [message]="recargaDeSaldoMessage"
+  (volver)="dismissCompras()"
+  (recarga)="irARecarga()"
+  class="paymentItem"
+  *ngIf="saldoInsuficiente"
+></app-saldo-insuficiente>
+<app-venta-cancelada
+  class="paymentItem"
+  [message]="cancelMessage"
+  *ngIf="compraCancelada"
+></app-venta-cancelada>

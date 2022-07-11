@@ -1,0 +1,16 @@
+<div class="contenedor_ticket">
+    <div class="logo_ticket">
+        <img src="../../../../assets/img/millonaria-consulta.png" alt="">
+    </div>
+    <div>
+        <hr size="2px" />
+    </div>
+    <div class="scroll">
+        <millonaria-ticket-consulta [ticket]="ticketGanador"></millonaria-ticket-consulta>
+    </div>
+
+    <div class="boton_comprar">
+        <button (click)="verUltimoBoletin()">VER BOLETIN</button>
+        <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
+    </div>
+</div>

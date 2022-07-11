@@ -9,7 +9,7 @@ export interface sorteo {
   combinacion2: string;
   combinacion3: string;
   combinacion4: string;
-  combinacion5: string;
+  combinacion5: string;sorteo
 }
 
 export interface ticketsNacional {
