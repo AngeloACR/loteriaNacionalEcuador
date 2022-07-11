@@ -14,10 +14,7 @@ const authController = {
       let response = await helper.alboranRequest(authData, "/CheckToken");
       if (response["password"]) delete response["password"];
       /******************* FOR TESTING ONLY*******************/
-      response.resultCode = 0;
-      let lotteryToken = await psdAuth.authTest();
-      response.playerDocument = "0951234566";
-      response.lotteryToken = lotteryToken;
+      response.balance = response.balance/100;
       if (parseInt(response.resultCode) >= 0) {
         /*         let logData = {
           data: authData,
