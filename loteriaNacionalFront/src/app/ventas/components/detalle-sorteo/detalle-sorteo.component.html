@@ -1,8 +1,9 @@
 <div class="menuBox">
   <div class="menuInfo">
     <div class="menuSorteo">
+      <h1>SORTEO</h1>
       <div class="menuItem">
-        Sorteo:
+        Número:
         <select
           class="fechaItem"
           [(ngModel)]="seleccionado"
@@ -40,6 +41,8 @@
       </div>
     </div>
     <div class="menuPremio">
+      <h1>PREMIOS</h1>
+
       <div class="menuItem" *ngIf="!isLoteria">
         Premio:
         <p>{{ premio }}</p>

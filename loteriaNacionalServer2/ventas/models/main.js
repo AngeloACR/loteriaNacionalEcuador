@@ -136,6 +136,12 @@ const VentaSchema = new mongoose.Schema(
     exaReservaId: {
       type: String,
     },
+    alboranVentaId: {
+      type: String,
+    },
+    alboranReservaId: {
+      type: String,
+    },
   },
   {
     toJSON: { virtuals: true },

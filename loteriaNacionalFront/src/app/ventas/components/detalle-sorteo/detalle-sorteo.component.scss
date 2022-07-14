@@ -45,7 +45,17 @@ $color-botton: #28aae1;
     background: #ffffff;
     box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
+    padding: 15px;
     .menuSorteo {
+      width: 50%;
+      padding: 10px;
+      h1 {
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+      }
+
       .menuItem {
         height: 40px;
         display: flex;
@@ -53,14 +63,15 @@ $color-botton: #28aae1;
         align-items: center;
         list-style: none;
         padding: 5px;
-        font-size: 16px;
+        font-size: 20px;
         font-family: $fuente-subtitulo;
         background-color: transparent;
         margin: 0 0 4px 0;
+        font-style: italic;
 
         select {
           cursor: pointer;
-          font-size: 14px;
+          font-size: 20px;
           option:first-child {
             visibility: hidden;
             display: none;
@@ -71,17 +82,18 @@ $color-botton: #28aae1;
         }
 
         p {
-          font-size: 14px;
+          font-size: 20px;
           margin: 3px 3px 3px 10px;
           font-family: $fuente-parrafo;
-        }
+        font-style: normal;
+      }
 
         .fechaItem {
           width: 100%;
           min-width: 220px;
           max-width: 320px;
           display: block;
-          font-size: 14px;
+          font-size: 20px;
           font-family: $fuente-parrafo;
           font-weight: 400;
           color: #444;
@@ -104,6 +116,14 @@ $color-botton: #28aae1;
       }
     }
     .menuPremio {
+      width: 50%;
+      padding: 10px;
+      h1 {
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+      }
       .menuItem {
         height: 40px;
         display: flex;
@@ -111,15 +131,17 @@ $color-botton: #28aae1;
         align-items: center;
         list-style: none;
         padding: 5px;
-        font-size: 16px;
+        font-size: 20px;
         font-family: $fuente-subtitulo;
         background-color: transparent;
         margin: 0 0 4px 0;
+        font-style: italic;
 
         p {
-          font-size: 14px;
+          font-size: 20px;
           margin: 3px 3px 3px 10px;
           font-family: $fuente-parrafo;
+          font-style: normal;
         }
       }
     }

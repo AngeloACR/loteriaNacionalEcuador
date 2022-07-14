@@ -5,7 +5,8 @@ const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache");
 const CodigosPromocionales = require("../../codigosPromocionales/controller/main"); // COMUNICAR POR gRPC
 const psdVentas = require("../../psdLoteria/ventas");
 const Ventas = require("../models/main");
-const Wallet = require("../../exalogic/wallet"); // COMUNICAR POR gRPC
+const Wallet = require("../../alboran/wallet"); // COMUNICAR POR gRPC
+//const Wallet = require("../../exalogic/wallet"); // COMUNICAR POR gRPC
 const Ganadores = require("../../ganadores/models/main"); // COMUNICAR POR gRPC
 const { ventasLogger } = require("../logging");
 var errorHandler = require("../errors").errorHandler;
@@ -60,11 +61,11 @@ const ventasController = {
     if (!exaReservaResponse.status) {
       await errorHandler.exalogicReserveError(exaReservaData);
     }
-    exaReservaResponse["exaReservaData"] = exaReservaData
+    exaReservaResponse["exaReservaData"] = exaReservaData;
     let reservaStatusResponse = await Ventas.actualizarStatus(
       venta._id,
       "Reservada",
-      exaReservaId,
+      exaReservaId
     );
 
     let logData = {
@@ -75,9 +76,46 @@ const ventasController = {
     ventasLogger.info("reservaSaldoExalogic.api", logData);
     return exaReservaResponse;
   },
+  reservarSaldoAlboran: async (
+    reservationDetails,
+    venta,
+    token,
+    totalVenta
+  ) => {
+    /* RESERVA CON Alboran */
+    let alboranReservaId = Date.now();
+
+    let alboranReservaData = {
+      token,
+      transactionId: alboranReservaId,
+      amount: totalVenta,
+      reservationDetails,
+    };
+
+    let alboranReservaResponse = await Wallet.reserveLottery(
+      alboranReservaData
+    );
+    if (!alboranReservaResponse.status) {
+      await errorHandler.alboranReserveError(alboranReservaData);
+    }
+    alboranReservaResponse["alboranReservaData"] = alboranReservaData;
+    let reservaStatusResponse = await Ventas.actualizarStatus(
+      venta._id,
+      "Reservada",
+      alboranReservaId
+    );
+
+    let logData = {
+      data: alboranReservaData,
+      response: alboranReservaResponse,
+      function: "Wallet.reserveLottery",
+    };
+    ventasLogger.info("reservaSaldoAlboran.api", logData);
+    return alboranReservaResponse;
+  },
   ventaPSD: async (
-    exaReservaId,
-    exaReservaData,
+    alboranReservaId,
+    alboranReservaData,
     total,
     totalConDesc,
     loteria,
@@ -90,7 +128,7 @@ const ventasController = {
     venta,
     ip
   ) => {
-    let ordComp = exaReservaId;
+    let ordComp = alboranReservaId;
     let loteriaVentaResponse = await psdVentas.venderBoletos(
       ordComp,
       total,
@@ -105,7 +143,7 @@ const ventasController = {
       ip
     );
     if (!loteriaVentaResponse.status) {
-      await errorHandler.loteriaSellError(exaReservaData);
+      await errorHandler.loteriaSellError(alboranReservaData);
     }
     let logData = {
       data: {
@@ -297,6 +335,167 @@ const ventasController = {
 
     return { exaVentaResponse, instantaneaResponse };
   },
+  ventaAlboran: async (
+    loteriaVentaResponse,
+    reservaId,
+    venta,
+    personaId,
+    reservationDetails,
+    alboranReservaId,
+    lotteryToken,
+    token,
+    totalVenta,
+    user,
+    ip
+  ) => {
+    /* VENTA EN Alboran */
+
+    let instantaneas = loteriaVentaResponse.instantaneas;
+    let prizeDetails = [];
+    let instantaneaStatus = false;
+    let instantaneaData = {};
+    if (instantaneas != "" && instantaneas.length != 0) {
+      let loteriaSorteos = await CacheLoteria.getSorteosDisponibles();
+      let lottoSorteos = await CacheLotto.getSorteosDisponibles();
+      let pozoSorteos = await CachePozo.getSorteosDisponibles();
+      let millonariaSorteos = await CacheLaMillonaria.getSorteosDisponibles();
+      instantaneaStatus = true;
+      for (let j = 0; j < instantaneas.length; j++) {
+        const instantanea = instantaneas[j];
+
+        for (let i = 0; i < instantanea.premios.length; i++) {
+          const premio = instantanea.premios[i];
+
+          let nombreLoteria;
+          let tipoLoteria = parseInt(instantanea.sorteo.JId);
+
+          let prizeDetail = {
+            lotteryType: tipoLoteria,
+            drawNumber: parseInt(instantanea.sorteo.Sort),
+            combinationC1: premio.Num,
+            prize: premio.Val,
+            prizeWithDiscount: premio.ConDesc,
+            prizeDescription: premio.Prem.normalize("NFD").replace(
+              /[\u0300-\u036f]/g,
+              ""
+            ),
+          };
+
+          let drawDateAux;
+          switch (tipoLoteria) {
+            case 1:
+              drawDateAux = loteriaSorteos
+                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                .fecha.split(" ")[0]
+                .split("/");
+              prizeDetail[
+                "drawDate"
+              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+              prizeDetail["fractions"] = `${[premio.Fra]}`;
+
+              break;
+            case 2:
+              drawDateAux = lottoSorteos
+                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                .fecha.split(" ")[0]
+                .split("/");
+              prizeDetail[
+                "drawDate"
+              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+              let item = reservationDetails.find(
+                (element) => prizeDetail.combinationC1 == element.combinationC1
+              );
+              prizeDetail["combinationC2"] = item.combinationC2;
+              prizeDetail["combinationC3"] = item.combinationC3;
+              prizeDetail["combinationC4"] = item.combinationC4;
+              prizeDetail["combinationC5"] = item.combinationC5;
+              break;
+
+            case 5:
+              drawDateAux = pozoSorteos
+                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                .fecha.split(" ")[0]
+                .split("/");
+              prizeDetail[
+                "drawDate"
+              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+              break;
+            case 14:
+              drawDateAux = millonariaSorteos
+                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+                .fecha.split(" ")[0]
+                .split("/");
+              prizeDetail[
+                "drawDate"
+              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+              prizeDetail["fractions"] = `${[premio.Fra]}`;
+              prizeDetail["combinationC2"] = premio.Num2;
+              break;
+          }
+          let ganador = {
+            personaId: personaId,
+            tipoLoteria: tipoLoteria,
+            numeroSorteo: parseInt(instantanea.sorteo.Sort),
+            combinacion1: premio.Num,
+            codigoPremio: `${parseInt(instantanea.sorteo.Sort)}-INSTANTANEA`,
+            fraccion: premio.Fra,
+            descripcionPremio: premio.Prem,
+            valorPremio: premio.Val,
+            valorPremioDescuento: premio.ConDesc,
+            ventaId: loteriaVentaResponse.ticketId,
+            acreditado: true,
+          };
+          await Ganadores.crearGanador(ganador);
+          let logData = {
+            data: ganador,
+            response: loteriaVentaResponse,
+            function: "Ganadores.crearGanador",
+          };
+          ventasLogger.info("comprarBoletos.api", logData);
+          prizeDetails.push(prizeDetail);
+        }
+      }
+      instantaneaData = prizeDetails;
+    }
+
+    let alboranVentaId = Date.now();
+    let alboranVentaData = {
+      token,
+      transactionId: alboranVentaId,
+      reserveId: alboranReservaId,
+      ticketId: loteriaVentaResponse.ticketId,
+      amount: totalVenta,
+      prizeDetails,
+    };
+    let alboranVentaResponse = await Wallet.sellLottery(alboranVentaData);
+    if (!alboranVentaResponse.status) {
+      await errorHandler.alboranSellError(
+        alboranVentaData,
+        reservaId,
+        lotteryToken,
+        user,
+        ip
+      );
+    }
+    let logData = {
+      data: alboranVentaData,
+      response: alboranVentaResponse,
+      function: "Wallet.sellLottery",
+    };
+    ventasLogger.info("comprarBoletos.api", logData);
+
+    let ventaAlboranStatusResponse = await Ventas.actualizarStatus(
+      venta._id,
+      "Completada",
+      alboranVentaId
+    );
+    let instantaneaResponse = {
+      status: instantaneaStatus,
+      data: instantaneaData,
+    };
+
+    return { alboranVentaResponse, instantaneaResponse };
+  },
   comprarBoletos: async (req, res) => {
     try {
       ventasLogger.silly("comprarBoletos");
@@ -323,12 +522,15 @@ const ventasController = {
         let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
         let aux = {
           lotteryType: 1,
-          lotteryName: "Loteria Nacional",
           drawNumber: parseInt(loteriaAux[id].sorteo.sorteo),
           drawDate,
-          subTotal: parseFloat(loteriaAux[id].subtotal).toFixed(2),
+          subTotal: `${parseFloat(loteriaAux[id].subtotal).toFixed(2)}`,
           combinationC1: loteriaAux[id].ticket.combinacion,
-          fractions: loteriaAux[id].ticket.seleccionados,
+          fractions: `[${loteriaAux[id].ticket.seleccionados
+            .map((item) => {
+              return parseInt(item);
+            })
+            .join(", ")}`,
         };
         reservationDetails.push(aux);
         loteria.push(loteriaAux[id]);
@@ -339,10 +541,9 @@ const ventasController = {
         let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
         let aux = {
           lotteryType: 2,
-          lotteryName: "Lotto",
           drawNumber: parseInt(lottoAux[id].sorteo.sorteo),
           drawDate,
-          subTotal: parseFloat(lottoAux[id].subtotal).toFixed(2),
+          subTotal: `${parseFloat(lottoAux[id].subtotal).toFixed(2)}`,
           combinationC1: lottoAux[id].ticket.combinacion1,
           combinationC2: lottoAux[id].ticket.combinacion2,
           combinationC3: lottoAux[id].ticket.combinacion3,
@@ -358,10 +559,9 @@ const ventasController = {
         let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
         let aux = {
           lotteryType: 5,
-          lotteryName: "Pozo Millonario",
           drawNumber: parseInt(pozoAux[id].sorteo.sorteo),
           drawDate,
-          subTotal: parseFloat(pozoAux[id].subtotal).toFixed(2),
+          subTotal: `${parseFloat(pozoAux[id].subtotal).toFixed(2)}`,
           combinationC1: pozoAux[id].ticket.combinacion1,
           combinationC2: pozoAux[id].ticket.combinacion2,
           combinationC3: pozoAux[id].ticket.mascota,
@@ -371,17 +571,22 @@ const ventasController = {
       }
       let millonaria = [];
       for (id in millonariaAux) {
-        let drawDateAux = millonariaAux[id].sorteo.fecha.split(" ")[0].split("/");
+        let drawDateAux = millonariaAux[id].sorteo.fecha
+          .split(" ")[0]
+          .split("/");
         let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
         let aux = {
           lotteryType: 14,
-          lotteryName: "La Millonaria",
           drawNumber: parseInt(millonariaAux[id].sorteo.sorteo),
           drawDate,
-          subTotal: parseFloat(millonariaAux[id].subtotal).toFixed(2),
+          subTotal: `${parseFloat(millonariaAux[id].subtotal).toFixed(2)}`,
           combinationC1: millonariaAux[id].ticket.combinacion1,
           combinationC2: millonariaAux[id].ticket.combinacion2,
-          fractions: millonariaAux[id].ticket.seleccionados,
+          fractions: `[${millonariaAux[id].ticket.seleccionados
+            .map((item) => {
+              return parseInt(item);
+            })
+            .join(", ")}]`,
         };
         reservationDetails.push(aux);
         millonaria.push(millonariaAux[id]);
@@ -410,18 +615,18 @@ const ventasController = {
 
       let venta = apiVentaResponse.values;
 
-      let reservaStatusResponse = await ventasController.reservarSaldoExalogic(
+      let reservaStatusResponse = await ventasController.reservarSaldoAlboran(
         reservationDetails,
         venta,
         token,
         totalVenta
       );
-      let exaReservaId = reservaStatusResponse.transactionId;
-      let exaReservaData = reservaStatusResponse.exaReservaData;
+      let alboranReservaId = reservaStatusResponse.transactionId;
+      let alboranReservaData = reservaStatusResponse.alboranReservaData;
       /* VENTA EN LOTERIA */
       let loteriaVentaResponse = await ventasController.ventaPSD(
-        exaReservaId,
-        exaReservaData,
+        alboranReservaId,
+        alboranReservaData,
         total,
         totalConDesc,
         loteria,
@@ -434,13 +639,13 @@ const ventasController = {
         venta,
         ip
       );
-      let exaVentaResponse = await ventasController.ventaExalogic(
+      let alboranVentaResponse = await ventasController.ventaAlboran(
         loteriaVentaResponse,
         reservaId,
         venta,
         personaId,
         reservationDetails,
-        exaReservaId,
+        alboranReservaId,
         lotteryToken,
         token,
         totalVenta,
@@ -457,7 +662,7 @@ const ventasController = {
       );
 
       /* RESPUESTA DE API */
-      let instantaneaResponse = exaVentaResponse.instantaneaResponse;
+      let instantaneaResponse = alboranVentaResponse.instantaneaResponse;
       let finalResponse = {
         data: apiVentaResponse,
         instantanea: instantaneaResponse,
@@ -551,16 +756,16 @@ const ventasController = {
       let totalConDesc = parseFloat(apiReservaData.amountConDesc).toFixed(2);
       let reservaId = apiReservaData.reservaId;
       let ventaId = apiReservaData.ventaId;
-      let exaReservaId = apiReservaData.exaReservaId;
-      let exaVentaId = apiReservaData.exaVentaId;
+      let alboranReservaId = apiReservaData.alboranReservaId;
+      let alboranVentaId = apiReservaData.alboranVentaId;
       let user = apiReservaData.user;
       let accountId = apiReservaData.accountId;
       let status = apiReservaData.status;
       let element = {
         loteria,
-        exaReservaId,
+        alboranReservaId,
         pozo,
-        exaVentaId,
+        alboranVentaId,
         lotto,
         millonaria,
         total,
@@ -591,7 +796,7 @@ const ventasController = {
           break;
 
         default:
-          venta["exaVentaId"] = value;
+          venta["alboranVentaId"] = value;
           break;
       }
       let response = await venta.save();
@@ -618,7 +823,7 @@ const ventasController = {
       let ticketId = req.body.ticketId;
       let accountId = req.body.accountId;
       let personaId = req.body.personaId;
-/*       let codigoPromocionalResponse = await CodigosPromocionales.getCode(
+      /*       let codigoPromocionalResponse = await CodigosPromocionales.getCode(
         personaId,
         ticketId,
         ip

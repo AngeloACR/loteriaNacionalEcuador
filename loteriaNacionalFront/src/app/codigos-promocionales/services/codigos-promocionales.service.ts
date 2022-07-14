@@ -6,18 +6,13 @@ import {
   HttpResponse,
 } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class CodigosPromocionalesService {
-  localSource = "http://localhost:100";
-  testSource = "https://ventas-api-prueba.loteria.com.ec";
-  productionSource = "https://ventas-api.loteria.com.ec";
-
-  //mySource = this.localSource;
-  mySource = this.testSource;
-  //mySource = this.productionSource;
+  mySource = environment.source
 
   constructor(private http: HttpClient) {}
   obtenerCodigos() {

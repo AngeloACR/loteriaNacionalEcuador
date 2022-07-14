@@ -43,7 +43,8 @@ const walletController = {
         .replace("Z", "");
  */
 
-      let response = await exalogicWallet.sellLottery(req.body);
+      //let response = await exalogicWallet.sellLottery(req.body);
+      let response = await alboranWallet.sellLottery(req.body);
       res.status(200).json(response);
     } catch (e) {
       walletLogger.error("sellLottery.error", {
@@ -74,7 +75,8 @@ const walletController = {
         .replace("T", " ")
         .replace("Z", ""); */
 
-      let response = await exalogicWallet.cancelLottery(req.body);
+      //let response = await exalogicWallet.cancelLottery(req.body);
+      let response = await alboranWallet.cancelLottery(req.body);
       res.status(200).json(response);
     } catch (e) {
       walletLogger.error("cancelLottery.error", {
@@ -116,7 +118,8 @@ const walletController = {
         .toISOString()
         .replace("T", " ")
         .replace("Z", ""); */
-      let response = await exalogicWallet.reserveLottery(req.body);
+      let response = await alboranWallet.reserveLottery(req.body);
+      //let response = await exalogicWallet.reserveLottery(req.body);
 
       res.status(200).json(response);
     } catch (e) {

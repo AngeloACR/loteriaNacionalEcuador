@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  source: 'https://ventas-api.loteria.com.ec',
 };

@@ -2,18 +2,13 @@ import { Injectable } from '@angular/core';
 import { sorteo } from '../interfaces/sorteo';
 import { ticketsVenta } from '../interfaces/ticket-venta';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VentaService {
-  localSource = 'http://localhost:100';
-  testSource = 'https://ventas-api-prueba.loteria.com.ec';
-  productionSource = 'https://ventas-api.loteria.com.ec';
-
-  //mySource = this.localSource;
-  mySource = this.testSource;
-  //mySource = this.productionSource;
+  mySource = environment.source
 
   constructor(private http: HttpClient) {}
   obtenerSorteo(authData: any) {

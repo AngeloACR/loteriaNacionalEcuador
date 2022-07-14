@@ -23,13 +23,13 @@ const walletController = {
     "token": "661c0ce5ccabbeb1136a"
 } */
 
-      let exaData = {
+      let alboranData = {
         sessionToken: token,
       };
-      let response = await helper.alboranRequest(exaData, "/GetBalance");
+      let response = await helper.alboranRequest(alboranData, "/GetBalance");
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
-          data: exaData,
+          data: alboranData,
           response,
           function: "getBalance",
         };
@@ -77,25 +77,22 @@ const walletController = {
         .replace("Z", ""); */
       let operationTimeStamp = getCurrentTimeStamp();
 
-      let exaData = {
-        command: "sellLottery",
-        systemCode: "1",
+      let alboranData = {
         sessionToken: data.token,
         transactionId: data.transactionId,
         reserveId: data.reserveId,
-        language: "en",
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
         ticketId: data.ticketId,
-        amount: data.amount,
+        amount: `${data.amount}`,
         instantWinDetails: data.prizeDetails,
       };
-      let response = await helper.alboranRequest(exaData);
+      let response = await helper.alboranRequest(alboranData, '/SellTicket');
       response["status"] = true;
 
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
-          data: exaData,
+          data: alboranData,
           response,
           function: "Wallet.sellLottery",
         };
@@ -145,22 +142,19 @@ const walletController = {
         .replace("Z", ""); */
       let operationTimeStamp = getCurrentTimeStamp();
 
-      let exaData = {
-        command: "cancelLottery",
-        systemCode: "1",
+      let alboranData = {
         sessionToken: data.token,
         transactionId: data.transactionId,
         reserveId: data.reserveId,
-        language: "en",
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
-        amount: data.amount,
+        amount: `${data.amount}`,
       };
-      let response = await helper.alboranRequest(exaData);
+      let response = await helper.alboranRequest(alboranData, '/CancelTicket');
       response["status"] = true;
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
-          data: exaData,
+          data: alboranData,
           response,
           function: "cancelLottery",
         };
@@ -225,22 +219,19 @@ const walletController = {
         .replace("Z", ""); */
       let operationTimeStamp = getCurrentTimeStamp();
 
-      let exaData = {
-        command: "reserveLottery",
-        systemCode: "1",
+      let alboranData = {
         sessionToken: data.token,
         transactionId: data.transactionId,
-        language: "en",
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
-        amount: data.amount,
+        amount: `${data.amount}`,
         reservationDetails: data.reservationDetails,
       };
-      let response = await helper.alboranRequest(exaData);
+      let response = await helper.alboranRequest(alboranData, '/ReserveBalance');
       response["status"] = true;
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
-          data: exaData,
+          data: alboranData,
           response,
           function: "Wallet.reserveLottery",
         };

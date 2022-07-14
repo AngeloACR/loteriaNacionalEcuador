@@ -49,7 +49,7 @@ export class MenuBoxComponent implements OnInit {
         if (this.lotteryToken) {
           this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
           this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
-          this.linkPozoMillonario = `/compra_tus_juegos/pozo-millonario/${this.token}`;
+          this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
           this.linkMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
         }
 

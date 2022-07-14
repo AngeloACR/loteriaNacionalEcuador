@@ -96,9 +96,10 @@ module.exports = {
     //ftpUser: "loterianacional",
     //ftpPass: "$lnftp123..$",
     
-    ftpBoletinesPath: "/uploads/boletines",
-    ftpBoletosPath: "/uploads/boletos",
-  
+  ftpBoletinesPath: "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletines",
+  ftpBoletosPath: "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletos",
+  imgCorreosPath: "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/correos",
+
     //SSL DATA
     sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",
     sslPathTest: "/etc/letsencrypt/live/ventas-prueba.loteria.com.ec/",
