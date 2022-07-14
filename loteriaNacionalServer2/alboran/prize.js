@@ -15,7 +15,7 @@ function getCurrentTimeStamp() {
   return n;
 }
 const prizeController = {
-  payLottery: async (data) => {
+  payLottery: async (data, endpoint) => {
     try {
       /*
             {
@@ -39,7 +39,7 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
         operationTimeStamp: operationTimeStamp,
         prizeDetails: data.prizeDetails,
       };
-      let response = await helper.alboranRequest(alboranData);
+      let response = await helper.alboranRequest(alboranData, endpoint);
       let logData = {
         data: alboranData,
         response,

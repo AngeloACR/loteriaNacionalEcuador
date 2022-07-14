@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
         if (data.includes('compra_tus_juegos?token')) {
           let url = data.split('?token=')[0];
           /********************************************** SOLO PARA PRUEBAS **********************************************/
-          this.token = "123" //data.split('?token=')[1];
+          this.token = data.split('?token=')[1];
           this.router.navigateByUrl(`${url}/${this.token}`);
         }
         if (data.includes('inicio')) {

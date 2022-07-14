@@ -42,17 +42,17 @@ const ganadoresController = {
           let prizeDetails = [
             {
               lotteryType: ganador.tipoLoteria,
-              personalId: ganador.personaId,
+              personalId: parseInt(ganador.personaId),
               drawNumber: parseInt(ganador.numeroSorteo),
               drawDate: ganador.fechaCaducidad,
-              prize: ganador.valorPremio,
-              prizeWithDiscount: ganador.valorPremioDescuento,
+              prize: parseFloat(ganador.valorPremio).toFixed(2),
+              prizeWithDiscount: parseFloat(ganador.valorPremioDescuento).toFixed(2),
               combinationC1: ganador.combinacion1,
               combinationC2: ganador.combinacion2,
               combinationC3: ganador.combinacion3,
               combinationC4: ganador.combinacion4,
               combinationC5: ganador.combinacion5,
-              fractions: `[${ganador.fraction}]`,
+              //fractions: `[${ganador.fraccion}]`,
               prizeDescription: ganador.descripcionPremio,
               prizeCode: ganador.codigoPremio,
               ticketId: ganador.ventaId,
@@ -63,7 +63,7 @@ const ganadoresController = {
             prizeDetails,
             transactionId: Date.now(),
           };
-          let aux = await alboranPrize.payLottery(data);
+          let aux = await alboranPrize.payLottery(data, '/PayPrize');
           if (aux.resultCode >= 0) {
             ganador.acreditado = true;
           }
