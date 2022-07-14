@@ -1,4 +1,5 @@
 const exalogicPrize = require("../../exalogic/prize");
+const alboranPrize = require("../../alboran/prize");
 const psdAuth = require("../../psdLoteria/auth");
 const psdVentas = require("../../psdLoteria/ventas");
 const Correos = require("../../correos/ganadores");
@@ -37,36 +38,36 @@ const ganadoresController = {
       };
       for (let i = 0; i < length; i++) {
         const ganador = ganadores[i];
-
         if (!ganador.acreditado && ganador.tipoPremio == "DIN") {
-          let payLine = `<R PE="${ganador.personaId}" J="${
-            ganador.tipoLoteria
-          }" S="${ganador.numeroSorteo}" FC="${ganador.fechaCaducidad}" C="${
-            ganador.combinacion1
-          }" C2="${ganador.combinacion2}" C3="${ganador.combinacion3}" C4="${
-            ganador.combinacion4
-          }" C5="${ganador.combinacion5}" F="${ganador.fraccion}" B="${
-            ganador.boletoId
-          }" P="${
-            ganador.codigoPremio.split("-")[1]
-          }" N="${ganador.descripcionPremio
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")}" VP="${
-            ganador.valorPremio
-          }" VD="${ganador.valorPremioDescuento}" TP="${
-            ganador.tipoPremio
-          }" RT="${ganador.requiereTestimonio}" V="${ganador.ventaId}"/>`;
+          let prizeDetails = [
+            {
+              lotteryType: ganador.tipoLoteria,
+              personalId: ganador.personaId,
+              drawNumber: parseInt(ganador.numeroSorteo),
+              drawDate: ganador.fechaCaducidad,
+              prize: ganador.valorPremio,
+              prizeWithDiscount: ganador.valorPremioDescuento,
+              combinationC1: ganador.combinacion1,
+              combinationC2: ganador.combinacion2,
+              combinationC3: ganador.combinacion3,
+              combinationC4: ganador.combinacion4,
+              combinationC5: ganador.combinacion5,
+              fractions: `[${ganador.fraction}]`,
+              prizeDescription: ganador.descripcionPremio,
+              prizeCode: ganador.codigoPremio,
+              ticketId: ganador.ventaId,
+              combinationId: parseInt(ganador.boletoId),
+            },
+          ];
           let data = {
-            payLine,
+            prizeDetails,
             transactionId: Date.now(),
           };
-          let aux = await exalogicPrize.payLottery(data);
+          let aux = await alboranPrize.payLottery(data);
           if (aux.resultCode >= 0) {
             ganador.acreditado = true;
           }
           response.push(aux);
-
-
           logData.data.push(data);
         } else if (ganador.tipoPremio == "ESP") {
           let ordenResponse = await ganadoresController.procesarPremioEspecies(
