@@ -1,5 +1,5 @@
 const FtpSrv = require('ftp-srv');
-const config = require('../environments/local');
+const config = require('../environments/test');
 const path = require("path");
 
 const ftpUser = config.ftpUser;
