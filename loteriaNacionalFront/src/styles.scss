@@ -55,7 +55,8 @@ button {
 
 html,
 body {
-  height: 812px;
+  max-height: 812px;
+  background-color: #fff;
 }
 body {
   width: 100%;
