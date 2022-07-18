@@ -526,11 +526,11 @@ const ventasController = {
           drawDate,
           subTotal: `${parseFloat(loteriaAux[id].subtotal).toFixed(2)}`,
           combinationC1: loteriaAux[id].ticket.combinacion,
-          fractions: `[${loteriaAux[id].ticket.seleccionados
-            .map((item) => {
+          fractions: `${JSON.stringify(
+            loteriaAux[id].ticket.seleccionados.map((item) => {
               return parseInt(item);
             })
-            .join(", ")}`,
+          )}`,
         };
         reservationDetails.push(aux);
         loteria.push(loteriaAux[id]);

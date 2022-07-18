@@ -1,5 +1,5 @@
 const ftpBoletosServer = require("./ftpBoletosServer");
-const config = require("../environments/test");
+const config = require("../environments/local");
 
 const ftpHost = config.ftpHost;
 

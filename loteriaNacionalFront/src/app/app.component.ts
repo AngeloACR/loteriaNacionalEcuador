@@ -17,23 +17,16 @@ export class AppComponent implements OnInit {
   title = 'loteriaNacionalWeb';
   token: string = '';
   isDetail: boolean = false;
-  showPromo: boolean = false;
   constructor(private router: Router, private consultas: ConsultasService) {
     this.isDetail = false;
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         let data = decodeURIComponent(event.url);
-        if (data.includes('inicio')) {
-          this.showPromo = true;
-        }
         if (data.includes('compra_tus_juegos?token')) {
           let url = data.split('?token=')[0];
           /********************************************** SOLO PARA PRUEBAS **********************************************/
           this.token = data.split('?token=')[1];
           this.router.navigateByUrl(`${url}/${this.token}`);
-        }
-        if (data.includes('inicio')) {
-          this.showPromo = true;
         }
         if (data.includes('compra_tus_juegos/detalle')) {
           this.isDetail = true;
@@ -55,8 +48,5 @@ export class AppComponent implements OnInit {
   }
   async ngOnInit() {
     await this.consultas.recuperarUltimosResultados();
-  }
-  closePromo() {
-    this.showPromo = false;
   }
 }
