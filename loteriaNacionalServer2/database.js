@@ -7,7 +7,7 @@ module.exports.init = function () {
   const options = {
     autoIndex: false, // Don't build indexes
     maxPoolSize: 30, // Maintain up to 30 socket connections
-    serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+    serverSelectionTimeoutMS: 15000, // Keep trying to send operations for 5 seconds
     socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
     useUnifiedTopology: true,
     useNewUrlParser: true,

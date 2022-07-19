@@ -7,9 +7,6 @@ const ventasApp = ventasServer.init(ventasPort);
 
 ventasApp.listen(ventasPort, () => {
   console.log("Server running at: " + ventasPort);
-  console.log(
-    `Heapdump enabled. Run "kill -USR2 ${process.pid}" or send a request to "/heapdump" to generate a heapdump.`
-  );
 });
 
 let jobs = cronjobs.setCronJobs();
