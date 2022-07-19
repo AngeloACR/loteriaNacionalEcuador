@@ -44,10 +44,14 @@ $fuente-botones: "Monstserrat SemiBold";
       width: 120px;
     }
 
+    &.juegosOnline {
+      display: none;
+    }
+
     img {
       width: 70px;
       margin: 0;
-      transition: width  0.3s ease;
+      transition: width 0.3s ease;
       background-color: transparent;
     }
 
@@ -71,7 +75,7 @@ $fuente-botones: "Monstserrat SemiBold";
 
   &.home {
     .contenedor_loteria {
-      width: 24%;
+      width: 19%;
       height: 92px;
       font-size: 25px;
 
@@ -82,14 +86,17 @@ $fuente-botones: "Monstserrat SemiBold";
       &:hover img {
         width: 34%;
       }
+      &.juegosOnline {
+        display: flex;
+      }
+  
     }
   }
   .active {
     display: none;
     transition: all 0.3s ease;
   }
-  .title{
-
+  .title {
     display: block !important;
     font-family: "Helvetica";
     font-style: italic;
@@ -103,19 +110,18 @@ $fuente-botones: "Monstserrat SemiBold";
     &.loteria {
       border-bottom: 2px solid $color-loteria;
     }
-    
+
     &.lotto {
       border-bottom: 2px solid $color-lotto;
     }
-    
+
     &.pozo {
       border-bottom: 2px solid $color-pozo;
     }
-    
+
     &.millonaria {
       border-bottom: 2px solid $color-millonaria;
     }
-    
   }
 }
 
@@ -137,4 +143,9 @@ $fuente-botones: "Monstserrat SemiBold";
 .millonaria {
   color: $color-millonaria;
   background-color: $color-millonaria;
+}
+
+.juegosOnline {
+  color: #15295b;
+  background-color: #15295b;
 }

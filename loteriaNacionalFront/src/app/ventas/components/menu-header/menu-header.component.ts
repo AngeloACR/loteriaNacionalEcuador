@@ -14,6 +14,7 @@ export class MenuHeaderComponent implements OnInit {
   linkLaMillonaria?: string;
   token?: string;
   usuario?: string;
+  linkJuegosOnline?: string;
   homeClass = {
     home: this.home,
   };
@@ -31,5 +32,6 @@ export class MenuHeaderComponent implements OnInit {
     this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
     this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
     this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
+    this.linkJuegosOnline = `/inicio`;
   }
 }

@@ -52,7 +52,7 @@ const ganadoresController = {
               combinationC3: ganador.combinacion3,
               combinationC4: ganador.combinacion4,
               combinationC5: ganador.combinacion5,
-              //fractions: `[${ganador.fraccion}]`,
+              fractions: ` [${ganador.fraccion}]`,
               prizeDescription: ganador.descripcionPremio,
               prizeCode: ganador.codigoPremio,
               ticketId: ganador.ventaId,
