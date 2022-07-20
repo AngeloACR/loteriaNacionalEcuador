@@ -59,9 +59,13 @@ const ganadoresController = {
               combinationId: parseInt(ganador.boletoId),
             },
           ];
+          let transactionId = Date.now()
+          let checkSum = (98 - ((transactionId * 100)%97))%97
+          let validationCode = parseInt(`${transactionId}${checkSum}`)
           let data = {
             prizeDetails,
-            transactionId: Date.now(),
+            transactionId,
+            validationCode,
           };
           let aux = await alboranPrize.payLottery(data, '/PayPrize');
           if (aux.resultCode >= 0) {

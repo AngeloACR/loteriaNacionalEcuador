@@ -18,7 +18,6 @@ module.exports.alboranRequest = async (data, endpoint) => {
         let aux = JSON.stringify(data);
         const options = {
           hostname: alboranHost,
-          port: alboranPort,
           path: `${alboranEndpoint}${endpoint}`,
           method: "POST",
           headers: {

@@ -25,11 +25,8 @@ module.exports = {
     exalogicHost: "test.loteria.com.ec",
     exalogicEndpoint: "/testlotery_api/XReceiver",
   
-    alboranHost: "loteria.mongibello.tech",
-    alboranPort: "8081",
+    alboranHost: "loteria.mongibello.tech/out/",
     alboranEndpoint: "/direct/json/lottery",
-    //exalogicHost: "www.loteria.com.ec",
-    //exalogicEndpoint: "/lotery_api/XReceiver",
   
     // DATA FOR LOTERIA NACIONAL API
     usuarioAplicativo: "sitiowebprep",
