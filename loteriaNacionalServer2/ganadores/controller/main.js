@@ -46,28 +46,35 @@ const ganadoresController = {
               drawNumber: parseInt(ganador.numeroSorteo),
               drawDate: ganador.fechaCaducidad,
               prize: parseFloat(ganador.valorPremio).toFixed(2),
-              prizeWithDiscount: parseFloat(ganador.valorPremioDescuento).toFixed(2),
+              prizeWithDiscount: parseFloat(
+                ganador.valorPremioDescuento
+              ).toFixed(2),
               combinationC1: ganador.combinacion1,
               combinationC2: ganador.combinacion2,
               combinationC3: ganador.combinacion3,
               combinationC4: ganador.combinacion4,
               combinationC5: ganador.combinacion5,
-              fractions: ` [${ganador.fraccion}]`,
+              fractions: JSON.stringify([parseInt(ganador.fraccion)]),
               prizeDescription: ganador.descripcionPremio,
               prizeCode: ganador.codigoPremio,
               ticketId: ganador.ventaId,
               combinationId: parseInt(ganador.boletoId),
             },
           ];
-          let transactionId = Date.now()
-          let checkSum = (98 - ((transactionId * 100)%97))%97
-          let validationCode = parseInt(`${transactionId}${checkSum}`)
+          if (ganador.tipoLoteria == 1 || ganador.tipoLoteria == 14) {
+            prizeDetails["fractions"] = JSON.stringify([
+              parseInt(ganador.fraccion),
+            ]);
+          }
+          let transactionId = Date.now();
+          let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
+          let validationCode = parseInt(`${transactionId}${checkSum}`);
           let data = {
             prizeDetails,
             transactionId,
             validationCode,
           };
-          let aux = await alboranPrize.payLottery(data, '/PayPrize');
+          let aux = await alboranPrize.payLottery(data, "/PayPrize");
           if (aux.resultCode >= 0) {
             ganador.acreditado = true;
           }

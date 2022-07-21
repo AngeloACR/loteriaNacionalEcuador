@@ -228,9 +228,10 @@ const walletController = {
         reservationDetails: data.reservationDetails,
       };
       let response = await helper.alboranRequest(alboranData, '/ReserveBalance');
-      response["status"] = true;
+      response["status"] = false;
       if (parseInt(response.resultCode) >= 0) {
-        let logData = {
+      response["status"] = true;
+      let logData = {
           data: alboranData,
           response,
           function: "Wallet.reserveLottery",

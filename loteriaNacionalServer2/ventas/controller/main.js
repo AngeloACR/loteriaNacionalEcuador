@@ -526,11 +526,12 @@ const ventasController = {
           drawDate,
           subTotal: `${parseFloat(loteriaAux[id].subtotal).toFixed(2)}`,
           combinationC1: loteriaAux[id].ticket.combinacion,
-          fractions: ` [${JSON.stringify(
-            loteriaAux[id].ticket.seleccionados.map((item) => {
+
+          fractions: JSON.stringify([
+            ...loteriaAux[id].ticket.seleccionados.map((item) => {
               return parseInt(item);
-            }).join(", ")
-          )}]`,
+            }),
+          ]).replace(",", ", "),
         };
         reservationDetails.push(aux);
         loteria.push(loteriaAux[id]);
@@ -582,11 +583,11 @@ const ventasController = {
           subTotal: `${parseFloat(millonariaAux[id].subtotal).toFixed(2)}`,
           combinationC1: millonariaAux[id].ticket.combinacion1,
           combinationC2: millonariaAux[id].ticket.combinacion2,
-          fractions: ` [${millonariaAux[id].ticket.seleccionados
-            .map((item) => {
+          fractions: JSON.stringify([
+            ...millonariaAux[id].ticket.seleccionados.map((item) => {
               return parseInt(item);
-            })
-            .join(", ")}]`,
+            }),
+          ]).replace(",", ", "),
         };
         reservationDetails.push(aux);
         millonaria.push(millonariaAux[id]);

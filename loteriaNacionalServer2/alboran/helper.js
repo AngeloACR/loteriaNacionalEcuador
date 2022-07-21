@@ -23,6 +23,9 @@ module.exports.alboranRequest = async (data, endpoint) => {
           headers: {
             "Content-Type": "application/json",
             "Content-Length": aux.length,
+            "Accept-Encoding": "gzip, deflate, br",
+            Accept: "*/*",
+            Host: alboranHost,
           },
         };
         const req = https.request(options, (res) => {
