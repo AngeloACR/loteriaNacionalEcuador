@@ -14,7 +14,7 @@ export class PagosService {
     let data = JSON.parse(localStorage.getItem('userData')!);
     let lotteryToken = data.lotteryToken;
     let user = data.playerDocument;
-    let personalId = data.personalId;
+    let personalId = data.personaId;
     let accountId = data.accountId;
     if (data.user_ == 'italtronicprep') user = data.user_;
     let response = {

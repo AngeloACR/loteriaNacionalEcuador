@@ -37,9 +37,9 @@ export class DetalleDeVentaComponent implements OnInit {
       this.loadingMessage = 'Consultando el detalle de tu compra';
       this.isLoading = true;
       this.compra = await this.pagos.getCompra(this.ticketId, this.accountId);
-      this.codigosPromocionales = await this.pagos.getCodigosPromocionales(
+      /* this.codigosPromocionales = await this.pagos.getCodigosPromocionales(
         this.ticketId
-      );
+      ); */
       this.user = this.compra.user
         ? this.compra.user
         : this.ventas.getAuthData().user;

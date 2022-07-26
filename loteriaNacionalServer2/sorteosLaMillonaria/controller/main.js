@@ -6,13 +6,7 @@ const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
 const UltimoResultado = require("../models/ultimoResultado");
 const config = require("../../environments/test");
-Results.on("index", function (err) {
-  if (err) {
-    console.error("User index error: %s", err);
-  } else {
-    console.info("User indexing complete");
-  }
-});
+
 /*************************** CONSULTA DE RESULTADOS************************/
 
 const mainController = {
@@ -142,7 +136,7 @@ const mainController = {
       let combinaciones = req.body.combinaciones;
       let response = [];
       let length = combinaciones.length;
-      await mainController.validateSorteo(sorteo, 14);
+      //await mainController.validateSorteo(sorteo, 14);
       for (let i = 0; i < length; i++) {
         let aux = await Results.getResultadoGanador(sorteo, combinaciones[i]);
         if (aux.status) {

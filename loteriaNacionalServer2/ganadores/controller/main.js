@@ -54,23 +54,24 @@ const ganadoresController = {
               combinationC3: ganador.combinacion3,
               combinationC4: ganador.combinacion4,
               combinationC5: ganador.combinacion5,
-              fractions: JSON.stringify([parseInt(ganador.fraccion)]),
               prizeDescription: ganador.descripcionPremio,
               prizeCode: ganador.codigoPremio,
               ticketId: ganador.ventaId,
               combinationId: parseInt(ganador.boletoId),
             },
           ];
-          if (ganador.tipoLoteria == 1 || ganador.tipoLoteria == 14) {
-            prizeDetails["fractions"] = JSON.stringify([
+          if (parseInt(ganador.tipoLoteria) == 1 || parseInt(ganador.tipoLoteria) == 14) {
+            prizeDetails[0]["fractions"] = JSON.stringify([
               parseInt(ganador.fraccion),
             ]);
           }
           let transactionId = Date.now();
           let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
           let validationCode = parseInt(`${transactionId}${checkSum}`);
+          let prizesNumber = ganadores.filter(item =>item.ventaId == ganador.ventaId && !item.codigoPremio.includes("INSTANTANEA")).length;
           let data = {
             prizeDetails,
+            prizesNumber,
             transactionId,
             validationCode,
           };

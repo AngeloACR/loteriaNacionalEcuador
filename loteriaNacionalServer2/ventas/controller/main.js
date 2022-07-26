@@ -207,7 +207,6 @@ const ventasController = {
             lotteryType: tipoLoteria,
             drawNumber: parseInt(instantanea.sorteo.Sort),
             combinationC1: premio.Num,
-            lotteryName: nombreLoteria,
             prize: parseFloat(premio.Val).toFixed(2),
             prizeWithDiscount: parseFloat(premio.ConDesc).toFixed(2),
             prizeDescription: premio.Prem.normalize("NFD").replace(
@@ -531,7 +530,7 @@ const ventasController = {
             ...loteriaAux[id].ticket.seleccionados.map((item) => {
               return parseInt(item);
             }),
-          ]).replace(",", ", "),
+          ]).replace(/,/g, ", "),
         };
         reservationDetails.push(aux);
         loteria.push(loteriaAux[id]);
@@ -587,7 +586,7 @@ const ventasController = {
             ...millonariaAux[id].ticket.seleccionados.map((item) => {
               return parseInt(item);
             }),
-          ]).replace(",", ", "),
+          ]).replace(/,/g, ", "),
         };
         reservationDetails.push(aux);
         millonaria.push(millonariaAux[id]);
@@ -655,19 +654,19 @@ const ventasController = {
       );
 
       /* GENERAR CODIGOS PROMOCIONALES */
-      let codigoPromocionalResponse = await CodigosPromocionales.setCode(
+      /*       let codigoPromocionalResponse = await CodigosPromocionales.setCode(
         parseFloat(totalVenta),
         personaId,
         loteriaVentaResponse.ticketId,
         ip
-      );
+      ); */
 
       /* RESPUESTA DE API */
       let instantaneaResponse = alboranVentaResponse.instantaneaResponse;
       let finalResponse = {
         data: apiVentaResponse,
         instantanea: instantaneaResponse,
-        codigoPromocional: codigoPromocionalResponse,
+        //codigoPromocional: codigoPromocionalResponse,
         status: true,
       };
 

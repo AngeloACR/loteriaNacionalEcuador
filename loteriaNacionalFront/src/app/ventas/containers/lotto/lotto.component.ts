@@ -304,7 +304,7 @@ export class LottoComponent implements OnInit {
           );
           this.isLoading = false;
           if (response.status) {
-            this.codigoPromocional = response.codigoPromocional;
+            //this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

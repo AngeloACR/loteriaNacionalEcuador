@@ -12,8 +12,6 @@ module.exports.alboranRequest = async (data, endpoint) => {
     alboranLogger.silly("alboranRequest");
     return new Promise(async (resolve, reject) => {
       try {
-        //await authController.logoutUser();
-        //process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
         let aux = JSON.stringify(data);
         const options = {

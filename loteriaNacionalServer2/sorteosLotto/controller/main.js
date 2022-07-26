@@ -2,8 +2,8 @@ const psdResultados = require("../../psdLoteria/resultados");
 const psdSorteos = require("../../psdLoteria/sorteos");
 const psdVentas = require("../../psdLoteria/ventas");
 const Results = require("../models/main");
-const UltimoResultado = require("../models/ultimoResultado");
 const Premios = require("../models/premio");
+const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/test");
 

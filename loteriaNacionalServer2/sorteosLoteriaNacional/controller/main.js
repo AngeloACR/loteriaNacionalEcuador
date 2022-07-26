@@ -6,13 +6,7 @@ const Premios = require("../models/premio");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/test");
-Results.on("index", function (err) {
-  if (err) {
-    console.error("User index error: %s", err);
-  } else {
-    console.info("User indexing complete");
-  }
-});
+
 /*************************** CONSULTA DE RESULTADOS************************/
 
 const mainController = {

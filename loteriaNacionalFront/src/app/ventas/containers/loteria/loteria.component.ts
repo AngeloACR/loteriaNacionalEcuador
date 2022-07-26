@@ -452,7 +452,7 @@ export class LoteriaComponent implements OnInit {
             reservaId
           );
           if (response.status) {
-            this.codigoPromocional = response.codigoPromocional;
+            //this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
