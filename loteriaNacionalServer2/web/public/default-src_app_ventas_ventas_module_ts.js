@@ -3760,7 +3760,10 @@ class DetalleDeVentaComponent {
         _this.loadingMessage = 'Consultando el detalle de tu compra';
         _this.isLoading = true;
         _this.compra = yield _this.pagos.getCompra(_this.ticketId, _this.accountId);
-        _this.codigosPromocionales = yield _this.pagos.getCodigosPromocionales(_this.ticketId);
+        /* this.codigosPromocionales = await this.pagos.getCodigosPromocionales(
+          this.ticketId
+        ); */
+
         _this.user = _this.compra.user ? _this.compra.user : _this.ventas.getAuthData().user;
         _this.ganador = yield _this.pagos.getGanador(_this.ticketId);
 
@@ -4867,8 +4870,7 @@ class LoteriaComponent {
             let response = yield _this8.paymentService.confirmarCompra(_this8.token, reservaId);
 
             if (response.status) {
-              _this8.codigoPromocional = response.codigoPromocional;
-
+              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this8.dismissCompras();
 
@@ -6090,8 +6092,7 @@ class LottoComponent {
             _this4.isLoading = false;
 
             if (response.status) {
-              _this4.codigoPromocional = response.codigoPromocional;
-
+              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this4.dismissCompras();
 
@@ -7553,8 +7554,7 @@ class MillonariaComponent {
             _this7.isLoading = false;
 
             if (response.status) {
-              _this7.codigoPromocional = response.codigoPromocional;
-
+              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this7.dismissCompras();
 
@@ -8987,8 +8987,7 @@ class PozoComponent {
             _this6.isLoading = false;
 
             if (response.status) {
-              _this6.codigoPromocional = response.codigoPromocional;
-
+              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this6.dismissCompras();
 
@@ -10319,7 +10318,7 @@ class PagosService {
     let data = JSON.parse(localStorage.getItem('userData'));
     let lotteryToken = data.lotteryToken;
     let user = data.playerDocument;
-    let personalId = data.personalId;
+    let personalId = data.personaId;
     let accountId = data.accountId;
     if (data.user_ == 'italtronicprep') user = data.user_;
     let response = {
