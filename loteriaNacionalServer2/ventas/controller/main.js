@@ -368,10 +368,14 @@ const ventasController = {
           let nombreLoteria;
           let tipoLoteria = parseInt(instantanea.sorteo.JId);
 
+          let transactionId = Date.now();
+          let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
+          let validationCode = parseInt(`${transactionId}${checkSum.toString().padStart(2,"0")}`);
           let prizeDetail = {
             lotteryType: tipoLoteria,
             drawNumber: parseInt(instantanea.sorteo.Sort),
             combinationC1: premio.Num,
+            validationCode,
             prize: premio.Val,
             prizeWithDiscount: premio.ConDesc,
             prizeDescription: premio.Prem.normalize("NFD").replace(

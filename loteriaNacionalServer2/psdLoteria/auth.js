@@ -11,7 +11,7 @@ const claveClientePsd = config.passwordAplicativo;
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
 
-module.exports.authTest = async () => {
+module.exports.authTest = async (user, password) => {
   try {
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
@@ -22,8 +22,8 @@ module.exports.authTest = async () => {
           <mt>
               <c>
             <aplicacion>17</aplicacion>
-            <usuario>0951234566</usuario>
-            <clave>Pass1234!</clave>
+            <usuario>${user}</usuario>
+            <clave>${password}</clave>
             <maquina>192.168.1.13</maquina>
             <codError>0</codError>
             <msgError />
