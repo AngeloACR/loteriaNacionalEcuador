@@ -84,8 +84,7 @@ const walletController = {
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
         ticketId: data.ticketId,
-        amount: `${data.amount}`,
-        instantWinDetails: data.prizeDetails,
+        amount: `${data.amount}`
       };
       let response = await helper.alboranRequest(alboranData, '/SellTicket');
       response["status"] = true;

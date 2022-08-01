@@ -8,6 +8,7 @@ const Ventas = require("../models/main");
 const Wallet = require("../../alboran/wallet"); // COMUNICAR POR gRPC
 //const Wallet = require("../../exalogic/wallet"); // COMUNICAR POR gRPC
 const Ganadores = require("../../ganadores/models/main"); // COMUNICAR POR gRPC
+const GanadoresController = require("../../ganadores/controller/main"); // COMUNICAR POR gRPC
 const { ventasLogger } = require("../logging");
 var errorHandler = require("../errors").errorHandler;
 
@@ -349,118 +350,6 @@ const ventasController = {
   ) => {
     /* VENTA EN Alboran */
 
-    let instantaneas = loteriaVentaResponse.instantaneas;
-    let prizeDetails = [];
-    let instantaneaStatus = false;
-    let instantaneaData = {};
-    if (instantaneas != "" && instantaneas.length != 0) {
-      let loteriaSorteos = await CacheLoteria.getSorteosDisponibles();
-      let lottoSorteos = await CacheLotto.getSorteosDisponibles();
-      let pozoSorteos = await CachePozo.getSorteosDisponibles();
-      let millonariaSorteos = await CacheLaMillonaria.getSorteosDisponibles();
-      instantaneaStatus = true;
-      for (let j = 0; j < instantaneas.length; j++) {
-        const instantanea = instantaneas[j];
-
-        for (let i = 0; i < instantanea.premios.length; i++) {
-          const premio = instantanea.premios[i];
-
-          let nombreLoteria;
-          let tipoLoteria = parseInt(instantanea.sorteo.JId);
-
-          let transactionId = Date.now();
-          let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
-          let validationCode = parseInt(`${transactionId}${checkSum.toString().padStart(2,"0")}`);
-          let prizeDetail = {
-            lotteryType: tipoLoteria,
-            drawNumber: parseInt(instantanea.sorteo.Sort),
-            combinationC1: premio.Num,
-            validationCode,
-            prize: premio.Val,
-            prizeWithDiscount: premio.ConDesc,
-            prizeDescription: premio.Prem.normalize("NFD").replace(
-              /[\u0300-\u036f]/g,
-              ""
-            ),
-          };
-
-          let drawDateAux;
-          switch (tipoLoteria) {
-            case 1:
-              drawDateAux = loteriaSorteos
-                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
-                .fecha.split(" ")[0]
-                .split("/");
-              prizeDetail[
-                "drawDate"
-              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-              prizeDetail["fractions"] = `${[premio.Fra]}`;
-
-              break;
-            case 2:
-              drawDateAux = lottoSorteos
-                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
-                .fecha.split(" ")[0]
-                .split("/");
-              prizeDetail[
-                "drawDate"
-              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-              let item = reservationDetails.find(
-                (element) => prizeDetail.combinationC1 == element.combinationC1
-              );
-              prizeDetail["combinationC2"] = item.combinationC2;
-              prizeDetail["combinationC3"] = item.combinationC3;
-              prizeDetail["combinationC4"] = item.combinationC4;
-              prizeDetail["combinationC5"] = item.combinationC5;
-              break;
-
-            case 5:
-              drawDateAux = pozoSorteos
-                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
-                .fecha.split(" ")[0]
-                .split("/");
-              prizeDetail[
-                "drawDate"
-              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-              break;
-            case 14:
-              drawDateAux = millonariaSorteos
-                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
-                .fecha.split(" ")[0]
-                .split("/");
-              prizeDetail[
-                "drawDate"
-              ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-              prizeDetail["fractions"] = `${[premio.Fra]}`;
-              prizeDetail["combinationC2"] = premio.Num2;
-              break;
-          }
-          let ganador = {
-            personaId: personaId,
-            tipoLoteria: tipoLoteria,
-            numeroSorteo: parseInt(instantanea.sorteo.Sort),
-            combinacion1: premio.Num,
-            codigoPremio: `${parseInt(instantanea.sorteo.Sort)}-INSTANTANEA`,
-            fraccion: premio.Fra,
-            descripcionPremio: premio.Prem,
-            valorPremio: premio.Val,
-            valorPremioDescuento: premio.ConDesc,
-            ventaId: loteriaVentaResponse.ticketId,
-            acreditado: true,
-          };
-          await Ganadores.crearGanador(ganador);
-          let logData = {
-            data: ganador,
-            response: loteriaVentaResponse,
-            function: "Ganadores.crearGanador",
-          };
-          ventasLogger.info("comprarBoletos.api", logData);
-          prizeDetails.push(prizeDetail);
-        }
-      }
-      instantaneaData = prizeDetails;
-    }
-
     let alboranVentaId = Date.now();
     let alboranVentaData = {
       token,
@@ -468,7 +357,6 @@ const ventasController = {
       reserveId: alboranReservaId,
       ticketId: loteriaVentaResponse.ticketId,
       amount: totalVenta,
-      prizeDetails,
     };
     let alboranVentaResponse = await Wallet.sellLottery(alboranVentaData);
     if (!alboranVentaResponse.status) {
@@ -492,12 +380,125 @@ const ventasController = {
       "Completada",
       alboranVentaId
     );
-    let instantaneaResponse = {
+
+    return alboranVentaResponse;
+  },
+  payInstantanea: async (
+    loteriaVentaResponse,
+    personaId,
+    reservationDetails
+  ) => {
+    let instantaneas = loteriaVentaResponse.instantaneas;
+    let instantaneaStatus = instantaneas.length > 0;
+    let instantaneaData = [];
+
+    let sorteos = await Promise.all([
+      CacheLoteria.getSorteosDisponibles(),
+      CacheLotto.getSorteosDisponibles(),
+      CachePozo.getSorteosDisponibles(),
+      CacheLaMillonaria.getSorteosDisponibles(),
+    ]);
+    let loteriaSorteos = sorteos[0];
+    let lottoSorteos = sorteos[1];
+    let pozoSorteos = sorteos[2];
+    let millonariaSorteos = sorteos[3];
+    let auxPagoInstantaneas = [];
+    let auxGanadores = [];
+
+    for (let j = 0; j < instantaneas.length; j++) {
+      const instantanea = instantaneas[j];
+
+      for (let i = 0; i < instantanea.premios.length; i++) {
+        const premio = instantanea.premios[i];
+
+        let tipoLoteria = parseInt(instantanea.sorteo.JId);
+        let numeroSorteo = parseInt(instantanea.sorteo.Sort);
+        let drawDateAux;
+        switch (tipoLoteria) {
+          case 1:
+            drawDateAux = loteriaSorteos
+              .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+              .fecha.split(" ")[0]
+              .split("/");
+            break;
+          case 2:
+            drawDateAux = lottoSorteos
+              .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+              .fecha.split(" ")[0]
+              .split("/");
+            break;
+
+          case 5:
+            drawDateAux = pozoSorteos
+              .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+              .fecha.split(" ")[0]
+              .split("/");
+            break;
+          case 14:
+            drawDateAux = millonariaSorteos
+              .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
+              .fecha.split(" ")[0]
+              .split("/");
+            break;
+        }
+        let item = reservationDetails.find(
+          (element) => premio.Num == element.combinationC1
+        );
+        let combinacion1 = premio.Num;
+        let combinacion2 = "";
+        let combinacion3 = "";
+        let combinacion4 = "";
+        let combinacion5 = "";
+        if (tipoLoteria == 2) {
+          combinacion2 = item.combinacion2;
+          combinacion3 = item.combinacion3;
+          combinacion4 = item.combinacion4;
+          combinacion5 = item.combinacion5;
+        }
+        if (tipoLoteria == 14) {
+          combinacion2 = premio.Num2;
+        }
+        let ganador = {
+          personaId,
+          tipoLoteria,
+          numeroSorteo,
+          fechaCaducidad: `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`,
+          combinacion1,
+          combinacion2,
+          combinacion3,
+          combinacion4,
+          combinacion5,
+          fraccion: premio.Fra,
+          descripcionPremio: premio.Prem,
+          valorPremio: premio.Val,
+          valorPremioDescuento: premio.ConDesc,
+          codigoPremio: `${numeroSorteo}-INSTANTANEA`,
+          ventaId: loteriaVentaResponse.ticketId,
+          tipoPremio: "DIN",
+          acreditado: false,
+          //boletoId
+        };
+        auxGanadores.push(Ganadores.crearGanador(ganador));
+        let logData = {
+          data: ganador,
+          response: loteriaVentaResponse,
+          function: "Ganadores.crearGanador",
+        };
+        ventasLogger.info("comprarBoletos.api", logData);
+        instantaneaData.push(ganador);
+        if (!auxPagoInstantaneas.includes(numeroSorteo)) auxPagoInstantaneas.push(numeroSorteo)
+      }
+    }
+    let ganadores = await Promise.all(auxGanadores);
+    auxPagoInstantaneas.map((item) => {
+      return GanadoresController.pagarLoteria(item)
+    })
+    let pagoInstantaneas = await Promise.all(auxPagoInstantaneas);
+    return {
       status: instantaneaStatus,
       data: instantaneaData,
+      pagoInstantaneas
     };
-
-    return { alboranVentaResponse, instantaneaResponse };
   },
   comprarBoletos: async (req, res) => {
     try {
@@ -665,8 +666,19 @@ const ventasController = {
         ip
       ); */
 
+      /* PAGO DE INSTANTANEAS */
+      let instantaneaResponse = "";
+      if (
+        loteriaVentaResponse.instantaneas != "" &&
+        loteriaVentaResponse.instantaneas.length != 0
+      ) {
+        instantaneaResponse = await ventasController.payInstantanea(
+          loteriaVentaResponse,
+          personaId,
+          reservationDetails
+        );
+      }
       /* RESPUESTA DE API */
-      let instantaneaResponse = alboranVentaResponse.instantaneaResponse;
       let finalResponse = {
         data: apiVentaResponse,
         instantanea: instantaneaResponse,
@@ -826,15 +838,7 @@ const ventasController = {
     try {
       let ticketId = req.body.ticketId;
       let accountId = req.body.accountId;
-      let personaId = req.body.personaId;
-      /*       let codigoPromocionalResponse = await CodigosPromocionales.getCode(
-        personaId,
-        ticketId,
-        ip
-      );
- */
       let response = await Ventas.getVentaByVentaId(ticketId, accountId);
-      /*response['codigoPromocional'] = codigoPromocionalResponse;*/
       res.status(200).json(response);
     } catch (e) {
       let response = {

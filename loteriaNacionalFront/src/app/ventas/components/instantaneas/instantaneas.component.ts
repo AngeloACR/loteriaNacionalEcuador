@@ -59,16 +59,15 @@ export class InstantaneasComponent implements OnInit {
     }
     this.resultados.forEach((resultado: any) => {
       let ticket = {
-        tipoLoteria: parseInt(resultado.lotteryType),
-        lotteryName: resultado.lotteryName,
-        sorteo: resultado.drawNumber,
-        drawDate: resultado.drawDate,
-        combinacion: resultado.combinationC1,
-        combinacion2: resultado.combinationC2,
-        fracciones: resultado.fractions,
-        prize: resultado.prize,
-        prizeWithDiscount: resultado.prizeWithDiscount,
-        prizeDescription: resultado.prizeDescription,
+        tipoLoteria: parseInt(resultado.tipoLoteria),
+        sorteo: resultado.numeroSorteo,
+        drawDate: resultado.fechaCaducidad,
+        combinacion: resultado.combinacion1,
+        combinacion2: resultado.combinacion2,
+        fracciones: resultado.fraccion,
+        prize: resultado.valorPremio,
+        prizeWithDiscount: resultado.valorPremioDescuento,
+        prizeDescription: resultado.descripcionPremio,
       };
       this.premios.push(ticket);
     });

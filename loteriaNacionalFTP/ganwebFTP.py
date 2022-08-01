@@ -88,6 +88,7 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
                 "personaId": personaId,
                 "numeroSorteo": numeroSorteo,
                 "combinacion1": combinacion1,
+                "combinacion2": combinacion2,
                 "fraccion": fraccion,
                 "codigoPremio": codigoPremio,
             }
@@ -113,16 +114,16 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
                 "ventaId": ventaId
             }
             if not ganadorAux:
-                ganador['acreditado']=False
+                ganador['acreditado'] = False
                 ganadoreswebs.insert_one(ganador)
             else:
                 updateQuery = {"$set": ganador}
                 ganadoreswebs.update_one(query, updateQuery)
 
-        url = "http://localhost:7500/acreditarPremios"
-        
+        #url = "http://localhost:7500/acreditarPremios"
+
         #url = "https://ventas-api-prueba.loteria.com.ec/ganadores/acreditarPremios"
-        #url = "https://ventas-api.loteria.com.ec/ganadores/acreditarPremios"
+        url = "https://ventas-api.loteria.com.ec/ganadores/acreditarPremios"
         response = requests.post(url, json={"sorteo": numeroSorteo})
         resultado = response.json()
         closeConnect(connection)
@@ -142,11 +143,11 @@ def sendResult(message):
 
 
 def main():
-    db = "mongodb://localhost:27017/loteriaDB"
-    #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
+    #db = "mongodb://localhost:27017/loteriaDB"
+    db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    #filepath = "/home/loterianacional/resultados" + filename
-    filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
+    filepath = "/home/loterianacional/resultados" + filename
+    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
 
