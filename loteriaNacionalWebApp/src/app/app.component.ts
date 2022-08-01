@@ -19,16 +19,14 @@ export class AppComponent implements OnInit {
   token: string;
   faCoffee = faCoffee;
   isDetail: boolean = false;
-  showPromo: boolean = false;
   constructor(private router: Router) {
     this.isDetail = false;
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         let data = decodeURIComponent(event.url);
-    if (data.includes("inicio")) {
-      this.showPromo = true;
-    }
-    if (data.includes("compra_tus_juegos?token")) {
+        if (data.includes("inicio")) {
+        }
+        if (data.includes("compra_tus_juegos?token")) {
           let url = data.split("?token=")[0];
           this.token = data.split("?token=")[1];
           this.router.navigateByUrl(`${url}/${this.token}`);
@@ -52,7 +50,4 @@ export class AppComponent implements OnInit {
     });
   }
   async ngOnInit() {}
-  closePromo() {
-    this.showPromo = false;
-  }
 }
