@@ -93,28 +93,6 @@ export class PaymentService {
       );
     });
   }
-  getCodigosPromocionales(ventaId) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    let address = "/codigosPromocionales";
-    let endpoint = "";
-    let body = {
-      ventaId,
-    };
-    endpoint = `${endpoint}/getCodes`;
-
-    address = this.mySource + address + endpoint;
-    return new Promise<boolean>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          resolve(data);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
-  }
 
   getGanador(ticketId) {
     ticketId = ticketId.toString();

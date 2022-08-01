@@ -9,7 +9,6 @@ import { LotteryService } from "../../../lottery/services/lottery.service";
 export class CompraFinalizadaComponent implements OnInit {
   @Output() volver = new EventEmitter();
   @Input() compra: any;
-  @Input() codigosPromocionales: any;
   user: any;
   constructor(
     private lottery: LotteryService,

@@ -12,7 +12,6 @@ export class CompraDetalleComponent implements OnInit {
   ticketId: string;
   accountId: string;
   compra: any;
-  codigosPromocionales: any = [];
   ganador: any;
   compraReady: boolean = false;
   user: string;
@@ -36,7 +35,6 @@ export class CompraDetalleComponent implements OnInit {
       this.loadingMessage = "Consultando el detalle de tu compra";
       this.isLoading = true;
       this.compra = await this.payment.getCompra(this.ticketId, this.accountId);
-      this.codigosPromocionales = await this.payment.getCodigosPromocionales(this.ticketId);
       this.user = this.compra.user
         ? this.compra.user
         : this.lottery.getAuthData().user;

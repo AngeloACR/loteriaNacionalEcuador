@@ -2,7 +2,6 @@ const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache"); /
 const CacheLotto = require("../../sorteosLotto/controller/cache"); // COMUNICAR POR gRPC
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache"); // COMUNICAR POR gRPC
 const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache"); // COMUNICAR POR gRPC
-const CodigosPromocionales = require("../../codigosPromocionales/controller/main"); // COMUNICAR POR gRPC
 const psdVentas = require("../../psdLoteria/ventas");
 const Ventas = require("../models/main");
 const Wallet = require("../../exalogic/wallet"); // COMUNICAR POR gRPC
@@ -448,20 +447,12 @@ const ventasController = {
         ip
       );
 
-      /* GENERAR CODIGOS PROMOCIONALES */
-      let codigoPromocionalResponse = await CodigosPromocionales.setCode(
-        parseFloat(totalVenta),
-        personaId,
-        loteriaVentaResponse.ticketId,
-        ip
-      );
 
       /* RESPUESTA DE API */
       let instantaneaResponse = exaVentaResponse.instantaneaResponse;
       let finalResponse = {
         data: apiVentaResponse,
         instantanea: instantaneaResponse,
-        codigoPromocional: codigoPromocionalResponse,
         status: true,
       };
 
@@ -618,14 +609,7 @@ const ventasController = {
       let ticketId = req.body.ticketId;
       let accountId = req.body.accountId;
       let personaId = req.body.personaId;
-/*       let codigoPromocionalResponse = await CodigosPromocionales.getCode(
-        personaId,
-        ticketId,
-        ip
-      );
- */
       let response = await Ventas.getVentaByVentaId(ticketId, accountId);
-      /*response['codigoPromocional'] = codigoPromocionalResponse;*/
       res.status(200).json(response);
     } catch (e) {
       let response = {

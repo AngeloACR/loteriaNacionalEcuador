@@ -61,7 +61,7 @@ export class LoteriaComponent implements OnInit {
       }
       await this.getCarritoTickets();
       this.sorteo = await this.lotteryService.obtenerSorteo(this.token, 1);
-      this.descuentos = await this.lotteryService.obtenerDescuentos()
+      this.descuentos = await this.lotteryService.obtenerDescuentos();
       this.isLoading = false;
       this.showComponents = true;
     } catch (e) {
@@ -179,7 +179,7 @@ export class LoteriaComponent implements OnInit {
   }
 
   async setDescuento(tipoLoteria) {
-    return
+    return;
     let descuentos = this.descuentos.filter(
       (element: any) => parseInt(element.tipoLoteria) == tipoLoteria
     );
@@ -231,7 +231,8 @@ export class LoteriaComponent implements OnInit {
         let identificador = this.ticketsDisponibles[id].identificador;
         await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
         this.ticketsDisponibles[id].seleccionados = [];
-      } await this.setDescuento(1);
+      }
+      await this.setDescuento(1);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -422,7 +423,6 @@ export class LoteriaComponent implements OnInit {
       amountConDesc,
     };
 
-
     this.confirmacionDeCompra = true;
   }
 
@@ -433,7 +433,7 @@ export class LoteriaComponent implements OnInit {
   }
 
   irARecarga() {}
-codigoPromocional: any = [];
+
   async confirmarCompra() {
     try {
       this.isLoading = true;
@@ -449,7 +449,6 @@ codigoPromocional: any = [];
             reservaId
           );
           if (response.status) {
-            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

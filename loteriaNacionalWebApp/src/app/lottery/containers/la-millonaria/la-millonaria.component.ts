@@ -180,7 +180,8 @@ export class LaMillonariaComponent implements OnInit {
         let identificador = this.ticketsDisponibles[id].identificador;
         await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
         this.ticketsDisponibles[id].seleccionados = [];
-      } await this.setDescuento(1);
+      }
+      await this.setDescuento(1);
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -454,7 +455,6 @@ export class LaMillonariaComponent implements OnInit {
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
-  codigoPromocional: any = [];
   async confirmarCompra() {
     try {
       this.isLoading = true;
@@ -471,7 +471,6 @@ export class LaMillonariaComponent implements OnInit {
           );
           this.isLoading = false;
           if (response.status) {
-            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
@@ -548,11 +547,10 @@ export class LaMillonariaComponent implements OnInit {
       this.seleccionSeries = await this.lotteryService.obtenerSeries(
         this.sorteo[0].sorteo
       );
-      this.descuentos = await this.lotteryService.obtenerDescuentos()
+      this.descuentos = await this.lotteryService.obtenerDescuentos();
       this.isLoading = false;
-      
-      this.showComponents = true;
 
+      this.showComponents = true;
     } catch (e) {
       this.isLoading = false;
       console.log(e.message);
@@ -562,7 +560,7 @@ export class LaMillonariaComponent implements OnInit {
   }
 
   async setDescuento(tipoLoteria) {
-    return
+    return;
     let descuentos = this.descuentos.filter(
       (element: any) => parseInt(element.tipoLoteria) == tipoLoteria
     );

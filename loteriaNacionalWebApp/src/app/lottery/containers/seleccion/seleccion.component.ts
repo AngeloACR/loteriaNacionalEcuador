@@ -19,7 +19,6 @@ export class SeleccionComponent implements OnInit {
   errorTitle: string;
   isLoading: boolean;
   loadingMessage: string;
-  codigoPromocional: any = [];
   ticketsPozo: any;
   ticketsLotto: any;
   ticketsLoteria: any;
@@ -186,7 +185,6 @@ export class SeleccionComponent implements OnInit {
             reservaId
           );
           if (response.status) {
-            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

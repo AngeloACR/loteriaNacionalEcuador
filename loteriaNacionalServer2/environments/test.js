@@ -20,7 +20,6 @@ module.exports = {
   walletPort: 8500,
   uploadsPort: 9000,
   helperPort: 9500,
-  codigosPromocionalesPort: 10000,
 
   host: "localhost",
 
@@ -47,7 +46,8 @@ module.exports = {
 
   // MONGO DATABASE DATA
   //dbAddress: "mongodb://localhost:27017/loteriaDB",
-  dbAddress: "mongodb://loterianacional:%24lndatabase123..%24@ventas-prueba.loteria.com.ec:27017/loteriaDB?replicaSet=backuptest",
+  dbAddress:
+    "mongodb://loterianacional:%24lndatabase123..%24@ventas-prueba.loteria.com.ec:27017/loteriaDB?replicaSet=backuptest",
   //dbAddress: "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
 
   //MAILJET DATA
@@ -83,7 +83,8 @@ module.exports = {
   //ftpUser: "loterianacional",
   //ftpPass: "$lnftp123..$",
 
-  ftpBoletinesPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
+  ftpBoletinesPath:
+    "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
   ftpBoletosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
   imgCorreosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
 
