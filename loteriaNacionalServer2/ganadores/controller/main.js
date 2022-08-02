@@ -65,7 +65,7 @@ const ganadoresController = {
               combinationC5: ganador.combinacion5,
               prizeDescription: ganador.descripcionPremio,
               prizeCode: ganador.codigoPremio,
-              ticketId: ganador.ventaId,
+              ticketId: parseInt(ganador.ventaId),
               combinationId: parseInt(ganador.boletoId),
               validationCode: `${validationCode}`,
             },
