@@ -815,32 +815,7 @@ function DescripcionDeVentaComponent_h3_10_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r0.ticketId);
 } }
-function DescripcionDeVentaComponent_div_11_span_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const codigoPromocional_r10 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](codigoPromocional_r10.codigo);
-} }
-function DescripcionDeVentaComponent_div_11_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "h3");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, " Con estos c\u00F3digos participas en el sorteo por un Iphone 13 pro: ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "h3", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](5, DescripcionDeVentaComponent_div_11_span_5_Template, 2, 1, "span", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r1.codigosPromocionales);
-} }
-function DescripcionDeVentaComponent_div_12_div_4_p_29_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_11_div_4_p_29_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Total con descuento: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
@@ -848,14 +823,14 @@ function DescripcionDeVentaComponent_div_12_div_4_p_29_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
-    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r13.formatNumber(item_r12.subtotalConDesc));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r10.formatNumber(item_r9.subtotalConDesc));
 } }
-function DescripcionDeVentaComponent_div_12_div_4_ng_container_30_div_16_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p", 20);
+function DescripcionDeVentaComponent_div_11_div_4_ng_container_30_div_16_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "p");
@@ -872,27 +847,27 @@ function DescripcionDeVentaComponent_div_12_div_4_ng_container_30_div_16_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r18 = ctx.$implicit;
-    const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r15 = ctx.$implicit;
+    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r18.fraccion);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r15.fraccion);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r16.formatNumber(ganador_r18.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r13.formatNumber(ganador_r15.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r16.formatNumber(ganador_r18.valorPremio - ganador_r18.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r13.formatNumber(ganador_r15.valorPremio - ganador_r15.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r16.formatNumber(ganador_r18.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r13.formatNumber(ganador_r15.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r18.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r15.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_12_div_4_ng_container_30_div_17_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 19);
+function DescripcionDeVentaComponent_div_11_div_4_ng_container_30_div_17_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, "FRACCI\u00D3N");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -926,32 +901,32 @@ function DescripcionDeVentaComponent_div_12_div_4_ng_container_30_div_17_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r19 = ctx.$implicit;
-    const i_r20 = ctx.index;
-    const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r16 = ctx.$implicit;
+    const i_r17 = ctx.index;
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r20 + 1, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r17 + 1, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r19.fraccion);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r16.fraccion);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r17.formatNumber(ganador_r19.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r14.formatNumber(ganador_r16.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r17.formatNumber(ganador_r19.valorPremio - ganador_r19.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r14.formatNumber(ganador_r16.valorPremio - ganador_r16.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r17.formatNumber(ganador_r19.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r14.formatNumber(ganador_r16.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r19.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r16.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_12_div_4_ng_container_30_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_11_div_4_ng_container_30_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Boleto ganador");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "p", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "p", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "FRACCI\u00D3N");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "p");
@@ -967,20 +942,20 @@ function DescripcionDeVentaComponent_div_12_div_4_ng_container_30_Template(rf, c
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](15, "DESCRIPCI\u00D3N DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](16, DescripcionDeVentaComponent_div_12_div_4_ng_container_30_div_16_Template, 11, 5, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](16, DescripcionDeVentaComponent_div_11_div_4_ng_container_30_div_16_Template, 11, 5, "div", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](17, DescripcionDeVentaComponent_div_12_div_4_ng_container_30_div_17_Template, 25, 6, "div", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](17, DescripcionDeVentaComponent_div_11_div_4_ng_container_30_div_17_Template, 25, 6, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
-    const item_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const item_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r12.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r9.detalleGanador);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r12.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r9.detalleGanador);
 } }
-function DescripcionDeVentaComponent_div_12_div_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 13);
+function DescripcionDeVentaComponent_div_11_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, " Sorteo: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "span");
@@ -994,7 +969,7 @@ function DescripcionDeVentaComponent_div_12_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, " Combinaci\u00F3n: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](13, "span");
@@ -1008,7 +983,7 @@ function DescripcionDeVentaComponent_div_12_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](19, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](19, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](20, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](21, " Cantidad: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](22, "span");
@@ -1016,52 +991,52 @@ function DescripcionDeVentaComponent_div_12_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](24, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](24, "div", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](25, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](26, " Total: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](27, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](28);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](29, DescripcionDeVentaComponent_div_12_div_4_p_29_Template, 4, 1, "p", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](29, DescripcionDeVentaComponent_div_11_div_4_p_29_Template, 4, 1, "p", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](30, DescripcionDeVentaComponent_div_12_div_4_ng_container_30_Template, 18, 2, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](30, DescripcionDeVentaComponent_div_11_div_4_ng_container_30_Template, 18, 2, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r12 = ctx.$implicit;
-    const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r9 = ctx.$implicit;
+    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r12.sorteo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r9.sorteo);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r12.fecha);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r9.fecha);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r12.combinacion1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r9.combinacion1);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r12.fracciones.join(", "));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r9.fracciones.join(", "));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r12.fracciones.length);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r9.fracciones.length);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r11.formatNumber(item_r12.subtotal));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r8.formatNumber(item_r9.subtotal));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r12.tieneDescuento);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r9.tieneDescuento);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r12.hasGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r9.hasGanador);
 } }
-function DescripcionDeVentaComponent_div_12_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_11_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "h3");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "LOTER\u00CDA NACIONAL");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_12_div_4_Template, 31, 8, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_11_div_4_Template, 31, 8, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r2.compra.loteria);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r1.compra.loteria);
 } }
-function DescripcionDeVentaComponent_div_13_div_4_p_27_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_12_div_4_p_27_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Antojito: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
@@ -1069,12 +1044,12 @@ function DescripcionDeVentaComponent_div_13_div_4_p_27_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
-    const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r24.nombreAntojito(item_r23.combinacion5));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r21.nombreAntojito(item_r20.combinacion5));
 } }
-function DescripcionDeVentaComponent_div_13_div_4_p_38_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_12_div_4_p_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Total con descuento: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
@@ -1082,13 +1057,13 @@ function DescripcionDeVentaComponent_div_13_div_4_p_38_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
-    const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r25.formatNumber(item_r23.subtotalConDesc));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r22.formatNumber(item_r20.subtotalConDesc));
 } }
-function DescripcionDeVentaComponent_div_13_div_4_ng_container_39_div_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 23);
+function DescripcionDeVentaComponent_div_12_div_4_ng_container_39_div_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1103,25 +1078,25 @@ function DescripcionDeVentaComponent_div_13_div_4_ng_container_39_div_14_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r31 = ctx.$implicit;
-    const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r28 = ctx.$implicit;
+    const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r29.formatNumber(ganador_r31.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r26.formatNumber(ganador_r28.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r29.formatNumber(ganador_r31.valorPremio - ganador_r31.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r26.formatNumber(ganador_r28.valorPremio - ganador_r28.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r29.formatNumber(ganador_r31.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r26.formatNumber(ganador_r28.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r31.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r28.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_13_div_4_ng_container_39_div_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 29);
+function DescripcionDeVentaComponent_div_12_div_4_ng_container_39_div_15_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, "VALOR DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1149,29 +1124,29 @@ function DescripcionDeVentaComponent_div_13_div_4_ng_container_39_div_15_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r32 = ctx.$implicit;
-    const i_r33 = ctx.index;
-    const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r29 = ctx.$implicit;
+    const i_r30 = ctx.index;
+    const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r33 + 1, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r30 + 1, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r30.formatNumber(ganador_r32.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r27.formatNumber(ganador_r29.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r30.formatNumber(ganador_r32.valorPremio - ganador_r32.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r27.formatNumber(ganador_r29.valorPremio - ganador_r29.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r30.formatNumber(ganador_r32.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r27.formatNumber(ganador_r29.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r32.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r29.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_13_div_4_ng_container_39_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_12_div_4_ng_container_39_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Boleto ganador");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "VALOR DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1185,20 +1160,20 @@ function DescripcionDeVentaComponent_div_13_div_4_ng_container_39_Template(rf, c
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, "DESCRIPCI\u00D3N DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](14, DescripcionDeVentaComponent_div_13_div_4_ng_container_39_div_14_Template, 9, 4, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](14, DescripcionDeVentaComponent_div_12_div_4_ng_container_39_div_14_Template, 9, 4, "div", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, DescripcionDeVentaComponent_div_13_div_4_ng_container_39_div_15_Template, 21, 5, "div", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, DescripcionDeVentaComponent_div_12_div_4_ng_container_39_div_15_Template, 21, 5, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
-    const item_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const item_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r23.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r20.detalleGanador);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r23.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r20.detalleGanador);
 } }
-function DescripcionDeVentaComponent_div_13_div_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 13);
+function DescripcionDeVentaComponent_div_12_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, " Sorteo: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "span");
@@ -1212,7 +1187,7 @@ function DescripcionDeVentaComponent_div_13_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, " Combinaci\u00F3n: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](13, "span");
@@ -1237,9 +1212,9 @@ function DescripcionDeVentaComponent_div_13_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](26);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](27, DescripcionDeVentaComponent_div_13_div_4_p_27_Template, 4, 1, "p", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](27, DescripcionDeVentaComponent_div_12_div_4_p_27_Template, 4, 1, "p", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](29, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](30, "Cantidad: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](31, "span");
@@ -1247,56 +1222,56 @@ function DescripcionDeVentaComponent_div_13_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "div", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](34, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](35, " Total: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](36, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](37);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](38, DescripcionDeVentaComponent_div_13_div_4_p_38_Template, 4, 1, "p", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](38, DescripcionDeVentaComponent_div_12_div_4_p_38_Template, 4, 1, "p", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](39, DescripcionDeVentaComponent_div_13_div_4_ng_container_39_Template, 16, 2, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](39, DescripcionDeVentaComponent_div_12_div_4_ng_container_39_Template, 16, 2, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r23 = ctx.$implicit;
-    const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r20 = ctx.$implicit;
+    const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r23.sorteo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r20.sorteo);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r23.fecha);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r20.fecha);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r23.combinacion1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r20.combinacion1);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r23.combinacion3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r20.combinacion3);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r23.combinacion2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r20.combinacion2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r23.combinacion4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r20.combinacion4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r23.combinacion5 && item_r23.combinacion5 != "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r20.combinacion5 && item_r20.combinacion5 != "");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r22.formatNumber(item_r23.subtotal));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r19.formatNumber(item_r20.subtotal));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r23.tieneDescuento);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r20.tieneDescuento);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r23.hasGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r20.hasGanador);
 } }
-function DescripcionDeVentaComponent_div_13_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "h3");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "LOTTO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_13_div_4_Template, 40, 10, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_12_div_4_Template, 40, 10, "div", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r3.compra.lotto);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r2.compra.lotto);
 } }
-function DescripcionDeVentaComponent_div_14_div_4_p_33_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_13_div_4_p_33_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Total con descuento: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
@@ -1304,13 +1279,13 @@ function DescripcionDeVentaComponent_div_14_div_4_p_33_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
-    const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r37.formatNumber(item_r36.subtotalConDesc));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r34.formatNumber(item_r33.subtotalConDesc));
 } }
-function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 23);
+function DescripcionDeVentaComponent_div_13_div_4_ng_container_34_div_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1325,25 +1300,25 @@ function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_14_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r42 = ctx.$implicit;
-    const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r39 = ctx.$implicit;
+    const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r40.formatNumber(ganador_r42.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r37.formatNumber(ganador_r39.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r40.formatNumber(ganador_r42.valorPremio - ganador_r42.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r37.formatNumber(ganador_r39.valorPremio - ganador_r39.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r40.formatNumber(ganador_r42.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r37.formatNumber(ganador_r39.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r42.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r39.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 34);
+function DescripcionDeVentaComponent_div_13_div_4_ng_container_34_div_15_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, "VALOR DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1371,29 +1346,29 @@ function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_15_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r43 = ctx.$implicit;
-    const i_r44 = ctx.index;
-    const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r40 = ctx.$implicit;
+    const i_r41 = ctx.index;
+    const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r44 + 1, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r41 + 1, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r41.formatNumber(ganador_r43.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r38.formatNumber(ganador_r40.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r41.formatNumber(ganador_r43.valorPremio - ganador_r43.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r38.formatNumber(ganador_r40.valorPremio - ganador_r40.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r41.formatNumber(ganador_r43.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r38.formatNumber(ganador_r40.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r43.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r40.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_13_div_4_ng_container_34_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Boleto ganador");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "VALOR DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1407,20 +1382,20 @@ function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_Template(rf, c
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, "DESCRIPCI\u00D3N DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](14, DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_14_Template, 9, 4, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](14, DescripcionDeVentaComponent_div_13_div_4_ng_container_34_div_14_Template, 9, 4, "div", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_15_Template, 21, 5, "div", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, DescripcionDeVentaComponent_div_13_div_4_ng_container_34_div_15_Template, 21, 5, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
-    const item_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const item_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r36.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r33.detalleGanador);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r36.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r33.detalleGanador);
 } }
-function DescripcionDeVentaComponent_div_14_div_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 13);
+function DescripcionDeVentaComponent_div_13_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, " Sorteo: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "span");
@@ -1434,7 +1409,7 @@ function DescripcionDeVentaComponent_div_14_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, " Boleto: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](13, "span");
@@ -1454,7 +1429,7 @@ function DescripcionDeVentaComponent_div_14_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](24, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](25, "Cantidad: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](26, "span");
@@ -1462,52 +1437,52 @@ function DescripcionDeVentaComponent_div_14_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "div", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](29, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](30, " Total: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](31, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](33, DescripcionDeVentaComponent_div_14_div_4_p_33_Template, 4, 1, "p", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](33, DescripcionDeVentaComponent_div_13_div_4_p_33_Template, 4, 1, "p", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](34, DescripcionDeVentaComponent_div_14_div_4_ng_container_34_Template, 16, 2, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](34, DescripcionDeVentaComponent_div_13_div_4_ng_container_34_Template, 16, 2, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r36 = ctx.$implicit;
-    const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r33 = ctx.$implicit;
+    const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r36.sorteo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r33.sorteo);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r36.fecha);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r33.fecha);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r36.combinacion1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r33.combinacion1);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r35.nombreMascota(item_r36.mascota));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r32.nombreMascota(item_r33.mascota));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r36.combinacion2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r33.combinacion2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r35.formatNumber(item_r36.subtotal));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r32.formatNumber(item_r33.subtotal));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r36.tieneDescuento);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r33.tieneDescuento);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r36.hasGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r33.hasGanador);
 } }
-function DescripcionDeVentaComponent_div_14_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "h3");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "POZO MILLONARIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_14_div_4_Template, 35, 8, "div", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_13_div_4_Template, 35, 8, "div", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r4.compra.pozo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r3.compra.pozo);
 } }
-function DescripcionDeVentaComponent_div_15_div_4_p_33_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_14_div_4_p_33_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Total con descuento: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
@@ -1515,13 +1490,13 @@ function DescripcionDeVentaComponent_div_15_div_4_p_33_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
-    const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r48.formatNumber(item_r47.subtotalConDesc));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r45.formatNumber(item_r44.subtotalConDesc));
 } }
-function DescripcionDeVentaComponent_div_15_div_4_ng_container_34_div_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 23);
+function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1536,25 +1511,25 @@ function DescripcionDeVentaComponent_div_15_div_4_ng_container_34_div_14_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r53 = ctx.$implicit;
-    const ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r50 = ctx.$implicit;
+    const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r51.formatNumber(ganador_r53.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r48.formatNumber(ganador_r50.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r51.formatNumber(ganador_r53.valorPremio - ganador_r53.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r48.formatNumber(ganador_r50.valorPremio - ganador_r50.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r51.formatNumber(ganador_r53.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r48.formatNumber(ganador_r50.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r53.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r50.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_15_div_4_ng_container_34_div_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 39);
+function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_15_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, "VALOR DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1582,29 +1557,29 @@ function DescripcionDeVentaComponent_div_15_div_4_ng_container_34_div_15_Templat
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ganador_r54 = ctx.$implicit;
-    const i_r55 = ctx.index;
-    const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
+    const ganador_r51 = ctx.$implicit;
+    const i_r52 = ctx.index;
+    const ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r55 + 1, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Premio ", i_r52 + 1, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r52.formatNumber(ganador_r54.valorPremio));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r49.formatNumber(ganador_r51.valorPremio));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r52.formatNumber(ganador_r54.valorPremio - ganador_r54.valorPremioDescuento), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r49.formatNumber(ganador_r51.valorPremio - ganador_r51.valorPremioDescuento), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r52.formatNumber(ganador_r54.valorPremioDescuento));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r49.formatNumber(ganador_r51.valorPremioDescuento));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r54.descripcionPremio);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ganador_r51.descripcionPremio);
 } }
-function DescripcionDeVentaComponent_div_15_div_4_ng_container_34_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_14_div_4_ng_container_34_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Boleto ganador");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "VALOR DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -1618,20 +1593,20 @@ function DescripcionDeVentaComponent_div_15_div_4_ng_container_34_Template(rf, c
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, "DESCRIPCI\u00D3N DEL PREMIO");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](14, DescripcionDeVentaComponent_div_15_div_4_ng_container_34_div_14_Template, 9, 4, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](14, DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_14_Template, 9, 4, "div", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, DescripcionDeVentaComponent_div_15_div_4_ng_container_34_div_15_Template, 21, 5, "div", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, DescripcionDeVentaComponent_div_14_div_4_ng_container_34_div_15_Template, 21, 5, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
-    const item_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
+    const item_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r47.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r44.detalleGanador);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r47.detalleGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", item_r44.detalleGanador);
 } }
-function DescripcionDeVentaComponent_div_15_div_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 13);
+function DescripcionDeVentaComponent_div_14_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, " Sorteo: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "span");
@@ -1645,7 +1620,7 @@ function DescripcionDeVentaComponent_div_15_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, " Combinaci\u00F3n: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](13, "span");
@@ -1665,7 +1640,7 @@ function DescripcionDeVentaComponent_div_15_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](24, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](25, " Cantidad: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](26, "span");
@@ -1673,52 +1648,61 @@ function DescripcionDeVentaComponent_div_15_div_4_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "div", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](29, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](30, " Total: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](31, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](33, DescripcionDeVentaComponent_div_15_div_4_p_33_Template, 4, 1, "p", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](33, DescripcionDeVentaComponent_div_14_div_4_p_33_Template, 4, 1, "p", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](34, DescripcionDeVentaComponent_div_15_div_4_ng_container_34_Template, 16, 2, "ng-container", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](34, DescripcionDeVentaComponent_div_14_div_4_ng_container_34_Template, 16, 2, "ng-container", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const item_r47 = ctx.$implicit;
-    const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    const item_r44 = ctx.$implicit;
+    const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r47.sorteo);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r44.sorteo);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r47.fecha);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r44.fecha);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r47.combinacion1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r44.combinacion1);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r47.combinacion2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r44.combinacion2);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r47.fracciones.join(", "));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r44.fracciones.join(", "));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r47.fracciones.length);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](item_r44.fracciones.length);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r46.formatNumber(item_r47.subtotal));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r43.formatNumber(item_r44.subtotal));
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r47.tieneDescuento);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r44.tieneDescuento);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r47.hasGanador);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", item_r44.hasGanador);
 } }
-function DescripcionDeVentaComponent_div_15_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_div_14_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "h3");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "LA MILLONARIA");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_15_div_4_Template, 35, 9, "div", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](4, DescripcionDeVentaComponent_div_14_div_4_Template, 35, 9, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r4.compra.millonaria);
+} }
+function DescripcionDeVentaComponent_span_18_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r5.compra.millonaria);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r5.formatNumber(ctx_r5.compra.amount));
 } }
 function DescripcionDeVentaComponent_span_19_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span");
@@ -1727,47 +1711,38 @@ function DescripcionDeVentaComponent_span_19_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r6.formatNumber(ctx_r6.compra.amount));
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r6.formatNumber(ctx_r6.compra.total));
 } }
-function DescripcionDeVentaComponent_span_20_Template(rf, ctx) { if (rf & 1) {
+function DescripcionDeVentaComponent_p_20_span_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r54.formatNumber(ctx_r54.compra.amountConDesc));
+} }
+function DescripcionDeVentaComponent_p_20_span_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r55 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r55.formatNumber(ctx_r55.compra.totalConDesc));
+} }
+function DescripcionDeVentaComponent_p_20_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Total con descuento: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](2, DescripcionDeVentaComponent_p_20_span_2_Template, 2, 1, "span", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](3, DescripcionDeVentaComponent_p_20_span_3_Template, 2, 1, "span", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r7.formatNumber(ctx_r7.compra.total));
-} }
-function DescripcionDeVentaComponent_p_21_span_2_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r57 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r57.formatNumber(ctx_r57.compra.amountConDesc));
-} }
-function DescripcionDeVentaComponent_p_21_span_3_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r58 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r58.formatNumber(ctx_r58.compra.totalConDesc));
-} }
-function DescripcionDeVentaComponent_p_21_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, " Total con descuento: ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](2, DescripcionDeVentaComponent_p_21_span_2_Template, 2, 1, "span", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](3, DescripcionDeVentaComponent_p_21_span_3_Template, 2, 1, "span", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx_r8.compra.amountConDesc);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx_r7.compra.amountConDesc);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx_r8.compra.totalConDesc);
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx_r7.compra.totalConDesc);
 } }
 class DescripcionDeVentaComponent {
     constructor(pozo, lotto) {
@@ -1796,7 +1771,7 @@ class DescripcionDeVentaComponent {
     }
 }
 DescripcionDeVentaComponent.ɵfac = function DescripcionDeVentaComponent_Factory(t) { return new (t || DescripcionDeVentaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_juegos_pozo_services_venta_service__WEBPACK_IMPORTED_MODULE_0__.VentaService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_juegos_lotto_services_venta_service__WEBPACK_IMPORTED_MODULE_1__.VentaService)); };
-DescripcionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: DescripcionDeVentaComponent, selectors: [["app-descripcion-de-venta"]], inputs: { compra: "compra", codigosPromocionales: "codigosPromocionales", user: "user", ticketId: "ticketId" }, decls: 22, vars: 10, consts: [[1, "titleBox"], [1, "containerDetails"], [1, "containerInfoBox"], [1, "titleLoteryBox"], [4, "ngIf"], ["class", "containerInfoBox", 4, "ngIf"], [1, "totalBox"], [1, "codigos", "titleLoteryBox"], [1, "codigo"], [4, "ngFor", "ngForOf"], [1, "titleLoteriaBox"], ["class", "dateLoteryBox loteria", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "loteria"], [1, "infoSorteoBox"], [1, "dateTicketBox"], [1, "numberBox"], [1, "montoBox"], [1, "ganadorTitleBox", "loteriaColor"], [1, "ganadorBox"], [1, "ganadorHeaderBox", "loteriaBackground"], [1, "ganadorFraccion"], ["class", "ganadorDetailsBox", 4, "ngFor", "ngForOf"], ["class", "ganadorBoxMobile", 4, "ngFor", "ngForOf"], [1, "ganadorDetailsBox"], [1, "ganadorBoxMobile"], [1, "titleLottoBox"], ["class", "dateLoteryBox lotto", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "lotto"], [1, "ganadorTitleBox", "lottoColor"], [1, "ganadorHeaderBox", "lottoBackground"], [1, "titlePozoBox"], ["class", "dateLoteryBox pozo", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "pozo"], [1, "ganadorTitleBox", "pozoColor"], [1, "ganadorHeaderBox", "pozoBackground"], [1, "titleMillonariaBox"], ["class", "dateLoteryBox millonaria", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "millonaria"], [1, "ganadorTitleBox", "millonariaColor"], [1, "ganadorHeaderBox", "millonariaBackground"]], template: function DescripcionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
+DescripcionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: DescripcionDeVentaComponent, selectors: [["app-descripcion-de-venta"]], inputs: { compra: "compra", user: "user", ticketId: "ticketId" }, decls: 21, vars: 9, consts: [[1, "titleBox"], [1, "containerDetails"], [1, "containerInfoBox"], [1, "titleLoteryBox"], [4, "ngIf"], ["class", "containerInfoBox", 4, "ngIf"], [1, "totalBox"], [1, "titleLoteriaBox"], ["class", "dateLoteryBox loteria", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "loteria"], [1, "infoSorteoBox"], [1, "dateTicketBox"], [1, "numberBox"], [1, "montoBox"], [1, "ganadorTitleBox", "loteriaColor"], [1, "ganadorBox"], [1, "ganadorHeaderBox", "loteriaBackground"], [1, "ganadorFraccion"], ["class", "ganadorDetailsBox", 4, "ngFor", "ngForOf"], ["class", "ganadorBoxMobile", 4, "ngFor", "ngForOf"], [1, "ganadorDetailsBox"], [1, "ganadorBoxMobile"], [1, "titleLottoBox"], ["class", "dateLoteryBox lotto", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "lotto"], [1, "ganadorTitleBox", "lottoColor"], [1, "ganadorHeaderBox", "lottoBackground"], [1, "titlePozoBox"], ["class", "dateLoteryBox pozo", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "pozo"], [1, "ganadorTitleBox", "pozoColor"], [1, "ganadorHeaderBox", "pozoBackground"], [1, "titleMillonariaBox"], ["class", "dateLoteryBox millonaria", 4, "ngFor", "ngForOf"], [1, "dateLoteryBox", "millonaria"], [1, "ganadorTitleBox", "millonariaColor"], [1, "ganadorHeaderBox", "millonariaBackground"]], template: function DescripcionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, "A continuacion un resumen de tu compra:");
@@ -1814,18 +1789,17 @@ DescripcionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTE
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](10, DescripcionDeVentaComponent_h3_10_Template, 4, 1, "h3", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](11, DescripcionDeVentaComponent_div_11_Template, 6, 1, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](11, DescripcionDeVentaComponent_div_11_Template, 5, 1, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](12, DescripcionDeVentaComponent_div_12_Template, 5, 1, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](13, DescripcionDeVentaComponent_div_13_Template, 5, 1, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](14, DescripcionDeVentaComponent_div_14_Template, 5, 1, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](15, DescripcionDeVentaComponent_div_15_Template, 5, 1, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](16, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](17, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](18, " Total: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](15, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](16, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](17, " Total: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](18, DescripcionDeVentaComponent_span_18_Template, 2, 1, "span", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](19, DescripcionDeVentaComponent_span_19_Template, 2, 1, "span", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](20, DescripcionDeVentaComponent_span_20_Template, 2, 1, "span", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](21, DescripcionDeVentaComponent_p_21_Template, 4, 2, "p", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](20, DescripcionDeVentaComponent_p_20_Template, 4, 2, "p", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -1833,8 +1807,6 @@ DescripcionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTE
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.user);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.ticketId);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.codigosPromocionales && ctx.codigosPromocionales.length);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.compra.loteria.length != 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
@@ -2777,7 +2749,7 @@ function MenuBoxComponent_app_venta_finalizada_10_Template(rf, ctx) {
 
   if (rf & 2) {
     const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("compra", ctx_r4.detalleCompra)("codigosPromocionales", ctx_r4.codigoPromocional);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("compra", ctx_r4.detalleCompra);
   }
 }
 
@@ -2826,7 +2798,6 @@ class MenuBoxComponent {
     this.linkLoteriaNacional = "";
     this.linkPozoMillonario = "";
     this.linkMillonaria = "";
-    this.codigoPromocional = [];
     this.confirmacionDeCompra = false;
     this.compraFinalizada = false;
     this.saldoInsuficiente = false;
@@ -2989,8 +2960,6 @@ class MenuBoxComponent {
             let response = yield _this2.paymentService.confirmarCompra(_this2.token, reservaId);
 
             if (response.status) {
-              _this2.codigoPromocional = response.codigoPromocional;
-
               if (response.instantanea.status) {
                 _this2.dismissCompras();
 
@@ -3314,7 +3283,7 @@ MenuBoxComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_13_
   selectors: [["app-menu-box"]],
   decls: 13,
   vars: 19,
-  consts: [[1, "selectionBox"], ["image", "assets/img/loteria-sombra-2.png", "name", "loteria", 3, "link", "token", "authError"], ["image", "assets/img/lotto-sombra.png", "name", "lotto", 3, "link", "token", "authError"], ["image", "assets/img/pozo-sombra.png", "name", "pozo", 3, "link", "token", "authError"], ["image", "assets/img/millonaria-sombra.png", "name", "millonaria", 3, "link", "token", "authError"], ["tipoLoteria", "loteria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", "emitirCompra", "eliminarTodo"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "title", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoloteria", "14", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "codigosPromocionales", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], ["loader", "loteria", 3, "message"], [3, "msg", "title", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoloteria", "14", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "codigosPromocionales", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
+  consts: [[1, "selectionBox"], ["image", "assets/img/loteria-sombra-2.png", "name", "loteria", 3, "link", "token", "authError"], ["image", "assets/img/lotto-sombra.png", "name", "lotto", 3, "link", "token", "authError"], ["image", "assets/img/pozo-sombra.png", "name", "pozo", 3, "link", "token", "authError"], ["image", "assets/img/millonaria-sombra.png", "name", "millonaria", 3, "link", "token", "authError"], ["tipoLoteria", "loteria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", "emitirCompra", "eliminarTodo"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "title", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoloteria", "14", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], ["loader", "loteria", 3, "message"], [3, "msg", "title", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoloteria", "14", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
   template: function MenuBoxComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "div", 0);
@@ -3360,7 +3329,7 @@ MenuBoxComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_13_
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](7, MenuBoxComponent_app_error_7_Template, 1, 2, "app-error", 7);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](8, MenuBoxComponent_app_confirmacion_de_venta_8_Template, 1, 1, "app-confirmacion-de-venta", 8);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](9, MenuBoxComponent_app_instantaneas_9_Template, 1, 2, "app-instantaneas", 9);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](10, MenuBoxComponent_app_venta_finalizada_10_Template, 1, 2, "app-venta-finalizada", 10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](10, MenuBoxComponent_app_venta_finalizada_10_Template, 1, 1, "app-venta-finalizada", 10);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](11, MenuBoxComponent_app_saldo_insuficiente_11_Template, 1, 1, "app-saldo-insuficiente", 11);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](12, MenuBoxComponent_app_venta_cancelada_12_Template, 1, 1, "app-venta-cancelada", 12);
     }
@@ -3630,7 +3599,7 @@ class VentaFinalizadaComponent {
     }
 }
 VentaFinalizadaComponent.ɵfac = function VentaFinalizadaComponent_Factory(t) { return new (t || VentaFinalizadaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_ventas_service__WEBPACK_IMPORTED_MODULE_0__.VentasService)); };
-VentaFinalizadaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: VentaFinalizadaComponent, selectors: [["app-venta-finalizada"]], inputs: { compra: "compra", codigosPromocionales: "codigosPromocionales" }, outputs: { volver: "volver" }, decls: 13, vars: 3, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [1, "closeButton"], [1, "closeB", 3, "click"], [1, "mensajeBox"], [3, "compra", "codigosPromocionales", "user"], [1, "mensajeButtonBox", 3, "click"]], template: function VentaFinalizadaComponent_Template(rf, ctx) { if (rf & 1) {
+VentaFinalizadaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: VentaFinalizadaComponent, selectors: [["app-venta-finalizada"]], inputs: { compra: "compra" }, outputs: { volver: "volver" }, decls: 13, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [1, "closeButton"], [1, "closeB", 3, "click"], [1, "mensajeBox"], [3, "compra", "user"], [1, "mensajeButtonBox", 3, "click"]], template: function VentaFinalizadaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function VentaFinalizadaComponent_Template_div_click_0_listener() { return ctx.seguirJugando(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -3657,7 +3626,7 @@ VentaFinalizadaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_M
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("compra", ctx.compra)("codigosPromocionales", ctx.codigosPromocionales)("user", ctx.user);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("compra", ctx.compra)("user", ctx.user);
     } }, directives: [_descripcion_de_venta_descripcion_de_venta_component__WEBPACK_IMPORTED_MODULE_1__.DescripcionDeVentaComponent], styles: [".closeButton[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  width: 23px;\n  height: 23px;\n}\n.closeButton[_ngcontent-%COMP%]   .closeB[_ngcontent-%COMP%] {\n  background: transparent;\n  width: 100%;\n  height: 100%;\n  z-index: 2000;\n  color: red;\n  font-weight: bold;\n  margin: 0 auto;\n  text-align: center;\n  border: 2px solid white;\n  border-radius: 3px;\n  cursor: pointer;\n  padding: 0;\n}\n.closeButton[_ngcontent-%COMP%]   .closeB[_ngcontent-%COMP%]:hover {\n  background-color: red;\n  color: white;\n}\n.blackBox[_ngcontent-%COMP%] {\n  position: fixed;\n  z-index: 8000;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  transition: height 0.2s ease-out;\n  overflow: hidden;\n  background-color: rgba(155, 155, 155, 0.5);\n  border: none;\n}\n.paymentBox[_ngcontent-%COMP%] {\n  width: 70%;\n  height: 70%;\n  position: fixed;\n  padding: 15px;\n  z-index: 10000;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  overflow-y: scroll;\n}\n.paymentBox[_ngcontent-%COMP%]   .mensajeButtonBox[_ngcontent-%COMP%] {\n  display: block;\n  padding: 15px;\n  border-radius: 30px;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n  margin: 10px auto;\n  width: 100%;\n  max-width: 300px;\n  cursor: pointer;\n  color: #fff;\n  background-color: green;\n  border: 1px solid green;\n}\n.paymentBox[_ngcontent-%COMP%]   .mensajeButtonBox[_ngcontent-%COMP%]:hover {\n  background-color: white;\n  color: green;\n  transition: background-color 0.4s ease;\n}\n@media screen and (max-width: 1000px) {\n  .paymentBox[_ngcontent-%COMP%] {\n    width: 95%;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZlbnRhLWZpbmFsaXphZGEuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBTUE7RUFDRSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7QUFMRjtBQU1FO0VBQ0UsdUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSxVQUFBO0VBQ0EsaUJBQUE7RUFDQSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLFVBQUE7QUFKSjtBQUtJO0VBQ0UscUJBQUE7RUFDQSxZQUFBO0FBSE47QUFPQTtFQUNFLGVBQUE7RUFDQSxhQUFBO0VBQ0EsTUFBQTtFQUNBLE9BQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGdDQUFBO0VBQ0EsZ0JBQUE7RUFDQSwwQ0FBQTtFQUNBLFlBQUE7QUFKRjtBQU9BO0VBQ0UsVUFBQTtFQUNBLFdBQUE7RUFDQSxlQUFBO0VBQ0EsYUFBQTtFQUNBLGNBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLGdDQUFBO0VBQ0EsdUJBQUE7RUFDQSxrQkFBQTtBQUpGO0FBS0U7RUFDRSxjQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsbUNBeERhO0VBeURiLGVBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0VBQ0EsdUJBQUE7RUFDQSx1QkFBQTtBQUhKO0FBS0k7RUFDRSx1QkFBQTtFQUNBLFlBQUE7RUFDQSxzQ0FBQTtBQUhOO0FBT0E7RUFDRTtJQUNFLFVBQUE7RUFKRjtBQUNGIiwiZmlsZSI6InZlbnRhLWZpbmFsaXphZGEuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkZnVlbnRlLXRpdHVsbzogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG4kZnVlbnRlLXN1YnRpdHVsbzogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuJGZ1ZW50ZS1wYXJyYWZvOiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbiRmdWVudGUtYm90b25lczogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuXG4kY29sb3ItbG90ZXJpYTogIzdjOTFhODtcbi5jbG9zZUJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAxMHB4O1xuICByaWdodDogMTBweDtcbiAgd2lkdGg6IDIzcHg7XG4gIGhlaWdodDogMjNweDtcbiAgLmNsb3NlQiB7XG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHotaW5kZXg6IDIwMDA7XG4gICAgY29sb3I6IHJlZDtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBtYXJnaW46IDAgYXV0bztcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYm9yZGVyOiAycHggc29saWQgd2hpdGU7XG4gICAgYm9yZGVyLXJhZGl1czogM3B4O1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBwYWRkaW5nOiAwO1xuICAgICY6aG92ZXIge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xuICAgICAgY29sb3I6IHdoaXRlO1xuICAgIH1cbiAgfVxufVxuLmJsYWNrQm94IHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB6LWluZGV4OiA4MDAwO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHRyYW5zaXRpb246IGhlaWdodCAwLjJzIGVhc2Utb3V0O1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDE1NSwgMTU1LCAxNTUsIDAuNSk7XG4gIGJvcmRlcjogbm9uZTtcbn1cblxuLnBheW1lbnRCb3gge1xuICB3aWR0aDogNzAlO1xuICBoZWlnaHQ6IDcwJTtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBwYWRkaW5nOiAxNXB4O1xuICB6LWluZGV4OiAxMDAwMDtcbiAgdG9wOiA1MCU7XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBvdmVyZmxvdy15OiBzY3JvbGw7XG4gIC5tZW5zYWplQnV0dG9uQm94IHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBwYWRkaW5nOiAxNXB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDMwcHg7XG4gICAgZm9udC1mYW1pbHk6ICRmdWVudGUtYm90b25lcztcbiAgICBmb250LXNpemU6IDE2cHg7XG4gICAgbWFyZ2luOiAxMHB4IGF1dG87XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWF4LXdpZHRoOiAzMDBweDtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XG4gICAgYm9yZGVyOiAxcHggc29saWQgZ3JlZW47XG5cbiAgICAmOmhvdmVyIHtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAgICAgY29sb3I6IGdyZWVuO1xuICAgICAgdHJhbnNpdGlvbjogYmFja2dyb3VuZC1jb2xvciAwLjRzIGVhc2U7XG4gICAgfVxuICB9XG59XG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDAwcHgpIHtcbiAgLnBheW1lbnRCb3gge1xuICAgIHdpZHRoOiA5NSU7XG4gIH1cbn1cbiJdfQ== */"] });
 
 
@@ -3702,7 +3671,7 @@ function DetalleDeVentaComponent_ng_container_0_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("compra", ctx_r0.compra)("codigosPromocionales", ctx_r0.codigosPromocionales)("user", ctx_r0.user)("ticketId", ctx_r0.ticketId);
+    _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("compra", ctx_r0.compra)("user", ctx_r0.user)("ticketId", ctx_r0.ticketId);
   }
 }
 
@@ -3741,7 +3710,6 @@ class DetalleDeVentaComponent {
     this.actRoute = actRoute;
     this.pagos = pagos;
     this.ventas = ventas;
-    this.codigosPromocionales = [];
     this.compraReady = false;
     this.isError = false;
     this.actRoute.params.subscribe(params => {
@@ -3759,10 +3727,6 @@ class DetalleDeVentaComponent {
         _this.loadingMessage = 'Consultando el detalle de tu compra';
         _this.isLoading = true;
         _this.compra = yield _this.pagos.getCompra(_this.ticketId, _this.accountId);
-        /* this.codigosPromocionales = await this.pagos.getCodigosPromocionales(
-          this.ticketId
-        ); */
-
         _this.user = _this.compra.user ? _this.compra.user : _this.ventas.getAuthData().user;
         _this.ganador = yield _this.pagos.getGanador(_this.ticketId);
 
@@ -3868,10 +3832,10 @@ DetalleDeVentaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MOD
   selectors: [["app-detalle-de-venta"]],
   decls: 3,
   vars: 3,
-  consts: [[4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], [3, "compra", "codigosPromocionales", "user", "ticketId"], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"]],
+  consts: [[4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], [3, "compra", "user", "ticketId"], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"]],
   template: function DetalleDeVentaComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](0, DetalleDeVentaComponent_ng_container_0_Template, 2, 4, "ng-container", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](0, DetalleDeVentaComponent_ng_container_0_Template, 2, 3, "ng-container", 0);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](1, DetalleDeVentaComponent_app_loader_1_Template, 1, 1, "app-loader", 1);
       _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](2, DetalleDeVentaComponent_app_error_2_Template, 1, 1, "app-error", 2);
     }
@@ -4384,7 +4348,7 @@ function LoteriaComponent_app_venta_finalizada_8_Template(rf, ctx) {
 
   if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵproperty"]("compra", ctx_r6.detalleCompra)("codigosPromocionales", ctx_r6.codigoPromocional);
+    _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵproperty"]("compra", ctx_r6.detalleCompra);
   }
 }
 
@@ -4445,7 +4409,6 @@ class LoteriaComponent {
     this.compraCancelada = false;
     this.isInstantaneas = false;
     this.cancelMessage = '';
-    this.codigoPromocional = [];
     this.showComponents = false;
     this.isError = false;
     this.isValidationError = false;
@@ -4869,7 +4832,6 @@ class LoteriaComponent {
             let response = yield _this8.paymentService.confirmarCompra(_this8.token, reservaId);
 
             if (response.status) {
-              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this8.dismissCompras();
 
@@ -5207,7 +5169,7 @@ LoteriaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_19_
   selectors: [["app-loteria"]],
   decls: 11,
   vars: 13,
-  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], ["tipoLoteria", "loteria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "1", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "codigosPromocionales", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "Loteria Nacional", "color", "loteria", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contenedor_seleccion"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte0", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input1", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte1", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input2", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte2", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input3", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte3", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input4", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte4", 3, "ngModel", "ngModelChange"], ["input5", ""], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "loteria", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsLotto", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deleteMillonariaTicket", "deletePozoTicket", "deleteLoteriaFraccion"], [1, "contenedor_numeros_suerte"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray", 2, "width", "100%"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "tooltip"], [1, "contenedor_numeros"], [1, "combinationBox"], [1, "seleccionAll"], ["type", "checkbox", 2, "position", "relative", "width", "20px", "opacity", "1", "margin-left", "5px", 3, "ngModel", "click", "ngModelChange"], [1, "contenedor_fracciones"], ["class", "fracciones", 4, "ngFor", "ngForOf"], [1, "fracciones"], ["type", "checkbox", 1, "checkbox", 3, "checked", "id", "click"], [3, "for"], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "1", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "codigosPromocionales", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
+  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], ["tipoLoteria", "loteria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "1", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "Loteria Nacional", "color", "loteria", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contenedor_seleccion"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte0", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input1", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte1", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input2", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte2", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input3", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte3", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input4", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte4", 3, "ngModel", "ngModelChange"], ["input5", ""], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "loteria", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsLotto", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deleteMillonariaTicket", "deletePozoTicket", "deleteLoteriaFraccion"], [1, "contenedor_numeros_suerte"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray", 2, "width", "100%"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "tooltip"], [1, "contenedor_numeros"], [1, "combinationBox"], [1, "seleccionAll"], ["type", "checkbox", 2, "position", "relative", "width", "20px", "opacity", "1", "margin-left", "5px", 3, "ngModel", "click", "ngModelChange"], [1, "contenedor_fracciones"], ["class", "fracciones", 4, "ngFor", "ngForOf"], [1, "fracciones"], ["type", "checkbox", 1, "checkbox", 3, "checked", "id", "click"], [3, "for"], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "1", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
   template: function LoteriaComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵelement"](0, "ventas-menu-header");
@@ -5234,7 +5196,7 @@ LoteriaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_19_
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](5, LoteriaComponent_app_error_5_Template, 1, 1, "app-error", 3);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](6, LoteriaComponent_app_confirmacion_de_venta_6_Template, 1, 1, "app-confirmacion-de-venta", 4);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](7, LoteriaComponent_app_instantaneas_7_Template, 1, 2, "app-instantaneas", 5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](8, LoteriaComponent_app_venta_finalizada_8_Template, 1, 2, "app-venta-finalizada", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](8, LoteriaComponent_app_venta_finalizada_8_Template, 1, 1, "app-venta-finalizada", 6);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](9, LoteriaComponent_app_saldo_insuficiente_9_Template, 1, 1, "app-saldo-insuficiente", 7);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](10, LoteriaComponent_app_venta_cancelada_10_Template, 1, 1, "app-venta-cancelada", 8);
     }
@@ -5770,7 +5732,7 @@ function LottoComponent_app_venta_finalizada_8_Template(rf, ctx) {
 
   if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵproperty"]("compra", ctx_r6.detalleCompra)("codigosPromocionales", ctx_r6.codigoPromocional);
+    _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵproperty"]("compra", ctx_r6.detalleCompra);
   }
 }
 
@@ -6091,7 +6053,6 @@ class LottoComponent {
             _this4.isLoading = false;
 
             if (response.status) {
-              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this4.dismissCompras();
 
@@ -6492,7 +6453,7 @@ LottoComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_19__[
   selectors: [["app-lotto"]],
   decls: 11,
   vars: 13,
-  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "lotto", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket", "emitirCompra", "eliminarTodo"], ["loader", "lotto", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "2", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "codigosPromocionales", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "Lotto", "color", "lotto", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contenedor_seleccion"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "name", "", "inputmode", "numeric", "pattern", "[0-9]*", "maxlength", "1", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input1", ""], ["input2", ""], ["input3", ""], ["input4", ""], ["input5", ""], ["type", "text", "name", "", "inputmode", "numeric", "pattern", "[0-9]*", "maxlength", "1", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", 3, "ngModel", "ngModelChange"], ["input6", ""], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "lotto", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsMillonaria", "ticketsPozo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket", "emitirCompra", "eliminarTodo"], [1, "contenedor_numeros_suerte"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "contenedor"], ["type", "checkbox", 3, "checked", "click"], [1, "contenedor_numeros"], [1, "contenedor_fracciones"], [4, "ngIf"], ["alt", "", 3, "src"], ["loader", "lotto", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "2", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "codigosPromocionales", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
+  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "lotto", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket", "emitirCompra", "eliminarTodo"], ["loader", "lotto", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "2", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "Lotto", "color", "lotto", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contenedor_seleccion"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "name", "", "inputmode", "numeric", "pattern", "[0-9]*", "maxlength", "1", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input1", ""], ["input2", ""], ["input3", ""], ["input4", ""], ["input5", ""], ["type", "text", "name", "", "inputmode", "numeric", "pattern", "[0-9]*", "maxlength", "1", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", 3, "ngModel", "ngModelChange"], ["input6", ""], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "lotto", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsMillonaria", "ticketsPozo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket", "emitirCompra", "eliminarTodo"], [1, "contenedor_numeros_suerte"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "contenedor"], ["type", "checkbox", 3, "checked", "click"], [1, "contenedor_numeros"], [1, "contenedor_fracciones"], [4, "ngIf"], ["alt", "", 3, "src"], ["loader", "lotto", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "2", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
   template: function LottoComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵelement"](0, "ventas-menu-header");
@@ -6519,7 +6480,7 @@ LottoComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_19__[
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](5, LottoComponent_app_error_5_Template, 1, 1, "app-error", 3);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](6, LottoComponent_app_confirmacion_de_venta_6_Template, 1, 1, "app-confirmacion-de-venta", 4);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](7, LottoComponent_app_instantaneas_7_Template, 1, 2, "app-instantaneas", 5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](8, LottoComponent_app_venta_finalizada_8_Template, 1, 2, "app-venta-finalizada", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](8, LottoComponent_app_venta_finalizada_8_Template, 1, 1, "app-venta-finalizada", 6);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](9, LottoComponent_app_saldo_insuficiente_9_Template, 1, 1, "app-saldo-insuficiente", 7);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](10, LottoComponent_app_venta_cancelada_10_Template, 1, 1, "app-venta-cancelada", 8);
     }
@@ -7064,7 +7025,7 @@ function MillonariaComponent_app_venta_finalizada_8_Template(rf, ctx) {
 
   if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵproperty"]("compra", ctx_r6.detalleCompra)("codigosPromocionales", ctx_r6.codigoPromocional);
+    _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵproperty"]("compra", ctx_r6.detalleCompra);
   }
 }
 
@@ -7126,7 +7087,6 @@ class MillonariaComponent {
     this.compraCancelada = false;
     this.cancelMessage = '';
     this.isInstantaneas = false;
-    this.codigoPromocional = [];
     this.ticketsLoteria = {};
     this.ticketsPozo = {};
     this.ticketsLotto = {};
@@ -7553,7 +7513,6 @@ class MillonariaComponent {
             _this7.isLoading = false;
 
             if (response.status) {
-              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this7.dismissCompras();
 
@@ -8005,7 +7964,7 @@ MillonariaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_
   selectors: [["app-millonaria"]],
   decls: 11,
   vars: 13,
-  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "millonaria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"], ["loader", "millonaria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "14", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "codigosPromocionales", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "La Millonaria", "color", "millonaria", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contendor_seleccion"], [1, "contenedor_select_animales"], ["class", "options", 4, "ngIf"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte0", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input1", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte1", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input2", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte2", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input3", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte3", 3, "ngModel", "ngModelChange"], ["input4", ""], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "millonaria", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsLotto", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"], [1, "options"], ["class", "option", 4, "ngFor", "ngForOf"], [1, "option"], ["type", "checkbox", "name", "serie", 3, "checked", "value", "id", "click"], [3, "for"], [1, "contenedor_numeros_suerte"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray", 2, "width", "100%"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "tooltip"], [1, "contenedor_numeros"], [1, "combinationBox"], [1, "serieBox"], [1, "serieTitle"], [1, "serieItem"], [1, "seleccionAll"], ["type", "checkbox", 2, "position", "relative", "width", "20px", "opacity", "1", "margin-left", "5px", 3, "ngModel", "click", "ngModelChange"], [1, "contenedor_fracciones"], ["class", "fracciones", 4, "ngFor", "ngForOf"], [1, "fracciones"], ["type", "checkbox", 1, "checkbox", 3, "checked", "id", "click"], ["loader", "millonaria", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "14", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "codigosPromocionales", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
+  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "millonaria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"], ["loader", "millonaria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "14", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "La Millonaria", "color", "millonaria", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contendor_seleccion"], [1, "contenedor_select_animales"], ["class", "options", 4, "ngIf"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte0", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input1", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte1", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input2", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte2", 3, "appAutoTab", "ngModel", "ngModelChange"], ["input3", ""], ["type", "text", "maxlength", "1", "inputmode", "numeric", "pattern", "[0-9]*", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", "name", "combinacionDeLaSuerte3", 3, "ngModel", "ngModelChange"], ["input4", ""], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "millonaria", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsLotto", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"], [1, "options"], ["class", "option", 4, "ngFor", "ngForOf"], [1, "option"], ["type", "checkbox", "name", "serie", 3, "checked", "value", "id", "click"], [3, "for"], [1, "contenedor_numeros_suerte"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray", 2, "width", "100%"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "tooltip"], [1, "contenedor_numeros"], [1, "combinationBox"], [1, "serieBox"], [1, "serieTitle"], [1, "serieItem"], [1, "seleccionAll"], ["type", "checkbox", 2, "position", "relative", "width", "20px", "opacity", "1", "margin-left", "5px", 3, "ngModel", "click", "ngModelChange"], [1, "contenedor_fracciones"], ["class", "fracciones", 4, "ngFor", "ngForOf"], [1, "fracciones"], ["type", "checkbox", 1, "checkbox", 3, "checked", "id", "click"], ["loader", "millonaria", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "14", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
   template: function MillonariaComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵelement"](0, "ventas-menu-header");
@@ -8032,7 +7991,7 @@ MillonariaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](5, MillonariaComponent_app_error_5_Template, 1, 1, "app-error", 3);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](6, MillonariaComponent_app_confirmacion_de_venta_6_Template, 1, 1, "app-confirmacion-de-venta", 4);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](7, MillonariaComponent_app_instantaneas_7_Template, 1, 2, "app-instantaneas", 5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](8, MillonariaComponent_app_venta_finalizada_8_Template, 1, 2, "app-venta-finalizada", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](8, MillonariaComponent_app_venta_finalizada_8_Template, 1, 1, "app-venta-finalizada", 6);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](9, MillonariaComponent_app_saldo_insuficiente_9_Template, 1, 1, "app-saldo-insuficiente", 7);
       _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵtemplate"](10, MillonariaComponent_app_venta_cancelada_10_Template, 1, 1, "app-venta-cancelada", 8);
     }
@@ -8550,7 +8509,7 @@ function PozoComponent_app_venta_finalizada_8_Template(rf, ctx) {
 
   if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵproperty"]("compra", ctx_r6.detalleCompra)("codigosPromocionales", ctx_r6.codigoPromocional);
+    _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵproperty"]("compra", ctx_r6.detalleCompra);
   }
 }
 
@@ -8598,7 +8557,6 @@ class PozoComponent {
     this.router = router;
     this.changeDetectorRef = changeDetectorRef;
     this.combinacionDeLaSuerte = ['', '', '', ''];
-    this.codigoPromocional = [];
     this.animalesTabs = [];
     this.page_size = 12;
     this.page_number = 1;
@@ -8986,7 +8944,6 @@ class PozoComponent {
             _this6.isLoading = false;
 
             if (response.status) {
-              //this.codigoPromocional = response.codigoPromocional;
               if (response.instantanea.status) {
                 _this6.dismissCompras();
 
@@ -9394,7 +9351,7 @@ PozoComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_18__["
   selectors: [["app-pozo"]],
   decls: 11,
   vars: 13,
-  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "pozo", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket"], ["loader", "pozo", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "5", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "codigosPromocionales", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "Pozo Millonario", "color", "pozo", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contendor_seleccion"], [1, "contenedor_select_animales"], [1, "options"], ["class", "option", 4, "ngFor", "ngForOf"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "inputmode", "numeric", "pattern", "[0-9]*", "maxlength", "2", "name", "", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", 3, "ngModel", "input", "ngModelChange"], ["class", "errorTag", 4, "ngIf"], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "pozo", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsLotto", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"], [1, "option"], ["type", "checkbox", "name", "nombre", 3, "checked", "value", "id", "click"], [3, "for"], [3, "src", "alt"], [1, "errorTag"], [1, "contenedor_numeros_suerte"], [4, "ngIf"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray"], ["type", "checkbox", "name", "", "id", "", 3, "checked", "click"], [1, "contenedor_seleccion_numero"], [1, "imagen_animal"], ["alt", "", 3, "src"], ["loader", "pozo", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "5", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "codigosPromocionales", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
+  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "pozo", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket"], ["loader", "pozo", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoLoteria", "5", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "contenedor_loteria"], [1, "ventasBox"], ["titulo", "Pozo Millonario", "color", "pozo", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "contendor_seleccion"], [1, "contenedor_select_animales"], [1, "options"], ["class", "option", 4, "ngFor", "ngForOf"], [1, "selectBox"], [1, "contenedor_select"], ["name", "", "id", "", 1, "select_option", 3, "ngModel", "ngModelChange"], ["value", "96", 1, "option"], ["value", "5", 1, "option"], ["value", "30", 1, "option"], ["value", "50", 1, "option"], [1, "numeros_suerte"], [1, "numeros"], ["type", "text", "inputmode", "numeric", "pattern", "[0-9]*", "maxlength", "2", "name", "", "onInput", "this.value=this.value.replace(/[^0-9]/g,'');", 3, "ngModel", "input", "ngModelChange"], ["class", "errorTag", 4, "ngIf"], [1, "activado", 3, "click"], [1, "tagItem"], ["class", "contenedor_numeros_suerte", 4, "ngIf"], ["tipoLoteria", "pozo", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsLotto", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"], [1, "option"], ["type", "checkbox", "name", "nombre", 3, "checked", "value", "id", "click"], [3, "for"], [3, "src", "alt"], [1, "errorTag"], [1, "contenedor_numeros_suerte"], [4, "ngIf"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [4, "ngFor", "ngForOf"], ["size", "2px", "color", "gray"], ["type", "checkbox", "name", "", "id", "", 3, "checked", "click"], [1, "contenedor_seleccion_numero"], [1, "imagen_animal"], ["alt", "", 3, "src"], ["loader", "pozo", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoLoteria", "5", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
   template: function PozoComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵelement"](0, "ventas-menu-header");
@@ -9421,7 +9378,7 @@ PozoComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_18__["
       _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵtemplate"](5, PozoComponent_app_error_5_Template, 1, 1, "app-error", 3);
       _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵtemplate"](6, PozoComponent_app_confirmacion_de_venta_6_Template, 1, 1, "app-confirmacion-de-venta", 4);
       _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵtemplate"](7, PozoComponent_app_instantaneas_7_Template, 1, 2, "app-instantaneas", 5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵtemplate"](8, PozoComponent_app_venta_finalizada_8_Template, 1, 2, "app-venta-finalizada", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵtemplate"](8, PozoComponent_app_venta_finalizada_8_Template, 1, 1, "app-venta-finalizada", 6);
       _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵtemplate"](9, PozoComponent_app_saldo_insuficiente_9_Template, 1, 1, "app-saldo-insuficiente", 7);
       _angular_core__WEBPACK_IMPORTED_MODULE_18__["ɵɵtemplate"](10, PozoComponent_app_venta_cancelada_10_Template, 1, 1, "app-venta-cancelada", 8);
     }
@@ -10381,27 +10338,6 @@ class PagosService {
         }
 
         resolve(data.values);
-      }, error => {
-        reject(new Error(error.error.message));
-      });
-    });
-  }
-
-  getCodigosPromocionales(ventaId) {
-    let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/codigosPromocionales';
-    let endpoint = '';
-    let body = {
-      ventaId
-    };
-    endpoint = `${endpoint}/getCodes`;
-    address = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.post(address, body, {
-        headers: headers
-      }).subscribe(data => {
-        resolve(data);
       }, error => {
         reject(new Error(error.error.message));
       });

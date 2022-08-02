@@ -9,7 +9,6 @@ import { VentasService } from "../../services/ventas.service";
 export class VentaFinalizadaComponent implements OnInit {
   @Output() volver = new EventEmitter();
   @Input() compra: any;
-  @Input() codigosPromocionales: any;
   user: any;
   constructor(
     private ventas: VentasService,

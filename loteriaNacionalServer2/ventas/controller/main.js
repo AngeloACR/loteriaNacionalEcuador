@@ -2,7 +2,6 @@ const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache"); /
 const CacheLotto = require("../../sorteosLotto/controller/cache"); // COMUNICAR POR gRPC
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache"); // COMUNICAR POR gRPC
 const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache"); // COMUNICAR POR gRPC
-const CodigosPromocionales = require("../../codigosPromocionales/controller/main"); // COMUNICAR POR gRPC
 const psdVentas = require("../../psdLoteria/ventas");
 const Ventas = require("../models/main");
 const Wallet = require("../../alboran/wallet"); // COMUNICAR POR gRPC
@@ -491,7 +490,7 @@ const ventasController = {
     }
     let ganadores = await Promise.all(auxGanadores);
     auxPagoInstantaneas.map((item) => {
-      return GanadoresController.pagarLoteria(item)
+      return GanadoresController.pagarLoteria(item, true)
     })
     let pagoInstantaneas = await Promise.all(auxPagoInstantaneas);
     return {
@@ -657,15 +656,6 @@ const ventasController = {
         user,
         ip
       );
-
-      /* GENERAR CODIGOS PROMOCIONALES */
-      /*       let codigoPromocionalResponse = await CodigosPromocionales.setCode(
-        parseFloat(totalVenta),
-        personaId,
-        loteriaVentaResponse.ticketId,
-        ip
-      ); */
-
       /* PAGO DE INSTANTANEAS */
       let instantaneaResponse = "";
       if (
@@ -682,7 +672,6 @@ const ventasController = {
       let finalResponse = {
         data: apiVentaResponse,
         instantanea: instantaneaResponse,
-        //codigoPromocional: codigoPromocionalResponse,
         status: true,
       };
 

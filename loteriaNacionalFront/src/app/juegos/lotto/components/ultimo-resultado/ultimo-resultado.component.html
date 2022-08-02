@@ -12,22 +12,11 @@
     <h2 class="texto">PREMIOS ESPECIALES</h2>
 
     <div class="texto_premios">
-        <p *ngIf="ticketLottoPlus != ''">Lotto Plus:</p>
-        <p *ngIf="ticketLottoPlus != ''">{{ticketLottoPlus}}</p>
-        <ng-container  *ngIf="ticketLottito && ticketLottito.length != 0">
+        <ng-container *ngFor="let premio of premiosEspeciales">
 
-            <ng-container *ngFor="let lottito of ticketLottito">
-                
-                <p>Lottito:</p>
-                <p>{{lottito}}</p>
-            </ng-container>
+            <p>premio.nombre:</p>
+            <p>{{premio.combinacion}}</p>
         </ng-container>
-
-        <p *ngIf="ticketNosVemosJefe != ''">Nos vemos jefe:</p>
-        <p *ngIf="ticketNosVemosJefe != ''">{{ticketNosVemosJefe}}</p>
-        <p *ngIf="ticketAntojito
-        ">Antojito:</p>
-        <p *ngIf="ticketAntojito">{{ticketAntojito}}</p>
     </div>
 
 

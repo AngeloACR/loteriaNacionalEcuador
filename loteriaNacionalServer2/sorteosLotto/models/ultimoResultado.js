@@ -10,24 +10,15 @@ const ultimoResultadoSchema = new mongoose.Schema(
         type: String,
       },
     },
-    resultadoLottoPlus: {
-      combinacion2: {
-        type: String,
-      },
-    },
-    resultadoNosVemosJefe: {
-      combinacion4: {
-        type: String,
-      },
-    },
-    resultadoAntojito: {
-      combinacion5: {
-        type: String,
-      },
-    },
-    resultadosLottito: [
+    premiosEspeciales: [
       {
-        combinacion3: {
+        combinacion: {
+          type: String,
+        },
+        nombre: {
+          type: String,
+        },
+        codigoPremio: {
           type: String,
         },
       },
@@ -35,22 +26,7 @@ const ultimoResultadoSchema = new mongoose.Schema(
     numeroSorteo: {
       type: String,
     },
-    indexLottito: {
-      type: Number,
-    },
     codigoPremioPrincipal: {
-      type: String,
-    },
-    codigoPremioLottoPlus: {
-      type: String,
-    },
-    codigoPremioNosVemosJefe: {
-      type: String,
-    },
-    codigoPremioAntojito: {
-      type: String,
-    },
-    codigoPremioLottito: {
       type: String,
     },
   },
@@ -61,52 +37,22 @@ const ultimoResultadoSchema = new mongoose.Schema(
 );
 
 ultimoResultadoSchema.virtual("sorteo", {
-  ref: "SorteoLotto", // The model to use
-  localField: "numeroSorteo", // Find people where `localField`
-  foreignField: "sorteo", // is equal to `foreignField`
-  // If `justOne` is true, 'members' will be a single doc as opposed to
-  // an array. `justOne` is false by default.
+  ref: "SorteoLotto",
+  localField: "numeroSorteo",
+  foreignField: "sorteo",
   justOne: true,
 });
 
 ultimoResultadoSchema.virtual("premioPrincipal", {
-  ref: "PremioLotto", // The model to use
-  localField: "codigoPremioPrincipal", // Find people where `localField`
-  foreignField: "codigo", // is equal to `foreignField`
-  // If `justOne` is true, 'members' will be a single doc as opposed to
-  // an array. `justOne` is false by default.
+  ref: "PremioLotto",
+  localField: "codigoPremioPrincipal",
+  foreignField: "codigo",
   justOne: true,
 });
-ultimoResultadoSchema.virtual("premioNosVemosJefe", {
-  ref: "PremioLotto", // The model to use
-  localField: "codigoPremioNosVemosJefe", // Find people where `localField`
-  foreignField: "codigo", // is equal to `foreignField`
-  // If `justOne` is true, 'members' will be a single doc as opposed to
-  // an array. `justOne` is false by default.
-  justOne: true,
-});
-ultimoResultadoSchema.virtual("premioAntojito", {
-  ref: "PremioLotto", // The model to use
-  localField: "codigoPremioAntojito", // Find people where `localField`
-  foreignField: "codigo", // is equal to `foreignField`
-  // If `justOne` is true, 'members' will be a single doc as opposed to
-  // an array. `justOne` is false by default.
-  justOne: true,
-});
-ultimoResultadoSchema.virtual("premioLottoPlus", {
-  ref: "PremioLotto", // The model to use
-  localField: "codigoPremioLottoPlus", // Find people where `localField`
-  foreignField: "codigo", // is equal to `foreignField`
-  // If `justOne` is true, 'members' will be a single doc as opposed to
-  // an array. `justOne` is false by default.
-  justOne: true,
-});
-ultimoResultadoSchema.virtual("premioLottito", {
-  ref: "PremioLotto", // The model to use
-  localField: "codigoPremioLottito", // Find people where `localField`
-  foreignField: "codigo", // is equal to `foreignField`
-  // If `justOne` is true, 'members' will be a single doc as opposed to
-  // an array. `justOne` is false by default.
+ultimoResultadoSchema.virtual("otrosPremios", {
+  ref: "PremioLotto",
+  localField: "premiosEspeciales.codigoPremio",
+  foreignField: "codigo",
   justOne: true,
 });
 
@@ -122,35 +68,21 @@ ultimoResultadoSchema.statics = {
       );
       if (psdUltimosResultados && psdUltimosResultados.length) {
         let ultimoResultado = await this.findOne();
+        ultimoResultado.premiosEspeciales = [];
         for (let index = 0; index < psdUltimosResultados.length; index++) {
           const resultado = psdUltimosResultados[index];
-          ultimoResultado.resultadoLottoPlus.combinacion2 = '';
-          ultimoResultado.resultadosLottito = [];
-          ultimoResultado.resultadoNosVemosJefe.combinacion4 = ''
-          ultimoResultado.resultadoAntojito.combinacion5 = ''
 
           ultimoResultado.numeroSorteo = resultado.sorteo;
           if (resultado.descripcionPremio.toLowerCase().includes("primera")) {
             ultimoResultado.ultimoResultadoLotto.combinacion1 =
               resultado.combinacion;
             ultimoResultado.codigoPremioPrincipal = resultado.codigoPremio;
-          } else if (resultado.descripcionPremio.toLowerCase().includes("lotto plus")) {
-            ultimoResultado.resultadoLottoPlus.combinacion2 =
-              resultado.combinacion;
-            ultimoResultado.codigoPremioLottoPlus = resultado.codigoPremio;
-          } else if (resultado.descripcionPremio.toLowerCase().includes("lottito")) {
-            ultimoResultado.resultadosLottito.push({
-              combinacion3: resultado.combinacion,
+          } else {
+            ultimoResultado.premiosEspeciales.push({
+              nombre: resultado.descripcionPremio,
+              combinacion: resultado.combinacion,
+              codigoPremio: resultado.codigoPremio,
             });
-            ultimoResultado.codigoPremioLottito = resultado.codigoPremio;
-          } else if (resultado.descripcionPremio.toLowerCase().includes("jefe")) {
-            ultimoResultado.resultadoNosVemosJefe.combinacion4 =
-              resultado.combinacion;
-            ultimoResultado.codigoPremioNosVemosJefe = resultado.codigoPremio;
-          } else if (resultado.descripcionPremio.toLowerCase().includes("antojitos")) {
-            ultimoResultado.resultadoAntojito.combinacion5 =
-              resultado.combinacion;
-            ultimoResultado.codigoPremioAntojito = resultado.codigoPremio;
           }
         }
 

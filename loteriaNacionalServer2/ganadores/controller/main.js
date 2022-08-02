@@ -13,7 +13,7 @@ const ganadoresController = {
   pagarLoteriaHttp: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
-      let response = await ganadoresController.pagarLoteria(sorteo);
+      let response = await ganadoresController.pagarLoteria(sorteo, false);
       res.status(200).json(response);
     } catch (e) {
       let response = {
@@ -24,7 +24,7 @@ const ganadoresController = {
     }
   },
 
-  pagarLoteria: async (sorteo) => {
+  pagarLoteria: async (sorteo, instantWin) => {
     try {
       ganadoresLogger.silly("pagarLoteria");
       let query = { numeroSorteo: `${sorteo}` };
@@ -50,6 +50,7 @@ const ganadoresController = {
           let prizeDetails = [
             {
               lotteryType: ganador.tipoLoteria,
+              instantWin,
               personalId: parseInt(ganador.personaId),
               drawNumber: parseInt(ganador.numeroSorteo),
               drawDate: ganador.fechaCaducidad,

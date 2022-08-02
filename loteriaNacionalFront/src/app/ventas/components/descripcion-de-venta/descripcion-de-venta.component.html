@@ -12,16 +12,6 @@
         </h3>
       </div>
     </div>
-    <div *ngIf="codigosPromocionales && codigosPromocionales.length" class="containerInfoBox">
-      <div class="codigos titleLoteryBox">
-        <h3>
-          Con estos códigos participas en el sorteo por un Iphone 13 pro:
-        </h3>
-        <h3 class="codigo">
-           <span *ngFor="let codigoPromocional of codigosPromocionales" >{{ codigoPromocional.codigo }}</span>
-        </h3>
-      </div>
-    </div>
     <div class="containerInfoBox" *ngIf="compra.loteria.length != 0">
       <div class="titleLoteriaBox">
         <h3>LOTERÍA NACIONAL</h3>

@@ -9,7 +9,6 @@ import {VentaService as LottoService} from '../../../juegos/lotto/services/venta
 })
 export class DescripcionDeVentaComponent implements OnInit {
   @Input() compra: any;
-  @Input() codigosPromocionales: any;
   @Input() user: any;
   @Input() ticketId: any;
 

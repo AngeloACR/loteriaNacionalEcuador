@@ -21,7 +21,6 @@ import { CarritoService } from '../../services/carrito.service';
 export class PozoComponent implements OnInit {
   combinacionDeLaSuerte: string[] = ['', '', '', ''];
 
-  codigoPromocional: any = [];
   animalesTabs: animales[] = [];
 
   page_size: number = 12;
@@ -408,7 +407,6 @@ export class PozoComponent implements OnInit {
           );
           this.isLoading = false;
           if (response.status) {
-            //this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

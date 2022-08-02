@@ -35,10 +35,10 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
  */
       let alboranData = {
         transactionId: data.transactionId,
-        validationCode: data.validationCode,
         prizesNumber: data.prizesNumber,
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
+        instantWin: data.prizeDetails[0].instantWin,
         prizeDetails: data.prizeDetails,
       };
       let response = await helper.alboranRequest(alboranData, endpoint);

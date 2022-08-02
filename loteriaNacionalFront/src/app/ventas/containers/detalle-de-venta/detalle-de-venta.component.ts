@@ -10,7 +10,6 @@ import { VentasService } from '../../services/ventas.service';
 })
 export class DetalleDeVentaComponent implements OnInit {
   compra: any;
-  codigosPromocionales: any = [];
   ganador: any;
   compraReady: boolean = false;
 
@@ -25,7 +24,7 @@ export class DetalleDeVentaComponent implements OnInit {
     private pagos: PagosService,
     private ventas: VentasService
   ) {
-    this.actRoute.params.subscribe((params) => {
+    this.actRoute.params.subscribe((params: any) => {
       let aux = params['id'];
       this.accountId = aux.split('-')[0];
       this.ticketId = aux.split('-')[1];
@@ -37,9 +36,6 @@ export class DetalleDeVentaComponent implements OnInit {
       this.loadingMessage = 'Consultando el detalle de tu compra';
       this.isLoading = true;
       this.compra = await this.pagos.getCompra(this.ticketId, this.accountId);
-      /* this.codigosPromocionales = await this.pagos.getCodigosPromocionales(
-        this.ticketId
-      ); */
       this.user = this.compra.user
         ? this.compra.user
         : this.ventas.getAuthData().user;
