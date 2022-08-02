@@ -475,7 +475,7 @@ const ventasController = {
           ventaId: loteriaVentaResponse.ticketId,
           tipoPremio: "DIN",
           acreditado: false,
-          //boletoId
+          boletoId: Date.now(),
         };
         auxGanadores.push(Ganadores.crearGanador(ganador));
         let logData = {
@@ -485,18 +485,19 @@ const ventasController = {
         };
         ventasLogger.info("comprarBoletos.api", logData);
         instantaneaData.push(ganador);
-        if (!auxPagoInstantaneas.includes(numeroSorteo)) auxPagoInstantaneas.push(numeroSorteo)
+        if (!auxPagoInstantaneas.includes(numeroSorteo))
+          auxPagoInstantaneas.push(numeroSorteo);
       }
     }
     let ganadores = await Promise.all(auxGanadores);
     auxPagoInstantaneas.map((item) => {
-      return GanadoresController.pagarLoteria(item, true)
-    })
+      return GanadoresController.pagarLoteria(item, true);
+    });
     let pagoInstantaneas = await Promise.all(auxPagoInstantaneas);
     return {
       status: instantaneaStatus,
       data: instantaneaData,
-      pagoInstantaneas
+      pagoInstantaneas,
     };
   },
   comprarBoletos: async (req, res) => {
