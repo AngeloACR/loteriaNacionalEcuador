@@ -40,12 +40,12 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: 'consultas',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_ventas_ventas_module_ts"), __webpack_require__.e("default-src_app_consultas_consultas_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./consultas/consultas.module */ 8001)).then((m) => m.ConsultasModule),
-    },
-    {
         path: 'inicio',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_ventas_ventas_module_ts"), __webpack_require__.e("default-src_app_consultas_consultas_module_ts"), __webpack_require__.e("src_app_public_public_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./public/public.module */ 1627)).then((m) => m.PublicModule),
+    },
+    {
+        path: 'consultas',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_ventas_ventas_module_ts"), __webpack_require__.e("default-src_app_consultas_consultas_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./consultas/consultas.module */ 8001)).then((m) => m.ConsultasModule),
     },
     {
         path: 'compra_tus_juegos',
@@ -203,7 +203,6 @@ AppModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵ
 AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineInjector"]({ providers: [], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__.BrowserModule,
             _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__.SharedModule,
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
             _juegos_loteria_loteria_module__WEBPACK_IMPORTED_MODULE_3__.LoteriaModule,
             _juegos_lotto_lotto_module__WEBPACK_IMPORTED_MODULE_4__.LottoModule,
             _juegos_pozo_pozo_module__WEBPACK_IMPORTED_MODULE_5__.PozoModule,
@@ -215,10 +214,10 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵ
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_12__.BrowserAnimationsModule,
             _angular_material_paginator__WEBPACK_IMPORTED_MODULE_13__.MatPaginatorModule,
             _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__.MatFormFieldModule,
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
         ], _angular_material_paginator__WEBPACK_IMPORTED_MODULE_13__.MatPaginatorModule, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__.MatFormFieldModule, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.FormsModule] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__.BrowserModule,
         _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__.SharedModule,
-        _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
         _juegos_loteria_loteria_module__WEBPACK_IMPORTED_MODULE_3__.LoteriaModule,
         _juegos_lotto_lotto_module__WEBPACK_IMPORTED_MODULE_4__.LottoModule,
         _juegos_pozo_pozo_module__WEBPACK_IMPORTED_MODULE_5__.PozoModule,
@@ -229,7 +228,8 @@ AppModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵ
         _angular_common_http__WEBPACK_IMPORTED_MODULE_11__.HttpClientModule,
         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_12__.BrowserAnimationsModule,
         _angular_material_paginator__WEBPACK_IMPORTED_MODULE_13__.MatPaginatorModule,
-        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__.MatFormFieldModule], exports: [_angular_material_paginator__WEBPACK_IMPORTED_MODULE_13__.MatPaginatorModule, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__.MatFormFieldModule, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.FormsModule] }); })();
+        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__.MatFormFieldModule,
+        _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule], exports: [_angular_material_paginator__WEBPACK_IMPORTED_MODULE_13__.MatPaginatorModule, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__.MatFormFieldModule, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.FormsModule] }); })();
 
 
 /***/ }),

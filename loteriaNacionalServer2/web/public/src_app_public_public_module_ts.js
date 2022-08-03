@@ -18,7 +18,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [{ path: '', component: _public_component__WEBPACK_IMPORTED_MODULE_0__.PublicComponent }];
+const routes = [
+    { path: '', component: _public_component__WEBPACK_IMPORTED_MODULE_0__.PublicComponent },
+    { path: ':token', component: _public_component__WEBPACK_IMPORTED_MODULE_0__.PublicComponent },
+    /*   {
+        path: 'consultas',
+        loadChildren: () =>
+          import('../consultas/consultas.module').then((m) => m.ConsultasModule),
+      },
+      {
+        path: 'compra_tus_juegos',
+        loadChildren: () =>
+          import('../ventas/ventas.module').then((m) => m.VentasModule),
+      }, */
+];
 class PublicRoutingModule {
 }
 PublicRoutingModule.ɵfac = function PublicRoutingModule_Factory(t) { return new (t || PublicRoutingModule)(); };
@@ -88,13 +101,13 @@ class PublicModule {
 PublicModule.ɵfac = function PublicModule_Factory(t) { return new (t || PublicModule)(); };
 PublicModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: PublicModule });
 PublicModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ imports: [[
-            _angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule,
             _public_routing_module__WEBPACK_IMPORTED_MODULE_0__.PublicRoutingModule,
+            _angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule,
             _consultas_consultas_module__WEBPACK_IMPORTED_MODULE_2__.ConsultasModule,
             _ventas_ventas_module__WEBPACK_IMPORTED_MODULE_3__.VentasModule,
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](PublicModule, { declarations: [_public_component__WEBPACK_IMPORTED_MODULE_1__.PublicComponent], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule,
-        _public_routing_module__WEBPACK_IMPORTED_MODULE_0__.PublicRoutingModule,
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](PublicModule, { declarations: [_public_component__WEBPACK_IMPORTED_MODULE_1__.PublicComponent], imports: [_public_routing_module__WEBPACK_IMPORTED_MODULE_0__.PublicRoutingModule,
+        _angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule,
         _consultas_consultas_module__WEBPACK_IMPORTED_MODULE_2__.ConsultasModule,
         _ventas_ventas_module__WEBPACK_IMPORTED_MODULE_3__.VentasModule] }); })();
 

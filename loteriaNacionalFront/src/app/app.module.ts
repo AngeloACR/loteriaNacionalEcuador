@@ -22,7 +22,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   imports: [
     BrowserModule,
     SharedModule,
-    AppRoutingModule,
     LoteriaModule,
     LottoModule,
     PozoModule,
@@ -35,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
     MatPaginatorModule,
     MatFormFieldModule,
+    AppRoutingModule,
   ],
   exports: [MatPaginatorModule, MatFormFieldModule, FormsModule],
   providers: [],

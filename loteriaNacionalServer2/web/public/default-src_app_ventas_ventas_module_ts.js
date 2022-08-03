@@ -10957,10 +10957,10 @@ VentasModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_26__["
             _juegos_pozo_pozo_module__WEBPACK_IMPORTED_MODULE_19__.PozoModule,
             _juegos_millonaria_millonaria_module__WEBPACK_IMPORTED_MODULE_20__.MillonariaModule,
             _shared_shared_module__WEBPACK_IMPORTED_MODULE_21__.SharedModule,
-            _ventas_routing_module__WEBPACK_IMPORTED_MODULE_0__.VentasRoutingModule,
             _angular_forms__WEBPACK_IMPORTED_MODULE_28__.FormsModule,
             _angular_material_paginator__WEBPACK_IMPORTED_MODULE_29__.MatPaginatorModule,
             _angular_material_form_field__WEBPACK_IMPORTED_MODULE_30__.MatFormFieldModule,
+            _ventas_routing_module__WEBPACK_IMPORTED_MODULE_0__.VentasRoutingModule,
             _angular_forms__WEBPACK_IMPORTED_MODULE_28__.ReactiveFormsModule
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_26__["ɵɵsetNgModuleScope"](VentasModule, { declarations: [_ventas_component__WEBPACK_IMPORTED_MODULE_1__.VentasComponent,
@@ -10988,10 +10988,10 @@ VentasModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_26__["
         _juegos_pozo_pozo_module__WEBPACK_IMPORTED_MODULE_19__.PozoModule,
         _juegos_millonaria_millonaria_module__WEBPACK_IMPORTED_MODULE_20__.MillonariaModule,
         _shared_shared_module__WEBPACK_IMPORTED_MODULE_21__.SharedModule,
-        _ventas_routing_module__WEBPACK_IMPORTED_MODULE_0__.VentasRoutingModule,
         _angular_forms__WEBPACK_IMPORTED_MODULE_28__.FormsModule,
         _angular_material_paginator__WEBPACK_IMPORTED_MODULE_29__.MatPaginatorModule,
         _angular_material_form_field__WEBPACK_IMPORTED_MODULE_30__.MatFormFieldModule,
+        _ventas_routing_module__WEBPACK_IMPORTED_MODULE_0__.VentasRoutingModule,
         _angular_forms__WEBPACK_IMPORTED_MODULE_28__.ReactiveFormsModule], exports: [_ventas_component__WEBPACK_IMPORTED_MODULE_1__.VentasComponent,
         _components_confirmacion_de_venta_confirmacion_de_venta_component__WEBPACK_IMPORTED_MODULE_2__.ConfirmacionDeVentaComponent,
         _components_venta_finalizada_venta_finalizada_component__WEBPACK_IMPORTED_MODULE_3__.VentaFinalizadaComponent,

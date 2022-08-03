@@ -78,11 +78,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     PozoModule,
     MillonariaModule,
     SharedModule,
-    VentasRoutingModule,
     FormsModule,
-
+    
     MatPaginatorModule,
     MatFormFieldModule,
+    VentasRoutingModule,
     ReactiveFormsModule
   ],
 })

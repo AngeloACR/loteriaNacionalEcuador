@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'consultas',
-    loadChildren: () =>
-      import('./consultas/consultas.module').then((m) => m.ConsultasModule),
-  },
-  {
     path: 'inicio',
     loadChildren: () =>
       import('./public/public.module').then((m) => m.PublicModule),
+  },
+  {
+    path: 'consultas',
+    loadChildren: () =>
+      import('./consultas/consultas.module').then((m) => m.ConsultasModule),
   },
   {
     path: 'compra_tus_juegos',

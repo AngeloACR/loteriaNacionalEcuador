@@ -12,8 +12,8 @@ import { VentasModule } from '../ventas/ventas.module';
     PublicComponent
   ],
   imports: [
-    CommonModule,
     PublicRoutingModule,
+    CommonModule,
     ConsultasModule,
     VentasModule,
   ]
