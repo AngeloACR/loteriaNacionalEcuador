@@ -3377,12 +3377,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MenuHeaderComponent": () => (/* binding */ MenuHeaderComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ 1258);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 1258);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var _shared_components_error_error_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../shared/components/error/error.component */ 3772);
 
 
 
+
+function MenuHeaderComponent_app_error_25_Template(rf, ctx) { if (rf & 1) {
+    const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "app-error", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("closeError", function MenuHeaderComponent_app_error_25_Template_app_error_closeError_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r2); const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r1.closeError(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("msg", ctx_r0.errorMessage)("title", ctx_r0.errorTitle);
+} }
 class MenuHeaderComponent {
     constructor(actRoute) {
         this.actRoute = actRoute;
@@ -3390,6 +3401,7 @@ class MenuHeaderComponent {
         this.homeClass = {
             home: this.home,
         };
+        this.isError = false;
         this.actRoute.params.subscribe((params) => {
             this.token = params['token'];
         });
@@ -3404,64 +3416,94 @@ class MenuHeaderComponent {
         this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
         this.linkJuegosOnline = `/inicio`;
     }
+    checkToken(e) {
+        if (!this.token) {
+            e.stopPropagation();
+            e.preventDefault();
+            this.authError();
+            return;
+        }
+    }
+    authError() {
+        this.openError('Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta', 'Aviso');
+    }
+    openError(msg, title) {
+        this.errorTitle = title.toUpperCase();
+        this.errorMessage = msg;
+        this.isError = true;
+    }
+    closeError() {
+        this.isError = false;
+    }
 }
-MenuHeaderComponent.ɵfac = function MenuHeaderComponent_Factory(t) { return new (t || MenuHeaderComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__.ActivatedRoute)); };
-MenuHeaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MenuHeaderComponent, selectors: [["ventas-menu-header"]], inputs: { home: "home" }, decls: 24, vars: 10, consts: [[1, "container", 3, "ngClass"], ["routerLinkActive", "title loteria", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "title lotto", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "title pozo", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "title millonaria", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "active", 1, "contenedor_loteria", "loteria", 3, "routerLink"], ["src", "assets/img/loteria-sombra-2.png"], ["routerLinkActive", "active", 1, "contenedor_loteria", "lotto", 3, "routerLink"], ["src", "assets/img/lotto-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "pozo", 3, "routerLink"], ["src", "assets/img/pozo-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "millonaria", 3, "routerLink"], ["src", "assets/img/millonaria-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "juegosOnline", 3, "routerLink"], ["src", "assets/img/juegos-online.png", "alt", ""]], template: function MenuHeaderComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " LOTERIA NACIONAL ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " LOTTO ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "a", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " POZO MILLONARIO ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "a", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " LA MILLONARIA ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "a", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "img", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Jugar ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "img", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, " Jugar ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "img", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, " Jugar ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "a", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "img", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, " Jugar ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "a", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "img", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, " Jugar ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+MenuHeaderComponent.ɵfac = function MenuHeaderComponent_Factory(t) { return new (t || MenuHeaderComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__.ActivatedRoute)); };
+MenuHeaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MenuHeaderComponent, selectors: [["ventas-menu-header"]], inputs: { home: "home" }, decls: 26, vars: 11, consts: [[1, "container", 3, "ngClass"], ["routerLinkActive", "title loteria", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "title lotto", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "title pozo", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "title millonaria", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "active", 1, "contenedor_loteria", "loteria", 3, "routerLink"], ["src", "assets/img/loteria-sombra-2.png"], ["routerLinkActive", "active", 1, "contenedor_loteria", "lotto", 3, "routerLink", "click"], ["src", "assets/img/lotto-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "pozo", 3, "routerLink", "click"], ["src", "assets/img/pozo-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "millonaria", 3, "routerLink", "click"], ["src", "assets/img/millonaria-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "juegosOnline", 3, "routerLink"], ["src", "assets/img/juegos-online.png", "alt", ""], [3, "msg", "title", "closeError", 4, "ngIf"], [3, "msg", "title", "closeError"]], template: function MenuHeaderComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "a", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_1_listener($event) { return ctx.checkToken($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, " LOTERIA NACIONAL ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "a", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_3_listener($event) { return ctx.checkToken($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, " LOTTO ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "a", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_5_listener($event) { return ctx.checkToken($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, " POZO MILLONARIO ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "a", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_7_listener($event) { return ctx.checkToken($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, " LA MILLONARIA ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "a", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, " (click)=\"checkToken($event)\" ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](11, "img", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "a", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_13_listener($event) { return ctx.checkToken($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](14, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "a", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_16_listener($event) { return ctx.checkToken($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](17, "img", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "a", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_19_listener($event) { return ctx.checkToken($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](20, "img", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "a", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](23, "img", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](25, MenuHeaderComponent_app_error_25_Template, 1, 2, "app-error", 15);
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx.homeClass);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkLoteriaNacional);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkLotto);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkPozoMillonario);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkLaMillonaria);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkLoteriaNacional);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkLotto);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkPozoMillonario);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkLaMillonaria);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx.linkJuegosOnline);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__.NgClass, _angular_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkWithHref, _angular_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkActive], styles: [".container[_ngcontent-%COMP%] {\n  width: 95%;\n  margin: auto;\n  border-bottom: 1px solid #28aae1;\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  width: 20%;\n  height: 50px;\n  margin: 20px 20px 20px 0;\n  box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);\n  border-radius: 45.5px;\n  font-family: \"Helvetica\";\n  font-style: italic;\n  font-size: 16px;\n  font-weight: 700;\n  text-align: center;\n  text-decoration: none;\n  color: #ffffff;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria.millonaria[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 110px;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria.millonaria[_ngcontent-%COMP%]:hover   img[_ngcontent-%COMP%] {\n  width: 120px;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria.juegosOnline[_ngcontent-%COMP%] {\n  display: none;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 70px;\n  margin: 0;\n  transition: width 0.3s ease;\n  background-color: transparent;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]:hover   img[_ngcontent-%COMP%] {\n  width: 80px;\n  transition: width 0.3s ease;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]   .boton[_ngcontent-%COMP%] {\n  padding: 5px 10px;\n  border-radius: 30px;\n  position: relative;\n  bottom: 0px;\n  text-decoration: none;\n  text-align: center;\n  color: #fff;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 10px;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%] {\n  width: 19%;\n  height: 92px;\n  font-size: 25px;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 30%;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]:hover   img[_ngcontent-%COMP%] {\n  width: 34%;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria.juegosOnline[_ngcontent-%COMP%] {\n  display: flex;\n}\n.container[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%] {\n  display: none;\n  transition: all 0.3s ease;\n}\n.container[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n  display: block !important;\n  font-family: \"Helvetica\";\n  font-style: italic;\n  width: 25%;\n  font-weight: 700;\n  font-size: 25px;\n  text-transform: uppercase;\n  text-decoration: none;\n  background: none !important;\n  margin-right: 20px;\n}\n.container[_ngcontent-%COMP%]   .title.loteria[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #28aae1;\n}\n.container[_ngcontent-%COMP%]   .title.lotto[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #b51f20;\n}\n.container[_ngcontent-%COMP%]   .title.pozo[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #04b865;\n}\n.container[_ngcontent-%COMP%]   .title.millonaria[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #b51f20;\n}\n.loteria[_ngcontent-%COMP%] {\n  color: #28aae1;\n  background-color: #28aae1;\n}\n.lotto[_ngcontent-%COMP%] {\n  color: #b51f20;\n  background-color: #b51f20;\n}\n.pozo[_ngcontent-%COMP%] {\n  color: #04b865;\n  background-color: #04b865;\n}\n.millonaria[_ngcontent-%COMP%] {\n  color: #b51f20;\n  background-color: #b51f20;\n}\n.juegosOnline[_ngcontent-%COMP%] {\n  color: #15295b;\n  background-color: #15295b;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtaGVhZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVdBO0VBQ0UsVUFBQTtFQUNBLFlBQUE7RUFDQSxnQ0FBQTtFQUVBLGFBQUE7RUFDQSwyQkFBQTtFQUNBLG1CQUFBO0FBWEY7QUFhRTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLDZCQUFBO0VBRUEsVUFBQTtFQUNBLFlBQUE7RUFDQSx3QkFBQTtFQUNBLDRDQUFBO0VBQ0EscUJBQUE7RUFDQSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUVBLGNBQUE7QUFiSjtBQWVJO0VBQ0UsWUFBQTtBQWJOO0FBZUk7RUFDRSxZQUFBO0FBYk47QUFnQkk7RUFDRSxhQUFBO0FBZE47QUFpQkk7RUFDRSxXQUFBO0VBQ0EsU0FBQTtFQUNBLDJCQUFBO0VBQ0EsNkJBQUE7QUFmTjtBQWtCSTtFQUNFLFdBQUE7RUFFQSwyQkFBQTtBQWpCTjtBQW1CSTtFQUNFLGlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxxQkFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLG1DQTdEVztFQThEWCxlQUFBO0FBakJOO0FBc0JJO0VBQ0UsVUFBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0FBcEJOO0FBc0JNO0VBQ0UsVUFBQTtBQXBCUjtBQXVCTTtFQUNFLFVBQUE7QUFyQlI7QUF1Qk07RUFDRSxhQUFBO0FBckJSO0FBMEJFO0VBQ0UsYUFBQTtFQUNBLHlCQUFBO0FBeEJKO0FBMEJFO0VBQ0UseUJBQUE7RUFDQSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLHlCQUFBO0VBQ0EscUJBQUE7RUFDQSwyQkFBQTtFQUNBLGtCQUFBO0FBeEJKO0FBeUJJO0VBQ0UsZ0NBQUE7QUF2Qk47QUEwQkk7RUFDRSxnQ0FBQTtBQXhCTjtBQTJCSTtFQUNFLGdDQUFBO0FBekJOO0FBNEJJO0VBQ0UsZ0NBQUE7QUExQk47QUErQkE7RUFDRSxjQWhJYztFQWlJZCx5QkFqSWM7QUFxR2hCO0FBK0JBO0VBQ0UsY0FwSVk7RUFxSVoseUJBcklZO0FBeUdkO0FBK0JBO0VBQ0UsY0F4SVc7RUF5SVgseUJBeklXO0FBNkdiO0FBK0JBO0VBQ0UsY0E1SWlCO0VBNklqQix5QkE3SWlCO0FBaUhuQjtBQStCQTtFQUNFLGNBQUE7RUFDQSx5QkFBQTtBQTVCRiIsImZpbGUiOiJtZW51LWhlYWRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRjb2xvci1sb3RlcmlhOiAjMjhhYWUxO1xuJGNvbG9yLWxvdHRvOiAjYjUxZjIwO1xuJGNvbG9yLXBvem86ICMwNGI4NjU7XG4kY29sb3ItbWlsbG9uYXJpYTogI2I1MWYyMDtcbi8vJGNvbG9yLXBvem86ICMwNTczMzM7XG5cbiRmdWVudGUtdGl0dWxvOiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbiRmdWVudGUtc3VidGl0dWxvOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4kZnVlbnRlLXBhcnJhZm86IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xuJGZ1ZW50ZS1ib3RvbmVzOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG5cbi5jb250YWluZXIge1xuICB3aWR0aDogOTUlO1xuICBtYXJnaW46IGF1dG87XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAkY29sb3ItbG90ZXJpYTtcblxuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG5cbiAgLmNvbnRlbmVkb3JfbG90ZXJpYSB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuXG4gICAgd2lkdGg6IDIwJTtcbiAgICBoZWlnaHQ6IDUwcHg7XG4gICAgbWFyZ2luOiAyMHB4IDIwcHggMjBweCAwO1xuICAgIGJveC1zaGFkb3c6IDBweCA1cHggMTFweCByZ2JhKDAsIDAsIDAsIDAuMjUpO1xuICAgIGJvcmRlci1yYWRpdXM6IDQ1LjVweDtcbiAgICBmb250LWZhbWlseTogXCJIZWx2ZXRpY2FcIjtcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcblxuICAgIGNvbG9yOiAjZmZmZmZmO1xuXG4gICAgJi5taWxsb25hcmlhIGltZyB7XG4gICAgICB3aWR0aDogMTEwcHg7XG4gICAgfVxuICAgICYubWlsbG9uYXJpYTpob3ZlciBpbWcge1xuICAgICAgd2lkdGg6IDEyMHB4O1xuICAgIH1cblxuICAgICYuanVlZ29zT25saW5lIHtcbiAgICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgfVxuXG4gICAgaW1nIHtcbiAgICAgIHdpZHRoOiA3MHB4O1xuICAgICAgbWFyZ2luOiAwO1xuICAgICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgfVxuXG4gICAgJjpob3ZlciBpbWcge1xuICAgICAgd2lkdGg6IDgwcHg7XG5cbiAgICAgIHRyYW5zaXRpb246IHdpZHRoIDAuM3MgZWFzZTtcbiAgICB9XG4gICAgLmJvdG9uIHtcbiAgICAgIHBhZGRpbmc6IDVweCAxMHB4O1xuICAgICAgYm9yZGVyLXJhZGl1czogMzBweDtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIGJvdHRvbTogMHB4O1xuICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgY29sb3I6ICNmZmY7XG4gICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1ib3RvbmVzO1xuICAgICAgZm9udC1zaXplOiAxMHB4O1xuICAgIH1cbiAgfVxuXG4gICYuaG9tZSB7XG4gICAgLmNvbnRlbmVkb3JfbG90ZXJpYSB7XG4gICAgICB3aWR0aDogMTklO1xuICAgICAgaGVpZ2h0OiA5MnB4O1xuICAgICAgZm9udC1zaXplOiAyNXB4O1xuXG4gICAgICBpbWcge1xuICAgICAgICB3aWR0aDogMzAlO1xuICAgICAgfVxuXG4gICAgICAmOmhvdmVyIGltZyB7XG4gICAgICAgIHdpZHRoOiAzNCU7XG4gICAgICB9XG4gICAgICAmLmp1ZWdvc09ubGluZSB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICB9XG4gIFxuICAgIH1cbiAgfVxuICAuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBub25lO1xuICAgIHRyYW5zaXRpb246IGFsbCAwLjNzIGVhc2U7XG4gIH1cbiAgLnRpdGxlIHtcbiAgICBkaXNwbGF5OiBibG9jayAhaW1wb3J0YW50O1xuICAgIGZvbnQtZmFtaWx5OiBcIkhlbHZldGljYVwiO1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICB3aWR0aDogMjUlO1xuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XG4gICAgZm9udC1zaXplOiAyNXB4O1xuICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgIGJhY2tncm91bmQ6IG5vbmUgIWltcG9ydGFudDtcbiAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG4gICAgJi5sb3RlcmlhIHtcbiAgICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAkY29sb3ItbG90ZXJpYTtcbiAgICB9XG5cbiAgICAmLmxvdHRvIHtcbiAgICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAkY29sb3ItbG90dG87XG4gICAgfVxuXG4gICAgJi5wb3pvIHtcbiAgICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAkY29sb3ItcG96bztcbiAgICB9XG5cbiAgICAmLm1pbGxvbmFyaWEge1xuICAgICAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICRjb2xvci1taWxsb25hcmlhO1xuICAgIH1cbiAgfVxufVxuXG4ubG90ZXJpYSB7XG4gIGNvbG9yOiAkY29sb3ItbG90ZXJpYTtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdGVyaWE7XG59XG5cbi5sb3R0byB7XG4gIGNvbG9yOiAkY29sb3ItbG90dG87XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1sb3R0bztcbn1cblxuLnBvem8ge1xuICBjb2xvcjogJGNvbG9yLXBvem87XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xufVxuXG4ubWlsbG9uYXJpYSB7XG4gIGNvbG9yOiAkY29sb3ItbWlsbG9uYXJpYTtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLW1pbGxvbmFyaWE7XG59XG5cbi5qdWVnb3NPbmxpbmUge1xuICBjb2xvcjogIzE1Mjk1YjtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzE1Mjk1Yjtcbn1cbiJdfQ== */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", ctx.homeClass);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLoteriaNacional);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLotto);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkPozoMillonario);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLaMillonaria);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLoteriaNacional);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLotto);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkPozoMillonario);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLaMillonaria);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkJuegosOnline);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.isError);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__.NgClass, _angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterLinkWithHref, _angular_router__WEBPACK_IMPORTED_MODULE_2__.RouterLinkActive, _angular_common__WEBPACK_IMPORTED_MODULE_3__.NgIf, _shared_components_error_error_component__WEBPACK_IMPORTED_MODULE_0__.ErrorComponent], styles: [".container[_ngcontent-%COMP%] {\n  width: 95%;\n  margin: auto;\n  border-bottom: 1px solid #28aae1;\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  width: 20%;\n  height: 50px;\n  margin: 20px 20px 20px 0;\n  box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);\n  border-radius: 45.5px;\n  font-family: \"Helvetica\";\n  font-style: italic;\n  font-size: 16px;\n  font-weight: 700;\n  text-align: center;\n  text-decoration: none;\n  color: #ffffff;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria.millonaria[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 110px;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria.millonaria[_ngcontent-%COMP%]:hover   img[_ngcontent-%COMP%] {\n  width: 120px;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria.juegosOnline[_ngcontent-%COMP%] {\n  display: none;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 70px;\n  margin: 0;\n  transition: width 0.3s ease;\n  background-color: transparent;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]:hover   img[_ngcontent-%COMP%] {\n  width: 80px;\n  transition: width 0.3s ease;\n}\n.container[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]   .boton[_ngcontent-%COMP%] {\n  padding: 5px 10px;\n  border-radius: 30px;\n  position: relative;\n  bottom: 0px;\n  text-decoration: none;\n  text-align: center;\n  color: #fff;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 10px;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%] {\n  width: 19%;\n  height: 92px;\n  font-size: 25px;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 30%;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria[_ngcontent-%COMP%]:hover   img[_ngcontent-%COMP%] {\n  width: 34%;\n}\n.container.home[_ngcontent-%COMP%]   .contenedor_loteria.juegosOnline[_ngcontent-%COMP%] {\n  display: flex;\n}\n.container[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%] {\n  display: none;\n  transition: all 0.3s ease;\n}\n.container[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n  display: block !important;\n  font-family: \"Helvetica\";\n  font-style: italic;\n  width: 25%;\n  font-weight: 700;\n  font-size: 25px;\n  text-transform: uppercase;\n  text-decoration: none;\n  background: none !important;\n  margin-right: 20px;\n}\n.container[_ngcontent-%COMP%]   .title.loteria[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #28aae1;\n}\n.container[_ngcontent-%COMP%]   .title.lotto[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #b51f20;\n}\n.container[_ngcontent-%COMP%]   .title.pozo[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #04b865;\n}\n.container[_ngcontent-%COMP%]   .title.millonaria[_ngcontent-%COMP%] {\n  border-bottom: 2px solid #b51f20;\n}\n.loteria[_ngcontent-%COMP%] {\n  color: #28aae1;\n  background-color: #28aae1;\n}\n.lotto[_ngcontent-%COMP%] {\n  color: #b51f20;\n  background-color: #b51f20;\n}\n.pozo[_ngcontent-%COMP%] {\n  color: #04b865;\n  background-color: #04b865;\n}\n.millonaria[_ngcontent-%COMP%] {\n  color: #b51f20;\n  background-color: #b51f20;\n}\n.juegosOnline[_ngcontent-%COMP%] {\n  color: #15295b;\n  background-color: #15295b;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtaGVhZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVdBO0VBQ0UsVUFBQTtFQUNBLFlBQUE7RUFDQSxnQ0FBQTtFQUVBLGFBQUE7RUFDQSwyQkFBQTtFQUNBLG1CQUFBO0FBWEY7QUFhRTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLDZCQUFBO0VBRUEsVUFBQTtFQUNBLFlBQUE7RUFDQSx3QkFBQTtFQUNBLDRDQUFBO0VBQ0EscUJBQUE7RUFDQSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUVBLGNBQUE7QUFiSjtBQWVJO0VBQ0UsWUFBQTtBQWJOO0FBZUk7RUFDRSxZQUFBO0FBYk47QUFnQkk7RUFDRSxhQUFBO0FBZE47QUFpQkk7RUFDRSxXQUFBO0VBQ0EsU0FBQTtFQUNBLDJCQUFBO0VBQ0EsNkJBQUE7QUFmTjtBQWtCSTtFQUNFLFdBQUE7RUFFQSwyQkFBQTtBQWpCTjtBQW1CSTtFQUNFLGlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxxQkFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLG1DQTdEVztFQThEWCxlQUFBO0FBakJOO0FBc0JJO0VBQ0UsVUFBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0FBcEJOO0FBc0JNO0VBQ0UsVUFBQTtBQXBCUjtBQXVCTTtFQUNFLFVBQUE7QUFyQlI7QUF1Qk07RUFDRSxhQUFBO0FBckJSO0FBMEJFO0VBQ0UsYUFBQTtFQUNBLHlCQUFBO0FBeEJKO0FBMEJFO0VBQ0UseUJBQUE7RUFDQSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLHlCQUFBO0VBQ0EscUJBQUE7RUFDQSwyQkFBQTtFQUNBLGtCQUFBO0FBeEJKO0FBeUJJO0VBQ0UsZ0NBQUE7QUF2Qk47QUEwQkk7RUFDRSxnQ0FBQTtBQXhCTjtBQTJCSTtFQUNFLGdDQUFBO0FBekJOO0FBNEJJO0VBQ0UsZ0NBQUE7QUExQk47QUErQkE7RUFDRSxjQWhJYztFQWlJZCx5QkFqSWM7QUFxR2hCO0FBK0JBO0VBQ0UsY0FwSVk7RUFxSVoseUJBcklZO0FBeUdkO0FBK0JBO0VBQ0UsY0F4SVc7RUF5SVgseUJBeklXO0FBNkdiO0FBK0JBO0VBQ0UsY0E1SWlCO0VBNklqQix5QkE3SWlCO0FBaUhuQjtBQStCQTtFQUNFLGNBQUE7RUFDQSx5QkFBQTtBQTVCRiIsImZpbGUiOiJtZW51LWhlYWRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRjb2xvci1sb3RlcmlhOiAjMjhhYWUxO1xuJGNvbG9yLWxvdHRvOiAjYjUxZjIwO1xuJGNvbG9yLXBvem86ICMwNGI4NjU7XG4kY29sb3ItbWlsbG9uYXJpYTogI2I1MWYyMDtcbi8vJGNvbG9yLXBvem86ICMwNTczMzM7XG5cbiRmdWVudGUtdGl0dWxvOiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbiRmdWVudGUtc3VidGl0dWxvOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4kZnVlbnRlLXBhcnJhZm86IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xuJGZ1ZW50ZS1ib3RvbmVzOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG5cbi5jb250YWluZXIge1xuICB3aWR0aDogOTUlO1xuICBtYXJnaW46IGF1dG87XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAkY29sb3ItbG90ZXJpYTtcblxuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG5cbiAgLmNvbnRlbmVkb3JfbG90ZXJpYSB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuXG4gICAgd2lkdGg6IDIwJTtcbiAgICBoZWlnaHQ6IDUwcHg7XG4gICAgbWFyZ2luOiAyMHB4IDIwcHggMjBweCAwO1xuICAgIGJveC1zaGFkb3c6IDBweCA1cHggMTFweCByZ2JhKDAsIDAsIDAsIDAuMjUpO1xuICAgIGJvcmRlci1yYWRpdXM6IDQ1LjVweDtcbiAgICBmb250LWZhbWlseTogXCJIZWx2ZXRpY2FcIjtcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcblxuICAgIGNvbG9yOiAjZmZmZmZmO1xuXG4gICAgJi5taWxsb25hcmlhIGltZyB7XG4gICAgICB3aWR0aDogMTEwcHg7XG4gICAgfVxuICAgICYubWlsbG9uYXJpYTpob3ZlciBpbWcge1xuICAgICAgd2lkdGg6IDEyMHB4O1xuICAgIH1cblxuICAgICYuanVlZ29zT25saW5lIHtcbiAgICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgfVxuXG4gICAgaW1nIHtcbiAgICAgIHdpZHRoOiA3MHB4O1xuICAgICAgbWFyZ2luOiAwO1xuICAgICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgfVxuXG4gICAgJjpob3ZlciBpbWcge1xuICAgICAgd2lkdGg6IDgwcHg7XG5cbiAgICAgIHRyYW5zaXRpb246IHdpZHRoIDAuM3MgZWFzZTtcbiAgICB9XG4gICAgLmJvdG9uIHtcbiAgICAgIHBhZGRpbmc6IDVweCAxMHB4O1xuICAgICAgYm9yZGVyLXJhZGl1czogMzBweDtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIGJvdHRvbTogMHB4O1xuICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgY29sb3I6ICNmZmY7XG4gICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1ib3RvbmVzO1xuICAgICAgZm9udC1zaXplOiAxMHB4O1xuICAgIH1cbiAgfVxuXG4gICYuaG9tZSB7XG4gICAgLmNvbnRlbmVkb3JfbG90ZXJpYSB7XG4gICAgICB3aWR0aDogMTklO1xuICAgICAgaGVpZ2h0OiA5MnB4O1xuICAgICAgZm9udC1zaXplOiAyNXB4O1xuXG4gICAgICBpbWcge1xuICAgICAgICB3aWR0aDogMzAlO1xuICAgICAgfVxuXG4gICAgICAmOmhvdmVyIGltZyB7XG4gICAgICAgIHdpZHRoOiAzNCU7XG4gICAgICB9XG4gICAgICAmLmp1ZWdvc09ubGluZSB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICB9XG4gIFxuICAgIH1cbiAgfVxuICAuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBub25lO1xuICAgIHRyYW5zaXRpb246IGFsbCAwLjNzIGVhc2U7XG4gIH1cbiAgLnRpdGxlIHtcbiAgICBkaXNwbGF5OiBibG9jayAhaW1wb3J0YW50O1xuICAgIGZvbnQtZmFtaWx5OiBcIkhlbHZldGljYVwiO1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICB3aWR0aDogMjUlO1xuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XG4gICAgZm9udC1zaXplOiAyNXB4O1xuICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgIGJhY2tncm91bmQ6IG5vbmUgIWltcG9ydGFudDtcbiAgICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG4gICAgJi5sb3RlcmlhIHtcbiAgICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAkY29sb3ItbG90ZXJpYTtcbiAgICB9XG5cbiAgICAmLmxvdHRvIHtcbiAgICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAkY29sb3ItbG90dG87XG4gICAgfVxuXG4gICAgJi5wb3pvIHtcbiAgICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAkY29sb3ItcG96bztcbiAgICB9XG5cbiAgICAmLm1pbGxvbmFyaWEge1xuICAgICAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICRjb2xvci1taWxsb25hcmlhO1xuICAgIH1cbiAgfVxufVxuXG4ubG90ZXJpYSB7XG4gIGNvbG9yOiAkY29sb3ItbG90ZXJpYTtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWxvdGVyaWE7XG59XG5cbi5sb3R0byB7XG4gIGNvbG9yOiAkY29sb3ItbG90dG87XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1sb3R0bztcbn1cblxuLnBvem8ge1xuICBjb2xvcjogJGNvbG9yLXBvem87XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xufVxuXG4ubWlsbG9uYXJpYSB7XG4gIGNvbG9yOiAkY29sb3ItbWlsbG9uYXJpYTtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLW1pbGxvbmFyaWE7XG59XG5cbi5qdWVnb3NPbmxpbmUge1xuICBjb2xvcjogIzE1Mjk1YjtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzE1Mjk1Yjtcbn1cbiJdfQ== */"] });
 
 
 /***/ }),

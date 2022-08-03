@@ -3,6 +3,7 @@
     style="display: none"
     [routerLink]="linkLoteriaNacional"
     routerLinkActive="title loteria"
+    (click)="checkToken($event)"
   >
     LOTERIA NACIONAL
   </a>
@@ -11,6 +12,7 @@
     style="display: none"
     [routerLink]="linkLotto"
     routerLinkActive="title lotto"
+    (click)="checkToken($event)"
   >
     LOTTO
   </a>
@@ -19,6 +21,7 @@
     style="display: none"
     [routerLink]="linkPozoMillonario"
     routerLinkActive="title pozo"
+    (click)="checkToken($event)"
   >
     POZO MILLONARIO
   </a>
@@ -27,6 +30,7 @@
     style="display: none"
     [routerLink]="linkLaMillonaria"
     routerLinkActive="title millonaria"
+    (click)="checkToken($event)"
   >
     LA MILLONARIA
   </a>
@@ -36,6 +40,7 @@
     [routerLink]="linkLoteriaNacional"
     routerLinkActive="active"
   >
+    (click)="checkToken($event)"
     <img src="assets/img/loteria-sombra-2.png" />
     Jugar
   </a>
@@ -44,6 +49,7 @@
     class="contenedor_loteria lotto"
     [routerLink]="linkLotto"
     routerLinkActive="active"
+    (click)="checkToken($event)"
   >
     <img src="assets/img/lotto-sombra.png" alt="" />
     Jugar
@@ -53,6 +59,7 @@
     class="contenedor_loteria pozo"
     [routerLink]="linkPozoMillonario"
     routerLinkActive="active"
+    (click)="checkToken($event)"
   >
     <img src="assets/img/pozo-sombra.png" alt="" />
     Jugar
@@ -62,6 +69,7 @@
     class="contenedor_loteria millonaria"
     [routerLink]="linkLaMillonaria"
     routerLinkActive="active"
+    (click)="checkToken($event)"
   >
     <img src="assets/img/millonaria-sombra.png" alt="" />
     Jugar
@@ -76,3 +84,10 @@
     Jugar
   </a>
 </div>
+
+<app-error
+  [msg]="errorMessage!"
+  (closeError)="closeError()"
+  [title]="errorTitle!"
+  *ngIf="isError"
+></app-error>

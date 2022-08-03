@@ -98,7 +98,7 @@ class AppComponent {
       if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_2__.NavigationStart) {
         let data = decodeURIComponent(event.url);
 
-        if (data.includes('compra_tus_juegos?token')) {
+        if (data.includes('compra_tus_juegos?token') || data.includes('inicio?token')) {
           let url = data.split('?token=')[0];
           this.token = data.split('?token=')[1];
           this.router.navigateByUrl(`${url}/${this.token}`);

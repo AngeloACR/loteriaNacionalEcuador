@@ -34,4 +34,31 @@ export class MenuHeaderComponent implements OnInit {
     this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
     this.linkJuegosOnline = `/inicio`;
   }
+  checkToken(e: any) {
+    if (!this.token) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.authError();
+      return;
+    }
+  }
+  authError() {
+    this.openError(
+      'Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta',
+      'Aviso'
+    );
+  }
+
+  isError: boolean = false;
+  errorMessage?: string;
+  errorTitle?: string;
+  openError(msg: string, title: string) {
+    this.errorTitle = title.toUpperCase();
+    this.errorMessage = msg;
+    this.isError = true;
+  }
+
+  closeError() {
+    this.isError = false;
+  }
 }
