@@ -51,10 +51,6 @@ const routes = [
         path: 'compra_tus_juegos',
         loadChildren: () => __webpack_require__.e(/*! import() */ "default-src_app_ventas_ventas_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./ventas/ventas.module */ 5268)).then((m) => m.VentasModule),
     },
-    {
-        path: 'codigosPromocionales',
-        loadChildren: () => Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ./codigos-promocionales/codigos-promocionales.module */ 8166)).then((m) => m.CodigosPromocionalesModule),
-    },
 ];
 class AppRoutingModule {
 }

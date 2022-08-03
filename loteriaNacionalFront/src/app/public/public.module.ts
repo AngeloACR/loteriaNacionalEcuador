@@ -13,7 +13,7 @@ import { VentasModule } from '../ventas/ventas.module';
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule,
+    //PublicRoutingModule,
     ConsultasModule,
     VentasModule,
   ]

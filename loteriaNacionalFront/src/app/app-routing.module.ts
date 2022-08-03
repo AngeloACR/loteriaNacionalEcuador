@@ -17,13 +17,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./ventas/ventas.module').then((m) => m.VentasModule),
   },
-  {
-    path: 'codigosPromocionales',
-    loadChildren: () =>
-      import('./codigos-promocionales/codigos-promocionales.module').then(
-        (m) => m.CodigosPromocionalesModule
-      ),
-  },
 ];
 
 @NgModule({

@@ -8,10 +8,10 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 })
 export class MenuHeaderComponent implements OnInit {
   @Input() home: boolean = false;
-  linkLotto?: string;
-  linkLoteriaNacional?: string;
-  linkPozoMillonario?: string;
-  linkLaMillonaria?: string;
+  linkLotto: string = "";
+  linkLoteriaNacional: string = "";
+  linkPozoMillonario: string = "";
+  linkLaMillonaria: string = "";
   token?: string;
   usuario?: string;
   linkJuegosOnline?: string;
@@ -34,13 +34,12 @@ export class MenuHeaderComponent implements OnInit {
     this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
     this.linkJuegosOnline = `/inicio`;
   }
-  checkToken(e: any) {
+  checkToken(link: string) {
     if (!this.token) {
-      e.stopPropagation();
-      e.preventDefault();
       this.authError();
       return;
     }
+    return link;
   }
   authError() {
     this.openError(

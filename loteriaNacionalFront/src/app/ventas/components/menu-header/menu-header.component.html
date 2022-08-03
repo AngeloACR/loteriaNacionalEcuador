@@ -3,7 +3,6 @@
     style="display: none"
     [routerLink]="linkLoteriaNacional"
     routerLinkActive="title loteria"
-    (click)="checkToken($event)"
   >
     LOTERIA NACIONAL
   </a>
@@ -12,7 +11,6 @@
     style="display: none"
     [routerLink]="linkLotto"
     routerLinkActive="title lotto"
-    (click)="checkToken($event)"
   >
     LOTTO
   </a>
@@ -21,7 +19,6 @@
     style="display: none"
     [routerLink]="linkPozoMillonario"
     routerLinkActive="title pozo"
-    (click)="checkToken($event)"
   >
     POZO MILLONARIO
   </a>
@@ -30,26 +27,23 @@
     style="display: none"
     [routerLink]="linkLaMillonaria"
     routerLinkActive="title millonaria"
-    (click)="checkToken($event)"
   >
     LA MILLONARIA
   </a>
 
   <a
     class="contenedor_loteria loteria"
-    [routerLink]="linkLoteriaNacional"
+    [routerLink]="checkToken(linkLoteriaNacional)"
     routerLinkActive="active"
   >
-    (click)="checkToken($event)"
     <img src="assets/img/loteria-sombra-2.png" />
     Jugar
   </a>
 
   <a
     class="contenedor_loteria lotto"
-    [routerLink]="linkLotto"
     routerLinkActive="active"
-    (click)="checkToken($event)"
+    [routerLink]="checkToken(linkLotto)"
   >
     <img src="assets/img/lotto-sombra.png" alt="" />
     Jugar
@@ -57,9 +51,8 @@
 
   <a
     class="contenedor_loteria pozo"
-    [routerLink]="linkPozoMillonario"
+    [routerLink]="checkToken(linkPozoMillonario)"
     routerLinkActive="active"
-    (click)="checkToken($event)"
   >
     <img src="assets/img/pozo-sombra.png" alt="" />
     Jugar
@@ -67,9 +60,8 @@
 
   <a
     class="contenedor_loteria millonaria"
-    [routerLink]="linkLaMillonaria"
+    [routerLink]="checkToken(linkLaMillonaria)"
     routerLinkActive="active"
-    (click)="checkToken($event)"
   >
     <img src="assets/img/millonaria-sombra.png" alt="" />
     Jugar

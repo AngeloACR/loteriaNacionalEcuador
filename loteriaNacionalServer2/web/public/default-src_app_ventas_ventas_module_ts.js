@@ -3385,10 +3385,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function MenuHeaderComponent_app_error_25_Template(rf, ctx) { if (rf & 1) {
+function MenuHeaderComponent_app_error_24_Template(rf, ctx) { if (rf & 1) {
     const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "app-error", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("closeError", function MenuHeaderComponent_app_error_25_Template_app_error_closeError_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r2); const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r1.closeError(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("closeError", function MenuHeaderComponent_app_error_24_Template_app_error_closeError_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r2); const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r1.closeError(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
@@ -3398,6 +3398,10 @@ class MenuHeaderComponent {
     constructor(actRoute) {
         this.actRoute = actRoute;
         this.home = false;
+        this.linkLotto = "";
+        this.linkLoteriaNacional = "";
+        this.linkPozoMillonario = "";
+        this.linkLaMillonaria = "";
         this.homeClass = {
             home: this.home,
         };
@@ -3416,13 +3420,12 @@ class MenuHeaderComponent {
         this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
         this.linkJuegosOnline = `/inicio`;
     }
-    checkToken(e) {
+    checkToken(link) {
         if (!this.token) {
-            e.stopPropagation();
-            e.preventDefault();
             this.authError();
             return;
         }
+        return link;
     }
     authError() {
         this.openError('Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta', 'Aviso');
@@ -3437,50 +3440,42 @@ class MenuHeaderComponent {
     }
 }
 MenuHeaderComponent.ɵfac = function MenuHeaderComponent_Factory(t) { return new (t || MenuHeaderComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__.ActivatedRoute)); };
-MenuHeaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MenuHeaderComponent, selectors: [["ventas-menu-header"]], inputs: { home: "home" }, decls: 26, vars: 11, consts: [[1, "container", 3, "ngClass"], ["routerLinkActive", "title loteria", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "title lotto", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "title pozo", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "title millonaria", 2, "display", "none", 3, "routerLink", "click"], ["routerLinkActive", "active", 1, "contenedor_loteria", "loteria", 3, "routerLink"], ["src", "assets/img/loteria-sombra-2.png"], ["routerLinkActive", "active", 1, "contenedor_loteria", "lotto", 3, "routerLink", "click"], ["src", "assets/img/lotto-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "pozo", 3, "routerLink", "click"], ["src", "assets/img/pozo-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "millonaria", 3, "routerLink", "click"], ["src", "assets/img/millonaria-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "juegosOnline", 3, "routerLink"], ["src", "assets/img/juegos-online.png", "alt", ""], [3, "msg", "title", "closeError", 4, "ngIf"], [3, "msg", "title", "closeError"]], template: function MenuHeaderComponent_Template(rf, ctx) { if (rf & 1) {
+MenuHeaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MenuHeaderComponent, selectors: [["ventas-menu-header"]], inputs: { home: "home" }, decls: 25, vars: 11, consts: [[1, "container", 3, "ngClass"], ["routerLinkActive", "title loteria", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "title lotto", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "title pozo", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "title millonaria", 2, "display", "none", 3, "routerLink"], ["routerLinkActive", "active", 1, "contenedor_loteria", "loteria", 3, "routerLink"], ["src", "assets/img/loteria-sombra-2.png"], ["routerLinkActive", "active", 1, "contenedor_loteria", "lotto", 3, "routerLink"], ["src", "assets/img/lotto-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "pozo", 3, "routerLink"], ["src", "assets/img/pozo-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "millonaria", 3, "routerLink"], ["src", "assets/img/millonaria-sombra.png", "alt", ""], ["routerLinkActive", "active", 1, "contenedor_loteria", "juegosOnline", 3, "routerLink"], ["src", "assets/img/juegos-online.png", "alt", ""], [3, "msg", "title", "closeError", 4, "ngIf"], [3, "msg", "title", "closeError"]], template: function MenuHeaderComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "a", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_1_listener($event) { return ctx.checkToken($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, " LOTERIA NACIONAL ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "a", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_3_listener($event) { return ctx.checkToken($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, " LOTTO ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "a", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_5_listener($event) { return ctx.checkToken($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, " POZO MILLONARIO ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "a", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_7_listener($event) { return ctx.checkToken($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, " LA MILLONARIA ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "a", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, " (click)=\"checkToken($event)\" ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](11, "img", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](10, "img", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](11, " Jugar ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "a", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_13_listener($event) { return ctx.checkToken($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](14, "img", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "a", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](13, "img", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, " Jugar ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "a", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_16_listener($event) { return ctx.checkToken($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](17, "img", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "a", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](16, "img", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, " Jugar ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "a", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MenuHeaderComponent_Template_a_click_19_listener($event) { return ctx.checkToken($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](20, "img", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "a", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](19, "img", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, " Jugar ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "a", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](23, "img", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](24, " Jugar ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "a", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](22, "img", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, " Jugar ");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](25, MenuHeaderComponent_app_error_25_Template, 1, 2, "app-error", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](24, MenuHeaderComponent_app_error_24_Template, 1, 2, "app-error", 15);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", ctx.homeClass);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
@@ -3492,13 +3487,13 @@ MenuHeaderComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLaMillonaria);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLoteriaNacional);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLotto);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.checkToken(ctx.linkLoteriaNacional));
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkPozoMillonario);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.checkToken(ctx.linkLotto));
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkLaMillonaria);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.checkToken(ctx.linkPozoMillonario));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.checkToken(ctx.linkLaMillonaria));
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", ctx.linkJuegosOnline);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
