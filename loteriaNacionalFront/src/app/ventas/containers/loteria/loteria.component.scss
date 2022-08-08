@@ -264,11 +264,10 @@ $color-botton: #28aae1;
         display: flex;
         justify-content: space-between;
         flex-wrap: nowrap;
-        align-items: center;
+        align-items: flex-end;
 
         .contenedor_select {
           width: 50%;
-          margin: 10px auto;
           z-index: 100;
 
           h3 {
@@ -288,7 +287,8 @@ $color-botton: #28aae1;
             padding: 10px;
             box-sizing: border-box;
             border: 1px solid #aaa;
-
+            height: 60px;
+            margin: 10px 0;
             background: #ffffff;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
             border-radius: 10px;
@@ -406,6 +406,7 @@ $color-botton: #28aae1;
           border: 1px solid $color-botton;
           color: #fff;
           font-family: $fuente-botones;
+          height: 60px;
           font-size: 16px;
           cursor: pointer;
 
