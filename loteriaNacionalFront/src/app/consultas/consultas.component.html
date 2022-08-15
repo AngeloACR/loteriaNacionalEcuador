@@ -2,4 +2,11 @@
   <consultas-menu></consultas-menu>
 
   <router-outlet></router-outlet>
+
+  <div class="otros" *ngIf="notHome">
+    <h3>Consultar otros resultados</h3>
+    <consultas-ultimos-resultados></consultas-ultimos-resultados>
+
+  </div>
+
 </div>

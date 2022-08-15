@@ -349,30 +349,75 @@ select {
     }
   }
 }
+.masResultados {
+  display: none;
+}
 
 @media screen and (max-width: 1000px) {
+  .masResultados {
+    display: block;
+    width: 90%;
+    padding: 20px 30px;
+    border-radius: 40px;
+    margin: 10px auto;
+    font-family: $fuente-botones;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+  .consultaBox {
+    .boletin_oficial {
+      h1 {
+        margin: 20px 0 !important;
+        color: #021151 !important;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
   .container_consulta {
     .boletin_oficial {
+      h1 {
+        margin: 20px 0 !important;
+        color: #021151 !important;
+        text-align: center;
+      }
     }
 
     .cuerpo_boletin {
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+        color: #021151 !important;
+      }
       .explicacion {
-        grid-template-columns: repeat(2, 1fr);
-
+        grid-template-columns: repeat(1, 1fr);
         .content_explicacion {
+          width: 100%;
           .icono {
-            width: 25px;
-            height: 25px;
+            width: 40px;
+            height: 40px;
             margin-right: 8px;
           }
 
           p:nth-child(2) {
-            font-size: 8px;
+            font-weight: 400;
+            font-size: 16px;
+
+            color: #171717;
           }
         }
       }
 
       .consulta_boleto {
+        h3 {
+          font-size: 18px;
+        }
         .formulario {
           display: flex;
           flex-direction: column;
@@ -381,12 +426,29 @@ select {
           .input {
             display: block;
             width: 90%;
+            .tag {
+              color: #878787;
+              font-size: 10px;
+            }
+            .input_content {
+              input,
+              select {
+                border: none !important;
+              }
+              button {
+                margin: 25px 0;
 
+                padding: 15px 35px;
+              }
+            }
             button {
-              margin: auto;
-              margin-top: 25px;
+              margin: 25px 0;
               padding: 15px 35px;
             }
+          }
+          button {
+            margin: 25px 0;
+            padding: 15px 35px;
           }
         }
       }

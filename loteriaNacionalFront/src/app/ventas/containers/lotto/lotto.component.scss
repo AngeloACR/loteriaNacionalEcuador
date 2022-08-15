@@ -472,6 +472,10 @@ $color-lotto: #b51f20;
 @media screen and (max-width: 1000px) {
   .contenedor_loteria {
     flex-direction: column;
+
+    .ventasBox {
+      width: 100%;
+    }
     .infoBox {
       max-width: 800px;
       width: 100%;
@@ -483,9 +487,10 @@ $color-lotto: #b51f20;
 
       .selectBox {
         flex-wrap: wrap;
+        flex-direction: column;
 
         .contenedor_select {
-          width: 100%;
+          width: 100% !important;
         }
       }
 
@@ -494,9 +499,12 @@ $color-lotto: #b51f20;
         margin: 0;
         .numeros {
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: center !important;
           input {
             margin: 0 6px !important;
+            width: 45px !important;
+            height: 45px !important;
+            font-size: 20px !important;
           }
 
           .activado {
@@ -507,7 +515,7 @@ $color-lotto: #b51f20;
 
       table {
         tbody {
-          grid-template-columns: repeat(1, auto);
+          grid-template-columns: repeat(2, auto) !important;
         }
 
         hr {

@@ -1,15 +1,36 @@
 .selectionBox {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(2, auto);
+  .otros {
+    display: none;
+  }
+  .contenedor {
     width: 100%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(2, auto);
-  
-    .contenedor {
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .selectionBox {
+    .otros {
+      display: block;
       width: 100%;
-      margin: 20px auto;
-      display: flex;
-      justify-content: space-evenly;
+
+      h3 {
+        /* Consulta por Boleto y Sorteo */
+
+        font-family: "Helvetica";
+        font-style: italic;
+        font-weight: 700;
+        margin-left: 20px;
+        font-size: 18px;
+        color: #021151 !important;
+        text-transform: uppercase;
+      }
     }
   }
-  
+}

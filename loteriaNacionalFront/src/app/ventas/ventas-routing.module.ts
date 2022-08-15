@@ -20,6 +20,7 @@ const routes: Routes = [
       path: "pozo/:token",
       component: PozoComponent
     },
+    { path: "", component: HomeComponent },
     { path: ":token", component: HomeComponent }
   ],
   },

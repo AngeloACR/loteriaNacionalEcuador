@@ -2274,6 +2274,12 @@ body {
   margin: 0;
   font-family: "Monstserrat Regular";
 }
+select {
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
 *,
 ::before,
 ::after {
@@ -2507,17 +2513,61 @@ body {
   font-family: "Monstserrat Bold";
   cursor: pointer;
 }
+.masResultados {
+  display: none;
+}
 @media screen and (max-width: 1000px) {
+  .masResultados {
+    display: block;
+    width: 90%;
+    padding: 20px 30px;
+    border-radius: 40px;
+    margin: 10px auto;
+    font-family: "Monstserrat SemiBold";
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+  }
+  .masResultados:hover {
+    background-color: #fff;
+  }
+
+  .consultaBox .boletin_oficial h1 {
+    margin: 20px 0 !important;
+    color: #021151 !important;
+    text-align: center;
+    width: 100%;
+  }
+
+  .container_consulta .boletin_oficial h1 {
+    margin: 20px 0 !important;
+    color: #021151 !important;
+    text-align: center;
+  }
+  .container_consulta .cuerpo_boletin h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #021151 !important;
+  }
   .container_consulta .cuerpo_boletin .explicacion {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .container_consulta .cuerpo_boletin .explicacion .content_explicacion {
+    width: 100%;
   }
   .container_consulta .cuerpo_boletin .explicacion .content_explicacion .icono {
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     margin-right: 8px;
   }
   .container_consulta .cuerpo_boletin .explicacion .content_explicacion p:nth-child(2) {
-    font-size: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #171717;
+  }
+  .container_consulta .cuerpo_boletin .consulta_boleto h3 {
+    font-size: 18px;
   }
   .container_consulta .cuerpo_boletin .consulta_boleto .formulario {
     display: flex;
@@ -2528,9 +2578,24 @@ body {
     display: block;
     width: 90%;
   }
+  .container_consulta .cuerpo_boletin .consulta_boleto .formulario .input .tag {
+    color: #878787;
+    font-size: 10px;
+  }
+  .container_consulta .cuerpo_boletin .consulta_boleto .formulario .input .input_content input,
+.container_consulta .cuerpo_boletin .consulta_boleto .formulario .input .input_content select {
+    border: none !important;
+  }
+  .container_consulta .cuerpo_boletin .consulta_boleto .formulario .input .input_content button {
+    margin: 25px 0;
+    padding: 15px 35px;
+  }
   .container_consulta .cuerpo_boletin .consulta_boleto .formulario .input button {
-    margin: auto;
-    margin-top: 25px;
+    margin: 25px 0;
+    padding: 15px 35px;
+  }
+  .container_consulta .cuerpo_boletin .consulta_boleto .formulario button {
+    margin: 25px 0;
     padding: 15px 35px;
   }
 }

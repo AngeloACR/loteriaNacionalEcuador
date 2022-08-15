@@ -89,7 +89,6 @@ $fuente-botones: "Monstserrat SemiBold";
       &.juegosOnline {
         display: flex;
       }
-  
     }
   }
   .active {
@@ -148,4 +147,19 @@ $fuente-botones: "Monstserrat SemiBold";
 .juegosOnline {
   color: #15295b;
   background-color: #15295b;
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    overflow-x: scroll;
+    .title {
+      display: none !important;
+    }
+    .contenedor_loteria{
+      width: 50%;
+      padding: 0 20px;
+      .mobile{
+        display: none !important;
+      }
+    }
+  }
 }

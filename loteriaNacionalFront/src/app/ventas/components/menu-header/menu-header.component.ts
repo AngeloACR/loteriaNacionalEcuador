@@ -32,7 +32,7 @@ export class MenuHeaderComponent implements OnInit {
     this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
     this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
     this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
-    this.linkJuegosOnline = `/inicio`;
+    this.linkJuegosOnline = `http://loteria.mongibello.tech:83/#/juegos`;
   }
   getLink(link: string) {
     if (!this.token) {

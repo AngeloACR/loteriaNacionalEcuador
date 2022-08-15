@@ -1,129 +1,124 @@
+<div class="container_consulta">
+  <div class="cuerpo_boletin">
+    <h1>Consultas</h1>
+    <div class="explicacion">
+      <div class="content_explicacion">
+        <p class="icono">1</p>
+        <p>Ingresa la combinación principal y la serie de tu boleto.</p>
+      </div>
+      <div class="content_explicacion">
+        <p class="icono">2</p>
+        <p>Luego Elige la fecha del sorteo.</p>
+      </div>
+      <div class="content_explicacion">
+        <p class="icono">!</p>
+        <p>
+          Los boletos a consultar deben corresponder a la misma fecha y puedes
+          revisar de los ultimos 3 meses.
+        </p>
+      </div>
+    </div>
+    <div class="separador">
+      <hr />
+    </div>
+    <div class="consulta_boleto">
+      <h3 class="">Consulta por Boleto y Sorteo</h3>
 
-    <div class="container_consulta">
-      <div class="cuerpo_boletin">
-        <h1>Consultas</h1>
-        <div class="explicacion">
-          <div class="content_explicacion">
-            <p class="icono">1</p>
-            <p>Ingresa la combinación principal y la serie de tu boleto.</p>
+      <form action="" class="formulario">
+        <div class="input">
+          <div class="input_content">
+            <label for="">Ingresa numero de boleto:</label>
+            <input
+              name="combinaciones"
+              type="text"
+              maxlength="4"
+              (input)="validateCombinacion()"
+              [(ngModel)]="combinacion"
+            />
           </div>
-          <div class="content_explicacion">
-            <p class="icono">2</p>
-            <p>Luego Elige la fecha del sorteo.</p>
+          <p class="tag">
+            Ingresa los 4 dígitos de la combinación principal de tu boleto. Solo
+            puedes consultar un boleto a la vez.
+          </p>
+        </div>
+        <div class="input">
+          <div class="input_content">
+            <label for="">Ingresa la serie de tu boleto:</label>
+            <input
+              name="serie"
+              type="text"
+              (input)="validateSerie()"
+              [(ngModel)]="serie"
+            />
           </div>
-          <div class="content_explicacion">
-            <p class="icono">!</p>
-            <p>
-              Los boletos a consultar deben corresponder a la misma fecha y puedes
-              revisar de los ultimos 3 meses.
-            </p>
+          <p>Ingresa todos los dígitos de la serie de tu boleto.</p>
+        </div>
+        <div class="input">
+          <div class="input_content">
+            <label for="">Selecciona el numero del sorteo:</label>
+            <select
+              name="sorteoGanador"
+              id="sorteoGanador"
+              placeholder=""
+              [(ngModel)]="sorteoGanador"
+            >
+              <option value="default" selected disabled>
+                Seleccione un sorteo
+              </option>
+              <option
+                *ngFor="let option of sorteosJugados"
+                [value]="option.sorteo"
+              >
+                N° {{ option.sorteo }} - {{ option.fecha }}
+              </option>
+            </select>
           </div>
         </div>
-        <div class="separador">
-          <hr />
+        <button (click)="buscarBoletoGanador()">VER RESULTADOS</button>
+      </form>
+    </div>
+
+    <div class="separador">
+      <hr />
+    </div>
+
+    <div class="consulta_boleto espacio">
+      <h3 class="">Consulta por Boletin de Resultados</h3>
+      <form action="" class="formulario">
+        <div class="input">
+          <div class="input_content">
+            <label for="">Selecciona el numero del sorteo:</label>
+            <select
+              name="sorteoBoletin"
+              id="sorteoBoletin"
+              placeholder=""
+              [(ngModel)]="sorteoBoletin"
+            >
+              <option value="default" selected disabled>
+                Seleccione un sorteo
+              </option>
+              <option
+                *ngFor="let option of sorteosJugados"
+                [value]="option.sorteo"
+              >
+                N° {{ option.sorteo }} - {{ option.fecha }}
+              </option>
+            </select>
+          </div>
         </div>
-        <div class="consulta_boleto">
-          <h3 class="">Consulta por Boleto y Sorteo</h3>
-  
-          <form action="" class="formulario">
-            <div class="input">
-              <div class="input_content">
-                <label for="">Ingresa numero de boleto:</label>
-                <input
-                  name="combinaciones"
-                  type="text"
-                  maxlength="4"
-                  (input)="validateCombinacion()"
-                  [(ngModel)]="combinacion"
-                />
-              </div>
-              <p>
-                Ingresa los 4 dígitos de la combinación principal de tu boleto.
-                Solo puedes consultar un boleto a la vez.
-              </p>
-            </div>
-            <div class="input">
-              <div class="input_content">
-                <label for="">Ingresa la serie de tu boleto:</label>
-                <input
-                  name="serie"
-                  type="text"
-                  (input)="validateSerie()"
-                  [(ngModel)]="serie"
-                />
-              </div>
-              <p>
-                Ingresa todos los dígitos de la serie de tu boleto.
-              </p>
-            </div>
-            <div class="input">
-              <div class="input_content">
-                <label for="">Selecciona el numero del sorteo:</label>
-                <select
-                  name="sorteoGanador"
-                  id="sorteoGanador"
-                  placeholder=""
-                  [(ngModel)]="sorteoGanador"
-                >
-                  <option value="default" selected disabled>
-                    Seleccione un sorteo
-                  </option>
-                  <option
-                    *ngFor="let option of sorteosJugados"
-                    [value]="option.sorteo"
-                  >
-                    N° {{ option.sorteo }} - {{ option.fecha }}
-                  </option>
-                </select>
-              </div>
-  
-            </div>
-            <button (click)="buscarBoletoGanador()">VER RESULTADOS</button>
-          </form>
-        </div>
-  
-        <div class="separador">
-          <hr />
-        </div>
-  
-        <div class="consulta_boleto espacio">
-          <h3 class="">Consulta por Boletin de Resultados</h3>
-          <form action="" class="formulario">
-            <div class="input">
-              <div class="input_content">
-                <label for="">Selecciona el numero del sorteo:</label>
-                <select
-                  name="sorteoBoletin"
-                  id="sorteoBoletin"
-                  placeholder=""
-                  [(ngModel)]="sorteoBoletin"
-                >
-                  <option value="default" selected disabled>
-                    Seleccione un sorteo
-                  </option>
-                  <option
-                    *ngFor="let option of sorteosJugados"
-                    [value]="option.sorteo"
-                  >
-                    N° {{ option.sorteo }} - {{ option.fecha }}
-                  </option>
-                </select>
-              </div>
-            </div>
-            <button (click)="buscarBoletin()">VER RESULTADOS</button>
-          </form>
-        </div>
+        <button (click)="buscarBoletin()">VER RESULTADOS</button>
+      </form>
     </div>
   </div>
-  <app-loader
-    loader="millonaria"
-    [message]="loadingMessage"
-    *ngIf="isLoading"
-  ></app-loader>
-  
-  <app-error
-    [msg]="errorMessage"
-    (closeError)="closeError()"
-    *ngIf="isError"
-  ></app-error>
-  
+</div>
+<app-loader
+  loader="millonaria"
+  [message]="loadingMessage"
+  *ngIf="isLoading"
+></app-loader>
+
+<app-error
+  [msg]="errorMessage"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>

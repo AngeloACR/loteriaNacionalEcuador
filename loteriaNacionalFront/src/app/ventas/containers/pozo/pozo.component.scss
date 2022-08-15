@@ -543,6 +543,10 @@ $color-botton: #28aae1;
 @media screen and (max-width: 1000px) {
   .contenedor_loteria {
     flex-direction: column;
+
+    .ventasBox {
+      width: 100%;
+    }
     .infoBox {
       max-width: 800px;
       width: 100%;
@@ -551,19 +555,33 @@ $color-botton: #28aae1;
     .contendor_seleccion {
       width: 100%;
       margin: 0 0 20px 0;
-
+      .contenedor_select_animales {
+        .options {
+          .option {
+            width: 90px !important;
+            height: 90px !important;
+          }
+        }
+      }
       .selectBox {
         flex-wrap: wrap;
+        flex-direction: column;
 
         .contenedor_select {
-          width: 100%;
+          width: 100% !important;
         }
 
         .numeros_suerte {
-          width: 100%;
+          width: 100% !important;
           margin: 0;
           .numeros {
-            justify-content: center;
+            justify-content: center !important;
+            input {
+              margin: 0 6px !important;
+              width: 45px !important;
+              height: 45px !important;
+              font-size: 20px !important;
+            }
           }
         }
       }

@@ -19,6 +19,14 @@
   }
   
   @media screen and (max-width: 1000px) {
+    .masResultados {
+      background-color: #04b865;
+      border: 1px solid #04b865;
+  
+      &:hover {
+        color: #04b865;
+      }
+    }
     .container {
       width: 95%;
       flex-direction: column;

@@ -155,3 +155,17 @@ $color-botton: #28aae1;
     }
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .ticket_entero {
+
+    div {
+      p {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        padding: 15px !important;
+      }
+    }
+  }
+}

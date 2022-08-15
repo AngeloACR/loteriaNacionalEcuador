@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-public',
   templateUrl: './public.component.html',
-  styleUrls: ['./public.component.scss']
+  styleUrls: ['./public.component.scss'],
 })
 export class PublicComponent implements OnInit {
+  ventasLink: string =
+    'http://loteria.mongibello.tech:83/#/loteria/compra_tus_juegos';
+  consultasLink: string = '/consultas';
+  juegosLink: string = 'http://loteria.mongibello.tech:83/#/juego';
+  puntosDeLaSuerteLink: string = 'loteria.com.ec/puntos-de-la-suerte';
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

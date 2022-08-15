@@ -710,8 +710,28 @@ $color-botton: #b51f20;
 }
 
 @media screen and (max-width: 1000px) {
+  .tooltip {
+    .contenedor_numeros {
+      .contenedor_fracciones {
+        .fracciones {
+          width: 50px;
+          height: 50px;
+
+          label {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
   .contenedor_loteria {
     flex-direction: column;
+
+    .ventasBox {
+      width: 100%;
+    }
     .infoBox {
       max-width: 800px;
       width: 100%;
@@ -721,25 +741,40 @@ $color-botton: #b51f20;
       width: 100%;
       margin: 0 0 20px 0;
 
+      .contenedor_select_animales {
+        .options {
+          height: 200px;
+          .option {
+            width: 70px !important;
+            height: 70px !important;
+          }
+        }
+      }
       .selectBox {
         flex-wrap: wrap;
-
+        flex-direction: column;
         .contenedor_select {
-          width: 100%;
+          width: 100% !important;
         }
 
         .numeros_suerte {
           width: 100%;
           margin: 0;
           .numeros {
-            justify-content: center;
+            justify-content: center !important;
+            input {
+              margin: 0 6px !important;
+              width: 45px !important;
+              height: 45px !important;
+              font-size: 20px !important;
+            }
           }
         }
       }
 
       table {
         tbody {
-          grid-template-columns: repeat(2, auto);
+          grid-template-columns: repeat(2, auto) !important;
         }
 
         hr {
