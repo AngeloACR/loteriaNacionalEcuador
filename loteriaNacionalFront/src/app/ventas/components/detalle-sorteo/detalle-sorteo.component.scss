@@ -36,11 +36,14 @@ $color-botton: #28aae1;
   /* Rectangle 46 */
 
   width: 100%;
-
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   padding: 0;
   margin: auto;
   .menuInfo {
-    width: 60%;
+    width: 65%;
+    //min-width: 650px;
     display: flex;
     background: #ffffff;
     box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.25);
@@ -85,8 +88,8 @@ $color-botton: #28aae1;
           font-size: 20px;
           margin: 3px 3px 3px 10px;
           font-family: $fuente-parrafo;
-        font-style: normal;
-      }
+          font-style: normal;
+        }
 
         .fechaItem {
           width: 100%;
@@ -149,7 +152,7 @@ $color-botton: #28aae1;
 
   .menuImage {
     display: flex;
-    width: 40%;
+    width: 30%;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -160,15 +163,34 @@ $color-botton: #28aae1;
     }
   }
 }
+@media screen and (max-width: 1400px) {
+  .menuBox {
+    .menuInfo {
+      flex-direction: column;
+      align-items: center;
+      .menuSorteo,
+      .menuPremio {
+        width: 100%;
+      }
+    }
+  }
+}
 @media screen and (max-width: 1000px) {
-  .menuBox{
-    .menuInfo{
+  .menuBox {
+    flex-direction: column;
+    align-items: center;
+    .menuInfo {
       width: 100%;
       flex-direction: column;
       align-items: center;
-      .menuSorteo, .menuPremio{
-        width:100%;
+      .menuSorteo,
+      .menuPremio {
+        width: 100%;
       }
+    }
+    .menuImage {
+      width: 80%;
+      margin-top: 10px;
     }
   }
 }
