@@ -17,7 +17,9 @@ const mainController = {
       });
       let response = {
         status: "error",
-        message:e.message.toLowerCase.includes("otp")? "Has iniciado sesión en otro dispositivo.": e.message,
+        message: e.message.toLowerCase().includes("otp")
+          ? "Has iniciado sesión en otro dispositivo."
+          : e.message,
       };
       res.status(400).json(response);
     }
