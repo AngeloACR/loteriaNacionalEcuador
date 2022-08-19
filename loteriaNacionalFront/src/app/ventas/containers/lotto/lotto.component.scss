@@ -100,11 +100,12 @@ $color-lotto: #b51f20;
       }
       .selectBox {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         flex-wrap: nowrap;
         align-items: flex-end;
         .contenedor_select {
-          width: 35%;
+          width: 30%;
+          max-width: 400px;
           height: 100%;
           z-index: 100;
 
@@ -195,10 +196,10 @@ $color-lotto: #b51f20;
 
         .numeros_suerte {
           width: 35%;
+          max-width: 400px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          margin: auto;
 
           h3 {
             font-family: $fuente-subtitulo;
@@ -494,23 +495,23 @@ $color-lotto: #b51f20;
         .contenedor_select {
           width: 100% !important;
         }
-      }
 
-      .numeros_suerte {
-        width: 100%;
-        margin: 0;
-        .numeros {
-          flex-wrap: wrap;
-          justify-content: center !important;
-          input {
-            margin: 0 6px !important;
-            width: 45px !important;
-            height: 45px !important;
-            font-size: 20px !important;
-          }
+        .numeros_suerte {
+          width: 100%;
+          margin: 0;
+          .numeros {
+            flex-wrap: wrap;
+            justify-content: center !important;
+            input {
+              margin: 0 6px !important;
+              width: 45px !important;
+              height: 45px !important;
+              font-size: 20px !important;
+            }
 
-          .activado {
-            margin-top: 20px;
+            .activado {
+              margin-top: 20px;
+            }
           }
         }
       }

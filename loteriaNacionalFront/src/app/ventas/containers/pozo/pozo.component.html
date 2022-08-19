@@ -50,12 +50,12 @@
           </select>
         </div>
         <div class="numeros_suerte">
-          <h3>
-            Ingresa tu número de la suerte:
-          </h3>
+          <h3>Ingresa tu número de la suerte:</h3>
 
           <div class="numeros">
             <input
+              #input1
+              [appAutoTab]="input2"
               type="text"
               inputmode="numeric"
               pattern="[0-9]*"
@@ -66,6 +66,8 @@
               [(ngModel)]="combinacionDeLaSuerte[0]"
             />
             <input
+              #input2
+              [appAutoTab]="input3"
               type="text"
               inputmode="numeric"
               pattern="[0-9]*"
@@ -76,6 +78,8 @@
               [(ngModel)]="combinacionDeLaSuerte[1]"
             />
             <input
+              #input3
+              [appAutoTab]="input4"
               type="text"
               inputmode="numeric"
               pattern="[0-9]*"
@@ -86,6 +90,7 @@
               [(ngModel)]="combinacionDeLaSuerte[2]"
             />
             <input
+              #input4
               type="text"
               inputmode="numeric"
               pattern="[0-9]*"

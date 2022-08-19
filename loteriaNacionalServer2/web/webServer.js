@@ -42,9 +42,10 @@ module.exports.init = function (folder, thePath, port) {
       directives: {
         "frame-ancestors": [
           "'self'",
-          "https://*.loteria.com.ec",
-          "http://*.mongibello.tech",
-          "http://loteria.mongibello.tech:83",
+          "*",
+//          "https://*.loteria.com.ec",
+//          "http://*.mongibello.tech",
+  //        "http://loteria.mongibello.tech:83",
         ],
       },
     })
