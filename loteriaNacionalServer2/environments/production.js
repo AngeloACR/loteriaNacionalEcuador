@@ -48,9 +48,8 @@ module.exports = {
 
   // MONGO DATABASE DATA
   //dbAddress: "mongodb://localhost:27017/loteriaDB",
-  //dbAddress: "mongodb://localhost:27017/loteriaDB",
-  dbAddress:
-    "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
+  dbAddress: "mongodb://localhost:27017/loteriaDB",
+  //dbAddress:"mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
 
   //MAILJET DATA
 
