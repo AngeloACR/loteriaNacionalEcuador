@@ -29,7 +29,7 @@ module.exports = {
   exalogicHost: "www.loteria.com.ec",
   exalogicEndpoint: "/lotery_api/XReceiver",
 
-  alboranHost: "loteria.mongibello.tech",
+  alboranHost: "mtpu.bet593.ec",
   alboranEndpoint: "/out/direct/json/lottery",
   // DATA FOR LOTERIA NACIONAL API
   //usuarioAplicativo: "sitiowebprep",
@@ -65,7 +65,7 @@ module.exports = {
   // FTP DATA
   //ftpHost: "localhost",
   //ftpHost: "172.81.117.113",
-  ftpHost: "20.8.126.89",
+  ftpHost: "0.0.0.0",
 
   ftpBoletinesPort: 2224,
   ftpBoletosPort: 2226,

@@ -72,7 +72,7 @@ module.exports = {
 
   // FTP DATA
   //ftpHost: "localhost",
-  ftpHost: "20.229.220.176",
+  ftpHost: "0.0.0.0",
   //ftpHost: "144.208.73.177",
 
   ftpBoletinesPort: 2224,
