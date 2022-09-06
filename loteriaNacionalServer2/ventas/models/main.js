@@ -242,16 +242,16 @@ VentaSchema.statics = {
       let venta = await this.findOne(query);
       let response;
       if (venta) {
-        if (accountId == venta.accountId) {
+        //if (accountId == venta.accountId) {
           response = {
             status: true,
             values: venta,
           };
-        } else {
+        /*} else {
           response = {
             status: false,
           };
-        }
+        }*/
       } else {
         response = {
           status: false,

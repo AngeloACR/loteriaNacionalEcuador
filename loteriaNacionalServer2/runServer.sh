@@ -2,10 +2,10 @@
 
 cd auth
 pm2 start authApp.js --name authApp
-cd ../ftpBoletines
-pm2 start ftpBoletinesApp.js --name ftpBoletinesApp
-cd ../ftpBoletos
-pm2 start ftpBoletosApp.js --name ftpBoletosApp
+# cd ../ftpBoletines
+# pm2 start ftpBoletinesApp.js --name ftpBoletinesApp
+# cd ../ftpBoletos
+# pm2 start ftpBoletosApp.js --name ftpBoletosApp
 cd ../ganadores
 pm2 start ganadoresApp.js --name ganadoresApp
 cd ../helper
