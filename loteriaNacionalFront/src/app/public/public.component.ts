@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PublicComponent implements OnInit {
   ventasLink: string = 'https://www.loteria.com.ec/#/loteria/compra_tus_juegos';
   consultasLink: string = '/consultas/loteria';
-  juegosLink: string = 'https://www.loteria.com.ec/#/juego';
+  juegosLink: string = 'https://www.loteria.com.ec/#/juegos';
   puntosDeLaSuerteLink: string =
     'https://www.loteria.com.ec/#/contenido/puntos-suerte';
   constructor() {}
