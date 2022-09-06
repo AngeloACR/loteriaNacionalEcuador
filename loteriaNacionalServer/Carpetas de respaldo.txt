@@ -1,4 +1,0 @@
-/home/loterianacional/respaldoDB/
-/root/loteriaNacionalEcuador/loteriaNacionalServer/uploads/boletines
-/root/loteriaNacionalEcuador/loteriaNacionalServer/uploads/boletos
-
