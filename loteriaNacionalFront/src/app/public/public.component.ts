@@ -6,11 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./public.component.scss'],
 })
 export class PublicComponent implements OnInit {
-  ventasLink: string =
-    'http://loteria.mongibello.tech:83/#/loteria/compra_tus_juegos';
-  consultasLink: string = 'http://loteria.mongibello.tech:83/#/loteria/inicio';
-  juegosLink: string = 'http://loteria.mongibello.tech:83/#/juego';
-  puntosDeLaSuerteLink: string = 'loteria.com.ec/puntos-de-la-suerte';
+  ventasLink: string = 'https://www.loteria.com.ec/#/loteria/compra_tus_juegos';
+  consultasLink: string = '/consultas/loteria';
+  juegosLink: string = 'https://www.loteria.com.ec/#/juego';
+  puntosDeLaSuerteLink: string =
+    'https://www.loteria.com.ec/#/contenido/puntos-suerte';
   constructor() {}
 
   ngOnInit(): void {}
