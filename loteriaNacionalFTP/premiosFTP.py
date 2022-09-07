@@ -77,10 +77,10 @@ def sendResult(message):
     sys.stdout.flush()
 
 def main():
-    #db = "mongodb://localhost:27017/loteriaDB"
-    db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
+    db = "mongodb://localhost:27017/loteriaDB"
+    #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    filepath = "/home/loterianacional/resultados" + filename
+    filepath = "/home/acri/resultados" + filename
     #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores" + filename
     file = open(filepath, encoding="iso-8859-1")
     content = file.read()
