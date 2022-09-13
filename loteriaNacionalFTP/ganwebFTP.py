@@ -120,10 +120,10 @@ def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
                 updateQuery = {"$set": ganador}
                 ganadoreswebs.update_one(query, updateQuery)
 
-        #url = "http://localhost:7500/acreditarPremios"
+        url = "http://localhost:200/ganadores/acreditarPremios"
 
         #url = "https://ventas-api-prueba.loteria.com.ec/ganadores/acreditarPremios"
-        url = "https://ventas-api.loteria.com.ec/ganadores/acreditarPremios"
+        #url = "https://ventas-api.loteria.com.ec/ganadores/acreditarPremios"
         response = requests.post(url, json={"sorteo": numeroSorteo})
         resultado = response.json()
         closeConnect(connection)

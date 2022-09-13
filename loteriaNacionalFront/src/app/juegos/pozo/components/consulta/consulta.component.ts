@@ -180,7 +180,7 @@ export class ConsultaComponent implements OnInit {
       return;
     }
     this.router.navigateByUrl(
-      `/resultados/pozo_millonario_boletin/${this.sorteoBoletin}`
+      `/consultas/pozo/${this.sorteoBoletin}`
     );
   }
   async buscarRango() {
@@ -205,7 +205,6 @@ export class ConsultaComponent implements OnInit {
       );
       this.resultados.emit(data);
       this.dismissLoader();
-      //this.router.navigateByUrl(`/pozo_millonario_boletin/${this.sorteoBoletin}`);
     } catch (e: any) {
       this.dismissLoader();
       this.openError(e.message);
