@@ -4,6 +4,7 @@ const mainController = require('../controller/main');
 
 lotteryRouter.post('/sellLottery', mainController.sellLottery);
 lotteryRouter.post('/cancelLottery', mainController.cancelLottery);
+lotteryRouter.post('/cancelMany', mainController.cancelMany);
 lotteryRouter.post('/reserveLottery', mainController.reserveLottery);
 lotteryRouter.post('/getBalance', mainController.getBalance);
 

@@ -92,6 +92,40 @@ const walletController = {
       res.status(400).json(response);
     }
   },
+  cancelMany: async (req, res) => {
+    try {
+      /* {
+                "token": "661c0ce5ccabbeb1136a"
+                "reserveId": 123564987,
+                "amount": "30.00",
+                "transactionId": "2223846696262170"
+            } */
+      /*       let operationTimeStamp = new Date(Date.now())
+        .toISOString()
+        .replace("T", " ")
+        .replace("Z", ""); */
+
+      //let response = await exalogicWallet.cancelLottery(req.body);
+      let data = req.body
+      let aux = data.map((item)=>{
+        return alboranWallet.cancelLottery(item)
+      })
+      let response = await Promise.all(aux);
+      res.status(200).json(response);
+    } catch (e) {
+      walletLogger.error("cancelLottery.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
   reserveLottery: async (req, res) => {
     try {
       /*
