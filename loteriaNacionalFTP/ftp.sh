@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo tail -F /home/acri/ftpLogs/xferlog | while read line; do
+sudo tail -F /home/acri/ftp/log/xferlog | while read line; do
   if echo "$line" | grep -q 'i r'; then
     IFS=" " read -a myarray <<< $line
     filename=${myarray[8]}
