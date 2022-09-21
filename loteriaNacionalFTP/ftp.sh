@@ -12,7 +12,14 @@ sudo tail -F /home/acri/ftp/log/xferlog | while read line; do
     fi        
     if [[ $filename == *"GANWEB"* ]]; then
         python3.6 ./ganwebFTP.py $filename
-    fi    
+    fi
+    if [[ $filename == *"boletos"* ]]; then
+        cp /home/acri/ftp/resultados/$filename /home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos
+    fi
+    if [[ $filename == *"boletines"* ]]; then
+        cp /home/acri/ftp/resultados/$filename /home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletines
+    fi
+
   fi
 done
 
