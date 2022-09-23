@@ -34,7 +34,7 @@ $loteriaNacionalWeb-theme: mat-light-theme(
  */
 $fuente-titulo: "Monstserrat Bold";
 $fuente-subtitulo: "Monstserrat SemiBold";
-$fuente-parrafo: "Monstserrat Regular";
+$fuente-parrafo: "Helvetica";
 $fuente-botones: "Monstserrat SemiBold";
 
 /*
@@ -51,6 +51,9 @@ body {
 
 button {
   outline: none;
+}
+a,p,button,div{
+  font-family: $fuente-parrafo !important;
 }
 
 html,

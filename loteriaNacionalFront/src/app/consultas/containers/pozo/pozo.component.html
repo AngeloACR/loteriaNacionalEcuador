@@ -2,6 +2,7 @@
   <pozo-consulta class="consultaBox" (resultados)="toggleResultados($event)">
   </pozo-consulta>
   <pozo-ultimo-resultado class="selectorBox"></pozo-ultimo-resultado>
+  <ventas-menu-box class="menuBox" [miniBox]="true"></ventas-menu-box>
 
   <div class="modalBox" *ngIf="showResultados">
     <consultas-resultados

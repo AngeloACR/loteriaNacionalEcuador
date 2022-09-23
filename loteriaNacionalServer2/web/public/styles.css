@@ -2261,6 +2261,9 @@ body {
 button {
   outline: none;
 }
+a, p, button, div {
+  font-family: "Helvetica" !important;
+}
 html,
 body {
   background-color: #fff;
@@ -2272,7 +2275,7 @@ body {
   background-repeat: repeat;
   padding: 0;
   margin: 0;
-  font-family: "Monstserrat Regular";
+  font-family: "Helvetica";
 }
 select {
   margin: 0;
@@ -2434,7 +2437,7 @@ select {
   border-radius: 30px;
   max-height: 50px;
   color: #fff;
-  font-family: "Monstserrat Regular";
+  font-family: "Helvetica";
   margin-top: 25px;
   font-size: 13px;
   cursor: pointer;
@@ -2449,7 +2452,7 @@ select {
   max-height: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   color: #fff;
-  font-family: "Monstserrat Regular";
+  font-family: "Helvetica";
   margin-top: 25px;
   font-size: 13px;
   cursor: pointer;
@@ -2482,7 +2485,7 @@ select {
   border-radius: 15px 15px 0 0;
 }
 .boletin_oficial h1 {
-  font-family: "Monstserrat Regular";
+  font-family: "Helvetica";
   font-style: italic;
   font-weight: 700;
   font-size: 30px;
@@ -2503,7 +2506,7 @@ select {
   justify-content: center;
 }
 .container_boletin .boletinNotFound p {
-  font-family: "Monstserrat Regular";
+  font-family: "Helvetica";
   font-size: 16px;
   text-align: center;
 }

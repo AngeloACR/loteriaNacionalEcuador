@@ -1,4 +1,5 @@
-$fuente-titulo: "Monstserrat Bold";
+$fuente-premio: "Hanuman";
+$fuente-titulo: "Helvetica";
 $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
@@ -72,6 +73,29 @@ $color-pozo: #04b865;
         text-align: center;
         -webkit-text-stroke: 2px $color-pozo;
         color: $color-pozo;
+        font-family: $fuente-premio!important;
+        margin: 10px 0px;
+      }
+
+      p:nth-child(2) {
+        font-size: 14px;
+        margin: 0px;
+        margin-bottom: 5px;
+        color: $color-pozo;
+        font-family: $fuente-subtitulo;
+      }
+    }
+    .ticket_title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p:nth-child(1) {
+        font-size: 30px;
+        text-align: center;
+        -webkit-text-stroke: 2px $color-pozo;
+        font-style: italic;
+        color: $color-pozo;
         font-family: $fuente-titulo;
         margin: 10px 0px;
       }
@@ -84,7 +108,6 @@ $color-pozo: #04b865;
         font-family: $fuente-subtitulo;
       }
     }
-
     .ticket_entero_fraccion {
       display: flex;
       justify-content: space-between;

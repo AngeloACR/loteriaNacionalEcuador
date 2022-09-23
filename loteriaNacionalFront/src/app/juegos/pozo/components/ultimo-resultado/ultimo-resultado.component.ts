@@ -28,7 +28,8 @@ export class UltimoResultadoComponent implements OnInit {
       mascota: this.mascota,
       numeroSorteo: data.numeroSorteo,
       codigo: data.ultimoResultadoPozo.codigo,
-      sorteo: data.sorteo
+      sorteo: data.sorteo,
+      valorPremio: data.premioPrincipal.valorPremio
     };
   }
   verUltimoBoletin() {

@@ -20,7 +20,8 @@ export class UltimoResultadoComponent implements OnInit {
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       numeroSorteo: data.numeroSorteo,
-      sorteo: data.sorteo
+      sorteo: data.sorteo,
+      valorPremio: parseFloat(data.premioPrincipal.valorPremio)
     };
   }
 

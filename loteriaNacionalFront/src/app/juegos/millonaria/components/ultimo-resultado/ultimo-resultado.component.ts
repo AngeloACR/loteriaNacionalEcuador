@@ -23,7 +23,8 @@ export class UltimoResultadoComponent implements OnInit {
       ticketNumbers: this.ticketNumbers,
       serieNumbers: this.serieNumbers,
       numeroSorteo: data.numeroSorteo,
-      sorteo: data.sorteo
+      sorteo: data.sorteo,
+      valorPremio: data.premioPrincipal.valorPremio
     };
   }
 

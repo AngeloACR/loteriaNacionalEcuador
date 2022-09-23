@@ -18,11 +18,16 @@
 
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   .consultaBox {
     width: 65%;
   }
 
   .selectorBox {
+    width: 30%;
+  }
+  .menuBox {
+    margin-left: auto;
     width: 30%;
   }
 }

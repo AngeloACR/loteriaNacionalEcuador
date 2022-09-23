@@ -210,8 +210,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function BotonDeJuegoComponent_a_0_Template(rf, ctx) { if (rf & 1) {
+    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function BotonDeJuegoComponent_a_0_Template_a_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3); const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r2.checkToken($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Jugar\n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("href", ctx_r0.link, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("ngClass", ctx_r0.name)("ngClass", ctx_r0.tipoLoteria);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx_r0.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+} }
+function BotonDeJuegoComponent_a_1_Template(rf, ctx) { if (rf & 1) {
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function BotonDeJuegoComponent_a_1_Template_a_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.checkToken($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Jugar\n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("href", ctx_r1.link, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("ngClass", ctx_r1.name)("ngClass", ctx_r1.tipoLoteria);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx_r1.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+} }
 class BotonDeJuegoComponent {
     constructor() {
+        this.mini = false;
         this.authError = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
     }
     ngOnInit() {
@@ -248,17 +275,14 @@ class BotonDeJuegoComponent {
     }
 }
 BotonDeJuegoComponent.ɵfac = function BotonDeJuegoComponent_Factory(t) { return new (t || BotonDeJuegoComponent)(); };
-BotonDeJuegoComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BotonDeJuegoComponent, selectors: [["app-boton-de-juego"]], inputs: { image: "image", link: "link", name: "name", loteria: "loteria", token: "token" }, outputs: { authError: "authError" }, decls: 3, vars: 4, consts: [[1, "lotteryBox", 3, "href", "ngClass", "click"], ["alt", "", 1, "lotteryImg", 3, "src"]], template: function BotonDeJuegoComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function BotonDeJuegoComponent_Template_a_click_0_listener($event) { return ctx.checkToken($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Jugar\n");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+BotonDeJuegoComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BotonDeJuegoComponent, selectors: [["app-boton-de-juego"]], inputs: { image: "image", link: "link", mini: "mini", name: "name", loteria: "loteria", token: "token" }, outputs: { authError: "authError" }, decls: 2, vars: 2, consts: [["class", "lotteryBox", 3, "href", "ngClass", "click", 4, "ngIf"], ["class", "miniLotteryBox", 3, "href", "ngClass", "click", 4, "ngIf"], [1, "lotteryBox", 3, "href", "ngClass", "click"], ["alt", "", 1, "lotteryImg", 3, "src"], [1, "miniLotteryBox", 3, "href", "ngClass", "click"]], template: function BotonDeJuegoComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, BotonDeJuegoComponent_a_0_Template, 3, 4, "a", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, BotonDeJuegoComponent_a_1_Template, 3, 4, "a", 1);
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("href", ctx.link, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("ngClass", ctx.name)("ngClass", ctx.tipoLoteria);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.mini);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.NgClass], styles: [".lotteryBox[_ngcontent-%COMP%] {\n  font-family: \"Helvetica\";\n  font-style: italic;\n  font-weight: 700;\n  font-size: 25px;\n  text-align: center;\n  text-decoration: none;\n  text-transform: uppercase;\n  color: #ffffff;\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  width: 420px;\n  height: 140px;\n  margin: 20px 20px 20px 0;\n  box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);\n  border-radius: 45.5px;\n}\n.lotteryBox[_ngcontent-%COMP%]   .lotteryImg[_ngcontent-%COMP%] {\n  width: 50%;\n  transition: width 0.3s ease;\n}\n.lotteryBox[_ngcontent-%COMP%]:hover   .lotteryImg[_ngcontent-%COMP%] {\n  width: 60%;\n  transition: width 0.3s ease;\n}\n.lotteryBox[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%] {\n  display: none;\n}\n.loteria[_ngcontent-%COMP%] {\n  background-color: #28AAE1;\n  border: 3px solid #28AAE1;\n}\n.lotto[_ngcontent-%COMP%] {\n  background-color: #b51f20;\n  border: 3px solid #b51f20;\n}\n.pozo[_ngcontent-%COMP%] {\n  background-color: #04b865;\n  border: 3px solid #04b865;\n}\n.millonaria[_ngcontent-%COMP%] {\n  background-color: #b51f20;\n  border: 3px solid #b51f20;\n}\n@media screen and (max-width: 800px) {\n  .lotteryBox[_ngcontent-%COMP%] {\n    width: 300px;\n    height: 100px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJvdG9uLWRlLWp1ZWdvLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGdEQUFBO0FBVUE7RUFFRSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUNBLHlCQUFBO0VBRUEsY0FBQTtFQUVBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLDZCQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSx3QkFBQTtFQUNBLDRDQUFBO0VBQ0EscUJBQUE7QUFYRjtBQWFFO0VBQ0UsVUFBQTtFQUNBLDJCQUFBO0FBWEo7QUFjRTtFQUNFLFVBQUE7RUFFQSwyQkFBQTtBQWJKO0FBZ0JFO0VBQ0UsYUFBQTtBQWRKO0FBbUJBO0VBQ0UseUJBQUE7RUFDQSx5QkFBQTtBQWhCRjtBQW1CQTtFQUNFLHlCQUFBO0VBQ0EseUJBQUE7QUFoQkY7QUFtQkE7RUFDRSx5QkFBQTtFQUNBLHlCQUFBO0FBaEJGO0FBbUJBO0VBQ0UseUJBQUE7RUFDQSx5QkFBQTtBQWhCRjtBQW9CQTtFQUNFO0lBQ0UsWUFBQTtJQUNBLGFBQUE7RUFqQkY7QUFDRiIsImZpbGUiOiJib3Rvbi1kZS1qdWVnby5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEBpbXBvcnQgdXJsKFwiLi4vLi4vLi4vLi4vc2Fzcy9mb250cy5zY3NzXCIpOyAqL1xyXG4kY29sb3ItbG90ZXJpYTogIzI4QUFFMTtcclxuJGNvbG9yLWxvdHRvOiAjYjUxZjIwO1xyXG4kY29sb3ItcG96bzogIzA0Yjg2NTtcclxuJGNvbG9yLW1pbGxvbmFyaWE6ICNiNTFmMjA7XHJcbiRmdWVudGUtdGl0dWxvOiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcclxuJGZ1ZW50ZS1zdWJ0aXR1bG86IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcclxuJGZ1ZW50ZS1wYXJyYWZvOiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcclxuJGZ1ZW50ZS1ib3RvbmVzOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XHJcblxyXG4ubG90dGVyeUJveCB7XHJcblxyXG4gIGZvbnQtZmFtaWx5OiBcIkhlbHZldGljYVwiO1xyXG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcclxuICBmb250LXdlaWdodDogNzAwO1xyXG4gIGZvbnQtc2l6ZTogMjVweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgXHJcbiAgY29sb3I6ICNmZmZmZmY7XHJcblxyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICB3aWR0aDogNDIwcHg7XHJcbiAgaGVpZ2h0OiAxNDBweDtcclxuICBtYXJnaW46IDIwcHggMjBweCAyMHB4IDA7XHJcbiAgYm94LXNoYWRvdzogMHB4IDVweCAxMXB4IHJnYmEoMCwgMCwgMCwgMC4yNSk7XHJcbiAgYm9yZGVyLXJhZGl1czogNDUuNXB4O1xyXG5cclxuICAubG90dGVyeUltZyB7XHJcbiAgICB3aWR0aDogNTAlO1xyXG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xyXG4gIH1cclxuXHJcbiAgJjpob3ZlciAubG90dGVyeUltZ3tcclxuICAgIHdpZHRoOiA2MCU7XHJcblxyXG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xyXG4gIH1cclxuXHJcbiAgLmFjdGl2ZSB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG4gIH1cclxufVxyXG5cclxuXHJcbi5sb3RlcmlhIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjhBQUUxO1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkICMyOEFBRTE7XHJcbn1cclxuXHJcbi5sb3R0byB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I1MWYyMDtcclxuICBib3JkZXI6IDNweCBzb2xpZCAjYjUxZjIwO1xyXG59XHJcblxyXG4ucG96byB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzA0Yjg2NTtcclxuICBib3JkZXI6IDNweCBzb2xpZCAjMDRiODY1O1xyXG59XHJcblxyXG4ubWlsbG9uYXJpYSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I1MWYyMDtcclxuICBib3JkZXI6IDNweCBzb2xpZCAjYjUxZjIwO1xyXG59XHJcblxyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogODAwcHgpIHtcclxuICAubG90dGVyeUJveHtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGhlaWdodDogMTAwcHg7XHJcbiAgfVxyXG59XHJcbiJdfQ== */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.mini);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_1__.NgClass], styles: [".lotteryBox[_ngcontent-%COMP%] {\n  font-family: \"Helvetica\";\n  font-style: italic;\n  font-weight: 700;\n  font-size: 25px;\n  text-align: center;\n  text-decoration: none;\n  text-transform: uppercase;\n  color: #ffffff;\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  width: 420px;\n  height: 140px;\n  margin: 20px 20px 20px 0;\n  box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);\n  border-radius: 45.5px;\n}\n.lotteryBox[_ngcontent-%COMP%]   .lotteryImg[_ngcontent-%COMP%] {\n  width: 50%;\n  transition: width 0.3s ease;\n}\n.lotteryBox[_ngcontent-%COMP%]:hover   .lotteryImg[_ngcontent-%COMP%] {\n  width: 60%;\n  transition: width 0.3s ease;\n}\n.lotteryBox[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%] {\n  display: none;\n}\n.miniLotteryBox[_ngcontent-%COMP%] {\n  font-family: \"Helvetica\";\n  font-style: italic;\n  font-weight: 700;\n  font-size: 16px;\n  text-align: center;\n  text-decoration: none;\n  text-transform: uppercase;\n  color: #ffffff;\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n  width: 200px;\n  height: 60px;\n  margin: 20px;\n  box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);\n  border-radius: 45.5px;\n}\n.miniLotteryBox[_ngcontent-%COMP%]   .lotteryImg[_ngcontent-%COMP%] {\n  width: 40%;\n  transition: width 0.3s ease;\n}\n.miniLotteryBox[_ngcontent-%COMP%]:hover   .lotteryImg[_ngcontent-%COMP%] {\n  width: 50%;\n  transition: width 0.3s ease;\n}\n.miniLotteryBox[_ngcontent-%COMP%]   .active[_ngcontent-%COMP%] {\n  display: none;\n}\n.loteria[_ngcontent-%COMP%] {\n  background-color: #28AAE1;\n  border: 3px solid #28AAE1;\n}\n.lotto[_ngcontent-%COMP%] {\n  background-color: #b51f20;\n  border: 3px solid #b51f20;\n}\n.pozo[_ngcontent-%COMP%] {\n  background-color: #04b865;\n  border: 3px solid #04b865;\n}\n.millonaria[_ngcontent-%COMP%] {\n  background-color: #b51f20;\n  border: 3px solid #b51f20;\n}\n@media screen and (max-width: 800px) {\n  .lotteryBox[_ngcontent-%COMP%] {\n    width: 300px;\n    height: 100px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJvdG9uLWRlLWp1ZWdvLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGdEQUFBO0FBVUE7RUFFRSx3QkFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtFQUNBLHlCQUFBO0VBRUEsY0FBQTtFQUVBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLDZCQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSx3QkFBQTtFQUNBLDRDQUFBO0VBQ0EscUJBQUE7QUFYRjtBQWFFO0VBQ0UsVUFBQTtFQUNBLDJCQUFBO0FBWEo7QUFjRTtFQUNFLFVBQUE7RUFFQSwyQkFBQTtBQWJKO0FBZ0JFO0VBQ0UsYUFBQTtBQWRKO0FBaUJBO0VBRUUsd0JBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0VBQ0EscUJBQUE7RUFDQSx5QkFBQTtFQUVBLGNBQUE7RUFFQSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSw2QkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLDRDQUFBO0VBQ0EscUJBQUE7QUFqQkY7QUFtQkU7RUFDRSxVQUFBO0VBQ0EsMkJBQUE7QUFqQko7QUFvQkU7RUFDRSxVQUFBO0VBRUEsMkJBQUE7QUFuQko7QUFzQkU7RUFDRSxhQUFBO0FBcEJKO0FBd0JBO0VBQ0UseUJBQUE7RUFDQSx5QkFBQTtBQXJCRjtBQXdCQTtFQUNFLHlCQUFBO0VBQ0EseUJBQUE7QUFyQkY7QUF3QkE7RUFDRSx5QkFBQTtFQUNBLHlCQUFBO0FBckJGO0FBd0JBO0VBQ0UseUJBQUE7RUFDQSx5QkFBQTtBQXJCRjtBQXlCQTtFQUNFO0lBQ0UsWUFBQTtJQUNBLGFBQUE7RUF0QkY7QUFDRiIsImZpbGUiOiJib3Rvbi1kZS1qdWVnby5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIEBpbXBvcnQgdXJsKFwiLi4vLi4vLi4vLi4vc2Fzcy9mb250cy5zY3NzXCIpOyAqL1xyXG4kY29sb3ItbG90ZXJpYTogIzI4QUFFMTtcclxuJGNvbG9yLWxvdHRvOiAjYjUxZjIwO1xyXG4kY29sb3ItcG96bzogIzA0Yjg2NTtcclxuJGNvbG9yLW1pbGxvbmFyaWE6ICNiNTFmMjA7XHJcbiRmdWVudGUtdGl0dWxvOiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcclxuJGZ1ZW50ZS1zdWJ0aXR1bG86IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcclxuJGZ1ZW50ZS1wYXJyYWZvOiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcclxuJGZ1ZW50ZS1ib3RvbmVzOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XHJcblxyXG4ubG90dGVyeUJveCB7XHJcblxyXG4gIGZvbnQtZmFtaWx5OiBcIkhlbHZldGljYVwiO1xyXG4gIGZvbnQtc3R5bGU6IGl0YWxpYztcclxuICBmb250LXdlaWdodDogNzAwO1xyXG4gIGZvbnQtc2l6ZTogMjVweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgXHJcbiAgY29sb3I6ICNmZmZmZmY7XHJcblxyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICB3aWR0aDogNDIwcHg7XHJcbiAgaGVpZ2h0OiAxNDBweDtcclxuICBtYXJnaW46IDIwcHggMjBweCAyMHB4IDA7XHJcbiAgYm94LXNoYWRvdzogMHB4IDVweCAxMXB4IHJnYmEoMCwgMCwgMCwgMC4yNSk7XHJcbiAgYm9yZGVyLXJhZGl1czogNDUuNXB4O1xyXG5cclxuICAubG90dGVyeUltZyB7XHJcbiAgICB3aWR0aDogNTAlO1xyXG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xyXG4gIH1cclxuXHJcbiAgJjpob3ZlciAubG90dGVyeUltZ3tcclxuICAgIHdpZHRoOiA2MCU7XHJcblxyXG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xyXG4gIH1cclxuXHJcbiAgLmFjdGl2ZSB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG4gIH1cclxufVxyXG4ubWluaUxvdHRlcnlCb3gge1xyXG5cclxuICBmb250LWZhbWlseTogXCJIZWx2ZXRpY2FcIjtcclxuICBmb250LXN0eWxlOiBpdGFsaWM7XHJcbiAgZm9udC13ZWlnaHQ6IDcwMDtcclxuICBmb250LXNpemU6IDE2cHg7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xyXG4gIFxyXG4gIGNvbG9yOiAjZmZmZmZmO1xyXG5cclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgd2lkdGg6IDIwMHB4O1xyXG4gIGhlaWdodDogNjBweDtcclxuICBtYXJnaW46IDIwcHg7XHJcbiAgYm94LXNoYWRvdzogMHB4IDVweCAxMXB4IHJnYmEoMCwgMCwgMCwgMC4yNSk7XHJcbiAgYm9yZGVyLXJhZGl1czogNDUuNXB4O1xyXG5cclxuICAubG90dGVyeUltZyB7XHJcbiAgICB3aWR0aDogNDAlO1xyXG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xyXG4gIH1cclxuXHJcbiAgJjpob3ZlciAubG90dGVyeUltZ3tcclxuICAgIHdpZHRoOiA1MCU7XHJcblxyXG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xyXG4gIH1cclxuXHJcbiAgLmFjdGl2ZSB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG4gIH1cclxufVxyXG5cclxuLmxvdGVyaWEge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMyOEFBRTE7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgIzI4QUFFMTtcclxufVxyXG5cclxuLmxvdHRvIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjUxZjIwO1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkICNiNTFmMjA7XHJcbn1cclxuXHJcbi5wb3pvIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDRiODY1O1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkICMwNGI4NjU7XHJcbn1cclxuXHJcbi5taWxsb25hcmlhIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYjUxZjIwO1xyXG4gIGJvcmRlcjogM3B4IHNvbGlkICNiNTFmMjA7XHJcbn1cclxuXHJcblxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA4MDBweCkge1xyXG4gIC5sb3R0ZXJ5Qm94e1xyXG4gICAgd2lkdGg6IDMwMHB4O1xyXG4gICAgaGVpZ2h0OiAxMDBweDtcclxuICB9XHJcbn1cclxuIl19 */"] });
 
 
 /***/ }),
@@ -2631,9 +2655,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_ventas_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/ventas.service */ 1987);
 /* harmony import */ var _services_pagos_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/pagos.service */ 6862);
 /* harmony import */ var _services_carrito_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/carrito.service */ 9384);
-/* harmony import */ var _boton_de_juego_boton_de_juego_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../boton-de-juego/boton-de-juego.component */ 7368);
-/* harmony import */ var _floating_menu_floating_menu_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../floating-menu/floating-menu.component */ 647);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var _floating_menu_floating_menu_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../floating-menu/floating-menu.component */ 647);
+/* harmony import */ var _boton_de_juego_boton_de_juego_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../boton-de-juego/boton-de-juego.component */ 7368);
 /* harmony import */ var _shared_components_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../shared/components/loader/loader.component */ 605);
 /* harmony import */ var _shared_components_error_error_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../shared/components/error/error.component */ 3772);
 /* harmony import */ var _confirmacion_de_venta_confirmacion_de_venta_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../confirmacion-de-venta/confirmacion-de-venta.component */ 5543);
@@ -2658,91 +2682,156 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function MenuBoxComponent_app_loader_6_Template(rf, ctx) {
+function MenuBoxComponent_div_0_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelement"](0, "app-loader", 13);
+    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](1, "app-boton-de-juego", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_0_Template_app_boton_de_juego_authError_1_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r10);
+      const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r9.authError();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](2, "app-boton-de-juego", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_0_Template_app_boton_de_juego_authError_2_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r10);
+      const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r11.authError();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](3, "app-boton-de-juego", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_0_Template_app_boton_de_juego_authError_3_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r10);
+      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r12.authError();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](4, "app-boton-de-juego", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_0_Template_app_boton_de_juego_authError_4_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r10);
+      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r13.authError();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("message", ctx_r0.loadingMessage);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r0.linkLoteriaNacional)("token", ctx_r0.lotteryToken);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r0.linkLotto)("token", ctx_r0.lotteryToken);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r0.linkPozoMillonario)("token", ctx_r0.lotteryToken);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r0.linkMillonaria)("token", ctx_r0.lotteryToken);
   }
 }
 
-function MenuBoxComponent_app_error_7_Template(rf, ctx) {
+function MenuBoxComponent_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-error", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("closeError", function MenuBoxComponent_app_error_7_Template_app_error_closeError_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r8);
-      const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r7.closeError();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](1, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](2, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtext"](3, "COMPRAR AQU\u00CD");
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](4, "app-boton-de-juego", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_1_Template_app_boton_de_juego_authError_4_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r15);
+      const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r14.authError();
     });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](5, "app-boton-de-juego", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_1_Template_app_boton_de_juego_authError_5_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r15);
+      const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r16.authError();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](6, "app-boton-de-juego", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_1_Template_app_boton_de_juego_authError_6_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r15);
+      const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r17.authError();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](7, "app-boton-de-juego", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_div_1_Template_app_boton_de_juego_authError_7_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r15);
+      const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r18.authError();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("msg", ctx_r1.errorMessage)("title", ctx_r1.errorTitle);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r1.linkLoteriaNacional)("token", ctx_r1.lotteryToken)("mini", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r1.linkLotto)("token", ctx_r1.lotteryToken)("mini", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r1.linkPozoMillonario)("token", ctx_r1.lotteryToken)("mini", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx_r1.linkMillonaria)("token", ctx_r1.lotteryToken)("mini", true);
   }
 }
 
-function MenuBoxComponent_app_confirmacion_de_venta_8_Template(rf, ctx) {
+function MenuBoxComponent_app_loader_3_Template(rf, ctx) {
   if (rf & 1) {
-    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
-
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-confirmacion-de-venta", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("compraConfirmada", function MenuBoxComponent_app_confirmacion_de_venta_8_Template_app_confirmacion_de_venta_compraConfirmada_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r10);
-      const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r9.confirmarCompra();
-    })("compraCancelada", function MenuBoxComponent_app_confirmacion_de_venta_8_Template_app_confirmacion_de_venta_compraCancelada_0_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r10);
-      const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r11.cancelarCompra($event);
-    })("comprarDespues", function MenuBoxComponent_app_confirmacion_de_venta_8_Template_app_confirmacion_de_venta_comprarDespues_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r10);
-      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r12.dismissCompras();
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelement"](0, "app-loader", 20);
   }
 
   if (rf & 2) {
     const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("compra", ctx_r2.detalleCompra);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("message", ctx_r2.loadingMessage);
   }
 }
 
-function MenuBoxComponent_app_instantaneas_9_Template(rf, ctx) {
+function MenuBoxComponent_app_error_4_Template(rf, ctx) {
   if (rf & 1) {
-    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
+    const _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-instantaneas", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("close", function MenuBoxComponent_app_instantaneas_9_Template_app_instantaneas_close_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r14);
-      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r13.abrirFinalizar();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-error", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("closeError", function MenuBoxComponent_app_error_4_Template_app_error_closeError_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r20);
+      const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r19.closeError();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("resultados", ctx_r3.instantaneas)("isLoteriaNacional", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("msg", ctx_r3.errorMessage)("title", ctx_r3.errorTitle);
   }
 }
 
-function MenuBoxComponent_app_venta_finalizada_10_Template(rf, ctx) {
+function MenuBoxComponent_app_confirmacion_de_venta_5_Template(rf, ctx) {
   if (rf & 1) {
-    const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
+    const _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-venta-finalizada", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("volver", function MenuBoxComponent_app_venta_finalizada_10_Template_app_venta_finalizada_volver_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r16);
-      const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r15.finalizarCompra();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-confirmacion-de-venta", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("compraConfirmada", function MenuBoxComponent_app_confirmacion_de_venta_5_Template_app_confirmacion_de_venta_compraConfirmada_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r22);
+      const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r21.confirmarCompra();
+    })("compraCancelada", function MenuBoxComponent_app_confirmacion_de_venta_5_Template_app_confirmacion_de_venta_compraCancelada_0_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r22);
+      const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r23.cancelarCompra($event);
+    })("comprarDespues", function MenuBoxComponent_app_confirmacion_de_venta_5_Template_app_confirmacion_de_venta_comprarDespues_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r22);
+      const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r24.dismissCompras();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
   }
@@ -2753,37 +2842,75 @@ function MenuBoxComponent_app_venta_finalizada_10_Template(rf, ctx) {
   }
 }
 
-function MenuBoxComponent_app_saldo_insuficiente_11_Template(rf, ctx) {
+function MenuBoxComponent_app_instantaneas_6_Template(rf, ctx) {
   if (rf & 1) {
-    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
+    const _r26 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-saldo-insuficiente", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("volver", function MenuBoxComponent_app_saldo_insuficiente_11_Template_app_saldo_insuficiente_volver_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r18);
-      const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r17.dismissCompras();
-    })("recarga", function MenuBoxComponent_app_saldo_insuficiente_11_Template_app_saldo_insuficiente_recarga_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r18);
-      const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-      return ctx_r19.irARecarga();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-instantaneas", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("close", function MenuBoxComponent_app_instantaneas_6_Template_app_instantaneas_close_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r26);
+      const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r25.abrirFinalizar();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
     const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("message", ctx_r5.recargaDeSaldoMessage);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("resultados", ctx_r5.instantaneas)("isLoteriaNacional", true);
   }
 }
 
-function MenuBoxComponent_app_venta_cancelada_12_Template(rf, ctx) {
+function MenuBoxComponent_app_venta_finalizada_7_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelement"](0, "app-venta-cancelada", 19);
+    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-venta-finalizada", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("volver", function MenuBoxComponent_app_venta_finalizada_7_Template_app_venta_finalizada_volver_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r28);
+      const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r27.finalizarCompra();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("message", ctx_r6.cancelMessage);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("compra", ctx_r6.detalleCompra);
+  }
+}
+
+function MenuBoxComponent_app_saldo_insuficiente_8_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵgetCurrentView"]();
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "app-saldo-insuficiente", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("volver", function MenuBoxComponent_app_saldo_insuficiente_8_Template_app_saldo_insuficiente_volver_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r30);
+      const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r29.dismissCompras();
+    })("recarga", function MenuBoxComponent_app_saldo_insuficiente_8_Template_app_saldo_insuficiente_recarga_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵrestoreView"](_r30);
+      const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+      return ctx_r31.irARecarga();
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("message", ctx_r7.recargaDeSaldoMessage);
+  }
+}
+
+function MenuBoxComponent_app_venta_cancelada_9_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelement"](0, "app-venta-cancelada", 26);
+  }
+
+  if (rf & 2) {
+    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("message", ctx_r8.cancelMessage);
   }
 }
 
@@ -2798,6 +2925,7 @@ class MenuBoxComponent {
     this.linkLoteriaNacional = "";
     this.linkPozoMillonario = "";
     this.linkMillonaria = "";
+    this.miniBox = false;
     this.confirmacionDeCompra = false;
     this.compraFinalizada = false;
     this.saldoInsuficiente = false;
@@ -3280,69 +3408,47 @@ MenuBoxComponent.ɵfac = function MenuBoxComponent_Factory(t) {
 
 MenuBoxComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵdefineComponent"]({
   type: MenuBoxComponent,
-  selectors: [["app-menu-box"]],
-  decls: 13,
-  vars: 19,
-  consts: [[1, "selectionBox"], ["image", "assets/img/loteria-sombra-2.png", "name", "loteria", 3, "link", "token", "authError"], ["image", "assets/img/lotto-sombra.png", "name", "lotto", 3, "link", "token", "authError"], ["image", "assets/img/pozo-sombra.png", "name", "pozo", 3, "link", "token", "authError"], ["image", "assets/img/millonaria-sombra.png", "name", "millonaria", 3, "link", "token", "authError"], ["tipoLoteria", "loteria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", "emitirCompra", "eliminarTodo"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "title", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoloteria", "14", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], ["loader", "loteria", 3, "message"], [3, "msg", "title", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoloteria", "14", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
+  selectors: [["ventas-menu-box"]],
+  inputs: {
+    miniBox: "miniBox"
+  },
+  decls: 10,
+  vars: 13,
+  consts: [["class", "selectionBox", 4, "ngIf"], ["class", "miniBox", 4, "ngIf"], ["tipoLoteria", "loteria", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", "emitirCompra", "eliminarTodo"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "title", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues", 4, "ngIf"], ["tipoloteria", "14", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], ["class", "paymentItem", 3, "compra", "volver", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], ["class", "paymentItem", 3, "message", 4, "ngIf"], [1, "selectionBox"], ["image", "assets/img/loteria-sombra-2.png", "name", "loteria", 3, "link", "token", "authError"], ["image", "assets/img/lotto-sombra.png", "name", "lotto", 3, "link", "token", "authError"], ["image", "assets/img/pozo-sombra.png", "name", "pozo", 3, "link", "token", "authError"], ["image", "assets/img/millonaria-sombra.png", "name", "millonaria", 3, "link", "token", "authError"], [1, "miniBox"], ["image", "assets/img/loteria-sombra-2.png", "name", "loteria", 3, "link", "token", "mini", "authError"], ["image", "assets/img/lotto-sombra.png", "name", "lotto", 3, "link", "token", "mini", "authError"], ["image", "assets/img/pozo-sombra.png", "name", "pozo", 3, "link", "token", "mini", "authError"], ["image", "assets/img/millonaria-sombra.png", "name", "millonaria", 3, "link", "token", "mini", "authError"], ["loader", "loteria", 3, "message"], [3, "msg", "title", "closeError"], [1, "paymentItem", 3, "compra", "compraConfirmada", "compraCancelada", "comprarDespues"], ["tipoloteria", "14", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"], [1, "paymentItem", 3, "compra", "volver"], [1, "paymentItem", 3, "message", "volver", "recarga"], [1, "paymentItem", 3, "message"]],
   template: function MenuBoxComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](0, "div", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](1, "app-boton-de-juego", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_Template_app_boton_de_juego_authError_1_listener() {
-        return ctx.authError();
-      });
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](2, "app-boton-de-juego", 2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_Template_app_boton_de_juego_authError_2_listener() {
-        return ctx.authError();
-      });
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](3, "app-boton-de-juego", 3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_Template_app_boton_de_juego_authError_3_listener() {
-        return ctx.authError();
-      });
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](4, "app-boton-de-juego", 4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("authError", function MenuBoxComponent_Template_app_boton_de_juego_authError_4_listener() {
-        return ctx.authError();
-      });
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](5, "app-floating-menu", 5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("deleteLoteriaTicket", function MenuBoxComponent_Template_app_floating_menu_deleteLoteriaTicket_5_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](0, MenuBoxComponent_div_0_Template, 5, 8, "div", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](1, MenuBoxComponent_div_1_Template, 8, 12, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementStart"](2, "app-floating-menu", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵlistener"]("deleteLoteriaTicket", function MenuBoxComponent_Template_app_floating_menu_deleteLoteriaTicket_2_listener($event) {
         return ctx.deleteLoteriaTicket($event);
-      })("deleteLottoTicket", function MenuBoxComponent_Template_app_floating_menu_deleteLottoTicket_5_listener($event) {
+      })("deleteLottoTicket", function MenuBoxComponent_Template_app_floating_menu_deleteLottoTicket_2_listener($event) {
         return ctx.deleteLottoTicket($event);
-      })("deletePozoTicket", function MenuBoxComponent_Template_app_floating_menu_deletePozoTicket_5_listener($event) {
+      })("deletePozoTicket", function MenuBoxComponent_Template_app_floating_menu_deletePozoTicket_2_listener($event) {
         return ctx.deletePozoTicket($event);
-      })("deleteMillonariaTicket", function MenuBoxComponent_Template_app_floating_menu_deleteMillonariaTicket_5_listener($event) {
+      })("deleteMillonariaTicket", function MenuBoxComponent_Template_app_floating_menu_deleteMillonariaTicket_2_listener($event) {
         return ctx.deleteMillonariaTicket($event);
-      })("deleteLoteriaFraccion", function MenuBoxComponent_Template_app_floating_menu_deleteLoteriaFraccion_5_listener($event) {
+      })("deleteLoteriaFraccion", function MenuBoxComponent_Template_app_floating_menu_deleteLoteriaFraccion_2_listener($event) {
         return ctx.deleteLoteriaFraccion($event);
-      })("emitirCompra", function MenuBoxComponent_Template_app_floating_menu_emitirCompra_5_listener() {
+      })("emitirCompra", function MenuBoxComponent_Template_app_floating_menu_emitirCompra_2_listener() {
         return ctx.comprar();
-      })("eliminarTodo", function MenuBoxComponent_Template_app_floating_menu_eliminarTodo_5_listener() {
+      })("eliminarTodo", function MenuBoxComponent_Template_app_floating_menu_eliminarTodo_2_listener() {
         return ctx.deleteAllTickets();
       });
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](6, MenuBoxComponent_app_loader_6_Template, 1, 1, "app-loader", 6);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](7, MenuBoxComponent_app_error_7_Template, 1, 2, "app-error", 7);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](8, MenuBoxComponent_app_confirmacion_de_venta_8_Template, 1, 1, "app-confirmacion-de-venta", 8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](9, MenuBoxComponent_app_instantaneas_9_Template, 1, 2, "app-instantaneas", 9);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](10, MenuBoxComponent_app_venta_finalizada_10_Template, 1, 1, "app-venta-finalizada", 10);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](11, MenuBoxComponent_app_saldo_insuficiente_11_Template, 1, 1, "app-saldo-insuficiente", 11);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](12, MenuBoxComponent_app_venta_cancelada_12_Template, 1, 1, "app-venta-cancelada", 12);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](3, MenuBoxComponent_app_loader_3_Template, 1, 1, "app-loader", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](4, MenuBoxComponent_app_error_4_Template, 1, 2, "app-error", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](5, MenuBoxComponent_app_confirmacion_de_venta_5_Template, 1, 1, "app-confirmacion-de-venta", 5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](6, MenuBoxComponent_app_instantaneas_6_Template, 1, 2, "app-instantaneas", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](7, MenuBoxComponent_app_venta_finalizada_7_Template, 1, 1, "app-venta-finalizada", 7);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](8, MenuBoxComponent_app_saldo_insuficiente_8_Template, 1, 1, "app-saldo-insuficiente", 8);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵtemplate"](9, MenuBoxComponent_app_venta_cancelada_9_Template, 1, 1, "app-venta-cancelada", 9);
     }
 
     if (rf & 2) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("ngIf", !ctx.miniBox);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx.linkLoteriaNacional)("token", ctx.lotteryToken);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx.linkLotto)("token", ctx.lotteryToken);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx.linkPozoMillonario)("token", ctx.lotteryToken);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("link", ctx.linkMillonaria)("token", ctx.lotteryToken);
+      _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("ngIf", ctx.miniBox);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("ticketsLoteria", ctx.ticketsLoteria)("ticketsLotto", ctx.ticketsLotto)("ticketsPozo", ctx.ticketsPozo)("ticketsMillonaria", ctx.ticketsMillonaria);
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵadvance"](1);
@@ -3361,8 +3467,8 @@ MenuBoxComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_13_
       _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵproperty"]("ngIf", ctx.compraCancelada);
     }
   },
-  directives: [_boton_de_juego_boton_de_juego_component__WEBPACK_IMPORTED_MODULE_4__.BotonDeJuegoComponent, _floating_menu_floating_menu_component__WEBPACK_IMPORTED_MODULE_5__.FloatingMenuComponent, _angular_common__WEBPACK_IMPORTED_MODULE_15__.NgIf, _shared_components_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__.LoaderComponent, _shared_components_error_error_component__WEBPACK_IMPORTED_MODULE_7__.ErrorComponent, _confirmacion_de_venta_confirmacion_de_venta_component__WEBPACK_IMPORTED_MODULE_8__.ConfirmacionDeVentaComponent, _instantaneas_instantaneas_component__WEBPACK_IMPORTED_MODULE_9__.InstantaneasComponent, _venta_finalizada_venta_finalizada_component__WEBPACK_IMPORTED_MODULE_10__.VentaFinalizadaComponent, _saldo_insuficiente_saldo_insuficiente_component__WEBPACK_IMPORTED_MODULE_11__.SaldoInsuficienteComponent, _venta_cancelada_venta_cancelada_component__WEBPACK_IMPORTED_MODULE_12__.VentaCanceladaComponent],
-  styles: [".selectionBox[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  justify-content: space-evenly;\n  flex-direction: column;\n  align-items: center;\n  padding: 100px;\n}\n\n@media screen and (max-width: 1000px) {\n  .selectionBox[_ngcontent-%COMP%] {\n    padding: 25px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtYm94LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGFBQUE7RUFDQSw2QkFBQTtFQUNBLHNCQUFBO0VBQ0EsbUJBQUE7RUFDQSxjQUFBO0FBQ0o7O0FBQ0U7RUFDRTtJQUNFLGFBQUE7RUFFSjtBQUNGIiwiZmlsZSI6Im1lbnUtYm94LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNlbGVjdGlvbkJveCB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgcGFkZGluZzogMTAwcHg7XHJcbiAgfVxyXG4gIEBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gICAgLnNlbGVjdGlvbkJveHtcclxuICAgICAgcGFkZGluZzogMjVweDtcclxuICAgIH1cclxuICB9Il19 */"]
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_15__.NgIf, _floating_menu_floating_menu_component__WEBPACK_IMPORTED_MODULE_4__.FloatingMenuComponent, _boton_de_juego_boton_de_juego_component__WEBPACK_IMPORTED_MODULE_5__.BotonDeJuegoComponent, _shared_components_loader_loader_component__WEBPACK_IMPORTED_MODULE_6__.LoaderComponent, _shared_components_error_error_component__WEBPACK_IMPORTED_MODULE_7__.ErrorComponent, _confirmacion_de_venta_confirmacion_de_venta_component__WEBPACK_IMPORTED_MODULE_8__.ConfirmacionDeVentaComponent, _instantaneas_instantaneas_component__WEBPACK_IMPORTED_MODULE_9__.InstantaneasComponent, _venta_finalizada_venta_finalizada_component__WEBPACK_IMPORTED_MODULE_10__.VentaFinalizadaComponent, _saldo_insuficiente_saldo_insuficiente_component__WEBPACK_IMPORTED_MODULE_11__.SaldoInsuficienteComponent, _venta_cancelada_venta_cancelada_component__WEBPACK_IMPORTED_MODULE_12__.VentaCanceladaComponent],
+  styles: [".selectionBox[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  justify-content: space-evenly;\n  flex-direction: column;\n  align-items: center;\n  padding: 100px;\n}\n\n.miniBox[_ngcontent-%COMP%] {\n  width: 90%;\n  margin-left: 3px;\n  margin-top: -170px;\n  display: flex;\n  justify-content: space-evenly;\n  flex-direction: column;\n  align-items: center;\n  background-color: white;\n}\n\n.miniBox[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n  width: 100%;\n  background-color: #021151;\n  height: 60px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.miniBox[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 0;\n  font-style: italic;\n  text-decoration: underline;\n  color: white;\n  font-weight: bold;\n  width: 100%;\n  text-align: center;\n}\n\n@media screen and (max-width: 1000px) {\n  .selectionBox[_ngcontent-%COMP%] {\n    padding: 25px;\n  }\n\n  .miniBox[_ngcontent-%COMP%] {\n    display: none;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lbnUtYm94LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGFBQUE7RUFDQSw2QkFBQTtFQUNBLHNCQUFBO0VBQ0EsbUJBQUE7RUFDQSxjQUFBO0FBQ0o7O0FBQ0U7RUFDRSxVQUFBO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSw2QkFBQTtFQUNBLHNCQUFBO0VBQ0EsbUJBQUE7RUFDRix1QkFBQTtBQUVGOztBQURFO0VBRUUsV0FBQTtFQUNBLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0FBRUo7O0FBREk7RUFDRSxTQUFBO0VBQ0Ysa0JBQUE7RUFDQSwwQkFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtBQUdKOztBQUNFO0VBQ0U7SUFDRSxhQUFBO0VBRUo7O0VBQUU7SUFDRSxhQUFBO0VBR0o7QUFDRiIsImZpbGUiOiJtZW51LWJveC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zZWxlY3Rpb25Cb3gge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1ldmVubHk7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHBhZGRpbmc6IDEwMHB4O1xyXG4gIH1cclxuICAubWluaUJveCB7XHJcbiAgICB3aWR0aDogOTAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDNweDtcclxuICAgIG1hcmdpbi10b3A6IC0xNzBweDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gIGRpdntcclxuXHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMwMjExNTE7XHJcbiAgICBoZWlnaHQ6IDYwcHg7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgcHtcclxuICAgICAgbWFyZ2luOiAwO1xyXG4gICAgZm9udC1zdHlsZTogaXRhbGljO1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgICBjb2xvcjp3aGl0ZTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG4gIH1cclxuICB9XHJcbiAgQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTAwMHB4KSB7XHJcbiAgICAuc2VsZWN0aW9uQm94e1xyXG4gICAgICBwYWRkaW5nOiAyNXB4O1xyXG4gICAgfVxyXG4gICAgLm1pbmlCb3h7XHJcbiAgICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgICB9XHJcbiAgfVxyXG4iXX0= */"]
 });
 
 /***/ }),
@@ -3933,7 +4039,7 @@ class HomeComponent {
 }
 HomeComponent.ɵfac = function HomeComponent_Factory(t) { return new (t || HomeComponent)(); };
 HomeComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: HomeComponent, selectors: [["app-home"]], decls: 1, vars: 0, template: function HomeComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "app-menu-box");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "ventas-menu-box");
     } }, directives: [_components_menu_box_menu_box_component__WEBPACK_IMPORTED_MODULE_0__.MenuBoxComponent], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJob21lLmNvbXBvbmVudC5zY3NzIn0= */"] });
 
 

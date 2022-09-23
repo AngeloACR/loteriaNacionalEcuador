@@ -44,7 +44,42 @@ $fuente-botones: "Monstserrat SemiBold";
     display: none;
   }
 }
+.miniLotteryBox {
 
+  font-family: "Helvetica";
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  height: 60px;
+  margin: 20px;
+  box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);
+  border-radius: 45.5px;
+
+  .lotteryImg {
+    width: 40%;
+    transition: width 0.3s ease;
+  }
+
+  &:hover .lotteryImg{
+    width: 50%;
+
+    transition: width 0.3s ease;
+  }
+
+  .active {
+    display: none;
+  }
+}
 
 .loteria {
   background-color: #28AAE1;

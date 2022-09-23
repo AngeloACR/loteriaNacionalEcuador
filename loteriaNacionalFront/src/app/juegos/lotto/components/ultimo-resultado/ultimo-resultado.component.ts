@@ -21,6 +21,7 @@ export class UltimoResultadoComponent implements OnInit {
       premiosEspeciales: this.premiosEspeciales,
       numeroSorteo: data.numeroSorteo,
       sorteo: data.sorteo,
+      valorPremio: data.premioPrincipal.valorPremio
     };
   }
   verUltimoBoletin() {

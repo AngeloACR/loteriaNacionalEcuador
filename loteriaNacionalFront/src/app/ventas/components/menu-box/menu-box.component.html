@@ -1,40 +1,84 @@
-<div class="selectionBox">
-    <app-boton-de-juego
-      image="assets/img/loteria-sombra-2.png"
-      [link]="linkLoteriaNacional"
-      [token]="lotteryToken"
-      name="loteria"
-      (authError)="authError()"
-    >
-    </app-boton-de-juego>
-  
-    <app-boton-de-juego
-      image="assets/img/lotto-sombra.png"
-      [link]="linkLotto"
-      [token]="lotteryToken"
-      name="lotto"
-      (authError)="authError()"
-    >
-    </app-boton-de-juego>
-  
-    <app-boton-de-juego
-      image="assets/img/pozo-sombra.png"
-      [link]="linkPozoMillonario"
-      [token]="lotteryToken"
-      name="pozo"
-      (authError)="authError()"
-    >
-    </app-boton-de-juego>
-    <app-boton-de-juego
-      image="assets/img/millonaria-sombra.png"
-      [link]="linkMillonaria"
-      [token]="lotteryToken"
-      name="millonaria"
-      (authError)="authError()"
-    >
-    </app-boton-de-juego>
+<div *ngIf="!miniBox" class="selectionBox">
+  <app-boton-de-juego
+    image="assets/img/loteria-sombra-2.png"
+    [link]="linkLoteriaNacional"
+    [token]="lotteryToken"
+    name="loteria"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+
+  <app-boton-de-juego
+    image="assets/img/lotto-sombra.png"
+    [link]="linkLotto"
+    [token]="lotteryToken"
+    name="lotto"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+
+  <app-boton-de-juego
+    image="assets/img/pozo-sombra.png"
+    [link]="linkPozoMillonario"
+    [token]="lotteryToken"
+    name="pozo"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+  <app-boton-de-juego
+    image="assets/img/millonaria-sombra.png"
+    [link]="linkMillonaria"
+    [token]="lotteryToken"
+    name="millonaria"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+</div>
+<div *ngIf="miniBox" class="miniBox">
+  <div>
+    <p>COMPRAR AQUÍ</p>
+
   </div>
-  
+  <app-boton-de-juego
+    image="assets/img/loteria-sombra-2.png"
+    [link]="linkLoteriaNacional"
+    [token]="lotteryToken"
+    [mini]="true"
+    name="loteria"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+
+  <app-boton-de-juego
+    image="assets/img/lotto-sombra.png"
+    [link]="linkLotto"
+    [token]="lotteryToken"
+    [mini]="true"
+    name="lotto"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+
+  <app-boton-de-juego
+    image="assets/img/pozo-sombra.png"
+    [link]="linkPozoMillonario"
+    [token]="lotteryToken"
+    [mini]="true"
+    name="pozo"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+  <app-boton-de-juego
+    image="assets/img/millonaria-sombra.png"
+    [link]="linkMillonaria"
+    [token]="lotteryToken"
+    [mini]="true"
+    name="millonaria"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
+</div>
+
   <app-floating-menu
     (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
     (deleteLottoTicket)="deleteLottoTicket($event)"

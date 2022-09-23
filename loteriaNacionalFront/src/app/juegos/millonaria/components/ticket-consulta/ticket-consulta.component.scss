@@ -1,4 +1,5 @@
-$fuente-titulo: "Monstserrat Bold";
+$fuente-premio: "Hanuman";
+$fuente-titulo: "Helvetica";
 $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
@@ -69,6 +70,30 @@ $color-botton: #b51f20;
         text-align: center;
         -webkit-text-stroke: 2px $color-botton;
         color: $color-botton;
+        font-family: $fuente-premio!important;
+        margin: 10px 0px;
+      }
+
+      p:nth-child(2) {
+        font-size: 14px;
+        margin: 0px;
+        margin-bottom: 5px;
+        color: $color-botton;
+        font-family: $fuente-subtitulo;
+      }
+    }
+
+    .ticket_title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p:nth-child(1) {
+        font-size: 30px;
+        text-align: center;
+        -webkit-text-stroke: 2px $color-botton;
+        color: $color-botton;
+        font-style: italic;
         font-family: $fuente-titulo;
         margin: 10px 0px;
       }

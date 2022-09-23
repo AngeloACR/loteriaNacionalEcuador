@@ -1,5 +1,17 @@
 <a
+*ngIf="!mini"
   class="lotteryBox"
+  [href]="link"
+  [ngClass]="name!"
+  [ngClass]="tipoLoteria!"
+  (click)="checkToken($event)"
+>
+  <img class="lotteryImg" [src]="image" alt="" />
+  Jugar
+</a>
+<a
+*ngIf="mini"
+  class="miniLotteryBox"
   [href]="link"
   [ngClass]="name!"
   [ngClass]="tipoLoteria!"

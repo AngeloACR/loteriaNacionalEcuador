@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class BotonDeJuegoComponent implements OnInit {
   @Input() image?: String;
   @Input() link?: String;
+  @Input() mini?: boolean = false;
   @Input() name?: String;
   @Input() loteria?: String;
   @Input() token?: String;

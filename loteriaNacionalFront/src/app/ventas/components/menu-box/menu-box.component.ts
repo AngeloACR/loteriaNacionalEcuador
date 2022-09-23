@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { VentasService } from "../../services/ventas.service";
 import { PagosService } from "../../services/pagos.service";
 import { CarritoService } from "../../services/carrito.service";
 
 @Component({
-  selector: 'app-menu-box',
+  selector: 'ventas-menu-box',
   templateUrl: './menu-box.component.html',
   styleUrls: ['./menu-box.component.scss']
 })
@@ -25,6 +25,8 @@ export class MenuBoxComponent implements OnInit {
   ticketsLoteria: any;
   ticketsCarrito: any;
   ticketsMillonaria: any;
+  @Input() miniBox: boolean = false;
+
   constructor(
     private actRoute: ActivatedRoute,
     public lottery: VentasService,
