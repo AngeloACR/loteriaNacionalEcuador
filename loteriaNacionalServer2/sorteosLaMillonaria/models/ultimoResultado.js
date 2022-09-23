@@ -81,7 +81,7 @@ ultimoResultadoSchema.statics = {
   },
   get: async function () {
     try {
-      return await this.findOne().populate('codigoPremioPrincipal').lean();
+      return await this.findOne().populate('premioPrincipal').lean();
     } catch (error) {
       let response = {
         status: false,
