@@ -35,27 +35,6 @@ $fuente-botones: "Monstserrat SemiBold";
       p {
         color: white;
       }
-      &.compras {
-        background: #27a9e1;
-        img.loteria {
-          width: 60%;
-        }
-        img.carrito {
-          width: 40%;
-        }
-      }
-      &.consulta {
-        background: #d12a2a;
-      }
-      &.juegos {
-        img {
-          width: 100%;
-        }
-        background: #021151;
-      }
-      &.suerte {
-        background: #005490;
-      }
     }
   }
 }

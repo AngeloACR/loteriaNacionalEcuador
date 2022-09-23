@@ -1,0 +1,17 @@
+- Editar iconos del home para quitar lineas de colores - LISTO
+- Botones de compra en el home, hacer mas chiquitos - LISTO
+- Logo de pozo un poco mas grande en el bloque de ultimos resultados - LISTO
+- Agregar monto de premio a los ultimos resultados
+- Implementar cambios en vista de detalle de compra
+- Pozo boletin no funciona bien - LISTO
+- Agregar boton para volver al inicio
+- Agregar loader en el modulos de consulta - LISTO
+- En loteria consulta, agregar ultimos resultados al final
+- Cambiar tipo de fuente a Helvetica y Hanuman
+- Agregar menu vertical de compra debajo de cada ultimo resultado en consuta
+- Centrar contenedor de sorteo y premios en venta de boletos - LISTO
+- Editar estilo del carrito segun cambios 
+- Cronjob para resolucion de ventas fallidas
+- Automatizar resolucion de ventas fallidas
+- Validar premios no pagados
+- Modificar mensaje de premio instantaneo lotto

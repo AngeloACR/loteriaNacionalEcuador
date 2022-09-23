@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-
 import { ConsultaService } from '../../services/consulta.service';
-
 @Component({
   selector: 'pozo-boletin',
   templateUrl: './boletin.component.html',

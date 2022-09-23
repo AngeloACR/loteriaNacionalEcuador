@@ -32,9 +32,10 @@ export class ConsultaComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    console.log('En la consulta de loteria');
+    this.triggerLoader();
     this.sorteosJugados = await this.consulta.recuperarSorteosJugados();
     this.setSorteoDefault();
+    this.dismissLoader();
   }
 
   setSorteoDefault() {
@@ -93,7 +94,7 @@ export class ConsultaComponent implements OnInit {
   }
 
   isLoading: boolean = false;
-  loadingMessage: String = 'Consultando los resultados';
+  loadingMessage: String = 'Cargando datos';
 
   triggerLoader() {
     this.isLoading = true;
