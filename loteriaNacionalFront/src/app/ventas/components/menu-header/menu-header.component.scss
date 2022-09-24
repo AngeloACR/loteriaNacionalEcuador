@@ -74,9 +74,10 @@ $fuente-botones: "Monstserrat SemiBold";
   }
 
   &.home {
+    padding: 20px 0;
     .contenedor_loteria {
       width: 19%;
-      height:50px;
+      height:65px;
       font-size: 25px;
 
       img {

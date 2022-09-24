@@ -114,7 +114,6 @@ $color-botton: #b51f20;
       font-family: $fuente-subtitulo;
 
       .ticket_entero {
-        padding-left: 15px;
         display: flex;
         justify-content: space-between;
 
@@ -140,15 +139,15 @@ $color-botton: #b51f20;
 
             box-sizing: border-box;
 
-            width: 30px;
-            height: 30px;
+            width: 15px;
+            height: 15px;
             background-color: #fff;
             border: 4px solid $color-botton;
             border-radius: 150px;
-            padding: 20px;
+            padding: 15px;
             font-family: $fuente-subtitulo;
             font-weight: bold;
-            font-size: 22px;
+            font-size: 20px;
             color: #000;
             margin: 0px 2px;
             display: flex;

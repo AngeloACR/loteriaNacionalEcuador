@@ -8,9 +8,12 @@
 - Cambiar tipo de fuente a Helvetica y Hanuman - LISTO
 - Agregar menu vertical de compra debajo de cada ultimo resultado en consuta - LISTO
 - Agregar boton para volver al inicio - LISTO
+- Ajustar tamaño de ultimo resultado pozo para que coincida con los demas - LISTO
+- Agregar margin arriba y abajo en menu header de home y ultimos resultados de home - LISTO
 - Implementar cambios en vista de detalle de compra
-- Editar estilo del carrito segun cambios 
+- Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR
 - Cronjob para resolucion de ventas fallidas
 - Automatizar resolucion de ventas fallidas
 - Validar premios no pagados
+- Resolver premios especiales de lotto en ultimos resultados
 - Modificar mensaje de premio instantaneo lotto
