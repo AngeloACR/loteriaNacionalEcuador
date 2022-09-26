@@ -11,7 +11,7 @@
 - Ajustar tamaño de ultimo resultado pozo para que coincida con los demas - LISTO
 - Agregar margin arriba y abajo en menu header de home y ultimos resultados de home - LISTO
 - Implementar cambios en vista de detalle de compra
-- Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR
+- Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR  
 - Cronjob para resolucion de ventas fallidas
 - Automatizar resolucion de ventas fallidas
 - Validar premios no pagados
