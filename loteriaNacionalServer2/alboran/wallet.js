@@ -142,7 +142,6 @@ const walletController = {
       let operationTimeStamp = getCurrentTimeStamp();
 
       let alboranData = {
-        sessionToken: data.token,
         transactionId: data.transactionId,
         reserveId: data.reserveId,
         currency: "USD",
