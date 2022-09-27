@@ -10,6 +10,7 @@ import {VentaService as LottoService} from '../../../juegos/lotto/services/venta
 export class DescripcionDeVentaComponent implements OnInit {
   @Input() compra: any;
   @Input() user: any;
+  @Input() resumen: boolean = true;
   @Input() ticketId: any;
 
   constructor(private pozo: PozoService,private lotto: LottoService) { }
