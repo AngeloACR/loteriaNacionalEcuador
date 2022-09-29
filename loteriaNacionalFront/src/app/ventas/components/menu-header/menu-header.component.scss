@@ -164,3 +164,19 @@ $fuente-botones: "Monstserrat SemiBold";
     }
   }
 }
+
+@media screen and (min-width: 1500px) and (max-width: 2500px) {
+  .container {
+    .contenedor_loteria{
+      height: 90px !important;
+    }
+  }
+}
+
+@media screen and (min-width: 2501px) {
+  .container {
+    .contenedor_loteria{
+      height: 150px !important;
+    }
+  }
+}

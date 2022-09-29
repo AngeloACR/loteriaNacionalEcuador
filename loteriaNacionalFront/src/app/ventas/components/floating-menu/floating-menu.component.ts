@@ -5,6 +5,8 @@ import {
   Input,
   EventEmitter,
   Output,
+  HostListener,
+  ViewChild,
 } from '@angular/core';
 import { CarritoService } from '../../services/carrito.service';
 @Component({
@@ -14,6 +16,14 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class FloatingMenuComponent implements OnInit {
   isToggled: boolean = false;
+  @ViewChild('float') floatingBox: any;
+
+  @HostListener('document:scroll', ['$event']) 
+  handleScroll(e: any) {
+    console.log(e.scrollTop);
+    let position = window.innerWidth -80 + e.scrollTop;
+    this.floatingBox.style.top=position
+  }
   @Input() ticketsLoteria: any;
   @Input() ticketsMillonaria: any;
   @Input() ticketsLotto: any;

@@ -5,7 +5,7 @@ const Results = require("../models/main");
 const Premios = require("../models/premio");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
-const config = require("../../environments/production");
+const config = require("../../environments/test");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 

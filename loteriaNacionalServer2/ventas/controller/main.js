@@ -245,6 +245,7 @@ const ventasController = {
               prizeDetail["combinationC3"] = item.combinationC3;
               prizeDetail["combinationC4"] = item.combinationC4;
               prizeDetail["combinationC5"] = item.combinationC5;
+                prizeDetail.prizeDescription = `PREMIO INSTANTÁNEO DE \$${prizeDetail.prize}`
               break;
 
             case 5:

@@ -158,6 +158,7 @@ export class PagosService {
   }
   cancelarCompra() {}
   finalizarCompra() {
+    parent.postMessage("getBalance","*");
     this.cart.borrarCarrito();
   }
   getTotal() {
