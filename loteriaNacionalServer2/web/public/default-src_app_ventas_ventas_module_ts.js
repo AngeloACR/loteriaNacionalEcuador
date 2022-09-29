@@ -10584,7 +10584,7 @@ class PagosService {
   cancelarCompra() {}
 
   finalizarCompra() {
-    parent.postMessage("getBalance", "*");
+    //parent.postMessage("getBalance","*");
     this.cart.borrarCarrito();
   }
 
