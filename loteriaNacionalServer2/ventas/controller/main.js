@@ -245,7 +245,7 @@ const ventasController = {
               prizeDetail["combinationC3"] = item.combinationC3;
               prizeDetail["combinationC4"] = item.combinationC4;
               prizeDetail["combinationC5"] = item.combinationC5;
-                prizeDetail.prizeDescription = `PREMIO INSTANTÁNEO DE \$${prizeDetail.prize}`
+              prizeDetail.prizeDescription = `PREMIO INSTANTÁNEO DE \$${prizeDetail.prize}`;
               break;
 
             case 5:
@@ -469,7 +469,10 @@ const ventasController = {
           combinacion4,
           combinacion5,
           fraccion: premio.Fra,
-          descripcionPremio: premio.Prem,
+          descripcionPremio:
+            tipoLoteria == 2
+              ? `PREMIO INSTANTÁNEO DE \$${prizeDetail.prize}`
+              : premio.Prem,
           valorPremio: premio.Val,
           valorPremioDescuento: premio.ConDesc,
           codigoPremio: `${numeroSorteo}-INSTANTANEA`,
