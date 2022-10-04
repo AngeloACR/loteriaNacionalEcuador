@@ -158,7 +158,7 @@ export class PagosService {
   }
   cancelarCompra() {}
   finalizarCompra() {
-    //parent.postMessage("getBalance","*");
+    parent.postMessage("getBalance","*");
     console.log("Finalizando compra")
     this.cart.borrarCarrito();
   }
