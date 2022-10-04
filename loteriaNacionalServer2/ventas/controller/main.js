@@ -471,7 +471,7 @@ const ventasController = {
           fraccion: premio.Fra,
           descripcionPremio:
             tipoLoteria == 2
-              ? `PREMIO INSTANTÁNEO DE \$${prizeDetail.prize}`
+              ? `PREMIO INSTANTÁNEO DE \$${premio.Val}`
               : premio.Prem,
           valorPremio: premio.Val,
           valorPremioDescuento: premio.ConDesc,
