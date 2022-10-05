@@ -41,7 +41,8 @@ export class FloatingMenuComponent implements OnInit {
   carrito: any = {};
   cerrar: any = {};
   ngOnInit() {
-    window.addEventListener("scroll", this.handleScroll)
+    //window.addEventListener("scroll", this.handleScroll)
+    console.log(this.floatingBox)
     this.carrito = {
       carritoDisplay: false,
     };

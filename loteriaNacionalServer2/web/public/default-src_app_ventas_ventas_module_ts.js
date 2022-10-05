@@ -2236,11 +2236,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const _c0 = ["float"];
-function FloatingMenuComponent_div_7_Template(rf, ctx) { if (rf & 1) {
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
+function FloatingMenuComponent_div_6_Template(rf, ctx) { if (rf & 1) {
+    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function FloatingMenuComponent_div_7_Template_div_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r4.toggleCart(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function FloatingMenuComponent_div_6_Template_div_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r3.toggleCart(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "img", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "CARRITO DE COMPRA");
@@ -2263,18 +2263,18 @@ function FloatingMenuComponent_div_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r2.total, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r1.total, " ");
 } }
-function FloatingMenuComponent_app_carrito_8_Template(rf, ctx) { if (rf & 1) {
-    const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
+function FloatingMenuComponent_app_carrito_7_Template(rf, ctx) { if (rf & 1) {
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "app-carrito", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("emitirCompra", function FloatingMenuComponent_app_carrito_8_Template_app_carrito_emitirCompra_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r6.comprar(); })("eliminarTodo", function FloatingMenuComponent_app_carrito_8_Template_app_carrito_eliminarTodo_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r8.deleteAllTickets(); })("deleteLoteriaTicket", function FloatingMenuComponent_app_carrito_8_Template_app_carrito_deleteLoteriaTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r9.deleteLoteria($event); })("deleteLottoTicket", function FloatingMenuComponent_app_carrito_8_Template_app_carrito_deleteLottoTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r10.deleteLotto($event); })("deletePozoTicket", function FloatingMenuComponent_app_carrito_8_Template_app_carrito_deletePozoTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r11.deletePozo($event); })("deleteMillonariaTicket", function FloatingMenuComponent_app_carrito_8_Template_app_carrito_deleteMillonariaTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r12.deleteMillonaria($event); })("deleteLoteriaFraccion", function FloatingMenuComponent_app_carrito_8_Template_app_carrito_deleteLoteriaFraccion_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r7); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r13.deleteFraccion($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("emitirCompra", function FloatingMenuComponent_app_carrito_7_Template_app_carrito_emitirCompra_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r5.comprar(); })("eliminarTodo", function FloatingMenuComponent_app_carrito_7_Template_app_carrito_eliminarTodo_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r6); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r7.deleteAllTickets(); })("deleteLoteriaTicket", function FloatingMenuComponent_app_carrito_7_Template_app_carrito_deleteLoteriaTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r6); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r8.deleteLoteria($event); })("deleteLottoTicket", function FloatingMenuComponent_app_carrito_7_Template_app_carrito_deleteLottoTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r6); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r9.deleteLotto($event); })("deletePozoTicket", function FloatingMenuComponent_app_carrito_7_Template_app_carrito_deletePozoTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r6); const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r10.deletePozo($event); })("deleteMillonariaTicket", function FloatingMenuComponent_app_carrito_7_Template_app_carrito_deleteMillonariaTicket_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r6); const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r11.deleteMillonaria($event); })("deleteLoteriaFraccion", function FloatingMenuComponent_app_carrito_7_Template_app_carrito_deleteLoteriaFraccion_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r6); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r12.deleteFraccion($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ticketsLoteria", ctx_r3.ticketsLoteria)("ticketsLotto", ctx_r3.ticketsLotto)("ticketsPozo", ctx_r3.ticketsPozo)("ticketsMillonaria", ctx_r3.ticketsMillonaria)("tipoLoteria", ctx_r3.tipoLoteria);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ticketsLoteria", ctx_r2.ticketsLoteria)("ticketsLotto", ctx_r2.ticketsLotto)("ticketsPozo", ctx_r2.ticketsPozo)("ticketsMillonaria", ctx_r2.ticketsMillonaria)("tipoLoteria", ctx_r2.tipoLoteria);
 } }
 class FloatingMenuComponent {
     constructor(cart) {
@@ -2298,7 +2298,8 @@ class FloatingMenuComponent {
         this.floatingBox.style.top = `${position}px`;
     }
     ngOnInit() {
-        window.addEventListener("scroll", this.handleScroll);
+        //window.addEventListener("scroll", this.handleScroll)
+        console.log(this.floatingBox);
         this.carrito = {
             carritoDisplay: false,
         };
@@ -2360,19 +2361,19 @@ FloatingMenuComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.floatingBox = _t.first);
-    } }, inputs: { ticketsLoteria: "ticketsLoteria", ticketsMillonaria: "ticketsMillonaria", ticketsLotto: "ticketsLotto", ticketsPozo: "ticketsPozo", tickets: "tickets", tipoLoteria: "tipoLoteria" }, outputs: { emitirCompra: "emitirCompra", eliminarTodo: "eliminarTodo", deleteLoteriaTicket: "deleteLoteriaTicket", deleteLoteriaFraccion: "deleteLoteriaFraccion", deleteLottoTicket: "deleteLottoTicket", deletePozoTicket: "deletePozoTicket", deleteMillonariaTicket: "deleteMillonariaTicket" }, decls: 9, vars: 6, consts: [[1, "floatingBox", 3, "click"], ["floatingBox", "", "float", ""], ["src", "assets/carrito-blanco.svg", "alt", "", 1, "carrito", 3, "ngClass"], ["src", "assets/cerrar.svg", "alt", "", 1, "cerrar", 3, "ngClass"], [1, "totalBox", 3, "ngClass"], ["class", "toggleBox", 4, "ngIf"], ["class", "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", 4, "ngIf"], [1, "toggleBox"], [1, "itemBox", 3, "click"], ["src", "assets/carrito-negro.svg", "alt", ""], [1, "totalCartBox"], ["href", "https://www.loteria.com.ec/casino", "target", "_parent", 1, "itemBox"], ["src", "assets/casino.svg", "alt", ""], ["href", "https://www.loteria.com.ec/sport", "target", "_parent", 1, "itemBox"], ["src", "assets/sport.svg", "alt", ""], [1, "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"]], template: function FloatingMenuComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { ticketsLoteria: "ticketsLoteria", ticketsMillonaria: "ticketsMillonaria", ticketsLotto: "ticketsLotto", ticketsPozo: "ticketsPozo", tickets: "tickets", tipoLoteria: "tipoLoteria" }, outputs: { emitirCompra: "emitirCompra", eliminarTodo: "eliminarTodo", deleteLoteriaTicket: "deleteLoteriaTicket", deleteLoteriaFraccion: "deleteLoteriaFraccion", deleteLottoTicket: "deleteLottoTicket", deletePozoTicket: "deletePozoTicket", deleteMillonariaTicket: "deleteMillonariaTicket" }, decls: 8, vars: 6, consts: [[1, "floatingBox", 3, "click"], ["float", ""], ["src", "assets/carrito-blanco.svg", "alt", "", 1, "carrito", 3, "ngClass"], ["src", "assets/cerrar.svg", "alt", "", 1, "cerrar", 3, "ngClass"], [1, "totalBox", 3, "ngClass"], ["class", "toggleBox", 4, "ngIf"], ["class", "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", 4, "ngIf"], [1, "toggleBox"], [1, "itemBox", 3, "click"], ["src", "assets/carrito-negro.svg", "alt", ""], [1, "totalCartBox"], ["href", "https://www.loteria.com.ec/casino", "target", "_parent", 1, "itemBox"], ["src", "assets/casino.svg", "alt", ""], ["href", "https://www.loteria.com.ec/sport", "target", "_parent", 1, "itemBox"], ["src", "assets/sport.svg", "alt", ""], [1, "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"]], template: function FloatingMenuComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function FloatingMenuComponent_Template_div_click_0_listener() { return ctx.toggleBox(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](3, "img", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](4, "img", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "img", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](3, "img", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](7, FloatingMenuComponent_div_7_Template, 15, 1, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](8, FloatingMenuComponent_app_carrito_8_Template, 1, 5, "app-carrito", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](6, FloatingMenuComponent_div_6_Template, 15, 1, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](7, FloatingMenuComponent_app_carrito_7_Template, 1, 5, "app-carrito", 6);
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.carrito);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngClass", ctx.cerrar);
