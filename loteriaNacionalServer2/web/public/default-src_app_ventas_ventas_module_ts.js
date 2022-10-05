@@ -2294,7 +2294,7 @@ class FloatingMenuComponent {
     handleScroll(e) {
         console.log(e.scrollTop);
         let position = window.innerWidth - 80 + e.scrollTop;
-        this.floatingBox.style = `{top: ${position}px; position: absolute: left: 20px;}`;
+        this.floatingBox.style = `{top: ${position}px; position: absolute; left: 20px;}`;
     }
     ngOnInit() {
         this.carrito = {

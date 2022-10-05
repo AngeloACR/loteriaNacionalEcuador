@@ -22,7 +22,7 @@ export class FloatingMenuComponent implements OnInit {
   handleScroll(e: any) {
     console.log(e.scrollTop);
     let position = window.innerWidth -80 + e.scrollTop;
-    this.floatingBox.style = `{top: ${position}px; position: absolute: left: 20px;}`
+    this.floatingBox.style = `{top: ${position}px; position: absolute; left: 20px;}`
   }
   @Input() ticketsLoteria: any;
   @Input() ticketsMillonaria: any;
