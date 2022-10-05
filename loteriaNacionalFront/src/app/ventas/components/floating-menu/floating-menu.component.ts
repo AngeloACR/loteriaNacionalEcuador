@@ -18,7 +18,7 @@ export class FloatingMenuComponent implements OnInit {
   isToggled: boolean = false;
   @ViewChild('float') floatingBox: any;
 
-  @HostListener('scroll', ['$event']) 
+  @HostListener('window:parent.scroll', ['$event']) 
   handleScroll(e: any) {
     console.log(e.scrollTop);
     let position = window.innerWidth -80 + e.scrollTop;
