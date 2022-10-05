@@ -42,7 +42,6 @@ module.exports.init = function (port) {
           "'self'",
           "https://localhost",
           "https://*.loteria.com.ec",
-          "http://loteria.mongibello.tech:83",
           "http://*.mongibello.tech",
         ],
       },

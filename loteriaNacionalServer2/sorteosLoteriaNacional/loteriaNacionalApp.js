@@ -7,9 +7,7 @@ const sorteosLoteriaNacionalApp = sorteosLoteriaNacionalServer.init(sorteosLoter
 
 sorteosLoteriaNacionalApp.listen(sorteosLoteriaNacionalPort, () => {
   console.log("Server running at: " + sorteosLoteriaNacionalPort);
-  console.log(
-    `Heapdump enabled. Run "kill -USR2 ${process.pid}" or send a request to "/heapdump" to generate a heapdump.`
-  );
+
 });
 
 let jobs = cronjobs.setCronJobs();

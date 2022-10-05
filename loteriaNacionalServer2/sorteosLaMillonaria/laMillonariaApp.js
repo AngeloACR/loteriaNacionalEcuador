@@ -7,9 +7,7 @@ const sorteosLaMillonariaApp = sorteosLaMillonariaServer.init(sorteosLaMillonari
 
 sorteosLaMillonariaApp.listen(sorteosLaMillonariaPort, () => {
   console.log("Server running at: " + sorteosLaMillonariaPort);
-  console.log(
-    `Heapdump enabled. Run "kill -USR2 ${process.pid}" or send a request to "/heapdump" to generate a heapdump.`
-  );
+
 });
 
 let jobs = cronjobs.setCronJobs();

@@ -7,9 +7,7 @@ const authApp = authServer.init(authPort);
 
 authApp.listen(authPort, () => {
   console.log("Server running at: " + authPort);
-  console.log(
-    `Heapdump enabled. Run "kill -USR2 ${process.pid}" or send a request to "/heapdump" to generate a heapdump.`
-  );
+
 });
 
 let jobs = cronjobs.setCronJobs();
