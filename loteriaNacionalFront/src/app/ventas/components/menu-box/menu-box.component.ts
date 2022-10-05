@@ -60,7 +60,7 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
-      console.log(e.message);
+      console.log(e);
       let errorMessage = e.message;
       let errorTitle = "Error";
       this.openError(errorMessage, errorTitle);

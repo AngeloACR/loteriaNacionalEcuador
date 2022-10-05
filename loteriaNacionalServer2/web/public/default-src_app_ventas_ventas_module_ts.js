@@ -2955,7 +2955,7 @@ class MenuBoxComponent {
         _this.isLoading = false;
       } catch (e) {
         _this.isLoading = false;
-        console.log(e.message);
+        console.log(e);
         let errorMessage = e.message;
         let errorTitle = "Error";
 
