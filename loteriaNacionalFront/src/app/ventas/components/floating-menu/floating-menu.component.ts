@@ -8,6 +8,7 @@ import {
   Output,
   HostListener,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { CarritoService } from '../../services/carrito.service';
 @Component({
@@ -17,7 +18,7 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
-  @ViewChild('float') floatingBox: any;
+  @ViewChildren('float') floatingBox: any;
 
   //@HostListener('document:scroll', ['$event'])
   handleScroll(e: any) {
@@ -51,7 +52,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
     };
   }
   ngAfterViewInit(){
-    window.addEventListener("scroll", this.handleScroll)
+    window.parent.addEventListener("scroll", this.handleScroll)
     
   }
   toggleBox() {
