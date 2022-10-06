@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   OnChanges,
+  AfterViewInit,
   Input,
   EventEmitter,
   Output,
@@ -14,15 +15,15 @@ import { CarritoService } from '../../services/carrito.service';
   templateUrl: './floating-menu.component.html',
   styleUrls: ['./floating-menu.component.scss'],
 })
-export class FloatingMenuComponent implements OnInit {
+export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
   @ViewChild('float') floatingBox: any;
 
-  //@HostListener('document:scroll', ['$event']) 
+  //@HostListener('document:scroll', ['$event'])
   handleScroll(e: any) {
     console.log(e.scrollTop);
-    let position = window.innerHeight -10 + e.scrollTop;
-    this.floatingBox.style.top = `${position}px`
+    let position = window.parent.innerHeight - 10 + e.scrollTop;
+    this.floatingBox.style.top = `${position}px`;
   }
   @Input() ticketsLoteria: any;
   @Input() ticketsMillonaria: any;
@@ -41,14 +42,17 @@ export class FloatingMenuComponent implements OnInit {
   carrito: any = {};
   cerrar: any = {};
   ngOnInit() {
-    //window.addEventListener("scroll", this.handleScroll)
-    console.log(this.floatingBox)
+    console.log(this.floatingBox);
     this.carrito = {
       carritoDisplay: false,
     };
     this.cerrar = {
       cerrarDisplay: false,
     };
+  }
+  ngAfterViewInit(){
+    window.addEventListener("scroll", this.handleScroll)
+    
   }
   toggleBox() {
     this.isToggled = !this.isToggled;

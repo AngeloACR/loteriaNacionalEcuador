@@ -2291,14 +2291,13 @@ class FloatingMenuComponent {
         this.cerrar = {};
         this.isCart = false;
     }
-    //@HostListener('document:scroll', ['$event']) 
+    //@HostListener('document:scroll', ['$event'])
     handleScroll(e) {
         console.log(e.scrollTop);
-        let position = window.innerHeight - 10 + e.scrollTop;
+        let position = window.parent.innerHeight - 10 + e.scrollTop;
         this.floatingBox.style.top = `${position}px`;
     }
     ngOnInit() {
-        //window.addEventListener("scroll", this.handleScroll)
         console.log(this.floatingBox);
         this.carrito = {
             carritoDisplay: false,
@@ -2306,6 +2305,9 @@ class FloatingMenuComponent {
         this.cerrar = {
             cerrarDisplay: false,
         };
+    }
+    ngAfterViewInit() {
+        window.addEventListener("scroll", this.handleScroll);
     }
     toggleBox() {
         this.isToggled = !this.isToggled;
