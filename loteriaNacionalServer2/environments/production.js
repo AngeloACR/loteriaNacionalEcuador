@@ -23,17 +23,10 @@ module.exports = {
 
   host: "localhost",
 
-  //exalogicHost: "test.loteria.com.ec",
-  //exalogicEndpoint: "/testlotery_api/XReceiver",
-
-  exalogicHost: "www.loteria.com.ec",
-  exalogicEndpoint: "/lotery_api/XReceiver",
-
   alboranHost: "mtpu.bet593.ec",
   alboranEndpoint: "/out/direct/json/lottery",
+
   // DATA FOR LOTERIA NACIONAL API
-  //usuarioAplicativo: "sitiowebprep",
-  //passwordAplicativo: "12345678",
 
   usuarioCliente: "italtronicprep",
   passwordCliente: "12345678",
@@ -43,11 +36,9 @@ module.exports = {
 
   medioAplicativoId: 17,
 
-  //aplicativoAddress: "serviciomt-prep.wsdl",
   aplicativoAddress: "serviciomt-prod.wsdl",
 
   // MONGO DATABASE DATA
-  //dbAddress: "mongodb://localhost:27017/loteriaDB",
   dbAddress: "mongodb://localhost:27017/loteriaDB",
   //dbAddress:"mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
 
@@ -61,31 +52,11 @@ module.exports = {
 
   emailRemitente: "ayuda@loteria.com.ec",
   nombreRemitente: "Asistencia Loteria",
-
-  // FTP DATA
-  //ftpHost: "localhost",
-  //ftpHost: "172.81.117.113",
-  ftpHost: "0.0.0.0",
-
-  ftpBoletinesPort: 2224,
-  ftpBoletosPort: 2226,
-
-  ftpPassMin: 10520,
-  ftpPassMax: 10521,
-  //ftpUser: "test",
-  //ftpPass: "test",
-  ftpUser: "loterianacional",
-  ftpPass: "$lnftp123..$",
-
   ftpBoletinesPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
-  ftpBoletosPath: "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
-  imgCorreosPath: "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
+  ftpBoletosPath:
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
 
-  //SSL DATA
-  sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",
-  sslPathTest: "/etc/letsencrypt/live/ventas-prueba.loteria.com.ec/",
-  keyFile: "privkey.pem",
-  certFile: "fullchain.pem",
-  reqFile: "request.pem",
+  imgCorreosPath:
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
 };

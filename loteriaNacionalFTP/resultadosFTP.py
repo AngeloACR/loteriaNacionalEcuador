@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+from datetime import datetime
+import os
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import codecs
 import xml.etree.ElementTree as ET
 import sys
-import requests
 
 
 def connectDB(myDB):
@@ -21,15 +22,49 @@ def closeConnect(connection):
     except:
         sendResult("Close Error")
 
+def agregarMaestro(nombre, size, cantidad, tipoLoteria, sorteo, db):
+    try:
+        connection = connectDB(db)
+        loteriaDB = connection['loteriaDB']
+        date = datetime.now()
+        data = {
+            "numeroSorteo": sorteo,
+            "resultados": {
+                "status": True,
+                "nombre": nombre,
+                "tamaño": size,
+                "cantidad": cantidad,
+                "recibido": date,
+                },
+            "actualizado": date,
+        }
+        query = {
+            "numeroSorteo": sorteo,
+        }
+        updateQuery = {"$set": data}
+        if (tipoLoteria == "1"):
+            loteriaDB['masterloterias'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "2"):
+            loteriaDB['masterlottos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "5"):
+            loteriaDB['masterpozos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "14"):
+            loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
+        closeConnect(connection)
+        status = True
+        return status
+    except Exception as ex:
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        sendResult(message)
+        status = False
+        return status
+
 
 def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
     try:
         connection = connectDB(db)
         loteriaDB = connection['loteriaDB']
-        indexLottito = 0
-        resultadosLottito = []
-        premioPozo = False
-        reintegroPozo = False
         for x in resultadosNuevos:
             resultadoData = x.attrib
             premioData = x[0][0].attrib
@@ -133,8 +168,9 @@ def main():
     db = "mongodb://localhost:27017/loteriaDB"
     #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    filepath = "/home/acri/ftp/resultados" + filename
-    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores" + filename
+    #filepath = "/home/acri/ftp/resultados" + filename
+    filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
+    size = os.path.getsize(filepath)
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
 
@@ -147,12 +183,18 @@ def main():
     file.seek(0, 0)
     file.write("<dataset>" + content + '</dataset>')
     file.close()
-    # content = "<dataset>"+content+"</dataset>"
     resultadosTree = ET.parse(filepath)
     resultados = resultadosTree.getroot()
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
+
+    file = open(filepath, 'w+', encoding="utf8")
+    file.seek(0, 0)
+    file.write(content)
+    file.close()
+
+    agregarMaestro(filename,size,len(resultados),tipoLoteria, sorteo, db)
     agregarResultados(resultados, tipoLoteria, sorteo, db)
 
 

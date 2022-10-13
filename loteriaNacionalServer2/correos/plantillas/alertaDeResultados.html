@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      .full {
+        margin: 0 auto;
+        width: 700px;
+      }
+      .logo {
+        float: left;
+      }
+      .header {
+        background-color: #28abe2;
+        width: 100%;
+      }
+      .social {
+        float: right;
+        margin: 25px 10px;
+      }
+      .text {
+        display: table;
+        font-family: Comfortaa, sans-serif;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="full">
+      <div class="header"></div>
+
+      <div class="logo">
+        <img
+          src="https://ventas-api-prueba.loteria.com.ec/uploads/correos/logo-loteria.png"
+          alt="Loteria Nacional"
+        />
+      </div>
+      <div class="text">
+        <h1><strong>Esta es la información de los archivos cargados recientemente:</strong></h1>
+        {% if var:loteria == true%}
+        <div>
+
+          <table>
+            <tr>
+              <th>Sorteo {{var:loteriaSorteo}}</th>
+              <th>Nombre</th>
+              <th>Tamaño (Kb)</th>
+              <th>Cantidad de elementos</th>
+            </tr>
+            <tr>
+              <td>Resultados</td>
+              <td>{{var:loteriaArchivoResultados}}</td>
+              <td>{{var:loteriaLengthResultados}}</td>
+              <td>{{var:loteriaCantidadResultados}}</td>
+            </tr>
+            <tr>
+              <td>Premios</td>
+              <td>{{var:loteriaArchivoPremios}}</td>
+              <td>{{var:loteriaLengthPremios}}</td>
+              <td>{{var:loteriaCantidadPremios}}</td>
+            </tr>
+            <tr>
+              <td>Ganadores</td>
+              <td>{{var:loteriaArchivoGanadores}}</td>
+              <td>{{var:loteriaLengthGanadores}}</td>
+              <td>{{var:loteriaCantidadGanadores}}</td>
+            </tr>
+          </table>
+          <h2>
+            Datos de los ultimos resultados:
+            <p>{{var:loteriaUltimosResultados}}</p>
+          </h2>
+          <br />
+        </div>
+        {% endif %} {% if var:lotto == true %}
+        <div>
+          <table>
+            <tr>
+              <th>Sorteo {{var:lottoSorteo}}</th>
+              <th>Nombre</th>
+              <th>Tamaño (Kb)</th>
+              <th>Cantidad de elementos</th>
+            </tr>
+            <tr>
+              <td>Resultados</td>
+              <td>{{var:lottoArchivoResultados}}</td>
+              <td>{{var:lottoLengthResultados}}</td>
+              <td>{{var:lottoCantidadResultados}}</td>
+            </tr>
+            <tr>
+              <td>Premios</td>
+              <td>{{var:lottoArchivoPremios}}</td>
+              <td>{{var:lottoLengthPremios}}</td>
+              <td>{{var:lottoCantidadPremios}}</td>
+            </tr>
+            <tr>
+              <td>Ganadores</td>
+              <td>{{var:lottoArchivoGanadores}}</td>
+              <td>{{var:lottoLengthGanadores}}</td>
+              <td>{{var:lottoCantidadGanadores}}</td>
+            </tr>
+          </table>
+          <h2>
+            Datos de los ultimos resultados:
+            <p>{{var:lottoUltimosResultados}}</p>
+          </h2>
+          <br />
+        </div>
+
+        {% endif %} {% if var:pozo == true %}
+        <div>
+          <table>
+            <tr>
+              <th>Sorteo {{var:pozoSorteo}}</th>
+              <th>Nombre</th>
+              <th>Tamaño (Kb)</th>
+              <th>Cantidad de elementos</th>
+            </tr>
+            <tr>
+              <td>Resultados</td>
+              <td>{{var:pozoArchivoResultados}}</td>
+              <td>{{var:pozoLengthResultados}}</td>
+              <td>{{var:pozoCantidadResultados}}</td>
+            </tr>
+            <tr>
+              <td>Premios</td>
+              <td>{{var:pozoArchivoPremios}}</td>
+              <td>{{var:pozoLengthPremios}}</td>
+              <td>{{var:pozoCantidadPremios}}</td>
+            </tr>
+            <tr>
+              <td>Ganadores</td>
+              <td>{{var:pozoArchivoGanadores}}</td>
+              <td>{{var:pozoLengthGanadores}}</td>
+              <td>{{var:pozoCantidadGanadores}}</td>
+            </tr>
+          </table>          <h2>
+            Datos de los ultimos resultados:
+            <p>{{var:pozoUltimosResultados}}</p>
+          </h2>
+          <br />
+        </div>
+
+        {% endif %} {% if var:millonaria == true%}
+        <div>
+          <table>
+            <tr>
+              <th>Sorteo {{var:millonariaSorteo}}</th>
+              <th>Nombre</th>
+              <th>Tamaño (Kb)</th>
+              <th>Cantidad de elementos</th>
+            </tr>
+            <tr>
+              <td>Resultados</td>
+              <td>{{var:millonariaArchivoResultados}}</td>
+              <td>{{var:millonariaLengthResultados}}</td>
+              <td>{{var:millonariaCantidadResultados}}</td>
+            </tr>
+            <tr>
+              <td>Premios</td>
+              <td>{{var:millonariaArchivoPremios}}</td>
+              <td>{{var:millonariaLengthPremios}}</td>
+              <td>{{var:millonariaCantidadPremios}}</td>
+            </tr>
+            <tr>
+              <td>Ganadores</td>
+              <td>{{var:millonariaArchivoGanadores}}</td>
+              <td>{{var:millonariaLengthGanadores}}</td>
+              <td>{{var:millonariaCantidadGanadores}}</td>
+            </tr>
+          </table>          <h2>
+            Datos de los ultimos resultados:
+            <p>{{var:millonariaUltimosResultados}}</p>
+          </h2>
+          <br />
+        </div>
+
+        {% endif %}
+
+        <p>
+          Si existe alguna inconsistencia en la información mostrada, por favor
+          validar y corregir lo antes posible.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

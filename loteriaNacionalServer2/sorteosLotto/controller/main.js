@@ -6,6 +6,7 @@ const Premios = require("../models/premio");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/test");
+const { response } = require("express");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -94,6 +95,17 @@ const mainController = {
       response = await Sorteos.getSorteos(2);
 
       res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+  
+  getSorteo: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo
+      response = await Sorteos.getSorteoByNumber(sorteo);
+      if(!response.status) throw new Error("El sorteo no se encuentra cargado")
+      res.status(200).json(response.values);
     } catch (e) {
       res.status(400).json(e.toString());
     }

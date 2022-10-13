@@ -81,11 +81,11 @@ $fuente-botones: "Monstserrat SemiBold";
       font-size: 25px;
 
       img {
-        width: 30%;
+        width: 40%;
       }
 
       &:hover img {
-        width: 34%;
+        width: 48%;
       }
       &.juegosOnline {
         display: flex;
@@ -152,12 +152,29 @@ $fuente-botones: "Monstserrat SemiBold";
 @media screen and (max-width: 1000px) {
   .container {
     overflow-x: scroll;
+    
+  &.home {
+    .contenedor_loteria {
+      img {
+        width: 70%;
+      }
+
+      &:hover img {
+        width: 80%;
+      }
+    }
+  }
     .title {
       display: none !important;
     }
     .contenedor_loteria{
       width: 50%;
       padding: 0 20px;
+
+      img {
+        width: 80%;
+      }
+
       .mobile{
         display: none !important;
       }

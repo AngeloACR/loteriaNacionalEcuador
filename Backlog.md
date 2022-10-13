@@ -12,8 +12,8 @@
 - Agregar margin arriba y abajo en menu header de home y ultimos resultados de home - LISTO
 - Implementar cambios en vista de detalle de compra - LISTO
 - Modificar mensaje de premio instantaneo lotto - LISTO
+- Actualizar balance en padre del iframe - Listo
 - Carrito flotante
-- Actualizar balance en padre del iframe
 - Generar ruta de pruebas controladas en produccion
 - Revisar fallos de la cuenta de pruebas en produccion
 - Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR  
@@ -22,3 +22,4 @@
 - Validar premios no pagados
 - Validar premios no pagados en exalogic
 - Resolver premios especiales de lotto en ultimos resultados
+- Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra

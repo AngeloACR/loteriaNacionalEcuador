@@ -1,11 +1,13 @@
 const auth = require('./auth');
+const sorteos = require('./sorteos');
+const config = require('../environments/test');
 
 (async () => {
     try {
-      let data = await auth.authTest("1805018866","l39IE68E0v23sw");
-      console.log(data);
+      let data = await auth.authTest(config.usuarioAplicativo,config.passwordAplicativo);
+      let sorteosData = await sorteos.consultarSorteosDisponibles(2, data, config.usuarioAplicativo, "192.168.0.1")
+      console.log(sorteosData);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   })();
-  

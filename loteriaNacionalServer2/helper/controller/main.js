@@ -1,10 +1,10 @@
 const psdAuth = require("../../psdLoteria/codigosPromocionales");
-const UltimosResultadosLoteria = require("../../sorteosLoteriaNacional/models/ultimoResultado");
-const UltimosResultadosLotto = require("../../sorteosLotto/models/ultimoResultado");
-const UltimosResultadosPozoMillonario = require("../../sorteosPozoMillonario/models/ultimoResultado");
-const UltimosResultadosLaMillonaria = require("../../sorteosLaMillonaria/models/ultimoResultado");
-const UltimosResultados = require("../../../loteriaNacionalServer/results/model/ultimoResultado");
+const Alerta = require("../../correos/alertaDeResultados");
 const db = require("../database").db;
+const masterLoteria = require("../../sorteosLoteriaNacional/models/master");
+const masterLotto = require("../../sorteosLotto/models/master");
+const masterPozo = require("../../sorteosPozoMillonario/models/master");
+const masterMillonaria = require("../../sorteosLaMillonaria/models/master");
 const SorteosLoteria = require("../../sorteosLoteriaNacional/models/sorteo");
 const SorteosLotto = require("../../sorteosLotto/models/sorteo");
 const SorteosPozoMillonario = require("../../sorteosPozoMillonario/models/sorteo");
@@ -21,7 +21,13 @@ const { helperLogger } = require("../logging");
 const ipTool = require("ip");
 
 /*************************** HERRAMIENTAS DE APOYO PARA SOPORTE TECNICO DEL SISTEMA ************************/
-
+function diff_hours(dt2, dt1) {
+  if(  dt2 == "Invalid Date" || dt1 == "Invalid Date" ) return true;
+  var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= 60 * 60;
+  let response = Math.abs(Math.round(diff)) > 15;
+  return response
+}
 const helperController = {
   corregirTransaccion: async (req, res) => {
     try {
@@ -264,11 +270,14 @@ const helperController = {
                 prizeDetail[
                   "drawDate"
                 ] = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-                let item = reservationDetails.find(element => prizeDetail.combinationC1 == element.combinationC1);
-                prizeDetail['combinationC2'] = item.combinationC2
-                prizeDetail['combinationC3'] = item.combinationC3
-                prizeDetail['combinationC4'] = item.combinationC4
-                prizeDetail['combinationC5'] = item.combinationC5
+                let item = reservationDetails.find(
+                  (element) =>
+                    prizeDetail.combinationC1 == element.combinationC1
+                );
+                prizeDetail["combinationC2"] = item.combinationC2;
+                prizeDetail["combinationC3"] = item.combinationC3;
+                prizeDetail["combinationC4"] = item.combinationC4;
+                prizeDetail["combinationC5"] = item.combinationC5;
                 break;
 
               case 5:
@@ -313,8 +322,7 @@ const helperController = {
         }
         instantaneaData = prizeDetails;
       }
- 
-      
+
       let exaVentaId = Date.now();
       let exaVentaData = {
         token,
@@ -382,6 +390,232 @@ const helperController = {
         errorMessage: e.message,
       };
       res.status(400).json(response);
+    }
+  },
+
+  alertaArchivos: async () => {
+    try {
+      let today = new Date();
+      let loteria = await masterLoteria
+        .findOne({})
+        .sort({ actualizado: -1 })
+        .lean();
+      let loteriaDate = new Date(loteria.actualizado);
+      let lotto = await masterLotto
+        .findOne({})
+        .sort({ actualizado: -1 })
+        .lean();
+      let lottoDate = new Date(lotto.actualizado);
+      let pozo = await masterPozo.findOne({}).sort({ actualizado: -1 }).lean();
+      let pozoDate = new Date(pozo.actualizado);
+      let millonaria = await masterMillonaria
+        .findOne({})
+        .sort({ actualizado: -1 })
+        .lean();
+      let millonariaDate = new Date(millonaria.actualizado);
+
+      let data = {
+        loteria:
+          diff_hours(today, loteriaDate) 
+            ? {
+                status: false,
+                sorteo: "",
+                archivoResultados: "",
+                lengthResultados: "",
+                cantidadResultados: "",
+                archivoPremios: "",
+                lengthPremios: "",
+                cantidadPremios: "",
+                archivoGanadores: "",
+                lengthGanadores: "",
+                cantidadGanadores: "",
+                ultimosResultados: "",
+              }
+            : {
+                status: true,
+                sorteo: loteria.numeroSorteo,
+                archivoResultados: loteria.resultados
+                  ? loteria.resultados.nombre
+                  : `No hay archivo de resultados para este sorteo`,
+                lengthResultados: loteria.resultados
+                  ? loteria.resultados.tamaño
+                  : `No hay archivo de resultados para este sorteo`,
+                cantidadResultados: loteria.resultados
+                  ? loteria.resultados.cantidad
+                  : `No hay archivo de resultados para este sorteo`,
+                archivoPremios: loteria.premios
+                  ? loteria.premios.nombre
+                  : `No hay archivo de premios para este sorteo`,
+                lengthPremios: loteria.premios
+                  ? loteria.premios.tamaño
+                  : `No hay archivo de premios para este sorteo`,
+                cantidadPremios: loteria.premios
+                  ? loteria.premios.cantidad
+                  : `No hay archivo de premios para este sorteo`,
+                archivoGanadores: loteria.ganadores
+                  ? loteria.ganadores.nombre
+                  : `No hay archivo de ganadores para este sorteo`,
+                lengthGanadores: loteria.ganadores
+                  ? loteria.ganadores.tamaño
+                  : `No hay archivo de ganadores para este sorteo`,
+                cantidadGanadores: loteria.ganadores
+                  ? loteria.ganadores.cantidad
+                  : `No hay archivo de ganadores para este sorteo`,
+                ultimosResultados: "",
+              },
+        lotto:
+          diff_hours(today, lottoDate) 
+            ? {
+                status: false,
+                sorteo: "",
+                archivoResultados: "",
+                lengthResultados: "",
+                cantidadResultados: "",
+                archivoPremios: "",
+                lengthPremios: "",
+                cantidadPremios: "",
+                archivoGanadores: "",
+                lengthGanadores: "",
+                cantidadGanadores: "",
+                ultimosResultados: "",
+              }
+            : {
+                status: true,
+                sorteo: lotto.numeroSorteo,
+                archivoResultados: lotto.resultados
+                  ? lotto.resultados.nombre
+                  : "No hay archivo de resultados para este sorteo",
+                lengthResultados: lotto.resultados
+                  ? lotto.resultados.tamaño
+                  : "No hay archivo de resultados para este sorteo",
+                cantidadResultados: lotto.resultados
+                  ? lotto.resultados.cantidad
+                  : "No hay archivo de resultados para este sorteo",
+                archivoPremios: lotto.premios
+                  ? lotto.premios.nombre
+                  : "No hay archivo de premios para este sorteo",
+                lengthPremios: lotto.premios
+                  ? lotto.premios.tamaño
+                  : "No hay archivo de premios para este sorteo",
+                cantidadPremios: lotto.premios
+                  ? lotto.premios.cantidad
+                  : "No hay archivo de premios para este sorteo",
+                archivoGanadores: lotto.ganadores
+                  ? lotto.ganadores.nombre
+                  : "No hay archivo de ganadores para este sorteo",
+                lengthGanadores: lotto.ganadores
+                  ? lotto.ganadores.tamaño
+                  : "No hay archivo de ganadores para este sorteo",
+                cantidadGanadores: lotto.ganadores
+                  ? lotto.ganadores.cantidad
+                  : "No hay archivo de ganadores para este sorteo",
+                ultimosResultados: "",
+              },
+        pozo:
+          diff_hours(today, pozoDate) 
+            ? {
+                status: false,
+                sorteo: "",
+                archivoResultados: "",
+                lengthResultados: "",
+                cantidadResultados: "",
+                archivoPremios: "",
+                lengthPremios: "",
+                cantidadPremios: "",
+                archivoGanadores: "",
+                lengthGanadores: "",
+                cantidadGanadores: "",
+                ultimosResultados: "",
+              }
+            : {
+                status: true,
+                sorteo: pozo.numeroSorteo,
+                archivoResultados: pozo.resultados
+                  ? pozo.resultados.nombre
+                  : "No hay archivo de resultados para este sorteo",
+                lengthResultados: pozo.resultados
+                  ? pozo.resultados.tamaño
+                  : "No hay archivo de resultados para este sorteo",
+                cantidadResultados: pozo.resultados
+                  ? pozo.resultados.cantidad
+                  : "No hay archivo de resultados para este sorteo",
+                archivoPremios: pozo.premios
+                  ? pozo.premios.nombre
+                  : "No hay archivo de premios para este sorteo",
+                lengthPremios: pozo.premios
+                  ? pozo.premios.tamaño
+                  : "No hay archivo de premios para este sorteo",
+                cantidadPremios: pozo.premios
+                  ? pozo.premios.cantidad
+                  : "No hay archivo de premios para este sorteo",
+                archivoGanadores: pozo.ganadores
+                  ? pozo.ganadores.nombre
+                  : "No hay archivo de ganadores para este sorteo",
+                lengthGanadores: pozo.ganadores
+                  ? pozo.ganadores.tamaño
+                  : "No hay archivo de ganadores para este sorteo",
+                cantidadGanadores: pozo.ganadores
+                  ? pozo.ganadores.cantidad
+                  : "No hay archivo de ganadores para este sorteo",
+                ultimosResultados: "",
+              },
+        millonaria:
+          diff_hours(today, millonariaDate) 
+            ? {
+                status: false,
+                sorteo: "",
+                archivoResultados: "",
+                lengthResultados: "",
+                cantidadResultados: "",
+                archivoPremios: "",
+                lengthPremios: "",
+                cantidadPremios: "",
+                archivoGanadores: "",
+                lengthGanadores: "",
+                cantidadGanadores: "",
+                ultimosResultados: "",
+              }
+            : {
+                status: true,
+                sorteo: millonaria.numeroSorteo,
+                archivoResultados: millonaria.resultados
+                  ? millonaria.resultados.nombre
+                  : "No hay archivo de resultados para este sorteo",
+                lengthResultados: millonaria.resultados
+                  ? millonaria.resultados.tamaño
+                  : "No hay archivo de resultados para este sorteo",
+                cantidadResultados: millonaria.resultados
+                  ? millonaria.resultados.cantidad
+                  : "No hay archivo de resultados para este sorteo",
+                archivoPremios: millonaria.premios
+                  ? millonaria.premios.nombre
+                  : "No hay archivo de premios para este sorteo",
+                lengthPremios: millonaria.premios
+                  ? millonaria.premios.tamaño
+                  : "No hay archivo de premios para este sorteo",
+                cantidadPremios: millonaria.premios
+                  ? millonaria.premios.cantidad
+                  : "No hay archivo de premios para este sorteo",
+                archivoGanadores: millonaria.ganadores
+                  ? millonaria.ganadores.nombre
+                  : "No hay archivo de ganadores para este sorteo",
+                lengthGanadores: millonaria.ganadores
+                  ? millonaria.ganadores.tamaño
+                  : "No hay archivo de ganadores para este sorteo",
+                cantidadGanadores: millonaria.ganadores
+                  ? millonaria.ganadores.cantidad
+                  : "No hay archivo de ganadores para este sorteo",
+                ultimosResultados: "",
+              },
+      };
+      let response = await Alerta.send(data);
+      return response;
+    } catch (e) {
+      let response = {
+        status: "error",
+        errorMessage: e.message,
+      };
+      throw e;
     }
   },
   pruebaConsulta: async (req, res) => {
@@ -523,77 +757,6 @@ const helperController = {
   },
   parseMicroServicios: async (req, res) => {
     try {
-      let auxA = await UltimosResultados.findOne({ tipoLoteria: 1 }).lean();
-      let auxB = await UltimosResultados.findOne({ tipoLoteria: 2 }).lean();
-      let auxC = await UltimosResultados.findOne({ tipoLoteria: 5 }).lean();
-      let auxD = await UltimosResultados.findOne({ tipoLoteria: 14 }).lean();
-
-      let queryA = { numeroSorteo: auxA.numeroSorteo };
-      let queryB = { numeroSorteo: auxB.numeroSorteo };
-      let queryC = { numeroSorteo: auxC.numeroSorteo };
-      let queryD = { numeroSorteo: auxD.numeroSorteo };
-
-      let loteria = {
-        ultimoResultadoLoteria: {
-          combinacion1: auxA.ultimoResultadoLoteria.combinacion1,
-        },
-        numeroSorteo: auxA.numeroSorteo,
-        codigoPremioPrincipal: auxA.codigoPremioPrincipal,
-      };
-
-      let millonaria = {
-        ultimoResultadoMillonaria: {
-          combinacion1: auxD.combinacion1,
-          combinacion2: auxD.combinacion2,
-        },
-        numeroSorteo: auxD.numeroSorteo,
-        codigoPremioPrincipal: auxD.codigoPremioPrincipal,
-      };
-
-      let lotto = {
-        ultimoResultadoLotto: { combinacion1: auxB.combinacion1 },
-        resultadoLottoPlus: auxB.resultadoLottoPlus,
-        resultadosLottito: auxB.resultadosLottito,
-        resultadoNosVemosJefe: auxB.resultadoNosVemosJefe,
-        resultadoAntojito: auxB.resultadoAntojito,
-        codigoPremioLottoPlus: auxB.codigoPremioLottoPlus,
-        codigoPremioLottito: auxB.codigoPremioLottito,
-        codigoPremioNosVemosJefe: auxB.codigoPremioNosVemosJefe,
-        codigoPremioAntojito: auxB.codigoPremioAntojito,
-        numeroSorteo: auxB.numeroSorteo,
-        codigoPremioPrincipal: auxB.codigoPremioPrincipal,
-      };
-
-      let pozo = {
-        ultimoResultadoPozo: {
-          combinacion2: auxC.combinacion2,
-        },
-        mascota: auxC.mascota,
-        numeroSorteo: auxC.numeroSorteo,
-        codigoPremioPrincipal: auxC.codigoPremioPrincipal,
-      };
-
-      let responseA = await UltimosResultadosLoteria.updateOne(
-        queryA,
-        { $set: loteria },
-        { upsert: true } // Make this update into an upsert
-      );
-      let responseB = await UltimosResultadosLotto.updateOne(
-        queryB,
-        { $set: lotto },
-        { upsert: true } // Make this update into an upsert
-      );
-      let responseC = await UltimosResultadosPozoMillonario.updateOne(
-        queryC,
-        { $set: pozo },
-        { upsert: true } // Make this update into an upsert
-      );
-      let responseD = await UltimosResultadosLaMillonaria.updateOne(
-        queryD,
-        { $set: millonaria },
-        { upsert: true } // Make this update into an upsert
-      );
-
       let auxE = await db.model("Sorteos").findOne({ tipoLoteria: 1 });
       let auxF = await db.model("Sorteos").findOne({ tipoLoteria: 2 });
       let auxG = await db.model("Sorteos").findOne({ tipoLoteria: 5 });

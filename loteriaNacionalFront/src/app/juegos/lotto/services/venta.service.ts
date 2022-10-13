@@ -39,7 +39,32 @@ export class VentaService {
         );
     });
   }
-
+  getSorteo(sorteo: any) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    //let endpoint = "/inquiry";
+    let endpoint = `/getSorteo`;
+    let address = '/lotto';
+    address = this.mySource + address + endpoint;
+    let body = {
+      sorteo
+    }
+    return new Promise<sorteo>((resolve, reject) => {
+      this.http
+        .post(address, body, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            let sorteo: sorteo = data;
+            resolve(sorteo);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
+  }
   ordenaSorteos(a: any, b: any) {
     let a1 = a['sorteo'];
     let b1 = b['sorteo'];

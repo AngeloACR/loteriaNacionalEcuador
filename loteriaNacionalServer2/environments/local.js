@@ -1,109 +1,64 @@
 module.exports = {
-    // SECRETS FOR ENCRYPTION
-    authSecret: "Shall I let you pass, or Shall I not?",
-    vSecret: "Becoming an outstanding Loteria Nacional User",
-    cSecret: "My incredible Loteria Nacional",
-    mSecret: "My secret moves will never be discovered",
-  
-    // SERVERS DATA
-    webPort: 6800,
-    contenidosPort: 5950,
-    
-    ventasPort: 4000,
-    reservasPort: 4500,
-    sorteosLoteriaNacionalPort: 5500,
-    sorteosLottoPort: 6000,
-    sorteosPozoMillonarioPort: 6500,
-    sorteosLaMillonariaPort: 7000,
-    ganadoresPort: 7500,
-    authPort: 8000,
-    walletPort: 8500,    
-    uploadsPort: 9000,    
-    helperPort: 9500,
-    host: "localhost",
-  
-    exalogicHost: "test.loteria.com.ec",
-    exalogicEndpoint: "/testlotery_api/XReceiver",
-  
-    alboranHost: "loteria.mongibello.tech",
-    alboranEndpoint: "/out/direct/json/lottery",
-  
-    // DATA FOR LOTERIA NACIONAL API
-    usuarioAplicativo: "sitiowebprep",
-    passwordAplicativo: "12345678",
-  
-    usuarioCliente: "italtronicprep",
-    passwordCliente: "12345678",
-  
-    //usuarioAplicativo: "sitiowebprodrsd",
-    //passwordAplicativo: "$13w8p707R6o",
-  
-    medioAplicativoId: 17,
-  
-    aplicativoAddress: "serviciomt-prep.wsdl",
-    //aplicativoAddress: "serviciomt-prod.wsdl",
-  
-    // MONGO DATABASE DATA
-    dbAddress: "mongodb://localhost:27017/loteriaDB",
-    //dbAddress: "mongodb://localhost:27017/loteriaDB",
-    //dbAddress: "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
-    
-    //MAILJET DATA
+  // SECRETS FOR ENCRYPTION
+  authSecret: "Shall I let you pass, or Shall I not?",
+  vSecret: "Becoming an outstanding Loteria Nacional User",
+  cSecret: "My incredible Loteria Nacional",
+  mSecret: "My secret moves will never be discovered",
 
+  // SERVERS DATA
+  webPort: 6800,
+  contenidosPort: 5950,
 
-    mailjetKey1: "b4ca63161564f363c152cb38c11fe8cd",
-    mailjetKey2: "a4568d6735f54dc085d3ac3e2ab572eb",
-  
-    //mailjetKey1: "3bab0fb6541b67dcc6432ec78e61cf4a",
-    //mailjetKey2: "ed376525e47bbc67f419af0aa6b6ea1b",
-  
-    emailRemitente: "ayuda@loteria.com.ec",
-    nombreRemitente: "Asistencia Loteria",
-  
-  
+  ventasPort: 4000,
+  reservasPort: 4500,
+  sorteosLoteriaNacionalPort: 5500,
+  sorteosLottoPort: 6000,
+  sorteosPozoMillonarioPort: 6500,
+  sorteosLaMillonariaPort: 7000,
+  ganadoresPort: 7500,
+  authPort: 8000,
+  walletPort: 8500,
+  uploadsPort: 9000,
+  helperPort: 9500,
+  host: "localhost",
 
-    
-  /*   mysqlPort: "3306",
-    mysqlUser: "serverUser",
-    mysqlPass: "",
-    dbName: "LoteriaNacional",
-    connectionLimit: 100,
-   */
-    // STATIC FILES PATHS
-    sourceBoletines: "http://localhost:5480/boletines/",
-    //sourceBoletines: "https://ventas-api-prueba.loteria.com.ec/boletines/",
-    //sourceBoletines: "https://ventas-api.loteria.com.ec/boletines/",
-    
-    sourceBoletos: "http://localhost:5480/boletos/",
-    //sourceBoletos: "https://ventas-api.loteria.com.ec/boletos/",
-    //sourceBoletos: "https://ventas-api-prueba.loteria.com.ec/boletos/",
-  
-    // FTP DATA
-    ftpHost: "localhost",
-    //ftpHost: "172.81.117.113",
-    //ftpHost: "144.208.73.177",
-    
-    ftpBoletinesPort: 2224,
-    ftpBoletosPort: 2226,
-    
-    ftpPassMin: 10520,
-    ftpPassMax: 10521,
-    ftpUser: "test",
-    ftpPass: "test",
-    //ftpUser: "loterianacional",
-    //ftpPass: "$lnftp123..$",
-    
-  ftpBoletinesPath: "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletines",
-  ftpBoletosPath: "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletos",
-  imgCorreosPath: "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/correos",
+  alboranHost: "loteria.mongibello.tech",
+  alboranEndpoint: "/out/direct/json/lottery",
 
-    //SSL DATA
-    sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",
-    sslPathTest: "/etc/letsencrypt/live/ventas-prueba.loteria.com.ec/",
-    keyFile: "privkey.pem",
-    certFile: "fullchain.pem",
-    reqFile: "request.pem",
-  
-    
-  };
-  
+  // DATA FOR LOTERIA NACIONAL API
+  usuarioAplicativo: "sitiowebprep",
+  passwordAplicativo: "12345678",
+
+  usuarioCliente: "italtronicprep",
+  passwordCliente: "12345678",
+
+  medioAplicativoId: 17,
+
+  aplicativoAddress: "serviciomt-prep.wsdl",
+
+  // MONGO DATABASE DATA
+  dbAddress: "mongodb://localhost:27017/loteriaDB",
+
+  //MAILJET DATA
+
+  mailjetKey1: "b4ca63161564f363c152cb38c11fe8cd",
+  mailjetKey2: "a4568d6735f54dc085d3ac3e2ab572eb",
+
+  //mailjetKey1: "3bab0fb6541b67dcc6432ec78e61cf4a",
+  //mailjetKey2: "ed376525e47bbc67f419af0aa6b6ea1b",
+
+  emailRemitente: "angelocrincoli91@gmail.com",
+  nombreRemitente: "Asistencia Loteria",
+  ftpBoletinesPath:
+    "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletines",
+  ftpBoletosPath:
+    "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletos",
+
+  imgCorreosPath:
+    "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/correos",
+
+  destinatarios: [
+    { nombre: "Angelo Crincoli", correo: "angelocrincoli91@gmail.com" },
+    { nombre: "Francisco Vidal", correo: "f0414475@gmail.com" },
+  ],
+};

@@ -23,14 +23,8 @@ module.exports = {
 
   host: "localhost",
 
-  exalogicHost: "test.loteria.com.ec",
-  exalogicEndpoint: "/testlotery_api/XReceiver",
-
   alboranHost: "loteria.mongibello.tech",
   alboranEndpoint: "/out/direct/json/lottery",
-
-  //exalogicHost: "www.loteria.com.ec",
-  //exalogicEndpoint: "/lotery_api/XReceiver",
 
   // DATA FOR LOTERIA NACIONAL API
   usuarioAplicativo: "sitiowebprep",
@@ -39,18 +33,13 @@ module.exports = {
   usuarioCliente: "italtronicprep",
   passwordCliente: "12345678",
 
-  //usuarioAplicativo: "sitiowebprodrsd",
-  //passwordAplicativo: "$13w8p707R6o",
-
   medioAplicativoId: 17,
 
   aplicativoAddress: "serviciomt-prep.wsdl",
-  //aplicativoAddress: "serviciomt-prod.wsdl",
 
   // MONGO DATABASE DATA
   dbAddress: "mongodb://localhost:27017/loteriaDB",
   //dbAddress:"mongodb://loterianacional:%24lndatabase123..%24@ventas-prueba.loteria.com.ec:27017/loteriaDB?replicaSet=backuptest",
-  //dbAddress: "mongodb://loterianacional:%24lndatabase123..%24@ventas.loteria.com.ec:27017/loteriaDB?replicaSet=backup",
 
   //MAILJET DATA
 
@@ -63,37 +52,11 @@ module.exports = {
   emailRemitente: "ayuda@loteria.com.ec",
   nombreRemitente: "Asistencia Loteria",
 
-  /*   mysqlPort: "3306",
-    mysqlUser: "serverUser",
-    mysqlPass: "",
-    dbName: "LoteriaNacional",
-    connectionLimit: 100,
-   */
-
-  // FTP DATA
-  //ftpHost: "localhost",
-  ftpHost: "0.0.0.0",
-  //ftpHost: "144.208.73.177",
-
-  ftpBoletinesPort: 2224,
-  ftpBoletosPort: 2226,
-
-  ftpPassMin: 10520,
-  ftpPassMax: 10521,
-  ftpUser: "test",
-  ftpPass: "test",
-  //ftpUser: "loterianacional",
-  //ftpPass: "$lnftp123..$",
-
   ftpBoletinesPath:
-    "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
-  ftpBoletosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
-  imgCorreosPath: "/root/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
+  ftpBoletosPath:
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
 
-  //SSL DATA
-  //sslPath: "/etc/letsencrypt/live/ventas.loteria.com.ec/",
-  sslPath: "/etc/letsencrypt/live/ventas-prueba.loteria.com.ec/",
-  keyFile: "privkey.pem",
-  certFile: "fullchain.pem",
-  reqFile: "request.pem",
+  imgCorreosPath:
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
 };

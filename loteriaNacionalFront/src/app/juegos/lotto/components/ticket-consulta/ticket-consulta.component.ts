@@ -12,11 +12,13 @@ export class TicketConsultaComponent implements OnInit {
   ticketNumbers?: Number[];
   numeroSorteo?: Number;
   sorteo: any;
+  premio: any;
   constructor() {}
 
   ngOnInit() {
     this.description = this.ticket.description;
     this.ticketNumbers = this.ticket.ticketNumbers;
+    this.premio = this.ticket.valorPremio? this.ticket.valorPremio : "";
 
     this.sorteo = this.ticket.sorteo;
     this.numeroSorteo = this.ticket.numeroSorteo;

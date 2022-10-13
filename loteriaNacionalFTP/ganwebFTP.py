@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+from datetime import datetime
+import os
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import codecs
@@ -20,6 +22,45 @@ def closeConnect(connection):
         connection.close()
     except:
         sendResult("Close Error")
+
+def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
+    try:
+        connection = connectDB(db)
+        loteriaDB = connection['loteriaDB']
+        date = datetime.now()
+        data = {
+            "numeroSorteo": sorteo,
+            "ganadores": {
+                "status": True,
+                "nombre": nombre,
+                "tamaño": tamaño,
+                "cantidad": cantidad,
+                "recibido": date,
+                },
+            "actualizado": date,
+        }
+        query = {
+            "numeroSorteo": sorteo,
+        }
+        updateQuery = {"$set": data}
+        if (tipoLoteria == "1"):
+            loteriaDB['masterloterias'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "2"):
+            loteriaDB['masterlottos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "5"):
+            loteriaDB['masterpozos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "14"):
+            loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
+        closeConnect(connection)
+        status = True
+        return status
+    except Exception as ex:
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        sendResult(message)
+        status = False
+        return status
+
 
 
 def agregarResultados(ganadoresNuevos, tipoLoteria, numeroSorteo, db):
@@ -148,6 +189,7 @@ def main():
     filename = sys.argv[1]
     filepath = "/home/acri/ftp/resultados" + filename
     #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
+    size = os.path.getsize(filepath)
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
 
@@ -166,6 +208,16 @@ def main():
     data = filename.split("-")
     tipoLoteria = data[1]
     numeroSorteo = data[2].split(".")[0]
+
+    file = open(filepath, 'w+', encoding="utf8")
+    file.seek(0, 0)
+    file.write(content)
+    file.close()
+
+
+
+    agregarMaestro(filename,size,len(resultados),tipoLoteria, numeroSorteo, db)
+
     agregarResultados(resultados, tipoLoteria, numeroSorteo, db)
 
 

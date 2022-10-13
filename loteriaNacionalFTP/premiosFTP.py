@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
+from datetime import datetime
 import xml.etree.ElementTree as ET
 from pymongo import MongoClient
 import sys
+import os
 
 def connectDB(myDB):
     try:
@@ -16,6 +18,45 @@ def closeConnect(connection):
         connection.close()
     except:
         sendResult("Close Error")
+
+def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
+    try:
+        connection = connectDB(db)
+        loteriaDB = connection['loteriaDB']
+        date = datetime.now()
+        data = {
+            "numeroSorteo": sorteo,
+            "premios": {
+                "status": True,
+                "nombre": nombre,
+                "tamaño": tamaño,
+                "cantidad": cantidad,
+                "recibido": date,
+                },
+            "actualizado": date,        }
+        query = {
+            "numeroSorteo": sorteo,
+        }
+        updateQuery = {"$set": data}
+        if (tipoLoteria == "1"):
+            loteriaDB['masterloterias'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "2"):
+            loteriaDB['masterlottos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "5"):
+            loteriaDB['masterpozos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "14"):
+            loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
+        closeConnect(connection)
+        status = True
+        return status
+    except Exception as ex:
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        sendResult(message)
+        status = False
+        return status
+
+
 
 def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
     try:
@@ -80,8 +121,8 @@ def main():
     db = "mongodb://localhost:27017/loteriaDB"
     #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
-    filepath = "/home/acri/ftp/resultados" + filename
-    #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores" + filename
+    #filepath = "/home/acri/ftp/resultados" + filename
+    filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
     file = open(filepath, encoding="iso-8859-1")
     content = file.read()
     file.close()
@@ -90,6 +131,9 @@ def main():
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
+    size = os.path.getsize(filepath)
+    agregarMaestro(filename,size,len(premios),tipoLoteria, sorteo, db)
+
     agregarPremios(premios, tipoLoteria, sorteo, db)
         
 
