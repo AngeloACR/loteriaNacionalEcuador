@@ -145,7 +145,7 @@
         <p *ngIf="item.combinacion3 == ''">
           Sueldo mensual por 1 año: <span>{{ item.combinacion2 }}</span>
         </p>
-        <ng-template *ngIf="item.combinacion4 != ''">
+        <ng-container *ngIf="item.combinacion4 != ''">
           <p>
             Suerte extra: <span>{{ item.combinacion2 }}</span>
           </p>
@@ -158,7 +158,7 @@
           <p *ngIf="item.combinacion5 && item.combinacion5 != ''">
             Antojito: <span>{{ nombreAntojito(item.combinacion5) }}</span>
           </p>
-        </ng-template>
+        </ng-container>
       </div>
       <div class="numberBox">
         <p>Cantidad: <span>1</span></p>
