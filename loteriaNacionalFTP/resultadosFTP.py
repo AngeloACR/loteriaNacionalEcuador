@@ -169,7 +169,8 @@ def main():
     #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]
     #filepath = "/home/acri/ftp/resultados" + filename
-    filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
+    filepath = "/home/acri/ftp/ftpResultados" + filename
+    #filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
     size = os.path.getsize(filepath)
     with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         lines = file.read()
