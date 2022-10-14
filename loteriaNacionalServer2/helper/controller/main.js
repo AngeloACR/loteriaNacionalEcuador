@@ -22,11 +22,11 @@ const ipTool = require("ip");
 
 /*************************** HERRAMIENTAS DE APOYO PARA SOPORTE TECNICO DEL SISTEMA ************************/
 function diff_hours(dt2, dt1) {
-  if(  dt2 == "Invalid Date" || dt1 == "Invalid Date" ) return true;
+  if (dt2 == "Invalid Date" || dt1 == "Invalid Date") return true;
   var diff = (dt2.getTime() - dt1.getTime()) / 1000;
   diff /= 60 * 60;
   let response = Math.abs(Math.round(diff)) > 15;
-  return response
+  return response;
 }
 const helperController = {
   corregirTransaccion: async (req, res) => {
@@ -400,213 +400,217 @@ const helperController = {
         .findOne({})
         .sort({ actualizado: -1 })
         .lean();
-      let loteriaDate = new Date(loteria.actualizado);
+      let loteriaDate = loteria.actualizado
+        ? new Date(loteria.actualizado)
+        : new Date("2019-01-01");
       let lotto = await masterLotto
         .findOne({})
         .sort({ actualizado: -1 })
         .lean();
-      let lottoDate = new Date(lotto.actualizado);
+      let lottoDate = lotto.actualizado
+        ? new Date(lotto.actualizado)
+        : new Date("2019-01-01");
       let pozo = await masterPozo.findOne({}).sort({ actualizado: -1 }).lean();
-      let pozoDate = new Date(pozo.actualizado);
+      let pozoDate = pozo.actualizado
+        ? new Date(pozo.actualizado)
+        : new Date("2019-01-01");
       let millonaria = await masterMillonaria
         .findOne({})
         .sort({ actualizado: -1 })
         .lean();
-      let millonariaDate = new Date(millonaria.actualizado);
+      let millonariaDate = millonaria.actualizado
+        ? new Date(millonaria.actualizado)
+        : new Date("2019-01-01");
 
       let data = {
-        loteria:
-          diff_hours(today, loteriaDate) 
-            ? {
-                status: false,
-                sorteo: "",
-                archivoResultados: "",
-                lengthResultados: "",
-                cantidadResultados: "",
-                archivoPremios: "",
-                lengthPremios: "",
-                cantidadPremios: "",
-                archivoGanadores: "",
-                lengthGanadores: "",
-                cantidadGanadores: "",
-                ultimosResultados: "",
-              }
-            : {
-                status: true,
-                sorteo: loteria.numeroSorteo,
-                archivoResultados: loteria.resultados
-                  ? loteria.resultados.nombre
-                  : `No hay archivo de resultados para este sorteo`,
-                lengthResultados: loteria.resultados
-                  ? loteria.resultados.tamaño/1024
-                  : `No hay archivo de resultados para este sorteo`,
-                cantidadResultados: loteria.resultados
-                  ? loteria.resultados.cantidad
-                  : `No hay archivo de resultados para este sorteo`,
-                archivoPremios: loteria.premios
-                  ? loteria.premios.nombre
-                  : `No hay archivo de premios para este sorteo`,
-                lengthPremios: loteria.premios
-                  ? loteria.premios.tamaño/1024
-                  : `No hay archivo de premios para este sorteo`,
-                cantidadPremios: loteria.premios
-                  ? loteria.premios.cantidad
-                  : `No hay archivo de premios para este sorteo`,
-                archivoGanadores: loteria.ganadores
-                  ? loteria.ganadores.nombre
-                  : `No hay archivo de ganadores para este sorteo`,
-                lengthGanadores: loteria.ganadores
-                  ? loteria.ganadores.tamaño/1024
-                  : `No hay archivo de ganadores para este sorteo`,
-                cantidadGanadores: loteria.ganadores
-                  ? loteria.ganadores.cantidad
-                  : `No hay archivo de ganadores para este sorteo`,
-                ultimosResultados: "",
-              },
-        lotto:
-          diff_hours(today, lottoDate) 
-            ? {
-                status: false,
-                sorteo: "",
-                archivoResultados: "",
-                lengthResultados: "",
-                cantidadResultados: "",
-                archivoPremios: "",
-                lengthPremios: "",
-                cantidadPremios: "",
-                archivoGanadores: "",
-                lengthGanadores: "",
-                cantidadGanadores: "",
-                ultimosResultados: "",
-              }
-            : {
-                status: true,
-                sorteo: lotto.numeroSorteo,
-                archivoResultados: lotto.resultados
-                  ? lotto.resultados.nombre
-                  : "No hay archivo de resultados para este sorteo",
-                lengthResultados: lotto.resultados
-                  ? lotto.resultados.tamaño/1024
-                  : "No hay archivo de resultados para este sorteo",
-                cantidadResultados: lotto.resultados
-                  ? lotto.resultados.cantidad
-                  : "No hay archivo de resultados para este sorteo",
-                archivoPremios: lotto.premios
-                  ? lotto.premios.nombre
-                  : "No hay archivo de premios para este sorteo",
-                lengthPremios: lotto.premios
-                  ? lotto.premios.tamaño/1024
-                  : "No hay archivo de premios para este sorteo",
-                cantidadPremios: lotto.premios
-                  ? lotto.premios.cantidad
-                  : "No hay archivo de premios para este sorteo",
-                archivoGanadores: lotto.ganadores
-                  ? lotto.ganadores.nombre
-                  : "No hay archivo de ganadores para este sorteo",
-                lengthGanadores: lotto.ganadores
-                  ? lotto.ganadores.tamaño/1024
-                  : "No hay archivo de ganadores para este sorteo",
-                cantidadGanadores: lotto.ganadores
-                  ? lotto.ganadores.cantidad
-                  : "No hay archivo de ganadores para este sorteo",
-                ultimosResultados: "",
-              },
-        pozo:
-          diff_hours(today, pozoDate) 
-            ? {
-                status: false,
-                sorteo: "",
-                archivoResultados: "",
-                lengthResultados: "",
-                cantidadResultados: "",
-                archivoPremios: "",
-                lengthPremios: "",
-                cantidadPremios: "",
-                archivoGanadores: "",
-                lengthGanadores: "",
-                cantidadGanadores: "",
-                ultimosResultados: "",
-              }
-            : {
-                status: true,
-                sorteo: pozo.numeroSorteo,
-                archivoResultados: pozo.resultados
-                  ? pozo.resultados.nombre
-                  : "No hay archivo de resultados para este sorteo",
-                lengthResultados: pozo.resultados
-                  ? pozo.resultados.tamaño/1024
-                  : "No hay archivo de resultados para este sorteo",
-                cantidadResultados: pozo.resultados
-                  ? pozo.resultados.cantidad
-                  : "No hay archivo de resultados para este sorteo",
-                archivoPremios: pozo.premios
-                  ? pozo.premios.nombre
-                  : "No hay archivo de premios para este sorteo",
-                lengthPremios: pozo.premios
-                  ? pozo.premios.tamaño/1024
-                  : "No hay archivo de premios para este sorteo",
-                cantidadPremios: pozo.premios
-                  ? pozo.premios.cantidad
-                  : "No hay archivo de premios para este sorteo",
-                archivoGanadores: pozo.ganadores
-                  ? pozo.ganadores.nombre
-                  : "No hay archivo de ganadores para este sorteo",
-                lengthGanadores: pozo.ganadores
-                  ? pozo.ganadores.tamaño/1024
-                  : "No hay archivo de ganadores para este sorteo",
-                cantidadGanadores: pozo.ganadores
-                  ? pozo.ganadores.cantidad
-                  : "No hay archivo de ganadores para este sorteo",
-                ultimosResultados: "",
-              },
-        millonaria:
-          diff_hours(today, millonariaDate) 
-            ? {
-                status: false,
-                sorteo: "",
-                archivoResultados: "",
-                lengthResultados: "",
-                cantidadResultados: "",
-                archivoPremios: "",
-                lengthPremios: "",
-                cantidadPremios: "",
-                archivoGanadores: "",
-                lengthGanadores: "",
-                cantidadGanadores: "",
-                ultimosResultados: "",
-              }
-            : {
-                status: true,
-                sorteo: millonaria.numeroSorteo,
-                archivoResultados: millonaria.resultados
-                  ? millonaria.resultados.nombre
-                  : "No hay archivo de resultados para este sorteo",
-                lengthResultados: millonaria.resultados
-                  ? millonaria.resultados.tamaño/1024
-                  : "No hay archivo de resultados para este sorteo",
-                cantidadResultados: millonaria.resultados
-                  ? millonaria.resultados.cantidad
-                  : "No hay archivo de resultados para este sorteo",
-                archivoPremios: millonaria.premios
-                  ? millonaria.premios.nombre
-                  : "No hay archivo de premios para este sorteo",
-                lengthPremios: millonaria.premios
-                  ? millonaria.premios.tamaño/1024
-                  : "No hay archivo de premios para este sorteo",
-                cantidadPremios: millonaria.premios
-                  ? millonaria.premios.cantidad
-                  : "No hay archivo de premios para este sorteo",
-                archivoGanadores: millonaria.ganadores
-                  ? millonaria.ganadores.nombre
-                  : "No hay archivo de ganadores para este sorteo",
-                lengthGanadores: millonaria.ganadores
-                  ? millonaria.ganadores.tamaño/1024
-                  : "No hay archivo de ganadores para este sorteo",
-                cantidadGanadores: millonaria.ganadores
-                  ? millonaria.ganadores.cantidad
-                  : "No hay archivo de ganadores para este sorteo",
-                ultimosResultados: "",
-              },
+        loteria: diff_hours(today, loteriaDate)
+          ? {
+              status: false,
+              sorteo: "",
+              archivoResultados: "",
+              lengthResultados: "",
+              cantidadResultados: "",
+              archivoPremios: "",
+              lengthPremios: "",
+              cantidadPremios: "",
+              archivoGanadores: "",
+              lengthGanadores: "",
+              cantidadGanadores: "",
+              ultimosResultados: "",
+            }
+          : {
+              status: true,
+              sorteo: loteria.numeroSorteo,
+              archivoResultados: loteria.resultados
+                ? loteria.resultados.nombre
+                : `No hay archivo de resultados para este sorteo`,
+              lengthResultados: loteria.resultados
+                ? loteria.resultados.tamaño / 1024
+                : `No hay archivo de resultados para este sorteo`,
+              cantidadResultados: loteria.resultados
+                ? loteria.resultados.cantidad
+                : `No hay archivo de resultados para este sorteo`,
+              archivoPremios: loteria.premios
+                ? loteria.premios.nombre
+                : `No hay archivo de premios para este sorteo`,
+              lengthPremios: loteria.premios
+                ? loteria.premios.tamaño / 1024
+                : `No hay archivo de premios para este sorteo`,
+              cantidadPremios: loteria.premios
+                ? loteria.premios.cantidad
+                : `No hay archivo de premios para este sorteo`,
+              archivoGanadores: loteria.ganadores
+                ? loteria.ganadores.nombre
+                : `No hay archivo de ganadores para este sorteo`,
+              lengthGanadores: loteria.ganadores
+                ? loteria.ganadores.tamaño / 1024
+                : `No hay archivo de ganadores para este sorteo`,
+              cantidadGanadores: loteria.ganadores
+                ? loteria.ganadores.cantidad
+                : `No hay archivo de ganadores para este sorteo`,
+              ultimosResultados: "",
+            },
+        lotto: diff_hours(today, lottoDate)
+          ? {
+              status: false,
+              sorteo: "",
+              archivoResultados: "",
+              lengthResultados: "",
+              cantidadResultados: "",
+              archivoPremios: "",
+              lengthPremios: "",
+              cantidadPremios: "",
+              archivoGanadores: "",
+              lengthGanadores: "",
+              cantidadGanadores: "",
+              ultimosResultados: "",
+            }
+          : {
+              status: true,
+              sorteo: lotto.numeroSorteo,
+              archivoResultados: lotto.resultados
+                ? lotto.resultados.nombre
+                : "No hay archivo de resultados para este sorteo",
+              lengthResultados: lotto.resultados
+                ? lotto.resultados.tamaño / 1024
+                : "No hay archivo de resultados para este sorteo",
+              cantidadResultados: lotto.resultados
+                ? lotto.resultados.cantidad
+                : "No hay archivo de resultados para este sorteo",
+              archivoPremios: lotto.premios
+                ? lotto.premios.nombre
+                : "No hay archivo de premios para este sorteo",
+              lengthPremios: lotto.premios
+                ? lotto.premios.tamaño / 1024
+                : "No hay archivo de premios para este sorteo",
+              cantidadPremios: lotto.premios
+                ? lotto.premios.cantidad
+                : "No hay archivo de premios para este sorteo",
+              archivoGanadores: lotto.ganadores
+                ? lotto.ganadores.nombre
+                : "No hay archivo de ganadores para este sorteo",
+              lengthGanadores: lotto.ganadores
+                ? lotto.ganadores.tamaño / 1024
+                : "No hay archivo de ganadores para este sorteo",
+              cantidadGanadores: lotto.ganadores
+                ? lotto.ganadores.cantidad
+                : "No hay archivo de ganadores para este sorteo",
+              ultimosResultados: "",
+            },
+        pozo: diff_hours(today, pozoDate)
+          ? {
+              status: false,
+              sorteo: "",
+              archivoResultados: "",
+              lengthResultados: "",
+              cantidadResultados: "",
+              archivoPremios: "",
+              lengthPremios: "",
+              cantidadPremios: "",
+              archivoGanadores: "",
+              lengthGanadores: "",
+              cantidadGanadores: "",
+              ultimosResultados: "",
+            }
+          : {
+              status: true,
+              sorteo: pozo.numeroSorteo,
+              archivoResultados: pozo.resultados
+                ? pozo.resultados.nombre
+                : "No hay archivo de resultados para este sorteo",
+              lengthResultados: pozo.resultados
+                ? pozo.resultados.tamaño / 1024
+                : "No hay archivo de resultados para este sorteo",
+              cantidadResultados: pozo.resultados
+                ? pozo.resultados.cantidad
+                : "No hay archivo de resultados para este sorteo",
+              archivoPremios: pozo.premios
+                ? pozo.premios.nombre
+                : "No hay archivo de premios para este sorteo",
+              lengthPremios: pozo.premios
+                ? pozo.premios.tamaño / 1024
+                : "No hay archivo de premios para este sorteo",
+              cantidadPremios: pozo.premios
+                ? pozo.premios.cantidad
+                : "No hay archivo de premios para este sorteo",
+              archivoGanadores: pozo.ganadores
+                ? pozo.ganadores.nombre
+                : "No hay archivo de ganadores para este sorteo",
+              lengthGanadores: pozo.ganadores
+                ? pozo.ganadores.tamaño / 1024
+                : "No hay archivo de ganadores para este sorteo",
+              cantidadGanadores: pozo.ganadores
+                ? pozo.ganadores.cantidad
+                : "No hay archivo de ganadores para este sorteo",
+              ultimosResultados: "",
+            },
+        millonaria: diff_hours(today, millonariaDate)
+          ? {
+              status: false,
+              sorteo: "",
+              archivoResultados: "",
+              lengthResultados: "",
+              cantidadResultados: "",
+              archivoPremios: "",
+              lengthPremios: "",
+              cantidadPremios: "",
+              archivoGanadores: "",
+              lengthGanadores: "",
+              cantidadGanadores: "",
+              ultimosResultados: "",
+            }
+          : {
+              status: true,
+              sorteo: millonaria.numeroSorteo,
+              archivoResultados: millonaria.resultados
+                ? millonaria.resultados.nombre
+                : "No hay archivo de resultados para este sorteo",
+              lengthResultados: millonaria.resultados
+                ? millonaria.resultados.tamaño / 1024
+                : "No hay archivo de resultados para este sorteo",
+              cantidadResultados: millonaria.resultados
+                ? millonaria.resultados.cantidad
+                : "No hay archivo de resultados para este sorteo",
+              archivoPremios: millonaria.premios
+                ? millonaria.premios.nombre
+                : "No hay archivo de premios para este sorteo",
+              lengthPremios: millonaria.premios
+                ? millonaria.premios.tamaño / 1024
+                : "No hay archivo de premios para este sorteo",
+              cantidadPremios: millonaria.premios
+                ? millonaria.premios.cantidad
+                : "No hay archivo de premios para este sorteo",
+              archivoGanadores: millonaria.ganadores
+                ? millonaria.ganadores.nombre
+                : "No hay archivo de ganadores para este sorteo",
+              lengthGanadores: millonaria.ganadores
+                ? millonaria.ganadores.tamaño / 1024
+                : "No hay archivo de ganadores para este sorteo",
+              cantidadGanadores: millonaria.ganadores
+                ? millonaria.ganadores.cantidad
+                : "No hay archivo de ganadores para este sorteo",
+              ultimosResultados: "",
+            },
       };
       let response = await Alerta.send(data);
       return response;
