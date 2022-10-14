@@ -438,7 +438,7 @@ const helperController = {
                   ? loteria.resultados.nombre
                   : `No hay archivo de resultados para este sorteo`,
                 lengthResultados: loteria.resultados
-                  ? loteria.resultados.tamaño
+                  ? loteria.resultados.tamaño/1024
                   : `No hay archivo de resultados para este sorteo`,
                 cantidadResultados: loteria.resultados
                   ? loteria.resultados.cantidad
@@ -447,7 +447,7 @@ const helperController = {
                   ? loteria.premios.nombre
                   : `No hay archivo de premios para este sorteo`,
                 lengthPremios: loteria.premios
-                  ? loteria.premios.tamaño
+                  ? loteria.premios.tamaño/1024
                   : `No hay archivo de premios para este sorteo`,
                 cantidadPremios: loteria.premios
                   ? loteria.premios.cantidad
@@ -456,7 +456,7 @@ const helperController = {
                   ? loteria.ganadores.nombre
                   : `No hay archivo de ganadores para este sorteo`,
                 lengthGanadores: loteria.ganadores
-                  ? loteria.ganadores.tamaño
+                  ? loteria.ganadores.tamaño/1024
                   : `No hay archivo de ganadores para este sorteo`,
                 cantidadGanadores: loteria.ganadores
                   ? loteria.ganadores.cantidad
@@ -486,7 +486,7 @@ const helperController = {
                   ? lotto.resultados.nombre
                   : "No hay archivo de resultados para este sorteo",
                 lengthResultados: lotto.resultados
-                  ? lotto.resultados.tamaño
+                  ? lotto.resultados.tamaño/1024
                   : "No hay archivo de resultados para este sorteo",
                 cantidadResultados: lotto.resultados
                   ? lotto.resultados.cantidad
@@ -495,7 +495,7 @@ const helperController = {
                   ? lotto.premios.nombre
                   : "No hay archivo de premios para este sorteo",
                 lengthPremios: lotto.premios
-                  ? lotto.premios.tamaño
+                  ? lotto.premios.tamaño/1024
                   : "No hay archivo de premios para este sorteo",
                 cantidadPremios: lotto.premios
                   ? lotto.premios.cantidad
@@ -504,7 +504,7 @@ const helperController = {
                   ? lotto.ganadores.nombre
                   : "No hay archivo de ganadores para este sorteo",
                 lengthGanadores: lotto.ganadores
-                  ? lotto.ganadores.tamaño
+                  ? lotto.ganadores.tamaño/1024
                   : "No hay archivo de ganadores para este sorteo",
                 cantidadGanadores: lotto.ganadores
                   ? lotto.ganadores.cantidad
@@ -534,7 +534,7 @@ const helperController = {
                   ? pozo.resultados.nombre
                   : "No hay archivo de resultados para este sorteo",
                 lengthResultados: pozo.resultados
-                  ? pozo.resultados.tamaño
+                  ? pozo.resultados.tamaño/1024
                   : "No hay archivo de resultados para este sorteo",
                 cantidadResultados: pozo.resultados
                   ? pozo.resultados.cantidad
@@ -543,7 +543,7 @@ const helperController = {
                   ? pozo.premios.nombre
                   : "No hay archivo de premios para este sorteo",
                 lengthPremios: pozo.premios
-                  ? pozo.premios.tamaño
+                  ? pozo.premios.tamaño/1024
                   : "No hay archivo de premios para este sorteo",
                 cantidadPremios: pozo.premios
                   ? pozo.premios.cantidad
@@ -552,7 +552,7 @@ const helperController = {
                   ? pozo.ganadores.nombre
                   : "No hay archivo de ganadores para este sorteo",
                 lengthGanadores: pozo.ganadores
-                  ? pozo.ganadores.tamaño
+                  ? pozo.ganadores.tamaño/1024
                   : "No hay archivo de ganadores para este sorteo",
                 cantidadGanadores: pozo.ganadores
                   ? pozo.ganadores.cantidad
@@ -582,7 +582,7 @@ const helperController = {
                   ? millonaria.resultados.nombre
                   : "No hay archivo de resultados para este sorteo",
                 lengthResultados: millonaria.resultados
-                  ? millonaria.resultados.tamaño
+                  ? millonaria.resultados.tamaño/1024
                   : "No hay archivo de resultados para este sorteo",
                 cantidadResultados: millonaria.resultados
                   ? millonaria.resultados.cantidad
@@ -591,7 +591,7 @@ const helperController = {
                   ? millonaria.premios.nombre
                   : "No hay archivo de premios para este sorteo",
                 lengthPremios: millonaria.premios
-                  ? millonaria.premios.tamaño
+                  ? millonaria.premios.tamaño/1024
                   : "No hay archivo de premios para este sorteo",
                 cantidadPremios: millonaria.premios
                   ? millonaria.premios.cantidad
@@ -600,7 +600,7 @@ const helperController = {
                   ? millonaria.ganadores.nombre
                   : "No hay archivo de ganadores para este sorteo",
                 lengthGanadores: millonaria.ganadores
-                  ? millonaria.ganadores.tamaño
+                  ? millonaria.ganadores.tamaño/1024
                   : "No hay archivo de ganadores para este sorteo",
                 cantidadGanadores: millonaria.ganadores
                   ? millonaria.ganadores.cantidad
