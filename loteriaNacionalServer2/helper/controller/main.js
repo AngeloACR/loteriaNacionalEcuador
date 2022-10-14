@@ -400,27 +400,31 @@ const helperController = {
         .findOne({})
         .sort({ actualizado: -1 })
         .lean();
-      let loteriaDate = loteria.actualizado
-        ? new Date(loteria.actualizado)
-        : new Date("2019-01-01");
+      let loteriaDate =
+        loteria && loteria.actualizado
+          ? new Date(loteria.actualizado)
+          : new Date("2019-01-01");
       let lotto = await masterLotto
         .findOne({})
         .sort({ actualizado: -1 })
         .lean();
-      let lottoDate = lotto.actualizado
-        ? new Date(lotto.actualizado)
-        : new Date("2019-01-01");
+      let lottoDate =
+        lotto && lotto.actualizado
+          ? new Date(lotto.actualizado)
+          : new Date("2019-01-01");
       let pozo = await masterPozo.findOne({}).sort({ actualizado: -1 }).lean();
-      let pozoDate = pozo.actualizado
-        ? new Date(pozo.actualizado)
-        : new Date("2019-01-01");
+      let pozoDate =
+        pozo && pozo.actualizado
+          ? new Date(pozo.actualizado)
+          : new Date("2019-01-01");
       let millonaria = await masterMillonaria
         .findOne({})
         .sort({ actualizado: -1 })
         .lean();
-      let millonariaDate = millonaria.actualizado
-        ? new Date(millonaria.actualizado)
-        : new Date("2019-01-01");
+      let millonariaDate =
+        millonaria && millonaria.actualizado
+          ? new Date(millonaria.actualizado)
+          : new Date("2019-01-01");
 
       let data = {
         loteria: diff_hours(today, loteriaDate)
