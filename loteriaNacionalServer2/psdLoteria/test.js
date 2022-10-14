@@ -1,6 +1,6 @@
 const auth = require('./auth');
 const sorteos = require('./sorteos');
-const config = require('../environments/local');
+const config = require('../environments/test');
 
 (async () => {
     try {
