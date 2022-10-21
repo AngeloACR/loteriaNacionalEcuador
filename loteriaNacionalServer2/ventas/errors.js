@@ -1,5 +1,6 @@
 const psdVentas = require("../psdLoteria/ventas");
 const Wallet = require("../wallet/controller/main"); // COMUNICAR POR gRPC
+const Ventas = require("./models/main");
 
 /*AGREGAR LOGGING */
 
@@ -121,6 +122,11 @@ const errorHandler = {
         "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
       );
     }
+    let ventaLoteriaStatusResponse = await Ventas.actualizarStatus(
+      venta._id,
+      "Cancelada",
+      alboranCancelId
+    );
     throw new Error(
       "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
     );
