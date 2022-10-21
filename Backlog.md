@@ -19,6 +19,8 @@
 - Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR  
 - Cronjob para resolucion de ventas fallidas
 - Automatizar resolucion de ventas fallidas
+- Agregar validacion previa a la venta para obtener status de la reserva
+- Aplicar debouncing al boton de confirmar compra
 - Validar premios no pagados
 - Validar premios no pagados en exalogic
 - Resolver premios especiales de lotto en ultimos resultados
