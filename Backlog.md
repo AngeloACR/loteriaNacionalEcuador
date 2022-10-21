@@ -12,10 +12,10 @@
 - Agregar margin arriba y abajo en menu header de home y ultimos resultados de home - LISTO
 - Implementar cambios en vista de detalle de compra - LISTO
 - Modificar mensaje de premio instantaneo lotto - LISTO
-- Actualizar balance en padre del iframe - Listo
-- Carrito flotante
+- Actualizar balance en padre del iframe - LISTO
+- Agregar evento de scrolling en carrito flotante, errores y loaders
 - Generar ruta de pruebas controladas en produccion
-- Revisar fallos de la cuenta de pruebas en produccion
+- Revisar fallos de la cuenta de pruebas en produccion - Listo
 - Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR  
 - Cronjob para resolucion de ventas fallidas
 - Automatizar resolucion de ventas fallidas

@@ -103,7 +103,7 @@ const errorHandler = {
       );
     }
   },
-  loteriaSellError: async (exaReservaData) => {
+  loteriaSellError: async (alboranReservaData) => {
     let alboranCancelId = Date.now();
     let alboranCancelData = {
       transactionId: alboranCancelId,

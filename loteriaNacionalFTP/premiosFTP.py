@@ -123,8 +123,8 @@ def main():
     filename = sys.argv[1]
     print(sys.argv)
     #filepath = "/home/acri/ftp/resultados" + filename
-    #filepath = "/home/acri/ftpResultados" + filename
-    filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
+    filepath = "/home/acri/ftpResultados" + filename
+    #filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
     file = open(filepath, encoding="iso-8859-1")
     content = file.read()
     file.close()
