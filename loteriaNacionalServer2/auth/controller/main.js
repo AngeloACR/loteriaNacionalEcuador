@@ -32,9 +32,10 @@ const mainController = {
       } */
       let token = req.body.token;
       let user = "0951234566";
+      let playerDocument = "0951234566";
       let pass = "Pass1234!";
       let response = await psdAuth.authTest(user, pass);
-      res.status(200).json({ user, lotteryToken: response , personalId: '43030', accountId: '54961'});
+      res.status(200).json({ user, playerDocument, lotteryToken: response , personalId: '43030', accountId: '54961'});
     } catch (e) {
       authLogger.error("authUser.error", {
         errorMessage: e.message,

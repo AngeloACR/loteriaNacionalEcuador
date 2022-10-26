@@ -77,6 +77,7 @@ export class VentaService {
           resolve(combinacionesDisponibles);
         },
         (error: any) => {
+          console.log(error);
           reject(new Error(error.error.message));
         }
       );

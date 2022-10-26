@@ -72,6 +72,7 @@ class VentaService {
                 let combinacionesDisponibles = data.combinaciones;
                 resolve(combinacionesDisponibles);
             }, (error) => {
+                console.log(error);
                 reject(new Error(error.error.message));
             });
         });
