@@ -10724,7 +10724,8 @@ class VentasService {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         let address = '/auth';
-        let endpoint = '/';
+        //let endpoint = '/';
+        let endpoint = '/test';
         let body = {
             token,
         };

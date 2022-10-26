@@ -97,7 +97,8 @@ export class VentasService {
     headers = headers.append('Content-Type', 'application/json');
     let address = '/auth';
 
-    let endpoint = '/';
+    //let endpoint = '/';
+    let endpoint = '/test';
     let body = {
       token,
     };

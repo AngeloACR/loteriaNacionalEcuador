@@ -1,4 +1,5 @@
 const alboranAuth = require("../../alboran/auth");
+const psdAuth = require("../../psdLoteria/auth");
 const { authLogger } = require("../logging");
 
 const mainController = {
@@ -10,6 +11,30 @@ const mainController = {
       let token = req.body.token;
       let response = await alboranAuth.authUser(token);
       res.status(200).json(response);
+    } catch (e) {
+      authLogger.error("authUser.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
+      let response = {
+        status: "error",
+        message: e.message.toLowerCase().includes("otp")
+          ? "Has iniciado sesión en otro dispositivo."
+          : e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  authUserPSD: async (req, res) => {
+    try {
+      /* {
+        "token": "661c0ce5ccabbeb1136a"
+      } */
+      let token = req.body.token;
+      let user = "0951234566";
+      let pass = "Pass1234!";
+      let response = await psdAuth.authTest(user, pass);
+      res.status(200).json({ user, lotteryToken: response });
     } catch (e) {
       authLogger.error("authUser.error", {
         errorMessage: e.message,
