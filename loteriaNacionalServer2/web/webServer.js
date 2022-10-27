@@ -45,7 +45,7 @@ module.exports.init = function (folder, thePath, port) {
           "*",
 //          "https://*.loteria.com.ec",
 //          "http://*.mongibello.tech",
-  //        "http://loteria.mongibello.tech:83",
+          "http://loteria.mongibello.tech:8300",
         ],
       },
     })
