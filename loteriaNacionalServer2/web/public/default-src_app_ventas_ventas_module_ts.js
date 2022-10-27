@@ -754,9 +754,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ConfirmacionDeVentaComponent": () => (/* binding */ ConfirmacionDeVentaComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
 /* harmony import */ var _services_ventas_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/ventas.service */ 1987);
 /* harmony import */ var _descripcion_de_venta_descripcion_de_venta_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../descripcion-de-venta/descripcion-de-venta.component */ 7179);
+/* harmony import */ var _shared_throttle_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../shared/throttle.directive */ 2989);
+
 
 
 
@@ -764,9 +766,9 @@ __webpack_require__.r(__webpack_exports__);
 class ConfirmacionDeVentaComponent {
     constructor(ventas) {
         this.ventas = ventas;
-        this.compraConfirmada = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
-        this.compraCancelada = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
-        this.comprarDespues = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
+        this.compraConfirmada = new _angular_core__WEBPACK_IMPORTED_MODULE_3__.EventEmitter();
+        this.compraCancelada = new _angular_core__WEBPACK_IMPORTED_MODULE_3__.EventEmitter();
+        this.comprarDespues = new _angular_core__WEBPACK_IMPORTED_MODULE_3__.EventEmitter();
     }
     ngOnInit() {
         this.user = this.ventas.getAuthData().user;
@@ -781,31 +783,33 @@ class ConfirmacionDeVentaComponent {
         this.compraCancelada.emit("La compra no se pudo procesar, por favor intente mas tarde");
     }
 }
-ConfirmacionDeVentaComponent.ɵfac = function ConfirmacionDeVentaComponent_Factory(t) { return new (t || ConfirmacionDeVentaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_ventas_service__WEBPACK_IMPORTED_MODULE_0__.VentasService)); };
-ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: ConfirmacionDeVentaComponent, selectors: [["app-confirmacion-de-venta"]], inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 10, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], [1, "confirmationButton", 3, "click"]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_div_click_0_listener() { return ctx.volver(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "app-descripcion-de-venta", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "Seguro que deseas efectuar la compra?");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "button", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_button_click_6_listener() { return ctx.volver(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "Volver");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "button", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_button_click_8_listener() { return ctx.confirmarCompra(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](9, " Confirmar compra ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+ConfirmacionDeVentaComponent.ɵfac = function ConfirmacionDeVentaComponent_Factory(t) { return new (t || ConfirmacionDeVentaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_ventas_service__WEBPACK_IMPORTED_MODULE_0__.VentasService)); };
+ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: ConfirmacionDeVentaComponent, selectors: [["app-confirmacion-de-venta"]], inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 10, vars: 3, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["appPreventDoubleClick", "", 1, "confirmationButton", 3, "throttleTime", "throttledClick"]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_div_click_0_listener() { return ctx.volver(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "app-descripcion-de-venta", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Seguro que deseas efectuar la compra?");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "button", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_button_click_6_listener() { return ctx.volver(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "Volver");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "button", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("throttledClick", function ConfirmacionDeVentaComponent_Template_button_throttledClick_8_listener() { return ctx.confirmarCompra(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, " Confirmar compra ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("compra", ctx.compra)("user", ctx.user);
-    } }, directives: [_descripcion_de_venta_descripcion_de_venta_component__WEBPACK_IMPORTED_MODULE_1__.DescripcionDeVentaComponent], styles: [".paymentBox[_ngcontent-%COMP%] {\n  width: 70%;\n  height: 70%;\n  position: fixed;\n  padding: 15px;\n  z-index: 10000;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  overflow-y: scroll;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-around;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  padding: 15px;\n  border-radius: 30px;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n  margin: 10px auto;\n  width: 100%;\n  max-width: 300px;\n  cursor: pointer;\n  color: #fff;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.confirmationButton[_ngcontent-%COMP%] {\n  background-color: green;\n  border: 1px solid green;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.confirmationButton[_ngcontent-%COMP%]:hover {\n  background-color: white;\n  color: green;\n  transition: background-color 0.4s ease;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.backButton[_ngcontent-%COMP%] {\n  background-color: red;\n  border: 1px solid red;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.backButton[_ngcontent-%COMP%]:hover {\n  background-color: white;\n  color: red;\n  transition: background-color 0.4s ease;\n}\n.blackBox[_ngcontent-%COMP%] {\n  position: fixed;\n  z-index: 8000;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  transition: height 0.2s ease-out;\n  overflow: hidden;\n  background-color: rgba(155, 155, 155, 0.5);\n  border: none;\n}\n@media screen and (max-width: 1000px) {\n  .paymentBox[_ngcontent-%COMP%] {\n    width: 95%;\n  }\n}\n@media screen and (max-width: 600px) {\n  .paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%] {\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpcm1hY2lvbi1kZS12ZW50YS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLFVBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGFBQUE7RUFDQSxjQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxnQ0FBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7QUFERjtBQUdFO0VBQ0UsYUFBQTtFQUNBLDZCQUFBO0FBREo7QUFFSTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLG1DQXBCVztFQXFCWCxlQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtBQUFOO0FBRU07RUFDRSx1QkFBQTtFQUNBLHVCQUFBO0FBQVI7QUFDUTtFQUNFLHVCQUFBO0VBQ0EsWUFBQTtFQUNBLHNDQUFBO0FBQ1Y7QUFFTTtFQUNFLHFCQUFBO0VBQ0EscUJBQUE7QUFBUjtBQUNRO0VBQ0UsdUJBQUE7RUFDQSxVQUFBO0VBQ0Esc0NBQUE7QUFDVjtBQUtBO0VBQ0UsZUFBQTtFQUNBLGFBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0NBQUE7RUFDQSxnQkFBQTtFQUNBLDBDQUFBO0VBQ0EsWUFBQTtBQUZGO0FBSUE7RUFDRTtJQUNFLFVBQUE7RUFERjtBQUNGO0FBR0E7RUFFSTtJQUNFLHNCQUFBO0VBRko7QUFDRiIsImZpbGUiOiJjb25maXJtYWNpb24tZGUtdmVudGEuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkZnVlbnRlLWJvdG9uZXM6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcclxuXHJcbi5wYXltZW50Qm94IHtcclxuICB3aWR0aDogNzAlO1xyXG4gIGhlaWdodDogNzAlO1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBwYWRkaW5nOiAxNXB4O1xyXG4gIHotaW5kZXg6IDEwMDAwO1xyXG4gIHRvcDogNTAlO1xyXG4gIGxlZnQ6IDUwJTtcclxuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICBvdmVyZmxvdy15OiBzY3JvbGw7XHJcblxyXG4gIC5idXR0b25Cb3gge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xyXG4gICAgYnV0dG9uIHtcclxuICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxuICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtYm90b25lcztcclxuICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICBtYXJnaW46IDEwcHggYXV0bztcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgIG1heC13aWR0aDogMzAwcHg7XHJcbiAgICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgICAgY29sb3I6ICNmZmY7XHJcblxyXG4gICAgICAmLmNvbmZpcm1hdGlvbkJ1dHRvbiB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XHJcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgZ3JlZW47XHJcbiAgICAgICAgJjpob3ZlciB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgIGNvbG9yOiBncmVlbjtcclxuICAgICAgICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC40cyBlYXNlO1xyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgICAmLmJhY2tCdXR0b24ge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCByZWQ7XHJcbiAgICAgICAgJjpob3ZlciB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgIGNvbG9yOiByZWQ7XHJcbiAgICAgICAgICB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kLWNvbG9yIDAuNHMgZWFzZTtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcbn1cclxuLmJsYWNrQm94IHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgei1pbmRleDogODAwMDtcclxuICB0b3A6IDA7XHJcbiAgbGVmdDogMDtcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbiAgdHJhbnNpdGlvbjogaGVpZ2h0IDAuMnMgZWFzZS1vdXQ7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDE1NSwgMTU1LCAxNTUsIDAuNSk7XHJcbiAgYm9yZGVyOiBub25lO1xyXG59XHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gIC5wYXltZW50Qm94IHtcclxuICAgIHdpZHRoOiA5NSU7XHJcbiAgfVxyXG59XHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XHJcbiAgLnBheW1lbnRCb3gge1xyXG4gICAgLmJ1dHRvbkJveHtcclxuICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIH1cclxuICB9XHJcbn1cclxuIl19 */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("compra", ctx.compra)("user", ctx.user);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("throttleTime", 700);
+    } }, directives: [_descripcion_de_venta_descripcion_de_venta_component__WEBPACK_IMPORTED_MODULE_1__.DescripcionDeVentaComponent, _shared_throttle_directive__WEBPACK_IMPORTED_MODULE_2__.PreventDoubleClickDirective], styles: [".paymentBox[_ngcontent-%COMP%] {\n  width: 70%;\n  height: 70%;\n  position: fixed;\n  padding: 15px;\n  z-index: 10000;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  overflow-y: scroll;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-around;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  padding: 15px;\n  border-radius: 30px;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n  margin: 10px auto;\n  width: 100%;\n  max-width: 300px;\n  cursor: pointer;\n  color: #fff;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.confirmationButton[_ngcontent-%COMP%] {\n  background-color: green;\n  border: 1px solid green;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.confirmationButton[_ngcontent-%COMP%]:hover {\n  background-color: white;\n  color: green;\n  transition: background-color 0.4s ease;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.backButton[_ngcontent-%COMP%] {\n  background-color: red;\n  border: 1px solid red;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.backButton[_ngcontent-%COMP%]:hover {\n  background-color: white;\n  color: red;\n  transition: background-color 0.4s ease;\n}\n.blackBox[_ngcontent-%COMP%] {\n  position: fixed;\n  z-index: 8000;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  transition: height 0.2s ease-out;\n  overflow: hidden;\n  background-color: rgba(155, 155, 155, 0.5);\n  border: none;\n}\n@media screen and (max-width: 1000px) {\n  .paymentBox[_ngcontent-%COMP%] {\n    width: 95%;\n  }\n}\n@media screen and (max-width: 600px) {\n  .paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%] {\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpcm1hY2lvbi1kZS12ZW50YS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLFVBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGFBQUE7RUFDQSxjQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxnQ0FBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7QUFERjtBQUdFO0VBQ0UsYUFBQTtFQUNBLDZCQUFBO0FBREo7QUFFSTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLG1DQXBCVztFQXFCWCxlQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtBQUFOO0FBRU07RUFDRSx1QkFBQTtFQUNBLHVCQUFBO0FBQVI7QUFDUTtFQUNFLHVCQUFBO0VBQ0EsWUFBQTtFQUNBLHNDQUFBO0FBQ1Y7QUFFTTtFQUNFLHFCQUFBO0VBQ0EscUJBQUE7QUFBUjtBQUNRO0VBQ0UsdUJBQUE7RUFDQSxVQUFBO0VBQ0Esc0NBQUE7QUFDVjtBQUtBO0VBQ0UsZUFBQTtFQUNBLGFBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0NBQUE7RUFDQSxnQkFBQTtFQUNBLDBDQUFBO0VBQ0EsWUFBQTtBQUZGO0FBSUE7RUFDRTtJQUNFLFVBQUE7RUFERjtBQUNGO0FBR0E7RUFFSTtJQUNFLHNCQUFBO0VBRko7QUFDRiIsImZpbGUiOiJjb25maXJtYWNpb24tZGUtdmVudGEuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkZnVlbnRlLWJvdG9uZXM6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcclxuXHJcbi5wYXltZW50Qm94IHtcclxuICB3aWR0aDogNzAlO1xyXG4gIGhlaWdodDogNzAlO1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBwYWRkaW5nOiAxNXB4O1xyXG4gIHotaW5kZXg6IDEwMDAwO1xyXG4gIHRvcDogNTAlO1xyXG4gIGxlZnQ6IDUwJTtcclxuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICBvdmVyZmxvdy15OiBzY3JvbGw7XHJcblxyXG4gIC5idXR0b25Cb3gge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xyXG4gICAgYnV0dG9uIHtcclxuICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxuICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtYm90b25lcztcclxuICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICBtYXJnaW46IDEwcHggYXV0bztcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgIG1heC13aWR0aDogMzAwcHg7XHJcbiAgICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgICAgY29sb3I6ICNmZmY7XHJcblxyXG4gICAgICAmLmNvbmZpcm1hdGlvbkJ1dHRvbiB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XHJcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgZ3JlZW47XHJcbiAgICAgICAgJjpob3ZlciB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgIGNvbG9yOiBncmVlbjtcclxuICAgICAgICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC40cyBlYXNlO1xyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgICAmLmJhY2tCdXR0b24ge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCByZWQ7XHJcbiAgICAgICAgJjpob3ZlciB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgIGNvbG9yOiByZWQ7XHJcbiAgICAgICAgICB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kLWNvbG9yIDAuNHMgZWFzZTtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcbn1cclxuLmJsYWNrQm94IHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgei1pbmRleDogODAwMDtcclxuICB0b3A6IDA7XHJcbiAgbGVmdDogMDtcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbiAgdHJhbnNpdGlvbjogaGVpZ2h0IDAuMnMgZWFzZS1vdXQ7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDE1NSwgMTU1LCAxNTUsIDAuNSk7XHJcbiAgYm9yZGVyOiBub25lO1xyXG59XHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gIC5wYXltZW50Qm94IHtcclxuICAgIHdpZHRoOiA5NSU7XHJcbiAgfVxyXG59XHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XHJcbiAgLnBheW1lbnRCb3gge1xyXG4gICAgLmJ1dHRvbkJveHtcclxuICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIH1cclxuICB9XHJcbn1cclxuIl19 */"] });
 
 
 /***/ }),
@@ -2316,7 +2320,6 @@ class FloatingMenuComponent {
         this.cerrar = {};
         this.isCart = false;
     }
-    //@HostListener('document:scroll', ['$event'])
     handleScroll(e) {
         console.log(e.scrollTop);
         let position = window.parent.innerHeight - 10 + e.scrollTop;
@@ -2388,6 +2391,8 @@ FloatingMenuComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.floatingBox = _t);
+    } }, hostBindings: function FloatingMenuComponent_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("scrolling", function FloatingMenuComponent_scrolling_HostBindingHandler($event) { return ctx.handleScroll($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵresolveDocument"]);
     } }, inputs: { ticketsLoteria: "ticketsLoteria", ticketsMillonaria: "ticketsMillonaria", ticketsLotto: "ticketsLotto", ticketsPozo: "ticketsPozo", tickets: "tickets", tipoLoteria: "tipoLoteria" }, outputs: { emitirCompra: "emitirCompra", eliminarTodo: "eliminarTodo", deleteLoteriaTicket: "deleteLoteriaTicket", deleteLoteriaFraccion: "deleteLoteriaFraccion", deleteLottoTicket: "deleteLottoTicket", deletePozoTicket: "deletePozoTicket", deleteMillonariaTicket: "deleteMillonariaTicket" }, decls: 8, vars: 6, consts: [[1, "floatingBox", 3, "click"], ["float", ""], ["src", "assets/carrito-blanco.svg", "alt", "", 1, "carrito", 3, "ngClass"], ["src", "assets/cerrar.svg", "alt", "", 1, "cerrar", 3, "ngClass"], [1, "totalBox", 3, "ngClass"], ["class", "toggleBox", 4, "ngIf"], ["class", "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", 4, "ngIf"], [1, "toggleBox"], [1, "itemBox", 3, "click"], ["src", "assets/carrito-negro.svg", "alt", ""], [1, "totalCartBox"], ["href", "https://www.loteria.com.ec/casino", "target", "_parent", 1, "itemBox"], ["src", "assets/casino.svg", "alt", ""], ["href", "https://www.loteria.com.ec/sport", "target", "_parent", 1, "itemBox"], ["src", "assets/sport.svg", "alt", ""], [1, "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"]], template: function FloatingMenuComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function FloatingMenuComponent_Template_div_click_0_listener() { return ctx.toggleBox(); });
@@ -10725,8 +10730,7 @@ class VentasService {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         let address = '/auth';
-        //let endpoint = '/';
-        let endpoint = '/test';
+        let endpoint = '/';
         let body = {
             token,
         };

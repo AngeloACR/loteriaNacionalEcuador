@@ -10,12 +10,14 @@ import { StylePaginatorDirective } from './style-paginator.directive';
 import { AutoTabDirective } from './autotab.directive';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { getSpanishPaginatorIntl } from './paginacion-es';
+import { PreventDoubleClickDirective } from './throttle.directive';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     ErrorComponent,
     StylePaginatorDirective,
+    PreventDoubleClickDirective,
     AutoTabDirective,
     PaginatePipe,
   ],
@@ -23,6 +25,7 @@ import { getSpanishPaginatorIntl } from './paginacion-es';
     LoaderComponent,
     ErrorComponent,
     StylePaginatorDirective,
+    PreventDoubleClickDirective,
     AutoTabDirective,
     PaginatePipe,
   ],
