@@ -6812,7 +6812,7 @@ __webpack_require__.r(__webpack_exports__);
 
 class PreventDoubleClickDirective {
     constructor() {
-        this.throttleTime = 500;
+        this.throttleTime = 3600000;
         this.throttledClick = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
         this.clicks = new rxjs__WEBPACK_IMPORTED_MODULE_1__.Subject();
     }

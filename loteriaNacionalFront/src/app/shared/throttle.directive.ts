@@ -7,7 +7,7 @@ import { throttleTime } from 'rxjs/operators';
 })
 export class PreventDoubleClickDirective implements OnInit, OnDestroy {
   @Input()
-  throttleTime = 500;
+  throttleTime = 3600000;
 
   @Output()
   throttledClick = new EventEmitter();

@@ -25,3 +25,4 @@
 - Validar premios no pagados en exalogic
 - Resolver premios especiales de lotto en ultimos resultados
 - Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra
+- rsync entre servidor viejo y nuevo para sincronizar archivos
