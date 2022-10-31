@@ -40,6 +40,7 @@ module.exports.init = function (port) {
         "frame-ancestors": [
           "'self'",
           "http://localhost",
+          "http://localhost:4200",
           "https://*.loteria.com.ec",
           "http://loteria.mongibello.tech:83",
           "http://*.mongibello.tech",
