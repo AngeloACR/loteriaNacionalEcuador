@@ -138,8 +138,7 @@ export class PagosService {
       reservaId,
     };
     endpoint = `${endpoint}/comprarBoletos`;
-    //address = this.mySource + address + endpoint;
-    address = "http://localhost:4000" + address + endpoint;
+    address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {

@@ -15,6 +15,11 @@ export class CodigosPromocionalesService {
   mySource = environment.source
 
   constructor(private http: HttpClient) {}
+  getBannerLink(){
+    return "assets/bannerPopup.jpeg"
+  }
+
+
   obtenerCodigos() {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");

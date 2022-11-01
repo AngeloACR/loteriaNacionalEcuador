@@ -45,6 +45,10 @@
     }
     .modal-content {
       z-index: 100;
+      .modal-body{
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 }
