@@ -13,17 +13,21 @@
 - Implementar cambios en vista de detalle de compra - LISTO
 - Modificar mensaje de premio instantaneo lotto - LISTO
 - Actualizar balance en padre del iframe - LISTO
-- Agregar evento de scrolling en carrito flotante, errores y loaders
+- Revisar fallos de la cuenta de pruebas en produccion - LISTO
+
+
+
+
 - Generar ruta de pruebas controladas en produccion
-- Revisar fallos de la cuenta de pruebas en produccion - Listo
+- Agregar evento de scrolling en carrito flotante, errores y loaders
 - Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR  
-- Cronjob para resolucion de ventas fallidas
-- Automatizar resolucion de ventas fallidas
+- Automatizar resolucion de ventas fallidas en psd
+- Automatizar resolucion de ventas fallidas en alboran
 - Agregar validacion previa a la venta para obtener status de la reserva
 - Aplicar debouncing al boton de confirmar compra
 - Validar premios no pagados
 - Validar premios no pagados en exalogic
 - Resolver premios especiales de lotto en ultimos resultados
-- Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra
+- Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra, y mostrar que no se ha cargado la info del sorteo en caso negativo
 - rsync entre servidor viejo y nuevo para sincronizar archivos
 - Interfaz administrativa para popup
