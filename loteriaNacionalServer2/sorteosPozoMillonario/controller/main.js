@@ -6,7 +6,7 @@ const Premios = require("../models/premio");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
 const config = require("../../environments/test");
-const { sorteosPozoLogger } = require("../logging");
+const { sorteosPozoMillonarioLogger } = require("../logging");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
@@ -156,7 +156,7 @@ const mainController = {
 
       res.status(200).json(finalResponse);
     } catch (e) {
-      sorteosPozoLogger.error("searchSorteosDisponibles.error", {
+      sorteosPozoMillonarioLogger.error("searchSorteosDisponibles.error", {
         errorMessage: e.message,
       });
       let response = {
@@ -208,9 +208,12 @@ const mainController = {
 
       res.status(200).json(response);
     } catch (e) {
-      sorteosPozoLogger.error("searchCombinacionesDisponibles.error", {
-        errorMessage: e.message,
-      });
+      sorteosPozoMillonarioLogger.error(
+        "searchCombinacionesDisponibles.error",
+        {
+          errorMessage: e.message,
+        }
+      );
       let response = {
         status: "error",
         message: e.message,
