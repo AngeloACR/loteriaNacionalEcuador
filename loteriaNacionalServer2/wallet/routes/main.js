@@ -1,12 +1,11 @@
-const express = require('express');
+const express = require("express");
 const lotteryRouter = express.Router();
-const mainController = require('../controller/main');
+const mainController = require("../controller/main");
 
-lotteryRouter.post('/sellLottery', mainController.sellLottery);
-lotteryRouter.post('/cancelLottery', mainController.cancelLottery);
-lotteryRouter.post('/cancelMany', mainController.cancelMany);
-lotteryRouter.post('/reserveLottery', mainController.reserveLottery);
-lotteryRouter.post('/getBalance', mainController.getBalance);
-
+lotteryRouter.post("/sellLottery", mainController.sellLotteryHttp);
+lotteryRouter.post("/cancelLottery", mainController.cancelLotteryHttp);
+lotteryRouter.post("/cancelMany", mainController.cancelManyHttp);
+lotteryRouter.post("/reserveLottery", mainController.reserveLotteryHttp);
+lotteryRouter.post("/getBalance", mainController.getBalanceHttp);
 
 module.exports = lotteryRouter;

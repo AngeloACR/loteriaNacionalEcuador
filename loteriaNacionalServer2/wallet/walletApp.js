@@ -7,7 +7,6 @@ const walletApp = walletServer.init(walletPort);
 
 walletApp.listen(walletPort, () => {
   console.log("Server running at: " + walletPort);
-
 });
 
 let jobs = cronjobs.setCronJobs();

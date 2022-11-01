@@ -7,7 +7,6 @@ const sorteosLottoApp = sorteosLottoServer.init(sorteosLottoPort);
 
 sorteosLottoApp.listen(sorteosLottoPort, () => {
   console.log("Server running at: " + sorteosLottoPort);
-
 });
 
 let jobs = cronjobs.setCronJobs();

@@ -114,7 +114,7 @@ const cacheController = {
   },
   actualizarHttp: async (req, res) => {
     try {
-       await cacheController.actualizar();
+      await cacheController.actualizar();
       res.status(200).json("Done");
     } catch (e) {
       res.status(400).json(e.toString());
@@ -128,11 +128,9 @@ const cacheController = {
       await cacheController.setUltimoResultado();
 
       await cacheController.setSorteos();
-
     } catch (e) {
       throw new Error(e.message);
     }
   },
-
 };
 module.exports = cacheController;

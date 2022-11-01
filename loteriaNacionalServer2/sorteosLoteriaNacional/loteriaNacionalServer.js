@@ -26,10 +26,10 @@ module.exports.init = function (port) {
 
   //App compression
   app.use(compression());
-  
+
   // Cors Middleware
   app.use(cors());
-  
+
   //Adding routes
   app.use(helmet());
   app.use((req, res, next) => {
@@ -43,18 +43,18 @@ module.exports.init = function (port) {
         "frame-ancestors": [
           "'self'",
           "https://localhost",
+          "http://localhost:4200",
           "https://*.loteria.com.ec",
           "http://loteria.mongibello.tech:83",
           "http://*.mongibello.tech",
         ],
       },
     })
-    );
-    // Body Parser Middleware
-    app.use(bodyParser.json());
-    
-    
-    app.use("/", routes);
-    app.use("/cache", cache);
-    return app;
-  };
+  );
+  // Body Parser Middleware
+  app.use(bodyParser.json());
+
+  app.use("/", routes);
+  app.use("/cache", cache);
+  return app;
+};

@@ -95,7 +95,7 @@ const ventasController = {
     let ordComp = alboranReservaId;
     let loteriaVentaResponse = await psdVentas.venderBoletos(
       ordComp,
-      total,
+      parseInt(total)+1,
       totalConDesc,
       loteria,
       lotto,
@@ -107,7 +107,8 @@ const ventasController = {
       ip
     );
     if (!loteriaVentaResponse.status) {
-      await errorHandler.loteriaSellError(alboranReservaData);
+
+      await errorHandler.loteriaSellError(alboranReservaData, venta);
     }
     let logData = {
       data: {
@@ -492,7 +493,6 @@ const ventasController = {
       res.status(400).json(response);
     }
   },
-
   crearVenta: async (apiReservaData) => {
     try {
       let loteriaAux = apiReservaData.loteria;
@@ -587,42 +587,6 @@ const ventasController = {
       let response = await Ventas.addVenta(element);
       return response;
     } catch (e) {
-      throw new Error(e.message);
-    }
-  },
-  actualizarVentaStatus: async (id, status, value) => {
-    try {
-      let venta = (await Ventas.getVentaById(id)).values;
-      venta["status"] = status;
-      switch (status) {
-        case "Reservada":
-          venta["exaReservaId"] = value;
-          break;
-        case "Procesada":
-          venta["ventaId"] = value;
-
-          break;
-
-        default:
-          venta["alboranVentaId"] = value;
-          break;
-      }
-      let response = await venta.save();
-
-      let logData = {
-        data: {
-          id,
-          status,
-          value,
-        },
-        response,
-      };
-      ventasLogger.info("actualizarVentasStatus.loteria", logData);
-      return response;
-    } catch (e) {
-      ventasLogger.error("comprarBoletos.error", {
-        errorMessage: e.message,
-      });
       throw new Error(e.message);
     }
   },

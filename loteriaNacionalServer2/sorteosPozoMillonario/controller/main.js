@@ -124,7 +124,7 @@ const mainController = {
 
   buscarUltimosResultados: async (req, res) => {
     try {
-      response = await psdResultados.consultarUltimosResultados(5, token);
+      let response = await psdResultados.consultarUltimosResultados(5, token);
       res.status(200).json(response);
     } catch (e) {
       res.status(400).json(e.toString());
@@ -133,7 +133,7 @@ const mainController = {
 
   buscarSorteosJugados: async (req, res) => {
     try {
-      response = await Sorteos.getSorteos(5);
+      let response = await Sorteos.getSorteos(5);
 
       res.status(200).json(response);
     } catch (e) {
@@ -201,7 +201,7 @@ const mainController = {
         return combinacion;
       });
 
-      response = {
+      let response = {
         combinaciones,
       };
 
@@ -220,7 +220,7 @@ const mainController = {
     }
   },
   actualizarUltimoResultado: async (req, res) => {
-    try {      
+    try {
       let response = await UltimoResultado.actualizar();
       res.status(200).json(response);
     } catch (e) {
@@ -235,7 +235,7 @@ const mainController = {
   },
 
   actualizarSorteosJugados: async (req, res) => {
-    try {      
+    try {
       let response = await Sorteos.actualizarSorteosJugados();
       res.status(200).json(response);
     } catch (e) {

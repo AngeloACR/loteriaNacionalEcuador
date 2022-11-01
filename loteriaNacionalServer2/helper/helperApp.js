@@ -7,7 +7,6 @@ const helperApp = helperServer.init(helperPort);
 
 helperApp.listen(helperPort, () => {
   console.log("Server running at: " + helperPort);
-
 });
 
 let jobs = cronjobs.setCronJobs();

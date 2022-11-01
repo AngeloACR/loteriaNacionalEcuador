@@ -20,7 +20,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
   @ViewChildren('float') floatingBox: any;
 
-  //@HostListener('document:scroll', ['$event'])
+  //@HostListener('window:scrolling', ['$event'])
   handleScroll(e: any) {
     console.log(e.scrollTop);
     let position = window.parent.innerHeight - 10 + e.scrollTop;

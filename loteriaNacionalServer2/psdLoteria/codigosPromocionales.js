@@ -110,9 +110,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
                   ? o.$.TipoContactoCodigoNombre.toLowerCase().includes("móvil")
                   : false
               );
-              telefono = telefono.length
-                ? telefono[0].$.Descripcion
-                : "";
+              telefono = telefono.length ? telefono[0].$.Descripcion : "";
               let response = {
                 nombre: `${datosUsuario.$.PrimerNombre} ${datosUsuario.$.ApellidoPaterno}`,
                 identificacion: datosUsuario.$.Identificacion,
@@ -126,10 +124,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaAuthLogger.info(
-                "consultarDatosUsuario.loteria",
-                logData
-              );
+              loteriaAuthLogger.info("consultarDatosUsuario.loteria", logData);
               resolve(response);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
@@ -241,20 +236,14 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaAuthLogger.info(
-                "consultarDatosUsuario2.loteria",
-                logData
-              );
+              loteriaAuthLogger.info("consultarDatosUsuario2.loteria", logData);
               resolve(response);
             } else {
               let errorMsg = data.mt.c[0].msgError[0];
-              loteriaAuthLogger.error(
-                "consultarDatosUsuario2.loteria.error",
-                {
-                  data: message,
-                  errorMessage: `${errorCode}-${errorMsg}`,
-                }
-              );
+              loteriaAuthLogger.error("consultarDatosUsuario2.loteria.error", {
+                data: message,
+                errorMessage: `${errorCode}-${errorMsg}`,
+              });
               let errorData = {
                 status: false,
                 input: message,

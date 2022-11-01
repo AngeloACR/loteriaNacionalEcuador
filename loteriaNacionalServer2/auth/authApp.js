@@ -7,7 +7,6 @@ const authApp = authServer.init(authPort);
 
 authApp.listen(authPort, () => {
   console.log("Server running at: " + authPort);
-
 });
 
 let jobs = cronjobs.setCronJobs();

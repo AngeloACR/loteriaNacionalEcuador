@@ -7,7 +7,6 @@ const reservasApp = reservasServer.init(reservasPort);
 
 reservasApp.listen(reservasPort, () => {
   console.log("Server running at: " + reservasPort);
-
 });
 
 let jobs = cronjobs.setCronJobs();

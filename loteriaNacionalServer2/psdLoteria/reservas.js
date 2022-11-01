@@ -1,14 +1,14 @@
 var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
-var {loteriaError} = require("./errors");
-const path = require( 'path' )
+var { loteriaError } = require("./errors");
+const path = require("path");
 
 const { loteriaReservasLogger } = require("./logging");
 const config = require("../environments/production");
 
 const medioId = config.medioAplicativoId;
-const address = path.join( __dirname, config.aplicativoAddress );
+const address = path.join(__dirname, config.aplicativoAddress);
 
 module.exports.reservarCombinaciones = async (
   loteria,
@@ -154,10 +154,13 @@ module.exports.reservarCombinaciones = async (
               resolve(reservaId);
             } else {
               let errorMessage = data.mt.c[0].msgError[0];
-              loteriaReservasLogger.error("reservarCombinaciones.loteria.error", {
-                data: message,
-                errorMessage: `${errorCode}-${errorMessage}`,
-              });
+              loteriaReservasLogger.error(
+                "reservarCombinaciones.loteria.error",
+                {
+                  data: message,
+                  errorMessage: `${errorCode}-${errorMessage}`,
+                }
+              );
               let errorData = {
                 input: message,
                 output: errorCode,

@@ -60,9 +60,8 @@ module.exports = {
   imgCorreosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
 
-    destinatarios: [
-      { nombre: "Angelo Crincoli", correo: "angelocrincoli91@gmail.com" },
-      { nombre: "Andrés Alvear", correo: "aalvearl@loteria.com.ec" },
-    ],
-
-  };
+  destinatarios: [
+    { nombre: "Angelo Crincoli", correo: "angelocrincoli91@gmail.com" },
+    { nombre: "Andrés Alvear", correo: "aalvearl@loteria.com.ec" },
+  ],
+};

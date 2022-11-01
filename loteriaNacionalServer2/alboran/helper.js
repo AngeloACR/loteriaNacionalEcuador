@@ -12,7 +12,6 @@ module.exports.alboranRequest = async (data, endpoint) => {
     alboranLogger.silly("alboranRequest");
     return new Promise(async (resolve, reject) => {
       try {
-
         let aux = JSON.stringify(data);
         const options = {
           hostname: alboranHost,

@@ -12,8 +12,11 @@ module.exports.send = async (data) => {
   return new Promise(async (resolve, reject) => {
     let destinatarios = [];
     for (let i = 0; i < config.destinatarios.length; i++) {
-      let destinatario = config.destinatarios[i]
-      destinatarios.push({Name: destinatario.nombre, Email: destinatario.correo})
+      let destinatario = config.destinatarios[i];
+      destinatarios.push({
+        Name: destinatario.nombre,
+        Email: destinatario.correo,
+      });
     }
     console.log(data);
     const request = mailjet.post("send", { version: "v3.1" }).request({
@@ -77,7 +80,6 @@ module.exports.send = async (data) => {
             millonariaLengthGanadores: data.millonaria.lengthGanadores,
             millonariaCantidadGanadores: data.millonaria.cantidadGanadores,
             millonariaUltimosResultados: data.millonaria.ultimosResultados,
-
           },
           TemplateLanguage: true,
           TemplateErrorDeliver: true,

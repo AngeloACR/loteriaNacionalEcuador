@@ -7,7 +7,6 @@ const ganadoresApp = ganadoresServer.init(ganadoresPort);
 
 ganadoresApp.listen(ganadoresPort, () => {
   console.log("Server running at: " + ganadoresPort);
-
 });
 
 let jobs = cronjobs.setCronJobs();

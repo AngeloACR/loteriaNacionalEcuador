@@ -1,5 +1,6 @@
 const psdVentas = require("../psdLoteria/ventas");
-const Wallet = require("../wallet/controller/main"); // COMUNICAR POR gRPC
+const Wallet = require("../alboran/wallet"); // COMUNICAR POR gRPC
+const Ventas = require("./models/main");
 
 /*AGREGAR LOGGING */
 
@@ -97,13 +98,12 @@ const errorHandler = {
     );
  */
     } catch (e) {
-
       throw new Error(
         "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
       );
     }
   },
-  loteriaSellError: async (exaReservaData) => {
+  loteriaSellError: async (alboranReservaData, venta) => {
     let alboranCancelId = Date.now();
     let alboranCancelData = {
       transactionId: alboranCancelId,
@@ -121,6 +121,11 @@ const errorHandler = {
         "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
       );
     }
+    let ventaLoteriaStatusResponse = await Ventas.actualizarStatus(
+      venta._id,
+      "Cancelada",
+      alboranCancelId
+    );
     throw new Error(
       "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
     );
@@ -131,7 +136,6 @@ const errorHandler = {
     );
   },
 };
-
 
 class apiError extends Error {
   constructor(message, code, errorData) {

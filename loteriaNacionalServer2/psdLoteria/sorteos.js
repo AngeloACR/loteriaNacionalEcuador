@@ -1,14 +1,14 @@
 var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
-var {loteriaError} = require("./errors");
-const path = require( 'path' )
+var { loteriaError } = require("./errors");
+const path = require("path");
 
 const { loteriaSorteosLogger } = require("./logging");
 const config = require("../environments/production");
 
 const medioId = config.medioAplicativoId;
-const address = path.join( __dirname, config.aplicativoAddress );
+const address = path.join(__dirname, config.aplicativoAddress);
 
 const usuarioClientePsd = config.usuarioAplicativo;
 module.exports.consultarSorteosJugados = async (tipoLoteria, token) => {

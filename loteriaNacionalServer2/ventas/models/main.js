@@ -139,6 +139,9 @@ const VentaSchema = new mongoose.Schema(
     alboranVentaId: {
       type: String,
     },
+    alboranCancelacionId: {
+      type: String,
+    },
     alboranReservaId: {
       type: String,
     },
@@ -175,15 +178,20 @@ VentaSchema.statics = {
       venta["status"] = status;
       switch (status) {
         case "Reservada":
-          venta["exaReservaId"] = value;
+          venta["alboranReservaId"] = value;
           break;
-        case "Procesada":
-          venta["ventaId"] = value;
+          case "Procesada":
+            venta["ventaId"] = value;
+  
+            break;
+            
+        case "Cancelada":
+          venta["alboranCancelacionId"] = value;
 
           break;
 
         default:
-          venta["exaVentaId"] = value;
+          venta["alboranVentaId"] = value;
           break;
       }
       let response = await venta.save();

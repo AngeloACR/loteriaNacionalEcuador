@@ -1,5 +1,5 @@
 const https = require("https");
-var {exalogicError} = require("./errors");
+var { exalogicError } = require("./errors");
 const config = require("../environments/production");
 const { exalogicLogger } = require("./logging");
 

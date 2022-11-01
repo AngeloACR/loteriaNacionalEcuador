@@ -1,4 +1,5 @@
 const alboranAuth = require("../../alboran/auth");
+const psdAuth = require("../../psdLoteria/auth");
 const { authLogger } = require("../logging");
 
 const mainController = {

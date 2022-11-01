@@ -9,14 +9,14 @@
       <div class="modal-body">
         <a target="_parent" href="https://www.loteria.com.ec/compra-tus-boletos">
           <img
-            src="assets/BANNERWEB-POPUP.jpg"
+            [src]="bannerLink"
             class="Desktop"
             (click)="close()"
           />
         </a>
         <a target="_parent" href="https://www.loteria.com.ec/compra-tus-boletos">
           <img
-            src="assets/BANNERWEB-600X450.jpg"
+            [src]="bannerLink"
             style="max-width: 100%"
             class="Ipad"
             (click)="close()"
@@ -24,7 +24,7 @@
         </a>
         <a target="_parent" href="https://www.loteria.com.ec/compra-tus-boletos">
           <img
-            src="assets/BANNERPOPUPMOBILE-480X710.jpg"
+            [src]="bannerLink"
             (click)="close()"
             class="Mobile"
           />

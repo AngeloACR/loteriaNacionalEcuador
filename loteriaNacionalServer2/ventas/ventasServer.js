@@ -25,7 +25,7 @@ module.exports.init = function (port) {
 
   //App compression
   app.use(compression());
-  
+
   // Cors Middleware
   app.use(cors());
   app.use(helmet());
@@ -39,7 +39,8 @@ module.exports.init = function (port) {
       directives: {
         "frame-ancestors": [
           "'self'",
-          "https://localhost",
+          "http://localhost",
+          "http://localhost:4200",
           "https://*.loteria.com.ec",
           "http://loteria.mongibello.tech:83",
           "http://*.mongibello.tech",

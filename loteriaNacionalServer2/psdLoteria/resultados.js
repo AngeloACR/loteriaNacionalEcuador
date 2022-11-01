@@ -137,22 +137,22 @@ module.exports.consultarUltimosResultados = async (tipoLoteria, token) => {
           if (!errorCode) {
             let response = [];
             if (data.mt.rs[0].r[0] == "") resolve(response);
-              response = data.mt.rs[0].r[0].Row.map((data) => {
-                let resultado = {
-                  tipoLoteria: data.$.JId,
-                  nombreLoteria: data.$.JNom,
-                  sorteo: data.$.SortId,
-                  fechaSorteo: data.$.FSort,
-                  combinacion: data.$.Comb,
-                  primeraSuerte: data.$.PriSue,
-                  descripcionPremio: data.$.DesPre,
-                  valorPremio: data.$.ValPre,
-                  codigoPremio: `${data.$.SortId}-${data.$.Prem}`,
-                };
-                if (resultado.tipoLoteria == "14")
-                  resultado["serie"] = data.$.Comb2;
-                return resultado;
-              });
+            response = data.mt.rs[0].r[0].Row.map((data) => {
+              let resultado = {
+                tipoLoteria: data.$.JId,
+                nombreLoteria: data.$.JNom,
+                sorteo: data.$.SortId,
+                fechaSorteo: data.$.FSort,
+                combinacion: data.$.Comb,
+                primeraSuerte: data.$.PriSue,
+                descripcionPremio: data.$.DesPre,
+                valorPremio: data.$.ValPre,
+                codigoPremio: `${data.$.SortId}-${data.$.Prem}`,
+              };
+              if (resultado.tipoLoteria == "14")
+                resultado["serie"] = data.$.Comb2;
+              return resultado;
+            });
             loteriaConsultasLogger.info("consultarUltimosResultados.loteria", {
               data,
               response,
