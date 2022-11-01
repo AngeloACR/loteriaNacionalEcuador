@@ -95,7 +95,7 @@ const ventasController = {
     let ordComp = alboranReservaId;
     let loteriaVentaResponse = await psdVentas.venderBoletos(
       ordComp,
-      parseInt(total)+1,
+      parseInt(total),
       totalConDesc,
       loteria,
       lotto,
@@ -107,7 +107,6 @@ const ventasController = {
       ip
     );
     if (!loteriaVentaResponse.status) {
-
       await errorHandler.loteriaSellError(alboranReservaData, venta);
     }
     let logData = {
