@@ -9,9 +9,11 @@ import { CodigosPromocionalesService } from "./services/codigos-promocionales.se
 })
 export class CodigosPromocionalesComponent implements OnInit {
   codigos: any = [];
+  showPromo: boolean = false;
   constructor(private codigosService: CodigosPromocionalesService) {}
 
   async ngOnInit() {
+    this.showPromo= await this.codigosService.getConfig()
     //this.codigos = (await this.codigosService.obtenerCodigos() as any).values
   }
 
@@ -40,5 +42,8 @@ export class CodigosPromocionalesComponent implements OnInit {
         throw new Error(error.error.message);
       }
     );
+  }
+  changePopup(){
+    console.log(this.showPromo)
   }
 }

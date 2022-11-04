@@ -43,6 +43,31 @@ export class CodigosPromocionalesService {
         );
     });
   }
+  
+  getConfig() {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+
+    let address = "/codigosPromocionales";
+    let endpoint = "/config";
+    address = this.mySource + address + endpoint;
+    return new Promise<boolean>((resolve, reject) => {
+      resolve(true)
+      /* this.http
+        .get(address, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        ); */
+    });
+  }
   /*   obtenerTxt() {
     let address = "";
     let endpoint = "/getTxt";
