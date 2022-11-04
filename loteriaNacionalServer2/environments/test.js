@@ -59,6 +59,8 @@ module.exports = {
 
   imgCorreosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
+  assetsCodigosPromocionalesPath:
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalServer2/codigosPromocionales/assets",
 
   destinatarios: [
     { nombre: "Angelo Crincoli", correo: "angelocrincoli91@gmail.com" },

@@ -11,8 +11,8 @@ export class PopupPromoComponent implements OnInit {
   bannerLink: string = "";
   constructor(private codigoPromocionalService: CodigosPromocionalesService) { }
 
-  ngOnInit() {
-    this.bannerLink = this.codigoPromocionalService.getBannerLink();
+  async ngOnInit() {
+    this.bannerLink = await this.codigoPromocionalService.getBannerLink();
   }
   close() {
     this.closePromo.emit();

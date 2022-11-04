@@ -16,7 +16,30 @@ export class CodigosPromocionalesService {
 
   constructor(private http: HttpClient) {}
   getBannerLink(){
-    return "assets/bannerPopup.jpeg"
+    
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+
+    let address = "/codigosPromocionales";
+    let endpoint = "/files";
+    address = this.mySource + address + endpoint;
+    return new Promise<any>((resolve, reject) => {
+      resolve("assets/bannerPopup.jpeg")
+      /* 
+      this.http
+        .get(address, formData,{
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        ); */
+    });
   }
 
 
@@ -28,7 +51,7 @@ export class CodigosPromocionalesService {
     let address = "/codigosPromocionales";
     let endpoint = "/getCodCsv";
     address = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.http
         .get(address, {
           headers: headers,
@@ -44,18 +67,71 @@ export class CodigosPromocionalesService {
     });
   }
   
-  getConfig() {
+  getStatus() {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
     //let endpoint = "/inquiry";
 
     let address = "/codigosPromocionales";
-    let endpoint = "/config";
+    let endpoint = "/status";
     address = this.mySource + address + endpoint;
-    return new Promise<boolean>((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       resolve(true)
       /* this.http
         .get(address, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        ); */
+    });
+  }
+    
+  setStatus(showPromo: boolean) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+
+    let address = "/codigosPromocionales";
+    let endpoint = "/status";
+    address = this.mySource + address + endpoint;
+    return new Promise<any>((resolve, reject) => {
+      resolve(true)
+      /* 
+      let body = {showPromo}
+      this.http
+        .post(address, body,{
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        ); */
+    });
+  }
+      
+  cargarImagenes(formData: any) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Content-Type", "application/json");
+    //let endpoint = "/inquiry";
+
+    let address = "/codigosPromocionales";
+    let endpoint = "/files";
+    address = this.mySource + address + endpoint;
+    return new Promise<any>((resolve, reject) => {
+      resolve(true)
+      /* 
+      this.http
+        .post(address, formData,{
           headers: headers,
         })
         .subscribe(
@@ -72,7 +148,7 @@ export class CodigosPromocionalesService {
     let address = "";
     let endpoint = "/getTxt";
     address = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       this.http
         .get<Blob>(address, {
           observe: "response",
