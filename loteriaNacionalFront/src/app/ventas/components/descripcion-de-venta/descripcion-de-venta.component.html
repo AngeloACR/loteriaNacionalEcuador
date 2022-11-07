@@ -29,6 +29,17 @@
       </h3>
     </div>
   </div>
+  
+  <div *ngIf="codigosPromocionales && codigosPromocionales.length" class="containerInfoBox">
+    <div class="codigos titleLoteryBox">
+      <h3>
+        Con estos códigos participas en el sorteo por un Iphone 14 Pro Max:
+      </h3>
+      <h3 class="codigo">
+         <span *ngFor="let codigoPromocional of codigosPromocionales" >{{ codigoPromocional.codigo }}</span>
+      </h3>
+    </div>
+  </div>
   <div class="containerInfoBox" *ngIf="compra.loteria.length != 0">
     <div class="titleLoteriaBox">
       <img src="assets/img/loteria-sombra-2.png" width="180"/>

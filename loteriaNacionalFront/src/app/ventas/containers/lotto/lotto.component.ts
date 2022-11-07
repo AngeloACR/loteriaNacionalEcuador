@@ -29,6 +29,7 @@ export class LottoComponent implements OnInit {
   token?: string;
   usuario?: string;
   ticketsMillonaria: any;
+  codigoPromocional: any = [];
 
   constructor(
     private lotteryService: VentasService,
@@ -303,6 +304,7 @@ export class LottoComponent implements OnInit {
           );
           this.isLoading = false;
           if (response.status) {
+            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

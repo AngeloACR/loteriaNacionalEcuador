@@ -20,9 +20,11 @@ const configSchema = new mongoose.Schema(
 configSchema.statics = {
   updateStatus: async function (status) {
     try {
-      let query = { showPromo };
+      let query = {};
 
       let aux = await this.findOne();
+
+      if (!aux) return await this.create({ showPromo: status });
       aux.showPromo = status;
       let updatedConfig = await aux.save();
 

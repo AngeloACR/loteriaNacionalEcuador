@@ -33,6 +33,7 @@ export class MillonariaComponent implements OnInit {
   token?: string;
   usuario?: string;
   seriesReady: boolean = false;
+  codigoPromocional: any = [];
   constructor(
     private lotteryService: VentasService,
     private actRoute: ActivatedRoute,
@@ -465,6 +466,7 @@ export class MillonariaComponent implements OnInit {
           );
           this.isLoading = false;
           if (response.status) {
+            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;

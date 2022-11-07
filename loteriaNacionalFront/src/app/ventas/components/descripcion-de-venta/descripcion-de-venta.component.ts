@@ -12,6 +12,7 @@ export class DescripcionDeVentaComponent implements OnInit {
   @Input() user: any;
   @Input() resumen: boolean = true;
   @Input() ticketId: any;
+  @Input() codigosPromocionales: any;
 
   constructor(private pozo: PozoService,private lotto: LottoService) { }
 

@@ -629,34 +629,29 @@ class CodigosPromocionalesService {
     }
     getBannerLink() {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append("Content-Type", "application/json");
+        headers = headers.append('Content-Type', 'application/json');
         //let endpoint = "/inquiry";
-        let address = "/codigosPromocionales";
-        let endpoint = "/files";
+        let address = '/codigosPromocionales';
+        let endpoint = '/files';
         address = this.mySource + address + endpoint;
         return new Promise((resolve, reject) => {
-            resolve("assets/bannerPopup.jpeg");
-            /*
             this.http
-              .get(address, formData,{
+                .get(address, {
                 headers: headers,
-              })
-              .subscribe(
-                (data: any) => {
-                  resolve(data);
-                },
-                (error: any) => {
-                  reject(new Error(error.error.message));
-                }
-              ); */
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
         });
     }
     obtenerCodigos() {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append("Content-Type", "application/json");
+        headers = headers.append('Content-Type', 'application/json');
         //let endpoint = "/inquiry";
-        let address = "/codigosPromocionales";
-        let endpoint = "/getCodCsv";
+        let address = '/codigosPromocionales';
+        let endpoint = '/getCodCsv';
         address = this.mySource + address + endpoint;
         return new Promise((resolve, reject) => {
             this.http
@@ -672,74 +667,58 @@ class CodigosPromocionalesService {
     }
     getStatus() {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append("Content-Type", "application/json");
+        headers = headers.append('Content-Type', 'application/json');
         //let endpoint = "/inquiry";
-        let address = "/codigosPromocionales";
-        let endpoint = "/status";
+        let address = '/codigosPromocionales';
+        let endpoint = '/status';
         address = this.mySource + address + endpoint;
         return new Promise((resolve, reject) => {
-            resolve(true);
-            /* this.http
-              .get(address, {
+            this.http
+                .get(address, {
                 headers: headers,
-              })
-              .subscribe(
-                (data: any) => {
-                  resolve(data);
-                },
-                (error: any) => {
-                  reject(new Error(error.error.message));
-                }
-              ); */
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
         });
     }
     setStatus(showPromo) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append("Content-Type", "application/json");
+        headers = headers.append('Content-Type', 'application/json');
         //let endpoint = "/inquiry";
-        let address = "/codigosPromocionales";
-        let endpoint = "/status";
+        let address = '/codigosPromocionales';
+        let endpoint = '/status';
         address = this.mySource + address + endpoint;
         return new Promise((resolve, reject) => {
-            resolve(true);
-            /*
-            let body = {showPromo}
+            let body = { showPromo };
             this.http
-              .post(address, body,{
+                .post(address, body, {
                 headers: headers,
-              })
-              .subscribe(
-                (data: any) => {
-                  resolve(data);
-                },
-                (error: any) => {
-                  reject(new Error(error.error.message));
-                }
-              ); */
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
         });
     }
     cargarImagenes(formData) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append("Content-Type", "application/json");
-        //let endpoint = "/inquiry";
-        let address = "/codigosPromocionales";
-        let endpoint = "/files";
+        let address = '/codigosPromocionales';
+        let endpoint = '/files';
         address = this.mySource + address + endpoint;
         return new Promise((resolve, reject) => {
-            resolve(true);
-            /*
             this.http
-              .post(address, formData,{
+                .post(address, formData, {
                 headers: headers,
-              })
-              .subscribe(
-                (data: any) => {
-                  resolve(data);
-                },
-                (error: any) => {
-                  reject(new Error(error.error.message));
-                }
-              ); */
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
         });
     }
     /*   obtenerTxt() {
@@ -764,17 +743,17 @@ class CodigosPromocionalesService {
       });
     } */
     obtenerTxt() {
-        let address = "/codigosPromocionales";
-        let endpoint = "/getTxt";
+        let address = '/codigosPromocionales';
+        let endpoint = '/getTxt';
         address = this.mySource + address + endpoint;
         return this.http.get(address, {
-            observe: "response",
-            responseType: "blob",
+            observe: 'response',
+            responseType: 'blob',
         });
     }
 }
 CodigosPromocionalesService.ɵfac = function CodigosPromocionalesService_Factory(t) { return new (t || CodigosPromocionalesService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient)); };
-CodigosPromocionalesService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: CodigosPromocionalesService, factory: CodigosPromocionalesService.ɵfac, providedIn: "root" });
+CodigosPromocionalesService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: CodigosPromocionalesService, factory: CodigosPromocionalesService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),

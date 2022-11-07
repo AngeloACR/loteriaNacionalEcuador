@@ -3,7 +3,9 @@ const config = require("../environments/test");
 const cronjobs = require("./cronjobs");
 
 const codigosPromocionalesPort = config.codigosPromocionalesPort;
-const codigosPromocionalesApp = codigosPromocionalesServer.init(codigosPromocionalesPort);
+const codigosPromocionalesApp = codigosPromocionalesServer.init(
+  codigosPromocionalesPort
+);
 
 codigosPromocionalesApp.listen(codigosPromocionalesPort, () => {
   console.log("Server running at: " + codigosPromocionalesPort);

@@ -471,10 +471,18 @@ const ventasController = {
           reservationDetails
         );
       }
+      /* GENERAR CODIGOS PROMOCIONALES */
+      let codigoPromocionalResponse = await CodigosPromocionales.setCode(
+        parseFloat(totalVenta),
+        personaId,
+        loteriaVentaResponse.ticketId,
+        ip
+      );
       /* RESPUESTA DE API */
       let finalResponse = {
         data: apiVentaResponse,
         instantanea: instantaneaResponse,
+        codigoPromocional: codigoPromocionalResponse,
         status: true,
       };
 

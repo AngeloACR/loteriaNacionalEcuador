@@ -1,9 +1,10 @@
 const express = require("express");
 const lotteryRouter = express.Router();
 const mainController = require("../controller/main");
+const fileUpload = require("express-fileupload");
 
 lotteryRouter.get("/", mainController.populate);
-lotteryRouter.get("/files", mainController.getFilesList);
+lotteryRouter.get("/files", mainController.getFileLink);
 lotteryRouter.post(
   "/files",
   fileUpload({ createParentPath: true }),

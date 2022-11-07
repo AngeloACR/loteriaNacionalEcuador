@@ -4,6 +4,7 @@ const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
+const config = require("../environments/test");
 
 const routes = require("./routes/main");
 
@@ -40,6 +41,10 @@ module.exports.init = function (port) {
   //Adding routes
   app.use("/", routes);
   app.use("/assets", express.static(config.assetsCodigosPromocionalesPath));
+  app.use(
+    "/assets/correo",
+    express.static(`${config.assetsCodigosPromocionalesPath}/correo`)
+  );
 
   return app;
 };

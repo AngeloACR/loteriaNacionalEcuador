@@ -20,6 +20,7 @@ module.exports = {
   walletPort: 8500,
   uploadsPort: 9000,
   helperPort: 9500,
+  codigosPromocionalesPort: 10000,
   host: "localhost",
 
   alboranHost: "loteria.mongibello.tech",
@@ -57,7 +58,7 @@ module.exports = {
   imgCorreosPath:
     "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/correos",
   assetsCodigosPromocionalesPath:
-    "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalServer2/codigosPromocionales/assets",
+    "C:\\Users\\angel\\Proyectos\\loteria\\loteriaNacionalEcuador\\loteriaNacionalServer2\\codigosPromocionales\\assets",
 
   destinatarios: [
     { nombre: "Angelo Crincoli", correo: "angelocrincoli91@gmail.com" },

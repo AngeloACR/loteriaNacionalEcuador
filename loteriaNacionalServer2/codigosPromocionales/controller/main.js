@@ -4,10 +4,17 @@ const Config = require("../models/config");
 const Ventas = require("../../ventas/models/main");
 const emailCodigosPromocionales = require("../../correos/codigoPromocional");
 const { codigosPromocionalesLogger } = require("../logging");
+const config = require("../../environments/test");
+const fs = require("fs").promises;
 const path = require("path");
 const mainController = {
-  getFilesList: async (req, res) => {
+  getFileLink: async (req, res) => {
     try {
+      let files = await fs.readdir(config.assetsCodigosPromocionalesPath);
+      files = files.filter((item) => item != "correo");
+      let fileName = files[Math.floor(Math.random() * files.length)];
+      let link = `https://ventas-api.loteria.com.ec/assets/${fileName}`;
+      res.status(200).json(link);
     } catch (e) {
       let response = {
         status: "error",
@@ -22,7 +29,10 @@ const mainController = {
     try {
       const files = req.files;
       Object.keys(files).forEach((key) => {
-        const filepath = path.join(__dirname, "assets", files[key].name);
+        const filepath = path.join(
+          config.assetsCodigosPromocionalesPath,
+          files[key].name
+        );
         files[key].mv(filepath, (err) => {
           if (err) throw err;
         });
@@ -41,7 +51,7 @@ const mainController = {
   getStatus: async (req, res) => {
     try {
       let response = await Config.findOne().lean();
-      res.status(200).json(response);
+      res.status(200).json(response.showPromo);
     } catch (e) {
       let response = {
         status: "error",

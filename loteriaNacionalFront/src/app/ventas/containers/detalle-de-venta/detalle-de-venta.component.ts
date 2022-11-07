@@ -13,6 +13,7 @@ export class DetalleDeVentaComponent implements OnInit {
   ganador: any;
   compraReady: boolean = false;
 
+  codigosPromocionales: any = [];
   ticketId?: string;
   accountId?: string;
   user?: string;
@@ -36,6 +37,7 @@ export class DetalleDeVentaComponent implements OnInit {
       this.loadingMessage = 'Consultando el detalle de tu compra';
       this.isLoading = true;
       this.compra = await this.pagos.getCompra(this.ticketId, this.accountId);
+      this.codigosPromocionales = await this.pagos.getCodigosPromocionales(this.ticketId);
       this.user = this.compra.user
         ? this.compra.user
         : this.ventas.getAuthData().user;

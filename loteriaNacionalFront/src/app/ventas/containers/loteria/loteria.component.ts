@@ -40,6 +40,7 @@ export class LoteriaComponent implements OnInit {
   page_number: number = 1;
   pageSizeOptions = [5, 10, 20, 100];
   ticketsMillonaria: any;
+  codigoPromocional: any = [];
 
   constructor(
     private lotteryService: VentasService,
@@ -451,6 +452,8 @@ export class LoteriaComponent implements OnInit {
             reservaId
           );
           if (response.status) {
+            
+            this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
