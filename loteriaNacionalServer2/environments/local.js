@@ -47,6 +47,7 @@ module.exports = {
 
   //mailjetKey1: "3bab0fb6541b67dcc6432ec78e61cf4a",
   //mailjetKey2: "ed376525e47bbc67f419af0aa6b6ea1b",
+  ventasURL: "http://localhost",
 
   emailRemitente: "angelocrincoli91@gmail.com",
   nombreRemitente: "Asistencia Loteria",

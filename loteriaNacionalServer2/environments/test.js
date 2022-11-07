@@ -52,7 +52,7 @@ module.exports = {
 
   emailRemitente: "ayuda@loteria.com.ec",
   nombreRemitente: "Asistencia Loteria",
-
+  ventasURL: "https://ventas-api-prueba.loteria.com.ec",
   ftpBoletinesPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
   ftpBoletosPath:

@@ -13,7 +13,7 @@ const mainController = {
       let files = await fs.readdir(config.assetsCodigosPromocionalesPath);
       files = files.filter((item) => item != "correo");
       let fileName = files[Math.floor(Math.random() * files.length)];
-      let link = `https://ventas-api.loteria.com.ec/assets/${fileName}`;
+      let link = `${config.ventasURL}/assets/${fileName}`;
       res.status(200).json(link);
     } catch (e) {
       let response = {
