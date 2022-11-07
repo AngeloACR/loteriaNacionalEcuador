@@ -45,7 +45,7 @@ codigosPromocionalesSchema.virtual("venta", {
 });
 
 codigosPromocionalesSchema.statics = {
-  populate: async function (element) {
+  populate: async function () {
     try {
       for (let i = 0; i < 10000000; i++) {
         let codigo = `${i}`;
@@ -80,11 +80,7 @@ codigosPromocionalesSchema.statics = {
       const query = { asignado: true };
       let resultados = await this.find(query).lean();
       resultados = resultados.map((resultado) => {
-        return `${resultado.codigo},${resultado.codigo},${
-          resultado.cedula
-        },${resultado.nombre},${resultado.correo},${
-          resultado.telefono
-        },SITIO WEB`;
+        return `${resultado.codigo},${resultado.codigo},${resultado.cedula},${resultado.nombre},${resultado.correo},${resultado.telefono},SITIO WEB`;
       });
       let response = {
         status: true,
