@@ -2,6 +2,7 @@ const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache"); /
 const CacheLotto = require("../../sorteosLotto/controller/cache"); // COMUNICAR POR gRPC
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache"); // COMUNICAR POR gRPC
 const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache"); // COMUNICAR POR gRPC
+const CodigosPromocionales = require("../../codigosPromocionales/controller/main"); // COMUNICAR POR gRPC
 const psdVentas = require("../../psdLoteria/ventas");
 const Ventas = require("../models/main");
 const Wallet = require("../../alboran/wallet"); // COMUNICAR POR gRPC
