@@ -39,7 +39,7 @@ module.exports.send = async (email, nombre, ventaId, codigos) => {
             codigo5: codigos[4],
           },
           TemplateLanguage: true,
-          Subject: "Participa en el sorteo por un Iphone 13 pro.",
+          Subject: "Participa en el sorteo por un Iphone 14 Pro Max.",
           HTMLPart: htmlTemplate,
           CustomID: "SorteoIphone",
         },
