@@ -22,9 +22,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    console.log(e);
-    console.log(parent.document.documentElement.scrollTop); 
-    console.log(parent.document.body.scrollTop); 
+    console.log(e.origin == "http://loteria.mongibello.tech:8300" && e.data.message == "scrolling");
     //    let position = window.parent.innerHeight - 10 + e.scrollTop;
     //    this.floatingBox.style.top = `${position}px`;
   }
