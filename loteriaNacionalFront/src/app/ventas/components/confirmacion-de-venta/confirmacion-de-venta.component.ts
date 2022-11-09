@@ -22,11 +22,11 @@ export class ConfirmacionDeVentaComponent implements OnInit {
     this.user = this.ventas.getAuthData().user
   }
   confirmarCompra() {
-    console.log(this.purchase)
     this.compraConfirmada.emit();
+    this.purchase.disabled = true;
   }
   habilitarBoton() {
-    //this.purchase.disabled = false;
+    this.purchase.disabled = false;
   }
 
   volver() {

@@ -773,11 +773,11 @@ class ConfirmacionDeVentaComponent {
         this.user = this.ventas.getAuthData().user;
     }
     confirmarCompra() {
-        console.log(this.purchase);
         this.compraConfirmada.emit();
+        this.purchase.disabled = true;
     }
     habilitarBoton() {
-        //this.purchase.disabled = false;
+        this.purchase.disabled = false;
     }
     volver() {
         this.comprarDespues.emit();
@@ -792,7 +792,7 @@ ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORT
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.purchase = _t);
-    } }, inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 11, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], [1, "confirmationButton"], ["purchase", ""]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 11, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], [1, "confirmationButton", 3, "click"], ["purchase", ""]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_div_click_0_listener() { return ctx.volver(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -807,6 +807,7 @@ ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORT
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, "Volver");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](8, "button", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_button_click_8_listener() { return ctx.confirmarCompra(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10, " Confirmar compra ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
