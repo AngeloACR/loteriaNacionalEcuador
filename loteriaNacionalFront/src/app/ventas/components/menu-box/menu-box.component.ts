@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { VentasService } from "../../services/ventas.service";
 import { PagosService } from "../../services/pagos.service";
@@ -182,7 +182,7 @@ export class MenuBoxComponent implements OnInit {
       if (hasBalance) {
         let reservaId = this.cart.getReservaId();
         let cartValidation = await this.cart.validarCarrito(reservaId);
-        if (cartValidation) {
+        if (cartValidation.status) {
           let response = await this.paymentService.confirmarCompra(
             this.token,
             reservaId
@@ -199,6 +199,8 @@ export class MenuBoxComponent implements OnInit {
           } else {
             this.cancelarCompra("");
           }
+        } else {
+          this.openValidationError(cartValidation.message);
         }
         this.isLoading = false;
       } else {
@@ -206,15 +208,30 @@ export class MenuBoxComponent implements OnInit {
         let message = "Tu saldo es insuficiente para realizar la compra";
         this.recargarSaldo(message);
       }
+
     } catch (e: any) {
       this.isLoading = false;
+      this.purchase.habilitarBoton();
       console.log(e.message);
       let errorMessage = e.message;
       let errorTitle = "Error";
       this.openError(errorMessage, errorTitle);
     }
   }
+  @ViewChildren('purchase') purchase: any;
 
+  isValidationError: boolean = false;
+  validationErrorMessage?: string;
+  openValidationError(msg: any) {
+    this.validationErrorMessage = msg;
+    this.isValidationError = true;
+  }
+
+  closeValidationError() {
+    this.isValidationError = false;
+    this.validationErrorMessage = '';
+    window.location.reload();
+  }
   cancelarCompra(e: any) {
     this.dismissCompras();
     this.compraCancelada = true;

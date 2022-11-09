@@ -104,12 +104,19 @@
     [title]="errorTitle!"
     *ngIf="isError"
   ></app-error>
+  
+<app-error
+[msg]="validationErrorMessage!"
+(closeError)="closeValidationError()"
+*ngIf="isValidationError"
+></app-error>
   <app-confirmacion-de-venta
     (compraConfirmada)="confirmarCompra()"
     (compraCancelada)="cancelarCompra($event)"
     (comprarDespues)="dismissCompras()"
     [compra]="detalleCompra"
     class="paymentItem"
+    #purchase
     *ngIf="confirmacionDeCompra"
   ></app-confirmacion-de-venta>
   <app-instantaneas

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChildren } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import {
   sorteo,
@@ -474,13 +474,16 @@ export class LoteriaComponent implements OnInit {
         let message = 'Tu saldo es insuficiente para realizar la compra';
         this.recargarSaldo(message);
       }
+
     } catch (e: any) {
       this.isLoading = false;
+      this.purchase.habilitarBoton();
       console.log(e.message);
       let errorMessage = e.message;
       this.openError(errorMessage);
     }
   }
+  @ViewChildren('purchase') purchase: any;
 
   cancelarCompra() {
     this.dismissCompras();

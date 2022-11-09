@@ -6823,17 +6823,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SharedModule": () => (/* binding */ SharedModule)
 /* harmony export */ });
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ 4364);
-/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/paginator */ 8021);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/paginator */ 8021);
 /* harmony import */ var _components_loader_loader_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/loader/loader.component */ 605);
 /* harmony import */ var _components_error_error_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/error/error.component */ 3772);
 /* harmony import */ var _style_paginator_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style-paginator.directive */ 6560);
 /* harmony import */ var _autotab_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./autotab.directive */ 3444);
 /* harmony import */ var _pipes_paginate_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pipes/paginate.pipe */ 2343);
 /* harmony import */ var _paginacion_es__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./paginacion-es */ 3359);
-/* harmony import */ var _throttle_directive__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./throttle.directive */ 2989);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2316);
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2316);
 
 
 
@@ -6846,22 +6844,20 @@ __webpack_require__.r(__webpack_exports__);
 class SharedModule {
 }
 SharedModule.ɵfac = function SharedModule_Factory(t) { return new (t || SharedModule)(); };
-SharedModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineNgModule"]({ type: SharedModule });
-SharedModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineInjector"]({ providers: [
+SharedModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineNgModule"]({ type: SharedModule });
+SharedModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjector"]({ providers: [
         {
-            provide: _angular_material_paginator__WEBPACK_IMPORTED_MODULE_8__.MatPaginatorIntl,
+            provide: _angular_material_paginator__WEBPACK_IMPORTED_MODULE_7__.MatPaginatorIntl,
             useValue: (0,_paginacion_es__WEBPACK_IMPORTED_MODULE_5__.getSpanishPaginatorIntl)(),
         },
-    ], imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_9__.CommonModule, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_8__.MatPaginatorModule]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵsetNgModuleScope"](SharedModule, { declarations: [_components_loader_loader_component__WEBPACK_IMPORTED_MODULE_0__.LoaderComponent,
+    ], imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_8__.CommonModule, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_7__.MatPaginatorModule]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵsetNgModuleScope"](SharedModule, { declarations: [_components_loader_loader_component__WEBPACK_IMPORTED_MODULE_0__.LoaderComponent,
         _components_error_error_component__WEBPACK_IMPORTED_MODULE_1__.ErrorComponent,
         _style_paginator_directive__WEBPACK_IMPORTED_MODULE_2__.StylePaginatorDirective,
-        _throttle_directive__WEBPACK_IMPORTED_MODULE_6__.PreventDoubleClickDirective,
         _autotab_directive__WEBPACK_IMPORTED_MODULE_3__.AutoTabDirective,
-        _pipes_paginate_pipe__WEBPACK_IMPORTED_MODULE_4__.PaginatePipe], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_9__.CommonModule, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_8__.MatPaginatorModule], exports: [_components_loader_loader_component__WEBPACK_IMPORTED_MODULE_0__.LoaderComponent,
+        _pipes_paginate_pipe__WEBPACK_IMPORTED_MODULE_4__.PaginatePipe], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_8__.CommonModule, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_7__.MatPaginatorModule], exports: [_components_loader_loader_component__WEBPACK_IMPORTED_MODULE_0__.LoaderComponent,
         _components_error_error_component__WEBPACK_IMPORTED_MODULE_1__.ErrorComponent,
         _style_paginator_directive__WEBPACK_IMPORTED_MODULE_2__.StylePaginatorDirective,
-        _throttle_directive__WEBPACK_IMPORTED_MODULE_6__.PreventDoubleClickDirective,
         _autotab_directive__WEBPACK_IMPORTED_MODULE_3__.AutoTabDirective,
         _pipes_paginate_pipe__WEBPACK_IMPORTED_MODULE_4__.PaginatePipe] }); })();
 
@@ -7021,53 +7017,6 @@ class StylePaginatorDirective {
 }
 StylePaginatorDirective.ɵfac = function StylePaginatorDirective_Factory(t) { return new (t || StylePaginatorDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_paginator__WEBPACK_IMPORTED_MODULE_1__.MatPaginator, 11), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewContainerRef), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.Renderer2)); };
 StylePaginatorDirective.ɵdir = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: StylePaginatorDirective, selectors: [["", "style-paginator", ""]], inputs: { showTotalPages: "showTotalPages" } });
-
-
-/***/ }),
-
-/***/ 2989:
-/*!**********************************************!*\
-  !*** ./src/app/shared/throttle.directive.ts ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PreventDoubleClickDirective": () => (/* binding */ PreventDoubleClickDirective)
-/* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 9441);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ 9190);
-
-
-
-
-class PreventDoubleClickDirective {
-    constructor() {
-        this.throttleTime = 3600000;
-        this.throttledClick = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
-        this.clicks = new rxjs__WEBPACK_IMPORTED_MODULE_1__.Subject();
-    }
-    ngOnInit() {
-        this.subscription = this.clicks.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.throttleTime)(this.throttleTime)).subscribe(e => this.emitThrottledClick(e));
-    }
-    emitThrottledClick(e) {
-        this.throttledClick.emit(e);
-    }
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-    }
-    clickEvent(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.clicks.next(event);
-    }
-}
-PreventDoubleClickDirective.ɵfac = function PreventDoubleClickDirective_Factory(t) { return new (t || PreventDoubleClickDirective)(); };
-PreventDoubleClickDirective.ɵdir = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: PreventDoubleClickDirective, selectors: [["", "appPreventDoubleClick", ""]], hostBindings: function PreventDoubleClickDirective_HostBindings(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PreventDoubleClickDirective_click_HostBindingHandler($event) { return ctx.clickEvent($event); });
-    } }, inputs: { throttleTime: "throttleTime" }, outputs: { throttledClick: "throttledClick" } });
 
 
 /***/ }),

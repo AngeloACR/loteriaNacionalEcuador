@@ -244,7 +244,8 @@
   (compraCancelada)="cancelarCompra()"
   (comprarDespues)="dismissCompras()"
   [compra]="detalleCompra"
-  class="paymentItem"
+    #purchase
+    class="paymentItem"
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-venta>
 <app-instantaneas
