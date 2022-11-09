@@ -2354,7 +2354,6 @@ class FloatingMenuComponent {
         this.floatingBox.style.top = `${position}px`;
     }
     ngOnInit() {
-        console.log(this.floatingBox);
         this.carrito = {
             carritoDisplay: false,
         };
@@ -2363,6 +2362,7 @@ class FloatingMenuComponent {
         };
     }
     ngAfterViewInit() {
+        console.log(this.floatingBox);
     }
     toggleBox() {
         this.isToggled = !this.isToggled;

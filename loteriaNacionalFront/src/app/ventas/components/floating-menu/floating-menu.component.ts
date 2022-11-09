@@ -43,7 +43,6 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   carrito: any = {};
   cerrar: any = {};
   ngOnInit() {
-    console.log(this.floatingBox);
     this.carrito = {
       carritoDisplay: false,
     };
@@ -52,6 +51,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
     };
   }
   ngAfterViewInit(){
+    console.log(this.floatingBox);
     
   }
   toggleBox() {
