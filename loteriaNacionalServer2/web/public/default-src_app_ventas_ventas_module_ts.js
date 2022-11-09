@@ -770,15 +770,14 @@ class ConfirmacionDeVentaComponent {
         this.comprarDespues = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
     }
     ngOnInit() {
-        this.purchase.disabled = false;
         this.user = this.ventas.getAuthData().user;
     }
     confirmarCompra() {
+        console.log(this.purchase);
         this.compraConfirmada.emit();
-        this.purchase.disabled = true;
     }
     habilitarBoton() {
-        this.purchase.disabled = false;
+        //this.purchase.disabled = false;
     }
     volver() {
         this.comprarDespues.emit();
