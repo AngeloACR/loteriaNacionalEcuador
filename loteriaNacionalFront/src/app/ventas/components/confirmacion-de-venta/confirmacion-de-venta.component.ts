@@ -19,6 +19,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.purchase.disabled = false;
     this.user = this.ventas.getAuthData().user
   }
   confirmarCompra() {
