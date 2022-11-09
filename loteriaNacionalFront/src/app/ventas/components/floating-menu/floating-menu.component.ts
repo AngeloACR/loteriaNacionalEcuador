@@ -20,7 +20,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
   @ViewChildren('float') floatingBox: any;
 
-  //@HostListener('window:scrolling', ['$event'])
+  @HostListener('document:scrolling', ['$event'])
   handleScroll(e: any) {
     console.log(e.scrollTop);
     let position = window.parent.innerHeight - 10 + e.scrollTop;
@@ -52,7 +52,6 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
     };
   }
   ngAfterViewInit(){
-    window.parent.addEventListener("scroll", this.handleScroll)
     
   }
   toggleBox() {
