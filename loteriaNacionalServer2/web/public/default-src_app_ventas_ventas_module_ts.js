@@ -773,8 +773,8 @@ class ConfirmacionDeVentaComponent {
         this.user = this.ventas.getAuthData().user;
     }
     confirmarCompra() {
-        this.compraConfirmada.emit();
         this.purchase.disabled = true;
+        this.compraConfirmada.emit();
     }
     habilitarBoton() {
         this.purchase.disabled = false;
