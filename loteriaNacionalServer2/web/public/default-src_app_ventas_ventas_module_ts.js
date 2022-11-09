@@ -2359,6 +2359,8 @@ class FloatingMenuComponent {
     }
     handleScroll(e) {
         console.log(e);
+        console.log(parent.document.documentElement.scrollTop);
+        console.log(parent.document.body.scrollTop);
         //    let position = window.parent.innerHeight - 10 + e.scrollTop;
         //    this.floatingBox.style.top = `${position}px`;
     }

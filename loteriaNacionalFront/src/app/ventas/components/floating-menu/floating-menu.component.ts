@@ -23,8 +23,10 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     console.log(e);
-//    let position = window.parent.innerHeight - 10 + e.scrollTop;
-//    this.floatingBox.style.top = `${position}px`;
+    console.log(parent.document.documentElement.scrollTop); 
+    console.log(parent.document.body.scrollTop); 
+    //    let position = window.parent.innerHeight - 10 + e.scrollTop;
+    //    this.floatingBox.style.top = `${position}px`;
   }
   @Input() ticketsLoteria: any;
   @Input() ticketsMillonaria: any;
@@ -50,9 +52,8 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
       cerrarDisplay: false,
     };
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     console.log(this.floatingBox);
-    
   }
   toggleBox() {
     this.isToggled = !this.isToggled;
