@@ -14,6 +14,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
   @Output() comprarDespues = new EventEmitter();
   @Input() compra: any;
   user: any;
+  disabled: boolean = false;
   constructor(
     private ventas: VentasService,
   ) {}
@@ -22,12 +23,11 @@ export class ConfirmacionDeVentaComponent implements OnInit {
     this.user = this.ventas.getAuthData().user
   }
   confirmarCompra() {
-    console.log("Probando")
-    this.purchase.attr.disabled = true;
+    this.disabled = true;
     this.compraConfirmada.emit();
   }
   habilitarBoton() {
-    this.purchase.attr.disabled = false;
+    this.disabled = false;
   }
 
   volver() {
