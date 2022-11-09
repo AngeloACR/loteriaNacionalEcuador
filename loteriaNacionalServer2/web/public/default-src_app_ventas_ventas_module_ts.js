@@ -794,7 +794,7 @@ ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORT
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.purchase = _t);
-    } }, inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 11, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["appPreventDoubleClick", "", 1, "confirmationButton", 3, "throttledClick"], ["purchase", ""]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 10, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["appPreventDoubleClick", "", 1, "confirmationButton", 3, "throttledClick"]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_div_click_0_listener() { return ctx.volver(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -808,9 +808,9 @@ ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORT
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_button_click_6_listener() { return ctx.volver(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "Volver");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "button", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "button", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("throttledClick", function ConfirmacionDeVentaComponent_Template_button_throttledClick_8_listener() { return ctx.confirmarCompra(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10, " Confirmar compra ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, " Confirmar compra ");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
