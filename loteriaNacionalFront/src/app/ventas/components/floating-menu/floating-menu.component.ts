@@ -20,11 +20,11 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
   @ViewChildren('float') floatingBox: any;
 
-  @HostListener('document:scrolling', ['$event'])
+  @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    console.log(e.scrollTop);
-    let position = window.parent.innerHeight - 10 + e.scrollTop;
-    this.floatingBox.style.top = `${position}px`;
+    console.log(e);
+//    let position = window.parent.innerHeight - 10 + e.scrollTop;
+//    this.floatingBox.style.top = `${position}px`;
   }
   @Input() ticketsLoteria: any;
   @Input() ticketsMillonaria: any;
