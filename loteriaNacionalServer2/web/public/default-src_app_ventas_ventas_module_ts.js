@@ -774,11 +774,11 @@ class ConfirmacionDeVentaComponent {
     }
     confirmarCompra() {
         console.log("Probando");
-        this.purchase.disabled = true;
+        this.purchase.attr.disabled = true;
         this.compraConfirmada.emit();
     }
     habilitarBoton() {
-        this.purchase.disabled = false;
+        this.purchase.attr.disabled = false;
     }
     volver() {
         this.comprarDespues.emit();
