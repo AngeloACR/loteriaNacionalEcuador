@@ -8,7 +8,7 @@
   <p>Seguro que deseas efectuar la compra?</p>
   <div class="buttonBox">
     <button class="backButton" (click)="volver()">Volver</button>
-    <button class="confirmationButton"  appPreventDoubleClick (throttledClick)="confirmarCompra()" [throttleTime]="700">
+    <button class="confirmationButton" #purchase appPreventDoubleClick (throttledClick)="confirmarCompra()">
       Confirmar compra
     </button>
   </div>

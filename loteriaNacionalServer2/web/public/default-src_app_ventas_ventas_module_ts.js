@@ -763,6 +763,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const _c0 = ["purchase"];
 class ConfirmacionDeVentaComponent {
     constructor(ventas) {
         this.ventas = ventas;
@@ -774,7 +775,11 @@ class ConfirmacionDeVentaComponent {
         this.user = this.ventas.getAuthData().user;
     }
     confirmarCompra() {
+        this.purchase.disabled = true;
         this.compraConfirmada.emit();
+    }
+    habilitarBoto() {
+        this.purchase.disabled = false;
     }
     volver() {
         this.comprarDespues.emit();
@@ -784,7 +789,12 @@ class ConfirmacionDeVentaComponent {
     }
 }
 ConfirmacionDeVentaComponent.ɵfac = function ConfirmacionDeVentaComponent_Factory(t) { return new (t || ConfirmacionDeVentaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_ventas_service__WEBPACK_IMPORTED_MODULE_0__.VentasService)); };
-ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: ConfirmacionDeVentaComponent, selectors: [["app-confirmacion-de-venta"]], inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 10, vars: 3, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["appPreventDoubleClick", "", 1, "confirmationButton", 3, "throttleTime", "throttledClick"]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
+ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({ type: ConfirmacionDeVentaComponent, selectors: [["app-confirmacion-de-venta"]], viewQuery: function ConfirmacionDeVentaComponent_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](_c0, 5);
+    } if (rf & 2) {
+        let _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.purchase = _t);
+    } }, inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 11, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["appPreventDoubleClick", "", 1, "confirmationButton", 3, "throttledClick"], ["purchase", ""]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_div_click_0_listener() { return ctx.volver(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
@@ -798,17 +808,15 @@ ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORT
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_button_click_6_listener() { return ctx.volver(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "Volver");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "button", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "button", 5, 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("throttledClick", function ConfirmacionDeVentaComponent_Template_button_throttledClick_8_listener() { return ctx.confirmarCompra(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, " Confirmar compra ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10, " Confirmar compra ");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("compra", ctx.compra)("user", ctx.user);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("throttleTime", 700);
     } }, directives: [_descripcion_de_venta_descripcion_de_venta_component__WEBPACK_IMPORTED_MODULE_1__.DescripcionDeVentaComponent, _shared_throttle_directive__WEBPACK_IMPORTED_MODULE_2__.PreventDoubleClickDirective], styles: [".paymentBox[_ngcontent-%COMP%] {\n  width: 70%;\n  height: 70%;\n  position: fixed;\n  padding: 15px;\n  z-index: 10000;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  overflow-y: scroll;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-around;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  padding: 15px;\n  border-radius: 30px;\n  font-family: \"Monstserrat SemiBold\";\n  font-size: 16px;\n  margin: 10px auto;\n  width: 100%;\n  max-width: 300px;\n  cursor: pointer;\n  color: #fff;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.confirmationButton[_ngcontent-%COMP%] {\n  background-color: green;\n  border: 1px solid green;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.confirmationButton[_ngcontent-%COMP%]:hover {\n  background-color: white;\n  color: green;\n  transition: background-color 0.4s ease;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.backButton[_ngcontent-%COMP%] {\n  background-color: red;\n  border: 1px solid red;\n}\n.paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%]   button.backButton[_ngcontent-%COMP%]:hover {\n  background-color: white;\n  color: red;\n  transition: background-color 0.4s ease;\n}\n.blackBox[_ngcontent-%COMP%] {\n  position: fixed;\n  z-index: 8000;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  transition: height 0.2s ease-out;\n  overflow: hidden;\n  background-color: rgba(155, 155, 155, 0.5);\n  border: none;\n}\n@media screen and (max-width: 1000px) {\n  .paymentBox[_ngcontent-%COMP%] {\n    width: 95%;\n  }\n}\n@media screen and (max-width: 600px) {\n  .paymentBox[_ngcontent-%COMP%]   .buttonBox[_ngcontent-%COMP%] {\n    flex-direction: column;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpcm1hY2lvbi1kZS12ZW50YS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLFVBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGFBQUE7RUFDQSxjQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxnQ0FBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7QUFERjtBQUdFO0VBQ0UsYUFBQTtFQUNBLDZCQUFBO0FBREo7QUFFSTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLG1DQXBCVztFQXFCWCxlQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtBQUFOO0FBRU07RUFDRSx1QkFBQTtFQUNBLHVCQUFBO0FBQVI7QUFDUTtFQUNFLHVCQUFBO0VBQ0EsWUFBQTtFQUNBLHNDQUFBO0FBQ1Y7QUFFTTtFQUNFLHFCQUFBO0VBQ0EscUJBQUE7QUFBUjtBQUNRO0VBQ0UsdUJBQUE7RUFDQSxVQUFBO0VBQ0Esc0NBQUE7QUFDVjtBQUtBO0VBQ0UsZUFBQTtFQUNBLGFBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsZ0NBQUE7RUFDQSxnQkFBQTtFQUNBLDBDQUFBO0VBQ0EsWUFBQTtBQUZGO0FBSUE7RUFDRTtJQUNFLFVBQUE7RUFERjtBQUNGO0FBR0E7RUFFSTtJQUNFLHNCQUFBO0VBRko7QUFDRiIsImZpbGUiOiJjb25maXJtYWNpb24tZGUtdmVudGEuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkZnVlbnRlLWJvdG9uZXM6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcclxuXHJcbi5wYXltZW50Qm94IHtcclxuICB3aWR0aDogNzAlO1xyXG4gIGhlaWdodDogNzAlO1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBwYWRkaW5nOiAxNXB4O1xyXG4gIHotaW5kZXg6IDEwMDAwO1xyXG4gIHRvcDogNTAlO1xyXG4gIGxlZnQ6IDUwJTtcclxuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICBvdmVyZmxvdy15OiBzY3JvbGw7XHJcblxyXG4gIC5idXR0b25Cb3gge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xyXG4gICAgYnV0dG9uIHtcclxuICAgICAgcGFkZGluZzogMTVweDtcclxuICAgICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxuICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtYm90b25lcztcclxuICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICBtYXJnaW46IDEwcHggYXV0bztcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgIG1heC13aWR0aDogMzAwcHg7XHJcbiAgICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgICAgY29sb3I6ICNmZmY7XHJcblxyXG4gICAgICAmLmNvbmZpcm1hdGlvbkJ1dHRvbiB7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XHJcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgZ3JlZW47XHJcbiAgICAgICAgJjpob3ZlciB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgIGNvbG9yOiBncmVlbjtcclxuICAgICAgICAgIHRyYW5zaXRpb246IGJhY2tncm91bmQtY29sb3IgMC40cyBlYXNlO1xyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG4gICAgICAmLmJhY2tCdXR0b24ge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCByZWQ7XHJcbiAgICAgICAgJjpob3ZlciB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgIGNvbG9yOiByZWQ7XHJcbiAgICAgICAgICB0cmFuc2l0aW9uOiBiYWNrZ3JvdW5kLWNvbG9yIDAuNHMgZWFzZTtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuICAgIH1cclxuICB9XHJcbn1cclxuLmJsYWNrQm94IHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgei1pbmRleDogODAwMDtcclxuICB0b3A6IDA7XHJcbiAgbGVmdDogMDtcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbiAgdHJhbnNpdGlvbjogaGVpZ2h0IDAuMnMgZWFzZS1vdXQ7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDE1NSwgMTU1LCAxNTUsIDAuNSk7XHJcbiAgYm9yZGVyOiBub25lO1xyXG59XHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gIC5wYXltZW50Qm94IHtcclxuICAgIHdpZHRoOiA5NSU7XHJcbiAgfVxyXG59XHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KSB7XHJcbiAgLnBheW1lbnRCb3gge1xyXG4gICAgLmJ1dHRvbkJveHtcclxuICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIH1cclxuICB9XHJcbn1cclxuIl19 */"] });
 
 
