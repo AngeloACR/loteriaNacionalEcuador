@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     SharedModule,
     LoteriaModule,
@@ -27,14 +28,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     PozoModule,
     MillonariaModule,
     ReactiveFormsModule,
-    CodigosPromocionalesModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
     MatPaginatorModule,
     MatFormFieldModule,
-    AppRoutingModule,
+    CodigosPromocionalesModule,
   ],
   exports: [MatPaginatorModule, MatFormFieldModule, FormsModule],
   providers: [],
