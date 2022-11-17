@@ -129,7 +129,7 @@ def main():
     #filepath = "/home/acri/ftpResultados" + filename
     #filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
     data = urllib.request.urlopen(filepath) # it's a file like object and works just like a file
-    with codecs.open(filename+".xml", 'w', encoding='utf8') as file:
+    with codecs.open(filename, 'w', encoding='utf8') as file:
         for line in data: # files are iterable
             file.write(line.decode('utf-8'))
             
@@ -140,7 +140,7 @@ def main():
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
-    size = os.path.getsize(filename+".xml")
+    size = os.path.getsize(filename)
     agregarMaestro(filename,size,len(premios),tipoLoteria, sorteo, db)
 
     agregarPremios(premios, tipoLoteria, sorteo, db)
