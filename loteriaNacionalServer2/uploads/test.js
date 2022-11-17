@@ -21,57 +21,57 @@ const fs = require("fs").promises;
       .filter((item) => {
         return item.tipoArchivo == "PREM" && item.tipoLoteria == 1;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let ganadoresLoteria = files
       .filter((item) => {
         return item.tipoArchivo == "GANWEB" && item.tipoLoteria == 1;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let resultadosLotto = files
       .filter((item) => {
         return item.tipoArchivo == "BOLPRE" && item.tipoLoteria == 2;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let premiosLotto = files
       .filter((item) => {
         return item.tipoArchivo == "PREM" && item.tipoLoteria == 2;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let ganadoresLotto = files
       .filter((item) => {
         return item.tipoArchivo == "GANWEB" && item.tipoLoteria == 2;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let resultadosPozo = files
       .filter((item) => {
         return item.tipoArchivo == "BOLPRE" && item.tipoLoteria == 5;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let premiosPozo = files
       .filter((item) => {
         return item.tipoArchivo == "PREM" && item.tipoLoteria == 5;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let ganadoresPozo = files
       .filter((item) => {
         return item.tipoArchivo == "GANWEB" && item.tipoLoteria == 5;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let resultadosMillonaria = files
       .filter((item) => {
         return item.tipoArchivo == "BOLPRE" && item.tipoLoteria == 14;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let premiosMillonaria = files
       .filter((item) => {
         return item.tipoArchivo == "PREM" && item.tipoLoteria == 14;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
     let ganadoresMillonaria = files
       .filter((item) => {
         return item.tipoArchivo == "GANWEB" && item.tipoLoteria == 14;
       })
-      .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
+      .sort((a, b) => b.sorteo - a.sorteo)[0].sorteo;
 
     let response = {
       resultadosLoteria,

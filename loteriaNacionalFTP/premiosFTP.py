@@ -122,7 +122,7 @@ def sendResult(message):
 def main():
     db = "mongodb://localhost:27017/loteriaDB"
     #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
-    filename = sys.argv[1]
+    filename = sys.argv[1]+".xml"
     print(sys.argv)
     filepath = "http://67.43.9.57:9000/resultados/" + filename
     #filepath = "/home/acri/ftp/resultados" + filename
@@ -141,6 +141,7 @@ def main():
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
     size = os.path.getsize(filename)
+    os.remove(filename)
     agregarMaestro(filename,size,len(premios),tipoLoteria, sorteo, db)
 
     agregarPremios(premios, tipoLoteria, sorteo, db)

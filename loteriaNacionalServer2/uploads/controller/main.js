@@ -1,5 +1,3 @@
-const alboranAuth = require("../../alboran/auth");
-const psdAuth = require("../../psdLoteria/auth");
 const fs = require("fs").promises;
 
 const mainController = {

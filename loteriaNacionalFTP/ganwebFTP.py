@@ -187,7 +187,7 @@ def sendResult(message):
 def main():
     db = "mongodb://localhost:27017/loteriaDB"
     #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
-    filename = sys.argv[1]
+    filename = sys.argv[1]+".xml"
     filepath = "http://67.43.9.57:9000/resultados/" + filename
     #filepath = "/home/acri/ftp/resultados"
     #filepath = "/home/acri/ftpResultados" + filename
@@ -197,9 +197,6 @@ def main():
     with codecs.open(filename, 'w', encoding='utf8') as file:
         for line in data: # files are iterable
             file.write(line.decode('utf-8'))
-
-    with codecs.open(filename, 'w', encoding='utf8') as file:
-        file.write(lines)
 
     file = open(filename, 'r+', encoding="utf8")
 
@@ -220,7 +217,7 @@ def main():
     file.close()
 
     size = os.path.getsize(filename)
-
+    os.remove(filename)
 
     agregarMaestro(filename,size,len(resultados),tipoLoteria, numeroSorteo, db)
 

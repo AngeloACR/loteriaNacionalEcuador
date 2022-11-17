@@ -96,7 +96,7 @@ const ventasController = {
     let ordComp = alboranReservaId;
     let loteriaVentaResponse = await psdVentas.venderBoletos(
       ordComp,
-      parseInt(total),
+      parseFloat(total),
       totalConDesc,
       loteria,
       lotto,

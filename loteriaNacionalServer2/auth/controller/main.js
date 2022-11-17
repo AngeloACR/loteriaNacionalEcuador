@@ -19,7 +19,7 @@ const mainController = {
       let response = {
         status: "error",
         message: e.message.toLowerCase().includes("otp")
-          ? "Has iniciado sesión en otro dispositivo."
+          ? "Hay un problema con tu inicio de sesión."
           : e.message,
       };
       res.status(400).json(response);
