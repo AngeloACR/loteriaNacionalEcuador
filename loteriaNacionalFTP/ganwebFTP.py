@@ -7,7 +7,7 @@ import codecs
 import xml.etree.ElementTree as ET
 import sys
 import requests
-import urllib2  # the lib that handles the url stuff
+import urllib.request  # the lib that handles the url stuff
 
 
 def connectDB(myDB):
@@ -192,11 +192,11 @@ def main():
     #filepath = "/home/acri/ftp/resultados"
     #filepath = "/home/acri/ftpResultados" + filename
     #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
-    data = urllib2.urlopen(filepath) # it's a file like object and works just like a file
-    with codecs.open(filename+".xml", 'w+', encoding='utf8') as file:
-        for line in data: # files are iterable
-            file.write(line)
 
+    data = urllib.request.urlopen(filepath) # it's a file like object and works just like a file
+    with codecs.open(filename+".xml", 'w', encoding='utf8') as file:
+        for line in data: # files are iterable
+            file.write(line.decode('utf-8'))
 
     with codecs.open(filename+".xml", 'w', encoding='utf8') as file:
         file.write(lines)
