@@ -57,6 +57,7 @@ module.exports = {
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
   ftpBoletosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
+  resultadosPath: "/home/lottoweb/resultados",
 
   imgCorreosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",

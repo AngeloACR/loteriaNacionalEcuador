@@ -36,6 +36,7 @@ module.exports.init = function (port) {
   app.use("/boletines", express.static(config.ftpBoletinesPath));
   app.use("/boletos", express.static(config.ftpBoletosPath));
   app.use("/correos", express.static(config.imgCorreosPath));
+  app.use("/resultados", express.static(config.resultadosPath));
 
   return app;
 };
