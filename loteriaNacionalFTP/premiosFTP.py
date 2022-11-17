@@ -136,7 +136,7 @@ def main():
     file = open(filename, 'r+', encoding="utf8")        
     content = file.read()
     file.close()
-    content = "<dataset>"+data+"</dataset>"
+    content = "<dataset>"+content+"</dataset>"
     premios = ET.fromstring(content)
     data = filename.split("-")
     tipoLoteria = data[1]
