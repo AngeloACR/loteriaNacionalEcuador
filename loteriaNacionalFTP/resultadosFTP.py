@@ -7,6 +7,7 @@ import codecs
 import xml.etree.ElementTree as ET
 import sys
 
+import urllib2  # the lib that handles the url stuff
 
 def connectDB(myDB):
     try:
@@ -172,29 +173,30 @@ def main():
     #filepath = "/home/acri/ftp/resultados" + filename
     #filepath = "/home/acri/ftpResultados" + filename
     #filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
-    size = os.path.getsize(filepath)
-    with codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
-        lines = file.read()
+    data = urllib2.urlopen(filepath) # it's a file like object and works just like a file
+    with codecs.open(filename+".xml", 'w', encoding='utf8') as file:
+        for line in data: # files are iterable
+            file.write(line)
 
-    with codecs.open(filepath, 'w', encoding='utf8') as file:
-        file.write(lines)
 
-    file = open(filepath, 'r+', encoding="utf8")
+
+    file = open(filename+".xml", 'r+', encoding="utf8")
 
     content = file.read()
     file.seek(0, 0)
     file.write("<dataset>" + content + '</dataset>')
     file.close()
-    resultadosTree = ET.parse(filepath)
+    resultadosTree = ET.parse(filename+".xml")
     resultados = resultadosTree.getroot()
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
 
-    file = open(filepath, 'w+', encoding="utf8")
+    file = open(filename+".xml", 'w+', encoding="utf8")
     file.seek(0, 0)
     file.write(content)
     file.close()
+    size = os.path.getsize(filepath)
 
     agregarMaestro(filename,size,len(resultados),tipoLoteria, sorteo, db)
     agregarResultados(resultados, tipoLoteria, sorteo, db)

@@ -5,6 +5,8 @@ import xml.etree.ElementTree as ET
 from pymongo import MongoClient
 import sys
 import os
+import urllib2  # the lib that handles the url stuff
+import codecs
 
 def connectDB(myDB):
     try:
@@ -126,15 +128,20 @@ def main():
     #filepath = "/home/acri/ftp/resultados" + filename
     #filepath = "/home/acri/ftpResultados" + filename
     #filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
-    file = open(filepath, encoding="iso-8859-1")
-    content = file.read()
-    file.close()
+    data = urllib2.urlopen(filepath) # it's a file like object and works just like a file
+    with codecs.open(filename+".xml", 'w+', encoding='utf8') as file:
+        for line in data: # files are iterable
+            file.write(line)
+
+    content = urllib2.urlopen(filepath)
+    #content = file.read()
+    #file.close()
     content = "<dataset>"+content+"</dataset>"
     premios = ET.fromstring(content)
     data = filename.split("-")
     tipoLoteria = data[1]
     sorteo = data[2].split(".")[0]
-    size = os.path.getsize(filepath)
+    size = os.path.getsize(filename+".xml")
     agregarMaestro(filename,size,len(premios),tipoLoteria, sorteo, db)
 
     agregarPremios(premios, tipoLoteria, sorteo, db)
