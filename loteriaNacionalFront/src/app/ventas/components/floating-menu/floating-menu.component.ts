@@ -10,6 +10,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
+import { DateAdapter } from '@angular/material/core';
 import { CarritoService } from '../../services/carrito.service';
 @Component({
   selector: 'app-floating-menu',
@@ -22,11 +23,17 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    console.log(e.origin == "http://loteria.mongibello.tech:8300" && e.data.message == "scrolling");
-    console.log(e.data.message, e.data.top)
-    //    let position = e.parent.innerHeight - 10 + e.data.top;
+    console.log(
+      e.origin == 'http://loteria.mongibello.tech:8300' &&
+        e.data.message == 'scrolling'
+    );
+    let position =
+      e.data.screen - 90 + e.data.top > e.target.innerHeight - 20
+        ? e.target.innerHeight - 20
+        : e.data.screen - 90 + e.data.top;
     //    this.floatingBox.style.top = `${position}px`;
   }
+
   @Input() ticketsLoteria: any;
   @Input() ticketsMillonaria: any;
   @Input() ticketsLotto: any;

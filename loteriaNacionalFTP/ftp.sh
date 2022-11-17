@@ -6,21 +6,17 @@ sudo tail -F /home/acri/ftp/log/xferlog | while read line; do
     IFS=" " read -a myarray <<< $line
     filename=${myarray[8]}
     if [[ $filename == *"BOLPRE"* ]]; then
-        python3.6 ./resultadosFTP.py $filename
+        curl -k "https://ventas-api-prueba.loteria.com.ec/ftp/resultados$filename"
+        #python3.6 ./resultadosFTP.py $filename
     fi    
     if [[ $filename == *"PREM"* ]]; then
-        python3.6 ./premiosFTP.py $filename
+        curl -k "https://ventas-api-prueba.loteria.com.ec/ftp/premios$filename"
+        #python3.6 ./premiosFTP.py $filename
     fi        
     if [[ $filename == *"GANWEB"* ]]; then
-        python3.6 ./ganwebFTP.py $filename
+        curl -k "https://ventas-api-prueba.loteria.com.ec/ftp/ganadores$filename"
+        #python3.6 ./ganwebFTP.py $filename
     fi
-    if [[ $filename == *"boletos"* ]]; then
-        cp /home/acri/ftp/resultados/$filename /home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos
-    fi
-    if [[ $filename == *"boletines"* ]]; then
-        cp /home/acri/ftp/resultados/$filename /home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletines
-    fi
-
   fi
 done
 
