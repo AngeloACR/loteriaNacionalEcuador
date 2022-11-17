@@ -132,9 +132,10 @@ def main():
     with codecs.open(filename, 'w', encoding='utf8') as file:
         for line in data: # files are iterable
             file.write(line.decode("iso-8859-1"))
-            
-    #content = file.read()
-    #file.close()
+    
+    file = open(filename, 'r+', encoding="utf8")        
+    content = file.read()
+    file.close()
     content = "<dataset>"+data+"</dataset>"
     premios = ET.fromstring(content)
     data = filename.split("-")
