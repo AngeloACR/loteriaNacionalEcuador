@@ -131,7 +131,7 @@ def main():
     data = urllib.request.urlopen(filepath) # it's a file like object and works just like a file
     with codecs.open(filename, 'w', encoding='utf8') as file:
         for line in data: # files are iterable
-            file.write(line)
+            file.write(line.decode("iso-8859-1"))
             
     #content = file.read()
     #file.close()
