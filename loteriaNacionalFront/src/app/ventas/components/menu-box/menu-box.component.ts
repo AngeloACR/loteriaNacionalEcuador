@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { VentasService } from "../../services/ventas.service";
 import { PagosService } from "../../services/pagos.service";
@@ -218,7 +218,7 @@ export class MenuBoxComponent implements OnInit {
       this.openError(errorMessage, errorTitle);
     }
   }
-  @ViewChildren('purchase') purchase: any;
+  @ViewChild('purchase') purchase: any;
 
   isValidationError: boolean = false;
   validationErrorMessage?: string;
