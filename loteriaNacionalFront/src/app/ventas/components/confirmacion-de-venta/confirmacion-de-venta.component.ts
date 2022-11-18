@@ -26,6 +26,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
     this.disabled = true;
     this.compraConfirmada.emit();
   }
+  
   habilitarBoton() {
     this.disabled = false;
   }
