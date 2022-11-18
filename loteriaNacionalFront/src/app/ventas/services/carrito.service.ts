@@ -338,7 +338,7 @@ export class CarritoService {
           this.setMillonariaLocal(data.millonaria);
           this.setPozoLocal(data.pozo);
           this.setReservaId(data.reservaId);
-          await this.setTotal();
+          //await this.setTotal();
 
           resolve(data);
         },

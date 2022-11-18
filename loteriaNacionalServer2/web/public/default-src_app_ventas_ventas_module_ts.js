@@ -10259,9 +10259,9 @@ class CarritoService {
 
               _this12.setPozoLocal(data.pozo);
 
-              _this12.setReservaId(data.reservaId);
+              _this12.setReservaId(data.reservaId); //await this.setTotal();
 
-              yield _this12.setTotal();
+
               resolve(data);
             });
 
