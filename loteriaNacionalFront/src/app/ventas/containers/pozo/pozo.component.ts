@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChildren } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import {
   sorteo,
@@ -437,7 +437,7 @@ export class PozoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  @ViewChildren('purchase') purchase: any;
+  @ViewChild('purchase') purchase: any;
 
   async abrirFinalizar() {
     this.dismissCompras();
