@@ -123,7 +123,6 @@ def main():
     db = "mongodb://localhost:27017/loteriaDB"
     #db = "mongodb://loterianacional:$lndatabase123..$@localhost:27017/loteriaDB"
     filename = sys.argv[1]+".xml"
-    print(sys.argv)
     filepath = "http://67.43.9.57:9000/resultados/" + filename
     #filepath = "/home/acri/ftp/resultados" + filename
     #filepath = "/home/acri/ftpResultados" + filename
