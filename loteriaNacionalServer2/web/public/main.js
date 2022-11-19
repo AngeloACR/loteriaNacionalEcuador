@@ -6835,9 +6835,20 @@ class PositioningDirective {
         this.renderer = renderer;
     }
     handleScroll(e) {
-        let position = e.data.screen - 200 + e.data.top > e.target.innerHeight - 130
-            ? e.target.innerHeight - 130
-            : e.data.screen - 200 + e.data.top;
+        let position = e.data.screen -
+            90 -
+            this.el.nativeElement.style.height.replace('px', '') +
+            e.data.top >
+            e.target.innerHeight -
+                70 -
+                this.el.nativeElement.style.height.replace('px', '')
+            ? e.target.innerHeight -
+                70 -
+                this.el.nativeElement.style.height.replace('px', '')
+            : e.data.screen -
+                90 -
+                this.el.nativeElement.style.height.replace('px', '') +
+                e.data.top;
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
     }
 }
