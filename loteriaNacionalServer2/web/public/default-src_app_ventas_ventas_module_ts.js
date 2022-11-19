@@ -2335,8 +2335,9 @@ function FloatingMenuComponent_app_carrito_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ticketsLoteria", ctx_r2.ticketsLoteria)("ticketsLotto", ctx_r2.ticketsLotto)("ticketsPozo", ctx_r2.ticketsPozo)("ticketsMillonaria", ctx_r2.ticketsMillonaria)("tipoLoteria", ctx_r2.tipoLoteria);
 } }
 class FloatingMenuComponent {
-    constructor(cart) {
+    constructor(cart, renderer) {
         this.cart = cart;
+        this.renderer = renderer;
         this.isToggled = false;
         this.emitirCompra = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
         this.eliminarTodo = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
@@ -2354,7 +2355,7 @@ class FloatingMenuComponent {
             ? e.target.innerHeight - 20
             : e.data.screen - 90 + e.data.top;
         console.log(this.floatingBox);
-        this.floatingBox._elementRef.nativeElement.style.top = `${position}px`;
+        this.renderer.setStyle(this.floatingBox._elementRef.nativeElement, 'top', `${position}px`);
     }
     ngOnInit() {
         this.carrito = {
@@ -2415,7 +2416,7 @@ class FloatingMenuComponent {
         return formatter.format(number);
     }
 }
-FloatingMenuComponent.ɵfac = function FloatingMenuComponent_Factory(t) { return new (t || FloatingMenuComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_carrito_service__WEBPACK_IMPORTED_MODULE_0__.CarritoService)); };
+FloatingMenuComponent.ɵfac = function FloatingMenuComponent_Factory(t) { return new (t || FloatingMenuComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_carrito_service__WEBPACK_IMPORTED_MODULE_0__.CarritoService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_2__.Renderer2)); };
 FloatingMenuComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: FloatingMenuComponent, selectors: [["app-floating-menu"]], viewQuery: function FloatingMenuComponent_Query(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵviewQuery"](_c0, 5);
     } if (rf & 2) {

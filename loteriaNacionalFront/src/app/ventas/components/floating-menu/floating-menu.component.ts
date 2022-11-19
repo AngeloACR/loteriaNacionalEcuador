@@ -8,6 +8,7 @@ import {
   Output,
   HostListener,
   ViewChild,
+  Renderer2,
 } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { CarritoService } from '../../services/carrito.service';
@@ -27,7 +28,8 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
         ? e.target.innerHeight - 20
         : e.data.screen - 90 + e.data.top;
         console.log(this.floatingBox);
-    this.floatingBox._elementRef.nativeElement.style.top = `${position}px`;
+        this.renderer.setStyle(this.floatingBox._elementRef.nativeElement, 'top', `${position}px`);
+
   }
 
   @Input() ticketsLoteria: any;
@@ -43,7 +45,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
   @Output() deleteMillonariaTicket = new EventEmitter();
-  constructor(private cart: CarritoService) {}
+  constructor(private cart: CarritoService, private renderer: Renderer2) {}
   carrito: any = {};
   cerrar: any = {};
   ngOnInit() {
