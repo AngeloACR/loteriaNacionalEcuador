@@ -11,10 +11,10 @@ export class PositioningDirective {
         this.el.nativeElement.offsetHeight/2 +
         e.data.top >
       e.target.innerHeight -
-        70 -
+        90 -
         this.el.nativeElement.offsetHeight/2
         ? e.target.innerHeight -
-          70 -
+          90 -
           this.el.nativeElement.offsetHeight/2
         : e.data.screen -
           90 -
