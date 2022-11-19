@@ -19,7 +19,7 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
-  @ViewChild('float') floatingBox: any;
+  @ViewChild('float', {static: false}) floatingBox: any;
 
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
