@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, ViewChildren } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { VentasService } from "../../services/ventas.service";
 
 @Component({
@@ -7,7 +7,6 @@ import { VentasService } from "../../services/ventas.service";
   styleUrls: ['./confirmacion-de-venta.component.scss']
 })
 export class ConfirmacionDeVentaComponent implements OnInit {
-  @ViewChildren('purchase') purchase: any;
 
   @Output() compraConfirmada = new EventEmitter();
   @Output() compraCancelada = new EventEmitter();

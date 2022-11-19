@@ -761,7 +761,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const _c0 = ["purchase"];
 class ConfirmacionDeVentaComponent {
     constructor(ventas) {
         this.ventas = ventas;
@@ -788,12 +787,7 @@ class ConfirmacionDeVentaComponent {
     }
 }
 ConfirmacionDeVentaComponent.ɵfac = function ConfirmacionDeVentaComponent_Factory(t) { return new (t || ConfirmacionDeVentaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_ventas_service__WEBPACK_IMPORTED_MODULE_0__.VentasService)); };
-ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: ConfirmacionDeVentaComponent, selectors: [["app-confirmacion-de-venta"]], viewQuery: function ConfirmacionDeVentaComponent_Query(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵviewQuery"](_c0, 5);
-    } if (rf & 2) {
-        let _t;
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.purchase = _t);
-    } }, inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 11, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], [1, "confirmationButton", 3, "click"], ["purchase", ""]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
+ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: ConfirmacionDeVentaComponent, selectors: [["app-confirmacion-de-venta"]], inputs: { compra: "compra" }, outputs: { compraConfirmada: "compraConfirmada", compraCancelada: "compraCancelada", comprarDespues: "comprarDespues" }, decls: 11, vars: 2, consts: [[1, "blackBox", 3, "click"], [1, "paymentBox"], [3, "compra", "user"], [1, "buttonBox"], [1, "backButton", 3, "click"], [1, "confirmationButton", 3, "click"], ["purchase", ""]], template: function ConfirmacionDeVentaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_Template_div_click_0_listener() { return ctx.volver(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -2429,7 +2423,7 @@ FloatingMenuComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵviewQuery"](_c0, 5);
     } if (rf & 2) {
         let _t;
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.floatingBox = _t);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.floatingBox = _t.first);
     } }, hostBindings: function FloatingMenuComponent_HostBindings(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("message", function FloatingMenuComponent_message_HostBindingHandler($event) { return ctx.handleScroll($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵresolveWindow"]);
     } }, inputs: { ticketsLoteria: "ticketsLoteria", ticketsMillonaria: "ticketsMillonaria", ticketsLotto: "ticketsLotto", ticketsPozo: "ticketsPozo", tickets: "tickets", tipoLoteria: "tipoLoteria" }, outputs: { emitirCompra: "emitirCompra", eliminarTodo: "eliminarTodo", deleteLoteriaTicket: "deleteLoteriaTicket", deleteLoteriaFraccion: "deleteLoteriaFraccion", deleteLottoTicket: "deleteLottoTicket", deletePozoTicket: "deletePozoTicket", deleteMillonariaTicket: "deleteMillonariaTicket" }, decls: 8, vars: 6, consts: [[1, "floatingBox", 3, "click"], ["float", ""], ["src", "assets/carrito-blanco.svg", "alt", "", 1, "carrito", 3, "ngClass"], ["src", "assets/cerrar.svg", "alt", "", 1, "cerrar", 3, "ngClass"], [1, "totalBox", 3, "ngClass"], ["class", "toggleBox", 4, "ngIf"], ["class", "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", 4, "ngIf"], [1, "toggleBox"], [1, "itemBox", 3, "click"], ["src", "assets/carrito-negro.svg", "alt", ""], [1, "totalCartBox"], ["href", "https://www.loteria.com.ec/casino", "target", "_parent", 1, "itemBox"], ["src", "assets/casino.svg", "alt", ""], ["href", "https://www.loteria.com.ec/sport", "target", "_parent", 1, "itemBox"], ["src", "assets/sport.svg", "alt", ""], [1, "ticketScroller", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozo", "ticketsMillonaria", "tipoLoteria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion"]], template: function FloatingMenuComponent_Template(rf, ctx) { if (rf & 1) {

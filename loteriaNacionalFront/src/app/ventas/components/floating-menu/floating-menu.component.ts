@@ -8,7 +8,6 @@ import {
   Output,
   HostListener,
   ViewChild,
-  ViewChildren,
 } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { CarritoService } from '../../services/carrito.service';
@@ -19,7 +18,7 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
-  @ViewChildren('float') floatingBox: any;
+  @ViewChild('float') floatingBox: any;
 
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
