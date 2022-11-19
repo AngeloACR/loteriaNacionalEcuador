@@ -6837,17 +6837,17 @@ class PositioningDirective {
     handleScroll(e) {
         console.log(this.el.nativeElement.offsetHeight);
         let position = e.data.screen -
-            90 -
+            120 -
             this.el.nativeElement.offsetHeight / 2 +
             e.data.top >
             e.target.innerHeight -
-                90 -
+                120 -
                 this.el.nativeElement.offsetHeight / 2
             ? e.target.innerHeight -
-                90 -
+                120 -
                 this.el.nativeElement.offsetHeight / 2
             : e.data.screen -
-                90 -
+                120 -
                 this.el.nativeElement.offsetHeight / 2 +
                 e.data.top;
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
