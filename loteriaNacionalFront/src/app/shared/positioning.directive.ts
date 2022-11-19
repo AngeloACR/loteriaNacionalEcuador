@@ -5,7 +5,6 @@ export class PositioningDirective {
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     console.log(    this.el.nativeElement.offsetHeight);
-    console.log(    this.el.nativeElement.offsetHeight.replace('px', ''));
     let position =
       e.data.screen -
         90 -
