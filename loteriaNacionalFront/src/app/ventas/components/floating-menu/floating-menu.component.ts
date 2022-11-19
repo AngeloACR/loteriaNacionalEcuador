@@ -24,9 +24,9 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     let position =
-      e.data.screen - 90 + e.data.top > e.target.innerHeight - 20
-        ? e.target.innerHeight - 20
-        : e.data.screen - 90 + e.data.top;
+      e.data.screen - 150 + e.data.top > e.target.innerHeight - 80
+        ? e.target.innerHeight - 80
+        : e.data.screen - 150 + e.data.top;
         console.log(this.floatingBox);
         console.log(e.data);
         this.renderer.setStyle(this.floatingBox.nativeElement, 'top', `${position}px`);
