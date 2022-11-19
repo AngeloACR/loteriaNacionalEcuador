@@ -2355,7 +2355,7 @@ class FloatingMenuComponent {
             ? e.target.innerHeight - 20
             : e.data.screen - 90 + e.data.top;
         console.log(this.floatingBox);
-        this.renderer.setStyle(this.floatingBox._elementRef.nativeElement, 'top', `${position}px`);
+        this.renderer.setStyle(this.floatingBox, 'top', `${position}px`);
     }
     ngOnInit() {
         this.carrito = {
