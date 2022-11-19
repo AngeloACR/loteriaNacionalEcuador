@@ -28,7 +28,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
         ? e.target.innerHeight - 20
         : e.data.screen - 90 + e.data.top;
         console.log(this.floatingBox);
-        this.renderer.setStyle(this.floatingBox, 'top', `${position}px`);
+        this.renderer.setStyle(this.floatingBox.nativeElement, 'top', `${position}px`);
 
   }
 
