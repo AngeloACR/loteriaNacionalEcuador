@@ -1,4 +1,4 @@
-<div class="floatingBox" #float (click)="toggleBox()">
+<div class="floatingBox" positioning (click)="toggleBox()">
   <img
     [ngClass]="carrito"
     class="carrito"
@@ -7,7 +7,7 @@
   />
   <img [ngClass]="cerrar" class="cerrar" src="assets/cerrar.svg" alt="" />
 </div>
-<div class="totalBox" [ngClass]="carrito">
+<div class="totalBox" positioning [ngClass]="carrito">
   {{ total }}
 </div>
 <div class="toggleBox" *ngIf="isToggled && !isCart">

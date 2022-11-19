@@ -8,7 +8,6 @@ import {
   Output,
   HostListener,
   ViewChild,
-  Renderer2,
 } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { CarritoService } from '../../services/carrito.service';
@@ -21,17 +20,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
   @ViewChild('float', {static: false}) floatingBox: any;
 
-  @HostListener('window:message', ['$event'])
-  handleScroll(e: any) {
-    let position =
-      e.data.screen - 150 + e.data.top > e.target.innerHeight - 80
-        ? e.target.innerHeight - 80
-        : e.data.screen - 150 + e.data.top;
-        console.log(this.floatingBox);
-        console.log(e.data);
-        this.renderer.setStyle(this.floatingBox.nativeElement, 'top', `${position}px`);
 
-  }
 
   @Input() ticketsLoteria: any;
   @Input() ticketsMillonaria: any;
@@ -46,7 +35,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
   @Output() deleteMillonariaTicket = new EventEmitter();
-  constructor(private cart: CarritoService, private renderer: Renderer2) {}
+  constructor(private cart: CarritoService) {}
   carrito: any = {};
   cerrar: any = {};
   ngOnInit() {
