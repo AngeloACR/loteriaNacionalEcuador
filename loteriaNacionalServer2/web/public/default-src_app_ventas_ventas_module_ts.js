@@ -2355,6 +2355,7 @@ class FloatingMenuComponent {
             ? e.target.innerHeight - 20
             : e.data.screen - 90 + e.data.top;
         console.log(this.floatingBox);
+        console.log(e.data);
         this.renderer.setStyle(this.floatingBox.nativeElement, 'top', `${position}px`);
     }
     ngOnInit() {
