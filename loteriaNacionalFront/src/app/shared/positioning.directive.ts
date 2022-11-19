@@ -4,8 +4,8 @@ import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 export class PositioningDirective {
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    console.log(this.el.nativeElement.style.height.replace('px', ''));
-    console.log(this.el.nativeElement.style.height);
+    console.log(    this.el.nativeElement.offsetHeight);
+    console.log(    this.el.nativeElement.offsetHeight.replace('px', ''));
     let position =
       e.data.screen -
         90 -
