@@ -6835,9 +6835,9 @@ class PositioningDirective {
         this.renderer = renderer;
     }
     handleScroll(e) {
-        let position = e.data.screen - 150 + e.data.top > e.target.innerHeight - 80
-            ? e.target.innerHeight - 80
-            : e.data.screen - 150 + e.data.top;
+        let position = e.data.screen - 200 + e.data.top > e.target.innerHeight - 130
+            ? e.target.innerHeight - 130
+            : e.data.screen - 200 + e.data.top;
         console.log(this.el);
         console.log(e.data);
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
