@@ -27,7 +27,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
         ? e.target.innerHeight - 20
         : e.data.screen - 90 + e.data.top;
         console.log(this.floatingBox);
-    this.floatingBox.style.top = `${position}px`;
+    this.floatingBox._elementRef.nativeElement.style.top = `${position}px`;
   }
 
   @Input() ticketsLoteria: any;
