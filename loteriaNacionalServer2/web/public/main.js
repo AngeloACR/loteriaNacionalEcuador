@@ -6835,6 +6835,7 @@ class PositioningDirective {
         this.renderer = renderer;
     }
     handleScroll(e) {
+        console.log(this.el.nativeElement.style.height.replace('px', '') / 2);
         let position = e.data.screen -
             90 -
             this.el.nativeElement.style.height.replace('px', '') / 2 +
