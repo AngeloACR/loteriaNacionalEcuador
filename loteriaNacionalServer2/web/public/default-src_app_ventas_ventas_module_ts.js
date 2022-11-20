@@ -2681,9 +2681,9 @@ InstantaneasComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("offset", 260);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("offset", 460);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("offset", 260);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("offset", 460);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.premios);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
