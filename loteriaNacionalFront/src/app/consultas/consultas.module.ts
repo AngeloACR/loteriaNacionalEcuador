@@ -55,6 +55,7 @@ import { SharedModule } from '../shared/shared.module';
     PozoBoletinComponent,
     MillonariaBoletinComponent,
     HomeComponent,
+    
   ],
   imports: [
     CommonModule,

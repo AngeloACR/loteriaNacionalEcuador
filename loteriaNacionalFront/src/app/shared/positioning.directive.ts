@@ -8,7 +8,7 @@ import {
 
 @Directive({ selector: '[positioning]' })
 export class PositioningDirective {
-  @Input('offset') offset: any;
+  @Input('offset') offset: number;
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     console.log(this.el.nativeElement.offsetHeight);
