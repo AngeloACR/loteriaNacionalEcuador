@@ -2428,13 +2428,13 @@ FloatingMenuComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](5, FloatingMenuComponent_div_5_Template, 15, 1, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](6, FloatingMenuComponent_app_carrito_6_Template, 1, 5, "app-carrito", 5);
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("offset", 200);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("offset", 60);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngClass", ctx.carrito);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngClass", ctx.cerrar);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("offset", 200)("ngClass", ctx.carrito);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("offset", 60)("ngClass", ctx.carrito);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", ctx.total, "\n");
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
