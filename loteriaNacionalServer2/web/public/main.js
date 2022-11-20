@@ -6874,6 +6874,8 @@ class PositioningDirective {
                 this.offset -
                 this.el.nativeElement.offsetHeight / 2 +
                 e.data.top;
+        console.log(position);
+        console.log(this.offset);
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
     }
 }
