@@ -6878,6 +6878,7 @@ class PositioningDirective {
         console.log(position);
         console.log(this.offset);
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
+        this.renderer.setStyle(this.el.nativeElement, 'max-height', `${e.data.screen}px`);
     }
 }
 PositioningDirective.ɵfac = function PositioningDirective_Factory(t) { return new (t || PositioningDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.Renderer2)); };

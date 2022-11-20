@@ -35,6 +35,7 @@ export class PositioningDirective {
     console.log(position);
     console.log(this.offset);
     this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
+    this.renderer.setStyle(this.el.nativeElement, 'max-height', `${e.data.screen}px`);
   }
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 }
