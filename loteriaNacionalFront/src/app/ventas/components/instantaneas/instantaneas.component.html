@@ -1,7 +1,7 @@
-<div class="blackBox" positioning (click)="closeBox()">
+<div class="blackBox" positioning [offset]="260"(click)="closeBox()">
 </div>
 
-<div positioning class="resultsBox">
+<div positioning [offset]="260"class="resultsBox">
 
     <div class="resultBox" *ngFor="let premio of premios">
 

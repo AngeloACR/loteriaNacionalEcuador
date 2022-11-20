@@ -548,7 +548,7 @@ PopupPromoComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_
   },
   decls: 13,
   vars: 3,
-  consts: [[1, "blackBox", 3, "click"], ["id", "myModal", "tabindex", "-1", 1, "modal", "fade"], [1, "modal-dialog"], [1, "modal-header"], ["aria-label", "Close", 1, "close", 3, "click"], [1, "modal-content"], [1, "modal-body"], ["target", "_parent", "href", "https://www.loteria.com.ec/#/loteria/compra_tus_juegos"], [1, "Desktop", 3, "src", "click"], [1, "Ipad", 2, "max-width", "100%", 3, "src", "click"], [1, "Mobile", 3, "src", "click"]],
+  consts: [["positioning", "", 1, "blackBox", 3, "click"], ["id", "myModal", "positioning", "", "tabindex", "-1", 1, "modal", "fade"], [1, "modal-dialog"], [1, "modal-header"], ["aria-label", "Close", 1, "close", 3, "click"], [1, "modal-content"], [1, "modal-body"], ["target", "_parent", "href", "https://www.loteria.com.ec/#/loteria/compra_tus_juegos"], [1, "Desktop", 3, "src", "click"], [1, "Ipad", 2, "max-width", "100%", 3, "src", "click"], [1, "Mobile", 3, "src", "click"]],
   template: function PopupPromoComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
@@ -6841,17 +6841,21 @@ class PositioningDirective {
     handleScroll(e) {
         console.log(this.el.nativeElement.offsetHeight);
         let position = e.data.screen -
-            130 -
+            90 -
+            this.offset -
             this.el.nativeElement.offsetHeight / 2 +
             e.data.top >
             e.target.innerHeight -
-                130 -
+                90 -
+                this.offset -
                 this.el.nativeElement.offsetHeight / 2
             ? e.target.innerHeight -
-                130 -
+                90 -
+                this.offset -
                 this.el.nativeElement.offsetHeight / 2
             : e.data.screen -
-                130 -
+                90 -
+                this.offset -
                 this.el.nativeElement.offsetHeight / 2 +
                 e.data.top;
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
@@ -6860,7 +6864,7 @@ class PositioningDirective {
 PositioningDirective.ɵfac = function PositioningDirective_Factory(t) { return new (t || PositioningDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.Renderer2)); };
 PositioningDirective.ɵdir = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: PositioningDirective, selectors: [["", "positioning", ""]], hostBindings: function PositioningDirective_HostBindings(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("message", function PositioningDirective_message_HostBindingHandler($event) { return ctx.handleScroll($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveWindow"]);
-    } } });
+    } }, inputs: { offset: "offset" } });
 
 
 /***/ }),
