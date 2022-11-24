@@ -305,7 +305,7 @@ const helperController = {
             reservationDetails.push(aux);
           });
         }
-        let aux = {
+        return {
           reserveId: venta.alboranReservaId,
           sellId: venta.alboranVentaId,
           ticketId: venta.ventaId,
