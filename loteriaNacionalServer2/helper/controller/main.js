@@ -221,9 +221,9 @@ const helperController = {
       let ventasPromises = [];
       let ventasId = [];
       ganadores.reduce((prev, curr) => {
-        let index = ventasId.indexOf(ganador.ventaId);
+        let index = ventasId.indexOf(curr.ventaId);
         if (index == -1) {
-          let query = { ventaId: ganador.ventaId };
+          let query = { ventaId: curr.ventaId };
           ventasPromises.push(Ventas.find(query).lean());
           ventasId.push(ganador.ventaId);
         }
