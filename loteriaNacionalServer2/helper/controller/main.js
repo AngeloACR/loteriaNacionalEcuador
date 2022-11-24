@@ -224,7 +224,7 @@ const helperController = {
         let index = ventasId.indexOf(curr.ventaId);
         if (index == -1) {
           let query = { ventaId: curr.ventaId };
-          ventasPromises.push(Ventas.find(query).lean());
+          ventasPromises.push(Ventas.findOne(query).lean());
           ventasId.push(curr.ventaId);
         }
       }, 0);
