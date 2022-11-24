@@ -221,11 +221,16 @@ const helperController = {
               parseInt(ganador.numeroSorteo) >= 26)) &&
           parseInt(ganador.ventaId) >= 3583690
       );
-      await fs.writeFile("ganadores.json", JSON.stringify(ganadores));
+      await fs.writeFile(
+        "ganadores.json",
+        JSON.stringify(console.log(ganadores.length))
+      );
 
       let ventasPromises = [];
       let ventasId = [];
+      let total = 0;
       ganadores.reduce((prev, curr) => {
+        total += parseFloat(curr.valorPremioDescuento);
         let index = ventasId.indexOf(curr.ventaId);
         if (index == -1) {
           let query = { ventaId: curr.ventaId };
@@ -235,7 +240,11 @@ const helperController = {
       }, 0);
       let ventas = await Promise.all(ventasPromises);
       ventas = ventas.filter((item) => item != null);
-      await fs.writeFile("ventasId.json", JSON.stringify(ventasId));
+      await fs.writeFile(
+        "ventasId.json",
+        JSON.stringify(console.log(ventasId.length))
+      );
+      await fs.writeFile("monto.json", JSON.stringify(console.log(total)));
       await fs.writeFile("ventas.json", JSON.stringify(ventas));
       console.log(ventas.length);
       let detalles = ventas.map((venta) => {

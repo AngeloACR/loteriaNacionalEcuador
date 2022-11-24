@@ -64,10 +64,10 @@ const ganadoresController = {
               prizeWithDiscount: parseFloat(
                 ganador.valorPremioDescuento
               ).toFixed(2),
-              prizeDescription: ganador.descripcionPremio,
               ticketId: parseInt(ganador.ventaId),
-              combinationId,
+              combinationId: `${combinationId}`,
               validationCode: `${validationCode}`,
+              /* prizeDescription: ganador.descripcionPremio, */
             },
           ];
           let data = {
