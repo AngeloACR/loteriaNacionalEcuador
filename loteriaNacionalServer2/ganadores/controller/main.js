@@ -70,14 +70,6 @@ const ganadoresController = {
               validationCode: `${validationCode}`,
             },
           ];
-          if (
-            parseInt(ganador.tipoLoteria) == 1 ||
-            parseInt(ganador.tipoLoteria) == 14
-          ) {
-            prizeDetails[0]["fractions"] = JSON.stringify([
-              parseInt(ganador.fraccion),
-            ]);
-          }
           let data = {
             prizesNumber,
             prizeDetails,
