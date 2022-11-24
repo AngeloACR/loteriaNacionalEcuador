@@ -49,6 +49,11 @@ const ganadoresController = {
               item.ventaId == ganador.ventaId &&
               !item.codigoPremio.includes("INSTANTANEA")
           ).length;
+          let combinationId = parseInt(
+            `${ganador.codigoPremio
+              .replaceAll("INSTANTANEA", "200")
+              .replaceAll("-", "")}${ganador.boletoId}`
+          );
           let prizeDetails = [
             {
               lotteryType: ganador.tipoLoteria,
@@ -61,11 +66,7 @@ const ganadoresController = {
               ).toFixed(2),
               prizeDescription: ganador.descripcionPremio,
               ticketId: parseInt(ganador.ventaId),
-              combinationId: parseInt(
-                `${ganador.codigoPremio
-                  .replaceAll("INSTANTANEA", "200")
-                  .replaceAll("-", "")}${ganador.boletoId}`
-              ),
+              combinationId,
               validationCode: `${validationCode}`,
             },
           ];
