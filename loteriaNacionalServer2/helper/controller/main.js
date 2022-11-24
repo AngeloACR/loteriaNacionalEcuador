@@ -235,8 +235,9 @@ const helperController = {
       }, 0);
       let ventas = await Promise.all(ventasPromises);
       await fs.writeFile("ventas.json", JSON.stringify(ventas));
-
+      console.log(ventas.length);
       let detalles = ventas.map((venta) => {
+        console.log(venta);
         let reservationDetails = [];
         if (venta && venta.loteria && venta.loteria.length) {
           venta.loteria.forEach((item) => {
