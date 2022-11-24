@@ -227,12 +227,13 @@ const helperController = {
         let index = ventasId.indexOf(curr.ventaId);
         if (index == -1) {
           let query = { ventaId: curr.ventaId };
-          ventasPromises.push(Ventas.findOne(query));
+          ventasPromises.push(Ventas.find(query));
           ventasId.push(curr.ventaId);
         }
       }, 0);
       let ventas = await Promise.all(ventasPromises);
       let detalles = ventas.map((venta) => {
+        venta = venta[0];
         let reservationDetails = [];
         if (venta.loteria && venta.loteria.length) {
           venta.loteria.forEach((item) => {
