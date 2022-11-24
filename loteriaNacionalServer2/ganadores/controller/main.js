@@ -63,7 +63,7 @@ const ganadoresController = {
               ticketId: parseInt(ganador.ventaId),
               combinationId: parseInt(
                 `${ganador.codigoPremio
-                  .replace("INSTANTANEA", "200")
+                  .replaceAll("INSTANTANEA", "200")
                   .replaceAll("-", "")}${ganador.boletoId}`
               ),
               validationCode: `${validationCode}`,
