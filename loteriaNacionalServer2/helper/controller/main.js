@@ -234,7 +234,7 @@ const helperController = {
         }
       }, 0);
       let ventas = await Promise.all(ventasPromises);
-      ventas = ventas.filter((item) => !!ventas);
+      ventas = ventas.filter((item) => ventas != null);
       await fs.writeFile("ventas.json", JSON.stringify(ventas));
       console.log(ventas.length);
       let detalles = ventas.map((venta) => {
