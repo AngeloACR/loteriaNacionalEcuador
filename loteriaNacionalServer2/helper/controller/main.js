@@ -231,72 +231,80 @@ const helperController = {
       let ventas = await Promise.all(ventasPromises);
       let detalles = ventas.map((venta) => {
         let reservationDetails = [];
-        venta.loteria.forEach((item) => {
-          let drawDateAux = item.fecha.split(" ")[0].split("/");
-          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-          let aux = {
-            lotteryType: 1,
-            drawNumber: parseInt(item.sorteo),
-            drawDate,
-            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
-            combinationC1: item.combinacion1,
+        if (venta.loteria && venta.loteria.length) {
+          venta.loteria.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 1,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
 
-            fractions: JSON.stringify([
-              ...item.fracciones.map((item) => {
-                return parseInt(item);
-              }),
-            ]).replace(/,/g, ", "),
-          };
-          reservationDetails.push(aux);
-        });
-        venta.lotto.forEach((item) => {
-          let drawDateAux = item.fecha.split(" ")[0].split("/");
-          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-          let aux = {
-            lotteryType: 2,
-            drawNumber: parseInt(item.sorteo),
-            drawDate,
-            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
-            combinationC1: item.combinacion1,
-            combinationC2: item.combinacion2,
-            combinationC3: item.combinacion3,
-            combinationC4: item.combinacion4,
-            combinationC5: item.combinacion5,
-          };
-          reservationDetails.push(aux);
-        });
-        venta.pozo.forEach((item) => {
-          let drawDateAux = item.fecha.split(" ")[0].split("/");
-          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-          let aux = {
-            lotteryType: 5,
-            drawNumber: parseInt(item.sorteo),
-            drawDate,
-            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
-            combinationC1: item.combinacion1,
-            combinationC2: item.combinacion2,
-            combinationC3: item.mascota,
-          };
-          reservationDetails.push(aux);
-        });
-        venta.millonaria.forEach((item) => {
-          let drawDateAux = item.fecha.split(" ")[0].split("/");
-          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-          let aux = {
-            lotteryType: 14,
-            drawNumber: parseInt(item.sorteo),
-            drawDate,
-            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
-            combinationC1: item.combinacion1,
-            combinationC2: item.combinacion2,
-            fractions: JSON.stringify([
-              ...item.fracciones.map((item) => {
-                return parseInt(item);
-              }),
-            ]).replace(/,/g, ", "),
-          };
-          reservationDetails.push(aux);
-        });
+              fractions: JSON.stringify([
+                ...item.fracciones.map((item) => {
+                  return parseInt(item);
+                }),
+              ]).replace(/,/g, ", "),
+            };
+            reservationDetails.push(aux);
+          });
+        }
+        if (venta.lotto && venta.lotto.length) {
+          venta.lotto.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 2,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
+              combinationC2: item.combinacion2,
+              combinationC3: item.combinacion3,
+              combinationC4: item.combinacion4,
+              combinationC5: item.combinacion5,
+            };
+            reservationDetails.push(aux);
+          });
+        }
+        if (venta.pozo && venta.pozo.length) {
+          venta.pozo.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 5,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
+              combinationC2: item.combinacion2,
+              combinationC3: item.mascota,
+            };
+            reservationDetails.push(aux);
+          });
+        }
+        if (venta.millonaria && venta.millonaria.length) {
+          venta.millonaria.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 14,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
+              combinationC2: item.combinacion2,
+              fractions: JSON.stringify([
+                ...item.fracciones.map((item) => {
+                  return parseInt(item);
+                }),
+              ]).replace(/,/g, ", "),
+            };
+            reservationDetails.push(aux);
+          });
+        }
         let aux = {
           reserveId: venta.alboranReservaId,
           sellId: venta.alboranVentaId,
