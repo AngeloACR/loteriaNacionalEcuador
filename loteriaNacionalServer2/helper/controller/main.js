@@ -15,8 +15,10 @@ const CachePozo = require("../../sorteosPozoMillonario/controller/cache"); // CO
 const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache"); // COMUNICAR POR gRPC
 const Wallet = require("../../exalogic/wallet"); // COMUNICAR POR gRPC
 const Ganadores = require("../../ganadores/models/main"); // COMUNICAR POR gRPC
+const Ventas = require("../../ventas/models/main"); // COMUNICAR POR gRPC
 const ventasController = require("../../ventas/controller/main"); // COMUNICAR POR gRPC
-
+const fs = require("fs").promises;
+const path = require("path");
 const { helperLogger } = require("../logging");
 const ipTool = require("ip");
 
@@ -193,6 +195,118 @@ const helperController = {
           : acumulado;
       }
       res.status(200).json({ acumulado, data: response });
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  getVentasDePremiosNoPagos: async (req, res) => {
+    try {
+      let query = { acreditado: false };
+      let ganadores = await Ganadores.find(query).lean();
+      ganadores = ganadores.filter(
+        (ganador) =>
+          (ganador.tipoLoteria == 1 &&
+            parseInt(ganador.numeroSorteo) >= 6805) ||
+          (ganador.tipoLoteria == 2 &&
+            parseInt(ganador.numeroSorteo) >= 2782) ||
+          (ganador.tipoLoteria == 5 && parseInt(ganador.numeroSorteo) >= 996) ||
+          (ganador.tipoLoteria == 14 && parseInt(ganador.numeroSorteo) >= 26)
+      );
+      let ventasPromises = [];
+      let ventasId = [];
+      ganadores.reduce((prev, curr) => {
+        let index = ventasId.indexOf(ganador.ventaId);
+        if (index == -1) {
+          let query = { ventaId: ganador.ventaId };
+          ventasPromises.push(Ventas.find(query).lean());
+          ventasId.push(ganador.ventaId);
+        }
+      }, 0);
+      let ventas = await Promise.all(ventasPromises);
+      let detalles = ventas.map((venta) => {
+        let reservationDetails = [];
+        venta.loteria.forEach((item) => {
+          let drawDateAux = item.fecha.split(" ")[0].split("/");
+          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+          let aux = {
+            lotteryType: 1,
+            drawNumber: parseInt(item.sorteo),
+            drawDate,
+            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+            combinationC1: item.combinacion1,
+
+            fractions: JSON.stringify([
+              ...item.fracciones.map((item) => {
+                return parseInt(item);
+              }),
+            ]).replace(/,/g, ", "),
+          };
+          reservationDetails.push(aux);
+        });
+        venta.lotto.forEach((item) => {
+          let drawDateAux = item.fecha.split(" ")[0].split("/");
+          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+          let aux = {
+            lotteryType: 2,
+            drawNumber: parseInt(item.sorteo),
+            drawDate,
+            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+            combinationC1: item.combinacion1,
+            combinationC2: item.combinacion2,
+            combinationC3: item.combinacion3,
+            combinationC4: item.combinacion4,
+            combinationC5: item.combinacion5,
+          };
+          reservationDetails.push(aux);
+        });
+        venta.pozo.forEach((item) => {
+          let drawDateAux = item.fecha.split(" ")[0].split("/");
+          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+          let aux = {
+            lotteryType: 5,
+            drawNumber: parseInt(item.sorteo),
+            drawDate,
+            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+            combinationC1: item.combinacion1,
+            combinationC2: item.combinacion2,
+            combinationC3: item.mascota,
+          };
+          reservationDetails.push(aux);
+        });
+        venta.millonaria.forEach((item) => {
+          let drawDateAux = item.fecha.split(" ")[0].split("/");
+          let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+          let aux = {
+            lotteryType: 14,
+            drawNumber: parseInt(item.sorteo),
+            drawDate,
+            subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+            combinationC1: item.combinacion1,
+            combinationC2: item.combinacion2,
+            fractions: JSON.stringify([
+              ...item.fracciones.map((item) => {
+                return parseInt(item);
+              }),
+            ]).replace(/,/g, ", "),
+          };
+          reservationDetails.push(aux);
+        });
+        let aux = {
+          reserveId: venta.alboranReservaId,
+          sellId: venta.alboranVentaId,
+          ticketId: venta.ventaId,
+          reservationDetails,
+        };
+      });
+
+      await fs.writeFile("details.json", JSON.stringify(detalles));
+      res.status(200).json({ detalles });
     } catch (e) {
       let response = {
         status: "error",
