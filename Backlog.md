@@ -23,7 +23,7 @@
 
 - Generar ruta de pruebas controladas en produccion
 - Agregar evento de scrolling en carrito flotante, errores y loaders
-- Editar estilo del carrito segun cambios - PENDIENTE DE PREGUNTAR  
+- Editar estilo del sitio web  
 - Automatizar resolucion de ventas fallidas en alboran
 - Agregar validacion previa a la venta para obtener status de la reserva
 - Validar premios no pagados
@@ -31,4 +31,5 @@
 - Resolver premios especiales de lotto en ultimos resultados
 - Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra, y mostrar que no se ha cargado la info del sorteo en caso negativo
 - Validar cada 3 horas si hay nuevos archivos en el servidor
-- Interfaz administrativa para popup
+- Interfaz administrativa para gestion de codigos promocionales
+- Integrar Pozo Revancha

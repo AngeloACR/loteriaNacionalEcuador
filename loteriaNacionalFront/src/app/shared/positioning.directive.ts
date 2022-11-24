@@ -6,7 +6,7 @@ import {
   Renderer2,
 } from '@angular/core';
 
-@Directive({ selector: '[positioning]' })
+@Directive({ selector: '[]' })
 export class PositioningDirective {
   @Input() public offset: number;
   @HostListener('window:message', ['$event'])

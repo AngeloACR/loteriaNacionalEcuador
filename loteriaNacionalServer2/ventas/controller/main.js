@@ -276,7 +276,7 @@ const ventasController = {
           valorPremioDescuento: premio.ConDesc,
           codigoPremio: `${numeroSorteo}-INSTANTANEA`,
           ventaId: loteriaVentaResponse.ticketId,
-          tipoPremio: "DIN",
+          tipoPremio: premio.TPrem,
           acreditado: false,
           boletoId: Date.now(),
         };

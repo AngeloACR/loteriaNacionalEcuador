@@ -41,7 +41,9 @@ const ganadoresController = {
         if (!ganador.acreditado && ganador.tipoPremio == "DIN") {
           let transactionId = Date.now();
           let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
-          let validationCode = parseInt(`${transactionId}${checkSum.toString().padStart(2,"0")}`);
+          let validationCode = parseInt(
+            `${transactionId}${checkSum.toString().padStart(2, "0")}`
+          );
           let prizesNumber = ganadores.filter(
             (item) =>
               item.ventaId == ganador.ventaId &&
@@ -50,23 +52,20 @@ const ganadoresController = {
           let prizeDetails = [
             {
               lotteryType: ganador.tipoLoteria,
-              instantWin,
+              instantWin: ganador.codigoPremio.includes("INSTANTANEA"),
               personalId: parseInt(ganador.personaId),
               drawNumber: parseInt(ganador.numeroSorteo),
-              drawDate: ganador.fechaCaducidad,
               prize: parseFloat(ganador.valorPremio).toFixed(2),
               prizeWithDiscount: parseFloat(
                 ganador.valorPremioDescuento
               ).toFixed(2),
-              combinationC1: ganador.combinacion1,
-              combinationC2: ganador.combinacion2,
-              combinationC3: ganador.combinacion3,
-              combinationC4: ganador.combinacion4,
-              combinationC5: ganador.combinacion5,
               prizeDescription: ganador.descripcionPremio,
-              prizeCode: ganador.codigoPremio,
               ticketId: parseInt(ganador.ventaId),
-              combinationId: parseInt(ganador.boletoId),
+              combinationId: parseInt(
+                `${ganador.codigoPremio
+                  .replace("INSTANTANEA", "200")
+                  .replaceAll("-", "")}${ganador.boletoId}`
+              ),
               validationCode: `${validationCode}`,
             },
           ];

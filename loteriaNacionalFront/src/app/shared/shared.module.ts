@@ -10,7 +10,7 @@ import { StylePaginatorDirective } from './style-paginator.directive';
 import { AutoTabDirective } from './autotab.directive';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { getSpanishPaginatorIntl } from './paginacion-es';
-import { PositioningDirective } from './positioning.directive';
+import { PositioningDirective } from './.directive';
 
 @NgModule({
   declarations: [
