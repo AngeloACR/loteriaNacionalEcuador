@@ -208,7 +208,7 @@ const helperController = {
   getVentasDePremiosNoPagos: async (req, res) => {
     try {
       let query = { acreditado: false };
-      let ganadores = await Ganadores.find(query).lean();
+      let ganadores = await Ganadores.find(query);
       ganadores = ganadores.filter(
         (ganador) =>
           ((ganador.tipoLoteria == 1 &&
@@ -227,7 +227,7 @@ const helperController = {
         let index = ventasId.indexOf(curr.ventaId);
         if (index == -1) {
           let query = { ventaId: curr.ventaId };
-          ventasPromises.push(Ventas.findOne(query).lean());
+          ventasPromises.push(Ventas.findOne(query));
           ventasId.push(curr.ventaId);
         }
       }, 0);
