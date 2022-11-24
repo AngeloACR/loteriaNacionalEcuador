@@ -50,7 +50,9 @@ const ganadoresController = {
               !item.codigoPremio.includes("INSTANTANEA")
           ).length;
           let combinationId = parseInt(
-            `${ganador.codigoPremio.replaceAll("-", "")}${ganador.boletoId}`
+            `${ganador.codigoPremio
+              .replace("-", "")
+              .replace("INSTANTANEA", "200")}${ganador.boletoId}`
           );
           let prizeDetails = [
             {
