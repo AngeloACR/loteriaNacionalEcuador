@@ -221,7 +221,7 @@ const helperController = {
               parseInt(ganador.numeroSorteo) >= 26)) &&
           parseInt(ganador.ventaId) >= 3583690
       );
-      await fs.writeFile("ganadores.json", JSON.stringify(ventas));
+      await fs.writeFile("ganadores.json", JSON.stringify(ganadores));
 
       let ventasPromises = [];
       let ventasId = [];
