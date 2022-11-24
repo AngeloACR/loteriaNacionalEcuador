@@ -221,19 +221,22 @@ const helperController = {
               parseInt(ganador.numeroSorteo) >= 26)) &&
           parseInt(ganador.ventaId) >= 3583690
       );
+      await fs.writeFile("ganadores.json", JSON.stringify(ventas));
+
       let ventasPromises = [];
       let ventasId = [];
       ganadores.reduce((prev, curr) => {
         let index = ventasId.indexOf(curr.ventaId);
         if (index == -1) {
           let query = { ventaId: curr.ventaId };
-          ventasPromises.push(Ventas.find(query));
+          ventasPromises.push(Ventas.findOne(query));
           ventasId.push(curr.ventaId);
         }
       }, 0);
       let ventas = await Promise.all(ventasPromises);
+      await fs.writeFile("ventas.json", JSON.stringify(ventas));
+
       let detalles = ventas.map((venta) => {
-        venta = venta[0];
         let reservationDetails = [];
         if (venta.loteria && venta.loteria.length) {
           venta.loteria.forEach((item) => {
