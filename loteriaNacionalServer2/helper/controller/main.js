@@ -313,8 +313,12 @@ const helperController = {
           });
         }
         return {
-          reserveId: venta.alboranReservaId,
-          sellId: venta.alboranVentaId,
+          reserveId: venta.alboranReservaId
+            ? venta.alboranReservaId
+            : venta.exaReservaId,
+          sellId: venta.alboranVentaId
+            ? venta.alboranVentaId
+            : venta.exaVentaId,
           ticketId: venta.ventaId,
           reservationDetails,
         };
