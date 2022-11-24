@@ -225,7 +225,7 @@ const helperController = {
         if (index == -1) {
           let query = { ventaId: curr.ventaId };
           ventasPromises.push(Ventas.find(query).lean());
-          ventasId.push(ganador.ventaId);
+          ventasId.push(curr.ventaId);
         }
       }, 0);
       let ventas = await Promise.all(ventasPromises);
