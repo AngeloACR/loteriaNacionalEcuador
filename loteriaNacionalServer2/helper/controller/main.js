@@ -211,12 +211,15 @@ const helperController = {
       let ganadores = await Ganadores.find(query).lean();
       ganadores = ganadores.filter(
         (ganador) =>
-          (ganador.tipoLoteria == 1 &&
+          ((ganador.tipoLoteria == 1 &&
             parseInt(ganador.numeroSorteo) >= 6805) ||
-          (ganador.tipoLoteria == 2 &&
-            parseInt(ganador.numeroSorteo) >= 2782) ||
-          (ganador.tipoLoteria == 5 && parseInt(ganador.numeroSorteo) >= 996) ||
-          (ganador.tipoLoteria == 14 && parseInt(ganador.numeroSorteo) >= 26)
+            (ganador.tipoLoteria == 2 &&
+              parseInt(ganador.numeroSorteo) >= 2782) ||
+            (ganador.tipoLoteria == 5 &&
+              parseInt(ganador.numeroSorteo) >= 996) ||
+            (ganador.tipoLoteria == 14 &&
+              parseInt(ganador.numeroSorteo) >= 26)) &&
+          parseInt(ganador.ventaId) >= 3583690
       );
       let ventasPromises = [];
       let ventasId = [];
