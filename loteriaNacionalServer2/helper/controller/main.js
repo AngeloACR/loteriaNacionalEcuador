@@ -205,6 +205,24 @@ const helperController = {
       res.status(400).json(response);
     }
   },
+  updateInstantaneasInFalse: async (req, res) => {
+    try {
+      let query = { acreditado: false };
+      let ganadores = await Ganadores.find(query);
+      ganadores = ganadores.filter((ganador) =>
+        ganador.codigoPremio.includes("INSTANTANEA")
+      );
+      res.status(200).json(ganadores);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
   getVentasDePremiosNoPagos: async (req, res) => {
     try {
       let query = { acreditado: false };
