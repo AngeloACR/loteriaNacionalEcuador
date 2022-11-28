@@ -219,9 +219,10 @@ const helperController = {
               parseInt(ganador.numeroSorteo) >= 996) ||
             (ganador.tipoLoteria == 14 &&
               parseInt(ganador.numeroSorteo) >= 26)) &&
-          parseInt(ganador.ventaId) >= 3583690
+          parseInt(ganador.ventaId) >= 3583690 &&
+          !ganador.codigoPremio.includes("INSTANTANEA")
       );
-      await fs.writeFile("ganadores.json", JSON.stringify(ganadores.length));
+      await fs.writeFile("ganadores.json", JSON.stringify(ganadores));
 
       let ventasPromises = [];
       let ventasId = [];
@@ -332,7 +333,25 @@ const helperController = {
         };
       });
 
+      let sellTickets = ventas.map((venta) => {
+        return {
+          reserveId: venta.alboranReservaId
+            ? venta.alboranReservaId
+            : venta.exaReservaId,
+          transactionId: venta.alboranVentaId
+            ? venta.alboranVentaId
+            : venta.exaVentaId,
+          ticketId: venta.ventaId,
+          amount: venta.total,
+        };
+      });
+      let reserveIds = sellTickets.map((venta) => {
+        return venta.reserveId;
+      });
+
       await fs.writeFile("details.json", JSON.stringify(detalles));
+      await fs.writeFile("sellTickets.json", JSON.stringify(sellTickets));
+      await fs.writeFile("reserveIds.json", JSON.stringify(reserveIds));
       res.status(200).json({ detalles });
     } catch (e) {
       let response = {
