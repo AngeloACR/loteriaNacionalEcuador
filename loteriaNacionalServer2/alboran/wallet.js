@@ -84,9 +84,9 @@ const walletController = {
         currency: "USD",
         operationTimeStamp: operationTimeStamp,
         ticketId: data.ticketId,
-        amount: `${data.amount}`
+        amount: `${data.amount}`,
       };
-      let response = await helper.alboranRequest(alboranData, '/SellTicket');
+      let response = await helper.alboranRequest(alboranData, "/SellTicket");
       response["status"] = true;
 
       if (parseInt(response.resultCode) >= 0) {
@@ -148,7 +148,7 @@ const walletController = {
         operationTimeStamp: operationTimeStamp,
         amount: `${data.amount}`,
       };
-      let response = await helper.alboranRequest(alboranData, '/CancelTicket');
+      let response = await helper.alboranRequest(alboranData, "/CancelTicket");
       response["status"] = true;
       if (parseInt(response.resultCode) >= 0) {
         let logData = {
@@ -225,11 +225,83 @@ const walletController = {
         amount: `${data.amount}`,
         reservationDetails: data.reservationDetails,
       };
-      let response = await helper.alboranRequest(alboranData, '/ReserveBalance');
+      let response = await helper.alboranRequest(
+        alboranData,
+        "/ReserveBalance"
+      );
       response["status"] = false;
       if (parseInt(response.resultCode) >= 0) {
-      response["status"] = true;
-      let logData = {
+        response["status"] = true;
+        let logData = {
+          data: alboranData,
+          response,
+          function: "Wallet.reserveLottery",
+        };
+        alboranLogger.info("reserveLottery.alboran", logData);
+        return response;
+      } else {
+        let errorData = {
+          input: data,
+          output: response,
+          function: "reserveLottery",
+          status: false,
+        };
+        return errorData;
+        /* throw new alboranError(
+          response.resultDescription,
+          "alboran",
+          errorData
+        ); */
+      }
+    } catch (e) {
+      alboranLogger.error("reserveLottery.error", {
+        errorMessage: e.message,
+        errorData: e.data,
+      });
+      let errorData = {
+        input: e,
+        output: "",
+        function: "reserveLottery",
+        status: false,
+      };
+      return errorData;
+      //throw new alboranError(e.message, "alboran", errorData);
+    }
+  },
+  fixReserve: async (data) => {
+    try {
+      alboranLogger.silly("reserveLottery");
+      /*
+            {
+                "transactionId": "2223846696262170",
+                "reservationDetails": [
+                    {
+                        "lotteryType": 2,
+                        "lotteryName": "Lotto",
+                        "drawNumber": 2578,
+                        "drawDate": "2021-05-10",
+                        "subTotal": 10.0,
+                        "combinationC1": "267855",
+                        "combinationC2": "256987",
+                        "combinationC3": "526987",
+                        "combinationC4": "075366"
+                    }]
+            }
+            
+            */
+
+      let alboranData = {
+        transactionId: data.transactionId,
+        reservationDetails: data.reservationDetails,
+      };
+      let response = await helper.alboranRequest(
+        alboranData,
+        "/FixReserveDetails"
+      );
+      response["status"] = false;
+      if (parseInt(response.resultCode) >= 0) {
+        response["status"] = true;
+        let logData = {
           data: alboranData,
           response,
           function: "Wallet.reserveLottery",
