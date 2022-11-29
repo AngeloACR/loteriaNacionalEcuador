@@ -320,13 +320,14 @@ const helperController = {
           reservationDetails,
         };
       });
-      let response = [];
+      let responseAux = [];
       for (let i = 0; i < detalles.length; i++) {
         const detalle = detalles[i];
-        let aux = await Wallet.fixReserve(detalle);
-        response.push(aux);
+        let aux = Wallet.fixReserve(detalle);
+        responseAux.push(aux);
       }
-      res.status(200).json();
+      let response = await Promise.all(responseAux);
+      res.status(200).json(response);
     } catch (e) {
       let response = {
         status: "error",
