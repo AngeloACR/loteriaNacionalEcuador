@@ -205,7 +205,21 @@ const helperController = {
       res.status(400).json(response);
     }
   },
-  fixReserve: async (req, res) => {
+  fixReserveHttp: async (req, res) => {
+    try {
+      let response = await helperController.fixReserve();
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  fixReserve: async () => {
     try {
       let query = { acreditado: false };
       let ganadores = await Ganadores.find(query);
@@ -327,15 +341,10 @@ const helperController = {
         responseAux.push(aux);
       }
       let response = await Promise.all(responseAux);
-      res.status(200).json(response);
+      return response;
     } catch (e) {
-      let response = {
-        status: "error",
-        message: e.message,
-        code: e.code,
-        handler: e.handler,
-      };
-      res.status(400).json(response);
+      console.log(e);
+      throw e;
     }
   },
   updateInstantaneasInFalse: async (req, res) => {
