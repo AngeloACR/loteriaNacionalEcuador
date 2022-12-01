@@ -355,7 +355,7 @@ const helperController = {
         ganador.codigoPremio.includes("INSTANTANEA")
       );
       let ganadoresAux = ganadores.map((ganador) => {
-        ganador.status = true;
+        ganador.acreditado = true;
         return ganador.save();
       });
       let response = await Promise.all(ganadoresAux);
@@ -387,7 +387,7 @@ const helperController = {
       );
 
       let ganadoresAux = ganadores.map((ganador) => {
-        ganador.status = true;
+        ganador.acreditado = true;
         return ganador.save();
       });
       let response = await Promise.all(ganadoresAux);
