@@ -386,12 +386,12 @@ const helperController = {
             !ganador.codigoPremio.includes("INSTANTANEA"))
       );
 
-      let ganadoresAux = ganadores.map((ganador) => {
+      /*let ganadoresAux = ganadores.map((ganador) => {
         ganador.acreditado = true;
         return ganador.save();
       });
       let response = await Promise.all(ganadoresAux);
-      res.status(200).json(response);
+      */ res.status(200).json(ganadoress);
     } catch (e) {
       let response = {
         status: "error",
