@@ -391,7 +391,7 @@ const helperController = {
         return ganador.save();
       });
       let response = await Promise.all(ganadoresAux);
-      */ res.status(200).json(ganadoress);
+      */ res.status(200).json(ganadores);
     } catch (e) {
       let response = {
         status: "error",
