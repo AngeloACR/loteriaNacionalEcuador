@@ -385,13 +385,12 @@ const helperController = {
             parseInt(ganador.ventaId) >= 3583690 &&
             !ganador.codigoPremio.includes("INSTANTANEA"))
       );
-
-      /*let ganadoresAux = ganadores.map((ganador) => {
+      let ganadoresAux = ganadores.map((ganador) => {
         ganador.acreditado = true;
         return ganador.save();
       });
       let response = await Promise.all(ganadoresAux);
-      */ res.status(200).json(ganadores);
+      res.status(200).json(response);
     } catch (e) {
       let response = {
         status: "error",
