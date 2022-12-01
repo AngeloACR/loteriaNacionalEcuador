@@ -33,3 +33,4 @@
 - Validar cada 3 horas si hay nuevos archivos en el servidor
 - Interfaz administrativa para gestion de codigos promocionales
 - Integrar Pozo Revancha
+- Revisar tema de pago de premios en la millonaria cuando hay una combinacion con diferentes series

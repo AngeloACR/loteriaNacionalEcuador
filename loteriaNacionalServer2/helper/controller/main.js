@@ -434,10 +434,7 @@ const helperController = {
       }, 0);
       let ventas = await Promise.all(ventasPromises);
       ventas = ventas.filter((item) => item != null);
-      await fs.writeFile(
-        "ventasId.json",
-        JSON.stringify(console.log(ventasId.length))
-      );
+      await fs.writeFile("ventasId.json", JSON.stringify(ventasId.length));
       await fs.writeFile("monto.json", JSON.stringify(total));
       await fs.writeFile("ventas.json", JSON.stringify(ventas));
       console.log(ventas.length);
