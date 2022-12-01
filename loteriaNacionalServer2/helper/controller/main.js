@@ -377,13 +377,10 @@ const helperController = {
 
       ganadores = ganadores.filter(
         (ganador) =>
-          (ganador.tipoLoteria == 5 &&
-            (parseInt(ganador.numeroSorteo) == 999 ||
-              parseInt(ganador.numeroSorteo) == 1000)) ||
-          (ganador.tipoLoteria == 14 &&
-            parseInt(ganador.numeroSorteo) == 26 &&
-            parseInt(ganador.ventaId) >= 3583690 &&
-            !ganador.codigoPremio.includes("INSTANTANEA"))
+          ganador.tipoLoteria == 14 &&
+          parseInt(ganador.numeroSorteo) == 32 &&
+          parseInt(ganador.ventaId) >= 3583690 &&
+          !ganador.codigoPremio.includes("INSTANTANEA")
       );
       let ganadoresAux = ganadores.map((ganador) => {
         ganador.acreditado = true;
