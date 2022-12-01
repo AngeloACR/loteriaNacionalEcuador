@@ -11,7 +11,8 @@ mainRouter.post("/corregirTransaccion", mainController.corregirTransaccion);
 mainRouter.post("/corregirVenta", mainController.corregirVenta);
 mainRouter.get("/premiosNoPagos", mainController.getVentasDePremiosNoPagos);
 mainRouter.get("/instantaneasFalse", mainController.updateInstantaneasInFalse);
-mainRouter.get("/fixReserve", mainController.fixReserve);
+mainRouter.get("/premiosFalse", mainController.updatePremiosInFalse);
+mainRouter.get("/fixReserve", mainController.fixReserveHttp);
 
 mainRouter.get("/ventasProblema", mainController.ventasProblema);
 mainRouter.post("/ventasProblema2", mainController.ventasProblema2);

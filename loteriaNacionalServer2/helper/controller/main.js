@@ -354,7 +354,44 @@ const helperController = {
       ganadores = ganadores.filter((ganador) =>
         ganador.codigoPremio.includes("INSTANTANEA")
       );
-      res.status(200).json(ganadores);
+      let ganadoresAux = ganadores.map((ganador) => {
+        ganador.status = true;
+        return ganador.save();
+      });
+      let response = await Promise.all(ganadoresAux);
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  updatePremiosInFalse: async (req, res) => {
+    try {
+      let query = { acreditado: false };
+      let ganadores = await Ganadores.find(query);
+
+      ganadores = ganadores.filter(
+        (ganador) =>
+          (ganador.tipoLoteria == 5 &&
+            (parseInt(ganador.numeroSorteo) == 999 ||
+              parseInt(ganador.numeroSorteo) == 1000)) ||
+          (ganador.tipoLoteria == 14 &&
+            parseInt(ganador.numeroSorteo) == 26 &&
+            parseInt(ganador.ventaId) >= 3583690 &&
+            !ganador.codigoPremio.includes("INSTANTANEA"))
+      );
+
+      let ganadoresAux = ganadores.map((ganador) => {
+        ganador.status = true;
+        return ganador.save();
+      });
+      let response = await Promise.all(ganadoresAux);
+      res.status(200).json(response);
     } catch (e) {
       let response = {
         status: "error",
