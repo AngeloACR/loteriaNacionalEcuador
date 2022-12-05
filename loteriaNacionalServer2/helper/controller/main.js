@@ -375,13 +375,77 @@ const helperController = {
       let query = { acreditado: false };
       let ganadores = await Ganadores.find(query);
 
-      ganadores = ganadores.filter(
-        (ganador) =>
-          ganador.tipoLoteria == 14 &&
-          parseInt(ganador.numeroSorteo) == 32 &&
-          parseInt(ganador.ventaId) >= 3583690 &&
-          !ganador.codigoPremio.includes("INSTANTANEA")
-      );
+      ganadores =
+        ganadores.filter(
+          (ganador) =>
+            parseInt(ganador.ventaId) >= 3583690 &&
+            !ganador.codigoPremio.includes("INSTANTANEA")
+        ) &&
+        ((ganador.tipoLoteria == 1 && parseInt(ganador.numeroSorteo) == 6843) ||
+          (ganador.tipoLoteria == 1 &&
+            parseInt(ganador.numeroSorteo) == 6808) ||
+          (ganador.tipoLoteria == 1 &&
+            parseInt(ganador.numeroSorteo) == 6841 &&
+            [
+              "3701238",
+              "3699878",
+              "3701583",
+              "3702231",
+              "3701409",
+              "3702119",
+              "3698363",
+              "3701971",
+              "3701097",
+              "3701932",
+              "3701931",
+              "3701679",
+              "3701081",
+              "3701518",
+              "3702169",
+              "3701471",
+              "3701989",
+              "3700354",
+            ].includes(ganador.ventaId)) ||
+          (ganador.tipoLoteria == 2 &&
+            parseInt(ganador.numeroSorteo) == 2830 &&
+            ["3702887"].includes(ganador.ventaId)) ||
+          (ganador.tipoLoteria == 2 &&
+            parseInt(ganador.numeroSorteo) == 2831 &&
+            ["3704268", "3704591"].includes(ganador.ventaId)) ||
+          (ganador.tipoLoteria == 5 &&
+            parseInt(ganador.numeroSorteo) == 1008 &&
+            ["3704272", "3704910", "3704494", "3704268", "3702731"].includes(
+              ganador.ventaId
+            )) ||
+          (ganador.tipoLoteria == 14 &&
+            parseInt(ganador.numeroSorteo) == 37 &&
+            [
+              "3702728",
+              "3700289",
+              "3702805",
+              "3698665",
+              "3698591",
+              "3702736",
+              "3702630",
+              "3701123",
+              "3702687",
+              "3702397",
+              "3700166",
+              "3699770",
+              "3702256",
+              "3698889",
+              "3699938",
+              "3699981",
+              "3700128",
+              "3702770",
+              "3702801",
+              "3700207",
+              "3698536",
+              "3702704",
+              "3698465",
+              "3702766",
+              "3699154",
+            ].includes(ganador.ventaId)));
       let ganadoresAux = ganadores.map((ganador) => {
         ganador.acreditado = true;
         return ganador.save();
