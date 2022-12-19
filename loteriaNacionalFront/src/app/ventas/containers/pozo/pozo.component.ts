@@ -22,6 +22,7 @@ export class PozoComponent implements OnInit {
   combinacionDeLaSuerte: string[] = ['', '', '', ''];
 
   animalesTabs: animales[] = [];
+  revanchas?: boolean[];
 
   page_size: number = 12;
   page_number: number = 1;
@@ -90,8 +91,29 @@ export class PozoComponent implements OnInit {
     localStorage.setItem('animalesTabs', JSON.stringify(this.animalesTabs));
   }
 
+  async agregarRevancha(id: number) {
+    try {
+      console.log('here2');
+
+      this.changeDetectorRef.detectChanges();
+      this.revanchas![id] = !this.revanchas![id];
+      this.changeDetectorRef.markForCheck();
+      if (this.revanchas![id] && !this.ticketsDisponibles![id].status) {
+        await this.seleccionarTicket(id);
+      }
+      return;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
+  }
+
   async seleccionarTicket(id: any) {
     try {
+      console.log('here');
+      this.isLoading = true;
       this.changeDetectorRef.detectChanges();
       this.ticketsDisponibles![id].status =
         !this.ticketsDisponibles![id].status;
@@ -99,10 +121,13 @@ export class PozoComponent implements OnInit {
       if (!this.ticketsDisponibles![id].status) {
         let identificador = this.ticketsDisponibles![id].identificador;
         let ticketPozo = this.ticketsPozo[identificador];
+        this.isLoading = false;
         await this.deletePozoTicket(ticketPozo);
+        if (this.revanchas![id]) this.revanchas![id] = false;
       } else {
         let count = (await this.cart.getCount()) + 1;
         if (count <= 1000) {
+          this.isLoading = false;
           await this.pushToSeleccionado(this.ticketsDisponibles![id]);
         } else {
           this.changeDetectorRef.detectChanges();
@@ -111,6 +136,7 @@ export class PozoComponent implements OnInit {
           let errorMessage =
             'Incluir el boleto excede el límite de compra. Si quieres escoger este boleto, por favor elimina algún otro de tu carrito.';
           this.openError(errorMessage);
+          this.isLoading = false;
         }
       }
       await this.setDescuento(5);
@@ -233,6 +259,10 @@ export class PozoComponent implements OnInit {
 
       this.combinacionDeLaSuerte = ['', '', '', ''];
       this.showNumeros = true;
+      this.revanchas = this.ticketsDisponibles!!.map((ticket: any) => {
+        return false;
+      });
+      console.log(this.revanchas);
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;

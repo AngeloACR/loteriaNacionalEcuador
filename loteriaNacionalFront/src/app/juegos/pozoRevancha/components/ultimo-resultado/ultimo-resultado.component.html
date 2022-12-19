@@ -1,0 +1,19 @@
+<div class="contenedor_ticket">
+    <div class="logo_ticket">
+        <img src="../../../../assets/img/pozo-sombra.png" alt="">
+    </div>
+    <div>
+        <hr size="2px" />
+    </div>
+    <div class="scroll">
+        <pozo-ticket-consulta [ticket]="ticketGanador" [mascotaPath]="mascotaPath" [mascota]="mascota"></pozo-ticket-consulta>
+    </div>
+
+
+
+
+    <div class="boton_comprar">
+        <button (click)="verUltimoBoletin()">VER BOLETIN</button>
+        <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
+    </div>
+</div>

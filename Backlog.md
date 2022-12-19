@@ -19,8 +19,8 @@
 - rsync entre servidor viejo y nuevo para sincronizar archivos - LISTO
 
 
-
-
+- Validar la hora de cierre del sorteo y bloquear las ventas para esa hora
+- Cuando falle la db, propagar error correctamente para evitar ventas en reserve
 - Generar ruta de pruebas controladas en produccion
 - Agregar evento de scrolling en carrito flotante, errores y loaders
 - Editar estilo del sitio web  

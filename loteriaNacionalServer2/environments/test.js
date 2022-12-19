@@ -14,6 +14,7 @@ module.exports = {
   sorteosLoteriaNacionalPort: 5500,
   sorteosLottoPort: 6000,
   sorteosPozoMillonarioPort: 6500,
+  sorteosPozoRevanchaPort: 10500,
   sorteosLaMillonariaPort: 7000,
   ganadoresPort: 7500,
   authPort: 8000,

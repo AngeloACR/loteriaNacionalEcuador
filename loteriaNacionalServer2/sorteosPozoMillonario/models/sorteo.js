@@ -3,26 +3,45 @@ const db = require("../database").db;
 const psdSorteos = require("../../psdLoteria/sorteos");
 const psdAuth = require("../../psdLoteria/auth");
 
-const sorteoSchema = new mongoose.Schema({
-  sorteo: {
-    type: String,
-  },
+const sorteoSchema = new mongoose.Schema(
+  {
+    sorteo: {
+      type: String,
+    },
 
-  precio: {
-    type: Number,
+    precio: {
+      type: Number,
+    },
+    fecha: {
+      type: String,
+    },
+    cantidadDeFracciones: {
+      type: Number,
+    },
+    valorPremioPrincipal: {
+      type: Number,
+    },
+    nombre: {
+      type: String,
+    },
+    tieneRevancha: {
+      type: String,
+    },
+    sorteoRevancha: {
+      type: String,
+    },
   },
-  fecha: {
-    type: String,
-  },
-  cantidadDeFracciones: {
-    type: Number,
-  },
-  valorPremioPrincipal: {
-    type: Number,
-  },
-  nombre: {
-    type: String,
-  },
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
+
+sorteoSchema.virtual("sorteo", {
+  ref: "SorteoPozoRevancha",
+  localField: "sorteoRevancha",
+  foreignField: "sorteo",
+  justOne: true,
 });
 
 sorteoSchema.statics = {

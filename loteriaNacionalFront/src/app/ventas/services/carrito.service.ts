@@ -330,14 +330,12 @@ export class CarritoService {
             data.lotto = {};
             data.pozo = {};
             data.millonaria = {};
-            data.reservaId = 0;
           }
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);
           this.setMillonariaLocal(data.millonaria);
           this.setPozoLocal(data.pozo);
-          this.setReservaId(data.reservaId);
           //await this.setTotal();
 
           resolve(data);

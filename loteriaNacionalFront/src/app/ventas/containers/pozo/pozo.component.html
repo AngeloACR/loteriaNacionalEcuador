@@ -120,24 +120,52 @@
             <tr
               *ngFor="
                 let ticket of ticketsDisponibles
-                  | paginacion: page_size:page_number;
+                  | paginacion : page_size : page_number;
                 let i = index
               "
             >
               <td>
-                <input
-                  type="checkbox"
-                  name=""
-                  id=""
-                  [checked]="ticket.status"
-                  (click)="seleccionarTicket(page_size * (page_number - 1) + i)"
-                />
-                <div class="contenedor_seleccion_numero">
-                  <div class="imagen_animal">
-                    <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
+                <div class="pozoBox">
+                  <input
+                    type="checkbox"
+                    [name]="'pozo' + i"
+                    id=""
+                    [checked]="ticket.status"
+                    (click)="
+                      seleccionarTicket(page_size * (page_number - 1) + i)
+                    "
+                  />
+
+                  <div class="contenedor_seleccion_numero">
+                    <div class="imagen_animal">
+                      <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
+                    </div>
+                    <div class="numeros">
+                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                    </div>
                   </div>
-                  <div class="numeros">
-                    <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                </div>
+
+                <hr />
+
+                <div class="seleccionAll">
+                  <input
+                    type="checkbox"
+                    [name]="'revancha' + i"
+                    id=""
+                    [checked]="revanchas![page_size * (page_number - 1) + i]"
+                    (click)="agregarRevancha(page_size * (page_number - 1) + i)"
+                  />
+                  <div class="contenedor_seleccion_revancha">
+                    <p style="width: 100% !important">
+                      Agregar Pozo Revancha (+$0.50)
+                    </p>
+                    <div class="imagen_animal">
+                      <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
+                    </div>
+                    <div class="numeros">
+                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                    </div>
                   </div>
                 </div>
                 <!-- <app-seleccion-pozo [tickets]="ticketMascota"></app-seleccion-pozo> -->

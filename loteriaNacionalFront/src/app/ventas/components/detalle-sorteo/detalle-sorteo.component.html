@@ -34,6 +34,10 @@
         Precio:
         <p>{{ precio }}</p>
       </div>
+      <div class="menuItem" *ngIf="!isLoteria && isPozo">
+        Precio Revancha:
+        <p>{{ precioRevancha }}</p>
+      </div>
 
       <div class="menuItem" *ngIf="isLoteria">
         Precio de fracción:
@@ -46,6 +50,10 @@
       <div class="menuItem" *ngIf="!isLoteria">
         Premio:
         <p>{{ premio }}</p>
+      </div>
+      <div class="menuItem" *ngIf="!isLoteria && isPozo">
+        Premio Revancha:
+        <p>{{ premioRevancha }}</p>
       </div>
       <div class="menuItem" *ngIf="isLoteria">
         Premio al entero:

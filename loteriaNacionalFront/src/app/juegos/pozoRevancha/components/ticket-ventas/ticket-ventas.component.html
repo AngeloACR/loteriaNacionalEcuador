@@ -1,0 +1,19 @@
+<div class="contenedor_informacion_ticket">
+  <p>Juego: <span>Pozo Revancha</span></p>
+
+  <p>
+    Sorteo: <span>{{ sorteoNumber }}</span>
+  </p>
+  <p>
+    Fecha: <span>{{ date }}</span>
+  </p>
+  <p>
+    Mascota: <span>{{ mascota!.nombre }}</span>
+  </p>
+  <p>Combinación:</p>
+  <br />
+
+  <p class="combinacion">{{ ticketNumbers!.join(", ") }}</p>
+  <img src="assets/trash.svg" class="trash" (click)="deleteTicket()" alt="" />
+  <img class="logoTicket" src="assets/img/pozo-sombra.png" alt="" />
+</div>
