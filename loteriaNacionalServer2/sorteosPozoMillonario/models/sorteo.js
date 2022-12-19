@@ -25,7 +25,7 @@ const sorteoSchema = new mongoose.Schema(
       type: String,
     },
     tieneRevancha: {
-      type: String,
+      type: Boolean,
     },
     sorteoRevancha: {
       type: String,

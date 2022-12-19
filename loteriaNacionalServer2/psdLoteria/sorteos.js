@@ -127,6 +127,8 @@ module.exports.consultarSorteosDisponibles = async (
                   combinacion3: sorteo.$.NomComb3,
                   combinacion4: sorteo.$.NomComb4,
                   combinacion5: sorteo.$.NomComb5,
+                  tieneRevancha: !!parseInt(sorteo.$.TieneRevancha),
+                  sorteoRevancha: sorteo.$.SortRelId,
                   dia: sorteo.$.SortNombSal.split(" ")[2],
                 };
                 return sorteoAux;
