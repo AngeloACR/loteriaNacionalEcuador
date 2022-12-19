@@ -37,7 +37,7 @@ const sorteoSchema = new mongoose.Schema(
   }
 );
 
-sorteoSchema.virtual("sorteo", {
+sorteoSchema.virtual("detalleSorteoRevancha", {
   ref: "SorteoPozoRevancha",
   localField: "sorteoRevancha",
   foreignField: "sorteo",
