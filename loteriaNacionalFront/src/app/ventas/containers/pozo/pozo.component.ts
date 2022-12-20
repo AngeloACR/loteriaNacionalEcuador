@@ -115,7 +115,7 @@ export class PozoComponent implements OnInit {
         let count = (await this.cart.getCount()) + 1;
         if (count <= 1000) {
           this.isLoading = false;
-          console.log(this.ticketsDisponibles![id])
+          console.log(this.ticketsDisponibles![id]);
           await this.pushToSeleccionado(this.ticketsDisponibles![id]);
         } else {
           this.changeDetectorRef.detectChanges();
@@ -193,7 +193,6 @@ export class PozoComponent implements OnInit {
     return this.pozo.obtenerMascota(mascota);
   }
 
-
   over25Error: boolean = false;
   over25ErrorTag: string =
     'Los números no pueden ser mayores a 25. Por favor, toma esto en cuenta al ingresar tus números preferidos.';
@@ -255,7 +254,7 @@ export class PozoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  
+
   ordenaCombinacion(a: any, b: any) {
     return a - b;
   }
@@ -507,13 +506,17 @@ export class PozoComponent implements OnInit {
       let authData = this.ventas.getAuthData();
       this.sorteo = await this.pozo.obtenerSorteo(authData);
       let sorteosRevancha = await this.pozoRevancha.obtenerSorteo(authData);
-        this.sorteo = this.sorteo.map((item) => {
-          if(item.tieneRevancha){
-            let index = sorteosRevancha.findIndex((sorteo) => sorteo.sorteo == item.sorteoRevancha)
-            item.sorteoRevancha = sorteosRevancha[index];
-          }
-          return item
-        })
+      console.log(sorteosRevancha)
+      this.sorteo = this.sorteo.map((item) => {
+        if (item.tieneRevancha) {
+          let index = sorteosRevancha.findIndex(
+            (sorteo) => sorteo.sorteo == item.sorteoRevancha
+          );
+          item.sorteoRevancha = sorteosRevancha[index];
+        }
+        return item;
+      });
+      console.log(this.sorteo)
       this.descuentos = await this.ventas.obtenerDescuentos();
       this.isLoading = false;
       this.showComponents = true;
@@ -717,7 +720,7 @@ export class PozoComponent implements OnInit {
         if (deletedIndex != -1)
           this.ticketsDisponibles[deletedIndex].status = false;
       }
-      
+
       await this.getCarritoTickets();
       //this.getTotal();
       await this.setDescuento(5);
