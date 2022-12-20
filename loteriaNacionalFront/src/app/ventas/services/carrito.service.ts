@@ -11,6 +11,7 @@ export class CarritoService {
   ticketsLotto: any = {};
   ticketsPozo: any = {};
   ticketsMillonaria: any = {};
+  ticketsPozoRevancha: any = {};
   ticketsCarrito: any = [];
   reservaId: any = 0;
 
@@ -212,6 +213,7 @@ export class CarritoService {
         loteria: this.getLoteriaLocal(),
         lotto: this.getLottoLocal(),
         pozo: this.getPozoLocal(),
+        pozoRevancha: this.getPozoRevanchaLocal(),
         millonaria: this.getMillonariaLocal(),
         carrito: this.getCarritoLocal(),
         total: this.getTotal(),
@@ -270,6 +272,16 @@ export class CarritoService {
     });
   }
 
+  async setCarritoPozoRevancha(tickets: any) {
+    return new Promise<any>(async (resolve, reject) => {
+      localStorage.setItem('seleccionadosPozoRevancha', JSON.stringify(tickets));
+      //this.ticketsPozo = tickets;
+      await this.setTotal();
+      await this.actualizarCarrito();
+      resolve('Done');
+    });
+  }
+
   setCarritoLocal(data: any) {
     localStorage.setItem('seleccionadosCarrito', JSON.stringify(data));
   }
@@ -284,6 +296,9 @@ export class CarritoService {
   }
   setPozoLocal(data: any) {
     localStorage.setItem('seleccionadosPozo', JSON.stringify(data));
+  }
+  setPozoRevanchaLocal(data: any) {
+    localStorage.setItem('seleccionadosPozoRevancha', JSON.stringify(data));
   }
 
   getCarritoLocal() {
@@ -305,6 +320,10 @@ export class CarritoService {
   }
   getPozoLocal() {
     return JSON.parse(localStorage.getItem('seleccionadosPozo')!);
+  }
+
+  getPozoRevanchaLocal() {
+    return JSON.parse(localStorage.getItem('seleccionadosPozoRevancha')!);
   }
 
   async buscarCarrito() {
@@ -329,6 +348,7 @@ export class CarritoService {
             data.loteria = {};
             data.lotto = {};
             data.pozo = {};
+            data.pozoRevancha = {};
             data.millonaria = {};
           }
           this.setCarritoLocal(data.carrito);
@@ -336,6 +356,7 @@ export class CarritoService {
           this.setLottoLocal(data.lotto);
           this.setMillonariaLocal(data.millonaria);
           this.setPozoLocal(data.pozo);
+          this.setPozoRevanchaLocal(data.pozo);
           //await this.setTotal();
 
           resolve(data);
@@ -412,12 +433,20 @@ export class CarritoService {
       //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
     });
   }
+  async getCarritoPozoRevancha() {
+    return new Promise<any>(async (resolve, reject) => {
+      let carritoDB = await this.buscarCarrito();
+      resolve(carritoDB.pozoRevancha);
+      //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
+    });
+  }
   async borrarCarrito() {
     this.ticketsCarrito = [];
     this.ticketsLoteria = {};
     this.ticketsLotto = {};
     this.ticketsPozo = {};
     this.ticketsMillonaria = {};
+    this.ticketsPozoRevancha = {};
     this.reservaId = 0;
     this.total = 0;
     localStorage.removeItem('seleccionadosLoteria');
@@ -425,6 +454,7 @@ export class CarritoService {
     localStorage.removeItem('seleccionadosPozo');
     localStorage.removeItem('seleccionadosCarrito');
     localStorage.removeItem('seleccionadosMillonaria');
+    localStorage.removeItem('seleccionadosPozoRevancha');
     localStorage.removeItem('reservaId');
     localStorage.removeItem('total');
     localStorage.removeItem('totalConDesc');

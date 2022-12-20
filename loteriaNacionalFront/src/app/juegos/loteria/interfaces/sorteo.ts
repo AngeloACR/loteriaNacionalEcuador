@@ -10,5 +10,7 @@ export interface sorteo {
     combinacion3: string;
     combinacion4: string;
     combinacion5: string;
+    tieneRevancha: boolean;
+    sorteoRevancha?: string;
   }
   

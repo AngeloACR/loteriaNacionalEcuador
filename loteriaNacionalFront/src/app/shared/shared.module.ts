@@ -11,6 +11,7 @@ import { AutoTabDirective } from './autotab.directive';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { getSpanishPaginatorIntl } from './paginacion-es';
 import { PositioningDirective } from './positioning.directive';
+import { BuscarNumeroDirective } from './directives/buscar-numero.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PositioningDirective } from './positioning.directive';
     PositioningDirective,
 
     PaginatePipe,
+      BuscarNumeroDirective,
   ],
   exports: [
     LoaderComponent,

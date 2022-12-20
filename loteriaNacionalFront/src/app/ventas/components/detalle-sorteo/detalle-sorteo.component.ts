@@ -112,6 +112,7 @@ export class DetalleSorteoComponent implements OnInit {
       this.seleccionado!.sorteo
     );
     this.imgNotFound = false;
+    console.log(this.seleccionado)
     this.changeDetectorRef.markForCheck();
   }
 

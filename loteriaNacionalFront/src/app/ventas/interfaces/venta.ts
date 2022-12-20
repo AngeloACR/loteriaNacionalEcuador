@@ -11,7 +11,7 @@ export interface sorteo {
     combinacion4: string;
     combinacion5: string;
     tieneRevancha: boolean;
-    sorteoRevancha: string;
+    sorteoRevancha?: any;
   }
   
   export interface ticketsNacional {

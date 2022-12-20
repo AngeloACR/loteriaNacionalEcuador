@@ -148,7 +148,7 @@
 
                 <hr />
 
-                <div class="seleccionAll">
+                <div class="seleccionAll" *ngIf="sorteoSeleccionado!.tieneRevancha">
                   <input
                     type="checkbox"
                     [name]="'revancha' + i"
