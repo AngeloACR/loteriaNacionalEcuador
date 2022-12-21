@@ -62,6 +62,14 @@
           [sorteo]="item.sorteo"
         >
         </millonaria-ticket-ventas>
+        <revancha-ticket-ventas
+          style="width: 100%"
+          *ngIf="item.tipoLoteria == 17"
+          (delete)="deletePozoRevancha(item)"
+          [ticket]="item.ticket"
+          [sorteo]="item.sorteo"
+        >
+        </revancha-ticket-ventas>
       </ng-container>
     </div>
   </div>
@@ -70,7 +78,8 @@
       checkTicketsLoteria() ||
       checkTicketsLotto() ||
       checkTicketsPozo() ||
-      checkTicketsLaMillonaria()
+      checkTicketsLaMillonaria() ||
+      checkTicketsPozoRevancha()
     "
   >
     <div>

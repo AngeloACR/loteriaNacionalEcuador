@@ -14,7 +14,6 @@ export class UltimoResultadoComponent implements OnInit {
       localStorage.getItem("loteriaNacionalUltimoResultado")!
     );
     this.ticketNumbers = data.ultimoResultadoLoteria.combinacion1.split("");
-    console.log(data);
     this.ticketGanador = {
       ticketIndex: data.ultimoResultadoLoteria.codigo,
       description: "Boleto Ganador",

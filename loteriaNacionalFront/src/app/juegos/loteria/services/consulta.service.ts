@@ -22,7 +22,6 @@ export class ConsultaService {
     return new Promise((resolve, reject) => {
       this.http.get(address, { headers: headers }).subscribe((data: any) => {
         let sorteosJugados = data.values;
-        console.log(sorteosJugados);
         sorteosJugados.sort(this.ordenaSorteos);
         resolve(sorteosJugados);
       });
@@ -46,7 +45,6 @@ export class ConsultaService {
       sorteo,
       combinaciones,
     };
-    console.log(body);
     return new Promise((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {

@@ -7,6 +7,7 @@ $color-botton: #28AAE1;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
 $color-millonaria: #b51f20;
+$color-revancha: #ffe401;
 
 .contenedor_ticket.fondoLoteria {
   background-color: $color-botton;
@@ -23,6 +24,10 @@ $color-millonaria: #b51f20;
 .contenedor_ticket.fondoMillonaria {
   background-color: $color-millonaria;
   border: 1px solid $color-millonaria;
+}
+.contenedor_ticket.fondoRevancha {
+  background-color: $color-revancha;
+  border: 1px solid $color-revancha;
 }
 .contenedor_ticket {
   width: 100%;
@@ -157,6 +162,16 @@ $color-millonaria: #b51f20;
       background-color: $color-millonaria;
       color: white;
       border: 1px solid $color-millonaria;
+      &:hover {
+        background-color: white;
+        color: $color-millonaria;
+        transition: background-color 0.5s ease;
+      }
+    }
+    button.fondoRevancha {
+      background-color: $color-revancha;
+      color: white;
+      border: 1px solid $color-revancha;
       &:hover {
         background-color: white;
         color: $color-millonaria;

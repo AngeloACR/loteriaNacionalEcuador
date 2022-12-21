@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'pozo-venta',
+  selector: 'revancha-venta',
   templateUrl: './venta.component.html',
   styleUrls: ['./venta.component.scss']
 })

@@ -11,7 +11,6 @@ export class PositioningDirective {
   @Input() public offset: number;
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    console.log(this.el.nativeElement.offsetHeight);
     let position =
       e.data.screen -
         90 -
@@ -32,8 +31,6 @@ export class PositioningDirective {
           this.el.nativeElement.offsetHeight / 2 +
           e.data.top;
     position = position > 0 ? position : 0;
-    console.log(position);
-    console.log(this.offset);
     this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
     this.renderer.setStyle(this.el.nativeElement, 'max-height', `${e.data.screen}px`);
   }

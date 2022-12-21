@@ -83,7 +83,6 @@ export class StylePaginatorDirective {
       /*       let node = // Numero de elementos en el paginador
       this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[0]
       .childNodes[2];
-      console.log(this.vr.element.nativeElement); 
       let paginatorBox = this.vr.element.nativeElement
       paginatorBox.class = 'paginatorBox';
        */

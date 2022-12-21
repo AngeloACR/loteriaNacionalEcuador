@@ -33,4 +33,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
   imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule],
 })
-export class PozoModule {}
+export class PozoRevanchaModule {}

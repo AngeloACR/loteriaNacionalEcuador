@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { ConsultaService } from '../../services/consulta.service';
 @Component({
-  selector: 'pozo-boletin',
+  selector: 'revancha-boletin',
   templateUrl: './boletin.component.html',
   styleUrls: ['./boletin.component.scss'],
 })
@@ -22,7 +22,6 @@ export class BoletinComponent implements OnInit {
   }
 
   async ngOnInit() {
-    /* console.log("En la consulta de loteria"); */
     this.triggerLoader();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.boletinImagen = await this.consulta.obtenerBoletin(this.sorteo);

@@ -112,7 +112,7 @@
             <tr
               *ngFor="
                 let ticket of ticketsDisponibles
-                  | paginacion: page_size:page_number;
+                  | paginacion : page_size : page_number;
                 let i = index
               "
             >
@@ -185,9 +185,11 @@
     (deletePozoTicket)="deletePozoTicket($event)"
     (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
     (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+    (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
     (emitirCompra)="comprar()"
     (eliminarTodo)="deleteAllTickets()"
     [ticketsLoteria]="ticketsLoteria"
+    [ticketsPozoRevancha]="ticketsPozoRevancha"
     [ticketsLotto]="ticketsLotto"
     [ticketsMillonaria]="ticketsMillonaria"
     [ticketsPozo]="ticketsPozo"
@@ -203,9 +205,11 @@
   (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   (emitirCompra)="comprar()"
   (eliminarTodo)="deleteAllTickets()"
+  (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozo]="ticketsPozo"
+  [ticketsPozoRevancha]="ticketsPozoRevancha"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="lotto"
 ></app-floating-menu>
@@ -244,8 +248,8 @@
   (compraCancelada)="cancelarCompra()"
   (comprarDespues)="dismissCompras()"
   [compra]="detalleCompra"
-    #purchase
-    class="paymentItem"
+  #purchase
+  class="paymentItem"
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-venta>
 <app-instantaneas

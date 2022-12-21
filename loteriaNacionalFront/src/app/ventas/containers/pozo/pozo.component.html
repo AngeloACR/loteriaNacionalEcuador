@@ -148,12 +148,19 @@
 
                 <hr />
 
-                <div class="seleccionAll" *ngIf="sorteoSeleccionado!.tieneRevancha">
+                <div
+                  class="seleccionAll"
+                  *ngIf="sorteoSeleccionado!.tieneRevancha"
+                >
                   <input
                     type="checkbox"
                     [name]="'revancha' + i"
                     id=""
-                    [checked]="revanchas![page_size * (page_number - 1) + i]"
+                    [checked]="
+                      ticketsDisponiblesRevancha![
+                        page_size * (page_number - 1) + i
+                      ].status
+                    "
                     (click)="agregarRevancha(page_size * (page_number - 1) + i)"
                   />
                   <div class="contenedor_seleccion_revancha">
@@ -208,7 +215,9 @@
     (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
     (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
     [ticketsLoteria]="ticketsLoteria"
+    (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
     [ticketsMillonaria]="ticketsMillonaria"
+    [ticketsPozoRevancha]="ticketsPozoRevancha"
     [ticketsLotto]="ticketsLotto"
     [ticketsPozo]="ticketsPozo"
     tipoLoteria="pozo"
@@ -221,10 +230,12 @@
   (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
   (deleteLottoTicket)="deleteLottoTicket($event)"
   (deletePozoTicket)="deletePozoTicket($event)"
+  (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
   (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
+  [ticketsPozoRevancha]="ticketsPozoRevancha"
   [ticketsPozo]="ticketsPozo"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="pozo"

@@ -27,6 +27,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Input() ticketsLotto: any;
   @Input() ticketsPozo: any;
   @Input() tickets: any;
+  @Input() ticketsPozoRevancha: any;
   @Input() tipoLoteria?: string;
   @Output() emitirCompra = new EventEmitter();
   @Output() eliminarTodo = new EventEmitter();
@@ -34,6 +35,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Output() deleteLoteriaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
+  @Output() deletePozoRevanchaTicket = new EventEmitter();
   @Output() deleteMillonariaTicket = new EventEmitter();
   constructor(private cart: CarritoService) {}
   carrito: any = {};
@@ -47,7 +49,6 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
     };
   }
   ngAfterViewInit() {
-    console.log(this.floatingBox);
   }
   toggleBox() {
     this.isToggled = !this.isToggled;
@@ -85,6 +86,10 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   }
   deleteFraccion(e: any) {
     this.deleteLoteriaFraccion.emit(e);
+  }
+
+  deletePozoRevancha(ticket: any) {
+    this.deletePozoRevanchaTicket.emit(ticket);
   }
 
   total?: any;

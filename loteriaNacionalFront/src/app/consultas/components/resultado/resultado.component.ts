@@ -21,7 +21,6 @@ export class ResultadoComponent implements OnInit {
   ngOnInit() {
     this.sorteo = this.ticket.sorteo;
     let resultado = this.ticket.resultado;
-    console.log(resultado);
     if (resultado.status) {
       this.description = `Boleto ganador`;
       this.valorPremio = this.formatNumber(resultado.data.premio.valorPremio);

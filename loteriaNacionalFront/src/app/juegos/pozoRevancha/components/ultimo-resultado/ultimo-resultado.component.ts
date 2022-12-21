@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConsultaService } from "../../services/consulta.service";
 @Component({
-  selector: 'pozo-ultimo-resultado',
+  selector: 'revancha-ultimo-resultado',
   templateUrl: './ultimo-resultado.component.html',
   styleUrls: ['./ultimo-resultado.component.scss']
 })

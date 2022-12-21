@@ -113,7 +113,7 @@
             <tr
               *ngFor="
                 let ticket of ticketsDisponibles
-                  | paginacion: page_size:page_number;
+                  | paginacion : page_size : page_number;
                 let i = index
               "
             >
@@ -217,8 +217,10 @@
     (deletePozoTicket)="deletePozoTicket($event)"
     (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
     (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+    (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
     [ticketsLoteria]="ticketsLoteria"
     [ticketsMillonaria]="ticketsMillonaria"
+    [ticketsPozoRevancha]="ticketsPozoRevancha"
     [ticketsLotto]="ticketsLotto"
     [ticketsPozo]="ticketsPozo"
     tipoLoteria="millonaria"
@@ -233,9 +235,11 @@
   (deletePozoTicket)="deletePozoTicket($event)"
   (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozo]="ticketsPozo"
+  [ticketsPozoRevancha]="ticketsPozoRevancha"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="millonaria"
 ></app-floating-menu

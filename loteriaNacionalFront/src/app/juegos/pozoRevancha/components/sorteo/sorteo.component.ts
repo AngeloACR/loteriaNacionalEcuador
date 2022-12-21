@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'pozo-sorteo',
+  selector: 'revancha-sorteo',
   templateUrl: './sorteo.component.html',
   styleUrls: ['./sorteo.component.scss']
 })

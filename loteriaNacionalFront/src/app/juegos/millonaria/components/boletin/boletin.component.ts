@@ -22,7 +22,6 @@ export class BoletinComponent implements OnInit {
   }
 
   async ngOnInit() {
-    /* console.log("En la consulta de loteria"); */
     this.triggerLoader();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.boletinImagen = await this.consulta.obtenerBoletin(

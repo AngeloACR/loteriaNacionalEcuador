@@ -12,6 +12,7 @@ export class CarritoComponent implements OnInit {
   @Input() ticketsLotto: any;
   @Input() ticketsPozo: any;
   @Input() ticketsMillonaria: any;
+  @Input() ticketsPozoRevancha: any;
   @Input() tickets: any;
   @Input() tipoLoteria?: string;
   @Input() isResumen: boolean = false;
@@ -22,6 +23,7 @@ export class CarritoComponent implements OnInit {
   @Output() deleteMillonariaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
+  @Output() deletePozoRevanchaTicket = new EventEmitter();
   @Output() deleteMillonariaTicket = new EventEmitter();
 
   isLoteriaNacional: boolean = false;
@@ -110,6 +112,13 @@ export class CarritoComponent implements OnInit {
     }else return false
   }
 
+
+  checkTicketsPozoRevancha() {
+    if (this.ticketsPozoRevancha) {
+      return Object.keys(this.ticketsPozoRevancha).length != 0;
+    }else return false
+  }
+
   deleteLoteria(ticket: any) {
     this.deleteLoteriaTicket.emit(ticket);
   }
@@ -138,6 +147,9 @@ export class CarritoComponent implements OnInit {
   }
   deletePozo(ticket: any) {
     this.deletePozoTicket.emit(ticket);
+  }
+  deletePozoRevancha(ticket: any) {
+    this.deletePozoRevanchaTicket.emit(ticket);
   }
 
   getTotal() {

@@ -4,7 +4,7 @@ import { ticketsVenta } from "../../interfaces/ticket-venta";
 import { VentaService } from "../../services/venta.service";
 
 @Component({
-  selector: 'pozo-ticket-ventas',
+  selector: 'revancha-ticket-ventas',
   templateUrl: './ticket-ventas.component.html',
   styleUrls: ['./ticket-ventas.component.scss']
 })

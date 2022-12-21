@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'pozo-ticket-consulta',
+  selector: 'revancha-ticket-consulta',
   templateUrl: './ticket-consulta.component.html',
   styleUrls: ['./ticket-consulta.component.scss']
 })

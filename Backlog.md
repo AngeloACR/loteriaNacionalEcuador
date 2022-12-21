@@ -18,6 +18,10 @@
 - Automatizar resolucion de ventas fallidas en psd - LISTO
 - rsync entre servidor viejo y nuevo para sincronizar archivos - LISTO
 
+- Mover la pasarela de pago a un componente o modulo que se despliegue en un modal, y refactorizando para adaptarse al cambio
+- Refactorizar y simplificar las funciones del carrito, para que se maneje solo un array de boletos
+- Reservar primero en loteria, luego agregar al carrito
+- Agregar Pozo revancha al carrito
 
 - Validar la hora de cierre del sorteo y bloquear las ventas para esa hora
 - Cuando falle la db, propagar error correctamente para evitar ventas en reserve

@@ -41,6 +41,7 @@ export class LoteriaComponent implements OnInit {
   pageSizeOptions = [5, 10, 20, 100];
   ticketsMillonaria: any;
   codigoPromocional: any = [];
+  ticketsPozoRevancha: any;
 
   constructor(
     private lotteryService: VentasService,
@@ -81,6 +82,7 @@ export class LoteriaComponent implements OnInit {
     this.ticketsLotto = carrito.lotto;
     this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
+    this.ticketsPozoRevancha = carrito.pozoRevancha;
   }
   sorteoSeleccionado?: sorteo;
   procesaEmitir(sorteo: any) {
@@ -756,6 +758,40 @@ export class LoteriaComponent implements OnInit {
     }
   }
 
+  async deletePozoRevanchaTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = "";
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let ticket = this.ticketsPozoRevancha[identificador].ticket;
+      let sorteo = data.sorteo;
+
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        17,
+        reservaId
+      );
+
+      delete this.ticketsPozoRevancha[identificador];
+
+      await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = "Error";
+      this.openError(errorMessage);
+    }
+  }
   isError: boolean = false;
   errorMessage?: string;
   openError(msg: any) {

@@ -22,7 +22,6 @@ export class CodigosPromocionalesComponent implements OnInit {
     const formData = new FormData();
     if (!Object.keys(myFiles).length) return;
     Object.keys(myFiles).forEach((key) => {
-      console.log(myFiles.item(key).name);
       formData.append(myFiles.item(key).name, myFiles.item(key));
     });
 

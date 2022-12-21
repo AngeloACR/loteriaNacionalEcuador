@@ -26,6 +26,7 @@ export class MenuBoxComponent implements OnInit {
   ticketsCarrito: any;
   ticketsMillonaria: any;
   @Input() miniBox: boolean = false;
+  ticketsPozoRevancha: any;
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -428,6 +429,40 @@ export class MenuBoxComponent implements OnInit {
       this.openError(errorMessage, errorTitle);
     }
   }
+  async deletePozoRevanchaTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = "";
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let ticket = this.ticketsPozoRevancha[identificador].ticket;
+      let sorteo = data.sorteo;
+
+      let reservaId = this.lottery.getReservaId();
+      let response = await this.lottery.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        17,
+        reservaId
+      );
+
+      delete this.ticketsPozoRevancha[identificador];
+
+      await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = "Error";
+      this.openError(errorMessage, errorTitle);
+    }
+  }
   async deleteAllTickets() {
     try {
       this.loadingMessage = "Removiendo boletos del carrito";
@@ -475,7 +510,9 @@ export class MenuBoxComponent implements OnInit {
     let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
+    this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
+    this.ticketsPozoRevancha = carrito.pozoRevancha;
   }
 
   authError() {

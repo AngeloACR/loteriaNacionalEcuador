@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { ConsultaService } from '../../services/consulta.service';
 
 @Component({
-  selector: 'pozo-consulta',
+  selector: 'revancha-consulta',
   templateUrl: './consulta.component.html',
   styleUrls: ['./consulta.component.scss'],
 })
@@ -164,7 +164,6 @@ export class ConsultaComponent implements OnInit {
         this.sorteoGanador,
         combinaciones
       );
-      console.log(data);
       this.resultados.emit(data);
       this.dismissLoader();
     } catch (e: any) {
@@ -187,7 +186,6 @@ export class ConsultaComponent implements OnInit {
   async buscarRango() {
     try {
       this.triggerLoader();
-      console.log('Buscando por rango');
       if (this.sorteoRango == 'default') {
         this.dismissLoader();
         this.openError('Por favor, selecciona un sorteo');

@@ -30,6 +30,7 @@ export class LottoComponent implements OnInit {
   usuario?: string;
   ticketsMillonaria: any;
   codigoPromocional: any = [];
+  ticketsPozoRevancha: any;
 
   constructor(
     private lotteryService: VentasService,
@@ -589,6 +590,40 @@ export class LottoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
+  async deletePozoRevanchaTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = "";
+      this.loadingMessage = "Removiendo boleto del carrito";
+      this.isLoading = true;
+      let ticket = this.ticketsPozoRevancha[identificador].ticket;
+      let sorteo = data.sorteo;
+
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        17,
+        reservaId
+      );
+
+      delete this.ticketsPozoRevancha[identificador];
+
+      await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = "Error";
+      this.openError(errorMessage);
+    }
+  }
   async deleteAllTickets() {
     try {
       this.loadingMessage = 'Removiendo boletos del carrito';
@@ -646,6 +681,7 @@ export class LottoComponent implements OnInit {
     this.ticketsLotto = carrito.lotto;
     this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
+    this.ticketsPozoRevancha = carrito.pozoRevancha;
   }
   isError: boolean = false;
   errorMessage?: string;

@@ -30,6 +30,10 @@ import { SaldoInsuficienteComponent } from './components/saldo-insuficiente/sald
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { BuscarNumeroDirective } from './directives/buscar-numero.directive';
+import { AgregarTicketDirective } from './directives/agregar-ticket.directive';
+import { BorrarTicketDirective } from './directives/borrar-ticket.directive';
+import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BotonDeJuegoComponent,
     VentaCanceladaComponent,
     SaldoInsuficienteComponent,
+    BuscarNumeroDirective,
+    AgregarTicketDirective,
+    BorrarTicketDirective,
+
   ],
   exports: [
     VentasComponent,
@@ -70,12 +78,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     PozoComponent,
     LottoComponent,
     MillonariaComponent,
+    BuscarNumeroDirective,
+    AgregarTicketDirective,
   ],
   imports: [
     CommonModule,
     LoteriaModule,
     LottoModule,
     PozoModule,
+    PozoRevanchaModule,
     MillonariaModule,
     SharedModule,
     FormsModule,

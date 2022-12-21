@@ -14,7 +14,6 @@ export class LottoComponent implements OnInit {
 
   toggleResultados(resultados: any) {
     this.resultados = resultados;
-    console.log(this.resultados);
     this.showResultados = true;
   }
   closeBox() {

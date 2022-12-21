@@ -161,7 +161,6 @@ export class ConsultaComponent implements OnInit {
         this.sorteoGanador,
         combinaciones
       );
-      console.log(data);
       this.resultados.emit(data);
       this.dismissLoader();
     } catch (e: any) {
