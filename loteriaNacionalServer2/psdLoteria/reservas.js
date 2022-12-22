@@ -81,7 +81,7 @@ module.exports.reservarCombinaciones = async (
         pozoRevanchaCombinacionesXML = `${pozoRevanchaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
       });
       pozoRevanchaCombinacionesXML = `
-            <JG id="5">
+            <JG id="17">
             ${pozoRevanchaCombinacionesXML}
             </JG>        
               
@@ -287,7 +287,7 @@ module.exports.eliminarReservas = async (
         pozoRevanchaCombinacionesXML = `${pozoRevanchaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" />`;
       });
       pozoRevanchaCombinacionesXML = `
-            <JG id="5">
+            <JG id="17">
             ${pozoRevanchaCombinacionesXML}
             </JG>        
               
