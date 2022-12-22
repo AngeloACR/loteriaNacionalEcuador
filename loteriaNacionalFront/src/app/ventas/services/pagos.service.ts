@@ -138,6 +138,7 @@ export class PagosService {
     let loteria = await this.cart.getCarritoLoteria();
     let lotto = await this.cart.getCarritoLotto();
     let pozo = await this.cart.getCarritoPozo();
+    let pozoRevancha = await this.cart.getCarritoPozoRevancha();
     let millonaria = await this.cart.getCarritoMillonaria();
     let total = this.cart.getTotal();
     let totalConDesc = this.cart.getTotalConDesc();
@@ -150,6 +151,7 @@ export class PagosService {
       loteria,
       lotto,
       pozo,
+      pozoRevancha,
       millonaria,
       lotteryToken: authData.lotteryToken,
       user: authData.user,

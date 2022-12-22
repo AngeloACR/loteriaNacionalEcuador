@@ -92,7 +92,6 @@ export class PozoComponent implements OnInit {
         return;
       }
       if (!this.ticketsDisponibles![id].status) {
-        console.log("agregando ticket de pozo")
         await this.seleccionarTicket(id);
       }
       this.isLoading = true;
@@ -164,7 +163,6 @@ export class PozoComponent implements OnInit {
         sorteo: tipoLoteria == 5? this.sorteoSeleccionado : this.sorteoSeleccionado!.sorteoRevancha,
         subtotal,
       };
-      console.log(aux);
       let hasBalance = await this.paymentService.hasBalance(
         subtotal,
         this.token
@@ -175,17 +173,14 @@ export class PozoComponent implements OnInit {
           ? (this.ticketsPozo[ticket.identificador] = aux)
           : (this.ticketsPozoRevancha[ticket.identificador] = aux);
         let reservaId = this.ventas.getReservaId();
-        console.log(reservaId)
         let response = await this.ventas.reservarBoletos(
           this.token!,
           aux,
           tipoLoteria,
           reservaId
         );
-        console.log(response)
 
         this.ventas.setReservaId(response);
-        console.log("Here i am")
         await this.cart.setCarrito(aux, tipoLoteria);
         tipoLoteria == 5? await this.cart.setCarritoPozo(this.ticketsPozo):await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
         await this.getCarritoTickets();
@@ -267,7 +262,8 @@ export class PozoComponent implements OnInit {
       this.ticketsDisponiblesRevancha = this.ticketsDisponiblesRevancha.map((ticket: any) => {
         ticket.identificador += 1;
         return ticket;
-      });;
+      });
+      console.log(this.ticketsDisponibles)
       this.combinacionDeLaSuerte = ['', '', '', ''];
       this.showNumeros = true;
       this.isLoading = false;

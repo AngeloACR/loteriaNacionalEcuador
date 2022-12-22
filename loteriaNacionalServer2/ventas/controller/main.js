@@ -320,6 +320,7 @@ const ventasController = {
       let loteriaAux = req.body.loteria;
       let lottoAux = req.body.lotto;
       let pozoAux = req.body.pozo;
+      let pozoRevanchaAux = req.body.pozoRevancha;
       let millonariaAux = req.body.millonaria;
       let reservationDetails = [];
 
@@ -377,6 +378,24 @@ const ventasController = {
         reservationDetails.push(aux);
         pozo.push(pozoAux[id]);
       }
+      let pozoRevancha = [];
+      for (id in pozoRevanchaAux) {
+        let drawDateAux = pozoRevanchaAux[id].sorteo.fecha
+          .split(" ")[0]
+          .split("/");
+        let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+        let aux = {
+          lotteryType: 17,
+          drawNumber: parseInt(pozoRevanchaAux[id].sorteo.sorteo),
+          drawDate,
+          subTotal: `${parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2)}`,
+          combinationC1: pozoRevanchaAux[id].ticket.combinacion1,
+          combinationC2: pozoRevanchaAux[id].ticket.combinacion2,
+          combinationC3: pozoRevanchaAux[id].ticket.mascota,
+        };
+        reservationDetails.push(aux);
+        pozoRevancha.push(pozoRevanchaAux[id]);
+      }
       let millonaria = [];
       for (id in millonariaAux) {
         let drawDateAux = millonariaAux[id].sorteo.fecha
@@ -415,6 +434,7 @@ const ventasController = {
         millonaria: millonariaAux,
         user,
         pozo: pozoAux,
+        pozoRevancha: pozoRevanchaAux,
         reservaId: reservaId,
         accountId,
         status: "Pendiente",
@@ -552,6 +572,22 @@ const ventasController = {
         aux["fecha"] = pozoAux[id].sorteo.fecha;
         pozo.push(aux);
       }
+      let pozoRevanchaAux = apiReservaData.pozoRevancha;
+      let pozoRevancha = [];
+      for (id in pozoRevanchaAux) {
+        let aux = {};
+        aux["combinacion1"] = pozoRevanchaAux[id].ticket.combinacion1;
+        aux["combinacion2"] = pozoRevanchaAux[id].ticket.combinacion2;
+        aux["mascota"] = pozoRevanchaAux[id].ticket.mascota;
+        aux["sorteo"] = pozoRevanchaAux[id].sorteo.sorteo;
+        aux["subtotal"] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
+        aux["tieneDescuento"] = pozoRevanchaAux[id].tieneDescuento;
+        aux["subtotalConDesc"] = parseFloat(
+          pozoRevanchaAux[id].subtotalConDesc
+        ).toFixed(2);
+        aux["fecha"] = pozoRevanchaAux[id].sorteo.fecha;
+        pozoRevancha.push(aux);
+      }
       let millonariaAux = apiReservaData.millonaria;
       let millonaria = [];
       for (id in millonariaAux) {
@@ -581,6 +617,7 @@ const ventasController = {
         loteria,
         alboranReservaId,
         pozo,
+        pozoRevancha,
         alboranVentaId,
         lotto,
         millonaria,

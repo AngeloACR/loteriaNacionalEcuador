@@ -77,6 +77,28 @@ const VentaSchema = new mongoose.Schema(
         },
       },
     ],
+    pozoRevancha: [
+      {
+        sorteo: {
+          type: String,
+        },
+        subtotal: {
+          type: String,
+        },
+        fecha: {
+          type: String,
+        },
+        combinacion1: {
+          type: String,
+        },
+        combinacion2: {
+          type: String,
+        },
+        mascota: {
+          type: String,
+        },
+      },
+    ],
 
     millonaria: [
       {
@@ -153,7 +175,6 @@ const VentaSchema = new mongoose.Schema(
 );
 
 VentaSchema.statics = {
-
   addVenta: async function (element) {
     try {
       let newVenta = await this.create(element);
@@ -173,18 +194,17 @@ VentaSchema.statics = {
   },
   actualizarStatus: async function (id, status, value) {
     try {
-      
       let venta = (await this.getVentaById(id)).values;
       venta["status"] = status;
       switch (status) {
         case "Reservada":
           venta["alboranReservaId"] = value;
           break;
-          case "Procesada":
-            venta["ventaId"] = value;
-  
-            break;
-            
+        case "Procesada":
+          venta["ventaId"] = value;
+
+          break;
+
         case "Cancelada":
           venta["alboranCancelacionId"] = value;
 
@@ -196,7 +216,7 @@ VentaSchema.statics = {
       }
       let response = await venta.save();
 
-/*       logData = {
+      /*       logData = {
         data: {
           id,
           status,
@@ -251,10 +271,10 @@ VentaSchema.statics = {
       let response;
       if (venta) {
         //if (accountId == venta.accountId) {
-          response = {
-            status: true,
-            values: venta,
-          };
+        response = {
+          status: true,
+          values: venta,
+        };
         /*} else {
           response = {
             status: false,

@@ -22,7 +22,7 @@ export class UltimoResultadoComponent implements OnInit {
     this.mascotaPath = this.consulta.obtenerMascota(this.mascota);
 
     this.ticketGanador = {
-      ticketIndex: data.ultimoResultadoPozo.codigo,
+      ticketIndex: data.ultimoResultadoPozoRevancha.codigo,
       description: "Boleto Ganador",
       ticketNumbers: this.ticketNumbers,
       mascota: this.mascota,
@@ -34,9 +34,9 @@ export class UltimoResultadoComponent implements OnInit {
   }
   verUltimoBoletin() {
     let sorteo = this.ticketGanador.numeroSorteo;
-    this.router.navigateByUrl(`/consultas/pozo/boletin/${sorteo}`);
+    this.router.navigateByUrl(`/consultas/pozoRevancha/boletin/${sorteo}`);
   }
   verResultados() {
-    this.router.navigateByUrl(`/consultas/pozo`);
+    this.router.navigateByUrl(`/consultas/pozoRevancha`);
   }
 }

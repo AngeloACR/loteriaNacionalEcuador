@@ -13,8 +13,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class VentasService {
-
-  mySource = environment.source
+  mySource = environment.source;
 
   sorteo?: Array<sorteo>;
   ticketsNacional?: ticketsNacional[];
@@ -180,6 +179,15 @@ export class VentasService {
         ];
         body['pozo'] = aux;
         break;
+      case 17:
+        aux = [
+          {
+            combinacion: boleto.ticket.combinacion1,
+            sorteo: boleto.sorteo,
+          },
+        ];
+        body['pozoRevancha'] = aux;
+        break;
       case 14:
         aux = [
           {
@@ -248,15 +256,24 @@ export class VentasService {
         body['lotto'] = aux;
         break;
 
-      case 5:
-        aux = [
-          {
-            combinacion: boleto.combinacion1,
-            sorteo: sorteo,
-          },
-        ];
-        body['pozo'] = aux;
-        break;
+        case 5:
+          aux = [
+            {
+              combinacion: boleto.combinacion1,
+              sorteo: sorteo,
+            },
+          ];
+          body['pozo'] = aux;
+          break;
+          case 17:
+            aux = [
+              {
+                combinacion: boleto.combinacion1,
+                sorteo: sorteo,
+              },
+            ];
+            body['pozoRevancha'] = aux;
+            break;
       case 14:
         aux = [
           {
@@ -286,6 +303,7 @@ export class VentasService {
     boletosLoteria: any,
     boletosLotto: any,
     boletosPozo: any,
+    boletosPozoRevancha: any,
     boletosMillonaria: any,
     reservaId: any
   ) {
@@ -305,6 +323,7 @@ export class VentasService {
     let auxLoteria: any = [];
     let auxLotto: any = [];
     let auxPozo: any = [];
+    let auxPozoRevancha: any = [];
     let auxMillonaria: any = [];
     boletosLoteria.forEach((boleto: any) => {
       auxLoteria.push({
@@ -327,6 +346,13 @@ export class VentasService {
         sorteo: boleto.sorteo,
       });
       body['pozo'] = auxPozo;
+    });
+    boletosPozoRevancha.forEach((boleto: any) => {
+      auxPozoRevancha.push({
+        combinacion: boleto.ticket.combinacion1,
+        sorteo: boleto.sorteo,
+      });
+      body['pozoRevancha'] = auxPozoRevancha;
     });
     boletosMillonaria.forEach((boleto: any) => {
       auxMillonaria.push({

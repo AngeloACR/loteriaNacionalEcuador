@@ -4,7 +4,7 @@ var soap = require("soap");
 const path = require("path");
 var { loteriaError } = require("./errors");
 const { loteriaAuthLogger } = require("./logging");
-const config = require("../environments/test");
+const config = require("../environments/production");
 
 const usuarioClientePsd = config.usuarioAplicativo;
 const claveClientePsd = config.passwordAplicativo;
@@ -162,6 +162,20 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
                 identificacion: datosUsuario.$.Identificacion,
                 correo,
                 telefono,
+                tipoId: datosUsuario.$.TipoIdentificacion,
+                tipoPersona: datosUsuario.$.TipoPersonaNombre,
+                recibeNumerologia: datosUsuario.$.RecibeNumerologia,
+                recibeEstadisticas: datosUsuario.$.RecibeEstadisticas,
+                activo: datosUsuario.$.Activo,
+                fechaRegistro: datosUsuario.$.FechaRegistro,
+                usuarioRegistroId: datosUsuario.$.UsuarioRegistroId,
+                fechaModificacion: datosUsuario.$.FechaModificacion,
+                usuarioModificacionId: datosUsuario.$.UsuarioModificacionId,
+                fechaActivacion: datosUsuario.$.FechaActivacion,
+                usuarioActivacionId: datosUsuario.$.UsuarioActivacionId,
+                fechaInactivacion: datosUsuario.$.FechaInactivacion,
+                usuarioInactivacionId: datosUsuario.$.UsuarioInactivacionId,
+
                 status: true,
               };
 
@@ -277,6 +291,7 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
                 nombre:
                   `${data.PE.R[0].$.pNomb} ${data.PE.R[0].$.apePat}`.toUpperCase(),
                 status: true,
+                personaId: data.PE.R[0].$.PerId,
               };
 
               let logData = {

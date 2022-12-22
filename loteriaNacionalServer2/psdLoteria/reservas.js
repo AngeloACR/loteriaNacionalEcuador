@@ -5,7 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaReservasLogger } = require("./logging");
-const config = require("../environments/test");
+const config = require("../environments/production");
 
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
@@ -14,6 +14,7 @@ module.exports.reservarCombinaciones = async (
   loteria,
   lotto,
   pozo,
+  pozoRevancha,
   millonaria,
   token,
   reservaId,
@@ -71,6 +72,20 @@ module.exports.reservarCombinaciones = async (
               
             `;
     }
+
+    if (pozoRevancha.length != 0) {
+      pozoRevancha.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        pozoRevanchaCombinacionesXML = `${pozoRevanchaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      pozoRevanchaCombinacionesXML = `
+            <JG id="5">
+            ${pozoRevanchaCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
     if (millonaria.length != 0) {
       millonaria.forEach((item) => {
         let combinacion = item.combinacion;
@@ -117,6 +132,7 @@ module.exports.reservarCombinaciones = async (
     ${loteriaCombinacionesXML} 
     ${lottoCombinacionesXML} 
     ${pozoCombinacionesXML} 
+    ${pozoRevanchaCombinacionesXML} 
     ${millonariaCombinacionesXML} 
 
   </RS>
@@ -206,6 +222,7 @@ module.exports.eliminarReservas = async (
   loteria,
   lotto,
   pozo,
+  pozoRevancha,
   millonaria,
   token,
   reservaId,
@@ -261,6 +278,19 @@ module.exports.eliminarReservas = async (
               
             `;
     }
+    if (pozoRevancha.length != 0) {
+      pozoRevancha.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        pozoRevanchaCombinacionesXML = `${pozoRevanchaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" />`;
+      });
+      pozoRevanchaCombinacionesXML = `
+            <JG id="5">
+            ${pozoRevanchaCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
     if (millonaria.length != 0) {
       millonaria.forEach((item) => {
         let combinacion = item.combinacion;
@@ -305,6 +335,7 @@ module.exports.eliminarReservas = async (
               ${loteriaCombinacionesXML} 
               ${lottoCombinacionesXML} 
               ${pozoCombinacionesXML}
+              ${pozoRevanchaCombinacionesXML} 
               ${millonariaCombinacionesXML}
           
             </RS>
@@ -462,6 +493,7 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
               let loteria = boletos.filter((x) => x.tipoLoteria == 1);
               let lotto = boletos.filter((x) => x.tipoLoteria == 2);
               let pozo = boletos.filter((x) => x.tipoLoteria == 5);
+              let pozoRevancha = boletos.filter((x) => x.tipoLoteria == 17);
               let millonaria = boletos.filter((x) => x.tipoLoteria == 14);
 
               let carrito = loteria.concat(lotto).concat(pozo);
@@ -469,6 +501,7 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
                 loteria,
                 lotto,
                 pozo,
+                pozoRevancha,
                 millonaria,
                 carrito,
               };
