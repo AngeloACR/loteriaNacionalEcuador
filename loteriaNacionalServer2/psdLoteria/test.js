@@ -1,6 +1,6 @@
 const auth = require("./auth");
 const juegos = require("./juegos");
-const config = require("../environments/production");
+const config = require("../environments/test");
 
 (async () => {
   try {
