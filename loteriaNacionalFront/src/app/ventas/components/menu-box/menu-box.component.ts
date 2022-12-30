@@ -1,19 +1,19 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
-import { VentasService } from "../../services/ventas.service";
-import { PagosService } from "../../services/pagos.service";
-import { CarritoService } from "../../services/carrito.service";
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { VentasService } from '../../services/ventas.service';
+import { PagosService } from '../../services/pagos.service';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'ventas-menu-box',
   templateUrl: './menu-box.component.html',
-  styleUrls: ['./menu-box.component.scss']
+  styleUrls: ['./menu-box.component.scss'],
 })
 export class MenuBoxComponent implements OnInit {
-  linkLotto: string = "";
-  linkLoteriaNacional: string = "";
-  linkPozoMillonario: string = "";
-  linkMillonaria: string = "";
+  linkLotto: string = '';
+  linkLoteriaNacional: string = '';
+  linkPozoMillonario: string = '';
+  linkMillonaria: string = '';
   token?: string;
   lotteryToken?: string;
   usuario?: string;
@@ -37,13 +37,13 @@ export class MenuBoxComponent implements OnInit {
     private router: Router
   ) {
     this.actRoute.params.subscribe((params) => {
-      this.token = params["token"];
+      this.token = params['token'];
     });
   }
 
   async ngOnInit() {
     try {
-      this.loadingMessage = "Espera mientras procesamos tu información";
+      this.loadingMessage = 'Espera mientras procesamos tu información';
       this.isLoading = true;
       if (this.token) {
         let data = await this.lottery.authUser(this.token);
@@ -63,7 +63,7 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
       console.log(e);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
@@ -74,7 +74,7 @@ export class MenuBoxComponent implements OnInit {
   compraCancelada: boolean = false;
   instantaneas: any;
   isInstantaneas: boolean = false;
-  cancelMessage: string = "";
+  cancelMessage: string = '';
   detalleCompra: any;
   recargaDeSaldoMessage?: string;
 
@@ -103,52 +103,52 @@ export class MenuBoxComponent implements OnInit {
     let loteria = [];
     for (let id in loteriaAux) {
       let aux: any = {};
-      aux["combinacion1"] = loteriaAux[id].ticket.combinacion;
-      aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
-      aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
-      aux["fecha"] = loteriaAux[id].sorteo.fecha;
-      aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
+      aux['combinacion1'] = loteriaAux[id].ticket.combinacion;
+      aux['fracciones'] = loteriaAux[id].ticket.seleccionados;
+      aux['subtotal'] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
+      aux['fecha'] = loteriaAux[id].sorteo.fecha;
+      aux['sorteo'] = loteriaAux[id].sorteo.sorteo;
       loteria.push(aux);
     }
     let lottoAux = this.ticketsLotto;
     let lotto = [];
     for (let id in lottoAux) {
       let aux: any = {};
-      aux["combinacion1"] = lottoAux[id].ticket.combinacion1;
-      aux["combinacion2"] = lottoAux[id].ticket.combinacion2;
-      aux["combinacion3"] = lottoAux[id].ticket.combinacion3;
-      aux["combinacion4"] = lottoAux[id].ticket.combinacion4;
-      aux["sorteo"] = lottoAux[id].sorteo.sorteo;
-      aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
-      aux["fecha"] = lottoAux[id].sorteo.fecha;
+      aux['combinacion1'] = lottoAux[id].ticket.combinacion1;
+      aux['combinacion2'] = lottoAux[id].ticket.combinacion2;
+      aux['combinacion3'] = lottoAux[id].ticket.combinacion3;
+      aux['combinacion4'] = lottoAux[id].ticket.combinacion4;
+      aux['sorteo'] = lottoAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(lottoAux[id].subtotal).toFixed(2);
+      aux['fecha'] = lottoAux[id].sorteo.fecha;
       lotto.push(aux);
     }
     let pozoAux = this.ticketsPozo;
     let pozo = [];
     for (let id in pozoAux) {
       let aux: any = {};
-      aux["combinacion1"] = pozoAux[id].ticket.combinacion1;
-      aux["combinacion2"] = pozoAux[id].ticket.combinacion2;
-      aux["mascota"] = pozoAux[id].ticket.mascota;
-      aux["sorteo"] = pozoAux[id].sorteo.sorteo;
-      aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
-      aux["fecha"] = pozoAux[id].sorteo.fecha;
+      aux['combinacion1'] = pozoAux[id].ticket.combinacion1;
+      aux['combinacion2'] = pozoAux[id].ticket.combinacion2;
+      aux['mascota'] = pozoAux[id].ticket.mascota;
+      aux['sorteo'] = pozoAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(pozoAux[id].subtotal).toFixed(2);
+      aux['fecha'] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
     }
     let millonariaAux = this.ticketsMillonaria;
     let millonaria = [];
     for (let id in millonariaAux) {
       let aux: any = {};
-      aux["combinacion1"] = millonariaAux[id].ticket.combinacion1;
-      aux["combinacion2"] = millonariaAux[id].ticket.combinacion2;
-      aux["fracciones"] = millonariaAux[id].ticket.seleccionados;
-      aux["subtotal"] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
-      aux["subtotalConDesc"] = parseFloat(
+      aux['combinacion1'] = millonariaAux[id].ticket.combinacion1;
+      aux['combinacion2'] = millonariaAux[id].ticket.combinacion2;
+      aux['fracciones'] = millonariaAux[id].ticket.seleccionados;
+      aux['subtotal'] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(
         millonariaAux[id].subtotalConDesc
       ).toFixed(2);
-      aux["tieneDescuento"] = millonariaAux[id].tieneDescuento;
-      aux["fecha"] = millonariaAux[id].sorteo.fecha;
-      aux["sorteo"] = millonariaAux[id].sorteo.sorteo;
+      aux['tieneDescuento'] = millonariaAux[id].tieneDescuento;
+      aux['fecha'] = millonariaAux[id].sorteo.fecha;
+      aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
       millonaria.push(aux);
     }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
@@ -177,7 +177,7 @@ export class MenuBoxComponent implements OnInit {
   async confirmarCompra() {
     try {
       this.isLoading = true;
-      this.loadingMessage = "Espera mientras procesamos tu compra";
+      this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
 
       if (hasBalance) {
@@ -194,11 +194,11 @@ export class MenuBoxComponent implements OnInit {
               this.instantaneas = response.instantanea.data;
               this.isInstantaneas = true;
             } else {
-              this.instantaneas = "";
+              this.instantaneas = '';
               this.abrirFinalizar();
             }
           } else {
-            this.cancelarCompra("");
+            this.cancelarCompra('');
           }
         } else {
           this.openValidationError(cartValidation.message);
@@ -206,16 +206,15 @@ export class MenuBoxComponent implements OnInit {
         this.isLoading = false;
       } else {
         this.isLoading = false;
-        let message = "Tu saldo es insuficiente para realizar la compra";
+        let message = 'Tu saldo es insuficiente para realizar la compra';
         this.recargarSaldo(message);
       }
-
     } catch (e: any) {
       this.isLoading = false;
       this.purchase.habilitarBoton();
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
@@ -254,7 +253,7 @@ export class MenuBoxComponent implements OnInit {
     try {
       let identificador = data.ticket.identificador;
       let fracciones = data.ticket.seleccionados;
-      this.loadingMessage = "Removiendo boleto del carrito";
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let ticket = this.ticketsMillonaria[identificador].ticket;
       let sorteo = data.sorteo;
@@ -282,7 +281,7 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
@@ -290,7 +289,7 @@ export class MenuBoxComponent implements OnInit {
     try {
       let identificador = data.ticket.identificador;
       let fracciones = data.ticket.seleccionados;
-      this.loadingMessage = "Removiendo boleto del carrito";
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let ticket = this.ticketsLoteria[identificador].ticket;
       let sorteo = data.sorteo;
@@ -318,15 +317,15 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
   async deleteLottoTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;
-      let fraccion = "";
-      this.loadingMessage = "Removiendo boleto del carrito";
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let ticket = this.ticketsLotto[identificador].ticket;
       let sorteo = data.sorteo;
@@ -352,14 +351,14 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
 
   async deleteLoteriaFraccion(data: any) {
     try {
-      this.loadingMessage = "Removiendo boleto del carrito";
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let identificador = data.ticket.ticket.identificador;
       let ticket = data.ticket.ticket;
@@ -391,15 +390,15 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
   async deletePozoTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;
-      let fraccion = "";
-      this.loadingMessage = "Removiendo boleto del carrito";
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = data.sorteo;
@@ -420,20 +419,25 @@ export class MenuBoxComponent implements OnInit {
 
       await this.getCarritoTickets();
       this.getTotal();
+      if (this.ticketsPozoRevancha[identificador + 1]) {
+        await this.deletePozoRevanchaTicket(
+          this.ticketsPozoRevancha[identificador + 1]
+        );
+      }
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
   async deletePozoRevanchaTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;
-      let fraccion = "";
-      this.loadingMessage = "Removiendo boleto del carrito";
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let ticket = this.ticketsPozoRevancha[identificador].ticket;
       let sorteo = data.sorteo;
@@ -449,6 +453,7 @@ export class MenuBoxComponent implements OnInit {
       );
 
       delete this.ticketsPozoRevancha[identificador];
+      await this.cart.removeFromCart(ticket, 17);
 
       await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
 
@@ -459,13 +464,13 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
   async deleteAllTickets() {
     try {
-      this.loadingMessage = "Removiendo boletos del carrito";
+      this.loadingMessage = 'Removiendo boletos del carrito';
       this.isLoading = true;
       let boletosLoteria = Object.keys(this.ticketsLoteria).map((key) => {
         return {
@@ -486,7 +491,7 @@ export class MenuBoxComponent implements OnInit {
         };
       });
       let reservaId = this.lottery.getReservaId();
-/*       await this.lottery.eliminarTodosLosBoletosDeReserva(
+      /*       await this.lottery.eliminarTodosLosBoletosDeReserva(
         this.token,
         boletosLoteria,
         boletosLotto,
@@ -501,7 +506,7 @@ export class MenuBoxComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage, errorTitle);
     }
   }
@@ -517,8 +522,8 @@ export class MenuBoxComponent implements OnInit {
 
   authError() {
     this.openError(
-      "Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta",
-      "Aviso"
+      'Por favor, para poder comprar tu boleto preferido, deberás iniciar sesión en tu cuenta',
+      'Aviso'
     );
   }
 

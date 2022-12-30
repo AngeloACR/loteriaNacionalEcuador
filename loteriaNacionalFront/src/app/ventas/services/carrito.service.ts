@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +14,6 @@ export class CarritoService {
   ticketsPozoRevancha: any = {};
   ticketsCarrito: any = [];
   reservaId: any = 0;
-
 
   mySource = environment.source;
 
@@ -273,8 +272,12 @@ export class CarritoService {
   }
 
   async setCarritoPozoRevancha(tickets: any) {
+    console.log(tickets);
     return new Promise<any>(async (resolve, reject) => {
-      localStorage.setItem('seleccionadosPozoRevancha', JSON.stringify(tickets));
+      localStorage.setItem(
+        'seleccionadosPozoRevancha',
+        JSON.stringify(tickets)
+      );
       //this.ticketsPozo = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
@@ -356,7 +359,7 @@ export class CarritoService {
           this.setLottoLocal(data.lotto);
           this.setMillonariaLocal(data.millonaria);
           this.setPozoLocal(data.pozo);
-          this.setPozoRevanchaLocal(data.pozo);
+          this.setPozoRevanchaLocal(data.pozoRevancha);
           //await this.setTotal();
 
           resolve(data);
@@ -534,6 +537,7 @@ export class CarritoService {
       let loteriaAux = this.getLoteriaLocal();
       let lottoAux = this.getLottoLocal();
       let pozoAux = this.getPozoLocal();
+      let revanchaAux = this.getPozoRevanchaLocal();
       let millonariaAux = this.getMillonariaLocal();
       let loteria = 0;
       for (let id in loteriaAux) {
@@ -547,11 +551,15 @@ export class CarritoService {
       for (let id in pozoAux) {
         pozo += parseFloat(pozoAux[id].subtotal);
       }
+      let revancha = 0;
+      for (let id in revanchaAux) {
+        revancha += parseFloat(revanchaAux[id].subtotal);
+      }
       let millonaria = 0;
       for (let id in millonariaAux) {
         millonaria += parseFloat(millonariaAux[id].subtotal);
       }
-      let aux = loteria + lotto + pozo + millonaria;
+      let aux = loteria + lotto + pozo + revancha + millonaria;
 
       this.total = aux;
       localStorage.setItem('total', JSON.stringify(aux));

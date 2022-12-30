@@ -460,6 +460,7 @@ const ventasController = {
         loteria,
         lotto,
         pozo,
+        pozoRevancha,
         millonaria,
         lotteryToken,
         reservaId,

@@ -81,24 +81,29 @@ export class PozoComponent implements OnInit {
 
   async agregarRevancha(id: number) {
     try {
+      if (this.ticketsDisponibles![id].status) {
+        await this.deletePozoTicket(
+          this.ticketsPozo[this.ticketsDisponibles![id].identificador]
+        );
+      }
       this.changeDetectorRef.detectChanges();
       this.ticketsDisponiblesRevancha![id].status =
         !this.ticketsDisponiblesRevancha![id].status;
       this.changeDetectorRef.markForCheck();
       if (!this.ticketsDisponiblesRevancha![id].status) {
-        this.deletePozoRevanchaTicket(
-          this.ticketsPozo[this.ticketsDisponiblesRevancha![id].identificador]
+        await this.deletePozoRevanchaTicket(
+          this.ticketsPozoRevancha[
+            this.ticketsDisponiblesRevancha![id].identificador
+          ]
         );
         return;
       }
-      if (!this.ticketsDisponibles![id].status) {
-        await this.seleccionarTicket(id);
-      }
       this.isLoading = true;
-      let count = (await this.cart.getCount()) + 1;
+      let count = (await this.cart.getCount()) + 2;
       if (count <= 1000) {
         this.isLoading = false;
-        await this.pushToSeleccionado(this.ticketsDisponiblesRevancha![id], 17);
+        this.ticketsDisponibles![id].status = true;
+        await this.pushToRevancha(id);
       } else {
         this.changeDetectorRef.detectChanges();
         this.ticketsDisponiblesRevancha![id].status = false;
@@ -117,6 +122,70 @@ export class PozoComponent implements OnInit {
     }
   }
 
+  async pushToRevancha(id: any) {
+    try {
+      this.loadingMessage = 'Agregando boleto al carrito';
+      this.isLoading = true;
+      let subtotal =
+        parseFloat(this.sorteoSeleccionado!.precio) +
+        parseFloat(this.sorteoSeleccionado!.sorteoRevancha.precio);
+      let auxPozo = {
+        ticket: this.ticketsDisponibles[id],
+        sorteo: this.sorteoSeleccionado,
+        subtotal: this.sorteoSeleccionado!.precio,
+      };
+      let auxRevancha = {
+        ticket: this.ticketsDisponiblesRevancha[id],
+        sorteo: this.sorteoSeleccionado!.sorteoRevancha,
+        subtotal: this.sorteoSeleccionado!.sorteoRevancha.precio,
+      };
+      let hasBalance = await this.paymentService.hasBalance(
+        subtotal,
+        this.token
+      );
+
+      if (hasBalance) {
+        this.ticketsPozo[this.ticketsDisponibles[id].identificador] = auxPozo;
+        this.ticketsPozoRevancha[
+          this.ticketsDisponiblesRevancha[id].identificador
+        ] = auxRevancha;
+        let reservaId = this.ventas.getReservaId();
+        let response = await this.ventas.reservarRevancha(
+          auxPozo,
+          auxRevancha,
+          reservaId
+        );
+
+        this.ventas.setReservaId(response);
+        await this.cart.setCarrito(auxPozo, 5);
+        await this.cart.setCarrito(auxRevancha, 17);
+        await this.cart.setCarritoPozo(this.ticketsPozo);
+        await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
+        await this.getCarritoTickets();
+        //this.getTotal();
+        this.isLoading = false;
+      } else {
+        this.isLoading = false;
+        let message =
+          'Tu saldo es insuficiente para agregar este boleto al carrito';
+        this.ticketsDisponibles!.find(
+          (x: any) =>
+            x.identificador === this.ticketsDisponibles[id].identificador
+        ).status = false;
+        this.ticketsDisponiblesRevancha!.find(
+          (x: any) =>
+            x.identificador ===
+            this.ticketsDisponiblesRevancha[id].identificador
+        ).status = false;
+        this.recargarSaldo(message);
+      }
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      this.openError(errorMessage);
+    }
+  }
   async seleccionarTicket(id: any) {
     try {
       this.isLoading = true;
@@ -157,10 +226,10 @@ export class PozoComponent implements OnInit {
     try {
       this.loadingMessage = 'Agregando boleto al carrito';
       this.isLoading = true;
-      let subtotal =tipoLoteria == 5? this.sorteoSeleccionado!.precio: this.sorteoSeleccionado!.sorteoRevancha.precio;
+      let subtotal = this.sorteoSeleccionado!.precio;
       let aux = {
         ticket,
-        sorteo: tipoLoteria == 5? this.sorteoSeleccionado : this.sorteoSeleccionado!.sorteoRevancha,
+        sorteo: this.sorteoSeleccionado,
         subtotal,
       };
       let hasBalance = await this.paymentService.hasBalance(
@@ -169,9 +238,7 @@ export class PozoComponent implements OnInit {
       );
 
       if (hasBalance) {
-        tipoLoteria == 5
-          ? (this.ticketsPozo[ticket.identificador] = aux)
-          : (this.ticketsPozoRevancha[ticket.identificador] = aux);
+        this.ticketsPozo[ticket.identificador] = aux;
         let reservaId = this.ventas.getReservaId();
         let response = await this.ventas.reservarBoletos(
           this.token!,
@@ -182,7 +249,7 @@ export class PozoComponent implements OnInit {
 
         this.ventas.setReservaId(response);
         await this.cart.setCarrito(aux, tipoLoteria);
-        tipoLoteria == 5? await this.cart.setCarritoPozo(this.ticketsPozo):await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
+        await this.cart.setCarritoPozo(this.ticketsPozo);
         await this.getCarritoTickets();
         //this.getTotal();
         this.isLoading = false;
@@ -258,12 +325,15 @@ export class PozoComponent implements OnInit {
         this.tipoSeleccion,
         authData
       );
-      this.ticketsDisponiblesRevancha = JSON.parse(JSON.stringify(this.ticketsDisponibles));
-      this.ticketsDisponiblesRevancha = this.ticketsDisponiblesRevancha.map((ticket: any) => {
-        ticket.identificador += 1;
-        return ticket;
-      });
-      console.log(this.ticketsDisponibles)
+      this.ticketsDisponiblesRevancha = JSON.parse(
+        JSON.stringify(this.ticketsDisponibles)
+      );
+      this.ticketsDisponiblesRevancha = this.ticketsDisponiblesRevancha.map(
+        (ticket: any) => {
+          ticket.identificador += 1;
+          return ticket;
+        }
+      );
       this.combinacionDeLaSuerte = ['', '', '', ''];
       this.showNumeros = true;
       this.isLoading = false;
@@ -715,14 +785,14 @@ export class PozoComponent implements OnInit {
         );
         if (deletedIndex != -1)
           this.ticketsDisponibles[deletedIndex].status = false;
+      }
+      if (this.ticketsPozoRevancha[identificador + 1]) {
         await this.deletePozoRevanchaTicket({
           ticket: {
-            identificador:
-              this.ticketsDisponiblesRevancha[deletedIndex].identificador,
+            identificador: identificador + 1,
           },
         });
       }
-
       await this.getCarritoTickets();
       //this.getTotal();
       await this.setDescuento(5);
@@ -753,16 +823,19 @@ export class PozoComponent implements OnInit {
         reservaId
       );
 
-      delete this.ticketsPozo[identificador];
+      delete this.ticketsPozoRevancha[identificador];
 
       await this.cart.removeFromCart(ticket, 17);
       await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
-      if (this.ticketsDisponibles && this.ticketsDisponibles.length) {
-        let deletedIndex = this.ticketsDisponibles.findIndex(
+      if (
+        this.ticketsDisponiblesRevancha &&
+        this.ticketsDisponiblesRevancha.length
+      ) {
+        let deletedIndex = this.ticketsDisponiblesRevancha.findIndex(
           (x: any) => x.identificador === identificador
         );
         if (deletedIndex != -1)
-          this.ticketsDisponibles[deletedIndex].status = false;
+          this.ticketsDisponiblesRevancha[deletedIndex].status = false;
       }
       await this.getCarritoTickets();
       //this.getTotal();
@@ -812,6 +885,18 @@ export class PozoComponent implements OnInit {
           );
           if (deletedIndex != -1)
             this.ticketsDisponibles[deletedIndex].status = false;
+        }
+      });
+      Object.keys(this.ticketsPozoRevancha).forEach((key) => {
+        if (
+          this.ticketsDisponiblesRevancha &&
+          this.ticketsDisponiblesRevancha.length != 0
+        ) {
+          let deletedIndex = this.ticketsDisponiblesRevancha.findIndex(
+            (x: any) => x.identificador == key
+          );
+          if (deletedIndex != -1)
+            this.ticketsDisponiblesRevancha[deletedIndex].status = false;
         }
       });
       await this.cart.borrarCarrito();

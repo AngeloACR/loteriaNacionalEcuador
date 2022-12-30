@@ -265,6 +265,7 @@ module.exports.venderBoletos = async (
   loteria,
   lotto,
   pozo,
+  pozoRevancha,
   millonaria,
   lotteryToken,
   reservaId,
@@ -278,6 +279,7 @@ module.exports.venderBoletos = async (
     let loteriaCombinacionesXML = "";
     let lottoCombinacionesXML = "";
     let pozoCombinacionesXML = "";
+    let pozoRevanchaCombinacionesXML = "";
     let millonariaCombinacionesXML = "";
     if (loteria.length != 0) {
       loteria.forEach((item) => {
@@ -326,6 +328,21 @@ module.exports.venderBoletos = async (
       pozoCombinacionesXML = `
             <JG id="5">
                 ${pozoCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
+    if (pozoRevancha.length != 0) {
+      pozoRevancha.forEach((item) => {
+        let combinacion = item.ticket.combinacion1;
+        let cant = 1;
+        pozoRevanchaCombinacionesXML = `
+                ${pozoRevanchaCombinacionesXML}
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      pozoRevanchaCombinacionesXML = `
+            <JG id="17">
+                ${pozoRevanchaCombinacionesXML}
             </JG>        
               
             `;

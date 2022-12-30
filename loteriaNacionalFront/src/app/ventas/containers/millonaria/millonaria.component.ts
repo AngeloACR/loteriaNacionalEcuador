@@ -488,7 +488,6 @@ export class MillonariaComponent implements OnInit {
         let message = 'Tu saldo es insuficiente para realizar la compra';
         this.recargarSaldo(message);
       }
-
     } catch (e: any) {
       this.isLoading = false;
       this.purchase.habilitarBoton();
@@ -812,6 +811,11 @@ export class MillonariaComponent implements OnInit {
       await this.cart.setCarritoPozo(this.ticketsPozo);
       //this.getTotal();
 
+      if (this.ticketsPozoRevancha[identificador + 1]) {
+        await this.deletePozoRevanchaTicket(
+          this.ticketsPozoRevancha[identificador + 1]
+        );
+      }
       await this.setDescuento(5);
       this.isLoading = false;
     } catch (e: any) {
@@ -824,8 +828,8 @@ export class MillonariaComponent implements OnInit {
   async deletePozoRevanchaTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;
-      let fraccion = "";
-      this.loadingMessage = "Removiendo boleto del carrito";
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let ticket = this.ticketsPozoRevancha[identificador].ticket;
       let sorteo = data.sorteo;
@@ -841,6 +845,7 @@ export class MillonariaComponent implements OnInit {
       );
 
       delete this.ticketsPozoRevancha[identificador];
+      await this.cart.removeFromCart(ticket, 17);
 
       await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
 
@@ -851,7 +856,7 @@ export class MillonariaComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage);
     }
   }

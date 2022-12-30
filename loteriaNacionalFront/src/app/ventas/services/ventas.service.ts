@@ -213,6 +213,50 @@ export class VentasService {
     });
   }
 
+  reservarRevancha(
+    pozo: any,
+    revancha: any,
+    reservaId: any
+  ) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let address = '/reservas';
+    let endpoint = '/reservarBoletos';
+
+    address = this.mySource + address + endpoint;
+    let authData = this.getAuthData();
+    let body: any = {
+      lotteryToken: authData.lotteryToken,
+      user: authData.user,
+      reservaId,
+    };
+    let auxPozo = [
+      {
+        combinacion: pozo.ticket.combinacion1,
+        sorteo: pozo.sorteo,
+      },
+    ];
+    body['pozo'] = auxPozo;
+    let auxRevancha = [
+      {
+        combinacion: revancha.ticket.combinacion1,
+        sorteo: revancha.sorteo,
+      },
+    ];
+    body['pozoRevancha'] = auxRevancha;
+
+    return new Promise<any>((resolve, reject) => {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) => {
+          let response: any = data;
+          resolve(response);
+        },
+        (error: any) => {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
   eliminarBoletosDeReserva(
     token: any,
     boleto: any,

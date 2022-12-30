@@ -7,7 +7,7 @@ import {
   ticketsLotto,
 } from '../../interfaces/venta';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import {VentaService as LottoService} from '../../../juegos/lotto/services/venta.service'
+import { VentaService as LottoService } from '../../../juegos/lotto/services/venta.service';
 import { VentasService } from '../../services/ventas.service';
 import { PagosService } from '../..//services/pagos.service';
 import { CarritoService } from '../../services/carrito.service';
@@ -93,7 +93,8 @@ export class LottoComponent implements OnInit {
   }
   async seleccionarTicket(id: any) {
     try {
-      this.ticketsDisponibles![id].status = !this.ticketsDisponibles![id].status;
+      this.ticketsDisponibles![id].status =
+        !this.ticketsDisponibles![id].status;
       if (!this.ticketsDisponibles![id].status) {
         let identificador = this.ticketsDisponibles![id].identificador;
         let ticketLotto = this.ticketsLotto[identificador];
@@ -326,7 +327,6 @@ export class LottoComponent implements OnInit {
         let message = 'Tu saldo es insuficiente para realizar la compra';
         this.recargarSaldo(message);
       }
-
     } catch (e: any) {
       this.isLoading = false;
       this.purchase.habilitarBoton();
@@ -580,6 +580,12 @@ export class LottoComponent implements OnInit {
       await this.cart.setCarritoPozo(this.ticketsPozo);
 
       await this.getCarritoTickets();
+
+      if (this.ticketsPozoRevancha[identificador + 1]) {
+        await this.deletePozoRevanchaTicket(
+          this.ticketsPozoRevancha[identificador + 1]
+        );
+      }
       //this.getTotal();
       await this.setDescuento(5);
       this.isLoading = false;
@@ -593,8 +599,8 @@ export class LottoComponent implements OnInit {
   async deletePozoRevanchaTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;
-      let fraccion = "";
-      this.loadingMessage = "Removiendo boleto del carrito";
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let ticket = this.ticketsPozoRevancha[identificador].ticket;
       let sorteo = data.sorteo;
@@ -610,6 +616,7 @@ export class LottoComponent implements OnInit {
       );
 
       delete this.ticketsPozoRevancha[identificador];
+      await this.cart.removeFromCart(ticket, 17);
 
       await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
 
@@ -620,7 +627,7 @@ export class LottoComponent implements OnInit {
       this.isLoading = false;
       console.log(e.message);
       let errorMessage = e.message;
-      let errorTitle = "Error";
+      let errorTitle = 'Error';
       this.openError(errorMessage);
     }
   }
