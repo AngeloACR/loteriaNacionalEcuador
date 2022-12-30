@@ -407,6 +407,7 @@ module.exports.venderBoletos = async (
         ${loteriaCombinacionesXML} 
         ${lottoCombinacionesXML} 
         ${pozoCombinacionesXML}
+        ${pozoRevanchaCombinacionesXML}
         ${millonariaCombinacionesXML}
         </RS>
         </xmlNumeros>
