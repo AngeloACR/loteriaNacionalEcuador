@@ -115,6 +115,7 @@ module.exports.consultarSorteosDisponibles = async (
 
             if (!errorCode) {
               let aux = data.mt.rs[0].r[0].Row;
+              if (!aux) resolve([]);
               let response = aux.map((sorteo) => {
                 let sorteoAux = {
                   fecha: sorteo.$.FSort,
