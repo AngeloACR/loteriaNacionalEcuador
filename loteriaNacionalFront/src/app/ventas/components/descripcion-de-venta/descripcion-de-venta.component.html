@@ -322,6 +322,95 @@
     </div>
   </div>
 
+
+  <div class="containerInfoBox" *ngIf="compra.pozoRevancha.length != 0">
+    <div class="titlePozoBox">
+      <img src="assets/img/revancha-sombra.png" width="180"/>
+    </div>
+    <div *ngFor="let item of compra.pozo" class="dateLoteryBox pozo">
+      <div class="infoSorteoBox">
+        <p>
+          Sorteo: <span>{{ item.sorteo }}</span>
+        </p>
+        <p>
+          Fecha del sorteo: <span>{{ item.fecha }}</span>
+        </p>
+      </div>
+      <div class="dateTicketBox">
+        <p>
+          Boleto: <span>{{ item.combinacion1 }}</span>
+        </p>
+        <p>
+          Mascota: <span>{{ nombreMascota(item.mascota) }}</span>
+        </p>
+        <p>
+          Combinación:
+          <span>{{ item.combinacion2 }}</span>
+        </p>
+      </div>
+      <div class="numberBox">
+        <p>Cantidad: <span>1</span></p>
+      </div>
+      <div class="montoBox">
+        <p>
+          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
+        </p>
+        <p *ngIf="item.tieneDescuento">
+          Total con descuento:
+          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
+        </p>
+      </div>
+      <ng-container *ngIf="item.hasGanador">
+        <div class="ganadorTitleBox pozoColor">
+          <p>Boleto ganador</p>
+        </div>
+        <div class="ganadorBox">
+          <div class="ganadorHeaderBox pozoBackground">
+            <p>VALOR DEL PREMIO</p>
+            <p>DESCUENTO 14%</p>
+            <p>VALOR DEL PREMIO CON DESCUENTO</p>
+            <p>DESCRIPCIÓN DEL PREMIO</p>
+          </div>
+          <div
+            class="ganadorDetailsBox"
+            *ngFor="let ganador of item.detalleGanador"
+          >
+            <p>{{ formatNumber(ganador.valorPremio) }}</p>
+            <p>
+              {{
+                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
+              }}
+            </p>
+            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>
+            <p>{{ ganador.descripcionPremio }}</p>
+          </div>
+        </div>
+        <div
+          class="ganadorBoxMobile"
+          *ngFor="let ganador of item.detalleGanador; let i = index"
+        >
+          <div class="ganadorHeaderBox pozoBackground">
+            <p>Premio {{ i + 1 }}</p>
+          </div>
+          <div class="ganadorDetailsBox">
+            <p>VALOR DEL PREMIO</p>
+            <p>{{ formatNumber(ganador.valorPremio) }}</p>
+            <p>DESCUENTO 14%</p>
+            <p>
+              {{
+                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
+              }}
+            </p>
+            <p>VALOR DEL PREMIO CON DESC.</p>
+            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>
+            <p>DESCRIPCIÓN DEL PREMIO</p>
+            <p>{{ ganador.descripcionPremio }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
   <div class="containerInfoBox" *ngIf="compra.millonaria.length != 0">
     <div class="titleMillonariaBox">
       <img src="assets/img/millonaria-sombra.png" width="180" />

@@ -10,7 +10,7 @@ const config = require("../environments/production");
       config.passwordAplicativo
     );
     let aux = await sorteos.consultarSorteosDisponibles(
-      17,
+      5,
       data,
       config.usuarioAplicativo,
       "192.168.0.1"

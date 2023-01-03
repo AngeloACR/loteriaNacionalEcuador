@@ -19,7 +19,7 @@ export class DetalleDeVentaComponent implements OnInit {
   user?: string;
   isLoading?: boolean;
   loadingMessage?: string;
-  
+
   constructor(
     private actRoute: ActivatedRoute,
     private pagos: PagosService,
@@ -37,7 +37,9 @@ export class DetalleDeVentaComponent implements OnInit {
       this.loadingMessage = 'Consultando el detalle de tu compra';
       this.isLoading = true;
       this.compra = await this.pagos.getCompra(this.ticketId, this.accountId);
-      this.codigosPromocionales = await this.pagos.getCodigosPromocionales(this.ticketId);
+      this.codigosPromocionales = await this.pagos.getCodigosPromocionales(
+        this.ticketId
+      );
       this.user = this.compra.user
         ? this.compra.user
         : this.ventas.getAuthData().user;
@@ -51,6 +53,9 @@ export class DetalleDeVentaComponent implements OnInit {
           element['detalleGanador'] = [];
         });
         this.compra.pozo.forEach((element: any) => {
+          element['detalleGanador'] = [];
+        });
+        this.compra.pozoRevancha.forEach((element: any) => {
           element['detalleGanador'] = [];
         });
         this.compra.millonaria.forEach((element: any) => {
@@ -94,6 +99,20 @@ export class DetalleDeVentaComponent implements OnInit {
               if (ganadorIndex != -1) {
                 this.compra.pozo[ganadorIndex]['hasGanador'] = true;
                 this.compra.pozo[ganadorIndex]['detalleGanador'].push(ganador);
+              }
+              break;
+
+            case 17:
+              ganadorIndex = this.compra.pozoRevancha.findIndex(
+                (x: any) =>
+                  x.combinacion1 == ganador.combinacion1 &&
+                  x.sorteo == ganador.numeroSorteo
+              );
+              if (ganadorIndex != -1) {
+                this.compra.pozoRevancha[ganadorIndex]['hasGanador'] = true;
+                this.compra.pozoRevancha[ganadorIndex]['detalleGanador'].push(
+                  ganador
+                );
               }
               break;
             case 14:
