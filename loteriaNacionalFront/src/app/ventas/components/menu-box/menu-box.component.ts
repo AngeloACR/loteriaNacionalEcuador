@@ -403,6 +403,11 @@ export class MenuBoxComponent implements OnInit {
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = data.sorteo;
 
+      if (this.ticketsPozoRevancha[identificador + 1]) {
+        await this.deletePozoRevanchaTicket(
+          this.ticketsPozoRevancha[identificador + 1]
+        );
+      }
       let reservaId = this.lottery.getReservaId();
       let response = await this.lottery.eliminarBoletosDeReserva(
         this.token,
@@ -419,11 +424,6 @@ export class MenuBoxComponent implements OnInit {
 
       await this.getCarritoTickets();
       this.getTotal();
-      if (this.ticketsPozoRevancha[identificador + 1]) {
-        await this.deletePozoRevanchaTicket(
-          this.ticketsPozoRevancha[identificador + 1]
-        );
-      }
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;

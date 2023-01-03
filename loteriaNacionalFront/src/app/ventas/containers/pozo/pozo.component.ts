@@ -762,9 +762,18 @@ export class PozoComponent implements OnInit {
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
       let identificador = data.ticket.identificador;
+
       let fraccion = '';
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = this.ticketsPozo[identificador].sorteo;
+
+      if (this.ticketsPozoRevancha[identificador + 1]) {
+        await this.deletePozoRevanchaTicket({
+          ticket: {
+            identificador: identificador + 1,
+          },
+        });
+      }
       let reservaId = this.ventas.getReservaId();
       let response = await this.ventas.eliminarBoletosDeReserva(
         this.token,
@@ -785,13 +794,6 @@ export class PozoComponent implements OnInit {
         );
         if (deletedIndex != -1)
           this.ticketsDisponibles[deletedIndex].status = false;
-      }
-      if (this.ticketsPozoRevancha[identificador + 1]) {
-        await this.deletePozoRevanchaTicket({
-          ticket: {
-            identificador: identificador + 1,
-          },
-        });
       }
       await this.getCarritoTickets();
       //this.getTotal();

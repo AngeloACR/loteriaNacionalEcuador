@@ -795,6 +795,12 @@ export class MillonariaComponent implements OnInit {
       let fraccion = '';
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = data.sorteo;
+
+      if (this.ticketsPozoRevancha[identificador + 1]) {
+        await this.deletePozoRevanchaTicket(
+          this.ticketsPozoRevancha[identificador + 1]
+        );
+      }
       let reservaId = this.cart.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
@@ -811,11 +817,6 @@ export class MillonariaComponent implements OnInit {
       await this.cart.setCarritoPozo(this.ticketsPozo);
       //this.getTotal();
 
-      if (this.ticketsPozoRevancha[identificador + 1]) {
-        await this.deletePozoRevanchaTicket(
-          this.ticketsPozoRevancha[identificador + 1]
-        );
-      }
       await this.setDescuento(5);
       this.isLoading = false;
     } catch (e: any) {

@@ -564,6 +564,11 @@ export class LottoComponent implements OnInit {
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = data.sorteo;
 
+      if (this.ticketsPozoRevancha[identificador + 1]) {
+        await this.deletePozoRevanchaTicket(
+          this.ticketsPozoRevancha[identificador + 1]
+        );
+      }
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
@@ -581,11 +586,6 @@ export class LottoComponent implements OnInit {
 
       await this.getCarritoTickets();
 
-      if (this.ticketsPozoRevancha[identificador + 1]) {
-        await this.deletePozoRevanchaTicket(
-          this.ticketsPozoRevancha[identificador + 1]
-        );
-      }
       //this.getTotal();
       await this.setDescuento(5);
       this.isLoading = false;
