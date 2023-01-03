@@ -7261,7 +7261,6 @@ class LoteriaComponent {
       try {
         yield _this12.getCarritoTickets();
         _this12.loadingMessage = 'Removiendo boleto del carrito';
-        _this12.isLoading = true;
         let identificador = data.ticket.identificador;
         let fraccion = '';
         let ticket = _this12.ticketsPozo[identificador].ticket;
@@ -7270,6 +7269,8 @@ class LoteriaComponent {
         if (_this12.ticketsPozoRevancha[identificador + 1]) {
           yield _this12.deletePozoRevanchaTicket(_this12.ticketsPozoRevancha[identificador + 1]);
         }
+
+        _this12.isLoading = true;
 
         let reservaId = _this12.cart.getReservaId();
 
