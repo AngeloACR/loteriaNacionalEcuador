@@ -324,10 +324,10 @@
 
 
   <div class="containerInfoBox" *ngIf="compra.pozoRevancha.length != 0">
-    <div class="titlePozoBox">
+    <div class="titlePozoRevanchaBox">
       <img src="assets/img/revancha-sombra.png" width="180"/>
     </div>
-    <div *ngFor="let item of compra.pozo" class="dateLoteryBox pozo">
+    <div *ngFor="let item of compra.pozoRevancha" class="dateLoteryBox pozoRevancha">
       <div class="infoSorteoBox">
         <p>
           Sorteo: <span>{{ item.sorteo }}</span>
@@ -361,11 +361,11 @@
         </p>
       </div>
       <ng-container *ngIf="item.hasGanador">
-        <div class="ganadorTitleBox pozoColor">
+        <div class="ganadorTitleBox pozoRevanchaColor">
           <p>Boleto ganador</p>
         </div>
         <div class="ganadorBox">
-          <div class="ganadorHeaderBox pozoBackground">
+          <div class="ganadorHeaderBox pozoRevanchaBackground">
             <p>VALOR DEL PREMIO</p>
             <p>DESCUENTO 14%</p>
             <p>VALOR DEL PREMIO CON DESCUENTO</p>
@@ -389,7 +389,7 @@
           class="ganadorBoxMobile"
           *ngFor="let ganador of item.detalleGanador; let i = index"
         >
-          <div class="ganadorHeaderBox pozoBackground">
+          <div class="ganadorHeaderBox pozoRevanchaBackground">
             <p>Premio {{ i + 1 }}</p>
           </div>
           <div class="ganadorDetailsBox">

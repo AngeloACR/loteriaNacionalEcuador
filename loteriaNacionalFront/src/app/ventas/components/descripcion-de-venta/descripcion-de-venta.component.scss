@@ -2,6 +2,7 @@ $color-header: #7c91a8;
 $color-loteria: #28aae1;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
+$color-revancha: #fae80c;
 $color-millonaria: #b51f20;
 
 .titleBox {
@@ -79,6 +80,20 @@ $color-millonaria: #b51f20;
       flex-wrap: wrap;
       background: #fff;
       background-color: $color-pozo;
+      padding: 5px;
+
+      h3 {
+        color: white;
+        font-family: Open Sans !important;
+
+        font-size: 16px;
+      }
+    }
+    .titlePozoRevanchaBox {
+      display: flex;
+      flex-wrap: wrap;
+      background: #fff;
+      background-color: $color-revancha;
       padding: 5px;
 
       h3 {
@@ -237,7 +252,10 @@ $color-millonaria: #b51f20;
         &.pozoColor {
           color: $color-pozo;
         }
-        &.milloanriaColor {
+        &.pozoRevanchaColor {
+          color: $color-revancha;
+        }
+        &.millonariaColor {
           color: $color-millonaria;
         }
         p {
@@ -332,6 +350,11 @@ $color-millonaria: #b51f20;
       border-width: 0 0 1px 0;
       border-style: solid;
       border-color: $color-pozo;
+    }
+    .revancha {
+      border-width: 0 0 1px 0;
+      border-style: solid;
+      border-color: $color-revancha;
     }
     .millonaria {
       border-width: 0 0 1px 0;
@@ -448,6 +471,9 @@ $color-millonaria: #b51f20;
             }
             &.pozoBackground {
               background-color: $color-pozo;
+            }
+            &.pozoRevanchaBackground {
+              background-color: $color-revancha;
             }
             &.millonariaBackground {
               background-color: $color-millonaria;
