@@ -5338,13 +5338,14 @@ class MenuBoxComponent {
         let identificador = data.ticket.identificador;
         let fraccion = '';
         _this8.loadingMessage = 'Removiendo boleto del carrito';
-        _this8.isLoading = true;
         let ticket = _this8.ticketsPozo[identificador].ticket;
         let sorteo = data.sorteo;
 
         if (_this8.ticketsPozoRevancha[identificador + 1]) {
           yield _this8.deletePozoRevanchaTicket(_this8.ticketsPozoRevancha[identificador + 1]);
         }
+
+        _this8.isLoading = true;
 
         let reservaId = _this8.lottery.getReservaId();
 
@@ -8682,13 +8683,14 @@ class LottoComponent {
         let identificador = data.ticket.identificador;
         let fraccion = '';
         _this12.loadingMessage = 'Removiendo boleto del carrito';
-        _this12.isLoading = true;
         let ticket = _this12.ticketsPozo[identificador].ticket;
         let sorteo = data.sorteo;
 
         if (_this12.ticketsPozoRevancha[identificador + 1]) {
           yield _this12.deletePozoRevanchaTicket(_this12.ticketsPozoRevancha[identificador + 1]);
         }
+
+        _this12.isLoading = true;
 
         let reservaId = _this12.lotteryService.getReservaId();
 
@@ -10255,7 +10257,6 @@ class MillonariaComponent {
       try {
         yield _this16.getCarritoTickets();
         _this16.loadingMessage = 'Removiendo boleto del carrito';
-        _this16.isLoading = true;
         let identificador = data.ticket.identificador;
         let fraccion = '';
         let ticket = _this16.ticketsPozo[identificador].ticket;
@@ -10264,6 +10265,8 @@ class MillonariaComponent {
         if (_this16.ticketsPozoRevancha[identificador + 1]) {
           yield _this16.deletePozoRevanchaTicket(_this16.ticketsPozoRevancha[identificador + 1]);
         }
+
+        _this16.isLoading = true;
 
         let reservaId = _this16.cart.getReservaId();
 
@@ -11851,7 +11854,6 @@ class PozoComponent {
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
       try {
         _this14.loadingMessage = 'Removiendo boleto del carrito';
-        _this14.isLoading = true;
         let identificador = data.ticket.identificador;
         let fraccion = '';
         let ticket = _this14.ticketsPozo[identificador].ticket;
@@ -11864,6 +11866,8 @@ class PozoComponent {
             }
           });
         }
+
+        _this14.isLoading = true;
 
         let reservaId = _this14.ventas.getReservaId();
 

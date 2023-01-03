@@ -399,7 +399,6 @@ export class MenuBoxComponent implements OnInit {
       let identificador = data.ticket.identificador;
       let fraccion = '';
       this.loadingMessage = 'Removiendo boleto del carrito';
-      this.isLoading = true;
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = data.sorteo;
 
@@ -408,6 +407,7 @@ export class MenuBoxComponent implements OnInit {
           this.ticketsPozoRevancha[identificador + 1]
         );
       }
+      this.isLoading = true;
       let reservaId = this.lottery.getReservaId();
       let response = await this.lottery.eliminarBoletosDeReserva(
         this.token,

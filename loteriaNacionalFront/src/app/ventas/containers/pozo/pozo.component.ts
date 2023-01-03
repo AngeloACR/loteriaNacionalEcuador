@@ -760,7 +760,6 @@ export class PozoComponent implements OnInit {
   async deletePozoTicket(data: any) {
     try {
       this.loadingMessage = 'Removiendo boleto del carrito';
-      this.isLoading = true;
       let identificador = data.ticket.identificador;
 
       let fraccion = '';
@@ -774,6 +773,7 @@ export class PozoComponent implements OnInit {
           },
         });
       }
+      this.isLoading = true;
       let reservaId = this.ventas.getReservaId();
       let response = await this.ventas.eliminarBoletosDeReserva(
         this.token,

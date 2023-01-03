@@ -560,7 +560,6 @@ export class LottoComponent implements OnInit {
       let identificador = data.ticket.identificador;
       let fraccion = '';
       this.loadingMessage = 'Removiendo boleto del carrito';
-      this.isLoading = true;
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = data.sorteo;
 
@@ -569,6 +568,7 @@ export class LottoComponent implements OnInit {
           this.ticketsPozoRevancha[identificador + 1]
         );
       }
+      this.isLoading = true;
       let reservaId = this.lotteryService.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,

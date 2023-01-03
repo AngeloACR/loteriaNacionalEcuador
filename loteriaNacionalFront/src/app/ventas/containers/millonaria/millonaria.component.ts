@@ -790,7 +790,6 @@ export class MillonariaComponent implements OnInit {
     try {
       await this.getCarritoTickets();
       this.loadingMessage = 'Removiendo boleto del carrito';
-      this.isLoading = true;
       let identificador = data.ticket.identificador;
       let fraccion = '';
       let ticket = this.ticketsPozo[identificador].ticket;
@@ -801,6 +800,7 @@ export class MillonariaComponent implements OnInit {
           this.ticketsPozoRevancha[identificador + 1]
         );
       }
+      this.isLoading = true;
       let reservaId = this.cart.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
