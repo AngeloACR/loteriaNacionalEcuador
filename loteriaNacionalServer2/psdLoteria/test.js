@@ -1,6 +1,7 @@
 const auth = require("./auth");
 const juegos = require("./juegos");
-const config = require("../environments/test");
+const sorteos = require("./sorteos");
+const config = require("../environments/production");
 
 (async () => {
   try {
@@ -8,8 +9,13 @@ const config = require("../environments/test");
       config.usuarioAplicativo,
       config.passwordAplicativo
     );
-    let figuras = await juegos.consultaFiguras(data, 5, "192.168.0.1");
-    console.log(figuras);
+    let aux = await sorteos.consultarSorteosDisponibles(
+      5,
+      data,
+      config.usuarioAplicativo,
+      "192.168.0.1"
+    );
+    console.log(aux);
   } catch (error) {
     console.log(error);
   }

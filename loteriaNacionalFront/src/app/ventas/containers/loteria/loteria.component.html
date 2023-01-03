@@ -212,6 +212,7 @@
   [message]="loadingMessage!"
   *ngIf="isLoading"
 ></app-loader>
+
 <app-floating-menu
   (emitirCompra)="comprar()"
   (eliminarTodo)="deleteAllTickets()"
@@ -228,19 +229,7 @@
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="loteria"
 ></app-floating-menu>
-<!-- <app-floating-menu
-  (emitirCompra)="comprar()"
-  (eliminarTodo)="deleteAllTickets()"
-  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-  (deleteLottoTicket)="deleteLottoTicket($event)"
-  (deletePozoTicket)="deletePozoTicket($event)"
-  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-  [ticketsLoteria]="ticketsLoteria"
-  [ticketsLotto]="ticketsLotto"
-  [ticketsPozo]="ticketsPozo"
-  [total]="total"
-  tipoLoteria="loteria"
-></app-floating-menu> -->
+
 <app-error
   [msg]="errorMessage!"
   (closeError)="closeError()"
@@ -261,6 +250,7 @@
   class="paymentItem"
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-venta>
+
 <app-instantaneas
   (close)="abrirFinalizar()"
   [resultados]="instantaneas"
