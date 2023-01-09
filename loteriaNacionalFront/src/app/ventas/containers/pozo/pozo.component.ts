@@ -437,6 +437,22 @@ export class PozoComponent implements OnInit {
       aux['fecha'] = pozoAux[id].sorteo.fecha;
       pozo.push(aux);
     }
+    let pozoRevanchaAux = this.ticketsPozoRevancha;
+    let pozoRevancha = [];
+    for (let id in pozoRevanchaAux) {
+      let aux: any = {};
+      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
+      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
+      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
+      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(
+        pozoRevanchaAux[id].subtotalConDesc
+      ).toFixed(2);
+      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
+      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
+      pozoRevancha.push(aux);
+    }
     let millonariaAux = this.ticketsMillonaria;
     let millonaria = [];
     for (let id in millonariaAux) {
@@ -461,6 +477,7 @@ export class PozoComponent implements OnInit {
       millonaria,
       lotto,
       pozo,
+      pozoRevancha,
       amount,
       amountConDesc,
     };

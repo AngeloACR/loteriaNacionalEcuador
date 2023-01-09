@@ -4782,6 +4782,22 @@ class MenuBoxComponent {
       pozo.push(aux);
     }
 
+    let pozoRevanchaAux = this.ticketsPozoRevancha;
+    let pozoRevancha = [];
+
+    for (let id in pozoRevanchaAux) {
+      let aux = {};
+      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
+      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
+      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
+      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(pozoRevanchaAux[id].subtotalConDesc).toFixed(2);
+      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
+      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
+      pozoRevancha.push(aux);
+    }
+
     let millonariaAux = this.ticketsMillonaria;
     let millonaria = [];
 
@@ -4805,6 +4821,7 @@ class MenuBoxComponent {
       millonaria,
       lotto,
       pozo,
+      pozoRevancha,
       amount,
       amountConDesc
     };
@@ -6787,6 +6804,22 @@ class LoteriaComponent {
       pozo.push(aux);
     }
 
+    let pozoRevanchaAux = this.ticketsPozoRevancha;
+    let pozoRevancha = [];
+
+    for (let id in pozoRevanchaAux) {
+      let aux = {};
+      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
+      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
+      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
+      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(pozoRevanchaAux[id].subtotalConDesc).toFixed(2);
+      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
+      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
+      pozoRevancha.push(aux);
+    }
+
     let millonariaAux = this.ticketsMillonaria;
     let millonaria = [];
 
@@ -6810,6 +6843,7 @@ class LoteriaComponent {
       millonaria,
       lotto,
       pozo,
+      pozoRevancha,
       amount,
       amountConDesc
     };
@@ -8072,6 +8106,22 @@ class LottoComponent {
       pozo.push(aux);
     }
 
+    let pozoRevanchaAux = this.ticketsPozoRevancha;
+    let pozoRevancha = [];
+
+    for (let id in pozoRevanchaAux) {
+      let aux = {};
+      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
+      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
+      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
+      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(pozoRevanchaAux[id].subtotalConDesc).toFixed(2);
+      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
+      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
+      pozoRevancha.push(aux);
+    }
+
     let millonariaAux = this.ticketsMillonaria;
     let millonaria = [];
 
@@ -8095,6 +8145,7 @@ class LottoComponent {
       millonaria,
       lotto,
       pozo,
+      pozoRevancha,
       amount,
       amountConDesc
     };
@@ -9596,6 +9647,22 @@ class MillonariaComponent {
       pozo.push(aux);
     }
 
+    let pozoRevanchaAux = this.ticketsPozoRevancha;
+    let pozoRevancha = [];
+
+    for (let id in pozoRevanchaAux) {
+      let aux = {};
+      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
+      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
+      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
+      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(pozoRevanchaAux[id].subtotalConDesc).toFixed(2);
+      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
+      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
+      pozoRevancha.push(aux);
+    }
+
     let millonariaAux = this.ticketsMillonaria;
     let millonaria = [];
 
@@ -9619,6 +9686,7 @@ class MillonariaComponent {
       millonaria,
       lotto,
       pozo,
+      pozoRevancha,
       amount,
       amountConDesc
     };
@@ -11236,6 +11304,22 @@ class PozoComponent {
       pozo.push(aux);
     }
 
+    let pozoRevanchaAux = this.ticketsPozoRevancha;
+    let pozoRevancha = [];
+
+    for (let id in pozoRevanchaAux) {
+      let aux = {};
+      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
+      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
+      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
+      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(pozoRevanchaAux[id].subtotalConDesc).toFixed(2);
+      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
+      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
+      pozoRevancha.push(aux);
+    }
+
     let millonariaAux = this.ticketsMillonaria;
     let millonaria = [];
 
@@ -11259,6 +11343,7 @@ class PozoComponent {
       millonaria,
       lotto,
       pozo,
+      pozoRevancha,
       amount,
       amountConDesc
     };
