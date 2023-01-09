@@ -46,6 +46,8 @@ def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
             loteriaDB['masterlottos'].update_one(query, updateQuery, True)
         if (tipoLoteria == "5"):
             loteriaDB['masterpozos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "17"):
+            loteriaDB['masterpozorevanchas'].update_one(query, updateQuery, True)
         if (tipoLoteria == "14"):
             loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
         closeConnect(connection)
@@ -102,6 +104,8 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
                 loteriaDB['premiolottos'].update_one(query, updateQuery, True)
             if (tipoLoteria == "5"):
                 loteriaDB['premiopozos'].update_one(query, updateQuery, True)
+            if (tipoLoteria == "17"):
+                loteriaDB['premiopozorevanchas'].update_one(query, updateQuery, True)
             if (tipoLoteria == "14"):
                 loteriaDB['premiolamillonarias'].update_one(query, updateQuery, True)
 
