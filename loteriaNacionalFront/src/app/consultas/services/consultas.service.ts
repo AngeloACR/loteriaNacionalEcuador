@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ConsultaService as LoteriaService } from 'src/app/juegos/loteria/services/consulta.service';
 import { ConsultaService as LottoService } from 'src/app/juegos/lotto/services/consulta.service';
 import { ConsultaService as PozoService } from 'src/app/juegos/pozo/services/consulta.service';
+import { ConsultaService as RevanchaService } from 'src/app/juegos/pozoRevancha/services/consulta.service';
 import { ConsultaService as MillonariaService } from 'src/app/juegos/millonaria/services/consulta.service';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class ConsultasService {
     private loteria: LoteriaService,
     private lotto: LottoService,
     private pozo: PozoService,
+    private revancha: RevanchaService,
     private millonaria: MillonariaService
   ) {}
   async recuperarUltimosResultados() {
@@ -19,6 +21,7 @@ export class ConsultasService {
       this.loteria.getUltimoResultado(),
       this.lotto.getUltimoResultado(),
       this.pozo.getUltimoResultado(),
+      this.revancha.getUltimoResultado(),
       this.millonaria.getUltimoResultado(),
     ]);
   }

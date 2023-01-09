@@ -447,8 +447,7 @@ const helperController = {
               parseInt(ganador.numeroSorteo) >= 996) ||
             (ganador.tipoLoteria == 14 &&
               parseInt(ganador.numeroSorteo) >= 26)) &&
-          parseInt(ganador.ventaId) >= 3583690 &&
-          !ganador.codigoPremio.includes("INSTANTANEA")
+          parseInt(ganador.ventaId) >= 3583690
       );
       await fs.writeFile("ganadores.json", JSON.stringify(ganadores));
 

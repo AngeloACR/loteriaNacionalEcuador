@@ -1,13 +1,15 @@
 <div class="container">
-  <pozo-consulta class="consultaBox" (resultados)="toggleResultados($event)">
-  </pozo-consulta>
-  <pozo-ultimo-resultado class="selectorBox"></pozo-ultimo-resultado>
+  <revancha-consulta
+    class="consultaBox"
+    (resultados)="toggleResultados($event)"
+  >
+  </revancha-consulta>
+  <revancha-ultimo-resultado class="selectorBox"></revancha-ultimo-resultado>
   <ventas-menu-box class="menuBox" [miniBox]="true"></ventas-menu-box>
 
   <div class="modalBox" *ngIf="showResultados">
     <consultas-resultados
-      tipoLoteria="5"
-      [isLoteriaNacional]="true"
+      tipoLoteria="17"
       (close)="closeBox()"
       *ngIf="showResultados"
       [resultados]="resultados"

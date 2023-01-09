@@ -36,10 +36,10 @@ export class ConsultaComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.triggerLoader()
+    this.triggerLoader();
     this.sorteosJugados = await this.consulta.recuperarSorteosJugados();
     this.setSorteoDefault();
-    this.dismissLoader()
+    this.dismissLoader();
   }
 
   setSorteoDefault() {
@@ -180,7 +180,7 @@ export class ConsultaComponent implements OnInit {
       return;
     }
     this.router.navigateByUrl(
-      `/consultas/pozo/boletin/${this.sorteoBoletin}`
+      `/consultas/revancha/boletin/${this.sorteoBoletin}`
     );
   }
   async buscarRango() {
@@ -212,7 +212,7 @@ export class ConsultaComponent implements OnInit {
   }
 
   isError: boolean = false;
-  errorMessage: string = "";
+  errorMessage: string = '';
   openError(msg: string) {
     this.errorMessage = msg;
     this.isError = true;

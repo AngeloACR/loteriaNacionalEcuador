@@ -751,11 +751,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ConsultasService": () => (/* binding */ ConsultasService)
 /* harmony export */ });
 /* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2316);
 /* harmony import */ var src_app_juegos_loteria_services_consulta_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/juegos/loteria/services/consulta.service */ 8514);
 /* harmony import */ var src_app_juegos_lotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/juegos/lotto/services/consulta.service */ 6151);
 /* harmony import */ var src_app_juegos_pozo_services_consulta_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/juegos/pozo/services/consulta.service */ 9398);
-/* harmony import */ var src_app_juegos_millonaria_services_consulta_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/juegos/millonaria/services/consulta.service */ 2054);
+/* harmony import */ var src_app_juegos_pozoRevancha_services_consulta_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/juegos/pozoRevancha/services/consulta.service */ 759);
+/* harmony import */ var src_app_juegos_millonaria_services_consulta_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/juegos/millonaria/services/consulta.service */ 2054);
+
 
 
 
@@ -763,10 +765,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class ConsultasService {
-  constructor(loteria, lotto, pozo, millonaria) {
+  constructor(loteria, lotto, pozo, revancha, millonaria) {
     this.loteria = loteria;
     this.lotto = lotto;
     this.pozo = pozo;
+    this.revancha = revancha;
     this.millonaria = millonaria;
   }
 
@@ -774,17 +777,17 @@ class ConsultasService {
     var _this = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
-      yield Promise.all([_this.loteria.getUltimoResultado(), _this.lotto.getUltimoResultado(), _this.pozo.getUltimoResultado(), _this.millonaria.getUltimoResultado()]);
+      yield Promise.all([_this.loteria.getUltimoResultado(), _this.lotto.getUltimoResultado(), _this.pozo.getUltimoResultado(), _this.revancha.getUltimoResultado(), _this.millonaria.getUltimoResultado()]);
     })();
   }
 
 }
 
 ConsultasService.ɵfac = function ConsultasService_Factory(t) {
-  return new (t || ConsultasService)(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](src_app_juegos_loteria_services_consulta_service__WEBPACK_IMPORTED_MODULE_1__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](src_app_juegos_lotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_2__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](src_app_juegos_pozo_services_consulta_service__WEBPACK_IMPORTED_MODULE_3__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinject"](src_app_juegos_millonaria_services_consulta_service__WEBPACK_IMPORTED_MODULE_4__.ConsultaService));
+  return new (t || ConsultasService)(_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_loteria_services_consulta_service__WEBPACK_IMPORTED_MODULE_1__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_lotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_2__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_pozo_services_consulta_service__WEBPACK_IMPORTED_MODULE_3__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_pozoRevancha_services_consulta_service__WEBPACK_IMPORTED_MODULE_4__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_millonaria_services_consulta_service__WEBPACK_IMPORTED_MODULE_5__.ConsultaService));
 };
 
-ConsultasService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjectable"]({
+ConsultasService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjectable"]({
   token: ConsultasService,
   factory: ConsultasService.ɵfac,
   providedIn: 'root'
@@ -4596,6 +4599,203 @@ ConsultaService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__
 
 /***/ }),
 
+/***/ 759:
+/*!******************************************************************!*\
+  !*** ./src/app/juegos/pozoRevancha/services/consulta.service.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ConsultaService": () => (/* binding */ ConsultaService)
+/* harmony export */ });
+/* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 3882);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
+
+
+
+
+
+class ConsultaService {
+  constructor(http) {
+    this.http = http;
+    this.today = new Date();
+    this.mySource = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.source;
+  }
+
+  recuperarSorteosJugados() {
+    var _this = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json'); //let endpoint = "/inquiry";
+
+      let endpoint = '/cache';
+      var address = '/pozoRevancha';
+      endpoint = `${endpoint}/sorteosJugados`;
+      address = _this.mySource + address + endpoint;
+      return new Promise((resolve, reject) => {
+        _this.http.get(address, {
+          headers: headers
+        }).subscribe(data => {
+          let sorteosJugados = data.values;
+          sorteosJugados.sort(_this.ordenaSorteos);
+          resolve(sorteosJugados);
+        });
+      });
+    })();
+  }
+
+  ordenaSorteos(a, b) {
+    let a1 = a['sorteo'];
+    let b1 = b['sorteo'];
+    return b1 - a1;
+  }
+
+  recuperarBoletoGanador(sorteo, combinaciones) {
+    let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let endpoint = '';
+    let address = '/pozoRevancha';
+    endpoint = `${endpoint}/ganador`;
+    address = this.mySource + address + endpoint;
+    let body = {
+      sorteo,
+      combinaciones
+    };
+    return new Promise((resolve, reject) => {
+      this.http.post(address, body, {
+        headers: headers
+      }).subscribe(data => {
+        let boletoGanador = data;
+        resolve(boletoGanador);
+      }, error => {
+        reject(new Error(error.error.message));
+      });
+    });
+  }
+
+  recuperarBoletoGanadorPorPlancha(boletoInicial, boletoFinal, sorteo) {
+    let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let address = '/pozoRevancha';
+    let endpoint = '/plancha';
+    address = this.mySource + address + endpoint;
+    let body = {
+      sorteo,
+      boletoInicial,
+      boletoFinal
+    };
+    return new Promise((resolve, reject) => {
+      this.http.post(address, body, {
+        headers: headers
+      }).subscribe(data => {
+        let boletoGanador = data;
+        resolve(boletoGanador);
+      });
+    });
+  }
+
+  getUltimoResultado() {
+    let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let endpoint = '/cache/ultimoResultado';
+    let address = '/pozoRevancha';
+    let auxAddress = this.mySource + address + endpoint;
+    return new Promise((resolve, reject) => {
+      this.http.get(auxAddress, {
+        headers: headers
+      }).subscribe(data => {
+        let response;
+        let pozoRevancha = data;
+        localStorage.setItem('pozoRevanchaUltimoResultado', JSON.stringify(pozoRevancha));
+        response = {
+          tipo: 'pozoRevancha',
+          data: pozoRevancha
+        };
+        resolve(response);
+      }, error => {
+        reject(new Error(error.error.message));
+      });
+    });
+  }
+
+  obtenerBoletin(sorteo) {
+    let sourceBoletines = `${this.mySource}/uploads/boletines/`;
+    return new Promise((resolve, reject) => {
+      let boletinAddress = `${sourceBoletines}T17${sorteo}.jpg`;
+      resolve(boletinAddress);
+    });
+  }
+
+  obtenerMascota(mascota) {
+    let mascotaPath;
+
+    switch (mascota) {
+      case '01':
+        mascotaPath = 'assets/mascotas/Delfin.png';
+        break;
+
+      case '02':
+        mascotaPath = 'assets/mascotas/Perro.png';
+        break;
+
+      case '03':
+        mascotaPath = 'assets/mascotas/Llama.png';
+        break;
+
+      case '04':
+        mascotaPath = 'assets/mascotas/Papagayo.png';
+        break;
+
+      case '05':
+        mascotaPath = 'assets/mascotas/Conejo.png';
+        break;
+
+      case '06':
+        mascotaPath = 'assets/mascotas/Mono.png';
+        break;
+
+      case '07':
+        mascotaPath = 'assets/mascotas/Galapago.png';
+        break;
+
+      case '08':
+        mascotaPath = 'assets/mascotas/Foca.png';
+        break;
+
+      case '09':
+        mascotaPath = 'assets/mascotas/Condor.png';
+        break;
+
+      case '10':
+        mascotaPath = 'assets/mascotas/Iguana.png';
+        break;
+
+      default:
+        break;
+    }
+
+    return mascotaPath;
+  }
+
+}
+
+ConsultaService.ɵfac = function ConsultaService_Factory(t) {
+  return new (t || ConsultaService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient));
+};
+
+ConsultaService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({
+  token: ConsultaService,
+  factory: ConsultaService.ɵfac,
+  providedIn: 'root'
+});
+
+/***/ }),
+
 /***/ 9022:
 /*!*********************************************************************!*\
   !*** ./src/app/juegos/pozo/components/boletin/boletin.component.ts ***!
@@ -5871,123 +6071,43 @@ class ConsultaService {
 
     switch (mascota) {
       case '01':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Camaron.png';
+        mascotaPath = 'assets/mascotas/Delfin.png';
         break;
 
       case '02':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Delfin.png';
+        mascotaPath = 'assets/mascotas/Perro.png';
         break;
 
       case '03':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Perro.png';
+        mascotaPath = 'assets/mascotas/Llama.png';
         break;
 
       case '04':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Llama.png';
+        mascotaPath = 'assets/mascotas/Papagayo.png';
         break;
 
       case '05':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Papagayo.png';
+        mascotaPath = 'assets/mascotas/Conejo.png';
         break;
 
       case '06':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Conejo.png';
+        mascotaPath = 'assets/mascotas/Mono.png';
         break;
 
       case '07':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Mono.png';
+        mascotaPath = 'assets/mascotas/Galapago.png';
         break;
 
       case '08':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Galapago.png';
+        mascotaPath = 'assets/mascotas/Foca.png';
         break;
 
       case '09':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Tucan.png';
+        mascotaPath = 'assets/mascotas/Condor.png';
         break;
 
       case '10':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Ballena.png';
-        break;
-
-      case '11':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Oso.png';
-        break;
-
-      case '12':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Foca.png';
-        break;
-
-      case '13':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Cangrejo.png';
-        break;
-
-      case '14':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Condor.png';
-        break;
-
-      case '15':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Iguana.png';
-        break;
-
-      case '16':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Caballo.png';
-        break;
-
-      case '17':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Rana.png';
-        break;
-
-      case '18':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Tiburon.png';
-        break;
-
-      case '19':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Caracol.png';
-        break;
-
-      case '20':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Oveja.png';
-        break;
-
-      case '21':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Gallo.png';
-        break;
-
-      case '22':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Abeja.png';
-        break;
-
-      case '23':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Mariposa.png';
-        break;
-
-      case '24':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Pez.png';
-        break;
-
-      case '25':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Pinguino.png';
-        break;
-
-      case '26':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Cocodrilo.png';
-        break;
-
-      case '27':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Vaca.png';
-        break;
-
-      case '28':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Chanchito.png';
-        break;
-
-      case '29':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Tigre.png';
-        break;
-
-      case '30':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Gato.png';
+        mascotaPath = 'assets/mascotas/Iguana.png';
         break;
 
       default:

@@ -5,9 +5,10 @@ const config = require("../environments/test");
 
 (async () => {
   try {
-    let cedulas = JSON.parse(
+    /* let cedulas = JSON.parse(
       await fs.readFile("../../../ganadores/cedulasProblema.json")
-    );
+    ); */
+    let cedulas = ["0601674849"];
     let response = [];
     let response2 = [];
     for (let i = 0; i < cedulas.length; i++) {

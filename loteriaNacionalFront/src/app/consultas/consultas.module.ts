@@ -22,6 +22,9 @@ import { MillonariaModule } from '../juegos/millonaria/millonaria.module';
 import { VentasModule } from '../ventas/ventas.module';
 import { HomeComponent } from './containers/home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { RevanchaComponent } from './containers/revancha/revancha.component';
+import { RevanchaBoletinComponent } from './containers/revancha-boletin/revancha-boletin.component';
+import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,8 @@ import { SharedModule } from '../shared/shared.module';
     PozoBoletinComponent,
     MillonariaBoletinComponent,
     HomeComponent,
+    RevanchaComponent,
+    RevanchaBoletinComponent,
   ],
   exports: [
     ConsultasComponent,
@@ -55,7 +60,8 @@ import { SharedModule } from '../shared/shared.module';
     PozoBoletinComponent,
     MillonariaBoletinComponent,
     HomeComponent,
-    
+    RevanchaComponent,
+    RevanchaBoletinComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +69,7 @@ import { SharedModule } from '../shared/shared.module';
     LoteriaModule,
     LottoModule,
     PozoModule,
+    PozoRevanchaModule,
     MillonariaModule,
     VentasModule,
     SharedModule,

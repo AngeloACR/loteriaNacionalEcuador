@@ -242,11 +242,11 @@ function BoletinComponent_div_3_div_2_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2, "Parece que aun no se ha cargado el bolet\u00EDn de este sorteo. Mientras el equipo de Loter\u00EDa Nacional se encarga de esto, pas\u00E9ate por ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2, " Parece que aun no se ha cargado el bolet\u00EDn de este sorteo. Mientras el equipo de Loter\u00EDa Nacional se encarga de esto, pas\u00E9ate por ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "a", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "nuestros juegos online");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5, " y disfruta de todos los juegos que tenemos para ti.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5, " y disfruta de todos los juegos que tenemos para ti. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
@@ -333,7 +333,7 @@ BoletinComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__
   selectors: [["revancha-boletin"]],
   decls: 5,
   vars: 2,
-  consts: [[1, "boletin_oficial"], ["class", "container_boletin", 4, "ngIf"], ["loader", "pozo", 3, "message", 4, "ngIf"], [1, "container_boletin"], ["alt", "Imagen del boletin de pozo millonario", 3, "src", "error", 4, "ngIf"], ["class", "boletinNotFound", 4, "ngIf"], ["alt", "Imagen del boletin de pozo millonario", 3, "src", "error"], [1, "boletinNotFound"], ["href", "https://www.loteria.com.ec/casino", "target", "_parent"], ["loader", "pozo", 3, "message"]],
+  consts: [[1, "boletin_oficial"], ["class", "container_boletin", 4, "ngIf"], ["loader", "revancha", 3, "message", 4, "ngIf"], [1, "container_boletin"], ["alt", "Imagen del boletin de pozo revancha", 3, "src", "error", 4, "ngIf"], ["class", "boletinNotFound", 4, "ngIf"], ["alt", "Imagen del boletin de pozo revancha", 3, "src", "error"], [1, "boletinNotFound"], ["href", "https://www.loteria.com.ec/casino", "target", "_parent"], ["loader", "revancha", 3, "message"]],
   template: function BoletinComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
@@ -477,7 +477,7 @@ class ConsultaComponent {
     this.isLoading = false;
     this.loadingMessage = 'Cargando datos';
     this.isError = false;
-    this.errorMessage = "";
+    this.errorMessage = '';
   }
 
   ngOnInit() {
@@ -651,7 +651,7 @@ class ConsultaComponent {
         return;
       }
 
-      _this3.router.navigateByUrl(`/consultas/pozo/boletin/${_this3.sorteoBoletin}`);
+      _this3.router.navigateByUrl(`/consultas/revancha/boletin/${_this3.sorteoBoletin}`);
     })();
   }
 
@@ -710,7 +710,7 @@ ConsultaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4_
   },
   decls: 94,
   vars: 11,
-  consts: [[1, "container_consulta"], [1, "cuerpo_boletin"], [1, "explicacion"], [1, "content_explicacion"], [1, "icono"], [1, "separador"], [1, "consulta_boleto"], [1, ""], ["action", "", 1, "formulario"], [1, "input"], [1, "input_content"], ["for", ""], ["name", "combinaciones", "type", "text", 3, "ngModel", "keydown", "click", "focus", "input", "ngModelChange"], [1, "tag"], ["name", "sorteoGanador", "id", "sorteoGanador", "placeholder", "", 3, "ngModel", "ngModelChange"], ["value", "default", "selected", "", "disabled", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "click"], ["name", "sorteoBoletin", "id", "sorteoBoletin", "placeholder", "", 3, "ngModel", "ngModelChange"], [1, "consulta_boleto", "espacio"], ["name", "boletoInicial", "type", "text", 3, "ngModel", "ngModelChange"], ["name", "boletoFinal", "type", "text", 3, "ngModel", "ngModelChange"], ["name", "sorteoRango", "id", "sorteoRango", "placeholder", "", 3, "ngModel", "ngModelChange"], ["loader", "pozo", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], [3, "value"], ["loader", "pozo", 3, "message"], [3, "msg", "closeError"]],
+  consts: [[1, "container_consulta"], [1, "cuerpo_boletin"], [1, "explicacion"], [1, "content_explicacion"], [1, "icono"], [1, "separador"], [1, "consulta_boleto"], [1, ""], ["action", "", 1, "formulario"], [1, "input"], [1, "input_content"], ["for", ""], ["name", "combinaciones", "type", "text", 3, "ngModel", "keydown", "click", "focus", "input", "ngModelChange"], [1, "tag"], ["name", "sorteoGanador", "id", "sorteoGanador", "placeholder", "", 3, "ngModel", "ngModelChange"], ["value", "default", "selected", "", "disabled", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "click"], ["name", "sorteoBoletin", "id", "sorteoBoletin", "placeholder", "", 3, "ngModel", "ngModelChange"], [1, "consulta_boleto", "espacio"], ["name", "boletoInicial", "type", "text", 3, "ngModel", "ngModelChange"], ["name", "boletoFinal", "type", "text", 3, "ngModel", "ngModelChange"], ["name", "sorteoRango", "id", "sorteoRango", "placeholder", "", 3, "ngModel", "ngModelChange"], ["loader", "revancha", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], [3, "value"], ["loader", "revancha", 3, "message"], [3, "msg", "closeError"]],
   template: function ConsultaComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 0);
@@ -1188,30 +1188,30 @@ class UltimoResultadoComponent {
     constructor(router, consulta) {
         this.router = router;
         this.consulta = consulta;
-        this.mascota = "01";
+        this.mascota = '01';
     }
     ngOnInit() {
-        let data = JSON.parse(localStorage.getItem("pozoMillonarioUltimoResultado"));
+        let data = JSON.parse(localStorage.getItem('pozoRevanchaUltimoResultado'));
         this.ticketNumbers = data.ultimoResultadoPozo.combinacion2.match(/.{1,2}/g);
         this.mascota = data.mascota;
         this.mascotaPath = this.consulta.obtenerMascota(this.mascota);
         this.ticketGanador = {
             ticketIndex: data.ultimoResultadoPozoRevancha.codigo,
-            description: "Boleto Ganador",
+            description: 'Boleto Ganador',
             ticketNumbers: this.ticketNumbers,
             mascota: this.mascota,
             numeroSorteo: data.numeroSorteo,
             codigo: data.ultimoResultadoPozo.codigo,
             sorteo: data.sorteo,
-            valorPremio: data.premioPrincipal.valorPremio
+            valorPremio: data.premioPrincipal.valorPremio,
         };
     }
     verUltimoBoletin() {
         let sorteo = this.ticketGanador.numeroSorteo;
-        this.router.navigateByUrl(`/consultas/pozoRevancha/boletin/${sorteo}`);
+        this.router.navigateByUrl(`/consultas/revancha/boletin/${sorteo}`);
     }
     verResultados() {
-        this.router.navigateByUrl(`/consultas/pozoRevancha`);
+        this.router.navigateByUrl(`/consultas/revancha`);
     }
 }
 UltimoResultadoComponent.ɵfac = function UltimoResultadoComponent_Factory(t) { return new (t || UltimoResultadoComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_consulta_service__WEBPACK_IMPORTED_MODULE_0__.ConsultaService)); };
@@ -1323,282 +1323,6 @@ PozoRevanchaModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_
         _components_ticket_consulta_ticket_consulta_component__WEBPACK_IMPORTED_MODULE_5__.TicketConsultaComponent,
         _components_ticket_ventas_ticket_ventas_component__WEBPACK_IMPORTED_MODULE_6__.TicketVentasComponent] }); })();
 
-
-/***/ }),
-
-/***/ 759:
-/*!******************************************************************!*\
-  !*** ./src/app/juegos/pozoRevancha/services/consulta.service.ts ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ConsultaService": () => (/* binding */ ConsultaService)
-/* harmony export */ });
-/* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 3882);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
-
-
-
-
-
-class ConsultaService {
-  constructor(http) {
-    this.http = http;
-    this.today = new Date();
-    this.mySource = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.source;
-  }
-
-  recuperarSorteosJugados() {
-    var _this = this;
-
-    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
-      let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
-      headers = headers.append('Content-Type', 'application/json'); //let endpoint = "/inquiry";
-
-      let endpoint = '/cache';
-      var address = '/pozoRevancha';
-      endpoint = `${endpoint}/sorteosJugados`;
-      address = _this.mySource + address + endpoint;
-      return new Promise((resolve, reject) => {
-        _this.http.get(address, {
-          headers: headers
-        }).subscribe(data => {
-          let sorteosJugados = data.values;
-          sorteosJugados.sort(_this.ordenaSorteos);
-          resolve(sorteosJugados);
-        });
-      });
-    })();
-  }
-
-  ordenaSorteos(a, b) {
-    let a1 = a['sorteo'];
-    let b1 = b['sorteo'];
-    return b1 - a1;
-  }
-
-  recuperarBoletoGanador(sorteo, combinaciones) {
-    let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '';
-    let address = '/pozoRevancha';
-    endpoint = `${endpoint}/ganador`;
-    address = this.mySource + address + endpoint;
-    let body = {
-      sorteo,
-      combinaciones
-    };
-    return new Promise((resolve, reject) => {
-      this.http.post(address, body, {
-        headers: headers
-      }).subscribe(data => {
-        let boletoGanador = data;
-        resolve(boletoGanador);
-      }, error => {
-        reject(new Error(error.error.message));
-      });
-    });
-  }
-
-  recuperarBoletoGanadorPorPlancha(boletoInicial, boletoFinal, sorteo) {
-    let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/pozoRevancha';
-    let endpoint = '/plancha';
-    address = this.mySource + address + endpoint;
-    let body = {
-      sorteo,
-      boletoInicial,
-      boletoFinal
-    };
-    return new Promise((resolve, reject) => {
-      this.http.post(address, body, {
-        headers: headers
-      }).subscribe(data => {
-        let boletoGanador = data;
-        resolve(boletoGanador);
-      });
-    });
-  }
-
-  getUltimoResultado() {
-    let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '/cache/ultimoResultado';
-    let address = '/pozoRevancha';
-    let auxAddress = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(auxAddress, {
-        headers: headers
-      }).subscribe(data => {
-        let response;
-        let pozoRevancha = data;
-        localStorage.setItem('pozoRevanchaUltimoResultado', JSON.stringify(pozoRevancha));
-        response = {
-          tipo: 'pozoRevancha',
-          data: pozoRevancha
-        };
-        resolve(response);
-      }, error => {
-        reject(new Error(error.error.message));
-      });
-    });
-  }
-
-  obtenerBoletin(sorteo) {
-    let sourceBoletines = `${this.mySource}/uploads/boletines/`;
-    return new Promise((resolve, reject) => {
-      let boletinAddress = `${sourceBoletines}T17${sorteo}.jpg`;
-      resolve(boletinAddress);
-    });
-  }
-
-  obtenerMascota(mascota) {
-    let mascotaPath;
-
-    switch (mascota) {
-      case '01':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Camaron.png';
-        break;
-
-      case '02':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Delfin.png';
-        break;
-
-      case '03':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Perro.png';
-        break;
-
-      case '04':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Llama.png';
-        break;
-
-      case '05':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Papagayo.png';
-        break;
-
-      case '06':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Conejo.png';
-        break;
-
-      case '07':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Mono.png';
-        break;
-
-      case '08':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Galapago.png';
-        break;
-
-      case '09':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Tucan.png';
-        break;
-
-      case '10':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Ballena.png';
-        break;
-
-      case '11':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Oso.png';
-        break;
-
-      case '12':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Foca.png';
-        break;
-
-      case '13':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Cangrejo.png';
-        break;
-
-      case '14':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Condor.png';
-        break;
-
-      case '15':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Iguana.png';
-        break;
-
-      case '16':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Caballo.png';
-        break;
-
-      case '17':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Rana.png';
-        break;
-
-      case '18':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Tiburon.png';
-        break;
-
-      case '19':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Caracol.png';
-        break;
-
-      case '20':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Oveja.png';
-        break;
-
-      case '21':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Gallo.png';
-        break;
-
-      case '22':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Abeja.png';
-        break;
-
-      case '23':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Mariposa.png';
-        break;
-
-      case '24':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Pez.png';
-        break;
-
-      case '25':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Pinguino.png';
-        break;
-
-      case '26':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Cocodrilo.png';
-        break;
-
-      case '27':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Vaca.png';
-        break;
-
-      case '28':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Chanchito.png';
-        break;
-
-      case '29':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Tigre.png';
-        break;
-
-      case '30':
-        mascotaPath = 'assets/mascotas/mascotas pozo millonario-Gato.png';
-        break;
-
-      default:
-        break;
-    }
-
-    return mascotaPath;
-  }
-
-}
-
-ConsultaService.ɵfac = function ConsultaService_Factory(t) {
-  return new (t || ConsultaService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient));
-};
-
-ConsultaService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({
-  token: ConsultaService,
-  factory: ConsultaService.ɵfac,
-  providedIn: 'root'
-});
 
 /***/ }),
 

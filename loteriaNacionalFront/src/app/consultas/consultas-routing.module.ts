@@ -10,6 +10,8 @@ import { MillonariaBoletinComponent } from './containers/millonaria-boletin/mill
 import { MillonariaComponent } from './containers/millonaria/millonaria.component';
 import { PozoBoletinComponent } from './containers/pozo-boletin/pozo-boletin.component';
 import { PozoComponent } from './containers/pozo/pozo.component';
+import { RevanchaBoletinComponent } from './containers/revancha-boletin/revancha-boletin.component';
+import { RevanchaComponent } from './containers/revancha/revancha.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,10 @@ const routes: Routes = [
         component: PozoBoletinComponent,
       },
       {
+        path: 'revancha/boletin/:sorteo',
+        component: RevanchaBoletinComponent,
+      },
+      {
         path: 'millonaria/boletin/:sorteo',
         component: MillonariaBoletinComponent,
       },
@@ -34,6 +40,10 @@ const routes: Routes = [
       {
         path: 'pozo',
         component: PozoComponent,
+      },
+      {
+        path: 'revancha',
+        component: RevanchaComponent,
       },
       { path: 'millonaria', component: MillonariaComponent },
       { path: '', component: HomeComponent },
