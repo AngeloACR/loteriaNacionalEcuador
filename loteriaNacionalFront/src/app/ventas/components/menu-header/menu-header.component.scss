@@ -76,18 +76,106 @@ $fuente-botones: "Monstserrat SemiBold";
     padding: 20px 0;
     .contenedor_loteria {
       width: 19%;
-      height:65px;
-      font-size: 25px;
+      height: 170px !important;
+      font-size: 17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      border-radius: 5px !important;
 
-      img {
-        width: 40%;
+      &:hover {
+        .mobile {
+          color: white !important;
+        }
+        &.loteria {
+          .mobile {
+            background-color: $color-loteria;
+          }
+        }
+        &.lotto {
+          .mobile {
+            background-color: $color-lotto;
+          }
+        }
+        &.pozo {
+          .mobile {
+            background-color: $color-pozo;
+          }
+        }
+        &.millonaria {
+          .mobile {
+            background-color: $color-millonaria;
+          }
+        }
+        &.juegosOnline {
+          .mobile {
+            background-color: #15295b;
+          }
+        }
       }
-
-      &:hover img {
-        width: 48%;
+      .mobile {
+        text-decoration: none;
+        padding: 5px 20px;
+        background-color: white;
+        border-radius: 150px;
+        border: 1px solid white;
+      }
+      &.loteria {
+        img {
+          width: 50% !important;
+        }
+        img:hover {
+          width: 50% !important;
+        }
+        .mobile {
+          color: $color-loteria;
+        }
+      }
+      &.lotto {
+        img {
+          width: 50% !important;
+        }
+        img:hover {
+          width: 50% !important;
+        }
+        .mobile {
+          color: $color-lotto;
+        }
+      }
+      &.pozo {
+        img {
+          width: 50% !important;
+          margin-top: -30px;
+        }
+        img:hover {
+          width: 50% !important;
+        }
+        .mobile {
+          color: $color-pozo;
+          margin-top: -35px;
+        }
+      }
+      &.millonaria {
+        img {
+          width: 70% !important;
+        }
+        img:hover {
+          width: 70% !important;
+        }
+        .mobile {
+          color: $color-millonaria;
+        }
       }
       &.juegosOnline {
-        display: flex;
+        img {
+          width: 50% !important;
+        }
+        img:hover {
+          width: 50% !important;
+        }
+        .mobile {
+          color: #15295b;
+        }
       }
     }
   }
@@ -151,22 +239,22 @@ $fuente-botones: "Monstserrat SemiBold";
 @media screen and (max-width: 1000px) {
   .container {
     overflow-x: scroll;
-    
-  &.home {
-    .contenedor_loteria {
-      img {
-        width: 70%;
-      }
 
-      &:hover img {
-        width: 80%;
+    &.home {
+      .contenedor_loteria {
+        img {
+          width: 70%;
+        }
+
+        &:hover img {
+          width: 80%;
+        }
       }
     }
-  }
     .title {
       display: none !important;
     }
-    .contenedor_loteria{
+    .contenedor_loteria {
       width: 50%;
       padding: 0 20px;
 
@@ -174,7 +262,7 @@ $fuente-botones: "Monstserrat SemiBold";
         width: 80%;
       }
 
-      .mobile{
+      .mobile {
         display: none !important;
       }
     }
@@ -183,7 +271,7 @@ $fuente-botones: "Monstserrat SemiBold";
 
 @media screen and (min-width: 1500px) and (max-width: 2500px) {
   .container {
-    .contenedor_loteria{
+    .contenedor_loteria {
       height: 90px !important;
     }
   }
@@ -191,7 +279,7 @@ $fuente-botones: "Monstserrat SemiBold";
 
 @media screen and (min-width: 2501px) {
   .container {
-    .contenedor_loteria{
+    .contenedor_loteria {
       height: 150px !important;
     }
   }
