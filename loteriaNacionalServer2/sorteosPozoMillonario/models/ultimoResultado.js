@@ -5,7 +5,6 @@ const db = require("../database").db;
 
 const ultimoResultadoSchema = new mongoose.Schema(
   {
-    
     ultimoResultadoPozo: {
       combinacion2: {
         type: String,
@@ -61,9 +60,10 @@ ultimoResultadoSchema.statics = {
           const resultado = psdUltimosResultados[index];
           ultimoResultado.numeroSorteo = resultado.sorteo;
           if (resultado.codigoPremio.includes("-1")) {
-            ultimoResultado.ultimoResultadoPozo.combinacion2 = resultado.combinacion;
+            ultimoResultado.ultimoResultadoPozo.combinacion2 =
+              resultado.combinacion;
             ultimoResultado.codigoPremioPrincipal = resultado.codigoPremio;
-          } else if (resultado.codigoPremio.includes("-6")) {
+          } else if (resultado.codigoPremio.includes("-5")) {
             ultimoResultado.mascota = resultado.combinacion;
             if (resultado.combinacion.length == 1)
               ultimoResultado.mascota = `0${resultado.combinacion}`;
@@ -83,7 +83,7 @@ ultimoResultadoSchema.statics = {
   },
   get: async function () {
     try {
-      return await this.findOne().populate('premioPrincipal').lean();
+      return await this.findOne().populate("premioPrincipal").lean();
     } catch (error) {
       let response = {
         status: false,

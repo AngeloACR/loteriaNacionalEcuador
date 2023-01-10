@@ -63,7 +63,7 @@ ultimoResultadoSchema.statics = {
             ultimoResultado.ultimoResultadoPozo.combinacion2 =
               resultado.combinacion;
             ultimoResultado.codigoPremioPrincipal = resultado.codigoPremio;
-          } else if (resultado.codigoPremio.includes("-6")) {
+          } else if (resultado.codigoPremio.includes("-5")) {
             ultimoResultado.mascota = resultado.combinacion;
             if (resultado.combinacion.length == 1)
               ultimoResultado.mascota = `0${resultado.combinacion}`;
