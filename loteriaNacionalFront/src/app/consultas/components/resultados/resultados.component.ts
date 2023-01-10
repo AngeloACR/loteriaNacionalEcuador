@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: "consultas-resultados",
-  templateUrl: "./resultados.component.html",
-  styleUrls: ["./resultados.component.scss"],
+  selector: 'consultas-resultados',
+  templateUrl: './resultados.component.html',
+  styleUrls: ['./resultados.component.scss'],
 })
 export class ResultadosComponent implements OnInit {
   @Input() resultados: any;
@@ -18,25 +18,31 @@ export class ResultadosComponent implements OnInit {
 
   ngOnInit() {
     switch (this.tipoLoteria) {
-      case "1":
+      case '1':
         this.loteriaBackground = {
           backgroundLoteriaNacional: true,
         };
         break;
-      case "2":
+      case '2':
         this.loteriaBackground = {
           backgroundLotto: true,
         };
 
         break;
 
-      case "5":
+      case '5':
         this.loteriaBackground = {
           backgroundPozoMillonario: true,
         };
 
         break;
-      case "14":
+      case '17':
+        this.loteriaBackground = {
+          backgroundPozoMillonario: true,
+        };
+
+        break;
+      case '14':
         this.loteriaBackground = {
           backgroundLotto: true,
         };
@@ -51,14 +57,14 @@ export class ResultadosComponent implements OnInit {
         combinacion: resultado.combinacion,
         resultado,
       };
-      if(this.tipoLoteria == "14"){
-        ticket['serie'] = resultado.serie
+      if (this.tipoLoteria == '14') {
+        ticket['serie'] = resultado.serie;
       }
       this.tickets.push(ticket);
     });
   }
 
   closeBox() {
-    this.close.emit("");
+    this.close.emit('');
   }
 }
