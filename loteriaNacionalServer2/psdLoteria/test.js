@@ -11,7 +11,7 @@ const config = require("../environments/production");
       config.passwordAplicativo
     );
 
-    let aux = await resultados.consultarUltimosResultados(5, data);
+    let aux = await sorteos.consultarSorteosJugados(17, data);
     console.log(aux);
   } catch (error) {
     console.log(error);
