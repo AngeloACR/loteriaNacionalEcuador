@@ -27,7 +27,7 @@ const ultimoResultadoSchema = new mongoose.Schema(
 );
 
 ultimoResultadoSchema.virtual("sorteo", {
-  ref: "SorteoPozo", // The model to use
+  ref: "SorteoPozoRevancha", // The model to use
   localField: "numeroSorteo", // Find people where `localField`
   foreignField: "sorteo", // is equal to `foreignField`
   // If `justOne` is true, 'members' will be a single doc as opposed to
@@ -36,7 +36,7 @@ ultimoResultadoSchema.virtual("sorteo", {
 });
 
 ultimoResultadoSchema.virtual("premioPrincipal", {
-  ref: "PremioPozo", // The model to use
+  ref: "PremioPozoRevancha", // The model to use
   localField: "codigoPremioPrincipal", // Find people where `localField`
   foreignField: "codigo", // is equal to `foreignField`
   // If `justOne` is true, 'members' will be a single doc as opposed to

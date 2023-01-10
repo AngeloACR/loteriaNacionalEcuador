@@ -92,34 +92,34 @@ export class VentaService {
   obtenerMascota(mascota: any) {
     let mascotaPath;
     switch (mascota) {
-      case '01':
+      case '04':
         mascotaPath = 'assets/mascotas/Delfin.png';
         break;
       case '02':
         mascotaPath = 'assets/mascotas/Perro.png';
         break;
-      case '03':
+      case '08':
         mascotaPath = 'assets/mascotas/Llama.png';
         break;
-      case '04':
+      case '09':
         mascotaPath = 'assets/mascotas/Papagayo.png';
         break;
-      case '05':
+      case '01':
         mascotaPath = 'assets/mascotas/Conejo.png';
         break;
-      case '06':
+      case '10':
         mascotaPath = 'assets/mascotas/Mono.png';
         break;
-      case '07':
+      case '03':
         mascotaPath = 'assets/mascotas/Galapago.png';
         break;
-      case '08':
+      case '05':
         mascotaPath = 'assets/mascotas/Foca.png';
         break;
-      case '09':
+      case '06':
         mascotaPath = 'assets/mascotas/Condor.png';
         break;
-      case '10':
+      case '07':
         mascotaPath = 'assets/mascotas/Iguana.png';
         break;
       default:
@@ -132,49 +132,49 @@ export class VentaService {
     this.animales = [
       {
         ruta: 'assets/mascotas/Condor.png',
-        identificador: '09',
+        identificador: '06',
         nombre: 'Cóndor',
         status: false,
       },
       {
         ruta: 'assets/mascotas/Iguana.png',
-        identificador: '10',
+        identificador: '07',
         nombre: 'Iguana',
         status: false,
       },
       {
         ruta: 'assets/mascotas/Conejo.png',
-        identificador: '05',
+        identificador: '01',
         nombre: 'Conejo',
         status: false,
       },
       {
         ruta: 'assets/mascotas/Delfin.png',
-        identificador: '01',
+        identificador: '04',
         nombre: 'Delfín',
         status: false,
       },
       {
         ruta: 'assets/mascotas/Galapago.png',
-        identificador: '07',
+        identificador: '03',
         nombre: 'Galápago',
         status: false,
       },
       {
         ruta: 'assets/mascotas/Llama.png',
-        identificador: '03',
+        identificador: '08',
         nombre: 'Llama',
         status: false,
       },
       {
         ruta: 'assets/mascotas/Mono.png',
-        identificador: '06',
+        identificador: '10',
         nombre: 'Mono',
         status: false,
       },
       {
         ruta: 'assets/mascotas/Papagayo.png',
-        identificador: '04',
+        identificador: '09',
         nombre: 'Papagayo',
         status: false,
       },
@@ -186,7 +186,7 @@ export class VentaService {
       },
       {
         ruta: 'assets/mascotas/Foca.png',
-        identificador: '08',
+        identificador: '05',
         nombre: 'Foca',
         status: false,
       },
@@ -202,42 +202,42 @@ export class VentaService {
     let animales = [
       {
         ruta: 'assets/mascotas/Condor.png',
-        identificador: '09',
+        identificador: '06',
         nombre: 'Cóndor',
       },
       {
         ruta: 'assets/mascotas/Iguana.png',
-        identificador: '10',
+        identificador: '07',
         nombre: 'Iguana',
       },
       {
         ruta: 'assets/mascotas/Conejo.png',
-        identificador: '05',
+        identificador: '01',
         nombre: 'Conejo',
       },
       {
         ruta: 'assets/mascotas/Delfin.png',
-        identificador: '01',
+        identificador: '04',
         nombre: 'Delfín',
       },
       {
         ruta: 'assets/mascotas/Galapago.png',
-        identificador: '07',
+        identificador: '03',
         nombre: 'Galápago',
       },
       {
         ruta: 'assets/mascotas/Llama.png',
-        identificador: '03',
+        identificador: '08',
         nombre: 'Llama',
       },
       {
         ruta: 'assets/mascotas/Mono.png',
-        identificador: '06',
+        identificador: '10',
         nombre: 'Mono',
       },
       {
         ruta: 'assets/mascotas/Papagayo.png',
-        identificador: '04',
+        identificador: '09',
         nombre: 'Papagayo',
       },
       {
@@ -247,7 +247,7 @@ export class VentaService {
       },
       {
         ruta: 'assets/mascotas/Foca.png',
-        identificador: '08',
+        identificador: '05',
         nombre: 'Foca',
       },
     ];

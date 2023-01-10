@@ -122,34 +122,34 @@ export class ConsultaService {
   obtenerMascota(mascota: any) {
     let mascotaPath;
     switch (mascota) {
-      case '01':
+      case '04':
         mascotaPath = 'assets/mascotas/Delfin.png';
         break;
       case '02':
         mascotaPath = 'assets/mascotas/Perro.png';
         break;
-      case '03':
+      case '08':
         mascotaPath = 'assets/mascotas/Llama.png';
         break;
-      case '04':
+      case '09':
         mascotaPath = 'assets/mascotas/Papagayo.png';
         break;
-      case '05':
+      case '01':
         mascotaPath = 'assets/mascotas/Conejo.png';
         break;
-      case '06':
+      case '10':
         mascotaPath = 'assets/mascotas/Mono.png';
         break;
-      case '07':
+      case '03':
         mascotaPath = 'assets/mascotas/Galapago.png';
         break;
-      case '08':
+      case '05':
         mascotaPath = 'assets/mascotas/Foca.png';
         break;
-      case '09':
+      case '06':
         mascotaPath = 'assets/mascotas/Condor.png';
         break;
-      case '10':
+      case '07':
         mascotaPath = 'assets/mascotas/Iguana.png';
         break;
       default:
