@@ -11,7 +11,12 @@ const config = require("../environments/production");
       config.passwordAplicativo
     );
 
-    let aux = await sorteos.consultarSorteosJugados(17, data);
+    let aux = await resultados.consultarUltimosResultados(
+      17,
+      data,
+      config.usuarioAplicativo,
+      "192.168.0.1"
+    );
     console.log(aux);
   } catch (error) {
     console.log(error);

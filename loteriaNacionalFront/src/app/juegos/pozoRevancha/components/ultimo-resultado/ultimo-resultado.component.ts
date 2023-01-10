@@ -19,7 +19,7 @@ export class UltimoResultadoComponent implements OnInit {
     this.mascotaPath = this.consulta.obtenerMascota(this.mascota);
 
     this.ticketGanador = {
-      ticketIndex: data.ultimoResultadoPozoRevancha.codigo,
+      ticketIndex: data.ultimoResultadoPozo.codigo,
       description: 'Boleto Ganador',
       ticketNumbers: this.ticketNumbers,
       mascota: this.mascota,
