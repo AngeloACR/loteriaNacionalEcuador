@@ -6,19 +6,6 @@ $fuente-botones: "Monstserrat SemiBold";
 $color-lotto: #b51f20;
 
 .contenedor_ticket {
-  /* width: 34%; */
-/*   width: 90%;
-  max-width: 400px;
-  min-width: 320px;
-
-  margin: 20px auto;
-  padding: 15px;
-  border-radius: 30px;
-  background-color: white;
-  -webkit-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
- */
   .logo_ticket {
     width: 100%;
     margin: auto;
@@ -27,10 +14,11 @@ $color-lotto: #b51f20;
     align-items: center;
     justify-content: center;
     margin: 15px 0;
+    height: 80px;
 
     img {
-      height: 80px;
-      margin: auto;
+    height: 65px;
+    margin: auto;
     }
     p {
       margin: 0;
@@ -195,7 +183,7 @@ $color-lotto: #b51f20;
 
     button {
       width: 90%;
-      padding: 20px 30px;
+      padding: 10px 30px;
       background-color: $color-lotto;
       border: 1px solid $color-lotto;;
       border-radius: 40px;

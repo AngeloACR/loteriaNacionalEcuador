@@ -1,8 +1,18 @@
 $fuente-botones: "Monstserrat SemiBold";
 
 #desktopLanding {
+  padding-top: 15px;
   width: 100%;
   height: 100%;
+  .separador{
+    margin: auto; 
+  border-bottom: 1px solid #021151;
+    width: 92%;
+    h1  {
+      color: #021151;
+      margin: 0;
+    }
+  }
 }
 #mobileLanding {
   display: none;

@@ -4,19 +4,8 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-pozo: #04b865;
-//$color-pozo: #057333;
 
 .contenedor_ticket {
-/*   width: 90%;
-  max-width: 400px;
-  min-width: 320px;
-  padding: 15px;
-  border-radius: 30px;
-  background-color: white;
-  -webkit-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  margin: 20px auto; */
   .texto {
     color: black;
     font-family: $fuente-titulo;
@@ -34,10 +23,11 @@ $color-pozo: #04b865;
     align-items: center;
     justify-content: center;
     margin: 15px 0;
+    height: 80px;
 
     img {
-      height: 100px;
-      margin-top: -20px;
+    height: 150px;
+    margin-top: -20px;
     }
     p {
       margin: 0;
@@ -181,7 +171,7 @@ $color-pozo: #04b865;
 
     button {
       width: 90%;
-      padding: 20px 30px;
+      padding: 10px 30px;
 
       //      background-color: $color-pozo;
       background-color: $color-pozo;
