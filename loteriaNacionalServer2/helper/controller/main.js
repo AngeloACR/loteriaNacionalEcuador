@@ -464,12 +464,10 @@ const helperController = {
           ventasId.push(curr.ventaId);
         }
       }, 0);
+      ventasId = ventasId.sort((a, b) => a - b);
       let ventas = await Promise.all(ventasPromises);
       ventas = ventas.filter((item) => item != null);
-      await fs.writeFile(
-        "instantaneasVentasId.json",
-        JSON.stringify(ventasId.length)
-      );
+      await fs.writeFile("instantaneasVentasId.json", JSON.stringify(ventasId));
       await fs.writeFile("instantaneasVentas.json", JSON.stringify(ventas));
       console.log(ventas.length);
       let detalles = ventas.map((venta) => {
