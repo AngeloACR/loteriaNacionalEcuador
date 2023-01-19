@@ -433,7 +433,7 @@ const helperController = {
       res.status(400).json(response);
     }
   },
-  getVentasDePremiosNoPagos: async (req, res) => {
+  getInstantaneasNoPagas: async (req, res) => {
     try {
       let query = { acreditado: false };
       let ganadores = await Ganadores.find(query);
@@ -449,6 +449,155 @@ const helperController = {
               parseInt(ganador.numeroSorteo) >= 26)) &&
           parseInt(ganador.ventaId) >= 3583690 &&
           ganador.codigoPremio.includes("INSTANTANEA")
+      );
+      await fs.writeFile("instantaneas.json", JSON.stringify(ganadores));
+
+      let ventasPromises = [];
+      let ventasId = [];
+      let total = 0;
+      ganadores.reduce((prev, curr) => {
+        total += parseFloat(curr.valorPremioDescuento);
+        let index = ventasId.indexOf(curr.ventaId);
+        if (index == -1) {
+          let query = { ventaId: curr.ventaId };
+          ventasPromises.push(Ventas.findOne(query));
+          ventasId.push(curr.ventaId);
+        }
+      }, 0);
+      let ventas = await Promise.all(ventasPromises);
+      ventas = ventas.filter((item) => item != null);
+      await fs.writeFile(
+        "instantaneasVentasId.json",
+        JSON.stringify(ventasId.length)
+      );
+      await fs.writeFile("instantaneasVentas.json", JSON.stringify(ventas));
+      console.log(ventas.length);
+      let detalles = ventas.map((venta) => {
+        let reservationDetails = [];
+        if (venta && venta.loteria && venta.loteria.length) {
+          venta.loteria.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 1,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
+
+              fractions: JSON.stringify([
+                ...item.fracciones.map((item) => {
+                  return parseInt(item);
+                }),
+              ]).replace(/,/g, ", "),
+            };
+            reservationDetails.push(aux);
+          });
+        }
+        if (venta && venta.lotto && venta.lotto.length) {
+          venta.lotto.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 2,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
+              combinationC2: item.combinacion2,
+              combinationC3: item.combinacion3,
+              combinationC4: item.combinacion4,
+              combinationC5: item.combinacion5,
+            };
+            reservationDetails.push(aux);
+          });
+        }
+        if (venta && venta.pozo && venta.pozo.length) {
+          venta.pozo.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 5,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
+              combinationC2: item.combinacion2,
+              combinationC3: item.mascota,
+            };
+            reservationDetails.push(aux);
+          });
+        }
+        if (venta && venta.millonaria && venta.millonaria.length) {
+          venta.millonaria.forEach((item) => {
+            let drawDateAux = item.fecha.split(" ")[0].split("/");
+            let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
+            let aux = {
+              lotteryType: 14,
+              drawNumber: parseInt(item.sorteo),
+              drawDate,
+              subTotal: `${parseFloat(item.subtotal).toFixed(2)}`,
+              combinationC1: item.combinacion1,
+              combinationC2: item.combinacion2,
+              fractions: JSON.stringify([
+                ...item.fracciones.map((item) => {
+                  return parseInt(item);
+                }),
+              ]).replace(/,/g, ", "),
+            };
+            reservationDetails.push(aux);
+          });
+        }
+        return {
+          transactionId: venta.alboranReservaId
+            ? venta.alboranReservaId
+            : venta.exaReservaId,
+          reservationDetails,
+        };
+      });
+
+      let sellTickets = ventas.map((venta) => {
+        return {
+          reserveId: venta.alboranReservaId
+            ? venta.alboranReservaId
+            : venta.exaReservaId,
+          transactionId: venta.alboranVentaId
+            ? venta.alboranVentaId
+            : venta.exaVentaId,
+          ticketId: venta.ventaId,
+          amount: venta.total,
+        };
+      });
+      let reserveIds = sellTickets.map((venta) => {
+        return venta.reserveId;
+      });
+      res.status(200).json({ detalles });
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  getVentasDePremiosNoPagos: async (req, res) => {
+    try {
+      let query = { acreditado: false };
+      let ganadores = await Ganadores.find(query);
+      ganadores = ganadores.filter(
+        (ganador) =>
+          ((ganador.tipoLoteria == 1 &&
+            parseInt(ganador.numeroSorteo) >= 6805) ||
+            (ganador.tipoLoteria == 2 &&
+              parseInt(ganador.numeroSorteo) >= 2782) ||
+            (ganador.tipoLoteria == 5 &&
+              parseInt(ganador.numeroSorteo) >= 996) ||
+            (ganador.tipoLoteria == 14 &&
+              parseInt(ganador.numeroSorteo) >= 26)) &&
+          parseInt(ganador.ventaId) >= 3583690 &&
+          !ganador.codigoPremio.includes("INSTANTANEA")
       );
       await fs.writeFile("ganadores.json", JSON.stringify(ganadores));
 

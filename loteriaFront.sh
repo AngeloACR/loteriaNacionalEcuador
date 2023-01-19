@@ -1,13 +1,14 @@
 #!/bin/bash
-ng new loteriaNacionalFront --style scss --routing true --force
+ng new loteriaNacionalFront2 --style scss --routing true --force
 
-cd loteriaNacionalFrontcashproApp/
+cd loteriaNacionalFront2/
 
-ng generate module public --route public --module app.module
+ng generate module public --route inicio --module app.module
 ng generate module consultas --route consulta --module app.module
 ng generate module ventas --route ventas --module app.module
-ng generate module shared --route shared --module app.module
-ng generate module juegos --route juegos --module app.module
+ng generate module codigosPromocionales --route codigosPromocionales --module app.module
+ng generate module shared
+ng generate module juegos
 
 ng add @angular/material
 
@@ -18,16 +19,14 @@ cd ./consultas
     mkdir services
 
     cd ./components
-        ng g c menu
         ng g c resultado
         ng g c resultados
+        ng g c ultimosResultados
 
     cd ../containers                
+        ng g c home
         ng g c consultas
-        ng g c loteria
-        ng g c pozo
-        ng g c lotto
-        ng g c millonaria
+        ng g c boletin
 
     cd ../services
         ng generate service consultas
@@ -41,15 +40,39 @@ cd ../../shared
         ng generate component loader
         ng generate component error
         ng generate component confirm
-                
-    cd ../containers                
-        ng generate component notFound
+        ng g component menuComprasHeader
+        ng g component menuConsultasHeader
+        ng g component menuComprasBox
+        ng g component floatingMenu
 
+    cd ./services
+        ng generate service loader
+        ng generate service error
+        ng generate service confirm
+                
+    cd ../pipes
+        ng generate pipe paginate
+
+    cd ../directives
+        ng generate directive autotab
+        ng generate directive positioning
+        ng generate directive stylePaginator
+
+cd ../../codigosPromocionales
+    mkdir components
+    mkdir containers
+
+    cd ./components
+        ng generate component popupPromo
+
+    cd ./services
+        ng generate service codigosPromocionales
+                
 cd ../../juegos
-    ng generate module loteria --route loteria --module juegos.module
-    ng generate module lotto --route lotto --module juegos.module
-    ng generate module pozo --route pozo --module juegos.module
-    ng generate module millonaria --route millonaria --module juegos.module
+    ng generate module loteria
+    ng generate module lotto
+    ng generate module pozo
+    ng generate module millonaria
 
     cd ./loteria
         mkdir components
@@ -57,18 +80,21 @@ cd ../../juegos
         mkdir interfaces
 
         cd ./components
+            ng generate component boletin
             ng generate component consulta
             ng generate component sorteo
-            ng generate component venta
-            ng generate component boletin
-            ng generate component ticket
+            ng generate component ticketConsulta
+            ng generate component ticketVentas
             ng generate component ultimoResultado
+            ng generate component venta
 
         cd ../services
-            ng generate service loteria
+            ng generate service venta
+            ng generate service consulta
 
         cd ../interfaces
-            ng generate interface ticket
+            ng generate interface ticketConsulta
+            ng generate interface ticketVentas
             ng generate interface ultimoResultado
             ng generate interface sorteo
 
@@ -78,18 +104,21 @@ cd ../../juegos
         mkdir interfaces
 
         cd ./components
-            ng generate component consulta
             ng generate component boletin
+            ng generate component consulta
             ng generate component sorteo
-            ng generate component venta
-            ng generate component ticket
+            ng generate component ticketConsulta
+            ng generate component ticketVentas
             ng generate component ultimoResultado
+            ng generate component venta
 
         cd ../services
-            ng generate service lotto
+            ng generate service venta
+            ng generate service consulta
 
         cd ../interfaces
-            ng generate interface ticket
+            ng generate interface ticketConsulta
+            ng generate interface ticketVentas
             ng generate interface ultimoResultado
             ng generate interface sorteo
 
@@ -99,18 +128,45 @@ cd ../../juegos
         mkdir interfaces
 
         cd ./components
-            ng generate component consulta
             ng generate component boletin
+            ng generate component consulta
             ng generate component sorteo
-            ng generate component venta
-            ng generate component ticket
+            ng generate component ticketConsulta
+            ng generate component ticketVentas
             ng generate component ultimoResultado
+            ng generate component venta
 
         cd ../services
-            ng generate service pozo
+            ng generate service venta
+            ng generate service consulta
 
         cd ../interfaces
-            ng generate interface ticket
+            ng generate interface ticketConsulta
+            ng generate interface ticketVentas
+            ng generate interface ultimoResultado
+            ng generate interface sorteo
+
+    cd ../../revancha
+        mkdir components
+        mkdir services
+        mkdir interfaces
+
+        cd ./components
+            ng generate component boletin
+            ng generate component consulta
+            ng generate component sorteo
+            ng generate component ticketConsulta
+            ng generate component ticketVentas
+            ng generate component ultimoResultado
+            ng generate component venta
+
+        cd ../services            
+            ng generate service venta
+            ng generate service consulta
+
+        cd ../interfaces
+            ng generate interface ticketConsulta
+            ng generate interface ticketVentas
             ng generate interface ultimoResultado
             ng generate interface sorteo
 
@@ -120,18 +176,21 @@ cd ../../juegos
         mkdir interfaces
 
         cd ./components
-            ng generate component consulta
-            ng generate component venta
-            ng generate component sorteo
             ng generate component boletin
-            ng generate component ticket
+            ng generate component consulta
+            ng generate component sorteo
+            ng generate component ticketConsulta
+            ng generate component ticketVentas
             ng generate component ultimoResultado
+            ng generate component venta
 
         cd ../services
-            ng generate service millonaria
+            ng generate service venta
+            ng generate service consulta
 
         cd ../interfaces
-            ng generate interface ticket
+            ng generate interface ticketConsulta
+            ng generate interface ticketVentas
             ng generate interface ultimoResultado
             ng generate interface sorteo
 
@@ -142,27 +201,24 @@ cd ../../../ventas
     mkdir interfaces
 
     cd ./components
-        ng g component confirmacionDeVenta
-        ng g component ventaFinalizada
-        ng g component descripcionDeVenta
+        ng g component confirmacion
+        ng g component finalizada
+        ng g component descripcion
         ng g component carrito
         ng g component instantanea
-        ng g component instantaneas 
-        ng g component menuHeader
-        ng g component menuBox
-        ng g component floatingMenu
+        ng g component instantaneas
 
     cd ../containers                
-        ng g c detalleDeVenta
-        ng g c ventas
-        ng g c loteria
-        ng g c pozo
-        ng g c lotto
-        ng g c millonaria
+        ng g c detalle
+        ng g c home
+        ng g c venta
 
     cd ../services
-        ng generate service pagos
+        ng generate service cartera
+        ng generate service venta
+        ng generate service reserva
         ng generate service carrito
+        ng generate service descuento
     
     cd ../interfaces
         ng generate interface carrito

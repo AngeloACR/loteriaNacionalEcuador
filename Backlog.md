@@ -17,11 +17,14 @@
 - Aplicar debouncing al boton de confirmar compra - LISTO
 - Automatizar resolucion de ventas fallidas en psd - LISTO
 - rsync entre servidor viejo y nuevo para sincronizar archivos - LISTO
+- Integrar Pozo Revancha - LISTO
+- Agregar Pozo revancha al carrito - LISTO
+- Revisar tema de pago de premios en la millonaria cuando hay una combinacion con diferentes series - LISTO
 
+- Activar los descuentos
 - Mover la pasarela de pago a un componente o modulo que se despliegue en un modal, y refactorizando para adaptarse al cambio
 - Refactorizar y simplificar las funciones del carrito, para que se maneje solo un array de boletos
 - Reservar primero en loteria, luego agregar al carrito
-- Agregar Pozo revancha al carrito
 
 - Validar la hora de cierre del sorteo y bloquear las ventas para esa hora
 - Cuando falle la db, propagar error correctamente para evitar ventas en reserve
@@ -36,5 +39,3 @@
 - Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra, y mostrar que no se ha cargado la info del sorteo en caso negativo
 - Validar cada 3 horas si hay nuevos archivos en el servidor
 - Interfaz administrativa para gestion de codigos promocionales
-- Integrar Pozo Revancha
-- Revisar tema de pago de premios en la millonaria cuando hay una combinacion con diferentes series

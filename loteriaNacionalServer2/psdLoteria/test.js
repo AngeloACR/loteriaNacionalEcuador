@@ -2,7 +2,7 @@ const auth = require("./auth");
 const juegos = require("./juegos");
 const resultados = require("./resultados");
 const sorteos = require("./sorteos");
-const config = require("../environments/test");
+const config = require("../environments/production");
 
 (async () => {
   try {
@@ -11,12 +11,7 @@ const config = require("../environments/test");
       config.passwordAplicativo
     );
 
-    let aux = await resultados.consultarUltimosResultados(
-      17,
-      data,
-      config.usuarioAplicativo,
-      "192.168.0.1"
-    );
+    let aux = await resultados.consultarUltimosResultados(17, data);
     console.log(aux);
   } catch (error) {
     console.log(error);

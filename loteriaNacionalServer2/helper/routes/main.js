@@ -10,6 +10,7 @@ mainRouter.get("/pruebaOrden", mainController.pruebaOrden);
 mainRouter.post("/corregirTransaccion", mainController.corregirTransaccion);
 mainRouter.post("/corregirVenta", mainController.corregirVenta);
 mainRouter.get("/premiosNoPagos", mainController.getVentasDePremiosNoPagos);
+mainRouter.get("/instantaneasNoPagas", mainController.getInstantaneasNoPagas);
 mainRouter.get("/instantaneasFalse", mainController.updateInstantaneasInFalse);
 mainRouter.get("/premiosFalse", mainController.updatePremiosInFalse);
 mainRouter.get("/fixReserve", mainController.fixReserveHttp);
