@@ -1,5 +1,5 @@
 const authServer = require("./authServer");
-const config = require("../environments/test");
+const config = require("../environments/production");
 const cronjobs = require("./cronjobs");
 
 const authPort = config.authPort;

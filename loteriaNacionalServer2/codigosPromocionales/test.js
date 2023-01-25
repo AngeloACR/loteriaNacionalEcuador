@@ -1,5 +1,5 @@
 const fs = require("fs").promises;
-const config = require("../environments/test");
+const config = require("../environments/production");
 const CodigoPromocional = require("./models/main");
 (async () => {
   try {
