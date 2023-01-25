@@ -22,6 +22,7 @@
 - Revisar tema de pago de premios en la millonaria cuando hay una combinacion con diferentes series - LISTO
 
 - Activar los descuentos
+- Codigos promocionales a partir del 1 de febrero, minimo 2$
 - Mover la pasarela de pago a un componente o modulo que se despliegue en un modal, y refactorizando para adaptarse al cambio
 - Refactorizar y simplificar las funciones del carrito, para que se maneje solo un array de boletos
 - Reservar primero en loteria, luego agregar al carrito
