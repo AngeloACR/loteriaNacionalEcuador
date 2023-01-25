@@ -99,7 +99,6 @@ const VentaSchema = new mongoose.Schema(
         },
       },
     ],
-
     millonaria: [
       {
         sorteo: {
