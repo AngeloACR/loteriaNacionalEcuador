@@ -3,11 +3,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConsultaService {
   today = new Date();
-  mySource = environment.source
+  mySource = environment.source;
 
   constructor(private http: HttpClient) {}
 
@@ -23,8 +23,20 @@ export class ConsultaService {
       this.http.get(address, { headers: headers }).subscribe((data: any) => {
         let sorteosJugados = data.values;
         sorteosJugados.sort(this.ordenaSorteos);
+        sorteosJugados = this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
         resolve(sorteosJugados);
       });
+    });
+  }
+  limpiaSorteosDeMasDe3Meses(sorteos: any) {
+    var today = new Date();
+    var minDate = new Date(new Date().setDate(today.getDate() - 90));
+    return sorteos.filter((sorteo: any) => {
+      let fechaSorteo = new Date(
+        sorteo.fecha.split(' ')[0].split('/').reverse().join('-')
+      );
+      console.log(minDate.getTime(), fechaSorteo.getTime());
+      return fechaSorteo.getTime() >= minDate.getTime();
     });
   }
 
