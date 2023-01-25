@@ -17,11 +17,10 @@ $color-millonaria: #b51f20;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  
+
   a {
-    
     box-sizing: border-box;
-    
+
     width: 18%;
     height: 53px;
     text-align: center;
@@ -40,7 +39,7 @@ $color-millonaria: #b51f20;
     align-items: center;
     justify-content: center;
     position: relative;
-    &:nth-child(6) {
+    &:nth-child(7) {
       font-size: 20px;
       text-transform: uppercase;
 
@@ -83,7 +82,7 @@ $color-millonaria: #b51f20;
 
       padding: 10px;
       margin-bottom: 20px;
-      &:nth-child(5) {
+      &:nth-child(7) {
         right: unset;
         position: relative;
       }
