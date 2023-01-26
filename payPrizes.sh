@@ -3,7 +3,6 @@
   #curl -k -X POST -d '{"sorteo":"6856"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #curl -k -X POST -d '{"sorteo":"6853"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
 
-  #curl -k -X POST -d '{"sorteo":"6870"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #REVISAR curl -k -X POST -d '{"sorteo":"6848"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #REVISAR curl -k -X POST -d '{"sorteo":"6861"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #REVISAR curl -k -X POST -d '{"sorteo":"6867"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
@@ -13,9 +12,10 @@
   #REVISAR curl -k -X POST -d '{"sorteo":"6863"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #REVISAR  curl -k -X POST -d '{"sorteo":"6862"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #REVISAR curl -k -X POST -d '{"sorteo":"6860"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
+  #REVISAR curl -k -X POST -d '{"sorteo":"6871"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   
-  #echo "Sorteo 6871"
-  #curl -k -X POST -d '{"sorteo":"6871"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
+  #echo "Sorteo 6870"
+  #curl -k -X POST -d '{"sorteo":"6870"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #echo ""
   #echo ""
   #echo "Sorteo 6869"
@@ -64,16 +64,18 @@
   #echo ""
   #echo ""
   #echo "Sorteo 6847"
+
+  
   #curl -k -X POST -d '{"sorteo":"6847"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #echo ""
   #echo ""
   #echo "Sorteo 2863"
   #curl -k -X POST -d '{"sorteo":"2863"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
-  echo ""
-  echo ""
-  echo "Sorteo 2864"
-  curl -k -X POST -d '{"sorteo":"2864"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
-#curl -k -X POST -d '{"sorteo":"2862"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
+  #echo ""
+  #echo ""
+  #echo "Sorteo 2864"
+  #curl -k -X POST -d '{"sorteo":"2864"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
+  #curl -k -X POST -d '{"sorteo":"2862"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #curl -k -X POST -d '{"sorteo":"2848"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #curl -k -X POST -d '{"sorteo":"2840"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
   #curl -k -X POST -d '{"sorteo":"2836"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/ganadores/acreditarPremios
