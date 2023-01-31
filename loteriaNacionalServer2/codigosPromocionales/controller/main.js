@@ -85,14 +85,31 @@ const mainController = {
         personaId,
         ip
       );
-      let cantidadDeCodigos = 0;
+      let venta = Ventas.getVentaByVentaId(ventaId);
+
+      let enterosMillonaria =
+        venta.millonaria.filter((item) => item.fracciones.length == 3).length *
+        2;
+      let adicionalMillonaria = venta.millonaria.filter(
+        (item) => item.fracciones.length != 3
+      ).length
+        ? 1
+        : 0;
+      let pozo = venta.pozo.length >= 2 ? 1 : 0;
+      let revancha = !!pozo && venta.pozoRevancha.length >= 1 ? 1 : 0;
+      let cantidadDeCodigos =
+        enterosMillonaria + adicionalMillonaria + pozo + revancha;
+      /*       
       if (totalVenta >= 5.0 && totalVenta < 10.0) {
         cantidadDeCodigos = 1;
       } else if (totalVenta >= 10.0 && totalVenta < 15.0) {
         cantidadDeCodigos = 3;
       } else if (totalVenta >= 15.0) {
         cantidadDeCodigos = 5;
-      }
+      } */
+      //Millonaria compra minima de 2$ sin enteros, 1 cupon - n boletos enteros, 2n cupones - n boletos adicionales sin entero 1 cupon
+      //Pozo si tiene 2 boletos, 1 cupon - 2 boletos + Revancha 2 cupones
+
       if (!cantidadDeCodigos) {
         return [];
       }

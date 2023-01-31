@@ -17,8 +17,8 @@ $color-lotto: #b51f20;
     height: 80px;
 
     img {
-    height: 100%;
-    margin: auto;
+      height: 100%;
+      margin: auto;
     }
     p {
       margin: 0;
@@ -185,7 +185,7 @@ $color-lotto: #b51f20;
       width: 90%;
       padding: 10px 30px;
       background-color: $color-lotto;
-      border: 1px solid $color-lotto;;
+      border: 1px solid $color-lotto;
       border-radius: 40px;
       margin: 10px auto;
       font-family: $fuente-botones;
@@ -250,9 +250,9 @@ $color-lotto: #b51f20;
 
     display: grid;
 
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(6, auto);
-    text-align: center;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(4, auto);
+    text-align: left;
 
     p {
       font-size: 0.8rem;

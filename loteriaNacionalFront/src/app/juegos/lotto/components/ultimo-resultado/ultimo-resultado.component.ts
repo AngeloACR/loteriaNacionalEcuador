@@ -9,11 +9,12 @@ export class UltimoResultadoComponent implements OnInit {
   ticketGanador?: any;
   ticketNumbers?: String[];
   premiosEspeciales?: any;
-  
+
   constructor(private router: Router) {}
   ngOnInit() {
     let data = JSON.parse(localStorage.getItem('lottoUltimoResultado')!);
     this.ticketNumbers = data.ultimoResultadoLotto.combinacion1.split('');
+    this.premiosEspeciales = data.premiosEspeciales;
     this.ticketGanador = {
       ticketIndex: data.ultimoResultadoLotto.codigo,
       description: 'Boleto Ganador',
@@ -21,7 +22,7 @@ export class UltimoResultadoComponent implements OnInit {
       premiosEspeciales: this.premiosEspeciales,
       numeroSorteo: data.numeroSorteo,
       sorteo: data.sorteo,
-      valorPremio: data.premioPrincipal.valorPremio
+      valorPremio: data.premioPrincipal.valorPremio,
     };
   }
   verUltimoBoletin() {

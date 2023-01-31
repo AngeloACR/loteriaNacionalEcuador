@@ -1,27 +1,26 @@
 <div class="contenedor_ticket">
-    <div class="logo_ticket">
-        <img src="assets/img/lotto-sombra-2.png" alt="">
-    </div>
-    <div>
-        <hr size="2px" />
-    </div>
-    <div class="scroll">
-        <lotto-ticket-consulta [ticket]="ticketGanador"></lotto-ticket-consulta>
-    </div>
-
+  <div class="logo_ticket">
+    <img src="assets/img/lotto-sombra-2.png" alt="" />
+  </div>
+  <div>
+    <hr size="2px" />
+  </div>
+  <div class="scroll">
+    <lotto-ticket-consulta [ticket]="ticketGanador"></lotto-ticket-consulta>
+  </div>
+  <ng-container *ngIf="false">
     <h2 class="texto">PREMIOS ESPECIALES</h2>
 
     <div class="texto_premios">
-        <ng-container *ngFor="let premio of premiosEspeciales">
-
-            <p>premio.nombre:</p>
-            <p>{{premio.combinacion}}</p>
-        </ng-container>
+      <ng-container *ngFor="let premio of premiosEspeciales">
+        <p>{{ premio.nombre }}:</p>
+        <p>{{ premio.combinacion }}</p>
+      </ng-container>
     </div>
+  </ng-container>
 
-
-    <div class="boton_comprar">
-        <button (click)="verUltimoBoletin()">VER BOLETIN</button>
-        <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
-    </div>
+  <div class="boton_comprar">
+    <button (click)="verUltimoBoletin()">VER BOLETIN</button>
+    <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
+  </div>
 </div>
