@@ -85,7 +85,7 @@ const mainController = {
         personaId,
         ip
       );
-      let venta = Ventas.getVentaByVentaId(ventaId);
+      let venta = Ventas.findOne(ventaId);
 
       let enterosMillonaria =
         venta.millonaria.filter((item) => item.fracciones.length == 3).length *
