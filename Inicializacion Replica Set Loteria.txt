@@ -1,0 +1,33 @@
+
+
+mongod --dbpath /var/lib/mongo --keyFile backup.key --logpath /var/log/mongodb/mongod.log --replSet backup --bind_ip localhost,ventas.loteria.com.ec --fork
+
+ps -edaf | grep mongo | grep -v grep
+
+use admin
+db.createUser(
+  {
+    user: "admin",
+    pwd: passwordPrompt(), // or cleartext password
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+db.createUser(
+  {
+    "user" : "clusteradmin",
+    "pwd" : passwordPrompt(),     // or cleartext password
+    roles: [ { "role" : "clusterAdmin", "db" : "admin" } ]
+  }
+)
+
+use loteriaDB
+
+db.createUser(
+  {
+    "user" : "loterianacional",
+    "pwd" : passwordPrompt(),     // or cleartext password
+    roles: [ { role: "readWrite", db: "loteriaDB" }]
+  }
+)
+
+rs.add( { host: "backuploteria.ibereffect.com:27017" } )

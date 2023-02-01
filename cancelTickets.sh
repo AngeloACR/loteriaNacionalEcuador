@@ -1,4 +1,40 @@
 #!/bin/bash
 #!/bin/bash
-curl -k -X POST -d '{"reserveId":"1670955471583", "amount":"4.00","transactionId":"1670955471584"}' -H "Content-Type: application/json" -X POST https://ventas-api.loteria.com.ec/wallet/cancelLottery
-curl -k -X POST -d '{"reserveId":"1670955471583", "amount":"4.00","transactionId":"1670955471584"}' -H "Content-Type: application/json" -X POST https://ventas-api.loteria.com.ec/wallet/cancelLottery
+curl -k -X POST -d '{"reserveId": "1675142091219",	"transactionId": "1675142091220",	"amount": "3.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675140894734",	"transactionId": "1675140894735",	"amount": "2.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675140555104",	"transactionId": "1675140555105",	"amount": "20.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675140364920",	"transactionId": "1675140364921",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675140338191",	"transactionId": "1675140338192",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675140263039",	"transactionId": "1675140263040",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675140214284",	"transactionId": "1675140214285",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675116517558",	"transactionId": "1675116517559",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675116014031",	"transactionId": "1675116014032",	"amount": "1.50"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675115803158",	"transactionId": "1675115803159",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675110001217",	"transactionId": "1675110001218",	"amount": "6.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675043747981",	"transactionId": "1675043747982",	"amount": "3.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041829916",	"transactionId": "1675041829917",	"amount": "3.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041787690",	"transactionId": "1675041787691",	"amount": "4.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041654829",	"transactionId": "1675041654830",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041629085",	"transactionId": "1675041629086",	"amount": "4.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041610536",	"transactionId": "1675041610537",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041576922",	"transactionId": "1675041576923",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041557286",	"transactionId": "1675041557287",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675041534597",	"transactionId": "1675041534598",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675035027382",	"transactionId": "1675035027383",	"amount": "3.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675034712204",	"transactionId": "1675034712205",	"amount": "3.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675033807766",	"transactionId": "1675033807767",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675032611317",	"transactionId": "1675032611318",	"amount": "2.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675032589403",	"transactionId": "1675032589404",	"amount": "2.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675032567938",	"transactionId": "1675032567939",	"amount": "2.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675032058062",	"transactionId": "1675032058063",	"amount": "2.50"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675032039418",	"transactionId": "1675032039419",	"amount": "2.50"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1675032002417",	"transactionId": "1675032002418",	"amount": "2.50"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+#curl -k -X POST -d '{"reserveId": "1674535236787",	"transactionId": "1674535236788",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1674346510265",	"transactionId": "1674346510266",	"amount": "2.50"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1673931663759",	"transactionId": "1673931663760",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1673537765230",	"transactionId": "1673537765231",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1673533406391",	"transactionId": "1673533406392",	"amount": "3.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1673532642078",	"transactionId": "1673532642079",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1673326326680",	"transactionId": "1673326326681",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1673326304484",	"transactionId": "1673326304485",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 
+curl -k -X POST -d '{"reserveId": "1673326272695",	"transactionId": "1673326272696",	"amount": "1.00"}' -H "Content-Type: application/json" https://ventas-api.loteria.com.ec/wallet/cancelLottery 

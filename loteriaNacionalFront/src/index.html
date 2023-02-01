@@ -54,9 +54,22 @@
       name="facebook-domain-verification"
       content="3sfmd0ncv8psurus7sj9vvifetazrd"
     />
-
-    <!-- Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LZSMZFV9Y7"
+    ></script>
     <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LZSMZFV9Y7");
+    </script>
+    <!-- Google Tag Manager -->
+    <!--     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -67,11 +80,11 @@
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-KB6NGM4");
-    </script>
+    </script> -->
     <!-- End Google Tag Manager -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
+    <!--     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=UA-228385317-4"
     ></script>
@@ -83,7 +96,7 @@
       gtag("js", new Date());
 
       gtag("config", "UA-228385317-4");
-    </script>
+    </script> -->
     <link
       rel="preload"
       href="assets/fonts/Montserrat-Bold.otf"
@@ -109,14 +122,14 @@
 
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
+    <!-- <noscript
       ><iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-KB6NGM4"
         height="0"
         width="0"
         style="display: none; visibility: hidden"
       ></iframe
-    ></noscript>
+    ></noscript> -->
     <!-- End Google Tag Manager (noscript) -->
     <app-root></app-root>
   </body>
