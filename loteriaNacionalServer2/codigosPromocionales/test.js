@@ -9,19 +9,17 @@ const Ventas = require("../ventas/models/main");
       millonaria: { $size: 1 },
     });
     ventas.forEach((venta) => {
-      let enterosMillonaria = venta.millonaria.filter(
-        (item) => item.fracciones.length == 3
-      ).length;
-      let adicionalMillonaria = venta.millonaria.filter(
-        (item) => item.fracciones.length != 3
-      ).length
-        ? 1
-        : 0;
-      let pozo = venta.pozo.length >= 2 ? 1 : 0;
-      let revancha = !!pozo && venta.pozoRevancha.length >= 1 ? 1 : 0;
-      let totalCupones =
-        enterosMillonaria + adicionalMillonaria + pozo + revancha;
-      console.log(totalCupones);
+      let totalMillonaria = venta.millonaria.reduce((total, item) => {
+        return total + parseFloat(item.subtotal);
+      }, 0);
+      let totalPozo = venta.pozo.reduce((total, item) => {
+        return total + parseFloat(item.subtotal);
+      }, 0);
+      let totalRevancha = venta.pozoRevancha.reduce((total, item) => {
+        return total + parseFloat(item.subtotal);
+      }, 0);
+      let total = totalMillonaria + totalPozo + totalRevancha;
+      total >= 9 && console.log(total);
     });
   } catch (error) {
     console.log(error.message);

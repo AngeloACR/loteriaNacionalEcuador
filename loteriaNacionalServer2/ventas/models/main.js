@@ -116,9 +116,6 @@ const VentaSchema = new mongoose.Schema(
         subtotal: {
           type: String,
         },
-        subtotalConDesc: {
-          type: String,
-        },
         tieneDescuento: {
           type: Boolean,
         },
