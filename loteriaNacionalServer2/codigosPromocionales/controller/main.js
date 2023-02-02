@@ -100,21 +100,24 @@ const mainController = {
       let cantidadDeCodigos =
         enterosMillonaria + adicionalMillonaria + pozo + revancha; */
 
-      let totalMillonaria = venta.millonaria.length
-        ? venta.millonaria.reduce((total, item) => {
-            return total + parseFloat(item.subtotal);
-          }, 0)
-        : 0;
-      let totalPozo = venta.pozo.length
-        ? venta.pozo.reduce((total, item) => {
-            return total + parseFloat(item.subtotal);
-          }, 0)
-        : 0;
-      let totalRevancha = venta.pozoRevancha.length
-        ? venta.pozoRevancha.reduce((total, item) => {
-            return total + parseFloat(item.subtotal);
-          }, 0)
-        : 0;
+      let totalMillonaria =
+        venta.millonaria && venta.millonaria.length
+          ? venta.millonaria.reduce((total, item) => {
+              return total + parseFloat(item.subtotal);
+            }, 0)
+          : 0;
+      let totalPozo =
+        venta.pozo && venta.pozo.length
+          ? venta.pozo.reduce((total, item) => {
+              return total + parseFloat(item.subtotal);
+            }, 0)
+          : 0;
+      let totalRevancha =
+        venta.pozoRevancha && venta.pozoRevancha.length
+          ? venta.pozoRevancha.reduce((total, item) => {
+              return total + parseFloat(item.subtotal);
+            }, 0)
+          : 0;
       let total = totalMillonaria + totalPozo + totalRevancha;
       if (total >= 3.5 && total < 5.0) {
         cantidadDeCodigos = 2;
