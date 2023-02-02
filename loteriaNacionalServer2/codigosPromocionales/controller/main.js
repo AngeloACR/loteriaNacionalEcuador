@@ -85,7 +85,7 @@ const mainController = {
         personaId,
         ip
       );
-      let venta = Ventas.findOne({ ventaId });
+      let venta = await Ventas.findOne({ ventaId });
       let cantidadDeCodigos = 0;
       let totalMillonaria =
         venta.millonaria && venta.millonaria.length

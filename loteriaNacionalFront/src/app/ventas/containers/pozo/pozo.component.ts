@@ -508,6 +508,7 @@ export class PozoComponent implements OnInit {
             reservaId
           );
           this.isLoading = false;
+          console.log(response);
           if (response.status) {
             this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
