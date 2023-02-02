@@ -140,6 +140,10 @@ const mainController = {
       if (!cantidadDeCodigos) {
         return [];
       }
+
+      codigosPromocionalesLogger.info("generate", {
+        cantidadDeCodigos,
+      });
       let codigos = await CodigoPromocional.getCode(cantidadDeCodigos);
       let codigosPromocionales = await CodigoPromocional.updateCode(
         codigos,
