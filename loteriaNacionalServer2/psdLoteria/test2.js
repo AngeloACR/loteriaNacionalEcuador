@@ -12,7 +12,11 @@ const config = require("../environments/test");
       config.usuarioAplicativo,
       config.passwordAplicativo
     );
-    let user2 = await auth.consultarDatosUsuario(data, "382361", "192.168.0.1");
+    let user2 = await auth.consultarDatosUsuario2(
+      data,
+      "1720771441",
+      "192.168.0.1"
+    );
     /*     for (let i = 0; i < cedulas.length; i++) {
       const element = cedulas[i];
 
