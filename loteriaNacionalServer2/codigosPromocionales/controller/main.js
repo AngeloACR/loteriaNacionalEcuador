@@ -99,7 +99,7 @@ const mainController = {
       let revancha = !!pozo && venta.pozoRevancha.length >= 1 ? 1 : 0;
       let cantidadDeCodigos =
         enterosMillonaria + adicionalMillonaria + pozo + revancha; */
-
+      let cantidadDeCodigos = 0;
       let totalMillonaria =
         venta.millonaria && venta.millonaria.length
           ? venta.millonaria.reduce((total, item) => {
