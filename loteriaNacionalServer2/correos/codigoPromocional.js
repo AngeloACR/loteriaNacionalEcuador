@@ -13,7 +13,7 @@ module.exports.send = async (email, nombre, ventaId, codigos) => {
   );
   let htmlTemplate = await fs.promises.readFile(htmlAddress, "utf8");
   return new Promise(async (resolve, reject) => {
-    while (codigos.length !== 5) {
+    while (codigos.length !== 8) {
       codigos.push("");
     }
     const request = mailjet.post("send", { version: "v3.1" }).request({
@@ -37,6 +37,9 @@ module.exports.send = async (email, nombre, ventaId, codigos) => {
             codigo3: codigos[2],
             codigo4: codigos[3],
             codigo5: codigos[4],
+            codigo6: codigos[5],
+            codigo7: codigos[6],
+            codigo8: codigos[7],
           },
           TemplateLanguage: true,
           Subject: "Participa en el sorteo por un Ipad Air.",
