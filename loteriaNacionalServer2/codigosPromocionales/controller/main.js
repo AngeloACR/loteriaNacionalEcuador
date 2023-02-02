@@ -86,19 +86,6 @@ const mainController = {
         ip
       );
       let venta = Ventas.findOne({ ventaId });
-
-      /*       let enterosMillonaria =
-        venta.millonaria.filter((item) => item.fracciones.length == 3).length *
-        2;
-      let adicionalMillonaria = venta.millonaria.filter(
-        (item) => item.fracciones.length != 3
-      ).length
-        ? 1
-        : 0;
-      let pozo = venta.pozo.length >= 2 ? 1 : 0;
-      let revancha = !!pozo && venta.pozoRevancha.length >= 1 ? 1 : 0;
-      let cantidadDeCodigos =
-        enterosMillonaria + adicionalMillonaria + pozo + revancha; */
       let cantidadDeCodigos = 0;
       let totalMillonaria =
         venta.millonaria && venta.millonaria.length
