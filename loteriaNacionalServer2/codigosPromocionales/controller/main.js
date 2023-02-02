@@ -134,16 +134,11 @@ const mainController = {
       } else if (totalVenta >= 15.0) {
         cantidadDeCodigos = 5;
       } */
-      //Millonaria compra minima de 2$ sin enteros, 1 cupon - n boletos enteros, 2n cupones - n boletos adicionales sin entero 1 cupon
-      //Pozo si tiene 2 boletos, 1 cupon - 2 boletos + Revancha 2 cupones
 
       if (!cantidadDeCodigos) {
         return [];
       }
 
-      codigosPromocionalesLogger.info("generate", {
-        cantidadDeCodigos,
-      });
       let codigos = await CodigoPromocional.getCode(cantidadDeCodigos);
       let codigosPromocionales = await CodigoPromocional.updateCode(
         codigos,
@@ -159,7 +154,6 @@ const mainController = {
         ventaId,
         codigos
       );
-      console.log(info);
       return codigosPromocionales;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {
