@@ -35,43 +35,45 @@ const mainController = {
       let boletos = [...Array(size).keys()].map(
         (i) => parseInt(i) + boletoInicial
       );
-      let response = [];
       let auxResult = await Results.getResultadosByCodigos(sorteo, boletos);
-      for (let i = 0; i < auxResult.length; i++) {
-        if (auxResult.status) {
-          let combinacion = auxResult.values.combinacion1;
-
-          let aux = await Results.getResultadoGanador(sorteo, combinacion);
-          if (aux.status) {
-            let n = aux.values.length;
-            for (let j = 0; j < n; j++) {
-              let boleto = aux.values[j];
-              let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-              boleto["premio"] = premio.values;
-              let responseAux = {
-                status: true,
-                combinacion: combinacion,
-                sorteo,
-                data: boleto,
-              };
-              response.push(responseAux);
-            }
-          } else {
-            let responseAux = {
+      let auxPremios = [];
+      let response;
+      if (auxResult.status) {
+        response = auxResult.values.map((boleto) => {
+          auxPremios.push(Premios.getPremioByCodigo(boleto.codigoPremio));
+          boleto["premio"] = premio.values;
+          return {
+            status: true,
+            combinacion: combinacion,
+            sorteo,
+            data: boleto,
+          };
+        });
+        let premios = await Promise.all(auxPremios);
+        response = response.map((element, i) => {
+          element.data["premio"] = premios[i].values;
+        });
+        let boletosNoGanadores = boletos.filter((boleto) =>
+          response.some((item) => item.data.codigo == boleto)
+        );
+        response = [
+          ...response,
+          ...boletosNoGanadores.map((boleto) => {
+            return {
               status: false,
-              combinacion,
+              combinacion: boleto,
               sorteo,
             };
-            response.push(responseAux);
-          }
-        } else {
-          let responseAux = {
+          }),
+        ];
+      } else {
+        response = boletos.map((boleto) => {
+          return {
             status: false,
-            combinacion: boletos[i],
+            combinacion: boleto,
             sorteo,
           };
-          response.push(responseAux);
-        }
+        });
       }
       res.status(200).json(response);
     } catch (e) {

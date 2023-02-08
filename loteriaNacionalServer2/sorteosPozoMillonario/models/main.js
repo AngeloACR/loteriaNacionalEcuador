@@ -199,7 +199,7 @@ resultadoPozoSchema.statics = {
       let query = { numeroSorteo: sorteo, codigo: { $in: codigos } };
       let resultados = await this.find(query).lean();
       let response;
-      if (resultado && resultado.length != 0) {
+      if (resultados && resultados.length != 0) {
         response = {
           status: true,
           values: resultados,
