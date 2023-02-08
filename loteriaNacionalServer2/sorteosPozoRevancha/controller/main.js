@@ -24,7 +24,61 @@ const mainController = {
       throw new Error(e.message);
     }
   },
+
   buscarPlancha: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let boletoInicial = parseInt(req.body.boletoInicial);
+      let boletoFinal = parseInt(req.body.boletoFinal);
+
+      let size = boletoFinal - boletoInicial + 1;
+      let boletos = [...Array(size).keys()].map(
+        (i) => parseInt(i) + boletoInicial
+      );
+      let response = [];
+      let auxResult = await Results.getResultadosByCodigos(sorteo, boletos);
+      for (let i = 0; i < auxResult.length; i++) {
+        if (auxResult.status) {
+          let combinacion = auxResult.values.combinacion1;
+
+          let aux = await Results.getResultadoGanador(sorteo, combinacion);
+          if (aux.status) {
+            let n = aux.values.length;
+            for (let j = 0; j < n; j++) {
+              let boleto = aux.values[j];
+              let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
+              boleto["premio"] = premio.values;
+              let responseAux = {
+                status: true,
+                combinacion: combinacion,
+                sorteo,
+                data: boleto,
+              };
+              response.push(responseAux);
+            }
+          } else {
+            let responseAux = {
+              status: false,
+              combinacion,
+              sorteo,
+            };
+            response.push(responseAux);
+          }
+        } else {
+          let responseAux = {
+            status: false,
+            combinacion: boletos[i],
+            sorteo,
+          };
+          response.push(responseAux);
+        }
+      }
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+  /*   buscarPlancha: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
       let boletoInicial = parseInt(req.body.boletoInicial);
@@ -78,7 +132,7 @@ const mainController = {
       res.status(400).json(e.toString());
     }
   },
-
+ */
   buscarWinner: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;

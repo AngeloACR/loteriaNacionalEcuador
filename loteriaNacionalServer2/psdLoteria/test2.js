@@ -2,44 +2,48 @@ const fs = require("fs").promises;
 const auth = require("./auth");
 const juegos = require("./juegos");
 const config = require("../environments/test");
-
+function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 (async () => {
   try {
-    /* let cedulas = JSON.parse(
-      await fs.readFile("../../../ganadores/cedulasProblema.json")
-    ); */
+    let conRevancha = JSON.parse(
+      await fs.readFile(
+        "../../../ganadores/boletos de pozo con mascotas cambiadas (con revanchas).json"
+      )
+    );
     let data = await auth.authTest(
       config.usuarioAplicativo,
       config.passwordAplicativo
     );
-    let user2 = await auth.consultarDatosUsuario2(
-      data,
-      "1720771441",
-      "192.168.0.1"
-    );
-    /*     for (let i = 0; i < cedulas.length; i++) {
-      const element = cedulas[i];
 
-      let user = await auth.consultarDatosUsuario2(
-        data,
-        element,
-        "192.168.0.1"
-      );
-      user["identificacion"] = element;
-      user2["identificacion"] = element;
-      response.push(user);
-      response2.push(user2);
+    for (let i = 0; i < conRevancha.length; i++) {
+      if (i >= 80) {
+        const boleto = conRevancha[i];
+        boleto.pozo = boleto.pozo.filter((item) => item.mascota == "08");
+        boleto.pozoRevancha = boleto.pozoRevancha.filter(
+          (item) => item.mascota == "08"
+        );
+        await timeout(2000);
+        let userData = await auth.consultarDatosUsuario2(
+          data,
+          boleto.user,
+          "192.168.0.1"
+        );
+        await timeout(2000);
+        boleto["userData"] = await auth.consultarDatosUsuario(
+          data,
+          userData.personaId,
+          "192.168.0.1"
+        );
+      }
     }
+    conRevancha = conRevancha.filter((item, i) => i >= 80);
+
     await fs.writeFile(
-      "detallesUsuariosProblema-consultaPorCedula.json",
-      JSON.stringify(response)
+      "boletosProblema-conRevancha-2.json",
+      JSON.stringify(conRevancha)
     );
-    await fs.writeFile(
-      "detallesUsuariosProblema-consultaPorPersonaId.json",
-      JSON.stringify(response2)
-    );
-    console.log(response);
- */ console.log(user2);
   } catch (error) {
     console.log(error);
   }

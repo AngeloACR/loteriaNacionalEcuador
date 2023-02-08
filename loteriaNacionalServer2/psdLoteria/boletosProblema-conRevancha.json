@@ -1,0 +1,6066 @@
+[
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0503619",
+        "combinacion2": "01,02,04,07,09,10,15,18,20,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b47bdebe70ce4bbdcc55bb" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0503619",
+        "combinacion2": "01,02,04,07,09,10,15,18,20,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b47bdebe70ce4bbdcc55bc" }
+      }
+    ],
+    "total": "1.50",
+    "user": "1718801408",
+    "ventaId": "3732903",
+    "userData": {
+      "nombre": "DAYANA  YANEZ ",
+      "identificacion": "1718801408",
+      "correo": "dayo.yanez@gmail.com",
+      "telefono": "0994999789",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2021-11-22 07:28",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0503607",
+        "combinacion2": "03,09,10,11,13,14,15,16,19,20,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b49374be70ce4bbdcc56cb" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0531490",
+        "combinacion2": "01,06,07,13,15,16,19,20,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b49374be70ce4bbdcc56cf" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0531490",
+        "combinacion2": "01,06,07,13,15,16,19,20,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b49374be70ce4bbdcc56d1" }
+      }
+    ],
+    "total": "10.00",
+    "user": "1720282167",
+    "ventaId": "3732999",
+    "userData": {
+      "nombre": "JUAN AVILA",
+      "identificacion": "1720282167",
+      "correo": "juanjoavinti@gmail.com",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2021-05-17 16:27",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502669",
+        "combinacion2": "02,03,04,09,10,11,15,19,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b4bb91be70ce4bbdcc5807" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502669",
+        "combinacion2": "02,03,04,09,10,11,15,19,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b4bb91be70ce4bbdcc5808" }
+      }
+    ],
+    "total": "1.50",
+    "user": "1309737615",
+    "ventaId": "3733178",
+    "userData": {
+      "nombre": "YANINA DEL ROCIO MARCILLO BARCIA",
+      "identificacion": "1309737615",
+      "correo": "yanimarcillo@hotmail.com",
+      "telefono": "0992032251",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2021-07-22 08:31",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0510914",
+        "combinacion2": "02,04,06,07,09,12,16,17,19,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b5a1e1f0080431303b5b0f" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502494",
+        "combinacion2": "03,05,06,07,09,10,12,13,18,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b5a1e1f0080431303b5b11" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0510914",
+        "combinacion2": "02,04,06,07,09,12,16,17,19,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b5a1e1f0080431303b5b15" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502494",
+        "combinacion2": "03,05,06,07,09,10,12,13,18,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b5a1e1f0080431303b5b17" }
+      }
+    ],
+    "total": "10.00",
+    "user": "1756391254",
+    "ventaId": "3733366",
+    "userData": {
+      "nombre": "CARLOS PUPO ORTIZ",
+      "identificacion": "1756391254",
+      "correo": "cortiz37@gmail.com",
+      "telefono": "0998678563",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2019-09-15 07:31",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0509855",
+        "combinacion2": "01,02,03,05,08,10,13,16,17,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5a7caf0080431303b5c05" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0509855",
+        "combinacion2": "01,02,03,05,08,10,13,16,17,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5a7caf0080431303b5c09" }
+      }
+    ],
+    "total": "5.00",
+    "user": "0919442939",
+    "ventaId": "3733407",
+    "userData": {
+      "nombre": "RENE FABIAN GARCIA GARCIA",
+      "identificacion": "0919442939",
+      "correo": "rene.garcia.garcia@gmail.com",
+      "telefono": "0989137053",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-07-15 01:03",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-07-21 13:54",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0514821",
+        "combinacion2": "04,05,06,07,11,12,16,18,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5b972f0080431303b5dc5" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0514821",
+        "combinacion2": "04,05,06,07,11,12,16,18,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5b972f0080431303b5dc6" }
+      }
+    ],
+    "total": "7.50",
+    "user": "1311526048",
+    "ventaId": "3733510",
+    "userData": {
+      "nombre": "Marcela Margarita Velez Casanova",
+      "identificacion": "1311526048",
+      "correo": "margyv88@hotmail.com",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2017-04-29 10:09",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0555746",
+        "combinacion2": "01,03,07,11,12,14,16,19,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5bbd7f0080431303b5dfb" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0522883",
+        "combinacion2": "05,07,09,10,11,13,16,17,20,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b5bbd7f0080431303b5dfc" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0555746",
+        "combinacion2": "01,03,07,11,12,14,16,19,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5bbd7f0080431303b5dff" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0522883",
+        "combinacion2": "05,07,09,10,11,13,16,17,20,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b5bbd7f0080431303b5e00" }
+      }
+    ],
+    "total": "6.00",
+    "user": "0914161195",
+    "ventaId": "3733524",
+    "userData": {
+      "nombre": "FREDDY  MARIN GALARZA",
+      "identificacion": "0914161195",
+      "correo": "lquishpe0511@gmail.com",
+      "telefono": "0989976297",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-04-04 11:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0508838",
+        "combinacion2": "01,05,07,14,16,17,19,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b5cc80f0080431303b5f69" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0508838",
+        "combinacion2": "01,05,07,14,16,17,19,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b5cc80f0080431303b5f6a" }
+      }
+    ],
+    "total": "1.50",
+    "user": "1315604361",
+    "ventaId": "3733594",
+    "userData": {
+      "nombre": "CHRISTIAN GONZALO PINARGOTE GARCÍA",
+      "identificacion": "1315604361",
+      "correo": "cgpg94@gmail.com",
+      "telefono": "0989862393",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2020-12-01 12:57",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2022-06-21 15:22",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0505830",
+        "combinacion2": "01,03,09,15,16,17,18,19,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b5cf1cf0080431303b5fdb" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0505830",
+        "combinacion2": "01,03,09,15,16,17,18,19,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b5cf1cf0080431303b5fde" }
+      }
+    ],
+    "total": "18.50",
+    "user": "1313723379",
+    "ventaId": "3733613",
+    "userData": {
+      "nombre": "MARITZ RAFAELA CEDENO COBENA",
+      "identificacion": "1313723379",
+      "correo": "maritzarafaela3@gmail.com",
+      "telefono": "0980620978",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-05-28 11:31",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502713",
+        "combinacion2": "02,03,04,05,07,12,13,15,19,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5d6fff0080431303b6110" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502713",
+        "combinacion2": "02,03,04,05,07,12,13,15,19,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b5d6fff0080431303b6111" }
+      }
+    ],
+    "total": "4.50",
+    "user": "0201474723",
+    "ventaId": "3733653",
+    "userData": {
+      "nombre": "EDGAR ALFONSO MORA CHAVES",
+      "identificacion": "0201474723",
+      "correo": "edgarmorabce@gmail.com",
+      "telefono": "0994041012",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2020-07-28 12:40",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502951",
+        "combinacion2": "02,07,08,09,12,13,16,19,20,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b5e4caf0080431303b6214" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502951",
+        "combinacion2": "02,07,08,09,12,13,16,19,20,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b5e4caf0080431303b6218" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1302555816",
+    "ventaId": "3733713",
+    "userData": {
+      "nombre": "ALICIA JESUS LUZARDO GARCIA",
+      "identificacion": "1302555816",
+      "correo": "alicialuzardos@hotmail.com",
+      "telefono": "0983494901",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2015-06-30 18:31",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0504048",
+        "combinacion2": "01,05,07,08,12,13,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b61571f0080431303b65a7" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0504048",
+        "combinacion2": "01,05,07,08,12,13,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b61571f0080431303b65a8" }
+      }
+    ],
+    "total": "5.00",
+    "user": "0602038861",
+    "ventaId": "3733926",
+    "userData": {
+      "nombre": "MERCEDES AMELIA GALLEGOS AYALA",
+      "identificacion": "0602038861",
+      "correo": "mercedesgallegos5555@yahoo.com",
+      "telefono": "0984491466",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2017-03-24 17:05",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0584921",
+        "combinacion2": "03,04,06,07,08,10,12,17,18,19,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b62da5f0080431303b6721" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0584921",
+        "combinacion2": "03,04,06,07,08,10,12,17,18,19,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b62da5f0080431303b672f" }
+      }
+    ],
+    "total": "21.00",
+    "user": "1712235157",
+    "ventaId": "3733967",
+    "userData": {
+      "nombre": "DANIEL SEBASTIAN SANCHEZ TERAN",
+      "identificacion": "1712235157",
+      "correo": "danielsebas@me.com",
+      "telefono": "0981302238",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2015-09-14 11:19",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "2021-07-21 23:11",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0500155",
+        "combinacion2": "02,06,07,11,12,13,14,19,20,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b63c24f0080431303b6812" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0500155",
+        "combinacion2": "02,06,07,11,12,13,14,19,20,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b63c24f0080431303b6814" }
+      }
+    ],
+    "total": "5.00",
+    "user": "1004795884",
+    "ventaId": "3733986",
+    "userData": {
+      "nombre": "PABLO VIDAL QUIÑONEZ ESPINOZA",
+      "identificacion": "1004795884",
+      "correo": "pablovidalespinoza@gmail.com",
+      "telefono": "0967894861 ",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2020-02-10 22:43",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-03-23 13:55",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0519168",
+        "combinacion2": "01,04,07,10,11,12,13,14,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b732fada34eafd5a09f979" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0519168",
+        "combinacion2": "01,04,07,10,11,12,13,14,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b732fada34eafd5a09f983" }
+      }
+    ],
+    "total": "15.00",
+    "user": "0601187602",
+    "ventaId": "3734469",
+    "userData": {
+      "nombre": "Juan Carlos Vintimilla Leon",
+      "identificacion": "0601187602",
+      "correo": "j_vintimilla_leon@hotmail.com",
+      "telefono": "0988396776",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2014-11-14 11:58",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "2021-07-14 15:04",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b34da34eafd5a09fa09" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b34da34eafd5a09fa0c" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b34da34eafd5a09fa11" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b34da34eafd5a09fa14" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b5bda34eafd5a09fa1f" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b5bda34eafd5a09fa22" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b5bda34eafd5a09fa27" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b5bda34eafd5a09fa2a" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b7bda34eafd5a09fa35" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b7bda34eafd5a09fa38" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b7bda34eafd5a09fa3d" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73b7bda34eafd5a09fa40" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ba5da34eafd5a09fa4b" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ba5da34eafd5a09fa4e" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ba5da34eafd5a09fa53" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ba5da34eafd5a09fa56" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73be2da34eafd5a09fa61" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73be2da34eafd5a09fa64" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73be2da34eafd5a09fa69" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73be2da34eafd5a09fa6c" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ca8da34eafd5a09fa8a" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ca8da34eafd5a09fa8d" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ca8da34eafd5a09fa92" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ca8da34eafd5a09fa95" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73cc2da34eafd5a09faa0" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73cc2da34eafd5a09faa3" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73cc2da34eafd5a09faa8" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73cc2da34eafd5a09faab" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ceada34eafd5a09fac0" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ceada34eafd5a09fac3" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ceada34eafd5a09fac8" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73ceada34eafd5a09facb" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d1cda34eafd5a09fad6" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d1cda34eafd5a09fad9" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d1cda34eafd5a09fade" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d1cda34eafd5a09fae1" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d2fda34eafd5a09faec" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d2fda34eafd5a09faef" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d2fda34eafd5a09faf4" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d2fda34eafd5a09faf7" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d70da34eafd5a09fb08" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d70da34eafd5a09fb0b" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d70da34eafd5a09fb10" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73d70da34eafd5a09fb13" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73dc1da34eafd5a09fb2b" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73dc1da34eafd5a09fb2e" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73dc1da34eafd5a09fb33" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73dc1da34eafd5a09fb36" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73e39da34eafd5a09fb42" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73e39da34eafd5a09fb45" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0520766",
+        "combinacion2": "01,03,04,06,08,10,11,12,14,15,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b73e39da34eafd5a09fb4a" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518124",
+        "combinacion2": "02,03,05,06,11,12,14,16,17,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b73e39da34eafd5a09fb4d" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75ab3da34eafd5a09fe89" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75ab3da34eafd5a09fe93" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75b10da34eafd5a09fead" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75b10da34eafd5a09feb7" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75b35da34eafd5a09fec7" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75b35da34eafd5a09fed1" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75b4cda34eafd5a09fee1" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75b4cda34eafd5a09feeb" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75ba1da34eafd5a09ff05" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75ba1da34eafd5a09ff0f" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75be0da34eafd5a09ff1f" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75be0da34eafd5a09ff29" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75bebda34eafd5a09ff39" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75bebda34eafd5a09ff43" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75bf9da34eafd5a09ff5c" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0594475",
+        "combinacion2": "02,04,09,11,12,16,17,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b75bf9da34eafd5a09ff66" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1307536464",
+    "userData": {
+      "nombre": "Richard Pinargote",
+      "identificacion": "1307536464",
+      "correo": "richardpinargoterodriguez@gmail.com",
+      "telefono": "0984741118",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-08-19 15:14",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-09-04 20:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0577759",
+        "combinacion2": "01,03,04,06,07,08,16,18,19,20,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b75eadda34eafd5a09ffc8" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0577759",
+        "combinacion2": "01,03,04,06,07,08,16,18,19,20,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b75eadda34eafd5a09ffcb" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0577759",
+        "combinacion2": "01,03,04,06,07,08,16,18,19,20,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b75eadda34eafd5a09ffd6" }
+      }
+    ],
+    "total": "20.00",
+    "user": "0803128206",
+    "userData": {
+      "nombre": "ANABEL ELIZABETH CABEZAS VELEZ",
+      "identificacion": "0803128206",
+      "correo": "anabel.cabezas25@gmail.com",
+      "telefono": "0989585644",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2020-04-26 10:24",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0577759",
+        "combinacion2": "01,03,04,06,07,08,16,18,19,20,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b75f0cda34eafd5a09fff2" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0577759",
+        "combinacion2": "01,03,04,06,07,08,16,18,19,20,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b75f0cda34eafd5a09fff5" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0577759",
+        "combinacion2": "01,03,04,06,07,08,16,18,19,20,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b75f0cda34eafd5a0a0000" }
+      }
+    ],
+    "total": "20.00",
+    "user": "0803128206",
+    "userData": {
+      "nombre": "ANABEL ELIZABETH CABEZAS VELEZ",
+      "identificacion": "0803128206",
+      "correo": "anabel.cabezas25@gmail.com",
+      "telefono": "0989585644",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2020-04-26 10:24",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0509098",
+        "combinacion2": "02,03,04,05,07,12,13,17,19,20,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b7b66bda34eafd5a0a042e" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0512652",
+        "combinacion2": "03,04,05,07,09,12,13,15,16,18,19",
+        "mascota": "08",
+        "_id": { "$oid": "63b7b66bda34eafd5a0a042f" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0509098",
+        "combinacion2": "02,03,04,05,07,12,13,17,19,20,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b7b66bda34eafd5a0a0430" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0512652",
+        "combinacion2": "03,04,05,07,09,12,13,15,16,18,19",
+        "mascota": "08",
+        "_id": { "$oid": "63b7b66bda34eafd5a0a0431" }
+      }
+    ],
+    "total": "3.00",
+    "user": "0603402777",
+    "ventaId": "3734809",
+    "userData": {
+      "nombre": "Pablo Antonio Salcedo Segura",
+      "identificacion": "0603402777",
+      "correo": "Pabuchoec@yahoo.es",
+      "telefono": "0984662491",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 20:27",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0515014",
+        "combinacion2": "03,06,09,11,12,13,19,20,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b8199cda34eafd5a0a0602" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0504408",
+        "combinacion2": "01,03,04,05,11,12,18,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b8199cda34eafd5a0a060c" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0515014",
+        "combinacion2": "03,06,09,11,12,13,19,20,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b8199cda34eafd5a0a060e" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0504408",
+        "combinacion2": "01,03,04,05,11,12,18,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b8199cda34eafd5a0a0618" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3734839",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0507812",
+        "combinacion2": "01,03,04,13,14,17,18,20,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b81a5fda34eafd5a0a0635" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0507083",
+        "combinacion2": "05,07,10,12,14,16,19,20,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b81a5fda34eafd5a0a0637" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0507812",
+        "combinacion2": "01,03,04,13,14,17,18,20,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b81a5fda34eafd5a0a0641" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0507083",
+        "combinacion2": "05,07,10,12,14,16,19,20,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b81a5fda34eafd5a0a0643" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3734841",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0514987",
+        "combinacion2": "01,02,04,05,11,12,14,15,16,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b82362da34eafd5a0a06e5" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0584081",
+        "combinacion2": "01,05,06,07,12,16,17,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b82362da34eafd5a0a06ef" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0580378",
+        "combinacion2": "03,04,05,07,08,09,11,15,16,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b82362da34eafd5a0a06f4" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0514987",
+        "combinacion2": "01,02,04,05,11,12,14,15,16,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b82362da34eafd5a0a0703" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0584081",
+        "combinacion2": "01,05,06,07,12,16,17,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b82362da34eafd5a0a070d" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0580378",
+        "combinacion2": "03,04,05,07,08,09,11,15,16,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b82362da34eafd5a0a0712" }
+      }
+    ],
+    "total": "45.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0514987",
+        "combinacion2": "01,02,04,05,11,12,14,15,16,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b827f2da34eafd5a0a0749" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0584081",
+        "combinacion2": "01,05,06,07,12,16,17,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b827f2da34eafd5a0a0753" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0580378",
+        "combinacion2": "03,04,05,07,08,09,11,15,16,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b827f2da34eafd5a0a0758" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0514987",
+        "combinacion2": "01,02,04,05,11,12,14,15,16,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b827f2da34eafd5a0a0767" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0584081",
+        "combinacion2": "01,05,06,07,12,16,17,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b827f2da34eafd5a0a0771" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0580378",
+        "combinacion2": "03,04,05,07,08,09,11,15,16,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b827f2da34eafd5a0a0776" }
+      }
+    ],
+    "total": "45.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0522614",
+        "combinacion2": "02,04,06,09,10,16,19,20,21,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b834f2da34eafd5a0a0840" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0522614",
+        "combinacion2": "02,04,06,09,10,16,19,20,21,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b834f2da34eafd5a0a0848" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1720904513",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0567270",
+        "combinacion2": "01,03,05,06,08,10,13,15,18,20,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b83709da34eafd5a0a08bd" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0567270",
+        "combinacion2": "01,03,05,06,08,10,13,15,18,20,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b83709da34eafd5a0a08bf" }
+      }
+    ],
+    "total": "3.00",
+    "user": "1720904513",
+    "ventaId": "3734905",
+    "userData": {
+      "nombre": "Oswaldo Sebastián Valencia Bernal",
+      "identificacion": "1720904513",
+      "correo": "sebastian.valencia.b@hotmail.com",
+      "telefono": "0979065368",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-03-06 09:34",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-12-26 15:02",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502699",
+        "combinacion2": "04,05,07,09,12,13,16,19,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b84ddada34eafd5a0a0a0f" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0541335",
+        "combinacion2": "04,05,06,07,09,11,18,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b84ddada34eafd5a0a0a1c" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502699",
+        "combinacion2": "04,05,07,09,12,13,16,19,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b84ddada34eafd5a0a0a27" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0541335",
+        "combinacion2": "04,05,06,07,09,11,18,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b84ddada34eafd5a0a0a34" }
+      }
+    ],
+    "total": "36.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502699",
+        "combinacion2": "04,05,07,09,12,13,16,19,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b85594da34eafd5a0a0ae8" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0541335",
+        "combinacion2": "04,05,06,07,09,11,18,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b85594da34eafd5a0a0af5" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502699",
+        "combinacion2": "04,05,07,09,12,13,16,19,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b85594da34eafd5a0a0b00" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0541335",
+        "combinacion2": "04,05,06,07,09,11,18,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b85594da34eafd5a0a0b0d" }
+      }
+    ],
+    "total": "36.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0535182",
+        "combinacion2": "03,05,08,09,10,11,12,13,14,17,18",
+        "mascota": "08",
+        "_id": { "$oid": "63b85774da34eafd5a0a0b2b" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0532810",
+        "combinacion2": "02,04,05,06,14,15,17,18,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b85774da34eafd5a0a0b2f" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0556598",
+        "combinacion2": "02,05,06,09,12,13,17,19,20,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b85774da34eafd5a0a0b36" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0535182",
+        "combinacion2": "03,05,08,09,10,11,12,13,14,17,18",
+        "mascota": "08",
+        "_id": { "$oid": "63b85774da34eafd5a0a0b43" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0532810",
+        "combinacion2": "02,04,05,06,14,15,17,18,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b85774da34eafd5a0a0b47" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0556598",
+        "combinacion2": "02,05,06,09,12,13,17,19,20,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b85774da34eafd5a0a0b4e" }
+      }
+    ],
+    "total": "36.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0535182",
+        "combinacion2": "03,05,08,09,10,11,12,13,14,17,18",
+        "mascota": "08",
+        "_id": { "$oid": "63b85b31da34eafd5a0a0ba3" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0532810",
+        "combinacion2": "02,04,05,06,14,15,17,18,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b85b31da34eafd5a0a0ba7" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0556598",
+        "combinacion2": "02,05,06,09,12,13,17,19,20,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b85b31da34eafd5a0a0bae" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0535182",
+        "combinacion2": "03,05,08,09,10,11,12,13,14,17,18",
+        "mascota": "08",
+        "_id": { "$oid": "63b85b31da34eafd5a0a0bbb" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0532810",
+        "combinacion2": "02,04,05,06,14,15,17,18,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b85b31da34eafd5a0a0bbf" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0556598",
+        "combinacion2": "02,05,06,09,12,13,17,19,20,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b85b31da34eafd5a0a0bc6" }
+      }
+    ],
+    "total": "36.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0500550",
+        "combinacion2": "01,04,06,07,08,09,10,14,17,18,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b866bdda34eafd5a0a0c4d" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0500550",
+        "combinacion2": "01,04,06,07,08,09,10,14,17,18,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b866bdda34eafd5a0a0c4e" }
+      }
+    ],
+    "total": "5.00",
+    "user": "0602884496",
+    "ventaId": "3735124",
+    "userData": {
+      "nombre": "Jorge Luis Ortega Sanchez",
+      "identificacion": "0602884496",
+      "correo": "jorge.ortega@ymail.com",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2014-11-14 02:42",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0505880",
+        "combinacion2": "04,07,08,17,19,20,21,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0cf9" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0505618",
+        "combinacion2": "02,04,06,07,08,10,11,13,15,19,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0cfa" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0507738",
+        "combinacion2": "03,04,05,07,10,11,13,14,17,21,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0cfe" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518939",
+        "combinacion2": "02,05,06,07,10,16,19,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0cff" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0505880",
+        "combinacion2": "04,07,08,17,19,20,21,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0d11" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0505618",
+        "combinacion2": "02,04,06,07,08,10,11,13,15,19,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0d12" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0507738",
+        "combinacion2": "03,04,05,07,10,11,13,14,17,21,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0d16" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518939",
+        "combinacion2": "02,05,06,07,10,16,19,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b86fdfda34eafd5a0a0d17" }
+      }
+    ],
+    "total": "36.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0505880",
+        "combinacion2": "04,07,08,17,19,20,21,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d38" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0505618",
+        "combinacion2": "02,04,06,07,08,10,11,13,15,19,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d39" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0507738",
+        "combinacion2": "03,04,05,07,10,11,13,14,17,21,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d3d" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0518939",
+        "combinacion2": "02,05,06,07,10,16,19,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d3e" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0505880",
+        "combinacion2": "04,07,08,17,19,20,21,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d55" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0505618",
+        "combinacion2": "02,04,06,07,08,10,11,13,15,19,21",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d56" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0507738",
+        "combinacion2": "03,04,05,07,10,11,13,14,17,21,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d5a" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0518939",
+        "combinacion2": "02,05,06,07,10,16,19,20,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87072da34eafd5a0a0d5b" }
+      }
+    ],
+    "total": "43.50",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0523948",
+        "combinacion2": "01,02,06,08,09,14,15,17,19,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b873b7da34eafd5a0a0da9" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0523948",
+        "combinacion2": "01,02,06,08,09,14,15,17,19,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b873b7da34eafd5a0a0dab" }
+      }
+    ],
+    "total": "11.00",
+    "user": "1702723782",
+    "ventaId": "3735175",
+    "userData": {
+      "nombre": "KLÉBER HERNÁN GRANDA GRANDA",
+      "identificacion": "1702723782",
+      "correo": "khgranda@hotmail.com",
+      "telefono": "0998954652",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2020-07-23 10:17",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0540086",
+        "combinacion2": "01,02,03,08,11,12,17,18,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87b40da34eafd5a0a0e1e" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0538513",
+        "combinacion2": "01,05,07,11,13,14,15,19,20,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b87b40da34eafd5a0a0e1f" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0540086",
+        "combinacion2": "01,02,03,08,11,12,17,18,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87b40da34eafd5a0a0e36" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0538513",
+        "combinacion2": "01,05,07,11,13,14,15,19,20,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b87b40da34eafd5a0a0e37" }
+      }
+    ],
+    "total": "36.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0540086",
+        "combinacion2": "01,02,03,08,11,12,17,18,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87bd2da34eafd5a0a0e6b" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0538513",
+        "combinacion2": "01,05,07,11,13,14,15,19,20,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b87bd2da34eafd5a0a0e6c" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0540086",
+        "combinacion2": "01,02,03,08,11,12,17,18,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b87bd2da34eafd5a0a0e83" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0538513",
+        "combinacion2": "01,05,07,11,13,14,15,19,20,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b87bd2da34eafd5a0a0e84" }
+      }
+    ],
+    "total": "36.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0583917",
+        "combinacion2": "06,08,09,10,12,14,15,18,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b88869da34eafd5a0a0f4b" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0583917",
+        "combinacion2": "06,08,09,10,12,14,15,18,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b88869da34eafd5a0a0f57" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735280",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0566528",
+        "combinacion2": "01,03,04,10,11,12,14,18,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b8a365da34eafd5a0a11a9" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0566528",
+        "combinacion2": "01,03,04,10,11,12,14,18,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b8a365da34eafd5a0a11b5" }
+      }
+    ],
+    "total": "18.00",
+    "user": "0925973935",
+    "ventaId": "3735427",
+    "userData": {
+      "nombre": "Geanny Alfredo Montesdeoca Marin",
+      "identificacion": "0925973935",
+      "correo": "montesdeoca.alfredo@hotmail.com",
+      "telefono": "0991530718",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-09-26 12:00",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0512812",
+        "combinacion2": "03,06,07,08,09,11,13,16,17,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b8a786da34eafd5a0a1246" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0512812",
+        "combinacion2": "03,06,07,08,09,11,13,16,17,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b8a786da34eafd5a0a1247" }
+      }
+    ],
+    "total": "3.50",
+    "user": "1718946146",
+    "ventaId": "3735453",
+    "userData": {
+      "nombre": "MARCO JAVIER LASCANO MINCHALA",
+      "identificacion": "1718946146",
+      "correo": "marcojavierl@yahoo.es",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2021-03-18 10:54",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0534311",
+        "combinacion2": "01,02,05,10,11,12,19,21,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b8b5ebda34eafd5a0a12e4" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0534311",
+        "combinacion2": "01,02,05,10,11,12,19,21,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b8b5ebda34eafd5a0a12ee" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1721579967",
+    "ventaId": "3735494",
+    "userData": {
+      "nombre": "RAUL EDUARDO SGARAVATTI BAETHGEN",
+      "identificacion": "1721579967",
+      "correo": "raulesgab@hotmail.com",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2021-01-09 11:40",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0515024",
+        "combinacion2": "04,05,06,07,08,11,19,20,21,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b8d40cda34eafd5a0a1479" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0515024",
+        "combinacion2": "04,05,06,07,08,11,19,20,21,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b8d40cda34eafd5a0a1481" }
+      }
+    ],
+    "total": "15.00",
+    "user": "1712260247",
+    "ventaId": "3735538",
+    "userData": {
+      "nombre": "roberto calderon",
+      "identificacion": "1712260247",
+      "correo": "rca.ceo@live.com",
+      "telefono": "0995554630",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2014-11-12 13:54",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "2021-07-16 09:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502195",
+        "combinacion2": "02,04,05,07,09,10,12,13,16,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b8d6c7da34eafd5a0a14b0" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502195",
+        "combinacion2": "02,04,05,07,09,10,12,13,16,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b8d6c7da34eafd5a0a14b6" }
+      }
+    ],
+    "total": "9.00",
+    "user": "0400557450",
+    "ventaId": "3735542",
+    "userData": {
+      "nombre": "ALBERTO EFRAIN GUERRERO VALLEJO",
+      "identificacion": "0400557450",
+      "correo": "efra7guerrero@hotmail.com",
+      "telefono": "0999402385",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-10-19 18:11",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0571091",
+        "combinacion2": "02,05,08,09,11,12,16,20,21,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b94aa8da34eafd5a0a1721" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0570228",
+        "combinacion2": "02,03,04,05,07,08,14,17,21,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b94aa8da34eafd5a0a1723" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0565387",
+        "combinacion2": "03,04,05,07,10,12,16,19,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94aa8da34eafd5a0a1728" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0571091",
+        "combinacion2": "02,05,08,09,11,12,16,20,21,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b94aa8da34eafd5a0a172d" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0570228",
+        "combinacion2": "02,03,04,05,07,08,14,17,21,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b94aa8da34eafd5a0a172f" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0565387",
+        "combinacion2": "03,04,05,07,10,12,16,19,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94aa8da34eafd5a0a1734" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735586",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0501798",
+        "combinacion2": "02,05,07,09,10,11,14,18,19,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94bc5da34eafd5a0a173e" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0526070",
+        "combinacion2": "06,07,08,10,11,13,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94bc5da34eafd5a0a1748" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0501798",
+        "combinacion2": "02,05,07,09,10,11,14,18,19,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94bc5da34eafd5a0a1750" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0526070",
+        "combinacion2": "06,07,08,10,11,13,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94bc5da34eafd5a0a175a" }
+      }
+    ],
+    "total": "27.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0501798",
+        "combinacion2": "02,05,07,09,10,11,14,18,19,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94fdfda34eafd5a0a1764" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0526070",
+        "combinacion2": "06,07,08,10,11,13,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94fdfda34eafd5a0a176e" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0501798",
+        "combinacion2": "02,05,07,09,10,11,14,18,19,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94fdfda34eafd5a0a1776" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0526070",
+        "combinacion2": "06,07,08,10,11,13,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b94fdfda34eafd5a0a1780" }
+      }
+    ],
+    "total": "27.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0525194",
+        "combinacion2": "01,03,04,06,08,09,11,13,17,19,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b951cfda34eafd5a0a179f" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0519253",
+        "combinacion2": "01,03,06,07,10,11,15,18,19,20,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b951cfda34eafd5a0a17a6" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0525194",
+        "combinacion2": "01,03,04,06,08,09,11,13,17,19,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b951cfda34eafd5a0a17ab" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0519253",
+        "combinacion2": "01,03,06,07,10,11,15,18,19,20,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b951cfda34eafd5a0a17b2" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735588",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0542993",
+        "combinacion2": "01,03,08,09,11,13,14,15,19,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b952f4da34eafd5a0a17e2" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0540713",
+        "combinacion2": "02,05,06,09,10,11,12,13,15,16,19",
+        "mascota": "08",
+        "_id": { "$oid": "63b952f4da34eafd5a0a17e5" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0538632",
+        "combinacion2": "01,02,03,10,16,17,18,19,20,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b952f4da34eafd5a0a17e6" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0542993",
+        "combinacion2": "01,03,08,09,11,13,14,15,19,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b952f4da34eafd5a0a17ee" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0540713",
+        "combinacion2": "02,05,06,09,10,11,12,13,15,16,19",
+        "mascota": "08",
+        "_id": { "$oid": "63b952f4da34eafd5a0a17f1" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0538632",
+        "combinacion2": "01,02,03,10,16,17,18,19,20,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b952f4da34eafd5a0a17f2" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735590",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0500125",
+        "combinacion2": "02,07,08,09,10,11,16,18,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b95405da34eafd5a0a17fd" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0505634",
+        "combinacion2": "01,02,03,05,06,07,08,10,19,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b95405da34eafd5a0a1800" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0500125",
+        "combinacion2": "02,07,08,09,10,11,16,18,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b95405da34eafd5a0a1818" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0505634",
+        "combinacion2": "01,02,03,05,06,07,08,10,19,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b95405da34eafd5a0a181b" }
+      }
+    ],
+    "total": "40.50",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0511444",
+        "combinacion2": "02,03,07,09,10,11,12,13,20,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b97f5eda34eafd5a0a1b4d" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0511444",
+        "combinacion2": "02,03,07,09,10,11,12,13,20,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b97f5eda34eafd5a0a1b59" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735640",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0523940",
+        "combinacion2": "02,03,05,08,13,16,21,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b9800eda34eafd5a0a1b79" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0523940",
+        "combinacion2": "02,03,05,08,13,16,21,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b9800eda34eafd5a0a1b85" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735643",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0540247",
+        "combinacion2": "02,04,07,10,14,15,16,18,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b981dbda34eafd5a0a1bbd" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0540247",
+        "combinacion2": "02,04,07,10,14,15,16,18,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b981dbda34eafd5a0a1bc9" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735649",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0552320",
+        "combinacion2": "02,03,04,10,12,15,17,19,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b98311da34eafd5a0a1bd9" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0552320",
+        "combinacion2": "02,03,04,10,12,15,17,19,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b98311da34eafd5a0a1be5" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735651",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0565890",
+        "combinacion2": "04,05,06,08,13,14,17,18,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b98443da34eafd5a0a1c26" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0564254",
+        "combinacion2": "04,07,09,12,13,16,18,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b98443da34eafd5a0a1c27" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0565890",
+        "combinacion2": "04,05,06,08,13,14,17,18,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63b98443da34eafd5a0a1c32" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0564254",
+        "combinacion2": "04,07,09,12,13,16,18,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b98443da34eafd5a0a1c33" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735655",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0500704",
+        "combinacion2": "01,02,04,06,09,14,16,17,19,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b984f7da34eafd5a0a1c4a" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0500704",
+        "combinacion2": "01,02,04,06,09,14,16,17,19,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b984f7da34eafd5a0a1c56" }
+      }
+    ],
+    "total": "18.00",
+    "user": "1311607962",
+    "ventaId": "3735658",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0506175",
+        "combinacion2": "01,05,08,09,12,16,18,19,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b985e6da34eafd5a0a1c82" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0538907",
+        "combinacion2": "03,04,05,06,09,10,11,13,18,20,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b985e6da34eafd5a0a1c8a" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0506175",
+        "combinacion2": "01,05,08,09,12,16,18,19,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63b985e6da34eafd5a0a1c91" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0538907",
+        "combinacion2": "03,04,05,06,09,10,11,13,18,20,22",
+        "mascota": "08",
+        "_id": { "$oid": "63b985e6da34eafd5a0a1c99" }
+      }
+    ],
+    "total": "22.50",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502684",
+        "combinacion2": "04,05,07,11,12,13,14,17,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b9a8e3da34eafd5a0a1f74" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502684",
+        "combinacion2": "04,05,07,11,12,13,14,17,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63b9a8e3da34eafd5a0a1f75" }
+      }
+    ],
+    "total": "1.50",
+    "user": "0901933325",
+    "ventaId": "3735814",
+    "userData": {
+      "nombre": "Ramon Arnoldo Miño Moncada",
+      "identificacion": "0901933325",
+      "correo": "ramonminomoncada@hotmail.com",
+      "telefono": "0996292465",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2015-07-08 17:49",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0502730",
+        "combinacion2": "07,08,09,14,16,17,18,19,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63ba3a7ada34eafd5a0a28e9" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0511688",
+        "combinacion2": "01,05,07,11,13,14,19,20,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63ba3a7ada34eafd5a0a28ed" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0502730",
+        "combinacion2": "07,08,09,14,16,17,18,19,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63ba3a7ada34eafd5a0a28ef" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0511688",
+        "combinacion2": "01,05,07,11,13,14,19,20,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63ba3a7ada34eafd5a0a28f3" }
+      }
+    ],
+    "total": "15.00",
+    "user": "0919079004",
+    "ventaId": "3736212",
+    "userData": {
+      "nombre": "mario raul  vasco torres",
+      "identificacion": "0919079004",
+      "correo": "marcros21@hotmail.com",
+      "telefono": "0994019088",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2015-07-13 22:31",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0501880",
+        "combinacion2": "02,03,04,06,09,12,13,19,20,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bae300da34eafd5a0a2b8b" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0501880",
+        "combinacion2": "02,03,04,06,09,12,13,19,20,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bae300da34eafd5a0a2b8c" }
+      }
+    ],
+    "total": "1.50",
+    "user": "0909091001",
+    "ventaId": "3736278",
+    "userData": {
+      "nombre": "JOSE LUIS PLAZA PULGARIN",
+      "identificacion": "0909091001",
+      "correo": "jlpp1015@hotmail.com",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2021-06-06 11:40",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0507365",
+        "combinacion2": "01,02,03,06,07,08,15,19,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bb0762da34eafd5a0a2d39" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0507365",
+        "combinacion2": "01,02,03,06,07,08,15,19,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bb0762da34eafd5a0a2d3c" }
+      }
+    ],
+    "total": "4.50",
+    "user": "1203108855",
+    "ventaId": "3736366",
+    "userData": {
+      "nombre": "Jorge Chávez",
+      "identificacion": "1203108855",
+      "correo": "jorge1928@hotmail.com",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2017-05-18 06:26",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0503018",
+        "combinacion2": "01,07,08,13,14,15,16,17,18,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bb207cda34eafd5a0a2dad" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0503018",
+        "combinacion2": "01,07,08,13,14,15,16,17,18,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bb207cda34eafd5a0a2dae" }
+      }
+    ],
+    "total": "1.50",
+    "user": "1105088833",
+    "ventaId": "3736413",
+    "userData": {
+      "nombre": "MARIUXI LORENA RIOS RIOFRIO",
+      "identificacion": "1105088833",
+      "correo": "marucha94_@outlook.es",
+      "telefono": "0985045254",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-04-15 08:11",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0570002",
+        "combinacion2": "04,05,06,09,10,12,16,19,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bb7f59da34eafd5a0a31f0" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0570002",
+        "combinacion2": "04,05,06,09,10,12,16,19,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bb7f59da34eafd5a0a31f7" }
+      }
+    ],
+    "total": "10.00",
+    "user": "1003485701",
+    "ventaId": "3736565",
+    "userData": {
+      "nombre": "cristian javier cadena farinango",
+      "identificacion": "1003485701",
+      "correo": "c.xavier_18@hotmail.com",
+      "telefono": "0983017120",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-11-17 00:29",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0525297",
+        "combinacion2": "01,03,06,08,10,11,12,13,15,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bbf9cfda34eafd5a0a3480" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0525297",
+        "combinacion2": "01,03,06,08,10,11,12,13,15,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bbf9cfda34eafd5a0a3482" }
+      }
+    ],
+    "total": "3.00",
+    "user": "1714670658",
+    "ventaId": "3736617",
+    "userData": {
+      "nombre": "SARA XIMENA PEÑAFIEL CERON",
+      "identificacion": "1714670658",
+      "correo": "menafiel@hotmail.com",
+      "telefono": "",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2021-03-07 21:43",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0508601",
+        "combinacion2": "02,03,04,05,07,12,13,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc20c3da34eafd5a0a36aa" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0529378",
+        "combinacion2": "01,05,08,09,12,17,20,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc20c3da34eafd5a0a36ae" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0508601",
+        "combinacion2": "02,03,04,05,07,12,13,20,21,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc20c3da34eafd5a0a36b9" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0529378",
+        "combinacion2": "01,05,08,09,12,17,20,22,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc20c3da34eafd5a0a36bd" }
+      }
+    ],
+    "total": "22.50",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0557078",
+        "combinacion2": "03,04,07,08,10,11,14,21,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc21acda34eafd5a0a3720" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0590074",
+        "combinacion2": "03,04,08,09,13,14,16,17,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc21acda34eafd5a0a3721" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0557078",
+        "combinacion2": "03,04,07,08,10,11,14,21,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc21acda34eafd5a0a3726" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0590074",
+        "combinacion2": "03,04,08,09,13,14,16,17,21,22,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc21acda34eafd5a0a3727" }
+      }
+    ],
+    "total": "9.00",
+    "user": "0302093901",
+    "ventaId": "3736657",
+    "userData": {
+      "nombre": "Arturo Mauricio Palomino Palacios",
+      "identificacion": "0302093901",
+      "correo": "mpalomino.palacios@gmail.com",
+      "telefono": "0983872697",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2015-04-15 09:20",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "2022-05-24 17:31",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0597412",
+        "combinacion2": "03,06,07,09,15,16,17,18,19,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc256fda34eafd5a0a37cb" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0589596",
+        "combinacion2": "03,04,06,08,09,11,14,16,17,18,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc256fda34eafd5a0a37ce" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0597412",
+        "combinacion2": "03,06,07,09,15,16,17,18,19,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc256fda34eafd5a0a37d8" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0589596",
+        "combinacion2": "03,04,06,08,09,11,14,16,17,18,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc256fda34eafd5a0a37db" }
+      }
+    ],
+    "total": "19.50",
+    "user": "1311607962",
+    "ventaId": "3736669",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0534423",
+        "combinacion2": "02,05,08,11,16,17,19,20,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc261eda34eafd5a0a3806" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0565603",
+        "combinacion2": "04,10,12,13,14,15,16,20,21,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc261eda34eafd5a0a380c" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0571056",
+        "combinacion2": "01,02,03,06,09,13,19,21,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc261eda34eafd5a0a380d" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0534423",
+        "combinacion2": "02,05,08,11,16,17,19,20,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc261eda34eafd5a0a3814" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0571056",
+        "combinacion2": "01,02,03,06,09,13,19,21,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc261eda34eafd5a0a381a" }
+      }
+    ],
+    "total": "20.50",
+    "user": "1311607962",
+    "ventaId": "3736675",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0562817",
+        "combinacion2": "01,03,04,06,07,08,10,11,14,17,22",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2757da34eafd5a0a3836" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0584246",
+        "combinacion2": "01,05,09,10,12,13,15,19,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2757da34eafd5a0a383b" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0562817",
+        "combinacion2": "01,03,04,06,07,08,10,11,14,17,22",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2757da34eafd5a0a3846" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0584246",
+        "combinacion2": "01,05,09,10,12,13,15,19,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2757da34eafd5a0a384b" }
+      }
+    ],
+    "total": "24.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0562817",
+        "combinacion2": "01,03,04,06,07,08,10,11,14,17,22",
+        "mascota": "08",
+        "_id": { "$oid": "63bc28d1da34eafd5a0a387c" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0584246",
+        "combinacion2": "01,05,09,10,12,13,15,19,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc28d1da34eafd5a0a3881" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0562817",
+        "combinacion2": "01,03,04,06,07,08,10,11,14,17,22",
+        "mascota": "08",
+        "_id": { "$oid": "63bc28d1da34eafd5a0a388c" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0584246",
+        "combinacion2": "01,05,09,10,12,13,15,19,20,21,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc28d1da34eafd5a0a3891" }
+      }
+    ],
+    "total": "24.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0519280",
+        "combinacion2": "01,03,04,07,11,13,15,18,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2b3eda34eafd5a0a38d4" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0519280",
+        "combinacion2": "01,03,04,07,11,13,15,18,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2b3eda34eafd5a0a38dc" }
+      }
+    ],
+    "total": "12.00",
+    "user": "1311607962",
+    "ventaId": "3736696",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0534356",
+        "combinacion2": "02,03,05,08,10,11,16,17,18,20,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2becda34eafd5a0a38fe" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0528051",
+        "combinacion2": "01,03,04,05,07,10,13,15,17,19,22",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2becda34eafd5a0a3907" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0534356",
+        "combinacion2": "02,03,05,08,10,11,16,17,18,20,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2becda34eafd5a0a390a" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0528051",
+        "combinacion2": "01,03,04,05,07,10,13,15,17,19,22",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2becda34eafd5a0a3913" }
+      }
+    ],
+    "total": "20.00",
+    "user": "1311607962",
+    "ventaId": "3736700",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0509568",
+        "combinacion2": "05,06,09,10,11,16,17,18,20,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2cabda34eafd5a0a3929" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0533861",
+        "combinacion2": "04,06,09,14,15,16,17,20,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2cabda34eafd5a0a392b" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0509568",
+        "combinacion2": "05,06,09,10,11,16,17,18,20,21,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2cabda34eafd5a0a3937" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0533861",
+        "combinacion2": "04,06,09,14,15,16,17,20,22,23,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2cabda34eafd5a0a3939" }
+      }
+    ],
+    "total": "21.00",
+    "user": "1311607962",
+    "ventaId": "3736704",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0582040",
+        "combinacion2": "03,06,07,08,10,12,14,17,18,19,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2dd6da34eafd5a0a3982" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0582040",
+        "combinacion2": "03,06,07,08,10,12,14,17,18,19,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc2dd6da34eafd5a0a3990" }
+      }
+    ],
+    "total": "21.00",
+    "user": "1311607962",
+    "ventaId": "3736711",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0517317",
+        "combinacion2": "01,04,10,11,12,15,16,18,20,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc4c13da34eafd5a0a3c62" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0517317",
+        "combinacion2": "01,04,10,11,12,15,16,18,20,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc4c13da34eafd5a0a3c63" }
+      }
+    ],
+    "total": "1.50",
+    "user": "0930115993",
+    "ventaId": "3736925",
+    "userData": {
+      "nombre": "AMANDA ALCIRA ZAMBRANO MURILLO",
+      "identificacion": "0930115993",
+      "correo": "amandazambranomurillo@hotmail.com",
+      "telefono": "0939982490",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-05-02 12:36",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0517761",
+        "combinacion2": "02,04,05,07,09,12,15,17,19,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc5d71da34eafd5a0a3e36" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0517761",
+        "combinacion2": "02,04,05,07,09,12,15,17,19,22,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc5d71da34eafd5a0a3e3b" }
+      }
+    ],
+    "total": "6.00",
+    "user": "1710727601",
+    "ventaId": "3737019",
+    "userData": {
+      "nombre": "ALEX ESTEBAN LOPEZ CARRILLO",
+      "identificacion": "1710727601",
+      "correo": "axlfox23@hotmail.com",
+      "telefono": "023909236",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2018-11-16 12:08",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "2021-07-30 12:28",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0503363",
+        "combinacion2": "01,03,06,09,10,13,18,20,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6834da34eafd5a0a3f7a" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0503363",
+        "combinacion2": "01,03,06,09,10,13,18,20,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6834da34eafd5a0a3f88" }
+      }
+    ],
+    "total": "21.00",
+    "user": "1311607962",
+    "ventaId": "3737075",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0507018",
+        "combinacion2": "01,03,06,07,10,11,14,17,18,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc68f7da34eafd5a0a3fb4" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0585487",
+        "combinacion2": "01,02,06,07,08,11,13,16,17,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc68f7da34eafd5a0a3fbe" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0507018",
+        "combinacion2": "01,03,06,07,10,11,14,17,18,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc68f7da34eafd5a0a3fc3" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0585487",
+        "combinacion2": "01,02,06,07,08,11,13,16,17,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc68f7da34eafd5a0a3fcd" }
+      }
+    ],
+    "total": "22.50",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0507018",
+        "combinacion2": "01,03,06,07,10,11,14,17,18,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc69bbda34eafd5a0a3ff7" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0585487",
+        "combinacion2": "01,02,06,07,08,11,13,16,17,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc69bbda34eafd5a0a4000" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0507018",
+        "combinacion2": "01,03,06,07,10,11,14,17,18,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc69bbda34eafd5a0a4006" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0585487",
+        "combinacion2": "01,02,06,07,08,11,13,16,17,21,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc69bbda34eafd5a0a400f" }
+      }
+    ],
+    "total": "22.00",
+    "user": "1311607962",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0509660",
+        "combinacion2": "02,04,06,09,10,11,12,13,15,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6c41da34eafd5a0a404f" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0510190",
+        "combinacion2": "01,05,07,08,12,13,19,21,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6c41da34eafd5a0a4054" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0509660",
+        "combinacion2": "02,04,06,09,10,11,12,13,15,19,24",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6c41da34eafd5a0a405d" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0510190",
+        "combinacion2": "01,05,07,08,12,13,19,21,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6c41da34eafd5a0a4062" }
+      }
+    ],
+    "total": "21.00",
+    "user": "1311607962",
+    "ventaId": "3737099",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0501797",
+        "combinacion2": "01,02,06,08,10,13,14,15,16,17,19",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6ce4da34eafd5a0a4081" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0538435",
+        "combinacion2": "01,02,06,09,10,11,13,14,17,18,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6ce4da34eafd5a0a4088" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0501797",
+        "combinacion2": "01,02,06,08,10,13,14,15,16,17,19",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6ce4da34eafd5a0a408f" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0538435",
+        "combinacion2": "01,02,06,09,10,11,13,14,17,18,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6ce4da34eafd5a0a4096" }
+      }
+    ],
+    "total": "21.00",
+    "user": "1311607962",
+    "ventaId": "3737107",
+    "userData": {
+      "nombre": "MAIRA ELIZABETH MENDOZA VILLAFUERTE",
+      "identificacion": "1311607962",
+      "correo": "jeam21@hotmail.com",
+      "telefono": "0987370149",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-02-03 22:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0542789",
+        "combinacion2": "03,04,05,06,07,08,14,19,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6e6bda34eafd5a0a40e6" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0542789",
+        "combinacion2": "03,04,05,06,07,08,14,19,23,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc6e6bda34eafd5a0a40e7" }
+      }
+    ],
+    "total": "1.50",
+    "user": "0804591253",
+    "ventaId": "3737117",
+    "userData": {
+      "nombre": "ERIKA LISSETTE CARVACHE MONTERO",
+      "identificacion": "0804591253",
+      "correo": "erilis_25@hotmail.com",
+      "telefono": "0997277244",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2019-09-15 09:06",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0506031",
+        "combinacion2": "01,03,04,06,10,12,13,15,19,20,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc79b7da34eafd5a0a4222" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0506031",
+        "combinacion2": "01,03,04,06,10,12,13,15,19,20,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc79b7da34eafd5a0a4223" }
+      }
+    ],
+    "total": "1.50",
+    "user": "1722526892",
+    "ventaId": "3737186",
+    "userData": {
+      "nombre": "Edison Giovanny Limaico Paguay",
+      "identificacion": "1722526892",
+      "correo": "j.edison_92@hotmail.com",
+      "telefono": "0999187976",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2022-12-26 18:29",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0575751",
+        "combinacion2": "01,02,03,05,06,07,11,13,15,17,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc7ff1da34eafd5a0a42e3" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0588137",
+        "combinacion2": "06,07,08,09,12,19,20,21,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc7ff1da34eafd5a0a42e4" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0588137",
+        "combinacion2": "06,07,08,09,12,19,20,21,22,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc7ff1da34eafd5a0a42e5" }
+      }
+    ],
+    "total": "2.50",
+    "user": "1705244950",
+    "ventaId": "3737240",
+    "userData": {
+      "nombre": "BYRON ORLANDO TORRES GRANIZO",
+      "identificacion": "1705244950",
+      "correo": "t.byron005@gmail.com",
+      "telefono": "0998235381",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2019-04-08 09:13",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0543122",
+        "combinacion2": "01,02,04,07,08,09,12,15,17,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc8937da34eafd5a0a4429" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0543122",
+        "combinacion2": "01,02,04,07,08,09,12,15,17,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc8937da34eafd5a0a442b" }
+      }
+    ],
+    "total": "3.00",
+    "user": "0703593368",
+    "ventaId": "3737315",
+    "userData": {
+      "nombre": "SARA ELIZALDE MENDIETA",
+      "identificacion": "0703593368",
+      "correo": "sary_em@hotmail.com",
+      "telefono": "0994031406",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2020-09-09 16:21",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0556458",
+        "combinacion2": "05,06,07,08,10,12,13,19,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc8cc1da34eafd5a0a44a9" }
+      },
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0574319",
+        "combinacion2": "02,04,05,06,10,11,12,15,18,20,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc8cc1da34eafd5a0a44aa" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0556458",
+        "combinacion2": "05,06,07,08,10,12,13,19,20,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc8cc1da34eafd5a0a44ae" }
+      },
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0574319",
+        "combinacion2": "02,04,05,06,10,11,12,15,18,20,23",
+        "mascota": "08",
+        "_id": { "$oid": "63bc8cc1da34eafd5a0a44af" }
+      }
+    ],
+    "total": "7.50",
+    "user": "1717234197",
+    "ventaId": "3737336",
+    "userData": {
+      "nombre": "William Cardona Carvajal",
+      "identificacion": "1717234197",
+      "correo": "wcardona43@gmail.com",
+      "telefono": "0999720379",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2016-12-30 12:45",
+      "usuarioRegistroId": "sitiowebprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0526714",
+        "combinacion2": "01,03,05,07,09,14,15,19,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc9132da34eafd5a0a4568" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0526714",
+        "combinacion2": "01,03,05,07,09,14,15,19,21,22,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bc9132da34eafd5a0a456b" }
+      }
+    ],
+    "total": "4.50",
+    "user": "1712260247",
+    "ventaId": "3737369",
+    "userData": {
+      "nombre": "roberto calderon",
+      "identificacion": "1712260247",
+      "correo": "rca.ceo@live.com",
+      "telefono": "0995554630",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2014-11-12 13:54",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "2021-07-16 09:12",
+      "usuarioModificacionId": "sitiowebprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0503461",
+        "combinacion2": "02,04,07,09,11,12,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bca37fda34eafd5a0a4783" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0503461",
+        "combinacion2": "02,04,07,09,11,12,16,18,20,24,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bca37fda34eafd5a0a4786" }
+      }
+    ],
+    "total": "4.50",
+    "user": "0704415470",
+    "ventaId": "3737484",
+    "userData": {
+      "nombre": "Washington Israel Ramirez Cordova",
+      "identificacion": "0704415470",
+      "correo": "wacho1012@gmail.com",
+      "telefono": "0986712483",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2015-07-17 16:34",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "",
+      "usuarioModificacionId": "",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  },
+  {
+    "pozo": [
+      {
+        "sorteo": "1014",
+        "subtotal": "1.00",
+        "fecha": "09/01/2023 21:30:00",
+        "combinacion1": "0500774",
+        "combinacion2": "03,04,07,11,13,14,16,18,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bca385da34eafd5a0a4791" }
+      }
+    ],
+    "pozoRevancha": [
+      {
+        "sorteo": "1",
+        "subtotal": "0.50",
+        "fecha": "09/01/2023 22:00:00",
+        "combinacion1": "0500774",
+        "combinacion2": "03,04,07,11,13,14,16,18,22,23,25",
+        "mascota": "08",
+        "_id": { "$oid": "63bca385da34eafd5a0a4792" }
+      }
+    ],
+    "total": "1.50",
+    "user": "1705059606",
+    "ventaId": "3737485",
+    "userData": {
+      "nombre": "luis enrique ARMIJOS COYAGO",
+      "identificacion": "1705059606",
+      "correo": "leac001@hotmail.com",
+      "telefono": "0999050520",
+      "tipoId": "Cédula",
+      "tipoPersona": "Persona",
+      "recibeNumerologia": "False",
+      "recibeEstadisticas": "False",
+      "activo": "True",
+      "fechaRegistro": "2015-02-04 20:31",
+      "usuarioRegistroId": "imagetprod",
+      "fechaModificacion": "2015-02-04 20:34",
+      "usuarioModificacionId": "imagetprod",
+      "fechaActivacion": "",
+      "usuarioActivacionId": "",
+      "fechaInactivacion": "",
+      "usuarioInactivacionId": "",
+      "status": true
+    }
+  }
+]

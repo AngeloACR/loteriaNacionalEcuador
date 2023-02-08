@@ -194,7 +194,28 @@ resultadoPozoSchema.statics = {
       throw error;
     }
   },
+  getResultadosByCodigos: async function (sorteo, codigos) {
+    try {
+      let query = { numeroSorteo: sorteo, codigo: { $in: codigos } };
+      let resultados = await this.find(query).lean();
+      let response;
+      if (resultado && resultado.length != 0) {
+        response = {
+          status: true,
+          values: resultados,
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 resultadoPozoSchema.index({ numeroSorteo: 1, combinacion1: 1 }); // schema level
+resultadoPozoSchema.index({ numeroSorteo: 1, codigo: 1 }); // schema level
 
 module.exports = db.model("ResultadoPozoRevancha", resultadoPozoSchema);

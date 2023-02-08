@@ -120,7 +120,9 @@ resultadoPozoSchema.statics = {
       let sorteoAux = `${sorteo}`;
       let combinacionAux = `${combinacion}`;
       let query = { numeroSorteo: sorteoAux, combinacion1: combinacionAux };
-      let resultado = await this.find(query).lean().select('combinacion1 numeroSorteo codigoPremio');
+      let resultado = await this.find(query)
+        .lean()
+        .select("combinacion1 numeroSorteo codigoPremio");
       if (resultado && resultado.length != 0) {
         response = {
           status: true,
@@ -192,7 +194,28 @@ resultadoPozoSchema.statics = {
       throw error;
     }
   },
+  getResultadosByCodigos: async function (sorteo, codigos) {
+    try {
+      let query = { numeroSorteo: sorteo, codigo: { $in: codigos } };
+      let resultados = await this.find(query).lean();
+      let response;
+      if (resultado && resultado.length != 0) {
+        response = {
+          status: true,
+          values: resultados,
+        };
+      } else {
+        response = {
+          status: false,
+        };
+      }
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 resultadoPozoSchema.index({ numeroSorteo: 1, combinacion1: 1 }); // schema level
+resultadoPozoSchema.index({ numeroSorteo: 1, codigo: 1 }); // schema level
 
 module.exports = db.model("ResultadoPozo", resultadoPozoSchema);
