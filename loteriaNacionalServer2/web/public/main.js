@@ -6538,7 +6538,7 @@ ErrorComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_1__[
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("offset", 230);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("offset", 150);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.title);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
@@ -6705,7 +6705,7 @@ class PositioningDirective {
         this.renderer = renderer;
     }
     handleScroll(e) {
-        let data = e.data.screen && e.data.top ? e.data.top + e.data.screen : 100;
+        let data = e.data.screen && e.data.top ? e.data.top + e.data.screen : 120;
         let totalOffset = 90 + this.offset + this.el.nativeElement.offsetHeight / 2;
         let position = Math.min(Math.abs(data - totalOffset), Math.abs(e.target.innerHeight - totalOffset));
         console.log(position);
