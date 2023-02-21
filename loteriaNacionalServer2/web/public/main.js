@@ -6720,7 +6720,11 @@ class PositioningDirective {
         let position = e.data.top ? e.data.top + this.offset : 100 + this.offset;
         position = position > 0 ? position : 0;
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
-        this.renderer.setStyle(this.el.nativeElement, 'max-height', `${e.data.screen}px`);
+        /*     this.renderer.setStyle(
+          this.el.nativeElement,
+          'max-height',
+          `${e.data.screen}px`
+        ); */
     }
     ngOnInit() { }
 }
