@@ -15,8 +15,8 @@ export class PositioningDirective implements OnInit {
     let data = e.data.screen && e.data.top ? e.data.top + e.data.screen : 100;
     let totalOffset = 90 + this.offset + this.el.nativeElement.offsetHeight / 2;
     let position = Math.min(
-      data - totalOffset,
-      e.target.innerHeight - totalOffset
+      Math.abs(data - totalOffset),
+      Math.abs(e.target.innerHeight - totalOffset)
     );
     console.log(position);
     position = position > 0 ? position : 0;
