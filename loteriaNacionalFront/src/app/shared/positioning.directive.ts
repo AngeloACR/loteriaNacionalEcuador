@@ -31,6 +31,7 @@ export class PositioningDirective implements OnInit {
           this.offset -
           this.el.nativeElement.offsetHeight / 2 +
           e.data.top;
+    console.log(position);
     position = position > 0 ? position : 0;
     this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
     this.renderer.setStyle(
