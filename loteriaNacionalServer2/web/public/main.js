@@ -6706,7 +6706,7 @@ class PositioningDirective {
     }
     handleScroll(e) {
         let data = e.data.screen && e.data.top ? e.data.top + e.data.screen : 120;
-        let totalOffset = 90 + this.offset + this.el.nativeElement.offsetHeight / 2;
+        let totalOffset = this.offset + this.el.nativeElement.offsetHeight / 2;
         let position = Math.min(Math.abs(data - totalOffset), Math.abs(e.target.innerHeight - totalOffset));
         console.log(position);
         position = position > 0 ? position : 0;
