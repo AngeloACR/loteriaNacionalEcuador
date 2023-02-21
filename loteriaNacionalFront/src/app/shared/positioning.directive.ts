@@ -12,7 +12,6 @@ export class PositioningDirective implements OnInit {
   @Input() public offset: number;
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    console.log(e);
     let position =
       e.data.screen -
         90 -
@@ -42,7 +41,5 @@ export class PositioningDirective implements OnInit {
   }
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  ngOnInit(): void {
-    this.renderer.setStyle(this.el.nativeElement, 'top', `${this.offset}px`);
-  }
+  ngOnInit(): void {}
 }

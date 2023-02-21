@@ -6705,7 +6705,6 @@ class PositioningDirective {
         this.renderer = renderer;
     }
     handleScroll(e) {
-        console.log(e);
         let position = e.data.screen -
             90 -
             this.offset -
@@ -6728,9 +6727,7 @@ class PositioningDirective {
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
         this.renderer.setStyle(this.el.nativeElement, 'max-height', `${e.data.screen}px`);
     }
-    ngOnInit() {
-        this.renderer.setStyle(this.el.nativeElement, 'top', `${this.offset}px`);
-    }
+    ngOnInit() { }
 }
 PositioningDirective.ɵfac = function PositioningDirective_Factory(t) { return new (t || PositioningDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.Renderer2)); };
 PositioningDirective.ɵdir = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: PositioningDirective, selectors: [["", "floatingItem", ""]], hostBindings: function PositioningDirective_HostBindings(rf, ctx) { if (rf & 1) {
