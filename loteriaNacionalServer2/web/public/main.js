@@ -6705,6 +6705,9 @@ class PositioningDirective {
         this.renderer = renderer;
     }
     handleScroll(e) {
+        console.log(this.el.nativeElement.offsetHeight);
+        console.log(e.target.innerHeight);
+        console.log(e.data.top);
         let position = e.data.screen -
             90 -
             this.offset -
