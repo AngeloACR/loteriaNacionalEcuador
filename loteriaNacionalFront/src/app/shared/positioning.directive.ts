@@ -13,10 +13,10 @@ export class PositioningDirective implements OnInit {
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     let data = e.data.top ? e.data.top : 120;
-    //this.offset + this.el.nativeElement.offsetHeight / 2;
+    let totalOffset = this.offset + this.el.nativeElement.offsetHeight / 2;
     let position = Math.min(
-      data - this.offset,
-      e.target.innerHeight - this.offset
+      data - totalOffset,
+      e.target.innerHeight - totalOffset
     );
     position = position > 0 ? position : 0;
     this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
