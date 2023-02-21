@@ -7,7 +7,7 @@ import {
   Renderer2,
 } from '@angular/core';
 
-@Directive({ selector: '[]' })
+@Directive({ selector: '[floatingItem]' })
 export class PositioningDirective implements OnInit {
   @Input() public offset: number;
   @HostListener('window:message', ['$event'])
