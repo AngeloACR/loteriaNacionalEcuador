@@ -12,7 +12,7 @@ export class PositioningDirective implements OnInit {
   @Input() public offset: number;
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    let data = e.data.top ? e.data.top : 120;
+    let data = e.data.top ? e.data.top + e.data.screen : 120;
     let totalOffset = this.offset + this.el.nativeElement.offsetHeight / 2;
     let position = Math.min(
       data - totalOffset,
