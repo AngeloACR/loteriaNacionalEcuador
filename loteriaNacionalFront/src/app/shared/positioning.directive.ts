@@ -13,7 +13,9 @@ export class PositioningDirective implements OnInit {
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     let iframeOffset = 100 + 0.2 * e.target.innerWidth + this.offset;
+    console.log(iframeOffset);
     let itemOffset = this.el.nativeElement.offsetHeight / 2;
+    console.log(itemOffset);
     console.log(e.data);
     /*     let data = e.data.top ? e.data.top + e.data.screen : this.offset;
     let totalOffset =
