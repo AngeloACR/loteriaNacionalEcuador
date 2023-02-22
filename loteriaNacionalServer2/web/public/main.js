@@ -6704,9 +6704,10 @@ class PositioningDirective {
     constructor(el, renderer) {
         this.el = el;
         this.renderer = renderer;
+        this.offset = 0;
     }
     handleScroll(e) {
-        let iframeOffset = 100 + 0.2 * e.target.innerWidth;
+        let iframeOffset = 100 + 0.2 * e.target.innerWidth + this.offset;
         let itemOffset = this.el.nativeElement.offsetHeight / 2;
         console.log(e.data);
         /*     let data = e.data.top ? e.data.top + e.data.screen : this.offset;
