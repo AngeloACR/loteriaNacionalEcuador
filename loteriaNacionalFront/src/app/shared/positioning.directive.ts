@@ -3,11 +3,12 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnInit,
   Renderer2,
 } from '@angular/core';
 
 @Directive({ selector: '[]' })
-export class PositioningDirective {
+export class PositioningDirective implements OnInit {
   @Input() public offset: number;
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
@@ -32,7 +33,13 @@ export class PositioningDirective {
           e.data.top;
     position = position > 0 ? position : 0;
     this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
-    this.renderer.setStyle(this.el.nativeElement, 'max-height', `${e.data.screen}px`);
+    this.renderer.setStyle(
+      this.el.nativeElement,
+      'max-height',
+      `${e.data.screen}px`
+    );
   }
   constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  ngOnInit(): void {}
 }
