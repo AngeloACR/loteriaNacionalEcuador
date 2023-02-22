@@ -6721,10 +6721,10 @@ class PositioningDirective {
         ); */
         let position;
         if (e.data.top) {
-            position = e.data.screen / 2 + e.data.top; //- iframeOffset - itemOffset;
+            position = e.data.screen / 2 + e.data.top - itemOffset; //- iframeOffset - itemOffset;
         }
         else {
-            position = 1080 / 2; //- Math.abs(iframeOffset) - itemOffset;
+            position = 1080 / 2 - itemOffset; //- Math.abs(iframeOffset) - itemOffset;
         }
         position = position > 0 ? position : 0;
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
