@@ -1,5 +1,5 @@
-<div class="blackBox"   (click)="close()"></div>
-<div id="myModal"   class="modal fade" tabindex="-1">
+<div class="blackBox" (click)="close()"></div>
+<div id="myModal" class="modal fade" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-header">
       <button class="close" aria-label="Close" (click)="close()"></button>
@@ -7,27 +7,28 @@
 
     <div class="modal-content">
       <div class="modal-body">
-        <a target="_parent" href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos">
-          <img
-            [src]="bannerLink"
-            class="Desktop"
-            (click)="close()"
-          />
+        <a
+          target="_parent"
+          href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos"
+        >
+          <img src="assets/popupPozo.png" class="Desktop" (click)="close()" />
         </a>
-        <a target="_parent" href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos">
+        <a
+          target="_parent"
+          href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos"
+        >
           <img
-            [src]="bannerLink"
+            src="assets/popupPozo.png"
             style="max-width: 100%"
             class="Ipad"
             (click)="close()"
           />
         </a>
-        <a target="_parent" href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos">
-          <img
-            [src]="bannerLink"
-            (click)="close()"
-            class="Mobile"
-          />
+        <a
+          target="_parent"
+          href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos"
+        >
+          <img src="assets/popupPozo.png" (click)="close()" class="Mobile" />
         </a>
       </div>
     </div>
