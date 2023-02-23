@@ -10,8 +10,7 @@
 .modal {
   z-index: 500000;
   position: fixed;
-  transform: translate(-50%, -50%);
-  top: 50%;
+  transform: translateX(-50%);
   left: 50%;
   cursor: pointer;
   div {
@@ -45,7 +44,7 @@
     }
     .modal-content {
       z-index: 100;
-      .modal-body{
+      .modal-body {
         display: flex;
         justify-content: center;
       }
