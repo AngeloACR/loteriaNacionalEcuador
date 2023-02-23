@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import {
   Router,
   Event,
@@ -18,21 +18,32 @@ export class AppComponent implements OnInit {
   token: string = '';
   isDetail: boolean = false;
   showPromo: boolean = false;
+  @HostListener('window:message', ['$event'])
+  handleScroll(e: any) {
+    console.log(e.data);
+    if (e.data && e.data.message == 'scrolling') {
+      localStorage.setItem('top', e.data.top);
+      localStorage.setItem('screen', e.data.screen);
+    }
+  }
   constructor(private router: Router, private consultas: ConsultasService) {
     this.isDetail = false;
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         let data = decodeURIComponent(event.url);
-        
-        if (data.includes("inicio")) {
+
+        if (data.includes('inicio')) {
           this.showPromo = true;
         }
-        if (data.includes('compra_tus_juegos?token') || data.includes('inicio?token')) {
+        if (
+          data.includes('compra_tus_juegos?token') ||
+          data.includes('inicio?token')
+        ) {
           let url = data.split('?token=')[0];
           this.token = data.split('?token=')[1];
           this.router.navigateByUrl(`${url}/${this.token}`);
         }
-        
+
         if (data.includes('compra_tus_juegos/detalle')) {
           this.isDetail = true;
           let url;

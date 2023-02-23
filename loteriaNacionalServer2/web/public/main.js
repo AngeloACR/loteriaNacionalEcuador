@@ -119,7 +119,7 @@ class AppComponent {
       if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationStart) {
         let data = decodeURIComponent(event.url);
 
-        if (data.includes("inicio")) {
+        if (data.includes('inicio')) {
           this.showPromo = true;
         }
 
@@ -150,6 +150,15 @@ class AppComponent {
     });
   }
 
+  handleScroll(e) {
+    console.log(e.data);
+
+    if (e.data && e.data.message == 'scrolling') {
+      localStorage.setItem('top', e.data.top);
+      localStorage.setItem('screen', e.data.screen);
+    }
+  }
+
   ngOnInit() {
     var _this = this;
 
@@ -171,6 +180,13 @@ AppComponent.ɵfac = function AppComponent_Factory(t) {
 AppComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
   type: AppComponent,
   selectors: [["app-root"]],
+  hostBindings: function AppComponent_HostBindings(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("message", function AppComponent_message_HostBindingHandler($event) {
+        return ctx.handleScroll($event);
+      }, false, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresolveWindow"]);
+    }
+  },
   decls: 2,
   vars: 1,
   consts: [[3, "closePromo", 4, "ngIf"], [3, "closePromo"]],
@@ -6727,7 +6743,7 @@ class PositioningDirective {
         this.offset = 0;
     }
     handleScroll(e) {
-        let iframeOffset = 100 + 0.2 * e.target.innerWidth + this.offset;
+        let iframeOffset = 0.2 * e.target.innerWidth;
         let itemOffset = this.el.nativeElement.offsetHeight / 2;
         /*     let data = e.data.top ? e.data.top + e.data.screen : this.offset;
         let totalOffset =
@@ -6736,7 +6752,7 @@ class PositioningDirective {
           Math.abs(data - totalOffset),
           Math.abs(e.target.innerHeight - totalOffset)
         ); */
-        let position;
+        let position = 0;
         if (e.data.top) {
             position = e.data.top;
             //position = e.data.screen / 2 + e.data.top - itemOffset; //- iframeOffset - itemOffset;
@@ -6746,6 +6762,7 @@ class PositioningDirective {
             //position = 1080 / 2 - itemOffset; //- Math.abs(iframeOffset) - itemOffset;
         }
         position = position > 0 ? position : 0;
+        position = 50;
         this.renderer.setStyle(this.el.nativeElement, 'top', `${position}px`);
         /*     this.renderer.setStyle(
           this.el.nativeElement,
