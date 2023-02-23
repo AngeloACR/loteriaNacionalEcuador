@@ -1,7 +1,7 @@
 $fuente-botones: "Monstserrat SemiBold";
 
 .backgroundLoteriaNacional {
-  background-color: #28AAE1;
+  background-color: #28aae1;
 }
 .backgroundLotto {
   background-color: #b51f20;
@@ -14,11 +14,11 @@ $fuente-botones: "Monstserrat SemiBold";
 }
 
 .backgroundLoteriaNacionalButton {
-  border: 1px solid #28AAE1;
-  background-color: #28AAE1;
+  border: 1px solid #28aae1;
+  background-color: #28aae1;
   &:hover {
     background-color: #fff;
-    color: #28AAE1 !important;
+    color: #28aae1 !important;
     transition: background-color 0.5s ease;
   }
 }
@@ -69,9 +69,8 @@ $fuente-botones: "Monstserrat SemiBold";
   position: fixed;
   padding: 15px;
   z-index: 10000;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translateX(-50%);
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
