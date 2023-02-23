@@ -21,8 +21,9 @@
 - Agregar Pozo revancha al carrito - LISTO
 - Revisar tema de pago de premios en la millonaria cuando hay una combinacion con diferentes series - LISTO
 
+- Cambiar boton de venta de pozo a amarillo
 - Problemas con estilo en iphone en formularios de consulta
-- Mensajes de error flotante
+- Corregir funcion de directiva flotante
 - Activar los descuentos
 - Codigos promocionales a partir del 1 de febrero, minimo 2$
 - Mover la pasarela de pago a un componente o modulo que se despliegue en un modal, y refactorizando para adaptarse al cambio
