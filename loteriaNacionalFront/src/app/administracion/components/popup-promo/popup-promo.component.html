@@ -1,0 +1,36 @@
+<div class="blackBox" (click)="close()"></div>
+<div id="myModal" floatingItem class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <button class="close" aria-label="Close" (click)="close()"></button>
+    </div>
+
+    <div class="modal-content">
+      <div class="modal-body">
+        <a
+          target="_parent"
+          href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos"
+        >
+          <img src="assets/popupPozo.gif" class="Desktop" (click)="close()" />
+        </a>
+        <a
+          target="_parent"
+          href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos"
+        >
+          <img
+            src="assets/popupPozo.gif"
+            style="max-width: 100%"
+            class="Ipad"
+            (click)="close()"
+          />
+        </a>
+        <a
+          target="_parent"
+          href="https://www.loteria.com.ec/#/loteria/compra_tus_juegos"
+        >
+          <img src="assets/popupPozo.gif" (click)="close()" class="Mobile" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

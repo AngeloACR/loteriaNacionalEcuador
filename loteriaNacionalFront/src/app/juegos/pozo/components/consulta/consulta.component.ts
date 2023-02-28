@@ -36,10 +36,10 @@ export class ConsultaComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.triggerLoader()
+    this.triggerLoader();
     this.sorteosJugados = await this.consulta.recuperarSorteosJugados();
     this.setSorteoDefault();
-    this.dismissLoader()
+    this.dismissLoader();
   }
 
   setSorteoDefault() {
@@ -125,7 +125,7 @@ export class ConsultaComponent implements OnInit {
       el.focus();
       var range = el.createTextRange();
       range.collapse(false);
-      range.select();
+      //range.select();
     }
     this.changeDetectorRef.markForCheck();
   }
@@ -179,9 +179,7 @@ export class ConsultaComponent implements OnInit {
 
       return;
     }
-    this.router.navigateByUrl(
-      `/consultas/pozo/boletin/${this.sorteoBoletin}`
-    );
+    this.router.navigateByUrl(`/consultas/pozo/boletin/${this.sorteoBoletin}`);
   }
   async buscarRango() {
     try {
@@ -212,7 +210,7 @@ export class ConsultaComponent implements OnInit {
   }
 
   isError: boolean = false;
-  errorMessage: string = "";
+  errorMessage: string = '';
   openError(msg: string) {
     this.errorMessage = msg;
     this.isError = true;
