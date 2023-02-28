@@ -23,6 +23,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./codigos-promocionales/codigos-promocionales.module').then((m) => m.CodigosPromocionalesModule),
   },
+  { path: 'admin', loadChildren: () => import('./administracion/administracion.module').then(m => m.AdministracionModule) },
 ];
 
 @NgModule({

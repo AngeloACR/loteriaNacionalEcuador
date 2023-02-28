@@ -121,7 +121,7 @@ export class ConsultaComponent implements OnInit {
       el.focus();
       var range = el.createTextRange();
       range.collapse(false);
-      range.select();
+      //range.select();
     }
     this.changeDetectorRef.markForCheck();
   }

@@ -4,21 +4,21 @@ import {
   Output,
   EventEmitter,
   ChangeDetectorRef,
-} from "@angular/core";
-import { Router } from "@angular/router";
+} from '@angular/core';
+import { Router } from '@angular/router';
 
-import { ConsultaService } from "../../services/consulta.service";
+import { ConsultaService } from '../../services/consulta.service';
 
 @Component({
   selector: 'loteria-consulta',
   templateUrl: './consulta.component.html',
-  styleUrls: ['./consulta.component.scss']
+  styleUrls: ['./consulta.component.scss'],
 })
 export class ConsultaComponent implements OnInit {
   sorteosJugados: any;
   sorteoGanador: any;
   sorteoBoletin: any;
-  combinacionesAux: any = "";
+  combinacionesAux: any = '';
   characterCount: number = 0;
   previousLength: number = 0;
 
@@ -38,8 +38,8 @@ export class ConsultaComponent implements OnInit {
 
   setSorteoDefault() {
     this.changeDetectorRef.detectChanges();
-    this.sorteoGanador = "default";
-    this.sorteoBoletin = "default";
+    this.sorteoGanador = 'default';
+    this.sorteoBoletin = 'default';
     this.changeDetectorRef.markForCheck();
   }
   validateField() {
@@ -57,12 +57,12 @@ export class ConsultaComponent implements OnInit {
     let currentLength = this.combinacionesAux.length;
     let addComma = false;
     if (this.previousLength > currentLength) {
-      if (this.combinacionesAux[currentLength - 1] == ",") {
+      if (this.combinacionesAux[currentLength - 1] == ',') {
         this.combinacionesAux = this.combinacionesAux.slice(0, -1);
         this.cameFromBackspace = true;
       }
     } else {
-      this.numbers = this.combinacionesAux.split(", ");
+      this.numbers = this.combinacionesAux.split(', ');
       if (this.cameFromBackspace) {
         let lastNumber = this.numbers[this.numbers.length - 1];
         let auxLength = lastNumber.length;
@@ -71,10 +71,10 @@ export class ConsultaComponent implements OnInit {
         this.numbers.push(number);
         this.cameFromBackspace = false;
       }
-      this.combinacionesAux = "";
+      this.combinacionesAux = '';
       let numbersLength = this.numbers.length;
       let lastNumberAux = this.numbers[numbersLength - 1];
-      lastNumberAux = lastNumberAux.replace(reg, "");
+      lastNumberAux = lastNumberAux.replace(reg, '');
       if (lastNumberAux.length == this.maxDigits + 1) {
         let lastNumber = lastNumberAux[this.maxDigits];
         let beforeLastNumber = lastNumberAux.slice(0, -1);
@@ -84,7 +84,7 @@ export class ConsultaComponent implements OnInit {
       }
       numbersLength = this.numbers.length;
       this.numbers.forEach((number, index) => {
-        number = number.replace(reg, "");
+        number = number.replace(reg, '');
         this.combinacionesAux = `${this.combinacionesAux}${number}`;
         if (number.length == this.maxDigits && index != numbersLength - 1) {
           this.combinacionesAux = `${this.combinacionesAux}, `;
@@ -107,7 +107,7 @@ export class ConsultaComponent implements OnInit {
 
   preventArrow(e: any) {
     if (
-      ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1
+      ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(e.code) > -1
     ) {
       e.preventDefault();
     }
@@ -116,13 +116,13 @@ export class ConsultaComponent implements OnInit {
   moveCursorToEnd(e: any) {
     this.changeDetectorRef.detectChanges();
     let el = e.target;
-    if (typeof el.selectionStart == "number") {
+    if (typeof el.selectionStart == 'number') {
       el.selectionStart = el.selectionEnd = el.value.length;
-    } else if (typeof el.createTextRange != "undefined") {
+    } else if (typeof el.createTextRange != 'undefined') {
       el.focus();
       var range = el.createTextRange();
       range.collapse(false);
-      range.select();
+      //range.select();
     }
     this.changeDetectorRef.markForCheck();
   }
@@ -130,13 +130,16 @@ export class ConsultaComponent implements OnInit {
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
-      if(!this.combinacionesAux.length) throw new Error("Por favor, escribe al menos una combinación que quieras consultar")
+      if (!this.combinacionesAux.length)
+        throw new Error(
+          'Por favor, escribe al menos una combinación que quieras consultar'
+        );
       let aux = this.combinacionesAux;
-      if (this.combinacionesAux[this.combinacionesAux.length - 1] == " ") {
+      if (this.combinacionesAux[this.combinacionesAux.length - 1] == ' ') {
         aux = this.combinacionesAux.slice(0, -2);
       }
 
-      let combinaciones: Array<any> = aux.split(", ");
+      let combinaciones: Array<any> = aux.split(', ');
       combinaciones = combinaciones.map((combinacion, index) => {
         let auxLength = combinacion.length;
         if (auxLength != 0) {
@@ -149,9 +152,9 @@ export class ConsultaComponent implements OnInit {
           return combinacion;
         }
       });
-      if (this.sorteoGanador == "default") {
+      if (this.sorteoGanador == 'default') {
         this.dismissLoader();
-        this.openError("Por favor, selecciona un sorteo");
+        this.openError('Por favor, selecciona un sorteo');
 
         return;
       }
@@ -170,8 +173,8 @@ export class ConsultaComponent implements OnInit {
   }
 
   async buscarBoletin() {
-    if (this.sorteoBoletin == "default") {
-      this.openError("Por favor, selecciona un sorteo");
+    if (this.sorteoBoletin == 'default') {
+      this.openError('Por favor, selecciona un sorteo');
 
       return;
     }
@@ -182,7 +185,7 @@ export class ConsultaComponent implements OnInit {
   }
 
   isError: boolean = false;
-  errorMessage: string = "";
+  errorMessage: string = '';
   openError(msg: string) {
     this.errorMessage = msg;
     this.isError = true;
