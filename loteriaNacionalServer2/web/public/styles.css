@@ -2279,7 +2279,8 @@ body {
   margin: 0;
   font-family: "Helvetica";
 }
-select {
+select,
+input {
   margin: 0;
   box-sizing: border-box;
   -webkit-appearance: none;

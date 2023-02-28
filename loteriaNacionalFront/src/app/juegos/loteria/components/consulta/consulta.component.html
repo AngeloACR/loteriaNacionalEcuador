@@ -31,6 +31,10 @@
             <input
               name="combinaciones"
               type="text"
+              (keydown)="preventArrow($event)"
+              (click)="moveCursorToEnd($event)"
+              (focus)="moveCursorToEnd($event)"
+              (input)="validateField()"
               [(ngModel)]="combinacionesAux"
             />
           </div>

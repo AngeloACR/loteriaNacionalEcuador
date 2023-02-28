@@ -73,7 +73,8 @@ body {
   margin: 0;
   font-family: $fuente-parrafo;
 }
-select {
+select,
+input {
   margin: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
