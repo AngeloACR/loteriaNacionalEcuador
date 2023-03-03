@@ -53,7 +53,7 @@ const mainController = {
   getPopupStatus: async (req, res) => {
     try {
       let response = await Popup.findOne().lean();
-      res.status(200).json(response.showPromo);
+      res.status(200).json(response.status);
     } catch (e) {
       let response = {
         status: "error",
@@ -84,6 +84,20 @@ const mainController = {
       let image = req.body.image;
       let response = await Popup.updateImage(image);
       res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  getPopupType: async (req, res) => {
+    try {
+      let response = await Popup.findOne();
+      res.status(200).json(response.type);
     } catch (e) {
       let response = {
         status: "error",

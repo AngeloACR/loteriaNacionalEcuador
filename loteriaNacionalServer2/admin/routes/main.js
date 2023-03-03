@@ -5,6 +5,7 @@ const fileUpload = require("express-fileupload");
 
 lotteryRouter.get("/popup", mainController.getPopupLink);
 lotteryRouter.get("/popup/status", mainController.getPopupStatus);
+lotteryRouter.get("/popup/type", mainController.getPopupType);
 lotteryRouter.put("/popup/status", mainController.setPopupStatus);
 lotteryRouter.put("/popup/type", mainController.setPopupType);
 lotteryRouter.put("/popup/image", mainController.setPopupImage);
