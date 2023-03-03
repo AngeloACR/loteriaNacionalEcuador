@@ -22,6 +22,150 @@ module.exports = webpackEmptyAsyncContext;
 
 /***/ }),
 
+/***/ 6025:
+/*!*******************************************************************!*\
+  !*** ./src/app/administracion/services/administracion.service.ts ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AdministracionService": () => (/* binding */ AdministracionService)
+/* harmony export */ });
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 3882);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
+
+
+
+
+class AdministracionService {
+    constructor(http) {
+        this.http = http;
+        this.mySource = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.source;
+    }
+    getBannerLink() {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = '/popup/image';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            this.http
+                .get(address, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    getPopupStatus() {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = '/popup/status';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            this.http
+                .get(address, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    setPopupStatus(status) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = '/popup/status';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            let body = { status };
+            this.http
+                .put(address, body, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    getPopupType() {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = '/popup/type';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            this.http
+                .get(address, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    setPopupType(type) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = '/popup/type';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            let body = { type };
+            this.http
+                .put(address, body, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    cargarImagenes(formData) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        let address = '/admin';
+        let endpoint = '/popup';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            this.http
+                .post(address, formData, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+}
+AdministracionService.ɵfac = function AdministracionService_Factory(t) { return new (t || AdministracionService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient)); };
+AdministracionService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: AdministracionService, factory: AdministracionService.ɵfac, providedIn: 'root' });
+
+
+/***/ }),
+
 /***/ 158:
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -80,11 +224,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
 /* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 1258);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 1258);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2316);
 /* harmony import */ var _consultas_services_consultas_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./consultas/services/consultas.service */ 8717);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4364);
-/* harmony import */ var _codigos_promocionales_components_popup_promo_popup_promo_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./codigos-promocionales/components/popup-promo/popup-promo.component */ 9894);
+/* harmony import */ var _administracion_services_administracion_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./administracion/services/administracion.service */ 6025);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var _codigos_promocionales_components_popup_promo_popup_promo_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./codigos-promocionales/components/popup-promo/popup-promo.component */ 9894);
+
 
 
 
@@ -95,60 +241,71 @@ __webpack_require__.r(__webpack_exports__);
 
 function AppComponent_app_popup_promo_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "app-popup-promo", 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("closePromo", function AppComponent_app_popup_promo_1_Template_app_popup_promo_closePromo_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r2);
-      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "app-popup-promo", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("closePromo", function AppComponent_app_popup_promo_1_Template_app_popup_promo_closePromo_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r2);
+      const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
       return ctx_r1.closePromo();
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
   }
 }
 
 class AppComponent {
-  constructor(router, consultas) {
+  constructor(router, consultas, admin) {
+    var _this = this;
+
     this.router = router;
     this.consultas = consultas;
+    this.admin = admin;
     this.title = 'loteriaNacionalWeb';
     this.token = '';
     this.isDetail = false;
     this.showPromo = false;
     this.isDetail = false;
-    this.router.events.subscribe(event => {
-      if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationStart) {
-        let data = decodeURIComponent(event.url);
+    this.router.events.subscribe( /*#__PURE__*/function () {
+      var _ref = (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* (event) {
+        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_5__.NavigationStart) {
+          let data = decodeURIComponent(event.url);
 
-        if (data.includes('inicio')) {
-          this.showPromo = true;
-        }
+          if (data.includes('inicio')) {
+            _this.showPromo = yield _this.admin.getPopupStatus();
+          }
 
-        if (data.includes('compra_tus_juegos?token') || data.includes('inicio?token')) {
-          let url = data.split('?token=')[0];
-          this.token = data.split('?token=')[1];
-          this.router.navigateByUrl(`${url}/${this.token}`);
-        }
+          if (data.includes('compra_tus_juegos?token') || data.includes('inicio?token')) {
+            let url = data.split('?token=')[0];
+            _this.token = data.split('?token=')[1];
 
-        if (data.includes('compra_tus_juegos/detalle')) {
-          this.isDetail = true;
-          let url;
-          let ticketId;
+            _this.router.navigateByUrl(`${url}/${_this.token}`);
+          }
 
-          if (data.includes('?ticketId')) {
-            url = data.split('?ticketId=')[0];
-            ticketId = data.split('?ticketId=')[1];
-            this.router.navigateByUrl(`${url}/${ticketId}`);
+          if (data.includes('compra_tus_juegos/detalle')) {
+            _this.isDetail = true;
+            let url;
+            let ticketId;
+
+            if (data.includes('?ticketId')) {
+              url = data.split('?ticketId=')[0];
+              ticketId = data.split('?ticketId=')[1];
+
+              _this.router.navigateByUrl(`${url}/${ticketId}`);
+            }
           }
         }
-      }
 
-      if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationEnd) {}
+        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_5__.NavigationEnd) {}
 
-      if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationError) {
-        console.log(event.error);
-      }
-    });
+        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_5__.NavigationError) {
+          console.log(event.error);
+        }
+      });
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
   }
 
   handleScroll(e) {
@@ -159,10 +316,10 @@ class AppComponent {
   }
 
   ngOnInit() {
-    var _this = this;
+    var _this2 = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
-      yield _this.consultas.recuperarUltimosResultados();
+      yield _this2.consultas.recuperarUltimosResultados();
     })();
   }
 
@@ -173,17 +330,17 @@ class AppComponent {
 }
 
 AppComponent.ɵfac = function AppComponent_Factory(t) {
-  return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_consultas_services_consultas_service__WEBPACK_IMPORTED_MODULE_1__.ConsultasService));
+  return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_consultas_services_consultas_service__WEBPACK_IMPORTED_MODULE_1__.ConsultasService), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_administracion_services_administracion_service__WEBPACK_IMPORTED_MODULE_2__.AdministracionService));
 };
 
-AppComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
+AppComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineComponent"]({
   type: AppComponent,
   selectors: [["app-root"]],
   hostBindings: function AppComponent_HostBindings(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("message", function AppComponent_message_HostBindingHandler($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("message", function AppComponent_message_HostBindingHandler($event) {
         return ctx.handleScroll($event);
-      }, false, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresolveWindow"]);
+      }, false, _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵresolveWindow"]);
     }
   },
   decls: 2,
@@ -191,16 +348,16 @@ AppComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵ
   consts: [[3, "closePromo", 4, "ngIf"], [3, "closePromo"]],
   template: function AppComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "router-outlet");
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](1, AppComponent_app_popup_promo_1_Template, 1, 0, "app-popup-promo", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](0, "router-outlet");
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](1, AppComponent_app_popup_promo_1_Template, 1, 0, "app-popup-promo", 0);
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.showPromo);
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("ngIf", ctx.showPromo);
     }
   },
-  directives: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterOutlet, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgIf, _codigos_promocionales_components_popup_promo_popup_promo_component__WEBPACK_IMPORTED_MODULE_2__.PopupPromoComponent],
+  directives: [_angular_router__WEBPACK_IMPORTED_MODULE_5__.RouterOutlet, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgIf, _codigos_promocionales_components_popup_promo_popup_promo_component__WEBPACK_IMPORTED_MODULE_3__.PopupPromoComponent],
   styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MifQ== */"]
 });
 
