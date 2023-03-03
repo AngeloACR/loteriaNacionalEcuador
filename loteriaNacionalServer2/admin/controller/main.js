@@ -1,9 +1,5 @@
-const psdAuth = require("../../psdLoteria/auth");
-const CodigoPromocional = require("../models/main");
 const Popup = require("../models/popup");
-const Ventas = require("../../ventas/models/main");
-const emailCodigosPromocionales = require("../../correos/codigoPromocional");
-const { codigosPromocionalesLogger } = require("../logging");
+const { adminLogger } = require("../logging");
 const config = require("../../environments/test");
 const fs = require("fs").promises;
 const path = require("path");

@@ -1,8 +1,8 @@
 const { createLogger, format, transports } = require("winston");
 const { combine, timestamp, prettyPrint } = format;
 
-module.exports.codigosPromocionalesLogger = createLogger({
-  defaultMeta: { component: "codigosPromocionales" },
+module.exports.adminLogger = createLogger({
+  defaultMeta: { component: "admin" },
   format: combine(
     timestamp({
       format: "YYYY-MM-DD HH:mm:ss",
@@ -12,14 +12,14 @@ module.exports.codigosPromocionalesLogger = createLogger({
 
   transports: [
     new transports.File({
-      filename: "logs/codigos_promocionales_log.json",
+      filename: "logs/admin_log.json",
       prettyPrint: true,
       maxSize: "10485760",
       maxFiles: 10,
       level: "info",
     }),
     new transports.File({
-      filename: "logs/codigos_promocionales_error_log.json",
+      filename: "logs/admin_error_log.json",
       prettyPrint: true,
       maxSize: "10485760",
       maxFiles: 10,
