@@ -20,8 +20,8 @@ export class AdministracionService {
     headers = headers.append('Content-Type', 'application/json');
     //let endpoint = "/inquiry";
 
-    let address = '/administracion';
-    let endpoint = '/files';
+    let address = '/admin';
+    let endpoint = '/popup/image';
     address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http
@@ -39,13 +39,13 @@ export class AdministracionService {
     });
   }
 
-  obtenerCodigos() {
+  getPopupStatus() {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     //let endpoint = "/inquiry";
 
-    let address = '/codigosPromocionales';
-    let endpoint = '/getCodeCsv';
+    let address = '/admin';
+    let endpoint = '/popup/status';
     address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http
@@ -63,13 +63,37 @@ export class AdministracionService {
     });
   }
 
-  getStatus() {
+  setPopupStatus(status: boolean) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     //let endpoint = "/inquiry";
 
-    let address = '/codigosPromocionales';
-    let endpoint = '/status';
+    let address = '/admin';
+    let endpoint = '/popup/status';
+    address = this.mySource + address + endpoint;
+    return new Promise<any>((resolve, reject) => {
+      let body = { status };
+      this.http
+        .put(address, body, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
+  }
+  getPopupType() {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    //let endpoint = "/inquiry";
+
+    let address = '/admin';
+    let endpoint = '/popup/type';
     address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http
@@ -87,18 +111,18 @@ export class AdministracionService {
     });
   }
 
-  setStatus(showPromo: boolean) {
+  setPopupType(type: boolean) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     //let endpoint = "/inquiry";
 
-    let address = '/codigosPromocionales';
-    let endpoint = '/status';
+    let address = '/admin';
+    let endpoint = '/popup/type';
     address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
-      let body = { showPromo };
+      let body = { type };
       this.http
-        .post(address, body, {
+        .put(address, body, {
           headers: headers,
         })
         .subscribe(
@@ -115,8 +139,8 @@ export class AdministracionService {
   cargarImagenes(formData: any) {
     let headers = new HttpHeaders();
 
-    let address = '/codigosPromocionales';
-    let endpoint = '/files';
+    let address = '/admin';
+    let endpoint = '/popup';
     address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http
@@ -131,37 +155,6 @@ export class AdministracionService {
             reject(new Error(error.error.message));
           }
         );
-    });
-  }
-  /*   obtenerTxt() {
-    let address = "";
-    let endpoint = "/getTxt";
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http
-        .get<Blob>(address, {
-          observe: "response",
-          responseType: "blob" as "json",
-        })
-        .subscribe(
-          (data: HttpResponse<Blob>) => {
-            let contentDisposition = data.headers.get("content-disposition");
-            resolve(data.body);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
-  } */
-
-  obtenerTxt(): Observable<HttpResponse<Blob>> {
-    let address = '/codigosPromocionales';
-    let endpoint = '/getTxt';
-    address = this.mySource + address + endpoint;
-    return this.http.get<Blob>(address, {
-      observe: 'response',
-      responseType: 'blob' as 'json',
     });
   }
 }

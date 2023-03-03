@@ -9,6 +9,7 @@ module.exports = {
   webPort: 6800,
   contenidosPort: 5950,
 
+  adminPort: 3850,
   ventasPort: 4000,
   reservasPort: 4500,
   sorteosLoteriaNacionalPort: 5500,
@@ -64,6 +65,8 @@ module.exports = {
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
   assetsCodigosPromocionalesPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalServer2/codigosPromocionales/assets",
+  adminUploadsPath:
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalServer2/admin/assets",
 
   destinatarios: [
     { nombre: "Angelo Crincoli", correo: "angelocrincoli91@gmail.com" },
