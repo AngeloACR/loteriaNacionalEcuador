@@ -66,7 +66,7 @@ const mainController = {
   },
   setPopupStatus: async (req, res) => {
     try {
-      let status = req.body.showPromo;
+      let status = req.body.status;
       let response = await Popup.updateStatus(status);
       res.status(200).json(response);
     } catch (e) {
