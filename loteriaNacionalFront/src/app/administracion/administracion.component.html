@@ -3,11 +3,12 @@
     >Habilitar popup</mat-slide-toggle
   >
   <div>
-    Mixto
+    Mostrar imagenes mixtas
     <mat-slide-toggle
       [(ngModel)]="type"
       (change)="changePopupType()"
     ></mat-slide-toggle>
+    Mostrar imagen fija
   </div>
   <button type="button" mat-raised-button (click)="fileInput.click()">
     Escoja la(s) imagen(es) del popup

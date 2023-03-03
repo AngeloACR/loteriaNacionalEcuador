@@ -7,6 +7,7 @@ import {
   NavigationError,
 } from '@angular/router';
 import { ConsultasService } from './consultas/services/consultas.service';
+import { AdministracionService } from './administracion/services/administracion.service';
 
 @Component({
   selector: 'app-root',
@@ -25,14 +26,18 @@ export class AppComponent implements OnInit {
       localStorage.setItem('screen', e.data.screen);
     }
   }
-  constructor(private router: Router, private consultas: ConsultasService) {
+  constructor(
+    private router: Router,
+    private consultas: ConsultasService,
+    private admin: AdministracionService
+  ) {
     this.isDetail = false;
-    this.router.events.subscribe((event: Event) => {
+    this.router.events.subscribe(async (event: Event) => {
       if (event instanceof NavigationStart) {
         let data = decodeURIComponent(event.url);
 
         if (data.includes('inicio')) {
-          this.showPromo = true;
+          this.showPromo = await this.admin.getPopupStatus();
         }
         if (
           data.includes('compra_tus_juegos?token') ||
