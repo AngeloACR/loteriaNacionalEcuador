@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   showPromo: boolean = false;
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
-    console.log(e.data);
     if (e.data && e.data.message == 'scrolling') {
       localStorage.setItem('top', e.data.top);
       localStorage.setItem('screen', e.data.screen);

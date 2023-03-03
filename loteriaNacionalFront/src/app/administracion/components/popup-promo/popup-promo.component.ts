@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { AdministracionService } from '../../services/administracion.service';
 
 @Component({
-  selector: 'app-popup-promo',
+  selector: 'public-popup',
   templateUrl: './popup-promo.component.html',
   styleUrls: ['./popup-promo.component.scss'],
 })
