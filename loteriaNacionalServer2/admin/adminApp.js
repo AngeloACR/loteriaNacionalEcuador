@@ -1,14 +1,12 @@
-const codigosPromocionalesServer = require("./adminServer");
+const adminServer = require("./adminServer");
 const config = require("../environments/test");
 const cronjobs = require("./cronjobs");
 
-const codigosPromocionalesPort = config.codigosPromocionalesPort;
-const codigosPromocionalesApp = codigosPromocionalesServer.init(
-  codigosPromocionalesPort
-);
+const adminPort = config.adminPort;
+const adminApp = adminServer.init(adminPort);
 
-codigosPromocionalesApp.listen(codigosPromocionalesPort, () => {
-  console.log("Server running at: " + codigosPromocionalesPort);
+adminApp.listen(adminPort, () => {
+  console.log("Server running at: " + adminPort);
   console.log(
     `Heapdump enabled. Run "kill -USR2 ${process.pid}" or send a request to "/heapdump" to generate a heapdump.`
   );
