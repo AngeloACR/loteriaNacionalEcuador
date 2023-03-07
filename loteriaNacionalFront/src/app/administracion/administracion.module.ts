@@ -20,5 +20,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     AdministracionRoutingModule,
   ],
+  exports: [PopupPromoComponent],
 })
 export class AdministracionModule {}

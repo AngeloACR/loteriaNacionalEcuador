@@ -13,10 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CodigosPromocionalesModule } from './codigos-promocionales/codigos-promocionales.module';
 
-import {
-  MatPaginatorModule,
-} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AdministracionModule } from './administracion/administracion.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -34,6 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatPaginatorModule,
     MatFormFieldModule,
     CodigosPromocionalesModule,
+    AdministracionModule,
   ],
   exports: [MatPaginatorModule, MatFormFieldModule, FormsModule],
   providers: [],

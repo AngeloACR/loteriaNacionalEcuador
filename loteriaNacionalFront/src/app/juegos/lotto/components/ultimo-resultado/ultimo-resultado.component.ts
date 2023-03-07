@@ -9,22 +9,27 @@ export class UltimoResultadoComponent implements OnInit {
   ticketGanador?: any;
   ticketNumbers?: String[];
   premiosEspeciales?: any;
-
+  isError: boolean = false;
   constructor(private router: Router) {}
   ngOnInit() {
-    let data = JSON.parse(localStorage.getItem('lottoUltimoResultado')!);
-    this.ticketNumbers = data.ultimoResultadoLotto.combinacion1.split('');
-    this.premiosEspeciales = data.premiosEspeciales;
-    this.ticketGanador = {
-      ticketIndex: data.ultimoResultadoLotto.codigo,
-      description: 'Boleto Ganador',
-      ticketNumbers: this.ticketNumbers,
-      premiosEspeciales: this.premiosEspeciales,
-      numeroSorteo: data.numeroSorteo,
-      sorteo: data.sorteo,
-      valorPremio: data.premioPrincipal.valorPremio,
-    };
+    try {
+      let data = JSON.parse(localStorage.getItem('lottoUltimoResultado')!);
+      this.ticketNumbers = data.ultimoResultadoLotto.combinacion1.split('');
+      this.premiosEspeciales = data.premiosEspeciales;
+      this.ticketGanador = {
+        ticketIndex: data.ultimoResultadoLotto.codigo,
+        description: 'Boleto Ganador',
+        ticketNumbers: this.ticketNumbers,
+        premiosEspeciales: this.premiosEspeciales,
+        numeroSorteo: data.numeroSorteo,
+        sorteo: data.sorteo,
+        valorPremio: data.premioPrincipal.valorPremio,
+      };
+    } catch (e) {
+      this.isError = true;
+    }
   }
+
   verUltimoBoletin() {
     let sorteo = this.ticketGanador.numeroSorteo;
     this.router.navigateByUrl(`/consultas/lotto/boletin/${sorteo}`);

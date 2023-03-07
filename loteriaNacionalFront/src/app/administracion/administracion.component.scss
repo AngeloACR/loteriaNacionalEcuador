@@ -7,6 +7,20 @@ $color-botton: #28aae1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  #fileList {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    p {
+      width: 100%;
+    }
+    img {
+      width: 20%;
+      margin: 0 10px;
+    }
+  }
   button {
     border-radius: 40px;
     height: 30px;

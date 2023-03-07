@@ -1,16 +1,26 @@
 <div class="contenedor_ticket">
-    <div class="logo_ticket">
-        <img src="../../../../assets/img/millonaria-consulta.png" alt="">
-    </div>
-    <div>
-        <hr size="2px" />
-    </div>
+  <div class="logo_ticket">
+    <img src="../../../../assets/img/millonaria-consulta.png" alt="" />
+  </div>
+  <div>
+    <hr size="2px" />
+  </div>
+  <ng-container *ngIf="!isError">
     <div class="scroll">
-        <millonaria-ticket-consulta [ticket]="ticketGanador"></millonaria-ticket-consulta>
+      <millonaria-ticket-consulta
+        [ticket]="ticketGanador"
+      ></millonaria-ticket-consulta>
     </div>
+  </ng-container>
+  <ng-container *ngIf="isError">
+    <div class="consultaError">
+      Los resultados no están disponibles por el momento, por favor revisa más
+      tarde
+    </div>
+  </ng-container>
 
-    <div class="boton_comprar">
-        <button (click)="verUltimoBoletin()">VER BOLETIN</button>
-        <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
-    </div>
+  <div class="boton_comprar">
+    <button (click)="verUltimoBoletin()">VER BOLETIN</button>
+    <button (click)="verResultados()">BUSCAR OTROS RESULTADOS</button>
+  </div>
 </div>

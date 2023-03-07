@@ -21,7 +21,7 @@ export class AdministracionService {
     //let endpoint = "/inquiry";
 
     let address = '/admin';
-    let endpoint = '/popup/image';
+    let endpoint = '/popup/';
     address = this.mySource + address + endpoint;
     return new Promise<any>((resolve, reject) => {
       this.http

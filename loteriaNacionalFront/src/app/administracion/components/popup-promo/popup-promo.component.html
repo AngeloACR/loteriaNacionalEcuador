@@ -8,18 +8,18 @@
     <div class="modal-content">
       <div class="modal-body">
         <a target="_parent">
-          <img src="assets/popupPozo.gif" class="Desktop" (click)="close()" />
+          <img [src]="bannerLink" class="Desktop" (click)="close()" />
         </a>
         <a target="_parent">
           <img
-            src="assets/popupPozo.gif"
+            [src]="bannerLink"
             style="max-width: 100%"
             class="Ipad"
             (click)="close()"
           />
         </a>
         <a target="_parent">
-          <img src="assets/popupPozo.gif" (click)="close()" class="Mobile" />
+          <img [src]="bannerLink" (click)="close()" class="Mobile" />
         </a>
       </div>
     </div>

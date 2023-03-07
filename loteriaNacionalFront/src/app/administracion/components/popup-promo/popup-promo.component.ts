@@ -13,6 +13,7 @@ export class PopupPromoComponent implements OnInit {
 
   async ngOnInit() {
     this.bannerLink = await this.administracionService.getBannerLink();
+    console.log(this.bannerLink);
   }
   close() {
     this.closePromo.emit();

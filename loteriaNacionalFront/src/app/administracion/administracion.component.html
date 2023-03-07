@@ -27,6 +27,23 @@
     <p *ngIf="!type">
       Listado de imágenes que aparecerán de forma aleatoria en el popup
     </p>
-    <img *ngFor="let file of files" [src]="file" alt="" />
+    <img
+      *ngFor="let file of files"
+      (click)="setImage($event, file)"
+      [src]="file"
+      alt=""
+    />
   </div>
 </div>
+
+<app-loader
+  loader="loteria"
+  [message]="loadingMessage"
+  *ngIf="isLoading"
+></app-loader>
+
+<app-error
+  [msg]="errorMessage"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>

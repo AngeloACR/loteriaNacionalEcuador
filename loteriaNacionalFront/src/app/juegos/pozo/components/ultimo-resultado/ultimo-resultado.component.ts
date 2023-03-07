@@ -11,26 +11,32 @@ export class UltimoResultadoComponent implements OnInit {
   ticketNumbers?: String[];
   mascota: string = '01';
   mascotaPath?: String;
+  isError: boolean = false;
   constructor(private router: Router, private consulta: ConsultaService) {}
   ngOnInit() {
-    let data = JSON.parse(
-      localStorage.getItem('pozoMillonarioUltimoResultado')!
-    );
-    this.ticketNumbers = data.ultimoResultadoPozo.combinacion2.match(/.{1,2}/g);
-    this.mascota = data.mascota;
-    console.log();
-    this.mascotaPath = this.consulta.obtenerMascota(this.mascota);
+    try {
+      let data = JSON.parse(
+        localStorage.getItem('pozoMillonarioUltimoResultado')!
+      );
+      this.ticketNumbers =
+        data.ultimoResultadoPozo.combinacion2.match(/.{1,2}/g);
+      this.mascota = data.mascota;
+      console.log();
+      this.mascotaPath = this.consulta.obtenerMascota(this.mascota);
 
-    this.ticketGanador = {
-      ticketIndex: data.ultimoResultadoPozo.codigo,
-      description: 'Boleto Ganador',
-      ticketNumbers: this.ticketNumbers,
-      mascota: this.mascota,
-      numeroSorteo: data.numeroSorteo,
-      codigo: data.ultimoResultadoPozo.codigo,
-      sorteo: data.sorteo,
-      valorPremio: data.premioPrincipal.valorPremio,
-    };
+      this.ticketGanador = {
+        ticketIndex: data.ultimoResultadoPozo.codigo,
+        description: 'Boleto Ganador',
+        ticketNumbers: this.ticketNumbers,
+        mascota: this.mascota,
+        numeroSorteo: data.numeroSorteo,
+        codigo: data.ultimoResultadoPozo.codigo,
+        sorteo: data.sorteo,
+        valorPremio: data.premioPrincipal.valorPremio,
+      };
+    } catch (e) {
+      this.isError = true;
+    }
   }
   verUltimoBoletin() {
     let sorteo = this.ticketGanador.numeroSorteo;

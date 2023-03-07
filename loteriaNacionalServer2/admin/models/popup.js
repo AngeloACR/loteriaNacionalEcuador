@@ -40,7 +40,7 @@ popupSchema.statics = {
   getImage: async function (type) {
     try {
       let aux = await this.findOne();
-      return aux.status;
+      return aux.image;
     } catch (error) {
       throw error;
     }
