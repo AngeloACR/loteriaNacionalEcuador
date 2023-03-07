@@ -30,7 +30,7 @@ const mainController = {
   getPopupFiles: async (req, res) => {
     try {
       let files = await fs.readdir(config.adminUploadsPath);
-      files.map((file) => {
+      files = files.map((file) => {
         console.log(file);
         return `${config.ventasURL}/admin/assets/${file}`;
       });

@@ -26,6 +26,7 @@ export class AdministracionComponent implements OnInit {
   }
   async getFiles() {
     this.files = await this.administracionService.getPopupFiles();
+    console.log(this.files);
   }
   async setImage(image: string) {
     let response = await this.setImage(image);
