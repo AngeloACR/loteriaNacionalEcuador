@@ -15,7 +15,7 @@ const mainController = {
         files = files.filter((item) => item != "correo");
         filename = files[Math.floor(Math.random() * files.length)];
       }
-      let link = `${config.ventasURL}/admin/assets/${filename}`;
+      let link = `${config.ventasURL}/admin/uploads/${filename}`;
       res.status(200).json(link);
     } catch (e) {
       let response = {
@@ -32,7 +32,7 @@ const mainController = {
       let files = await fs.readdir(config.adminUploadsPath);
       files = files.map((file) => {
         console.log(file);
-        return `${config.ventasURL}/admin/assets/${file}`;
+        return `${config.ventasURL}/admin/uploads/${file}`;
       });
       res.status(200).json(files);
     } catch (e) {
