@@ -27,12 +27,10 @@
     <p *ngIf="!type">
       Listado de imágenes que aparecerán de forma aleatoria en el popup
     </p>
-    <img
-      *ngFor="let file of files"
-      (click)="setImage($event, file)"
-      [src]="file"
-      alt=""
-    />
+    <div class="imgBox" *ngFor="let file of files">
+      <p (click)="deleteImage($event, file)">X</p>
+      <img (click)="setImage($event, file)" [src]="file" alt="" />
+    </div>
   </div>
 </div>
 

@@ -16,9 +16,28 @@ $color-botton: #28aae1;
     p {
       width: 100%;
     }
-    img {
+    .imgBox {
       width: 20%;
       margin: 0 10px;
+      position: relative;
+      p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: -10px;
+        border-radius: 150px;
+        margin: 0;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+      }
+      img {
+        width: 100%;
+      }
     }
   }
   button {
