@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
         let data = decodeURIComponent(event.url);
 
         if (data.includes('inicio')) {
-          this.showPromo = false;
+          this.showPromo = true;
         }
         if (
           data.includes('compra_tus_juegos?token') ||
