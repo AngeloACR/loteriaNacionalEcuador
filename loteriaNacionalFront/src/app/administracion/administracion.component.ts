@@ -29,6 +29,8 @@ export class AdministracionComponent implements OnInit {
 
   async deleteImage(event: any, image: string) {
     this.isLoading = true;
+    let aux = image.split('/');
+    image = aux[aux.length - 1];
     let response = await this.administracionService.deletePopupFiles(image);
     this.isLoading = false;
     this.getFiles();
