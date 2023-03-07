@@ -15,7 +15,6 @@ export class AdministracionComponent implements OnInit {
   async ngOnInit() {
     this.status = await this.administracionService.getPopupStatus();
     this.type = await this.administracionService.getPopupType();
-    //this.codigos = (await this.administracionService.obtenerCodigos() as any).values
   }
 
   async imagenesSeleccionadas() {
@@ -28,6 +27,8 @@ export class AdministracionComponent implements OnInit {
 
     const response = await this.administracionService.cargarImagenes(formData);
   }
+
+  async seleccionarImagenFija(i: number) {}
 
   async changePopupStatus() {
     await this.administracionService.setPopupStatus(this.status);

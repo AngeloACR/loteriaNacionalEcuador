@@ -63,6 +63,30 @@ export class AdministracionService {
     });
   }
 
+  setPopupImage(image: string) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    //let endpoint = "/inquiry";
+
+    let address = '/admin';
+    let endpoint = '/popup/image';
+    address = this.mySource + address + endpoint;
+    return new Promise<any>((resolve, reject) => {
+      let body = { image };
+      this.http
+        .put(address, body, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
+  }
   setPopupStatus(status: boolean) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
