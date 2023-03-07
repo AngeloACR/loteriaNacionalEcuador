@@ -22,5 +22,11 @@
     type="file"
     id="file"
   />
-  <div id="fileList"></div>
+  <div id="fileList">
+    <p *ngIf="type">Seleccione la imagen principal del popup</p>
+    <p *ngIf="!type">
+      Listado de imágenes que aparecerán de forma aleatoria en el popup
+    </p>
+    <img *ngFor="let file of files" [src]="file" alt="" />
+  </div>
 </div>
