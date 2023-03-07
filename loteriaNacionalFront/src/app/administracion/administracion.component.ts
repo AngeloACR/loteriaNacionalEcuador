@@ -8,6 +8,8 @@ import { AdministracionService } from './services/administracion.service';
 })
 export class AdministracionComponent implements OnInit {
   codigos: any = [];
+  files: any = [];
+  image: any = [];
   status: boolean = false;
   type: boolean = false;
   constructor(private administracionService: AdministracionService) {}
@@ -15,6 +17,19 @@ export class AdministracionComponent implements OnInit {
   async ngOnInit() {
     this.status = await this.administracionService.getPopupStatus();
     this.type = await this.administracionService.getPopupType();
+    await this.getFiles();
+  }
+
+  async deleteImage(image: string) {
+    let response = await this.deleteImage(image);
+    console.log(response);
+  }
+  async getFiles() {
+    this.files = await this.administracionService.getPopupFiles();
+  }
+  async setImage(image: string) {
+    let response = await this.setImage(image);
+    console.log(response);
   }
 
   async imagenesSeleccionadas() {
@@ -27,8 +42,6 @@ export class AdministracionComponent implements OnInit {
 
     const response = await this.administracionService.cargarImagenes(formData);
   }
-
-  async seleccionarImagenFija(i: number) {}
 
   async changePopupStatus() {
     await this.administracionService.setPopupStatus(this.status);

@@ -87,6 +87,52 @@ export class AdministracionService {
         );
     });
   }
+  getPopupFiles() {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    //let endpoint = "/inquiry";
+
+    let address = '/admin';
+    let endpoint = '/popup/files';
+    address = this.mySource + address + endpoint;
+    return new Promise<any>((resolve, reject) => {
+      this.http
+        .get(address, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
+  }
+  deletePopupFiles(image: string) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    //let endpoint = "/inquiry";
+
+    let address = '/admin';
+    let endpoint = `/popup/file/${image}`;
+    address = this.mySource + address + endpoint;
+    return new Promise<any>((resolve, reject) => {
+      this.http
+        .delete(address, {
+          headers: headers,
+        })
+        .subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+    });
+  }
   setPopupStatus(status: boolean) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');

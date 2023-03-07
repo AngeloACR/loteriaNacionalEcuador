@@ -27,6 +27,24 @@ const mainController = {
       res.status(400).json(response);
     }
   },
+  getPopupFiles: async (req, res) => {
+    try {
+      let files = await fs.readdir(config.adminUploadsPath);
+      files.map((file) => {
+        console.log(file);
+        return `${config.ventasURL}/admin/assets/${file}`;
+      });
+      res.status(200).json(files);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
   savePopupFiles: async (req, res) => {
     try {
       const files = req.files;
@@ -40,6 +58,24 @@ const mainController = {
       });
       await Popup.updateImage(filename);
       res.status(200).json(files);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  deletePopupFile: async (req, res) => {
+    try {
+      let filename = req.params.filename;
+      const filepath = path.join(config.adminUploadsPath, filename);
+      let result = await fs.unlink(filepath);
+      let files = await fs.readdir(config.adminUploadsPath);
+      if (!files.length) await Popup.updateImage("");
+      res.status(200).json(result);
     } catch (e) {
       let response = {
         status: "error",

@@ -83,6 +83,64 @@ class AdministracionService {
             });
         });
     }
+    setPopupImage(image) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = '/popup/image';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            let body = { image };
+            this.http
+                .put(address, body, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    getPopupFiles() {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = '/popup/files';
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            this.http
+                .get(address, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    deletePopupFiles(image) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/admin';
+        let endpoint = `/popup/file/${image}`;
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            this.http
+                .delete(address, {
+                headers: headers,
+            })
+                .subscribe((data) => {
+                resolve(data);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
     setPopupStatus(status) {
         let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');

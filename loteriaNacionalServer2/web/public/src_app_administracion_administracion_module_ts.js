@@ -53,6 +53,8 @@ class AdministracionComponent {
   constructor(administracionService) {
     this.administracionService = administracionService;
     this.codigos = [];
+    this.files = [];
+    this.image = [];
     this.status = false;
     this.type = false;
   }
@@ -62,12 +64,39 @@ class AdministracionComponent {
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
       _this.status = yield _this.administracionService.getPopupStatus();
-      _this.type = yield _this.administracionService.getPopupType(); //this.codigos = (await this.administracionService.obtenerCodigos() as any).values
+      _this.type = yield _this.administracionService.getPopupType();
+      yield _this.getFiles();
+    })();
+  }
+
+  deleteImage(image) {
+    var _this2 = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      let response = yield _this2.deleteImage(image);
+      console.log(response);
+    })();
+  }
+
+  getFiles() {
+    var _this3 = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      _this3.files = yield _this3.administracionService.getPopupFiles();
+    })();
+  }
+
+  setImage(image) {
+    var _this4 = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      let response = yield _this4.setImage(image);
+      console.log(response);
     })();
   }
 
   imagenesSeleccionadas() {
-    var _this2 = this;
+    var _this5 = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
       const myFiles = document.querySelector('#file').files;
@@ -76,23 +105,23 @@ class AdministracionComponent {
       Object.keys(myFiles).forEach(key => {
         formData.append(myFiles.item(key).name, myFiles.item(key));
       });
-      const response = yield _this2.administracionService.cargarImagenes(formData);
+      const response = yield _this5.administracionService.cargarImagenes(formData);
     })();
   }
 
   changePopupStatus() {
-    var _this3 = this;
+    var _this6 = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
-      yield _this3.administracionService.setPopupStatus(_this3.status);
+      yield _this6.administracionService.setPopupStatus(_this6.status);
     })();
   }
 
   changePopupType() {
-    var _this4 = this;
+    var _this7 = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
-      yield _this4.administracionService.setPopupType(_this4.type);
+      yield _this7.administracionService.setPopupType(_this7.type);
     })();
   }
 
@@ -105,9 +134,9 @@ AdministracionComponent.ɵfac = function AdministracionComponent_Factory(t) {
 AdministracionComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
   type: AdministracionComponent,
   selectors: [["app-administracion"]],
-  decls: 11,
+  decls: 12,
   vars: 2,
-  consts: [[1, "containerBox"], [3, "ngModel", "ngModelChange", "change"], ["type", "button", "mat-raised-button", "", 3, "click"], ["hidden", "", "accept", "image/*", "multiple", "", "type", "file", "id", "file", 3, "change"], ["fileInput", ""]],
+  consts: [[1, "containerBox"], [3, "ngModel", "ngModelChange", "change"], ["type", "button", "mat-raised-button", "", 3, "click"], ["hidden", "", "accept", "image/*", "multiple", "", "type", "file", "id", "file", 3, "change"], ["fileInput", ""], ["id", "fileList"]],
   template: function AdministracionComponent_Template(rf, ctx) {
     if (rf & 1) {
       const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetCurrentView"]();
@@ -147,6 +176,7 @@ AdministracionComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MOD
         return ctx.imagenesSeleccionadas();
       });
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](11, "div", 5);
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     }
 
