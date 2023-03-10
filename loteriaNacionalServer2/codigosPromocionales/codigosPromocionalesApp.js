@@ -1,5 +1,5 @@
 const codigosPromocionalesServer = require("./codigosPromocionalesServer");
-const config = require("../environments/test");
+const config = require("../environments/production");
 const cronjobs = require("./cronjobs");
 
 const codigosPromocionalesPort = config.codigosPromocionalesPort;
