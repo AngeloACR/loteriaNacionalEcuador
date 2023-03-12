@@ -21,6 +21,7 @@ export class AdministracionComponent implements OnInit {
 
   async ngOnInit() {
     this.isLoading = true;
+    await this.changePopupStatus();
     this.status = await this.administracionService.getPopupStatus();
     this.type = await this.administracionService.getPopupType();
     this.isLoading = false;
