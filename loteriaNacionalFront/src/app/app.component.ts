@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
         let data = decodeURIComponent(event.url);
 
         if (data.includes('inicio')) {
-          this.showPromo = await this.admin.getPopupStatus();
+          this.showPromo = true; //await this.admin.getPopupStatus();
         }
         if (
           data.includes('compra_tus_juegos?token') ||

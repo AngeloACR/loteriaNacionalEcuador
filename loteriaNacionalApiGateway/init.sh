@@ -5,6 +5,7 @@ mkdir -p /etc/nginx/api_conf.d
 cp ./api_gateway.conf /etc/nginx/conf.d/api_gateway.conf
 cp ./api_backends.conf /etc/nginx/api_backends.conf
 cp ./loteria_api.conf /etc/nginx/api_conf.d/loteria_api.conf
+cp ./admin_api.conf /etc/nginx/api_conf.d/admin_api.conf
 cp ./lotto_api.conf /etc/nginx/api_conf.d/lotto_api.conf
 cp ./pozoMillonario_api.conf /etc/nginx/api_conf.d/pozoMillonario_api.conf
 cp ./laMillonaria_api.conf /etc/nginx/api_conf.d/laMillonaria_api.conf
