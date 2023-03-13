@@ -12,7 +12,7 @@ export class PopupPromoComponent implements OnInit {
   constructor(private administracionService: AdministracionService) {}
 
   async ngOnInit() {
-    this.bannerLink = 'assets/popupPozo.gif'; //await this.administracionService.getBannerLink();
+    this.bannerLink = await this.administracionService.getBannerLink();
   }
   close() {
     this.closePromo.emit();
