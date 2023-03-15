@@ -503,6 +503,7 @@ const ventasController = {
         loteriaVentaResponse.ticketId,
         ip
       ); */
+      let codigoPromocionalResponse = "";
       /* RESPUESTA DE API */
       let finalResponse = {
         data: apiVentaResponse,
