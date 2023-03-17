@@ -547,13 +547,13 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriaReservasLogger.error("eliminarReservas.error", {
+    loteriaReservasLogger.error("validarReservas.error", {
       errorMessage: errorMsg,
     });
     let errorData = {
       input: e,
       output: "",
-      function: "eliminarReservas",
+      function: "validarReservas",
     };
     throw new loteriaError(errorMsg, "loteria", errorData);
   }
