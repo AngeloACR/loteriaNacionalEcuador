@@ -2,6 +2,7 @@ const psdVentas = require("../psdLoteria/ventas");
 const Wallet = require("../alboran/wallet"); // COMUNICAR POR gRPC
 const Ventas = require("./models/main");
 
+const TIMEOUT_ERROR = 99970;
 /*AGREGAR LOGGING */
 
 const errorHandler = {
@@ -103,13 +104,30 @@ const errorHandler = {
       );
     }
   },
-  loteriaSellError: async (alboranReservaData, venta) => {
+  loteriaSellError: async (
+    alboranReservaData,
+    venta,
+    errorCode,
+    user,
+    lotteryToken,
+    reservaId,
+    ip
+  ) => {
     let alboranCancelId = Date.now();
     let alboranCancelData = {
       transactionId: alboranCancelId,
       reserveId: alboranReservaData.transactionId,
       amount: alboranReservaData.amount,
     };
+    if (errorCode == TIMEOUT_ERROR) {
+      await psdVentas.cancelarVenta(
+        lotteryToken,
+        reservaId,
+        user,
+        "Cancelación por error de timeout",
+        ip
+      );
+    }
     let alboranCancelResponse = await Wallet.cancelLottery(alboranCancelData);
     let i = 0;
     while (!alboranCancelResponse.status && i != 3) {

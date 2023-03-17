@@ -110,7 +110,15 @@ const ventasController = {
       ip
     );
     if (!loteriaVentaResponse.status) {
-      await errorHandler.loteriaSellError(alboranReservaData, venta);
+      await errorHandler.loteriaSellError(
+        alboranReservaData,
+        venta,
+        loteriaVentaResponse.errorCode,
+        user,
+        lotteryToken,
+        reservaId,
+        ip
+      );
     }
     let logData = {
       data: {
