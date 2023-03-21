@@ -30,7 +30,7 @@ const resultadoLottoSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-    autoIndex:true
+    autoIndex: true,
   }
 );
 
@@ -64,9 +64,9 @@ resultadoLottoSchema.statics = {
       throw error;
     }
   },
-  deleteResultadosBySorteo: async function (sorteo) {
+  deleteResultadosBySorteo: async function (numeroSorteo) {
     try {
-      let query = { _id: id };
+      let query = { numeroSorteo };
       let deleteRes = await this.remove(query);
 
       let response = {
@@ -125,7 +125,9 @@ resultadoLottoSchema.statics = {
       let combinacionAux = `${combinacion}`;
       let query = { numeroSorteo: sorteoAux, combinacion1: combinacionAux };
 
-      let resultado = await this.find(query).lean().select('combinacion1 numeroSorteo codigoPremio');
+      let resultado = await this.find(query)
+        .lean()
+        .select("combinacion1 numeroSorteo codigoPremio");
       if (resultado && resultado.length != 0) {
         response = {
           status: true,

@@ -57,9 +57,9 @@ resultadoMillonariaSchema.statics = {
       throw error;
     }
   },
-  deleteResultadosBySorteo: async function (sorteo) {
+  deleteResultadosBySorteo: async function (numeroSorteo) {
     try {
-      let query = { numeroSorteo: `${sorteo}` };
+      let query = { numeroSorteo };
       let deleteRes = await this.remove(query);
 
       let response = {
@@ -124,7 +124,9 @@ resultadoMillonariaSchema.statics = {
         combinacion2: serieAux,
       };
       let response;
-      let resultado = await this.find(query).lean().select('combinacion1 combinacion2 numeroSorteo codigoPremio');
+      let resultado = await this.find(query)
+        .lean()
+        .select("combinacion1 combinacion2 numeroSorteo codigoPremio");
 
       if (resultado && resultado.length != 0) {
         response = {

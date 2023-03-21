@@ -332,6 +332,48 @@ const mainController = {
       };
     }
   },
+
+  limpiarDBHttp: async function (req, res) {
+    try {
+      console.log("Limpiando DB por http");
+      let response = await mainController.limpiarDB();
+      res.status(200).json(response);
+    } catch (e) {
+      res.status(400).json(e.toString());
+    }
+  },
+  limpiarDB: async function () {
+    try {
+      console.log("Empezando limpieza de DB");
+      let sorteos = (await Sorteos.getSorteos()).values;
+      var today = new Date();
+      var minDate = new Date(new Date().setDate(today.getDate() - 90));
+      let outdatedSorteos = sorteos.filter((sorteo) => {
+        let fechaSorteo = new Date(
+          sorteo.fecha.split(" ")[0].split("/").reverse().join("-")
+        );
+        return fechaSorteo.getTime() < minDate.getTime();
+      });
+
+      for (let i = 0; i < outdatedSorteos.length; i++) {
+        const sorteo = outdatedSorteos[i];
+
+        await Results.deleteResultadosBySorteo(sorteo.sorteo);
+        await Premios.deletePremiosBySorteo(sorteo.sorteo);
+        await Sorteos.deleteSorteo(sorteo.sorteo);
+      }
+
+      return outdatedSorteos;
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      console.log(response);
+    }
+  },
 };
 
 module.exports = mainController;

@@ -2,7 +2,7 @@ const psdVentas = require("../psdLoteria/ventas");
 const Wallet = require("../alboran/wallet"); // COMUNICAR POR gRPC
 const Ventas = require("./models/main");
 
-const TIMEOUT_ERROR = 99970;
+const TIMEOUT_ERROR = "99970";
 /*AGREGAR LOGGING */
 
 const errorHandler = {

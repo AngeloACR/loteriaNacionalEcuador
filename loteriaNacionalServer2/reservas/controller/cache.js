@@ -124,6 +124,7 @@ const cacheController = {
       let loteriaCache;
       let lottoCache;
       let pozoCache;
+      let pozoRevanchaCache;
       let millonariaCache;
       if (
         Object.keys(cacheCart.loteria).length !== 0 &&
@@ -149,6 +150,14 @@ const cacheController = {
         pozoCache = Object.values(cacheCart.pozo);
       } else {
         pozoCache = [];
+      }
+      if (
+        Object.keys(cacheCart.pozoRevancha).length !== 0 &&
+        Object.getPrototypeOf(cacheCart.pozoRevancha) === Object.prototype
+      ) {
+        pozoRevanchaCache = Object.values(cacheCart.pozoRevancha);
+      } else {
+        pozoRevanchaCache = [];
       }
       if (
         Object.keys(cacheCart.millonaria).length !== 0 &&
@@ -705,6 +714,8 @@ const cacheController = {
         auxLotto2.length ||
         auxPozo1.length ||
         auxPozo2.length ||
+        auxPozoRevancha1.length ||
+        auxPozoRevancha2.length ||
         auxMillonaria1.length ||
         auxMillonaria2.length ||
         auxMillonariaFracciones1.length ||

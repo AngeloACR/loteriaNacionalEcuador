@@ -870,7 +870,7 @@ module.exports.validarVentaPorOrdenDeCompra = async (
   ip
 ) => {
   try {
-    loteriaReservasLogger.silly("validarVentaPorOrdenDeCompra");
+    loteriaVentasLogger.silly("validarVentaPorOrdenDeCompra");
     let client = await soap.createClientAsync(address, { envelopeKey: "s" });
 
     let message = {
@@ -907,98 +907,83 @@ module.exports.validarVentaPorOrdenDeCompra = async (
         async function (err, res, rawResponse, soapHeader, rawRequest) {
           try {
             if (err) reject(new Error(err));
-
             let data = await parser.parseStringPromise(
               res.fnEjecutaTransaccionResult
             );
             let errorCode = parseInt(data.mt.c[0].codError[0]);
             if (!errorCode) {
-              let reserva = data.mt.rs[0];
-              let detalles = reserva.r[0].Row;
-              let fracciones = reserva.r[2]
-                ? reserva.r[2].Row.map((element) => {
-                    let response = {
-                      id: element.$.Id,
-                      jid: element.$.JId,
-                      fraccion: element.$.Fra,
-                    };
-                    return response;
-                  })
-                : [];
-              let boletos = reserva.r[1].Row.map((element) => {
-                let id = element.$.Id;
-                let jid = element.$.JId;
-                //Manejador de fracciones
-                let fraccionesAux = fracciones.filter(
-                  (x) => id == x.id && jid == x.jid
-                );
-                let response = {
-                  id,
-                  tipoLoteria: parseInt(element.$.JId),
-                  sorteo: element.$.Sort,
-                  combinacion: element.$.Num,
-                  combinacion2: element.$.Num2,
-                  combinacion3: element.$.Num3,
-                  combinacion4: element.$.Num4,
-                  combinacion5: element.$.Num5,
-                  cantidadFracciones: element.$.Cant,
-                  fracciones: fraccionesAux,
-                  cantidadReservados: element.$.Resrv,
-                };
-                return response;
-              });
+              let aux = data.mt.o[0].xmlVentaOutput[0];
+              let xmlVentaOutput = await parser.parseStringPromise(aux);
+              let ticketId = xmlVentaOutput.VTA.$.VId;
+              let instantaneas = [];
+              let instantaneasAux =
+                xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR
+                  ? xmlVentaOutput.VTA.INST[0].SOR
+                  : "";
+              if (instantaneasAux != "") {
+                instantaneasAux.forEach((sorteoAux) => {
+                  let sorteo = sorteoAux.$;
 
-              //let loteria = [];
-              //let lotto = [];
-              //let pozo = [];
-              let loteria = boletos.filter((x) => x.tipoLoteria == 1);
-              let lotto = boletos.filter((x) => x.tipoLoteria == 2);
-              let pozo = boletos.filter((x) => x.tipoLoteria == 5);
-              let pozoRevancha = boletos.filter((x) => x.tipoLoteria == 17);
-              let millonaria = boletos.filter((x) => x.tipoLoteria == 14);
-
-              let carrito = loteria.concat(lotto).concat(pozo);
+                  let premios = sorteoAux.R.map((premio) => {
+                    return premio.$;
+                  });
+                  let data = {
+                    sorteo,
+                    premios,
+                  };
+                  instantaneas.push(data);
+                });
+              }
               let response = {
-                loteria,
-                lotto,
-                pozo,
-                pozoRevancha,
-                millonaria,
-                carrito,
+                instantaneas,
+                ticketId,
+                errorCode,
+                status: true,
               };
+
               let logData = {
                 data: message,
                 loteriaResponse: rawResponse,
                 customResponse: response,
               };
-              loteriaReservasLogger.info("validarReservas.loteria", logData);
+              loteriaVentasLogger.info(
+                "validarVentaPorOrdenDeCompra.loteria",
+                logData
+              );
               resolve(response);
             } else {
-              let errorMessage = data.mt.c[0].msgError[0];
-              loteriaReservasLogger.error("validarReservas.loteria.error", {
-                message: `${errorCode}-${errorMessage}`,
-              });
+              let errorMsg = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error(
+                "validarVentaPorOrdenDeCompra.loteria.error",
+                {
+                  data: message,
+                  errorMessage: `${errorCode}-${errorMsg}`,
+                }
+              );
               let errorData = {
+                status: false,
                 input: message,
                 output: errorCode,
-                function: "validarReservas",
+                function: "validarVentaPorOrdenDeCompra",
               };
-
-              reject(new loteriaError(errorMessage, "loteria", errorData));
+              resolve(errorData);
+              //              reject(new loteriaError(errorMsg, "loteria", errorData));
             }
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriaReservasLogger.error("validarReservas.error", {
-              data: message,
-              errorMessage: `${errorMsg}`,
+            loteriaVentasLogger.error("validarVentaPorOrdenDeCompra.error", {
+              errorMessage: errorMsg,
             });
             let errorData = {
+              status: false,
               input: e,
               output: "",
-              function: "validarReservas",
+              function: "validarVentaPorOrdenDeCompra",
             };
-            reject(new loteriaError(errorMsg, "loteria", errorData));
+            resolve(errorData);
+
+            //reject(new loteriaError(errorMsg, "loteria", errorData));
           }
         }
       );
@@ -1006,13 +991,13 @@ module.exports.validarVentaPorOrdenDeCompra = async (
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriaReservasLogger.error("validarVentaPorOrdenDeCompra.error", {
+    loteriaVentasLogger.error("validarVentaPorOrdenDeCompra.error", {
       errorMessage: errorMsg,
     });
     let errorData = {
       input: e,
       output: "",
-      function: "eliminarReservas",
+      function: "validarVentaPorOrdenDeCompra",
     };
     throw new loteriaError(errorMsg, "loteria", errorData);
   }

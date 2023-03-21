@@ -60,9 +60,9 @@ resultadoPozoSchema.statics = {
       throw error;
     }
   },
-  deleteResultadosBySorteo: async function (sorteo) {
+  deleteResultadosBySorteo: async function (numeroSorteo) {
     try {
-      let query = { _id: id };
+      let query = { numeroSorteo };
       let deleteRes = await this.remove(query);
 
       let response = {

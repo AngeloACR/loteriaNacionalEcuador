@@ -26,9 +26,9 @@ const sorteoSchema = new mongoose.Schema({
 });
 
 sorteoSchema.statics = {
-  deleteSorteo: async function (id) {
+  deleteSorteo: async function (sorteo) {
     try {
-      let query = { _id: id };
+      let query = { sorteo };
       let deleteRes = await this.remove(query);
       response = {
         status: true,

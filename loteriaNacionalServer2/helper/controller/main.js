@@ -1354,9 +1354,9 @@ const helperController = {
       res.status(400).json(e.toString());
     }
   },
-  limpiarDB: async function () {
+  limpiarDBLoteria: async function () {
     console.log("Empezando limpieza de DB");
-    let sorteos = (await SorteosController.getAllSorteos()).values;
+    let sorteos = (await SorteosLoteriaController.getAllSorteos()).values;
     let outdatedSorteos = [];
     let n = sorteos.length;
     return new Promise(async (resolve, reject) => {
@@ -1388,9 +1388,9 @@ const helperController = {
           ) {
             console.log(`I should be deleting this sorteo: ${sorteo.sorteo}`);
             outdatedSorteos.push(sorteo.sorteo);
-            await ResultadosController.deleteResultadosBySorteo(sorteo.sorteo);
-            await PremiosController.deletePremiosBySorteo(sorteo.sorteo);
-            await SorteosController.deleteSorteo(sorteo.sorteo);
+            await ResultadosLoteriaController.deleteResultadosBySorteo(sorteo.sorteo);
+            await PremiosLoteriaController.deletePremiosBySorteo(sorteo.sorteo);
+            await SorteosLoteriaController.deleteSorteo(sorteo.sorteo);
           }
         }
 

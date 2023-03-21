@@ -51,7 +51,7 @@ premioSchema.statics = {
   deletePremio: async function (id) {
     try {
       let query = { _id: id };
-      let deleteRes = await this.remove(query);
+      let deleteRes = await this.deleteMany(query);
       response = {
         status: true,
         values: deleteRes,
@@ -61,10 +61,10 @@ premioSchema.statics = {
       throw error;
     }
   },
-  deletePremiosBySorteo: async function (sorteo) {
+  deletePremiosBySorteo: async function (numeroSorteo) {
     try {
-      const query = { numeroSorteo: `${sorteo}` };
-      let deleteRes = await this.remove(query);
+      const query = { numeroSorteo };
+      let deleteRes = await this.deleteMany(query);
 
       let response = {
         status: true,

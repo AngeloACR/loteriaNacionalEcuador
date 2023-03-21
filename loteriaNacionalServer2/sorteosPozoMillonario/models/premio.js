@@ -61,9 +61,9 @@ premioSchema.statics = {
       throw error;
     }
   },
-  deletePremiosBySorteo: async function (sorteo) {
+  deletePremiosBySorteo: async function (numeroSorteo) {
     try {
-      const query = { numeroSorteo: `${sorteo}` };
+      const query = { numeroSorteo };
       let deleteRes = await this.remove(query);
 
       let response = {
