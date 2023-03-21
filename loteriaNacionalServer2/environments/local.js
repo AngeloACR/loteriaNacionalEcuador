@@ -9,6 +9,7 @@ module.exports = {
   webPort: 6800,
   contenidosPort: 5950,
 
+  adminPort: 3850,
   ventasPort: 4000,
   reservasPort: 4500,
   sorteosLoteriaNacionalPort: 5500,

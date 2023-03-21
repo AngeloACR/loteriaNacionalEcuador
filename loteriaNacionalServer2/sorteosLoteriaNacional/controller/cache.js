@@ -3,7 +3,7 @@ const UltimosResultados = require("../models/ultimoResultado");
 const psdAuth = require("../../psdLoteria/auth");
 const psdSorteos = require("../../psdLoteria/sorteos");
 const redis = require("../../cache");
-const config = require("../../environments/test");
+const config = require("../../environments/local");
 
 const cacheController = {
   getUltimoResultado: async (req, res) => {
@@ -53,8 +53,8 @@ const cacheController = {
   setSorteos: async () => {
     try {
       let client = redis.getClient();
-      await client.connect();
       let sorteos = await Sorteos.getSorteos();
+      await client.connect();
       await client.set("loteriaSorteos", JSON.stringify(sorteos));
       await client.quit();
     } catch (e) {
@@ -101,7 +101,7 @@ const cacheController = {
     try {
       let client = redis.getClient();
       await client.connect();
-      let response = await client.get("loteriaSorteosDisponibles");
+      let response =  await client.get("loteriaSorteosDisponibles");
       if (!response) {
         await cacheController.setSorteosDisponibles();
         response = await client.get("loteriaSorteosDisponibles");

@@ -113,40 +113,46 @@ const errorHandler = {
     reservaId,
     ip
   ) => {
-    let alboranCancelId = Date.now();
-    let alboranCancelData = {
-      transactionId: alboranCancelId,
-      reserveId: alboranReservaData.transactionId,
-      amount: alboranReservaData.amount,
-    };
-    if (errorCode == TIMEOUT_ERROR) {
-      await psdVentas.cancelarVenta(
-        lotteryToken,
-        reservaId,
-        user,
-        "Cancelación por error de timeout",
-        ip
+    try {
+      let alboranCancelId = Date.now();
+      let alboranCancelData = {
+        transactionId: alboranCancelId,
+        reserveId: alboranReservaData.transactionId,
+        amount: alboranReservaData.amount,
+      };
+      if (errorCode == TIMEOUT_ERROR) {
+         await psdVentas.cancelarVenta(
+          lotteryToken,
+          reservaId,
+          user,
+          "Cancelación por error de timeout",
+          ip
+        ); 
+      }
+      let alboranCancelResponse = await Wallet.cancelLottery(alboranCancelData);
+      let i = 0;
+      while (!alboranCancelResponse.status && i != 3) {
+        alboranCancelResponse = await Wallet.cancelLottery(alboranCancelData);
+        i++;
+      }
+      if (i == 3 && !alboranCancelResponse.status) {
+        throw new Error(
+          "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
+        );
+      }
+      let ventaLoteriaStatusResponse = await Ventas.actualizarStatus(
+        venta._id,
+        "Cancelada",
+        alboranCancelId
       );
-    }
-    let alboranCancelResponse = await Wallet.cancelLottery(alboranCancelData);
-    let i = 0;
-    while (!alboranCancelResponse.status && i != 3) {
-      alboranCancelResponse = await Wallet.cancelLottery(alboranCancelData);
-      i++;
-    }
-    if (i == 3 && !alboranCancelResponse.status) {
       throw new Error(
-        "Ha ocurrido un error procesando tu compra, por favor comunícate con el equipo de Loteria Nacional para ayudarte a resolver el problema."
+        "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
+      );
+    } catch (e) {
+      throw new Error(
+        "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
       );
     }
-    let ventaLoteriaStatusResponse = await Ventas.actualizarStatus(
-      venta._id,
-      "Cancelada",
-      alboranCancelId
-    );
-    throw new Error(
-      "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
-    );
   },
   alboranReserveError: async (alboranReservaData) => {
     throw new Error(

@@ -5,7 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaVentasLogger } = require("./logging");
-const config = require("../environments/test");
+const config = require("../environments/local");
 
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
@@ -450,7 +450,6 @@ module.exports.venderBoletos = async (
               let response = {
                 instantaneas,
                 ticketId,
-                errorCode,
                 status: true,
               };
 
@@ -470,6 +469,7 @@ module.exports.venderBoletos = async (
               let errorData = {
                 status: false,
                 input: message,
+                errorCode,
                 output: errorCode,
                 function: "venderBoletos",
               };
@@ -485,6 +485,7 @@ module.exports.venderBoletos = async (
             let errorData = {
               status: false,
               input: e,
+              errorCode,
               output: "",
               function: "venderBoletos",
             };
@@ -568,6 +569,7 @@ module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
                 status: false,
                 input: message,
                 output: errorCode,
+                errorCode,
                 function: "cancelarVenta",
               };
 
@@ -584,6 +586,7 @@ module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
             let errorData = {
               status: false,
               input: e,
+              errorCode,
               output: "",
               function: "cancelarVenta",
             };
