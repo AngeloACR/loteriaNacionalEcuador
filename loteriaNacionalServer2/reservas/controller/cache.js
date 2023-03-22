@@ -505,6 +505,77 @@ const cacheController = {
         await cacheController.updateCart(cacheCart);
       }
 
+      /* VALIDACIÓN DE POZO REVANCHA*/
+
+      let auxPozoRevancha1 = pozoRevanchaCache.filter((item) => {
+        let index = loteriaCart.pozoRevancha.findIndex(
+          (pozoRevancha) => pozoRevancha.combinacion == item.ticket.combinacion1
+        );
+        if (index == -1) {
+          return true;
+        }
+        return false;
+      });
+      for (let i = 0; i < auxPozoRevancha1.length; i++) {
+        let item = auxPozoRevancha1[i];
+        let boleto = [
+          {
+            combinacion: item.ticket.combinacion1,
+            fracciones: item.seleccionados,
+            sorteo: item.sorteo,
+          },
+        ];
+        await psdReservas.reservarCombinaciones(
+          [],
+          [],
+          boleto,
+          [],
+          token,
+          reservaId,
+          user,
+          ip
+        );
+      }
+
+      let auxPozoRevancha2 = loteriaCart.pozoRevancha.filter((item) => {
+        let index = pozoRevanchaCache.findIndex(
+          (pozoRevancha) => item.combinacion == pozoRevancha.ticket.combinacion1
+        );
+        if (index == -1) {
+          return true;
+        }
+        return false;
+      });
+      for (let i = 0; i < auxPozoRevancha2.length; i++) {
+        let item = auxPozoRevancha2[i];
+        let identificador = Math.random();
+        let pozoRevanchaSorteos =
+          await CachePozoRevancha.getSorteosDisponibles();
+        let sorteo = pozoRevanchaSorteos.filter((pozoRevancha) => {
+          if (pozoRevancha.sorteo == item.sorteo) {
+            return true;
+          }
+          return false;
+        })[0];
+        let boleto = {
+          identificador,
+          ticket: {
+            combinacion1: item.combinacion,
+            combinacion2: item.combinacion2,
+            mascota: item.combinacion3,
+            display: item.combinacion.split(""),
+            identificador,
+          },
+          sorteo,
+          subtotal: sorteo.precio,
+          tipoLoteria: 5,
+        };
+        cacheCart.pozoRevancha[identificador] = boleto;
+        cacheCart.carrito.push(boleto);
+        cacheCart.total += parseFloat(boleto.subtotal);
+        await cacheController.updateCart(cacheCart);
+      }
+
       /* VALIDACIÓN DE LA MILLONARIA */
 
       let auxMillonaria1 = millonariaCache.filter((item) => {
