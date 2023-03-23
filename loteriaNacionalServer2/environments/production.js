@@ -68,6 +68,8 @@ module.exports = {
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalServer2/codigosPromocionales/assets",
   adminUploadsPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalServer2/admin/assets",
+  sendinbluePath:
+    "/home/acri/loteriaNacionalEcuador/loteriaNacionalServer2/web/public/assets/sendinblue",
 
   destinatarios: [
     { nombre: "Angelo Crincoli", correo: "angelocrincoli91@gmail.com" },

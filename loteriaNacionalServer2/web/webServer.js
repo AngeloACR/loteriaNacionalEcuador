@@ -43,8 +43,8 @@ module.exports.init = function (folder, thePath, port) {
         "frame-ancestors": [
           "'self'",
           "*",
-//          "https://*.loteria.com.ec",
-//          "http://*.mongibello.tech",
+          //          "https://*.loteria.com.ec",
+          //          "http://*.mongibello.tech",
           "http://loteria.mongibello.tech:8300",
         ],
       },
@@ -54,6 +54,7 @@ module.exports.init = function (folder, thePath, port) {
   // Set Static Folder
 
   app.use(express.static(path.join(__dirname, folder)));
+  app.use("/sendinblue", express.static(config.sendinbluePath));
 
   app.get("/", (req, res) => {
     res.send("We are having some troubles, please come back in a while!");
