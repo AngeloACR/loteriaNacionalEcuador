@@ -53,7 +53,6 @@ module.exports.init = function (folder, thePath, port) {
 
   // Set Static Folder
 
-  app.use("/sendinblue", express.static(config.sendinbluePath));
   app.use(express.static(path.join(__dirname, folder)));
 
   app.get("/", (req, res) => {
@@ -65,6 +64,8 @@ module.exports.init = function (folder, thePath, port) {
     var fileToSend = path.join(__dirname, thePath);
     res.sendFile(fileToSend);
   });
+
+  app.use("/sendinblue", express.static(config.sendinbluePath));
 
   return app;
 };
