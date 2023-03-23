@@ -65,7 +65,5 @@ module.exports.init = function (folder, thePath, port) {
     res.sendFile(fileToSend);
   });
 
-  app.use("/sendinblue", express.static(config.sendinbluePath));
-
   return app;
 };
