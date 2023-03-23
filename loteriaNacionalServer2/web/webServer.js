@@ -5,6 +5,7 @@ const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
+const config = require("../environments/production");
 
 module.exports.init = function (folder, thePath, port) {
   app.set("port", port);
@@ -65,7 +66,7 @@ module.exports.init = function (folder, thePath, port) {
     res.sendFile(fileToSend);
   });
 
-  //app.use("/sendinblue", express.static(config.sendinbluePath));
+  app.use("/sendinblue", express.static(config.sendinbluePath));
 
   return app;
 };
