@@ -5,6 +5,7 @@ const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
+const config = require("../environments/production");
 
 module.exports.init = function (folder, thePath, port) {
   app.set("port", port);
@@ -43,8 +44,8 @@ module.exports.init = function (folder, thePath, port) {
         "frame-ancestors": [
           "'self'",
           "*",
-//          "https://*.loteria.com.ec",
-//          "http://*.mongibello.tech",
+          //          "https://*.loteria.com.ec",
+          //          "http://*.mongibello.tech",
           "http://loteria.mongibello.tech:8300",
         ],
       },
@@ -52,6 +53,7 @@ module.exports.init = function (folder, thePath, port) {
   );
 
   // Set Static Folder
+  app.use("/sendinblue", express.static(config.sendinbluePath));
 
   app.use(express.static(path.join(__dirname, folder)));
 

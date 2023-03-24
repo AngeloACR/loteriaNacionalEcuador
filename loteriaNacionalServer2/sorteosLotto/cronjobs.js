@@ -22,7 +22,7 @@ module.exports.setCronJobs = function () {
     "America/Guayaquil"
   );
   jobs.push(jobB);
-  let jobTimeC = "00 30 01 * * *";
+  let jobTimeC = "00 30 00/1 * * *";
   var jobC = new CronJob(
     jobTimeC,
     Cache.actualizar,
@@ -31,7 +31,7 @@ module.exports.setCronJobs = function () {
     "America/Guayaquil"
   );
   jobs.push(jobC);
-  let jobTimeD = "00 55 00/1 * * *";
+  let jobTimeD = "00 55 01 * * *";
   var jobD = new CronJob(
     jobTimeD,
     Controller.limpiarDB,
