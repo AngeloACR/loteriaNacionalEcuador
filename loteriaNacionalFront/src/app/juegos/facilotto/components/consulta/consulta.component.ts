@@ -19,7 +19,7 @@ export class ConsultaComponent implements OnInit {
   sorteoGanador: any;
   sorteoBoletin: any;
   combinacionesAux: any = '';
-  maxDigits: number = 6;
+  maxDigits: number = 5;
   numbers: Array<any> = [];
   previousLength: number = 0;
   cameFromBackspace: boolean = false;

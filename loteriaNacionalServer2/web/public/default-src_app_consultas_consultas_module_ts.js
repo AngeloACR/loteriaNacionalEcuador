@@ -1741,7 +1741,7 @@ class ConsultaComponent {
     this.consulta = consulta;
     this.changeDetectorRef = changeDetectorRef;
     this.combinacionesAux = '';
-    this.maxDigits = 6;
+    this.maxDigits = 5;
     this.numbers = [];
     this.previousLength = 0;
     this.cameFromBackspace = false;
