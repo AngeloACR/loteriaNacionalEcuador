@@ -49,7 +49,7 @@ const masterLottoSchema = new mongoose.Schema(
 );
 
 masterLottoSchema.virtual("sorteo", {
-  ref: "SorteoLotto", // The model to use
+  ref: "SorteoFacilotto", // The model to use
   localField: "numeroSorteo", // Find people where `localField`
   foreignField: "sorteo", // is equal to `foreignField`
   // If `justOne` is true, 'members' will be a single doc as opposed to

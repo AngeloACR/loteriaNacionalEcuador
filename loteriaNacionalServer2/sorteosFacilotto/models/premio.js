@@ -41,7 +41,7 @@ const premioSchema = new mongoose.Schema(
 );
 
 premioSchema.virtual("sorteo", {
-  ref: "SorteoLotto", // The model to use
+  ref: "SorteoFacilotto", // The model to use
   localField: "numeroSorteo", // Find people where `localField`
   foreignField: "sorteo", // is equal to `foreignField`
   justOne: true,

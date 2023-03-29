@@ -57,12 +57,6 @@ ultimoResultadoSchema.statics = {
             ultimoResultado.ultimoResultadoFacilotto.combinacion1 =
               resultado.combinacion;
             ultimoResultado.codigoPremioPrincipal = resultado.codigoPremio;
-          } else {
-            ultimoResultado.premiosEspeciales.push({
-              nombre: resultado.descripcionPremio,
-              combinacion: resultado.combinacion,
-              codigoPremio: resultado.codigoPremio,
-            });
           }
         }
 
@@ -79,7 +73,7 @@ ultimoResultadoSchema.statics = {
   },
   get: async function () {
     try {
-      return await this.findOne().populate('premioPrincipal').lean();
+      return await this.findOne().populate("premioPrincipal").lean();
     } catch (error) {
       let response = {
         status: false,
