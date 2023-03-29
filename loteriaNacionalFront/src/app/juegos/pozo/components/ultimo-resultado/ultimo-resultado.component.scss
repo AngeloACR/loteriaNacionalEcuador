@@ -27,8 +27,8 @@ $color-pozo: #04b865;
     height: 80px;
 
     img {
-    height: 150px;
-    margin-top: -20px;
+      height: 150px;
+      margin-top: -20px;
     }
     p {
       margin: 0;
@@ -166,23 +166,26 @@ $color-pozo: #04b865;
     width: 100%;
     margin: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     button {
-      width: 90%;
-      padding: 10px 30px;
+      &:first-of-type {
+        width: 40%;
+        padding: 15px 15px !important;
+      }
+      width: 58%;
+      padding: 15px 30px;
 
       //      background-color: $color-pozo;
       background-color: $color-pozo;
       //border: 1px solid #fff;
       border: 1px solid $color-pozo;
-      border-radius: 40px;
+      border-radius: 15px;
       margin: 10px auto;
       font-family: $fuente-botones;
       color: #fff;
-      font-size: 12px;
+      font-size: 15px;
       cursor: pointer;
       transition: background-color 0.5s ease;
 

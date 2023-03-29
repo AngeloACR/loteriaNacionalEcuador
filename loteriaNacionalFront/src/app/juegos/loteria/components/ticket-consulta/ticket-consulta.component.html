@@ -13,11 +13,10 @@
         <p>PRIMERA SUERTE</p>
       </div>
       <div class="ticket_monto">
-        <p>$ {{premio | number: '6.2-2'}}</p>
+        <p>$ {{premio | number: '6.2-2'}} <span> al Entero</span></p>
       </div>
       <div class="ticket_entero_fraccion">
         <div class="ticket_entero">
-          <h5>Entero</h5>
           <div>
             <p *ngFor="let number of ticketNumbers">{{number}}</p>
           </div>

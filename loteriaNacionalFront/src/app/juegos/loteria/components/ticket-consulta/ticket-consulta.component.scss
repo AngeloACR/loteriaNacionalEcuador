@@ -81,6 +81,12 @@ $color-botton: #28aae1;
         color: $color-botton;
         font-family: $fuente-subtitulo;
       }
+      p{
+        span{
+          font-weight: bolder;
+          -webkit-text-stroke: 0 $color-botton;
+        }
+      }
     }
     .ticket_title {
       display: flex;

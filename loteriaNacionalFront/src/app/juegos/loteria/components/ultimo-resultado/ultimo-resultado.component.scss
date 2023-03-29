@@ -17,8 +17,8 @@ $color-botton: #28aae1;
     height: 80px;
 
     img {
-    height: 100%;
-    margin: auto;
+      height: 100%;
+      margin: auto;
     }
     p {
       margin: 0;
@@ -200,20 +200,24 @@ $color-botton: #28aae1;
     width: 100%;
     margin: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     button {
-      width: 90%;
-      padding: 10px 30px;
+      &:first-of-type {
+        width: 40%;
+        padding: 15px 15px !important;
+      }
+      width: 58%;
+      padding: 15px 30px;
+
       background-color: $color-botton;
       border: 1px solid $color-botton;
-      border-radius: 40px;
+      border-radius: 15px;
       margin: 10px auto;
       font-family: $fuente-botones;
       color: #fff;
-      font-size: 12px;
+      font-size: 15px;
       cursor: pointer;
       transition: background-color 0.5s ease;
 

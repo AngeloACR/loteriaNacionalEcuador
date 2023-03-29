@@ -177,23 +177,25 @@ $color-lotto: #f08d3c;
     width: 100%;
     margin: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    
     button {
-      width: 90%;
-      padding: 10px 30px;
+      &:first-of-type {
+      width: 40%;
+      padding: 15px 15px!important;
+      }
+      width: 58%;
+      padding: 15px 30px;
       background-color: $color-lotto;
       border: 1px solid $color-lotto;
-      border-radius: 40px;
+      border-radius: 23px;
       margin: 10px auto;
       font-family: $fuente-botones;
       color: #fff;
-      font-size: 12px;
+      font-size: 15px;
       cursor: pointer;
       transition: background-color 0.5s ease;
-
       &:hover {
         background-color: #fff;
         color: $color-lotto;
