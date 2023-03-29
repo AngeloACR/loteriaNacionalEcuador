@@ -4,6 +4,7 @@ import { ConsultaService as LottoService } from 'src/app/juegos/lotto/services/c
 import { ConsultaService as PozoService } from 'src/app/juegos/pozo/services/consulta.service';
 import { ConsultaService as RevanchaService } from 'src/app/juegos/pozoRevancha/services/consulta.service';
 import { ConsultaService as MillonariaService } from 'src/app/juegos/millonaria/services/consulta.service';
+import { ConsultaService as FacilottoService } from 'src/app/juegos/facilotto/services/consulta.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,8 @@ export class ConsultasService {
     private lotto: LottoService,
     private pozo: PozoService,
     private revancha: RevanchaService,
-    private millonaria: MillonariaService
+    private millonaria: MillonariaService,
+    private facilotto: FacilottoService
   ) {}
   async recuperarUltimosResultados() {
     await Promise.all([
@@ -23,6 +25,7 @@ export class ConsultasService {
       this.pozo.getUltimoResultado(),
       this.revancha.getUltimoResultado(),
       this.millonaria.getUltimoResultado(),
+      this.facilotto.getUltimoResultado(),
     ]);
   }
 }

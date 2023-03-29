@@ -9,16 +9,6 @@
     <div class="scroll">
       <facilotto-ticket-consulta [ticket]="ticketGanador"></facilotto-ticket-consulta>
     </div>
-    <ng-container *ngIf="false">
-      <h2 class="texto">PREMIOS ESPECIALES</h2>
-
-      <div class="texto_premios">
-        <ng-container *ngFor="let premio of premiosEspeciales">
-          <p>{{ premio.nombre }}:</p>
-          <p>{{ premio.combinacion }}</p>
-        </ng-container>
-      </div>
-    </ng-container>
   </ng-container>
   <ng-container *ngIf="isError">
     <div class="consultaError">

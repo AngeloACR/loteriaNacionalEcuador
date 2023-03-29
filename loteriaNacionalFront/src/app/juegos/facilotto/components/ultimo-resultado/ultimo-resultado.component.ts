@@ -8,19 +8,16 @@ import { Router } from '@angular/router';
 export class UltimoResultadoComponent implements OnInit {
   ticketGanador?: any;
   ticketNumbers?: String[];
-  premiosEspeciales?: any;
   isError: boolean = false;
   constructor(private router: Router) {}
   ngOnInit() {
     try {
       let data = JSON.parse(localStorage.getItem('facilottoUltimoResultado')!);
       this.ticketNumbers = data.ultimoResultadoFacilotto.combinacion1.split('');
-      this.premiosEspeciales = data.premiosEspeciales;
       this.ticketGanador = {
         ticketIndex: data.ultimoResultadoFacilotto.codigo,
         description: 'Boleto Ganador',
         ticketNumbers: this.ticketNumbers,
-        premiosEspeciales: this.premiosEspeciales,
         numeroSorteo: data.numeroSorteo,
         sorteo: data.sorteo,
         valorPremio: data.premioPrincipal.valorPremio,

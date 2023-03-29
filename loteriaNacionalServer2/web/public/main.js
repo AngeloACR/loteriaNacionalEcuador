@@ -1505,12 +1505,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ConsultasService": () => (/* binding */ ConsultasService)
 /* harmony export */ });
 /* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2316);
 /* harmony import */ var src_app_juegos_loteria_services_consulta_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/juegos/loteria/services/consulta.service */ 8514);
 /* harmony import */ var src_app_juegos_lotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/juegos/lotto/services/consulta.service */ 6151);
 /* harmony import */ var src_app_juegos_pozo_services_consulta_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/juegos/pozo/services/consulta.service */ 9398);
 /* harmony import */ var src_app_juegos_pozoRevancha_services_consulta_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/juegos/pozoRevancha/services/consulta.service */ 759);
 /* harmony import */ var src_app_juegos_millonaria_services_consulta_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/juegos/millonaria/services/consulta.service */ 2054);
+/* harmony import */ var src_app_juegos_facilotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/juegos/facilotto/services/consulta.service */ 4262);
+
 
 
 
@@ -1519,31 +1521,179 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class ConsultasService {
-  constructor(loteria, lotto, pozo, revancha, millonaria) {
+  constructor(loteria, lotto, pozo, revancha, millonaria, facilotto) {
     this.loteria = loteria;
     this.lotto = lotto;
     this.pozo = pozo;
     this.revancha = revancha;
     this.millonaria = millonaria;
+    this.facilotto = facilotto;
   }
 
   recuperarUltimosResultados() {
     var _this = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
-      yield Promise.all([_this.loteria.getUltimoResultado(), _this.lotto.getUltimoResultado(), _this.pozo.getUltimoResultado(), _this.revancha.getUltimoResultado(), _this.millonaria.getUltimoResultado()]);
+      yield Promise.all([_this.loteria.getUltimoResultado(), _this.lotto.getUltimoResultado(), _this.pozo.getUltimoResultado(), _this.revancha.getUltimoResultado(), _this.millonaria.getUltimoResultado(), _this.facilotto.getUltimoResultado()]);
     })();
   }
 
 }
 
 ConsultasService.ɵfac = function ConsultasService_Factory(t) {
-  return new (t || ConsultasService)(_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_loteria_services_consulta_service__WEBPACK_IMPORTED_MODULE_1__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_lotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_2__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_pozo_services_consulta_service__WEBPACK_IMPORTED_MODULE_3__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_pozoRevancha_services_consulta_service__WEBPACK_IMPORTED_MODULE_4__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinject"](src_app_juegos_millonaria_services_consulta_service__WEBPACK_IMPORTED_MODULE_5__.ConsultaService));
+  return new (t || ConsultasService)(_angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵinject"](src_app_juegos_loteria_services_consulta_service__WEBPACK_IMPORTED_MODULE_1__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵinject"](src_app_juegos_lotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_2__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵinject"](src_app_juegos_pozo_services_consulta_service__WEBPACK_IMPORTED_MODULE_3__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵinject"](src_app_juegos_pozoRevancha_services_consulta_service__WEBPACK_IMPORTED_MODULE_4__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵinject"](src_app_juegos_millonaria_services_consulta_service__WEBPACK_IMPORTED_MODULE_5__.ConsultaService), _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵinject"](src_app_juegos_facilotto_services_consulta_service__WEBPACK_IMPORTED_MODULE_6__.ConsultaService));
 };
 
-ConsultasService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineInjectable"]({
+ConsultasService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineInjectable"]({
   token: ConsultasService,
   factory: ConsultasService.ɵfac,
+  providedIn: 'root'
+});
+
+/***/ }),
+
+/***/ 4262:
+/*!***************************************************************!*\
+  !*** ./src/app/juegos/facilotto/services/consulta.service.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ConsultaService": () => (/* binding */ ConsultaService)
+/* harmony export */ });
+/* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 3882);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
+
+
+
+
+
+class ConsultaService {
+  constructor(http) {
+    this.http = http;
+    this.today = new Date();
+    this.mySource = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.source;
+  }
+
+  recuperarSorteosJugados() {
+    var _this = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '/cache';
+      var address = '/facilotto';
+      endpoint = `${endpoint}/sorteosJugados`;
+      address = _this.mySource + address + endpoint;
+      return new Promise((resolve, reject) => {
+        _this.http.get(address, {
+          headers: headers
+        }).subscribe(data => {
+          let sorteosJugados = data.values;
+          sorteosJugados.sort(_this.ordenaSorteos);
+          sorteosJugados = _this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
+          resolve(sorteosJugados);
+        });
+      });
+    })();
+  }
+
+  limpiaSorteosDeMasDe3Meses(sorteos) {
+    var today = new Date();
+    var minDate = new Date(new Date().setDate(today.getDate() - 90));
+    return sorteos.filter(sorteo => {
+      let fechaSorteo = new Date(sorteo.fecha.split(' ')[0].split('/').reverse().join('-'));
+      console.log(minDate.getTime(), fechaSorteo.getTime());
+      return fechaSorteo.getTime() >= minDate.getTime();
+    });
+  }
+
+  ordenaSorteos(a, b) {
+    let a1 = a['sorteo'];
+    let b1 = b['sorteo'];
+    return b1 - a1;
+  }
+
+  recuperarBoletoGanador(sorteo, combinaciones) {
+    var _this2 = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/facilotto';
+      endpoint = `${endpoint}/ganador`;
+      address = _this2.mySource + address + endpoint;
+      let body = {
+        sorteo,
+        combinaciones
+      };
+      return new Promise((resolve, reject) => {
+        _this2.http.post(address, body, {
+          headers: headers
+        }).subscribe(data => {
+          let boletoGanador = data;
+          resolve(boletoGanador);
+        }, error => {
+          reject(new Error(error.error.message));
+        });
+      });
+    })();
+  }
+
+  getUltimoResultado() {
+    var _this3 = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/facilotto';
+      let endpoint = '/cache/ultimoResultado';
+      let auxAddress = _this3.mySource + address + endpoint;
+      return new Promise((resolve, reject) => {
+        _this3.http.get(auxAddress, {
+          headers: headers
+        }).subscribe(data => {
+          let response;
+          let facilotto = data;
+          localStorage.setItem('facilottoUltimoResultado', JSON.stringify(facilotto));
+          response = {
+            tipo: 'facilotto',
+            data: facilotto
+          };
+          resolve(response);
+        }, error => {
+          reject(new Error(error.error.message));
+        });
+      });
+    })();
+  }
+
+  obtenerBoletin(sorteo) {
+    var _this4 = this;
+
+    return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      let sourceBoletines = `${_this4.mySource}/uploads/boletines/`;
+      return new Promise((resolve, reject) => {
+        let boletinAddress = `${sourceBoletines}T2${sorteo}.jpg`;
+        resolve(boletinAddress);
+      });
+    })();
+  }
+
+}
+
+ConsultaService.ɵfac = function ConsultaService_Factory(t) {
+  return new (t || ConsultaService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient));
+};
+
+ConsultaService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({
+  token: ConsultaService,
+  factory: ConsultaService.ɵfac,
   providedIn: 'root'
 });
 
