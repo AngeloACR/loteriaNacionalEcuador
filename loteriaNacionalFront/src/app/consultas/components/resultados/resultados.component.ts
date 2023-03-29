@@ -43,7 +43,7 @@ export class ResultadosComponent implements OnInit {
         break;
       case '18':
         this.loteriaBackground = {
-          backgroundLotto: true,
+          backgroundFacilotto: true,
         };
 
         break;
