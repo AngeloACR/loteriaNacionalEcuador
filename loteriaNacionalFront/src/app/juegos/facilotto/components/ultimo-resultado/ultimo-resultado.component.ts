@@ -14,10 +14,10 @@ export class UltimoResultadoComponent implements OnInit {
   ngOnInit() {
     try {
       let data = JSON.parse(localStorage.getItem('facilottoUltimoResultado')!);
-      this.ticketNumbers = data.ultimoResultadoLotto.combinacion1.split('');
+      this.ticketNumbers = data.ultimoResultadoFacilotto.combinacion1.split('');
       this.premiosEspeciales = data.premiosEspeciales;
       this.ticketGanador = {
-        ticketIndex: data.ultimoResultadoLotto.codigo,
+        ticketIndex: data.ultimoResultadoFacilotto.codigo,
         description: 'Boleto Ganador',
         ticketNumbers: this.ticketNumbers,
         premiosEspeciales: this.premiosEspeciales,

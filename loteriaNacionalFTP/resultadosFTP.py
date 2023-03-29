@@ -123,10 +123,6 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 resultado = {
                     "numeroSorteo": sorteo,
                     "combinacion1": resultadoData['C1'],
-                    "combinacion2": combinacion2,
-                    "combinacion3": combinacion3,
-                    "combinacion4": combinacion4,
-                    "combinacion5": combinacion5,
                     "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
                 }
