@@ -161,10 +161,6 @@ const mainController = {
       let combinaciones = combinacionesAux.map((element) => {
         let combinacion = {
           combinacion1: element.Num,
-          combinacion2: element.Num2,
-          combinacion3: element.Num3,
-          combinacion4: element.Num4,
-          combinacion5: element.Num5,
           display: element.Num.split(""),
           status: false,
           identificador: Math.random(),
