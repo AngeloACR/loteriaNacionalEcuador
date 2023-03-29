@@ -5,7 +5,7 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #28aae1;
 $color-lotto: #b51f20;
-$color-facilotto: #f08d3c;
+$color-facilotto: #EA5B80;
 $color-pozo: #04b865;
 $color-millonaria: #b51f20;
 //$color-pozo: #057333;
@@ -40,7 +40,7 @@ $color-millonaria: #b51f20;
     align-items: center;
     justify-content: center;
     position: relative;
-    &:nth-child(7) {
+    &:last-child {
       font-size: 20px;
       text-transform: uppercase;
 
@@ -87,7 +87,7 @@ $color-millonaria: #b51f20;
 
       padding: 10px;
       margin-bottom: 20px;
-      &:nth-child(7) {
+      &:last-child {
         right: unset;
         position: relative;
       }
