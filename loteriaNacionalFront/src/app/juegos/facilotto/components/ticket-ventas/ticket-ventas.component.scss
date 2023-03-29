@@ -1,0 +1,90 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-botton: #f08d3c;
+
+.contenedor_informacion_ticket {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  padding: 20px;
+  background-color: white;
+
+  border-radius: 20px;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: $color-botton;
+  background-color: $color-botton;
+  position: relative;
+  box-sizing: border-box;
+  p {
+    font-family: $fuente-parrafo;
+    font-size: 16px;
+    color: white;
+    margin: 5px;
+    span {
+      font-family: $fuente-subtitulo;
+    }
+  }
+  .fractionsBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    .fraccion {
+      font-family: $fuente-subtitulo;
+      margin: 4px;
+      padding: 5px;
+      text-align: center;
+      width: 16%;
+      background-color: white;
+      border: 1px solid black;
+    }
+  }
+  img.trash {
+    position: absolute;
+    cursor: pointer;
+    width: 6%;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg)
+      brightness(108%) contrast(109%);
+    top: 20px;
+    right: 20px;
+    transition: width 0.3s ease;
+  }
+  img.trash:hover {
+    width: 8%;
+    transition: width 0.3s ease;
+  }
+  img.logoTicket {
+    position: absolute;
+    width: 30%;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .contenedor_informacion_ticket {
+    p {
+      font-size: 14px;
+    }
+    img.logoTicket {
+      position: absolute;
+      width: 150px;
+      top: 132px;
+      right: 5px;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .contenedor_informacion_ticket {
+    img.logoTicket {
+      position: absolute;
+      top: 115px;
+      width: 120px;
+    }
+  }
+}

@@ -40,6 +40,11 @@ export class ResultadosComponent implements OnInit {
         this.loteriaBackground = {
           backgroundPozoMillonario: true,
         };
+        break;
+      case '18':
+        this.loteriaBackground = {
+          backgroundLotto: true,
+        };
 
         break;
       case '14':

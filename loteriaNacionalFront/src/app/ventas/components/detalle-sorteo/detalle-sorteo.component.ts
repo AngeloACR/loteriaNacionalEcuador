@@ -88,11 +88,14 @@ export class DetalleSorteoComponent implements OnInit {
     this.fecha = (this.seleccionado as sorteo).fecha.split(' ')[0];
     this.hora = (this.seleccionado as sorteo).fecha.split(' ')[1];
     let auxPremio = (this.seleccionado as sorteo).valorPremioPrincipal;
-    let auxPremioRevancha = (this.seleccionado as sorteo).sorteoRevancha.valorPremioPrincipal;
+    let auxPremioRevancha = (this.seleccionado as sorteo).sorteoRevancha
+      .valorPremioPrincipal;
     let premio = parseFloat(auxPremio).toFixed(2);
     let premioRevancha = parseFloat(auxPremioRevancha).toFixed(2);
     let precio = parseFloat((this.seleccionado as sorteo).precio).toFixed(2);
-    let precioRevancha = parseFloat((this.seleccionado as sorteo).sorteoRevancha.precio).toFixed(2);
+    let precioRevancha = parseFloat(
+      (this.seleccionado as sorteo).sorteoRevancha.precio
+    ).toFixed(2);
     this.cantidadDeFracciones = (
       this.seleccionado as sorteo
     ).cantidadDeFracciones;
@@ -105,7 +108,9 @@ export class DetalleSorteoComponent implements OnInit {
       .formatNumber(auxPremioLoteria)
       .split('.')[0];
     this.premio = this.ventas.formatNumber(premio).split('.')[0];
-    this.premioRevancha = this.ventas.formatNumber(premioRevancha).split('.')[0];
+    this.premioRevancha = this.ventas
+      .formatNumber(premioRevancha)
+      .split('.')[0];
     this.precio = this.ventas.formatNumber(precio);
     this.precioRevancha = this.ventas.formatNumber(precioRevancha);
     this.emitir.emit(this.seleccionado);

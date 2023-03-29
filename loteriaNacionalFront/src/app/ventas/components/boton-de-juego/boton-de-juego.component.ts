@@ -28,6 +28,11 @@ export class BotonDeJuegoComponent implements OnInit {
           lotto: true,
         };
         break;
+      case 'facilotto':
+        this.tipoLoteria = {
+          lotto: true,
+        };
+        break;
 
       case 'pozo':
         this.tipoLoteria = {

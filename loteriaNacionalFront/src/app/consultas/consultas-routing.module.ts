@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConsultasComponent } from './consultas.component';
+import { FacilottoBoletinComponent } from './containers/facilotto-boletin/facilotto-boletin.component';
+import { FacilottoComponent } from './containers/facilotto/facilotto.component';
 import { HomeComponent } from './containers/home/home.component';
 import { LoteriaBoletinComponent } from './containers/loteria-boletin/loteria-boletin.component';
 import { LoteriaComponent } from './containers/loteria/loteria.component';
@@ -24,6 +26,10 @@ const routes: Routes = [
       },
       { path: 'lotto/boletin/:sorteo', component: LottoBoletinComponent },
       {
+        path: 'facilotto/boletin/:sorteo',
+        component: FacilottoBoletinComponent,
+      },
+      {
         path: 'pozo/boletin/:sorteo',
         component: PozoBoletinComponent,
       },
@@ -37,6 +43,7 @@ const routes: Routes = [
       },
       { path: 'loteria', component: LoteriaComponent },
       { path: 'lotto', component: LottoComponent },
+      { path: 'facilotto', component: FacilottoComponent },
       {
         path: 'pozo',
         component: PozoComponent,

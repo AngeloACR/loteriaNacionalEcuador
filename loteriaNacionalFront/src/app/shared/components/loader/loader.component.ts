@@ -6,10 +6,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent implements OnInit {
-  @Input() message: String = "";
-  @Input() loader: String = "";
+  @Input() message: String = '';
+  @Input() loader: String = '';
   loaderPath: string = 'assets/loader.gif';
-  logoPath: string = "";
+  logoPath: string = '';
   constructor() {}
 
   interval: any;
@@ -17,6 +17,10 @@ export class LoaderComponent implements OnInit {
     switch (this.loader) {
       case 'lotto':
         this.logoPath = 'assets/img/lotto-sombra-2.png';
+        //this.logoPath = "assets/lottoLoader.gif";
+        break;
+      case 'facilotto':
+        this.logoPath = 'assets/img/facilotto-sombra.png';
         //this.logoPath = "assets/lottoLoader.gif";
         break;
       case 'pozo':

@@ -5,6 +5,7 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #28aae1;
 $color-lotto: #b51f20;
+$color-facilotto: #f08d3c;
 $color-pozo: #04b865;
 $color-millonaria: #b51f20;
 //$color-pozo: #057333;
@@ -62,6 +63,10 @@ $color-millonaria: #b51f20;
 
   .lotto {
     background-color: $color-lotto;
+  }
+
+  .facilotto {
+    background-color: $color-facilotto;
   }
 
   .pozo {

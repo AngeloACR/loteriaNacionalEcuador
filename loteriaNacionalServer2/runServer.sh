@@ -12,6 +12,8 @@ cd ../sorteosLaMillonaria
 pm2 start laMillonariaApp.js --name laMillonariaApp
 cd ../sorteosLoteriaNacional
 pm2 start loteriaNacionalApp.js --name loteriaNacionalApp
+cd ../sorteosFacilotto
+pm2 start facilottoApp.js --name facilottoApp
 cd ../sorteosLotto
 pm2 start lottoApp.js --name lottoApp
 cd ../sorteosPozoMillonario
@@ -26,3 +28,5 @@ cd ../wallet
 pm2 start walletApp.js --name walletApp
 cd ../web
 pm2 start webApp.js --name webApp
+cd ../../loteriaNacionalFTP
+pm2 start api.py --interpreter=python3.8

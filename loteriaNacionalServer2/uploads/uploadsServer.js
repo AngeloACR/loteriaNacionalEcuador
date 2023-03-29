@@ -4,8 +4,8 @@ const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
-const config = require("../environments/local");
-
+const config = require("../environments/test");
+var path = require("path");
 module.exports.init = function (port) {
   app.set("port", port);
 
@@ -33,10 +33,10 @@ module.exports.init = function (port) {
   app.use(bodyParser.json());
 
   // Static files
-  app.use("/boletines", express.static(config.ftpBoletinesPath));
-  app.use("/boletos", express.static(config.ftpBoletosPath));
-  app.use("/correos", express.static(config.imgCorreosPath));
-  app.use("/resultados", express.static(config.resultadosPath));
+  app.use("/boletines", express.static(path.resolve(config.ftpBoletinesPath)));
+  app.use("/boletos", express.static(path.resolve(config.ftpBoletosPath)));
+  app.use("/correos", express.static(path.resolve(config.imgCorreosPath)));
+  app.use("/resultados", express.static(path.resolve(config.resultadosPath)));
 
   return app;
 };

@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { CarritoService } from "../../services/carrito.service";
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.scss']
+  styleUrls: ['./carrito.component.scss'],
 })
 export class CarritoComponent implements OnInit {
   @Input() logo?: String;
@@ -52,29 +52,33 @@ export class CarritoComponent implements OnInit {
         : [];
     //this.seleccionadosCarrito = this.seleccionadosCarrito? this.seleccionadosCarrito.reverse(): [];
     switch (this.tipoLoteria) {
-      case "loteria":
+      case 'loteria':
         this.isLoteriaNacional = true;
-        this.logoPath = "assets/img/loteria-carrito.svg";
+        this.logoPath = 'assets/img/loteria-carrito.svg';
         break;
-      case "lotto":
+      case 'lotto':
         this.isLotto = true;
-        this.logoPath = "assets/img/lotto-carrito.svg";
+        this.logoPath = 'assets/img/lotto-carrito.svg';
         break;
-      case "pozo":
+      case 'dacilotto':
+        this.isLotto = true;
+        this.logoPath = 'assets/img/lotto-carrito.svg';
+        break;
+      case 'pozo':
         this.isPozoMillonario = true;
-        this.logoPath = "assets/img/pozo-carrito.svg";
+        this.logoPath = 'assets/img/pozo-carrito.svg';
         break;
 
-      case "millonaria":
+      case 'millonaria':
         this.isLaMillonaria = true;
-        this.logoPath = "assets/img/lotto-carrito.svg";
+        this.logoPath = 'assets/img/lotto-carrito.svg';
         break;
     }
     this.getTotal();
   }
 
   hasDiscount(total: string) {
-    return parseInt(total.replace("$", ""));
+    return parseInt(total.replace('$', ''));
   }
 
   async ngDoCheck() {
@@ -91,32 +95,31 @@ export class CarritoComponent implements OnInit {
   checkTicketsLoteria() {
     if (this.ticketsLoteria) {
       return Object.keys(this.ticketsLoteria).length != 0;
-    } else return false
+    } else return false;
   }
 
   checkTicketsLotto() {
     if (this.ticketsLotto) {
       return Object.keys(this.ticketsLotto).length != 0;
-    }else return false
+    } else return false;
   }
 
   checkTicketsPozo() {
     if (this.ticketsPozo) {
       return Object.keys(this.ticketsPozo).length != 0;
-    }else return false
+    } else return false;
   }
 
   checkTicketsLaMillonaria() {
     if (this.ticketsMillonaria) {
       return Object.keys(this.ticketsMillonaria).length != 0;
-    }else return false
+    } else return false;
   }
-
 
   checkTicketsPozoRevancha() {
     if (this.ticketsPozoRevancha) {
       return Object.keys(this.ticketsPozoRevancha).length != 0;
-    }else return false
+    } else return false;
   }
 
   deleteLoteria(ticket: any) {
@@ -130,7 +133,7 @@ export class CarritoComponent implements OnInit {
     };
     this.deleteLoteriaFraccion.emit(data);
   }
-  deleteFraccionMillonaria(ticket: any, fraccion:any) {
+  deleteFraccionMillonaria(ticket: any, fraccion: any) {
     let data = {
       ticket,
       fraccion,
@@ -158,9 +161,9 @@ export class CarritoComponent implements OnInit {
   }
   formatNumber(number: any) {
     // Create our number formatter.
-    var formatter = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
 
       // These options are needed to round to whole numbers if that's what you want.
       //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)

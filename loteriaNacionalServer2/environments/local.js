@@ -23,6 +23,7 @@ module.exports = {
   uploadsPort: 9000,
   helperPort: 9500,
   codigosPromocionalesPort: 10000,
+  sorteosFacilottoPort: 12250,
   host: "localhost",
 
   alboranHost: "loteria.mongibello.tech",
@@ -57,6 +58,7 @@ module.exports = {
     "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletines",
   ftpBoletosPath:
     "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletos",
+  resultadosPath: "/home/angeloacr/Proyectos/loteriaNacional/backuptest",
 
   imgCorreosPath:
     "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/correos",

@@ -25,6 +25,9 @@ import { SharedModule } from '../shared/shared.module';
 import { RevanchaComponent } from './containers/revancha/revancha.component';
 import { RevanchaBoletinComponent } from './containers/revancha-boletin/revancha-boletin.component';
 import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module';
+import { FacilottoComponent } from './containers/facilotto/facilotto.component';
+import { FacilottoBoletinComponent } from './containers/facilotto-boletin/facilotto-boletin.component';
+import { FacilottoModule } from '../juegos/facilotto/facilotto.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module'
     HomeComponent,
     RevanchaComponent,
     RevanchaBoletinComponent,
+    FacilottoComponent,
+    FacilottoBoletinComponent,
   ],
   exports: [
     ConsultasComponent,
@@ -68,6 +73,7 @@ import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module'
     ConsultasRoutingModule,
     LoteriaModule,
     LottoModule,
+    FacilottoModule,
     PozoModule,
     PozoRevanchaModule,
     MillonariaModule,

@@ -15,6 +15,7 @@ cp ./ventas_api.conf /etc/nginx/api_conf.d/ventas_api.conf
 cp ./auth_api.conf /etc/nginx/api_conf.d/auth_api.conf
 cp ./wallet_api.conf /etc/nginx/api_conf.d/wallet_api.conf
 cp ./helper_api.conf /etc/nginx/api_conf.d/helper_api.conf
+cp ./facilotto_api.conf /etc/nginx/api_conf.d/facilotto_api.conf
 cp ./uploads_api.conf /etc/nginx/api_conf.d/uploads_api.conf
 cp ./web.conf /etc/nginx/conf.d/web.conf
 cp ./cors /etc/nginx/cors

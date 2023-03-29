@@ -23,6 +23,7 @@ module.exports = {
   uploadsPort: 9000,
   codigosPromocionalesPort: 10000,
   helperPort: 9500,
+  sorteosFacilottoPort: 12250,
 
   host: "localhost",
 

@@ -1,5 +1,5 @@
 const reservasServer = require("./reservasServer");
-const config = require("../environments/local");
+const config = require("../environments/test");
 const cronjobs = require("./cronjobs");
 
 const reservasPort = config.reservasPort;

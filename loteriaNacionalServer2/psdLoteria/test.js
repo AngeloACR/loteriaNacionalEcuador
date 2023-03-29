@@ -4,7 +4,7 @@ const resultados = require("./resultados");
 const sorteos = require("./sorteos");
 const ventas = require("./ventas");
 const reservas = require("./reservas");
-const config = require("../environments/local");
+const config = require("../environments/test");
 
 (async () => {
   try {
