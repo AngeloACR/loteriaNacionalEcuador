@@ -94,7 +94,7 @@ export class ConsultaService {
   async obtenerBoletin(sorteo: string) {
     let sourceBoletines = `${this.mySource}/uploads/boletines/`;
     return new Promise((resolve, reject) => {
-      let boletinAddress = `${sourceBoletines}T2${sorteo}.jpg`;
+      let boletinAddress = `${sourceBoletines}T18${sorteo}.jpg`;
       resolve(boletinAddress);
     });
   }

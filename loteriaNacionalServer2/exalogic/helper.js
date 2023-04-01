@@ -1,6 +1,7 @@
 const https = require("https");
 var { exalogicError } = require("./errors");
 const config = require("../environments/local");
+
 const { exalogicLogger } = require("./logging");
 
 let exalogicHost = config.exalogicHost;

@@ -5,7 +5,11 @@ const Results = require("../models/main");
 const Premios = require("../models/premio");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
+<<<<<<< HEAD
 const config = require("../../environments/local");
+=======
+const config = require("../../environments/production");
+>>>>>>> facilotto-production
 const { response } = require("express");
 const { sorteosLottoLogger } = require("../logging");
 

@@ -7,6 +7,7 @@ const path = require("path");
 const { loteriaReservasLogger } = require("./logging");
 const config = require("../environments/local");
 
+
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
 

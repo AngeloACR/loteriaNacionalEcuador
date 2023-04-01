@@ -6,6 +6,7 @@ var { loteriaError } = require("./errors");
 const { loteriaAuthLogger } = require("./logging");
 const config = require("../environments/local");
 
+
 const usuarioClientePsd = config.usuarioAplicativo;
 const claveClientePsd = config.passwordAplicativo;
 const medioId = config.medioAplicativoId;
