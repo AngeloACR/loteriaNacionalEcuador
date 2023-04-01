@@ -8,13 +8,22 @@ const config = require("../environments/production");
 
 (async () => {
   try {
-    let data = await auth.authTest("0951234566", "Pass1234!");
-   let aux = await ventas.validarVentaPorOrdenDeCompra(
+    //let data = await auth.authTest("0951234566", "Pass1234!");
+   /* let aux = await ventas.validarVentaPorOrdenDeCompra(
       data,
       "1679381947289",
       "0951234566",
       "192.168.0.1"
+    ); */
+    
+    let data = await auth.authTest(
+      config.usuarioAplicativo,
+      config.passwordAplicativo
     );
+
+    let response = await sorteos.consultarSorteosJugados(18, data);
+    console.log(response)
+
     /* let aux = await reservas.validarReservas(
       data,
       "498320",
@@ -22,7 +31,6 @@ const config = require("../environments/production");
       "192.168.0.1"
     ); */
     //let aux = await juegos.consultaFiguras(data, 5, "192.168.0.1");
-    console.log(aux);
   } catch (error) {
     console.log(error);
   }
