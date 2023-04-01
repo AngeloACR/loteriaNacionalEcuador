@@ -9,6 +9,7 @@ import sys
 
 import urllib.request  # the lib that handles the url stuff
 
+
 def connectDB(myDB):
     try:
         connection = MongoClient(myDB)
@@ -23,6 +24,7 @@ def closeConnect(connection):
     except:
         sendResult("Close Error")
 
+
 def agregarMaestro(nombre, size, cantidad, tipoLoteria, sorteo, db):
     try:
         connection = connectDB(db)
@@ -36,7 +38,7 @@ def agregarMaestro(nombre, size, cantidad, tipoLoteria, sorteo, db):
                 "tamaño": size,
                 "cantidad": cantidad,
                 "recibido": date,
-                },
+            },
             "actualizado": date,
         }
         query = {
@@ -50,7 +52,8 @@ def agregarMaestro(nombre, size, cantidad, tipoLoteria, sorteo, db):
         if (tipoLoteria == "5"):
             loteriaDB['masterpozos'].update_one(query, updateQuery, True)
         if (tipoLoteria == "17"):
-            loteriaDB['masterpozorevanchas'].update_one(query, updateQuery, True)
+            loteriaDB['masterpozorevanchas'].update_one(
+                query, updateQuery, True)
         if (tipoLoteria == "14"):
             loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
         if (tipoLoteria == "18"):
@@ -95,12 +98,12 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 }
 
                 query = {
-                    "tipoLoteria": int(tipoLoteria),
                     "numeroSorteo": sorteo,
                     "combinacion1": resultadoData['C1'],
                 }
                 updateQuery = {"$set": resultado}
-                loteriaDB['resultadoloterias'].update_one(query, updateQuery, True)
+                loteriaDB['resultadoloterias'].update_one(
+                    query, updateQuery, True)
             if (tipoLoteria == "2"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -118,7 +121,8 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "combinacion1": resultadoData['C1'],
                 }
                 updateQuery = {"$set": resultado}
-                loteriaDB['resultadolottos'].update_one(query, updateQuery, True)
+                loteriaDB['resultadolottos'].update_one(
+                    query, updateQuery, True)
             if (tipoLoteria == "18"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -127,12 +131,12 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigoPremio": codigoPremio
                 }
                 query = {
-                    "tipoLoteria": int(tipoLoteria),
                     "numeroSorteo": sorteo,
                     "combinacion1": resultadoData['C1'],
                 }
                 updateQuery = {"$set": resultado}
-                loteriaDB['resultadofacilottos'].update_one(query, updateQuery, True)
+                loteriaDB['resultadofacilottos'].update_one(
+                    query, updateQuery, True)
 
             if (tipoLoteria == "5"):
                 resultado = {
@@ -144,12 +148,12 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigoPremio": codigoPremio
                 }
                 query = {
-                    "tipoLoteria": int(tipoLoteria),
                     "numeroSorteo": sorteo,
                     "combinacion1": resultadoData['C1'],
                 }
                 updateQuery = {"$set": resultado}
-                loteriaDB['resultadopozos'].update_one(query, updateQuery, True)
+                loteriaDB['resultadopozos'].update_one(
+                    query, updateQuery, True)
 
             if (tipoLoteria == "17"):
                 resultado = {
@@ -161,12 +165,12 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "codigoPremio": codigoPremio
                 }
                 query = {
-                    "tipoLoteria": int(tipoLoteria),
                     "numeroSorteo": sorteo,
                     "combinacion1": resultadoData['C1'],
                 }
                 updateQuery = {"$set": resultado}
-                loteriaDB['resultadopozorevanchas'].update_one(query, updateQuery, True)
+                loteriaDB['resultadopozorevanchas'].update_one(
+                    query, updateQuery, True)
             if (tipoLoteria == "14"):
                 resultado = {
                     "numeroSorteo": sorteo,
@@ -174,15 +178,15 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                     "combinacion2": combinacion2,
                     "codigo": int(resultadoData['B']),
                     "codigoPremio": codigoPremio
-                    }
+                }
                 query = {
-                    "tipoLoteria": int(tipoLoteria),
                     "numeroSorteo": sorteo,
                     "combinacion1": resultadoData['C1'],
                     "combinacion2": combinacion2,
                 }
                 updateQuery = {"$set": resultado}
-                loteriaDB['resultadomillonarias'].update_one(query, updateQuery, True)
+                loteriaDB['resultadomillonarias'].update_one(
+                    query, updateQuery, True)
 
         closeConnect(connection)
         status = True
@@ -208,12 +212,11 @@ def main():
     #filepath = "/home/acri/ftp/resultados" + filename
     #filepath = "/home/acri/ftpResultados" + filename
     #filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
-    data = urllib.request.urlopen(filepath) # it's a file like object and works just like a file
+    # it's a file like object and works just like a file
+    data = urllib.request.urlopen(filepath)
     with codecs.open(filename, 'w', encoding='utf8') as file:
-        for line in data: # files are iterable
+        for line in data:  # files are iterable
             file.write(line.decode("iso-8859-1"))
-
-
 
     file = open(filename, 'r+', encoding="utf8")
 
@@ -233,7 +236,7 @@ def main():
     file.close()
     size = os.path.getsize(filename)
     os.remove(filename)
-    agregarMaestro(filename,size,len(resultados),tipoLoteria, sorteo, db)
+    agregarMaestro(filename, size, len(resultados), tipoLoteria, sorteo, db)
     agregarResultados(resultados, tipoLoteria, sorteo, db)
 
 

@@ -9,9 +9,9 @@ $color-botton: #28aae1;
 
 $color-botton: #28aae1;
 
-.tooltip {
-  /* Rectangle 40 */
+/* Rectangle 40 */
 
+.contenedor_numeros {
   background: #ffffff;
   border-radius: 20px;
 
@@ -19,159 +19,125 @@ $color-botton: #28aae1;
   display: flex;
   justify-content: center;
 
-  input[type="checkbox"] {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-  }
+  width: 100%;
+  min-height: 200px;
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
 
-  input[type="checkbox"]:checked ~ div {
-    background-color: $color-botton;
-    border-radius: 10px;
-    color: #fff !important;
-    transition: background-color 0.3s ease-out;
-    opacity: 1;
-  }
-
-  .contenedor_numeros {
-    width: 100%;
-    min-height: 200px;
-    max-height: 260px;
+  .combinationBox {
     display: flex;
-    flex-direction: column;
-    border-radius: 20px;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      /* 4 */
 
-    .combinationBox {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      p {
-        /* 4 */
+      font-style: normal;
+      font-weight: 700;
+      font-size: 25px !important;
+      text-align: center;
+      text-transform: uppercase;
 
-        font-style: normal;
-        font-weight: 700;
-        font-size: 25px !important;
-        text-align: center;
-        text-transform: uppercase;
+      color: #000000;
 
-        color: #000000;
-
-        font-family: $fuente-titulo;
-        opacity: 0.7;
-        margin: 10px;
-      }
+      font-family: $fuente-titulo;
+      opacity: 0.7;
+      margin: 10px;
     }
-    .seleccionAll {
+  }
+  .seleccionAll {
+    width: 100%;
+    display: flex;
+    padding: 0 10px;
+    /* justify-content: space-around; */
+    align-items: center;
+    /* margin: auto; */
+    /* padding: 0; */
+    /* margin: 0; */
+    text-align: left;
+
+    p {
+      font-size: 14px;
+      font-style: italic;
+      font-weight: bold;
       width: 100%;
-      display: flex;
-      padding: 0 10px;
-      /* justify-content: space-around; */
-      align-items: center;
-      /* margin: auto; */
-      /* padding: 0; */
-      /* margin: 0; */
-      text-align: left;
-
-      p {
-        font-size: 14px;
-        font-style: italic;
-        font-weight: bold;
-        width: 100%;
-        margin: 10px;
-      }
-
-      input[type="checkbox"] {
-        width: 30px;
-        height: 30px;
-      }
+      margin: 10px;
     }
 
-    .contenedor_fracciones {
-      display: flex;
-      flex-wrap: wrap;
-      overflow-y: scroll;
-      justify-content: center;
+    input[type="checkbox"] {
+      width: 30px;
+      height: 30px;
+      border: 1px solid $color-botton;
+      position: relative;
+      border-radius: 10px;
+      transition: background-color 0.3s ease-out;
+      background-color: WHITE;
+    }
 
-      .fracciones {
-        /* display: grid;
+    input[type="checkbox"]:checked {
+      background-color: $color-botton;
+      color: #fff !important;
+      transition: background-color 0.3s ease-out;
+    }
+  }
+
+  .contenedor_fracciones {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    justify-content: center;
+
+    .fracciones {
+      /* display: grid;
         grid-template-columns: repeat(5, auto); */
-        width: 60px;
-        height: 60px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      label {
+        width: 50px;
+        cursor: pointer;
+        height: 50px;
+        border: 4.5px solid $color-botton;
+        background-color: #fff;
+        border-radius: 150px;
+        font-size: 25px;
+        color: #000;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
+      }
 
-        label {
-          width: 50px;
-          cursor: pointer;
-          height: 50px;
-          border: 4.5px solid $color-botton;
-          background-color: #fff;
-          border-radius: 150px;
-          font-size: 25px;
-          color: #000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+      .checkbox {
+        width: 20px;
+        height: 20px;
+        display: none;
+      }
 
-        .checkbox {
-          width: 20px;
-          height: 20px;
-          display: none;
-        }
-
-        .checkbox:checked + label {
-          background-color: $color-botton;
-          color: #000;
-        }
+      .checkbox:checked + label {
+        background-color: $color-botton;
+        color: #000;
       }
     }
   }
-}
 
-.tooltip span {
-  transition: opacity 1s ease;
-  -webkit-transition: opacity 1s ease;
-  top: 4rem;
-  left: 0.6rem;
-  z-index: 500;
-  background-color: #d1c6c6;
-  padding: 3px 30px;
-  border-radius: 20px;
+  .contenedor_numeros span {
+    transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease;
+    top: 4rem;
+    left: 0.6rem;
+    z-index: 500;
+    background-color: #d1c6c6;
+    padding: 3px 30px;
+    border-radius: 20px;
 
-  /* transition: all .3s ease; */
-  margin-left: -999em;
-  position: absolute;
-}
-
-.tooltip:hover span {
-  font-family: Calibri, Geneva, Tahoma, Arial, sans-serif;
-  position: absolute;
-  left: 1em;
-  top: 2em;
-  z-index: 99;
-  margin-left: 0;
-  width: 250px;
-}
-
-.tooltip:hover img {
-  border: 0;
-  margin: -10px 0 0 -55px;
-  float: left;
-  position: absolute;
-}
-
-.tooltip:hover em {
-  font-family: Candara, Tahoma, Geneva, sans-serif;
-  font-size: 1.2em;
-  font-weight: bold;
-  display: block;
-  padding: 0.2em 0 0.6em 0;
+    margin-left: -999em;
+    position: absolute;
+  }
 }
 
 .classic {
@@ -485,23 +451,6 @@ $color-botton: #28aae1;
               text-align: center;
               border-radius: 4px;
 
-              input[type="checkbox"] {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-              }
-
-              input[type="checkbox"]:checked ~ div {
-                background-color: $color-botton;
-                border-radius: 10px;
-                color: #fff !important;
-                transition: background-color 0.3s ease-out;
-                opacity: 1;
-              }
-
               .contenedor_seleccion_numero {
                 width: 100%;
                 display: flex;
@@ -630,18 +579,16 @@ $color-botton: #28aae1;
 }
 
 @media screen and (max-width: 1000px) {
-  .tooltip {
-    .contenedor_numeros {
-      .contenedor_fracciones {
-        .fracciones {
-          width: 40px;
-          height: 40px;
+  .contenedor_numeros {
+    .contenedor_fracciones {
+      .fracciones {
+        width: 40px;
+        height: 40px;
 
-          label {
-            width: 30px;
-            height: 30px;
-            font-size: 15px;
-          }
+        label {
+          width: 30px;
+          height: 30px;
+          font-size: 15px;
         }
       }
     }

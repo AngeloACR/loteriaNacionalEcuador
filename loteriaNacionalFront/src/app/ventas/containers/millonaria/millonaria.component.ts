@@ -475,7 +475,7 @@ export class MillonariaComponent implements OnInit {
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
 
       if (hasBalance) {
-        let reservaId = this.lotteryService.getReservaId();
+        let reservaId = this.cart.getReservaId();
         let cartValidation = await this.cart.validarCarrito(reservaId);
         if (cartValidation.status) {
           let response = await this.paymentService.confirmarCompra(
@@ -583,7 +583,7 @@ export class MillonariaComponent implements OnInit {
     );
     for (let index = 0; index < descuentos.length; index++) {
       const element = descuentos[index];
-      let conteo = await this.cart.contarBoletos(element.sorteo, tipoLoteria);
+      let conteo = this.cart.contarBoletos(element.sorteo, tipoLoteria);
       if (conteo >= parseInt(element.cantidad)) {
         await this.cart.calcularDescuento(element);
       } else {
@@ -602,7 +602,7 @@ export class MillonariaComponent implements OnInit {
       let ticket = this.ticketsLoteria[identificador].ticket;
       let sorteo = data.sorteo;
 
-      let reservaId = this.lotteryService.getReservaId();
+      let reservaId = this.cart.getReservaId();
       if (fracciones.length != 0) {
         let response = await this.lotteryService.eliminarBoletosDeReserva(
           this.token,
@@ -639,7 +639,7 @@ export class MillonariaComponent implements OnInit {
       let ticket = this.ticketsLotto[identificador].ticket;
       let sorteo = data.sorteo;
 
-      let reservaId = this.lotteryService.getReservaId();
+      let reservaId = this.cart.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         ticket,
@@ -771,7 +771,7 @@ export class MillonariaComponent implements OnInit {
       let fracciones = data.ticket.seleccionados;
       let ticket = this.ticketsMillonaria[identificador].ticket;
       let sorteo = this.ticketsMillonaria[identificador].sorteo;
-      let reservaId = this.lotteryService.getReservaId();
+      let reservaId = this.cart.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         ticket,
@@ -852,7 +852,7 @@ export class MillonariaComponent implements OnInit {
       let ticket = this.ticketsPozoRevancha[identificador].ticket;
       let sorteo = data.sorteo;
 
-      let reservaId = this.lotteryService.getReservaId();
+      let reservaId = this.cart.getReservaId();
       let response = await this.lotteryService.eliminarBoletosDeReserva(
         this.token,
         ticket,
@@ -900,7 +900,7 @@ export class MillonariaComponent implements OnInit {
           sorteo: this.ticketsMillonaria[key].sorteo,
         };
       });
-      let reservaId = this.lotteryService.getReservaId();
+      let reservaId = this.cart.getReservaId();
       /*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
         this.token,
         boletosLoteria,

@@ -20,51 +20,55 @@ export class CarritoService {
   constructor(private http: HttpClient) {}
 
   async eliminarDescuento(element: any, tipoLoteria: any) {
-    let sorteo = element.sorteo;
-    switch (tipoLoteria) {
-      case 1:
-        let loteria = this.getLoteriaLocal();
-        for (let id in loteria) {
-          if (loteria[id].sorteo.sorteo == sorteo) {
-            loteria[id].tieneDescuento = false;
-            loteria[id].subtotalConDesc = 0;
+    try {
+      let sorteo = element.sorteo;
+      switch (tipoLoteria) {
+        case 1:
+          let loteria = this.getLoteriaLocal();
+          for (let id in loteria) {
+            if (loteria[id].sorteo.sorteo == sorteo) {
+              loteria[id].tieneDescuento = false;
+              loteria[id].subtotalConDesc = 0;
+            }
           }
-        }
-        this.setLoteriaLocal(loteria);
-        break;
-      case 2:
-        let lotto = this.getLottoLocal();
-        for (let id in lotto) {
-          if (lotto[id].sorteo.sorteo == sorteo) {
-            lotto[id].tieneDescuento = false;
-            lotto[id].subtotalConDesc = 0;
+          this.setLoteriaLocal(loteria);
+          break;
+        case 2:
+          let lotto = this.getLottoLocal();
+          for (let id in lotto) {
+            if (lotto[id].sorteo.sorteo == sorteo) {
+              lotto[id].tieneDescuento = false;
+              lotto[id].subtotalConDesc = 0;
+            }
           }
-        }
-        this.setLottoLocal(lotto);
-        break;
+          this.setLottoLocal(lotto);
+          break;
 
-      case 5:
-        let pozo = this.getPozoLocal();
-        for (let id in pozo) {
-          if (pozo[id].sorteo.sorteo == sorteo) {
-            pozo[id].tieneDescuento = false;
-            pozo[id].subtotalConDesc = 0;
+        case 5:
+          let pozo = this.getPozoLocal();
+          for (let id in pozo) {
+            if (pozo[id].sorteo.sorteo == sorteo) {
+              pozo[id].tieneDescuento = false;
+              pozo[id].subtotalConDesc = 0;
+            }
           }
-        }
-        this.setPozoLocal(pozo);
-        break;
-      case 14:
-        let millonaria = this.getMillonariaLocal();
-        for (let id in millonaria) {
-          if (millonaria[id].sorteo.sorteo == sorteo) {
-            millonaria[id].tieneDescuento = false;
-            millonaria[id].subtotalConDesc = 0;
+          this.setPozoLocal(pozo);
+          break;
+        case 14:
+          let millonaria = this.getMillonariaLocal();
+          for (let id in millonaria) {
+            if (millonaria[id].sorteo.sorteo == sorteo) {
+              millonaria[id].tieneDescuento = false;
+              millonaria[id].subtotalConDesc = 0;
+            }
           }
-        }
-        this.setMillonariaLocal(millonaria);
-        break;
+          this.setMillonariaLocal(millonaria);
+          break;
+      }
+      await this.actualizarCarrito();
+    } catch (error: any) {
+      throw new Error(error.error.message);
     }
-    await this.actualizarCarrito();
   }
 
   async calcularDescuento(descuento: any) {
@@ -119,7 +123,7 @@ export class CarritoService {
     await this.actualizarCarrito();
   }
 
-  async contarBoletos(sorteo: any, tipoLoteria: any) {
+  contarBoletos(sorteo: any, tipoLoteria: any) {
     let aux = this.getCarritoLocal();
     let boletos = aux.filter(
       (item: any) =>
@@ -146,14 +150,19 @@ export class CarritoService {
   }
 
   async removeFromCart(ticket: any, tipoLoteria: any) {
-    let carrito = await this.getCarrito();
-    let deletedIndex = carrito.findIndex(
-      (x: any) =>
-        x.identificador === ticket.identificador && x.tipoLoteria == tipoLoteria
-    );
-    carrito.splice(deletedIndex, 1);
-    this.ticketsCarrito = carrito;
-    localStorage.setItem('seleccionadosCarrito', JSON.stringify(carrito));
+    try {
+      let carrito = await this.getCarrito();
+      let deletedIndex = carrito.findIndex(
+        (x: any) =>
+          x.identificador === ticket.identificador &&
+          x.tipoLoteria == tipoLoteria
+      );
+      carrito.splice(deletedIndex, 1);
+      this.ticketsCarrito = carrito;
+      localStorage.setItem('seleccionadosCarrito', JSON.stringify(carrito));
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
 
   getReservaId() {
@@ -169,43 +178,49 @@ export class CarritoService {
     localStorage.setItem('reservaId', JSON.stringify(id));
   }
   async getCount() {
-    let carrito = await this.getCarrito();
-    let count = 0;
-    if (carrito && carrito.length) {
-      carrito.forEach((item: any) => {
-        if (item.tipoLoteria == 1) {
-          count += item.ticket.seleccionados.length;
-        } else {
-          count += 1;
-        }
-      });
+    try {
+      let carrito = await this.getCarrito();
+      let count = 0;
+      if (carrito && carrito.length) {
+        carrito.forEach((item: any) => {
+          if (item.tipoLoteria == 1) {
+            count += item.ticket.seleccionados.length;
+          } else {
+            count += 1;
+          }
+        });
+      }
+      return count;
+    } catch (error: any) {
+      throw new Error(error.error.message);
     }
-    return count;
   }
 
   async setCarrito(ticket: any, tipoLoteria: any) {
-    let carrito: any = this.getCarritoLocal();
-    if (!carrito) carrito = [];
-    ticket['identificador'] = ticket.ticket.identificador;
-    ticket['tipoLoteria'] = tipoLoteria;
-    let addIndex = carrito.findIndex(
-      (x: any) => x.identificador === ticket.identificador
-    );
-    if ((tipoLoteria == 1 || tipoLoteria == 14) && addIndex != -1) {
-      carrito[addIndex] = ticket;
-    } else {
-      carrito.push(ticket);
+    try {
+      let carrito: any = this.getCarritoLocal();
+      if (!carrito) carrito = [];
+      ticket['identificador'] = ticket.ticket.identificador;
+      ticket['tipoLoteria'] = tipoLoteria;
+      let addIndex = carrito.findIndex(
+        (x: any) => x.identificador === ticket.identificador
+      );
+      if ((tipoLoteria == 1 || tipoLoteria == 14) && addIndex != -1) {
+        carrito[addIndex] = ticket;
+      } else {
+        carrito.push(ticket);
+      }
+      this.ticketsCarrito = carrito;
+      localStorage.setItem('seleccionadosCarrito', JSON.stringify(carrito));
+    } catch (error: any) {
+      throw new Error(error.error.message);
     }
-    this.ticketsCarrito = carrito;
-    localStorage.setItem('seleccionadosCarrito', JSON.stringify(carrito));
   }
 
-  actualizarCarrito() {
-    return new Promise<any>(async (resolve, reject) => {
-      let headers = new HttpHeaders();
-      headers = headers.append('Content-Type', 'application/json');
-      let address = '/reservas';
-      let endpoint = '/cache';
+  async actualizarCarrito() {
+    try {
+      let headers = this.getHeaders();
+      let address = this.buildAddress('actualizarCarrito');
       let user = JSON.parse(localStorage.getItem('userData')!).playerDocument;
 
       let body = {
@@ -219,70 +234,62 @@ export class CarritoService {
         reservaId: this.getReservaId(),
         user,
       };
-      endpoint = `${endpoint}/actualizarCarrito`;
-      address = this.mySource + address + endpoint;
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          resolve('Done');
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+      return await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
 
   async setCarritoLoteria(tickets: any) {
-    return new Promise<any>(async (resolve, reject) => {
-      localStorage.setItem('seleccionadosLoteria', JSON.stringify(tickets));
-      //this.ticketsLoteria = tickets;
+    try {
+      this.setLoteriaLocal(tickets);
       await this.setTotal();
       await this.actualizarCarrito();
-      resolve('Done');
-    });
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async setCarritoMillonaria(tickets: any) {
-    return new Promise<any>(async (resolve, reject) => {
-      localStorage.setItem('seleccionadosMillonaria', JSON.stringify(tickets));
-      //this.ticketsLoteria = tickets;
+    try {
+      this.setMillonariaLocal(tickets);
       await this.setTotal();
       await this.actualizarCarrito();
-      resolve('Done');
-    });
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
 
   async setCarritoLotto(tickets: any) {
-    return new Promise<any>(async (resolve, reject) => {
-      localStorage.setItem('seleccionadosLotto', JSON.stringify(tickets));
-      //this.ticketsLotto = tickets;
+    try {
+      this.setLottoLocal(tickets);
       await this.setTotal();
       await this.actualizarCarrito();
-      resolve('Done');
-    });
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
 
   async setCarritoPozo(tickets: any) {
-    return new Promise<any>(async (resolve, reject) => {
-      localStorage.setItem('seleccionadosPozo', JSON.stringify(tickets));
+    try {
+      this.setPozoLocal(tickets);
       //this.ticketsPozo = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
-      resolve('Done');
-    });
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
 
   async setCarritoPozoRevancha(tickets: any) {
-    console.log(tickets);
-    return new Promise<any>(async (resolve, reject) => {
-      localStorage.setItem(
-        'seleccionadosPozoRevancha',
-        JSON.stringify(tickets)
-      );
-      //this.ticketsPozo = tickets;
+    try {
+      this.setPozoRevanchaLocal(tickets);
       await this.setTotal();
       await this.actualizarCarrito();
-      resolve('Done');
-    });
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
 
   setCarritoLocal(data: any) {
@@ -330,158 +337,149 @@ export class CarritoService {
   }
 
   async buscarCarrito() {
-    return new Promise<any>(async (resolve, reject) => {
-      let headers = new HttpHeaders();
-      headers = headers.append('Content-Type', 'application/json');
-      let address = '/reservas';
-      let endpoint = '/cache';
-      let user = JSON.parse(localStorage.getItem('userData')!).playerDocument;
+    let headers = this.getHeaders();
+    let address = this.buildAddress('getCarrito');
+    let user = JSON.parse(localStorage.getItem('userData')!).playerDocument;
 
-      let body = {
-        user,
-      };
-      endpoint = `${endpoint}/getCarrito`;
-      address = this.mySource + address + endpoint;
-      this.http.post(address, body, { headers: headers }).subscribe(
-        async (data: any) => {
-          let reservaId = this.getReservaId();
-          if (data.carrito.length == 0) {
-            this.borrarCarrito();
-            data.carrito = [];
-            data.loteria = {};
-            data.lotto = {};
-            data.pozo = {};
-            data.pozoRevancha = {};
-            data.millonaria = {};
-          }
-          this.setCarritoLocal(data.carrito);
-          this.setLoteriaLocal(data.loteria);
-          this.setLottoLocal(data.lotto);
-          this.setMillonariaLocal(data.millonaria);
-          this.setPozoLocal(data.pozo);
-          this.setPozoRevanchaLocal(data.pozoRevancha);
-          //await this.setTotal();
-
-          resolve(data);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+    let body = {
+      user,
+    };
+    let data: any = await this.http
+      .post(address, body, { headers })
+      .toPromise();
+    if (data.carrito.length == 0) {
+      await this.borrarCarrito();
+      data.carrito = [];
+      data.loteria = {};
+      data.lotto = {};
+      data.pozo = {};
+      data.pozoRevancha = {};
+      data.millonaria = {};
+    }
+    this.setCarritoLocal(data.carrito);
+    this.setLoteriaLocal(data.loteria);
+    this.setLottoLocal(data.lotto);
+    this.setMillonariaLocal(data.millonaria);
+    this.setPozoLocal(data.pozo);
+    this.setPozoRevanchaLocal(data.pozoRevancha);
+    await this.setTotal();
+    return data;
   }
 
+  private buildAddress(action: string): string {
+    const addressBase = '/reservas';
+    const endpoint = `/cache/${action}`;
+    return this.mySource + addressBase + endpoint;
+  }
+  private getHeaders(): HttpHeaders {
+    const headers = new HttpHeaders().append(
+      'Content-Type',
+      'application/json'
+    );
+    return headers;
+  }
   async validarCarrito(reservaId: any) {
-    return new Promise<any>(async (resolve, reject) => {
-      let headers = new HttpHeaders();
-      headers = headers.append('Content-Type', 'application/json');
-      let address = '/reservas';
-      let endpoint = '/cache';
-      let user = JSON.parse(localStorage.getItem('userData')!).playerDocument;
-      let token = JSON.parse(localStorage.getItem('userData')!).lotteryToken;
+    const address = this.buildAddress('validar');
+    const headers = this.getHeaders();
+    const userData = JSON.parse(localStorage.getItem('userData')!);
+    const user = userData.playerDocument;
+    const token = userData.lotteryToken;
 
-      let body = {
-        user,
-        token,
-        reservaId,
-      };
-      endpoint = `${endpoint}/validar`;
-      address = this.mySource + address + endpoint;
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          /*           if (!data.status) {
-            reject(new Error(data.message));
-          }
- */ resolve(data);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+    const body = {
+      user,
+      token,
+      reservaId,
+    };
+
+    try {
+      const data: any = await this.http
+        .post(address, body, { headers })
+        .toPromise();
+      return data;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
 
   async getCarrito() {
-    return new Promise<any>(async (resolve, reject) => {
+    try {
       let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.carrito);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosCarrito")));
-    });
+      return carritoDB.carrito;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async getCarritoLoteria() {
-    return new Promise<any>(async (resolve, reject) => {
+    try {
       let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.loteria);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosLoteria")));
-    });
+      return carritoDB.loteria;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async getCarritoLotto() {
-    return new Promise<any>(async (resolve, reject) => {
+    try {
       let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.lotto);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosLotto")));
-    });
+      return carritoDB.lotto;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async getCarritoPozo() {
-    return new Promise<any>(async (resolve, reject) => {
+    try {
       let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.pozo);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
-    });
+      return carritoDB.pozo;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async getCarritoMillonaria() {
-    return new Promise<any>(async (resolve, reject) => {
+    try {
       let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.millonaria);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
-    });
+      return carritoDB.millonaria;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async getCarritoPozoRevancha() {
-    return new Promise<any>(async (resolve, reject) => {
+    try {
       let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.pozoRevancha);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
-    });
+      return carritoDB.pozoRevancha;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async borrarCarrito() {
-    this.ticketsCarrito = [];
-    this.ticketsLoteria = {};
-    this.ticketsLotto = {};
-    this.ticketsPozo = {};
-    this.ticketsMillonaria = {};
-    this.ticketsPozoRevancha = {};
-    this.reservaId = 0;
-    this.total = 0;
-    localStorage.removeItem('seleccionadosLoteria');
-    localStorage.removeItem('seleccionadosLotto');
-    localStorage.removeItem('seleccionadosPozo');
-    localStorage.removeItem('seleccionadosCarrito');
-    localStorage.removeItem('seleccionadosMillonaria');
-    localStorage.removeItem('seleccionadosPozoRevancha');
-    localStorage.removeItem('reservaId');
-    localStorage.removeItem('total');
-    localStorage.removeItem('totalConDesc');
-    return new Promise<any>(async (resolve, reject) => {
-      let headers = new HttpHeaders();
-      headers = headers.append('Content-Type', 'application/json');
-      let address = '/reservas';
-      let endpoint = '/cache';
+    try {
+      this.ticketsCarrito = [];
+      this.ticketsLoteria = {};
+      this.ticketsLotto = {};
+      this.ticketsPozo = {};
+      this.ticketsMillonaria = {};
+      this.ticketsPozoRevancha = {};
+      this.reservaId = 0;
+      this.total = 0;
+      localStorage.removeItem('seleccionadosLoteria');
+      localStorage.removeItem('seleccionadosLotto');
+      localStorage.removeItem('seleccionadosPozo');
+      localStorage.removeItem('seleccionadosCarrito');
+      localStorage.removeItem('seleccionadosMillonaria');
+      localStorage.removeItem('seleccionadosPozoRevancha');
+      localStorage.removeItem('reservaId');
+      localStorage.removeItem('total');
+      localStorage.removeItem('totalConDesc');
+      let headers = this.getHeaders();
+      let address = this.buildAddress('borrarCarrito');
       let user = JSON.parse(localStorage.getItem('userData')!).playerDocument;
 
       let body = {
         user,
       };
-      endpoint = `${endpoint}/borrarCarrito`;
-      address = this.mySource + address + endpoint;
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          resolve('Done');
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+      let data = await this.http.post(address, body, { headers }).toPromise();
+      return data;
+    } catch (error: any) {
+      throw new Error(error.error.message);
+    }
   }
   async setTotalConDesc() {
     return new Promise<any>(async (resolve, reject) => {

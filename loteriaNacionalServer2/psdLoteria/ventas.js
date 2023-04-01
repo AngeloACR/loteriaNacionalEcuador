@@ -5,7 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaVentasLogger } = require("./logging");
-const config = require("../environments/test");
+const config = require("../environments/local");
 
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);

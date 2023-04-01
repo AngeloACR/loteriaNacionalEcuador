@@ -156,7 +156,7 @@ export class PozoComponent implements OnInit {
           reservaId
         );
 
-        this.ventas.setReservaId(response);
+        this.cart.setReservaId(response);
         await this.cart.setCarrito(auxPozo, 5);
         await this.cart.setCarrito(auxRevancha, 17);
         await this.cart.setCarritoPozo(this.ticketsPozo);
@@ -247,7 +247,7 @@ export class PozoComponent implements OnInit {
           reservaId
         );
 
-        this.ventas.setReservaId(response);
+        this.cart.setReservaId(response);
         await this.cart.setCarrito(aux, tipoLoteria);
         await this.cart.setCarritoPozo(this.ticketsPozo);
         await this.getCarritoTickets();

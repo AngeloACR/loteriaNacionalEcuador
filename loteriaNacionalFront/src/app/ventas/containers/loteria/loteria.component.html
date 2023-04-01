@@ -105,64 +105,56 @@
             >
               <!--   -->
               <td>
-                <div class="tooltip">
-                  <div class="contenedor_numeros">
-                    <div class="combinationBox">
-                      <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
-                      <p *ngFor="let numero of ticket.combinacion.split('')">
-                        {{ numero }}
-                      </p>
-                    </div>
-                    <hr />
+                <div class="contenedor_numeros">
+                  <div class="combinationBox">
+                    <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
+                    <p *ngFor="let numero of ticket.combinacion.split('')">
+                      {{ numero }}
+                    </p>
+                  </div>
+                  <hr />
 
-                    <div class="seleccionAll">
-                      <p>Seleccionar todas las fracciones</p>
+                  <div class="seleccionAll">
+                    <p>Seleccionar todas las fracciones</p>
+                    <input
+                      (click)="
+                        seleccionarTodo(page_size * (page_number - 1) + i)
+                      "
+                      [(ngModel)]="
+                        allFractions![page_size! * (page_number! - 1) + i]
+                      "
+                      type="checkbox"
+                    />
+                  </div>
+                  <hr />
+                  <div class="contenedor_fracciones">
+                    <div
+                      class="fracciones"
+                      *ngFor="
+                        let item of ticket.fraccionesDisponibles;
+                        let j = index
+                      "
+                    >
                       <input
                         (click)="
-                          seleccionarTodo(page_size * (page_number - 1) + i)
+                          fraccionSeleccionada(
+                            page_size * (page_number - 1) + i,
+                            item
+                          )
                         "
-                        style="
-                          position: relative;
-                          width: 20px;
-                          opacity: 1;
-                          margin-left: 5px;
+                        [checked]="
+                          isSelected(page_size * (page_number - 1) + i, item)
                         "
-                        [(ngModel)]="
-                          allFractions![page_size! * (page_number! - 1) + i]
-                        "
+                        class="checkbox"
                         type="checkbox"
+                        id="{{ ticket.identificador }}-{{ item }}"
                       />
+                      <label for="{{ ticket.identificador }}-{{ item }}">{{
+                        item
+                      }}</label>
                     </div>
-                    <hr />
-                    <div class="contenedor_fracciones">
-                      <div
-                        class="fracciones"
-                        *ngFor="
-                          let item of ticket.fraccionesDisponibles;
-                          let j = index
-                        "
-                      >
-                        <input
-                          (click)="
-                            fraccionSeleccionada(
-                              page_size * (page_number - 1) + i,
-                              item
-                            )
-                          "
-                          [checked]="
-                            isSelected(page_size * (page_number - 1) + i, item)
-                          "
-                          class="checkbox"
-                          type="checkbox"
-                          id="{{ ticket.identificador }}-{{ item }}"
-                        />
-                        <label for="{{ ticket.identificador }}-{{ item }}">{{
-                          item
-                        }}</label>
-                      </div>
-                    </div>
-                    <hr />
                   </div>
+                  <hr />
                 </div>
               </td>
             </tr>

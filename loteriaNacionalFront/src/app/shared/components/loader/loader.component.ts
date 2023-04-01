@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  Inject,
+} from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-loader',
@@ -10,7 +18,14 @@ export class LoaderComponent implements OnInit {
   @Input() loader: String = '';
   loaderPath: string = 'assets/loader.gif';
   logoPath: string = '';
-  constructor() {}
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<LoaderComponent>
+  ) {
+    this.message = this.data.message;
+    this.loader = this.data.loader;
+  }
 
   interval: any;
   ngOnInit() {

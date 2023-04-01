@@ -11,6 +11,8 @@ import { AutoTabDirective } from './autotab.directive';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { getSpanishPaginatorIntl } from './paginacion-es';
 import { PositioningDirective } from './positioning.directive';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { PositioningDirective } from './positioning.directive';
     PositioningDirective,
     PaginatePipe,
   ],
-  imports: [CommonModule, MatPaginatorModule],
+  imports: [CommonModule, MatPaginatorModule, MatDialogModule],
 
   providers: [
     {
