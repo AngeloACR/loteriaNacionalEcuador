@@ -67,6 +67,8 @@ export class AppComponent implements OnInit {
     });
   }
   async ngOnInit() {
+    localStorage.setItem('top', "0");
+    localStorage.setItem('screen', "0");
     await this.consultas.recuperarUltimosResultados();
   }
   closePromo() {

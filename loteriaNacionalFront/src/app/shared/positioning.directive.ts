@@ -40,5 +40,7 @@ export class PositioningDirective implements OnInit {
   }
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.renderer.setStyle(this.el.nativeElement, 'top', `50px`);
+  }
 }
