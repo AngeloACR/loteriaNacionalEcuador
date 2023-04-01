@@ -38,10 +38,10 @@ const cacheController = {
     try {
       let client = redis.getClient();
       await client.connect();
-      let response = await client.get("lottoSorteos");
+      let response = await client.get("facilottoSorteos");
       if (response == "") {
         await cacheController.setSorteos();
-        response = await client.get("lottoSorteos");
+        response = await client.get("facilottoSorteos");
       }
       await client.quit();
       return JSON.parse(response);
@@ -55,7 +55,7 @@ const cacheController = {
       let client = redis.getClient();
       await client.connect();
       let sorteos = await Sorteos.getSorteos();
-      await client.set("lottoSorteos", JSON.stringify(sorteos));
+      await client.set("facilottoSorteos", JSON.stringify(sorteos));
       await client.quit();
     } catch (e) {
       console.log(e.toString());
@@ -73,7 +73,7 @@ const cacheController = {
         lotteryToken,
         user
       );
-      await client.set("lottoSorteosDisponibles", JSON.stringify(sorteos));
+      await client.set("facilottoSorteosDisponibles", JSON.stringify(sorteos));
 
       await client.quit();
     } catch (e) {
@@ -101,10 +101,10 @@ const cacheController = {
     try {
       let client = redis.getClient();
       await client.connect();
-      let response = await client.get("lottoSorteosDisponibles");
+      let response = await client.get("facilottoSorteosDisponibles");
       if (!response) {
         await cacheController.setSorteosDisponibles();
-        response = await client.get("lottoSorteosDisponibles");
+        response = await client.get("facilottoSorteosDisponibles");
       }
       await client.quit();
       return JSON.parse(response);
