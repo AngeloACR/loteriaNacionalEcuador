@@ -8,6 +8,7 @@ cp ./loteria_api.conf /etc/nginx/api_conf.d/loteria_api.conf
 cp ./admin_api.conf /etc/nginx/api_conf.d/admin_api.conf
 cp ./lotto_api.conf /etc/nginx/api_conf.d/lotto_api.conf
 cp ./pozoMillonario_api.conf /etc/nginx/api_conf.d/pozoMillonario_api.conf
+cp ./pozoRevancha_api.conf /etc/nginx/api_conf.d/pozoRevancha_api.conf
 cp ./laMillonaria_api.conf /etc/nginx/api_conf.d/laMillonaria_api.conf
 cp ./ganadores_api.conf /etc/nginx/api_conf.d/ganadores_api.conf
 cp ./reservas_api.conf /etc/nginx/api_conf.d/reservas_api.conf

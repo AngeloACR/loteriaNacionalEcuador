@@ -1,13 +1,20 @@
 {
   "version": "0.2.0",
   "configurations": [
+  
     {
-      "name": "Python: Current File",
-      "type": "python",
+      "name": "Launch Chrome",
       "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal",
-      "justMyCode": true
+      "type": "chrome",
+      "url": "http://localhost:4200",
+      "webRoot": "/home/angeloacr/Proyectos/loteriaNacionalEcuador/app/loteriaNacionalFront"
+    },
+    {
+      "name": "Attach",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
     }
   ]
 }

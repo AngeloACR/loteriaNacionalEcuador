@@ -126,7 +126,6 @@
                     "
                   />
                   <div class="contenedor_numeros">
-                    <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
                     <p>{{ ticket!.combinacion1 }}</p>
                   </div>
                   <hr />
@@ -154,7 +153,6 @@
                     </p>
                   </div>
                 </div>
-                <!-- <app-seleccion-lotto [tickets]="ticket"></app-seleccion-lotto> -->
               </td>
             </tr>
           </tbody>
@@ -171,10 +169,6 @@
           </mat-paginator>
         </div>
       </div>
-      <!-- 
-    <div class="boton_boleto"> <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-
-    </div> -->
     </div>
   </div>
 
@@ -213,20 +207,7 @@
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="lotto"
 ></app-floating-menu>
-<!-- <app-floating-menu
-  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-  (deleteLottoTicket)="deleteLottoTicket($event)"
-  (deletePozoTicket)="deletePozoTicket($event)"
-  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-  (emitirCompra)="comprar()"
-  (eliminarTodo)="deleteAllTickets()"
-  [ticketsLoteria]="ticketsLoteria"
-  [ticketsLotto]="ticketsLotto"
-  [ticketsPozo]="ticketsPozo"
-  [total]="total"
-  tipoLoteria="lotto"
-></app-floating-menu>
- --><app-loader
+<app-loader
   loader="lotto"
   [message]="loadingMessage!"
   *ngIf="isLoading"

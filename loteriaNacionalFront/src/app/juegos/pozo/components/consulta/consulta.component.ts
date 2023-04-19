@@ -28,6 +28,7 @@ export class ConsultaComponent implements OnInit {
   previousLength: number = 0;
   cameFromBackspace: boolean = false;
   @Output() resultados = new EventEmitter();
+  @Output() validar = new EventEmitter();
 
   constructor(
     private router: Router,
@@ -125,14 +126,21 @@ export class ConsultaComponent implements OnInit {
       el.focus();
       var range = el.createTextRange();
       range.collapse(false);
-      //range.select();
+      
     }
     this.changeDetectorRef.markForCheck();
+  }
+
+  async validarSorteo() {
+    let validacion = await this.consulta.validarSorteo(this.sorteoGanador);
+    this.validar.emit(validacion);
   }
 
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
+      await this.validarSorteo();
+
       if (!this.combinacionesAux.length)
         throw new Error(
           'Por favor, escribe al menos una combinación que quieras consultar'

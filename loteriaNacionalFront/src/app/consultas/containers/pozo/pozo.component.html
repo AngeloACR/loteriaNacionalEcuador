@@ -1,5 +1,5 @@
 <div class="container">
-  <pozo-consulta class="consultaBox" (resultados)="toggleResultados($event)">
+  <pozo-consulta class="consultaBox" (validar)="validacion = $event" (resultados)="toggleResultados($event)">
   </pozo-consulta>
   <pozo-ultimo-resultado class="selectorBox"></pozo-ultimo-resultado>
   <ventas-menu-box class="menuBox" [miniBox]="true"></ventas-menu-box>
@@ -15,3 +15,4 @@
     </consultas-resultados>
   </div>
 </div>
+ 

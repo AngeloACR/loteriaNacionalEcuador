@@ -5,11 +5,9 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #28aae1;
 
-// Estilos de componente tooltip
 
 $color-botton: #28aae1;
 
-/* Rectangle 40 */
 
 .contenedor_numeros {
   background: #ffffff;
@@ -31,7 +29,6 @@ $color-botton: #28aae1;
     justify-content: space-around;
     align-items: center;
     p {
-      /* 4 */
 
       font-style: normal;
       font-weight: 700;
@@ -50,11 +47,7 @@ $color-botton: #28aae1;
     width: 100%;
     display: flex;
     padding: 0 10px;
-    /* justify-content: space-around; */
     align-items: center;
-    /* margin: auto; */
-    /* padding: 0; */
-    /* margin: 0; */
     text-align: left;
 
     p {
@@ -89,8 +82,6 @@ $color-botton: #28aae1;
     justify-content: center;
 
     .fracciones {
-      /* display: grid;
-        grid-template-columns: repeat(5, auto); */
       width: 60px;
       height: 60px;
       display: flex;
@@ -200,7 +191,6 @@ $color-botton: #28aae1;
   }
 }
 
-// Estilos de component tooltip
 
 .contenedor_loteria {
   width: 98%;
@@ -280,9 +270,6 @@ $color-botton: #28aae1;
             grid-template-columns: repeat(4, 1fr);
 
             .option {
-              /*             width: 80px;
-            height: 80px;
- */
               width: 25%;
               overflow: hidden;
               label {
@@ -292,7 +279,6 @@ $color-botton: #28aae1;
                 img {
                   vertical-align: middle;
                   width: 100%;
-                  /* background-color: green; */
                   border-radius: 15px;
                 }
               }
@@ -305,7 +291,6 @@ $color-botton: #28aae1;
               padding: 0;
               display: block;
               float: left;
-              /* fix specific for Firefox */
               position: absolute;
               left: -10000px;
               & + label {
@@ -410,11 +395,7 @@ $color-botton: #28aae1;
             background-color: #fff;
             padding: 4px 8px;
             border-radius: 10px;
-            /* border: 1px solid #000; */
             text-align: center;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
             cursor: pointer;
           }
         }

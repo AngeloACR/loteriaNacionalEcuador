@@ -12,22 +12,25 @@ export class ConsultaService {
   constructor(private http: HttpClient) {}
 
   async recuperarSorteosJugados() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
-    let endpoint = '/cache';
-    var address = '/pozoRevancha';
-    endpoint = `${endpoint}/sorteosJugados`;
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    address = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(address, { headers: headers }).subscribe((data: any) => {
-        let sorteosJugados = data.values;
-        sorteosJugados.sort(this.ordenaSorteos);
-        sorteosJugados = this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
-        resolve(sorteosJugados);
-      });
-    });
+      let endpoint = '/cache';
+      var address = '/pozoRevancha';
+      endpoint = `${endpoint}/sorteosJugados`;
+
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .get(address, { headers: headers })
+        .toPromise();
+      let sorteosJugados = data.values;
+      sorteosJugados.sort(this.ordenaSorteos);
+      sorteosJugados = this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
+      return sorteosJugados;
+    } catch (error) {
+      throw error;
+    }
   }
   limpiaSorteosDeMasDe3Meses(sorteos: any) {
     var today = new Date();
@@ -46,88 +49,102 @@ export class ConsultaService {
     return b1 - a1;
   }
 
-  recuperarBoletoGanador(sorteo: any, combinaciones: any) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '';
-    let address = '/pozoRevancha';
-    endpoint = `${endpoint}/ganador`;
-    address = this.mySource + address + endpoint;
-    let body = {
-      sorteo,
-      combinaciones,
-    };
-    return new Promise((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let boletoGanador = data;
-          resolve(boletoGanador);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+  async recuperarBoletoGanador(sorteo: any, combinaciones: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/pozoRevancha';
+      endpoint = `${endpoint}/ganador`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+        combinaciones,
+      };
+      let data = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  recuperarBoletoGanadorPorPlancha(
+  async recuperarBoletoGanadorPorPlancha(
     boletoInicial: any,
     boletoFinal: any,
     sorteo: any
   ) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/pozoRevancha';
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/pozoRevancha';
 
-    let endpoint = '/plancha';
+      let endpoint = '/plancha';
 
-    address = this.mySource + address + endpoint;
-    let body = {
-      sorteo,
-      boletoInicial,
-      boletoFinal,
-    };
-    return new Promise((resolve, reject) => {
-      this.http
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+        boletoInicial,
+        boletoFinal,
+      };
+      let data = await this.http
         .post(address, body, { headers: headers })
-        .subscribe((data: any) => {
-          let boletoGanador = data;
-          resolve(boletoGanador);
-        });
-    });
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  getUltimoResultado() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '/cache/ultimoResultado';
-    let address = '/pozoRevancha';
-    let auxAddress = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(auxAddress, { headers: headers }).subscribe(
-        (data: any) => {
-          let response;
-          let pozoRevancha = data;
-          localStorage.setItem(
-            'pozoRevanchaUltimoResultado',
-            JSON.stringify(pozoRevancha)
-          );
-          response = { tipo: 'pozoRevancha', data: pozoRevancha };
-          resolve(response);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
+
+  async validarSorteo(sorteo: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/pozoRevancha';
+      endpoint = `${endpoint}/validar`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+      };
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getUltimoResultado() {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '/cache/ultimoResultado';
+      let address = '/pozoRevancha';
+      let auxAddress = this.mySource + address + endpoint;
+      let data = await this.http
+        .get(auxAddress, { headers: headers })
+        .toPromise();
+      let response;
+      let pozoRevancha = data;
+      localStorage.setItem(
+        'pozoRevanchaUltimoResultado',
+        JSON.stringify(pozoRevancha)
       );
-    });
+      response = { tipo: 'pozoRevancha', data: pozoRevancha };
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   obtenerBoletin(sorteo: any) {
     let sourceBoletines = `${this.mySource}/uploads/boletines/`;
-    return new Promise((resolve, reject) => {
-      let boletinAddress = `${sourceBoletines}T17${sorteo}.jpg`;
-      resolve(boletinAddress);
-    });
+    let boletinAddress = `${sourceBoletines}T17${sorteo}.jpg`;
+    return boletinAddress;
   }
 
   obtenerMascota(mascota: any) {

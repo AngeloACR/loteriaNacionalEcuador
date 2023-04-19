@@ -37,7 +37,6 @@ $color-loteria: #35aee2;
         .input {
           .input_content {
             input[type="text"] {
-              /* Rectangle 38 */
               @extend %input;
             }
 
@@ -51,7 +50,6 @@ $color-loteria: #35aee2;
           }
 
           button {
-            /* Rectangle 6 */
 
             background-color: $color-loteria;
             border: 1px solid $color-loteria;

@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ResultadosComponent implements OnInit {
   @Input() resultados: any;
+  @Input() validacion: boolean = false;;
   @Input() tipoLoteria: any;
   @Input() isLoteriaNacional: boolean = false;
   @Input() isLotto: boolean = false;

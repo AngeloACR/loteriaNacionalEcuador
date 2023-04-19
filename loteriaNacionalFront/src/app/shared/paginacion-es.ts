@@ -11,7 +11,6 @@ const getRangeLabel = (page: number, pageSize: number, length: number) => {
   const startIndex = page * pageSize;
   const startPage = page + 1;
 
-  // If the start index exceeds the list length, do not try and fix the end index to the end.
   const endIndex =
     startIndex < length
       ? Math.min(startIndex + pageSize, length)
@@ -19,7 +18,6 @@ const getRangeLabel = (page: number, pageSize: number, length: number) => {
 
   const endPage = Math.ceil(length / pageSize);
 
-  //return `${startIndex + 1} - ${endIndex} de ${length}`;
   return `Página ${page + 1} de  ${endPage}`;
 };
 

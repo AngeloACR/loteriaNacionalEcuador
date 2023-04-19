@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LottoComponent implements OnInit {
   showResultados: boolean = false;
   resultados: any;
+  validacion: any;
   constructor() {}
 
   ngOnInit() {}

@@ -9,6 +9,7 @@ export class RevanchaComponent implements OnInit {
   showResultados: boolean = false;
   resultados: any;
 
+  validacion: any;
   constructor() {}
 
   ngOnInit() {}

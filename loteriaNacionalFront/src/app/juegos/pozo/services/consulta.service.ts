@@ -12,9 +12,11 @@ export class ConsultaService {
   constructor(private http: HttpClient) {}
 
   async recuperarSorteosJugados() {
+    try {
+    } catch (error) {}
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+
     let endpoint = '/cache';
     var address = '/pozo';
     endpoint = `${endpoint}/sorteosJugados`;
@@ -48,6 +50,8 @@ export class ConsultaService {
   }
 
   recuperarBoletoGanador(sorteo: any, combinaciones: any) {
+    try {
+    } catch (error) {}
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     let endpoint = '';
@@ -76,6 +80,8 @@ export class ConsultaService {
     boletoFinal: any,
     sorteo: any
   ) {
+    try {
+    } catch (error) {}
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     let address = '/pozo';
@@ -98,7 +104,28 @@ export class ConsultaService {
     });
   }
 
+  async validarSorteo(sorteo: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/pozo';
+      endpoint = `${endpoint}/validar`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+      };
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
   getUltimoResultado() {
+    try {
+    } catch (error) {}
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     let endpoint = '/cache/ultimoResultado';
@@ -125,10 +152,8 @@ export class ConsultaService {
 
   obtenerBoletin(sorteo: any) {
     let sourceBoletines = `${this.mySource}/uploads/boletines/`;
-    return new Promise((resolve, reject) => {
-      let boletinAddress = `${sourceBoletines}T5${sorteo}.jpg`;
-      resolve(boletinAddress);
-    });
+    let boletinAddress = `${sourceBoletines}T5${sorteo}.jpg`;
+    return boletinAddress;
   }
 
   obtenerMascota(mascota: any) {

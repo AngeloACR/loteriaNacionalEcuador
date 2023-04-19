@@ -56,7 +56,7 @@ export class MenuBoxComponent implements OnInit {
         }
 
         await this.getCarritoTickets();
-        //this.getTotal();
+        
       }
       this.isLoading = false;
     } catch (e: any) {
@@ -291,7 +291,7 @@ export class MenuBoxComponent implements OnInit {
       await this.cart.setCarritoMillonaria(this.ticketsMillonaria);
 
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       //await this.setDescuento(14);
       this.isLoading = false;
     } catch (e: any) {
@@ -327,7 +327,6 @@ export class MenuBoxComponent implements OnInit {
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
 
       await this.getCarritoTickets();
-      this.getTotal();
 
       this.isLoading = false;
     } catch (e: any) {
@@ -362,7 +361,6 @@ export class MenuBoxComponent implements OnInit {
       await this.cart.setCarritoLotto(this.ticketsLotto);
 
       await this.getCarritoTickets();
-      this.getTotal();
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -401,7 +399,6 @@ export class MenuBoxComponent implements OnInit {
 
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       await this.getCarritoTickets();
-      this.getTotal();
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -440,7 +437,6 @@ export class MenuBoxComponent implements OnInit {
       await this.cart.setCarritoPozo(this.ticketsPozo);
 
       await this.getCarritoTickets();
-      this.getTotal();
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -475,7 +471,6 @@ export class MenuBoxComponent implements OnInit {
       await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
 
       await this.getCarritoTickets();
-      this.getTotal();
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -508,16 +503,8 @@ export class MenuBoxComponent implements OnInit {
         };
       });
       let reservaId = this.lottery.getReservaId();
-      /*       await this.lottery.eliminarTodosLosBoletosDeReserva(
-        this.token,
-        boletosLoteria,
-        boletosLotto,
-        boletosPozo,
-        reservaId
-      ); */
       await this.cart.borrarCarrito();
       await this.getCarritoTickets();
-      this.getTotal();
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;

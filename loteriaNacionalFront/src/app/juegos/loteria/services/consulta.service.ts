@@ -11,22 +11,25 @@ export class ConsultaService {
 
   constructor(private http: HttpClient) {}
 
-  recuperarSorteosJugados() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    var address = '/loteria';
-    let endpoint = '/cache';
-    endpoint = `${endpoint}/sorteosJugados`;
+  async recuperarSorteosJugados() {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      var address = '/loteria';
+      let endpoint = '/cache';
+      endpoint = `${endpoint}/sorteosJugados`;
 
-    address = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(address, { headers: headers }).subscribe((data: any) => {
-        let sorteosJugados = data.values;
-        sorteosJugados.sort(this.ordenaSorteos);
-        sorteosJugados = this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
-        resolve(sorteosJugados);
-      });
-    });
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .get(address, { headers: headers })
+        .toPromise();
+      let sorteosJugados = data.values;
+      sorteosJugados.sort(this.ordenaSorteos);
+      sorteosJugados = this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
+      return sorteosJugados;
+    } catch (error) {
+      throw error;
+    }
   }
   limpiaSorteosDeMasDe3Meses(sorteos: any) {
     var today = new Date();
@@ -46,61 +49,73 @@ export class ConsultaService {
     return b1 - a1;
   }
 
-  recuperarBoletoGanador(sorteo: number, combinaciones: any) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '';
-    let address = '/loteria';
-    endpoint = `${endpoint}/ganador`;
-    address = this.mySource + address + endpoint;
-    let body = {
-      sorteo,
-      combinaciones,
-    };
-    return new Promise((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let boletoGanador = data;
-          resolve(boletoGanador);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+  async recuperarBoletoGanador(sorteo: number, combinaciones: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/loteria';
+      endpoint = `${endpoint}/ganador`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+        combinaciones,
+      };
+      let data = this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 
+  async validarSorteo(sorteo: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/loteria';
+      endpoint = `${endpoint}/validar`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+      };
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
   async getUltimoResultado() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/loteria';
-    let endpoint = '/cache/ultimoResultado';
-    let auxAddress = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(auxAddress, { headers: headers }).subscribe(
-        (data: any) => {
-          let response;
-          let loteriaNacional = data;
-          localStorage.setItem(
-            'loteriaNacionalUltimoResultado',
-            JSON.stringify(loteriaNacional)
-          );
-
-          response = { tipo: 'loteriaNacional', data: loteriaNacional };
-          resolve(response);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/loteria';
+      let endpoint = '/cache/ultimoResultado';
+      let auxAddress = this.mySource + address + endpoint;
+      let data = await this.http
+        .get(auxAddress, { headers: headers })
+        .toPromise();
+      let response;
+      let loteriaNacional = data;
+      localStorage.setItem(
+        'loteriaNacionalUltimoResultado',
+        JSON.stringify(loteriaNacional)
       );
-    });
+
+      response = { tipo: 'loteriaNacional', data: loteriaNacional };
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   obtenerBoletin(sorteo: string) {
     let sourceBoletines = `${this.mySource}/uploads/boletines/`;
-    return new Promise((resolve, reject) => {
-      let boletinAddress = `${sourceBoletines}T1${sorteo}.jpg`;
-      resolve(boletinAddress);
-    });
+    let boletinAddress = `${sourceBoletines}T1${sorteo}.jpg`;
+    return boletinAddress;
   }
 }

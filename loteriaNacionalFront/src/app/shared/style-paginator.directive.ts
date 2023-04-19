@@ -50,7 +50,6 @@ export class StylePaginatorDirective {
     private vr: ViewContainerRef,
     private ren: Renderer2
   ) {
-    //Sub to rerender buttons when next page and last page is used
     this.matPag.page.subscribe((v) => {
       this.switchPage(v.pageIndex);
     });
@@ -65,31 +64,18 @@ export class StylePaginatorDirective {
     );
     const prevButtonCount = this._buttons.length;
 
-    // remove buttons before creating new ones
     if (this._buttons.length > 0) {
       this._buttons.forEach((button: any) => {
         this.ren.removeChild(actionContainer, button);
       });
-      //Empty state array
       this._buttons.length = 0;
     }
 
-    //initialize next page and last page buttons
     if (this._buttons.length == 0) {
       let nodeArray =
         this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[2]
           .childNodes;
 
-      /*       let node = // Numero de elementos en el paginador
-      this.vr.element.nativeElement.childNodes[0].childNodes[0].childNodes[0]
-      .childNodes[2];
-      let paginatorBox = this.vr.element.nativeElement
-      paginatorBox.class = 'paginatorBox';
-       */
-      /* node.style.visibility = 'hidden'; */
-      //node.style.display = 'none';
-      /* node.parentNode.removeChild(node); */
-      /* this.ren.setStyle(node, "background-color", "#E3E4E5"); */
 
       setTimeout(() => {
         for (let i = 0; i < nodeArray.length; i++) {
@@ -103,7 +89,7 @@ export class StylePaginatorDirective {
                 nodeArray[i],
                 "background-color",
                 "#293133"
-              ); /* #04b865 */
+              ); 
             }
           }
         }
@@ -162,7 +148,6 @@ export class StylePaginatorDirective {
     }
 
     this.ren.appendChild(linkBtn, text);
-    //Add button to private array for state
     this._buttons.push(linkBtn);
     return linkBtn;
   }
@@ -174,14 +159,6 @@ export class StylePaginatorDirective {
     this.buildPageNumbers();
   }
 
-  /*   private initPageRange(): void {
-    const middleIndex = (this._rangeStart + this._rangeEnd) / 2;
-
-    this._rangeStart = this.calcRangeStart(middleIndex);
-    this._rangeEnd = this.calcRangeEnd(middleIndex);
-
-    this.buildPageNumbers();
-  } */
 
   private switchPage(i: number): void {
     this._currentPage = i;

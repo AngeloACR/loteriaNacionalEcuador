@@ -274,7 +274,6 @@ export class CarritoService {
   async setCarritoPozo(tickets: any) {
     try {
       this.setPozoLocal(tickets);
-      //this.ticketsPozo = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
     } catch (error: any) {
@@ -482,8 +481,7 @@ export class CarritoService {
     }
   }
   async setTotalConDesc() {
-    return new Promise<any>(async (resolve, reject) => {
-      //await this.buscarCarrito();
+    try {
       let loteriaAux = this.getLoteriaLocal();
       let lottoAux = this.getLottoLocal();
       let pozoAux = this.getPozoLocal();
@@ -525,13 +523,13 @@ export class CarritoService {
 
       this.totalConDesc = auxConDesc;
       localStorage.setItem('totalConDesc', JSON.stringify(auxConDesc));
-      resolve('Done');
-    });
+    } catch (error) {
+      throw error;
+    }
   }
 
   async setTotal() {
-    return new Promise<any>(async (resolve, reject) => {
-      //await this.buscarCarrito();
+    try {
       let loteriaAux = this.getLoteriaLocal();
       let lottoAux = this.getLottoLocal();
       let pozoAux = this.getPozoLocal();
@@ -561,11 +559,11 @@ export class CarritoService {
 
       this.total = aux;
       localStorage.setItem('total', JSON.stringify(aux));
-      resolve('Done');
-    });
+    } catch (error) {
+      throw error;
+    }
   }
   getTotal() {
-    //return this.total;
     let total = JSON.parse(localStorage.getItem('total')!);
     if (total) {
       return total;
@@ -574,7 +572,6 @@ export class CarritoService {
     }
   }
   getTotalConDesc() {
-    //return this.total;
     let total = JSON.parse(localStorage.getItem('totalConDesc')!);
     if (total) {
       return total;

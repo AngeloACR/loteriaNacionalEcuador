@@ -12,21 +12,24 @@ export class ConsultaService {
   constructor(private http: HttpClient) {}
 
   async recuperarSorteosJugados() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '/cache';
-    var address = '/facilotto';
-    endpoint = `${endpoint}/sorteosJugados`;
-    address = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(address, { headers: headers }).subscribe((data: any) => {
-        let sorteosJugados = data.values;
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '/cache';
+      var address = '/facilotto';
+      endpoint = `${endpoint}/sorteosJugados`;
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .get(address, { headers: headers })
+        .toPromise();
+      let sorteosJugados = data.values;
 
-        sorteosJugados.sort(this.ordenaSorteos);
-        sorteosJugados = this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
-        resolve(sorteosJugados);
-      });
-    });
+      sorteosJugados.sort(this.ordenaSorteos);
+      sorteosJugados = this.limpiaSorteosDeMasDe3Meses(sorteosJugados);
+      return sorteosJugados;
+    } catch (error) {
+      throw error;
+    }
   }
   limpiaSorteosDeMasDe3Meses(sorteos: any) {
     var today = new Date();
@@ -46,56 +49,72 @@ export class ConsultaService {
   }
 
   async recuperarBoletoGanador(sorteo: any, combinaciones: any) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '';
-    let address = '/facilotto';
-    endpoint = `${endpoint}/ganador`;
-    address = this.mySource + address + endpoint;
-    let body = {
-      sorteo,
-      combinaciones,
-    };
-    return new Promise((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let boletoGanador = data;
-          resolve(boletoGanador);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/facilotto';
+      endpoint = `${endpoint}/ganador`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+        combinaciones,
+      };
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async validarSorteo(sorteo: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/facilotto';
+      endpoint = `${endpoint}/validar`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+      };
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getUltimoResultado() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/facilotto';
-    let endpoint = '/cache/ultimoResultado';
-    let auxAddress = this.mySource + address + endpoint;
-    return new Promise((resolve, reject) => {
-      this.http.get(auxAddress, { headers: headers }).subscribe(
-        (data: any) => {
-          let response;
-          let facilotto = data;
-          localStorage.setItem('facilottoUltimoResultado', JSON.stringify(facilotto));
-          response = { tipo: 'facilotto', data: facilotto };
-          resolve(response);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/facilotto';
+      let endpoint = '/cache/ultimoResultado';
+      let auxAddress = this.mySource + address + endpoint;
+      let data = await this.http
+        .get(auxAddress, { headers: headers })
+        .toPromise();
+      let response;
+      let facilotto = data;
+      localStorage.setItem(
+        'facilottoUltimoResultado',
+        JSON.stringify(facilotto)
       );
-    });
+      response = { tipo: 'facilotto', data: facilotto };
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async obtenerBoletin(sorteo: string) {
     let sourceBoletines = `${this.mySource}/uploads/boletines/`;
-    return new Promise((resolve, reject) => {
-      let boletinAddress = `${sourceBoletines}T18${sorteo}.jpg`;
-      resolve(boletinAddress);
-    });
+    let boletinAddress = `${sourceBoletines}T18${sorteo}.jpg`;
+    return boletinAddress;
   }
 }

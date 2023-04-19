@@ -37,7 +37,7 @@ $color-lotto: #b51f20;
         .input {
           .input_content {
             input[type="text"] {
-              /* Rectangle 38 */
+              
               @extend %input;
             }
 
@@ -51,7 +51,7 @@ $color-lotto: #b51f20;
           }
 
           button {
-            /* Rectangle 6 */
+            
 
             background-color: $color-lotto;
             border: 1px solid $color-lotto;

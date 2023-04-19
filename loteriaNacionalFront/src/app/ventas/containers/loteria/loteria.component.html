@@ -103,11 +103,9 @@
                 let i = index
               "
             >
-              <!--   -->
               <td>
                 <div class="contenedor_numeros">
                   <div class="combinationBox">
-                    <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
                     <p *ngFor="let numero of ticket.combinacion.split('')">
                       {{ numero }}
                     </p>
@@ -170,12 +168,7 @@
           >
           </mat-paginator>
         </div>
-        <!-- {{ ticketsDisponibles | json }} -->
       </div>
-      <!-- 
-    <div class="boton_boleto">
-      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-    </div> -->
     </div>
   </div>
 

@@ -141,7 +141,9 @@
                       <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
                     </div>
                     <div class="numeros">
-                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                      <p *ngFor="let numero of ticket.combinacion2.split(',')">
+                        {{ numero }}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -164,19 +166,22 @@
                     (click)="agregarRevancha(page_size * (page_number - 1) + i)"
                   />
                   <div class="contenedor_seleccion_revancha">
-                    <img src="assets/img/revancha-sombra.png" style="height: 120px;" alt="">
-                    <p style="width: 100% !important">
-                      Agregar (+$0.50)
-                    </p>
+                    <img
+                      src="assets/img/revancha-sombra.png"
+                      style="height: 120px"
+                      alt=""
+                    />
+                    <p style="width: 100% !important">Agregar (+$0.50)</p>
                     <div class="imagen_animal">
                       <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
                     </div>
                     <div class="numeros">
-                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                      <p *ngFor="let numero of ticket.combinacion2.split(',')">
+                        {{ numero }}
+                      </p>
                     </div>
                   </div>
                 </div>
-                <!-- <app-seleccion-pozo [tickets]="ticketMascota"></app-seleccion-pozo> -->
               </td>
             </tr>
           </tbody>
@@ -184,7 +189,6 @@
         </table>
 
         <div class="contenedor_botones">
-          <!-- showFirstLastButtons -->
           <mat-paginator
             style-paginator
             [length]="ticketsDisponibles.length"
@@ -194,15 +198,6 @@
           </mat-paginator>
         </div>
       </div>
-
-      <!-- <div>
-      Page Actual: {{pageActual}}
-    </div> -->
-      <!-- 
-    <div class="boton_boleto">
-      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-
-    </div> -->
     </div>
   </div>
 
@@ -240,21 +235,7 @@
   [ticketsPozo]="ticketsPozo"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="pozo"
-></app-floating-menu
-><!-- 
-<app-floating-menu
-  (emitirCompra)="comprar()"
-  (eliminarTodo)="deleteAllTickets()"
-  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-  (deleteLottoTicket)="deleteLottoTicket($event)"
-  (deletePozoTicket)="deletePozoTicket($event)"
-  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-  [ticketsLoteria]="ticketsLoteria"
-  [ticketsLotto]="ticketsLotto"
-  [ticketsPozo]="ticketsPozo"
-  [total]="total"
-  tipoLoteria="pozo"
-></app-floating-menu> -->
+></app-floating-menu>
 <app-loader
   loader="pozo"
   [message]="loadingMessage!"

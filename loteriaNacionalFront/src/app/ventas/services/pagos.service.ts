@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CarritoService } from './carrito.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PagosService {
-  mySource = environment.source
+  mySource = environment.source;
   constructor(private cart: CarritoService, private http: HttpClient) {}
 
   getAuthData() {
@@ -32,159 +32,145 @@ export class PagosService {
 
   recargarSaldo() {}
 
-  hasBalance(subtotal: any, token: any) {
-    let cartTotal = parseFloat(this.cart.getTotal());
-    let testAmount = parseFloat(subtotal) + cartTotal;
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async hasBalance(subtotal: any, token: any) {
+    try {
+      let cartTotal = parseFloat(this.cart.getTotal());
+      let testAmount = parseFloat(subtotal) + cartTotal;
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/wallet';
-    let endpoint = '';
-    let body = {
-      token,
-    };
-    endpoint = `${endpoint}/getBalance`;
+      let address = '/wallet';
+      let endpoint = '';
+      let body = {
+        token,
+      };
+      endpoint = `${endpoint}/getBalance`;
 
-    address = this.mySource + address + endpoint;
-    return new Promise<boolean>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let balance = parseFloat(data.balance);
-          let hasBalance = balance >= testAmount;
-          resolve(hasBalance);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      let balance = parseFloat(data.balance);
+      let hasBalance = balance >= testAmount;
+      return hasBalance;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  getCompra(ticketId: any, accountId: any) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/ventas';
-    let endpoint = '';
-    let body = {
-      ticketId,
-      accountId,
-    };
-    endpoint = `${endpoint}/getCompra`;
+  async getCompra(ticketId: any, accountId: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/ventas';
+      let endpoint = '';
+      let body = {
+        ticketId,
+        accountId,
+      };
+      endpoint = `${endpoint}/getCompra`;
 
-    address = this.mySource + address + endpoint;
-    return new Promise<boolean>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          if (!data.status) {
-            reject(new Error('No se pudo encontrar la compra solicitada'));
-          }
-          resolve(data.values);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      if (!data.status) {
+        throw new Error('No se pudo encontrar la compra solicitada');
+      }
+      return data.values;
+    } catch (error) {
+      throw error;
+    }
   }
-  getGanador(ticketId: any) {
-    ticketId = ticketId.toString();
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/ganadores';
-    let endpoint = '';
-    let body = {
-      ticketId,
-    };
-    endpoint = `${endpoint}/getGanador`;
+  async getGanador(ticketId: any) {
+    try {
+      ticketId = ticketId.toString();
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/ganadores';
+      let endpoint = '';
+      let body = {
+        ticketId,
+      };
+      endpoint = `${endpoint}/getGanador`;
 
-    address = this.mySource + address + endpoint;
-    return new Promise<boolean>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          resolve(data);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+      address = this.mySource + address + endpoint;
+      let data = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
-  
-  getCodigosPromocionales(ventaId: any) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    let address = "/codigosPromocionales";
-    let endpoint = "";
-    let body = {
-      ventaId,
-    };
-    endpoint = `${endpoint}/getCodes`;
 
-    address = this.mySource + address + endpoint;
-    return new Promise<boolean>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          resolve(data);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+  async getCodigosPromocionales(ventaId: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/codigosPromocionales';
+      let endpoint = '';
+      let body = {
+        ventaId,
+      };
+      endpoint = `${endpoint}/getCodes`;
+
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async confirmarCompra(token: any, reservaId: any): Promise<any> {
-    let loteria = await this.cart.getCarritoLoteria();
-    let lotto = await this.cart.getCarritoLotto();
-    let pozo = await this.cart.getCarritoPozo();
-    let pozoRevancha = await this.cart.getCarritoPozoRevancha();
-    let millonaria = await this.cart.getCarritoMillonaria();
-    let total = this.cart.getTotal();
-    let totalConDesc = this.cart.getTotalConDesc();
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/ventas';
-    let endpoint = '';
-    let authData = this.getAuthData();
-    let body = {
-      loteria,
-      lotto,
-      pozo,
-      pozoRevancha,
-      millonaria,
-      lotteryToken: authData.lotteryToken,
-      user: authData.user,
-      personaId: authData.personalId,
-      accountId: authData.accountId,
-      amount: total,
-      amountConDesc: totalConDesc,
-      hasDescuento: !(total == totalConDesc),
-      token,
-      reservaId,
-    };
-    endpoint = `${endpoint}/comprarBoletos`;
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let response: any = data;
-          resolve(response);
-        },
-        (error: any) => {
-          //reject(new Error(error.error.message));
-          reject(
-            new Error(
-              'Ha ocurrido un error procesando la compra. Por favor, intente de nuevo.'
-            )
-          );
-        }
+    try {
+      let loteria = await this.cart.getCarritoLoteria();
+      let lotto = await this.cart.getCarritoLotto();
+      let pozo = await this.cart.getCarritoPozo();
+      let pozoRevancha = await this.cart.getCarritoPozoRevancha();
+      let millonaria = await this.cart.getCarritoMillonaria();
+      let total = this.cart.getTotal();
+      let totalConDesc = this.cart.getTotalConDesc();
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/ventas';
+      let endpoint = '';
+      let authData = this.getAuthData();
+      let body = {
+        loteria,
+        lotto,
+        pozo,
+        pozoRevancha,
+        millonaria,
+        lotteryToken: authData.lotteryToken,
+        user: authData.user,
+        personaId: authData.personalId,
+        accountId: authData.accountId,
+        amount: total,
+        amountConDesc: totalConDesc,
+        hasDescuento: !(total == totalConDesc),
+        token,
+        reservaId,
+      };
+      endpoint = `${endpoint}/comprarBoletos`;
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw new Error(
+        'Ha ocurrido un error procesando la compra. Por favor, intente de nuevo.'
       );
-    });
+      //throw error;
+    }
   }
   cancelarCompra() {}
   finalizarCompra() {
-    parent.postMessage("getBalance","*");
+    parent.postMessage('getBalance', '*');
     this.cart.borrarCarrito();
   }
   getTotal() {

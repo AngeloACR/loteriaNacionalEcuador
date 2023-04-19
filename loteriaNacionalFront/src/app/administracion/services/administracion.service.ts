@@ -15,216 +15,172 @@ export class AdministracionService {
   mySource = environment.source;
 
   constructor(private http: HttpClient) {}
-  getBannerLink() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async getBannerLink() {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = '/popup/';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http
+      let address = '/admin';
+      let endpoint = '/popup/';
+      address = this.mySource + address + endpoint;
+      let response: any = await this.http
         .get(address, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  getPopupStatus() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async getPopupStatus() {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = '/popup/status';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http
+      let address = '/admin';
+      let endpoint = '/popup/status';
+      address = this.mySource + address + endpoint;
+      let response: any = await this.http
         .get(address, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  setPopupImage(image: string) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async setPopupImage(image: string) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = '/popup/image';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
+      let address = '/admin';
+      let endpoint = '/popup/image';
+      address = this.mySource + address + endpoint;
       let body = { image };
-      this.http
+      let response: any = await this.http
         .put(address, body, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
-  getPopupFiles() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async getPopupFiles() {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = '/popup/files';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http
+      let address = '/admin';
+      let endpoint = '/popup/files';
+      address = this.mySource + address + endpoint;
+      let response: any = await this.http
         .get(address, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
-  deletePopupFiles(image: string) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async deletePopupFiles(image: string) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = `/popup/file/${image}`;
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http
+      let address = '/admin';
+      let endpoint = `/popup/file/${image}`;
+      address = this.mySource + address + endpoint;
+      let response: any = await this.http
         .delete(address, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
-  setPopupStatus(status: boolean) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async setPopupStatus(status: boolean) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = '/popup/status';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
+      let address = '/admin';
+      let endpoint = '/popup/status';
+      address = this.mySource + address + endpoint;
       let body = { status };
-      this.http
+      let response: any = await this.http
         .put(address, body, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
-  getPopupType() {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async getPopupType() {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = '/popup/type';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http
+      let address = '/admin';
+      let endpoint = '/popup/type';
+      address = this.mySource + address + endpoint;
+      let response: any = await this.http
         .get(address, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  setPopupType(type: boolean) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    //let endpoint = "/inquiry";
+  async setPopupType(type: boolean) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
 
-    let address = '/admin';
-    let endpoint = '/popup/type';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
+      let address = '/admin';
+      let endpoint = '/popup/type';
+      address = this.mySource + address + endpoint;
       let body = { type };
-      this.http
+      let response: any = await this.http
         .put(address, body, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
-  cargarImagenes(formData: any) {
-    let headers = new HttpHeaders();
+  async cargarImagenes(formData: any) {
+    try {
+      let headers = new HttpHeaders();
 
-    let address = '/admin';
-    let endpoint = '/popup';
-    address = this.mySource + address + endpoint;
-    return new Promise<any>((resolve, reject) => {
-      this.http
+      let address = '/admin';
+      let endpoint = '/popup';
+      address = this.mySource + address + endpoint;
+      let response: any = await this.http
         .post(address, formData, {
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            resolve(data);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 }

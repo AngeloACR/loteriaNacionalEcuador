@@ -4,7 +4,6 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-pozo: #04b865;
-//$color-pozo: #057333;
 
 %input {
   padding: 13px 0px;
@@ -28,7 +27,6 @@ $color-pozo: #04b865;
 
   &:hover {
     background-color: #fff;
-    //color: $color-pozo;
     color: #186b76;
   }
 }
@@ -56,7 +54,7 @@ $color-pozo: #04b865;
         .input {
           .input_content {
             input[type="text"] {
-              /* Rectangle 38 */
+              
               @extend %input;
             }
 
@@ -70,7 +68,7 @@ $color-pozo: #04b865;
           }
 
           button {
-            /* Rectangle 6 */
+            
 
             background-color: $color-pozo;
             border: 1px solid $color-pozo;

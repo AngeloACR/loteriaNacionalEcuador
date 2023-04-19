@@ -100,7 +100,6 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   }
 
   formatNumber(number: number) {
-    // Create our number formatter.
     var formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',

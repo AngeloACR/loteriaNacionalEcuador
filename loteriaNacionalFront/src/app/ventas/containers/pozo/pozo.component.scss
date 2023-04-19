@@ -7,7 +7,6 @@ $color-pozo: #04b865;
 
 $color-revancha: #fae80c;
 
-// Estilos de seleccion animal
 
 .contenedor_loteria {
   width: 98%;
@@ -149,7 +148,6 @@ $color-revancha: #fae80c;
               padding: 0;
               display: block;
               float: left;
-              /* fix specific for Firefox */
               position: absolute;
               left: -10000px;
               & + label {
@@ -302,7 +300,6 @@ $color-revancha: #fae80c;
             padding: 0;
             display: block;
             float: left;
-            /* fix specific for Firefox */
             position: absolute;
             left: -10000px;
             & + label {
@@ -343,11 +340,7 @@ $color-revancha: #fae80c;
             background-color: #fff;
             padding: 4px 8px;
             border-radius: 10px;
-            /* border: 1px solid #000; */
             text-align: center;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
             cursor: pointer;
           }
         }
@@ -415,7 +408,6 @@ $color-revancha: #fae80c;
                   align-items: center;
                   flex-wrap: wrap;
                   padding: 5px;
-                  /* Rectangle 45 */
 
                   background: #ffffff;
                   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
@@ -469,12 +461,8 @@ $color-revancha: #fae80c;
                 display: flex;
                 padding: 0 10px;
                 position: relative;
-                /* justify-content: space-around; */
                 align-items: center;
                 flex-direction: column;
-                /* margin: auto; */
-                /* padding: 0; */
-                /* margin: 0; */
                 text-align: left;
 
                 p {
@@ -513,7 +501,6 @@ $color-revancha: #fae80c;
                   align-items: center;
                   flex-wrap: wrap;
                   padding: 5px;
-                  /* Rectangle 45 */
 
                   background: #ffffff;
                   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);

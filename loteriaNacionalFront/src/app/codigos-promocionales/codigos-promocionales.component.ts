@@ -13,20 +13,8 @@ export class CodigosPromocionalesComponent implements OnInit {
   constructor(private codigosService: CodigosPromocionalesService) {}
 
   async ngOnInit() {
-    this.showPromo = await this.codigosService.getStatus();
-    //this.codigos = (await this.codigosService.obtenerCodigos() as any).values
   }
 
-  async imagenesSeleccionadas() {
-    const myFiles: any = (document.querySelector('#file') as any)!.files;
-    const formData = new FormData();
-    if (!Object.keys(myFiles).length) return;
-    Object.keys(myFiles).forEach((key) => {
-      formData.append(myFiles.item(key).name, myFiles.item(key));
-    });
-
-    const response = await this.codigosService.cargarImagenes(formData);
-  }
   async generarTxt() {
     this.codigos = this.codigosService.obtenerTxt().subscribe(
       (data: HttpResponse<Blob>) => {
@@ -51,8 +39,5 @@ export class CodigosPromocionalesComponent implements OnInit {
         throw new Error(error.error.message);
       }
     );
-  }
-  async changePopup() {
-    await this.codigosService.setStatus(this.showPromo);
   }
 }

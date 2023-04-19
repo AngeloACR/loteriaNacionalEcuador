@@ -1,7 +1,7 @@
 const fs = require("fs").promises;
 const auth = require("./auth");
 const juegos = require("./juegos");
-const config = require("../environments/local");
+const config = require("../environments/production");
 
 function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -15,7 +15,7 @@ function timeout(ms) {
 
     let userData = await auth.consultarDatosUsuario2(
       data,
-      "1701006692",
+      "1711187706",
       "192.168.0.1"
     );
 
@@ -24,6 +24,8 @@ function timeout(ms) {
       userData.personaId,
       "192.168.0.1"
     );
+    console.log(userData);
+    console.log(userData2);
   } catch (error) {
     console.log(error);
   }

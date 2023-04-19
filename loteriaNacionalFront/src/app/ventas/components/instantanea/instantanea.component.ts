@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
-
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-instantanea',
   templateUrl: './instantanea.component.html',
-  styleUrls: ['./instantanea.component.scss']
+  styleUrls: ['./instantanea.component.scss'],
 })
 export class InstantaneaComponent implements OnInit {
   @Input() premio: any;
@@ -19,20 +18,18 @@ export class InstantaneaComponent implements OnInit {
 
   ngOnInit() {
     this.sorteo = this.premio.sorteo;
-      this.valorPremio = this.formatNumber(parseFloat(this.premio.prizeWithDiscount));
-      this.nombrePremio = this.premio.prizeDescription;
+    this.valorPremio = this.formatNumber(
+      parseFloat(this.premio.prizeWithDiscount)
+    );
+    this.nombrePremio = this.premio.prizeDescription;
   }
 
-  formatNumber(number: number){// Create our number formatter.
+  formatNumber(number: number) {
     var formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-    
-      // These options are needed to round to whole numbers if that's what you want.
-      //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-      //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
     });
-    
+
     return formatter.format(number);
   }
 }

@@ -23,6 +23,7 @@ export class ConsultaComponent implements OnInit {
   numbers: Array<any> = [];
   previousLength: number = 0;
   cameFromBackspace: boolean = false;
+  @Output() validar = new EventEmitter();
   @Output() resultados = new EventEmitter();
 
   constructor(
@@ -128,37 +129,26 @@ export class ConsultaComponent implements OnInit {
       el.focus();
       var range = el.createTextRange();
       range.collapse(false);
-      //range.select();
+      
     }
     this.changeDetectorRef.markForCheck();
+  }
+
+  async validarSorteo() {
+    let validacion = await this.consulta.validarSorteo(this.sorteoGanador);
+    this.validar.emit(validacion);
   }
 
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
+      await this.validarSorteo();
+
       if (!this.combinacion.length)
         throw new Error(
           'Por favor, escribe la combinación que quieras consultar'
         );
-      /*       let aux = this.combinacion;
-      if (this.combinacion[this.combinacion.length - 1] == " ") {
-        aux = this.combinacion.slice(0, -2);
-      }
-
-      let combinaciones: Array<any> = aux.split(", ");
-      combinaciones = combinaciones.map((combinacion, index) => {
-        let auxLength = combinacion.length;
-        if (auxLength != 0) {
-          if (auxLength < this.maxDigits) {
-            let auxAdd = this.maxDigits - auxLength;
-            for (let i = 1; i <= auxAdd; i++) {
-              combinacion = `0${combinacion}`;
-            }
-          }
-          return combinacion;
-        }
-      });
- */ if (this.sorteoGanador == 'default') {
+      if (this.sorteoGanador == 'default') {
         this.dismissLoader();
         this.openError('Por favor, selecciona un sorteo');
 

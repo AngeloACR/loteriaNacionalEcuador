@@ -32,23 +32,18 @@ export class LoaderComponent implements OnInit {
     switch (this.loader) {
       case 'lotto':
         this.logoPath = 'assets/img/lotto-sombra-2.png';
-        //this.logoPath = "assets/lottoLoader.gif";
         break;
       case 'facilotto':
         this.logoPath = 'assets/img/facilotto-sombra.png';
-        //this.logoPath = "assets/lottoLoader.gif";
         break;
       case 'pozo':
         this.logoPath = 'assets/img/pozo-sombra.png';
-        //this.logoPath = "assets/pozoLoader.gif";
         break;
       case 'millonaria':
         this.logoPath = 'assets/img/millonaria-consulta.png';
-        //this.logoPath = "assets/pozoLoader.gif";
         break;
       default:
         this.logoPath = 'assets/img/loteria-sombra.png';
-        //this.logoPath = "assets/loteriaLoader.gif";
         break;
     }
   }

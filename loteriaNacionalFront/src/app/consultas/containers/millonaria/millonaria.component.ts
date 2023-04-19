@@ -9,6 +9,7 @@ export class MillonariaComponent implements OnInit {
   showResultados: boolean = false;
   resultados: any;
 
+  validacion: any;
   constructor() {}
 
   ngOnInit() {}

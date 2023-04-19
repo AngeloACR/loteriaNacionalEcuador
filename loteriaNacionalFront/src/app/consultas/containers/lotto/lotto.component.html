@@ -1,5 +1,5 @@
 <div class="container">
-    <lotto-consulta class="consultaBox" (resultados)="toggleResultados($event)">
+    <lotto-consulta class="consultaBox" (validar)="validacion = $event" (resultados)="toggleResultados($event)">
     </lotto-consulta>
     <lotto-ultimo-resultado class="selectorBox"></lotto-ultimo-resultado>
     <ventas-menu-box class="menuBox" [miniBox]="true"></ventas-menu-box>
@@ -8,4 +8,4 @@
         </consultas-resultados>
     </div>
 
-</div>
+</div> 

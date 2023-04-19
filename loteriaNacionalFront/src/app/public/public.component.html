@@ -10,7 +10,7 @@
 </div>
 
 <div id="mobileLanding">
-  <a [href]="ventasLink" target="_parent" class="landingButton compras">
+  <a [href]="ventasLink" target="_parent" (click)="checkToken($event)" class="landingButton compras">
     <img src="assets/img/webicon01.png" alt="" />
   </a>
   <a [href]="consultasLink" class="landingButton consulta">
@@ -27,3 +27,9 @@
     <img src="assets/img/webicon04.png" alt="" />
   </a>
 </div>
+<app-error
+  [msg]="errorMessage!"
+  (closeError)="closeError()"
+  [title]="errorTitle!"
+  *ngIf="isError"
+></app-error>

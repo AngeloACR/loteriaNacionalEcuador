@@ -133,8 +133,7 @@ export class DetalleSorteoComponent implements OnInit {
 
   async ngOnInit() {
     this.getClassColor(this.color!);
-    this.setSorteoDefault(); /* 
-    this.sorteo = await this.ventas.obtenerSorteo(this.loteria);*/
+    this.setSorteoDefault(); 
   }
   sorteoDefault?: sorteo;
 

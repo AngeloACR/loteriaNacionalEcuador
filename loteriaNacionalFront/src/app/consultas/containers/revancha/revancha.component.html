@@ -9,6 +9,7 @@
 
   <div class="modalBox" *ngIf="showResultados">
     <consultas-resultados
+    (validar)="validacion = $event"
       tipoLoteria="17"
       (close)="closeBox()"
       *ngIf="showResultados"
@@ -17,3 +18,4 @@
     </consultas-resultados>
   </div>
 </div>
+ 

@@ -8,19 +8,19 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class VentaService {
-  mySource = environment.source
+  mySource = environment.source;
 
   constructor(private http: HttpClient) {}
 
-  obtenerSorteo(authData: any) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/loteria';
-    let endpoint = `/cache/sorteosDisponibles`;
-    address = this.mySource + address + endpoint;
+  async obtenerSorteo(authData: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let address = '/loteria';
+      let endpoint = `/cache/sorteosDisponibles`;
+      address = this.mySource + address + endpoint;
 
-    return new Promise<Array<sorteo>>((resolve, reject) => {
-      this.http
+      let data: any = await this.http
         .get(address, {
           params: {
             lotteryToken: authData.lotteryToken,
@@ -28,17 +28,13 @@ export class VentaService {
           },
           headers: headers,
         })
-        .subscribe(
-          (data: any) => {
-            let sorteosDisponibles: Array<sorteo> = data;
-            sorteosDisponibles.sort(this.ordenaSorteos);
-            resolve(sorteosDisponibles);
-          },
-          (error: any) => {
-            reject(new Error(error.error.message));
-          }
-        );
-    });
+        .toPromise();
+      let sorteosDisponibles: Array<sorteo> = data;
+      sorteosDisponibles.sort(this.ordenaSorteos);
+      return sorteosDisponibles;
+    } catch (error) {
+      throw error;
+    }
   }
 
   ordenaSorteos(a: any, b: any) {
@@ -47,40 +43,36 @@ export class VentaService {
     return a1 - b1;
   }
 
-  obtenerTickets(
+  async obtenerTickets(
     sorteo: any,
     combinacion: any,
     combinacionFigura: any,
     tipoSeleccion: any,
     authData: any
-  ): Promise<any> {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let endpoint = '';
-    let body = {
-      sorteo,
-      lotteryToken: authData.lotteryToken,
-      user: authData.user,
-      combinacion,
-      combinacionFigura,
-      tipoSeleccion,
-    };
-    endpoint = `${endpoint}/combinacionesDisponibles`;
-    let address = '/loteria';
+  ) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let body = {
+        sorteo,
+        lotteryToken: authData.lotteryToken,
+        user: authData.user,
+        combinacion,
+        combinacionFigura,
+        tipoSeleccion,
+      };
+      endpoint = `${endpoint}/combinacionesDisponibles`;
+      let address = '/loteria';
 
-    address = this.mySource + address + endpoint;
-    return new Promise<Array<ticketsVenta>>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let combinacionesDisponibles: Array<ticketsVenta> =
-            data.combinaciones;
-          resolve(combinacionesDisponibles);
-        },
-        (error: any) => {
-          console.log(error);
-          reject(new Error(error.error.message));
-        }
-      );
-    });
+      address = this.mySource + address + endpoint;
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      let combinacionesDisponibles: Array<ticketsVenta> = data.combinaciones;
+      return combinacionesDisponibles;
+    } catch (error) {
+      throw error;
+    }
   }
 }

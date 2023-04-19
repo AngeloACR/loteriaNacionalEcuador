@@ -4,7 +4,6 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-millonaria: #b51f20;
-//$color-millonaria: #057333;
 
 $color-botton: #b51f20;
 
@@ -57,7 +56,6 @@ $color-botton: #b51f20;
         }
       }
       p {
-        /* 4 */
 
         font-style: normal;
         font-weight: 700;
@@ -76,11 +74,7 @@ $color-botton: #b51f20;
       width: 100%;
       display: flex;
       padding: 0 10px;
-      /* justify-content: space-around; */
       align-items: center;
-      /* margin: auto; */
-      /* padding: 0; */
-      /* margin: 0; */
       text-align: left;
 
       p {
@@ -104,8 +98,6 @@ $color-botton: #b51f20;
       justify-content: center;
 
       .fracciones {
-        /* display: grid;
-        grid-template-columns: repeat(5, auto); */
         width: 60px;
         height: 60px;
         display: flex;
@@ -152,7 +144,6 @@ $color-botton: #b51f20;
   padding: 3px 30px;
   border-radius: 20px;
 
-  /* transition: all .3s ease; */
   margin-left: -999em;
   position: absolute;
 }
@@ -182,7 +173,6 @@ $color-botton: #b51f20;
   padding: 0.2em 0 0.6em 0;
 }
 
-// Estilos de seleccion animal
 
 .contenedor_loteria {
   width: 98%;
@@ -259,9 +249,6 @@ $color-botton: #b51f20;
             grid-template-columns: repeat(4, 1fr);
 
             .option {
-              /*             width: 80px;
-            height: 80px;
- */
               margin: 10px;
               width: 25%;
               overflow: hidden;
@@ -276,7 +263,6 @@ $color-botton: #b51f20;
                 img {
                   vertical-align: middle;
                   width: 100%;
-                  /* background-color: green; */
                   border-radius: 15px;
                 }
               }
@@ -289,7 +275,6 @@ $color-botton: #b51f20;
               padding: 0;
               display: block;
               float: left;
-              /* fix specific for Firefox */
               position: absolute;
               left: -10000px;
               & + label {
@@ -484,7 +469,6 @@ $color-botton: #b51f20;
             padding: 0;
             display: block;
             float: left;
-            /* fix specific for Firefox */
             position: absolute;
             left: -10000px;
             & + label {
@@ -525,11 +509,7 @@ $color-botton: #b51f20;
             background-color: #fff;
             padding: 4px 8px;
             border-radius: 10px;
-            /* border: 1px solid #000; */
             text-align: center;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
             cursor: pointer;
           }
         }
