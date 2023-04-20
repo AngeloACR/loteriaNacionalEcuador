@@ -133,6 +133,12 @@ export class ConsultaComponent implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
+  async validarSorteo() {
+    try {
+      let validacion = await this.consulta.validarSorteo(this.sorteoGanador);
+    } catch (e: any) {throw new Error(e.error.message)}
+  }
+
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
@@ -140,30 +146,13 @@ export class ConsultaComponent implements OnInit {
         throw new Error(
           'Por favor, escribe la combinación que quieras consultar'
         );
-      /*       let aux = this.combinacion;
-      if (this.combinacion[this.combinacion.length - 1] == " ") {
-        aux = this.combinacion.slice(0, -2);
-      }
-
-      let combinaciones: Array<any> = aux.split(", ");
-      combinaciones = combinaciones.map((combinacion, index) => {
-        let auxLength = combinacion.length;
-        if (auxLength != 0) {
-          if (auxLength < this.maxDigits) {
-            let auxAdd = this.maxDigits - auxLength;
-            for (let i = 1; i <= auxAdd; i++) {
-              combinacion = `0${combinacion}`;
-            }
-          }
-          return combinacion;
-        }
-      });
- */ if (this.sorteoGanador == 'default') {
+       if (this.sorteoGanador == 'default') {
         this.dismissLoader();
         this.openError('Por favor, selecciona un sorteo');
 
         return;
       }
+      await this.validarSorteo();
       let combinaciones = [{ principal: this.combinacion, serie: this.serie }];
       let data: any = await this.consulta.recuperarBoletoGanador(
         this.sorteoGanador,

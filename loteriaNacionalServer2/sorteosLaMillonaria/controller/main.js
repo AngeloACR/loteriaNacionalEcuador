@@ -5,23 +5,39 @@ const Results = require("../models/main");
 const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
 const UltimoResultado = require("../models/ultimoResultado");
-const config = require("../../environments/production");
+const config = require("../../environments/test");
 const { sorteosLaMillonariaLogger } = require("../logging");
 
 /*************************** CONSULTA DE RESULTADOS************************/
 
 const mainController = {
-  validateSorteo: async (sorteo) => {
+  validateSorteo: async (numeroSorteo) => {
     try {
-      let status = (await Results.getResultadosBySorteo(sorteo)).status;
+      let master = await Master.findOne({ numeroSorteo });
 
-      if (!status)
+      if (!master || !master.resultados || !master.resultados.status)
         throw new Error(
           "La información del sorteo no esta disponible en este momento, por favor vuelve a intentarlo más tarde"
         );
-      return status;
+      return master.resultados.status;
     } catch (e) {
       throw new Error(e.message);
+    }
+  },
+
+  validateSorteoHttp: async (req, res) => {
+    try {
+      let sorteo = req.body.sorteo;
+      let response = await mainController.validateSorteo(sorteo);
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
     }
   },
   searchSorteosDisponibles: async (req, res) => {

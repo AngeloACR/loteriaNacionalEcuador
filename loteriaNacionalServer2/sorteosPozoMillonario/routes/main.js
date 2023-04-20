@@ -4,11 +4,12 @@ const mainController = require("../controller/main");
 
 mainRouter.post('/combinacionesDisponibles', mainController.searchCombinacionesDisponibles);
 mainRouter.get('/sorteosDisponibles', mainController.searchSorteosDisponibles);
+mainRouter.post("/validar", mainController.validateSorteoHttp);
 
 mainRouter.post('/ganador', mainController.buscarWinner);
 mainRouter.post('/plancha', mainController.buscarPlancha);
 mainRouter.get('/ultimosResultados', mainController.buscarUltimosResultados);
 mainRouter.put('/sorteosJugados', mainController.actualizarSorteosJugados);
 mainRouter.put('/ultimoResultado', mainController.actualizarUltimoResultado);
-
+ 
 module.exports = mainRouter;

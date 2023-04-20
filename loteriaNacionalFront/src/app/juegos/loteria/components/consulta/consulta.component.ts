@@ -127,6 +127,12 @@ export class ConsultaComponent implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
+  async validarSorteo() {
+    try {
+      let validacion = await this.consulta.validarSorteo(this.sorteoGanador);
+    } catch (e: any) {throw new Error(e.error.message)}
+  }
+
   async buscarBoletoGanador() {
     try {
       this.triggerLoader();
@@ -158,6 +164,7 @@ export class ConsultaComponent implements OnInit {
 
         return;
       }
+      await this.validarSorteo();
       let data: any = await this.consulta.recuperarBoletoGanador(
         this.sorteoGanador,
         combinaciones

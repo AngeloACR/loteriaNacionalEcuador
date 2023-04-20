@@ -10,7 +10,25 @@ export class ConsultaService {
   mySource = environment.source;
 
   constructor(private http: HttpClient) {}
-
+  async validarSorteo(sorteo: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/facilotto';
+      endpoint = `${endpoint}/validar`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+      };
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
   async recuperarSorteosJugados() {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
@@ -80,7 +98,10 @@ export class ConsultaService {
         (data: any) => {
           let response;
           let facilotto = data;
-          localStorage.setItem('facilottoUltimoResultado', JSON.stringify(facilotto));
+          localStorage.setItem(
+            'facilottoUltimoResultado',
+            JSON.stringify(facilotto)
+          );
           response = { tipo: 'facilotto', data: facilotto };
           resolve(response);
         },

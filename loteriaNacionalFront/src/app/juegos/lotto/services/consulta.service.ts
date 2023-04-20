@@ -10,7 +10,25 @@ export class ConsultaService {
   mySource = environment.source;
 
   constructor(private http: HttpClient) {}
-
+  async validarSorteo(sorteo: any) {
+    try {
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      let endpoint = '';
+      let address = '/lotto';
+      endpoint = `${endpoint}/validar`;
+      address = this.mySource + address + endpoint;
+      let body = {
+        sorteo,
+      };
+      let data: any = await this.http
+        .post(address, body, { headers: headers })
+        .toPromise();
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
   async recuperarSorteosJugados() {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
