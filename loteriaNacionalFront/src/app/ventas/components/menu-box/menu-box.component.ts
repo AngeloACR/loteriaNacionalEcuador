@@ -29,11 +29,11 @@ export class MenuBoxComponent implements OnInit {
   ticketsPozoRevancha: any;
 
   constructor(
-    private actRoute: ActivatedRoute,
     public lottery: VentasService,
     private paymentService: PagosService,
     private cart: CarritoService,
-
+    
+    private actRoute: ActivatedRoute,
     private router: Router
   ) {
     this.actRoute.params.subscribe((params) => {
