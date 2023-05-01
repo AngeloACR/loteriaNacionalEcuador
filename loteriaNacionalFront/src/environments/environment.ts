@@ -7,6 +7,7 @@ export const environment = {
 
   //source: 'http://localhost:100',
   source: 'https://ventas-api-prueba.loteria.com.ec',
+  url: 'https://loteria2.mongibello.tech'
 };
 /*
  * For easier debugging in development mode, you can import the following file

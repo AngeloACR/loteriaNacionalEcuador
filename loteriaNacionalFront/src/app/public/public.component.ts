@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-public',
@@ -7,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./public.component.scss'],
 })
 export class PublicComponent implements OnInit {
-  ventasLink: string = 'https://www.loteria.com.ec/#/loteria/compra_tus_juegos';
+  ventasLink: string = '/compra_tus_juegos';
   consultasLink: string = '/consultas/loteria';
   juegosLink: string = 'https://www.loteria.com.ec/#/juegos';
   token: string;

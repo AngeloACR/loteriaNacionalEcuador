@@ -11,6 +11,7 @@ import { AutoTabDirective } from './autotab.directive';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { getSpanishPaginatorIntl } from './paginacion-es';
 import { PositioningDirective } from './positioning.directive';
+import { MobileHeaderComponent } from './components/mobile-header/mobile-header.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,14 @@ import { PositioningDirective } from './positioning.directive';
     PositioningDirective,
 
     PaginatePipe,
+    MobileHeaderComponent,
   ],
   exports: [
     LoaderComponent,
     ErrorComponent,
     StylePaginatorDirective,
     AutoTabDirective,
+    MobileHeaderComponent,
     PositioningDirective,
     PaginatePipe,
   ],

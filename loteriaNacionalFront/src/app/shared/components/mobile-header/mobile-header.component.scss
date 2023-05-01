@@ -1,0 +1,26 @@
+#header {
+  background: #021151;
+  box-shadow: 0 0px 5px 0px rgb(0 0 0 / 30%);
+  display: none;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 70px;
+  #logo {
+    height: 51px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+  #back {
+    height: 51px;
+    padding-top: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #header {
+    display: flex;
+  }
+}

@@ -43,3 +43,10 @@
 - Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra, y mostrar que no se ha cargado la info del sorteo en caso negativo
 - Validar cada 3 horas si hay nuevos archivos en el servidor
 - Interfaz administrativa para gestion de codigos promocionales
+
+- Reducir tamaño de ventanas flotantes en movil
+- Boton de inicio que mande a pagina de loteria, no a ventas
+- Quitar popup en entorno de pruebas
+- En entorno de pruebas, poner boton de compras para movil direccionado a ventas-prueba
+- Poner el ancho del iframe igual a los externos
+- 

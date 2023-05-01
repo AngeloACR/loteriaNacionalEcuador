@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   token: string = '';
   isDetail: boolean = false;
   showPromo: boolean = false;
+  showHeader: boolean = true;
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     if (e.data && e.data.message == 'scrolling') {
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
         let data = decodeURIComponent(event.url);
 
         if (data.includes('inicio')) {
+          this.showHeader = false;
           this.showPromo = await this.admin.getPopupStatus();
         }
         if (
