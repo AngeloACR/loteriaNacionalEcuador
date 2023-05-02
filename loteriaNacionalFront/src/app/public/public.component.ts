@@ -20,7 +20,9 @@ export class PublicComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ventasLink = `${this.ventasLink}/${this.token}`
+  }
 
   checkToken(e: any) {
     if (!this.token) {
