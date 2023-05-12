@@ -51,14 +51,13 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
   toggleBox() {
-    this.isToggled = !this.isToggled;
+    this.isCart = !this.isCart;
     this.carrito = {
-      carritoDisplay: this.isToggled,
+      carritoDisplay: this.isCart,
     };
     this.cerrar = {
-      cerrarDisplay: this.isToggled,
+      cerrarDisplay: this.isCart,
     };
-    this.isCart = false;
   }
   isCart: boolean = false;
   toggleCart() {

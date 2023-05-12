@@ -45,8 +45,17 @@
 - Interfaz administrativa para gestion de codigos promocionales
 
 - Reducir tamaño de ventanas flotantes en movil
-- Boton de inicio que mande a pagina de loteria, no a ventas
+- Boton de inicio que mande a pagina de loteria, no a ventas - Listo
 - Quitar popup en entorno de pruebas
-- En entorno de pruebas, poner boton de compras para movil direccionado a ventas-prueba
-- Poner el ancho del iframe igual a los externos
-- 
+- En entorno de pruebas, poner boton de compras para movil direccionado a ventas-prueba - Listo
+- Poner el ancho del iframe igual a los externos - Listo
+
+- En home, los ultimos resultados asegurar que en pantallas anchas sean 2 filas de 3 - Listo
+- Al darle buscar boletin desde la consulta, la primera vez, hacer que haga scroll top. Pasa solo con loteria la primera vez
+- Agregar "x" a ventanas de popup, para tener el icono de cierre a la mano
+- Agregar vinculo al home en el logo (en movil) - LISTO
+- Revisar por que tarda tanto tiempo el checkToken
+- Botones del menu de venta, mejorar la estetica - LISTO
+- Boton de carrito flotante, quitar menu y que desplieuge de una el carrito - LISTO
+- El carrito en popup ponerle fondo - LISTO
+- Loader de pozo revancha en consulta cambiarlo por el correcto - LISTO

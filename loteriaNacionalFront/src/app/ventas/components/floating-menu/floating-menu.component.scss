@@ -1,6 +1,20 @@
 $color-botton: #28abe2;
 $fuente-subtitulo: "Monstserrat SemiBold";
 
+
+.blackBox {
+  position: fixed;
+  z-index: 8000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: height 0.2s ease-out;
+  overflow: hidden;
+  background-color: rgba(155, 155, 155, 0.5);
+  border: none;
+}
+
 .floatingBox {
   display: none;
 }

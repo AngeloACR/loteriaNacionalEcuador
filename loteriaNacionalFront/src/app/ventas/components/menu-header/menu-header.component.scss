@@ -42,7 +42,26 @@ $fuente-botones: "Monstserrat SemiBold";
     &.millonaria:hover img {
       width: 120px;
     }
+    &.pozo img {
+      width: 80px;
+    }
+    &.pozo:hover img {
+      width: 95px;
+    }
 
+    &.lotto img {
+      width: 80px;
+    }
+    &.lotto:hover img {
+      width: 95px;
+    }
+
+    &.loteria img {
+      width: 90px;
+    }
+    &.loteria:hover img {
+      width: 110px;
+    }
     &.juegosOnline {
       display: none;
     }
