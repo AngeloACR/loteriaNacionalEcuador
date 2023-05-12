@@ -3,7 +3,6 @@ const psdSorteos = require("../../psdLoteria/sorteos");
 const psdVentas = require("../../psdLoteria/ventas");
 const Results = require("../models/main");
 const Premios = require("../models/premio");
-const Master = require("../models/master");
 const Sorteos = require("../models/sorteo");
 const UltimoResultado = require("../models/ultimoResultado");
 const Master = require("../models/master");
