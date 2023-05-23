@@ -59,3 +59,8 @@
 - Boton de carrito flotante, quitar menu y que desplieuge de una el carrito - LISTO
 - El carrito en popup ponerle fondo - LISTO
 - Loader de pozo revancha en consulta cambiarlo por el correcto - LISTO
+
+- Agregar cuenta regresiva en cada sorteo que se consulta para la compra
+- Fondo del home gris
+- Editar estilo de pagina de compras
+- Implementación de descuentos

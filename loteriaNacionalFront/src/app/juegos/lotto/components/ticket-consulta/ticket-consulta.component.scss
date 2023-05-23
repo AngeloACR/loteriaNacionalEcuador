@@ -18,9 +18,6 @@ $color-lotto: #b51f20;
     margin: 0px auto;
     padding: 10px 8px;
 
-    .contenedor_informacion_ticket_izquierdo_logo {
-    }
-
     .contenedor_informacion_ticket_izquierdo_barra {
       img {
         width: 40px;
@@ -131,11 +128,11 @@ $color-lotto: #b51f20;
             background-color: #fff;
             font-family: $fuente-subtitulo;
 
-            border: 4px solid $color-lotto;
+            border: 3px solid $color-lotto;
             border-radius: 150px;
             padding: 12px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             color: #000;
             margin: 0px 2px;
             display: flex;
