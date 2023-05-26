@@ -5,6 +5,7 @@ import { VentasRoutingModule } from './ventas-routing.module';
 import { VentasComponent } from './ventas.component';
 import { ConfirmacionDeVentaComponent } from './components/confirmacion-de-venta/confirmacion-de-venta.component';
 import { VentaFinalizadaComponent } from './components/venta-finalizada/venta-finalizada.component';
+import { VentaFinalizadaComponent as VentaFinalizadaComponent2 } from './containers/venta-finalizada/venta-finalizada.component';
 import { DescripcionDeVentaComponent } from './components/descripcion-de-venta/descripcion-de-venta.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { InstantaneaComponent } from './components/instantanea/instantanea.component';
@@ -60,6 +61,7 @@ import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module'
     BuscarNumeroDirective,
     AgregarTicketDirective,
     BorrarTicketDirective,
+    VentaFinalizadaComponent2
 
   ],
   exports: [

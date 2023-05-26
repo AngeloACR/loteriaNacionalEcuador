@@ -7,6 +7,7 @@ import { LottoComponent } from './containers/lotto/lotto.component';
 import { MillonariaComponent } from './containers/millonaria/millonaria.component';
 import { PozoComponent } from './containers/pozo/pozo.component';
 import { VentasComponent } from './ventas.component';
+import { VentaFinalizadaComponent } from './containers/venta-finalizada/venta-finalizada.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       path: "pozo/:token",
       component: PozoComponent
     },
+    { path: "venta_finalizada/:token", component: VentaFinalizadaComponent },
     { path: "", component: HomeComponent },
     { path: ":token", component: HomeComponent }
   ],

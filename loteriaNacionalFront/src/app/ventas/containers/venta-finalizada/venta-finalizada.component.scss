@@ -1,0 +1,39 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-loteria: #7c91a8;
+
+.paymentBox {
+  width: 98%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 40px;
+  .mensajeButtonBox {
+    display: block;
+    padding: 15px;
+    border-radius: 30px;
+    font-family: $fuente-botones;
+    font-size: 16px;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    color: #fff;
+    background-color: green;
+    border: 1px solid green;
+
+    &:hover {
+      background-color: white;
+      color: green;
+      transition: background-color 0.4s ease;
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .paymentBox {
+    width: 95%;
+  }
+}

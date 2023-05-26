@@ -64,3 +64,4 @@
 - Fondo del home gris
 - Editar estilo de pagina de compras
 - Implementación de descuentos
+- Habilitar reanimacion de db con interfaz administrativa

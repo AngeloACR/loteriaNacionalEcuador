@@ -1,0 +1,16 @@
+<div class="paymentBox">
+  <div class="mensajeBox">
+    <h1>¡FELICIDADES!</h1>
+    <h3>Tu compra se realizo con exito. Te deseamos mucha suerte.</h3>
+  </div>
+  <app-descripcion-de-venta
+    [compra]="compra"
+    [user]="user"
+    [resumen]="false"
+    [codigosPromocionales]="codigosPromocionales"
+  ></app-descripcion-de-venta>
+
+  <button (click)="seguirJugando()" class="mensajeButtonBox">
+    ¡SIGUE JUGANDO!
+  </button>
+</div>
