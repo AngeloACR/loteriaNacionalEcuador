@@ -1,5 +1,5 @@
 const sorteosLoteriaNacionalServer = require("./loteriaNacionalServer");
-const config = require("../environments/production");
+const config = require("../environments/test");
 const cronjobs = require("./cronjobs");
 
 const sorteosLoteriaNacionalPort = config.sorteosLoteriaNacionalPort;

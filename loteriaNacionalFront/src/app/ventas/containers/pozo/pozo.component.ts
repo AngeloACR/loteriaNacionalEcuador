@@ -544,7 +544,8 @@ export class PozoComponent implements OnInit {
   async abrirFinalizar() {
     this.dismissCompras();
     await this.cart.borrarCarrito();
-    this.compraFinalizada = true;
+      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}`);
+
   }
   cancelarCompra() {
     this.dismissCompras();

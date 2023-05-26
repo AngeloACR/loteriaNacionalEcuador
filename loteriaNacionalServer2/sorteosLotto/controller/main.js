@@ -6,7 +6,7 @@ const Premios = require("../models/premio");
 const Master = require("../models/master");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
-const config = require("../../environments/production");
+const config = require("../../environments/test");
 const { sorteosLottoLogger } = require("../logging");
 
 /*************************** CONSULTA DE RESULTADOS************************/
