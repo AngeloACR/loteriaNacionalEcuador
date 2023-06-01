@@ -8,6 +8,20 @@
       "program": "${file}",
       "console": "integratedTerminal",
       "justMyCode": true
+    },
+    {
+      "type": "node-terminal",
+      "name": "Test auth",
+      "request": "launch",
+      "command": "node authApp.js",
+      "cwd": "${workspaceFolder}/loteriaNacionalServer2/auth/"
+    },
+    {
+      "type": "node-terminal",
+      "name": "Test loteria",
+      "request": "launch",
+      "command": "node loteriaNacionalApp.js",
+      "cwd": "${workspaceFolder}/loteriaNacionalServer2/sorteosLoteriaNacional/"
     }
   ]
 }

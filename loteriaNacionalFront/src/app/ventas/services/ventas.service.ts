@@ -103,15 +103,21 @@ export class VentasService {
 
     address = this.mySource + address + endpoint;
     return new Promise<Array<any>>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          localStorage.setItem('userData', JSON.stringify(data));
-          resolve(data);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
+      let data = JSON.parse(localStorage.getItem('userData')!);
+      if (true) {
+        // if (!data || data.resultCode) {
+        this.http.post(address, body, { headers: headers }).subscribe(
+          (data: any) => {
+            localStorage.setItem('userData', JSON.stringify(data));
+            resolve(data);
+          },
+          (error: any) => {
+            reject(new Error(error.error.message));
+          }
+        );
+      } else {
+        resolve(data);
+      }
     });
   }
 
@@ -213,11 +219,7 @@ export class VentasService {
     });
   }
 
-  reservarRevancha(
-    pozo: any,
-    revancha: any,
-    reservaId: any
-  ) {
+  reservarRevancha(pozo: any, revancha: any, reservaId: any) {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     let address = '/reservas';
@@ -300,24 +302,24 @@ export class VentasService {
         body['lotto'] = aux;
         break;
 
-        case 5:
-          aux = [
-            {
-              combinacion: boleto.combinacion1,
-              sorteo: sorteo,
-            },
-          ];
-          body['pozo'] = aux;
-          break;
-          case 17:
-            aux = [
-              {
-                combinacion: boleto.combinacion1,
-                sorteo: sorteo,
-              },
-            ];
-            body['pozoRevancha'] = aux;
-            break;
+      case 5:
+        aux = [
+          {
+            combinacion: boleto.combinacion1,
+            sorteo: sorteo,
+          },
+        ];
+        body['pozo'] = aux;
+        break;
+      case 17:
+        aux = [
+          {
+            combinacion: boleto.combinacion1,
+            sorteo: sorteo,
+          },
+        ];
+        body['pozoRevancha'] = aux;
+        break;
       case 14:
         aux = [
           {
