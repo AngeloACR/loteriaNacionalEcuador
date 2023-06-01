@@ -1,5 +1,5 @@
 const sorteosLaMillonariaServer = require("./laMillonariaServer");
-const config = require("../environments/local");
+const config = require("../environments/production");
 const cronjobs = require("./cronjobs");
 
 const sorteosLaMillonariaPort = config.sorteosLaMillonariaPort;

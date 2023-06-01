@@ -1,5 +1,5 @@
 const uploadsServer = require("./uploadsServer");
-const config = require("../environments/local");
+const config = require("../environments/production");
 
 const uploadsPort = config.uploadsPort;
 const uploadsApp = uploadsServer.init(uploadsPort);
