@@ -27,6 +27,7 @@ export class MenuBoxComponent implements OnInit {
   ticketsMillonaria: any;
   @Input() miniBox: boolean = false;
   ticketsPozoRevancha: any;
+  codigoPromocional: any = [];
 
   constructor(
     public lottery: VentasService,
@@ -207,6 +208,7 @@ export class MenuBoxComponent implements OnInit {
           );
           if (response.status) {
             if (response.instantanea.status) {
+              this.codigoPromocional = response.codigoPromocional;
               this.dismissCompras();
               this.instantaneas = response.instantanea.data;
               this.isInstantaneas = true;

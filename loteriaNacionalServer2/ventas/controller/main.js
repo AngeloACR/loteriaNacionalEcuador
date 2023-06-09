@@ -505,13 +505,13 @@ const ventasController = {
         );
       }
       /* GENERAR CODIGOS PROMOCIONALES */
-      /*       let codigoPromocionalResponse = await CodigosPromocionales.setCode(
+      let codigoPromocionalResponse = await CodigosPromocionales.setCode(
         parseFloat(totalVenta),
         personaId,
         loteriaVentaResponse.ticketId,
         ip
-      ); */
-      let codigoPromocionalResponse = "";
+      );
+      //let codigoPromocionalResponse = "";
       /* RESPUESTA DE API */
       let finalResponse = {
         data: apiVentaResponse,
