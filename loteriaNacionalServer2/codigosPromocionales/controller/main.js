@@ -87,20 +87,25 @@ const mainController = {
       );
       let venta = await Ventas.findOne({ ventaId });
       let cantidadDeCodigos = 0;
+
       let total =
-        venta.pozoRevancha && venta.pozoRevancha.length
-          ? venta.pozoRevancha.reduce((total, item) => {
-              return total + parseFloat(item.subtotal);
+        venta.loteria && venta.loteria.length
+          ? venta.loteria.reduce((total, item) => {
+              return item.sorteo == "6940"
+                ? total + parseFloat(item.subtotal)
+                : total;
             }, 0)
           : 0;
-      if (total >= 3.5 && total < 5.0) {
-        cantidadDeCodigos = 2;
-      } else if (total >= 5.0 && total < 9.0) {
-        cantidadDeCodigos = 4;
-      } else if (total >= 9.0) {
+      if (total >= 4.0 && total < 10.0) {
+        cantidadDeCodigos = 1;
+      } else if (total >= 10.0 && total < 20.0) {
+        cantidadDeCodigos = 3;
+      } else if (total >= 20.0) {
         cantidadDeCodigos = 8;
       }
-      /*let totalMillonaria =
+
+      /* 
+      let totalMillonaria =
         venta.millonaria && venta.millonaria.length
           ? venta.millonaria.reduce((total, item) => {
               return total + parseFloat(item.subtotal);
@@ -125,7 +130,7 @@ const mainController = {
         cantidadDeCodigos = 4;
       } else if (total >= 9.0) {
         cantidadDeCodigos = 8;
-      }*/
+      } */
       /*       
       if (totalVenta >= 5.0 && totalVenta < 10.0) {
         cantidadDeCodigos = 1;
@@ -148,12 +153,12 @@ const mainController = {
         userData.telefono,
         userData.nombre
       );
-      let info = await emailCodigosPromocionales.send(
+/*       let info = await emailCodigosPromocionales.send(
         userData.correo,
         userData.nombre,
         ventaId,
         codigos
-      );
+      ); */
       return codigosPromocionales;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {
