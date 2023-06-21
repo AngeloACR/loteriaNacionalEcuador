@@ -1,17 +1,16 @@
 <ventas-menu-header></ventas-menu-header>
 
 <div class="contenedor_loteria" *ngIf="showComponents">
+  <app-detalle-sorteo
+    class="infoBox"
+    titulo="Pozo Millonario"
+    color="pozo"
+    [sorteos]="sorteo"
+    [loteria]="5"
+    (emitir)="procesaEmitir($event)"
+  >
+  </app-detalle-sorteo>
   <div class="ventasBox">
-    <app-detalle-sorteo
-      class="infoBox"
-      titulo="Pozo Millonario"
-      color="pozo"
-      [sorteos]="sorteo"
-      [loteria]="5"
-      (emitir)="procesaEmitir($event)"
-    >
-    </app-detalle-sorteo>
-
     <div class="contendor_seleccion">
       <div class="contenedor_select_animales">
         <h3>Selecciona tus mascotas de la suerte</h3>
@@ -35,20 +34,7 @@
         </div>
       </div>
       <div class="selectBox">
-        <div class="contenedor_select">
-          <h3>¿Cómo quieres comprar?</h3>
-          <select
-            class="select_option"
-            name=""
-            id=""
-            [(ngModel)]="tipoSeleccion"
-          >
-            <option class="option" value="96">Selección individual</option>
-            <option class="option" value="5">5 Boletos al azar</option>
-            <option class="option" value="30">30 Boletos al azar</option>
-            <option class="option" value="50">50 Boletos al azar</option>
-          </select>
-        </div>
+
         <div class="numeros_suerte">
           <h3>Ingresa tu número de la suerte:</h3>
 
@@ -164,10 +150,12 @@
                     (click)="agregarRevancha(page_size * (page_number - 1) + i)"
                   />
                   <div class="contenedor_seleccion_revancha">
-                    <img src="assets/img/revancha-sombra.png" style="height: 120px;" alt="">
-                    <p style="width: 100% !important">
-                      Agregar (+$0.50)
-                    </p>
+                    <img
+                      src="assets/img/revancha-sombra.png"
+                      style="height: 120px"
+                      alt=""
+                    />
+                    <p style="width: 100% !important">Agregar (+$0.50)</p>
                     <div class="imagen_animal">
                       <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
                     </div>
@@ -204,26 +192,26 @@
 
     </div> -->
     </div>
-  </div>
 
-  <app-carrito
-    class="ticketScroller"
-    (emitirCompra)="comprar()"
-    (eliminarTodo)="deleteAllTickets()"
-    (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-    (deleteLottoTicket)="deleteLottoTicket($event)"
-    (deletePozoTicket)="deletePozoTicket($event)"
-    (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
-    (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-    [ticketsLoteria]="ticketsLoteria"
-    (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
-    [ticketsMillonaria]="ticketsMillonaria"
-    [ticketsPozoRevancha]="ticketsPozoRevancha"
-    [ticketsLotto]="ticketsLotto"
-    [ticketsPozo]="ticketsPozo"
-    tipoLoteria="pozo"
-  >
-  </app-carrito>
+    <app-carrito
+      class="ticketScroller"
+      (emitirCompra)="comprar()"
+      (eliminarTodo)="deleteAllTickets()"
+      (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+      (deleteLottoTicket)="deleteLottoTicket($event)"
+      (deletePozoTicket)="deletePozoTicket($event)"
+      (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+      (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+      [ticketsLoteria]="ticketsLoteria"
+      (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
+      [ticketsMillonaria]="ticketsMillonaria"
+      [ticketsPozoRevancha]="ticketsPozoRevancha"
+      [ticketsLotto]="ticketsLotto"
+      [ticketsPozo]="ticketsPozo"
+      tipoLoteria="pozo"
+    >
+    </app-carrito>
+  </div>
 </div>
 <app-floating-menu
   (emitirCompra)="comprar()"

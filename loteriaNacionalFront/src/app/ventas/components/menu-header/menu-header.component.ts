@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectorRef,
+  AfterContentChecked,
+} from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -15,25 +21,50 @@ export class MenuHeaderComponent implements OnInit {
   token?: string;
   usuario?: string;
   linkJuegosOnline?: string;
-  homeClass = {
-    home: this.home,
-  };
-  constructor(private actRoute: ActivatedRoute) {
+
+  selectedClass = [
+    {
+      selected: false,
+    },
+    {
+      selected: false,
+    },
+    {
+      selected: false,
+    },
+    {
+      selected: false,
+    },
+  ];
+  constructor(
+    private actRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+    ) {
+      this.actRoute.url.subscribe((url: any) => {
+        this.setSelected(url[0].path);
+      });
+
     this.actRoute.params.subscribe((params) => {
       this.token = params['token'];
     });
   }
-
+  
   ngOnInit() {
-    this.homeClass = {
-      home: this.home,
-    };
+    this.cdr.detectChanges();
     this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
     this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
     this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
     this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
-    this.linkJuegosOnline = `https://www.loteria.com.ec/#/juegos`;
+    this.cdr.markForCheck();
   }
+
+
+  setSelected(url: string) {
+    console.log(url);
+    let index = ['loteria', 'lotto', 'pozo', 'millonaria'].indexOf(url);
+    if (index != -1) this.selectedClass[index].selected = true;
+  }
+
   getLink(link: string) {
     if (!this.token) {
       return '/inicio';

@@ -1,9 +1,8 @@
 <div class="menuBox">
   <div class="menuInfo">
     <div class="menuSorteo">
-      <h1>SORTEO</h1>
+      <h1>ELIGE UN SORTEO</h1>
       <div class="menuItem">
-        Número:
         <select
           class="fechaItem"
           [(ngModel)]="seleccionado"
@@ -21,6 +20,26 @@
           </ng-container>
         </select>
       </div>
+    </div>
+    <div class="menuPremio">
+      <div class="menuItem" *ngIf="!isLoteria">
+        Premio:
+        <p>{{ premio }}</p>
+      </div>
+      <div class="menuItem" *ngIf="!isLoteria && isPozo">
+        Premio Revancha:
+        <p>{{ premioRevancha }}</p>
+      </div>
+      <div class="menuItem" *ngIf="isLoteria">
+        Premio al entero:
+        <p>{{ premioLoteria }}</p>
+      </div>
+      <div class="menuItem" *ngIf="isLoteria">
+        Premio a la fracción:
+        <p>{{ premio }}</p>
+      </div>
+    </div>
+    <div class="menuSorteo">
       <div class="menuItem">
         Fecha:
         <p>{{ fecha }}</p>
@@ -42,30 +61,6 @@
       <div class="menuItem" *ngIf="isLoteria">
         Precio de fracción:
         <p>{{ precio }}</p>
-      </div>
-    </div>
-    <div class="menuPremio">
-      <h1>PREMIOS</h1>
-
-      <div class="menuItem" *ngIf="!isLoteria">
-        Premio:
-        <p>{{ premio }}</p>
-      </div>
-      <div class="menuItem" *ngIf="!isLoteria && isPozo">
-        Premio Revancha:
-        <p>{{ premioRevancha }}</p>
-      </div>
-      <div class="menuItem" *ngIf="isLoteria">
-        Premio al entero:
-        <p>{{ premioLoteria }}</p>
-      </div>
-      <div class="menuItem" *ngIf="isLoteria">
-        Premio a la fracción:
-        <p>{{ premio }}</p>
-      </div>
-      <div class="menuItem" *ngIf="isLoteria">
-        Total de fracciones:
-        <p>{{ cantidadDeFracciones }}</p>
       </div>
     </div>
   </div>

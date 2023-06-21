@@ -1,33 +1,18 @@
 <ventas-menu-header></ventas-menu-header>
 
 <div class="contenedor_loteria" *ngIf="showComponents">
+  <app-detalle-sorteo
+    class="infoBox"
+    titulo="Loteria Nacional"
+    [sorteos]="sorteo"
+    color="loteria"
+    [loteria]="1"
+    (emitir)="procesaEmitir($event)"
+  >
+  </app-detalle-sorteo>
   <div class="ventasBox">
-    <app-detalle-sorteo
-      class="infoBox"
-      titulo="Loteria Nacional"
-      [sorteos]="sorteo"
-      color="loteria"
-      [loteria]="1"
-      (emitir)="procesaEmitir($event)"
-    >
-    </app-detalle-sorteo>
-
     <div class="contenedor_seleccion">
       <div class="selectBox">
-        <div class="contenedor_select">
-          <h3>¿Cómo quieres comprar?</h3>
-          <select
-            class="select_option"
-            name=""
-            id=""
-            [(ngModel)]="tipoSeleccion"
-          >
-            <option class="option" value="96">Selección individual</option>
-            <option class="option" value="5">5 Boletos al azar</option>
-            <option class="option" value="30">30 Boletos al azar</option>
-            <option class="option" value="50">50 Boletos al azar</option>
-          </select>
-        </div>
         <div class="numeros_suerte">
           <h3>Ingresa tu número de la suerte</h3>
           <div class="numeros">
@@ -185,26 +170,26 @@
       <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
     </div> -->
     </div>
-  </div>
 
-  <app-carrito
-    class="ticketScroller"
-    (emitirCompra)="comprar()"
-    (eliminarTodo)="deleteAllTickets()"
-    (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-    (deleteLottoTicket)="deleteLottoTicket($event)"
-    (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
-    (deletePozoTicket)="deletePozoTicket($event)"
-    (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
-    (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-    [ticketsPozoRevancha]="ticketsPozoRevancha"
-    [ticketsLoteria]="ticketsLoteria"
-    [ticketsMillonaria]="ticketsMillonaria"
-    [ticketsLotto]="ticketsLotto"
-    [ticketsPozo]="ticketsPozo"
-    tipoLoteria="loteria"
-  >
-  </app-carrito>
+    <app-carrito
+      class="ticketScroller"
+      (emitirCompra)="comprar()"
+      (eliminarTodo)="deleteAllTickets()"
+      (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+      (deleteLottoTicket)="deleteLottoTicket($event)"
+      (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+      (deletePozoTicket)="deletePozoTicket($event)"
+      (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
+      (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+      [ticketsPozoRevancha]="ticketsPozoRevancha"
+      [ticketsLoteria]="ticketsLoteria"
+      [ticketsMillonaria]="ticketsMillonaria"
+      [ticketsLotto]="ticketsLotto"
+      [ticketsPozo]="ticketsPozo"
+      tipoLoteria="loteria"
+    >
+    </app-carrito>
+  </div>
 </div>
 
 <app-loader

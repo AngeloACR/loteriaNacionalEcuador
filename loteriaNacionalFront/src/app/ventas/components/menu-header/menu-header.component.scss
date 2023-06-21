@@ -1,4 +1,4 @@
-$color-loteria: #28aae1;
+$color-loteria: #021151;
 $color-lotto: #b51f20;
 $color-pozo: #fae80c;
 $color-millonaria: #b51f20;
@@ -10,23 +10,22 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 .container {
-  width: 85%;
+  width: 100%;
   margin: auto;
 
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 
   .contenedor_loteria {
     display: flex;
-    align-items: center;
+    padding: 20px 0 0 0;
+    align-items: flex-start;
     justify-content: space-around;
 
-    width: 20%;
-    height: 50px;
-    margin: 20px 20px 20px 0;
-    box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);
-    border-radius: 45.5px;
+    width: 25%;
+    height: 70px;
+    margin: 0;
     font-family: "Helvetica";
     font-style: italic;
     font-size: 16px;
@@ -35,49 +34,62 @@ $fuente-botones: "Monstserrat SemiBold";
     text-decoration: none;
 
     color: #ffffff;
+    transition: height 0.5s ease-in-out;
+    &:hover,
+    &.selected {
+      height: 80px;
+      transition: height 0.5s ease-in-out;
+    }
+    .mobile{
+      background-color: white;
+      border-radius: 102px;
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+    }
+    
+    &.millonaria {
+      .mobile {
+        color: $color-millonaria;
+      }
+      img {
+        width: 110px;
+      }
+    }
+    &.pozo {
+      img {
+        margin-top: -23px;
+        width: 80px;
+      }
+      .mobile {
+        color: $color-pozo;
+      }
+    }
 
-    &.millonaria img {
-      width: 110px;
-    }
-    &.millonaria:hover img {
-      width: 120px;
-    }
-    &.pozo img {
-      width: 80px;
-    }
-    &.pozo:hover img {
-      width: 95px;
+    &.lotto {
+      .mobile {
+        color: $color-lotto;
+      }
+      img {
+        width: 80px;
+      }
     }
 
-    &.lotto img {
-      width: 80px;
-    }
-    &.lotto:hover img {
-      width: 95px;
-    }
-
-    &.loteria img {
-      width: 90px;
-    }
-    &.loteria:hover img {
-      width: 110px;
-    }
-    &.juegosOnline {
-      display: none;
+    &.loteria {
+      .mobile {
+        color: $color-loteria;
+      }
+      img {
+        width: 90px;
+      }
     }
 
     img {
       width: 70px;
       margin: 0;
-      transition: width 0.3s ease;
       background-color: transparent;
     }
 
-    &:hover img {
-      width: 80px;
-
-      transition: width 0.3s ease;
-    }
     .boton {
       padding: 5px 10px;
       border-radius: 30px;
@@ -91,143 +103,9 @@ $fuente-botones: "Monstserrat SemiBold";
     }
   }
 
-  &.home {
-    padding: 20px 0;
-    .contenedor_loteria {
-      width: 19%;
-      height: 170px !important;
-      font-size: 17px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      border-radius: 5px !important;
-
-      &:hover {
-        .mobile {
-          color: white !important;
-        }
-        &.loteria {
-          .mobile {
-            background-color: $color-loteria;
-          }
-        }
-        &.lotto {
-          .mobile {
-            background-color: $color-lotto;
-          }
-        }
-        &.pozo {
-          .mobile {
-            background-color: $color-pozo;
-          }
-        }
-        &.millonaria {
-          .mobile {
-            background-color: $color-millonaria;
-          }
-        }
-        &.juegosOnline {
-          .mobile {
-            background-color: #15295b;
-          }
-        }
-      }
-      .mobile {
-        text-decoration: none;
-        padding: 5px 20px;
-        background-color: white;
-        border-radius: 150px;
-        border: 1px solid white;
-      }
-      &.loteria {
-        img {
-          width: 50% !important;
-        }
-        img:hover {
-          width: 50% !important;
-        }
-        .mobile {
-          color: $color-loteria;
-        }
-      }
-      &.lotto {
-        img {
-          width: 50% !important;
-        }
-        img:hover {
-          width: 50% !important;
-        }
-        .mobile {
-          color: $color-lotto;
-        }
-      }
-      &.pozo {
-        img {
-          width: 50% !important;
-          margin-top: -30px;
-        }
-        img:hover {
-          width: 50% !important;
-        }
-        .mobile {
-          color: $color-pozo;
-          margin-top: -35px;
-        }
-      }
-      &.millonaria {
-        img {
-          width: 70% !important;
-        }
-        img:hover {
-          width: 70% !important;
-        }
-        .mobile {
-          color: $color-millonaria;
-        }
-      }
-      &.juegosOnline {
-        img {
-          width: 50% !important;
-        }
-        img:hover {
-          width: 50% !important;
-        }
-        .mobile {
-          color: #15295b;
-        }
-      }
-    }
-  }
   .active {
     display: none;
     transition: all 0.3s ease;
-  }
-  .title {
-    display: block !important;
-    font-family: "Helvetica";
-    font-style: italic;
-    width: 25%;
-    font-weight: 700;
-    font-size: 25px;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: none !important;
-    margin-right: 20px;
-    &.loteria {
-      border-bottom: 2px solid $color-loteria;
-    }
-
-    &.lotto {
-      border-bottom: 2px solid $color-lotto;
-    }
-
-    &.pozo {
-      border-bottom: 2px solid $color-pozo;
-    }
-
-    &.millonaria {
-      border-bottom: 2px solid $color-millonaria;
-    }
   }
 }
 
@@ -251,10 +129,6 @@ $fuente-botones: "Monstserrat SemiBold";
   background-color: $color-millonaria;
 }
 
-.juegosOnline {
-  color: #15295b;
-  background-color: #15295b;
-}
 @media screen and (max-width: 1000px) {
   .container {
     overflow-x: scroll;

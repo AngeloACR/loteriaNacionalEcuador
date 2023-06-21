@@ -185,22 +185,21 @@ $color-botton: #b51f20;
 // Estilos de seleccion animal
 
 .contenedor_loteria {
-  width: 98%;
-  margin: 20px auto;
+  width: 100%;
 
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 40px;
+  flex-wrap: wrap;
 
+  .infoBox {
+    width: 100%;
+  }
   .ventasBox {
     display: flex;
-    flex-direction: column;
     width: 70%;
-    .infoBox {
-      width: 100%;
-    }
     .contendor_seleccion {
-      width: 100%;
+      width: 70%;
       margin-right: 15px;
       display: flex;
       flex-direction: column;

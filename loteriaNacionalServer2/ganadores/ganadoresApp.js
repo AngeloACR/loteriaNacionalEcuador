@@ -1,5 +1,5 @@
 const ganadoresServer = require("./ganadoresServer");
-const config = require("../environments/production");
+const config = require("../environments/local");
 const cronjobs = require("./cronjobs");
 
 const ganadoresPort = config.ganadoresPort;

@@ -19,6 +19,7 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class MillonariaComponent implements OnInit {
   combinacionDeLaSuerte: string[] = ['', '', '', ''];
+  isLoading?: boolean = false;
 
   seleccionSeries: any;
   seriesTabs: any = [];
@@ -336,7 +337,6 @@ export class MillonariaComponent implements OnInit {
   }
 
   showComponents: boolean = false;
-  isLoading?: boolean;
   loadingMessage?: string;
 
   abrirResumen() {

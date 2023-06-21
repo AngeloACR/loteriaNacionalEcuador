@@ -1,5 +1,5 @@
 const ventasServer = require("./ventasServer");
-const config = require("../environments/production");
+const config = require("../environments/local");
 const cronjobs = require("./cronjobs");
 
 const ventasPort = config.ventasPort;

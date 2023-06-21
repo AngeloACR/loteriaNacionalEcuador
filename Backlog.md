@@ -65,6 +65,6 @@
 - Editar estilo de pagina de compras
 - Implementación de descuentos
 - Habilitar reanimacion de db con interfaz administrativa
-
+- Proteger con guards las rutas de compra
 - Documentacion sobre la infraestructura de la plataforma
 - Documentacion de incidencias
