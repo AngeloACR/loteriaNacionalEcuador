@@ -88,20 +88,13 @@ const mainController = {
       let venta = await Ventas.findOne({ ventaId });
       let cantidadDeCodigos = 0;
 
-      let total =
-        venta.loteria && venta.loteria.length
-          ? venta.loteria.reduce((total, item) => {
-              return item.sorteo == "6940"
-                ? total + parseFloat(item.subtotal)
-                : total;
-            }, 0)
-          : 0;
-      if (total >= 4.0 && total < 10.0) {
+      let total = parseFloat(venta.total)
+      if (total >= 2.0 && total < 4.0) {
         cantidadDeCodigos = 1;
-      } else if (total >= 10.0 && total < 20.0) {
+      } else if (total >= 4.0 && total < 6.0) {
         cantidadDeCodigos = 3;
-      } else if (total >= 20.0) {
-        cantidadDeCodigos = 8;
+      } else if (total >= 6.0) {
+        cantidadDeCodigos = 5;
       }
 
       /* 
