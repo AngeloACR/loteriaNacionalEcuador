@@ -88,7 +88,7 @@ const mainController = {
       let venta = await Ventas.findOne({ ventaId });
       let cantidadDeCodigos = 0;
 
-      let total = parseFloat(venta.total)
+      let total = parseFloat(venta.total);
       if (total >= 2.0 && total < 4.0) {
         cantidadDeCodigos = 1;
       } else if (total >= 4.0 && total < 6.0) {
@@ -146,12 +146,12 @@ const mainController = {
         userData.telefono,
         userData.nombre
       );
-/*       let info = await emailCodigosPromocionales.send(
+      let info = await emailCodigosPromocionales.send(
         userData.correo,
         userData.nombre,
         ventaId,
         codigos
-      ); */
+      );
       return codigosPromocionales;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {
