@@ -6,7 +6,7 @@ const Premios = require("../models/premio");
 const Sorteos = require("../models/sorteo");
 const UltimoResultado = require("../models/ultimoResultado");
 const Master = require("../models/master");
-const config = require("../../environments/test");
+const config = require("../../environments/production");
 const { sorteosLaMillonariaLogger } = require("../logging");
 
 /*************************** CONSULTA DE RESULTADOS************************/
