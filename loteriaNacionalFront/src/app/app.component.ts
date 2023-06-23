@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 
         if (data.includes('inicio')) {
           this.showHeader = false;
-          this.showPromo = await this.admin.getPopupStatus();
+          this.showPromo =false;
         }
         if (
           data.includes('compra_tus_juegos?token') ||

@@ -1,0 +1,267 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-lotto: #784494;
+
+.contenedor_ticket {
+  .logo_ticket {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    height: 80px;
+
+    img {
+      height: 100%;
+      margin: auto;
+    }
+    p {
+      margin: 0;
+      font-family: $fuente-titulo;
+      font-style: italic;
+      font-size: 16px;
+      color: white;
+    }
+  }
+
+  hr {
+    width: 90%;
+    border-color: $color-lotto;
+  }
+
+  .scroll {
+    overflow: auto;
+    img{
+      width: 100%;
+    }
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar:vertical {
+      width: 10px;
+    }
+
+    /* &::-webkit-scrollbar-button:increment,
+        &::-webkit-scrollbar-button {
+          display: none;
+        } */
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #fff;
+      border-radius: 20px;
+      border: 2px solid #fff;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    .contenedor_informacion_ticket {
+      width: 90%;
+      margin: 10px auto;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-sizing: border-box;
+
+      .contenedor_titulo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 9px;
+
+        .contenedor_logo {
+          margin-right: 15px;
+
+          img {
+            width: 120px;
+            height: 50px;
+          }
+        }
+
+        .contenedor_info {
+          display: flex;
+          padding: auto 10px;
+          flex-direction: column;
+
+          p {
+            font-family: $fuente-subtitulo;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .contenedor_monto_premio {
+        width: 100%;
+        margin: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        .monto_sorteo {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          padding-right: 14px;
+
+          p:nth-child(1) {
+            font-size: 32px;
+            -webkit-text-stroke: 2px $color-lotto;
+            color: #fff;
+            font-family: $fuente-titulo;
+            margin: 5px 0px;
+          }
+
+          p:nth-child(2) {
+            font-size: 14px;
+            margin: 0px;
+            margin-bottom: 5px;
+            color: $color-lotto;
+            font-family: $fuente-titulo;
+          }
+        }
+
+        .contenedor_numeros {
+          width: 50%;
+          margin: left;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          font-family: $fuente-subtitulo;
+
+          .numero {
+            background-color: #fff;
+            display: flex;
+            justify-content: space-around;
+            margin-left: 10px;
+          }
+
+          .contenedor_n {
+            display: flex;
+            flex-direction: column;
+
+            padding: 6px;
+
+            h5 {
+              margin: 5px auto;
+              font-size: 10px;
+            }
+
+            .numeros {
+              display: flex;
+              justify-content: space-around;
+              background-color: #fff;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+
+      .contenedor_codigo_barra {
+        display: flex;
+        margin: auto;
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .boton_comprar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      &:first-of-type {
+        width: 40%;
+        padding: 15px 15px !important;
+      }
+      width: 58%;
+      padding: 15px 30px;
+      background-color: $color-lotto;
+      border: 1px solid $color-lotto;
+      border-radius: 15px;
+      margin: 10px auto;
+      font-family: $fuente-botones;
+      color: #fff;
+      font-size: 10px;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+      &:hover {
+        background-color: #fff;
+        color: $color-lotto;
+      }
+    }
+  }
+
+  .texto {
+    color: black;
+    font-family: $fuente-titulo;
+    font-size: 24px;
+    text-align: center;
+    margin: 20px auto;
+
+    margin-top: 5px;
+  }
+
+  .ticket_entero {
+    padding-left: 13px;
+
+    h5 {
+      margin-top: 18px;
+      margin-bottom: 18px;
+      font-family: $fuente-titulo;
+      text-align: center;
+      font-size: 17px;
+      color: #fff;
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+      margin: 0 0 15px 0;
+
+      p {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        font-family: $fuente-subtitulo;
+        font-size: 14px;
+        color: #000;
+        margin: 0px 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .texto_premios {
+    width: 100%;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(4, auto);
+    text-align: left;
+
+    p {
+      font-size: 0.8rem;
+      color: black;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<div class="contenedor_ticket">
+  <div class="logo_ticket">
+    <img src="assets/img/pega3-sombra.png" alt="" />
+  </div>
+  <div>
+    <hr size="2px" />
+  </div>
+  <ng-container *ngIf="!isError">
+    <div class="scroll">
+      <img src="assets/pega3-ultimo.jpeg" alt="">
+      <!-- <pega3-ticket-consulta [ticket]="ticketGanador"></pega3-ticket-consulta> -->
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isError">
+    <div class="consultaError">
+      Los resultados no están disponibles por el momento, por favor revisa más
+      tarde
+    </div>
+  </ng-container>
+  <div class="boton_comprar">
+    <button (click)="verUltimoBoletin()">VER BOLETIN</button>
+  </div>
+</div>
