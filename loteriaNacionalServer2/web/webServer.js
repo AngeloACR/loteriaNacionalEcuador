@@ -5,7 +5,7 @@ const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
-const config = require("../environments/local");
+const config = require("../environments/production");
 
 module.exports.init = function (folder, thePath, port) {
   app.set("port", port);
