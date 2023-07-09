@@ -103,7 +103,7 @@ const mainController = {
         return {
           sorteo: parseInt(item.split(".")[0].split("-")[1]),
           tipoArchivo: item.split(".")[0].split("-")[0],
-          ruta: `https://ventas-api.loteria.com.ec/uploads/${item}`,
+          ruta: `https://ventas-api.loteria.com.ec/uploads/pega3/${item}`,
           nombre: item.split(".")[0],
         };
       });

@@ -90,7 +90,7 @@ export class ConsultaService {
   async getData() {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    let address = 'https://ventas-api.loteria.com.ec/uploads/pega3';
+    let address = 'https://ventas-api.loteria.com.ec/uploads/pega3Files';
     return new Promise((resolve, reject) => {
       this.http.get(address, { headers: headers }).subscribe(
         (data: any) => {

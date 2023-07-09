@@ -43,7 +43,7 @@ const routes: Routes = [
         component: MillonariaBoletinComponent,
       },
       {
-        path: 'pega3/boletin/',
+        path: 'pega3/boletin',
         component: Pega3BoletinComponent,
       },
       { path: 'loteria', component: LoteriaComponent },

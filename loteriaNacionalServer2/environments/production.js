@@ -61,7 +61,8 @@ module.exports = {
     "/home/lottoweb/boletines",
   ftpBoletosPath:
     "/home/lottoweb/boletos",
-  resultadosPath: "/home/lottoweb/resultados",
+    resultadosPath: "/home/lottoweb/resultados",
+    pega3Path: "/home/lottoweb/pega3",
 
   imgCorreosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",

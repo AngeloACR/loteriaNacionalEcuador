@@ -38,6 +38,7 @@ module.exports.init = function (port) {
   app.use("/boletos", express.static(path.resolve(config.ftpBoletosPath)));
   app.use("/correos", express.static(path.resolve(config.imgCorreosPath)));
   app.use("/resultados", express.static(path.resolve(config.resultadosPath)));
+  app.use("/pega3", express.static(path.resolve(config.pega3Path)));
   app.use("/", routes);
 
   return app;

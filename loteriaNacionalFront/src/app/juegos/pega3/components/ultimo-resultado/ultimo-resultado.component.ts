@@ -13,9 +13,9 @@ export class UltimoResultadoComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit() {
     try {
-      this.ultimoResultado = JSON.parse(
+      this.ultimoResultado = 
         localStorage.getItem('pega3UltimoResultado')!
-      );
+
       /*       let data = JSON.parse(localStorage.getItem('pega3UltimoResultado')!);
       this.ticketNumbers = data.ultimoResultadoFacilotto.combinacion1.split('');
       this.ticketGanador = {

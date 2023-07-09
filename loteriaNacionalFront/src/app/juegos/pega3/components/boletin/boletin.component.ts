@@ -20,8 +20,8 @@ export class BoletinComponent implements OnInit {
 
   async ngOnInit() {
     this.triggerLoader();
-    this.sorteosJugados = JSON.parse(localStorage.get('pega3Sorteos'));
-    this.boletines = JSON.parse(localStorage.get('pega3Boletines'));
+    this.sorteosJugados = JSON.parse(localStorage.getItem('pega3Sorteos')!);
+    this.boletines = JSON.parse(localStorage.getItem('pega3Boletines')!);
     this.boletin = this.boletines[0].ruta;
     this.showBox = true;
     this.dismissLoader();
