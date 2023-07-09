@@ -1,44 +1,46 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
-import { ConsultaService } from "../../services/consulta.service";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { ConsultaService } from '../../services/consulta.service';
 
 @Component({
   selector: 'pega3-boletin',
   templateUrl: './boletin.component.html',
-  styleUrls: ['./boletin.component.scss']
+  styleUrls: ['./boletin.component.scss'],
 })
 export class BoletinComponent implements OnInit {
-  boletinImagen: any;
+  boletin: any;
+  boletines: any;
+  sorteosJugados: any;
+  sorteoGanador: any;
   imgNotFound: boolean = false;
   showBox: boolean = false;
   sorteo: any;
   constructor(
-    private actRoute: ActivatedRoute,
-    private router: Router,
-    private consulta: ConsultaService
-  ) {
-    this.actRoute.params.subscribe(params => {
-      this.sorteo = params["sorteo"];
-    });
-  }
+  ) {}
 
   async ngOnInit() {
     this.triggerLoader();
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.boletinImagen = await this.consulta.obtenerBoletin(
-      this.sorteo
-    );
+    this.sorteosJugados = JSON.parse(localStorage.get('pega3Sorteos'));
+    this.boletines = JSON.parse(localStorage.get('pega3Boletines'));
+    this.boletin = this.boletines[0].ruta;
     this.showBox = true;
     this.dismissLoader();
   }
 
+  changeBoletin() {
+    let i = this.boletines.findIndex(
+      (o: any) => o.sorteo == this.sorteoGanador
+    );
+    this.boletin = this.boletines[i].ruta;
+  }
+
   handleImgError() {
-    console.log("Img not found");
+    console.log('Img not found');
     this.imgNotFound = true;
   }
 
   isLoading: boolean = false;
-  loadingMessage: String = "Buscando el boletin";
+  loadingMessage: String = 'Buscando el boletin';
 
   triggerLoader() {
     this.isLoading = true;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CarritoService } from './carrito.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {environment } from '../../../environments/environment';
+import {environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',

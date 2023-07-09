@@ -3,26 +3,22 @@
 </div>
 
 <div class="container_boletin" *ngIf="showBox">
- <!--  <img
-    [src]="boletinImagen"
-    *ngIf="!imgNotFound"
-    (error)="handleImgError()"
-    alt="Imagen del boletin de pega3"
-  />
-  <div class="boletinNotFound" *ngIf="imgNotFound">
-    <p>
-      Parece que aun no se ha cargado el boletín de este sorteo. Mientras el
-      equipo de Lotería Nacional se encarga de esto, paséate por
-      <a href="https://www.loteria.com.ec/casino" target="_parent"
-        >nuestros juegos online</a
-      >
-      y disfruta de todos los juegos que tenemos para ti.
-    </p>
-  </div> -->
-  <img
-    src="assets/pega3-boletin.jpeg"
-    alt="Imagen del boletin de pega3"
-  />
+  <div class="input_content">
+    <label for="">Selecciona el numero del sorteo:</label>
+    <select
+      name="sorteoGanador"
+      id="sorteoGanador"
+      placeholder=""
+      (change)="changeBoletin()"
+      [(ngModel)]="sorteoGanador"
+    >
+      <option value="default" selected disabled>Seleccione un sorteo</option>
+      <option *ngFor="let option of sorteosJugados" [value]="option.sorteo">
+        N° {{ option.sorteo }}
+      </option>
+    </select>
+  </div>
+  <img [src]="boletin" alt="Imagen del boletin de pega3" />
 </div>
 <app-loader
   loader="pega3"

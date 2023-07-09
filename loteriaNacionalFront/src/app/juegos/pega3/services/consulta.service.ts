@@ -87,21 +87,24 @@ export class ConsultaService {
     });
   }
 
-  async getUltimoResultado() {
+  async getData() {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    let address = '/pega3';
-    let endpoint = '/cache/ultimoResultado';
-    let auxAddress = this.mySource + address + endpoint;
+    let address = 'https://ventas-api.loteria.com.ec/uploads/pega3';
     return new Promise((resolve, reject) => {
-      this.http.get(auxAddress, { headers: headers }).subscribe(
+      this.http.get(address, { headers: headers }).subscribe(
         (data: any) => {
           let response;
           let pega3 = data;
           localStorage.setItem(
             'pega3UltimoResultado',
-            JSON.stringify(pega3)
+            pega3.ultimosResultados[0].ruta
           );
+          localStorage.setItem(
+            'pega3Boletines',
+            JSON.stringify(pega3.boletines)
+          );
+          localStorage.setItem('pega3Sorteos', JSON.stringify(pega3.sorteos));
           response = { tipo: 'pega3', data: pega3 };
           resolve(response);
         },

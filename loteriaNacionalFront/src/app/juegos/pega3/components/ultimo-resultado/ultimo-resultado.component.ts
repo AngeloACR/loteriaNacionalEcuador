@@ -9,10 +9,14 @@ export class UltimoResultadoComponent implements OnInit {
   ticketGanador?: any;
   ticketNumbers?: String[];
   isError: boolean = false;
+  ultimoResultado: string = '';
   constructor(private router: Router) {}
   ngOnInit() {
     try {
-/*       let data = JSON.parse(localStorage.getItem('pega3UltimoResultado')!);
+      this.ultimoResultado = JSON.parse(
+        localStorage.getItem('pega3UltimoResultado')!
+      );
+      /*       let data = JSON.parse(localStorage.getItem('pega3UltimoResultado')!);
       this.ticketNumbers = data.ultimoResultadoFacilotto.combinacion1.split('');
       this.ticketGanador = {
         ticketIndex: data.ultimoResultadoFacilotto.codigo,
@@ -28,9 +32,8 @@ export class UltimoResultadoComponent implements OnInit {
   }
 
   verUltimoBoletin() {
-    let sorteo = "1";
     //let sorteo = this.ticketGanador.numeroSorteo;
-    this.router.navigateByUrl(`/consultas/pega3/boletin/${sorteo}`);
+    this.router.navigateByUrl(`/consultas/pega3/boletin`);
   }
   verResultados() {
     this.router.navigateByUrl(`/consultas/pega3`);

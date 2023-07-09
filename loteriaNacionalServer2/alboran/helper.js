@@ -1,6 +1,6 @@
 const https = require("https");
 var { alboranError } = require("./errors");
-const config = require("../environments/production");
+const config = require("../environments/local");
 const { alboranLogger } = require("./logging");
 
 let alboranHost = config.alboranHost;
@@ -32,19 +32,13 @@ module.exports.alboranRequest = async (data, endpoint) => {
           });
 
           res.on("end", async function () {
-            if (res.statusCode != 200) {
+            if (![200, 201, 202, 203, 204].includes(res.statusCode)) {
               let errorData = {
                 output: body,
                 input: data,
-                function: "alboranRequest",
+                function: "httpsRequest",
               };
-              reject(
-                new alboranError(
-                  "Ocurrio un error, por favor intente más tarde",
-                  "alboran",
-                  errorData
-                )
-              );
+              reject(new Error(body, "helper", errorData));
             } else {
               let response = body == "" ? "" : JSON.parse(body);
               let logData = {
