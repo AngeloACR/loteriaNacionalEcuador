@@ -53,7 +53,7 @@ module.exports.init = function (port) {
       },
     })
     );
-    app.use("/", routes);
     app.use("/cache", cache);
+    app.use("/", routes);
     return app;
   };
