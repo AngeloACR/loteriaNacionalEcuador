@@ -58,9 +58,9 @@ module.exports = {
   emailRemitente: "ayuda@loteria.com.ec",
   nombreRemitente: "Asistencia Loteria",
   ftpBoletinesPath:
-    "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletines",
+    "/home/lottoweb/boletines",
   ftpBoletosPath:
-    "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
+    "/home/lottoweb/boletos",
   resultadosPath: "/home/lottoweb/resultados",
 
   imgCorreosPath:
