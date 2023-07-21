@@ -4,7 +4,11 @@ const Config = require("../models/config");
 const Ventas = require("../../ventas/models/main");
 const emailCodigosPromocionales = require("../../correos/codigoPromocional");
 const { codigosPromocionalesLogger } = require("../logging");
+<<<<<<< HEAD
 const config = require("../../environments/local");
+=======
+const config = require("../../environments/production");
+>>>>>>> promo-padres-production
 const fs = require("fs").promises;
 const path = require("path");
 const mainController = {
@@ -88,20 +92,13 @@ const mainController = {
       let venta = await Ventas.findOne({ ventaId });
       let cantidadDeCodigos = 0;
 
-      let total =
-        venta.loteria && venta.loteria.length
-          ? venta.loteria.reduce((total, item) => {
-              return item.sorteo == "6940"
-                ? total + parseFloat(item.subtotal)
-                : total;
-            }, 0)
-          : 0;
-      if (total >= 4.0 && total < 10.0) {
+      let total = parseFloat(venta.total);
+      if (total >= 2.0 && total < 4.0) {
         cantidadDeCodigos = 1;
-      } else if (total >= 10.0 && total < 20.0) {
+      } else if (total >= 4.0 && total < 6.0) {
         cantidadDeCodigos = 3;
-      } else if (total >= 20.0) {
-        cantidadDeCodigos = 8;
+      } else if (total >= 6.0) {
+        cantidadDeCodigos = 5;
       }
 
       /* 
@@ -153,12 +150,12 @@ const mainController = {
         userData.telefono,
         userData.nombre
       );
-/*       let info = await emailCodigosPromocionales.send(
+      let info = await emailCodigosPromocionales.send(
         userData.correo,
         userData.nombre,
         ventaId,
         codigos
-      ); */
+      );
       return codigosPromocionales;
     } catch (e) {
       codigosPromocionalesLogger.error("generate.error", {

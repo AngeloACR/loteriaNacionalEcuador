@@ -14,6 +14,7 @@ import { PozoBoletinComponent } from './containers/pozo-boletin/pozo-boletin.com
 import { PozoComponent } from './containers/pozo/pozo.component';
 import { RevanchaBoletinComponent } from './containers/revancha-boletin/revancha-boletin.component';
 import { RevanchaComponent } from './containers/revancha/revancha.component';
+import { Pega3BoletinComponent } from './containers/pega3-boletin/pega3-boletin.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'millonaria/boletin/:sorteo',
         component: MillonariaBoletinComponent,
+      },
+      {
+        path: 'pega3/boletin',
+        component: Pega3BoletinComponent,
       },
       { path: 'loteria', component: LoteriaComponent },
       { path: 'lotto', component: LottoComponent },

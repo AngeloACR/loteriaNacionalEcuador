@@ -4,7 +4,12 @@ const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
+<<<<<<< HEAD
 const config = require("../environments/local");
+=======
+const config = require("../environments/production");
+const routes = require("./routes/main");
+>>>>>>> promo-padres-production
 var path = require("path");
 module.exports.init = function (port) {
   app.set("port", port);
@@ -37,6 +42,8 @@ module.exports.init = function (port) {
   app.use("/boletos", express.static(path.resolve(config.ftpBoletosPath)));
   app.use("/correos", express.static(path.resolve(config.imgCorreosPath)));
   app.use("/resultados", express.static(path.resolve(config.resultadosPath)));
+  app.use("/pega3", express.static(path.resolve(config.pega3Path)));
+  app.use("/", routes);
 
   return app;
 };

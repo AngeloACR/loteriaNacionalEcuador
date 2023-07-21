@@ -1,0 +1,27 @@
+<div class="contenedor_informacion_ticket">
+  <p>Juego: <span>Lotto</span></p>
+
+  <p>
+    Sorteo: <span>{{ sorteoNumber }}</span>
+  </p>
+  <p>
+    Fecha: <span>{{ date }}</span>
+  </p>
+  <p>
+    Combinación principal: <span>{{ ticket!.combinacion1 }}</span>
+  </p>
+  <p *ngIf="ticket!.combinacion3 != ''">
+    {{ sorteo!.combinacion3 }}: <span>{{ ticket!.combinacion3 }}</span>
+  </p>
+  <p *ngIf="ticket!.combinacion2 != ''">
+    {{ sorteo!.combinacion2 }}: <span>{{ ticket!.combinacion2 }}</span>
+  </p>
+  <p *ngIf="ticket!.combinacion4 != ''">
+    {{ sorteo!.combinacion4 }}: <span>{{ ticket!.combinacion4 }}</span>
+  </p>
+  <p *ngIf="ticket!.combinacion5 && ticket!.combinacion5 != ''">
+    {{ sorteo!.combinacion5 }}: <span>{{ antojito!.nombre }}</span>
+  </p>
+  <img src="assets/trash.svg" class="trash" (click)="deleteTicket()" alt="" />
+  <img class="logoTicket" src="assets/img/pega3-sombra.png" alt="" />
+</div>

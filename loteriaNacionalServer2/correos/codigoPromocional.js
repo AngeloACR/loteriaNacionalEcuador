@@ -1,4 +1,5 @@
 const config = require("../environments/local");
+
 const fs = require("fs");
 const path = require("path");
 const mailjet = require("node-mailjet").connect(
@@ -42,9 +43,9 @@ module.exports.send = async (email, nombre, ventaId, codigos) => {
             codigo8: codigos[7],
           },
           TemplateLanguage: true,
-          Subject: "Participa en el sorteo por un Ipad Air.",
+          Subject: "Participa en el sorteo por un PS5.",
           HTMLPart: htmlTemplate,
-          CustomID: "SorteoIpad",
+          CustomID: "SorteoPS5",
         },
       ],
     });

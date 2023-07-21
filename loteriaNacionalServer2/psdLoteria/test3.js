@@ -2,6 +2,7 @@ const fs = require("fs").promises;
 const auth = require("./auth");
 const juegos = require("./juegos");
 const config = require("../environments/local");
+
 function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

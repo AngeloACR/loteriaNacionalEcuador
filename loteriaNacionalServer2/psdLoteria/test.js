@@ -6,6 +6,7 @@ const ventas = require("./ventas");
 const reservas = require("./reservas");
 const config = require("../environments/local");
 
+
 (async () => {
   try {
     //let data = await auth.authTest("0951234566", "Pass1234!");

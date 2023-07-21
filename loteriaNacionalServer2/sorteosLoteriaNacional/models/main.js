@@ -83,7 +83,7 @@ resultadoLoteriaSchema.statics = {
   },
   addResultado: async function (element) {
     try {
-      let newResultado = new this.create(element);
+      let newResultado = await this.create(element);
       let response = {
         status: true,
         values: newResultado,
