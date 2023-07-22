@@ -23,44 +23,36 @@
     </div>
     <div class="menuPremio">
       <div class="menuItem" *ngIf="!isLoteria">
-        Premio:
-        <p>{{ premio }}</p>
+        <h2 class="premioPrincipal">Premio</h2>
+        <p class="montoPrincipal">{{ premio }}</p>
       </div>
       <div class="menuItem" *ngIf="!isLoteria && isPozo">
-        Premio Revancha:
-        <p>{{ premioRevancha }}</p>
+        <h2 class="premioPrincipal">Premio Revancha</h2>
+        <p class="montoPrincipal">{{ premioRevancha }}</p>
       </div>
       <div class="menuItem" *ngIf="isLoteria">
-        Premio al entero:
-        <p>{{ premioLoteria }}</p>
+        <h2 class="premioPrincipal">Premio al entero</h2>
+        <p class="montoPrincipal">{{ premioLoteria }}</p>
       </div>
       <div class="menuItem" *ngIf="isLoteria">
-        Premio a la fracción:
-        <p>{{ premio }}</p>
+        <h2 class="premioSecundario">Premio a la fracción</h2>
+        <p class="montoSecundario">{{ premio }}</p>
       </div>
     </div>
-    <div class="menuSorteo">
-      <div class="menuItem">
-        Fecha:
-        <p>{{ fecha }}</p>
-      </div>
-      <div class="menuItem">
-        Hora:
-        <p>{{ hora }}</p>
+    <div class="menuDetalles">
+      <div class="menuItem fechaSorteo">
+        <p>SORTEO EN {{ days }} y {{ hours }}</p>
       </div>
 
       <div class="menuItem" *ngIf="!isLoteria">
-        Precio:
-        <p>{{ precio }}</p>
+        <p class="precioSorteo">Precio por boleto {{ precio }}</p>
       </div>
       <div class="menuItem" *ngIf="!isLoteria && isPozo">
-        Precio Revancha:
-        <p>{{ precioRevancha }}</p>
+        <p class="precioSorteo">Precio Revancha {{ precioRevancha }}</p>
       </div>
 
       <div class="menuItem" *ngIf="isLoteria">
-        Precio de fracción:
-        <p>{{ precio }}</p>
+        <p class="precioSorteo">Precio por fracción {{ precio }}</p>
       </div>
     </div>
   </div>

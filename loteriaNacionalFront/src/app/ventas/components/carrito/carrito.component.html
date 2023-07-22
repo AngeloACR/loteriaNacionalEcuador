@@ -1,6 +1,7 @@
-<div class="contenedor_ticket">
+<div class="contenedor_carrito">
   <div class="logo_ticket">
-    <img [src]="logoPath" alt="" />
+    <p>MIS BOLETOS</p>
+    <img src="assets/carrito.png" alt="" />
   </div>
   <div>
     <hr
@@ -22,6 +23,58 @@
       ganar con nosotros!
     </div>
   </div>
+
+  <ng-container
+    *ngIf="
+      checkTicketsLoteria() ||
+      checkTicketsLotto() ||
+      checkTicketsPozo() ||
+      checkTicketsLaMillonaria() ||
+      checkTicketsPozoRevancha()
+    "
+  >
+    <div>
+      <hr
+        size="2px"
+        [ngClass]="{
+          fondoLoteria: isLoteriaNacional,
+          fondoLotto: isLotto,
+          fondoPozo: isPozoMillonario,
+          fondoMillonaria: isLaMillonaria
+        }"
+      />
+    </div>
+    <div class="totalsBox">Total: {{ total }}</div>
+    <div *ngIf="hasDiscount(totalConDesc)" class="totalsBox">
+      Total con descuento: {{ totalConDesc }}
+    </div>
+
+    <div>
+      <hr
+        size="2px"
+        [ngClass]="{
+          fondoLoteria: isLoteriaNacional,
+          fondoLotto: isLotto,
+          fondoPozo: isPozoMillonario,
+          fondoMillonaria: isLaMillonaria
+        }"
+      />
+    </div>
+    <div class="boton_comprar">
+      <button class="botonEliminar" (click)="eliminar()">LIMPIAR</button>
+      <button
+        (click)="comprar()"
+        [ngClass]="{
+          fondoLoteria: isLoteriaNacional,
+          fondoLotto: isLotto,
+          fondoPozo: isPozoMillonario,
+          fondoMillonaria: isLaMillonaria
+        }"
+      >
+        COMPRAR
+      </button>
+    </div>
+  </ng-container>
   <div
     class="detailBox"
     *ngIf="seleccionadosCarrito && seleccionadosCarrito.length"
@@ -73,55 +126,4 @@
       </ng-container>
     </div>
   </div>
-  <ng-container
-    *ngIf="
-      checkTicketsLoteria() ||
-      checkTicketsLotto() ||
-      checkTicketsPozo() ||
-      checkTicketsLaMillonaria() ||
-      checkTicketsPozoRevancha()
-    "
-  >
-    <div>
-      <hr
-        size="2px"
-        [ngClass]="{
-          fondoLoteria: isLoteriaNacional,
-          fondoLotto: isLotto,
-          fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
-        }"
-      />
-    </div>
-    <div class="totalsBox">Total: {{ total }}</div>
-    <div *ngIf="hasDiscount(totalConDesc)" class="totalsBox">
-      Total con descuento: {{ totalConDesc }}
-    </div>
-
-    <div>
-      <hr
-        size="2px"
-        [ngClass]="{
-          fondoLoteria: isLoteriaNacional,
-          fondoLotto: isLotto,
-          fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
-        }"
-      />
-    </div>
-    <div class="boton_comprar">
-      <button class="botonEliminar" (click)="eliminar()">BORRAR TODO</button>
-      <button
-        (click)="comprar()"
-        [ngClass]="{
-          fondoLoteria: isLoteriaNacional,
-          fondoLotto: isLotto,
-          fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
-        }"
-      >
-        COMPRAR
-      </button>
-    </div>
-  </ng-container>
 </div>

@@ -3,11 +3,8 @@ const UltimosResultados = require("../models/ultimoResultado");
 const psdAuth = require("../../psdLoteria/auth");
 const psdSorteos = require("../../psdLoteria/sorteos");
 const redis = require("../../cache");
-<<<<<<< HEAD
 const config = require("../../environments/local");
-=======
-const config = require("../../environments/production");
->>>>>>> promo-padres-production
+
 
 const cacheController = {
   getUltimoResultado: async (req, res) => {

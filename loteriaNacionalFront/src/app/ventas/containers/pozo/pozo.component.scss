@@ -22,6 +22,7 @@ $color-revancha: #fae80c;
   .ventasBox {
     display: flex;
     width: 100%;
+    justify-content: space-between;
     .contendor_seleccion {
       width: 70%;
       margin-right: 15px;

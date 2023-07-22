@@ -34,7 +34,8 @@ $color-botton: #28aae1;
 
 .menuBox {
   /* Rectangle 46 */
-
+  background-image: url("/assets/fondoSorteo.png");
+  background-size: cover;
   width: 100%;
   display: flex;
   align-items: center;
@@ -45,22 +46,27 @@ $color-botton: #28aae1;
     width: 100%;
     //min-width: 650px;
     display: flex;
-    background: #ffffff;
-    box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.25);
-    border-radius: 25px;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
     padding: 15px;
     .menuSorteo {
       width: 30%;
       padding: 10px;
       h1 {
-        width: 100%;
-        font-weight: bold;
+        /* ELIGE UN SORTEO */
+
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 30px;
+        text-transform: uppercase;
+
+        color: #ffffff;
         text-align: center;
-        margin: 0;
+        text-shadow: 1px 1px 0px #000000;
       }
 
       .menuItem {
-        height: 40px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -70,7 +76,6 @@ $color-botton: #28aae1;
         font-family: $fuente-subtitulo;
         background-color: transparent;
         margin: 0 0 4px 0;
-        font-style: italic;
 
         select {
           cursor: pointer;
@@ -93,21 +98,18 @@ $color-botton: #28aae1;
 
         .fechaItem {
           width: 100%;
-          min-width: 220px;
-          max-width: 320px;
           display: block;
           font-size: 20px;
           font-family: $fuente-parrafo;
           font-weight: 400;
           color: #444;
-          background-color: #f2f2f2;
+          background-color: #ffffff;
           line-height: 1.3;
           padding: 4px;
           margin: 0 0 0 10px;
           box-sizing: border-box;
-          border: 1px solid #aaa;
+          border: 3px solid #021151;
           box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
-          border-radius: 0.3em;
           text-align: center;
           &:hover {
             border-color: #888;
@@ -121,14 +123,77 @@ $color-botton: #28aae1;
     .menuPremio {
       width: 30%;
       padding: 10px;
-      h1 {
-        width: 100%;
-        font-weight: bold;
-        text-align: center;
-        margin: 0;
-      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       .menuItem {
-        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        padding: 5px;
+        font-size: 20px;
+        font-family: $fuente-subtitulo;
+        background-color: transparent;
+        margin: 0 0 4px 0;
+        .premioPrincipal {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 24px;
+          text-align: center;
+          text-transform: uppercase;
+
+          color: #031252;
+          margin: 0;
+        }
+
+        .montoPrincipal {
+          font-weight: 700;
+          font-size: 55px;
+          line-height: 67px;
+          /* identical to box height */
+          text-align: center;
+          text-transform: uppercase;
+
+          color: #ffffff;
+
+          text-shadow: 1px 1px 0px #000000;
+          margin: 0;
+        }
+
+        .premioSecundario {
+          /* PREMIO POR FRACCIÓN */
+
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 18px;
+          text-align: center;
+          text-transform: uppercase;
+
+          color: #031252;
+          margin: 0;
+        }
+        .montoSecundario {
+          font-weight: 700;
+          font-size: 30px;
+          line-height: 37px;
+          /* identical to box height */
+          text-align: center;
+          text-transform: uppercase;
+
+          color: #ffffff;
+
+          text-shadow: 1px 1px 0px #000000;
+          margin: 0;
+        }
+      }
+    }
+    .menuDetalles {
+      width: 30%;
+      padding: 10px;
+      .menuItem {
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -137,14 +202,33 @@ $color-botton: #28aae1;
         font-size: 20px;
         font-family: $fuente-subtitulo;
         background-color: transparent;
-        margin: 0 0 4px 0;
-        font-style: italic;
+        &.fechaSorteo {
+          margin: 0 0 4px 0;
+          background: #d12a2a;
+          border-radius: 30px;
+        }
 
         p {
-          font-size: 20px;
-          margin: 3px 3px 3px 10px;
-          font-family: $fuente-parrafo;
-          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 22px;
+          /* identical to box height */
+          text-align: center;
+          width: 100%;
+          color: #ffffff;
+          &.precioSorteo {
+            /* PRECIO POR BOLETO $2.00 */
+
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            /* identical to box height */
+            text-transform: uppercase;
+
+            color: #ffffff;
+
+            text-shadow: 1px 1px 0px #000000;
+          }
         }
       }
     }

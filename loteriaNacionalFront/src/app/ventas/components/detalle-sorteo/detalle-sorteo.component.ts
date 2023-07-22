@@ -32,7 +32,8 @@ export class DetalleSorteoComponent implements OnInit {
   imgNotFound: boolean = true;
   tipoLoteria?: number;
   fondoMillonaria: boolean = false;
-
+  days: any;
+  hours: any;
   constructor(
     private ventas: VentasService,
     private changeDetectorRef: ChangeDetectorRef
@@ -86,7 +87,33 @@ export class DetalleSorteoComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
     this.boleto = '';
     this.fecha = (this.seleccionado as sorteo).fecha.split(' ')[0];
+    let anio = parseInt(
+      (this.seleccionado as sorteo).fecha.split(' ')[0].split('/')[2]
+    );
+    let mes =
+      parseInt(
+        (this.seleccionado as sorteo).fecha.split(' ')[0].split('/')[1]
+      ) - 1;
+    let dia = parseInt(
+      (this.seleccionado as sorteo).fecha.split(' ')[0].split('/')[0]
+    );
     this.hora = (this.seleccionado as sorteo).fecha.split(' ')[1];
+    let horas = parseInt(
+      (this.seleccionado as sorteo).fecha.split(' ')[1].split(':')[0]
+    );
+    let minutos = parseInt(
+      (this.seleccionado as sorteo).fecha.split(' ')[1].split(':')[1]
+    );
+    let drawDate = new Date(anio, mes, dia, horas, minutos);
+    let today = new Date();
+    console.log(drawDate, today);
+    let difference = Math.floor(
+      Math.abs(drawDate.getTime() - today.getTime()) / 36e5
+    );
+    this.days = Math.floor(difference / 24);
+    this.hours = Math.floor(difference % 24);
+    this.days = this.days == 1 ? `${this.days} DÍA` : `${this.days} DÍAS`;
+    this.hours = this.hours == 1 ? `${this.hours} HORA` : `${this.hours} HORAS`;
     let auxPremio = (this.seleccionado as sorteo).valorPremioPrincipal;
     let auxPremioRevancha = (this.seleccionado as sorteo).sorteoRevancha
       .valorPremioPrincipal;

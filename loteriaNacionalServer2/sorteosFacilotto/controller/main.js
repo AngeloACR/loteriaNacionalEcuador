@@ -6,11 +6,8 @@ const Premios = require("../models/premio");
 const Master = require("../models/master");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
-<<<<<<< HEAD
 const config = require("../../environments/local");
-=======
-const config = require("../../environments/production");
->>>>>>> promo-padres-production
+
 const { response } = require("express");
 const { sorteosLottoLogger } = require("../logging");
 

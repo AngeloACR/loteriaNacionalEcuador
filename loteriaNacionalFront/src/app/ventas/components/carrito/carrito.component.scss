@@ -3,7 +3,7 @@ $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
-$color-botton: #28AAE1;
+$color-botton: #28aae1;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
 $color-millonaria: #b51f20;
@@ -29,17 +29,12 @@ $color-revancha: #ffe401;
   background-color: $color-revancha;
   border: 1px solid $color-revancha;
 }
-.contenedor_ticket {
+.contenedor_carrito {
   width: 100%;
   min-width: 305px;
-  border-radius: 30px;
   overflow: hidden;
   padding: 15px;
-  background-color: white;
-
-  -webkit-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 5px 0px 18px 2px rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
 
   .detailBox {
     overflow-y: scroll;
@@ -93,10 +88,22 @@ $color-revancha: #ffe401;
     margin: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100px;
+    p {
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 26px;
+      text-align: center;
 
+      color: #031252;
+    }
     img {
-      height: 100px;
-      margin: auto;
+      position: absolute;
+      right: 10px;
+      width: 50px;
+      height: 50px;
       margin: 15px auto;
     }
   }
@@ -178,7 +185,7 @@ $color-revancha: #ffe401;
         transition: background-color 0.5s ease;
       }
     }
-    .botonEliminar{
+    .botonEliminar {
       background-color: black;
       border: 1px solid black;
       &:hover {
@@ -196,7 +203,5 @@ $color-revancha: #ffe401;
         height: 10vh;
       }
     }
-  
   }
-  
 }

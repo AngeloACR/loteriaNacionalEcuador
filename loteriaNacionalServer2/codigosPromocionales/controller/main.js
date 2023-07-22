@@ -4,11 +4,8 @@ const Config = require("../models/config");
 const Ventas = require("../../ventas/models/main");
 const emailCodigosPromocionales = require("../../correos/codigoPromocional");
 const { codigosPromocionalesLogger } = require("../logging");
-<<<<<<< HEAD
 const config = require("../../environments/local");
-=======
-const config = require("../../environments/production");
->>>>>>> promo-padres-production
+
 const fs = require("fs").promises;
 const path = require("path");
 const mainController = {
