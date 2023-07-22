@@ -248,6 +248,8 @@ $color-botton: #28aae1;
   }
   .ventasBox {
     display: flex;
+
+    justify-content: space-between;
     width: 100%;
     .contenedor_seleccion {
       width: 70%;
