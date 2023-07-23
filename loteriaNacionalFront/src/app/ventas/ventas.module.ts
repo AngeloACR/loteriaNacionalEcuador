@@ -29,8 +29,8 @@ import { BotonDeJuegoComponent } from './components/boton-de-juego/boton-de-jueg
 import { VentaCanceladaComponent } from './components/venta-cancelada/venta-cancelada.component';
 import { SaldoInsuficienteComponent } from './components/saldo-insuficiente/saldo-insuficiente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { BuscarNumeroDirective } from './directives/buscar-numero.directive';
 import { AgregarTicketDirective } from './directives/agregar-ticket.directive';
 import { BorrarTicketDirective } from './directives/borrar-ticket.directive';

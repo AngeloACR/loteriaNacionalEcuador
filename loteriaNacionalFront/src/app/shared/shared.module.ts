@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MatPaginatorModule,
-  MatPaginatorIntl,
-} from '@angular/material/paginator';
+  MatLegacyPaginatorModule as MatPaginatorModule,
+  MatLegacyPaginatorIntl as MatPaginatorIntl,
+} from '@angular/material/legacy-paginator';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ErrorComponent } from './components/error/error.component';
 import { StylePaginatorDirective } from './style-paginator.directive';

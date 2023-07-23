@@ -5,7 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { CodigosPromocionalesRoutingModule } from './codigos-promocionales-routing.module';
 import { CodigosPromocionalesComponent } from './codigos-promocionales.component';
 import { PopupPromoComponent } from './components/popup-promo/popup-promo.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatLegacySlideToggleModule as MatSlideToggleModule} from '@angular/material/legacy-slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 

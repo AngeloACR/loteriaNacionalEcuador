@@ -9,7 +9,7 @@ import {
   ViewContainerRef,
   Input,
 } from "@angular/core";
-import { MatPaginator } from "@angular/material/paginator";
+import { MatLegacyPaginator as MatPaginator } from "@angular/material/legacy-paginator";
 interface PageObject {
   length: number;
   pageIndex: number;
