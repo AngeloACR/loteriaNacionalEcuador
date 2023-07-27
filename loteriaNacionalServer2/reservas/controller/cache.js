@@ -200,6 +200,7 @@ const cacheController = {
           [],
           [],
           [],
+          [],
           token,
           reservaId,
           user,
@@ -287,6 +288,7 @@ const cacheController = {
         ];
         await psdReservas.reservarCombinaciones(
           boleto,
+          [],
           [],
           [],
           [],
@@ -388,6 +390,7 @@ const cacheController = {
           boleto,
           [],
           [],
+          [],
           token,
           reservaId,
           user,
@@ -460,6 +463,7 @@ const cacheController = {
           [],
           boleto,
           [],
+          [],
           token,
           reservaId,
           user,
@@ -526,6 +530,7 @@ const cacheController = {
           },
         ];
         await psdReservas.reservarCombinaciones(
+          [],
           [],
           [],
           boleto,
@@ -600,6 +605,7 @@ const cacheController = {
           },
         ];
         await psdReservas.reservarCombinaciones(
+          [],
           [],
           [],
           [],
@@ -696,6 +702,7 @@ const cacheController = {
           },
         ];
         await psdReservas.reservarCombinaciones(
+          [],
           [],
           [],
           [],
