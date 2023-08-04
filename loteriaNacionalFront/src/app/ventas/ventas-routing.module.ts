@@ -8,6 +8,7 @@ import { MillonariaComponent } from './containers/millonaria/millonaria.componen
 import { PozoComponent } from './containers/pozo/pozo.component';
 import { VentasComponent } from './ventas.component';
 import { VentaFinalizadaComponent } from './containers/venta-finalizada/venta-finalizada.component';
+import { ConfirmacionDeVentaComponent } from './components/confirmacion-de-venta/confirmacion-de-venta.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
         path: 'pozo/:token',
         component: PozoComponent,
       },
-      { path: 'venta_finalizada/:token', component: VentaFinalizadaComponent },
+      { path: 'venta_finalizada/:token/:idVenta', component: VentaFinalizadaComponent },
+      { path: 'confirmar_venta/:token', component: ConfirmacionDeVentaComponent },
       { path: '', component: HomeComponent },
       { path: ':token', component: HomeComponent },
     ],
@@ -33,4 +35,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class VentasRoutingModule {}
+export class VentasRoutingModule { }

@@ -63,6 +63,7 @@ module.exports = {
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
   resultadosPath: "/home/lottoweb/resultados",
   pega3Path: "/home/lottoweb/pega3",
+  bingazoPath: "/home/lottoweb/bingazo",
 
   imgCorreosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",

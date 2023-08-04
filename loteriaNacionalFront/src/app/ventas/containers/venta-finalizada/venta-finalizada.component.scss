@@ -9,8 +9,10 @@ $color-loteria: #7c91a8;
   width: 98%;
   margin: 20px auto;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   padding-bottom: 40px;
+
   .mensajeButtonBox {
     display: block;
     padding: 15px;
@@ -32,6 +34,7 @@ $color-loteria: #7c91a8;
     }
   }
 }
+
 @media screen and (max-width: 1000px) {
   .paymentBox {
     width: 95%;

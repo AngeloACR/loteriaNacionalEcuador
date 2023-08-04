@@ -27,7 +27,7 @@ export class ConsultasService {
       this.loteria.getUltimoResultado(),
       this.lotto.getUltimoResultado(),
       this.pozo.getUltimoResultado(),
-      this.bingazo.getUltimoResultado(),
+      this.bingazo.getData(),
       this.revancha.getUltimoResultado(),
       this.millonaria.getUltimoResultado(),
       this.facilotto.getUltimoResultado(),

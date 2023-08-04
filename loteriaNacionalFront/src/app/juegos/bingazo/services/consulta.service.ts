@@ -9,7 +9,7 @@ export class ConsultaService {
   today = new Date();
   mySource = environment.source;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   async validarSorteo(sorteo: any) {
     try {
       let headers = new HttpHeaders();
@@ -122,5 +122,35 @@ export class ConsultaService {
       resolve(boletinAddress);
     });
   }
+
+
+  async getData() {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let address = 'https://ventas-api.loteria.com.ec/uploads/bingazoFiles';
+    return new Promise((resolve, reject) => {
+      this.http.get(address, { headers: headers }).subscribe(
+        (data: any) => {
+          let response;
+          let bingazo = data;
+          localStorage.setItem(
+            'bingazoUltimoResultado',
+            bingazo.ultimosResultados[0].ruta
+          );
+          localStorage.setItem(
+            'bingazoBoletines',
+            JSON.stringify(bingazo.boletines)
+          );
+          localStorage.setItem('bingazoSorteos', JSON.stringify(bingazo.sorteos));
+          response = { tipo: 'bingazo', data: bingazo };
+          resolve(response);
+        },
+        (error: any) => {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
+
 
 }

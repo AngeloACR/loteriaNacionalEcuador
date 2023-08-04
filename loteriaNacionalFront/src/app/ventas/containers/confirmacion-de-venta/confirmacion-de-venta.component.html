@@ -1,0 +1,43 @@
+<div class="paymentBox">
+  <app-descripcion-de-venta
+    [compra]="compra"
+    [user]="user"
+  ></app-descripcion-de-venta>
+
+  <p>Seguro que deseas efectuar la compra?</p>
+  <div class="buttonBox">
+    <button class="backButton" (click)="volver()">Volver</button>
+    <button
+      class="confirmationButton"
+      *ngIf="!disabled"
+      (click)="confirmarCompra()"
+      #purchase
+    >
+      Confirmar compra
+    </button>
+  </div>
+</div>
+<app-loader
+  loader="loteria"
+  [message]="loadingMessage!"
+  *ngIf="isLoading"
+></app-loader>
+
+<app-error
+  [msg]="errorMessage!"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>
+<app-error
+  [msg]="validationErrorMessage!"
+  (closeError)="closeValidationError()"
+  *ngIf="isValidationError"
+></app-error>
+<app-instantaneas
+  (close)="abrirFinalizar()"
+  [resultados]="instantaneas"
+  tipoLoteria="5"
+  [isLoteriaNacional]="true"
+  class="paymentItem"
+  *ngIf="isInstantaneas"
+></app-instantaneas>

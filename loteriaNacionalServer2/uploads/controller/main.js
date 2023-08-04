@@ -129,6 +129,38 @@ const mainController = {
       res.status(400).json(response);
     }
   },
+  getBingazo: async (req, res) => {
+    try {
+      const files = (await fs.readdir("/home/lottoweb/bingazo")).map((item) => {
+        return {
+          sorteo: parseInt(item.split(".")[0].split("-")[1]),
+          tipoArchivo: item.split(".")[0].split("-")[0],
+          ruta: `https://ventas-api.loteria.com.ec/uploads/bingazo/${item}`,
+          nombre: item.split(".")[0],
+        };
+      });
+
+      let boletines = files.filter((item) => item.tipoArchivo === "T");
+      boletines.sort((a, b) => b.sorteo - a.sorteo);
+      let ultimosResultados = files
+        .filter((item) => item.tipoArchivo === "U")
+        .sort((a, b) => b.sorteo - a.sorteo);
+      let sorteos = files
+        .reduce((prev, curr) => {
+          let index = prev.findIndex((item) => item === curr.sorteo);
+          if (index === -1) prev.push(curr.sorteo);
+          return prev;
+        }, [])
+        .sort((a, b) => b - a);
+      res.status(200).json({ boletines, ultimosResultados, sorteos });
+    } catch (e) {
+      let response = {
+        status: "error",
+        message: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
 };
 
 module.exports = mainController;
