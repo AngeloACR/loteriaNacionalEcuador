@@ -14,7 +14,7 @@ export class ResultadosComponent implements OnInit {
   tickets: any[] = [];
   @Output() close = new EventEmitter();
   loteriaBackground: any;
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     switch (this.tipoLoteria) {
@@ -39,6 +39,11 @@ export class ResultadosComponent implements OnInit {
       case '17':
         this.loteriaBackground = {
           backgroundPozoMillonario: true,
+        };
+        break;
+      case '12':
+        this.loteriaBackground = {
+          backgroundBingazo: true,
         };
         break;
       case '18':

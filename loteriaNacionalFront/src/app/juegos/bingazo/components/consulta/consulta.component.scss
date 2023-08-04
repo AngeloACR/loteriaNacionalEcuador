@@ -1,0 +1,97 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-bingazo: #283479;
+//$color-bingazo: #057333;
+
+%input {
+  padding: 13px 0px;
+  padding-left: 6px;
+  color: #977474;
+  background-color: white;
+  border: none;
+  border-left: 4px solid $color-bingazo;
+}
+
+%button {
+  background-color: $color-bingazo;
+  border: 1px solid $color-bingazo;
+  border-radius: 30px;
+  color: #fff;
+  font-family: $fuente-parrafo;
+  margin-top: 25px;
+  font-size: 13px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    //color: $color-bingazo;
+    color: #186b76;
+  }
+}
+
+.container_consulta {
+  .cuerpo_boletin {
+    h1 {
+      color: $color-bingazo;
+    }
+
+    .explicacion {
+      .content_explicacion {
+        .icono {
+          color: $color-bingazo;
+          border: 2px solid $color-bingazo;
+        }
+      }
+    }
+
+    .consulta_boleto {
+      h3 {
+        color: $color-bingazo;
+      }
+      .formulario {
+        .input {
+          .input_content {
+            input[type="text"] {
+              /* Rectangle 38 */
+              @extend %input;
+            }
+
+            input[type="date"] {
+              @extend %input;
+            }
+
+            select {
+              @extend %input;
+            }
+          }
+
+          button {
+            /* Rectangle 6 */
+
+            background-color: $color-bingazo;
+            border: 1px solid $color-bingazo;
+            &:hover {
+              color: $color-bingazo;
+            }
+          }
+        }
+        button {
+          background-color: $color-bingazo;
+          border: 1px solid $color-bingazo;
+
+          &:hover {
+            color: $color-bingazo;
+          }
+        }
+      }
+    }
+  }
+
+  .pie_boletin {
+    background-color: $color-bingazo;
+  }
+}

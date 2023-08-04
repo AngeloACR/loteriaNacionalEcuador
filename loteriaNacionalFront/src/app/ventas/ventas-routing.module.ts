@@ -13,18 +13,19 @@ const routes: Routes = [
   {
     path: '',
     component: VentasComponent,
-    children: [{ path: 'detalle/:id', component: DetalleDeVentaComponent },
-    { path: "loteria/:token", component: LoteriaComponent },
-    { path: "millonaria/:token", component: MillonariaComponent },
-    { path: "lotto/:token", component: LottoComponent },
-    {
-      path: "pozo/:token",
-      component: PozoComponent
-    },
-    { path: "venta_finalizada/:token", component: VentaFinalizadaComponent },
-    { path: "", component: HomeComponent },
-    { path: ":token", component: HomeComponent }
-  ],
+    children: [
+      { path: 'detalle/:id', component: DetalleDeVentaComponent },
+      { path: 'loteria/:token', component: LoteriaComponent },
+      { path: 'millonaria/:token', component: MillonariaComponent },
+      { path: 'lotto/:token', component: LottoComponent },
+      {
+        path: 'pozo/:token',
+        component: PozoComponent,
+      },
+      { path: 'venta_finalizada/:token', component: VentaFinalizadaComponent },
+      { path: '', component: HomeComponent },
+      { path: ':token', component: HomeComponent },
+    ],
   },
 ];
 

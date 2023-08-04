@@ -22,7 +22,8 @@ const config = require("../environments/local");
       config.passwordAplicativo
     );
 
-    let response = await sorteos.consultarSorteosJugados(18, data);
+    //let response = await sorteos.consultarSorteosJugados(18, data);
+    let response = await resultados.consultarUltimosResultados(12, data);
     console.log(response)
 
     /* let aux = await reservas.validarReservas(

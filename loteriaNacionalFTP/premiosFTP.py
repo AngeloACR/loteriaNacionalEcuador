@@ -8,6 +8,7 @@ import os
 import urllib.request  # the lib that handles the url stuff
 import codecs
 
+
 def connectDB(myDB):
     try:
         connection = MongoClient(myDB)
@@ -15,11 +16,13 @@ def connectDB(myDB):
     except:
         sendResult("Connect Error")
 
+
 def closeConnect(connection):
     try:
         connection.close()
     except:
         sendResult("Close Error")
+
 
 def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
     try:
@@ -34,8 +37,8 @@ def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
                 "tamaño": tamaño,
                 "cantidad": cantidad,
                 "recibido": date,
-                },
-            "actualizado": date,        }
+            },
+            "actualizado": date, }
         query = {
             "numeroSorteo": sorteo,
         }
@@ -47,11 +50,15 @@ def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
         if (tipoLoteria == "5"):
             loteriaDB['masterpozos'].update_one(query, updateQuery, True)
         if (tipoLoteria == "17"):
-            loteriaDB['masterpozorevanchas'].update_one(query, updateQuery, True)
+            loteriaDB['masterpozorevanchas'].update_one(
+                query, updateQuery, True)
         if (tipoLoteria == "14"):
             loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
         if (tipoLoteria == "18"):
             loteriaDB['masterfacilottos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "12"):
+            loteriaDB['masterbingazos'].update_one(query, updateQuery, True)
+
         closeConnect(connection)
         status = True
         return status
@@ -61,7 +68,6 @@ def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
         sendResult(message)
         status = False
         return status
-
 
 
 def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
@@ -101,17 +107,24 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
             }
             updateQuery = {"$set": premio}
             if (tipoLoteria == "1"):
-                loteriaDB['premioloterias'].update_one(query, updateQuery, True)
+                loteriaDB['premioloterias'].update_one(
+                    query, updateQuery, True)
             if (tipoLoteria == "2"):
                 loteriaDB['premiolottos'].update_one(query, updateQuery, True)
             if (tipoLoteria == "5"):
                 loteriaDB['premiopozos'].update_one(query, updateQuery, True)
             if (tipoLoteria == "17"):
-                loteriaDB['premiopozorevanchas'].update_one(query, updateQuery, True)
+                loteriaDB['premiopozorevanchas'].update_one(
+                    query, updateQuery, True)
             if (tipoLoteria == "14"):
-                loteriaDB['premiolamillonarias'].update_one(query, updateQuery, True)
+                loteriaDB['premiolamillonarias'].update_one(
+                    query, updateQuery, True)
             if (tipoLoteria == "18"):
-                loteriaDB['premiofacilottos'].update_one(query, updateQuery, True)
+                loteriaDB['premiofacilottos'].update_one(
+                    query, updateQuery, True)
+            if (tipoLoteria == "12"):
+                loteriaDB['premiobingazos'].update_one(
+                    query, updateQuery, True)
 
         closeConnect(connection)
         status = True
@@ -123,9 +136,11 @@ def agregarPremios(premiosNuevos, tipoLoteria, sorteo, db):
         status = False
         return status
 
+
 def sendResult(message):
     print(message)
     sys.stdout.flush()
+
 
 def main():
     db = "mongodb://localhost:27017/loteriaDB"
@@ -135,12 +150,13 @@ def main():
     #filepath = "/home/acri/ftp/resultados" + filename
     #filepath = "/home/acri/ftpResultados" + filename
     #filepath = "C:/Users/angel/Proyectos/loteria/resultadosNuevos" + filename
-    data = urllib.request.urlopen(filepath) # it's a file like object and works just like a file
+    # it's a file like object and works just like a file
+    data = urllib.request.urlopen(filepath)
     with codecs.open(filename, 'w', encoding='utf8') as file:
-        for line in data: # files are iterable
+        for line in data:  # files are iterable
             file.write(line.decode("iso-8859-1"))
-    
-    file = open(filename, 'r+', encoding="utf8")        
+
+    file = open(filename, 'r+', encoding="utf8")
     content = file.read()
     file.close()
     content = "<dataset>"+content+"</dataset>"
@@ -150,10 +166,10 @@ def main():
     sorteo = data[2].split(".")[0]
     size = os.path.getsize(filename)
     os.remove(filename)
-    agregarMaestro(filename,size,len(premios),tipoLoteria, sorteo, db)
+    agregarMaestro(filename, size, len(premios), tipoLoteria, sorteo, db)
 
     agregarPremios(premios, tipoLoteria, sorteo, db)
-        
+
 
 if __name__ == "__main__":
     main()

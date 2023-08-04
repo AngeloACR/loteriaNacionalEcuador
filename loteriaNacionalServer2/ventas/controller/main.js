@@ -429,12 +429,13 @@ const ventasController = {
         reservationDetails.push(aux);
         millonaria.push(millonariaAux[id]);
       }
-      let total = parseFloat(req.body.amount).toFixed(2);
+      let total = parseFloat(req.body.amount).toFixed(2);      
+      let reservaId = req.body.reservaId;
+
       let hasDescuento = req.body.hasDescuento;
       let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
-
-      let reservaId = req.body.reservaId;
       //let totalVenta = hasDescuento ? totalConDesc : total;
+      
       let totalVenta = total;
       /* CARGA DE COMPRA EN DB */
       let apiVentaData = {
