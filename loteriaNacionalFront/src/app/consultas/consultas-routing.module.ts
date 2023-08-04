@@ -50,7 +50,7 @@ const routes: Routes = [
       },
       { path: 'loteria', component: LoteriaComponent },
       {
-        path: 'bingazo/boletin',
+        path: 'bingazo/boletin/:sorteo',
         component: BingazoBoletinComponent,
       },
       { path: 'bingazo', component: BingazoComponent },

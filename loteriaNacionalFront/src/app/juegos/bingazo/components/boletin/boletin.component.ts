@@ -15,14 +15,22 @@ export class BoletinComponent implements OnInit {
   showBox: boolean = false;
   sorteo: any;
   constructor(
-  ) {}
+    private actRoute: ActivatedRoute,
+  ) {
+
+    this.actRoute.params.subscribe((params) => {
+      this.sorteoGanador! = params['sorteo'];
+    });
+  }
 
   async ngOnInit() {
     this.triggerLoader();
     this.sorteosJugados = JSON.parse(localStorage.getItem('bingazoSorteos')!);
     this.boletines = JSON.parse(localStorage.getItem('bingazoBoletines')!);
-    this.sorteoGanador = this.sorteosJugados[0];
-    this.boletin = this.boletines[0].ruta;
+    /*     this.sorteoGanador = this.sorteosJugados[0];
+        this.boletin = this.boletines[0].ruta;
+     */
+    this.changeBoletin();
     this.showBox = true;
     this.dismissLoader();
   }
@@ -51,4 +59,5 @@ export class BoletinComponent implements OnInit {
 
   dismissLoader() {
     this.isLoading = false;
-  }}
+  }
+}

@@ -9,7 +9,7 @@ $color-facilotto: #ea5b80;
 $color-bingazo: #283479;
 $color-pozo: #04b865;
 $color-millonaria: #b51f20;
-//$color-pozo: #057333;
+$color-pega3: #784494;
 
 .resultBox {
   width: 95%;
@@ -81,6 +81,9 @@ $color-millonaria: #b51f20;
 
   .millonaria {
     background-color: $color-millonaria;
+  }
+  .pega3 {
+    background-color: $color-pega3;
   }
 }
 
