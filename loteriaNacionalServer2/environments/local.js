@@ -61,6 +61,7 @@ module.exports = {
     "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/boletos",
   resultadosPath: "/home/angeloacr/Proyectos/loteriaNacional/backuptest",
   pega3Path: "/home/lottoweb/pega3",
+  bingazoPath: "/home/lottoweb/bingazo",
 
   imgCorreosPath:
     "/home/angeloacr/Proyectos/loteriaNacional/app/loteriaNacionalUploads/correos",
