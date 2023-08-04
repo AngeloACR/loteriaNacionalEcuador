@@ -4,18 +4,8 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-bingazo: #283479;
-//$color-bingazo: #057333;
 
 .contenedor_ticket {
-  .texto {
-    color: black;
-    font-family: $fuente-titulo;
-    font-size: 24px;
-    text-align: center;
-    margin: 20px auto;
-
-    margin-top: 5px;
-  }
   .logo_ticket {
     width: 100%;
     margin: auto;
@@ -27,7 +17,8 @@ $color-bingazo: #283479;
     height: 80px;
 
     img {
-      height: 70px;
+      height: 100%;
+      margin: auto;
     }
     p {
       margin: 0;
@@ -46,6 +37,9 @@ $color-bingazo: #283479;
 
   .scroll {
     overflow: auto;
+    img{
+      width: 100%;
+    }
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;
@@ -70,95 +64,6 @@ $color-bingazo: #283479;
       border-radius: 10px;
     }
 
-    .contenedor_informacion_ticket {
-      width: 90%;
-      display: flex;
-      margin: 10px auto;
-      background-color: #f2f2f2;
-      border-radius: 5px;
-      box-sizing: border-box;
-
-      .contenedor_numeros {
-        display: flex;
-        flex-direction: column;
-
-        .arriba {
-          width: 100%;
-          margin: auto;
-          display: flex;
-          flex-direction: column;
-          background-color: #c3c3c3;
-
-          h3 {
-            font-family: $fuente-subtitulo;
-            font-size: 16px;
-            text-align: center;
-          }
-
-          .numeros {
-            width: 100%;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            text-align: center;
-            justify-content: space-evenly;
-
-            p {
-              display: flex;
-              margin: 3px;
-              justify-content: center;
-              align-items: center;
-              padding: 8px;
-              background-color: #fff;
-              color: #444;
-              margin-right: 4px;
-              font-family: $fuente-parrafo;
-              font-size: 13px;
-            }
-          }
-        }
-
-        .abajo {
-          width: 100%;
-          margin: auto;
-          display: flex;
-
-          .contenedor_logo {
-            margin-right: 15px;
-
-            img {
-              width: auto;
-              height: 70px;
-            }
-          }
-
-          .contenedor_info {
-            display: flex;
-
-            .contenido {
-              width: 100%;
-              margin: auto;
-              background-color: #fff;
-              padding: 5px 30px;
-
-              img {
-                width: 16px;
-                margin: auto;
-              }
-            }
-          }
-        }
-      }
-
-      .contenedor_codigo_barra {
-        display: flex;
-        width: 25%;
-
-        img {
-          width: 100%;
-        }
-      }
-    }
   }
 
   .boton_comprar {
