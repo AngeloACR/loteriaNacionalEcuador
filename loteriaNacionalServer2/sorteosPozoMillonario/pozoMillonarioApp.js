@@ -1,5 +1,5 @@
 const sorteosPozoMillonarioServer = require("./pozoMillonarioServer");
-const config = require("../environments/local");
+const config = require("../environments/test");
 
 const cronjobs = require("./cronjobs");
 

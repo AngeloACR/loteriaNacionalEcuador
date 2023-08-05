@@ -1,15 +1,16 @@
 <div class="contenedor_ticket">
   <div class="logo_ticket">
-    <img src="../../../../assets/img/bingazo-sombra.png" alt="" />
+    <img src="assets/img/bingazo-sombra.png" alt="" />
   </div>
   <div>
     <hr size="2px" />
   </div>
   <ng-container *ngIf="!isError">
     <div class="scroll">
-      <bingazo-ticket-consulta
+      <img [src]="ultimoResultado" alt="">
+<!--       <bingazo-ticket-consulta
         [ticket]="ticketGanador"
-     ></bingazo-ticket-consulta>
+     ></bingazo-ticket-consulta> -->
     </div>
   </ng-container>
   <ng-container *ngIf="isError">

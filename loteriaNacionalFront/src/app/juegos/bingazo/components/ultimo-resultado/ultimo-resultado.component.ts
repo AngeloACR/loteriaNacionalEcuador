@@ -7,37 +7,34 @@ import { ConsultaService } from '../../services/consulta.service';
   styleUrls: ['./ultimo-resultado.component.scss'],
 })
 export class UltimoResultadoComponent implements OnInit {
-  ticketGanador: any;
+  ticketGanador?: any;
   ticketNumbers?: String[];
-  mascota: string = '01';
-  mascotaPath?: String;
   isError: boolean = false;
-  constructor(private router: Router, private consulta: ConsultaService) { }
+  ultimoResultado: string = '';
+  constructor(private router: Router) {}
   ngOnInit() {
     try {
-      let data = JSON.parse(
+      this.ultimoResultado = 
         localStorage.getItem('bingazoUltimoResultado')!
-      );
-      this.ticketNumbers =
-        data.ultimoResultadoBingazo.combinacion1.split('');
 
+      /*       let data = JSON.parse(localStorage.getItem('pega3UltimoResultado')!);
+      this.ticketNumbers = data.ultimoResultadoFacilotto.combinacion1.split('');
       this.ticketGanador = {
-        ticketIndex: data.ultimoResultadoBingazo.codigo,
+        ticketIndex: data.ultimoResultadoFacilotto.codigo,
         description: 'Boleto Ganador',
         ticketNumbers: this.ticketNumbers,
         numeroSorteo: data.numeroSorteo,
-        codigo: data.ultimoResultadoBingazo.codigo,
         sorteo: data.sorteo,
         valorPremio: data.premioPrincipal.valorPremio,
-      };
-      console.log(this.ticketGanador)
+      }; */
     } catch (e) {
       this.isError = true;
     }
   }
+
   verUltimoBoletin() {
-    let sorteo = this.ticketGanador.numeroSorteo;
-    this.router.navigateByUrl(`/consultas/bingazo/boletin/${sorteo}`);
+    //let sorteo = this.ticketGanador.numeroSorteo;
+    this.router.navigateByUrl(`/consultas/bingazo/boletin`);
   }
   verResultados() {
     this.router.navigateByUrl(`/consultas/bingazo`);
