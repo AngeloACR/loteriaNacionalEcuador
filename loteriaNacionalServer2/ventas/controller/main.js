@@ -429,13 +429,13 @@ const ventasController = {
         reservationDetails.push(aux);
         millonaria.push(millonariaAux[id]);
       }
-      let total = parseFloat(req.body.amount).toFixed(2);      
+      let total = parseFloat(req.body.amount).toFixed(2);
       let reservaId = req.body.reservaId;
 
       let hasDescuento = req.body.hasDescuento;
       let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
       //let totalVenta = hasDescuento ? totalConDesc : total;
-      
+
       let totalVenta = total;
       /* CARGA DE COMPRA EN DB */
       let apiVentaData = {
@@ -506,16 +506,17 @@ const ventasController = {
         );
       }
       /* GENERAR CODIGOS PROMOCIONALES */
-      let codigoPromocionalResponse = await CodigosPromocionales.setCode(
+      /*let codigoPromocionalResponse = await CodigosPromocionales.setCode(
         parseFloat(totalVenta),
         personaId,
         loteriaVentaResponse.ticketId,
         ip
-      );
-      //let codigoPromocionalResponse = "";
+      );*/
+      let codigoPromocionalResponse = "";
       /* RESPUESTA DE API */
       let finalResponse = {
         data: apiVentaResponse,
+        idVenta: loteriaVentaResponse.ticketId,
         instantanea: instantaneaResponse,
         codigoPromocional: codigoPromocionalResponse,
         status: true,

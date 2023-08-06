@@ -1,14 +1,27 @@
 <div class="boletin_oficial">
-    <h1>Boletín Oficial</h1>
-  </div>
-  
-  <div class="container_boletin" *ngIf="showBox">
-    <img [src]=boletinImagen *ngIf="!imgNotFound" (error)="handleImgError();" alt="Imagen del boletin de bingazo millonario">
-    <div class="boletinNotFound" *ngIf="imgNotFound">
-      <p>Parece que aun no se ha cargado el boletín de este sorteo. Mientras el equipo de Lotería Nacional se encarga de
-        esto, paséate por <a href="https://www.loteria.com.ec/casino" target="_parent">nuestros juegos online</a> y
-        disfruta de
-        todos los juegos que tenemos para ti.</p>
-    </div>
-  </div>
-  <app-loader loader="bingazo" [message]="loadingMessage" *ngIf="isLoading"></app-loader>
+  <h1>Boletín Oficial</h1>
+</div>
+
+<div class="input_content">
+  <label for="">ELIGE UN SORTEO</label>
+  <select
+    name="sorteoGanador"
+    id="sorteoGanador"
+    placeholder=""
+    (change)="changeBoletin()"
+    [(ngModel)]="sorteoGanador"
+  >
+    <option value="default" selected disabled>Seleccione un sorteo</option>
+    <option *ngFor="let option of sorteosJugados" [value]="option">
+      N° {{ option }}
+    </option>
+  </select>
+</div>
+<div class="container_boletin" *ngIf="showBox">
+  <img [src]="boletin" alt="Imagen del boletin de pega3" />
+</div>
+<app-loader
+  loader="pega3"
+  [message]="loadingMessage"
+  *ngIf="isLoading"
+></app-loader>

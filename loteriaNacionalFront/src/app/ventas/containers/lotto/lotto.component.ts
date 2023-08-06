@@ -307,8 +307,8 @@ export class LottoComponent implements OnInit {
 
   instantaneas: any;
   isInstantaneas: boolean = false;
-  async confirmarCompra() {
-    try {
+idVenta: string;
+  async confirmarCompra() {    try {
       this.isLoading = true;
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
@@ -330,7 +330,7 @@ export class LottoComponent implements OnInit {
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar();
+              this.abrirFinalizar(this.idVenta)
             }
           } else {
             this.cancelarCompra();
@@ -353,10 +353,10 @@ export class LottoComponent implements OnInit {
     }
   }
   @ViewChild('purchase') purchase: any;
-  async abrirFinalizar() {
+  async abrirFinalizar(idVenta: string) {
     this.dismissCompras();
     await this.cart.borrarCarrito();
-      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}`);
+      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
 
   }
   cancelarCompra() {

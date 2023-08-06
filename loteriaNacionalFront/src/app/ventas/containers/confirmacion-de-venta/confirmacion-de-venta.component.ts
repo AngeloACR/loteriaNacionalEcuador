@@ -41,8 +41,8 @@ export class ConfirmacionDeVentaComponent implements OnInit {
   ngOnInit() {
     this.user = this.ventas.getAuthData().user
   }
-  async confirmarCompra() {
-    try {
+idVenta: string;
+  async confirmarCompra() {    try {
       this.isLoading = true;
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.pagos.hasBalance(0, this.token);
