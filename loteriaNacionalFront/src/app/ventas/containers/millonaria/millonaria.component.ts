@@ -468,8 +468,8 @@ export class MillonariaComponent implements OnInit {
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
-  async confirmarCompra() {
-    try {
+idVenta: string;
+  async confirmarCompra() {    try {
       this.isLoading = true;
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
@@ -491,7 +491,7 @@ export class MillonariaComponent implements OnInit {
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar();
+              this.abrirFinalizar(this.idVenta)
             }
           } else {
             this.cancelarCompra();
@@ -514,17 +514,17 @@ export class MillonariaComponent implements OnInit {
     }
   }
   @ViewChild('purchase') purchase: any;
-  async abrirFinalizar() {
+  async abrirFinalizar(idVenta: string) {
     this.dismissCompras();
     await this.cart.borrarCarrito();
-      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}`);
+    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
 
   }
   cancelarCompra() {
     this.dismissCompras();
     this.compraCancelada = true;
   }
-  irARecarga() {}
+  irARecarga() { }
 
   recargaDeSaldoMessage?: string;
   recargarSaldo(message: any) {

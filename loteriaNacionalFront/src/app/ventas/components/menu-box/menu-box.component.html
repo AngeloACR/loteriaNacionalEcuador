@@ -121,7 +121,7 @@
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-venta>
 <app-instantaneas
-  (close)="abrirFinalizar()"
+  (close)="abrirFinalizar(idVenta)"
   [resultados]="instantaneas"
   tipoloteria="14"
   [isLoteriaNacional]="true"
