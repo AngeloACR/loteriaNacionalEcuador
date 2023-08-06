@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 const config = require("./environments/production");
-=======
-const config = require("./environments/test");
->>>>>>> be00adcaac21b90e3687f73f0906b40dbe9cda90
 const mongoose = require("mongoose");
 const myDB = config.dbAddress;
 
