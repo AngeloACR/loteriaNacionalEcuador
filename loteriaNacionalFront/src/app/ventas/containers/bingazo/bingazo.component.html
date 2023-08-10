@@ -13,7 +13,7 @@
   <div class="ventasBox">
     <div class="contendor_seleccion">
       <div class="contenedor_select_animales">
-        <h3>Selecciona tus frutas de la suerte</h3>
+        <h3>ESCOGE UNA FRUTA O REINTEGRO FAVORITO</h3>
         <div class="options">
           <div
             class="option"
@@ -63,7 +63,7 @@
                   <div class="contenedor_seleccion_numero">
                     <div class="imagen_animal">
                       <img [src]="obtenerFruta(ticket.fruta)" alt="" />
-                      <p>Nº DE CARTÓN: {{ticket.combinacion1}}</p>
+                      <p>Nº DE CARTÓN: {{ ticket.combinacion1 }}</p>
                     </div>
                     <div class="numeros">
                       <ng-container *ngFor="let numero of ticket.display">

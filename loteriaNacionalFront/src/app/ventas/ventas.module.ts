@@ -37,6 +37,7 @@ import { BorrarTicketDirective } from './directives/borrar-ticket.directive';
 import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module';
 import { BingazoModule } from '../juegos/bingazo/bingazo.module';
 import { BingazoComponent } from './containers/bingazo/bingazo.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { BingazoComponent } from './containers/bingazo/bingazo.component';
     MatPaginatorModule,
     MatFormFieldModule,
     VentasRoutingModule,
+    MatExpansionModule,
     ReactiveFormsModule
   ],
 })

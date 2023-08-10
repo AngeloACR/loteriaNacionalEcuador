@@ -230,9 +230,13 @@ $color-bingazo: #283479;
         margin: 10px auto;
         z-index: 100;
 
+
         h3 {
           font-family: $fuente-subtitulo;
-          font-size: 16px;
+          font-size: 21px;
+          text-align: center;
+          font-weight: bold;
+          color: $color-bingazo;
         }
 
         .select_option {
@@ -642,8 +646,8 @@ $color-bingazo: #283479;
     }
 
     .contendor_seleccion {
-      width: 100%;
-      margin: 0 0 20px 0;
+      width: 100% !important;
+      margin: 0 0 20px 0 !important;
 
       .contenedor_select_animales {
         .options {
@@ -659,6 +663,10 @@ $color-bingazo: #283479;
         flex-direction: column;
         align-items: center !important;
 
+        .activado {
+          width: unset !important;
+        }
+
         .contenedor_select {
           width: 100% !important;
         }
@@ -668,7 +676,7 @@ $color-bingazo: #283479;
           margin: 0;
 
           .numeros {
-            justify-content: center !important;
+            justify-content: space-between !important;
 
             input {
               margin: 0 6px !important;
@@ -682,7 +690,35 @@ $color-bingazo: #283479;
 
       table {
         tbody {
-          grid-template-columns: repeat(2, auto);
+          grid-template-columns: repeat(1, auto) !important;
+
+          tr {
+
+            td {
+
+              .bingazoBox {
+
+
+                .contenedor_seleccion_numero {
+
+                  .numeros {
+                    justify-content: space-between !important;
+
+                    p {
+                      width: 15vw !important;
+                      height: 15vw !important;
+                    }
+
+                    img {
+                      width: 15vw !important;
+                      height: 15vw !important;
+                    }
+                  }
+                }
+              }
+
+            }
+          }
         }
 
         hr {

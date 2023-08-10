@@ -2294,6 +2294,10 @@ input {
 .mat-paginator-page-size {
   display: none !important;
 }
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  margin: 0 !important;
+}
 .contenedor_ticket {
   width: 100%;
   /*   max-width: 320px;

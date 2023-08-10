@@ -23,9 +23,13 @@ $color-botton: #b51f20;
     top: 0;
     left: 0;
     opacity: 0;
+
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 
-  input[type="checkbox"]:checked ~ div {
+  input[type="checkbox"]:checked~div {
     background-color: $color-botton;
     border-radius: 10px;
     color: #fff !important;
@@ -45,17 +49,21 @@ $color-botton: #b51f20;
       display: flex;
       justify-content: space-around;
       align-items: center;
+
       .serieBox {
         border: 4.5px solid $color-botton;
         border-radius: 15px;
+
         .serieTitle {
           font-size: 12px !important;
         }
+
         .serieItem {
           font-size: 20px !important;
           font-weight: bold;
         }
       }
+
       p {
         /* 4 */
 
@@ -72,6 +80,7 @@ $color-botton: #b51f20;
         margin: 10px;
       }
     }
+
     .seleccionAll {
       width: 100%;
       display: flex;
@@ -133,7 +142,7 @@ $color-botton: #b51f20;
           display: none;
         }
 
-        .checkbox:checked + label {
+        .checkbox:checked+label {
           background-color: $color-botton;
           color: white;
         }
@@ -195,10 +204,12 @@ $color-botton: #b51f20;
   .infoBox {
     width: 100%;
   }
+
   .ventasBox {
     display: flex;
     width: 100%;
     justify-content: space-between;
+
     .contendor_seleccion {
       width: 70%;
       margin-right: 15px;
@@ -239,9 +250,11 @@ $color-botton: #b51f20;
             background: #ffffff;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
             border-radius: 10px;
+
             &:hover {
               border-color: #888;
             }
+
             &:focus {
               outline: none;
             }
@@ -265,6 +278,7 @@ $color-botton: #b51f20;
               margin: 10px;
               width: 25%;
               overflow: hidden;
+
               label {
                 cursor: pointer;
                 display: inline-block;
@@ -273,6 +287,7 @@ $color-botton: #b51f20;
                 border: 4.5px solid $color-botton;
                 border-radius: 15px;
                 background-color: white;
+
                 img {
                   vertical-align: middle;
                   width: 100%;
@@ -281,6 +296,7 @@ $color-botton: #b51f20;
                 }
               }
             }
+
             input {
               width: 0;
               height: 0;
@@ -292,12 +308,14 @@ $color-botton: #b51f20;
               /* fix specific for Firefox */
               position: absolute;
               left: -10000px;
-              & + label {
+
+              &+label {
                 display: block;
                 background-color: #fff;
                 text-align: center;
               }
-              &:checked + label {
+
+              &:checked+label {
                 background-color: $color-botton;
                 border-radius: 15px;
                 transition: background-color 0.3s ease;
@@ -325,6 +343,7 @@ $color-botton: #b51f20;
             flex-wrap: wrap;
             justify-content: space-evenly;
             margin: 10px 5px;
+
             input[type="text"] {
               width: 60px;
               height: 60px;
@@ -344,6 +363,7 @@ $color-botton: #b51f20;
               -webkit-appearance: none;
               margin: 0;
             }
+
             button {
               background-color: $color-botton;
               border: 1px solid $color-botton;
@@ -417,6 +437,7 @@ $color-botton: #b51f20;
           &:hover {
             border-color: #888;
           }
+
           &:focus {
             outline: none;
           }
@@ -453,11 +474,13 @@ $color-botton: #b51f20;
           &::-webkit-scrollbar-track {
             border-radius: 10px;
           }
+
           .option {
             width: 80px;
             height: 80px;
             margin: 10px;
             overflow: hidden;
+
             label {
               display: inline-block;
               width: 100%;
@@ -467,6 +490,7 @@ $color-botton: #b51f20;
               font-weight: bold;
               background-color: white;
               cursor: pointer;
+
               img {
                 background-color: transparent;
                 cursor: pointer;
@@ -476,6 +500,7 @@ $color-botton: #b51f20;
               }
             }
           }
+
           input {
             width: 0;
             height: 0;
@@ -487,12 +512,14 @@ $color-botton: #b51f20;
             /* fix specific for Firefox */
             position: absolute;
             left: -10000px;
-            & + label {
+
+            &+label {
               display: block;
               background-color: #fff;
               text-align: center;
             }
-            &:checked + label {
+
+            &:checked+label {
               background-color: #b51f20;
               border-radius: 15px;
               transition: background-color 0.3s ease;
@@ -500,6 +527,7 @@ $color-botton: #b51f20;
           }
         }
       }
+
       .tabs_animales {
         width: 100%;
         display: flex;
@@ -539,9 +567,11 @@ $color-botton: #b51f20;
         font-family: $fuente-botones;
         font-size: 16px;
       }
+
       .tagItem {
         font-size: 12px;
       }
+
       table {
         width: auto;
         display: flex;
@@ -575,9 +605,13 @@ $color-botton: #b51f20;
                 top: 0;
                 left: 0;
                 opacity: 0;
+
+                -webkit-appearance: textfield;
+                -moz-appearance: textfield;
+                appearance: textfield;
               }
 
-              input[type="checkbox"]:checked ~ div {
+              input[type="checkbox"]:checked~div {
                 background-color: $color-botton;
                 border-radius: 10px;
                 color: #fff !important;
@@ -592,6 +626,7 @@ $color-botton: #b51f20;
                 align-items: center;
                 flex-direction: column;
                 padding: 5px;
+
                 .imagen_animal {
                   display: flex;
                   flex-direction: column;
@@ -629,6 +664,7 @@ $color-botton: #b51f20;
           margin: 15px auto;
         }
       }
+
       .contenedor_botones {
         width: 100%;
         display: flex;
@@ -704,6 +740,7 @@ $color-botton: #b51f20;
       }
     }
   }
+
   .ticketScroller {
     width: 25%;
     max-width: 400px;
@@ -728,34 +765,39 @@ $color-botton: #b51f20;
       }
     }
   }
+
   .contenedor_loteria {
     flex-direction: column;
 
     .ventasBox {
       width: 100%;
     }
+
     .infoBox {
       max-width: 800px;
       width: 100%;
     }
 
     .contendor_seleccion {
-      width: 100%;
-      margin: 0 0 20px 0;
+      width: 100 !important;
+      margin: 0 0 20px 0 !important;
 
       .contenedor_select_animales {
         .options {
           height: 200px;
+
           .option {
             width: 70px !important;
             height: 70px !important;
           }
         }
       }
+
       .selectBox {
         flex-wrap: wrap;
         flex-direction: column;
         align-items: center !important;
+
         .contenedor_select {
           width: 100% !important;
         }
@@ -763,8 +805,10 @@ $color-botton: #b51f20;
         .numeros_suerte {
           width: 100%;
           margin: 0;
+
           .numeros {
             justify-content: center !important;
+
             input {
               margin: 0 6px !important;
               width: 45px !important;
@@ -777,7 +821,7 @@ $color-botton: #b51f20;
 
       table {
         tbody {
-          grid-template-columns: repeat(2, auto) !important;
+          grid-template-columns: repeat(1, auto) !important;
         }
 
         hr {

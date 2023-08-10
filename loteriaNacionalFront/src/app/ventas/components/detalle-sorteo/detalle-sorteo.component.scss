@@ -11,6 +11,7 @@ $color-botton: #28aae1;
   color: #28aae1;
   font-family: $fuente-titulo;
 }
+
 .fondoMillonaria {
   border-bottom: 1px solid #b51f20 !important;
   font-size: 30px !important;
@@ -42,6 +43,7 @@ $color-botton: #28aae1;
   justify-content: space-between;
   padding: 0;
   margin: auto;
+
   .menuInfo {
     width: 100%;
     //min-width: 650px;
@@ -50,9 +52,11 @@ $color-botton: #28aae1;
     align-items: center;
     background: transparent;
     padding: 15px;
+
     .menuSorteo {
       width: 30%;
       padding: 10px;
+
       h1 {
         /* ELIGE UN SORTEO */
 
@@ -80,10 +84,12 @@ $color-botton: #28aae1;
         select {
           cursor: pointer;
           font-size: 20px;
+
           option:first-child {
             visibility: hidden;
             display: none;
           }
+
           option span {
             text-shadow: 0px 0px 0px black;
           }
@@ -111,15 +117,18 @@ $color-botton: #28aae1;
           border: 3px solid #021151;
           box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
           text-align: center;
+
           &:hover {
             border-color: #888;
           }
+
           &:focus {
             outline: none;
           }
         }
       }
     }
+
     .menuPremio {
       width: 30%;
       padding: 10px;
@@ -127,6 +136,7 @@ $color-botton: #28aae1;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       .menuItem {
         display: flex;
         flex-direction: column;
@@ -138,6 +148,7 @@ $color-botton: #28aae1;
         font-family: $fuente-subtitulo;
         background-color: transparent;
         margin: 0 0 4px 0;
+
         .premioPrincipal {
           font-weight: 700;
           font-size: 20px;
@@ -175,6 +186,7 @@ $color-botton: #28aae1;
           color: #031252;
           margin: 0;
         }
+
         .montoSecundario {
           font-weight: 700;
           font-size: 30px;
@@ -190,9 +202,11 @@ $color-botton: #28aae1;
         }
       }
     }
+
     .menuDetalles {
       width: 30%;
       padding: 10px;
+
       .menuItem {
         display: flex;
         justify-content: flex-start;
@@ -202,6 +216,7 @@ $color-botton: #28aae1;
         font-size: 20px;
         font-family: $fuente-subtitulo;
         background-color: transparent;
+
         &.fechaSorteo {
           margin: 0 0 4px 0;
           background: #d12a2a;
@@ -216,6 +231,7 @@ $color-botton: #28aae1;
           text-align: center;
           width: 100%;
           color: #ffffff;
+
           &.precioSorteo {
             /* PRECIO POR BOLETO $2.00 */
 
@@ -242,16 +258,19 @@ $color-botton: #28aae1;
     list-style: none;
     padding: 5px;
     background-color: transparent;
+
     img {
       width: 100%;
     }
   }
 }
+
 @media screen and (max-width: 1000px) {
   .menuBox {
     .menuInfo {
       flex-direction: column;
       align-items: center;
+
       .menuSorteo,
       .menuPremio {
         width: 100%;
@@ -259,19 +278,24 @@ $color-botton: #28aae1;
     }
   }
 }
+
 @media screen and (max-width: 1000px) {
   .menuBox {
     flex-direction: column;
     align-items: center;
+
     .menuInfo {
       width: 100%;
       flex-direction: column;
       align-items: center;
+
       .menuSorteo,
-      .menuPremio {
+      .menuPremio,
+      .menuDetalles {
         width: 100%;
       }
     }
+
     .menuImage {
       width: 80%;
       margin-top: 10px;

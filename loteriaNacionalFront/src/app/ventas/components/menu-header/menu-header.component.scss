@@ -10,6 +10,11 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 .container {
+
+  &.mobile {
+    display: none;
+  }
+
   width: 100%;
   margin: auto;
 
@@ -153,7 +158,16 @@ $fuente-botones: "Monstserrat SemiBold";
 
 @media screen and (max-width: 1000px) {
   .container {
+    &.desktop {
+      display: none;
+    }
 
+    &.mobile {
+      display: block;
+    }
+
+    justify-content: flex-start;
+    align-items: flex-start;
     &.home {
       .contenedor_loteria {
         img {
@@ -171,15 +185,10 @@ $fuente-botones: "Monstserrat SemiBold";
     }
 
     .contenedor_loteria {
-      width: 50%;
-      padding: 0 20px;
-
+      width: calc( 100% - 20px );
+      margin: 10px;
       img {
         width: 80%;
-      }
-
-      .mobile {
-        display: none !important;
       }
     }
   }
