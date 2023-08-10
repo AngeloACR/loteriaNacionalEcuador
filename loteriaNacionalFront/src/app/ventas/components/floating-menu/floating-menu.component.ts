@@ -26,6 +26,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Input() ticketsMillonaria: any;
   @Input() ticketsLotto: any;
   @Input() ticketsPozo: any;
+  @Input() ticketsBingazo: any;
   @Input() tickets: any;
   @Input() ticketsPozoRevancha: any;
   @Input() tipoLoteria?: string;
@@ -34,6 +35,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Output() deleteLoteriaTicket = new EventEmitter();
   @Output() deleteLoteriaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
+  @Output() deleteBingazoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
   @Output() deletePozoRevanchaTicket = new EventEmitter();
   @Output() deleteMillonariaTicket = new EventEmitter();
@@ -89,6 +91,9 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
 
   deletePozoRevancha(ticket: any) {
     this.deletePozoRevanchaTicket.emit(ticket);
+  }
+  deleteBingazo(ticket: any) {
+    this.deleteBingazoTicket.emit(ticket);
   }
 
   total?: any;

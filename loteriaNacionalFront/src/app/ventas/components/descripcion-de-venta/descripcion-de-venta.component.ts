@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {VentaService as BingazoService} from '../../../juegos/bingazo/services/venta.service'
 import {VentaService as PozoService} from '../../../juegos/pozo/services/venta.service'
 import {VentaService as LottoService} from '../../../juegos/lotto/services/venta.service'
 
@@ -14,7 +15,7 @@ export class DescripcionDeVentaComponent implements OnInit {
   @Input() ticketId: any;
   @Input() codigosPromocionales: any;
 
-  constructor(private pozo: PozoService,private lotto: LottoService) { }
+  constructor(private pozo: PozoService,private lotto: LottoService,private bingazo: BingazoService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,10 @@ export class DescripcionDeVentaComponent implements OnInit {
   nombreMascota(mascota: any){
     let mascotaData = this.pozo.obtenerCaracteristicasDeMascota(mascota);
     return mascotaData!.nombre;
+  }  
+  nombreFruta(fruta: any){
+    let frutaData = this.bingazo.obtenerCaracteristicasDeFruta(fruta);
+    return frutaData!.nombre;
   }  
   nombreAntojito(antojito: any){
     let antojitoData = this.lotto.obtenerCaracteristicasDeAntojito(antojito);

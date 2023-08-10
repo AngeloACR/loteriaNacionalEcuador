@@ -492,8 +492,9 @@ export class PozoComponent implements OnInit {
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
-idVenta: string;
-  async confirmarCompra() {    try {
+  idVenta: string;
+  async confirmarCompra() {
+    try {
       this.isLoading = true;
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
@@ -516,7 +517,7 @@ idVenta: string;
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar(this.idVenta)
+              this.abrirFinalizar(response.idVenta)
             }
           } else {
             this.cancelarCompra();
@@ -825,6 +826,42 @@ idVenta: string;
       this.openError(errorMessage);
     }
   }
+
+  ticketsBingazo: any = {}
+  async deleteBingazoTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
+      this.isLoading = true;
+      let ticket = this.ticketsBingazo[identificador].ticket;
+      let sorteo = data.sorteo;
+
+      let reservaId = this.cart.getReservaId();
+      let response = await this.ventas.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        12,
+        reservaId
+      );
+
+      delete this.ticketsBingazo[identificador];
+
+      await this.cart.setCarritoBingazo(this.ticketsBingazo);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = 'Error';
+      this.openError(errorMessage);
+    }
+  }
   async deletePozoRevanchaTicket(data: any) {
     try {
       this.loadingMessage = 'Removiendo boleto del carrito';
@@ -891,13 +928,7 @@ idVenta: string;
         };
       });
       let reservaId = this.ventas.getReservaId();
-      /*       await this.ventas.eliminarTodosLosBoletosDeReserva(
-        this.token,
-        boletosLoteria,
-        boletosLotto,
-        boletosPozo,
-        reservaId
-      ); */
+
       Object.keys(this.ticketsPozo).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {
           let deletedIndex = this.ticketsDisponibles.findIndex(
@@ -936,6 +967,7 @@ idVenta: string;
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
     this.ticketsMillonaria = carrito.millonaria;
+    this.ticketsBingazo = carrito.bingazo;
     this.ticketsPozo = carrito.pozo;
     this.ticketsPozoRevancha = carrito.pozoRevancha;
   }

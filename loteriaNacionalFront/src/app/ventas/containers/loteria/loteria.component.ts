@@ -83,6 +83,7 @@ export class LoteriaComponent implements OnInit {
     this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
     this.ticketsPozoRevancha = carrito.pozoRevancha;
+    this.ticketsBingazo = carrito.bingazo;
   }
   sorteoSeleccionado?: sorteo;
   procesaEmitir(sorteo: any) {
@@ -478,7 +479,7 @@ idVenta: string;
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar(this.idVenta)
+              this.abrirFinalizar(response.idVenta)
             }
           } else {
             this.cancelarCompra();
@@ -749,13 +750,7 @@ idVenta: string;
         };
       });
       let reservaId = this.cart.getReservaId();
-      /*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
-        this.token!,
-        boletosLoteria,
-        boletosLotto,
-        boletosPozo,
-        reservaId
-      ); */
+
 
       Object.keys(this.ticketsLoteria).forEach((key) => {
         if (this.ticketsDisponibles! && this.ticketsDisponibles!.length != 0) {
@@ -778,7 +773,41 @@ idVenta: string;
       this.openError(errorMessage);
     }
   }
+  ticketsBingazo: any = {}
+  async deleteBingazoTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
+      this.isLoading = true;
+      let ticket = this.ticketsBingazo[identificador].ticket;
+      let sorteo = data.sorteo;
 
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        12,
+        reservaId
+      );
+
+      delete this.ticketsBingazo[identificador];
+
+      await this.cart.setCarritoBingazo(this.ticketsBingazo);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = 'Error';
+      this.openError(errorMessage);
+    }
+  }
   async deletePozoRevanchaTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;

@@ -8,27 +8,38 @@ $color-lotto: #b51f20;
 $color-pozo: #04b865;
 $color-millonaria: #b51f20;
 $color-revancha: #ffe401;
+$color-bingazo: #283479;
 
 .contenedor_ticket.fondoLoteria {
   background-color: $color-botton;
   border: 1px solid $color-botton;
 }
+
 .contenedor_ticket.fondoPozo {
   background-color: $color-pozo;
   border: 1px solid $color-pozo;
 }
+
 .contenedor_ticket.fondoLotto {
   background-color: $color-lotto;
   border: 1px solid $color-lotto;
 }
+
 .contenedor_ticket.fondoMillonaria {
   background-color: $color-millonaria;
   border: 1px solid $color-millonaria;
 }
+
 .contenedor_ticket.fondoRevancha {
   background-color: $color-revancha;
   border: 1px solid $color-revancha;
 }
+
+.contenedor_ticket.fondoBingazo {
+  background-color: $color-bingazo;
+  border: 1px solid $color-bingazo;
+}
+
 .contenedor_carrito {
   width: 100%;
   min-width: 305px;
@@ -41,6 +52,7 @@ $color-revancha: #ffe401;
     min-height: 20px;
     max-height: 40vh;
     padding: 0 10px;
+
     &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
@@ -91,6 +103,7 @@ $color-revancha: #ffe401;
     align-items: center;
     position: relative;
     height: 100px;
+
     p {
       font-weight: 700;
       font-size: 21px;
@@ -99,6 +112,7 @@ $color-revancha: #ffe401;
 
       color: #031252;
     }
+
     img {
       position: absolute;
       right: 10px;
@@ -111,6 +125,7 @@ $color-revancha: #ffe401;
   hr {
     width: 90%;
   }
+
   .totalsBox {
     padding: 10px;
     display: flex;
@@ -138,56 +153,80 @@ $color-revancha: #ffe401;
       cursor: pointer;
       transition: background-color 0.5s ease;
     }
+
     button.fondoLoteria {
       background-color: $color-botton;
       border: 1px solid $color-botton;
+
       &:hover {
         background-color: #fff;
         color: $color-botton;
         transition: background-color 0.5s ease;
       }
     }
+
     button.fondoLotto {
       background-color: $color-lotto;
       border: 1px solid $color-lotto;
+
       &:hover {
         background-color: #fff;
         color: $color-lotto;
         transition: background-color 0.5s ease;
       }
     }
+
     button.fondoPozo {
       background-color: $color-pozo;
       border: 1px solid $color-pozo;
+
       &:hover {
         background-color: #fff;
         color: $color-pozo;
         transition: background-color 0.5s ease;
       }
     }
+
     button.fondoMillonaria {
       background-color: $color-millonaria;
       color: white;
       border: 1px solid $color-millonaria;
+
       &:hover {
         background-color: white;
         color: $color-millonaria;
         transition: background-color 0.5s ease;
       }
     }
+
     button.fondoRevancha {
       background-color: $color-revancha;
       color: white;
       border: 1px solid $color-revancha;
+
       &:hover {
         background-color: white;
         color: $color-millonaria;
         transition: background-color 0.5s ease;
       }
     }
+
+    button.fondoBingazo {
+      background-color: $color-bingazo;
+      color: white;
+      border: 1px solid $color-bingazo;
+
+      &:hover {
+        background-color: white;
+        color: $color-millonaria;
+        transition: background-color 0.5s ease;
+      }
+    }
+
     .botonEliminar {
       background-color: black;
       border: 1px solid black;
+
       &:hover {
         background-color: #fff;
         color: black;
@@ -196,6 +235,7 @@ $color-revancha: #ffe401;
     }
   }
 }
+
 @media screen and (max-width: 1000px) {
   .contenedor_ticket {
     .logo_ticket {

@@ -6,7 +6,7 @@ const Premios = require("../models/premio");
 const Master = require("../models/master");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
-const config = require("../../environments/production");
+const config = require("../../environments/local");
 
 const { sorteosBingazoLogger } = require("../logging");
 
@@ -42,116 +42,6 @@ const mainController = {
       res.status(400).json(response);
     }
   },
-  buscarPlancha: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let boletoInicial = parseInt(req.body.boletoInicial);
-      let boletoFinal = parseInt(req.body.boletoFinal);
-
-      let size = boletoFinal - boletoInicial + 1;
-      let boletos = [...Array(size).keys()].map(
-        (i) => parseInt(i) + boletoInicial
-      );
-      let auxResult = await Results.getResultadosByCodigos(sorteo, boletos);
-      let auxPremios = [];
-      let response;
-      if (auxResult.status) {
-        response = auxResult.values.map((boleto) => {
-          auxPremios.push(Premios.getPremioByCodigo(boleto.codigoPremio));
-          boleto["premio"] = premio.values;
-          return {
-            status: true,
-            combinacion: combinacion,
-            sorteo,
-            data: boleto,
-          };
-        });
-        let premios = await Promise.all(auxPremios);
-        response = response.map((element, i) => {
-          element.data["premio"] = premios[i].values;
-        });
-        let boletosNoGanadores = boletos.filter((boleto) =>
-          response.some((item) => item.data.codigo == boleto)
-        );
-        response = [
-          ...response,
-          ...boletosNoGanadores.map((boleto) => {
-            return {
-              status: false,
-              combinacion: boleto,
-              sorteo,
-            };
-          }),
-        ];
-      } else {
-        response = boletos.map((boleto) => {
-          return {
-            status: false,
-            combinacion: boleto,
-            sorteo,
-          };
-        });
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
-  /*   buscarPlancha: async (req, res) => {
-    try {
-      let sorteo = req.body.sorteo;
-      let boletoInicial = parseInt(req.body.boletoInicial);
-      let boletoFinal = parseInt(req.body.boletoFinal);
-
-      let size = boletoFinal - boletoInicial + 1;
-      let boletos = [...Array(size).keys()].map((i) =>
-        (parseInt(i) + boletoInicial).toString()
-      );
-      let response = [];
-      let length = boletos.length;
-      for (let i = 0; i < length; i++) {
-        let auxResult = await Results.getResultadoByCodigo(sorteo, boletos[i]);
-        if (auxResult.status) {
-          let combinacion = auxResult.values.combinacion1;
-
-          let aux = await Results.getResultadoGanador(sorteo, combinacion);
-          if (aux.status) {
-            let n = aux.values.length;
-            for (let j = 0; j < n; j++) {
-              let boleto = aux.values[j];
-              let premio = await Premios.getPremioByCodigo(boleto.codigoPremio);
-              boleto["premio"] = premio.values;
-              let responseAux = {
-                status: true,
-                combinacion: combinacion,
-                sorteo,
-                data: boleto,
-              };
-              response.push(responseAux);
-            }
-          } else {
-            let responseAux = {
-              status: false,
-              combinacion,
-              sorteo,
-            };
-            response.push(responseAux);
-          }
-        } else {
-          let responseAux = {
-            status: false,
-            combinacion: boletos[i],
-            sorteo,
-          };
-          response.push(responseAux);
-        }
-      }
-      res.status(200).json(response);
-    } catch (e) {
-      res.status(400).json(e.toString());
-    }
-  },
- */
   buscarWinner: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
@@ -265,7 +155,7 @@ const mainController = {
 
       let combinaciones = combinacionesAux.map((element) => {
         let combinacion = {
-          mascota: element.Fig,
+          fruta: element.Fig,
           combinacion1: element.Num,
           combinacion2: element.Num2,
           display: element.Num2.split(","),
@@ -281,12 +171,9 @@ const mainController = {
 
       res.status(200).json(response);
     } catch (e) {
-      sorteosBingazoLogger.error(
-        "searchCombinacionesDisponibles.error",
-        {
-          errorMessage: e.message,
-        }
-      );
+      sorteosBingazoLogger.error("searchCombinacionesDisponibles.error", {
+        errorMessage: e.message,
+      });
       let response = {
         status: "error",
         message: e.message,

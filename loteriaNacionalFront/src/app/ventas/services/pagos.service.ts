@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CarritoService } from './carrito.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {environment } from '../../../environments/environment.prod';
+import {environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -140,6 +140,7 @@ export class PagosService {
     let pozo = await this.cart.getCarritoPozo();
     let pozoRevancha = await this.cart.getCarritoPozoRevancha();
     let millonaria = await this.cart.getCarritoMillonaria();
+    let bingazo = await this.cart.getCarritoBingazo();
     let total = this.cart.getTotal();
     let totalConDesc = this.cart.getTotalConDesc();
     let headers = new HttpHeaders();
@@ -153,6 +154,7 @@ export class PagosService {
       pozo,
       pozoRevancha,
       millonaria,
+      bingazo,
       lotteryToken: authData.lotteryToken,
       user: authData.user,
       personaId: authData.personalId,

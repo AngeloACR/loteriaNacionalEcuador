@@ -18,11 +18,15 @@ export class MenuHeaderComponent implements OnInit {
   linkLoteriaNacional: string = '';
   linkPozoMillonario: string = '';
   linkLaMillonaria: string = '';
+  linkBingazo: string = '';
   token?: string;
   usuario?: string;
   linkJuegosOnline?: string;
 
   selectedClass = [
+    {
+      selected: false,
+    },
     {
       selected: false,
     },
@@ -55,13 +59,14 @@ export class MenuHeaderComponent implements OnInit {
     this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
     this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
     this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
+    this.linkBingazo = `/compra_tus_juegos/bingazo/${this.token}`;
     this.cdr.markForCheck();
   }
 
 
   setSelected(url: string) {
     console.log(url);
-    let index = ['loteria', 'lotto', 'pozo', 'millonaria'].indexOf(url);
+    let index = ['loteria', 'lotto', 'pozo', 'millonaria', 'bingazo'].indexOf(url);
     if (index != -1) this.selectedClass[index].selected = true;
   }
 

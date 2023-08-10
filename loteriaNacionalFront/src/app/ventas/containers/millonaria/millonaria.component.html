@@ -199,11 +199,13 @@
       (deleteLottoTicket)="deleteLottoTicket($event)"
       (deletePozoTicket)="deletePozoTicket($event)"
       (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+      (deleteBingazoTicket)="deleteBingazoTicket($event)"
       (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
       (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
       [ticketsLoteria]="ticketsLoteria"
       [ticketsMillonaria]="ticketsMillonaria"
       [ticketsPozoRevancha]="ticketsPozoRevancha"
+      [ticketsBingazo]="ticketsBingazo"
       [ticketsLotto]="ticketsLotto"
       [ticketsPozo]="ticketsPozo"
       tipoLoteria="millonaria"
@@ -214,6 +216,7 @@
 <app-floating-menu
   (emitirCompra)="comprar()"
   (eliminarTodo)="deleteAllTickets()"
+  (deleteBingazoTicket)="deleteBingazoTicket($event)"
   (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
   (deleteLottoTicket)="deleteLottoTicket($event)"
   (deletePozoTicket)="deletePozoTicket($event)"
@@ -225,6 +228,7 @@
   [ticketsPozo]="ticketsPozo"
   [ticketsPozoRevancha]="ticketsPozoRevancha"
   [ticketsMillonaria]="ticketsMillonaria"
+  [ticketsBingazo]="ticketsBingazo"
   tipoLoteria="millonaria"
 ></app-floating-menu
 ><!-- 

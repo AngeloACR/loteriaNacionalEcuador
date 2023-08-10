@@ -4,7 +4,7 @@ var soap = require("soap");
 const path = require("path");
 var { loteriaError } = require("./errors");
 const { loteriaAuthLogger } = require("./logging");
-const config = require("../environments/production");
+const config = require("../environments/local");
 
 
 const usuarioClientePsd = config.usuarioAplicativo;
@@ -135,7 +135,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
         ]]>
       </PI_DatosXml>`,
     };
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -269,7 +269,7 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
         ]]>
       </PI_DatosXml>`,
     };
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,

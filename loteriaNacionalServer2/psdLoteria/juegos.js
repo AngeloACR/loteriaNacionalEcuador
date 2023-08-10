@@ -4,7 +4,7 @@ var soap = require("soap");
 const path = require("path");
 var { loteriaError } = require("./errors");
 const { loteriaAuthLogger } = require("./logging");
-const config = require("../environments/production");
+const config = require("../environments/local");
 
 
 const usuarioClientePsd = config.usuarioAplicativo;
@@ -41,7 +41,7 @@ module.exports.consultaFiguras = async (lotteryToken, tipoLoteria, ip) => {
         ]]>
       </PI_DatosXml>`,
     };
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -67,7 +67,7 @@ module.exports.consultaFiguras = async (lotteryToken, tipoLoteria, ip) => {
               resolve(response);
             } else {
               let errorMsg = dataAux.mt.c[0].msgError[0];
-              loteriaAuthLogger.error("consultarDatosUsuario2.loteria.error", {
+              loteriaAuthLogger.error("consultarFiguras.loteria.error", {
                 data: message,
                 errorMessage: `${errorCode}-${errorMsg}`,
               });
@@ -75,7 +75,7 @@ module.exports.consultaFiguras = async (lotteryToken, tipoLoteria, ip) => {
                 status: false,
                 input: message,
                 output: errorCode,
-                function: "consultarDatosUsuario2",
+                function: "consultarFiguras",
               };
               resolve(errorData);
               //              reject(new loteriaError(errorMsg, "loteria", errorData));
@@ -83,14 +83,14 @@ module.exports.consultaFiguras = async (lotteryToken, tipoLoteria, ip) => {
           } catch (e) {
             let errorMsg = e.message;
 
-            loteriaAuthLogger.error("consultarDatosUsuario2.error", {
+            loteriaAuthLogger.error("consultarFiguras.error", {
               errorMessage: errorMsg,
             });
             let errorData = {
               status: false,
               input: e,
               output: "",
-              function: "consultarDatosUsuario2",
+              function: "consultarFiguras",
             };
             resolve(errorData);
 
@@ -102,7 +102,7 @@ module.exports.consultaFiguras = async (lotteryToken, tipoLoteria, ip) => {
   } catch (e) {
     let errorMsg = e.message;
 
-    loteriaAuthLogger.error("consultarDatosUsuario2.error", {
+    loteriaAuthLogger.error("consultarFiguras.error", {
       errorMessage: errorMsg,
     });
 
@@ -110,7 +110,7 @@ module.exports.consultaFiguras = async (lotteryToken, tipoLoteria, ip) => {
       status: false,
       input: e,
       output: "",
-      function: "consultarDatosUsuario2",
+      function: "consultarFiguras",
     };
     return errorData;
     //throw new loteriaError(errorMsg, "loteria", errorData);

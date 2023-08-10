@@ -1,5 +1,5 @@
 export interface ticketsVenta {
-  mascota: string;
+  fruta: string;
   combinacion1: string;
   combinacion2: string;
   display?: Array<string>;

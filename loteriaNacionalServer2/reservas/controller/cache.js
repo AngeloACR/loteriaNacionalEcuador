@@ -3,6 +3,7 @@ const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache");
 const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache");
 const CacheLotto = require("../../sorteosLotto/controller/cache");
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache");
+const CacheBingazo = require("../../sorteosBingazo/controller/cache");
 const redis = require("../../cache");
 
 const cacheController = {
@@ -24,6 +25,7 @@ const cacheController = {
         pozo: req.body.pozo,
         pozoRevancha: req.body.pozoRevancha,
         millonaria: req.body.millonaria,
+        bingazo: req.body.bingazo,
         carrito: req.body.carrito,
         total: req.body.total,
         reservaId: req.body.reservaId,
@@ -53,6 +55,7 @@ const cacheController = {
           pozo: {},
           pozoRevancha: {},
           millonaria: {},
+          bingazo: {},
           carrito: [],
           total: 0,
           reservaId: 0,
@@ -95,6 +98,7 @@ const cacheController = {
         pozo: {},
         pozoRevancha: {},
         millonaria: {},
+        bingazo: {},
         carrito: [],
         total: 0,
         reservaId: 0,
@@ -126,6 +130,7 @@ const cacheController = {
       let pozoCache;
       let pozoRevanchaCache;
       let millonariaCache;
+      let bingazoCache;
       if (
         Object.keys(cacheCart.loteria).length !== 0 &&
         Object.getPrototypeOf(cacheCart.loteria) === Object.prototype
@@ -168,6 +173,15 @@ const cacheController = {
         millonariaCache = [];
       }
 
+      if (
+        Object.keys(cacheCart.bingazo).length !== 0 &&
+        Object.getPrototypeOf(cacheCart.bingazo) === Object.prototype
+      ) {
+        bingazoCache = Object.values(cacheCart.bingazo);
+      } else {
+        bingazoCache = [];
+      }
+
       let loteriaCart = await psdReservas.validarReservas(
         token,
         reservaId,
@@ -197,6 +211,8 @@ const cacheController = {
         ];
         await psdReservas.reservarCombinaciones(
           boleto,
+          [],
+          [],
           [],
           [],
           [],
@@ -287,6 +303,8 @@ const cacheController = {
         ];
         await psdReservas.reservarCombinaciones(
           boleto,
+          [],
+          [],
           [],
           [],
           [],
@@ -383,9 +401,10 @@ const cacheController = {
           },
         ];
         let info = await psdReservas.reservarCombinaciones(
-          //await Ventas.reservarCombinaciones(
           [],
           boleto,
+          [],
+          [],
           [],
           [],
           token,
@@ -460,6 +479,8 @@ const cacheController = {
           [],
           boleto,
           [],
+          [],
+          [],
           token,
           reservaId,
           user,
@@ -528,7 +549,9 @@ const cacheController = {
         await psdReservas.reservarCombinaciones(
           [],
           [],
+          [],
           boleto,
+          [],
           [],
           token,
           reservaId,
@@ -603,7 +626,9 @@ const cacheController = {
           [],
           [],
           [],
+          [],
           boleto,
+          [],
           token,
           reservaId,
           user,
@@ -699,7 +724,9 @@ const cacheController = {
           [],
           [],
           [],
+          [],
           boleto,
+          [],
           token,
           reservaId,
           user,
@@ -775,6 +802,78 @@ const cacheController = {
         await cacheController.updateCart(cacheCart);
       }
 
+      /* VALIDACIÓN DE BINGAZO */
+
+      let auxBingazo1 = bingazoCache.filter((item) => {
+        let index = loteriaCart.bingazo.findIndex(
+          (bingazo) => bingazo.combinacion == item.ticket.combinacion1
+        );
+        if (index == -1) {
+          return true;
+        }
+        return false;
+      });
+      for (let i = 0; i < auxBingazo1.length; i++) {
+        let item = auxBingazo1[i];
+        let boleto = [
+          {
+            combinacion: item.ticket.combinacion1,
+            fracciones: item.seleccionados,
+            sorteo: item.sorteo,
+          },
+        ];
+        await psdReservas.reservarCombinaciones(
+          [],
+          [],
+          [],
+          [],
+          [],
+          boleto,
+          token,
+          reservaId,
+          user,
+          ip
+        );
+      }
+
+      let auxBingazo2 = loteriaCart.bingazo.filter((item) => {
+        let index = bingazoCache.findIndex(
+          (bingazo) => item.combinacion == bingazo.ticket.combinacion1
+        );
+        if (index == -1) {
+          return true;
+        }
+        return false;
+      });
+      for (let i = 0; i < auxBingazo2.length; i++) {
+        let item = auxBingazo2[i];
+        let identificador = Math.random();
+        let bingazoSorteos = await CacheBingazo.getSorteosDisponibles();
+        let sorteo = bingazoSorteos.filter((bingazo) => {
+          if (bingazo.sorteo == item.sorteo) {
+            return true;
+          }
+          return false;
+        })[0];
+        let boleto = {
+          identificador,
+          ticket: {
+            combinacion1: item.combinacion,
+            combinacion2: item.combinacion2,
+            fruta: item.combinacion3,
+            display: item.combinacion.split(""),
+            identificador,
+          },
+          sorteo,
+          subtotal: sorteo.precio,
+          tipoLoteria: 12,
+        };
+        cacheCart.bingazo[identificador] = boleto;
+        cacheCart.carrito.push(boleto);
+        cacheCart.total += parseFloat(boleto.subtotal);
+        await cacheController.updateCart(cacheCart);
+      }
+
       await client.quit();
       if (
         auxLoteria1.length ||
@@ -790,7 +889,9 @@ const cacheController = {
         auxMillonaria1.length ||
         auxMillonaria2.length ||
         auxMillonariaFracciones1.length ||
-        auxMillonariaFracciones2.length
+        auxMillonariaFracciones2.length ||
+        auxBingazo1.length ||
+        auxBingazo2.length
       ) {
         flag = false;
       }

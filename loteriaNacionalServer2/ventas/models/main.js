@@ -127,6 +127,28 @@ const VentaSchema = new mongoose.Schema(
         ],
       },
     ],
+    bingazo: [
+      {
+        sorteo: {
+          type: String,
+        },
+        subtotal: {
+          type: String,
+        },
+        fecha: {
+          type: String,
+        },
+        combinacion1: {
+          type: String,
+        },
+        combinacion2: {
+          type: String,
+        },
+        fruta: {
+          type: String,
+        },
+      },
+    ],
     total: {
       type: String,
     },

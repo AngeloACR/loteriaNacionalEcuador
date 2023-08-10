@@ -13,6 +13,7 @@ export class CarritoComponent implements OnInit {
   @Input() ticketsPozo: any;
   @Input() ticketsMillonaria: any;
   @Input() ticketsPozoRevancha: any;
+  @Input() ticketsBingazo: any;
   @Input() tickets: any;
   @Input() tipoLoteria?: string;
   @Input() isResumen: boolean = false;
@@ -22,6 +23,7 @@ export class CarritoComponent implements OnInit {
   @Output() deleteLoteriaFraccion = new EventEmitter();
   @Output() deleteMillonariaFraccion = new EventEmitter();
   @Output() deleteLottoTicket = new EventEmitter();
+  @Output() deleteBingazoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
   @Output() deletePozoRevanchaTicket = new EventEmitter();
   @Output() deleteMillonariaTicket = new EventEmitter();
@@ -30,11 +32,12 @@ export class CarritoComponent implements OnInit {
   isLotto: boolean = false;
   isPozoMillonario: boolean = false;
   isLaMillonaria: boolean = false;
+  isBingazo: boolean = false;
   logoPath?: string;
   total: any;
   totalConDesc: any;
   seleccionadosCarrito: any;
-  constructor(private cart: CarritoService) {}
+  constructor(private cart: CarritoService) { }
 
   comprar() {
     this.emitirCompra.emit();
@@ -69,6 +72,10 @@ export class CarritoComponent implements OnInit {
         this.logoPath = 'assets/img/pozo-carrito.svg';
         break;
 
+      case 'bingazo':
+        this.isBingazo = true;
+        this.logoPath = 'assets/img/lotto-carrito.svg';
+        break;
       case 'millonaria':
         this.isLaMillonaria = true;
         this.logoPath = 'assets/img/lotto-carrito.svg';
@@ -104,6 +111,13 @@ export class CarritoComponent implements OnInit {
     } else return false;
   }
 
+
+  checkTicketsBingazo() {
+    if (this.ticketsBingazo) {
+      return Object.keys(this.ticketsBingazo).length != 0;
+    } else return false;
+  }
+
   checkTicketsPozo() {
     if (this.ticketsPozo) {
       return Object.keys(this.ticketsPozo).length != 0;
@@ -124,6 +138,11 @@ export class CarritoComponent implements OnInit {
 
   deleteLoteria(ticket: any) {
     this.deleteLoteriaTicket.emit(ticket);
+  }
+
+
+  deleteBingazo(ticket: any) {
+    this.deleteBingazoTicket.emit(ticket);
   }
 
   deleteFraccionLoteria(ticket: any, fraccion: any) {

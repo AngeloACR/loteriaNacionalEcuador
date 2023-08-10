@@ -9,6 +9,7 @@ import { PozoComponent } from './containers/pozo/pozo.component';
 import { VentasComponent } from './ventas.component';
 import { VentaFinalizadaComponent } from './containers/venta-finalizada/venta-finalizada.component';
 import { ConfirmacionDeVentaComponent } from './components/confirmacion-de-venta/confirmacion-de-venta.component';
+import { BingazoComponent } from './containers/bingazo/bingazo.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'loteria/:token', component: LoteriaComponent },
       { path: 'millonaria/:token', component: MillonariaComponent },
       { path: 'lotto/:token', component: LottoComponent },
+      { path: 'bingazo/:token', component: BingazoComponent },
       {
         path: 'pozo/:token',
         component: PozoComponent,

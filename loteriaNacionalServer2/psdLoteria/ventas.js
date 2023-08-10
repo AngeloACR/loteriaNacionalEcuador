@@ -5,7 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaVentasLogger } = require("./logging");
-const config = require("../environments/production");
+const config = require("../environments/local");
 
 
 const medioId = config.medioAplicativoId;
@@ -268,6 +268,7 @@ module.exports.venderBoletos = async (
   pozo,
   pozoRevancha,
   millonaria,
+  bingazo,
   lotteryToken,
   reservaId,
   user,
@@ -282,6 +283,7 @@ module.exports.venderBoletos = async (
     let pozoCombinacionesXML = "";
     let pozoRevanchaCombinacionesXML = "";
     let millonariaCombinacionesXML = "";
+    let bingazoCombinacionesXML = "";
     if (loteria.length != 0) {
       loteria.forEach((item) => {
         let combinacion = item.ticket.combinacion;
@@ -370,6 +372,21 @@ module.exports.venderBoletos = async (
               
             `;
     }
+    if (bingazo.length != 0) {
+      bingazo.forEach((item) => {
+        let combinacion = item.ticket.combinacion1;
+        let cant = 1;
+        bingazoCombinacionesXML = `
+                ${bingazoCombinacionesXML}
+                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      bingazoCombinacionesXML = `
+            <JG id="12">
+                ${bingazoCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
     let venta = `<V total="${total}"></V>`;
 
     let message = {
@@ -405,6 +422,7 @@ module.exports.venderBoletos = async (
         ${pozoCombinacionesXML}
         ${pozoRevanchaCombinacionesXML}
         ${millonariaCombinacionesXML}
+        ${bingazoCombinacionesXML}
         </RS>
         </xmlNumeros>
         <MedioId>${medioId}</MedioId>
@@ -414,7 +432,7 @@ module.exports.venderBoletos = async (
       ]]>
     </PI_DatosXml>`,
     };
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -543,7 +561,7 @@ module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
           </mt>  
                     ]]>
                   </PI_DatosXml>`,
-      /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+      
     };
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
@@ -662,7 +680,7 @@ module.exports.agregarOrdenPago = async (
       ]]>
     </PI_DatosXml>`,
     };
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -776,7 +794,7 @@ module.exports.recuperarSeriesLaMillonaria = async (
       ]]>
     </PI_DatosXml>`,
     };
-    /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+    
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -903,7 +921,7 @@ module.exports.validarVentaPorOrdenDeCompra = async (
 
                     ]]>
                   </PI_DatosXml>`,
-      /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
+      
     };
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(

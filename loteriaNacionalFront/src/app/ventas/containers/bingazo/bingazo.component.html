@@ -1,0 +1,208 @@
+<ventas-menu-header></ventas-menu-header>
+
+<div class="contenedor_loteria" *ngIf="showComponents">
+  <app-detalle-sorteo
+    class="infoBox"
+    titulo="Bingazo"
+    color="bingazo"
+    [sorteos]="sorteo"
+    [loteria]="5"
+    (emitir)="procesaEmitir($event)"
+  >
+  </app-detalle-sorteo>
+  <div class="ventasBox">
+    <div class="contendor_seleccion">
+      <div class="contenedor_select_animales">
+        <h3>Selecciona tus frutas de la suerte</h3>
+        <div class="options">
+          <div
+            class="option"
+            *ngFor="let fruta of seleccionFrutas; let i = index"
+          >
+            <input
+              (click)="agregar(fruta, i)"
+              type="checkbox"
+              [checked]="fruta.status"
+              name="nombre"
+              [value]="fruta"
+              id="nombre-{{ fruta.nombre }}"
+            />
+            <label for="nombre-{{ fruta.nombre }}">
+              <img [src]="fruta.ruta" [alt]="fruta.nombre" />
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="selectBox">
+        <button class="activado" (click)="buscarNumero()">
+          BUSCAR CARTONES
+        </button>
+      </div>
+      <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
+        <table *ngIf="showNumeros">
+          <tbody>
+            <tr
+              *ngFor="
+                let ticket of ticketsDisponibles
+                  | paginacion : page_size : page_number;
+                let i = index
+              "
+            >
+              <td>
+                <div class="bingazoBox">
+                  <input
+                    type="checkbox"
+                    [name]="'bingazo' + i"
+                    id=""
+                    [checked]="ticket.status"
+                    (click)="
+                      seleccionarTicket(page_size * (page_number - 1) + i)
+                    "
+                  />
+
+                  <div class="contenedor_seleccion_numero">
+                    <div class="imagen_animal">
+                      <img [src]="obtenerFruta(ticket.fruta)" alt="" />
+                    </div>
+                    <div class="numeros">
+                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <app-seleccion-bingazo [tickets]="ticketMascota"></app-seleccion-bingazo> -->
+              </td>
+            </tr>
+          </tbody>
+          <hr size="2px" color="gray" />
+        </table>
+
+        <div class="contenedor_botones">
+          <!-- showFirstLastButtons -->
+          <mat-paginator
+            style-paginator
+            [length]="ticketsDisponibles.length"
+            [pageSize]="page_size"
+            (page)="handlerPage($event)"
+          >
+          </mat-paginator>
+        </div>
+      </div>
+
+      <!-- <div>
+      Page Actual: {{pageActual}}
+    </div> -->
+      <!-- 
+    <div class="boton_boleto">
+      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
+
+    </div> -->
+    </div>
+
+    <app-carrito
+      class="ticketScroller"
+      (emitirCompra)="comprar()"
+      (eliminarTodo)="deleteAllTickets()"
+      (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+      (deleteLottoTicket)="deleteLottoTicket($event)"
+      (deletePozoTicket)="deletePozoTicket($event)"
+      (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+      (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+      (deleteBingazoTicket)="deleteBingazoTicket($event)"
+      [ticketsLoteria]="ticketsLoteria"
+      (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
+      [ticketsMillonaria]="ticketsMillonaria"
+      [ticketsPozoRevancha]="ticketsPozoRevancha"
+      [ticketsLotto]="ticketsLotto"
+      [ticketsBingazo]="ticketsBingazo"
+      [ticketsPozo]="ticketsPozo"
+      tipoLoteria="bingazo"
+    >
+    </app-carrito>
+  </div>
+</div>
+<app-floating-menu
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
+  (deleteBingazoTicket)="deleteBingazoTicket($event)"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozoRevancha]="ticketsPozoRevancha"
+  [ticketsPozo]="ticketsPozo"
+  [ticketsBingazo]="ticketsBingazo"
+  [ticketsMillonaria]="ticketsMillonaria"
+  tipoLoteria="bingazo"
+></app-floating-menu
+><!-- 
+<app-floating-menu
+  (emitirCompra)="comprar()"
+  (eliminarTodo)="deleteAllTickets()"
+  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteLottoTicket)="deleteLottoTicket($event)"
+  (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  [ticketsLoteria]="ticketsLoteria"
+  [ticketsLotto]="ticketsLotto"
+  [ticketsPozo]="ticketsPozo"
+  [total]="total"
+  tipoLoteria="bingazo"
+></app-floating-menu> -->
+<app-loader
+  loader="bingazo"
+  [message]="loadingMessage!"
+  *ngIf="isLoading"
+></app-loader>
+
+<app-error
+  [msg]="errorMessage!"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>
+<app-error
+  [msg]="validationErrorMessage!"
+  (closeError)="closeValidationError()"
+  *ngIf="isValidationError"
+></app-error>
+<app-instantaneas
+  (close)="abrirFinalizar(idVenta)"
+  [resultados]="instantaneas"
+  tipoLoteria="5"
+  [isLoteriaNacional]="true"
+  class="paymentItem"
+  *ngIf="isInstantaneas"
+></app-instantaneas>
+<app-saldo-insuficiente
+  [message]="recargaDeSaldoMessage"
+  (volver)="dismissCompras()"
+  (recarga)="irARecarga()"
+  class="paymentItem"
+  *ngIf="saldoInsuficiente"
+></app-saldo-insuficiente>
+<app-venta-cancelada
+  class="paymentItem"
+  [message]="cancelMessage"
+  *ngIf="compraCancelada"
+></app-venta-cancelada>
+
+<app-venta-finalizada
+  (volver)="finalizarCompra()"
+  [compra]="detalleCompra"
+  [codigosPromocionales]="codigoPromocional"
+  class="paymentItem"
+  *ngIf="compraFinalizada"
+></app-venta-finalizada>
+<app-confirmacion-de-venta
+  (compraConfirmada)="confirmarCompra()"
+  (compraCancelada)="cancelarCompra()"
+  (comprarDespues)="dismissCompras()"
+  [compra]="detalleCompra"
+  class="paymentItem"
+  #purchase
+  *ngIf="confirmacionDeCompra"
+></app-confirmacion-de-venta>
