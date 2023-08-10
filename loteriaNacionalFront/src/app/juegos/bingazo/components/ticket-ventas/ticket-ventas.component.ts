@@ -25,7 +25,7 @@ export class TicketVentasComponent implements OnInit {
 
   async ngOnInit() {
     this.ticketIndex = this.ticket!.combinacion1;
-    this.ticketNumbers = this.ticket!.display;
+    this.ticketNumbers = this.ticket!.display?.filter((item: any) => item != '00');
     this.sorteoNumber = this.sorteo!.sorteo;
     this.date = this.sorteo!.fecha;
 

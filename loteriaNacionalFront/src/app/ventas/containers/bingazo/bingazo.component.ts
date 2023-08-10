@@ -133,7 +133,8 @@ export class BingazoComponent implements OnInit {
           tipoLoteria,
           reservaId
         );
-
+        
+        console.log(this.ticketsBingazo)
         this.ventas.setReservaId(response);
         await this.cart.setCarrito(aux, tipoLoteria);
         await this.cart.setCarritoBingazo(this.ticketsBingazo);
@@ -162,9 +163,6 @@ export class BingazoComponent implements OnInit {
     this.page_number = e.pageIndex + 1;
   }
 
-  obtenerMascota(mascota: any) {
-    return this.bingazo.obtenerFruta(mascota);
-  }
 
   async buscarNumero() {
     try {
@@ -209,7 +207,7 @@ export class BingazoComponent implements OnInit {
   loadingMessage?: string;
 
   obtenerFruta(fruta: any) {
-    return this.bingazo.obtenerFruta(fruta);
+    return this.bingazo.obtenerCaracteristicasDeFruta(fruta)!.ruta;
   }
 
   abrirResumen() {

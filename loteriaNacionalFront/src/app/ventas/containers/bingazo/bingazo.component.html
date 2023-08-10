@@ -63,9 +63,19 @@
                   <div class="contenedor_seleccion_numero">
                     <div class="imagen_animal">
                       <img [src]="obtenerFruta(ticket.fruta)" alt="" />
+                      <p>Nº DE CARTÓN: {{ticket.combinacion1}}</p>
                     </div>
                     <div class="numeros">
-                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
+                      <ng-container *ngFor="let numero of ticket.display">
+                        <p *ngIf="numero != '00'">
+                          {{ numero }}
+                        </p>
+                        <img
+                          *ngIf="numero == '00'"
+                          src="assets/guachito.png"
+                          alt=""
+                        />
+                      </ng-container>
                     </div>
                   </div>
                 </div>

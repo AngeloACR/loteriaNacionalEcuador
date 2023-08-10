@@ -283,12 +283,29 @@ export class LottoComponent implements OnInit {
       aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
       millonaria.push(aux);
     }
+    let bingazoAux = this.ticketsBingazo;
+    let bingazo = [];
+    for (let id in bingazoAux) {
+      let aux: any = {};
+      aux['combinacion1'] = bingazoAux[id].ticket.combinacion1;
+      aux['combinacion2'] = bingazoAux[id].ticket.combinacion2;
+      aux['fruta'] = bingazoAux[id].ticket.fruta;
+      aux['sorteo'] = bingazoAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(bingazoAux[id].subtotalConDesc).toFixed(
+        2
+      );
+      aux['tieneDescuento'] = bingazoAux[id].tieneDescuento;
+      aux['fecha'] = bingazoAux[id].sorteo.fecha;
+      bingazo.push(aux);
+    }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
     let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
     this.detalleCompra = {
       loteria,
       millonaria,
+      bingazo,
       lotto,
       pozo,
       pozoRevancha,
