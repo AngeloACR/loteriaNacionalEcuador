@@ -110,7 +110,7 @@ export class PagosService {
       );
     });
   }
-  
+
   getCodigosPromocionales(ventaId: any) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");

@@ -39,16 +39,16 @@ export class MenuHeaderComponent implements OnInit {
   constructor(
     private actRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef
-    ) {
-      this.actRoute.url.subscribe((url: any) => {
-        this.setSelected(url[0].path);
-      });
+  ) {
+    this.actRoute.url.subscribe((url: any) => {
+      this.setSelected(url[0].path);
+    });
 
     this.actRoute.params.subscribe((params) => {
       this.token = params['token'];
     });
   }
-  
+
   ngOnInit() {
     this.cdr.detectChanges();
     this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
@@ -57,7 +57,6 @@ export class MenuHeaderComponent implements OnInit {
     this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
     this.cdr.markForCheck();
   }
-
 
   setSelected(url: string) {
     console.log(url);
