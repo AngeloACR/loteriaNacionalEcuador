@@ -111,6 +111,7 @@
                           width: 20px;
                           opacity: 1;
                           margin-left: 5px;
+                          
                         "
                         [(ngModel)]="
                           allFractions![page_size! * (page_number! - 1) + i]
@@ -180,10 +181,12 @@
       (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
       (deletePozoTicket)="deletePozoTicket($event)"
       (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
+      (deleteBingazoTicket)="deleteBingazoTicket($event)"
       (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
       [ticketsPozoRevancha]="ticketsPozoRevancha"
       [ticketsLoteria]="ticketsLoteria"
       [ticketsMillonaria]="ticketsMillonaria"
+      [ticketsBingazo]="ticketsBingazo"
       [ticketsLotto]="ticketsLotto"
       [ticketsPozo]="ticketsPozo"
       tipoLoteria="loteria"
@@ -204,12 +207,14 @@
   (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
   (deleteLottoTicket)="deleteLottoTicket($event)"
   (deletePozoTicket)="deletePozoTicket($event)"
+  (deleteBingazoTicket)="deleteBingazoTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
   (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozoRevancha]="ticketsPozoRevancha"
+  [ticketsBingazo]="ticketsBingazo"
   [ticketsPozo]="ticketsPozo"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="loteria"
@@ -237,7 +242,7 @@
 ></app-confirmacion-de-venta>
 
 <app-instantaneas
-  (close)="abrirFinalizar()"
+  (close)="abrirFinalizar(idVenta)"
   [resultados]="instantaneas"
   tipoLoteria="1"
   [isLoteriaNacional]="true"

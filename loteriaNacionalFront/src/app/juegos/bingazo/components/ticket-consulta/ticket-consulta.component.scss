@@ -1,0 +1,202 @@
+$fuente-premio: "Hanuman";
+$fuente-titulo: "Helvetica";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-bingazo: #283479;
+//$color-bingazo: #057333;
+
+.contenedor_informacion_ticket {
+  width: 100%;
+  display: flex;
+  margin: 10px auto;
+  border-radius: 5px;
+  box-sizing: border-box;
+
+  .contenedor_informacion_ticket_izquierdo {
+    margin: 0px auto;
+    padding: 10px 8px;
+
+    .contenedor_informacion_ticket_izquierdo_barra {
+      img {
+        width: 40px;
+        height: 120px;
+        margin: auto;
+      }
+    }
+  }
+
+  .contenedor_informacion_ticket_derecho {
+    width: 100%;
+    margin: auto;
+
+    .ticket_titulo {
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 70px;
+      }
+
+      h3 {
+        font-family: $fuente-titulo;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+
+      p {
+        margin: 0px;
+        font-family: $fuente-subtitulo;
+        font-size: 16px;
+        text-align: center;
+        /* Sorteo N° 6697 03/01/2022 21:00:00 */
+
+        font-family: "Helvetica";
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+    }
+
+    .ticket_monto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p:nth-child(1) {
+        font-size: 23px;
+        text-align: center;
+        -webkit-text-stroke: 2px $color-bingazo;
+        color: $color-bingazo;
+        font-family: $fuente-premio !important;
+        margin: 10px 0px;
+      }
+
+      p:nth-child(2) {
+        font-size: 14px;
+        margin: 0px;
+        margin-bottom: 5px;
+        color: $color-bingazo;
+        font-family: $fuente-subtitulo;
+      }
+    }
+
+    .ticket_title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p:nth-child(1) {
+        font-size: 20px;
+        text-align: center;
+        -webkit-text-stroke: 2px $color-bingazo;
+        font-style: italic;
+        color: $color-bingazo;
+        font-family: $fuente-titulo;
+        margin: 10px 0px;
+      }
+
+      p:nth-child(2) {
+        font-size: 14px;
+        margin: 0px;
+        margin-bottom: 5px;
+        color: $color-bingazo;
+        font-family: $fuente-subtitulo;
+      }
+    }
+
+    .ticket_entero_fraccion {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: $fuente-subtitulo;
+
+      .texto_premios {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .ticket_entero {
+        h5 {
+          margin-top: 7px;
+          margin-bottom: 8px;
+          text-align: center;
+        }
+
+        div {
+
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          margin: 0 0 15px 0;
+
+          p {
+            width: 15px;
+            height: 15px;
+            background-color: #fff;
+            font-family: $fuente-subtitulo;
+            border: 4px solid $color-bingazo;
+            border-radius: 150px;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #000;
+            margin: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      .ticket_fraccion {
+        padding-left: 15px;
+
+        h5 {
+          margin-top: 7px;
+          margin-bottom: 8px;
+        }
+
+        div {
+          display: flex;
+          justify-content: center;
+
+          p {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            font-family: $fuente-subtitulo;
+            font-size: 14px;
+            color: #000;
+            margin: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .ticket_entero {
+    div {
+      p {
+        padding: 15px !important;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+    }
+  }
+}

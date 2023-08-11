@@ -2,7 +2,7 @@ $color-loteria: #021151;
 $color-lotto: #b51f20;
 $color-pozo: #fae80c;
 $color-millonaria: #b51f20;
-//$color-pozo: #057333;
+$color-bingazo: #283479;
 
 $fuente-titulo: "Monstserrat Bold";
 $fuente-subtitulo: "Monstserrat SemiBold";
@@ -10,6 +10,11 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 .container {
+
+  &.mobile {
+    display: none;
+  }
+
   width: 100%;
   margin: auto;
 
@@ -35,32 +40,47 @@ $fuente-botones: "Monstserrat SemiBold";
 
     color: #ffffff;
     transition: height 0.5s ease-in-out;
+
     &:hover,
     &.selected {
       height: 80px;
       transition: height 0.5s ease-in-out;
     }
-    .mobile{
+
+    .mobile {
       background-color: white;
       border-radius: 102px;
       display: flex;
       align-items: center;
       padding: 5px 10px;
     }
-    
-    &.millonaria {
+
+    &.bingazo {
       .mobile {
-        color: $color-millonaria;
+        color: $color-bingazo;
       }
+
       img {
         width: 110px;
       }
     }
+
+    &.millonaria {
+      .mobile {
+        color: $color-millonaria;
+      }
+
+      img {
+        width: 110px;
+      }
+    }
+
     &.pozo {
       img {
         margin-top: -23px;
         width: 80px;
       }
+
       .mobile {
         color: $color-pozo;
       }
@@ -70,6 +90,7 @@ $fuente-botones: "Monstserrat SemiBold";
       .mobile {
         color: $color-lotto;
       }
+
       img {
         width: 80px;
       }
@@ -79,6 +100,7 @@ $fuente-botones: "Monstserrat SemiBold";
       .mobile {
         color: $color-loteria;
       }
+
       img {
         width: 90px;
       }
@@ -129,9 +151,23 @@ $fuente-botones: "Monstserrat SemiBold";
   background-color: $color-millonaria;
 }
 
+.bingazo {
+  color: $color-bingazo;
+  background-color: $color-bingazo;
+}
+
 @media screen and (max-width: 1000px) {
   .container {
+    &.desktop {
+      display: none;
+    }
 
+    &.mobile {
+      display: block;
+    }
+
+    justify-content: flex-start;
+    align-items: flex-start;
     &.home {
       .contenedor_loteria {
         img {
@@ -143,19 +179,16 @@ $fuente-botones: "Monstserrat SemiBold";
         }
       }
     }
+
     .title {
       display: none !important;
     }
-    .contenedor_loteria {
-      width: 50%;
-      padding: 0 20px;
 
+    .contenedor_loteria {
+      width: calc( 100% - 20px );
+      margin: 10px;
       img {
         width: 80%;
-      }
-
-      .mobile {
-        display: none !important;
       }
     }
   }

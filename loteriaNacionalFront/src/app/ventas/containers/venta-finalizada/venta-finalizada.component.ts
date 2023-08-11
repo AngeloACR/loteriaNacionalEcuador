@@ -9,10 +9,11 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ['./venta-finalizada.component.scss']
 })
 export class VentaFinalizadaComponent implements OnInit {
-  @Input() compra: any;
-  @Input() codigosPromocionales: any;
+  compra: any;
+  codigosPromocionales: any;
   user: any;
   token: any;
+  idVenta: any;
   constructor(
     private ventas: VentasService,
     private pagos: PagosService,
@@ -21,11 +22,16 @@ export class VentaFinalizadaComponent implements OnInit {
   ) {
     this.actRoute.params.subscribe((params) => {
       this.token! = params['token'];
+      this.idVenta! = params['idVenta'];
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.user = this.ventas.getAuthData().user
+    this.compra = await this.pagos.getCompra(this.idVenta, "");
+    this.codigosPromocionales = await this.pagos.getCodigosPromocionales(
+      this.idVenta
+    );
   }
 
   seguirJugando() {

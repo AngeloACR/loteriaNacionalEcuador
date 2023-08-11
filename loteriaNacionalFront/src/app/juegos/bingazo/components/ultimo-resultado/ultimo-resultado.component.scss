@@ -1,0 +1,103 @@
+$fuente-titulo: "Monstserrat Bold";
+$fuente-subtitulo: "Monstserrat SemiBold";
+$fuente-parrafo: "Monstserrat Regular";
+$fuente-botones: "Monstserrat SemiBold";
+
+$color-bingazo: #283479;
+
+.contenedor_ticket {
+  .logo_ticket {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    height: 80px;
+
+    img {
+      height: 100%;
+      margin: auto;
+    }
+    p {
+      margin: 0;
+      font-family: $fuente-titulo;
+      font-style: italic;
+      font-size: 16px;
+      color: white;
+      visibility: hidden;
+    }
+  }
+
+  hr {
+    width: 90%;
+    border-color: $color-bingazo;
+  }
+
+  .scroll {
+    overflow: auto;
+    img{
+      width: 100%;
+    }
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar:vertical {
+      width: 10px;
+    }
+
+    /* &::-webkit-scrollbar-button:increment,
+        &::-webkit-scrollbar-button {
+          display: none;
+        } */
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #fff;
+      border-radius: 20px;
+      border: 2px solid #fff;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+  }
+
+  .boton_comprar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      &:first-of-type {
+        width: 40%;
+        padding: 15px 15px !important;
+      }
+      width: 58%;
+      padding: 15px 30px;
+
+      //      background-color: $color-bingazo;
+      background-color: $color-bingazo;
+      //border: 1px solid #fff;
+      border: 1px solid $color-bingazo;
+      border-radius: 15px;
+      margin: 10px auto;
+      font-family: $fuente-botones;
+      color: #fff;
+      font-size: 10px;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+
+      &:hover {
+        background-color: #fff;
+        //color: $color-bingazo;
+        color: $color-bingazo;
+      }
+    }
+  }
+}

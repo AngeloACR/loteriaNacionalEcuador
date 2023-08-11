@@ -83,6 +83,8 @@ export class LoteriaComponent implements OnInit {
     this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
     this.ticketsPozoRevancha = carrito.pozoRevancha;
+    this.ticketsBingazo = carrito.bingazo;
+
   }
   sorteoSeleccionado?: sorteo;
   procesaEmitir(sorteo: any) {
@@ -433,19 +435,35 @@ export class LoteriaComponent implements OnInit {
       aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
       millonaria.push(aux);
     }
+    let bingazoAux = this.ticketsBingazo;
+    let bingazo = [];
+    for (let id in bingazoAux) {
+      let aux: any = {};
+      aux['combinacion1'] = bingazoAux[id].ticket.combinacion1;
+      aux['combinacion2'] = bingazoAux[id].ticket.combinacion2;
+      aux['fruta'] = bingazoAux[id].ticket.fruta;
+      aux['sorteo'] = bingazoAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(bingazoAux[id].subtotalConDesc).toFixed(
+        2
+      );
+      aux['tieneDescuento'] = bingazoAux[id].tieneDescuento;
+      aux['fecha'] = bingazoAux[id].sorteo.fecha;
+      bingazo.push(aux);
+    }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
     let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
     this.detalleCompra = {
       loteria,
       millonaria,
+      bingazo,
       lotto,
       pozo,
       pozoRevancha,
       amount,
       amountConDesc,
     };
-
     this.confirmacionDeCompra = true;
   }
 
@@ -455,7 +473,8 @@ export class LoteriaComponent implements OnInit {
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token!}`);
   }
 
-  irARecarga() {}
+  irARecarga() { }
+  idVenta: string;
   async confirmarCompra() {
     try {
       this.isLoading = true;
@@ -478,7 +497,7 @@ export class LoteriaComponent implements OnInit {
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar();
+              this.abrirFinalizar(response.idVenta)
             }
           } else {
             this.cancelarCompra();
@@ -507,10 +526,10 @@ export class LoteriaComponent implements OnInit {
     this.compraCancelada = true;
   }
 
-  async abrirFinalizar() {
+  async abrirFinalizar(idVenta: string) {
     this.dismissCompras();
     await this.cart.borrarCarrito();
-      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}`);
+    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
 
   }
 
@@ -749,13 +768,7 @@ export class LoteriaComponent implements OnInit {
         };
       });
       let reservaId = this.cart.getReservaId();
-      /*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
-        this.token!,
-        boletosLoteria,
-        boletosLotto,
-        boletosPozo,
-        reservaId
-      ); */
+
 
       Object.keys(this.ticketsLoteria).forEach((key) => {
         if (this.ticketsDisponibles! && this.ticketsDisponibles!.length != 0) {
@@ -778,7 +791,41 @@ export class LoteriaComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
+  ticketsBingazo: any = {}
+  async deleteBingazoTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
+      this.isLoading = true;
+      let ticket = this.ticketsBingazo[identificador].ticket;
+      let sorteo = data.sorteo;
 
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        12,
+        reservaId
+      );
+
+      delete this.ticketsBingazo[identificador];
+
+      await this.cart.setCarritoBingazo(this.ticketsBingazo);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = 'Error';
+      this.openError(errorMessage);
+    }
+  }
   async deletePozoRevanchaTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;

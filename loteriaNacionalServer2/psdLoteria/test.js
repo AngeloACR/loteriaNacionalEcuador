@@ -4,7 +4,7 @@ const resultados = require("./resultados");
 const sorteos = require("./sorteos");
 const ventas = require("./ventas");
 const reservas = require("./reservas");
-const config = require("../environments/local");
+const config = require("../environments/test");
 
 
 (async () => {
@@ -22,8 +22,8 @@ const config = require("../environments/local");
       config.passwordAplicativo
     );
 
-    let response = await sorteos.consultarSorteosJugados(18, data);
-    console.log(response)
+    //let response = await sorteos.consultarSorteosJugados(18, data);
+    //let response = await resultados.consultarUltimosResultados(12, data);
 
     /* let aux = await reservas.validarReservas(
       data,
@@ -31,7 +31,8 @@ const config = require("../environments/local");
       "0951234566",
       "192.168.0.1"
     ); */
-    //let aux = await juegos.consultaFiguras(data, 5, "192.168.0.1");
+    let aux = await juegos.consultaFiguras(data, 12, "192.168.0.1");
+    console.log(aux)
   } catch (error) {
     console.log(error);
   }

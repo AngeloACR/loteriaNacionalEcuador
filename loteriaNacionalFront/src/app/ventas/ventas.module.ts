@@ -35,6 +35,9 @@ import { BuscarNumeroDirective } from './directives/buscar-numero.directive';
 import { AgregarTicketDirective } from './directives/agregar-ticket.directive';
 import { BorrarTicketDirective } from './directives/borrar-ticket.directive';
 import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module';
+import { BingazoModule } from '../juegos/bingazo/bingazo.module';
+import { BingazoComponent } from './containers/bingazo/bingazo.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module'
     FloatingMenuComponent,
     DetalleDeVentaComponent,
     LoteriaComponent,
+    BingazoComponent,
     PozoComponent,
     LottoComponent,
     MillonariaComponent,
@@ -69,6 +73,7 @@ import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module'
     ConfirmacionDeVentaComponent,
     VentaFinalizadaComponent,
     DescripcionDeVentaComponent,
+    BingazoComponent,
     CarritoComponent,
     InstantaneaComponent,
     InstantaneasComponent,
@@ -92,11 +97,12 @@ import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module'
     MillonariaModule,
     SharedModule,
     FormsModule,
-    
+    BingazoModule,
     MatPaginatorModule,
     MatFormFieldModule,
     VentasRoutingModule,
+    MatExpansionModule,
     ReactiveFormsModule
   ],
 })
-export class VentasModule {}
+export class VentasModule { }

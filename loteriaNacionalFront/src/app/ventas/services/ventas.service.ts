@@ -21,7 +21,7 @@ export class VentasService {
   ticketsAnimales?: ticketsAnimales[];
   animales?: animales[];
   animalesTabs?: animales[];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   formatNumber(number: any) {
     // Create our number formatter.
@@ -205,6 +205,15 @@ export class VentasService {
         ];
         body['millonaria'] = aux;
         break;
+      case 12:
+        aux = [
+          {
+            combinacion: boleto.ticket.combinacion1,
+            sorteo: boleto.sorteo,
+          },
+        ];
+        body['bingazo'] = aux;
+        break;
     }
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
@@ -311,6 +320,15 @@ export class VentasService {
         ];
         body['pozo'] = aux;
         break;
+      case 12:
+        aux = [
+          {
+            combinacion: boleto.combinacion1,
+            sorteo: sorteo,
+          },
+        ];
+        body['bingazo'] = aux;
+        break;
       case 17:
         aux = [
           {
@@ -332,82 +350,6 @@ export class VentasService {
         body['millonaria'] = aux;
         break;
     }
-    return new Promise<any>((resolve, reject) => {
-      this.http.post(address, body, { headers: headers }).subscribe(
-        (data: any) => {
-          let response: any = data;
-          resolve(response);
-        },
-        (error: any) => {
-          reject(new Error(error.error.message));
-        }
-      );
-    });
-  }
-  eliminarTodosLosBoletosDeReserva(
-    token: any,
-    boletosLoteria: any,
-    boletosLotto: any,
-    boletosPozo: any,
-    boletosPozoRevancha: any,
-    boletosMillonaria: any,
-    reservaId: any
-  ) {
-    let headers = new HttpHeaders();
-    headers = headers.append('Content-Type', 'application/json');
-    let address = '/reservas';
-    let endpoint = '/eliminarBoletosDeReserva';
-
-    address = this.mySource + address + endpoint;
-
-    let authData = this.getAuthData();
-    let body: any = {
-      lotteryToken: authData.lotteryToken,
-      user: authData.user,
-      reservaId,
-    };
-    let auxLoteria: any = [];
-    let auxLotto: any = [];
-    let auxPozo: any = [];
-    let auxPozoRevancha: any = [];
-    let auxMillonaria: any = [];
-    boletosLoteria.forEach((boleto: any) => {
-      auxLoteria.push({
-        combinacion: boleto.ticket.combinacion,
-        fracciones: boleto.ticket.seleccionados,
-        sorteo: boleto.sorteo,
-      });
-      body['loteria'] = auxLoteria;
-    });
-    boletosLotto.forEach((boleto: any) => {
-      auxLotto.push({
-        combinacion: boleto.ticket.combinacion1,
-        sorteo: boleto.sorteo,
-      });
-      body['lotto'] = auxLotto;
-    });
-    boletosPozo.forEach((boleto: any) => {
-      auxPozo.push({
-        combinacion: boleto.ticket.combinacion1,
-        sorteo: boleto.sorteo,
-      });
-      body['pozo'] = auxPozo;
-    });
-    boletosPozoRevancha.forEach((boleto: any) => {
-      auxPozoRevancha.push({
-        combinacion: boleto.ticket.combinacion1,
-        sorteo: boleto.sorteo,
-      });
-      body['pozoRevancha'] = auxPozoRevancha;
-    });
-    boletosMillonaria.forEach((boleto: any) => {
-      auxMillonaria.push({
-        combinacion: boleto.ticket.combinacion1,
-        sorteo: boleto.sorteo,
-      });
-      body['millonaria'] = auxMillonaria;
-    });
-
     return new Promise<any>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {

@@ -10,7 +10,8 @@
         fondoLoteria: isLoteriaNacional,
         fondoLotto: isLotto,
         fondoPozo: isPozoMillonario,
-        fondoMillonaria: isLaMillonaria
+        fondoMillonaria: isLaMillonaria,
+        fondoBingazo: isBingazo
       }"
     />
   </div>
@@ -30,20 +31,10 @@
       checkTicketsLotto() ||
       checkTicketsPozo() ||
       checkTicketsLaMillonaria() ||
+      checkTicketsBingazo() ||
       checkTicketsPozoRevancha()
     "
   >
-    <div>
-      <hr
-        size="2px"
-        [ngClass]="{
-          fondoLoteria: isLoteriaNacional,
-          fondoLotto: isLotto,
-          fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
-        }"
-      />
-    </div>
     <div class="totalsBox">Total: {{ total }}</div>
     <div *ngIf="hasDiscount(totalConDesc)" class="totalsBox">
       Total con descuento: {{ totalConDesc }}
@@ -56,7 +47,8 @@
           fondoLoteria: isLoteriaNacional,
           fondoLotto: isLotto,
           fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
+          fondoMillonaria: isLaMillonaria,
+          fondoBingazo: isBingazo
         }"
       />
     </div>
@@ -68,7 +60,8 @@
           fondoLoteria: isLoteriaNacional,
           fondoLotto: isLotto,
           fondoPozo: isPozoMillonario,
-          fondoMillonaria: isLaMillonaria
+          fondoMillonaria: isLaMillonaria,
+          fondoBingazo: isBingazo
         }"
       >
         COMPRAR
@@ -123,6 +116,14 @@
           [sorteo]="item.sorteo"
         >
         </revancha-ticket-ventas>
+        <bingazo-ticket-ventas
+          style="width: 100%"
+          *ngIf="item.tipoLoteria == 12"
+          (delete)="deleteBingazo(item)"
+          [ticket]="item.ticket"
+          [sorteo]="item.sorteo"
+        >
+        </bingazo-ticket-ventas>
       </ng-container>
     </div>
   </div>

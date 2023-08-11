@@ -18,11 +18,9 @@ $loteriaNacionalWeb-accent: mat-palette($mat-pink, A200, A100, A400);
 $loteriaNacionalWeb-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$loteriaNacionalWeb-theme: mat-light-theme(
-  $loteriaNacionalWeb-primary,
-  $loteriaNacionalWeb-accent,
-  $loteriaNacionalWeb-warn
-);
+$loteriaNacionalWeb-theme: mat-light-theme($loteriaNacionalWeb-primary,
+    $loteriaNacionalWeb-accent,
+    $loteriaNacionalWeb-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -52,6 +50,7 @@ body {
 button {
   outline: none;
 }
+
 a,
 p,
 button,
@@ -63,6 +62,7 @@ html,
 body {
   background-color: #fff;
 }
+
 body {
   width: 100%;
   //background-image: url('assets/img/fondo-general.png');
@@ -73,6 +73,7 @@ body {
   margin: 0;
   font-family: $fuente-parrafo;
 }
+
 select,
 input {
   margin: 0;
@@ -83,13 +84,21 @@ input {
   -moz-appearance: none;
   appearance: none;
 }
+
 *,
 ::before,
 ::after {
   box-sizing: border-box;
 }
+
 .mat-paginator-page-size {
   display: none !important;
+}
+
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  margin: 0 !important;
 }
 
 .contenedor_ticket {
@@ -127,6 +136,7 @@ input {
 
   .cuerpo_boletin {
     width: 100%;
+
     h1 {
       font-family: "Helvetica";
       font-style: italic;
@@ -183,6 +193,7 @@ input {
       margin: 30px auto;
 
       color: #1f1f1f;
+
       h3 {
         /* Consulta por Boleto y Sorteo */
 
@@ -192,6 +203,7 @@ input {
         font-size: 25px;
         text-transform: uppercase;
       }
+
       .formulario {
         display: grid;
         grid-template-columns: repeat(2, 50%);
@@ -243,10 +255,12 @@ input {
               -webkit-appearance: none;
               -moz-appearance: none;
               cursor: pointer;
+
               option:first-child {
                 visibility: hidden;
                 display: none;
               }
+
               option {
                 cursor: pointer;
               }
@@ -276,6 +290,7 @@ input {
             }
           }
         }
+
         button {
           border-radius: 30px;
           max-height: 50px;
@@ -323,6 +338,7 @@ input {
   justify-content: space-between;
   align-items: center;
   border-radius: 15px 15px 0 0;
+
   h1 {
     font-family: $fuente-parrafo;
     font-style: italic;
@@ -332,10 +348,12 @@ input {
     margin-left: 20px;
   }
 }
+
 .container_boletin {
   width: 100%;
   margin: 0 auto;
   display: grid;
+
   img {
     width: 100%;
   }
@@ -344,10 +362,12 @@ input {
     width: 100%;
     display: flex;
     justify-content: center;
+
     p {
       font-family: $fuente-parrafo;
       font-size: 16px;
       text-align: center;
+
       a {
         text-decoration: none;
         color: black;
@@ -357,6 +377,7 @@ input {
     }
   }
 }
+
 .masResultados {
   display: none;
 }
@@ -378,6 +399,7 @@ input {
       background-color: #fff;
     }
   }
+
   .consultaBox {
     .boletin_oficial {
       h1 {
@@ -388,6 +410,7 @@ input {
       }
     }
   }
+
   .container_consulta {
     .boletin_oficial {
       h1 {
@@ -403,10 +426,13 @@ input {
         margin: 20px 0;
         color: #021151 !important;
       }
+
       .explicacion {
         grid-template-columns: repeat(1, 1fr);
+
         .content_explicacion {
           width: 100%;
+
           .icono {
             width: 40px;
             height: 40px;
@@ -426,6 +452,7 @@ input {
         h3 {
           font-size: 18px;
         }
+
         .formulario {
           display: flex;
           flex-direction: column;
@@ -434,26 +461,32 @@ input {
           .input {
             display: block;
             width: 90%;
+
             .tag {
               color: #878787;
               font-size: 10px;
             }
+
             .input_content {
+
               input,
               select {
                 border: none !important;
               }
+
               button {
                 margin: 25px 0;
 
                 padding: 15px 35px;
               }
             }
+
             button {
               margin: 25px 0;
               padding: 15px 35px;
             }
           }
+
           button {
             margin: 25px 0;
             padding: 15px 35px;

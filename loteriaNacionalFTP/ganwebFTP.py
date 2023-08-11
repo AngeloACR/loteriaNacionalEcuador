@@ -56,6 +56,9 @@ def agregarMaestro(nombre, tamaño, cantidad, tipoLoteria, sorteo, db):
             loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
         if (tipoLoteria == "18"):
             loteriaDB['masterfacilottos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "12"):
+            loteriaDB['masterbingazos'].update_one(query, updateQuery, True)
+
         closeConnect(connection)
         status = True
         return status

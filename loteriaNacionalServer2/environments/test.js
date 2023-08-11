@@ -17,6 +17,7 @@ module.exports = {
   sorteosPozoMillonarioPort: 6500,
   sorteosPozoRevanchaPort: 10500,
   sorteosLaMillonariaPort: 7000,
+  sorteosBingazoPort: 15500,
   ganadoresPort: 7500,
   authPort: 8000,
   walletPort: 8500,
@@ -62,6 +63,7 @@ module.exports = {
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/boletos",
   resultadosPath: "/home/lottoweb/resultados",
   pega3Path: "/home/lottoweb/pega3",
+  bingazoPath: "/home/lottoweb/bingazo",
 
   imgCorreosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",

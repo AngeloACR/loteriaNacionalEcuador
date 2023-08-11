@@ -18,6 +18,8 @@ cd ../sorteosLotto
 pm2 start lottoApp.js --name lottoApp
 cd ../sorteosPozoMillonario
 pm2 start pozoMillonarioApp.js --name pozoMillonarioApp
+cd ../sorteosBingazo
+pm2 start bingazoApp.js --name bingazoApp
 cd ../sorteosPozoRevancha
 pm2 start pozoRevanchaApp.js --name pozoRevanchaApp
 cd ../uploads

@@ -445,12 +445,29 @@ export class MillonariaComponent implements OnInit {
       aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
       millonaria.push(aux);
     }
+    let bingazoAux = this.ticketsBingazo;
+    let bingazo = [];
+    for (let id in bingazoAux) {
+      let aux: any = {};
+      aux['combinacion1'] = bingazoAux[id].ticket.combinacion1;
+      aux['combinacion2'] = bingazoAux[id].ticket.combinacion2;
+      aux['fruta'] = bingazoAux[id].ticket.fruta;
+      aux['sorteo'] = bingazoAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
+      aux['subtotalConDesc'] = parseFloat(bingazoAux[id].subtotalConDesc).toFixed(
+        2
+      );
+      aux['tieneDescuento'] = bingazoAux[id].tieneDescuento;
+      aux['fecha'] = bingazoAux[id].sorteo.fecha;
+      bingazo.push(aux);
+    }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
     let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
     this.detalleCompra = {
       loteria,
       millonaria,
+      bingazo,
       lotto,
       pozo,
       pozoRevancha,
@@ -468,8 +485,8 @@ export class MillonariaComponent implements OnInit {
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
-  async confirmarCompra() {
-    try {
+idVenta: string;
+  async confirmarCompra() {    try {
       this.isLoading = true;
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
@@ -491,7 +508,7 @@ export class MillonariaComponent implements OnInit {
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar();
+              this.abrirFinalizar(response.idVenta)
             }
           } else {
             this.cancelarCompra();
@@ -514,17 +531,17 @@ export class MillonariaComponent implements OnInit {
     }
   }
   @ViewChild('purchase') purchase: any;
-  async abrirFinalizar() {
+  async abrirFinalizar(idVenta: string) {
     this.dismissCompras();
     await this.cart.borrarCarrito();
-      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}`);
+    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
 
   }
   cancelarCompra() {
     this.dismissCompras();
     this.compraCancelada = true;
   }
-  irARecarga() {}
+  irARecarga() { }
 
   recargaDeSaldoMessage?: string;
   recargarSaldo(message: any) {
@@ -879,6 +896,42 @@ export class MillonariaComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
+
+  ticketsBingazo: any = {}
+  async deleteBingazoTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
+      this.isLoading = true;
+      let ticket = this.ticketsBingazo[identificador].ticket;
+      let sorteo = data.sorteo;
+
+      let reservaId = this.lotteryService.getReservaId();
+      let response = await this.lotteryService.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        12,
+        reservaId
+      );
+
+      delete this.ticketsBingazo[identificador];
+
+      await this.cart.setCarritoBingazo(this.ticketsBingazo);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = 'Error';
+      this.openError(errorMessage);
+    }
+  }
   async deleteAllTickets() {
     try {
       this.loadingMessage = 'Removiendo boletos del carrito';
@@ -902,13 +955,7 @@ export class MillonariaComponent implements OnInit {
         };
       });
       let reservaId = this.lotteryService.getReservaId();
-      /*       await this.lotteryService.eliminarTodosLosBoletosDeReserva(
-        this.token,
-        boletosLoteria,
-        boletosLotto,
-        boletosMillonaria,
-        reservaId
-      ); */
+
       Object.keys(this.ticketsMillonaria).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {
           let deletedIndex = this.ticketsDisponibles.findIndex(
@@ -936,6 +983,7 @@ export class MillonariaComponent implements OnInit {
     this.ticketsLotto = carrito.lotto;
     this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
+    this.ticketsBingazo = carrito.bingazo;
     this.ticketsPozoRevancha = carrito.pozoRevancha;
   }
 

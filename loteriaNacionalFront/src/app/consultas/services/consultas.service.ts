@@ -6,6 +6,7 @@ import { ConsultaService as RevanchaService } from 'src/app/juegos/pozoRevancha/
 import { ConsultaService as MillonariaService } from 'src/app/juegos/millonaria/services/consulta.service';
 import { ConsultaService as FacilottoService } from 'src/app/juegos/facilotto/services/consulta.service';
 import { ConsultaService as Pega3Service } from 'src/app/juegos/pega3/services/consulta.service';
+import { ConsultaService as BingazoService } from 'src/app/juegos/bingazo/services/consulta.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ export class ConsultasService {
     private lotto: LottoService,
     private pozo: PozoService,
     private revancha: RevanchaService,
+    private bingazo: BingazoService,
     private millonaria: MillonariaService,
     private facilotto: FacilottoService,
     private pega3: Pega3Service,
@@ -25,6 +27,7 @@ export class ConsultasService {
       this.loteria.getUltimoResultado(),
       this.lotto.getUltimoResultado(),
       this.pozo.getUltimoResultado(),
+      this.bingazo.getData(),
       this.revancha.getUltimoResultado(),
       this.millonaria.getUltimoResultado(),
       this.facilotto.getUltimoResultado(),

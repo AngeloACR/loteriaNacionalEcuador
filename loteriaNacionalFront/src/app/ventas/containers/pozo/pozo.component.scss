@@ -16,13 +16,16 @@ $color-revancha: #fae80c;
   justify-content: space-evenly;
   padding-bottom: 40px;
   flex-wrap: wrap;
+
   .infoBox {
     width: 100%;
   }
+
   .ventasBox {
     display: flex;
     width: 100%;
     justify-content: space-between;
+
     .contendor_seleccion {
       width: 70%;
       margin-right: 15px;
@@ -55,6 +58,7 @@ $color-revancha: #fae80c;
             transition: background-color 0.4s ease;
           }
         }
+
         .contenedor_select {
           width: 30%;
           max-width: 400px;
@@ -83,9 +87,11 @@ $color-revancha: #fae80c;
             background: #ffffff;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
             border-radius: 10px;
+
             &:hover {
               border-color: #888;
             }
+
             &:focus {
               outline: none;
             }
@@ -122,15 +128,18 @@ $color-revancha: #fae80c;
             &::-webkit-scrollbar-track {
               border-radius: 10px;
             }
+
             .option {
               width: 120px;
               height: 120px;
               overflow: hidden;
+
               label {
                 display: inline-block;
                 width: 100%;
                 padding: 5px;
                 background-color: transparent;
+
                 img {
                   background-color: transparent;
                   cursor: pointer;
@@ -140,6 +149,7 @@ $color-revancha: #fae80c;
                 }
               }
             }
+
             input {
               width: 0;
               height: 0;
@@ -151,12 +161,14 @@ $color-revancha: #fae80c;
               /* fix specific for Firefox */
               position: absolute;
               left: -10000px;
-              & + label {
+
+              &+label {
                 display: block;
                 background-color: #fff;
                 text-align: center;
               }
-              &:checked + label {
+
+              &:checked+label {
                 background-color: $color-pozo;
                 border-radius: 15px;
                 transition: background-color 0.3s ease;
@@ -171,6 +183,7 @@ $color-revancha: #fae80c;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+
           h3 {
             font-family: $fuente-subtitulo;
             font-size: 16px;
@@ -183,6 +196,7 @@ $color-revancha: #fae80c;
             flex-wrap: wrap;
             justify-content: space-evenly;
             margin: 10px 5px;
+
             input[type="text"] {
               width: 60px;
               height: 60px;
@@ -211,6 +225,7 @@ $color-revancha: #fae80c;
           }
         }
       }
+
       .contenedor_select_animales {
         width: 100%;
         margin: 10px auto;
@@ -236,9 +251,11 @@ $color-revancha: #fae80c;
           background: #ffffff;
           box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
           border-radius: 10px;
+
           &:hover {
             border-color: #888;
           }
+
           &:focus {
             outline: none;
           }
@@ -275,15 +292,18 @@ $color-revancha: #fae80c;
           &::-webkit-scrollbar-track {
             border-radius: 10px;
           }
+
           .option {
             width: 120px;
             height: 120px;
             overflow: hidden;
+
             label {
               display: inline-block;
               width: 100%;
               padding: 5px;
               background-color: transparent;
+
               img {
                 background-color: transparent;
                 cursor: pointer;
@@ -293,6 +313,7 @@ $color-revancha: #fae80c;
               }
             }
           }
+
           input {
             width: 0;
             height: 0;
@@ -304,12 +325,14 @@ $color-revancha: #fae80c;
             /* fix specific for Firefox */
             position: absolute;
             left: -10000px;
-            & + label {
+
+            &+label {
               display: block;
               background-color: #fff;
               text-align: center;
             }
-            &:checked + label {
+
+            &:checked+label {
               background-color: $color-pozo;
               border-radius: 15px;
               transition: background-color 0.3s ease;
@@ -317,6 +340,7 @@ $color-revancha: #fae80c;
           }
         }
       }
+
       .tabs_animales {
         width: 100%;
         display: flex;
@@ -356,9 +380,11 @@ $color-revancha: #fae80c;
         font-family: $fuente-botones;
         font-size: 16px;
       }
+
       .tagItem {
         font-size: 12px;
       }
+
       table {
         width: auto;
         display: flex;
@@ -387,6 +413,7 @@ $color-revancha: #fae80c;
 
               .pozoBox {
                 position: relative;
+
                 input[type="checkbox"] {
                   width: 100%;
                   height: 100%;
@@ -399,13 +426,14 @@ $color-revancha: #fae80c;
                   opacity: 0;
                 }
 
-                input[type="checkbox"]:checked ~ .contenedor_seleccion_numero {
+                input[type="checkbox"]:checked~.contenedor_seleccion_numero {
                   background-color: $color-pozo;
                   border-radius: 10px;
                   color: #fff !important;
                   transition: background-color 0.3s ease-out;
                   opacity: 1;
                 }
+
                 .contenedor_seleccion_numero {
                   width: 100%;
                   display: flex;
@@ -429,6 +457,7 @@ $color-revancha: #fae80c;
                     left: 0;
                     opacity: 0;
                   }
+
                   .imagen_animal {
                     display: flex;
                     flex-direction: column;
@@ -445,6 +474,7 @@ $color-revancha: #fae80c;
                     flex-wrap: wrap;
                     justify-content: flex-start;
                     margin: 8px;
+
                     p {
                       display: flex;
                       align-items: center;
@@ -496,14 +526,14 @@ $color-revancha: #fae80c;
                   opacity: 0;
                 }
 
-                input[type="checkbox"]:checked
-                  ~ .contenedor_seleccion_revancha {
+                input[type="checkbox"]:checked~.contenedor_seleccion_revancha {
                   background-color: $color-revancha;
                   border-radius: 10px;
                   color: black !important;
                   transition: background-color 0.3s ease-in;
                   opacity: 1;
                 }
+
                 .contenedor_seleccion_revancha {
                   width: 80%;
                   display: flex;
@@ -534,6 +564,7 @@ $color-revancha: #fae80c;
                     flex-wrap: wrap;
                     justify-content: flex-start;
                     margin: 8px;
+
                     p {
                       display: flex;
                       align-items: center;
@@ -637,6 +668,7 @@ $color-revancha: #fae80c;
         }
       }
     }
+
     .ticketScroller {
       width: 25%;
       max-width: 400px;
@@ -652,14 +684,16 @@ $color-revancha: #fae80c;
     .ventasBox {
       width: 100%;
     }
+
     .infoBox {
       max-width: 800px;
       width: 100%;
     }
 
     .contendor_seleccion {
-      width: 100%;
-      margin: 0 0 20px 0;
+      width: 100% !important;
+      margin: 0 0 20px 0 !important;
+
       .contenedor_select_animales {
         .options {
           .option {
@@ -668,6 +702,7 @@ $color-revancha: #fae80c;
           }
         }
       }
+
       .selectBox {
         flex-wrap: wrap;
         flex-direction: column;
@@ -680,8 +715,10 @@ $color-revancha: #fae80c;
         .numeros_suerte {
           width: 100% !important;
           margin: 0;
+
           .numeros {
             justify-content: center !important;
+
             input {
               margin: 0 6px !important;
               width: 45px !important;
@@ -694,7 +731,7 @@ $color-revancha: #fae80c;
 
       table {
         tbody {
-          grid-template-columns: repeat(2, auto);
+          grid-template-columns: repeat(1, auto) !important;
         }
 
         hr {

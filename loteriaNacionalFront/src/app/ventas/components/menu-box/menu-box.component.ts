@@ -14,6 +14,7 @@ export class MenuBoxComponent implements OnInit {
   linkLoteriaNacional: string = '';
   linkPozoMillonario: string = '';
   linkMillonaria: string = '';
+  linkBingazo: string = '';
   token?: string;
   lotteryToken?: string;
   usuario?: string;
@@ -23,6 +24,7 @@ export class MenuBoxComponent implements OnInit {
   ticketsPozo: any;
   ticketsLotto: any;
   ticketsLoteria: any;
+  ticketsBingazo: any;
   ticketsCarrito: any;
   ticketsMillonaria: any;
   @Input() miniBox: boolean = false;
@@ -33,7 +35,7 @@ export class MenuBoxComponent implements OnInit {
     public lottery: VentasService,
     private paymentService: PagosService,
     private cart: CarritoService,
-    
+
     private actRoute: ActivatedRoute,
     private router: Router
   ) {
@@ -54,6 +56,7 @@ export class MenuBoxComponent implements OnInit {
           this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
           this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
           this.linkMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
+          this.linkBingazo = `/compra_tus_juegos/bingazo/${this.token}`;
         }
 
         await this.getCarritoTickets();
@@ -168,6 +171,19 @@ export class MenuBoxComponent implements OnInit {
       aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
       millonaria.push(aux);
     }
+
+    let bingazoAux = this.ticketsBingazo;
+    let bingazo = [];
+    for (let id in bingazoAux) {
+      let aux: any = {};
+      aux['combinacion1'] = bingazoAux[id].ticket.combinacion1;
+      aux['combinacion2'] = bingazoAux[id].ticket.combinacion2;
+      aux['fruta'] = bingazoAux[id].ticket.fruta;
+      aux['sorteo'] = bingazoAux[id].sorteo.sorteo;
+      aux['subtotal'] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
+      aux['fecha'] = bingazoAux[id].sorteo.fecha;
+      bingazo.push(aux);
+    }
     let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
     let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
 
@@ -175,6 +191,7 @@ export class MenuBoxComponent implements OnInit {
       loteria,
       millonaria,
       lotto,
+      bingazo,
       pozo,
       pozoRevancha,
       amount,
@@ -190,8 +207,9 @@ export class MenuBoxComponent implements OnInit {
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
 
-  irARecarga() {}
+  irARecarga() { }
 
+  idVenta: string;
   async confirmarCompra() {
     try {
       this.isLoading = true;
@@ -214,7 +232,7 @@ export class MenuBoxComponent implements OnInit {
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar();
+              this.abrirFinalizar(response.idVenta)
             }
           } else {
             this.cancelarCompra('');
@@ -256,10 +274,10 @@ export class MenuBoxComponent implements OnInit {
     this.compraCancelada = true;
   }
 
-  async abrirFinalizar() {
+  async abrirFinalizar(idVenta: string) {
     this.dismissCompras();
     await this.cart.borrarCarrito();
-      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}`);
+    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
 
   }
 
@@ -363,6 +381,40 @@ export class MenuBoxComponent implements OnInit {
       delete this.ticketsLotto[identificador];
 
       await this.cart.setCarritoLotto(this.ticketsLotto);
+
+      await this.getCarritoTickets();
+      this.getTotal();
+      this.isLoading = false;
+    } catch (e: any) {
+      this.isLoading = false;
+      console.log(e.message);
+      let errorMessage = e.message;
+      let errorTitle = 'Error';
+      this.openError(errorMessage, errorTitle);
+    }
+  }
+  async deleteBingazoTicket(data: any) {
+    try {
+      let identificador = data.ticket.identificador;
+      let fraccion = '';
+      this.loadingMessage = 'Removiendo boleto del carrito';
+      this.isLoading = true;
+      let ticket = this.ticketsBingazo[identificador].ticket;
+      let sorteo = data.sorteo;
+
+      let reservaId = this.lottery.getReservaId();
+      let response = await this.lottery.eliminarBoletosDeReserva(
+        this.token,
+        ticket,
+        sorteo,
+        fraccion,
+        12,
+        reservaId
+      );
+
+      delete this.ticketsBingazo[identificador];
+
+      await this.cart.setCarritoBingazo(this.ticketsBingazo);
 
       await this.getCarritoTickets();
       this.getTotal();
@@ -511,13 +563,7 @@ export class MenuBoxComponent implements OnInit {
         };
       });
       let reservaId = this.lottery.getReservaId();
-      /*       await this.lottery.eliminarTodosLosBoletosDeReserva(
-        this.token,
-        boletosLoteria,
-        boletosLotto,
-        boletosPozo,
-        reservaId
-      ); */
+
       await this.cart.borrarCarrito();
       await this.getCarritoTickets();
       this.getTotal();
@@ -538,6 +584,7 @@ export class MenuBoxComponent implements OnInit {
     this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
     this.ticketsPozoRevancha = carrito.pozoRevancha;
+    this.ticketsBingazo = carrito.bingazo;
   }
 
   authError() {

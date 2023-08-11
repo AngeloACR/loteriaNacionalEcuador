@@ -29,20 +29,23 @@
       </h3>
     </div>
   </div>
-  
-  <div *ngIf="codigosPromocionales && codigosPromocionales.length" class="containerInfoBox">
+
+  <div
+    *ngIf="codigosPromocionales && codigosPromocionales.length"
+    class="containerInfoBox"
+  >
     <div class="codigos titleLoteryBox">
-      <h3>
-        Con estos códigos participas en el sorteo por un PS5:
-      </h3>
+      <h3>Con estos códigos participas en el sorteo por un PS5:</h3>
       <h3 class="codigo">
-         <span *ngFor="let codigoPromocional of codigosPromocionales" >{{ codigoPromocional.codigo }}</span>
+        <span *ngFor="let codigoPromocional of codigosPromocionales">{{
+          codigoPromocional.codigo
+        }}</span>
       </h3>
     </div>
   </div>
   <div class="containerInfoBox" *ngIf="compra.loteria.length != 0">
     <div class="titleLoteriaBox">
-      <img src="assets/img/loteria-sombra-2.png" width="180"/>
+      <img src="assets/img/loteria-sombra-2.png" width="180" />
     </div>
     <div *ngFor="let item of compra.loteria" class="dateLoteryBox loteria">
       <div class="infoSorteoBox">
@@ -133,7 +136,7 @@
 
   <div class="containerInfoBox" *ngIf="compra.lotto.length != 0">
     <div class="titleLottoBox">
-      <img src="assets/img/lotto-sombra.png" width="180"/>
+      <img src="assets/img/lotto-sombra.png" width="180" />
     </div>
     <div
       *ngFor="let item of compra.lotto; let i = index"
@@ -236,7 +239,7 @@
 
   <div class="containerInfoBox" *ngIf="compra.pozo.length != 0">
     <div class="titlePozoBox">
-      <img src="assets/img/pozo-sombra.png" width="180"/>
+      <img src="assets/img/pozo-sombra.png" width="180" />
     </div>
     <div *ngFor="let item of compra.pozo" class="dateLoteryBox pozo">
       <div class="infoSorteoBox">
@@ -322,12 +325,14 @@
     </div>
   </div>
 
-
   <div class="containerInfoBox" *ngIf="compra.pozoRevancha.length != 0">
     <div class="titlePozoRevanchaBox">
-      <img src="assets/img/revancha-sombra.png" width="180"/>
+      <img src="assets/img/revancha-sombra.png" width="180" />
     </div>
-    <div *ngFor="let item of compra.pozoRevancha" class="dateLoteryBox pozoRevancha">
+    <div
+      *ngFor="let item of compra.pozoRevancha"
+      class="dateLoteryBox pozoRevancha"
+    >
       <div class="infoSorteoBox">
         <p>
           Sorteo: <span>{{ item.sorteo }}</span>
@@ -505,6 +510,91 @@
     </div>
   </div>
 
+  <div class="containerInfoBox" *ngIf="compra.bingazo.length != 0">
+    <div class="titleBingazoBox">
+      <img src="assets/img/bingazo-sombra.png" width="180" />
+    </div>
+    <div *ngFor="let item of compra.bingazo" class="dateLoteryBox bingazo">
+      <div class="infoSorteoBox">
+        <p>
+          Sorteo: <span>{{ item.sorteo }}</span>
+        </p>
+        <p>
+          Fecha del sorteo: <span>{{ item.fecha }}</span>
+        </p>
+      </div>
+      <div class="dateTicketBox">
+        <p>
+          Boleto: <span>{{ item.combinacion1 }}</span>
+        </p>
+        <p>
+          Fruta: <span>{{ nombreFruta(item.fruta) }}</span>
+        </p>
+        <p>Combinación:</p>
+        <p class="combinacion">{{ filtrarBingazo(item.combinacion2) }}</p>
+      </div>
+      <div class="numberBox">
+        <p>Cantidad: <span>1</span></p>
+      </div>
+      <div class="montoBox">
+        <p>
+          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
+        </p>
+        <p *ngIf="item.tieneDescuento">
+          Total con descuento:
+          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
+        </p>
+      </div>
+      <ng-container *ngIf="item.hasGanador">
+        <div class="ganadorTitleBox bingazoColor">
+          <p>Boleto ganador</p>
+        </div>
+        <div class="ganadorBox">
+          <div class="ganadorHeaderBox bingazoBackground">
+            <p>VALOR DEL PREMIO</p>
+            <p>DESCUENTO 14%</p>
+            <p>VALOR DEL PREMIO CON DESCUENTO</p>
+            <p>DESCRIPCIÓN DEL PREMIO</p>
+          </div>
+          <div
+            class="ganadorDetailsBox"
+            *ngFor="let ganador of item.detalleGanador"
+          >
+            <p>{{ formatNumber(ganador.valorPremio) }}</p>
+            <p>
+              {{
+                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
+              }}
+            </p>
+            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>
+            <p>{{ ganador.descripcionPremio }}</p>
+          </div>
+        </div>
+        <div
+          class="ganadorBoxMobile"
+          *ngFor="let ganador of item.detalleGanador; let i = index"
+        >
+          <div class="ganadorHeaderBox bingazoBackground">
+            <p>Premio {{ i + 1 }}</p>
+          </div>
+          <div class="ganadorDetailsBox">
+            <p>VALOR DEL PREMIO</p>
+            <p>{{ formatNumber(ganador.valorPremio) }}</p>
+            <p>DESCUENTO 14%</p>
+            <p>
+              {{
+                formatNumber(ganador.valorPremio - ganador.valorPremioDescuento)
+              }}
+            </p>
+            <p>VALOR DEL PREMIO CON DESC.</p>
+            <p>{{ formatNumber(ganador.valorPremioDescuento) }}</p>
+            <p>DESCRIPCIÓN DEL PREMIO</p>
+            <p>{{ ganador.descripcionPremio }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
   <div class="totalBox">
     <p>
       TOTAL DE COMPRA:

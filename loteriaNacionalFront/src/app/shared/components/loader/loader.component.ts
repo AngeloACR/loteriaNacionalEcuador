@@ -10,7 +10,7 @@ export class LoaderComponent implements OnInit {
   @Input() loader: String = '';
   loaderPath: string = 'assets/loader.gif';
   logoPath: string = '';
-  constructor() {}
+  constructor() { }
 
   interval: any;
   ngOnInit() {
@@ -27,14 +27,18 @@ export class LoaderComponent implements OnInit {
         this.logoPath = 'assets/img/pozo-sombra.png';
         //this.logoPath = "assets/pozoLoader.gif";
         break;
-        case 'millonaria':
-          this.logoPath = 'assets/img/millonaria-consulta.png';
-          //this.logoPath = "assets/pozoLoader.gif";
-          break;
-          case 'revancha':
-            this.logoPath = 'assets/img/revancha-sombra.png';
-            //this.logoPath = "assets/pozoLoader.gif";
-            break;
+      case 'millonaria':
+        this.logoPath = 'assets/img/millonaria-consulta.png';
+        //this.logoPath = "assets/pozoLoader.gif";
+        break;
+      case 'revancha':
+        this.logoPath = 'assets/img/revancha-sombra.png';
+        //this.logoPath = "assets/pozoLoader.gif";
+        break;
+      case 'bingazo':
+        this.logoPath = 'assets/img/bingazo-sombra.png';
+        //this.logoPath = "assets/pozoLoader.gif";
+        break;
       default:
         this.logoPath = 'assets/img/loteria-sombra.png';
         //this.logoPath = "assets/loteriaLoader.gif";

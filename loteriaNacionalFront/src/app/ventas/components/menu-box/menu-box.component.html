@@ -33,6 +33,14 @@
     (authError)="authError()"
   >
   </app-boton-de-juego>
+  <app-boton-de-juego
+    image="assets/img/bingazo-sombra.png"
+    [link]="linkBingazo"
+    [token]="lotteryToken"
+    name="bingazo"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
 </div>
 <div *ngIf="miniBox" class="miniBox">
   <div>
@@ -76,6 +84,15 @@
     (authError)="authError()"
   >
   </app-boton-de-juego>
+  <app-boton-de-juego
+    image="assets/img/bingazo-sombra.png"
+    [link]="linkBingazo"
+    [token]="lotteryToken"
+    [mini]="true"
+    name="bingazo"
+    (authError)="authError()"
+  >
+  </app-boton-de-juego>
 </div>
 
 <app-floating-menu
@@ -84,12 +101,14 @@
   (deletePozoTicket)="deletePozoTicket($event)"
   (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
+  (deleteBingazoTicket)="deleteBingazoTicket($event)"
   (emitirCompra)="comprar()"
   (eliminarTodo)="deleteAllTickets()"
   (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozoRevancha]="ticketsPozoRevancha"
+  [ticketsBingazo]="ticketsBingazo"
   [ticketsPozo]="ticketsPozo"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="loteria"
@@ -121,7 +140,7 @@
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-venta>
 <app-instantaneas
-  (close)="abrirFinalizar()"
+  (close)="abrirFinalizar(idVenta)"
   [resultados]="instantaneas"
   tipoloteria="14"
   [isLoteriaNacional]="true"

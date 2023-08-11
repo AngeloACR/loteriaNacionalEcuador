@@ -31,7 +31,6 @@ export class BoletinComponent implements OnInit {
   changeBoletin() {
     this.showBox = false;
     this.boletin = "";
-    console.log("changingth")
     let i = this.boletines.findIndex(
       (o: any) => o.sorteo == this.sorteoGanador
     );

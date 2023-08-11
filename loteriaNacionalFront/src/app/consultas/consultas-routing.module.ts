@@ -15,6 +15,8 @@ import { PozoComponent } from './containers/pozo/pozo.component';
 import { RevanchaBoletinComponent } from './containers/revancha-boletin/revancha-boletin.component';
 import { RevanchaComponent } from './containers/revancha/revancha.component';
 import { Pega3BoletinComponent } from './containers/pega3-boletin/pega3-boletin.component';
+import { BingazoBoletinComponent } from './containers/bingazo-boletin/bingazo-boletin.component';
+import { BingazoComponent } from './containers/bingazo/bingazo.component';
 
 const routes: Routes = [
   {
@@ -47,6 +49,11 @@ const routes: Routes = [
         component: Pega3BoletinComponent,
       },
       { path: 'loteria', component: LoteriaComponent },
+      {
+        path: 'bingazo/boletin/:sorteo',
+        component: BingazoBoletinComponent,
+      },
+      { path: 'bingazo', component: BingazoComponent },
       { path: 'lotto', component: LottoComponent },
       { path: 'facilotto', component: FacilottoComponent },
       {
@@ -67,4 +74,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ConsultasRoutingModule {}
+export class ConsultasRoutingModule { }

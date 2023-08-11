@@ -14,7 +14,7 @@ export class BotonDeJuegoComponent implements OnInit {
   @Input() token?: String;
   @Output() authError = new EventEmitter();
   tipoLoteria: any;
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     switch (this.name) {
@@ -37,6 +37,11 @@ export class BotonDeJuegoComponent implements OnInit {
       case 'pozo':
         this.tipoLoteria = {
           pozo: true,
+        };
+        break;
+      case 'bingazo':
+        this.tipoLoteria = {
+          bingazo: true,
         };
         break;
 

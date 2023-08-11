@@ -17,7 +17,7 @@ $fuente-botones: "Monstserrat SemiBold";
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  
+
   color: #ffffff;
 
   display: flex;
@@ -34,7 +34,7 @@ $fuente-botones: "Monstserrat SemiBold";
     transition: width 0.3s ease;
   }
 
-  &:hover .lotteryImg{
+  &:hover .lotteryImg {
     width: 60%;
 
     transition: width 0.3s ease;
@@ -44,6 +44,7 @@ $fuente-botones: "Monstserrat SemiBold";
     display: none;
   }
 }
+
 .miniLotteryBox {
 
   font-family: "Helvetica";
@@ -53,7 +54,7 @@ $fuente-botones: "Monstserrat SemiBold";
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  
+
   color: #ffffff;
 
   display: flex;
@@ -70,7 +71,7 @@ $fuente-botones: "Monstserrat SemiBold";
     transition: width 0.3s ease;
   }
 
-  &:hover .lotteryImg{
+  &:hover .lotteryImg {
     width: 50%;
 
     transition: width 0.3s ease;
@@ -101,9 +102,14 @@ $fuente-botones: "Monstserrat SemiBold";
   border: 3px solid #b51f20;
 }
 
+.bingazo {
+  background-color: #283479;
+  border: 3px solid #283479;
+}
+
 
 @media screen and (max-width: 800px) {
-  .lotteryBox{
+  .lotteryBox {
     width: 300px;
     height: 100px;
   }

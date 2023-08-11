@@ -166,6 +166,7 @@
       (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
       (deleteLottoTicket)="deleteLottoTicket($event)"
       (deletePozoTicket)="deletePozoTicket($event)"
+      (deleteBingazoTicket)="deleteBingazoTicket($event)"
       (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
       (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
       (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
@@ -175,6 +176,7 @@
       [ticketsPozoRevancha]="ticketsPozoRevancha"
       [ticketsLotto]="ticketsLotto"
       [ticketsMillonaria]="ticketsMillonaria"
+      [ticketsBingazo]="ticketsBingazo"
       [ticketsPozo]="ticketsPozo"
       tipoLoteria="lotto"
     >
@@ -183,6 +185,7 @@
 </div>
 <app-floating-menu
   (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
+  (deleteBingazoTicket)="deleteBingazoTicket($event)"
   (deleteLottoTicket)="deleteLottoTicket($event)"
   (deletePozoTicket)="deletePozoTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
@@ -192,6 +195,7 @@
   (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
+  [ticketsBingazo]="ticketsBingazo"
   [ticketsPozo]="ticketsPozo"
   [ticketsPozoRevancha]="ticketsPozoRevancha"
   [ticketsMillonaria]="ticketsMillonaria"
@@ -237,7 +241,7 @@
   *ngIf="confirmacionDeCompra"
 ></app-confirmacion-de-venta>
 <app-instantaneas
-  (close)="abrirFinalizar()"
+  (close)="abrirFinalizar(idVenta)"
   [resultados]="instantaneas"
   tipoLoteria="2"
   [isLoteriaNacional]="true"

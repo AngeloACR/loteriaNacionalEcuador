@@ -1,0 +1,12 @@
+<div class="container">
+    <bingazo-consulta class="consultaBox" (resultados)="toggleResultados($event)">
+    </bingazo-consulta>
+    <bingazo-ultimo-resultado class="selectorBox"></bingazo-ultimo-resultado>
+    <ventas-menu-box class="menuBox" [miniBox]="true"></ventas-menu-box>
+
+    <div class="modalBox" *ngIf="showResultados">
+        <consultas-resultados tipoLoteria="12" [isLoteriaNacional]="true" (close)="closeBox()" *ngIf="showResultados"
+            [resultados]="resultados">
+        </consultas-resultados>
+    </div>
+</div>

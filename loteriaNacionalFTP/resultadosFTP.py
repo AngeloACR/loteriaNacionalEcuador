@@ -55,6 +55,8 @@ def agregarMaestro(nombre, size, cantidad, tipoLoteria, sorteo, db):
             loteriaDB['mastermillonarias'].update_one(query, updateQuery, True)
         if (tipoLoteria == "18"):
             loteriaDB['masterfacilottos'].update_one(query, updateQuery, True)
+        if (tipoLoteria == "12"):
+            loteriaDB['masterbingazos'].update_one(query, updateQuery, True)
         closeConnect(connection)
         status = True
         return status
@@ -150,6 +152,23 @@ def agregarResultados(resultadosNuevos, tipoLoteria, sorteo, db):
                 }
                 updateQuery = {"$set": resultado}
                 loteriaDB['resultadopozos'].update_one(query, updateQuery, True)
+
+            if (tipoLoteria == "12"):
+                resultado = {
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                    "combinacion2": combinacion2,
+                    "combinacion3": combinacion3,
+                    "codigo": int(resultadoData['B']),
+                    "codigoPremio": codigoPremio
+                }
+                query = {
+                    "tipoLoteria": int(tipoLoteria),
+                    "numeroSorteo": sorteo,
+                    "combinacion1": resultadoData['C1'],
+                }
+                updateQuery = {"$set": resultado}
+                loteriaDB['resultadobingazos'].update_one(query, updateQuery, True)
 
             if (tipoLoteria == "17"):
                 resultado = {

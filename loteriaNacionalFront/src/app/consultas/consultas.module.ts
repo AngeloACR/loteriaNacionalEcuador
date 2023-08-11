@@ -30,6 +30,9 @@ import { FacilottoBoletinComponent } from './containers/facilotto-boletin/facilo
 import { FacilottoModule } from '../juegos/facilotto/facilotto.module';
 import { Pega3BoletinComponent } from './containers/pega3-boletin/pega3-boletin.component';
 import { Pega3Module } from '../juegos/pega3/pega3.module';
+import { BingazoComponent } from './containers/bingazo/bingazo.component';
+import { BingazoBoletinComponent } from './containers/bingazo-boletin/bingazo-boletin.component';
+import { BingazoModule } from '../juegos/bingazo/bingazo.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { Pega3Module } from '../juegos/pega3/pega3.module';
     LoteriaComponent,
     PozoComponent,
     LottoComponent,
+    BingazoComponent,
+    BingazoBoletinComponent,
     MillonariaComponent,
     UltimosResultadosComponent,
     LoteriaBoletinComponent,
@@ -62,6 +67,8 @@ import { Pega3Module } from '../juegos/pega3/pega3.module';
     PozoComponent,
     LottoComponent,
     MillonariaComponent,
+    BingazoComponent,
+    BingazoBoletinComponent,
     UltimosResultadosComponent,
     LoteriaBoletinComponent,
     LottoBoletinComponent,
@@ -76,6 +83,7 @@ import { Pega3Module } from '../juegos/pega3/pega3.module';
     ConsultasRoutingModule,
     LoteriaModule,
     LottoModule,
+    BingazoModule,
     Pega3Module,
     FacilottoModule,
     PozoModule,
@@ -85,4 +93,4 @@ import { Pega3Module } from '../juegos/pega3/pega3.module';
     SharedModule,
   ],
 })
-export class ConsultasModule {}
+export class ConsultasModule { }

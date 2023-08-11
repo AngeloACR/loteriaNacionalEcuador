@@ -4,8 +4,32 @@ $fuente-parrafo: "Monstserrat Regular";
 $fuente-botones: "Monstserrat SemiBold";
 
 $color-botton: #784494;
+
 .boletin_oficial {
   h1 {
     color: $color-botton;
+  }
+}
+
+.input_content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $color-botton;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+  label {
+    color: white;
+    background-color: $color-botton;
+    padding-right: 10px;
+    font-size: 25px;
+  }
+
+  select {
+    background-color: white;
+    border: none;
+    padding-left: 10px;
   }
 }

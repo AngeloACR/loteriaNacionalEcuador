@@ -5,8 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaReservasLogger } = require("./logging");
-const config = require("../environments/local");
-
+const config = require("../environments/test");
 
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
@@ -17,6 +16,7 @@ module.exports.reservarCombinaciones = async (
   pozo,
   pozoRevancha,
   millonaria,
+  bingazo,
   token,
   reservaId,
   user,
@@ -30,6 +30,7 @@ module.exports.reservarCombinaciones = async (
     let pozoCombinacionesXML = "";
     let pozoRevanchaCombinacionesXML = "";
     let millonariaCombinacionesXML = "";
+    let bingazoCombinacionesXML = "";
     if (loteria.length != 0) {
       loteria.forEach((item) => {
         let combinacion = item.combinacion;
@@ -107,6 +108,19 @@ module.exports.reservarCombinaciones = async (
               
             `;
     }
+    if (bingazo.length != 0) {
+      bingazo.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        bingazoCombinacionesXML = `${bingazoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      bingazoCombinacionesXML = `
+            <JG id="12">
+            ${bingazoCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
     let message = {
       $xml: `
         <PI_DatosXml>
@@ -136,6 +150,7 @@ module.exports.reservarCombinaciones = async (
     ${pozoCombinacionesXML} 
     ${pozoRevanchaCombinacionesXML} 
     ${millonariaCombinacionesXML} 
+    ${bingazoCombinacionesXML} 
 
   </RS>
       </xmlNumeros>
@@ -226,6 +241,7 @@ module.exports.eliminarReservas = async (
   pozo,
   pozoRevancha,
   millonaria,
+  bingazo,
   token,
   reservaId,
   user,
@@ -239,6 +255,8 @@ module.exports.eliminarReservas = async (
     let pozoCombinacionesXML = "";
     let pozoRevanchaCombinacionesXML = "";
     let millonariaCombinacionesXML = "";
+    let bingazoCombinacionesXML = "";
+
     if (loteria.length != 0) {
       loteria.forEach((item) => {
         let combinacion = item.combinacion;
@@ -311,6 +329,20 @@ module.exports.eliminarReservas = async (
               
             `;
     }
+
+    if (bingazo.length != 0) {
+      bingazo.forEach((item) => {
+        let combinacion = item.combinacion;
+        let cant = 1;
+        bingazoCombinacionesXML = `${bingazoCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" />`;
+      });
+      bingazoCombinacionesXML = `
+            <JG id="12">
+            ${bingazoCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
     let message = {
       $xml: `
         <PI_DatosXml>
@@ -340,6 +372,7 @@ module.exports.eliminarReservas = async (
               ${pozoCombinacionesXML}
               ${pozoRevanchaCombinacionesXML} 
               ${millonariaCombinacionesXML}
+              ${bingazoCombinacionesXML}
           
             </RS>
                 </xmlNumeros>
@@ -347,7 +380,6 @@ module.exports.eliminarReservas = async (
             </mt>
                     ]]>
                   </PI_DatosXml>`,
-      /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
     };
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
@@ -441,7 +473,6 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
         </mt>
                     ]]>
                   </PI_DatosXml>`,
-      /*The message that you created above, ensure it works properly in SOAP UI rather copy a working request from SOAP UI*/
     };
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
@@ -490,14 +521,12 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
                 return response;
               });
 
-              //let loteria = [];
-              //let lotto = [];
-              //let pozo = [];
               let loteria = boletos.filter((x) => x.tipoLoteria == 1);
               let lotto = boletos.filter((x) => x.tipoLoteria == 2);
               let pozo = boletos.filter((x) => x.tipoLoteria == 5);
               let pozoRevancha = boletos.filter((x) => x.tipoLoteria == 17);
               let millonaria = boletos.filter((x) => x.tipoLoteria == 14);
+              let bingazo = boletos.filter((x) => x.tipoLoteria == 12);
 
               let carrito = loteria.concat(lotto).concat(pozo);
               let response = {
@@ -506,6 +535,7 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
                 pozo,
                 pozoRevancha,
                 millonaria,
+                bingazo,
                 carrito,
               };
               let logData = {

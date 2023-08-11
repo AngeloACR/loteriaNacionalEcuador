@@ -1,0 +1,26 @@
+<div class="contenedor_informacion_ticket">
+  <div class="contenedor_informacion_ticket_derecho">
+
+    <div class="ticket_titulo">
+      <!-- <img src="../../../../assets/img/loteria nacional.png" alt=""> -->
+
+      <div>
+        <p>Sorteo N° {{ticket.numeroSorteo}}</p>
+        <p *ngIf="ticket.sorteo">{{ticket.sorteo.fecha}}</p>
+      </div>
+    </div>
+    <div class="ticket_title">
+      <p>PREMIO MAYOR</p>
+    </div>
+    <div class="ticket_monto">
+      <p>$ {{premio | number: '5.2-2'}}</p>
+    </div>
+    <div class="ticket_entero_fraccion">
+      <div class="ticket_entero">
+        <div>
+          <p *ngFor="let number of ticketNumbers">{{number}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

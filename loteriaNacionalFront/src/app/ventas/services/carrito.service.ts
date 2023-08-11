@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,13 +11,14 @@ export class CarritoService {
   ticketsLotto: any = {};
   ticketsPozo: any = {};
   ticketsMillonaria: any = {};
+  ticketsBingazo: any = {};
   ticketsPozoRevancha: any = {};
   ticketsCarrito: any = [];
   reservaId: any = 0;
 
   mySource = environment.source;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   async eliminarDescuento(element: any, tipoLoteria: any) {
     let sorteo = element.sorteo;
@@ -52,6 +53,16 @@ export class CarritoService {
           }
         }
         this.setPozoLocal(pozo);
+        break;
+      case 12:
+        let bingazo = this.getBingazoLocal();
+        for (let id in bingazo) {
+          if (bingazo[id].sorteo.sorteo == sorteo) {
+            bingazo[id].tieneDescuento = false;
+            bingazo[id].subtotalConDesc = 0;
+          }
+        }
+        this.setBingazoLocal(bingazo);
         break;
       case 14:
         let millonaria = this.getMillonariaLocal();
@@ -173,7 +184,7 @@ export class CarritoService {
     let count = 0;
     if (carrito && carrito.length) {
       carrito.forEach((item: any) => {
-        if (item.tipoLoteria == 1) {
+        if (item.tipoLoteria == 1 || item.tipoLoteria == 14) {
           count += item.ticket.seleccionados.length;
         } else {
           count += 1;
@@ -214,6 +225,7 @@ export class CarritoService {
         pozo: this.getPozoLocal(),
         pozoRevancha: this.getPozoRevanchaLocal(),
         millonaria: this.getMillonariaLocal(),
+        bingazo: this.getBingazoLocal(),
         carrito: this.getCarritoLocal(),
         total: this.getTotal(),
         reservaId: this.getReservaId(),
@@ -235,6 +247,17 @@ export class CarritoService {
   async setCarritoLoteria(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
       localStorage.setItem('seleccionadosLoteria', JSON.stringify(tickets));
+      //this.ticketsLoteria = tickets;
+      await this.setTotal();
+      await this.actualizarCarrito();
+      resolve('Done');
+    });
+  }
+
+  async setCarritoBingazo(tickets: any) {
+    return new Promise<any>(async (resolve, reject) => {
+      console.log(tickets);
+      localStorage.setItem('seleccionadosBingazo', JSON.stringify(tickets));
       //this.ticketsLoteria = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
@@ -291,6 +314,9 @@ export class CarritoService {
   setLoteriaLocal(data: any) {
     localStorage.setItem('seleccionadosLoteria', JSON.stringify(data));
   }
+  setBingazoLocal(data: any) {
+    localStorage.setItem('seleccionadosBingazo', JSON.stringify(data));
+  }
   setMillonariaLocal(data: any) {
     localStorage.setItem('seleccionadosMillonaria', JSON.stringify(data));
   }
@@ -314,6 +340,9 @@ export class CarritoService {
   }
   getLoteriaLocal() {
     return JSON.parse(localStorage.getItem('seleccionadosLoteria')!);
+  }
+  getBingazoLocal() {
+    return JSON.parse(localStorage.getItem('seleccionadosBingazo')!);
   }
   getMillonariaLocal() {
     return JSON.parse(localStorage.getItem('seleccionadosMillonaria')!);
@@ -351,14 +380,17 @@ export class CarritoService {
             data.loteria = {};
             data.lotto = {};
             data.pozo = {};
+            data.bingazo = {};
             data.pozoRevancha = {};
             data.millonaria = {};
           }
+          console.log(data);
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);
           this.setMillonariaLocal(data.millonaria);
           this.setPozoLocal(data.pozo);
+          this.setBingazoLocal(data.bingazo);
           this.setPozoRevanchaLocal(data.pozoRevancha);
           //await this.setTotal();
 
@@ -392,7 +424,8 @@ export class CarritoService {
           /*           if (!data.status) {
             reject(new Error(data.message));
           }
- */ resolve(data);
+ */
+          resolve(data);
         },
         (error: any) => {
           reject(new Error(error.error.message));
@@ -429,6 +462,13 @@ export class CarritoService {
       //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
     });
   }
+  async getCarritoBingazo() {
+    return new Promise<any>(async (resolve, reject) => {
+      let carritoDB = await this.buscarCarrito();
+      resolve(carritoDB.bingazo);
+      //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
+    });
+  }
   async getCarritoMillonaria() {
     return new Promise<any>(async (resolve, reject) => {
       let carritoDB = await this.buscarCarrito();
@@ -450,8 +490,10 @@ export class CarritoService {
     this.ticketsPozo = {};
     this.ticketsMillonaria = {};
     this.ticketsPozoRevancha = {};
+    this.ticketsBingazo = {};
     this.reservaId = 0;
     this.total = 0;
+    localStorage.removeItem('seleccionadosBingazo');
     localStorage.removeItem('seleccionadosLoteria');
     localStorage.removeItem('seleccionadosLotto');
     localStorage.removeItem('seleccionadosPozo');
@@ -489,6 +531,8 @@ export class CarritoService {
       let loteriaAux = this.getLoteriaLocal();
       let lottoAux = this.getLottoLocal();
       let pozoAux = this.getPozoLocal();
+      let pozoRevanchaAux = this.getPozoRevanchaLocal();
+      let bingazoAux = this.getBingazoLocal();
       let millonariaAux = this.getMillonariaLocal();
       let loteriaConDesc = 0;
       for (let id in loteriaAux) {
@@ -514,6 +558,14 @@ export class CarritoService {
           pozoConDesc += parseFloat(pozoAux[id].subtotal);
         }
       }
+      let pozoRevanchaConDesc = 0;
+      for (let id in pozoRevanchaAux) {
+        if (pozoRevanchaAux[id].tieneDescuento) {
+          pozoRevanchaConDesc += parseFloat(pozoRevanchaAux[id].subtotalConDesc);
+        } else {
+          pozoRevanchaConDesc += parseFloat(pozoRevanchaAux[id].subtotal);
+        }
+      }
       let millonariaConDesc = 0;
       for (let id in millonariaAux) {
         if (millonariaAux[id].tieneDescuento) {
@@ -522,8 +574,16 @@ export class CarritoService {
           millonariaConDesc += parseFloat(millonariaAux[id].subtotal);
         }
       }
+      let bingazoConDesc = 0;
+      for (let id in bingazoAux) {
+        if (bingazoAux[id].tieneDescuento) {
+          bingazoConDesc += parseFloat(bingazoAux[id].subtotalConDesc);
+        } else {
+          bingazoConDesc += parseFloat(bingazoAux[id].subtotal);
+        }
+      }
       let auxConDesc =
-        loteriaConDesc + lottoConDesc + pozoConDesc + millonariaConDesc;
+        loteriaConDesc + lottoConDesc + pozoConDesc + pozoRevanchaConDesc + millonariaConDesc + bingazoConDesc;
 
       this.totalConDesc = auxConDesc;
       localStorage.setItem('totalConDesc', JSON.stringify(auxConDesc));
@@ -538,6 +598,7 @@ export class CarritoService {
       let lottoAux = this.getLottoLocal();
       let pozoAux = this.getPozoLocal();
       let revanchaAux = this.getPozoRevanchaLocal();
+      let bingazoAux = this.getBingazoLocal();
       let millonariaAux = this.getMillonariaLocal();
       let loteria = 0;
       for (let id in loteriaAux) {
@@ -559,7 +620,11 @@ export class CarritoService {
       for (let id in millonariaAux) {
         millonaria += parseFloat(millonariaAux[id].subtotal);
       }
-      let aux = loteria + lotto + pozo + revancha + millonaria;
+      let bingazo = 0;
+      for (let id in bingazoAux) {
+        bingazo += parseFloat(bingazoAux[id].subtotal);
+      }
+      let aux = loteria + lotto + pozo + revancha + millonaria + bingazo;
 
       this.total = aux;
       localStorage.setItem('total', JSON.stringify(aux));
