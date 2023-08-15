@@ -1,0 +1,909 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>loteria-nacional-front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">loteria-nacional-front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  UltimoResultadoComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>loteria-ultimo-resultado</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./ultimo-resultado.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ultimo-resultado.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isError" >isError</a>
+                            </li>
+                            <li>
+                                <a href="#ticketGanador" >ticketGanador</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#ticketNumbers" >ticketNumbers</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#verResultados" >verResultados</a>
+                            </li>
+                            <li>
+                                <a href="#verUltimoBoletin" >verUltimoBoletin</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts:11</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts:13</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verResultados"></a>
+                    <span class="name">
+                        <span ><b>verResultados</b></span>
+                        <a href="#verResultados"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verResultados()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verUltimoBoletin"></a>
+                    <span class="name">
+                        <span ><b>verUltimoBoletin</b></span>
+                        <a href="#verUltimoBoletin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>verUltimoBoletin()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isError"></a>
+                    <span class="name">
+                        <span ><b>isError</b></span>
+                        <a href="#isError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts:11</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ticketGanador"></a>
+                    <span class="name">
+                        <span ><b>ticketGanador</b></span>
+                        <a href="#ticketGanador"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts:9</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ticketNumbers"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>ticketNumbers</b></span>
+                        <a href="#ticketNumbers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>String[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/juegos/loteria/components/ultimo-resultado/ultimo-resultado.component.ts:10</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+@Component({
+  selector: &#x27;loteria-ultimo-resultado&#x27;,
+  templateUrl: &#x27;./ultimo-resultado.component.html&#x27;,
+  styleUrls: [&#x27;./ultimo-resultado.component.scss&#x27;],
+})
+export class UltimoResultadoComponent implements OnInit {
+  ticketGanador: any;
+  ticketNumbers?: String[];
+  isError: boolean &#x3D; false;
+  constructor(private router: Router) {}
+  ngOnInit() {
+    try {
+      let data &#x3D; JSON.parse(
+        localStorage.getItem(&#x27;loteriaNacionalUltimoResultado&#x27;)!
+      );
+      this.ticketNumbers &#x3D; data.ultimoResultadoLoteria.combinacion1.split(&#x27;&#x27;);
+      this.ticketGanador &#x3D; {
+        ticketIndex: data.ultimoResultadoLoteria.codigo,
+        description: &#x27;Boleto Ganador&#x27;,
+        ticketNumbers: this.ticketNumbers,
+        numeroSorteo: data.numeroSorteo,
+        sorteo: data.sorteo,
+        valorPremio: parseFloat(data.premioPrincipal.valorPremio),
+      };
+    } catch (e) {
+      this.isError &#x3D; true;
+    }
+  }
+
+  verUltimoBoletin() {
+    let sorteo &#x3D; this.ticketGanador.numeroSorteo;
+    this.router.navigateByUrl(&#x60;/consultas/loteria/boletin/${sorteo}&#x60;);
+  }
+
+  verResultados() {
+    this.router.navigateByUrl(&#x60;/consultas/loteria&#x60;);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;contenedor_ticket&quot;&gt;
+  &lt;div class&#x3D;&quot;logo_ticket&quot;&gt;
+    &lt;img src&#x3D;&quot;assets/img/loteria-sombra.png&quot; alt&#x3D;&quot;&quot; /&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;hr size&#x3D;&quot;2px&quot; /&gt;
+  &lt;/div&gt;
+  &lt;ng-container *ngIf&#x3D;&quot;!isError&quot;&gt;
+    &lt;div class&#x3D;&quot;scroll&quot;&gt;
+      &lt;loteria-ticket-consulta
+        [ticket]&#x3D;&quot;ticketGanador&quot;
+      &gt;&lt;/loteria-ticket-consulta&gt;
+    &lt;/div&gt;
+  &lt;/ng-container&gt;
+  &lt;ng-container *ngIf&#x3D;&quot;isError&quot;&gt;
+    &lt;div class&#x3D;&quot;consultaError&quot;&gt;
+      Los resultados no están disponibles por el momento, por favor revisa más
+      tarde
+    &lt;/div&gt;
+  &lt;/ng-container&gt;
+  &lt;div class&#x3D;&quot;boton_comprar&quot;&gt;
+    &lt;button (click)&#x3D;&quot;verUltimoBoletin()&quot;&gt;VER BOLETIN&lt;/button&gt;
+    &lt;button (click)&#x3D;&quot;verResultados()&quot;&gt;OTROS RESULTADOS&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./ultimo-resultado.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">$fuente-titulo: &quot;Monstserrat Bold&quot;;
+$fuente-subtitulo: &quot;Monstserrat SemiBold&quot;;
+$fuente-parrafo: &quot;Monstserrat Regular&quot;;
+$fuente-botones: &quot;Monstserrat SemiBold&quot;;
+
+$color-botton: #28aae1;
+
+.contenedor_ticket {
+  .logo_ticket {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
+    height: 80px;
+
+    img {
+      height: 100%;
+      margin: auto;
+    }
+    p {
+      margin: 0;
+      font-family: $fuente-titulo;
+      font-style: italic;
+      font-size: 16px;
+      color: white;
+      visibility: hidden;
+    }
+  }
+
+  hr {
+    width: 90%;
+    border-color: $color-botton;
+  }
+
+  .scroll {
+    overflow: auto;
+
+    &amp;::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+
+    &amp;::-webkit-scrollbar:vertical {
+      width: 10px;
+    }
+
+    &amp;::-webkit-scrollbar-thumb {
+      background-color: #fff;
+      border-radius: 20px;
+      border: 2px solid #fff;
+    }
+
+    &amp;::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    .contenedor_informacion_ticket {
+      width: 90%;
+      display: flex;
+      margin: 10px auto;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-sizing: border-box;
+
+      .contenedor_informacion_ticket_izquierdo {
+        margin: 0px auto;
+        padding: 10px 8px;
+
+        .contenedor_informacion_ticket_izquierdo_logo {
+        }
+
+        .contenedor_informacion_ticket_izquierdo_barra {
+          img {
+            width: 40px;
+            height: 120px;
+            margin: auto;
+          }
+        }
+      }
+      .contenedor_informacion_ticket_derecho {
+        width: 100%;
+        margin: auto;
+
+        .ticket_titulo {
+          display: flex;
+          margin: auto;
+          justify-content: space-around;
+          align-items: center;
+
+          img {
+            width: 40px;
+          }
+          h3 {
+            font-family: $fuente-titulo;
+            font-size: 16px;
+            margin-left: 10px;
+          }
+
+          p {
+            margin: 0px;
+            font-family: $fuente-subtitulo;
+            font-size: 10px;
+            margin-right: 10px;
+          }
+        }
+
+        .ticket_monto {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          padding-right: 14px;
+
+          p:nth-child(1) {
+            font-size: 32px;
+            -webkit-text-stroke: 2px $color-botton;
+            color: #fff;
+            font-family: $fuente-titulo;
+            margin: 10px 0px;
+          }
+
+          p:nth-child(2) {
+            font-size: 14px;
+            margin: 0px;
+            margin-bottom: 5px;
+            color: $color-botton;
+            font-family: $fuente-subtitulo;
+          }
+        }
+
+        .ticket_entero_fraccion {
+          display: flex;
+          justify-content: space-between;
+          font-family: $fuente-subtitulo;
+
+          .ticket_entero {
+            padding-left: 13px;
+
+            h5 {
+              margin-top: 7px;
+              margin-bottom: 8px;
+              color: #000;
+              font-size: 12px;
+              text-align: left;
+            }
+
+            div {
+              display: flex;
+              justify-content: center;
+              margin: 0 0 15px 0;
+
+              p {
+                width: 30px;
+                height: 30px;
+                background-color: #fff;
+                font-family: $fuente-subtitulo;
+                font-size: 14px;
+                color: #000;
+                margin: 0px 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+
+          .ticket_fraccion {
+            padding-right: 15px;
+
+            h5 {
+              margin-top: 7px;
+              margin-bottom: 8px;
+            }
+
+            div {
+              display: flex;
+              justify-content: center;
+
+              p {
+                width: 30px;
+                height: 30px;
+                background-color: #fff;
+                font-family: $fuente-subtitulo;
+                font-size: 14px;
+                color: #000;
+                margin: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .boton_comprar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      &amp;:first-of-type {
+        width: 40%;
+        padding: 15px 15px !important;
+      }
+      width: 58%;
+      padding: 15px 30px;
+
+      background-color: $color-botton;
+      border: 1px solid $color-botton;
+      border-radius: 15px;
+      margin: 10px auto;
+      font-family: $fuente-botones;
+      color: #fff;
+      font-size: 10px;
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+
+      &amp;:hover {
+        background-color: #fff;
+        color: $color-botton;
+      }
+    }
+  }
+}
+
+.texto {
+  color: #fff;
+  font-family: $fuente-titulo;
+  font-size: 14px;
+  text-align: center;
+  margin: auto;
+  margin-top: 5px;
+}
+
+.ticket_entero {
+  padding-left: 13px;
+
+  h5 {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-family: $fuente-titulo;
+    font-size: 17px;
+    color: #fff;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 15px 0;
+
+    p {
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      font-family: $fuente-subtitulo;
+      font-size: 14px;
+      color: #000;
+      margin: 0px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="contenedor_ticket">  <div class="logo_ticket">    <img src="assets/img/loteria-sombra.png" alt="" />  </div>  <div>    <hr size="2px" />  </div>  <ng-container *ngIf="!isError">    <div class="scroll">      <loteria-ticket-consulta        [ticket]="ticketGanador"      ></loteria-ticket-consulta>    </div>  </ng-container>  <ng-container *ngIf="isError">    <div class="consultaError">      Los resultados no están disponibles por el momento, por favor revisa más      tarde    </div>  </ng-container>  <div class="boton_comprar">    <button (click)="verUltimoBoletin()">VER BOLETIN</button>    <button (click)="verResultados()">OTROS RESULTADOS</button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdministracionComponent', 'selector': 'app-administracion'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BingazoBoletinComponent', 'selector': 'consultas-bingazo-boletin'},{'name': 'BingazoComponent', 'selector': 'consultas-bingazo'},{'name': 'BingazoComponent', 'selector': 'app-pozo'},{'name': 'BoletinComponent', 'selector': 'bingazo-boletin'},{'name': 'BoletinComponent', 'selector': 'facilotto-boletin'},{'name': 'BoletinComponent', 'selector': 'loteria-boletin'},{'name': 'BoletinComponent', 'selector': 'lotto-boletin'},{'name': 'BoletinComponent', 'selector': 'millonaria-boletin'},{'name': 'BoletinComponent', 'selector': 'pega3-boletin'},{'name': 'BoletinComponent', 'selector': 'pozo-boletin'},{'name': 'BoletinComponent', 'selector': 'revancha-boletin'},{'name': 'BotonDeJuegoComponent', 'selector': 'app-boton-de-juego'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'CodigosPromocionalesComponent', 'selector': 'app-codigos-promocionales'},{'name': 'ConfirmacionDeVentaComponent', 'selector': 'app-confirmacion-de-venta'},{'name': 'ConfirmacionDeVentaComponent', 'selector': 'app-confirmacion-de-venta'},{'name': 'ConsultaComponent', 'selector': 'bingazo-consulta'},{'name': 'ConsultaComponent', 'selector': 'facilotto-consulta'},{'name': 'ConsultaComponent', 'selector': 'loteria-consulta'},{'name': 'ConsultaComponent', 'selector': 'lotto-consulta'},{'name': 'ConsultaComponent', 'selector': 'millonaria-consulta'},{'name': 'ConsultaComponent', 'selector': 'pega3-consulta'},{'name': 'ConsultaComponent', 'selector': 'pozo-consulta'},{'name': 'ConsultaComponent', 'selector': 'revancha-consulta'},{'name': 'ConsultasComponent', 'selector': 'app-consultas'},{'name': 'DescripcionDeVentaComponent', 'selector': 'app-descripcion-de-venta'},{'name': 'DetalleDeVentaComponent', 'selector': 'app-detalle-de-venta'},{'name': 'DetalleSorteoComponent', 'selector': 'app-detalle-sorteo'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FacilottoBoletinComponent', 'selector': 'app-facilotto-boletin'},{'name': 'FacilottoComponent', 'selector': 'app-facilotto'},{'name': 'FloatingMenuComponent', 'selector': 'app-floating-menu'},{'name': 'HomeComponent', 'selector': 'consultas-home'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InstantaneaComponent', 'selector': 'app-instantanea'},{'name': 'InstantaneasComponent', 'selector': 'app-instantaneas'},{'name': 'LoaderComponent', 'selector': 'app-loader'},{'name': 'LoteriaBoletinComponent', 'selector': 'consultas-loteria-boletin'},{'name': 'LoteriaComponent', 'selector': 'consultas-loteria'},{'name': 'LoteriaComponent', 'selector': 'app-loteria'},{'name': 'LottoBoletinComponent', 'selector': 'consultas-lotto-boletin'},{'name': 'LottoComponent', 'selector': 'consultas-lotto'},{'name': 'LottoComponent', 'selector': 'app-lotto'},{'name': 'MenuBoxComponent', 'selector': 'ventas-menu-box'},{'name': 'MenuComponent', 'selector': 'consultas-menu'},{'name': 'MenuHeaderComponent', 'selector': 'ventas-menu-header'},{'name': 'MillonariaBoletinComponent', 'selector': 'consultas-millonaria-boletin'},{'name': 'MillonariaBoletinComponent', 'selector': 'consultas-millonaria-boletin'},{'name': 'MillonariaComponent', 'selector': 'consultas-millonaria'},{'name': 'MillonariaComponent', 'selector': 'app-millonaria'},{'name': 'MobileHeaderComponent', 'selector': 'app-mobile-header'},{'name': 'Pega3BoletinComponent', 'selector': 'app-pega3-boletin'},{'name': 'PopupPromoComponent', 'selector': 'public-popup'},{'name': 'PopupPromoComponent', 'selector': 'app-popup-promo'},{'name': 'PozoBoletinComponent', 'selector': 'consultas-pozo-boletin'},{'name': 'PozoComponent', 'selector': 'consultas-pozo'},{'name': 'PozoComponent', 'selector': 'app-pozo'},{'name': 'PublicComponent', 'selector': 'app-public'},{'name': 'ResultadoComponent', 'selector': 'consultas-resultado'},{'name': 'ResultadosComponent', 'selector': 'consultas-resultados'},{'name': 'RevanchaBoletinComponent', 'selector': 'consultas-revancha-boletin'},{'name': 'RevanchaComponent', 'selector': 'consultas-revancha'},{'name': 'SaldoInsuficienteComponent', 'selector': 'app-saldo-insuficiente'},{'name': 'SorteoComponent', 'selector': 'bingazo-sorteo'},{'name': 'SorteoComponent', 'selector': 'facilotto-sorteo'},{'name': 'SorteoComponent', 'selector': 'loteria-sorteo'},{'name': 'SorteoComponent', 'selector': 'lotto-sorteo'},{'name': 'SorteoComponent', 'selector': 'millonaria-sorteo'},{'name': 'SorteoComponent', 'selector': 'pega3-sorteo'},{'name': 'SorteoComponent', 'selector': 'pozo-sorteo'},{'name': 'SorteoComponent', 'selector': 'revancha-sorteo'},{'name': 'TicketConsultaComponent', 'selector': 'bingazo-ticket-consulta'},{'name': 'TicketConsultaComponent', 'selector': 'facilotto-ticket-consulta'},{'name': 'TicketConsultaComponent', 'selector': 'loteria-ticket-consulta'},{'name': 'TicketConsultaComponent', 'selector': 'lotto-ticket-consulta'},{'name': 'TicketConsultaComponent', 'selector': 'millonaria-ticket-consulta'},{'name': 'TicketConsultaComponent', 'selector': 'pega3-ticket-consulta'},{'name': 'TicketConsultaComponent', 'selector': 'pozo-ticket-consulta'},{'name': 'TicketConsultaComponent', 'selector': 'revancha-ticket-consulta'},{'name': 'TicketVentasComponent', 'selector': 'bingazo-ticket-ventas'},{'name': 'TicketVentasComponent', 'selector': 'facilotto-ticket-ventas'},{'name': 'TicketVentasComponent', 'selector': 'loteria-ticket-ventas'},{'name': 'TicketVentasComponent', 'selector': 'lotto-ticket-ventas'},{'name': 'TicketVentasComponent', 'selector': 'millonaria-ticket-ventas'},{'name': 'TicketVentasComponent', 'selector': 'pega3-ticket-ventas'},{'name': 'TicketVentasComponent', 'selector': 'pozo-ticket-ventas'},{'name': 'TicketVentasComponent', 'selector': 'revancha-ticket-ventas'},{'name': 'UltimoResultadoComponent', 'selector': 'bingazo-ultimo-resultado'},{'name': 'UltimoResultadoComponent', 'selector': 'facilotto-ultimo-resultado'},{'name': 'UltimoResultadoComponent', 'selector': 'loteria-ultimo-resultado'},{'name': 'UltimoResultadoComponent', 'selector': 'lotto-ultimo-resultado'},{'name': 'UltimoResultadoComponent', 'selector': 'millonaria-ultimo-resultado'},{'name': 'UltimoResultadoComponent', 'selector': 'pega3-ultimo-resultado'},{'name': 'UltimoResultadoComponent', 'selector': 'pozo-ultimo-resultado'},{'name': 'UltimoResultadoComponent', 'selector': 'revancha-ultimo-resultado'},{'name': 'UltimosResultadosComponent', 'selector': 'consultas-ultimos-resultados'},{'name': 'VentaCanceladaComponent', 'selector': 'app-venta-cancelada'},{'name': 'VentaComponent', 'selector': 'bingazo-venta'},{'name': 'VentaComponent', 'selector': 'facilotto-venta'},{'name': 'VentaComponent', 'selector': 'loteria-venta'},{'name': 'VentaComponent', 'selector': 'lotto-venta'},{'name': 'VentaComponent', 'selector': 'millonaria-venta'},{'name': 'VentaComponent', 'selector': 'pega3-venta'},{'name': 'VentaComponent', 'selector': 'pozo-venta'},{'name': 'VentaComponent', 'selector': 'revancha-venta'},{'name': 'VentaFinalizadaComponent', 'selector': 'app-venta-finalizada'},{'name': 'VentaFinalizadaComponent', 'selector': 'app-venta-finalizada'},{'name': 'VentasComponent', 'selector': 'app-ventas'}];
+    var DIRECTIVES = [{'name': 'AgregarTicketDirective', 'selector': '[appAgregarTicket]'},{'name': 'AutoTabDirective', 'selector': '[appAutoTab]'},{'name': 'BorrarTicketDirective', 'selector': '[appBorrarTicket]'},{'name': 'BuscarNumeroDirective', 'selector': '[appBuscarNumero]'},{'name': 'PositioningDirective', 'selector': '[floatingItem]'},{'name': 'StylePaginatorDirective', 'selector': '[style-paginator]'}];
+    var ACTUAL_COMPONENT = {'name': 'UltimoResultadoComponent-2'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UltimoResultadoComponent-2.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

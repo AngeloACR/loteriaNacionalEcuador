@@ -1,0 +1,1170 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>loteria-nacional-front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">loteria-nacional-front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >PagosService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/ventas/services/pagos.service.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#mySource" >mySource</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cancelarCompra" >cancelarCompra</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#confirmarCompra" >confirmarCompra</a>
+                            </li>
+                            <li>
+                                <a href="#finalizarCompra" >finalizarCompra</a>
+                            </li>
+                            <li>
+                                <a href="#getAuthData" >getAuthData</a>
+                            </li>
+                            <li>
+                                <a href="#getCodigosPromocionales" >getCodigosPromocionales</a>
+                            </li>
+                            <li>
+                                <a href="#getCompra" >getCompra</a>
+                            </li>
+                            <li>
+                                <a href="#getGanador" >getGanador</a>
+                            </li>
+                            <li>
+                                <a href="#getTotal" >getTotal</a>
+                            </li>
+                            <li>
+                                <a href="#hasBalance" >hasBalance</a>
+                            </li>
+                            <li>
+                                <a href="#liberarSaldo" >liberarSaldo</a>
+                            </li>
+                            <li>
+                                <a href="#recargarSaldo" >recargarSaldo</a>
+                            </li>
+                            <li>
+                                <a href="#reservarSaldo" >reservarSaldo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cart: <a href="../injectables/CarritoService.html" target="_self">CarritoService</a>, http: HttpClient)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/ventas/services/pagos.service.ts:10</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cart</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CarritoService.html" target="_self" >CarritoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelarCompra"></a>
+                    <span class="name">
+                        <span ><b>cancelarCompra</b></span>
+                        <a href="#cancelarCompra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelarCompra()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:187</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarCompra"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>confirmarCompra</b></span>
+                        <a href="#confirmarCompra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>confirmarCompra(token: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, reservaId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>token</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>reservaId</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finalizarCompra"></a>
+                    <span class="name">
+                        <span ><b>finalizarCompra</b></span>
+                        <a href="#finalizarCompra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>finalizarCompra()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:188</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAuthData"></a>
+                    <span class="name">
+                        <span ><b>getAuthData</b></span>
+                        <a href="#getAuthData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAuthData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:13</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{ lotteryToken: any; user: any; personalId: any; accountId: any; }</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCodigosPromocionales"></a>
+                    <span class="name">
+                        <span ><b>getCodigosPromocionales</b></span>
+                        <a href="#getCodigosPromocionales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCodigosPromocionales(ventaId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ventaId</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCompra"></a>
+                    <span class="name">
+                        <span ><b>getCompra</b></span>
+                        <a href="#getCompra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCompra(ticketId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, accountId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ticketId</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>accountId</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getGanador"></a>
+                    <span class="name">
+                        <span ><b>getGanador</b></span>
+                        <a href="#getGanador"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getGanador(ticketId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ticketId</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTotal"></a>
+                    <span class="name">
+                        <span ><b>getTotal</b></span>
+                        <a href="#getTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTotal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:192</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasBalance"></a>
+                    <span class="name">
+                        <span ><b>hasBalance</b></span>
+                        <a href="#hasBalance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasBalance(subtotal: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, token: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>subtotal</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>token</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="liberarSaldo"></a>
+                    <span class="name">
+                        <span ><b>liberarSaldo</b></span>
+                        <a href="#liberarSaldo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>liberarSaldo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="recargarSaldo"></a>
+                    <span class="name">
+                        <span ><b>recargarSaldo</b></span>
+                        <a href="#recargarSaldo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>recargarSaldo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reservarSaldo"></a>
+                    <span class="name">
+                        <span ><b>reservarSaldo</b></span>
+                        <a href="#reservarSaldo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reservarSaldo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/ventas/services/pagos.service.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mySource"></a>
+                    <span class="name">
+                        <span ><b>mySource</b></span>
+                        <a href="#mySource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.source</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/ventas/services/pagos.service.ts:10</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { CarritoService } from &#x27;./carrito.service&#x27;;
+import { HttpClient, HttpHeaders, HttpParams } from &#x27;@angular/common/http&#x27;;
+import {environment } from &#x27;../../../environments/environment&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class PagosService {
+  mySource &#x3D; environment.source
+  constructor(private cart: CarritoService, private http: HttpClient) {}
+
+  getAuthData() {
+    let data &#x3D; JSON.parse(localStorage.getItem(&#x27;userData&#x27;)!);
+    let lotteryToken &#x3D; data.lotteryToken;
+    let user &#x3D; data.playerDocument;
+    let personalId &#x3D; data.personaId;
+    let accountId &#x3D; data.accountId;
+    if (data.user_ &#x3D;&#x3D; &#x27;italtronicprep&#x27;) user &#x3D; data.user_;
+    let response &#x3D; {
+      lotteryToken,
+      user,
+      personalId,
+      accountId,
+    };
+    return response;
+  }
+
+  reservarSaldo() {}
+
+  liberarSaldo() {}
+
+  recargarSaldo() {}
+
+  hasBalance(subtotal: any, token: any) {
+    let cartTotal &#x3D; parseFloat(this.cart.getTotal());
+    let testAmount &#x3D; parseFloat(subtotal) + cartTotal;
+    let headers &#x3D; new HttpHeaders();
+    headers &#x3D; headers.append(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+    //let endpoint &#x3D; &quot;/inquiry&quot;;
+
+    let address &#x3D; &#x27;/wallet&#x27;;
+    let endpoint &#x3D; &#x27;&#x27;;
+    let body &#x3D; {
+      token,
+    };
+    endpoint &#x3D; &#x60;${endpoint}/getBalance&#x60;;
+
+    address &#x3D; this.mySource + address + endpoint;
+    return new Promise&lt;boolean&gt;((resolve, reject) &#x3D;&gt; {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) &#x3D;&gt; {
+          let balance &#x3D; parseFloat(data.balance);
+          let hasBalance &#x3D; balance &gt;&#x3D; testAmount;
+          resolve(hasBalance);
+        },
+        (error: any) &#x3D;&gt; {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
+
+  getCompra(ticketId: any, accountId: any) {
+    let headers &#x3D; new HttpHeaders();
+    headers &#x3D; headers.append(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+    let address &#x3D; &#x27;/ventas&#x27;;
+    let endpoint &#x3D; &#x27;&#x27;;
+    let body &#x3D; {
+      ticketId,
+      accountId,
+    };
+    endpoint &#x3D; &#x60;${endpoint}/getCompra&#x60;;
+
+    address &#x3D; this.mySource + address + endpoint;
+    return new Promise&lt;boolean&gt;((resolve, reject) &#x3D;&gt; {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) &#x3D;&gt; {
+          if (!data.status) {
+            reject(new Error(&#x27;No se pudo encontrar la compra solicitada&#x27;));
+          }
+          resolve(data.values);
+        },
+        (error: any) &#x3D;&gt; {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
+  getGanador(ticketId: any) {
+    ticketId &#x3D; ticketId.toString();
+    let headers &#x3D; new HttpHeaders();
+    headers &#x3D; headers.append(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+    let address &#x3D; &#x27;/ganadores&#x27;;
+    let endpoint &#x3D; &#x27;&#x27;;
+    let body &#x3D; {
+      ticketId,
+    };
+    endpoint &#x3D; &#x60;${endpoint}/getGanador&#x60;;
+
+    address &#x3D; this.mySource + address + endpoint;
+    return new Promise&lt;boolean&gt;((resolve, reject) &#x3D;&gt; {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) &#x3D;&gt; {
+          resolve(data);
+        },
+        (error: any) &#x3D;&gt; {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
+
+  getCodigosPromocionales(ventaId: any) {
+    let headers &#x3D; new HttpHeaders();
+    headers &#x3D; headers.append(&quot;Content-Type&quot;, &quot;application/json&quot;);
+    let address &#x3D; &quot;/codigosPromocionales&quot;;
+    let endpoint &#x3D; &quot;&quot;;
+    let body &#x3D; {
+      ventaId,
+    };
+    endpoint &#x3D; &#x60;${endpoint}/getCodes&#x60;;
+
+    address &#x3D; this.mySource + address + endpoint;
+    return new Promise&lt;boolean&gt;((resolve, reject) &#x3D;&gt; {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) &#x3D;&gt; {
+          resolve(data);
+        },
+        (error: any) &#x3D;&gt; {
+          reject(new Error(error.error.message));
+        }
+      );
+    });
+  }
+
+  async confirmarCompra(token: any, reservaId: any): Promise&lt;any&gt; {
+    let loteria &#x3D; await this.cart.getCarritoLoteria();
+    let lotto &#x3D; await this.cart.getCarritoLotto();
+    let pozo &#x3D; await this.cart.getCarritoPozo();
+    let pozoRevancha &#x3D; await this.cart.getCarritoPozoRevancha();
+    let millonaria &#x3D; await this.cart.getCarritoMillonaria();
+    let bingazo &#x3D; await this.cart.getCarritoBingazo();
+    let total &#x3D; this.cart.getTotal();
+    let totalConDesc &#x3D; this.cart.getTotalConDesc();
+    let headers &#x3D; new HttpHeaders();
+    headers &#x3D; headers.append(&#x27;Content-Type&#x27;, &#x27;application/json&#x27;);
+    let address &#x3D; &#x27;/ventas&#x27;;
+    let endpoint &#x3D; &#x27;&#x27;;
+    let authData &#x3D; this.getAuthData();
+    let body &#x3D; {
+      loteria,
+      lotto,
+      pozo,
+      pozoRevancha,
+      millonaria,
+      bingazo,
+      lotteryToken: authData.lotteryToken,
+      user: authData.user,
+      personaId: authData.personalId,
+      accountId: authData.accountId,
+      amount: total,
+      amountConDesc: totalConDesc,
+      hasDescuento: !(total &#x3D;&#x3D; totalConDesc),
+      token,
+      reservaId,
+    };
+    endpoint &#x3D; &#x60;${endpoint}/comprarBoletos&#x60;;
+    address &#x3D; this.mySource + address + endpoint;
+    return new Promise&lt;any&gt;((resolve, reject) &#x3D;&gt; {
+      this.http.post(address, body, { headers: headers }).subscribe(
+        (data: any) &#x3D;&gt; {
+          let response: any &#x3D; data;
+          resolve(response);
+        },
+        (error: any) &#x3D;&gt; {
+          //reject(new Error(error.error.message));
+          reject(
+            new Error(
+              &#x27;Ha ocurrido un error procesando la compra. Por favor, intente de nuevo.&#x27;
+            )
+          );
+        }
+      );
+    });
+  }
+  cancelarCompra() {}
+  finalizarCompra() {
+    parent.postMessage(&quot;getBalance&quot;,&quot;*&quot;);
+    this.cart.borrarCarrito();
+  }
+  getTotal() {
+    let total &#x3D; JSON.parse(localStorage.getItem(&#x27;total&#x27;)!);
+    if (total) {
+      return total;
+    } else {
+      return 0;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'PagosService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

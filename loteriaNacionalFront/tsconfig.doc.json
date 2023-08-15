@@ -1,0 +1,3 @@
+{"scripts": {
+    "compodoc": "npx compodoc -p tsconfig.doc.json"
+  },"include":["src/**/*.ts"],"exclude":["src/**/*.spec.ts"]}

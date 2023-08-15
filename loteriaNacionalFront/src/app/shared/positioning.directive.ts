@@ -14,20 +14,20 @@ export class PositioningDirective implements OnInit {
   handleScroll(e: any) {
     let iframeOffset = 0.2 * e.target.innerWidth;
     let itemOffset = this.el.nativeElement.offsetHeight / 2;
-    /*     let data = e.data.top ? e.data.top + e.data.screen : this.offset;
+         let data = e.data.top ? e.data.top + e.data.screen : this.offset;
     let totalOffset =
       150 + this.offset + this.el.nativeElement.offsetHeight / 2;
     let position = Math.min(
       Math.abs(data - totalOffset),
       Math.abs(e.target.innerHeight - totalOffset)
-    ); */
-    let position = 0;
+    );
+    //let position = 0;
     if (e.data.top) {
-      position = e.data.top;
-      //position = e.data.screen / 2 + e.data.top - itemOffset; //- iframeOffset - itemOffset;
+      //position = e.data.top;
+      position = e.data.screen / 2 + e.data.top - itemOffset; //- iframeOffset - itemOffset;
     } else {
-      position = 0;
-      //position = 1080 / 2 - itemOffset; //- Math.abs(iframeOffset) - itemOffset;
+      //position = 0;
+      position = 1080 / 2 - itemOffset; //- Math.abs(iframeOffset) - itemOffset;
     }
     position = position > 0 ? position : 0;
     position = 50;
