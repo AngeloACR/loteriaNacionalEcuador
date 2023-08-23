@@ -1,4 +1,4 @@
-const config = require("../environments/production");
+const config = require("../environments/local");
 
 const fs = require("fs");
 const path = require("path");
