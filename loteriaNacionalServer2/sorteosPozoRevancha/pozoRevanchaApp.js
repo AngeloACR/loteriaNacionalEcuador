@@ -1,5 +1,5 @@
 const sorteosPozoRevanchaServer = require("./pozoRevanchaServer");
-const config = require("../environments/local");
+const config = require("../environments/production");
 
 const cronjobs = require("./cronjobs");
 
