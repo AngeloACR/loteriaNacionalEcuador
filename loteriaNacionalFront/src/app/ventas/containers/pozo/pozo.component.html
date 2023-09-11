@@ -13,25 +13,33 @@
   <div class="ventasBox">
     <div class="contendor_seleccion">
       <div class="contenedor_select_animales">
-        <h3>Selecciona tus mascotas de la suerte</h3>
-        <div class="options">
-          <div
-            class="option"
-            *ngFor="let animal of seleccionAnimales; let i = index"
-          >
-            <input
-              (click)="agregar(animal, i)"
-              type="checkbox"
-              [checked]="animal.status"
-              name="nombre"
-              [value]="animal"
-              id="nombre-{{ animal.nombre }}"
-            />
-            <label for="nombre-{{ animal.nombre }}">
-              <img [src]="animal.ruta" [alt]="animal.nombre" />
-            </label>
-          </div>
-        </div>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle expanded #figureSelector>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h3>SELECCIONA TUS MASCOTAS DE LA SUERTE</h3>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="options">
+              <div
+                class="option"
+                *ngFor="let animal of seleccionAnimales; let i = index"
+              >
+                <input
+                  (click)="agregar(animal, i)"
+                  type="checkbox"
+                  [checked]="animal.status"
+                  name="nombre"
+                  [value]="animal"
+                  id="nombre-{{ animal.nombre }}"
+                />
+                <label for="nombre-{{ animal.nombre }}">
+                  <img [src]="animal.ruta" [alt]="animal.nombre" />
+                </label>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
       <div class="selectBox">
         <div class="numeros_suerte">
@@ -90,9 +98,13 @@
             {{ over25ErrorTag }}
           </div>
         </div>
-        <button class="activado" (click)="buscarNumero()">
+        <button class="activado" (click)="buscarNumero()" *ngIf="buscarCartones">
           BUSCAR CARTONES
+        </button>        
+        <button class="activado" (click)="openSelector()" *ngIf="!buscarCartones">
+          CAMBIAR MASCOTA
         </button>
+
       </div>
 
       <p class="tagItem">

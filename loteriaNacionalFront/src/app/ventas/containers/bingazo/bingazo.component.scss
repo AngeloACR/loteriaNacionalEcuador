@@ -8,6 +8,14 @@ $color-bingazo: #283479;
 
 // Estilos de seleccion animal
 
+mat-expansion-panel {
+  box-shadow: unset !important;
+}
+
+::ng-deep.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
 .contenedor_loteria {
   width: 100%;
 
@@ -233,6 +241,7 @@ $color-bingazo: #283479;
 
         h3 {
           font-family: $fuente-subtitulo;
+          width: 100%;
           font-size: 21px;
           text-align: center;
           font-weight: bold;
@@ -484,8 +493,8 @@ $color-bingazo: #283479;
                       align-items: center;
                       justify-content: center;
                       padding: 2px;
-                      width: 50px;
-                      height: 50px;
+                      width: 40px;
+                      height: 40px;
                       border: 4.5px solid $color-bingazo;
                       border-radius: 150px;
                       background-color: #fff;
@@ -495,8 +504,8 @@ $color-bingazo: #283479;
                     }
 
                     img {
-                      width: 50px;
-                      height: 50px;
+                      width: 40px;
+                      height: 40px;
                       border-radius: 120px;
                       background-color: #fff;
                       padding: 5px;
@@ -640,10 +649,6 @@ $color-bingazo: #283479;
       width: 100%;
     }
 
-    .infoBox {
-      max-width: 800px;
-      width: 100%;
-    }
 
     .contendor_seleccion {
       width: 100% !important;

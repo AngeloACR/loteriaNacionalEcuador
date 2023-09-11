@@ -20,6 +20,8 @@ import { CarritoService } from '../../services/carrito.service';
 export class MillonariaComponent implements OnInit {
   combinacionDeLaSuerte: string[] = ['', '', '', ''];
   isLoading?: boolean = false;
+  @ViewChild('figureSelector') figureSelector: any;
+  buscarCartones: boolean = true;
 
   seleccionSeries: any;
   seriesTabs: any = [];
@@ -56,6 +58,11 @@ export class MillonariaComponent implements OnInit {
 
     this.total = this.cart.getTotal();
     this.changeDetectorRef.markForCheck();
+  }
+
+  openSelector() {
+    this.figureSelector.open();
+    this.buscarCartones = true;
   }
 
   agregar(event: any, serie: any, i: number) {
@@ -309,7 +316,9 @@ export class MillonariaComponent implements OnInit {
       );
       this.seriesTabs = [];
       this.combinacionDeLaSuerte = ['', '', '', ''];
-      this.showNumeros = true;
+      this.showNumeros = true; 
+      this.figureSelector.close();
+      this.buscarCartones = false;
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -485,8 +494,9 @@ export class MillonariaComponent implements OnInit {
     this.dismissCompras();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
   }
-idVenta: string;
-  async confirmarCompra() {    try {
+  idVenta: string;
+  async confirmarCompra() {
+    try {
       this.isLoading = true;
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.paymentService.hasBalance(0, this.token);

@@ -19,6 +19,8 @@ export class BingazoComponent implements OnInit {
 
   frutasTabs: any[] = [];
   revanchas?: boolean[];
+  @ViewChild('figureSelector') figureSelector: any;
+  buscarCartones: boolean = true;
 
   page_size: number = 12;
   page_number: number = 1;
@@ -133,7 +135,7 @@ export class BingazoComponent implements OnInit {
           tipoLoteria,
           reservaId
         );
-        
+
         console.log(this.ticketsBingazo)
         this.ventas.setReservaId(response);
         await this.cart.setCarrito(aux, tipoLoteria);
@@ -183,6 +185,8 @@ export class BingazoComponent implements OnInit {
         authData
       );
       this.showNumeros = true;
+      this.figureSelector.close();
+      this.buscarCartones = false;
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -190,6 +194,11 @@ export class BingazoComponent implements OnInit {
       let errorMessage = e.message;
       this.openError(errorMessage);
     }
+  }
+
+  openSelector() {
+    this.figureSelector.open();
+    this.buscarCartones = true;
   }
 
   ordenaCombinacion(a: any, b: any) {

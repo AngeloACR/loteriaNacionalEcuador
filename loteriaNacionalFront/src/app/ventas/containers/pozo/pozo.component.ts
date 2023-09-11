@@ -24,6 +24,8 @@ export class PozoComponent implements OnInit {
 
   animalesTabs: animales[] = [];
   revanchas?: boolean[];
+  @ViewChild('figureSelector') figureSelector: any;
+  buscarCartones: boolean = true;
 
   page_size: number = 12;
   page_number: number = 1;
@@ -62,6 +64,10 @@ export class PozoComponent implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
+  openSelector() {
+    this.figureSelector.open();
+    this.buscarCartones = true;
+  }
   agregar(animal: animales, i: number) {
     if (this.seleccionAnimales![i].status === false) {
       this.seleccionAnimales![i].status = true;
@@ -336,6 +342,8 @@ export class PozoComponent implements OnInit {
       );
       this.combinacionDeLaSuerte = ['', '', '', ''];
       this.showNumeros = true;
+      this.figureSelector.close();
+      this.buscarCartones = false;
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;

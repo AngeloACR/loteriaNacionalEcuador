@@ -13,29 +13,40 @@
   <div class="ventasBox">
     <div class="contendor_seleccion">
       <div class="contenedor_select_animales">
-        <h3>ESCOGE UNA FRUTA O REINTEGRO FAVORITO</h3>
-        <div class="options">
-          <div
-            class="option"
-            *ngFor="let fruta of seleccionFrutas; let i = index"
-          >
-            <input
-              (click)="agregar(fruta, i)"
-              type="checkbox"
-              [checked]="fruta.status"
-              name="nombre"
-              [value]="fruta"
-              id="nombre-{{ fruta.nombre }}"
-            />
-            <label for="nombre-{{ fruta.nombre }}">
-              <img [src]="fruta.ruta" [alt]="fruta.nombre" />
-            </label>
-          </div>
-        </div>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle expanded  #figureSelector>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h3>ESCOGE UNA FRUTA O REINTEGRO FAVORITO</h3>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="options">
+              <div
+                class="option"
+                *ngFor="let fruta of seleccionFrutas; let i = index"
+              >
+                <input
+                  (click)="agregar(fruta, i)"
+                  type="checkbox"
+                  [checked]="fruta.status"
+                  name="nombre"
+                  [value]="fruta"
+                  id="nombre-{{ fruta.nombre }}"
+                />
+                <label for="nombre-{{ fruta.nombre }}">
+                  <img [src]="fruta.ruta" [alt]="fruta.nombre" />
+                </label>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
       <div class="selectBox">
-        <button class="activado" (click)="buscarNumero()">
+        <button class="activado" (click)="buscarNumero()" *ngIf="buscarCartones">
           BUSCAR CARTONES
+        </button>
+        <button class="activado" (click)="openSelector()" *ngIf="!buscarCartones">
+          CAMBIAR FRUTA O REINTEGRO
         </button>
       </div>
       <div *ngIf="showNumeros" class="contenedor_numeros_suerte">

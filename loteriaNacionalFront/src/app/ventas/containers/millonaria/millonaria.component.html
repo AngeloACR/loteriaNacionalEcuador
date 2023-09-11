@@ -13,25 +13,33 @@
   <div class="ventasBox">
     <div class="contendor_seleccion">
       <div class="contenedor_select_animales">
-        <h3>Selecciona tus series de la suerte</h3>
-        <div class="options" *ngIf="seleccionSeries.length != 0">
-          <div
-            class="option"
-            *ngFor="let serie of seleccionSeries; let i = index"
-          >
-            <input
-              (click)="agregar($event, serie, i)"
-              type="checkbox"
-              [checked]="serie.status"
-              name="serie"
-              [value]="serie"
-              id="serie-{{ serie.serie }}"
-            />
-            <label for="serie-{{ serie.serie }}">
-              <p>{{ serie.serie }}</p>
-            </label>
-          </div>
-        </div>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle expanded #figureSelector>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h3>SELECCIONA TUS SERIES DE LA SUERTE</h3>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="options" *ngIf="seleccionSeries.length != 0">
+              <div
+                class="option"
+                *ngFor="let serie of seleccionSeries; let i = index"
+              >
+                <input
+                  (click)="agregar($event, serie, i)"
+                  type="checkbox"
+                  [checked]="serie.status"
+                  name="serie"
+                  [value]="serie"
+                  id="serie-{{ serie.serie }}"
+                />
+                <label for="serie-{{ serie.serie }}">
+                  <p>{{ serie.serie }}</p>
+                </label>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
       <div class="selectBox">
         <div class="numeros_suerte">
@@ -82,8 +90,11 @@
             />
           </div>
         </div>
-        <button class="activado" (click)="buscarNumero()">
+        <button class="activado" (click)="buscarNumero()" *ngIf="buscarCartones">
           BUSCAR BOLETOS
+        </button>
+        <button class="activado" (click)="openSelector()" *ngIf="!buscarCartones">
+          CAMBIAR SERIE
         </button>
       </div>
 
