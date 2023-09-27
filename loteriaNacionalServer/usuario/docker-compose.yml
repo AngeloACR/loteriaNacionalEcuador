@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    image: node:20
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3400:3400
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
