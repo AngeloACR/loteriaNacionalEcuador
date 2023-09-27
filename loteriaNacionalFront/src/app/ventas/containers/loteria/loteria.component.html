@@ -72,89 +72,106 @@
             />
           </div>
         </div>
-        <button class="activado" (click)="buscarNumero()">BUSCAR NUMERO</button>
+        <button (click)="buscarNumero()">BUSCAR NUMERO</button>
       </div>
       <p class="tagItem">
         Si quieres cambiar tu número, ingrésalo nuevamente y haz click en
         "Buscar número"
       </p>
-      <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
-        <table>
-          <tbody>
-            <tr
-              *ngFor="
-                let ticket of ticketsDisponibles
-                  | paginacion : page_size : page_number;
-                let i = index
-              "
-            >
-              <!--   -->
-              <td>
-                <div class="tooltip">
-                  <div class="contenedor_numeros">
-                    <div class="combinationBox">
-                      <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
-                      <p *ngFor="let numero of ticket.combinacion.split('')">
-                        {{ numero }}
-                      </p>
-                    </div>
-                    <hr />
-
-                    <div class="seleccionAll">
-                      <p>Seleccionar todas las fracciones</p>
-                      <input
-                        (click)="
-                          seleccionarTodo(page_size * (page_number - 1) + i)
-                        "
-                        style="
-                          position: relative;
-                          width: 20px;
-                          opacity: 1;
-                          margin-left: 5px;
-                          
-                        "
-                        [(ngModel)]="
-                          allFractions![page_size! * (page_number! - 1) + i]
-                        "
-                        type="checkbox"
-                      />
-                    </div>
-                    <hr />
-                    <div class="contenedor_fracciones">
+      <div *ngIf="showNumeros" class="ticketsBox">
+        <div
+          class="ticketBox"
+          *ngFor="
+            let ticket of ticketsDisponibles
+              | paginacion : page_size : page_number;
+            let i = index
+          "
+        >
+          <div class="combinationBox">
+            <img [src]="boleto" alt="" />
+            <p>{{ ticket.combinacion }}</p>
+            <!--             <p *ngFor="let numero of ticket.combinacion.split('')">
+                {{ numero }}
+              </p>
+ -->
+          </div>
+          <div class="fractionsBox">
+            <div class="seleccionAll">
+              <p>Seleccionar entero</p>
+              <input
+                (click)="seleccionarTodo(page_size * (page_number - 1) + i)"
+                [(ngModel)]="allFractions![page_size! * (page_number! - 1) + i]"
+                type="checkbox"
+              />
+            </div>
+            <hr />
+            <div class="contenedor_fracciones">
+              <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
                       <div
-                        class="fracciones"
-                        *ngFor="
-                          let item of ticket.fraccionesDisponibles;
-                          let j = index
+                        style="
+                          width: 100%;
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding: 0 10px;
                         "
                       >
-                        <input
-                          (click)="
-                            fraccionSeleccionada(
-                              page_size * (page_number - 1) + i,
-                              item
-                            )
-                          "
-                          [checked]="
-                            isSelected(page_size * (page_number - 1) + i, item)
-                          "
-                          class="checkbox"
-                          type="checkbox"
-                          id="{{ ticket.identificador }}-{{ item }}"
+                        Seleccionar fracciones:
+                        <img
+                          style="width: 32px"
+                          src="assets/flecha.png"
+                          alt=""
                         />
-                        <label for="{{ ticket.identificador }}-{{ item }}">{{
-                          item
-                        }}</label>
                       </div>
-                    </div>
-                    <hr />
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div
+                    class="fracciones"
+                    *ngFor="
+                      let item of ticket.fraccionesDisponibles;
+                      let j = index
+                    "
+                  >
+                    <input
+                      (click)="
+                        fraccionSeleccionada(
+                          page_size * (page_number - 1) + i,
+                          item
+                        )
+                      "
+                      [checked]="
+                        isSelected(page_size * (page_number - 1) + i, item)
+                      "
+                      class="checkbox"
+                      type="checkbox"
+                      id="{{ ticket.identificador }}-{{ item }}"
+                    />
+                    <label for="{{ ticket.identificador }}-{{ item }}">{{
+                      item
+                    }}</label>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-          <hr size="2px" color="gray" style="width: 100%" />
-        </table>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+            <hr />
+            <div class="buttonsBox">
+              <button
+                (click)="limpiarSeleccionado(page_size * (page_number - 1) + i)"
+              >
+                LIMPIAR
+              </button>
+              <button
+                (click)="pushToSeleccionado(page_size * (page_number - 1) + i)"
+              >
+                AGREGAR AL CARRITO
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="contenedor_botones">
           <mat-paginator
             style-paginator
@@ -164,12 +181,7 @@
           >
           </mat-paginator>
         </div>
-        <!-- {{ ticketsDisponibles | json }} -->
       </div>
-      <!-- 
-    <div class="boton_boleto">
-      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-    </div> -->
     </div>
 
     <app-carrito

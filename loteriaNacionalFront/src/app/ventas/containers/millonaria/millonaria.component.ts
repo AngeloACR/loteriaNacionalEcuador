@@ -186,7 +186,7 @@ export class MillonariaComponent implements OnInit {
         }
       } else {
         let identificador = this.ticketsDisponibles[id].identificador;
-        await this.deleteLoteriaTicket(this.ticketsLoteria[identificador]);
+        await this.deleteMillonariaTicket(this.ticketsMillonaria[identificador]);
         this.ticketsDisponibles[id].seleccionados = [];
       }
       await this.setDescuento(1);
@@ -316,7 +316,7 @@ export class MillonariaComponent implements OnInit {
       );
       this.seriesTabs = [];
       this.combinacionDeLaSuerte = ['', '', '', ''];
-      this.showNumeros = true; 
+      this.showNumeros = true;
       this.figureSelector.close();
       this.buscarCartones = false;
       this.isLoading = false;
@@ -328,7 +328,7 @@ export class MillonariaComponent implements OnInit {
     }
   }
   tipoSeleccion: number = 96;
-
+  boleto: string = "";
   sorteoSeleccionado?: sorteo;
   async procesaEmitir(sorteo: any) {
     this.loadingMessage = 'Cargando la información del sorteo';
@@ -341,6 +341,11 @@ export class MillonariaComponent implements OnInit {
     this.seleccionSeries = await this.millonaria.obtenerSeries(
       this.sorteoSeleccionado!.sorteo,
       authData
+    );
+
+    this.boleto = this.lotteryService.obtenerImagenBoleto(
+      14,
+      this.sorteoSeleccionado?.sorteo
     );
     this.isLoading = false;
   }
@@ -621,9 +626,9 @@ export class MillonariaComponent implements OnInit {
     }
     await this.cart.setTotalConDesc();
   }
-  async deleteLoteriaTicket(data: any) {
+  async deleteLoteriaTicket(identificador: any) {
     try {
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsLoteria[identificador]
       let fracciones = data.ticket.seleccionados;
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
@@ -946,25 +951,6 @@ export class MillonariaComponent implements OnInit {
     try {
       this.loadingMessage = 'Removiendo boletos del carrito';
       this.isLoading = true;
-      let boletosLoteria = Object.keys(this.ticketsLoteria).map((key) => {
-        return {
-          ticket: this.ticketsLoteria[key].ticket,
-          sorteo: this.ticketsLoteria[key].sorteo,
-        };
-      });
-      let boletosLotto = Object.keys(this.ticketsLotto).map((key) => {
-        return {
-          ticket: this.ticketsLotto[key].ticket,
-          sorteo: this.ticketsLotto[key].sorteo,
-        };
-      });
-      let boletosMillonaria = Object.keys(this.ticketsMillonaria).map((key) => {
-        return {
-          ticket: this.ticketsMillonaria[key].ticket,
-          sorteo: this.ticketsMillonaria[key].sorteo,
-        };
-      });
-      let reservaId = this.lotteryService.getReservaId();
 
       Object.keys(this.ticketsMillonaria).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {

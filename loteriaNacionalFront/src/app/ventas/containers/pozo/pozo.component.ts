@@ -357,10 +357,21 @@ export class PozoComponent implements OnInit {
     return a - b;
   }
   tipoSeleccion: number = 96;
-
+  boleto: string = "";
+  boletoRevancha: string = "";
   sorteoSeleccionado?: sorteo;
   procesaEmitir(sorteo: any) {
     this.sorteoSeleccionado = sorteo;
+
+    this.boleto = this.ventas.obtenerImagenBoleto(
+      5,
+      this.sorteoSeleccionado?.sorteo
+    );
+
+    this.boletoRevancha = this.ventas.obtenerImagenBoleto(
+      17,
+      this.sorteoSeleccionado?.sorteo
+    );
     this.showNumeros = false;
   }
   isLoading?: boolean;
@@ -655,9 +666,9 @@ export class PozoComponent implements OnInit {
     }
     await this.cart.setTotalConDesc();
   }
-  async deleteLoteriaTicket(data: any) {
+  async deleteLoteriaTicket(identificador: any) {
     try {
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsLoteria[identificador]
       let fracciones = data.ticket.seleccionados;
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
@@ -934,25 +945,6 @@ export class PozoComponent implements OnInit {
     try {
       this.loadingMessage = 'Removiendo boletos del carrito';
       this.isLoading = true;
-      let boletosLoteria = Object.keys(this.ticketsLoteria).map((key) => {
-        return {
-          ticket: this.ticketsLoteria[key].ticket,
-          sorteo: this.ticketsLoteria[key].sorteo,
-        };
-      });
-      let boletosLotto = Object.keys(this.ticketsLotto).map((key) => {
-        return {
-          ticket: this.ticketsLotto[key].ticket,
-          sorteo: this.ticketsLotto[key].sorteo,
-        };
-      });
-      let boletosPozo = Object.keys(this.ticketsPozo).map((key) => {
-        return {
-          ticket: this.ticketsPozo[key].ticket,
-          sorteo: this.ticketsPozo[key].sorteo,
-        };
-      });
-      let reservaId = this.ventas.getReservaId();
 
       Object.keys(this.ticketsPozo).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {

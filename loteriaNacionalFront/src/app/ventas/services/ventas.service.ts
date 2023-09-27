@@ -84,11 +84,8 @@ export class VentasService {
   }
 
   obtenerImagenBoleto(tipoLoteria: any, sorteo: any) {
-    let sourceBoletos = `${this.mySource}/uploads/boletos/`;
-    return new Promise<string>((resolve, reject) => {
-      let boletoAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
-      resolve(boletoAddress);
-    });
+    let sourceBoletos = `https://ventas-api.loteria.com.ec/uploads/boletos/`;
+    return `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
   }
 
   authUser(token: string): Promise<any> {

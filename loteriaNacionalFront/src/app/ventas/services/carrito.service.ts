@@ -180,7 +180,7 @@ export class CarritoService {
     localStorage.setItem('reservaId', JSON.stringify(id));
   }
   async getCount() {
-    let carrito = await this.getCarrito();
+    let carrito = await this.getCarritoLocal();
     let count = 0;
     if (carrito && carrito.length) {
       carrito.forEach((item: any) => {
@@ -191,6 +191,7 @@ export class CarritoService {
         }
       });
     }
+    console.log(count)
     return count;
   }
 
@@ -384,7 +385,6 @@ export class CarritoService {
             data.pozoRevancha = {};
             data.millonaria = {};
           }
-          console.log(data);
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);
@@ -435,11 +435,8 @@ export class CarritoService {
   }
 
   async getCarrito() {
-    return new Promise<any>(async (resolve, reject) => {
-      let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.carrito);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosCarrito")));
-    });
+    let carritoDB = await this.buscarCarrito();
+    return carritoDB.carrito;
   }
   async getCarritoLoteria() {
     return new Promise<any>(async (resolve, reject) => {
@@ -649,4 +646,5 @@ export class CarritoService {
       return 0;
     }
   }
+
 }

@@ -19,10 +19,14 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class LottoComponent implements OnInit {
   combinacionDeLaSuerte: any = ['', '', '', '', '', ''];
+  boleto: string = "";
 
   page_size: number = 9;
   page_number: number = 1;
   showNumeros: boolean = false;
+  sorteoLunes: boolean = false;
+  sorteoJueves: boolean = false;
+  otrosSorteos: boolean = false;
   sorteo?: sorteo[];
   ticketsDisponibles?: any;
   pageSizeOptions?: [5, 10, 20, 100];
@@ -89,6 +93,13 @@ export class LottoComponent implements OnInit {
   sorteoSeleccionado?: sorteo;
   procesaEmitir(sorteo: any) {
     this.sorteoSeleccionado = sorteo;
+    this.sorteoLunes = sorteo.dia == "Lunes"
+    this.sorteoJueves = sorteo.dia == "Jueves"
+    this.otrosSorteos = sorteo.dia == "Martes" || sorteo.dia == "Sábado"
+    this.boleto = this.lotteryService.obtenerImagenBoleto(
+      2,
+      this.sorteoSeleccionado?.sorteo
+    );
     this.showNumeros = false;
   }
   async seleccionarTicket(id: any) {
@@ -175,7 +186,7 @@ export class LottoComponent implements OnInit {
     }
   }
 
-  irARecarga() {}
+  irARecarga() { }
 
   abrirResumen() {
     this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
@@ -324,8 +335,9 @@ export class LottoComponent implements OnInit {
 
   instantaneas: any;
   isInstantaneas: boolean = false;
-idVenta: string;
-  async confirmarCompra() {    try {
+  idVenta: string;
+  async confirmarCompra() {
+    try {
       this.isLoading = true;
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       let hasBalance = await this.paymentService.hasBalance(0, this.token);
@@ -373,7 +385,7 @@ idVenta: string;
   async abrirFinalizar(idVenta: string) {
     this.dismissCompras();
     await this.cart.borrarCarrito();
-      this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
+    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
 
   }
   cancelarCompra() {
@@ -479,13 +491,13 @@ idVenta: string;
       this.openError(errorMessage);
     }
   }
-  async deleteLoteriaTicket(data: any) {
+  async deleteLoteriaTicket(identificador: any) {
     try {
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsLoteria[identificador]
       let fracciones = data.ticket.seleccionados;
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
-      let ticket = this.ticketsLoteria[identificador].ticket;
+      let ticket = data.ticket;
       let sorteo = data.sorteo;
       let reservaId = this.lotteryService.getReservaId();
       if (fracciones.length != 0) {
@@ -706,26 +718,6 @@ idVenta: string;
     try {
       this.loadingMessage = 'Removiendo boletos del carrito';
       this.isLoading = true;
-      let boletosLoteria = Object.keys(this.ticketsLoteria).map((key) => {
-        return {
-          ticket: this.ticketsLoteria[key].ticket,
-          sorteo: this.ticketsLoteria[key].sorteo,
-        };
-      });
-      let boletosLotto = Object.keys(this.ticketsLotto).map((key) => {
-        return {
-          ticket: this.ticketsLotto[key].ticket,
-          sorteo: this.ticketsLotto[key].sorteo,
-        };
-      });
-      let boletosPozo = Object.keys(this.ticketsPozo).map((key) => {
-        return {
-          ticket: this.ticketsPozo[key].ticket,
-          sorteo: this.ticketsPozo[key].sorteo,
-        };
-      });
-      let reservaId = this.lotteryService.getReservaId();
-
       Object.keys(this.ticketsLotto).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {
           let deletedIndex = this.ticketsDisponibles.findIndex(

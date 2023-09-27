@@ -137,7 +137,7 @@ export class CarritoComponent implements OnInit {
   }
 
   deleteLoteria(ticket: any) {
-    this.deleteLoteriaTicket.emit(ticket);
+    this.deleteLoteriaTicket.emit(ticket.identificador);
   }
 
 
