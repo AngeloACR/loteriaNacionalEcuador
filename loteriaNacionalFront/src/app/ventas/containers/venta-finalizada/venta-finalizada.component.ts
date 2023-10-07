@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { VentasService } from "../../services/ventas.service";
 import { PagosService } from "../../services/pagos.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-venta-finalizada',
@@ -14,6 +15,8 @@ export class VentaFinalizadaComponent implements OnInit {
   user: any;
   token: any;
   idVenta: any;
+  url: string = environment.front
+
   constructor(
     private ventas: VentasService,
     private pagos: PagosService,
@@ -37,6 +40,10 @@ export class VentaFinalizadaComponent implements OnInit {
   seguirJugando() {
     this.pagos.finalizarCompra();
     this.router.navigateByUrl(`/compra_tus_juegos/${this.token!}`);
+  }
+
+  verBoletos() {
+    window.open(`${this.url}/compra_tus_juegos/detalle/${this.ventas.getAuthData().personaId}-${this.idVenta}`, "_blank")
   }
 
 }

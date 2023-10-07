@@ -12,6 +12,7 @@ export class DescripcionDeVentaComponent implements OnInit {
   @Input() compra: any;
   @Input() user: any;
   @Input() resumen: boolean = true;
+  @Input() showHeader: boolean = true;
   @Input() ticketId: any;
   @Input() codigosPromocionales: any;
 

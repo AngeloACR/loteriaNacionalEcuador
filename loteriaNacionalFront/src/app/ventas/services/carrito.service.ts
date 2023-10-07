@@ -165,6 +165,7 @@ export class CarritoService {
     carrito.splice(deletedIndex, 1);
     this.ticketsCarrito = carrito;
     localStorage.setItem('seleccionadosCarrito', JSON.stringify(carrito));
+    if (carrito.length == 0) await this.borrarCarrito();
   }
 
   getReservaId() {
@@ -497,7 +498,7 @@ export class CarritoService {
     localStorage.removeItem('seleccionadosCarrito');
     localStorage.removeItem('seleccionadosMillonaria');
     localStorage.removeItem('seleccionadosPozoRevancha');
-    localStorage.removeItem('reservaId');
+    this.setReservaId(0)
     localStorage.removeItem('total');
     localStorage.removeItem('totalConDesc');
     return new Promise<any>(async (resolve, reject) => {

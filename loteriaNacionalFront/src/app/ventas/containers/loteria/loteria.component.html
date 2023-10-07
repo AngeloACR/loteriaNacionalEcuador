@@ -90,10 +90,6 @@
           <div class="combinationBox">
             <img [src]="boleto" alt="" />
             <p>{{ ticket.combinacion }}</p>
-            <!--             <p *ngFor="let numero of ticket.combinacion.split('')">
-                {{ numero }}
-              </p>
- -->
           </div>
           <div class="fractionsBox">
             <div class="seleccionAll">
@@ -164,6 +160,7 @@
                 LIMPIAR
               </button>
               <button
+                [disabled]="ticket.status"
                 (click)="pushToSeleccionado(page_size * (page_number - 1) + i)"
               >
                 AGREGAR AL CARRITO
@@ -243,40 +240,10 @@
   *ngIf="isValidationError"
 ></app-error>
 
-<app-confirmacion-de-venta
-  (compraConfirmada)="confirmarCompra()"
-  (compraCancelada)="cancelarCompra()"
-  (comprarDespues)="dismissCompras()"
-  [compra]="detalleCompra"
-  #purchase
-  class="paymentItem"
-  *ngIf="confirmacionDeCompra"
-></app-confirmacion-de-venta>
-
-<app-instantaneas
-  (close)="abrirFinalizar(idVenta)"
-  [resultados]="instantaneas"
-  tipoLoteria="1"
-  [isLoteriaNacional]="true"
-  class="paymentItem"
-  *ngIf="isInstantaneas"
-></app-instantaneas>
-<app-venta-finalizada
-  (volver)="finalizarCompra()"
-  [compra]="detalleCompra"
-  [codigosPromocionales]="codigoPromocional"
-  class="paymentItem"
-  *ngIf="compraFinalizada"
-></app-venta-finalizada>
 <app-saldo-insuficiente
   [message]="recargaDeSaldoMessage"
-  (volver)="dismissCompras()"
+  (volver)="saldoInsuficiente = false"
   (recarga)="irARecarga()"
   class="paymentItem"
   *ngIf="saldoInsuficiente"
 ></app-saldo-insuficiente>
-<app-venta-cancelada
-  class="paymentItem"
-  [message]="cancelMessage"
-  *ngIf="compraCancelada"
-></app-venta-cancelada>

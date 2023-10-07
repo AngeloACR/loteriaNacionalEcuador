@@ -38,6 +38,7 @@ export class VentasService {
     let response = {
       user: '',
       lotteryToken: '',
+      personaId: '',
     };
     if (data) {
       let lotteryToken = data.lotteryToken;
@@ -46,6 +47,7 @@ export class VentasService {
       response = {
         lotteryToken,
         user,
+        personaId: data.personaId,
       };
     }
     return response;

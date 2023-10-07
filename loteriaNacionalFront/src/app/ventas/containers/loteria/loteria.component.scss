@@ -266,7 +266,7 @@ button {
             justify-content: space-around;
             align-items: center;
             position: relative;
-            min-height: 30px;
+            min-height: 245px;
 
             img {
               width: 100%;
@@ -394,7 +394,7 @@ button {
 
 @media screen and (max-width: 1000px) {
 
-  .ticketsBox {
+/*   .ticketsBox {
     .ticketBox {
       width: 300px !important;
 
@@ -408,7 +408,7 @@ button {
       }
 
     }
-  }
+  } */
 
   .paymentBox {
     width: 95%;
@@ -453,17 +453,6 @@ button {
               margin-top: 20px;
             }
           }
-        }
-      }
-
-      table {
-        tbody {
-          grid-template-columns: repeat(1, auto) !important;
-        }
-
-        hr {
-          width: 97%;
-          margin: 15px auto;
         }
       }
     }

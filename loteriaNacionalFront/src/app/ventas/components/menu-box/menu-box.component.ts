@@ -72,189 +72,25 @@ export class MenuBoxComponent implements OnInit {
     }
   }
 
-  confirmacionDeCompra: boolean = false;
-  compraFinalizada: boolean = false;
   saldoInsuficiente: boolean = false;
-  compraCancelada: boolean = false;
-  instantaneas: any;
-  isInstantaneas: boolean = false;
-  cancelMessage: string = '';
-  detalleCompra: any;
   recargaDeSaldoMessage?: string;
 
-  dismissCompras() {
-    this.confirmacionDeCompra = false;
-    this.isInstantaneas = false;
 
-    this.compraFinalizada = false;
-    this.saldoInsuficiente = false;
-    this.compraCancelada = false;
-  }
-
-  volver() {
-    this.dismissCompras();
-    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
-  }
 
   total?: string;
   getTotal() {
     this.total = this.cart.getTotal();
   }
+
   comprar() {
-    this.dismissCompras();
-
-    let loteriaAux = this.ticketsLoteria;
-    let loteria = [];
-    for (let id in loteriaAux) {
-      let aux: any = {};
-      aux['combinacion1'] = loteriaAux[id].ticket.combinacion;
-      aux['fracciones'] = loteriaAux[id].ticket.seleccionados;
-      aux['subtotal'] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
-      aux['fecha'] = loteriaAux[id].sorteo.fecha;
-      aux['sorteo'] = loteriaAux[id].sorteo.sorteo;
-      loteria.push(aux);
-    }
-    let lottoAux = this.ticketsLotto;
-    let lotto = [];
-    for (let id in lottoAux) {
-      let aux: any = {};
-      aux['combinacion1'] = lottoAux[id].ticket.combinacion1;
-      aux['combinacion2'] = lottoAux[id].ticket.combinacion2;
-      aux['combinacion3'] = lottoAux[id].ticket.combinacion3;
-      aux['combinacion4'] = lottoAux[id].ticket.combinacion4;
-      aux['sorteo'] = lottoAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(lottoAux[id].subtotal).toFixed(2);
-      aux['fecha'] = lottoAux[id].sorteo.fecha;
-      lotto.push(aux);
-    }
-    let pozoAux = this.ticketsPozo;
-    let pozo = [];
-    for (let id in pozoAux) {
-      let aux: any = {};
-      aux['combinacion1'] = pozoAux[id].ticket.combinacion1;
-      aux['combinacion2'] = pozoAux[id].ticket.combinacion2;
-      aux['mascota'] = pozoAux[id].ticket.mascota;
-      aux['sorteo'] = pozoAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(pozoAux[id].subtotal).toFixed(2);
-      aux['fecha'] = pozoAux[id].sorteo.fecha;
-      pozo.push(aux);
-    }
-    let pozoRevanchaAux = this.ticketsPozoRevancha;
-    let pozoRevancha = [];
-    for (let id in pozoRevanchaAux) {
-      let aux: any = {};
-      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
-      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
-      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
-      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(
-        pozoRevanchaAux[id].subtotalConDesc
-      ).toFixed(2);
-      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
-      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
-      pozoRevancha.push(aux);
-    }
-    let millonariaAux = this.ticketsMillonaria;
-    let millonaria = [];
-    for (let id in millonariaAux) {
-      let aux: any = {};
-      aux['combinacion1'] = millonariaAux[id].ticket.combinacion1;
-      aux['combinacion2'] = millonariaAux[id].ticket.combinacion2;
-      aux['fracciones'] = millonariaAux[id].ticket.seleccionados;
-      aux['subtotal'] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(
-        millonariaAux[id].subtotalConDesc
-      ).toFixed(2);
-      aux['tieneDescuento'] = millonariaAux[id].tieneDescuento;
-      aux['fecha'] = millonariaAux[id].sorteo.fecha;
-      aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
-      millonaria.push(aux);
-    }
-
-    let bingazoAux = this.ticketsBingazo;
-    let bingazo = [];
-    for (let id in bingazoAux) {
-      let aux: any = {};
-      aux['combinacion1'] = bingazoAux[id].ticket.combinacion1;
-      aux['combinacion2'] = bingazoAux[id].ticket.combinacion2;
-      aux['fruta'] = bingazoAux[id].ticket.fruta;
-      aux['sorteo'] = bingazoAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
-      aux['fecha'] = bingazoAux[id].sorteo.fecha;
-      bingazo.push(aux);
-    }
-    let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
-    let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
-
-    this.detalleCompra = {
-      loteria,
-      millonaria,
-      lotto,
-      bingazo,
-      pozo,
-      pozoRevancha,
-      amount,
-      amountConDesc,
-    };
-
-    this.confirmacionDeCompra = true;
+    this.router.navigateByUrl(`/compra_tus_juegos/confirmar_venta/${this.token!}`);
   }
 
-  finalizarCompra() {
-    this.paymentService.finalizarCompra();
-    this.dismissCompras();
-    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
-  }
 
   irARecarga() { }
 
   idVenta: string;
-  async confirmarCompra() {
-    try {
-      this.isLoading = true;
-      this.loadingMessage = 'Espera mientras procesamos tu compra';
-      let hasBalance = await this.paymentService.hasBalance(0, this.token);
 
-      if (hasBalance) {
-        let reservaId = this.cart.getReservaId();
-        let cartValidation = await this.cart.validarCarrito(reservaId);
-        if (cartValidation.status) {
-          let response = await this.paymentService.confirmarCompra(
-            this.token,
-            reservaId
-          );
-          if (response.status) {
-            if (response.instantanea.status) {
-              this.codigoPromocional = response.codigoPromocional;
-              this.dismissCompras();
-              this.instantaneas = response.instantanea.data;
-              this.isInstantaneas = true;
-            } else {
-              this.instantaneas = '';
-              this.abrirFinalizar(response.idVenta)
-            }
-          } else {
-            this.cancelarCompra('');
-          }
-        } else {
-          this.openValidationError(cartValidation.message);
-        }
-        this.isLoading = false;
-      } else {
-        this.isLoading = false;
-        let message = 'Tu saldo es insuficiente para realizar la compra';
-        this.recargarSaldo(message);
-      }
-    } catch (e: any) {
-      this.isLoading = false;
-      this.purchase.habilitarBoton();
-      console.log(e.message);
-      let errorMessage = e.message;
-      let errorTitle = 'Error';
-      this.openError(errorMessage, errorTitle);
-    }
-  }
   @ViewChild('purchase') purchase: any;
 
   isValidationError: boolean = false;
@@ -269,21 +105,9 @@ export class MenuBoxComponent implements OnInit {
     this.validationErrorMessage = '';
     window.location.reload();
   }
-  cancelarCompra(e: any) {
-    this.dismissCompras();
-    this.compraCancelada = true;
-  }
-
-  async abrirFinalizar(idVenta: string) {
-    this.dismissCompras();
-    await this.cart.borrarCarrito();
-    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
-
-  }
 
   recargarSaldo(message: any) {
     this.recargaDeSaldoMessage = message;
-    this.dismissCompras();
     this.saldoInsuficiente = true;
   }
 

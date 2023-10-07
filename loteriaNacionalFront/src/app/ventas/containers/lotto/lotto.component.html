@@ -123,44 +123,17 @@
             <p class="combinacion1">{{ ticket!.combinacion1 }}</p>
             <p class="combinacion2">{{ ticket!.combinacion2 }}</p>
           </div>
-          <!--                   <input
-                    type="checkbox"
-                    [checked]="ticket.status"
-                    (click)="
-                      seleccionarTicket(page_size! * (page_number! - 1) + i)
-                    "
-                  />
-                  <div class="contenedor_numeros">
-                    <p>{{ ticket!.combinacion1 }}</p>
-                  </div>
-                  <hr />
-                  <div class="contenedor_fracciones">
-                    <p *ngIf="ticket!.combinacion3 != ''">
-                      {{ sorteoSeleccionado!.combinacion3 }}:
-                      <span>{{ ticket!.combinacion3 }}</span>
-                    </p>
-                    <p *ngIf="ticket!.combinacion2 != ''">
-                      {{ sorteoSeleccionado!.combinacion2 }}:
-                      <span>{{ ticket!.combinacion2 }}</span>
-                    </p>
-                    <p *ngIf="ticket!.combinacion4 != ''">
-                      {{ sorteoSeleccionado!.combinacion4 }}:
-                      <span>{{ ticket!.combinacion4 }}</span>
-                    </p>
-                    <p
-                      *ngIf="ticket!.combinacion5 && ticket!.combinacion5 != ''"
-                    >
-                      {{ sorteoSeleccionado!.combinacion5 }}:
-                      <img
-                        [src]="obtenerAntojito(ticket!.combinacion5)"
-                        alt=""
-                      />
-                    </p>
-                  </div> -->
+ 
 
           <div class="buttonsBox">
-            <button>LIMPIAR</button>
             <button
+              (click)="deleteLottoTicket(ticket.identificador)"
+              [disabled]="!ticket.status"
+            >
+              LIMPIAR
+            </button>
+            <button
+              [disabled]="ticket.status"
               (click)="seleccionarTicket(page_size! * (page_number! - 1) + i)"
             >
               AGREGAR AL CARRITO
@@ -236,39 +209,10 @@
   *ngIf="isValidationError"
 ></app-error>
 
-<app-confirmacion-de-venta
-  (compraConfirmada)="confirmarCompra()"
-  (compraCancelada)="cancelarCompra()"
-  (comprarDespues)="dismissCompras()"
-  [compra]="detalleCompra"
-  #purchase
-  class="paymentItem"
-  *ngIf="confirmacionDeCompra"
-></app-confirmacion-de-venta>
-<app-instantaneas
-  (close)="abrirFinalizar(idVenta)"
-  [resultados]="instantaneas"
-  tipoLoteria="2"
-  [isLoteriaNacional]="true"
-  class="paymentItem"
-  *ngIf="isInstantaneas"
-></app-instantaneas>
-<app-venta-finalizada
-  (volver)="finalizarCompra()"
-  [compra]="detalleCompra"
-  [codigosPromocionales]="codigoPromocional"
-  class="paymentItem"
-  *ngIf="compraFinalizada"
-></app-venta-finalizada>
 <app-saldo-insuficiente
   [message]="recargaDeSaldoMessage"
-  (volver)="dismissCompras()"
+  (volver)="saldoInsuficiente = false"
   (recarga)="irARecarga()"
   class="paymentItem"
   *ngIf="saldoInsuficiente"
 ></app-saldo-insuficiente>
-<app-venta-cancelada
-  class="paymentItem"
-  [message]="cancelMessage"
-  *ngIf="compraCancelada"
-></app-venta-cancelada>

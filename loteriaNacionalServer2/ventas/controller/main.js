@@ -447,7 +447,7 @@ const ventasController = {
         let drawDateAux = bingazoAux[id].sorteo.fecha.split(" ")[0].split("/");
         let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
         let aux = {
-          lotteryType: 5,
+          lotteryType: 12,
           drawNumber: parseInt(bingazoAux[id].sorteo.sorteo),
           drawDate,
           subTotal: `${parseFloat(bingazoAux[id].subtotal).toFixed(2)}`,
