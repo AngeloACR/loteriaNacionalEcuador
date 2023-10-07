@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { VentasService } from '../ventas/services/ventas.service';
 
 @Component({
   selector: 'app-public',
@@ -13,15 +14,18 @@ export class PublicComponent implements OnInit {
   token: string;
   puntosDeLaSuerteLink: string =
     'https://www.loteria.com.ec/#/contenido/puntos-suerte';
-  constructor(private actRoute: ActivatedRoute) {
+  constructor(private actRoute: ActivatedRoute, private ventas: VentasService) {
     this.actRoute.params.subscribe((params) => {
       this.token = params['token'];
     });
   }
 
   async ngOnInit() {
-    this.ventasLink = `${this.ventasLink}/${this.token}`
-
+    console.log('here');
+    if (this.token) {
+      let data = await this.ventas.authUser(this.token);
+    }
+    this.ventasLink = `${this.ventasLink}/${this.token}`;
   }
 
   checkToken(e: any) {
