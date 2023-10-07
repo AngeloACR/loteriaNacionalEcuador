@@ -5,7 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaVentasLogger } = require("./logging");
-const config = require("../environments/production");
+const config = require("../environments/test");
 
 
 const medioId = config.medioAplicativoId;

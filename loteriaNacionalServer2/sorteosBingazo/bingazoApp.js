@@ -1,5 +1,5 @@
 const sorteosBingazoServer = require("./bingazoServer");
-const config = require("../environments/production");
+const config = require("../environments/test");
 
 const cronjobs = require("./cronjobs");
 
