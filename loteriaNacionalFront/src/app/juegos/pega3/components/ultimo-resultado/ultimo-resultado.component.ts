@@ -16,16 +16,6 @@ export class UltimoResultadoComponent implements OnInit {
       this.ultimoResultado = 
         localStorage.getItem('pega3UltimoResultado')!
 
-      /*       let data = JSON.parse(localStorage.getItem('pega3UltimoResultado')!);
-      this.ticketNumbers = data.ultimoResultadoFacilotto.combinacion1.split('');
-      this.ticketGanador = {
-        ticketIndex: data.ultimoResultadoFacilotto.codigo,
-        description: 'Boleto Ganador',
-        ticketNumbers: this.ticketNumbers,
-        numeroSorteo: data.numeroSorteo,
-        sorteo: data.sorteo,
-        valorPremio: data.premioPrincipal.valorPremio,
-      }; */
     } catch (e) {
       this.isError = true;
     }
