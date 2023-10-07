@@ -4,7 +4,6 @@ import { ConsultaService as LottoService } from 'src/app/juegos/lotto/services/c
 import { ConsultaService as PozoService } from 'src/app/juegos/pozo/services/consulta.service';
 import { ConsultaService as RevanchaService } from 'src/app/juegos/pozoRevancha/services/consulta.service';
 import { ConsultaService as MillonariaService } from 'src/app/juegos/millonaria/services/consulta.service';
-import { ConsultaService as FacilottoService } from 'src/app/juegos/facilotto/services/consulta.service';
 import { ConsultaService as Pega3Service } from 'src/app/juegos/pega3/services/consulta.service';
 import { ConsultaService as BingazoService } from 'src/app/juegos/bingazo/services/consulta.service';
 
@@ -19,7 +18,6 @@ export class ConsultasService {
     private revancha: RevanchaService,
     private bingazo: BingazoService,
     private millonaria: MillonariaService,
-    private facilotto: FacilottoService,
     private pega3: Pega3Service,
   ) {}
   async recuperarUltimosResultados() {
@@ -30,7 +28,6 @@ export class ConsultasService {
       this.bingazo.getData(),
       this.revancha.getUltimoResultado(),
       this.millonaria.getUltimoResultado(),
-      this.facilotto.getUltimoResultado(),
       this.pega3.getData(),
     ]);
   }
