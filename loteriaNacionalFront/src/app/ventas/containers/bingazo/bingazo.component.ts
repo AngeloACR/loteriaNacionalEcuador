@@ -3,7 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import {
   sorteo,
 } from '../../interfaces/venta';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { VentaService as BingazoService } from '../../../juegos/bingazo/services/venta.service';
 import { VentasService } from '../../services/ventas.service';
@@ -250,18 +250,13 @@ export class BingazoComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
-      if (this.token) {
-        let data = await this.ventas.authUser(this.token);
-      }
       await this.getCarritoTickets();
-      //this.getTotal();
 
       this.loadingMessage = 'Cargando los sorteos disponibles';
       this.seleccionFrutas = JSON.parse(
         localStorage.getItem('frutasSeleccionadas')!
       );
       this.frutasTabs = JSON.parse(localStorage.getItem('frutasTabs')!);
-      console.log("llegando aca")
       this.seleccionFrutas!.forEach((element) => {
         this.frutasTabs.forEach((elemento: any) => {
           if (elemento.nombre === element.nombre) {
@@ -269,7 +264,6 @@ export class BingazoComponent implements OnInit {
           }
         });
       });
-      console.log("pero no aca")
       localStorage.setItem(
         'frutasSeleccionadas',
         JSON.stringify(this.seleccionFrutas)
@@ -277,8 +271,8 @@ export class BingazoComponent implements OnInit {
       let authData = this.ventas.getAuthData();
       this.sorteo = await this.bingazo.obtenerSorteo(authData);
       this.descuentos = await this.ventas.obtenerDescuentos();
-      this.isLoading = false;
       this.showComponents = true;
+      this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
       console.log(e.message);
@@ -556,7 +550,7 @@ export class BingazoComponent implements OnInit {
       await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
 
       await this.getCarritoTickets();
-      this.getTotal();
+      //this.getTotal();
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;

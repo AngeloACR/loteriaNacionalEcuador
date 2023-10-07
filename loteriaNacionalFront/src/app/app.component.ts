@@ -6,8 +6,6 @@ import {
   NavigationEnd,
   NavigationError,
 } from '@angular/router';
-import { ConsultasService } from './consultas/services/consultas.service';
-import { AdministracionService } from './administracion/services/administracion.service';
 
 @Component({
   selector: 'app-root',
@@ -28,9 +26,7 @@ export class AppComponent implements OnInit {
     }
   }
   constructor(
-    private router: Router,
-    private consultas: ConsultasService,
-    private admin: AdministracionService
+    private router: Router
   ) {
     this.isDetail = false;
     this.router.events.subscribe(async (event: Event) => {
@@ -71,7 +67,6 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     localStorage.setItem('top', "0");
     localStorage.setItem('screen', "0");
-    await this.consultas.recuperarUltimosResultados();
   }
   closePromo() {
     this.showPromo = false;

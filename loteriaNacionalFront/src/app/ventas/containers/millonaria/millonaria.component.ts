@@ -399,13 +399,7 @@ export class MillonariaComponent implements OnInit {
     try {
       this.isLoading = true;
 
-      if (this.token) {
-        let data = await this.lotteryService.authUser(this.token);
-      }
       await this.getCarritoTickets();
-      //this.getTotal();
-
-      //TODO: Preguntar como quiere que venga la variable tabs, si llena o no
       let authData = this.lotteryService.getAuthData();
       this.sorteo = await this.millonaria.obtenerSorteo(authData);
       this.seleccionSeries = [];

@@ -31,10 +31,10 @@
                   [checked]="fruta.status"
                   name="nombre"
                   [value]="fruta"
-                  id="nombre-{{ fruta.nombre }}"
+                  [id]="fruta.nombre"
                 />
-                <label for="nombre-{{ fruta.nombre }}">
-                  <img [src]="fruta.ruta" [alt]="fruta.nombre" />
+                <label [for]="fruta.nombre">
+                  <img [src]="fruta.ruta" [alt]="fruta.nombre" loading="lazy"/>
                 </label>
               </div>
             </div>
@@ -112,8 +112,6 @@
           </mat-paginator>
         </div>
       </div>
-
-
     </div>
 
     <app-carrito
@@ -155,8 +153,7 @@
   [ticketsBingazo]="ticketsBingazo"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="bingazo"
-></app-floating-menu
->
+></app-floating-menu>
 <app-loader
   loader="bingazo"
   [message]="loadingMessage!"
@@ -180,4 +177,3 @@
   class="paymentItem"
   *ngIf="saldoInsuficiente"
 ></app-saldo-insuficiente>
-

@@ -391,9 +391,6 @@ export class PozoComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
-      if (this.token) {
-        let data = await this.ventas.authUser(this.token);
-      }
       await this.getCarritoTickets();
       //this.getTotal();
 

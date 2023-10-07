@@ -215,11 +215,8 @@ export class LottoComponent implements OnInit {
     try {
       this.loadingMessage = 'Cargando los sorteos disponibles';
       this.isLoading = true;
-      if (this.token) {
-        let data = await this.lotteryService.authUser(this.token);
-      }
+
       await this.getCarritoTickets();
-      //this.getTotal();
       let authData = this.lotteryService.getAuthData();
       this.sorteo = await this.lotto.obtenerSorteo(authData);
       this.descuentos = await this.lotteryService.obtenerDescuentos();

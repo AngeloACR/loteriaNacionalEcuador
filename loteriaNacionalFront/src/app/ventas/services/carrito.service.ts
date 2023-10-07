@@ -376,7 +376,7 @@ export class CarritoService {
       this.http.post(address, body, { headers: headers }).subscribe(
         async (data: any) => {
           let reservaId = this.getReservaId();
-          if (data.carrito.length == 0) {
+/*           if (data.carrito.length == 0) {
             this.borrarCarrito();
             data.carrito = [];
             data.loteria = {};
@@ -385,7 +385,7 @@ export class CarritoService {
             data.bingazo = {};
             data.pozoRevancha = {};
             data.millonaria = {};
-          }
+          } */
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);

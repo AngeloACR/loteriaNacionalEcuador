@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-public',
@@ -20,8 +19,9 @@ export class PublicComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.ventasLink = `${this.ventasLink}/${this.token}`
+
   }
 
   checkToken(e: any) {

@@ -59,9 +59,6 @@ export class LoteriaComponent implements OnInit {
     try {
       this.loadingMessage = 'Cargando los sorteos disponibles';
       this.isLoading = true;
-      if (this.token!) {
-        let data = await this.lotteryService.authUser(this.token!);
-      }
       await this.getCarritoTickets();
       let authData = this.lotteryService.getAuthData();
       this.sorteo = await this.loteria.obtenerSorteo(authData);
@@ -255,7 +252,7 @@ export class LoteriaComponent implements OnInit {
       this.ticketsDisponibles![id].seleccionados = [];
       this.isLoading = false;
       let identificador = this.ticketsDisponibles![id].identificador;
-      if(this.ticketsLoteria[identificador]) await this.deleteLoteriaTicket(identificador);
+      if (this.ticketsLoteria[identificador]) await this.deleteLoteriaTicket(identificador);
     } catch (e: any) {
       this.isLoading = false;
       console.log(e.message);
@@ -270,7 +267,7 @@ export class LoteriaComponent implements OnInit {
       this.isLoading = true;
       let ticket = this.ticketsDisponibles![id]
       let fracciones = this.ticketsDisponibles![id].seleccionados
-      if(fracciones.length == 0) throw new Error("Tienes que seleccionar al menos una fracción para agregar el boleto al carrito.")
+      if (fracciones.length == 0) throw new Error("Tienes que seleccionar al menos una fracción para agregar el boleto al carrito.")
       await this.getCarritoTickets();
       let subtotalTest =
         parseFloat(this.sorteoSeleccionado!.precio) * fracciones.length;
