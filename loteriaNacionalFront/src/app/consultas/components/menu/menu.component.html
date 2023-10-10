@@ -1,10 +1,8 @@
 <div class="resultBox">
-<!--   <a routerLink="/inicio">INICIO</a> -->
   <a routerLink="/consultas/loteria" routerLinkActive="active loteria"
     >LOTERIA NACIONAL</a
   >
   <a routerLink="/consultas/lotto" routerLinkActive="active lotto">LOTTO</a>
-  <a routerLink="/consultas/facilotto" routerLinkActive="active facilotto">FACILOTTO</a>
   <a routerLink="/consultas/pozo" routerLinkActive="active pozo"
     >POZO MILLONARIO</a
   >
@@ -20,6 +18,6 @@
   <a routerLink="/consultas/bingazo" routerLinkActive="active bingazo"
     >BINGAZO</a
   >
-  <a routerLink="/compra_tus_juegos/" routerLinkActive="active">COMPRA YA</a>
+  <a [routerLink]="comprasLink" routerLinkActive="active">COMPRA YA</a>
 </div>
 <hr />

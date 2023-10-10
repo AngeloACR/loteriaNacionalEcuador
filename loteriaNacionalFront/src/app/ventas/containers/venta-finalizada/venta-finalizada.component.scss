@@ -10,27 +10,94 @@ $color-loteria: #7c91a8;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   padding-bottom: 40px;
 
-  .mensajeButtonBox {
-    display: block;
-    padding: 15px;
-    border-radius: 30px;
-    font-family: $fuente-botones;
-    font-size: 16px;
-    margin: 10px auto;
-    width: 100%;
-    max-width: 300px;
-    cursor: pointer;
-    color: #fff;
-    background-color: green;
-    border: 1px solid green;
+  .mensajeBox {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: relative;
 
-    &:hover {
-      background-color: white;
-      color: green;
-      transition: background-color 0.4s ease;
+
+    .logoBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 15%;
+      background-color: #021151;
+      border-radius: 30px;
+
+      align-self: stretch;
+
+      img {
+        padding: 40px 0;
+        width: 50%
+      }
+    }
+
+    .textBox {
+      width: 80%;
+
+      font-family: Open Sans;
+      color: #1e1e1e;
+      font-family: Open Sans !important;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid black;
+      border-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' rx='30' ry='30'  fill='none' stroke='black' stroke-width='3' stroke-dasharray='100' stroke-dashoffset='225' stroke-linecap='square'/%3e%3c/svg%3e") 2 round;
+
+      img {
+        width: 90px;
+      }
+
+      p:nth-of-type(3),
+      p:nth-of-type(4) {
+        margin: 0;
+      }
+
+    }
+  }
+
+  .buttonsBox {
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-evenly;
+    width: 75%;
+    margin: 40px auto 0 auto;
+
+    button {
+
+      display: block;
+      padding: 15px;
+      border-radius: 30px;
+      font-family: $fuente-botones;
+      font-size: 16px;
+      margin: 10px;
+      width: 100%;
+      max-width: 300px;
+      cursor: pointer;
+      color: #fff;
+      background-color: green;
+      border: 1px solid green;
+
+      &:hover {
+        background-color: white;
+        color: green;
+        transition: background-color 0.4s ease;
+      }
+
+      &:nth-of-type(1) {
+        background-color: #021151;
+
+        &:hover {
+          color: #021151;
+          background-color: white;
+        }
+      }
     }
   }
 }

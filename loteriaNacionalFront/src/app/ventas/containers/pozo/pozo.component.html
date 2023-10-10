@@ -13,25 +13,33 @@
   <div class="ventasBox">
     <div class="contendor_seleccion">
       <div class="contenedor_select_animales">
-        <h3>Selecciona tus mascotas de la suerte</h3>
-        <div class="options">
-          <div
-            class="option"
-            *ngFor="let animal of seleccionAnimales; let i = index"
-          >
-            <input
-              (click)="agregar(animal, i)"
-              type="checkbox"
-              [checked]="animal.status"
-              name="nombre"
-              [value]="animal"
-              id="nombre-{{ animal.nombre }}"
-            />
-            <label for="nombre-{{ animal.nombre }}">
-              <img [src]="animal.ruta" [alt]="animal.nombre" />
-            </label>
-          </div>
-        </div>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle expanded #figureSelector>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h3>SELECCIONA TUS MASCOTAS DE LA SUERTE</h3>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="options">
+              <div
+                class="option"
+                *ngFor="let animal of seleccionAnimales; let i = index"
+              >
+                <input
+                  (click)="agregar(animal, i)"
+                  type="checkbox"
+                  [checked]="animal.status"
+                  name="nombre"
+                  [value]="animal"
+                  id="nombre-{{ animal.nombre }}"
+                />
+                <label for="nombre-{{ animal.nombre }}">
+                  <img [src]="animal.ruta" [alt]="animal.nombre" />
+                </label>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
       <div class="selectBox">
         <div class="numeros_suerte">
@@ -90,8 +98,19 @@
             {{ over25ErrorTag }}
           </div>
         </div>
-        <button class="activado" (click)="buscarNumero()">
+        <button
+          class="activado"
+          (click)="buscarNumero()"
+          *ngIf="buscarCartones"
+        >
           BUSCAR CARTONES
+        </button>
+        <button
+          class="activado"
+          (click)="openSelector()"
+          *ngIf="!buscarCartones"
+        >
+          CAMBIAR MASCOTA
         </button>
       </div>
 
@@ -99,79 +118,70 @@
         Si quieres cambiar tu cartón, ingresa los números nuevamente y haz click
         en "Buscar cartones".
       </p>
-      <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
-        <table *ngIf="showNumeros">
-          <tbody>
-            <tr
-              *ngFor="
-                let ticket of ticketsDisponibles
-                  | paginacion : page_size : page_number;
-                let i = index
-              "
-            >
-              <td>
-                <div class="pozoBox">
-                  <input
-                    type="checkbox"
-                    [name]="'pozo' + i"
-                    id=""
-                    [checked]="ticket.status"
-                    (click)="
-                      seleccionarTicket(page_size * (page_number - 1) + i)
-                    "
-                  />
+      <div *ngIf="showNumeros" class="ticketsBox">
+        <div
+          class="ticketBox"
+          *ngFor="
+            let ticket of ticketsDisponibles
+              | paginacion : page_size : page_number;
+            let i = index
+          "
+        >
+          <div class="pozoBox">
+            <img [src]="boleto" alt="" />
+            <div class="contenedor_seleccion_numero">
+              <img
+                class="mascota"
+                [src]="obtenerAnimal(ticket.mascota)"
+                alt=""
+              />
+              <p class="numero" *ngFor="let numero of ticket.display">
+                {{ numero }}
+              </p>
+            </div>
 
-                  <div class="contenedor_seleccion_numero">
-                    <div class="imagen_animal">
-                      <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
-                    </div>
-                    <div class="numeros">
-                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
-                    </div>
-                  </div>
-                </div>
+            <div class="buttonsBox">
+              <button [disabled]="!ticket.status">LIMPIAR</button>
+              <button
+                [disabled]="ticket.status"
+                (click)="seleccionarTicket(page_size * (page_number - 1) + i)"
+              >
+                AGREGAR AL CARRITO
+              </button>
+            </div>
+          </div>
 
-                <hr />
+          <div class="revanchaBox" *ngIf="sorteoSeleccionado!.tieneRevancha">
+            <img [src]="boletoRevancha" alt="" />
 
-                <div
-                  class="seleccionAll"
-                  *ngIf="sorteoSeleccionado!.tieneRevancha"
-                >
-                  <input
-                    type="checkbox"
-                    [name]="'revancha' + i"
-                    id=""
-                    [checked]="
-                      ticketsDisponiblesRevancha![
-                        page_size * (page_number - 1) + i
-                      ].status
-                    "
-                    (click)="agregarRevancha(page_size * (page_number - 1) + i)"
-                  />
-                  <div class="contenedor_seleccion_revancha">
-                    <img
-                      src="assets/img/revancha-sombra.png"
-                      style="height: 120px"
-                      alt=""
-                    />
-                    <p style="width: 100% !important">Agregar (+$0.50)</p>
-                    <div class="imagen_animal">
-                      <img [src]="obtenerAnimal(ticket.mascota)" alt="" />
-                    </div>
-                    <div class="numeros">
-                      <p *ngFor="let numero of ticket.display">{{ numero }}</p>
-                    </div>
-                  </div>
-                </div>
-                <!-- <app-seleccion-pozo [tickets]="ticketMascota"></app-seleccion-pozo> -->
-              </td>
-            </tr>
-          </tbody>
-          <hr size="2px" color="gray" />
-        </table>
+            <img class="mascota" [src]="obtenerAnimal(ticket.mascota)" alt="" />
+            <p class="numero" *ngFor="let numero of ticket.display">
+              {{ numero }}
+            </p>
+            <div class="buttonsBox">
+              <button
+                [disabled]="
+                  !ticketsDisponiblesRevancha![
+                    page_size * (page_number - 1) + i
+                  ].status
+                "
+              >
+                LIMPIAR
+              </button>
+              <button
+                [disabled]="
+                  ticketsDisponiblesRevancha![page_size * (page_number - 1) + i]
+                    .status
+                "
+                (click)="agregarRevancha(page_size * (page_number - 1) + i)"
+              >
+                AGREGAR AL CARRITO
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div class="contenedor_botones">
-          <!-- showFirstLastButtons -->
           <mat-paginator
             style-paginator
             [length]="ticketsDisponibles.length"
@@ -182,14 +192,6 @@
         </div>
       </div>
 
-      <!-- <div>
-      Page Actual: {{pageActual}}
-    </div> -->
-      <!-- 
-    <div class="boton_boleto">
-      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-
-    </div> -->
     </div>
 
     <app-carrito
@@ -248,40 +250,11 @@
   (closeError)="closeValidationError()"
   *ngIf="isValidationError"
 ></app-error>
-<app-instantaneas
-  (close)="abrirFinalizar(idVenta)"
-  [resultados]="instantaneas"
-  tipoLoteria="5"
-  [isLoteriaNacional]="true"
-  class="paymentItem"
-  *ngIf="isInstantaneas"
-></app-instantaneas>
 <app-saldo-insuficiente
   [message]="recargaDeSaldoMessage"
-  (volver)="dismissCompras()"
+  (volver)="saldoInsuficiente = false"
   (recarga)="irARecarga()"
   class="paymentItem"
   *ngIf="saldoInsuficiente"
 ></app-saldo-insuficiente>
-<app-venta-cancelada
-  class="paymentItem"
-  [message]="cancelMessage"
-  *ngIf="compraCancelada"
-></app-venta-cancelada>
 
-<app-venta-finalizada
-  (volver)="finalizarCompra()"
-  [compra]="detalleCompra"
-  [codigosPromocionales]="codigoPromocional"
-  class="paymentItem"
-  *ngIf="compraFinalizada"
-></app-venta-finalizada>
-<app-confirmacion-de-venta
-  (compraConfirmada)="confirmarCompra()"
-  (compraCancelada)="cancelarCompra()"
-  (comprarDespues)="dismissCompras()"
-  [compra]="detalleCompra"
-  class="paymentItem"
-  #purchase
-  *ngIf="confirmacionDeCompra"
-></app-confirmacion-de-venta>

@@ -1,7 +1,8 @@
-<div class="paymentBox">
+<div class="paymentBox" *ngIf="boletosListos">
   <app-descripcion-de-venta
     [compra]="compra"
     [user]="user"
+    [showHeader]="false"
   ></app-descripcion-de-venta>
 
   <p>Seguro que deseas efectuar la compra?</p>

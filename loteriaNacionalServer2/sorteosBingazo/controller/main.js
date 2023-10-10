@@ -154,11 +154,17 @@ const mainController = {
       );
 
       let combinaciones = combinacionesAux.map((element) => {
+        let aux = element.Num2.split(",");
+        let display = [];
+        for (let i = 0; i < aux.length; i = i + 5) {
+          display.push(aux.slice(i, i + 5));
+        }
+        display = display.map((_, colIndex) => display.map((row) => row[colIndex])).flat();
         let combinacion = {
           fruta: element.Fig,
           combinacion1: element.Num,
           combinacion2: element.Num2,
-          display: element.Num2.split(","),
+          display,
           status: false,
           identificador: Math.random(),
         };

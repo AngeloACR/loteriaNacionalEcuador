@@ -5,6 +5,25 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-lotto: #b51f20;
 
+
+button {
+  background-color: $color-lotto;
+  padding: 15px 30px;
+  margin: 10px 0;
+  border-radius: 30px;
+  border: 1px solid $color-lotto;
+  color: #fff;
+  font-family: $fuente-botones;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: $color-lotto;
+    transition: background-color 0.4s ease;
+  }
+}
+
 // Estilos del componente seleccion Lotto
 .contenedor {
   /* Rectangle 40 */
@@ -17,6 +36,7 @@ $color-lotto: #b51f20;
     border: 1px solid $color-lotto;
     margin: auto !important;
   }
+
   input[type="checkbox"] {
     cursor: pointer;
     width: 100%;
@@ -27,18 +47,21 @@ $color-lotto: #b51f20;
     opacity: 0;
   }
 
-  input[type="checkbox"]:checked ~ div {
+  input[type="checkbox"]:checked~div {
     background-color: $color-lotto;
     color: #fff !important;
     transition: background-color 0.3s ease-out;
     opacity: 1;
   }
-  input[type="checkbox"]:checked ~ .contenedor_numeros {
+
+  input[type="checkbox"]:checked~.contenedor_numeros {
     border-radius: 10px 10px 0 0;
   }
-  input[type="checkbox"]:checked ~ .contenedor_fracciones {
+
+  input[type="checkbox"]:checked~.contenedor_fracciones {
     border-radius: 0 0 10px 10px;
   }
+
   .contenedor_numeros {
     display: flex;
     justify-content: flex-start;
@@ -51,9 +74,11 @@ $color-lotto: #b51f20;
       opacity: 0.7;
     }
   }
+
   .contenedor_fracciones {
     padding: 10px;
     border-radius: 0 0 10px 10px;
+
     p {
       display: flex;
       flex-wrap: nowrap;
@@ -61,9 +86,11 @@ $color-lotto: #b51f20;
       justify-content: flex-start;
       text-align: left;
       margin: 0 0 10px 0;
+
       span {
         margin: 0 6px;
       }
+
       img {
         margin: 0 10px;
         width: 150px;
@@ -85,10 +112,12 @@ $color-lotto: #b51f20;
   .infoBox {
     width: 100%;
   }
+
   .ventasBox {
     display: flex;
     width: 100%;
     justify-content: space-between;
+
     .contenedor_seleccion {
       width: 70%;
       margin-right: 15px;
@@ -98,11 +127,13 @@ $color-lotto: #b51f20;
       .tagItem {
         font-size: 12px;
       }
+
       .selectBox {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: nowrap;
         align-items: flex-end;
+
         .contenedor_select {
           width: 30%;
           max-width: 400px;
@@ -135,6 +166,7 @@ $color-lotto: #b51f20;
             &:hover {
               border-color: #888;
             }
+
             &:focus {
               outline: none;
             }
@@ -157,10 +189,12 @@ $color-lotto: #b51f20;
  */
               width: 25%;
               overflow: hidden;
+
               label {
                 display: inline-block;
                 width: 100%;
                 padding: 5px;
+
                 img {
                   vertical-align: middle;
                   width: 100%;
@@ -169,6 +203,7 @@ $color-lotto: #b51f20;
                 }
               }
             }
+
             input {
               width: 0;
               height: 0;
@@ -180,12 +215,14 @@ $color-lotto: #b51f20;
               /* fix specific for Firefox */
               position: absolute;
               left: -10000px;
-              & + label {
+
+              &+label {
                 display: block;
                 background-color: #fff;
                 text-align: center;
               }
-              &:checked + label {
+
+              &:checked+label {
                 background-color: $color-lotto;
                 border-radius: 15px;
                 transition: background-color 0.3s ease;
@@ -213,6 +250,7 @@ $color-lotto: #b51f20;
             flex-wrap: nowrap;
             justify-content: space-evenly;
             margin: 10px 10px 10px 0;
+
             input[type="text"] {
               width: 50px;
               height: 50px;
@@ -256,6 +294,7 @@ $color-lotto: #b51f20;
           }
         }
       }
+
       .tabs_animales {
         width: 100%;
         display: flex;
@@ -296,96 +335,115 @@ $color-lotto: #b51f20;
         font-size: 16px;
       }
 
-      table {
-        width: auto;
+      .ticketsBox {
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
         margin: auto;
+        flex-wrap: wrap;
 
-        tbody {
-          width: 100%;
-          margin: auto;
+        .ticketBox {
+          width: 300px;
+          min-height: 458px;
+          margin: 7px;
+          position: relative;
 
-          display: grid;
-          grid-template-columns: repeat(3, auto);
-          gap: 10px 15px;
+          background-color: white;
+          text-align: center;
+          border-radius: 4px;
 
-          tr {
-            display: flex;
+          img {
+            width: 100%;
+          }
 
-            td {
-              width: 100%;
-              margin: 7px;
-              position: relative;
+          .sorteoLunes,
+          .sorteoJueves {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
 
-              background-color: #f2f2f2;
-              text-align: center;
-              border-radius: 4px;
+            p {
+              margin: 0;
+              position: absolute;
+            }
 
-              input[type="checkbox"] {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-              }
+            .combinacion1 {
+              bottom: 171px;
+              left: 50%;
+              transform: translateX(-50%);
+              font-size: 55px;
+            }
 
-              input[type="checkbox"]:checked ~ div {
-                background-color: $color-lotto;
-                border-radius: 10px;
-                color: #fff !important;
-                transition: background-color 0.3s ease-out;
-                opacity: 1;
-              }
-              input[type="checkbox"]:checked ~ .contenedor_numeros {
-                border-radius: 10px 10px 0 0;
-              }
-              input[type="checkbox"]:checked ~ .contenedor_fracciones {
-                border-radius: 0 0 10px 10px;
-              }
+            .combinacion2 {
+              bottom: 133px;
+              font-size: 25px;
+              left: 82px;
+            }
 
-              .contenedor_seleccion_numero {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                padding: 5px;
-                .imagen_animal {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  margin: auto 8px;
+            .combinacion3 {
+              bottom: 74px;
+              font-size: 20px;
+              left: 10px;
+            }
 
-                  img {
-                    width: 70px;
-                    border-radius: 30px;
-                  }
-                }
+            .combinacion4 {
+              bottom: 74px;
+              font-size: 20px;
+              left: 173px;
+            }
 
-                .numeros {
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: space-evenly;
+            .combinacion5 {
+              bottom: 93px;
+              border-radius: 6px;
+              right: 0;
+              position: absolute;
+              height: 46px;
+              width: 46px;
+            }
 
-                  p {
-                    display: block;
-                    padding: 4px;
-                    background-color: #fff;
-                    color: #444;
-                    margin: 4px;
-                  }
-                }
-              }
+          }
+
+          .otrosSorteos {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+
+            p {
+              margin: 0;
+              position: absolute;
+            }
+
+            .combinacion1 {
+
+              bottom: 182px;
+              font-size: 41px;
+              right: 24px;
+
+            }
+
+            .combinacion2 {
+              bottom: 66px;
+              font-size: 30px;
+              right: 44px;
             }
           }
+
         }
 
-        hr {
-          width: 97%;
-          margin: auto;
-          margin: 10px;
+        .buttonsBox {
+          display: flex;
+          justify-content: space-evenly;
+          position: relative;
+          z-index: 15000;
+
+          button {
+            padding: 10px 25px;
+
+            font-size: 12px !important;
+          }
         }
       }
 
@@ -464,6 +522,7 @@ $color-lotto: #b51f20;
       }
     }
   }
+
   .ticketScroller {
     width: 25%;
     max-width: 400px;
@@ -476,10 +535,6 @@ $color-lotto: #b51f20;
     flex-direction: column;
 
     .ventasBox {
-      width: 100%;
-    }
-    .infoBox {
-      max-width: 800px;
       width: 100%;
     }
 
@@ -499,9 +554,11 @@ $color-lotto: #b51f20;
         .numeros_suerte {
           width: 100%;
           margin: 0;
+
           .numeros {
             flex-wrap: wrap;
             justify-content: center !important;
+
             input {
               margin: 0 6px !important;
               width: 45px !important;

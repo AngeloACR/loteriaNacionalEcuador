@@ -1,34 +1,57 @@
 <div class="paymentBox">
   <div class="mensajeBox">
-    <h1>¡FELICIDADES!</h1>
-    <h3>Tu compra se realizo con exito. Te deseamos mucha suerte.</h3>
+    <div class="logoBox">
+      <img src="assets/logo-venta-finalizada.png" alt="" />
+    </div>
+    <div class="textBox">
+      <h1>¡FELICIDADES!</h1>
+      <p>Tu compra se realizó con éxito! te deseamos mucha suerte&nbsp;</p>
+      <img src="assets/check.png" alt="check" />
+      <p>DETALLES DE ORDEN</p>
+      <p>USUARIO: {{ user }}</p>
+      <p>ORDEN Nª: {{ idVenta }}</p>
+    </div>
   </div>
-  <app-descripcion-de-venta
-    [compra]="compra"
-    [user]="user"
-    [ticketId]="idVenta"
-    [resumen]="false"
-    [codigosPromocionales]="codigosPromocionales"
-  ></app-descripcion-de-venta>
-
-  <button (click)="seguirJugando()" class="mensajeButtonBox">
-    ¡SIGUE JUGANDO!
-  </button>
+  <div class="buttonsBox">
+    <button (click)="seguirJugando()">
+      SEGUIR JUGANDO
+    </button>
+    <button (click)="verBoletos()">
+      VER BOLETOS COMPRADOS
+    </button>
+  </div>
 </div>
 <!-- Meta Pixel Code -->
 <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '6604126292954950');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=6604126292954950&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  !(function (f, b, e, v, n, t, s) {
+    if (f.fbq) return;
+    n = f.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = "2.0";
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(
+    window,
+    document,
+    "script",
+    "https://connect.facebook.net/en_US/fbevents.js"
+  );
+  fbq("init", "6604126292954950");
+  fbq("track", "PageView");
+</script>
+<noscript
+  ><img
+    height="1"
+    width="1"
+    style="display: none"
+    src="https://www.facebook.com/tr?id=6604126292954950&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->

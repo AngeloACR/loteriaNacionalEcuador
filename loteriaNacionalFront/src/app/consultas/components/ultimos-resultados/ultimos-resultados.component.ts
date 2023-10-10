@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsultasService } from '../../services/consultas.service';
 
 @Component({
   selector: 'consultas-ultimos-resultados',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ultimos-resultados.component.scss']
 })
 export class UltimosResultadosComponent implements OnInit {
+  dataReady: boolean = false;
+  constructor(private consultas: ConsultasService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.consultas.recuperarUltimosResultados();
+    this.dataReady = true;
   }
 
 }

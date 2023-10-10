@@ -38,7 +38,7 @@ export class DetalleSorteoComponent implements OnInit {
   constructor(
     private ventas: VentasService,
     private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  ) { }
 
   getClassColor(color: string) {
     switch (color) {
@@ -47,8 +47,8 @@ export class DetalleSorteoComponent implements OnInit {
         this.fondoLoteria = true;
         this.isLoteria = true;
         this.fondoLotto = false;
-            this.fondoBingazo = false;
-            this.fondoMillonaria = false;
+        this.fondoBingazo = false;
+        this.fondoMillonaria = false;
         this.fondoPozo = false;
         break;
 
@@ -56,8 +56,8 @@ export class DetalleSorteoComponent implements OnInit {
         this.tipoLoteria = 2;
         this.fondoLotto = true;
         this.fondoMillonaria = false;
-            this.fondoBingazo = false;
-            this.fondoLoteria = false;
+        this.fondoBingazo = false;
+        this.fondoLoteria = false;
         this.fondoPozo = false;
         break;
 
@@ -67,30 +67,30 @@ export class DetalleSorteoComponent implements OnInit {
         this.fondoLotto = false;
         this.fondoMillonaria = false;
         this.fondoLoteria = false;
-            this.fondoBingazo = false;
-            this.isPozo = true;
+        this.fondoBingazo = false;
+        this.isPozo = true;
         break;
 
-        case 'millonaria':
-          this.tipoLoteria = 14;
-          this.isLoteria = true;
-  
-          this.fondoMillonaria = true;
-          this.fondoPozo = false;
-          this.fondoLotto = false;
-            this.fondoBingazo = false;
-            this.fondoLoteria = false;
-          break;
-          case 'bingazo':
-            this.tipoLoteria = 14;
-            this.isLoteria = true;
-    
-            this.fondoBingazo = true;
-            this.fondoMillonaria = false;
-            this.fondoPozo = false;
-            this.fondoLotto = false;
-            this.fondoLoteria = false;
-            break;
+      case 'millonaria':
+        this.tipoLoteria = 14;
+        this.isLoteria = true;
+
+        this.fondoMillonaria = true;
+        this.fondoPozo = false;
+        this.fondoLotto = false;
+        this.fondoBingazo = false;
+        this.fondoLoteria = false;
+        break;
+      case 'bingazo':
+        this.tipoLoteria = 12;
+        this.isLoteria = false;
+
+        this.fondoBingazo = true;
+        this.fondoMillonaria = false;
+        this.fondoPozo = false;
+        this.fondoLotto = false;
+        this.fondoLoteria = false;
+        break;
     }
   }
 

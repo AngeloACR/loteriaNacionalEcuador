@@ -7,13 +7,15 @@
   flex-wrap: wrap;
   background-color: white;
   padding: 20px 0;
+
   .selectorBox {
     min-width: 275px;
     width: 30%;
-    &.especial{
+
+    &.especial {
       min-width: 300px;
-        max-width: 516px;
-        width: 48%;
+      max-width: 590px;
+      width: 48%;
     }
   }
 }
@@ -23,14 +25,15 @@
     width: 95%;
     padding: 0;
     margin: auto;
+
     .selectorBox {
       width: 30%;
       margin-bottom: 10px;
-      &.pega3{
-        max-width: 516px;
+
+      &.especial {
         width: 50%;
       }
-      }
+    }
   }
 }
 
@@ -41,10 +44,12 @@
     align-items: center;
     padding: 0;
     margin: auto;
+
     .selectorBox {
       width: 100%;
       margin-bottom: 10px;
-      &.pega3{
+
+      &.especial {
         width: 100%;
       }
 

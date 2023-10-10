@@ -24,6 +24,8 @@ export class PozoComponent implements OnInit {
 
   animalesTabs: animales[] = [];
   revanchas?: boolean[];
+  @ViewChild('figureSelector') figureSelector: any;
+  buscarCartones: boolean = true;
 
   page_size: number = 12;
   page_number: number = 1;
@@ -62,6 +64,10 @@ export class PozoComponent implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
+  openSelector() {
+    this.figureSelector.open();
+    this.buscarCartones = true;
+  }
   agregar(animal: animales, i: number) {
     if (this.seleccionAnimales![i].status === false) {
       this.seleccionAnimales![i].status = true;
@@ -81,23 +87,6 @@ export class PozoComponent implements OnInit {
 
   async agregarRevancha(id: number) {
     try {
-      if (this.ticketsDisponibles![id].status) {
-        await this.deletePozoTicket(
-          this.ticketsPozo[this.ticketsDisponibles![id].identificador]
-        );
-      }
-      this.changeDetectorRef.detectChanges();
-      this.ticketsDisponiblesRevancha![id].status =
-        !this.ticketsDisponiblesRevancha![id].status;
-      this.changeDetectorRef.markForCheck();
-      if (!this.ticketsDisponiblesRevancha![id].status) {
-        await this.deletePozoRevanchaTicket(
-          this.ticketsPozoRevancha[
-          this.ticketsDisponiblesRevancha![id].identificador
-          ]
-        );
-        return;
-      }
       this.isLoading = true;
       let count = (await this.cart.getCount()) + 2;
       if (count <= 1000) {
@@ -202,6 +191,8 @@ export class PozoComponent implements OnInit {
         let count = (await this.cart.getCount()) + 1;
         if (count <= 1000) {
           this.isLoading = false;
+
+          this.ticketsDisponibles![id].status = true;
           await this.pushToSeleccionado(this.ticketsDisponibles![id], 5);
         } else {
           this.changeDetectorRef.detectChanges();
@@ -238,6 +229,7 @@ export class PozoComponent implements OnInit {
       );
 
       if (hasBalance) {
+
         this.ticketsPozo[ticket.identificador] = aux;
         let reservaId = this.ventas.getReservaId();
         let response = await this.ventas.reservarBoletos(
@@ -336,6 +328,8 @@ export class PozoComponent implements OnInit {
       );
       this.combinacionDeLaSuerte = ['', '', '', ''];
       this.showNumeros = true;
+      this.figureSelector.close();
+      this.buscarCartones = false;
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -349,10 +343,26 @@ export class PozoComponent implements OnInit {
     return a - b;
   }
   tipoSeleccion: number = 96;
-
+  boleto: string = "";
+  boletoRevancha: string = "";
   sorteoSeleccionado?: sorteo;
   procesaEmitir(sorteo: any) {
+    console.log(sorteo);
     this.sorteoSeleccionado = sorteo;
+
+    this.boleto = this.ventas.obtenerImagenBoleto(
+      5,
+      this.sorteoSeleccionado?.sorteo
+    );
+    if (this.sorteoSeleccionado?.tieneRevancha) {
+
+      this.boletoRevancha = this.ventas.obtenerImagenBoleto(
+        17,
+        this.sorteoSeleccionado?.sorteoRevancha.sorteo
+      );
+    }
+    this.openSelector();
+
     this.showNumeros = false;
   }
   isLoading?: boolean;
@@ -362,218 +372,17 @@ export class PozoComponent implements OnInit {
   obtenerAnimal(mascota: any) {
     return this.pozo.obtenerMascota(mascota);
   }
-
-  abrirResumen() {
-    this.router.navigate([`compra_tus_juegos/resumen/${this.token}`]);
-  }
-
-  confirmacionDeCompra: boolean = false;
-  compraFinalizada: boolean = false;
   saldoInsuficiente: boolean = false;
-  compraCancelada: boolean = false;
 
-  cancelMessage: string = '';
 
-  dismissCompras() {
-    this.confirmacionDeCompra = false;
-    this.compraFinalizada = false;
-    this.saldoInsuficiente = false;
-    this.compraCancelada = false;
-  }
-  volver() {
-    this.dismissCompras();
-    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
-  }
-
-  detalleCompra: any;
   comprar() {
-    this.dismissCompras();
-
-    let loteriaAux = this.ticketsLoteria;
-    let loteria = [];
-    for (let id in loteriaAux) {
-      let aux: any = {};
-      aux['combinacion1'] = loteriaAux[id].ticket.combinacion;
-      aux['fracciones'] = loteriaAux[id].ticket.seleccionados;
-      aux['subtotal'] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(
-        loteriaAux[id].subtotalConDesc
-      ).toFixed(2);
-      aux['tieneDescuento'] = loteriaAux[id].tieneDescuento;
-      aux['fecha'] = loteriaAux[id].sorteo.fecha;
-      aux['sorteo'] = loteriaAux[id].sorteo.sorteo;
-      loteria.push(aux);
-    }
-    let lottoAux = this.ticketsLotto;
-    let lotto = [];
-    for (let id in lottoAux) {
-      let aux: any = {};
-      aux['combinacion1'] = lottoAux[id].ticket.combinacion1;
-      aux['combinacion2'] = lottoAux[id].ticket.combinacion2;
-      aux['combinacion3'] = lottoAux[id].ticket.combinacion3;
-      aux['combinacion4'] = lottoAux[id].ticket.combinacion4;
-      aux['sorteo'] = lottoAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(lottoAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(lottoAux[id].subtotalConDesc).toFixed(
-        2
-      );
-      aux['tieneDescuento'] = lottoAux[id].tieneDescuento;
-      aux['fecha'] = lottoAux[id].sorteo.fecha;
-      lotto.push(aux);
-    }
-    let pozoAux = this.ticketsPozo;
-    let pozo = [];
-    for (let id in pozoAux) {
-      let aux: any = {};
-      aux['combinacion1'] = pozoAux[id].ticket.combinacion1;
-      aux['combinacion2'] = pozoAux[id].ticket.combinacion2;
-      aux['mascota'] = pozoAux[id].ticket.mascota;
-      aux['sorteo'] = pozoAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(pozoAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(pozoAux[id].subtotalConDesc).toFixed(
-        2
-      );
-      aux['tieneDescuento'] = pozoAux[id].tieneDescuento;
-      aux['fecha'] = pozoAux[id].sorteo.fecha;
-      pozo.push(aux);
-    }
-    let pozoRevanchaAux = this.ticketsPozoRevancha;
-    let pozoRevancha = [];
-    for (let id in pozoRevanchaAux) {
-      let aux: any = {};
-      aux['combinacion1'] = pozoRevanchaAux[id].ticket.combinacion1;
-      aux['combinacion2'] = pozoRevanchaAux[id].ticket.combinacion2;
-      aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
-      aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(
-        pozoRevanchaAux[id].subtotalConDesc
-      ).toFixed(2);
-      aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
-      aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
-      pozoRevancha.push(aux);
-    }
-    let millonariaAux = this.ticketsMillonaria;
-    let millonaria = [];
-    for (let id in millonariaAux) {
-      let aux: any = {};
-      aux['combinacion1'] = millonariaAux[id].ticket.combinacion1;
-      aux['combinacion2'] = millonariaAux[id].ticket.combinacion2;
-      aux['fracciones'] = millonariaAux[id].ticket.seleccionados;
-      aux['subtotal'] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(
-        millonariaAux[id].subtotalConDesc
-      ).toFixed(2);
-      aux['tieneDescuento'] = millonariaAux[id].tieneDescuento;
-      aux['fecha'] = millonariaAux[id].sorteo.fecha;
-      aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
-      millonaria.push(aux);
-    }
-    let bingazoAux = this.ticketsBingazo;
-    let bingazo = [];
-    for (let id in bingazoAux) {
-      let aux: any = {};
-      aux['combinacion1'] = bingazoAux[id].ticket.combinacion1;
-      aux['combinacion2'] = bingazoAux[id].ticket.combinacion2;
-      aux['fruta'] = bingazoAux[id].ticket.fruta;
-      aux['sorteo'] = bingazoAux[id].sorteo.sorteo;
-      aux['subtotal'] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(bingazoAux[id].subtotalConDesc).toFixed(
-        2
-      );
-      aux['tieneDescuento'] = bingazoAux[id].tieneDescuento;
-      aux['fecha'] = bingazoAux[id].sorteo.fecha;
-      bingazo.push(aux);
-    }
-    let amount = parseFloat(this.paymentService.getTotal()).toFixed(2);
-    let amountConDesc = parseFloat(this.cart.getTotalConDesc()).toFixed(2);
-
-    this.detalleCompra = {
-      loteria,
-      millonaria,
-      bingazo,
-      lotto,
-      pozo,
-      pozoRevancha,
-      amount,
-      amountConDesc,
-    };
-
-    this.confirmacionDeCompra = true;
-  }
-
-  instantaneas: any;
-  isInstantaneas: boolean = false;
-  finalizarCompra() {
-    this.paymentService.finalizarCompra();
-    this.dismissCompras();
-    this.router.navigateByUrl(`/compra_tus_juegos/${this.token}`);
-  }
-  idVenta: string;
-  async confirmarCompra() {
-    try {
-      this.isLoading = true;
-      this.loadingMessage = 'Espera mientras procesamos tu compra';
-      let hasBalance = await this.paymentService.hasBalance(0, this.token);
-
-      if (hasBalance) {
-        let reservaId = this.ventas.getReservaId();
-        let cartValidation = await this.cart.validarCarrito(reservaId);
-        if (cartValidation.status) {
-          let response = await this.paymentService.confirmarCompra(
-            this.token,
-            reservaId
-          );
-          this.isLoading = false;
-          console.log(response);
-          if (response.status) {
-            this.codigoPromocional = response.codigoPromocional;
-            if (response.instantanea.status) {
-              this.dismissCompras();
-              this.instantaneas = response.instantanea.data;
-              this.isInstantaneas = true;
-            } else {
-              this.instantaneas = '';
-              this.abrirFinalizar(response.idVenta)
-            }
-          } else {
-            this.cancelarCompra();
-          }
-        } else {
-          this.openValidationError(cartValidation.message);
-        }
-        this.isLoading = false;
-      } else {
-        this.isLoading = false;
-        let message = 'Tu saldo es insuficiente para realizar la compra';
-        this.recargarSaldo(message);
-      }
-    } catch (e: any) {
-      this.isLoading = false;
-      this.purchase.habilitarBoton();
-      console.log(e.message);
-      let errorMessage = e.message;
-      this.openError(errorMessage);
-    }
-  }
-  @ViewChild('purchase') purchase: any;
-
-  async abrirFinalizar(idVenta: string) {
-    this.dismissCompras();
-    await this.cart.borrarCarrito();
-    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
-
-  }
-  cancelarCompra() {
-    this.dismissCompras();
-    this.compraCancelada = true;
+    this.router.navigateByUrl(`/compra_tus_juegos/confirmar_venta/${this.token!}`);
   }
   irARecarga() { }
 
   recargaDeSaldoMessage?: string;
   recargarSaldo(message: any) {
     this.recargaDeSaldoMessage = message;
-    this.dismissCompras();
     this.saldoInsuficiente = true;
   }
   ticketsLoteria: any = {};
@@ -582,9 +391,6 @@ export class PozoComponent implements OnInit {
   async ngOnInit() {
     try {
       this.isLoading = true;
-      if (this.token) {
-        let data = await this.ventas.authUser(this.token);
-      }
       await this.getCarritoTickets();
       //this.getTotal();
 
@@ -647,9 +453,9 @@ export class PozoComponent implements OnInit {
     }
     await this.cart.setTotalConDesc();
   }
-  async deleteLoteriaTicket(data: any) {
+  async deleteLoteriaTicket(identificador: any) {
     try {
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsLoteria[identificador]
       let fracciones = data.ticket.seleccionados;
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
@@ -684,9 +490,9 @@ export class PozoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  async deleteMillonariaTicket(data: any) {
+  async deleteMillonariaTicket(identificador: any) {
     try {
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsMillonaria[identificador];
       let fracciones = data.ticket.seleccionados;
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
@@ -719,9 +525,9 @@ export class PozoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  async deleteLottoTicket(data: any) {
+  async deleteLottoTicket(identificador: any) {
     try {
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsLotto[identificador]
       let fraccion = '';
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
@@ -793,21 +599,19 @@ export class PozoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  async deletePozoTicket(data: any) {
+  async deletePozoTicket(identificador: any) {
     try {
       this.loadingMessage = 'Removiendo boleto del carrito';
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsPozo[identificador];
 
       let fraccion = '';
       let ticket = this.ticketsPozo[identificador].ticket;
       let sorteo = this.ticketsPozo[identificador].sorteo;
 
       if (this.ticketsPozoRevancha[identificador + 1]) {
-        await this.deletePozoRevanchaTicket({
-          ticket: {
-            identificador: identificador + 1,
-          },
-        });
+        await this.deletePozoRevanchaTicket(
+          identificador + 1
+        );
       }
       this.isLoading = true;
       let reservaId = this.ventas.getReservaId();
@@ -845,9 +649,9 @@ export class PozoComponent implements OnInit {
   }
 
   ticketsBingazo: any = {}
-  async deleteBingazoTicket(data: any) {
+  async deleteBingazoTicket(identificador: any) {
     try {
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsBingazo[identificador];
       let fraccion = '';
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
@@ -879,11 +683,11 @@ export class PozoComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  async deletePozoRevanchaTicket(data: any) {
+  async deletePozoRevanchaTicket(identificador: any) {
     try {
       this.loadingMessage = 'Removiendo boleto del carrito';
       this.isLoading = true;
-      let identificador = data.ticket.identificador;
+      let data = this.ticketsPozoRevancha[identificador];
       let fraccion = '';
       let ticket = this.ticketsPozoRevancha[identificador].ticket;
       let sorteo = this.ticketsPozoRevancha[identificador].sorteo;
@@ -926,25 +730,6 @@ export class PozoComponent implements OnInit {
     try {
       this.loadingMessage = 'Removiendo boletos del carrito';
       this.isLoading = true;
-      let boletosLoteria = Object.keys(this.ticketsLoteria).map((key) => {
-        return {
-          ticket: this.ticketsLoteria[key].ticket,
-          sorteo: this.ticketsLoteria[key].sorteo,
-        };
-      });
-      let boletosLotto = Object.keys(this.ticketsLotto).map((key) => {
-        return {
-          ticket: this.ticketsLotto[key].ticket,
-          sorteo: this.ticketsLotto[key].sorteo,
-        };
-      });
-      let boletosPozo = Object.keys(this.ticketsPozo).map((key) => {
-        return {
-          ticket: this.ticketsPozo[key].ticket,
-          sorteo: this.ticketsPozo[key].sorteo,
-        };
-      });
-      let reservaId = this.ventas.getReservaId();
 
       Object.keys(this.ticketsPozo).forEach((key) => {
         if (this.ticketsDisponibles && this.ticketsDisponibles.length != 0) {

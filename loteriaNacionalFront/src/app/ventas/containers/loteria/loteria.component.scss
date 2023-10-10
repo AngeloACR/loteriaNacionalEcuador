@@ -9,232 +9,39 @@ $color-botton: #28aae1;
 
 $color-botton: #28aae1;
 
-.tooltip {
-  /* Rectangle 40 */
+mat-expansion-panel {
+  box-shadow: unset !important;
+}
 
-  background: #ffffff;
-  border-radius: 20px;
+::ng-deep.mat-expansion-panel-body,
+::ng-deep.mat-expansion-panel-header {
+  padding: 0 !important;
+  width: 100%;
+}
 
-  margin: auto;
+::ng-deep.mat-expansion-panel-body {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-
-  input[type="checkbox"] {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
-  }
-
-  input[type="checkbox"]:checked ~ div {
-    background-color: $color-botton;
-    border-radius: 10px;
-    color: #fff !important;
-    transition: background-color 0.3s ease-out;
-    opacity: 1;
-  }
-
-  .contenedor_numeros {
-    width: 100%;
-    min-height: 200px;
-    max-height: 260px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-
-    .combinationBox {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      p {
-        /* 4 */
-
-        font-style: normal;
-        font-weight: 700;
-        font-size: 25px !important;
-        text-align: center;
-        text-transform: uppercase;
-
-        color: #000000;
-
-        font-family: $fuente-titulo;
-        opacity: 0.7;
-        margin: 10px;
-      }
-    }
-    .seleccionAll {
-      width: 100%;
-      display: flex;
-      padding: 0 10px;
-      /* justify-content: space-around; */
-      align-items: center;
-      /* margin: auto; */
-      /* padding: 0; */
-      /* margin: 0; */
-      text-align: left;
-
-      p {
-        font-size: 14px;
-        font-style: italic;
-        font-weight: bold;
-        width: 100%;
-        margin: 10px;
-      }
-
-      input[type="checkbox"] {
-        width: 30px;
-        height: 30px;
-      }
-    }
-
-    .contenedor_fracciones {
-      display: flex;
-      flex-wrap: wrap;
-      overflow-y: scroll;
-      justify-content: center;
-
-      .fracciones {
-        /* display: grid;
-        grid-template-columns: repeat(5, auto); */
-        width: 60px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-
-        label {
-          width: 50px;
-          cursor: pointer;
-          height: 50px;
-          border: 4.5px solid $color-botton;
-          background-color: #fff;
-          border-radius: 150px;
-          font-size: 25px;
-          color: #000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .checkbox {
-          width: 20px;
-          height: 20px;
-          display: none;
-        }
-
-        .checkbox:checked + label {
-          background-color: $color-botton;
-          color: #000;
-        }
-      }
-    }
-  }
 }
 
-.tooltip span {
-  transition: opacity 1s ease;
-  -webkit-transition: opacity 1s ease;
-  top: 4rem;
-  left: 0.6rem;
-  z-index: 500;
-  background-color: #d1c6c6;
-  padding: 3px 30px;
-  border-radius: 20px;
 
-  /* transition: all .3s ease; */
-  margin-left: -999em;
-  position: absolute;
-}
-
-.tooltip:hover span {
-  font-family: Calibri, Geneva, Tahoma, Arial, sans-serif;
-  position: absolute;
-  left: 1em;
-  top: 2em;
-  z-index: 99;
-  margin-left: 0;
-  width: 250px;
-}
-
-.tooltip:hover img {
-  border: 0;
-  margin: -10px 0 0 -55px;
-  float: left;
-  position: absolute;
-}
-
-.tooltip:hover em {
-  font-family: Candara, Tahoma, Geneva, sans-serif;
-  font-size: 1.2em;
-  font-weight: bold;
-  display: block;
-  padding: 0.2em 0 0.6em 0;
-}
-
-.classic {
-  padding: 0.8em 1em;
-}
-
-.custom {
-  padding: 0.5em 0.8em 0.8em 2em;
-}
-
-* html a:hover {
-  background: transparent;
-}
-
-.classic {
-  padding: 0.8em 1em;
-}
-
-* html a:hover {
-  background: transparent;
-}
-
-.classic {
-  background: #ffffaa;
-  border: 1px solid #ffad33;
-}
-
-.fondoNormal {
-  background-color: #f2f2f2;
-}
-
-.fondoAzul {
+button {
   background-color: $color-botton;
+  padding: 15px 30px;
+  margin: 10px 0;
+  border-radius: 30px;
+  border: 1px solid $color-botton;
   color: #fff;
-}
+  font-family: $fuente-botones;
+  font-size: 16px;
+  cursor: pointer;
 
-.numeros_grupo {
-  display: grid;
-  grid-template-columns: repeat(5, auto) 1fr;
-
-  h3 {
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  p {
-    width: 18px;
-    height: 18px;
-    padding: 8px 6px;
-    font-family: $fuente-subtitulo;
-    font-size: 12px;
-    border: 1.5px solid #000;
-    border-radius: 2px;
-    color: #000;
-    -moz-appearance: textfield;
-    margin-right: 3px;
-    background-color: #fff;
+  &:hover {
+    background-color: white;
+    color: $color-botton;
+    transition: background-color 0.4s ease;
   }
 }
 
@@ -250,11 +57,13 @@ $color-botton: #28aae1;
   .infoBox {
     width: 100%;
   }
+
   .ventasBox {
     display: flex;
 
     justify-content: space-between;
     width: 100%;
+
     .contenedor_seleccion {
       width: 70%;
       margin-right: 15px;
@@ -299,9 +108,11 @@ $color-botton: #28aae1;
             background: #ffffff;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
             border-radius: 10px;
+
             &:hover {
               border-color: #888;
             }
+
             &:focus {
               outline: none;
             }
@@ -324,10 +135,12 @@ $color-botton: #28aae1;
  */
               width: 25%;
               overflow: hidden;
+
               label {
                 display: inline-block;
                 width: 100%;
                 padding: 5px;
+
                 img {
                   vertical-align: middle;
                   width: 100%;
@@ -336,6 +149,7 @@ $color-botton: #28aae1;
                 }
               }
             }
+
             input {
               width: 0;
               height: 0;
@@ -347,12 +161,14 @@ $color-botton: #28aae1;
               /* fix specific for Firefox */
               position: absolute;
               left: -10000px;
-              & + label {
+
+              &+label {
                 display: block;
                 background-color: #fff;
                 text-align: center;
               }
-              &:checked + label {
+
+              &:checked+label {
                 background-color: $color-botton;
                 border-radius: 15px;
                 transition: background-color 0.3s ease;
@@ -380,6 +196,7 @@ $color-botton: #28aae1;
             flex-wrap: nowrap;
             justify-content: space-evenly;
             margin: 10px 10px 10px 0;
+
             input[type="text"] {
               width: 60px;
               height: 60px;
@@ -403,146 +220,158 @@ $color-botton: #28aae1;
           }
         }
 
-        button {
-          background-color: $color-botton;
-          padding: 15px;
-          margin: 10px 0;
-          width: 30%;
-          max-width: 300px;
-          border-radius: 30px;
-          border: 1px solid $color-botton;
-          color: #fff;
-          font-family: $fuente-botones;
-          height: 60px;
-          font-size: 16px;
-          cursor: pointer;
-
-          &:hover {
-            background-color: white;
-            color: $color-botton;
-            transition: background-color 0.4s ease;
-          }
-        }
       }
-      .tabs_animales {
+
+
+      .ticketsBox {
         width: 100%;
         display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: auto;
         flex-wrap: wrap;
 
-        p {
-          border: none;
-          border-radius: 20px;
-          font-family: $fuente-subtitulo;
-          font-size: 11px;
-          background-color: #f2f2f2;
-          color: rgba(0, 0, 0, 0.726);
-          padding: 10px 35px;
-          margin: 8px 12px 15px 0px;
+        .ticketBox {
+          width: 400px;
+          margin: 7px;
           position: relative;
 
-          span {
+          background-color: white;
+          text-align: center;
+          border-radius: 4px;
+
+
+          input[type="checkbox"] {
+            width: 100%;
+            height: 100%;
             position: absolute;
-            top: 10%;
-            right: 7%;
-            color: gray;
-            font-size: 15px;
-            background-color: #fff;
-            padding: 4px 8px;
-            border-radius: 10px;
-            /* border: 1px solid #000; */
-            text-align: center;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
-            cursor: pointer;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+            appearance: textfield;
           }
-        }
-      }
 
-      p {
-        font-family: $fuente-botones;
-        font-size: 16px;
-      }
+          input[type="checkbox"]:checked~div {
+            background-color: $color-botton;
+            border-radius: 10px;
+            color: #fff !important;
+            transition: background-color 0.3s ease-out;
+            opacity: 1;
+          }
 
-      table {
-        width: auto;
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-
-        tbody {
-          width: 100%;
-          margin: auto;
-
-          display: grid;
-          grid-template-columns: repeat(3, auto);
-          gap: 10px 15px;
-
-          tr {
+          .combinationBox {
             display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            min-height: 245px;
 
-            td {
+            img {
               width: 100%;
-              margin: 7px;
-              position: relative;
+            }
 
-              background-color: #f2f2f2;
+            p {
+              position: absolute;
+              right: 94px;
+              bottom: 9px;
+              font-style: normal;
+              font-weight: 700;
+              font-size: 40px;
               text-align: center;
-              border-radius: 4px;
+              text-transform: uppercase;
 
-              input[type="checkbox"] {
+              color: #000000;
+
+              font-family: $fuente-titulo;
+              opacity: 0.7;
+              margin: 0;
+            }
+          }
+
+          .fractionsBox {
+
+
+            .seleccionAll {
+              width: 100%;
+              display: flex;
+              padding: 0 10px 0 0;
+              align-items: center;
+              text-align: left;
+
+              p {
+                font-size: 15px;
                 width: 100%;
-                height: 100%;
-               position: absolute;
-                top: 0;
-                left: 0;
-                opacity: 0;
-                -webkit-appearance: textfield;
-                -moz-appearance: textfield;
-                appearance: textfield;
+                margin: 10px;
               }
 
-              input[type="checkbox"]:checked ~ div {
+              input[type="checkbox"] {
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+                position: relative;
+              }
+              input[type="checkbox"]:checked {
                 background-color: $color-botton;
                 border-radius: 10px;
                 color: #fff !important;
                 transition: background-color 0.3s ease-out;
                 opacity: 1;
               }
+    
+            }
 
-              .contenedor_seleccion_numero {
-                width: 100%;
+            .contenedor_fracciones {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: flex-start;
+              width: 100%;
+
+              .fracciones {
+                width: 40px;
+                height: 40px;
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                flex-direction: column;
-                padding: 5px;
-                .imagen_animal {
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: center;
-                  margin: auto 8px;
+                justify-content: center;
+                position: relative;
 
-                  img {
-                    width: 70px;
-                    border-radius: 30px;
-                  }
+                label {
+                  width: 30px;
+                  cursor: pointer;
+                  height: 30px;
+                  border: 2px solid $color-botton;
+                  background-color: #fff;
+                  border-radius: 150px;
+                  font-size: 15px;
+                  color: #000;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
                 }
 
-                .numeros {
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: space-evenly;
+                .checkbox {
+                  width: 20px;
+                  height: 20px;
+                  display: none;
+                }
 
-                  p {
-                    display: block;
-                    padding: 4px;
-                    background-color: #fff;
-                    color: #444;
-                    margin: 4px;
-                  }
+                .checkbox:checked+label {
+                  background-color: $color-botton;
+                  color: #000;
                 }
               }
+            }
+          }
+
+          .buttonsBox {
+            display: flex;
+            justify-content: space-evenly;
+
+            button {
+              padding: 10px 25px;
+
+              font-size: 12px !important;
             }
           }
         }
@@ -551,80 +380,6 @@ $color-botton: #28aae1;
           width: 97%;
           border: 1px solid $color-botton;
           margin: 5px auto;
-        }
-      }
-
-      .contenedor_botones {
-        width: 100%;
-        display: flex;
-        margin: auto;
-        justify-content: center;
-
-        .desaparecer {
-          opacity: 0;
-          cursor: default;
-        }
-
-        .aparecer {
-          display: inline;
-        }
-
-        .boton {
-          width: 3vw;
-          height: 3vw;
-          border: 1px solid $color-botton;
-          font-family: $fuente-parrafo;
-          background-color: $color-botton;
-          color: #fff;
-          border-radius: 50px;
-          font-size: 20px;
-          cursor: pointer;
-
-          &:nth-child(1) i {
-            padding: 3px 3px 0 0;
-          }
-
-          &:nth-child(2) i {
-            padding: 3px 0px 0 3px;
-          }
-
-          &:hover {
-            background-color: white;
-            color: $color-botton;
-            transition: background-color 0.4s ease;
-          }
-
-          &:active {
-            border: none;
-          }
-        }
-      }
-
-      .boton_boleto {
-        width: 100%;
-        margin: auto;
-        display: flex;
-        justify-content: flex-start;
-        margin-top: 25px;
-        margin-bottom: 20px;
-
-        button {
-          width: 220px;
-          background-color: #fff;
-          padding: 20px 17px;
-          border-radius: 30px;
-          border: 1px solid $color-botton;
-          color: $color-botton;
-          font-family: $fuente-titulo;
-          font-size: 13px;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $color-botton;
-            border: 1px solid transparent;
-            color: #fff;
-            transition: background-color 0.4s ease;
-          }
         }
       }
     }
@@ -638,32 +393,31 @@ $color-botton: #28aae1;
 }
 
 @media screen and (max-width: 1000px) {
-  .tooltip {
-    .contenedor_numeros {
-      .contenedor_fracciones {
-        .fracciones {
-          width: 40px;
-          height: 40px;
 
-          label {
-            width: 30px;
-            height: 30px;
-            font-size: 15px;
-          }
+/*   .ticketsBox {
+    .ticketBox {
+      width: 300px !important;
+
+      .combinationBox {
+
+        p {
+          right: 79px !important;
+          bottom: 7px !important;
+          font-size: 30px !important;
         }
       }
+
     }
-  }
+  } */
+
   .paymentBox {
     width: 95%;
   }
+
   .contenedor_loteria {
     flex-direction: column;
+
     .ventasBox {
-      width: 100%;
-    }
-    .infoBox {
-      max-width: 800px;
       width: 100%;
     }
 
@@ -683,30 +437,22 @@ $color-botton: #28aae1;
         .numeros_suerte {
           width: 100%;
           margin: 0;
+
           .numeros {
             flex-wrap: wrap;
             justify-content: center !important;
+
             input {
               width: 45px !important;
               height: 45px !important;
               font-size: 20px !important;
               margin: 0 8px !important;
             }
+
             .activado {
               margin-top: 20px;
             }
           }
-        }
-      }
-
-      table {
-        tbody {
-          grid-template-columns: repeat(1, auto) !important;
-        }
-
-        hr {
-          width: 97%;
-          margin: 15px auto;
         }
       }
     }
