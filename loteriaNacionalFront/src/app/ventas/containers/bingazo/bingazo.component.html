@@ -23,10 +23,9 @@
             <div class="options">
               <div
                 class="option"
-                *ngFor="let fruta of seleccionFrutas; let i = index"
+                *ngFor="let fruta of seleccionFrutas; let i = index; trackBy: trackBy"
               >
                 <input
-                  (click)="agregar(fruta, i)"
                   type="checkbox"
                   [checked]="fruta.status"
                   name="nombre"

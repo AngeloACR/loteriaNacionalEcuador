@@ -6,6 +6,7 @@ import {
   NavigationEnd,
   NavigationError,
 } from '@angular/router';
+import { VentasService } from './ventas/services/ventas.service';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
     }
   }
   constructor(
-    private router: Router
+    private router: Router,
+    private ventas: VentasService
   ) {
     this.isDetail = false;
     this.router.events.subscribe(async (event: Event) => {
@@ -35,7 +37,7 @@ export class AppComponent implements OnInit {
 
         if (data.includes('inicio')) {
           this.showHeader = false;
-          this.showPromo =false;
+          this.showPromo = false;
         }
         if (
           data.includes('compra_tus_juegos?token') ||
@@ -43,6 +45,7 @@ export class AppComponent implements OnInit {
         ) {
           let url = data.split('?token=')[0];
           this.token = data.split('?token=')[1];
+          await this.ventas.authUser(this.token);
           this.router.navigateByUrl(`${url}/${this.token}`);
         }
 

@@ -10,9 +10,9 @@ import { VentasService } from '../../services/ventas.service';
 import { PagosService } from '../../services/pagos.service';
 import { CarritoService } from '../../services/carrito.service';
 @Component({
-  selector: 'app-pozo',
+  selector: 'app-bingazo',
   templateUrl: './bingazo.component.html',
-  styleUrls: ['./bingazo.component.scss'],
+  styleUrls: ['./bingazo.component.scss']
 })
 export class BingazoComponent implements OnInit {
   combinacionDeLaSuerte: string[] = ['', '', '', '', '', ''];
@@ -26,7 +26,7 @@ export class BingazoComponent implements OnInit {
   page_number: number = 1;
   showNumeros: boolean = false;
   sorteo?: sorteo[];
-  seleccionFrutas?: any[];
+  seleccionFrutas: any[];
   ticketsDisponibles?: any;
   ticketsDisponiblesRevancha?: any;
   pageSizeOptions?: [5, 10, 20, 100];
@@ -52,13 +52,6 @@ export class BingazoComponent implements OnInit {
     });
   }
   total?: string;
-  getTotal() {
-    this.changeDetectorRef.detectChanges();
-
-    this.total = this.cart.getTotal();
-    this.changeDetectorRef.markForCheck();
-  }
-
   agregar(fruta: any, i: number) {
     if (this.seleccionFrutas![i].status === false) {
       this.seleccionFrutas![i].status = true;
@@ -140,7 +133,7 @@ export class BingazoComponent implements OnInit {
         await this.cart.setCarrito(aux, tipoLoteria);
         await this.cart.setCarritoBingazo(this.ticketsBingazo);
         await this.getCarritoTickets();
-        //this.getTotal();
+        
         this.isLoading = false;
       } else {
         this.isLoading = false;
@@ -271,6 +264,7 @@ export class BingazoComponent implements OnInit {
       let authData = this.ventas.getAuthData();
       this.sorteo = await this.bingazo.obtenerSorteo(authData);
       this.descuentos = await this.ventas.obtenerDescuentos();
+      console.log(this.seleccionFrutas)
       this.showComponents = true;
       this.isLoading = false;
     } catch (e: any) {
@@ -281,6 +275,9 @@ export class BingazoComponent implements OnInit {
     }
   }
 
+  trackBy(item: any) {
+    console.log(item);
+  }
   async setDescuento(tipoLoteria: any) {
     return;
     let descuentos = this.descuentos.filter(
@@ -324,7 +321,7 @@ export class BingazoComponent implements OnInit {
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
 
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       await this.setDescuento(1);
 
       this.isLoading = false;
@@ -360,7 +357,7 @@ export class BingazoComponent implements OnInit {
       await this.cart.setCarritoMillonaria(this.ticketsMillonaria);
 
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       await this.setDescuento(14);
       this.isLoading = false;
     } catch (e: any) {
@@ -394,7 +391,7 @@ export class BingazoComponent implements OnInit {
       await this.cart.removeFromCart(ticket, 2);
       await this.cart.setCarritoLotto(this.ticketsLotto);
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       await this.setDescuento(2);
       this.isLoading = false;
     } catch (e: any) {
@@ -434,7 +431,7 @@ export class BingazoComponent implements OnInit {
       await this.cart.removeFromCart(ticket, 1);
       await this.cart.setCarritoLoteria(this.ticketsLoteria);
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       await this.setDescuento(1);
       this.isLoading = false;
     } catch (e: any) {
@@ -475,7 +472,7 @@ export class BingazoComponent implements OnInit {
           this.ticketsDisponibles[deletedIndex].status = false;
       }
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       await this.setDescuento(5);
 
       this.isLoading = false;
@@ -514,7 +511,7 @@ export class BingazoComponent implements OnInit {
       await this.cart.removeFromCart(ticket, 5);
       await this.cart.setCarritoPozo(this.ticketsPozo);
       await this.getCarritoTickets();
-      //this.getTotal();
+      
 
       await this.setDescuento(5);
       this.isLoading = false;
@@ -550,7 +547,7 @@ export class BingazoComponent implements OnInit {
       await this.cart.setCarritoPozoRevancha(this.ticketsPozoRevancha);
 
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -576,7 +573,7 @@ export class BingazoComponent implements OnInit {
       });
       await this.cart.borrarCarrito();
       await this.getCarritoTickets();
-      //this.getTotal();
+      
       this.isLoading = false;
     } catch (e: any) {
       this.isLoading = false;
@@ -618,4 +615,5 @@ export class BingazoComponent implements OnInit {
     this.validationErrorMessage = '';
     window.location.reload();
   }
+
 }
