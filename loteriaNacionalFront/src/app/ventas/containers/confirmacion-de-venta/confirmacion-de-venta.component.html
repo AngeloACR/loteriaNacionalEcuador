@@ -34,9 +34,9 @@
   *ngIf="isValidationError"
 ></app-error>
 <app-instantaneas
-  (close)="abrirFinalizar(idVenta)"
+  (close)="abrirFinalizar()"
   [resultados]="instantaneas"
-  tipoLoteria="5"
+  tipoLoteria="1"
   [isLoteriaNacional]="true"
   class="paymentItem"
   *ngIf="isInstantaneas"

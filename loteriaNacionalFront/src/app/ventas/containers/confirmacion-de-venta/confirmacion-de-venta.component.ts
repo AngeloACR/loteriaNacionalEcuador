@@ -203,13 +203,14 @@ export class ConfirmacionDeVentaComponent implements OnInit {
           this.isLoading = false;
           console.log(response);
           if (response.status) {
+            this.idVenta = response.idVenta;
             this.codigoPromocional = response.codigoPromocional;
             if (response.instantanea.status) {
               this.instantaneas = response.instantanea.data;
               this.isInstantaneas = true;
             } else {
               this.instantaneas = '';
-              this.abrirFinalizar(response.idVenta);
+              this.abrirFinalizar();
             }
           } else {
             this.cancelarCompra();
@@ -231,10 +232,10 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       this.openError(errorMessage);
     }
   }
-  async abrirFinalizar(idVenta: string) {
+  async abrirFinalizar() {
     await this.cart.borrarCarrito();
     this.router.navigateByUrl(
-      `/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`
+      `/compra_tus_juegos/venta_finalizada/${this.token!}/${this.idVenta!}`
     );
   }
   recargaDeSaldoMessage?: string;

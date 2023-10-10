@@ -9694,7 +9694,7 @@ function ConfirmacionDeVentaComponent_app_instantaneas_4_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵlistener"]("close", function ConfirmacionDeVentaComponent_app_instantaneas_4_Template_app_instantaneas_close_0_listener() {
       _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r15);
       const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
-      return ctx_r14.abrirFinalizar(ctx_r14.idVenta);
+      return ctx_r14.abrirFinalizar();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
   }
@@ -9886,6 +9886,7 @@ class ConfirmacionDeVentaComponent {
             console.log(response);
 
             if (response.status) {
+              _this3.idVenta = response.idVenta;
               _this3.codigoPromocional = response.codigoPromocional;
 
               if (response.instantanea.status) {
@@ -9894,7 +9895,7 @@ class ConfirmacionDeVentaComponent {
               } else {
                 _this3.instantaneas = '';
 
-                _this3.abrirFinalizar(response.idVenta);
+                _this3.abrirFinalizar();
               }
             } else {
               _this3.cancelarCompra();
@@ -9923,13 +9924,13 @@ class ConfirmacionDeVentaComponent {
     })();
   }
 
-  abrirFinalizar(idVenta) {
+  abrirFinalizar() {
     var _this4 = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
       yield _this4.cart.borrarCarrito();
 
-      _this4.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${_this4.token}/${idVenta}`);
+      _this4.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${_this4.token}/${_this4.idVenta}`);
     })();
   }
 
@@ -9984,7 +9985,7 @@ ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTE
   },
   decls: 5,
   vars: 5,
-  consts: [["class", "paymentBox", 4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["tipoLoteria", "5", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], [1, "paymentBox"], [3, "compra", "user", "showHeader"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["class", "confirmationButton", 3, "click", 4, "ngIf"], [1, "confirmationButton", 3, "click"], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"], ["tipoLoteria", "5", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"]],
+  consts: [["class", "paymentBox", 4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["tipoLoteria", "1", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], [1, "paymentBox"], [3, "compra", "user", "showHeader"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["class", "confirmationButton", 3, "click", 4, "ngIf"], [1, "confirmationButton", 3, "click"], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"], ["tipoLoteria", "1", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"]],
   template: function ConfirmacionDeVentaComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtemplate"](0, ConfirmacionDeVentaComponent_div_0_Template, 8, 4, "div", 0);
