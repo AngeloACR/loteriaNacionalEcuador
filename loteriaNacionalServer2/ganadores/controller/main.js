@@ -13,7 +13,39 @@ const ganadoresController = {
   pagarLoteriaHttp: async (req, res) => {
     try {
       let sorteo = req.body.sorteo;
-      let response = await ganadoresController.pagarLoteria(sorteo, false);
+      let tipoLoteria = req.body.tipoLoteria;
+      let response = await ganadoresController.pagarPorSorteoYTipoDeLoteria(
+        sorteo,
+        tipoLoteria
+      );
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        errorMessage: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  pagarInstantaneasHttp: async (req, res) => {
+    try {
+      let ventaId = req.body.ventaId;
+      let response = await ganadoresController.pagarInstantaneasPorVentaId(
+        ventaId
+      );
+      res.status(200).json(response);
+    } catch (e) {
+      let response = {
+        status: "error",
+        errorMessage: e.message,
+      };
+      res.status(400).json(response);
+    }
+  },
+  pagarPorVentaIdHttp: async (req, res) => {
+    try {
+      let ventaId = req.body.ventaId;
+      let response = await ganadoresController.pagarPorVentaId(ventaId);
       res.status(200).json(response);
     } catch (e) {
       let response = {
@@ -24,87 +56,284 @@ const ganadoresController = {
     }
   },
 
-  pagarLoteria: async (sorteo, instantWin) => {
+  pagarPorSorteoYTipoDeLoteria: async (sorteo, lotteryType) => {
     try {
       ganadoresLogger.silly("pagarLoteria");
-      let query = { numeroSorteo: `${sorteo}` };
+      let query = { numeroSorteo: `${sorteo}`, tipoLoteria: lotteryType };
       let ganadores = await Ganadores.find(query);
-      let length = ganadores.length;
       let response = [];
       let logData = {
         data: [],
         response: [],
         function: "ganadoresController.pagarLoteria",
       };
-      for (let i = 0; i < length; i++) {
+
+      let premiosMetalicos = ganadores.filter(
+        (ganador) =>
+          ganador.tipoPremio == "DIN" &&
+          !ganador.acreditado &&
+          !item.codigoPremio.includes("INSTANTANEA")
+      );
+      let premiosEspecie = ganadores.filter(
+        (ganador) =>
+          ganador.tipoPremio == "ESP" &&
+          !ganador.acreditado &&
+          !item.codigoPremio.includes("INSTANTANEA")
+      );
+      for (let i = 0; i < premiosMetalicos.length; i++) {
         const ganador = ganadores[i];
-        if (!ganador.acreditado && ganador.tipoPremio == "DIN") {
-          let transactionId = Date.now();
-          let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
-          let validationCode = parseInt(
-            `${transactionId}${checkSum.toString().padStart(2, "0")}`
-          );
-          let prizesNumber = ganadores.filter(
-            (item) =>
-              item.ventaId == ganador.ventaId &&
-              !item.codigoPremio.includes("INSTANTANEA")
-          ).length;
-          let combinationId = `${ganador.codigoPremio
-            .replace("-", "")
-            .replace("INSTANTANEA", "50")}${ganador.boletoId}`;
+        let transactionId = Date.now();
+        let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
+        let validationCode = parseInt(
+          `${transactionId}${checkSum.toString().padStart(2, "0")}`
+        );
+        let prizesNumber = ganadores.filter(
+          (item) => item.ventaId == ganador.ventaId
+        ).length;
+        let combinationId = `${ganador.codigoPremio}${ganador.boletoId}`;
 
-          let prizeDetails = [
-            {
-              lotteryType: ganador.tipoLoteria,
-              instantWin: ganador.codigoPremio.includes("INSTANTANEA"),
-              personalId: parseInt(ganador.personaId),
-              drawNumber: parseInt(ganador.numeroSorteo),
-              prize: parseFloat(ganador.valorPremio).toFixed(2),
-              prizeWithDiscount: parseFloat(
-                ganador.valorPremioDescuento
-              ).toFixed(2),
-              ticketId: parseInt(ganador.ventaId),
-              combinationId: `${combinationId}`,
-              validationCode: `${validationCode}`,
-              /* prizeDescription: ganador.descripcionPremio, */
-            },
-          ];
-          let data = {
-            prizesNumber,
-            prizeDetails,
-            transactionId: `${transactionId}`,
-          };
-          let aux = await alboranPrize.payLottery(data, "/PayPrize");
-          if (aux.resultCode >= 0) {
-            ganador.acreditado = true;
-          }
-          response.push(aux);
-          let logAux = {
-            input: data,
-            type: "DIN",
-            output: aux,
-          };
-          logData.data.push(logAux);
-        } else if (ganador.tipoPremio == "ESP") {
-          let ordenResponse = await ganadoresController.procesarPremioEspecies(
-            ganador
-          );
-
-          ganador.ordenDePagoId = ordenResponse.ordenId;
-          response.push(ordenResponse);
-          let logAux = {
-            input: ganador.combinacion1,
-            type: "ESP",
-            output: orderResponse,
-          };
-          logData.data.push(logAux);
+        let prizeDetails = [
+          {
+            lotteryType,
+            instantWin: false,
+            personalId: parseInt(ganador.personaId),
+            drawNumber: parseInt(ganador.numeroSorteo),
+            prize: parseFloat(ganador.valorPremio).toFixed(2),
+            prizeWithDiscount: parseFloat(ganador.valorPremioDescuento).toFixed(
+              2
+            ),
+            ticketId: parseInt(ganador.ventaId),
+            combinationId,
+            validationCode: `${validationCode}`,
+          },
+        ];
+        let data = {
+          prizesNumber,
+          prizeDetails,
+          transactionId: `${transactionId}`,
+        };
+        let aux = await alboranPrize.payLottery(data, "/PayPrize");
+        if (aux.resultCode >= 0) {
+          ganador.acreditado = true;
         }
+        response.push(aux);
+        let logAux = {
+          input: data,
+          type: "DIN",
+          output: aux,
+        };
+        logData.data.push(logAux);
+
+        await ganador.save();
+      }
+      for (let i = 0; i < premiosEspecie.length; i++) {
+        const ganador = ganadores[i];
+        let ordenResponse = await ganadoresController.procesarPremioEspecies(
+          ganador
+        );
+        ganador.acreditado = true;
+
+        ganador.ordenDePagoId = ordenResponse.ordenId;
+        response.push(ordenResponse);
+        let logAux = {
+          input: ganador.combinacion1,
+          type: "ESP",
+          output: orderResponse,
+        };
+        logData.data.push(logAux);
+
         await ganador.save();
       }
       ganadoresLogger.info("pagarLoteria.api", logData);
       return response;
     } catch (e) {
       ganadoresLogger.error("pagarLoteria.error", {
+        errorMessage: e.message,
+      });
+      throw new Error(e.message);
+    }
+  },
+  pagarPorVentaId: async (ventaId) => {
+    try {
+      ganadoresLogger.silly("pagarLoteria");
+      let query = { ventaId };
+      let ganadores = await Ganadores.find(query);
+      let response = [];
+      let logData = {
+        data: [],
+        response: [],
+        function: "ganadoresController.pagarLoteria",
+      };
+      let premiosMetalicos = ganadores.filter(
+        (ganador) =>
+          ganador.tipoPremio == "DIN" &&
+          !ganador.acreditado &&
+          !item.codigoPremio.includes("INSTANTANEA")
+      );
+      let premiosEspecie = ganadores.filter(
+        (ganador) =>
+          ganador.tipoPremio == "ESP" &&
+          !ganador.acreditado &&
+          !item.codigoPremio.includes("INSTANTANEA")
+      );
+      for (let i = 0; i < premiosEspecie.length; i++) {
+        const ganador = ganadores[i];
+        let ordenResponse = await ganadoresController.procesarPremioEspecies(
+          ganador
+        );
+        ganador.acreditado = true;
+
+        ganador.ordenDePagoId = ordenResponse.ordenId;
+        response.push(ordenResponse);
+        let logAux = {
+          input: ganador.combinacion1,
+          type: "ESP",
+          output: orderResponse,
+        };
+        logData.data.push(logAux);
+        await ganador.save();
+      }
+      for (let i = 0; i < premiosMetalicos.length; i++) {
+        const ganador = ganadores[i];
+        let transactionId = Date.now();
+        let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
+        let validationCode = parseInt(
+          `${transactionId}${checkSum.toString().padStart(2, "0")}`
+        );
+        let prizesNumber = premiosMetalicos.length;
+        let combinationId = `${ganador.codigoPremio}${ganador.boletoId}`;
+
+        let prizeDetails = [
+          {
+            lotteryType: ganador.tipoLoteria,
+            instantWin: false,
+            personalId: parseInt(ganador.personaId),
+            drawNumber: parseInt(ganador.numeroSorteo),
+            prize: parseFloat(ganador.valorPremio).toFixed(2),
+            prizeWithDiscount: parseFloat(ganador.valorPremioDescuento).toFixed(
+              2
+            ),
+            ticketId: parseInt(ventaId),
+            combinationId,
+            validationCode: `${validationCode}`,
+          },
+        ];
+        let data = {
+          prizesNumber,
+          prizeDetails,
+          transactionId: `${transactionId}`,
+        };
+        let aux = await alboranPrize.payLottery(data, "/PayPrize");
+        if (aux.resultCode >= 0) {
+          ganador.acreditado = true;
+        }
+        response.push(aux);
+        let logAux = {
+          input: data,
+          type: "DIN",
+          output: aux,
+        };
+        logData.data.push(logAux);
+        await ganador.save();
+      }
+      ganadoresLogger.info("pagarPorVentaId.api", logData);
+      return response;
+    } catch (e) {
+      ganadoresLogger.error("pagarPorVentaId.error", {
+        errorMessage: e.message,
+      });
+      throw new Error(e.message);
+    }
+  },
+  pagarInstantaneasPorVentaId: async (ventaId) => {
+    try {
+      ganadoresLogger.silly("pagarLoteria");
+      let query = { ventaId };
+      let ganadores = await Ganadores.find(query);
+      let response = [];
+      let logData = {
+        data: [],
+        response: [],
+        function: "ganadoresController.pagarLoteria",
+      };
+      let premiosMetalicos = ganadores.filter(
+        (ganador) =>
+          ganador.tipoPremio == "DIN" &&
+          !ganador.acreditado &&
+          item.codigoPremio.includes("INSTANTANEA")
+      );
+      let premiosEspecie = ganadores.filter(
+        (ganador) =>
+          ganador.tipoPremio == "ESP" &&
+          !ganador.acreditado &&
+          item.codigoPremio.includes("INSTANTANEA")
+      );
+      for (let i = 0; i < premiosEspecie.length; i++) {
+        const ganador = ganadores[i];
+        let ordenResponse = await ganadoresController.procesarPremioEspecies(
+          ganador
+        );
+        ganador.acreditado = true;
+        ganador.ordenDePagoId = ordenResponse.ordenId;
+        response.push(ordenResponse);
+        let logAux = {
+          input: ganador.combinacion1,
+          type: "ESP",
+          output: orderResponse,
+        };
+        logData.data.push(logAux);
+        await ganador.save();
+      }
+      for (let i = 0; i < premiosMetalicos.length; i++) {
+        const ganador = ganadores[i];
+        let transactionId = Date.now();
+        let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
+        let validationCode = parseInt(
+          `${transactionId}${checkSum.toString().padStart(2, "0")}`
+        );
+        let prizesNumber = premiosMetalicos.length;
+
+        let combinationId = `${ganador.codigoPremio
+          .replace("-", "")
+          .replace("INSTANTANEA", "50")}${ganador.boletoId}`;
+
+        let prizeDetails = [
+          {
+            lotteryType: ganador.tipoLoteria,
+            instantWin: true,
+            personalId: parseInt(ganador.personaId),
+            drawNumber: parseInt(ganador.numeroSorteo),
+            prize: parseFloat(ganador.valorPremio).toFixed(2),
+            prizeWithDiscount: parseFloat(ganador.valorPremioDescuento).toFixed(
+              2
+            ),
+            ticketId: parseInt(ventaId),
+            combinationId,
+            validationCode: `${validationCode}`,
+          },
+        ];
+        let data = {
+          prizesNumber,
+          prizeDetails,
+          transactionId: `${transactionId}`,
+        };
+        let aux = await alboranPrize.payLottery(data, "/PayPrize");
+        if (aux.resultCode >= 0) {
+          ganador.acreditado = true;
+        }
+        response.push(aux);
+        let logAux = {
+          input: data,
+          type: "DIN",
+          output: aux,
+        };
+        logData.data.push(logAux);
+        await ganador.save();
+      }
+      ganadoresLogger.info("pagarPorVentaId.api", logData);
+      return response;
+    } catch (e) {
+      ganadoresLogger.error("pagarPorVentaId.error", {
         errorMessage: e.message,
       });
       throw new Error(e.message);
