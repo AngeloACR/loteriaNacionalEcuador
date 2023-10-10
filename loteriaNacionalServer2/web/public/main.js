@@ -782,10 +782,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
 /* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 1258);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4364);
-/* harmony import */ var _shared_components_mobile_header_mobile_header_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared/components/mobile-header/mobile-header.component */ 6086);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 1258);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ventas/services/ventas.service */ 1987);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var _shared_components_mobile_header_mobile_header_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./shared/components/mobile-header/mobile-header.component */ 6086);
+
 
 
 
@@ -795,15 +797,16 @@ __webpack_require__.r(__webpack_exports__);
 
 function AppComponent_app_mobile_header_0_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "app-mobile-header");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "app-mobile-header");
   }
 }
 
 class AppComponent {
-  constructor(router) {
+  constructor(router, ventas) {
     var _this = this;
 
     this.router = router;
+    this.ventas = ventas;
     this.title = 'loteriaNacionalWeb';
     this.token = '';
     this.isDetail = false;
@@ -812,7 +815,7 @@ class AppComponent {
     this.isDetail = false;
     this.router.events.subscribe( /*#__PURE__*/function () {
       var _ref = (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* (event) {
-        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__.NavigationStart) {
+        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationStart) {
           let data = decodeURIComponent(event.url);
 
           if (data.includes('inicio')) {
@@ -823,6 +826,7 @@ class AppComponent {
           if (data.includes('compra_tus_juegos?token') || data.includes('inicio?token')) {
             let url = data.split('?token=')[0];
             _this.token = data.split('?token=')[1];
+            yield _this.ventas.authUser(_this.token);
 
             _this.router.navigateByUrl(`${url}/${_this.token}`);
           }
@@ -841,9 +845,9 @@ class AppComponent {
           }
         }
 
-        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__.NavigationEnd) {}
+        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationEnd) {}
 
-        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__.NavigationError) {
+        if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationError) {
           console.log(event.error);
         }
       });
@@ -875,17 +879,17 @@ class AppComponent {
 }
 
 AppComponent.ɵfac = function AppComponent_Factory(t) {
-  return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__.Router));
+  return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_1__.VentasService));
 };
 
-AppComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+AppComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
   type: AppComponent,
   selectors: [["app-root"]],
   hostBindings: function AppComponent_HostBindings(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("message", function AppComponent_message_HostBindingHandler($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("message", function AppComponent_message_HostBindingHandler($event) {
         return ctx.handleScroll($event);
-      }, false, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵresolveWindow"]);
+      }, false, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresolveWindow"]);
     }
   },
   decls: 2,
@@ -893,15 +897,15 @@ AppComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵ
   consts: [[4, "ngIf"]],
   template: function AppComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](0, AppComponent_app_mobile_header_0_Template, 1, 0, "app-mobile-header", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](1, "router-outlet");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](0, AppComponent_app_mobile_header_0_Template, 1, 0, "app-mobile-header", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](1, "router-outlet");
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.showHeader);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.showHeader);
     }
   },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterOutlet, _shared_components_mobile_header_mobile_header_component__WEBPACK_IMPORTED_MODULE_1__.MobileHeaderComponent],
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__.NgIf, _angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterOutlet, _shared_components_mobile_header_mobile_header_component__WEBPACK_IMPORTED_MODULE_2__.MobileHeaderComponent],
   styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LnNjc3MifQ== */"]
 });
 
@@ -7686,6 +7690,325 @@ class StylePaginatorDirective {
 }
 StylePaginatorDirective.ɵfac = function StylePaginatorDirective_Factory(t) { return new (t || StylePaginatorDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_paginator__WEBPACK_IMPORTED_MODULE_1__.MatPaginator, 11), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewContainerRef), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__.Renderer2)); };
 StylePaginatorDirective.ɵdir = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: StylePaginatorDirective, selectors: [["", "style-paginator", ""]], inputs: { showTotalPages: "showTotalPages" } });
+
+
+/***/ }),
+
+/***/ 1987:
+/*!***************************************************!*\
+  !*** ./src/app/ventas/services/ventas.service.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "VentasService": () => (/* binding */ VentasService)
+/* harmony export */ });
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 3882);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
+
+
+
+
+class VentasService {
+    constructor(http) {
+        this.http = http;
+        this.mySource = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.source;
+    }
+    formatNumber(number) {
+        // Create our number formatter.
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+        return formatter.format(number);
+    }
+    getAuthData() {
+        let data = JSON.parse(localStorage.getItem('userData'));
+        let response = {
+            user: '',
+            lotteryToken: '',
+            personaId: '',
+        };
+        if (data) {
+            let lotteryToken = data.lotteryToken;
+            let user = data.playerDocument;
+            //if (data.user_ == 'italtronicprep') user = data.user_;
+            response = {
+                lotteryToken,
+                user,
+                personaId: data.personaId,
+            };
+        }
+        return response;
+    }
+    obtenerDescuentos() {
+        return;
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        //let endpoint = "/inquiry";
+        let address = '/ventas';
+        let endpoint = '/getDescuentos';
+        let authData = this.getAuthData();
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            this.http
+                .get(address, {
+                params: {
+                    lotteryToken: authData.lotteryToken,
+                    user: authData.user,
+                },
+                headers: headers,
+            })
+                .subscribe((data) => {
+                let descuentos = data;
+                resolve(descuentos);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    obtenerImagenBoleto(tipoLoteria, sorteo) {
+        let sourceBoletos = `https://ventas-api.loteria.com.ec/uploads/boletos/`;
+        return `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
+    }
+    authUser(token) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        let address = '/auth';
+        let endpoint = '/';
+        let body = {
+            token,
+        };
+        address = this.mySource + address + endpoint;
+        return new Promise((resolve, reject) => {
+            let data = JSON.parse(localStorage.getItem('userData'));
+            if (true) {
+                // if (!data || data.resultCode) {
+                this.http.post(address, body, { headers: headers }).subscribe((data) => {
+                    localStorage.setItem('userData', JSON.stringify(data));
+                    resolve(data);
+                }, (error) => {
+                    reject(new Error(error.error.message));
+                });
+            }
+            else {}
+        });
+    }
+    getReservaId() {
+        if (JSON.parse(localStorage.getItem('reservaId')) &&
+            JSON.parse(localStorage.getItem('reservaId')) != '') {
+            return JSON.parse(localStorage.getItem('reservaId'));
+        }
+        else {
+            return 0;
+        }
+    }
+    setReservaId(id) {
+        localStorage.setItem('reservaId', JSON.stringify(id));
+    }
+    reservarBoletos(token, boleto, tipoLoteria, reservaId) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        let address = '/reservas';
+        let endpoint = '/reservarBoletos';
+        address = this.mySource + address + endpoint;
+        let authData = this.getAuthData();
+        let body = {
+            lotteryToken: authData.lotteryToken,
+            user: authData.user,
+            reservaId,
+        };
+        let aux;
+        switch (tipoLoteria) {
+            case 1:
+                aux = [
+                    {
+                        combinacion: boleto.ticket.combinacion,
+                        fracciones: boleto.fracciones,
+                        sorteo: boleto.sorteo,
+                    },
+                ];
+                body['loteria'] = aux;
+                break;
+            case 2:
+                aux = [
+                    {
+                        combinacion: boleto.ticket.combinacion1,
+                        sorteo: boleto.sorteo,
+                    },
+                ];
+                body['lotto'] = aux;
+                break;
+            case 5:
+                aux = [
+                    {
+                        combinacion: boleto.ticket.combinacion1,
+                        sorteo: boleto.sorteo,
+                    },
+                ];
+                body['pozo'] = aux;
+                break;
+            case 17:
+                aux = [
+                    {
+                        combinacion: boleto.ticket.combinacion1,
+                        sorteo: boleto.sorteo,
+                    },
+                ];
+                body['pozoRevancha'] = aux;
+                break;
+            case 14:
+                aux = [
+                    {
+                        combinacion: boleto.ticket.combinacion1,
+                        combinacion2: boleto.ticket.combinacion2,
+                        fracciones: boleto.fracciones,
+                        sorteo: boleto.sorteo,
+                    },
+                ];
+                body['millonaria'] = aux;
+                break;
+            case 12:
+                aux = [
+                    {
+                        combinacion: boleto.ticket.combinacion1,
+                        sorteo: boleto.sorteo,
+                    },
+                ];
+                body['bingazo'] = aux;
+                break;
+        }
+        return new Promise((resolve, reject) => {
+            this.http.post(address, body, { headers: headers }).subscribe((data) => {
+                let response = data;
+                resolve(response);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    reservarRevancha(pozo, revancha, reservaId) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        let address = '/reservas';
+        let endpoint = '/reservarBoletos';
+        address = this.mySource + address + endpoint;
+        let authData = this.getAuthData();
+        let body = {
+            lotteryToken: authData.lotteryToken,
+            user: authData.user,
+            reservaId,
+        };
+        let auxPozo = [
+            {
+                combinacion: pozo.ticket.combinacion1,
+                sorteo: pozo.sorteo,
+            },
+        ];
+        body['pozo'] = auxPozo;
+        let auxRevancha = [
+            {
+                combinacion: revancha.ticket.combinacion1,
+                sorteo: revancha.sorteo,
+            },
+        ];
+        body['pozoRevancha'] = auxRevancha;
+        return new Promise((resolve, reject) => {
+            this.http.post(address, body, { headers: headers }).subscribe((data) => {
+                let response = data;
+                resolve(response);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+    eliminarBoletosDeReserva(token, boleto, sorteo, fracciones, tipoLoteria, reservaId) {
+        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        let address = '/reservas';
+        let endpoint = '/eliminarBoletosDeReserva';
+        address = this.mySource + address + endpoint;
+        let authData = this.getAuthData();
+        let body = {
+            lotteryToken: authData.lotteryToken,
+            user: authData.user,
+            reservaId,
+        };
+        let aux;
+        switch (tipoLoteria) {
+            case 1:
+                aux = [
+                    {
+                        combinacion: boleto.combinacion,
+                        fracciones,
+                        sorteo: sorteo,
+                    },
+                ];
+                body['loteria'] = aux;
+                break;
+            case 2:
+                aux = [
+                    {
+                        combinacion: boleto.combinacion1,
+                        sorteo: sorteo,
+                    },
+                ];
+                body['lotto'] = aux;
+                break;
+            case 5:
+                aux = [
+                    {
+                        combinacion: boleto.combinacion1,
+                        sorteo: sorteo,
+                    },
+                ];
+                body['pozo'] = aux;
+                break;
+            case 12:
+                aux = [
+                    {
+                        combinacion: boleto.combinacion1,
+                        sorteo: sorteo,
+                    },
+                ];
+                body['bingazo'] = aux;
+                break;
+            case 17:
+                aux = [
+                    {
+                        combinacion: boleto.combinacion1,
+                        sorteo: sorteo,
+                    },
+                ];
+                body['pozoRevancha'] = aux;
+                break;
+            case 14:
+                aux = [
+                    {
+                        combinacion: boleto.combinacion1,
+                        combinacion2: boleto.combinacion2,
+                        fracciones,
+                        sorteo: sorteo,
+                    },
+                ];
+                body['millonaria'] = aux;
+                break;
+        }
+        return new Promise((resolve, reject) => {
+            this.http.post(address, body, { headers: headers }).subscribe((data) => {
+                let response = data;
+                resolve(response);
+            }, (error) => {
+                reject(new Error(error.error.message));
+            });
+        });
+    }
+}
+VentasService.ɵfac = function VentasService_Factory(t) { return new (t || VentasService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient)); };
+VentasService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: VentasService, factory: VentasService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),

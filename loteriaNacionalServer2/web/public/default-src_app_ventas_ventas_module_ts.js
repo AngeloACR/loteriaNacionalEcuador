@@ -8550,18 +8550,8 @@ const _c0 = ["figureSelector"];
 
 function BingazoComponent_div_1_div_13_Template(rf, ctx) {
   if (rf & 1) {
-    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
-
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](1, "input", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("click", function BingazoComponent_div_1_div_13_Template_input_click_1_listener() {
-      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r13);
-      const fruta_r10 = restoredCtx.$implicit;
-      const i_r11 = restoredCtx.index;
-      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](2);
-      return ctx_r12.agregar(fruta_r10, i_r11);
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelement"](1, "input", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](2, "label", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelement"](3, "img", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
@@ -8581,13 +8571,13 @@ function BingazoComponent_div_1_div_13_Template(rf, ctx) {
 
 function BingazoComponent_div_1_button_15_Template(rf, ctx) {
   if (rf & 1) {
-    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "button", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("click", function BingazoComponent_div_1_button_15_Template_button_click_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r15);
-      const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](2);
-      return ctx_r14.buscarNumero();
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r13);
+      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](2);
+      return ctx_r12.buscarNumero();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtext"](1, " BUSCAR CARTONES ");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
@@ -8596,13 +8586,13 @@ function BingazoComponent_div_1_button_15_Template(rf, ctx) {
 
 function BingazoComponent_div_1_button_16_Template(rf, ctx) {
   if (rf & 1) {
-    const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "button", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("click", function BingazoComponent_div_1_button_16_Template_button_click_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r17);
-      const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](2);
-      return ctx_r16.openSelector();
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r15);
+      const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](2);
+      return ctx_r14.openSelector();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtext"](1, " CAMBIAR FRUTA O REINTEGRO ");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
@@ -8617,9 +8607,9 @@ function BingazoComponent_div_1_div_17_div_1_ng_container_8_p_1_Template(rf, ctx
   }
 
   if (rf & 2) {
-    const numero_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]().$implicit;
+    const numero_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]().$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtextInterpolate1"](" ", numero_r22, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtextInterpolate1"](" ", numero_r20, " ");
   }
 }
 
@@ -8638,17 +8628,17 @@ function BingazoComponent_div_1_div_17_div_1_ng_container_8_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const numero_r22 = ctx.$implicit;
+    const numero_r20 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngIf", numero_r22 != "00");
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngIf", numero_r20 != "00");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngIf", numero_r22 == "00");
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngIf", numero_r20 == "00");
   }
 }
 
 function BingazoComponent_div_1_div_17_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r27 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "div", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](1, "div", 28);
@@ -8667,19 +8657,19 @@ function BingazoComponent_div_1_div_17_div_1_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](9, "div", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](10, "button", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("click", function BingazoComponent_div_1_div_17_div_1_Template_button_click_10_listener() {
-      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r27);
-      const ticket_r19 = restoredCtx.$implicit;
-      const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](3);
-      return ctx_r26.deleteBingazoTicket(ticket_r19.identificador);
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r25);
+      const ticket_r17 = restoredCtx.$implicit;
+      const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](3);
+      return ctx_r24.deleteBingazoTicket(ticket_r17.identificador);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtext"](11, " LIMPIAR ");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](12, "button", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("click", function BingazoComponent_div_1_div_17_div_1_Template_button_click_12_listener() {
-      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r27);
-      const i_r20 = restoredCtx.index;
-      const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](3);
-      return ctx_r28.seleccionarTicket(ctx_r28.page_size * (ctx_r28.page_number - 1) + i_r20);
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r25);
+      const i_r18 = restoredCtx.index;
+      const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](3);
+      return ctx_r26.seleccionarTicket(ctx_r26.page_size * (ctx_r26.page_number - 1) + i_r18);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtext"](13, " AGREGAR AL CARRITO ");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
@@ -8688,24 +8678,24 @@ function BingazoComponent_div_1_div_17_div_1_Template(rf, ctx) {
   }
 
   if (rf & 2) {
-    const ticket_r19 = ctx.$implicit;
-    const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](3);
+    const ticket_r17 = ctx.$implicit;
+    const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("src", ctx_r18.obtenerFruta(ticket_r19.fruta), _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("src", ctx_r16.obtenerFruta(ticket_r17.fruta), _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵsanitizeUrl"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtextInterpolate1"]("N\u00BA DE CART\u00D3N: ", ticket_r19.combinacion1, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtextInterpolate1"]("N\u00BA DE CART\u00D3N: ", ticket_r17.combinacion1, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngForOf", ticket_r19.display);
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngForOf", ticket_r17.display);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("disabled", !ticket_r19.status);
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("disabled", !ticket_r17.status);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("disabled", ticket_r19.status);
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("disabled", ticket_r17.status);
   }
 }
 
 function BingazoComponent_div_1_div_17_Template(rf, ctx) {
   if (rf & 1) {
-    const _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "div", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtemplate"](1, BingazoComponent_div_1_div_17_div_1_Template, 14, 5, "div", 24);
@@ -8713,9 +8703,9 @@ function BingazoComponent_div_1_div_17_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](3, "div", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](4, "mat-paginator", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("page", function BingazoComponent_div_1_div_17_Template_mat_paginator_page_4_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
-      const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](2);
-      return ctx_r29.handlerPage($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r28);
+      const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"](2);
+      return ctx_r27.handlerPage($event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
@@ -8733,14 +8723,14 @@ function BingazoComponent_div_1_div_17_Template(rf, ctx) {
 
 function BingazoComponent_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    const _r32 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](1, "app-detalle-sorteo", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("emitir", function BingazoComponent_div_1_Template_app_detalle_sorteo_emitir_1_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r31.procesaEmitir($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r29.procesaEmitir($event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](2, "div", 7);
@@ -8769,41 +8759,41 @@ function BingazoComponent_div_1_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](18, "app-carrito", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("emitirCompra", function BingazoComponent_div_1_Template_app_carrito_emitirCompra_18_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r33.comprar();
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r31.comprar();
     })("eliminarTodo", function BingazoComponent_div_1_Template_app_carrito_eliminarTodo_18_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r34.deleteAllTickets();
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r32.deleteAllTickets();
     })("deleteLoteriaTicket", function BingazoComponent_div_1_Template_app_carrito_deleteLoteriaTicket_18_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r35.deleteLoteriaTicket($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r33.deleteLoteriaTicket($event);
     })("deleteLottoTicket", function BingazoComponent_div_1_Template_app_carrito_deleteLottoTicket_18_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r36.deleteLottoTicket($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r34.deleteLottoTicket($event);
     })("deletePozoTicket", function BingazoComponent_div_1_Template_app_carrito_deletePozoTicket_18_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r37.deletePozoTicket($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r35.deletePozoTicket($event);
     })("deleteMillonariaTicket", function BingazoComponent_div_1_Template_app_carrito_deleteMillonariaTicket_18_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r38.deleteMillonariaTicket($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r36.deleteMillonariaTicket($event);
     })("deleteLoteriaFraccion", function BingazoComponent_div_1_Template_app_carrito_deleteLoteriaFraccion_18_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r39.deleteLoteriaFraccion($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r37.deleteLoteriaFraccion($event);
     })("deleteBingazoTicket", function BingazoComponent_div_1_Template_app_carrito_deleteBingazoTicket_18_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r40.deleteBingazoTicket($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r38.deleteBingazoTicket($event);
     })("deletePozoRevanchaTicket", function BingazoComponent_div_1_Template_app_carrito_deletePozoRevanchaTicket_18_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r32);
-      const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r41.deletePozoRevanchaTicket($event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r30);
+      const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r39.deletePozoRevanchaTicket($event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
@@ -8815,7 +8805,7 @@ function BingazoComponent_div_1_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("sorteos", ctx_r0.sorteo)("loteria", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngForOf", ctx_r0.seleccionFrutas);
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngForOf", ctx_r0.seleccionFrutas)("ngForTrackBy", ctx_r0.trackBy);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("ngIf", ctx_r0.buscarCartones);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](1);
@@ -8840,13 +8830,13 @@ function BingazoComponent_app_loader_3_Template(rf, ctx) {
 
 function BingazoComponent_app_error_4_Template(rf, ctx) {
   if (rf & 1) {
-    const _r43 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r41 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "app-error", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("closeError", function BingazoComponent_app_error_4_Template_app_error_closeError_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r43);
-      const ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r42.closeError();
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r41);
+      const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r40.closeError();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
   }
@@ -8859,13 +8849,13 @@ function BingazoComponent_app_error_4_Template(rf, ctx) {
 
 function BingazoComponent_app_error_5_Template(rf, ctx) {
   if (rf & 1) {
-    const _r45 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r43 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "app-error", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("closeError", function BingazoComponent_app_error_5_Template_app_error_closeError_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r45);
-      const ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r44.closeValidationError();
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r43);
+      const ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r42.closeValidationError();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
   }
@@ -8878,17 +8868,17 @@ function BingazoComponent_app_error_5_Template(rf, ctx) {
 
 function BingazoComponent_app_saldo_insuficiente_6_Template(rf, ctx) {
   if (rf & 1) {
-    const _r47 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
+    const _r45 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](0, "app-saldo-insuficiente", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("volver", function BingazoComponent_app_saldo_insuficiente_6_Template_app_saldo_insuficiente_volver_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r47);
-      const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r46.saldoInsuficiente = false;
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r45);
+      const ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r44.saldoInsuficiente = false;
     })("recarga", function BingazoComponent_app_saldo_insuficiente_6_Template_app_saldo_insuficiente_recarga_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r47);
-      const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
-      return ctx_r48.irARecarga();
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵrestoreView"](_r45);
+      const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵnextContext"]();
+      return ctx_r46.irARecarga();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
   }
@@ -8934,12 +8924,6 @@ class BingazoComponent {
     this.actRoute.params.subscribe(params => {
       this.token = params['token'];
     });
-  }
-
-  getTotal() {
-    this.changeDetectorRef.detectChanges();
-    this.total = this.cart.getTotal();
-    this.changeDetectorRef.markForCheck();
   }
 
   agregar(fruta, i) {
@@ -9033,8 +9017,7 @@ class BingazoComponent {
 
           yield _this2.cart.setCarrito(aux, tipoLoteria);
           yield _this2.cart.setCarritoBingazo(_this2.ticketsBingazo);
-          yield _this2.getCarritoTickets(); //this.getTotal();
-
+          yield _this2.getCarritoTickets();
           _this2.isLoading = false;
         } else {
           _this2.isLoading = false;
@@ -9151,6 +9134,7 @@ class BingazoComponent {
 
         _this4.sorteo = yield _this4.bingazo.obtenerSorteo(authData);
         _this4.descuentos = yield _this4.ventas.obtenerDescuentos();
+        console.log(_this4.seleccionFrutas);
         _this4.showComponents = true;
         _this4.isLoading = false;
       } catch (e) {
@@ -9161,6 +9145,10 @@ class BingazoComponent {
         _this4.openError(errorMessage);
       }
     })();
+  }
+
+  trackBy(item) {
+    console.log(item);
   }
 
   setDescuento(tipoLoteria) {
@@ -9209,8 +9197,7 @@ class BingazoComponent {
         delete _this6.ticketsLoteria[identificador];
         yield _this6.cart.removeFromCart(ticket, 5);
         yield _this6.cart.setCarritoLoteria(_this6.ticketsLoteria);
-        yield _this6.getCarritoTickets(); //this.getTotal();
-
+        yield _this6.getCarritoTickets();
         yield _this6.setDescuento(1);
         _this6.isLoading = false;
       } catch (e) {
@@ -9244,8 +9231,7 @@ class BingazoComponent {
         delete _this7.ticketsMillonaria[identificador];
         yield _this7.cart.removeFromCart(ticket, 1);
         yield _this7.cart.setCarritoMillonaria(_this7.ticketsMillonaria);
-        yield _this7.getCarritoTickets(); //this.getTotal();
-
+        yield _this7.getCarritoTickets();
         yield _this7.setDescuento(14);
         _this7.isLoading = false;
       } catch (e) {
@@ -9276,8 +9262,7 @@ class BingazoComponent {
         delete _this8.ticketsLotto[identificador];
         yield _this8.cart.removeFromCart(ticket, 2);
         yield _this8.cart.setCarritoLotto(_this8.ticketsLotto);
-        yield _this8.getCarritoTickets(); //this.getTotal();
-
+        yield _this8.getCarritoTickets();
         yield _this8.setDescuento(2);
         _this8.isLoading = false;
       } catch (e) {
@@ -9316,8 +9301,7 @@ class BingazoComponent {
 
         yield _this9.cart.removeFromCart(ticket, 1);
         yield _this9.cart.setCarritoLoteria(_this9.ticketsLoteria);
-        yield _this9.getCarritoTickets(); //this.getTotal();
-
+        yield _this9.getCarritoTickets();
         yield _this9.setDescuento(1);
         _this9.isLoading = false;
       } catch (e) {
@@ -9355,8 +9339,7 @@ class BingazoComponent {
           if (deletedIndex != -1) _this10.ticketsDisponibles[deletedIndex].status = false;
         }
 
-        yield _this10.getCarritoTickets(); //this.getTotal();
-
+        yield _this10.getCarritoTickets();
         yield _this10.setDescuento(5);
         _this10.isLoading = false;
       } catch (e) {
@@ -9392,8 +9375,7 @@ class BingazoComponent {
         delete _this11.ticketsPozo[identificador];
         yield _this11.cart.removeFromCart(ticket, 5);
         yield _this11.cart.setCarritoPozo(_this11.ticketsPozo);
-        yield _this11.getCarritoTickets(); //this.getTotal();
-
+        yield _this11.getCarritoTickets();
         yield _this11.setDescuento(5);
         _this11.isLoading = false;
       } catch (e) {
@@ -9424,8 +9406,7 @@ class BingazoComponent {
         delete _this12.ticketsPozoRevancha[identificador];
         yield _this12.cart.removeFromCart(ticket, 17);
         yield _this12.cart.setCarritoPozoRevancha(_this12.ticketsPozoRevancha);
-        yield _this12.getCarritoTickets(); //this.getTotal();
-
+        yield _this12.getCarritoTickets();
         _this12.isLoading = false;
       } catch (e) {
         _this12.isLoading = false;
@@ -9453,8 +9434,7 @@ class BingazoComponent {
           }
         });
         yield _this13.cart.borrarCarrito();
-        yield _this13.getCarritoTickets(); //this.getTotal();
-
+        yield _this13.getCarritoTickets();
         _this13.isLoading = false;
       } catch (e) {
         _this13.isLoading = false;
@@ -9508,7 +9488,7 @@ BingazoComponent.ɵfac = function BingazoComponent_Factory(t) {
 
 BingazoComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵdefineComponent"]({
   type: BingazoComponent,
-  selectors: [["app-pozo"]],
+  selectors: [["app-bingazo"]],
   viewQuery: function BingazoComponent_Query(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵviewQuery"](_c0, 5);
@@ -9522,11 +9502,11 @@ BingazoComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_14_
   },
   decls: 7,
   vars: 11,
-  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "bingazo", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozoRevancha", "ticketsPozo", "ticketsBingazo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deletePozoRevanchaTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket", "deleteBingazoTicket"], ["loader", "bingazo", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], [1, "contenedor_loteria"], ["titulo", "Bingazo", "color", "bingazo", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "ventasBox"], [1, "contendor_seleccion"], [1, "contenedor_select_animales"], ["hideToggle", "", "expanded", ""], ["figureSelector", ""], [1, "options"], ["class", "option", 4, "ngFor", "ngForOf"], [1, "selectBox"], ["class", "activado", 3, "click", 4, "ngIf"], ["class", "ticketsBox", 4, "ngIf"], ["tipoLoteria", "bingazo", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsPozoRevancha", "ticketsLotto", "ticketsBingazo", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", "deleteBingazoTicket", "deletePozoRevanchaTicket"], [1, "option"], ["type", "checkbox", "name", "nombre", 3, "checked", "value", "id", "click"], [3, "for"], ["loading", "lazy", 3, "src", "alt"], [1, "activado", 3, "click"], [1, "ticketsBox"], ["class", "ticketBox", 4, "ngFor", "ngForOf"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "ticketBox"], [1, "bingazoBox"], [1, "contenedor_seleccion_numero"], [1, "imagen_animal"], ["alt", "", 3, "src"], [1, "numeros"], [4, "ngFor", "ngForOf"], [1, "buttonsBox"], [3, "disabled", "click"], [4, "ngIf"], ["src", "assets/guachito.png", "alt", "", 4, "ngIf"], ["src", "assets/guachito.png", "alt", ""], ["loader", "bingazo", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "message", "volver", "recarga"]],
+  consts: [["class", "contenedor_loteria", 4, "ngIf"], ["tipoLoteria", "bingazo", 3, "ticketsLoteria", "ticketsLotto", "ticketsPozoRevancha", "ticketsPozo", "ticketsBingazo", "ticketsMillonaria", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deletePozoRevanchaTicket", "deleteLoteriaFraccion", "deleteMillonariaTicket", "deleteBingazoTicket"], ["loader", "bingazo", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["class", "paymentItem", 3, "message", "volver", "recarga", 4, "ngIf"], [1, "contenedor_loteria"], ["titulo", "Bingazo", "color", "bingazo", 1, "infoBox", 3, "sorteos", "loteria", "emitir"], [1, "ventasBox"], [1, "contendor_seleccion"], [1, "contenedor_select_animales"], ["hideToggle", "", "expanded", ""], ["figureSelector", ""], [1, "options"], ["class", "option", 4, "ngFor", "ngForOf", "ngForTrackBy"], [1, "selectBox"], ["class", "activado", 3, "click", 4, "ngIf"], ["class", "ticketsBox", 4, "ngIf"], ["tipoLoteria", "bingazo", 1, "ticketScroller", 3, "ticketsLoteria", "ticketsMillonaria", "ticketsPozoRevancha", "ticketsLotto", "ticketsBingazo", "ticketsPozo", "emitirCompra", "eliminarTodo", "deleteLoteriaTicket", "deleteLottoTicket", "deletePozoTicket", "deleteMillonariaTicket", "deleteLoteriaFraccion", "deleteBingazoTicket", "deletePozoRevanchaTicket"], [1, "option"], ["type", "checkbox", "name", "nombre", 3, "checked", "value", "id"], [3, "for"], ["loading", "lazy", 3, "src", "alt"], [1, "activado", 3, "click"], [1, "ticketsBox"], ["class", "ticketBox", 4, "ngFor", "ngForOf"], [1, "contenedor_botones"], ["style-paginator", "", 3, "length", "pageSize", "page"], [1, "ticketBox"], [1, "bingazoBox"], [1, "contenedor_seleccion_numero"], [1, "imagen_animal"], ["alt", "", 3, "src"], [1, "numeros"], [4, "ngFor", "ngForOf"], [1, "buttonsBox"], [3, "disabled", "click"], [4, "ngIf"], ["src", "assets/guachito.png", "alt", "", 4, "ngIf"], ["src", "assets/guachito.png", "alt", ""], ["loader", "bingazo", 3, "message"], [3, "msg", "closeError"], [1, "paymentItem", 3, "message", "volver", "recarga"]],
   template: function BingazoComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelement"](0, "ventas-menu-header");
-      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtemplate"](1, BingazoComponent_div_1_Template, 19, 12, "div", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtemplate"](1, BingazoComponent_div_1_Template, 19, 13, "div", 0);
       _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](2, "app-floating-menu", 1);
       _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("emitirCompra", function BingazoComponent_Template_app_floating_menu_emitirCompra_2_listener() {
         return ctx.comprar();
@@ -9609,26 +9589,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const _c0 = ["purchase"];
 
 function ConfirmacionDeVentaComponent_div_0_button_7_Template(rf, ctx) {
   if (rf & 1) {
-    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
+    const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "button", 9, 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "button", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_div_0_button_7_Template_button_click_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r8);
-      const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"](2);
-      return ctx_r7.confirmarCompra();
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r7);
+      const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"](2);
+      return ctx_r6.confirmarCompra();
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtext"](2, " Confirmar compra ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtext"](1, " Confirmar compra ");
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
   }
 }
 
 function ConfirmacionDeVentaComponent_div_0_Template(rf, ctx) {
   if (rf & 1) {
-    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
+    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
 
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "div", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](1, "app-descripcion-de-venta", 5);
@@ -9638,13 +9617,13 @@ function ConfirmacionDeVentaComponent_div_0_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](4, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](5, "button", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵlistener"]("click", function ConfirmacionDeVentaComponent_div_0_Template_button_click_5_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r10);
-      const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
-      return ctx_r9.volver();
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r9);
+      const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
+      return ctx_r8.volver();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtext"](6, "Volver");
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtemplate"](7, ConfirmacionDeVentaComponent_div_0_button_7_Template, 3, 0, "button", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtemplate"](7, ConfirmacionDeVentaComponent_div_0_button_7_Template, 2, 0, "button", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
   }
@@ -9660,7 +9639,7 @@ function ConfirmacionDeVentaComponent_div_0_Template(rf, ctx) {
 
 function ConfirmacionDeVentaComponent_app_loader_1_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](0, "app-loader", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelement"](0, "app-loader", 10);
   }
 
   if (rf & 2) {
@@ -9671,13 +9650,13 @@ function ConfirmacionDeVentaComponent_app_loader_1_Template(rf, ctx) {
 
 function ConfirmacionDeVentaComponent_app_error_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
+    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "app-error", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "app-error", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵlistener"]("closeError", function ConfirmacionDeVentaComponent_app_error_2_Template_app_error_closeError_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r12);
-      const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
-      return ctx_r11.closeError();
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r11);
+      const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
+      return ctx_r10.closeError();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
   }
@@ -9690,13 +9669,13 @@ function ConfirmacionDeVentaComponent_app_error_2_Template(rf, ctx) {
 
 function ConfirmacionDeVentaComponent_app_error_3_Template(rf, ctx) {
   if (rf & 1) {
-    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
+    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "app-error", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "app-error", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵlistener"]("closeError", function ConfirmacionDeVentaComponent_app_error_3_Template_app_error_closeError_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r14);
-      const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
-      return ctx_r13.closeValidationError();
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r13);
+      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
+      return ctx_r12.closeValidationError();
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
   }
@@ -9709,13 +9688,13 @@ function ConfirmacionDeVentaComponent_app_error_3_Template(rf, ctx) {
 
 function ConfirmacionDeVentaComponent_app_instantaneas_4_Template(rf, ctx) {
   if (rf & 1) {
-    const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵgetCurrentView"]();
 
-    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "app-instantaneas", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementStart"](0, "app-instantaneas", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵlistener"]("close", function ConfirmacionDeVentaComponent_app_instantaneas_4_Template_app_instantaneas_close_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r16);
-      const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
-      return ctx_r15.abrirFinalizar(ctx_r15.idVenta);
+      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵrestoreView"](_r15);
+      const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵnextContext"]();
+      return ctx_r14.abrirFinalizar(ctx_r14.idVenta);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵelementEnd"]();
   }
@@ -9752,12 +9731,12 @@ class ConfirmacionDeVentaComponent {
     var _this = this;
 
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
-      console.log("a");
+      console.log('a');
       _this.loadingMessage = 'Recopilando los datos de la compra';
       _this.isLoading = true;
       _this.user = _this.ventas.getAuthData().user;
       yield _this.getCarritoTickets();
-      console.log("b");
+      console.log('b');
       let loteriaAux = _this.ticketsLoteria;
       let loteria = [];
 
@@ -9893,6 +9872,7 @@ class ConfirmacionDeVentaComponent {
       try {
         _this3.loadingMessage = 'Espera mientras procesamos tu compra';
         _this3.isLoading = true;
+        _this3.disabled = true;
         let hasBalance = yield _this3.pagos.hasBalance(0, _this3.token);
 
         if (hasBalance) {
@@ -9933,7 +9913,7 @@ class ConfirmacionDeVentaComponent {
       } catch (e) {
         _this3.isLoading = false;
 
-        _this3.purchase.habilitarBoton();
+        _this3.habilitarBoton();
 
         console.log(e.message);
         let errorMessage = e.message;
@@ -9975,7 +9955,7 @@ class ConfirmacionDeVentaComponent {
   }
 
   cancelarCompra() {
-    this.compraCancelada.emit("La compra no se pudo procesar, por favor intente mas tarde");
+    this.compraCancelada.emit('La compra no se pudo procesar, por favor intente mas tarde');
   }
 
   openValidationError(msg) {
@@ -9998,24 +9978,13 @@ ConfirmacionDeVentaComponent.ɵfac = function ConfirmacionDeVentaComponent_Facto
 ConfirmacionDeVentaComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineComponent"]({
   type: ConfirmacionDeVentaComponent,
   selectors: [["app-confirmacion-de-venta"]],
-  viewQuery: function ConfirmacionDeVentaComponent_Query(rf, ctx) {
-    if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵviewQuery"](_c0, 5);
-    }
-
-    if (rf & 2) {
-      let _t;
-
-      _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵloadQuery"]()) && (ctx.purchase = _t.first);
-    }
-  },
   outputs: {
     compraConfirmada: "compraConfirmada",
     compraCancelada: "compraCancelada"
   },
   decls: 5,
   vars: 5,
-  consts: [["class", "paymentBox", 4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["tipoLoteria", "5", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], [1, "paymentBox"], [3, "compra", "user", "showHeader"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["class", "confirmationButton", 3, "click", 4, "ngIf"], [1, "confirmationButton", 3, "click"], ["purchase", ""], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"], ["tipoLoteria", "5", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"]],
+  consts: [["class", "paymentBox", 4, "ngIf"], ["loader", "loteria", 3, "message", 4, "ngIf"], [3, "msg", "closeError", 4, "ngIf"], ["tipoLoteria", "5", "class", "paymentItem", 3, "resultados", "isLoteriaNacional", "close", 4, "ngIf"], [1, "paymentBox"], [3, "compra", "user", "showHeader"], [1, "buttonBox"], [1, "backButton", 3, "click"], ["class", "confirmationButton", 3, "click", 4, "ngIf"], [1, "confirmationButton", 3, "click"], ["loader", "loteria", 3, "message"], [3, "msg", "closeError"], ["tipoLoteria", "5", 1, "paymentItem", 3, "resultados", "isLoteriaNacional", "close"]],
   template: function ConfirmacionDeVentaComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtemplate"](0, ConfirmacionDeVentaComponent_div_0_Template, 8, 4, "div", 0);
@@ -10293,54 +10262,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "HomeComponent": () => (/* binding */ HomeComponent)
 /* harmony export */ });
 /* harmony import */ var C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _services_ventas_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/ventas.service */ 1987);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 1258);
-/* harmony import */ var _components_menu_box_menu_box_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/menu-box/menu-box.component */ 7404);
-
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _components_menu_box_menu_box_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/menu-box/menu-box.component */ 7404);
 
 
 
 class HomeComponent {
-  constructor(ventas, actRoute) {
-    this.ventas = ventas;
-    this.actRoute = actRoute;
+  constructor() {
     this.token = "";
-    this.actRoute.params.subscribe(params => {
-      this.token = params['token'];
-    });
   }
 
   ngOnInit() {
-    var _this = this;
-
     return (0,C_Users_angel_Proyectos_loteria_loteriaNacionalEcuador_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
       console.log("here");
-
-      if (_this.token) {
-        let data = yield _this.ventas.authUser(_this.token);
-      }
     })();
   }
 
 }
 
 HomeComponent.ɵfac = function HomeComponent_Factory(t) {
-  return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_ventas_service__WEBPACK_IMPORTED_MODULE_1__.VentasService), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.ActivatedRoute));
+  return new (t || HomeComponent)();
 };
 
-HomeComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
+HomeComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
   type: HomeComponent,
   selectors: [["app-home"]],
   decls: 1,
   vars: 0,
   template: function HomeComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "ventas-menu-box");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "ventas-menu-box");
     }
   },
-  directives: [_components_menu_box_menu_box_component__WEBPACK_IMPORTED_MODULE_2__.MenuBoxComponent],
+  directives: [_components_menu_box_menu_box_component__WEBPACK_IMPORTED_MODULE_1__.MenuBoxComponent],
   styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJob21lLmNvbXBvbmVudC5zY3NzIn0= */"]
 });
 
@@ -16730,324 +16684,6 @@ PagosService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_4__["�
   factory: PagosService.ɵfac,
   providedIn: 'root'
 });
-
-/***/ }),
-
-/***/ 1987:
-/*!***************************************************!*\
-  !*** ./src/app/ventas/services/ventas.service.ts ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "VentasService": () => (/* binding */ VentasService)
-/* harmony export */ });
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 3882);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
-
-
-
-
-class VentasService {
-    constructor(http) {
-        this.http = http;
-        this.mySource = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.source;
-    }
-    formatNumber(number) {
-        // Create our number formatter.
-        var formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        });
-        return formatter.format(number);
-    }
-    getAuthData() {
-        let data = JSON.parse(localStorage.getItem('userData'));
-        let response = {
-            user: '',
-            lotteryToken: '',
-            personaId: '',
-        };
-        if (data) {
-            let lotteryToken = data.lotteryToken;
-            let user = data.playerDocument;
-            //if (data.user_ == 'italtronicprep') user = data.user_;
-            response = {
-                lotteryToken,
-                user,
-                personaId: data.personaId,
-            };
-        }
-        return response;
-    }
-    obtenerDescuentos() {
-        return;
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append('Content-Type', 'application/json');
-        //let endpoint = "/inquiry";
-        let address = '/ventas';
-        let endpoint = '/getDescuentos';
-        let authData = this.getAuthData();
-        address = this.mySource + address + endpoint;
-        return new Promise((resolve, reject) => {
-            this.http
-                .get(address, {
-                params: {
-                    lotteryToken: authData.lotteryToken,
-                    user: authData.user,
-                },
-                headers: headers,
-            })
-                .subscribe((data) => {
-                let descuentos = data;
-                resolve(descuentos);
-            }, (error) => {
-                reject(new Error(error.error.message));
-            });
-        });
-    }
-    obtenerImagenBoleto(tipoLoteria, sorteo) {
-        let sourceBoletos = `https://ventas-api.loteria.com.ec/uploads/boletos/`;
-        return `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
-    }
-    authUser(token) {
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append('Content-Type', 'application/json');
-        let address = '/auth';
-        let endpoint = '/';
-        let body = {
-            token,
-        };
-        address = this.mySource + address + endpoint;
-        return new Promise((resolve, reject) => {
-            let data = JSON.parse(localStorage.getItem('userData'));
-            if (true) {
-                // if (!data || data.resultCode) {
-                this.http.post(address, body, { headers: headers }).subscribe((data) => {
-                    localStorage.setItem('userData', JSON.stringify(data));
-                    resolve(data);
-                }, (error) => {
-                    reject(new Error(error.error.message));
-                });
-            }
-            else {}
-        });
-    }
-    getReservaId() {
-        if (JSON.parse(localStorage.getItem('reservaId')) &&
-            JSON.parse(localStorage.getItem('reservaId')) != '') {
-            return JSON.parse(localStorage.getItem('reservaId'));
-        }
-        else {
-            return 0;
-        }
-    }
-    setReservaId(id) {
-        localStorage.setItem('reservaId', JSON.stringify(id));
-    }
-    reservarBoletos(token, boleto, tipoLoteria, reservaId) {
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append('Content-Type', 'application/json');
-        let address = '/reservas';
-        let endpoint = '/reservarBoletos';
-        address = this.mySource + address + endpoint;
-        let authData = this.getAuthData();
-        let body = {
-            lotteryToken: authData.lotteryToken,
-            user: authData.user,
-            reservaId,
-        };
-        let aux;
-        switch (tipoLoteria) {
-            case 1:
-                aux = [
-                    {
-                        combinacion: boleto.ticket.combinacion,
-                        fracciones: boleto.fracciones,
-                        sorteo: boleto.sorteo,
-                    },
-                ];
-                body['loteria'] = aux;
-                break;
-            case 2:
-                aux = [
-                    {
-                        combinacion: boleto.ticket.combinacion1,
-                        sorteo: boleto.sorteo,
-                    },
-                ];
-                body['lotto'] = aux;
-                break;
-            case 5:
-                aux = [
-                    {
-                        combinacion: boleto.ticket.combinacion1,
-                        sorteo: boleto.sorteo,
-                    },
-                ];
-                body['pozo'] = aux;
-                break;
-            case 17:
-                aux = [
-                    {
-                        combinacion: boleto.ticket.combinacion1,
-                        sorteo: boleto.sorteo,
-                    },
-                ];
-                body['pozoRevancha'] = aux;
-                break;
-            case 14:
-                aux = [
-                    {
-                        combinacion: boleto.ticket.combinacion1,
-                        combinacion2: boleto.ticket.combinacion2,
-                        fracciones: boleto.fracciones,
-                        sorteo: boleto.sorteo,
-                    },
-                ];
-                body['millonaria'] = aux;
-                break;
-            case 12:
-                aux = [
-                    {
-                        combinacion: boleto.ticket.combinacion1,
-                        sorteo: boleto.sorteo,
-                    },
-                ];
-                body['bingazo'] = aux;
-                break;
-        }
-        return new Promise((resolve, reject) => {
-            this.http.post(address, body, { headers: headers }).subscribe((data) => {
-                let response = data;
-                resolve(response);
-            }, (error) => {
-                reject(new Error(error.error.message));
-            });
-        });
-    }
-    reservarRevancha(pozo, revancha, reservaId) {
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append('Content-Type', 'application/json');
-        let address = '/reservas';
-        let endpoint = '/reservarBoletos';
-        address = this.mySource + address + endpoint;
-        let authData = this.getAuthData();
-        let body = {
-            lotteryToken: authData.lotteryToken,
-            user: authData.user,
-            reservaId,
-        };
-        let auxPozo = [
-            {
-                combinacion: pozo.ticket.combinacion1,
-                sorteo: pozo.sorteo,
-            },
-        ];
-        body['pozo'] = auxPozo;
-        let auxRevancha = [
-            {
-                combinacion: revancha.ticket.combinacion1,
-                sorteo: revancha.sorteo,
-            },
-        ];
-        body['pozoRevancha'] = auxRevancha;
-        return new Promise((resolve, reject) => {
-            this.http.post(address, body, { headers: headers }).subscribe((data) => {
-                let response = data;
-                resolve(response);
-            }, (error) => {
-                reject(new Error(error.error.message));
-            });
-        });
-    }
-    eliminarBoletosDeReserva(token, boleto, sorteo, fracciones, tipoLoteria, reservaId) {
-        let headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-        headers = headers.append('Content-Type', 'application/json');
-        let address = '/reservas';
-        let endpoint = '/eliminarBoletosDeReserva';
-        address = this.mySource + address + endpoint;
-        let authData = this.getAuthData();
-        let body = {
-            lotteryToken: authData.lotteryToken,
-            user: authData.user,
-            reservaId,
-        };
-        let aux;
-        switch (tipoLoteria) {
-            case 1:
-                aux = [
-                    {
-                        combinacion: boleto.combinacion,
-                        fracciones,
-                        sorteo: sorteo,
-                    },
-                ];
-                body['loteria'] = aux;
-                break;
-            case 2:
-                aux = [
-                    {
-                        combinacion: boleto.combinacion1,
-                        sorteo: sorteo,
-                    },
-                ];
-                body['lotto'] = aux;
-                break;
-            case 5:
-                aux = [
-                    {
-                        combinacion: boleto.combinacion1,
-                        sorteo: sorteo,
-                    },
-                ];
-                body['pozo'] = aux;
-                break;
-            case 12:
-                aux = [
-                    {
-                        combinacion: boleto.combinacion1,
-                        sorteo: sorteo,
-                    },
-                ];
-                body['bingazo'] = aux;
-                break;
-            case 17:
-                aux = [
-                    {
-                        combinacion: boleto.combinacion1,
-                        sorteo: sorteo,
-                    },
-                ];
-                body['pozoRevancha'] = aux;
-                break;
-            case 14:
-                aux = [
-                    {
-                        combinacion: boleto.combinacion1,
-                        combinacion2: boleto.combinacion2,
-                        fracciones,
-                        sorteo: sorteo,
-                    },
-                ];
-                body['millonaria'] = aux;
-                break;
-        }
-        return new Promise((resolve, reject) => {
-            this.http.post(address, body, { headers: headers }).subscribe((data) => {
-                let response = data;
-                resolve(response);
-            }, (error) => {
-                reject(new Error(error.error.message));
-            });
-        });
-    }
-}
-VentasService.ɵfac = function VentasService_Factory(t) { return new (t || VentasService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient)); };
-VentasService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: VentasService, factory: VentasService.ɵfac, providedIn: 'root' });
-
 
 /***/ }),
 

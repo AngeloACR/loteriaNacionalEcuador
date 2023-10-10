@@ -1,16 +1,22 @@
-import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from "@angular/core";
-import { VentasService } from "../../services/ventas.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { PagosService } from "../../services/pagos.service";
-import { CarritoService } from "../../services/carrito.service";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  ViewChild,
+} from '@angular/core';
+import { VentasService } from '../../services/ventas.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PagosService } from '../../services/pagos.service';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-confirmacion-de-venta',
   templateUrl: './confirmacion-de-venta.component.html',
-  styleUrls: ['./confirmacion-de-venta.component.scss']
+  styleUrls: ['./confirmacion-de-venta.component.scss'],
 })
 export class ConfirmacionDeVentaComponent implements OnInit {
-
   @Output() compraConfirmada = new EventEmitter();
   @Output() compraCancelada = new EventEmitter();
   codigoPromocional: any;
@@ -28,7 +34,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
   ticketsLoteria: any;
   ticketsPozoRevancha: any;
   ticketsMillonaria: any;
-  ticketsBingazo: any = {}
+  ticketsBingazo: any = {};
   compra: any = {};
   confirmacionDeCompra: boolean = false;
   boletosListos: boolean = false;
@@ -38,23 +44,21 @@ export class ConfirmacionDeVentaComponent implements OnInit {
     private pagos: PagosService,
     private cart: CarritoService,
     private actRoute: ActivatedRoute,
-    private router: Router,
-
+    private router: Router
   ) {
     this.actRoute.params.subscribe((params) => {
       this.token! = params['token'];
     });
-
   }
 
   async ngOnInit() {
-    console.log("a")
+    console.log('a');
     this.loadingMessage = 'Recopilando los datos de la compra';
     this.isLoading = true;
 
-    this.user = this.ventas.getAuthData().user
+    this.user = this.ventas.getAuthData().user;
     await this.getCarritoTickets();
-    console.log("b")
+    console.log('b');
 
     let loteriaAux = this.ticketsLoteria;
     let loteria = [];
@@ -113,9 +117,9 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       aux['mascota'] = pozoRevanchaAux[id].ticket.mascota;
       aux['sorteo'] = pozoRevanchaAux[id].sorteo.sorteo;
       aux['subtotal'] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(pozoRevanchaAux[id].subtotalConDesc).toFixed(
-        2
-      );
+      aux['subtotalConDesc'] = parseFloat(
+        pozoRevanchaAux[id].subtotalConDesc
+      ).toFixed(2);
       aux['tieneDescuento'] = pozoRevanchaAux[id].tieneDescuento;
       aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
       pozoRevancha.push(aux);
@@ -145,9 +149,9 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       aux['fruta'] = bingazoAux[id].ticket.fruta;
       aux['sorteo'] = bingazoAux[id].sorteo.sorteo;
       aux['subtotal'] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(bingazoAux[id].subtotalConDesc).toFixed(
-        2
-      );
+      aux['subtotalConDesc'] = parseFloat(
+        bingazoAux[id].subtotalConDesc
+      ).toFixed(2);
       aux['tieneDescuento'] = bingazoAux[id].tieneDescuento;
       aux['fecha'] = bingazoAux[id].sorteo.fecha;
       bingazo.push(aux);
@@ -165,7 +169,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       amount,
       amountConDesc,
     };
-    console.log(this.compra)
+    console.log(this.compra);
 
     this.boletosListos = true;
     this.isLoading = false;
@@ -185,8 +189,9 @@ export class ConfirmacionDeVentaComponent implements OnInit {
     try {
       this.loadingMessage = 'Espera mientras procesamos tu compra';
       this.isLoading = true;
-      let hasBalance = await this.pagos.hasBalance(0, this.token);
+      this.disabled = true;
 
+      let hasBalance = await this.pagos.hasBalance(0, this.token);
       if (hasBalance) {
         let reservaId = this.ventas.getReservaId();
         let cartValidation = await this.cart.validarCarrito(reservaId);
@@ -220,17 +225,17 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       }
     } catch (e: any) {
       this.isLoading = false;
-      this.purchase.habilitarBoton();
+      this.habilitarBoton();
       console.log(e.message);
       let errorMessage = e.message;
       this.openError(errorMessage);
     }
   }
-  @ViewChild('purchase') purchase: any;
   async abrirFinalizar(idVenta: string) {
     await this.cart.borrarCarrito();
-    this.router.navigateByUrl(`/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`);
-
+    this.router.navigateByUrl(
+      `/compra_tus_juegos/venta_finalizada/${this.token!}/${idVenta!}`
+    );
   }
   recargaDeSaldoMessage?: string;
   recargarSaldo(message: any) {
@@ -257,7 +262,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
 
   cancelarCompra() {
     this.compraCancelada.emit(
-      "La compra no se pudo procesar, por favor intente mas tarde"
+      'La compra no se pudo procesar, por favor intente mas tarde'
     );
   }
 

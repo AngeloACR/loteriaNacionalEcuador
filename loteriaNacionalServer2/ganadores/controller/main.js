@@ -72,13 +72,13 @@ const ganadoresController = {
         (ganador) =>
           ganador.tipoPremio == "DIN" &&
           !ganador.acreditado &&
-          !item.codigoPremio.includes("INSTANTANEA")
+          !ganador.codigoPremio.includes("INSTANTANEA")
       );
       let premiosEspecie = ganadores.filter(
         (ganador) =>
           ganador.tipoPremio == "ESP" &&
           !ganador.acreditado &&
-          !item.codigoPremio.includes("INSTANTANEA")
+          !ganador.codigoPremio.includes("INSTANTANEA")
       );
       for (let i = 0; i < premiosMetalicos.length; i++) {
         const ganador = ganadores[i];
@@ -168,13 +168,13 @@ const ganadoresController = {
         (ganador) =>
           ganador.tipoPremio == "DIN" &&
           !ganador.acreditado &&
-          !item.codigoPremio.includes("INSTANTANEA")
+          !ganador.codigoPremio.includes("INSTANTANEA")
       );
       let premiosEspecie = ganadores.filter(
         (ganador) =>
           ganador.tipoPremio == "ESP" &&
           !ganador.acreditado &&
-          !item.codigoPremio.includes("INSTANTANEA")
+          !ganador.codigoPremio.includes("INSTANTANEA")
       );
       for (let i = 0; i < premiosEspecie.length; i++) {
         const ganador = ganadores[i];
@@ -260,13 +260,13 @@ const ganadoresController = {
         (ganador) =>
           ganador.tipoPremio == "DIN" &&
           !ganador.acreditado &&
-          item.codigoPremio.includes("INSTANTANEA")
+          ganador.codigoPremio.includes("INSTANTANEA")
       );
       let premiosEspecie = ganadores.filter(
         (ganador) =>
           ganador.tipoPremio == "ESP" &&
           !ganador.acreditado &&
-          item.codigoPremio.includes("INSTANTANEA")
+          ganador.codigoPremio.includes("INSTANTANEA")
       );
       for (let i = 0; i < premiosEspecie.length; i++) {
         const ganador = ganadores[i];
