@@ -1,7 +1,8 @@
-<div class="paymentBox">
+<div class="paymentBox" *ngIf="boletosListos">
   <app-descripcion-de-venta
     [compra]="compra"
     [user]="user"
+    [showHeader]="false"
   ></app-descripcion-de-venta>
 
   <p>Seguro que deseas efectuar la compra?</p>
@@ -11,7 +12,6 @@
       class="confirmationButton"
       *ngIf="!disabled"
       (click)="confirmarCompra()"
-      #purchase
     >
       Confirmar compra
     </button>
@@ -34,9 +34,9 @@
   *ngIf="isValidationError"
 ></app-error>
 <app-instantaneas
-  (close)="abrirFinalizar(idVenta)"
+  (close)="abrirFinalizar()"
   [resultados]="instantaneas"
-  tipoLoteria="5"
+  tipoLoteria="1"
   [isLoteriaNacional]="true"
   class="paymentItem"
   *ngIf="isInstantaneas"

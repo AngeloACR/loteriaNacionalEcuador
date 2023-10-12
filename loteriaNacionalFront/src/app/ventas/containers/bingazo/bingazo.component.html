@@ -13,82 +13,99 @@
   <div class="ventasBox">
     <div class="contendor_seleccion">
       <div class="contenedor_select_animales">
-        <h3>ESCOGE UNA FRUTA O REINTEGRO FAVORITO</h3>
-        <div class="options">
-          <div
-            class="option"
-            *ngFor="let fruta of seleccionFrutas; let i = index"
-          >
-            <input
-              (click)="agregar(fruta, i)"
-              type="checkbox"
-              [checked]="fruta.status"
-              name="nombre"
-              [value]="fruta"
-              id="nombre-{{ fruta.nombre }}"
-            />
-            <label for="nombre-{{ fruta.nombre }}">
-              <img [src]="fruta.ruta" [alt]="fruta.nombre" />
-            </label>
-          </div>
-        </div>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle expanded #figureSelector>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h3>ESCOGE UNA FRUTA O REINTEGRO FAVORITO</h3>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="options">
+              <div
+                class="option"
+                *ngFor="
+                  let fruta of seleccionFrutas;
+                  let i = index;
+                  trackBy: trackBy
+                "
+              >
+                <input
+                  type="checkbox"
+                  (click)="agregar(fruta, i)"
+                  name="nombre"
+                  [value]="fruta.status"
+                  [id]="fruta.nombre"
+                />
+                <label [for]="fruta.nombre">
+                  <img [src]="fruta.ruta" [alt]="fruta.nombre" loading="lazy" />
+                </label>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
       <div class="selectBox">
-        <button class="activado" (click)="buscarNumero()">
+        <button
+          class="activado"
+          (click)="buscarNumero()"
+          *ngIf="buscarCartones"
+        >
           BUSCAR CARTONES
         </button>
+        <button
+          class="activado"
+          (click)="openSelector()"
+          *ngIf="!buscarCartones"
+        >
+          CAMBIAR FRUTA O REINTEGRO
+        </button>
       </div>
-      <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
-        <table *ngIf="showNumeros">
-          <tbody>
-            <tr
-              *ngFor="
-                let ticket of ticketsDisponibles
-                  | paginacion : page_size : page_number;
-                let i = index
-              "
-            >
-              <td>
-                <div class="bingazoBox">
-                  <input
-                    type="checkbox"
-                    [name]="'bingazo' + i"
-                    id=""
-                    [checked]="ticket.status"
-                    (click)="
-                      seleccionarTicket(page_size * (page_number - 1) + i)
-                    "
+      <div *ngIf="showNumeros" class="ticketsBox">
+        <div
+          class="ticketBox"
+          *ngFor="
+            let ticket of ticketsDisponibles
+              | paginacion : page_size : page_number;
+            let i = index
+          "
+        >
+          <div class="bingazoBox">
+            <div class="contenedor_seleccion_numero">
+              <div class="imagen_animal">
+                <img [src]="obtenerFruta(ticket.fruta)" alt="" />
+                <p>Nº DE CARTÓN: {{ ticket.combinacion1 }}</p>
+              </div>
+              <div class="numeros">
+                <ng-container *ngFor="let numero of ticket.display">
+                  <p *ngIf="numero != '00'">
+                    {{ numero }}
+                  </p>
+                  <img
+                    *ngIf="numero == '00'"
+                    src="assets/guachito.png"
+                    alt=""
                   />
+                </ng-container>
+              </div>
+            </div>
+          </div>
 
-                  <div class="contenedor_seleccion_numero">
-                    <div class="imagen_animal">
-                      <img [src]="obtenerFruta(ticket.fruta)" alt="" />
-                      <p>Nº DE CARTÓN: {{ ticket.combinacion1 }}</p>
-                    </div>
-                    <div class="numeros">
-                      <ng-container *ngFor="let numero of ticket.display">
-                        <p *ngIf="numero != '00'">
-                          {{ numero }}
-                        </p>
-                        <img
-                          *ngIf="numero == '00'"
-                          src="assets/guachito.png"
-                          alt=""
-                        />
-                      </ng-container>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- <app-seleccion-bingazo [tickets]="ticketMascota"></app-seleccion-bingazo> -->
-              </td>
-            </tr>
-          </tbody>
-          <hr size="2px" color="gray" />
-        </table>
-
+          <div class="buttonsBox">
+            <button
+              (click)="deleteBingazoTicket(ticket.identificador)"
+              [disabled]="!ticket.status"
+            >
+              LIMPIAR
+            </button>
+            <button
+              [disabled]="ticket.status"
+              (click)="seleccionarTicket(page_size * (page_number - 1) + i)"
+            >
+              AGREGAR AL CARRITO
+            </button>
+          </div>
+        </div>
         <div class="contenedor_botones">
-          <!-- showFirstLastButtons -->
           <mat-paginator
             style-paginator
             [length]="ticketsDisponibles.length"
@@ -98,15 +115,6 @@
           </mat-paginator>
         </div>
       </div>
-
-      <!-- <div>
-      Page Actual: {{pageActual}}
-    </div> -->
-      <!-- 
-    <div class="boton_boleto">
-      <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-
-    </div> -->
     </div>
 
     <app-carrito
@@ -148,21 +156,7 @@
   [ticketsBingazo]="ticketsBingazo"
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="bingazo"
-></app-floating-menu
-><!-- 
-<app-floating-menu
-  (emitirCompra)="comprar()"
-  (eliminarTodo)="deleteAllTickets()"
-  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-  (deleteLottoTicket)="deleteLottoTicket($event)"
-  (deletePozoTicket)="deletePozoTicket($event)"
-  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-  [ticketsLoteria]="ticketsLoteria"
-  [ticketsLotto]="ticketsLotto"
-  [ticketsPozo]="ticketsPozo"
-  [total]="total"
-  tipoLoteria="bingazo"
-></app-floating-menu> -->
+></app-floating-menu>
 <app-loader
   loader="bingazo"
   [message]="loadingMessage!"
@@ -179,40 +173,10 @@
   (closeError)="closeValidationError()"
   *ngIf="isValidationError"
 ></app-error>
-<app-instantaneas
-  (close)="abrirFinalizar(idVenta)"
-  [resultados]="instantaneas"
-  tipoLoteria="5"
-  [isLoteriaNacional]="true"
-  class="paymentItem"
-  *ngIf="isInstantaneas"
-></app-instantaneas>
 <app-saldo-insuficiente
   [message]="recargaDeSaldoMessage"
-  (volver)="dismissCompras()"
+  (volver)="saldoInsuficiente = false"
   (recarga)="irARecarga()"
   class="paymentItem"
   *ngIf="saldoInsuficiente"
 ></app-saldo-insuficiente>
-<app-venta-cancelada
-  class="paymentItem"
-  [message]="cancelMessage"
-  *ngIf="compraCancelada"
-></app-venta-cancelada>
-
-<app-venta-finalizada
-  (volver)="finalizarCompra()"
-  [compra]="detalleCompra"
-  [codigosPromocionales]="codigoPromocional"
-  class="paymentItem"
-  *ngIf="compraFinalizada"
-></app-venta-finalizada>
-<app-confirmacion-de-venta
-  (compraConfirmada)="confirmarCompra()"
-  (compraCancelada)="cancelarCompra()"
-  (comprarDespues)="dismissCompras()"
-  [compra]="detalleCompra"
-  class="paymentItem"
-  #purchase
-  *ngIf="confirmacionDeCompra"
-></app-confirmacion-de-venta>

@@ -6,7 +6,7 @@ const Premios = require("../models/premio");
 const Master = require("../models/master");
 const UltimoResultado = require("../models/ultimoResultado");
 const Sorteos = require("../models/sorteo");
-const config = require("../../environments/production");
+const config = require("../../environments/test");
 
 const { sorteosBingazoLogger } = require("../logging");
 
@@ -154,11 +154,17 @@ const mainController = {
       );
 
       let combinaciones = combinacionesAux.map((element) => {
+        let aux = element.Num2.split(",");
+        let display = [];
+        for (let i = 0; i < aux.length; i = i + 5) {
+          display.push(aux.slice(i, i + 5));
+        }
+        display = display.map((_, colIndex) => display.map((row) => row[colIndex])).flat();
         let combinacion = {
           fruta: element.Fig,
           combinacion1: element.Num,
           combinacion2: element.Num2,
-          display: element.Num2.split(","),
+          display,
           status: false,
           identificador: Math.random(),
         };

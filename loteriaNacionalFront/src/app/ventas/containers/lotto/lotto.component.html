@@ -91,60 +91,55 @@
         Si quieres cambiar tu número, ingrésalo nuevamente y haz click en
         "Buscar número"
       </p>
-      <div *ngIf="showNumeros" class="contenedor_numeros_suerte">
-        <table>
-          <tbody>
-            <tr
-              *ngFor="
-                let ticket of ticketsDisponibles
-                  | paginacion : page_size : page_number;
-                let i = index
-              "
+      <div *ngIf="showNumeros" class="ticketsBox">
+        <div
+          class="ticketBox"
+          *ngFor="
+            let ticket of ticketsDisponibles
+              | paginacion : page_size : page_number;
+            let i = index
+          "
+        >
+          <img [src]="boleto" alt="" />
+          <div *ngIf="sorteoLunes" class="sorteoLunes">
+            <p class="combinacion1">{{ ticket!.combinacion1 }}</p>
+            <p class="combinacion3">{{ ticket!.combinacion3 }}</p>
+            <p class="combinacion2">{{ ticket!.combinacion2 }}</p>
+            <p class="combinacion4">{{ ticket!.combinacion4 }}</p>
+          </div>
+          <div *ngIf="sorteoJueves" class="sorteoJueves">
+            <p class="combinacion1">{{ ticket!.combinacion1 }}</p>
+            <p class="combinacion3">{{ ticket!.combinacion3 }}</p>
+            <p class="combinacion2">{{ ticket!.combinacion2 }}</p>
+            <p class="combinacion4">{{ ticket!.combinacion4 }}</p>
+
+            <img
+              class="combinacion5"
+              [src]="obtenerAntojito(ticket!.combinacion5)"
+              alt=""
+            />
+          </div>
+          <div *ngIf="otrosSorteos" class="otrosSorteos">
+            <p class="combinacion1">{{ ticket!.combinacion1 }}</p>
+            <p class="combinacion2">{{ ticket!.combinacion2 }}</p>
+          </div>
+ 
+
+          <div class="buttonsBox">
+            <button
+              (click)="deleteLottoTicket(ticket.identificador)"
+              [disabled]="!ticket.status"
             >
-              <td>
-                <div class="contenedor">
-                  <input
-                    type="checkbox"
-                    [checked]="ticket.status"
-                    (click)="
-                      seleccionarTicket(page_size! * (page_number! - 1) + i)
-                    "
-                  />
-                  <div class="contenedor_numeros">
-                    <!-- <p *ngFor="let numero of ticket.display">{{ numero }}</p> -->
-                    <p>{{ ticket!.combinacion1 }}</p>
-                  </div>
-                  <hr />
-                  <div class="contenedor_fracciones">
-                    <p *ngIf="ticket!.combinacion3 != ''">
-                      {{ sorteoSeleccionado!.combinacion3 }}:
-                      <span>{{ ticket!.combinacion3 }}</span>
-                    </p>
-                    <p *ngIf="ticket!.combinacion2 != ''">
-                      {{ sorteoSeleccionado!.combinacion2 }}:
-                      <span>{{ ticket!.combinacion2 }}</span>
-                    </p>
-                    <p *ngIf="ticket!.combinacion4 != ''">
-                      {{ sorteoSeleccionado!.combinacion4 }}:
-                      <span>{{ ticket!.combinacion4 }}</span>
-                    </p>
-                    <p
-                      *ngIf="ticket!.combinacion5 && ticket!.combinacion5 != ''"
-                    >
-                      {{ sorteoSeleccionado!.combinacion5 }}:
-                      <img
-                        [src]="obtenerAntojito(ticket!.combinacion5)"
-                        alt=""
-                      />
-                    </p>
-                  </div>
-                </div>
-                <!-- <app-seleccion-lotto [tickets]="ticket"></app-seleccion-lotto> -->
-              </td>
-            </tr>
-          </tbody>
-          <hr size="2px" color="gray" />
-        </table>
+              LIMPIAR
+            </button>
+            <button
+              [disabled]="ticket.status"
+              (click)="seleccionarTicket(page_size! * (page_number! - 1) + i)"
+            >
+              AGREGAR AL CARRITO
+            </button>
+          </div>
+        </div>
 
         <div class="contenedor_botones">
           <mat-paginator
@@ -156,10 +151,6 @@
           </mat-paginator>
         </div>
       </div>
-      <!-- 
-    <div class="boton_boleto"> <button (click)="abrirResumen()">RESUMEN DE BOLETOS</button>
-
-    </div> -->
     </div>
     <app-carrito
       class="ticketScroller"
@@ -201,20 +192,7 @@
   [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="lotto"
 ></app-floating-menu>
-<!-- <app-floating-menu
-  (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
-  (deleteLottoTicket)="deleteLottoTicket($event)"
-  (deletePozoTicket)="deletePozoTicket($event)"
-  (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-  (emitirCompra)="comprar()"
-  (eliminarTodo)="deleteAllTickets()"
-  [ticketsLoteria]="ticketsLoteria"
-  [ticketsLotto]="ticketsLotto"
-  [ticketsPozo]="ticketsPozo"
-  [total]="total"
-  tipoLoteria="lotto"
-></app-floating-menu>
- --><app-loader
+<app-loader
   loader="lotto"
   [message]="loadingMessage!"
   *ngIf="isLoading"
@@ -231,39 +209,10 @@
   *ngIf="isValidationError"
 ></app-error>
 
-<app-confirmacion-de-venta
-  (compraConfirmada)="confirmarCompra()"
-  (compraCancelada)="cancelarCompra()"
-  (comprarDespues)="dismissCompras()"
-  [compra]="detalleCompra"
-  #purchase
-  class="paymentItem"
-  *ngIf="confirmacionDeCompra"
-></app-confirmacion-de-venta>
-<app-instantaneas
-  (close)="abrirFinalizar(idVenta)"
-  [resultados]="instantaneas"
-  tipoLoteria="2"
-  [isLoteriaNacional]="true"
-  class="paymentItem"
-  *ngIf="isInstantaneas"
-></app-instantaneas>
-<app-venta-finalizada
-  (volver)="finalizarCompra()"
-  [compra]="detalleCompra"
-  [codigosPromocionales]="codigoPromocional"
-  class="paymentItem"
-  *ngIf="compraFinalizada"
-></app-venta-finalizada>
 <app-saldo-insuficiente
   [message]="recargaDeSaldoMessage"
-  (volver)="dismissCompras()"
+  (volver)="saldoInsuficiente = false"
   (recarga)="irARecarga()"
   class="paymentItem"
   *ngIf="saldoInsuficiente"
 ></app-saldo-insuficiente>
-<app-venta-cancelada
-  class="paymentItem"
-  [message]="cancelMessage"
-  *ngIf="compraCancelada"
-></app-venta-cancelada>

@@ -55,7 +55,6 @@ export class ConsultaService {
       let fechaSorteo = new Date(
         sorteo.fecha.split(' ')[0].split('/').reverse().join('-')
       );
-      console.log(minDate.getTime(), fechaSorteo.getTime());
       return fechaSorteo.getTime() >= minDate.getTime();
     });
   }
@@ -151,7 +150,6 @@ export class ConsultaService {
 
   obtenerMascota(mascota: any) {
     let mascotaPath;
-    console.log(mascota);
     switch (mascota) {
       case '04':
         mascotaPath = 'assets/mascotas/Delfin.png';

@@ -12,6 +12,7 @@ export class DescripcionDeVentaComponent implements OnInit {
   @Input() compra: any;
   @Input() user: any;
   @Input() resumen: boolean = true;
+  @Input() showHeader: boolean = true;
   @Input() ticketId: any;
   @Input() codigosPromocionales: any;
 
@@ -46,7 +47,6 @@ export class DescripcionDeVentaComponent implements OnInit {
     return formatter.format(number);
   }
   filtrarBingazo(combinacion: any) {
-    console.log(combinacion)
     return combinacion.replaceAll(",", ",\ ")
   }
 }

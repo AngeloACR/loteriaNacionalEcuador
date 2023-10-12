@@ -38,6 +38,7 @@ export class VentasService {
     let response = {
       user: '',
       lotteryToken: '',
+      personaId: '',
     };
     if (data) {
       let lotteryToken = data.lotteryToken;
@@ -46,11 +47,21 @@ export class VentasService {
       response = {
         lotteryToken,
         user,
+        personaId: data.personaId,
       };
     }
     return response;
   }
 
+  preloadFigures(figures: any) {
+    let images = []
+    images = figures.map((img: any) => {
+      let image = new Image()
+      image.src = img.ruta;
+      return image
+    });
+    return images;
+  }
   obtenerDescuentos() {
     return;
     let headers = new HttpHeaders();
@@ -84,11 +95,8 @@ export class VentasService {
   }
 
   obtenerImagenBoleto(tipoLoteria: any, sorteo: any) {
-    let sourceBoletos = `${this.mySource}/uploads/boletos/`;
-    return new Promise<string>((resolve, reject) => {
-      let boletoAddress = `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
-      resolve(boletoAddress);
-    });
+    let sourceBoletos = `https://ventas-api.loteria.com.ec/uploads/boletos/`;
+    return `${sourceBoletos}B${tipoLoteria}${sorteo}.png`;
   }
 
   authUser(token: string): Promise<any> {

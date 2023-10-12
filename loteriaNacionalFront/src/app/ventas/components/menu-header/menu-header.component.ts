@@ -65,7 +65,6 @@ export class MenuHeaderComponent implements OnInit {
 
 
   setSelected(url: string) {
-    console.log(url);
     let index = ['loteria', 'lotto', 'pozo', 'millonaria', 'bingazo'].indexOf(url);
     if (index != -1) this.selectedClass[index].selected = true;
   }

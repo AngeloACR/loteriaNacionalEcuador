@@ -137,12 +137,12 @@ export class CarritoComponent implements OnInit {
   }
 
   deleteLoteria(ticket: any) {
-    this.deleteLoteriaTicket.emit(ticket);
+    this.deleteLoteriaTicket.emit(ticket.identificador);
   }
 
 
   deleteBingazo(ticket: any) {
-    this.deleteBingazoTicket.emit(ticket);
+    this.deleteBingazoTicket.emit(ticket.identificador);
   }
 
   deleteFraccionLoteria(ticket: any, fraccion: any) {
@@ -161,17 +161,17 @@ export class CarritoComponent implements OnInit {
   }
 
   deleteLotto(ticket: any) {
-    this.deleteLottoTicket.emit(ticket);
+    this.deleteLottoTicket.emit(ticket.identificador);
   }
 
   deleteMillonaria(ticket: any) {
-    this.deleteMillonariaTicket.emit(ticket);
+    this.deleteMillonariaTicket.emit(ticket.identificador);
   }
   deletePozo(ticket: any) {
-    this.deletePozoTicket.emit(ticket);
+    this.deletePozoTicket.emit(ticket.identificador);
   }
   deletePozoRevancha(ticket: any) {
-    this.deletePozoRevanchaTicket.emit(ticket);
+    this.deletePozoRevanchaTicket.emit(ticket.identificador);
   }
 
   getTotal() {

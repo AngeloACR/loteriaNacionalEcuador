@@ -55,7 +55,6 @@ export class ConsultaService {
       let fechaSorteo = new Date(
         sorteo.fecha.split(' ')[0].split('/').reverse().join('-')
       );
-      console.log(minDate.getTime(), fechaSorteo.getTime());
       return fechaSorteo.getTime() >= minDate.getTime();
     });
   }

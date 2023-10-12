@@ -21,7 +21,6 @@ export class UltimoResultadoComponent implements OnInit {
       this.ticketNumbers =
         data.ultimoResultadoPozo.combinacion2.match(/.{1,2}/g);
       this.mascota = data.mascota;
-      console.log();
       this.mascotaPath = this.consulta.obtenerMascota(this.mascota);
 
       this.ticketGanador = {

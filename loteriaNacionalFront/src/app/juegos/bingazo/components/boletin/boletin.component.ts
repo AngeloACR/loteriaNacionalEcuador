@@ -46,7 +46,6 @@ export class BoletinComponent implements OnInit {
   }
 
   handleImgError() {
-    console.log('Img not found');
     this.imgNotFound = true;
   }
 

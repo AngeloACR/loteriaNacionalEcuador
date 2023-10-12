@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VentasService } from '../../services/ventas.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  token: string = "";
+  constructor() {
 
-  constructor() { }
+  }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
   }
 
 }

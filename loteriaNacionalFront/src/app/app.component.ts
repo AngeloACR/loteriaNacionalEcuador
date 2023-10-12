@@ -6,8 +6,7 @@ import {
   NavigationEnd,
   NavigationError,
 } from '@angular/router';
-import { ConsultasService } from './consultas/services/consultas.service';
-import { AdministracionService } from './administracion/services/administracion.service';
+import { VentasService } from './ventas/services/ventas.service';
 
 @Component({
   selector: 'app-root',
@@ -29,8 +28,7 @@ export class AppComponent implements OnInit {
   }
   constructor(
     private router: Router,
-    private consultas: ConsultasService,
-    private admin: AdministracionService
+    private ventas: VentasService
   ) {
     this.isDetail = false;
     this.router.events.subscribe(async (event: Event) => {
@@ -39,7 +37,7 @@ export class AppComponent implements OnInit {
 
         if (data.includes('inicio')) {
           this.showHeader = false;
-          this.showPromo =false;
+          this.showPromo = false;
         }
         if (
           data.includes('compra_tus_juegos?token') ||
@@ -47,6 +45,7 @@ export class AppComponent implements OnInit {
         ) {
           let url = data.split('?token=')[0];
           this.token = data.split('?token=')[1];
+          await this.ventas.authUser(this.token);
           this.router.navigateByUrl(`${url}/${this.token}`);
         }
 
@@ -71,7 +70,6 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     localStorage.setItem('top', "0");
     localStorage.setItem('screen', "0");
-    await this.consultas.recuperarUltimosResultados();
   }
   closePromo() {
     this.showPromo = false;

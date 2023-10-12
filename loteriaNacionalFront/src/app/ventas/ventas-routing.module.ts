@@ -8,7 +8,7 @@ import { MillonariaComponent } from './containers/millonaria/millonaria.componen
 import { PozoComponent } from './containers/pozo/pozo.component';
 import { VentasComponent } from './ventas.component';
 import { VentaFinalizadaComponent } from './containers/venta-finalizada/venta-finalizada.component';
-import { ConfirmacionDeVentaComponent } from './components/confirmacion-de-venta/confirmacion-de-venta.component';
+import { ConfirmacionDeVentaComponent } from './containers/confirmacion-de-venta/confirmacion-de-venta.component';
 import { BingazoComponent } from './containers/bingazo/bingazo.component';
 
 const routes: Routes = [
