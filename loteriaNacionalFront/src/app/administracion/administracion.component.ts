@@ -34,22 +34,18 @@ export class AdministracionComponent implements OnInit {
     let response = await this.administracionService.deletePopupFiles(image);
     this.isLoading = false;
     this.getFiles();
-    console.log(response);
   }
   async getFiles() {
     this.isLoading = true;
 
     this.files = await this.administracionService.getPopupFiles();
-    console.log(this.files);
     this.isLoading = false;
   }
   async setImage(event: any, image: string) {
     this.isLoading = true;
     let aux = image.split('/');
     image = aux[aux.length - 1];
-    console.log(image);
     let response = await this.administracionService.setPopupImage(image);
-    console.log(response);
     this.isLoading = false;
   }
 

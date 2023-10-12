@@ -53,6 +53,15 @@ export class VentasService {
     return response;
   }
 
+  preloadFigures(figures: any) {
+    let images = []
+    images = figures.map((img: any) => {
+      let image = new Image()
+      image.src = img.ruta;
+      return image
+    });
+    return images;
+  }
   obtenerDescuentos() {
     return;
     let headers = new HttpHeaders();

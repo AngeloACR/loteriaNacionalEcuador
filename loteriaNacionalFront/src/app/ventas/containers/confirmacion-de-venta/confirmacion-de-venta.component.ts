@@ -52,13 +52,11 @@ export class ConfirmacionDeVentaComponent implements OnInit {
   }
 
   async ngOnInit() {
-    console.log('a');
     this.loadingMessage = 'Recopilando los datos de la compra';
     this.isLoading = true;
 
     this.user = this.ventas.getAuthData().user;
     await this.getCarritoTickets();
-    console.log('b');
 
     let loteriaAux = this.ticketsLoteria;
     let loteria = [];
@@ -169,7 +167,6 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       amount,
       amountConDesc,
     };
-    console.log(this.compra);
 
     this.boletosListos = true;
     this.isLoading = false;
@@ -201,7 +198,6 @@ export class ConfirmacionDeVentaComponent implements OnInit {
             reservaId
           );
           this.isLoading = false;
-          console.log(response);
           if (response.status) {
             this.idVenta = response.idVenta;
             this.codigoPromocional = response.codigoPromocional;

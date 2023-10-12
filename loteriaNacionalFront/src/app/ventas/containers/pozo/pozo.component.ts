@@ -347,7 +347,6 @@ export class PozoComponent implements OnInit {
   boletoRevancha: string = "";
   sorteoSeleccionado?: sorteo;
   procesaEmitir(sorteo: any) {
-    console.log(sorteo);
     this.sorteoSeleccionado = sorteo;
 
     this.boleto = this.ventas.obtenerImagenBoleto(

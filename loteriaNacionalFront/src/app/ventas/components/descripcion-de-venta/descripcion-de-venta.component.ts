@@ -47,7 +47,6 @@ export class DescripcionDeVentaComponent implements OnInit {
     return formatter.format(number);
   }
   filtrarBingazo(combinacion: any) {
-    console.log(combinacion)
     return combinacion.replaceAll(",", ",\ ")
   }
 }

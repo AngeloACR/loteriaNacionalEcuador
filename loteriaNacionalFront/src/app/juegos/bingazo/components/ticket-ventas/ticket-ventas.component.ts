@@ -33,9 +33,6 @@ export class TicketVentasComponent implements OnInit {
       this.ticket!.fruta
     );
   }
-  obtenerFruta(fruta: any) {
-    return this.lotteryService.obtenerFruta(fruta);
-  }
   deleteTicket() {
     this.delete.emit()
   }

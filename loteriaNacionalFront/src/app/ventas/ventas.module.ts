@@ -62,9 +62,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BotonDeJuegoComponent,
     VentaCanceladaComponent,
     SaldoInsuficienteComponent,
-    BuscarNumeroDirective,
-    AgregarTicketDirective,
-    BorrarTicketDirective
+    //BuscarNumeroDirective,
+    //AgregarTicketDirective,
+    //BorrarTicketDirective
 
   ],
   exports: [
@@ -82,8 +82,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     PozoComponent,
     LottoComponent,
     MillonariaComponent,
-    BuscarNumeroDirective,
-    AgregarTicketDirective,
+    //BuscarNumeroDirective,
+    //AgregarTicketDirective,
   ],
   imports: [
     CommonModule,

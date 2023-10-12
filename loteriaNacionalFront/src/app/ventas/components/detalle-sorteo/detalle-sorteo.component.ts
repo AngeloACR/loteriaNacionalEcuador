@@ -121,7 +121,6 @@ export class DetalleSorteoComponent implements OnInit {
     );
     let drawDate = new Date(anio, mes, dia, horas, minutos);
     let today = new Date();
-    console.log(drawDate, today);
     let difference = Math.floor(
       Math.abs(drawDate.getTime() - today.getTime()) / 36e5
     );

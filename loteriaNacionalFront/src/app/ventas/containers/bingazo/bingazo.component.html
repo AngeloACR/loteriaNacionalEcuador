@@ -23,17 +23,21 @@
             <div class="options">
               <div
                 class="option"
-                *ngFor="let fruta of seleccionFrutas; let i = index; trackBy: trackBy"
+                *ngFor="
+                  let fruta of seleccionFrutas;
+                  let i = index;
+                  trackBy: trackBy
+                "
               >
                 <input
                   type="checkbox"
-                  [checked]="fruta.status"
+                  (click)="agregar(fruta, i)"
                   name="nombre"
-                  [value]="fruta"
+                  [value]="fruta.status"
                   [id]="fruta.nombre"
                 />
                 <label [for]="fruta.nombre">
-                  <img [src]="fruta.ruta" [alt]="fruta.nombre" loading="lazy"/>
+                  <img [src]="fruta.ruta" [alt]="fruta.nombre" loading="lazy" />
                 </label>
               </div>
             </div>

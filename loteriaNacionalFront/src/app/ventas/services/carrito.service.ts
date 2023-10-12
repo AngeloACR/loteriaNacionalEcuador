@@ -192,7 +192,6 @@ export class CarritoService {
         }
       });
     }
-    console.log(count)
     return count;
   }
 
@@ -258,7 +257,6 @@ export class CarritoService {
 
   async setCarritoBingazo(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
-      console.log(tickets);
       localStorage.setItem('seleccionadosBingazo', JSON.stringify(tickets));
       //this.ticketsLoteria = tickets;
       await this.setTotal();
@@ -297,7 +295,6 @@ export class CarritoService {
   }
 
   async setCarritoPozoRevancha(tickets: any) {
-    console.log(tickets);
     return new Promise<any>(async (resolve, reject) => {
       localStorage.setItem(
         'seleccionadosPozoRevancha',

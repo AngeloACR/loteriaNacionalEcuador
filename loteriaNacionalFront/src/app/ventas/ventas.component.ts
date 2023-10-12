@@ -19,7 +19,6 @@ export class VentasComponent implements OnInit {
   }
 
   async ngOnInit() {
-    console.log("here")
     if (this.token) {
       let data = await this.ventas.authUser(this.token);
     }
