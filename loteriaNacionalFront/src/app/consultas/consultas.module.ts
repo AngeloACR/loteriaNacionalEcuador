@@ -25,9 +25,6 @@ import { SharedModule } from '../shared/shared.module';
 import { RevanchaComponent } from './containers/revancha/revancha.component';
 import { RevanchaBoletinComponent } from './containers/revancha-boletin/revancha-boletin.component';
 import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module';
-import { FacilottoComponent } from './containers/facilotto/facilotto.component';
-import { FacilottoBoletinComponent } from './containers/facilotto-boletin/facilotto-boletin.component';
-import { FacilottoModule } from '../juegos/facilotto/facilotto.module';
 import { Pega3BoletinComponent } from './containers/pega3-boletin/pega3-boletin.component';
 import { Pega3Module } from '../juegos/pega3/pega3.module';
 import { BingazoComponent } from './containers/bingazo/bingazo.component';
@@ -55,8 +52,6 @@ import { BingazoModule } from '../juegos/bingazo/bingazo.module';
     HomeComponent,
     RevanchaComponent,
     RevanchaBoletinComponent,
-    FacilottoComponent,
-    FacilottoBoletinComponent,
   ],
   exports: [
     ConsultasComponent,
@@ -85,7 +80,6 @@ import { BingazoModule } from '../juegos/bingazo/bingazo.module';
     LottoModule,
     BingazoModule,
     Pega3Module,
-    FacilottoModule,
     PozoModule,
     PozoRevanchaModule,
     MillonariaModule,
