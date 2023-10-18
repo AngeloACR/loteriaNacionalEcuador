@@ -59,7 +59,7 @@ const ganadoresController = {
   pagarPorSorteoYTipoDeLoteria: async (sorteo, lotteryType) => {
     try {
       ganadoresLogger.silly("pagarLoteria");
-      let query = { numeroSorteo: `${sorteo}`, tipoLoteria: lotteryType };
+      let query = { numeroSorteo: `${sorteo}`, tipoLoteria: parseInt(lotteryType) };
       let ganadores = await Ganadores.find(query);
       let response = [];
       let logData = {
@@ -67,13 +67,12 @@ const ganadoresController = {
         response: [],
         function: "ganadoresController.pagarLoteria",
       };
-
       let premiosMetalicos = ganadores.filter(
         (ganador) =>
           ganador.tipoPremio == "DIN" &&
           !ganador.acreditado &&
           !ganador.codigoPremio.includes("INSTANTANEA")
-      );
+      );      
       let premiosEspecie = ganadores.filter(
         (ganador) =>
           ganador.tipoPremio == "ESP" &&
@@ -81,7 +80,7 @@ const ganadoresController = {
           !ganador.codigoPremio.includes("INSTANTANEA")
       );
       for (let i = 0; i < premiosMetalicos.length; i++) {
-        const ganador = ganadores[i];
+        const ganador = premiosMetalicos[i];
         let transactionId = Date.now();
         let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
         let validationCode = parseInt(
@@ -90,8 +89,7 @@ const ganadoresController = {
         let prizesNumber = ganadores.filter(
           (item) => item.ventaId == ganador.ventaId
         ).length;
-        let combinationId = `${ganador.codigoPremio}${ganador.boletoId}`;
-
+        let combinationId = `${ganador.codigoPremio}${ganador.boletoId}`;        
         let prizeDetails = [
           {
             lotteryType,
@@ -127,7 +125,7 @@ const ganadoresController = {
         await ganador.save();
       }
       for (let i = 0; i < premiosEspecie.length; i++) {
-        const ganador = ganadores[i];
+        const ganador = premiosEspecie[i];
         let ordenResponse = await ganadoresController.procesarPremioEspecies(
           ganador
         );
@@ -177,7 +175,7 @@ const ganadoresController = {
           !ganador.codigoPremio.includes("INSTANTANEA")
       );
       for (let i = 0; i < premiosEspecie.length; i++) {
-        const ganador = ganadores[i];
+        const ganador = premiosEspecie[i];
         let ordenResponse = await ganadoresController.procesarPremioEspecies(
           ganador
         );
@@ -194,7 +192,7 @@ const ganadoresController = {
         await ganador.save();
       }
       for (let i = 0; i < premiosMetalicos.length; i++) {
-        const ganador = ganadores[i];
+        const ganador = premiosMetalicos[i];
         let transactionId = Date.now();
         let checkSum = (98 - ((transactionId * 100) % 97)) % 97;
         let validationCode = parseInt(

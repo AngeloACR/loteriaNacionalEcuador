@@ -5,7 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaReservasLogger } = require("./logging");
-const config = require("../environments/production");
+const config = require("../environments/test");
 
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
@@ -415,18 +415,17 @@ module.exports.eliminarReservas = async (
               reject(new loteriaError(errorMessage, "loteria", errorData));
             }
           } catch (e) {
-            let errorMsg = e.message;
 
             loteriaReservasLogger.error("eliminarReservas.error", {
               data: message,
-              errorMessage: `${errorCode}-${errorMsg}`,
+              errorMessage: e.message,
             });
             let errorData = {
               input: e,
               output: "",
               function: "eliminarReservas",
             };
-            reject(new loteriaError(errorMsg, "loteria", errorData));
+            reject(new loteriaError(e.message, "loteria", errorData));
           }
         }
       );
@@ -446,6 +445,99 @@ module.exports.eliminarReservas = async (
   }
 };
 
+module.exports.anularReserva = async (token, reservaId, user, ip) => {
+  try {
+    loteriaReservasLogger.silly("eliminarReservas");
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+
+    let message = {
+      $xml: `
+        <PI_DatosXml>
+        <![CDATA[
+          <mt>
+              <c>
+          	    <aplicacion>25</aplicacion>
+          	    <transaccion>93</transaccion>
+          	    <usuario>${user}</usuario>
+          	    <maquina>${ip}</maquina>
+          	    <codError>0</codError>
+          	    <msgError />
+          	    <medio>${medioId}</medio>
+          	    <token>${token}</token>
+          	    <operacion>${Date.now()}</operacion>
+              </c>
+              <i>
+          	    <ReservaId>${reservaId}</ReservaId>
+          	    <MotivoAnulacion>Se anula por solicitud del usuario</MotivoAnulacion>
+          	    <UsuarioId>${user}</UsuarioId>
+              </i>
+          </mt>          
+          ]]>
+        </PI_DatosXml>`,
+    };
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          try {
+            if (err) reject(new Error(err));
+
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            if (!errorCode) {
+              let response = data.mt.o[0];
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaReservasLogger.info("anularReserva.loteria", logData);
+              resolve(response);
+            } else {
+              let errorMessage = data.mt.c[0].msgError[0];
+              loteriaReservasLogger.error("anularReserva.loteria.error", {
+                message: `${errorCode}-${errorMessage}`,
+              });
+              let errorData = {
+                input: message,
+                output: errorCode,
+                function: "anularReserva",
+              };
+
+              reject(new loteriaError(errorMessage, "loteria", errorData));
+            }
+          } catch (e) {
+
+            loteriaReservasLogger.error("anularReserva.error", {
+              data: message,
+              errorMessage: e.message,
+            });
+            let errorData = {
+              input: e,
+              output: "",
+              function: "anularReserva",
+            };
+            reject(new loteriaError(e.message, "loteria", errorData));
+          }
+        }
+      );
+    });
+  } catch (e) {
+    let errorMsg = e.message;
+
+    loteriaReservasLogger.error("anularReserva.error", {
+      errorMessage: errorMsg,
+    });
+    let errorData = {
+      input: e,
+      output: "",
+      function: "anularReserva",
+    };
+    throw new loteriaError(errorMsg, "loteria", errorData);
+  }
+};
 module.exports.validarReservas = async (token, reservaId, user, ip) => {
   try {
     loteriaReservasLogger.silly("validarReservas");

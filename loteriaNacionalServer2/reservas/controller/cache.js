@@ -77,7 +77,12 @@ const cacheController = {
   },
   borrarCarritoHttp: async (req, res) => {
     try {
-      let response = await cacheController.borrarCarrito(req.body.user);
+      let response = await cacheController.borrarCarrito(
+        req.body.user,
+        req.body.token,
+        req.body.reservaId,
+        req.headers["x-forwarded-for"]
+      );
       res.status(200).json(response);
     } catch (e) {
       let response = {
@@ -87,11 +92,12 @@ const cacheController = {
       res.status(400).json(response);
     }
   },
-  borrarCarrito: async (user) => {
+  borrarCarrito: async (user, token, reservaId, ip) => {
     try {
       let timeout = 60 * 40;
       let client = redis.getClient();
       await client.connect();
+      await psdReservas.anularReserva(token, reservaId, user, ip);
       let carrito = {
         loteria: {},
         lotto: {},
@@ -107,7 +113,7 @@ const cacheController = {
       await client.set(`carrito-${user}`, JSON.stringify(carrito));
       await client.expire(`carrito-${user}`, timeout);
 
-      let response = await client.get(`carrito-${user}`);
+      response = await client.get(`carrito-${user}`);
       await client.quit();
       return JSON.parse(response);
     } catch (e) {

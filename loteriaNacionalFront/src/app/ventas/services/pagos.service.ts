@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CarritoService } from './carrito.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PagosService {
   mySource = environment.source
-  constructor(private cart: CarritoService, private http: HttpClient) {}
+  constructor(private cart: CarritoService, private http: HttpClient) { }
 
   getAuthData() {
     let data = JSON.parse(localStorage.getItem('userData')!);
@@ -26,11 +26,11 @@ export class PagosService {
     return response;
   }
 
-  reservarSaldo() {}
+  reservarSaldo() { }
 
-  liberarSaldo() {}
+  liberarSaldo() { }
 
-  recargarSaldo() {}
+  recargarSaldo() { }
 
   hasBalance(subtotal: any, token: any) {
     let cartTotal = parseFloat(this.cart.getTotal());
@@ -110,7 +110,7 @@ export class PagosService {
       );
     });
   }
-  
+
   getCodigosPromocionales(ventaId: any) {
     let headers = new HttpHeaders();
     headers = headers.append("Content-Type", "application/json");
@@ -174,19 +174,16 @@ export class PagosService {
           resolve(response);
         },
         (error: any) => {
-          //reject(new Error(error.error.message));
           reject(
-            new Error(
-              'Ha ocurrido un error procesando la compra. Por favor, intente de nuevo.'
-            )
+            new Error(error.error.message)
           );
         }
       );
     });
   }
-  cancelarCompra() {}
+  cancelarCompra() { }
   finalizarCompra() {
-    parent.postMessage("getBalance","*");
+    parent.postMessage("getBalance", "*");
     this.cart.borrarCarrito();
   }
   getTotal() {

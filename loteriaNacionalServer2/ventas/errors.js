@@ -108,6 +108,7 @@ const errorHandler = {
     alboranReservaData,
     venta,
     errorCode,
+    errorMsg,
     user,
     lotteryToken,
     reservaId,
@@ -120,14 +121,15 @@ const errorHandler = {
         reserveId: alboranReservaData.transactionId,
         amount: alboranReservaData.amount,
       };
+      if (errorCode == 400088) throw new Error(errorMsg);
       if (errorCode == TIMEOUT_ERROR) {
-         await psdVentas.cancelarVenta(
+        await psdVentas.cancelarVenta(
           lotteryToken,
           reservaId,
           user,
           "Cancelación por error de timeout",
           ip
-        ); 
+        );
       }
       let alboranCancelResponse = await Wallet.cancelLottery(alboranCancelData);
       let i = 0;
@@ -149,9 +151,7 @@ const errorHandler = {
         "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
       );
     } catch (e) {
-      throw new Error(
-        "Ha ocurrido un error procesando tu compra. Por favor, intenta de nuevo."
-      );
+      throw e
     }
   },
   alboranReserveError: async (alboranReservaData) => {

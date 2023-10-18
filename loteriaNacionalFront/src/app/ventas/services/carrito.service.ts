@@ -247,8 +247,8 @@ export class CarritoService {
 
   async setCarritoLoteria(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
+      if (tickets == null) tickets = {}
       localStorage.setItem('seleccionadosLoteria', JSON.stringify(tickets));
-      //this.ticketsLoteria = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
       resolve('Done');
@@ -257,8 +257,8 @@ export class CarritoService {
 
   async setCarritoBingazo(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
+      if (tickets == null) tickets = {}
       localStorage.setItem('seleccionadosBingazo', JSON.stringify(tickets));
-      //this.ticketsLoteria = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
       resolve('Done');
@@ -266,8 +266,9 @@ export class CarritoService {
   }
   async setCarritoMillonaria(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
+      if (tickets == null) tickets = {}
       localStorage.setItem('seleccionadosMillonaria', JSON.stringify(tickets));
-      //this.ticketsLoteria = tickets;
+      //this.ticketsLoteria =      //this.ticketsLotto = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
       resolve('Done');
@@ -276,8 +277,8 @@ export class CarritoService {
 
   async setCarritoLotto(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
+      if (tickets == null) tickets = {}
       localStorage.setItem('seleccionadosLotto', JSON.stringify(tickets));
-      //this.ticketsLotto = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
       resolve('Done');
@@ -286,8 +287,8 @@ export class CarritoService {
 
   async setCarritoPozo(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
+      if (tickets == null) tickets = {}
       localStorage.setItem('seleccionadosPozo', JSON.stringify(tickets));
-      //this.ticketsPozo = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
       resolve('Done');
@@ -296,11 +297,11 @@ export class CarritoService {
 
   async setCarritoPozoRevancha(tickets: any) {
     return new Promise<any>(async (resolve, reject) => {
+      if (tickets == null) tickets = {}
       localStorage.setItem(
         'seleccionadosPozoRevancha',
         JSON.stringify(tickets)
       );
-      //this.ticketsPozo = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
       resolve('Done');
@@ -372,17 +373,25 @@ export class CarritoService {
       address = this.mySource + address + endpoint;
       this.http.post(address, body, { headers: headers }).subscribe(
         async (data: any) => {
+          console.log(data)
           let reservaId = this.getReservaId();
-/*           if (data.carrito.length == 0) {
-            this.borrarCarrito();
-            data.carrito = [];
-            data.loteria = {};
-            data.lotto = {};
-            data.pozo = {};
-            data.bingazo = {};
-            data.pozoRevancha = {};
-            data.millonaria = {};
-          } */
+          /*           if (data.carrito.length == 0) {
+                      this.borrarCarrito();
+                      data.carrito = [];
+                      data.loteria = {};
+                      data.lotto = {};
+                      data.pozo = {};
+                      data.bingazo = {};
+                      data.pozoRevancha = {};
+                      data.millonaria = {};
+                    } */
+          if (data.loteria == null) data.loteria = {}
+          if (data.lotto == null) data.lotto = {}
+          if (data.millonaria == null) data.millonaria = {}
+          if (data.pozo == null) data.pozo = {}
+          if (data.bingazo == null) data.bingazo = {}
+          if (data.pozoRevancha == null) data.pozoRevancha = {}
+
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);
@@ -479,6 +488,7 @@ export class CarritoService {
     });
   }
   async borrarCarrito() {
+    let reservaId = this.getReservaId();
     this.ticketsCarrito = [];
     this.ticketsLoteria = {};
     this.ticketsLotto = {};
@@ -504,9 +514,12 @@ export class CarritoService {
       let address = '/reservas';
       let endpoint = '/cache';
       let user = JSON.parse(localStorage.getItem('userData')!).playerDocument;
+      let token = JSON.parse(localStorage.getItem('userData')!).lotteryToken;
 
       let body = {
         user,
+        token,
+        reservaId
       };
       endpoint = `${endpoint}/borrarCarrito`;
       address = this.mySource + address + endpoint;

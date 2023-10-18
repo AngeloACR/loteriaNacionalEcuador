@@ -117,6 +117,7 @@ const ventasController = {
         alboranReservaData,
         venta,
         loteriaVentaResponse.errorCode,
+        loteriaVentaResponse.errorMsg,
         user,
         lotteryToken,
         reservaId,
