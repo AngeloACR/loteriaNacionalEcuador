@@ -61,6 +61,9 @@ export class DetalleDeVentaComponent implements OnInit {
         this.compra.millonaria.forEach((element: any) => {
           element['detalleGanador'] = [];
         });
+        this.compra.bingazo.forEach((element: any) => {
+          element['detalleGanador'] = [];
+        });
         for (let i = 0; i < resultadosGanadores.length; i++) {
           const ganador = resultadosGanadores[i];
           let ganadorIndex;
@@ -124,6 +127,19 @@ export class DetalleDeVentaComponent implements OnInit {
               if (ganadorIndex != -1) {
                 this.compra.millonaria[ganadorIndex]['hasGanador'] = true;
                 this.compra.millonaria[ganadorIndex]['detalleGanador'].push(
+                  ganador
+                );
+              }
+              break;
+            case 12:
+              ganadorIndex = this.compra.bingazo.findIndex(
+                (x: any) =>
+                  x.combinacion1 == ganador.combinacion1 &&
+                  x.sorteo == ganador.numeroSorteo
+              );
+              if (ganadorIndex != -1) {
+                this.compra.bingazo[ganadorIndex]['hasGanador'] = true;
+                this.compra.bingazo[ganadorIndex]['detalleGanador'].push(
                   ganador
                 );
               }

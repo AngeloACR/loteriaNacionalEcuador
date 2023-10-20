@@ -1,5 +1,6 @@
 $color-header: #7c91a8;
 $color-loteria: #28aae1;
+$color-bingazo: #283479;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
 $color-revancha: #fae80c;
@@ -119,6 +120,21 @@ $color-millonaria: #b51f20;
       flex-wrap: wrap;
       background: #fff;
       background-color: $color-millonaria;
+      padding: 5px;
+
+      h3 {
+        color: white;
+        font-family: Open Sans !important;
+
+        font-size: 16px;
+      }
+    }
+
+    .titleBingazoBox {
+      display: flex;
+      flex-wrap: wrap;
+      background: #fff;
+      background-color: $color-bingazo;
       padding: 5px;
 
       h3 {
@@ -293,6 +309,11 @@ $color-millonaria: #b51f20;
           color: $color-millonaria;
         }
 
+        &.bingazoColor {
+
+          color: $color-bingazo;
+        }
+
         p {
           font-size: 20px;
 
@@ -337,6 +358,10 @@ $color-millonaria: #b51f20;
 
           &.millonariaBackground {
             background-color: $color-millonaria;
+          }
+
+          &.bingazoBackground {
+            background-color: $color-bingazo;
           }
 
           p {
@@ -411,6 +436,12 @@ $color-millonaria: #b51f20;
       border-width: 0 0 1px 0;
       border-style: solid;
       border-color: $color-millonaria;
+    }
+
+    .bingazo {
+      border-width: 0 0 1px 0;
+      border-style: solid;
+      border-color: $color-bingazo;
     }
   }
 
@@ -541,6 +572,11 @@ $color-millonaria: #b51f20;
 
             &.millonariaBackground {
               background-color: $color-millonaria;
+            }
+
+
+            &.bingazoBackground {
+              background-color: $color-bingazo;
             }
 
             p {
