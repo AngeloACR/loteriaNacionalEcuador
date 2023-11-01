@@ -6,9 +6,7 @@
       alt=""
     />
   </div>
-  <div class="title1">
-    A continuacion un resumen de tu compra:
-  </div>
+  <div class="title1">A continuacion un resumen de tu compra:</div>
 
   <div class="containerInfoBox">
     <div class="titleLoteryBox">
@@ -41,34 +39,29 @@
     <div *ngFor="let item of compra.loteria" class="dateLoteryBox loteria">
       <div class="infoSorteoBox">
         <p>
-          Sorteo: <span>{{ item.sorteo }}</span>
-        </p>
-        <p>
-          Fecha del sorteo: <span>{{ item.fecha }}</span>
+          Sorteo: <span># {{ item.sorteo }}</span> - Fecha:
+          <span>{{ item.fecha }}</span>
         </p>
       </div>
-      <div class="dateTicketBox">
-        <p>
-          Combinación: <span>{{ item.combinacion1 }}</span>
-        </p>
-        <p>
-          Fracciones seleccionadas:
-          <span>{{ item.fracciones.join(", ") }}</span>
-        </p>
+      <div class="ticketBox loteria">
+        <img class="ticketImage" [src]="getBoleto(1, item.sorteo)" alt="" />
+        <p class="ticketText">{{ item.combinacion1 }}</p>
       </div>
       <div class="numberBox">
-        <p>
-          Cantidad: <span>{{ item.fracciones.length }}</span>
-        </p>
+        <p>Cantidad:</p>
+        <p>{{ item.fracciones.length }}</p>
+        <hr />
+        <p>Fracciones seleccionadas:</p>
+        <p>{{ item.fracciones.join(", ") }}</p>
       </div>
       <div class="montoBox">
-        <p>
-          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
-        </p>
-        <p *ngIf="item.tieneDescuento">
-          Total con descuento:
-          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
-        </p>
+        <p>Total:</p>
+        <p>{{ formatNumber(item.subtotal) }}</p>
+        <hr />
+        <ng-container *ngIf="item.tieneDescuento">
+          <p>Total con descuento:</p>
+          <p>{{ formatNumber(item.subtotalConDesc) }}</p>
+        </ng-container>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox loteriaColor">
@@ -138,42 +131,50 @@
           Sorteo: <span>{{ item.sorteo }}</span>
         </p>
         <p>
-          Fecha del sorteo: <span>{{ item.fecha }}</span>
+          Fecha: <span>{{ item.fecha }}</span>
         </p>
       </div>
-      <div class="dateTicketBox">
-        <p>
-          Combinación: <span>{{ item.combinacion1 }}</span>
-        </p>
-        <p *ngIf="item.combinacion3 == ''">
-          Sueldo mensual por 1 año: <span>{{ item.combinacion2 }}</span>
-        </p>
-        <ng-container *ngIf="item.combinacion4 != ''">
-          <p>
-            Suerte extra: <span>{{ item.combinacion2 }}</span>
-          </p>
-          <p>
-            Lottito mini: <span>{{ item.combinacion3 }}</span>
-          </p>
-          <p>
-            Sueldo mensual por 1 año: <span>{{ item.combinacion4 }}</span>
-          </p>
-          <p *ngIf="item.combinacion5 && item.combinacion5 != ''">
-            Antojito: <span>{{ nombreAntojito(item.combinacion5) }}</span>
-          </p>
-        </ng-container>
+
+      <div class="ticketBox lotto">
+        <img [src]="getBoleto(2, item.sorteo)" alt="" />
+        <div *ngIf="getDay(item.fecha) == 0" class="sorteoLunes">
+          <p class="combinacion1">{{ item.combinacion1 }}</p>
+          <p class="combinacion3">{{ item.combinacion3 }}</p>
+          <p class="combinacion2">{{ item.combinacion2 }}</p>
+          <p class="combinacion4">{{ item.combinacion4 }}</p>
+        </div>
+        <div *ngIf="getDay(item.fecha) == 3" class="sorteoJueves">
+          <p class="combinacion1">{{ item.combinacion1 }}</p>
+          <p class="combinacion3">{{ item.combinacion3 }}</p>
+          <p class="combinacion2">{{ item.combinacion2 }}</p>
+          <p class="combinacion4">{{ item.combinacion4 }}</p>
+
+          <img
+            class="combinacion5"
+            [src]="rutaAntojito(item.combinacion5)"
+            alt=""
+          />
+        </div>
+        <div
+          *ngIf="getDay(item.fecha) != 0 && getDay(item.fecha) != 3"
+          class="otrosSorteos"
+        >
+          <p class="combinacion1">{{ item.combinacion1 }}</p>
+          <p class="combinacion2">{{ item.combinacion2 }}</p>
+        </div>
       </div>
       <div class="numberBox">
-        <p>Cantidad: <span>1</span></p>
+        <p>Cantidad:</p>
+        <p>1</p>
       </div>
       <div class="montoBox">
-        <p>
-          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
-        </p>
-        <p *ngIf="item.tieneDescuento">
-          Total con descuento:
-          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
-        </p>
+        <p>Total:</p>
+        <p>{{ formatNumber(item.subtotal) }}</p>
+        <hr />
+        <ng-container *ngIf="item.tieneDescuento">
+          <p>Total con descuento:</p>
+          <p>{{ formatNumber(item.subtotalConDesc) }}</p>
+        </ng-container>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox lottoColor">
@@ -236,32 +237,28 @@
           Sorteo: <span>{{ item.sorteo }}</span>
         </p>
         <p>
-          Fecha del sorteo: <span>{{ item.fecha }}</span>
+          Fecha: <span>{{ item.fecha }}</span>
         </p>
       </div>
-      <div class="dateTicketBox">
-        <p>
-          Boleto: <span>{{ item.combinacion1 }}</span>
-        </p>
-        <p>
-          Mascota: <span>{{ nombreMascota(item.mascota) }}</span>
-        </p>
-        <p>
-          Combinación:
-          <span>{{ item.combinacion2 }}</span>
+      <div class="ticketBox pozo">
+        <img [src]="getBoleto(5, item.sorteo)" alt="" />
+        <img class="mascota" [src]="rutaMascota(item.mascota)" alt="" />
+        <p class="numero" *ngFor="let numero of item.combinacion2.split(',')">
+          {{ numero }}
         </p>
       </div>
       <div class="numberBox">
-        <p>Cantidad: <span>1</span></p>
+        <p>Cantidad:</p>
+        <p>1</p>
       </div>
       <div class="montoBox">
-        <p>
-          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
-        </p>
-        <p *ngIf="item.tieneDescuento">
-          Total con descuento:
-          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
-        </p>
+        <p>Total:</p>
+        <p>{{ formatNumber(item.subtotal) }}</p>
+        <hr />
+        <ng-container *ngIf="item.tieneDescuento">
+          <p>Total con descuento:</p>
+          <p>{{ formatNumber(item.subtotalConDesc) }}</p>
+        </ng-container>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox pozoColor">
@@ -320,7 +317,7 @@
     </div>
     <div
       *ngFor="let item of compra.pozoRevancha"
-      class="dateLoteryBox pozoRevancha"
+      class="dateLoteryBox revancha"
     >
       <div class="infoSorteoBox">
         <p>
@@ -330,29 +327,25 @@
           Fecha del sorteo: <span>{{ item.fecha }}</span>
         </p>
       </div>
-      <div class="dateTicketBox">
-        <p>
-          Boleto: <span>{{ item.combinacion1 }}</span>
-        </p>
-        <p>
-          Mascota: <span>{{ nombreMascota(item.mascota) }}</span>
-        </p>
-        <p>
-          Combinación:
-          <span>{{ item.combinacion2 }}</span>
+      <div class="ticketBox revancha">
+        <img [src]="getBoleto(17, item.sorteo)" alt="" />
+        <img class="mascota" [src]="rutaMascota(item.mascota)" alt="" />
+        <p class="numero" *ngFor="let numero of item.combinacion2.split(',')">
+          {{ numero }}
         </p>
       </div>
       <div class="numberBox">
-        <p>Cantidad: <span>1</span></p>
+        <p>Cantidad:</p>
+        <p>1</p>
       </div>
       <div class="montoBox">
-        <p>
-          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
-        </p>
-        <p *ngIf="item.tieneDescuento">
-          Total con descuento:
-          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
-        </p>
+        <p>Total:</p>
+        <p>{{ formatNumber(item.subtotal) }}</p>
+        <hr />
+        <ng-container *ngIf="item.tieneDescuento">
+          <p>Total con descuento:</p>
+          <p>{{ formatNumber(item.subtotalConDesc) }}</p>
+        </ng-container>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox pozoRevanchaColor">
@@ -418,7 +411,7 @@
           Sorteo: <span>{{ item.sorteo }}</span>
         </p>
         <p>
-          Fecha del sorteo: <span>{{ item.fecha }}</span>
+          Fecha: <span>{{ item.fecha }}</span>
         </p>
       </div>
       <div class="dateTicketBox">
@@ -435,18 +428,17 @@
         </p>
       </div>
       <div class="numberBox">
-        <p>
-          Cantidad: <span>{{ item.fracciones.length }}</span>
-        </p>
+        <p>Cantidad:</p>
+        <p>{{ item.fracciones.length }}</p>
       </div>
       <div class="montoBox">
-        <p>
-          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
-        </p>
-        <p *ngIf="item.tieneDescuento">
-          Total con descuento:
-          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
-        </p>
+        <p>Total:</p>
+        <p>{{ formatNumber(item.subtotal) }}</p>
+        <hr />
+        <ng-container *ngIf="item.tieneDescuento">
+          <p>Total con descuento:</p>
+          <p>{{ formatNumber(item.subtotalConDesc) }}</p>
+        </ng-container>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox millonariaColor">
@@ -509,30 +501,41 @@
           Sorteo: <span>{{ item.sorteo }}</span>
         </p>
         <p>
-          Fecha del sorteo: <span>{{ item.fecha }}</span>
+          Fecha: <span>{{ item.fecha }}</span>
         </p>
       </div>
-      <div class="dateTicketBox">
-        <p>
-          Boleto: <span>{{ item.combinacion1 }}</span>
-        </p>
-        <p>
-          Fruta: <span>{{ nombreFruta(item.fruta) }}</span>
-        </p>
-        <p>Combinación:</p>
-        <p class="combinacion">{{ filtrarBingazo(item.combinacion2) }}</p>
+      <div class="ticketBox bingazo">
+        <img [src]="getBoleto(12, item.sorteo)" alt="" />
+        <img class="fruta" [src]="rutaFruta(item.fruta)" alt="" />
+        <p class="carton">{{ item.combinacion1 }}</p>
+        <div class="numeros">
+          <ng-container
+            *ngFor="let numero of filtrarBingazo(item.combinacion2).split(', ')"
+          >
+            <p *ngIf="numero != '00'">
+              {{ numero }}
+            </p>
+            <img
+              *ngIf="numero == '00'"
+              style="visibility: hidden"
+              src="assets/guachito.png"
+              alt=""
+            />
+          </ng-container>
+        </div>
       </div>
       <div class="numberBox">
-        <p>Cantidad: <span>1</span></p>
+        <p>Cantidad:</p>
+        <p>1</p>
       </div>
       <div class="montoBox">
-        <p>
-          Total de Boleto(s): <span>{{ formatNumber(item.subtotal) }}</span>
-        </p>
-        <p *ngIf="item.tieneDescuento">
-          Total con descuento:
-          <span>{{ formatNumber(item.subtotalConDesc) }}</span>
-        </p>
+        <p>Total:</p>
+        <p>{{ formatNumber(item.subtotal) }}</p>
+        <hr />
+        <ng-container *ngIf="item.tieneDescuento">
+          <p>Total con descuento:</p>
+          <p>{{ formatNumber(item.subtotalConDesc) }}</p>
+        </ng-container>
       </div>
       <ng-container *ngIf="item.hasGanador">
         <div class="ganadorTitleBox bingazoColor">

@@ -1,5 +1,4 @@
 const psdReservas = require("../../psdLoteria/reservas");
-const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache");
 const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache");
 const CacheLotto = require("../../sorteosLotto/controller/cache");
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache");
@@ -24,7 +23,6 @@ const cacheController = {
         lotto: req.body.lotto,
         pozo: req.body.pozo,
         pozoRevancha: req.body.pozoRevancha,
-        millonaria: req.body.millonaria,
         bingazo: req.body.bingazo,
         carrito: req.body.carrito,
         total: req.body.total,
@@ -54,7 +52,6 @@ const cacheController = {
           lotto: {},
           pozo: {},
           pozoRevancha: {},
-          millonaria: {},
           bingazo: {},
           carrito: [],
           total: 0,
@@ -103,7 +100,6 @@ const cacheController = {
         lotto: {},
         pozo: {},
         pozoRevancha: {},
-        millonaria: {},
         bingazo: {},
         carrito: [],
         total: 0,
@@ -135,7 +131,6 @@ const cacheController = {
       let lottoCache;
       let pozoCache;
       let pozoRevanchaCache;
-      let millonariaCache;
       let bingazoCache;
       if (
         Object.keys(cacheCart.loteria).length !== 0 &&
@@ -170,15 +165,6 @@ const cacheController = {
       } else {
         pozoRevanchaCache = [];
       }
-      if (
-        Object.keys(cacheCart.millonaria).length !== 0 &&
-        Object.getPrototypeOf(cacheCart.millonaria) === Object.prototype
-      ) {
-        millonariaCache = Object.values(cacheCart.millonaria);
-      } else {
-        millonariaCache = [];
-      }
-
       if (
         Object.keys(cacheCart.bingazo).length !== 0 &&
         Object.getPrototypeOf(cacheCart.bingazo) === Object.prototype
@@ -605,209 +591,6 @@ const cacheController = {
         await cacheController.updateCart(cacheCart);
       }
 
-      /* VALIDACIÓN DE LA MILLONARIA */
-
-      let auxMillonaria1 = millonariaCache.filter((item) => {
-        let index = loteriaCart.millonaria.findIndex(
-          (millonaria) =>
-            millonaria.combinacion == item.ticket.combinacion1 &&
-            millonaria.combinacion2 == item.ticket.combinacion2
-        );
-        if (index == -1) {
-          return true;
-        }
-        return false;
-      });
-      for (let i = 0; i < auxMillonaria1.length; i++) {
-        let item = auxMillonaria1[i];
-        let boleto = [
-          {
-            combinacion: item.ticket.combinacion1,
-            combinacion2: item.ticket.combinacion2,
-            fracciones: item.ticket.seleccionados,
-            sorteo: item.sorteo,
-          },
-        ];
-        await psdReservas.reservarCombinaciones(
-          [],
-          [],
-          [],
-          [],
-          boleto,
-          [],
-          token,
-          reservaId,
-          user,
-          ip
-        );
-      }
-      let auxMillonaria2 = loteriaCart.millonaria.filter((item) => {
-        let index = millonariaCache.findIndex(
-          (millonaria) =>
-            item.combinacion == millonaria.ticket.combinacion1 &&
-            item.combinacion2 == millonaria.ticket.combinacion2
-        );
-        if (index == -1) {
-          return true;
-        }
-        return false;
-      });
-      for (let i = 0; i < auxMillonaria2.length; i++) {
-        let item = auxMillonaria2[i];
-        let identificador = Math.random();
-        let millonariaSorteos = await CacheLaMillonaria.getSorteosDisponibles();
-        let sorteo = millonariaSorteos.filter((millonaria) => {
-          if (millonaria.sorteo == item.sorteo) {
-            return true;
-          }
-          return false;
-        })[0];
-        let seleccionados = item.fracciones.map((fraccion) => {
-          return fraccion.fraccion;
-        });
-        let boleto = {
-          identificador,
-          ticket: {
-            combinacion1: item.combinacion,
-            combinacion2: item.combinacion2,
-            display: item.combinacion.split(""),
-            identificador,
-            seleccionados,
-          },
-          sorteo,
-          subtotal: parseFloat(sorteo.precio) * seleccionados.length,
-          tipoLoteria: 14,
-        };
-        cacheCart.millonaria[identificador] = boleto;
-        cacheCart.carrito.push(boleto);
-        cacheCart.total += parseFloat(boleto.subtotal);
-        await cacheController.updateCart(cacheCart);
-      }
-      let seleccionadosProblemaMillonaria;
-      let auxMillonariaFracciones1 = millonariaCache.reduce(function (
-        filtered,
-        item
-      ) {
-        let index = loteriaCart.millonaria.findIndex(
-          (millonaria) =>
-            millonaria.combinacion == item.ticket.combinacion1 &&
-            millonaria.combinacion2 == item.ticket.combinacion2
-        );
-        let flag = false;
-        if (index != -1) {
-          seleccionadosProblemaMillonaria = item.ticket.seleccionados.filter(
-            (fraccion) => {
-              let indexB = loteriaCart.millonaria[index].fracciones.findIndex(
-                (millonaria) => millonaria.fraccion == fraccion
-              );
-              if (indexB == -1) {
-                flag = true;
-                return true;
-              }
-              return false;
-            }
-          );
-          if (flag) {
-            filtered.push(item);
-          }
-        }
-
-        return filtered;
-      },
-      []);
-
-      for (let i = 0; i < auxMillonariaFracciones1.length; i++) {
-        let item = auxMillonariaFracciones1[i];
-        let boleto = [
-          {
-            combinacion: item.ticket.combinacion,
-            combinacion2: item.ticket.combinacion2,
-            fracciones: seleccionadosProblemaMillonaria,
-            sorteo: item.sorteo,
-          },
-        ];
-        await psdReservas.reservarCombinaciones(
-          [],
-          [],
-          [],
-          [],
-          boleto,
-          [],
-          token,
-          reservaId,
-          user,
-          ip
-        );
-      }
-      let auxMillonariaFracciones2 = loteriaCart.millonaria.reduce(function (
-        filtered,
-        item
-      ) {
-        let index = millonariaCache.findIndex(
-          (millonaria) =>
-            millonaria.ticket.combinacion1 == item.combinacion &&
-            millonaria.ticket.combinacion2 == item.combinacion2
-        );
-        if (index != -1) {
-          let flag = false;
-          let seleccionados = [];
-          let identificador;
-          item.fracciones = item.fracciones.filter((fraccion) => {
-            let indexB = millonariaCache[index].ticket.seleccionados.findIndex(
-              (millonaria) => millonaria == fraccion.fraccion
-            );
-            if (indexB == -1) {
-              flag = true;
-              seleccionados.push(fraccion.fraccion);
-              identificador = millonariaCache[index].identificador;
-              return true;
-            }
-            return false;
-          });
-          if (flag) {
-            item.fracciones = item.fracciones.map((data) => {
-              return data.fraccion;
-            });
-            item["seleccionados"] = seleccionados;
-            item["identificador"] = identificador;
-            item["index"] = index;
-            filtered.push(item);
-          }
-        }
-        return filtered;
-      },
-      []);
-
-      for (let i = 0; i < auxMillonariaFracciones2.length; i++) {
-        let item = auxMillonariaFracciones2[i];
-        let identificador = item.identificador;
-        let index = item.index;
-        let millonariaSorteos = await CacheLaMillonaria.getSorteosDisponibles();
-        let sorteo = millonariaSorteos.filter((millonaria) => {
-          if (millonaria.sorteo == item.sorteo) {
-            return true;
-          }
-          return false;
-        })[0];
-        let seleccionados = item.seleccionados;
-        millonariaCache[index].ticket.seleccionados =
-          millonariaCache[index].ticket.seleccionados.concat(seleccionados);
-        millonariaCache[index].fracciones =
-          millonariaCache[index].fracciones.concat(seleccionados);
-        millonariaCache[index].subtotal +=
-          parseFloat(sorteo.precio) * seleccionados.length;
-        cacheCart.millonaria[identificador] = millonariaCache[index];
-
-        let indexC = cacheCart.carrito.findIndex(
-          (carrito) =>
-            carrito.ticket.combinacion ==
-            millonariaCache[index].ticket.combinacion
-        );
-        cacheCart.carrito[indexC] = millonariaCache[index];
-        cacheCart.total += parseFloat(sorteo.precio) * seleccionados.length;
-        await cacheController.updateCart(cacheCart);
-      }
-
       /* VALIDACIÓN DE BINGAZO */
 
       let auxBingazo1 = bingazoCache.filter((item) => {
@@ -892,10 +675,6 @@ const cacheController = {
         auxPozo2.length ||
         auxPozoRevancha1.length ||
         auxPozoRevancha2.length ||
-        auxMillonaria1.length ||
-        auxMillonaria2.length ||
-        auxMillonariaFracciones1.length ||
-        auxMillonariaFracciones2.length ||
         auxBingazo1.length ||
         auxBingazo2.length
       ) {

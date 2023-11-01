@@ -18,7 +18,6 @@ const ventasController = {
       let lotto = req.body.lotto ? req.body.lotto : [];
       let pozo = req.body.pozo ? req.body.pozo : [];
       let pozoRevancha = req.body.pozoRevancha ? req.body.pozoRevancha : [];
-      let millonaria = req.body.millonaria ? req.body.millonaria : [];
       let bingazo = req.body.bingazo ? req.body.bingazo : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
 
@@ -27,7 +26,6 @@ const ventasController = {
         lotto,
         pozo,
         pozoRevancha,
-        millonaria,
         bingazo,
         lotteryToken,
         reservaId,
@@ -41,7 +39,6 @@ const ventasController = {
           lotto,
           pozo,
           pozoRevancha,
-          millonaria,
           bingazo,
           lotteryToken,
           reservaId,
@@ -77,7 +74,6 @@ const ventasController = {
       let lotto = req.body.lotto ? req.body.lotto : [];
       let pozo = req.body.pozo ? req.body.pozo : [];
       let pozoRevancha = req.body.pozoRevancha ? req.body.pozoRevancha : [];
-      let millonaria = req.body.millonaria ? req.body.millonaria : [];
       let bingazo = req.body.bingazo ? req.body.bingazo : [];
       let reservaId = req.body.reservaId ? req.body.reservaId : 0;
       let finalResponse = await psdReservas.eliminarReservas(
@@ -85,7 +81,6 @@ const ventasController = {
         lotto,
         pozo,
         pozoRevancha,
-        millonaria,
         bingazo,
         lotteryToken,
         reservaId,
@@ -99,7 +94,6 @@ const ventasController = {
           lotto,
           pozo,
           pozoRevancha,
-          millonaria,
           bingazo,
           lotteryToken,
           reservaId,

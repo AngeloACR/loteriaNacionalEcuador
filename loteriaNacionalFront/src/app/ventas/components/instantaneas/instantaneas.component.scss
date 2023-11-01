@@ -9,9 +9,6 @@ $fuente-botones: "Monstserrat SemiBold";
 .backgroundPozoMillonario {
   background-color: #04b865;
 }
-.backgroundMillonaria {
-  background-color: #b51f20;
-}
 
 .backgroundLoteriaNacionalButton {
   border: 1px solid #28aae1;
@@ -37,16 +34,6 @@ $fuente-botones: "Monstserrat SemiBold";
   &:hover {
     background-color: #fff;
     color: #04b865 !important;
-    transition: background-color 0.5s ease;
-  }
-}
-.backgroundMillonariaButton {
-  border: 1px solid #b51f20;
-  background-color: #b51f20;
-  color: white;
-  &:hover {
-    background-color: #fff;
-    color: #b51f20 !important;
     transition: background-color 0.5s ease;
   }
 }

@@ -5,7 +5,6 @@ import {
   sorteo,
   ticketsLotto,
   ticketsNacional,
-  ticketsMillonaria,
 } from '../interfaces/venta';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -202,17 +201,6 @@ export class VentasService {
         ];
         body['pozoRevancha'] = aux;
         break;
-      case 14:
-        aux = [
-          {
-            combinacion: boleto.ticket.combinacion1,
-            combinacion2: boleto.ticket.combinacion2,
-            fracciones: boleto.fracciones,
-            sorteo: boleto.sorteo,
-          },
-        ];
-        body['millonaria'] = aux;
-        break;
       case 12:
         aux = [
           {
@@ -345,17 +333,6 @@ export class VentasService {
           },
         ];
         body['pozoRevancha'] = aux;
-        break;
-      case 14:
-        aux = [
-          {
-            combinacion: boleto.combinacion1,
-            combinacion2: boleto.combinacion2,
-            fracciones,
-            sorteo: sorteo,
-          },
-        ];
-        body['millonaria'] = aux;
         break;
     }
     return new Promise<any>((resolve, reject) => {

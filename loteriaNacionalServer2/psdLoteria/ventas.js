@@ -267,7 +267,6 @@ module.exports.venderBoletos = async (
   lotto,
   pozo,
   pozoRevancha,
-  millonaria,
   bingazo,
   lotteryToken,
   reservaId,
@@ -282,7 +281,6 @@ module.exports.venderBoletos = async (
     let lottoCombinacionesXML = "";
     let pozoCombinacionesXML = "";
     let pozoRevanchaCombinacionesXML = "";
-    let millonariaCombinacionesXML = "";
     let bingazoCombinacionesXML = "";
     if (loteria.length != 0) {
       loteria.forEach((item) => {
@@ -350,28 +348,6 @@ module.exports.venderBoletos = async (
               
             `;
     }
-    if (millonaria.length != 0) {
-      millonaria.forEach((item) => {
-        let combinacion = item.ticket.combinacion1;
-        let combinacion2 = item.ticket.combinacion2;
-        let fraccionesXML = "";
-        let cant = 0;
-        item.ticket.seleccionados.forEach((element) => {
-          fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
-          cant += 1;
-        });
-
-        millonariaCombinacionesXML = `
-                ${millonariaCombinacionesXML}
-                <R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" numero2="${combinacion2}" cantid="${cant}" >${fraccionesXML}</R>`;
-      });
-      millonariaCombinacionesXML = `
-            <JG id="14">
-                ${millonariaCombinacionesXML}
-            </JG>        
-              
-            `;
-    }
     if (bingazo.length != 0) {
       bingazo.forEach((item) => {
         let combinacion = item.ticket.combinacion1;
@@ -421,7 +397,6 @@ module.exports.venderBoletos = async (
         ${lottoCombinacionesXML} 
         ${pozoCombinacionesXML}
         ${pozoRevanchaCombinacionesXML}
-        ${millonariaCombinacionesXML}
         ${bingazoCombinacionesXML}
         </RS>
         </xmlNumeros>
@@ -757,132 +732,6 @@ module.exports.agregarOrdenPago = async (
     };
     return errorData;
     //throw new loteriaError(errorMsg, "loteria", errorData);
-  }
-};
-
-module.exports.recuperarSeriesLaMillonaria = async (
-  lotteryToken,
-  user,
-  sorteo,
-  ip
-) => {
-  try {
-    loteriaVentasLogger.silly("recuperarSeriesLaMillonaria");
-    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
-
-    let message = {
-      $xml: `
-      <PI_DatosXml>
-      <![CDATA[
-        <mt>
-  <c>
-    <aplicacion>25</aplicacion>
-    <transaccion>113</transaccion>
-    <usuario>${user}</usuario>
-    <maquina>${ip}</maquina>
-    <codError>0</codError>
-    <msgError />
-    <medio>${medioId}</medio>
-    <token>${lotteryToken}</token>
-    <operacion>${Date.now()}</operacion>
-  </c>
-  <i>
-    <JuegoId>14</JuegoId>
-    <SorteoId>${sorteo}</SorteoId>
-  </i>
-  </mt>
-  
-      ]]>
-    </PI_DatosXml>`,
-    };
-    
-    return new Promise(async (resolve, reject) => {
-      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
-        message,
-        async function (err, res, rawResponse, soapHeader, rawRequest) {
-          try {
-            if (err) reject(new Error(err));
-            let data = await parser.parseStringPromise(
-              res.fnEjecutaTransaccionResult
-            );
-            let errorCode = parseInt(data.mt.c[0].codError[0]);
-            if (!errorCode) {
-              if (data.mt.rs[0].r == "") {
-                let errorMessage = "No hay series disponibles para este sorteo";
-                loteriaVentasLogger.error(
-                  "recuperarSeriesLaMillonaria.loteria.error",
-                  {
-                    data: message,
-                    errorMessage,
-                  }
-                );
-
-                let errorData = {
-                  input: message,
-                  output: errorCode,
-                  function: "recuperarSeriesLaMillonaria",
-                };
-                reject(new loteriaError(errorMessage, "loteria", errorData));
-              }
-              let series = data.mt.rs[0].r[0].Row.map((row) => {
-                return row.$.Serie;
-              });
-
-              let logData = {
-                data: message,
-                loteriaResponse: rawResponse,
-                customResponse: series,
-              };
-              loteriaVentasLogger.info(
-                "recuperarSeriesLaMillonaria.loteria",
-                logData
-              );
-              resolve(series);
-            } else {
-              let errorMessage = data.mt.c[0].msgError[0];
-              loteriaVentasLogger.error(
-                "recuperarSeriesLaMillonaria.loteria.error",
-                {
-                  data: message,
-                  errorMessage: `${errorCode}-${errorMessage}`,
-                }
-              );
-
-              let errorData = {
-                input: message,
-                output: errorCode,
-                function: "recuperarSeriesLaMillonaria",
-              };
-              reject(new loteriaError(errorMessage, "loteria", errorData));
-            }
-          } catch (e) {
-            let errorMsg = e.message;
-            loteriaVentasLogger.error("recuperarSeriesLaMillonaria.error", {
-              errorMessage: errorMsg,
-            });
-            let errorData = {
-              input: e,
-              output: "",
-              function: "recuperarSeriesLaMillonaria",
-            };
-            reject(new loteriaError(errorMsg, "loteria", errorData));
-          }
-        }
-      );
-    });
-  } catch (e) {
-    let errorMsg = e.message;
-
-    loteriaVentasLogger.error("recuperarSeriesLaMillonaria.error", {
-      errorMessage: errorMsg,
-    });
-    let errorData = {
-      input: e,
-      output: "",
-      function: "recuperarSeriesLaMillonaria",
-    };
-
-    throw new loteriaError(errorMsg, "loteria", errorData);
   }
 };
 

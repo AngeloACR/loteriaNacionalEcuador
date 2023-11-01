@@ -42,16 +42,13 @@ $color-bingazo: #283479;
 
 .contenedor_carrito {
   width: 100%;
-  min-width: 305px;
   overflow: hidden;
-  padding: 15px;
   background-color: #f9f9f9;
 
   .detailBox {
     overflow-y: scroll;
     min-height: 20px;
-    max-height: 40vh;
-    padding: 0 10px;
+    max-height: 800px;
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;

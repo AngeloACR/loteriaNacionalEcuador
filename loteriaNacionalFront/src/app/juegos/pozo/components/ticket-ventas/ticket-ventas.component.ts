@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import {  sorteo } from "../../interfaces/sorteo";
 import { ticketsVenta } from "../../interfaces/ticket-venta";
 import { VentaService } from "../../services/venta.service";
+import { VentasService } from "src/app/ventas/services/ventas.service";
 
 @Component({
   selector: 'pozo-ticket-ventas',
@@ -20,8 +21,9 @@ export class TicketVentasComponent implements OnInit {
 
   objeto: any;
   numero: any;
+  boleto: any;
 
-  constructor(private lotteryService: VentaService) {}
+  constructor(private lotteryService: VentaService, private ventas: VentasService) {}
 
   async ngOnInit() {
     this.ticketIndex = this.ticket!.combinacion1;
@@ -30,6 +32,10 @@ export class TicketVentasComponent implements OnInit {
     this.date = this.sorteo!.fecha;
     this.mascota = this.lotteryService.obtenerCaracteristicasDeMascota(
       this.ticket!.mascota
+    );
+    this.boleto = this.ventas.obtenerImagenBoleto(
+      5,
+      this.sorteoNumber
     );
   }
 

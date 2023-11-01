@@ -69,24 +69,22 @@
             let i = index
           "
         >
-          <div class="bingazoBox">
-            <div class="contenedor_seleccion_numero">
-              <div class="imagen_animal">
-                <img [src]="obtenerFruta(ticket.fruta)" alt="" />
-                <p>Nº DE CARTÓN: {{ ticket.combinacion1 }}</p>
-              </div>
-              <div class="numeros">
-                <ng-container *ngFor="let numero of ticket.display">
-                  <p *ngIf="numero != '00'">
-                    {{ numero }}
-                  </p>
-                  <img
-                    *ngIf="numero == '00'"
-                    src="assets/guachito.png"
-                    alt=""
-                  />
-                </ng-container>
-              </div>
+          <div class="contenedor_seleccion_numero">
+            <img [src]="boleto" alt="" />
+            <img class="fruta" [src]="obtenerFruta(ticket.fruta)" alt="" />
+            <p class="carton">{{ ticket.combinacion1 }}</p>
+            <div class="numeros">
+              <ng-container *ngFor="let numero of ticket.display">
+                <p *ngIf="numero != '00'">
+                  {{ numero }}
+                </p>
+                <img
+                  *ngIf="numero == '00'"
+                  style="visibility: hidden"
+                  src="assets/guachito.png"
+                  alt=""
+                />
+              </ng-container>
             </div>
           </div>
 
@@ -124,12 +122,10 @@
       (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
       (deleteLottoTicket)="deleteLottoTicket($event)"
       (deletePozoTicket)="deletePozoTicket($event)"
-      (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
       (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
       (deleteBingazoTicket)="deleteBingazoTicket($event)"
       [ticketsLoteria]="ticketsLoteria"
       (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
-      [ticketsMillonaria]="ticketsMillonaria"
       [ticketsPozoRevancha]="ticketsPozoRevancha"
       [ticketsLotto]="ticketsLotto"
       [ticketsBingazo]="ticketsBingazo"
@@ -147,14 +143,12 @@
   (deletePozoTicket)="deletePozoTicket($event)"
   (deletePozoRevanchaTicket)="deletePozoRevanchaTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
-  (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   (deleteBingazoTicket)="deleteBingazoTicket($event)"
   [ticketsLoteria]="ticketsLoteria"
   [ticketsLotto]="ticketsLotto"
   [ticketsPozoRevancha]="ticketsPozoRevancha"
   [ticketsPozo]="ticketsPozo"
   [ticketsBingazo]="ticketsBingazo"
-  [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="bingazo"
 ></app-floating-menu>
 <app-loader

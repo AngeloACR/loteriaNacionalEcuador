@@ -13,10 +13,9 @@
         <div class="detailText">
           <p><span>SORTEO: </span>{{ sorteo }}</p>
           <p><span>COMBINACIÓN: </span>{{ ticket.combinacion }}</p>
-          <p *ngIf="tipoLoteria == 14"><span>SERIE: </span>{{ ticket.serie }}</p>
           <p><span>PREMIO: </span>{{ nombrePremio }}</p>
           <p><span>ENTERO: </span>{{ valorPremio }}</p>
-          <p *ngIf="tipoLoteria == 1 || tipoLoteria == 14">
+          <p *ngIf="tipoLoteria == 1">
             <span>FRACCIÓN: </span>{{ valorFraccion }}
           </p>
           <p *ngIf="descripcionDescuento != ''">Aplican descuentos en premios</p>
@@ -39,7 +38,6 @@
         <div class="detailText">
           <p><span>SORTEO: </span>{{ sorteo }}</p>
           <p><span>COMBINACIÓN: </span>{{ ticket.combinacion }}</p>
-          <p *ngIf="tipoLoteria == 14"><span>SERIE: </span>{{ ticket.serie }}</p>
         </div>
       </div>
       <p>¡Sigue intentándolo!</p>

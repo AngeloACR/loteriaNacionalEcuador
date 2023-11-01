@@ -5,88 +5,162 @@ $fuente-botones: "Monstserrat SemiBold";
 
 $color-bingazo: #283479;
 
+
+
 .contenedor_informacion_ticket {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
-  padding: 20px;
   background-color: white;
-
-  border-radius: 20px;
   border-width: 1px 0;
   border-style: solid;
   border-color: $color-bingazo;
   background-color: $color-bingazo;
   box-sizing: border-box;
   position: relative;
+  margin-bottom: 10px;
+
   p {
     font-family: $fuente-parrafo;
     font-size: 16px;
     color: white;
     margin: 5px;
+
     span {
       font-family: $fuente-subtitulo;
     }
   }
-  .combinacion {
-    font-weight: bold;
-    font-family: $fuente-subtitulo;
-  }
-  .fractionsBox {
+
+  .ticketBox {
     width: 100%;
+    position: relative;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    .fraccion {
-      font-family: $fuente-subtitulo;
-      margin: 4px;
-      padding: 5px;
+
+    &.boleto {
+
+      width: 370px;
+      margin: 0 auto;
+      position: relative;
+
+      background-color: #f2f2f2;
       text-align: center;
-      width: 16%;
-      background-color: white;
-      border: 1px solid black;
+      border-radius: 10px;
+
+
+      .contenedor_seleccion_numero {
+        img {
+          width: 100%;
+        }
+
+        min-height: 500px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        flex-wrap: wrap;
+        /* Rectangle 45 */
+
+        background: #ffffff;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+
+        .carton {
+          font-weight: bold;
+          position: absolute;
+          top: 107px;
+          left: 225px;
+        }
+
+        .fruta {
+          width: 40px;
+          border-radius: 30px;
+
+          position: absolute;
+          bottom: 76px;
+          left: 192px;
+
+        }
+
+        .numeros {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          margin: 60px;
+          position: absolute;
+          top: 125px;
+
+          p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+            width: 40px;
+            height: 34px;
+            font-weight: bold;
+            color: #444;
+            margin: 2px;
+          }
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 120px;
+            background-color: #fff;
+            padding: 5px;
+          }
+        }
+      }
     }
-  }
-  img.trash {
-    position: absolute;
-    cursor: pointer;
-    width: 6%;
-    top: 20px;
-    right: 20px;
-    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg)
-      brightness(108%) contrast(109%);
-    transition: width 0.3s ease;
-  }
-  img.trash:hover {
-    width: 8%;
-    transition: width 0.3s ease;
-  }
-  img.logoTicket {
-    position: absolute;
-    width: 30%;
-    top: 110px;
-    right: 5px;
+
+    .left {
+      width: 70%;
+
+      .fraccion {
+        font-family: $fuente-subtitulo;
+        margin: 2px;
+        padding: 5px;
+        text-align: center;
+        color: white;
+        width: 35px;
+        height: 35px;
+        font-weight: bold;
+      }
+
+      p {
+        font-weight: bold;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 30%;
+
+      img {
+        width: 100%;
+
+        &.trash {
+          width: 40%;
+          padding: 3px;
+          cursor: pointer;
+          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);
+          transition: width 0.3s ease;
+
+          &:hover {
+            width: 44%;
+            transition: width 0.3s ease;
+          }
+        }
+
+      }
+    }
   }
 }
-@media screen and (max-width: 1000px) {
-  .contenedor_informacion_ticket {
-    p {
-      font-size: 14px;
-    }
-    img.logoTicket {
-      position: absolute;
-      width: 150px;
-      top: 50px;
-      right: 5px;
-    }
-  }
-}
-@media screen and (max-width: 500px) {
-  .contenedor_informacion_ticket {
-    img.logoTicket {
-      position: absolute;
-      width: 120px;
-    }
-  }
-}
+
+
+@media screen and (max-width: 1000px) {}
+
+@media screen and (max-width: 500px) {}

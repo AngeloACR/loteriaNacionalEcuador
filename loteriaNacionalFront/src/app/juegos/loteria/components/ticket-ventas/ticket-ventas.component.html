@@ -1,25 +1,32 @@
 <div class="contenedor_informacion_ticket">
-    <p>
-      Juego: <span>Lotería Nacional</span>
-    </p>
-  
-    <p>
-      Sorteo: <span>{{ sorteoNumber }}</span>
-    </p>
-    <p>
-      Fecha: <span>{{ date }}</span>
-    </p>
-    <p>
-      Combinación: <span>{{ ticket!.combinacion }}</span>
-    </p>
-    <p>Fracciones:</p>
-    <br />
-    <div class="fractionsBox">
-  
-      <p class="fraccion" *ngFor="let number of fraccion">{{ number }}</p>
+  <div class="ticketBox">
+    <div class="left">
+      <p>Juego: <span>Lotería Nacional</span></p>
+
+      <p>
+        Sorteo: <span>{{ sorteoNumber }}</span>
+      </p>
+      <p>
+        Fecha: <span>{{ date }}</span>
+      </p>
+      <p>
+        Fracciones: <span class="fraccion">{{ fraccion?.join(" - ") }}</span>
+      </p>
     </div>
-    <img src="assets/trash.svg" class="trash" (click)="deleteBoleto()" alt="">
-    <img class="logoTicket" src="assets/img/loteria-sombra-2.png" alt="">
+    <div class="right">
+      <img
+        src="assets/trash.svg"
+        class="trash"
+        (click)="deleteBoleto()"
+        alt=""
+      />
+      <img class="logoTicket" src="assets/img/loteria-sombra-2.png" alt="" />
+    </div>
   </div>
-  
-  
+  <div class="ticketBox">
+    <div class="combinationBox">
+      <img [src]="boleto" alt="" />
+      <p>{{ ticket!.combinacion }}</p>
+    </div>
+  </div>
+</div>

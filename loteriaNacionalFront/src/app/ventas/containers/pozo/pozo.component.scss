@@ -51,8 +51,8 @@ mat-expansion-panel {
     justify-content: space-between;
 
     .contendor_seleccion {
-      width: 70%;
-      margin-right: 15px;
+      width: calc(100% - 400px);
+      padding: 5px;
       display: flex;
       flex-direction: column;
 
@@ -64,7 +64,7 @@ mat-expansion-panel {
 
         button {
           background-color: $color-pozo;
-          padding: 15px;
+          padding: 15px 30px;
           border-radius: 30px;
           height: 60px;
           border: 1px solid $color-pozo;
@@ -72,7 +72,6 @@ mat-expansion-panel {
           font-family: $fuente-botones;
           font-size: 16px;
           margin: 10px 0;
-          width: 30%;
           max-width: 300px;
           cursor: pointer;
 
@@ -154,8 +153,7 @@ mat-expansion-panel {
             }
 
             .option {
-              width: 120px;
-              height: 120px;
+              width: 18%;
               overflow: hidden;
 
               label {
@@ -320,8 +318,7 @@ mat-expansion-panel {
           }
 
           .option {
-            width: 120px;
-            height: 120px;
+            width: 18%;
             overflow: hidden;
 
             label {
@@ -387,7 +384,7 @@ mat-expansion-panel {
 
         .ticketBox {
 
-          width: 350px;
+          width: 360px;
           min-height: 458px;
           margin: 7px;
           position: relative;
@@ -395,6 +392,7 @@ mat-expansion-panel {
           background-color: white;
           text-align: center;
           border-radius: 4px;
+          border: solid 5px $color-pozo;
 
           .buttonsBox {
             display: flex;
@@ -493,11 +491,11 @@ mat-expansion-panel {
             min-height: 274px;
 
             button {
-              background-color: $color-revancha;
-              border: 1px solid $color-revancha;
+              background-color: $color-pozo;
+              border: 1px solid $color-pozo;
 
               &:hover {
-                color: $color-revancha;
+                color: $color-pozo;
                 background-color: white;
               }
             }
@@ -637,7 +635,7 @@ mat-expansion-panel {
           }
         }
       }
-
+ 
       .boton_boleto {
         width: 100%;
         margin: auto;
@@ -668,9 +666,7 @@ mat-expansion-panel {
     }
 
     .ticketScroller {
-      width: 25%;
-      max-width: 400px;
-      min-width: 250px;
+        width: 400px;
     }
   }
 }
@@ -691,8 +687,7 @@ mat-expansion-panel {
       .contenedor_select_animales {
         .options {
           .option {
-            width: 90px !important;
-            height: 90px !important;
+            width: 18%;
           }
         }
       }

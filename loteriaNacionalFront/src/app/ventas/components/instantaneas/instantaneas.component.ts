@@ -12,7 +12,6 @@ export class InstantaneasComponent implements OnInit {
   @Input() isLoteriaNacional: boolean = false;
   @Input() isLotto: boolean = false;
   @Input() isPozoMillonario: boolean = false;
-  @Input() isLaMillonaria: boolean = false;
   @Output() close = new EventEmitter();
   loteriaBackground: any;
   loteriaBackgroundButton: any;
@@ -37,16 +36,6 @@ export class InstantaneasComponent implements OnInit {
         };
 
         break;
-      case 14:
-        this.loteriaBackground = {
-          backgroundMillonaria: true,
-        };
-        this.loteriaBackgroundButton = {
-          backgroundMillonariaButton: true,
-        };
-
-        break;
-
       default:
         this.loteriaBackground = {
           backgroundPozoMillonario: true,

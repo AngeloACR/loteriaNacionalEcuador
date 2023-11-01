@@ -10,7 +10,6 @@ export class CarritoService {
   ticketsLoteria: any = {};
   ticketsLotto: any = {};
   ticketsPozo: any = {};
-  ticketsMillonaria: any = {};
   ticketsBingazo: any = {};
   ticketsPozoRevancha: any = {};
   ticketsCarrito: any = [];
@@ -64,16 +63,6 @@ export class CarritoService {
         }
         this.setBingazoLocal(bingazo);
         break;
-      case 14:
-        let millonaria = this.getMillonariaLocal();
-        for (let id in millonaria) {
-          if (millonaria[id].sorteo.sorteo == sorteo) {
-            millonaria[id].tieneDescuento = false;
-            millonaria[id].subtotalConDesc = 0;
-          }
-        }
-        this.setMillonariaLocal(millonaria);
-        break;
     }
     await this.actualizarCarrito();
   }
@@ -116,16 +105,6 @@ export class CarritoService {
         }
         this.setPozoLocal(pozo);
         break;
-      case '14':
-        let millonaria = this.getMillonariaLocal();
-        for (let id in millonaria) {
-          if (millonaria[id].sorteo.sorteo == sorteo) {
-            millonaria[id].tieneDescuento = true;
-            millonaria[id].subtotalConDesc = parseFloat(precioConDescuento);
-          }
-        }
-        this.setMillonariaLocal(millonaria);
-        break;
     }
     await this.actualizarCarrito();
   }
@@ -139,11 +118,6 @@ export class CarritoService {
     let conteo;
     switch (tipoLoteria) {
       case 1:
-        conteo = boletos.reduce((total: any, value: any) => {
-          return total + value.ticket.seleccionados.length;
-        }, 0);
-        break;
-      case 14:
         conteo = boletos.reduce((total: any, value: any) => {
           return total + value.ticket.seleccionados.length;
         }, 0);
@@ -185,7 +159,7 @@ export class CarritoService {
     let count = 0;
     if (carrito && carrito.length) {
       carrito.forEach((item: any) => {
-        if (item.tipoLoteria == 1 || item.tipoLoteria == 14) {
+        if (item.tipoLoteria == 1) {
           count += item.ticket.seleccionados.length;
         } else {
           count += 1;
@@ -203,7 +177,7 @@ export class CarritoService {
     let addIndex = carrito.findIndex(
       (x: any) => x.identificador === ticket.identificador
     );
-    if ((tipoLoteria == 1 || tipoLoteria == 14) && addIndex != -1) {
+    if ((tipoLoteria == 1) && addIndex != -1) {
       carrito[addIndex] = ticket;
     } else {
       carrito.push(ticket);
@@ -225,7 +199,6 @@ export class CarritoService {
         lotto: this.getLottoLocal(),
         pozo: this.getPozoLocal(),
         pozoRevancha: this.getPozoRevanchaLocal(),
-        millonaria: this.getMillonariaLocal(),
         bingazo: this.getBingazoLocal(),
         carrito: this.getCarritoLocal(),
         total: this.getTotal(),
@@ -259,16 +232,6 @@ export class CarritoService {
     return new Promise<any>(async (resolve, reject) => {
       if (tickets == null) tickets = {}
       localStorage.setItem('seleccionadosBingazo', JSON.stringify(tickets));
-      await this.setTotal();
-      await this.actualizarCarrito();
-      resolve('Done');
-    });
-  }
-  async setCarritoMillonaria(tickets: any) {
-    return new Promise<any>(async (resolve, reject) => {
-      if (tickets == null) tickets = {}
-      localStorage.setItem('seleccionadosMillonaria', JSON.stringify(tickets));
-      //this.ticketsLoteria =      //this.ticketsLotto = tickets;
       await this.setTotal();
       await this.actualizarCarrito();
       resolve('Done');
@@ -317,9 +280,6 @@ export class CarritoService {
   setBingazoLocal(data: any) {
     localStorage.setItem('seleccionadosBingazo', JSON.stringify(data));
   }
-  setMillonariaLocal(data: any) {
-    localStorage.setItem('seleccionadosMillonaria', JSON.stringify(data));
-  }
   setLottoLocal(data: any) {
     localStorage.setItem('seleccionadosLotto', JSON.stringify(data));
   }
@@ -343,9 +303,6 @@ export class CarritoService {
   }
   getBingazoLocal() {
     return JSON.parse(localStorage.getItem('seleccionadosBingazo')!);
-  }
-  getMillonariaLocal() {
-    return JSON.parse(localStorage.getItem('seleccionadosMillonaria')!);
   }
   getLottoLocal() {
     return JSON.parse(localStorage.getItem('seleccionadosLotto')!);
@@ -383,11 +340,9 @@ export class CarritoService {
                       data.pozo = {};
                       data.bingazo = {};
                       data.pozoRevancha = {};
-                      data.millonaria = {};
                     } */
           if (data.loteria == null) data.loteria = {}
           if (data.lotto == null) data.lotto = {}
-          if (data.millonaria == null) data.millonaria = {}
           if (data.pozo == null) data.pozo = {}
           if (data.bingazo == null) data.bingazo = {}
           if (data.pozoRevancha == null) data.pozoRevancha = {}
@@ -395,7 +350,6 @@ export class CarritoService {
           this.setCarritoLocal(data.carrito);
           this.setLoteriaLocal(data.loteria);
           this.setLottoLocal(data.lotto);
-          this.setMillonariaLocal(data.millonaria);
           this.setPozoLocal(data.pozo);
           this.setBingazoLocal(data.bingazo);
           this.setPozoRevanchaLocal(data.pozoRevancha);
@@ -473,13 +427,6 @@ export class CarritoService {
       //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
     });
   }
-  async getCarritoMillonaria() {
-    return new Promise<any>(async (resolve, reject) => {
-      let carritoDB = await this.buscarCarrito();
-      resolve(carritoDB.millonaria);
-      //resolve(JSON.parse(localStorage.getItem("seleccionadosPozo")));
-    });
-  }
   async getCarritoPozoRevancha() {
     return new Promise<any>(async (resolve, reject) => {
       let carritoDB = await this.buscarCarrito();
@@ -493,7 +440,6 @@ export class CarritoService {
     this.ticketsLoteria = {};
     this.ticketsLotto = {};
     this.ticketsPozo = {};
-    this.ticketsMillonaria = {};
     this.ticketsPozoRevancha = {};
     this.ticketsBingazo = {};
     this.reservaId = 0;
@@ -503,7 +449,6 @@ export class CarritoService {
     localStorage.removeItem('seleccionadosLotto');
     localStorage.removeItem('seleccionadosPozo');
     localStorage.removeItem('seleccionadosCarrito');
-    localStorage.removeItem('seleccionadosMillonaria');
     localStorage.removeItem('seleccionadosPozoRevancha');
     this.setReservaId(0)
     localStorage.removeItem('total');
@@ -541,7 +486,6 @@ export class CarritoService {
       let pozoAux = this.getPozoLocal();
       let pozoRevanchaAux = this.getPozoRevanchaLocal();
       let bingazoAux = this.getBingazoLocal();
-      let millonariaAux = this.getMillonariaLocal();
       let loteriaConDesc = 0;
       for (let id in loteriaAux) {
         if (loteriaAux[id].tieneDescuento) {
@@ -574,14 +518,6 @@ export class CarritoService {
           pozoRevanchaConDesc += parseFloat(pozoRevanchaAux[id].subtotal);
         }
       }
-      let millonariaConDesc = 0;
-      for (let id in millonariaAux) {
-        if (millonariaAux[id].tieneDescuento) {
-          millonariaConDesc += parseFloat(millonariaAux[id].subtotalConDesc);
-        } else {
-          millonariaConDesc += parseFloat(millonariaAux[id].subtotal);
-        }
-      }
       let bingazoConDesc = 0;
       for (let id in bingazoAux) {
         if (bingazoAux[id].tieneDescuento) {
@@ -591,7 +527,7 @@ export class CarritoService {
         }
       }
       let auxConDesc =
-        loteriaConDesc + lottoConDesc + pozoConDesc + pozoRevanchaConDesc + millonariaConDesc + bingazoConDesc;
+        loteriaConDesc + lottoConDesc + pozoConDesc + pozoRevanchaConDesc + bingazoConDesc;
 
       this.totalConDesc = auxConDesc;
       localStorage.setItem('totalConDesc', JSON.stringify(auxConDesc));
@@ -607,7 +543,6 @@ export class CarritoService {
       let pozoAux = this.getPozoLocal();
       let revanchaAux = this.getPozoRevanchaLocal();
       let bingazoAux = this.getBingazoLocal();
-      let millonariaAux = this.getMillonariaLocal();
       let loteria = 0;
       for (let id in loteriaAux) {
         loteria += parseFloat(loteriaAux[id].subtotal);
@@ -624,15 +559,11 @@ export class CarritoService {
       for (let id in revanchaAux) {
         revancha += parseFloat(revanchaAux[id].subtotal);
       }
-      let millonaria = 0;
-      for (let id in millonariaAux) {
-        millonaria += parseFloat(millonariaAux[id].subtotal);
-      }
       let bingazo = 0;
       for (let id in bingazoAux) {
         bingazo += parseFloat(bingazoAux[id].subtotal);
       }
-      let aux = loteria + lotto + pozo + revancha + millonaria + bingazo;
+      let aux = loteria + lotto + pozo + revancha + bingazo;
 
       this.total = aux;
       localStorage.setItem('total', JSON.stringify(aux));

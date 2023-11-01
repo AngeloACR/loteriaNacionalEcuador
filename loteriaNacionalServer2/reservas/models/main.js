@@ -12,9 +12,6 @@ const ReservaSchema = new mongoose.Schema({
     pozo: {
         type: Schema.Types.Mixed
     },
-    millonaria: {
-        type: Schema.Types.Mixed
-    },
     carrito: [{
         type: Schema.Types.Mixed
     }],

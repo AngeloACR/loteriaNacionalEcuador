@@ -23,7 +23,6 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
 
 
   @Input() ticketsLoteria: any;
-  @Input() ticketsMillonaria: any;
   @Input() ticketsLotto: any;
   @Input() ticketsPozo: any;
   @Input() ticketsBingazo: any;
@@ -38,7 +37,6 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Output() deleteBingazoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
   @Output() deletePozoRevanchaTicket = new EventEmitter();
-  @Output() deleteMillonariaTicket = new EventEmitter();
   constructor(private cart: CarritoService) {}
   carrito: any = {};
   cerrar: any = {};
@@ -81,9 +79,6 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   }
   deletePozo(e: any) {
     this.deletePozoTicket.emit(e);
-  }
-  deleteMillonaria(e: any) {
-    this.deleteMillonariaTicket.emit(e);
   }
   deleteFraccion(e: any) {
     this.deleteLoteriaFraccion.emit(e);

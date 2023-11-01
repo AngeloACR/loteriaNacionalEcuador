@@ -46,18 +46,6 @@ export class ResultadosComponent implements OnInit {
           backgroundBingazo: true,
         };
         break;
-      case '18':
-        this.loteriaBackground = {
-          backgroundFacilotto: true,
-        };
-
-        break;
-      case '14':
-        this.loteriaBackground = {
-          backgroundLotto: true,
-        };
-
-        break;
     }
     this.resultados.forEach((resultado: any) => {
       let description;
@@ -67,9 +55,6 @@ export class ResultadosComponent implements OnInit {
         combinacion: resultado.combinacion,
         resultado,
       };
-      if (this.tipoLoteria == '14') {
-        ticket['serie'] = resultado.serie;
-      }
       this.tickets.push(ticket);
     });
   }

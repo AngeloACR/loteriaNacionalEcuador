@@ -17,7 +17,6 @@ export class MenuHeaderComponent implements OnInit {
   linkLotto: string = '';
   linkLoteriaNacional: string = '';
   linkPozoMillonario: string = '';
-  linkLaMillonaria: string = '';
   linkBingazo: string = '';
   token?: string;
   usuario?: string;
@@ -36,36 +35,32 @@ export class MenuHeaderComponent implements OnInit {
     {
       selected: false,
     },
-    {
-      selected: false,
-    },
   ];
   constructor(
     private actRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef
-    ) {
-      this.actRoute.url.subscribe((url: any) => {
-        this.setSelected(url[0].path);
-      });
+  ) {
+    this.actRoute.url.subscribe((url: any) => {
+      this.setSelected(url[0].path);
+    });
 
     this.actRoute.params.subscribe((params) => {
       this.token = params['token'];
     });
   }
-  
+
   ngOnInit() {
     this.cdr.detectChanges();
     this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
     this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
     this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
-    this.linkLaMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
     this.linkBingazo = `/compra_tus_juegos/bingazo/${this.token}`;
     this.cdr.markForCheck();
   }
 
 
   setSelected(url: string) {
-    let index = ['loteria', 'lotto', 'pozo', 'millonaria', 'bingazo'].indexOf(url);
+    let index = ['loteria', 'lotto', 'pozo', 'bingazo'].indexOf(url);
     if (index != -1) this.selectedClass[index].selected = true;
   }
 

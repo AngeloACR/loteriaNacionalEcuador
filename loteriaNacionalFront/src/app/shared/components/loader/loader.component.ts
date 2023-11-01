@@ -19,10 +19,6 @@ export class LoaderComponent implements OnInit {
         this.logoPath = 'assets/img/lotto-sombra-2.png';
         //this.logoPath = "assets/lottoLoader.gif";
         break;
-      case 'facilotto':
-        this.logoPath = 'assets/img/facilotto-sombra.png';
-        //this.logoPath = "assets/lottoLoader.gif";
-        break;
       case 'pozo':
         this.logoPath = 'assets/img/pozo-sombra.png';
         //this.logoPath = "assets/pozoLoader.gif";

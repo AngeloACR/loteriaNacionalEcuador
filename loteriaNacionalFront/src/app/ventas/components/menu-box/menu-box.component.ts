@@ -13,7 +13,6 @@ export class MenuBoxComponent implements OnInit {
   linkLotto: string = '';
   linkLoteriaNacional: string = '';
   linkPozoMillonario: string = '';
-  linkMillonaria: string = '';
   linkBingazo: string = '';
   token?: string;
   lotteryToken?: string;
@@ -26,7 +25,6 @@ export class MenuBoxComponent implements OnInit {
   ticketsLoteria: any;
   ticketsBingazo: any;
   ticketsCarrito: any;
-  ticketsMillonaria: any;
   @Input() miniBox: boolean = false;
   ticketsPozoRevancha: any;
   codigoPromocional: any = [];
@@ -55,7 +53,6 @@ export class MenuBoxComponent implements OnInit {
           this.linkLoteriaNacional = `/compra_tus_juegos/loteria/${this.token}`;
           this.linkLotto = `/compra_tus_juegos/lotto/${this.token}`;
           this.linkPozoMillonario = `/compra_tus_juegos/pozo/${this.token}`;
-          this.linkMillonaria = `/compra_tus_juegos/millonaria/${this.token}`;
           this.linkBingazo = `/compra_tus_juegos/bingazo/${this.token}`;
         }
 
@@ -111,42 +108,6 @@ export class MenuBoxComponent implements OnInit {
     this.saldoInsuficiente = true;
   }
 
-  async deleteMillonariaTicket(data: any) {
-    try {
-      let identificador = data.ticket.identificador;
-      let fracciones = data.ticket.seleccionados;
-      this.loadingMessage = 'Removiendo boleto del carrito';
-      this.isLoading = true;
-      let ticket = this.ticketsMillonaria[identificador].ticket;
-      let sorteo = data.sorteo;
-      let reservaId = this.lottery.getReservaId();
-      if (fracciones.length != 0) {
-        let response = await this.lottery.eliminarBoletosDeReserva(
-          this.token,
-          ticket,
-          sorteo,
-          fracciones,
-          14,
-          reservaId
-        );
-      }
-      delete this.ticketsMillonaria[identificador];
-
-      await this.cart.removeFromCart(ticket, 1);
-      await this.cart.setCarritoMillonaria(this.ticketsMillonaria);
-
-      await this.getCarritoTickets();
-      //this.getTotal();
-      //await this.setDescuento(14);
-      this.isLoading = false;
-    } catch (e: any) {
-      this.isLoading = false;
-      console.log(e.message);
-      let errorMessage = e.message;
-      let errorTitle = 'Error';
-      this.openError(errorMessage, errorTitle);
-    }
-  }
   async deleteLoteriaTicket(data: any) {
     try {
       let identificador = data.ticket.identificador;
@@ -405,7 +366,6 @@ export class MenuBoxComponent implements OnInit {
     let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
-    this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
     this.ticketsPozoRevancha = carrito.pozoRevancha;
     this.ticketsBingazo = carrito.bingazo;

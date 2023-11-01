@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import {  sorteo } from "../../interfaces/sorteo";
+import { sorteo } from "../../interfaces/sorteo";
 import { ticketsVenta } from "../../interfaces/ticket-venta";
 import { VentaService } from "../../services/venta.service";
+import { VentasService } from "src/app/ventas/services/ventas.service";
 
 @Component({
   selector: 'revancha-ticket-ventas',
@@ -20,8 +21,9 @@ export class TicketVentasComponent implements OnInit {
 
   objeto: any;
   numero: any;
+  boleto: any;
 
-  constructor(private lotteryService: VentaService) {}
+  constructor(private lotteryService: VentaService, private ventas: VentasService) { }
 
   async ngOnInit() {
     this.ticketIndex = this.ticket!.combinacion1;
@@ -31,13 +33,17 @@ export class TicketVentasComponent implements OnInit {
     this.mascota = this.lotteryService.obtenerCaracteristicasDeMascota(
       this.ticket!.mascota
     );
+    this.boleto = this.ventas.obtenerImagenBoleto(
+      17,
+      this.sorteoNumber
+    );
   }
 
   obtenerAnimal(mascota: any) {
     return this.lotteryService.obtenerMascota(mascota);
   }
-  deleteTicket(){
+  deleteTicket() {
     this.delete.emit()
   }
- 
+
 }

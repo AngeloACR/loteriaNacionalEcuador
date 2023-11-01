@@ -1,7 +1,6 @@
 const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache"); // COMUNICAR POR gRPC
 const CacheLotto = require("../../sorteosLotto/controller/cache"); // COMUNICAR POR gRPC
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache"); // COMUNICAR POR gRPC
-const CacheLaMillonaria = require("../../sorteosLaMillonaria/controller/cache"); // COMUNICAR POR gRPC
 const CacheBingazo = require("../../sorteosBingazo/controller/cache"); // COMUNICAR POR gRPC
 const CodigosPromocionales = require("../../codigosPromocionales/controller/main"); // COMUNICAR POR gRPC
 const psdVentas = require("../../psdLoteria/ventas");
@@ -88,7 +87,6 @@ const ventasController = {
     lotto,
     pozo,
     pozoRevancha,
-    millonaria,
     bingazo,
     lotteryToken,
     reservaId,
@@ -105,7 +103,6 @@ const ventasController = {
       lotto,
       pozo,
       pozoRevancha,
-      millonaria,
       bingazo,
       lotteryToken,
       reservaId,
@@ -132,7 +129,6 @@ const ventasController = {
         lotto,
         pozo,
         pozoRevancha,
-        millonaria,
         bingazo,
         lotteryToken,
         reservaId,
@@ -213,13 +209,11 @@ const ventasController = {
         CacheLoteria.getSorteosDisponibles(),
         CacheLotto.getSorteosDisponibles(),
         CachePozo.getSorteosDisponibles(),
-        CacheLaMillonaria.getSorteosDisponibles(),
         CacheBingazo.getSorteosDisponibles(),
       ]);
       let loteriaSorteos = sorteos[0];
       let lottoSorteos = sorteos[1];
       let pozoSorteos = sorteos[2];
-      let millonariaSorteos = sorteos[3];
       let bingazoSorteos = sorteos[4];
       let auxPagoInstantaneas = [];
       let auxGanadores = [];
@@ -260,18 +254,12 @@ const ventasController = {
                 .fecha.split(" ")[0]
                 .split("/");
               break;
-            case 14:
-              drawDateAux = millonariaSorteos
-                .find((sorteo) => sorteo.sorteo == instantanea.sorteo.Sort)
-                .fecha.split(" ")[0]
-                .split("/");
-              break;
           }
           let item = reservationDetails.find(
             (element) => premio.Num == element.combinationC1
           );
           let combinacion1 = premio.Num;
-          let combinacion2 = tipoLoteria == 14? premio.Num2 : item.combinacion2 ? item.combinacion2 : "";
+          let combinacion2 = item.combinacion2 ? item.combinacion2 : "";
           let combinacion3 = item.combinacion3 ? item.combinacion3 : "";
           let combinacion4 = item.combinacion4 ? item.combinacion4 : "";
           let combinacion5 = item.combinacion5 ? item.combinacion5 : "";
@@ -335,7 +323,6 @@ const ventasController = {
       let lottoAux = req.body.lotto;
       let pozoAux = req.body.pozo;
       let pozoRevanchaAux = req.body.pozoRevancha;
-      let millonariaAux = req.body.millonaria;
       let bingazoAux = req.body.bingazo;
       let reservationDetails = [];
 
@@ -411,28 +398,6 @@ const ventasController = {
         reservationDetails.push(aux);
         pozoRevancha.push(pozoRevanchaAux[id]);
       }
-      let millonaria = [];
-      for (id in millonariaAux) {
-        let drawDateAux = millonariaAux[id].sorteo.fecha
-          .split(" ")[0]
-          .split("/");
-        let drawDate = `${drawDateAux[2]}-${drawDateAux[1]}-${drawDateAux[0]}`;
-        let aux = {
-          lotteryType: 14,
-          drawNumber: parseInt(millonariaAux[id].sorteo.sorteo),
-          drawDate,
-          subTotal: `${parseFloat(millonariaAux[id].subtotal).toFixed(2)}`,
-          combinationC1: millonariaAux[id].ticket.combinacion1,
-          combinationC2: millonariaAux[id].ticket.combinacion2,
-          fractions: JSON.stringify([
-            ...millonariaAux[id].ticket.seleccionados.map((item) => {
-              return parseInt(item);
-            }),
-          ]).replace(/,/g, ", "),
-        };
-        reservationDetails.push(aux);
-        millonaria.push(millonariaAux[id]);
-      }
       let bingazo = [];
       for (id in bingazoAux) {
         let drawDateAux = bingazoAux[id].sorteo.fecha.split(" ")[0].split("/");
@@ -463,7 +428,6 @@ const ventasController = {
         amountConDesc: totalConDesc,
         loteria: loteriaAux,
         lotto: lottoAux,
-        millonaria: millonariaAux,
         bingazo: bingazoAux,
         user,
         pozo: pozoAux,
@@ -494,7 +458,6 @@ const ventasController = {
         lotto,
         pozo,
         pozoRevancha,
-        millonaria,
         bingazo,
         lotteryToken,
         reservaId,
@@ -625,22 +588,6 @@ const ventasController = {
         aux["fecha"] = pozoRevanchaAux[id].sorteo.fecha;
         pozoRevancha.push(aux);
       }
-      let millonariaAux = apiReservaData.millonaria;
-      let millonaria = [];
-      for (id in millonariaAux) {
-        let aux = {};
-        aux["combinacion1"] = millonariaAux[id].ticket.combinacion1;
-        aux["combinacion2"] = millonariaAux[id].ticket.combinacion2;
-        aux["fracciones"] = millonariaAux[id].ticket.seleccionados;
-        aux["sorteo"] = millonariaAux[id].sorteo.sorteo;
-        aux["subtotal"] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
-        aux["tieneDescuento"] = millonariaAux[id].tieneDescuento;
-        aux["subtotalConDesc"] = parseFloat(
-          millonariaAux[id].subtotalConDesc
-        ).toFixed(2);
-        aux["fecha"] = millonariaAux[id].sorteo.fecha;
-        millonaria.push(aux);
-      }
       let bingazoAux = apiReservaData.bingazo;
       let bingazo = [];
       for (id in bingazoAux) {
@@ -673,7 +620,6 @@ const ventasController = {
         pozoRevancha,
         alboranVentaId,
         lotto,
-        millonaria,
         bingazo,
         total,
         totalConDesc,

@@ -4,7 +4,6 @@ import { DetalleDeVentaComponent } from './containers/detalle-de-venta/detalle-d
 import { HomeComponent } from './containers/home/home.component';
 import { LoteriaComponent } from './containers/loteria/loteria.component';
 import { LottoComponent } from './containers/lotto/lotto.component';
-import { MillonariaComponent } from './containers/millonaria/millonaria.component';
 import { PozoComponent } from './containers/pozo/pozo.component';
 import { VentasComponent } from './ventas.component';
 import { VentaFinalizadaComponent } from './containers/venta-finalizada/venta-finalizada.component';
@@ -18,7 +17,6 @@ const routes: Routes = [
     children: [
       { path: 'detalle/:id', component: DetalleDeVentaComponent },
       { path: 'loteria/:token', component: LoteriaComponent },
-      { path: 'millonaria/:token', component: MillonariaComponent },
       { path: 'lotto/:token', component: LottoComponent },
       { path: 'bingazo/:token', component: BingazoComponent },
       {

@@ -33,7 +33,6 @@ export class ConfirmacionDeVentaComponent implements OnInit {
   ticketsLotto: any;
   ticketsLoteria: any;
   ticketsPozoRevancha: any;
-  ticketsMillonaria: any;
   ticketsBingazo: any = {};
   compra: any = {};
   confirmacionDeCompra: boolean = false;
@@ -122,22 +121,6 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       aux['fecha'] = pozoRevanchaAux[id].sorteo.fecha;
       pozoRevancha.push(aux);
     }
-    let millonariaAux = this.ticketsMillonaria;
-    let millonaria = [];
-    for (let id in millonariaAux) {
-      let aux: any = {};
-      aux['combinacion1'] = millonariaAux[id].ticket.combinacion1;
-      aux['combinacion2'] = millonariaAux[id].ticket.combinacion2;
-      aux['fracciones'] = millonariaAux[id].ticket.seleccionados;
-      aux['subtotal'] = parseFloat(millonariaAux[id].subtotal).toFixed(2);
-      aux['subtotalConDesc'] = parseFloat(
-        millonariaAux[id].subtotalConDesc
-      ).toFixed(2);
-      aux['tieneDescuento'] = millonariaAux[id].tieneDescuento;
-      aux['fecha'] = millonariaAux[id].sorteo.fecha;
-      aux['sorteo'] = millonariaAux[id].sorteo.sorteo;
-      millonaria.push(aux);
-    }
     let bingazoAux = this.ticketsBingazo;
     let bingazo = [];
     for (let id in bingazoAux) {
@@ -159,7 +142,6 @@ export class ConfirmacionDeVentaComponent implements OnInit {
 
     this.compra = {
       loteria,
-      millonaria,
       bingazo,
       lotto,
       pozo,
@@ -175,7 +157,6 @@ export class ConfirmacionDeVentaComponent implements OnInit {
     let carrito = await this.cart.buscarCarrito();
     this.ticketsLoteria = carrito.loteria;
     this.ticketsLotto = carrito.lotto;
-    this.ticketsMillonaria = carrito.millonaria;
     this.ticketsPozo = carrito.pozo;
     this.ticketsPozoRevancha = carrito.pozoRevancha;
     this.ticketsBingazo = carrito.bingazo;

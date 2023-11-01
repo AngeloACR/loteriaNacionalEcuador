@@ -21,36 +21,24 @@
 - Agregar Pozo revancha al carrito - LISTO
 - Revisar tema de pago de premios en la millonaria cuando hay una combinacion con diferentes series - LISTO
 
-- Cambiar boton de venta de pozo a amarillo
-- Problemas con estilo en iphone en formularios de consulta
-- Corregir funcion de directiva flotante
-- Activar los descuentos
-- Codigos promocionales a partir del 1 de febrero, minimo 2$
-- Mover la pasarela de pago a un componente o modulo que se despliegue en un modal, y refactorizando para adaptarse al cambio
-- Refactorizar y simplificar las funciones del carrito, para que se maneje solo un array de boletos
-- Reservar primero en loteria, luego agregar al carrito
+- Cambiar boton de venta de pozo a amarillo - LISTO
+- Problemas con estilo en iphone en formularios de consulta - LISTO
+- Codigos promocionales a partir del 1 de febrero, minimo 2$ - LISTO
+- Mover la pasarela de pago a un componente o modulo que se despliegue en un modal, y refactorizando para adaptarse al cambio - LISTO
 
-- Validar la hora de cierre del sorteo y bloquear las ventas para esa hora
-- Cuando falle la db, propagar error correctamente para evitar ventas en reserve
-- Generar ruta de pruebas controladas en produccion
-- Agregar evento de scrolling en carrito flotante, errores y loaders
-- Editar estilo del sitio web  
-- Automatizar resolucion de ventas fallidas en alboran
-- Agregar validacion previa a la venta para obtener status de la reserva
-- Validar premios no pagados
-- Validar premios no pagados en exalogic
-- Resolver premios especiales de lotto en ultimos resultados
-- Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra, y mostrar que no se ha cargado la info del sorteo en caso negativo
-- Validar cada 3 horas si hay nuevos archivos en el servidor
-- Interfaz administrativa para gestion de codigos promocionales
+- Editar estilo del sitio web  - LISTO
+- Validar premios no pagados - LISTO
+- Validar premios no pagados en exalogic - LISTO
+- Resolver premios especiales de lotto en ultimos resultados - LISTO
+- Verificar si los resultados de un sorteo tienen registros haciendo uso de una tabla maestra, y mostrar que no se ha cargado la info del sorteo en caso negativo - LISTO
+- Validar cada 3 horas si hay nuevos archivos en el servidor - LISTO
 
-- Reducir tamaño de ventanas flotantes en movil
-- Boton de inicio que mande a pagina de loteria, no a ventas - Listo
-- Quitar popup en entorno de pruebas
-- En entorno de pruebas, poner boton de compras para movil direccionado a ventas-prueba - Listo
-- Poner el ancho del iframe igual a los externos - Listo
+- Boton de inicio que mande a pagina de loteria, no a ventas - LISTO
+- Quitar popup en entorno de pruebas - LISTO
+- En entorno de pruebas, poner boton de compras para movil direccionado a ventas-prueba - LISTO
+- Poner el ancho del iframe igual a los externos - LISTO
 
-- En home, los ultimos resultados asegurar que en pantallas anchas sean 2 filas de 3 - Listo
+- En home, los ultimos resultados asegurar que en pantallas anchas sean 2 filas de 3 - LISTO
 - Al darle buscar boletin desde la consulta, la primera vez, hacer que haga scroll top. Pasa solo con loteria la primera vez
 - Agregar "x" a ventanas de popup, para tener el icono de cierre a la mano
 - Agregar vinculo al home en el logo (en movil) - LISTO
@@ -60,11 +48,97 @@
 - El carrito en popup ponerle fondo - LISTO
 - Loader de pozo revancha en consulta cambiarlo por el correcto - LISTO
 
-- Agregar cuenta regresiva en cada sorteo que se consulta para la compra
+- Agregar cuenta regresiva en cada sorteo que se consulta para la compra - LISTO
+- Editar estilo de pagina de compras - LISTO
+
+- Reducir tamaño de texto en lotto, ponerle width en 270px y texto en bold - LISTO
+- Hacer que mascotas de pozo entren todas en dos filas de 5 - LISTO
+- Poner borde a la dupla pozo-revancha de color verde del pozo 5px - LISTO
+- Loteria nacional en mobile a las cosas pegadas a los bordes, darle un padding a los lados de 15px y ajustar numeros en proporcion a esto - LISTO
+- Texto de boton “Buscar numero” que salga en una sola linea - LISTO
+- Espacio en los bordes que se parezca a pozo - LISTO
+- Poner carrito flotante en el centro - NO HACE FALTA
+- Boton de pozo revancha ponerlo verde - LISTO
+
+- Agregar boleto bingazo - LISTO
+- Poner imagenes de boleto en carrito - LISTO
+- Remover codigo de venta de millonaria - LISTO
+
+- Tickets bingazo pendientes
+    - 3988228
+    - 3988258
+
+- Modificar menu box de compras
+- Poner imagenes de boletos en detalle de compra
+- Imagen de compra finalizada sacarla de figma
+- Chequeo general de estilo, validar que los botones de agg al carrito funcionan bien y tienen z index correcto
+- Validar que agg al carrito se bloquea cuando el boleto fue agregado. Pasa en loteria nacional
+
+- Reservar primero en loteria, luego agregar al carrito
+- Bloqueo de saldo no funciona bien
+- Mejorar logica para agregar y quitar fracciones
+- Mejorar Rendimiento del menu header
+
+- Validar la hora de cierre del sorteo y bloquear las ventas para esa hora
+- Reducir tamaño de ventanas flotantes en movil
+- Mejorar mensajes de error y loaders
+- Fallo en mandar el token desde el home en movil
+- Agregar token a boton de compra en menu de consulta
+
+
+- Implementacion de pega3
+- Implementación de descuentos 
+- Migrar de iframe a web component
+
+- Implementacion de interfaz de soporte
+    - Ventas en reserve
+    - Pago de premios
+    - Status de db y reanimacion
+    - Listado de ventas
+    - Listado de premios
+    - Automatización de resolucion de ventas fallidas en alboran
+
+- Mejora del versionado para tener mas control sobre ramas activas en los diferentes entornos
+- Mejorar manejo de las variables de entorno
+- Mejorar manejo y propagacion de error cuando falla la db para evitar ventas en reserve
+- Mejorar validacion previa a la venta para obtener status de la reserva y reducir la complejidad
+
+- Refactorizar servidor
+    - Optimizar manejo y propagacion de errores
+    - Optimizar manejo de logging
+
+- Refactorizar frontend
+    - Simplificar navegacion
+    - Reducir cantidad de componentes
+    - Abstraer codigo duplicado
+    - Optimizar manejo de datos y funciones para el carrito
+
+- Crear protocolos para la implementacion de nuevos juegos
+    - Consulta de juego
+    - Venta de juego
+    - Datos de juego
+- Crear protocolos para remover juegos
+    - Consulta de juego
+    - Venta de juego
+    - Datos de juego
+
+- Interfaz de gestion de codigos promocionales
+    - Creación de campaña con selección de cantidad de combinaciones
+    - Generador de txt con lista de codigos
+    - Customizacion de logica de codigos promocionales
+    - Logica para gestionar los codigos eficientemente (Definir mejor)
+
+- Migrar servicios ftp a a nodejs
+- Migrar de pm2 a docker
+- Validar actividades de Francisco
+
+- Min-height a body
 - Fondo del home gris
-- Editar estilo de pagina de compras
-- Implementación de descuentos
-- Habilitar reanimacion de db con interfaz administrativa
 - Proteger con guards las rutas de compra
+- Generar ruta de pruebas controladas en produccion
+
 - Documentacion sobre la infraestructura de la plataforma
 - Documentacion de incidencias
+
+- Agregar evento de scrolling en carrito flotante, errores y loaders - EN PAUSA
+

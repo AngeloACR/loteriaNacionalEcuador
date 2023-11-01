@@ -65,8 +65,8 @@ button {
     width: 100%;
 
     .contenedor_seleccion {
-      width: 70%;
-      margin-right: 15px;
+      width: calc(100% - 400px);
+      padding: 5px;
       display: flex;
       flex-direction: column;
 
@@ -312,6 +312,7 @@ button {
                 opacity: 1;
                 position: relative;
               }
+
               input[type="checkbox"]:checked {
                 background-color: $color-botton;
                 border-radius: 10px;
@@ -319,7 +320,7 @@ button {
                 transition: background-color 0.3s ease-out;
                 opacity: 1;
               }
-    
+
             }
 
             .contenedor_fracciones {
@@ -386,29 +387,13 @@ button {
   }
 
   .ticketScroller {
-    width: 25%;
-    max-width: 400px;
-    min-width: 250px;
+    width: 400px;
   }
 }
 
 @media screen and (max-width: 1000px) {
 
-/*   .ticketsBox {
-    .ticketBox {
-      width: 300px !important;
 
-      .combinationBox {
-
-        p {
-          right: 79px !important;
-          bottom: 7px !important;
-          font-size: 30px !important;
-        }
-      }
-
-    }
-  } */
 
   .paymentBox {
     width: 95%;
@@ -459,6 +444,23 @@ button {
 
     .ticketScroller {
       display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .ticketsBox {
+    .ticketBox {
+
+      width: 350px !important;
+
+      .combinationBox {
+        p {
+          right: 76px !important;
+          bottom: 21px !important;
+        }
+      }
+
     }
   }
 }

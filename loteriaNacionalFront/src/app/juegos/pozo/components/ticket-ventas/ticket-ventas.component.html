@@ -1,19 +1,32 @@
 <div class="contenedor_informacion_ticket">
-  <p>Juego: <span>Pozo Millonario</span></p>
+  <div class="ticketBox">
+    <div class="left">
+      <p>Juego: <span>Pozo Millonario</span></p>
 
-  <p>
-    Sorteo: <span>{{ sorteoNumber }}</span>
-  </p>
-  <p>
-    Fecha: <span>{{ date }}</span>
-  </p>
-  <p>
-    Mascota: <span>{{ mascota!.nombre }}</span>
-  </p>
-  <p>Combinación:</p>
-  <br />
-
-  <p class="combinacion">{{ ticketNumbers!.join(", ") }}</p>
-  <img src="assets/trash.svg" class="trash" (click)="deleteTicket()" alt="" />
-  <img class="logoTicket" src="assets/img/pozo-sombra.png" alt="" />
+      <p>
+        Sorteo: <span>{{ sorteoNumber }}</span>
+      </p>
+      <p>
+        Fecha: <span>{{ date }}</span>
+      </p>
+    </div>
+    <div class="right">
+      <img
+        src="assets/trash.svg"
+        class="trash"
+        (click)="deleteTicket()"
+        alt=""
+      />
+      <img class="logoTicket" src="assets/img/pozo-sombra.png" alt="" />
+    </div>
+  </div>
+  <div class="ticketBox boleto">
+    <img [src]="boleto" alt="" />
+    <div class="contenedor_seleccion_numero">
+      <img class="mascota" [src]="mascota!.ruta" alt="" />
+      <p class="numero" *ngFor="let numero of ticket.display">
+        {{ numero }}
+      </p>
+    </div>
+  </div>
 </div>

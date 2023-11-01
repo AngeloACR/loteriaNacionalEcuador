@@ -8,12 +8,8 @@ cd ../helper
 pm2 start helperApp.js --name helperApp
 cd ../reservas
 pm2 start reservasApp.js --name reservasApp
-cd ../sorteosLaMillonaria
-pm2 start laMillonariaApp.js --name laMillonariaApp
 cd ../sorteosLoteriaNacional
 pm2 start loteriaNacionalApp.js --name loteriaNacionalApp
-cd ../sorteosFacilotto
-pm2 start facilottoApp.js --name facilottoApp
 cd ../sorteosLotto
 pm2 start lottoApp.js --name lottoApp
 cd ../sorteosPozoMillonario

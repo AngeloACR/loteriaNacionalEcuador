@@ -2201,37 +2201,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TicketVentasComponent": () => (/* binding */ TicketVentasComponent)
 /* harmony export */ });
 /* harmony import */ var _home_angeloacr_Proyectos_loteriaNacional_app_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 2316);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var src_app_ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/ventas/services/ventas.service */ 1987);
 
 
 
-
-
-function TicketVentasComponent_p_21_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "p", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-  }
-
-  if (rf & 2) {
-    const number_r1 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](number_r1);
-  }
-}
 
 class TicketVentasComponent {
-  constructor() {
-    this.deleteTicket = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.EventEmitter();
-    this.deleteFraccion = new _angular_core__WEBPACK_IMPORTED_MODULE_1__.EventEmitter();
+  constructor(ventas) {
+    this.ventas = ventas;
+    this.deleteTicket = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
+    this.deleteFraccion = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
+    this.boleto = "";
   }
 
   ngOnInit() {
     var _this = this;
 
     return (0,_home_angeloacr_Proyectos_loteriaNacional_app_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)(function* () {
+      var _a;
+
+      _this.boleto = _this.ventas.obtenerImagenBoleto(1, (_a = _this.sorteo) === null || _a === void 0 ? void 0 : _a.sorteo);
       _this.ticketIndex = _this.ticket.combinacion;
       _this.fraccion = _this.ticket.seleccionados;
       _this.ticketNumbers = _this.ticket.display;
@@ -2247,10 +2237,10 @@ class TicketVentasComponent {
 }
 
 TicketVentasComponent.ɵfac = function TicketVentasComponent_Factory(t) {
-  return new (t || TicketVentasComponent)();
+  return new (t || TicketVentasComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](src_app_ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_1__.VentasService));
 };
 
-TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
+TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
   type: TicketVentasComponent,
   selectors: [["loteria-ticket-ventas"]],
   inputs: {
@@ -2261,65 +2251,73 @@ TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODUL
     deleteTicket: "deleteTicket",
     deleteFraccion: "deleteFraccion"
   },
-  decls: 24,
-  vars: 4,
-  consts: [[1, "contenedor_informacion_ticket"], [1, "fractionsBox"], ["class", "fraccion", 4, "ngFor", "ngForOf"], ["src", "assets/trash.svg", "alt", "", 1, "trash", 3, "click"], ["src", "assets/img/loteria-sombra-2.png", "alt", "", 1, "logoTicket"], [1, "fraccion"]],
+  decls: 27,
+  vars: 5,
+  consts: [[1, "contenedor_informacion_ticket"], [1, "ticketBox"], [1, "left"], [1, "fraccion"], [1, "right"], ["src", "assets/trash.svg", "alt", "", 1, "trash", 3, "click"], ["src", "assets/img/loteria-sombra-2.png", "alt", "", 1, "logoTicket"], [1, "combinationBox"], ["alt", "", 3, "src"]],
   template: function TicketVentasComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, " Juego: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "Loter\u00EDa Nacional");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, " Sorteo: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, " Fecha: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, " Combinaci\u00F3n: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "Fracciones:");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](19, "br");
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "div", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](21, TicketVentasComponent_p_21_Template, 2, 1, "p", 2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "img", 3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function TicketVentasComponent_Template_img_click_22_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "div", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "Juego: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, "Loter\u00EDa Nacional");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8, " Sorteo: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, " Fecha: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](13, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](14);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](15, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](16, " Fracciones: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](17, "span", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](18);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](19, "div", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](20, "img", 5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function TicketVentasComponent_Template_img_click_20_listener() {
         return ctx.deleteBoleto();
       });
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](23, "img", 4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](21, "img", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](22, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "div", 7);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](24, "img", 8);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](25, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](26);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.sorteoNumber);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.date);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx.ticket.combinacion);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.fraccion);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.sorteoNumber);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.date);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.fraccion == null ? null : ctx.fraccion.join(" - "));
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("src", ctx.boleto, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsanitizeUrl"]);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.ticket.combinacion);
     }
   },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__.NgForOf],
-  styles: [".contenedor_informacion_ticket[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  margin: 10px 0;\n  padding: 20px;\n  background-color: white;\n  border-radius: 20px;\n  border-width: 1px 0;\n  border-style: solid;\n  border-color: #28AAE1;\n  background-color: #28AAE1;\n  box-sizing: border-box;\n  position: relative;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat Regular\";\n  font-size: 16px;\n  color: white;\n  margin: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .fractionsBox[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  justify-content: space-evenly;\n  flex-wrap: wrap;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .fractionsBox[_ngcontent-%COMP%]   .fraccion[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-family: \"Monstserrat SemiBold\";\n  margin: 2px;\n  padding: 5px;\n  text-align: center;\n  color: white;\n  width: 35px;\n  height: 35px;\n  font-weight: bold;\n  background-color: transparent;\n  border: 4.5px solid white;\n  border-radius: 150px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%] {\n  position: absolute;\n  cursor: pointer;\n  width: 6%;\n  top: 20px;\n  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);\n  right: 20px;\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%]:hover {\n  width: 8%;\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n  position: absolute;\n  width: 30%;\n  top: 110px;\n  right: 5px;\n}\n@media screen and (max-width: 1000px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 150px;\n    top: 100px;\n    right: 5px;\n  }\n}\n@media screen and (max-width: 500px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 120px;\n    top: 100px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRpY2tldC12ZW50YXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0E7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsY0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFCQVphO0VBYWIseUJBYmE7RUFjYixzQkFBQTtFQUNBLGtCQUFBO0FBTkY7QUFPRTtFQUNFLGtDQXBCYTtFQXFCYixlQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUFMSjtBQU1JO0VBQ0UsbUNBMUJhO0FBc0JuQjtBQU9FO0VBQ0UsV0FBQTtFQUNBLGFBQUE7RUFDQSw2QkFBQTtFQUNBLGVBQUE7QUFMSjtBQU1JO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQ0F0Q2E7RUF1Q2IsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0EsNkJBQUE7RUFDQSx5QkFBQTtFQUNBLG9CQUFBO0FBSk47QUFPRTtFQUNFLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLFNBQUE7RUFDQSxTQUFBO0VBQ0EsaUdBQUE7RUFDQSxXQUFBO0VBQ0EsMkJBQUE7QUFMSjtBQU9FO0VBQ0UsU0FBQTtFQUNBLDJCQUFBO0FBTEo7QUFPRTtFQUNFLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFVBQUE7RUFDQSxVQUFBO0FBTEo7QUFTQTtFQUVJO0lBQ0UsZUFBQTtFQVBKO0VBVUs7SUFDRCxrQkFBQTtJQUNBLFlBQUE7SUFDQSxVQUFBO0lBQ0EsVUFBQTtFQVJKO0FBQ0Y7QUFXQTtFQUVJO0lBQ0Usa0JBQUE7SUFDQSxZQUFBO0lBQ0EsVUFBQTtFQVZKO0FBQ0YiLCJmaWxlIjoidGlja2V0LXZlbnRhcy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRmdWVudGUtdGl0dWxvOiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbiRmdWVudGUtc3VidGl0dWxvOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4kZnVlbnRlLXBhcnJhZm86IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xuJGZ1ZW50ZS1ib3RvbmVzOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG5cbiRjb2xvci1ib3R0b246ICMyOEFBRTE7XG5cbi5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBtYXJnaW46IDEwcHggMDtcbiAgcGFkZGluZzogMjBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIGJvcmRlci1yYWRpdXM6IDIwcHg7XG4gIGJvcmRlci13aWR0aDogMXB4IDA7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci1jb2xvcjogJGNvbG9yLWJvdHRvbjtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWJvdHRvbjtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgcG9zaXRpb246cmVsYXRpdmU7XG4gIHAge1xuICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXBhcnJhZm87XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBtYXJnaW46IDVweDtcbiAgICBzcGFuIHtcbiAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXN1YnRpdHVsbztcbiAgICB9XG4gIH1cbiAgLmZyYWN0aW9uc0JveCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcbiAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgLmZyYWNjaW9uIHtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgICBtYXJnaW46IDJweDtcbiAgICAgIHBhZGRpbmc6IDVweDtcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgIHdpZHRoOiAzNXB4O1xuICAgICAgaGVpZ2h0OiAzNXB4O1xuICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbiAgICAgIGJvcmRlcjogNC41cHggc29saWQgd2hpdGU7XG4gICAgICBib3JkZXItcmFkaXVzOiAxNTBweDtcbiAgICB9XG4gIH1cbiAgaW1nLnRyYXNoe1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgd2lkdGg6NiU7XG4gICAgdG9wOiAyMHB4O1xuICAgIGZpbHRlcjogaW52ZXJ0KDEwMCUpIHNlcGlhKDAlKSBzYXR1cmF0ZSg3NTAwJSkgaHVlLXJvdGF0ZSgzNjBkZWcpIGJyaWdodG5lc3MoMTA4JSkgY29udHJhc3QoMTA5JSk7XG4gICAgcmlnaHQ6IDIwcHg7XG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xuICAgIH1cbiAgaW1nLnRyYXNoOmhvdmVye1xuICAgIHdpZHRoOjglO1xuICAgIHRyYW5zaXRpb246IHdpZHRoIDAuM3MgZWFzZTtcbiAgfVxuICBpbWcubG9nb1RpY2tldHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6MzAlO1xuICAgIHRvcDogMTEwcHg7XG4gICAgcmlnaHQ6IDVweDtcbiAgICB9XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xuICAuY29udGVuZWRvcl9pbmZvcm1hY2lvbl90aWNrZXQge1xuICAgIHB7XG4gICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgXG4gICAgICAgIH1cbiAgICAgICBpbWcubG9nb1RpY2tldCB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICB3aWR0aDogMTUwcHg7XG4gICAgICB0b3A6IDEwMHB4O1xuICAgICAgcmlnaHQ6IDVweDtcbiAgICB9XG4gIH1cbn1cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDUwMHB4KSB7XG4gIC5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gICAgaW1nLmxvZ29UaWNrZXQge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgd2lkdGg6IDEyMHB4O1xuICAgICAgdG9wOiAxMDBweDtcbiAgICB9XG4gIH1cbn1cblxuIl19 */"]
+  styles: [".contenedor_informacion_ticket[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  background-color: white;\n  border-width: 1px 0;\n  border-style: solid;\n  border-color: #28AAE1;\n  background-color: #28AAE1;\n  box-sizing: border-box;\n  position: relative;\n  margin-bottom: 10px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat Regular\";\n  font-size: 16px;\n  color: white;\n  margin: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%] {\n  width: 100%;\n  position: relative;\n  display: flex;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .combinationBox[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  position: relative;\n  min-height: 245px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .combinationBox[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .combinationBox[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  position: absolute;\n  right: 94px;\n  bottom: 9px;\n  font-style: normal;\n  font-weight: bold !important;\n  font-size: 40px;\n  text-align: center;\n  text-transform: uppercase;\n  color: #000000;\n  font-family: \"Monstserrat Bold\";\n  opacity: 0.7;\n  margin: 0;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%] {\n  width: 70%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%]   .fraccion[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n  margin: 2px;\n  padding: 5px;\n  text-align: center;\n  color: white;\n  width: 35px;\n  height: 35px;\n  font-weight: bold;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-weight: bold;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: flex-end;\n  width: 30%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%] {\n  width: 40%;\n  padding: 3px;\n  cursor: pointer;\n  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%]:hover {\n  width: 44%;\n  transition: width 0.3s ease;\n}\n@media screen and (max-width: 500px) {\n  .ticketBox[_ngcontent-%COMP%] {\n    width: 350px !important;\n  }\n  .ticketBox[_ngcontent-%COMP%]   .combinationBox[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    right: 76px !important;\n    bottom: 21px !important;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRpY2tldC12ZW50YXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0E7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBVGE7RUFVYix5QkFWYTtFQVdiLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBQU5GO0FBUUU7RUFDRSxrQ0FuQmE7RUFvQmIsZUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0FBTko7QUFRSTtFQUNFLG1DQTFCYTtBQW9CbkI7QUFVRTtFQUNFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7QUFSSjtBQVdJO0VBQ0UsYUFBQTtFQUNBLDZCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FBVE47QUFXTTtFQUNFLFdBQUE7QUFUUjtBQVlNO0VBQ0Usa0JBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsNEJBQUE7RUFFQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkFBQTtFQUVBLGNBQUE7RUFFQSwrQkE3RFE7RUE4RFIsWUFBQTtFQUNBLFNBQUE7QUFiUjtBQWtCSTtFQUNFLFVBQUE7QUFoQk47QUFrQk07RUFDRSxtQ0F2RVc7RUF3RVgsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0FBaEJSO0FBbUJNO0VBQ0UsaUJBQUE7QUFqQlI7QUFxQkk7RUFDRSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSw4QkFBQTtFQUNBLHFCQUFBO0VBQ0EsVUFBQTtBQW5CTjtBQXFCTTtFQUNFLFdBQUE7QUFuQlI7QUFxQlE7RUFDRSxVQUFBO0VBQ0EsWUFBQTtFQUNBLGVBQUE7RUFDQSxpR0FBQTtFQUNBLDJCQUFBO0FBbkJWO0FBcUJVO0VBQ0UsVUFBQTtFQUNBLDJCQUFBO0FBbkJaO0FBZ0NBO0VBR0U7SUFFRSx1QkFBQTtFQWhDRjtFQW1DSTtJQUNFLHNCQUFBO0lBQ0EsdUJBQUE7RUFqQ047QUFDRiIsImZpbGUiOiJ0aWNrZXQtdmVudGFzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGZ1ZW50ZS10aXR1bG86IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xuJGZ1ZW50ZS1zdWJ0aXR1bG86IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcbiRmdWVudGUtcGFycmFmbzogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG4kZnVlbnRlLWJvdG9uZXM6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcblxuJGNvbG9yLWJvdHRvbjogIzI4QUFFMTtcblxuLmNvbnRlbmVkb3JfaW5mb3JtYWNpb25fdGlja2V0IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBib3JkZXItd2lkdGg6IDFweCAwO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItY29sb3I6ICRjb2xvci1ib3R0b247XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1ib3R0b247XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcblxuICBwIHtcbiAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1wYXJyYWZvO1xuICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgbWFyZ2luOiA1cHg7XG5cbiAgICBzcGFuIHtcbiAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXN1YnRpdHVsbztcbiAgICB9XG4gIH1cblxuICAudGlja2V0Qm94IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgZGlzcGxheTogZmxleDtcblxuXG4gICAgLmNvbWJpbmF0aW9uQm94IHtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICBtaW4taGVpZ2h0OiAyNDVweDtcblxuICAgICAgaW1nIHtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB9XG5cbiAgICAgIHAge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIHJpZ2h0OiA5NHB4O1xuICAgICAgICBib3R0b206IDlweDtcbiAgICAgICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgICAgICBmb250LXdlaWdodDogYm9sZCAhaW1wb3J0YW50O1xuXG4gICAgICAgIGZvbnQtc2l6ZTogNDBweDtcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuXG4gICAgICAgIGNvbG9yOiAjMDAwMDAwO1xuXG4gICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXRpdHVsbztcbiAgICAgICAgb3BhY2l0eTogMC43O1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICB9XG4gICAgfVxuXG5cbiAgICAubGVmdCB7XG4gICAgICB3aWR0aDogNzAlO1xuXG4gICAgICAuZnJhY2Npb24ge1xuICAgICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgICAgIG1hcmdpbjogMnB4O1xuICAgICAgICBwYWRkaW5nOiA1cHg7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICB3aWR0aDogMzVweDtcbiAgICAgICAgaGVpZ2h0OiAzNXB4O1xuICAgICAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICAgIH1cblxuICAgICAgcCB7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgfVxuICAgIH1cblxuICAgIC5yaWdodCB7XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICAgIGFsaWduLWl0ZW1zOiBmbGV4LWVuZDtcbiAgICAgIHdpZHRoOiAzMCU7XG5cbiAgICAgIGltZyB7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuXG4gICAgICAgICYudHJhc2gge1xuICAgICAgICAgIHdpZHRoOiA0MCU7XG4gICAgICAgICAgcGFkZGluZzogM3B4O1xuICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgICBmaWx0ZXI6IGludmVydCgxMDAlKSBzZXBpYSgwJSkgc2F0dXJhdGUoNzUwMCUpIGh1ZS1yb3RhdGUoMzYwZGVnKSBicmlnaHRuZXNzKDEwOCUpIGNvbnRyYXN0KDEwOSUpO1xuICAgICAgICAgIHRyYW5zaXRpb246IHdpZHRoIDAuM3MgZWFzZTtcblxuICAgICAgICAgICY6aG92ZXIge1xuICAgICAgICAgICAgd2lkdGg6IDQ0JTtcbiAgICAgICAgICAgIHRyYW5zaXRpb246IHdpZHRoIDAuM3MgZWFzZTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cblxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDAwcHgpIHtcblxufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA1MDBweCkge1xuXG5cbiAgLnRpY2tldEJveCB7XG5cbiAgICB3aWR0aDogMzUwcHggIWltcG9ydGFudDtcblxuICAgIC5jb21iaW5hdGlvbkJveCB7XG4gICAgICBwIHtcbiAgICAgICAgcmlnaHQ6IDc2cHggIWltcG9ydGFudDtcbiAgICAgICAgYm90dG9tOiAyMXB4ICFpbXBvcnRhbnQ7XG4gICAgICB9XG4gICAgfVxuXG4gIH1cbn0iXX0= */"]
 });
 
 /***/ }),
@@ -3420,95 +3418,108 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TicketVentasComponent": () => (/* binding */ TicketVentasComponent)
 /* harmony export */ });
 /* harmony import */ var _home_angeloacr_Proyectos_loteriaNacional_app_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
 /* harmony import */ var _services_venta_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/venta.service */ 2736);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 4364);
+/* harmony import */ var src_app_ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/ventas/services/ventas.service */ 1987);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4364);
 
 
 
 
 
 
-function TicketVentasComponent_p_17_Template(rf, ctx) {
+
+function TicketVentasComponent_div_20_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "p", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "p", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r0.sorteo.combinacion3, ": ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r0.ticket.combinacion3);
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r0.ticket.combinacion1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r0.ticket.combinacion3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r0.ticket.combinacion2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r0.ticket.combinacion4);
   }
 }
 
-function TicketVentasComponent_p_18_Template(rf, ctx) {
+function TicketVentasComponent_div_21_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "p", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "p", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](9, "img", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r1.sorteo.combinacion2, ": ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r1.ticket.combinacion2);
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r1.ticket.combinacion1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r1.ticket.combinacion3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r1.ticket.combinacion2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r1.ticket.combinacion4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("src", ctx_r1.antojito.ruta, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
   }
 }
 
-function TicketVentasComponent_p_19_Template(rf, ctx) {
+function TicketVentasComponent_div_22_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "p", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 
   if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r2.sorteo.combinacion4, ": ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r2.ticket.combinacion4);
-  }
-}
-
-function TicketVentasComponent_p_20_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-  }
-
-  if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", ctx_r3.sorteo.combinacion5, ": ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx_r3.antojito.nombre);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r2.ticket.combinacion1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r2.ticket.combinacion2);
   }
 }
 
 class TicketVentasComponent {
-  constructor(lotteryService) {
+  constructor(lotteryService, ventas) {
     this.lotteryService = lotteryService;
-    this.delete = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
+    this.ventas = ventas;
+    this.delete = new _angular_core__WEBPACK_IMPORTED_MODULE_3__.EventEmitter();
   }
 
   ngOnInit() {
@@ -3519,6 +3530,10 @@ class TicketVentasComponent {
       _this.ticketNumbers = _this.ticket.display;
       _this.sorteoNumber = _this.sorteo.sorteo;
       _this.date = _this.sorteo.fecha;
+      _this.sorteoLunes = _this.sorteo.dia == "Lunes";
+      _this.sorteoJueves = _this.sorteo.dia == "Jueves";
+      _this.otrosSorteos = _this.sorteo.dia == "Martes" || _this.sorteo.dia == "Sábado";
+      _this.boleto = _this.ventas.obtenerImagenBoleto(2, _this.sorteoNumber);
       _this.antojito = _this.lotteryService.obtenerCaracteristicasDeAntojito(_this.ticket.combinacion5);
     })();
   }
@@ -3530,10 +3545,10 @@ class TicketVentasComponent {
 }
 
 TicketVentasComponent.ɵfac = function TicketVentasComponent_Factory(t) {
-  return new (t || TicketVentasComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_venta_service__WEBPACK_IMPORTED_MODULE_1__.VentaService));
+  return new (t || TicketVentasComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_venta_service__WEBPACK_IMPORTED_MODULE_1__.VentaService), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](src_app_ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_2__.VentasService));
 };
 
-TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
   type: TicketVentasComponent,
   selectors: [["lotto-ticket-ventas"]],
   inputs: {
@@ -3544,67 +3559,67 @@ TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODUL
     delete: "delete"
   },
   decls: 23,
-  vars: 7,
-  consts: [[1, "contenedor_informacion_ticket"], [4, "ngIf"], ["src", "assets/trash.svg", "alt", "", 1, "trash", 3, "click"], ["src", "assets/img/lotto-sombra.png", "alt", "", 1, "logoTicket"]],
+  vars: 6,
+  consts: [[1, "contenedor_informacion_ticket"], [1, "ticketBox"], [1, "left"], [1, "right"], ["src", "assets/trash.svg", "alt", "", 1, "trash", 3, "click"], ["src", "assets/img/lotto-sombra.png", "alt", "", 1, "logoTicket"], [1, "ticketBox", "boleto"], ["alt", "", 3, "src"], ["class", "sorteoLunes", 4, "ngIf"], ["class", "sorteoJueves", 4, "ngIf"], ["class", "otrosSorteos", 4, "ngIf"], [1, "sorteoLunes"], [1, "combinacion1"], [1, "combinacion3"], [1, "combinacion2"], [1, "combinacion4"], [1, "sorteoJueves"], ["alt", "", 1, "combinacion5", 3, "src"], [1, "otrosSorteos"]],
   template: function TicketVentasComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, "Juego: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "Lotto");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, " Sorteo: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10, " Fecha: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](13, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](14, " Combinaci\u00F3n principal: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](15, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](16);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](17, TicketVentasComponent_p_17_Template, 4, 2, "p", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](18, TicketVentasComponent_p_18_Template, 4, 2, "p", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](19, TicketVentasComponent_p_19_Template, 4, 2, "p", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](20, TicketVentasComponent_p_20_Template, 4, 2, "p", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](21, "img", 2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function TicketVentasComponent_Template_img_click_21_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "div", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Juego: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "Lotto");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](8, " Sorteo: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](11, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](12, " Fecha: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](13, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](14);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](15, "div", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](16, "img", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function TicketVentasComponent_Template_img_click_16_listener() {
         return ctx.deleteTicket();
       });
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](22, "img", 3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](17, "img", 5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](18, "div", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](19, "img", 7);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](20, TicketVentasComponent_div_20_Template, 9, 4, "div", 8);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](21, TicketVentasComponent_div_21_Template, 10, 5, "div", 9);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](22, TicketVentasComponent_div_22_Template, 5, 2, "div", 10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.sorteoNumber);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.date);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.ticket.combinacion1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.ticket.combinacion3 != "");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.ticket.combinacion2 != "");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.ticket.combinacion4 != "");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.ticket.combinacion5 && ctx.ticket.combinacion5 != "");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx.sorteoNumber);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx.date);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("src", ctx.boleto, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.sorteoLunes);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.sorteoJueves);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.otrosSorteos);
     }
   },
-  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__.NgIf],
-  styles: [".contenedor_informacion_ticket[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  margin: 10px 0;\n  padding: 20px;\n  background-color: white;\n  border-radius: 20px;\n  border-width: 1px 0;\n  border-style: solid;\n  border-color: #b51f20;\n  background-color: #b51f20;\n  position: relative;\n  box-sizing: border-box;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat Regular\";\n  font-size: 16px;\n  color: white;\n  margin: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .fractionsBox[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  justify-content: space-evenly;\n  flex-wrap: wrap;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .fractionsBox[_ngcontent-%COMP%]   .fraccion[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n  margin: 4px;\n  padding: 5px;\n  text-align: center;\n  width: 16%;\n  background-color: white;\n  border: 1px solid black;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%] {\n  position: absolute;\n  cursor: pointer;\n  width: 6%;\n  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);\n  top: 20px;\n  right: 20px;\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%]:hover {\n  width: 8%;\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n  position: absolute;\n  width: 30%;\n  bottom: 5px;\n  right: 5px;\n}\n@media screen and (max-width: 1000px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 150px;\n    top: 132px;\n    right: 5px;\n  }\n}\n@media screen and (max-width: 500px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 115px;\n    width: 120px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRpY2tldC12ZW50YXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0E7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsY0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUVBLG1CQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFCQWJhO0VBY2IseUJBZGE7RUFlYixrQkFBQTtFQUNBLHNCQUFBO0FBUEY7QUFRRTtFQUNFLGtDQXJCYTtFQXNCYixlQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUFOSjtBQU9JO0VBQ0UsbUNBM0JhO0FBc0JuQjtBQVFFO0VBQ0UsV0FBQTtFQUNBLGFBQUE7RUFDQSw2QkFBQTtFQUNBLGVBQUE7QUFOSjtBQU9JO0VBQ0UsbUNBcENhO0VBcUNiLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsdUJBQUE7RUFDQSx1QkFBQTtBQUxOO0FBUUU7RUFDRSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxTQUFBO0VBQ0EsaUdBQUE7RUFFQSxTQUFBO0VBQ0EsV0FBQTtFQUNBLDJCQUFBO0FBUEo7QUFTRTtFQUNFLFNBQUE7RUFDQSwyQkFBQTtBQVBKO0FBU0U7RUFDRSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsVUFBQTtBQVBKO0FBV0E7RUFFSTtJQUNFLGVBQUE7RUFUSjtFQVdFO0lBQ0Usa0JBQUE7SUFDQSxZQUFBO0lBQ0EsVUFBQTtJQUNBLFVBQUE7RUFUSjtBQUNGO0FBWUE7RUFFSTtJQUNFLGtCQUFBO0lBQ0EsVUFBQTtJQUNBLFlBQUE7RUFYSjtBQUNGIiwiZmlsZSI6InRpY2tldC12ZW50YXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkZnVlbnRlLXRpdHVsbzogXCJNb25zdHNlcnJhdCBCb2xkXCI7XG4kZnVlbnRlLXN1YnRpdHVsbzogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuJGZ1ZW50ZS1wYXJyYWZvOiBcIk1vbnN0c2VycmF0IFJlZ3VsYXJcIjtcbiRmdWVudGUtYm90b25lczogXCJNb25zdHNlcnJhdCBTZW1pQm9sZFwiO1xuXG4kY29sb3ItYm90dG9uOiAjYjUxZjIwO1xuXG4uY29udGVuZWRvcl9pbmZvcm1hY2lvbl90aWNrZXQge1xuICB3aWR0aDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWFyZ2luOiAxMHB4IDA7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuXG4gIGJvcmRlci1yYWRpdXM6IDIwcHg7XG4gIGJvcmRlci13aWR0aDogMXB4IDA7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci1jb2xvcjogJGNvbG9yLWJvdHRvbjtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLWJvdHRvbjtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBwIHtcbiAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1wYXJyYWZvO1xuICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgbWFyZ2luOiA1cHg7XG4gICAgc3BhbiB7XG4gICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgfVxuICB9XG4gIC5mcmFjdGlvbnNCb3gge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1ldmVubHk7XG4gICAgZmxleC13cmFwOiB3cmFwO1xuICAgIC5mcmFjY2lvbiB7XG4gICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgICBtYXJnaW46IDRweDtcbiAgICAgIHBhZGRpbmc6IDVweDtcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgIHdpZHRoOiAxNiU7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xuICAgIH1cbiAgfVxuICBpbWcudHJhc2gge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgd2lkdGg6IDYlO1xuICAgIGZpbHRlcjogaW52ZXJ0KDEwMCUpIHNlcGlhKDAlKSBzYXR1cmF0ZSg3NTAwJSkgaHVlLXJvdGF0ZSgzNjBkZWcpXG4gICAgICBicmlnaHRuZXNzKDEwOCUpIGNvbnRyYXN0KDEwOSUpO1xuICAgIHRvcDogMjBweDtcbiAgICByaWdodDogMjBweDtcbiAgICB0cmFuc2l0aW9uOiB3aWR0aCAwLjNzIGVhc2U7XG4gIH1cbiAgaW1nLnRyYXNoOmhvdmVyIHtcbiAgICB3aWR0aDogOCU7XG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xuICB9XG4gIGltZy5sb2dvVGlja2V0IHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6IDMwJTtcbiAgICBib3R0b206IDVweDtcbiAgICByaWdodDogNXB4O1xuICB9XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xuICAuY29udGVuZWRvcl9pbmZvcm1hY2lvbl90aWNrZXQge1xuICAgIHAge1xuICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgIH1cbiAgICBpbWcubG9nb1RpY2tldCB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICB3aWR0aDogMTUwcHg7XG4gICAgICB0b3A6IDEzMnB4O1xuICAgICAgcmlnaHQ6IDVweDtcbiAgICB9XG4gIH1cbn1cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDUwMHB4KSB7XG4gIC5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gICAgaW1nLmxvZ29UaWNrZXQge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgdG9wOiAxMTVweDtcbiAgICAgIHdpZHRoOiAxMjBweDtcbiAgICB9XG4gIH1cbn1cbiJdfQ== */"]
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf],
+  styles: [".contenedor_informacion_ticket[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  background-color: white;\n  border-width: 1px 0;\n  border-style: solid;\n  border-color: #b51f20;\n  background-color: #b51f20;\n  box-sizing: border-box;\n  position: relative;\n  margin-bottom: 10px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat Regular\";\n  font-size: 16px;\n  color: white;\n  margin: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%] {\n  width: 100%;\n  position: relative;\n  display: flex;\n  align-items: center;\n  margin-bottom: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%] {\n  width: 270px;\n  min-height: 350px;\n  margin: 0 auto;\n  position: relative;\n  text-align: center;\n  border-radius: 4px;\n  font-weight: bold;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoLunes[_ngcontent-%COMP%], .contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoJueves[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoLunes[_ngcontent-%COMP%]   p[_ngcontent-%COMP%], .contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoJueves[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 0;\n  position: absolute;\n  color: black !important;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoLunes[_ngcontent-%COMP%]   .combinacion1[_ngcontent-%COMP%], .contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoJueves[_ngcontent-%COMP%]   .combinacion1[_ngcontent-%COMP%] {\n  bottom: 100px;\n  left: 50%;\n  transform: translateX(-50%);\n  font-size: 50px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoLunes[_ngcontent-%COMP%]   .combinacion2[_ngcontent-%COMP%], .contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoJueves[_ngcontent-%COMP%]   .combinacion2[_ngcontent-%COMP%] {\n  bottom: 67px;\n  font-size: 22px;\n  left: 75px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoLunes[_ngcontent-%COMP%]   .combinacion3[_ngcontent-%COMP%], .contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoJueves[_ngcontent-%COMP%]   .combinacion3[_ngcontent-%COMP%] {\n  bottom: 14px;\n  font-size: 18px;\n  left: 9px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoLunes[_ngcontent-%COMP%]   .combinacion4[_ngcontent-%COMP%], .contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoJueves[_ngcontent-%COMP%]   .combinacion4[_ngcontent-%COMP%] {\n  bottom: 14px;\n  font-size: 18px;\n  left: 157px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoLunes[_ngcontent-%COMP%]   .combinacion5[_ngcontent-%COMP%], .contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .sorteoJueves[_ngcontent-%COMP%]   .combinacion5[_ngcontent-%COMP%] {\n  bottom: 29px;\n  border-radius: 6px;\n  right: 0;\n  position: absolute;\n  height: 42px;\n  width: 42px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .otrosSorteos[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .otrosSorteos[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 0;\n  position: absolute;\n  color: black !important;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .otrosSorteos[_ngcontent-%COMP%]   .combinacion1[_ngcontent-%COMP%] {\n  bottom: 110px;\n  font-size: 37px;\n  right: 19px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .otrosSorteos[_ngcontent-%COMP%]   .combinacion2[_ngcontent-%COMP%] {\n  bottom: 6px;\n  font-size: 27px;\n  right: 38px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%] {\n  width: 70%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%]   .fraccion[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n  margin: 2px;\n  padding: 5px;\n  text-align: center;\n  color: white;\n  width: 35px;\n  height: 35px;\n  font-weight: bold;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-weight: bold;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: flex-end;\n  width: 30%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%] {\n  width: 40%;\n  padding: 3px;\n  cursor: pointer;\n  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%]:hover {\n  width: 44%;\n  transition: width 0.3s ease;\n}\n@media screen and (max-width: 1000px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 150px;\n    top: 132px;\n    right: 5px;\n  }\n}\n@media screen and (max-width: 500px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 115px;\n    width: 120px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRpY2tldC12ZW50YXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0E7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBVGE7RUFVYix5QkFWYTtFQVdiLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBQU5GO0FBUUU7RUFDRSxrQ0FuQmE7RUFvQmIsZUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0FBTko7QUFRSTtFQUNFLG1DQTFCYTtBQW9CbkI7QUFVRTtFQUVFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0FBVEo7QUFXSTtFQUVFLFlBQUE7RUFDQSxpQkFBQTtFQUVBLGNBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtBQVhOO0FBYU07RUFDRSxXQUFBO0FBWFI7QUFjTTs7RUFFRSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtBQVpSO0FBY1E7O0VBQ0UsU0FBQTtFQUNBLGtCQUFBO0VBQ0EsdUJBQUE7QUFYVjtBQWNROztFQUNFLGFBQUE7RUFDQSxTQUFBO0VBQ0EsMkJBQUE7RUFDQSxlQUFBO0FBWFY7QUFjUTs7RUFDRSxZQUFBO0VBQ0EsZUFBQTtFQUNBLFVBQUE7QUFYVjtBQWNROztFQUNFLFlBQUE7RUFDQSxlQUFBO0VBQ0EsU0FBQTtBQVhWO0FBY1E7O0VBQ0UsWUFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0FBWFY7QUFjUTs7RUFDRSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxRQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtBQVhWO0FBZ0JNO0VBQ0Usa0JBQUE7RUFDQSxNQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUFkUjtBQWdCUTtFQUNFLFNBQUE7RUFDQSxrQkFBQTtFQUNBLHVCQUFBO0FBZFY7QUFpQlE7RUFFRSxhQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7QUFoQlY7QUFvQlE7RUFDRSxXQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7QUFsQlY7QUF1Qkk7RUFDRSxVQUFBO0FBckJOO0FBdUJNO0VBQ0UsbUNBdElXO0VBdUlYLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtBQXJCUjtBQXdCTTtFQUNFLGlCQUFBO0FBdEJSO0FBMEJJO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsOEJBQUE7RUFDQSxxQkFBQTtFQUNBLFVBQUE7QUF4Qk47QUEwQk07RUFDRSxXQUFBO0FBeEJSO0FBMEJRO0VBQ0UsVUFBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0VBQ0EsaUdBQUE7RUFDQSwyQkFBQTtBQXhCVjtBQTBCVTtFQUNFLFVBQUE7RUFDQSwyQkFBQTtBQXhCWjtBQWlDQTtFQUVJO0lBQ0UsZUFBQTtFQS9CSjtFQWtDRTtJQUNFLGtCQUFBO0lBQ0EsWUFBQTtJQUNBLFVBQUE7SUFDQSxVQUFBO0VBaENKO0FBQ0Y7QUFvQ0E7RUFFSTtJQUNFLGtCQUFBO0lBQ0EsVUFBQTtJQUNBLFlBQUE7RUFuQ0o7QUFDRiIsImZpbGUiOiJ0aWNrZXQtdmVudGFzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGZ1ZW50ZS10aXR1bG86IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xuJGZ1ZW50ZS1zdWJ0aXR1bG86IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcbiRmdWVudGUtcGFycmFmbzogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG4kZnVlbnRlLWJvdG9uZXM6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcblxuJGNvbG9yLWJvdHRvbjogI2I1MWYyMDtcblxuLmNvbnRlbmVkb3JfaW5mb3JtYWNpb25fdGlja2V0IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICBib3JkZXItd2lkdGg6IDFweCAwO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItY29sb3I6ICRjb2xvci1ib3R0b247XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1ib3R0b247XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcblxuICBwIHtcbiAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1wYXJyYWZvO1xuICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgbWFyZ2luOiA1cHg7XG5cbiAgICBzcGFuIHtcbiAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXN1YnRpdHVsbztcbiAgICB9XG4gIH1cblxuICAudGlja2V0Qm94IHtcblxuICAgIHdpZHRoOiAxMDAlO1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgbWFyZ2luLWJvdHRvbTogNXB4O1xuXG4gICAgJi5ib2xldG8ge1xuXG4gICAgICB3aWR0aDogMjcwcHg7XG4gICAgICBtaW4taGVpZ2h0OiAzNTBweDtcblxuICAgICAgbWFyZ2luOiAwIGF1dG87XG4gICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICBmb250LXdlaWdodDogYm9sZDtcblxuICAgICAgaW1nIHtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB9XG5cbiAgICAgIC5zb3J0ZW9MdW5lcyxcbiAgICAgIC5zb3J0ZW9KdWV2ZXMge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIHRvcDogMDtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB3aWR0aDogMTAwJTtcblxuICAgICAgICBwIHtcbiAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xuICAgICAgICB9XG5cbiAgICAgICAgLmNvbWJpbmFjaW9uMSB7XG4gICAgICAgICAgYm90dG9tOiAxMDBweDtcbiAgICAgICAgICBsZWZ0OiA1MCU7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgICAgICAgIGZvbnQtc2l6ZTogNTBweDtcbiAgICAgICAgfVxuXG4gICAgICAgIC5jb21iaW5hY2lvbjIge1xuICAgICAgICAgIGJvdHRvbTogNjdweDtcbiAgICAgICAgICBmb250LXNpemU6IDIycHg7XG4gICAgICAgICAgbGVmdDogNzVweDtcbiAgICAgICAgfVxuXG4gICAgICAgIC5jb21iaW5hY2lvbjMge1xuICAgICAgICAgIGJvdHRvbTogMTRweDtcbiAgICAgICAgICBmb250LXNpemU6IDE4cHg7XG4gICAgICAgICAgbGVmdDogOXB4O1xuICAgICAgICB9XG5cbiAgICAgICAgLmNvbWJpbmFjaW9uNCB7XG4gICAgICAgICAgYm90dG9tOiAxNHB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMThweDtcbiAgICAgICAgICBsZWZ0OiAxNTdweDtcbiAgICAgICAgfVxuXG4gICAgICAgIC5jb21iaW5hY2lvbjUge1xuICAgICAgICAgIGJvdHRvbTogMjlweDtcbiAgICAgICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICAgICAgcmlnaHQ6IDA7XG4gICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgIGhlaWdodDogNDJweDtcbiAgICAgICAgICB3aWR0aDogNDJweDtcbiAgICAgICAgfVxuXG4gICAgICB9XG5cbiAgICAgIC5vdHJvc1NvcnRlb3Mge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIHRvcDogMDtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICB3aWR0aDogMTAwJTtcblxuICAgICAgICBwIHtcbiAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xuICAgICAgICB9XG5cbiAgICAgICAgLmNvbWJpbmFjaW9uMSB7XG5cbiAgICAgICAgICBib3R0b206IDExMHB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMzdweDtcbiAgICAgICAgICByaWdodDogMTlweDtcblxuICAgICAgICB9XG5cbiAgICAgICAgLmNvbWJpbmFjaW9uMiB7XG4gICAgICAgICAgYm90dG9tOiA2cHg7XG4gICAgICAgICAgZm9udC1zaXplOiAyN3B4O1xuICAgICAgICAgIHJpZ2h0OiAzOHB4O1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfVxuXG4gICAgLmxlZnQge1xuICAgICAgd2lkdGg6IDcwJTtcblxuICAgICAgLmZyYWNjaW9uIHtcbiAgICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtc3VidGl0dWxvO1xuICAgICAgICBtYXJnaW46IDJweDtcbiAgICAgICAgcGFkZGluZzogNXB4O1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgd2lkdGg6IDM1cHg7XG4gICAgICAgIGhlaWdodDogMzVweDtcbiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICB9XG5cbiAgICAgIHAge1xuICAgICAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAucmlnaHQge1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XG4gICAgICB3aWR0aDogMzAlO1xuXG4gICAgICBpbWcge1xuICAgICAgICB3aWR0aDogMTAwJTtcblxuICAgICAgICAmLnRyYXNoIHtcbiAgICAgICAgICB3aWR0aDogNDAlO1xuICAgICAgICAgIHBhZGRpbmc6IDNweDtcbiAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgICAgZmlsdGVyOiBpbnZlcnQoMTAwJSkgc2VwaWEoMCUpIHNhdHVyYXRlKDc1MDAlKSBodWUtcm90YXRlKDM2MGRlZykgYnJpZ2h0bmVzcygxMDglKSBjb250cmFzdCgxMDklKTtcbiAgICAgICAgICB0cmFuc2l0aW9uOiB3aWR0aCAwLjNzIGVhc2U7XG5cbiAgICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICAgIHdpZHRoOiA0NCU7XG4gICAgICAgICAgICB0cmFuc2l0aW9uOiB3aWR0aCAwLjNzIGVhc2U7XG4gICAgICAgICAgfVxuICAgICAgICB9XG5cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTAwMHB4KSB7XG4gIC5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gICAgcCB7XG4gICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgfVxuXG4gICAgaW1nLmxvZ29UaWNrZXQge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgd2lkdGg6IDE1MHB4O1xuICAgICAgdG9wOiAxMzJweDtcbiAgICAgIHJpZ2h0OiA1cHg7XG4gICAgfVxuICB9XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDUwMHB4KSB7XG4gIC5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gICAgaW1nLmxvZ29UaWNrZXQge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgdG9wOiAxMTVweDtcbiAgICAgIHdpZHRoOiAxMjBweDtcbiAgICB9XG4gIH1cbn0iXX0= */"]
 });
 
 /***/ }),
@@ -6334,16 +6349,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "TicketVentasComponent": () => (/* binding */ TicketVentasComponent)
 /* harmony export */ });
 /* harmony import */ var _home_angeloacr_Proyectos_loteriaNacional_app_loteriaNacionalFront_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ 9369);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2316);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2316);
 /* harmony import */ var _services_venta_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/venta.service */ 3630);
+/* harmony import */ var src_app_ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/ventas/services/ventas.service */ 1987);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4364);
 
 
 
+
+
+
+
+function TicketVentasComponent_p_22_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "p", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const numero_r1 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"](" ", numero_r1, " ");
+  }
+}
 
 class TicketVentasComponent {
-  constructor(lotteryService) {
+  constructor(lotteryService, ventas) {
     this.lotteryService = lotteryService;
-    this.delete = new _angular_core__WEBPACK_IMPORTED_MODULE_2__.EventEmitter();
+    this.ventas = ventas;
+    this.delete = new _angular_core__WEBPACK_IMPORTED_MODULE_3__.EventEmitter();
   }
 
   ngOnInit() {
@@ -6355,6 +6390,7 @@ class TicketVentasComponent {
       _this.sorteoNumber = _this.sorteo.sorteo;
       _this.date = _this.sorteo.fecha;
       _this.mascota = _this.lotteryService.obtenerCaracteristicasDeMascota(_this.ticket.mascota);
+      _this.boleto = _this.ventas.obtenerImagenBoleto(5, _this.sorteoNumber);
     })();
   }
 
@@ -6369,10 +6405,10 @@ class TicketVentasComponent {
 }
 
 TicketVentasComponent.ɵfac = function TicketVentasComponent_Factory(t) {
-  return new (t || TicketVentasComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_venta_service__WEBPACK_IMPORTED_MODULE_1__.VentaService));
+  return new (t || TicketVentasComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_venta_service__WEBPACK_IMPORTED_MODULE_1__.VentaService), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](src_app_ventas_services_ventas_service__WEBPACK_IMPORTED_MODULE_2__.VentasService));
 };
 
-TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
   type: TicketVentasComponent,
   selectors: [["pozo-ticket-ventas"]],
   inputs: {
@@ -6382,64 +6418,67 @@ TicketVentasComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODUL
   outputs: {
     delete: "delete"
   },
-  decls: 24,
-  vars: 4,
-  consts: [[1, "contenedor_informacion_ticket"], [1, "combinacion"], ["src", "assets/trash.svg", "alt", "", 1, "trash", 3, "click"], ["src", "assets/img/pozo-sombra.png", "alt", "", 1, "logoTicket"]],
+  decls: 23,
+  vars: 5,
+  consts: [[1, "contenedor_informacion_ticket"], [1, "ticketBox"], [1, "left"], [1, "right"], ["src", "assets/trash.svg", "alt", "", 1, "trash", 3, "click"], ["src", "assets/img/pozo-sombra.png", "alt", "", 1, "logoTicket"], [1, "ticketBox", "boleto"], ["alt", "", 3, "src"], [1, "contenedor_seleccion_numero"], ["alt", "", 1, "mascota", 3, "src"], ["class", "numero", 4, "ngFor", "ngForOf"], [1, "numero"]],
   template: function TicketVentasComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](2, "Juego: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](3, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](4, "Pozo Millonario");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](5, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](6, " Sorteo: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](7, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10, " Fecha: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](13, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](14, " Mascota: ");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](15, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](16);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](17, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](18, "Combinaci\u00F3n:");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](19, "br");
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](20, "p", 1);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](21);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](22, "img", 2);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function TicketVentasComponent_Template_img_click_22_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "div", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Juego: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "Pozo Millonario");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](8, " Sorteo: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](11, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](12, " Fecha: ");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](13, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](14);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](15, "div", 3);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](16, "img", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function TicketVentasComponent_Template_img_click_16_listener() {
         return ctx.deleteTicket();
       });
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](23, "img", 3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](17, "img", 5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](18, "div", 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](19, "img", 7);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](20, "div", 8);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](21, "img", 9);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](22, TicketVentasComponent_p_22_Template, 2, 1, "p", 10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.sorteoNumber);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.date);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.mascota.nombre);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](5);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.ticketNumbers.join(", "));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx.sorteoNumber);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx.date);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("src", ctx.boleto, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("src", ctx.mascota.ruta, _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx.ticket.display);
     }
   },
-  styles: [".contenedor_informacion_ticket[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  margin: 10px 0;\n  padding: 20px;\n  background-color: white;\n  border-radius: 20px;\n  border-width: 1px 0;\n  border-style: solid;\n  border-color: #04b865;\n  background-color: #04b865;\n  box-sizing: border-box;\n  position: relative;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat Regular\";\n  font-size: 16px;\n  color: white;\n  margin: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .combinacion[_ngcontent-%COMP%] {\n  font-weight: bold;\n  font-family: \"Monstserrat SemiBold\";\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .fractionsBox[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  justify-content: space-evenly;\n  flex-wrap: wrap;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .fractionsBox[_ngcontent-%COMP%]   .fraccion[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n  margin: 4px;\n  padding: 5px;\n  text-align: center;\n  width: 16%;\n  background-color: white;\n  border: 1px solid black;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%] {\n  position: absolute;\n  cursor: pointer;\n  width: 6%;\n  top: 20px;\n  right: 20px;\n  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%]:hover {\n  width: 8%;\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n  position: absolute;\n  width: 30%;\n  top: 110px;\n  right: 5px;\n}\n@media screen and (max-width: 1000px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 150px;\n    top: 50px;\n    right: 5px;\n  }\n}\n@media screen and (max-width: 500px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 120px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRpY2tldC12ZW50YXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0E7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsY0FBQTtFQUNBLGFBQUE7RUFDQSx1QkFBQTtFQUVBLG1CQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLHFCQWJXO0VBY1gseUJBZFc7RUFlWCxzQkFBQTtFQUNBLGtCQUFBO0FBUEY7QUFRRTtFQUNFLGtDQXJCYTtFQXNCYixlQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUFOSjtBQU9JO0VBQ0UsbUNBM0JhO0FBc0JuQjtBQVFFO0VBQ0UsaUJBQUE7RUFDQSxtQ0FoQ2U7QUEwQm5CO0FBUUU7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLDZCQUFBO0VBQ0EsZUFBQTtBQU5KO0FBT0k7RUFDRSxtQ0F4Q2E7RUF5Q2IsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSx1QkFBQTtFQUNBLHVCQUFBO0FBTE47QUFRRTtFQUNFLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLFNBQUE7RUFDQSxTQUFBO0VBQ0EsV0FBQTtFQUNBLGlHQUFBO0VBRUEsMkJBQUE7QUFQSjtBQVNFO0VBQ0UsU0FBQTtFQUNBLDJCQUFBO0FBUEo7QUFTRTtFQUNFLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFVBQUE7RUFDQSxVQUFBO0FBUEo7QUFVQTtFQUVJO0lBQ0UsZUFBQTtFQVJKO0VBVUU7SUFDRSxrQkFBQTtJQUNBLFlBQUE7SUFDQSxTQUFBO0lBQ0EsVUFBQTtFQVJKO0FBQ0Y7QUFXQTtFQUVJO0lBQ0Usa0JBQUE7SUFDQSxZQUFBO0VBVko7QUFDRiIsImZpbGUiOiJ0aWNrZXQtdmVudGFzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGZ1ZW50ZS10aXR1bG86IFwiTW9uc3RzZXJyYXQgQm9sZFwiO1xuJGZ1ZW50ZS1zdWJ0aXR1bG86IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcbiRmdWVudGUtcGFycmFmbzogXCJNb25zdHNlcnJhdCBSZWd1bGFyXCI7XG4kZnVlbnRlLWJvdG9uZXM6IFwiTW9uc3RzZXJyYXQgU2VtaUJvbGRcIjtcblxuJGNvbG9yLXBvem86ICMwNGI4NjU7XG5cbi5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gIHdpZHRoOiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBtYXJnaW46IDEwcHggMDtcbiAgcGFkZGluZzogMjBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG5cbiAgYm9yZGVyLXJhZGl1czogMjBweDtcbiAgYm9yZGVyLXdpZHRoOiAxcHggMDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLWNvbG9yOiAkY29sb3ItcG96bztcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yLXBvem87XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcCB7XG4gICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICBmb250LXNpemU6IDE2cHg7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIG1hcmdpbjogNXB4O1xuICAgIHNwYW4ge1xuICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtc3VidGl0dWxvO1xuICAgIH1cbiAgfVxuICAuY29tYmluYWNpb24ge1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXN1YnRpdHVsbztcbiAgfVxuICAuZnJhY3Rpb25zQm94IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtZXZlbmx5O1xuICAgIGZsZXgtd3JhcDogd3JhcDtcbiAgICAuZnJhY2Npb24ge1xuICAgICAgZm9udC1mYW1pbHk6ICRmdWVudGUtc3VidGl0dWxvO1xuICAgICAgbWFyZ2luOiA0cHg7XG4gICAgICBwYWRkaW5nOiA1cHg7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICB3aWR0aDogMTYlO1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gICAgICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbiAgICB9XG4gIH1cbiAgaW1nLnRyYXNoIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHdpZHRoOiA2JTtcbiAgICB0b3A6IDIwcHg7XG4gICAgcmlnaHQ6IDIwcHg7XG4gICAgZmlsdGVyOiBpbnZlcnQoMTAwJSkgc2VwaWEoMCUpIHNhdHVyYXRlKDc1MDAlKSBodWUtcm90YXRlKDM2MGRlZylcbiAgICAgIGJyaWdodG5lc3MoMTA4JSkgY29udHJhc3QoMTA5JSk7XG4gICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xuICB9XG4gIGltZy50cmFzaDpob3ZlciB7XG4gICAgd2lkdGg6IDglO1xuICAgIHRyYW5zaXRpb246IHdpZHRoIDAuM3MgZWFzZTtcbiAgfVxuICBpbWcubG9nb1RpY2tldCB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHdpZHRoOiAzMCU7XG4gICAgdG9wOiAxMTBweDtcbiAgICByaWdodDogNXB4O1xuICB9XG59XG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDAwcHgpIHtcbiAgLmNvbnRlbmVkb3JfaW5mb3JtYWNpb25fdGlja2V0IHtcbiAgICBwIHtcbiAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICB9XG4gICAgaW1nLmxvZ29UaWNrZXQge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgd2lkdGg6IDE1MHB4O1xuICAgICAgdG9wOiA1MHB4O1xuICAgICAgcmlnaHQ6IDVweDtcbiAgICB9XG4gIH1cbn1cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDUwMHB4KSB7XG4gIC5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gICAgaW1nLmxvZ29UaWNrZXQge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgd2lkdGg6IDEyMHB4O1xuICAgIH1cbiAgfVxufVxuIl19 */"]
+  directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf],
+  styles: [".contenedor_informacion_ticket[_ngcontent-%COMP%] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  background-color: white;\n  border-width: 1px 0;\n  border-style: solid;\n  border-color: #04b865;\n  background-color: #04b865;\n  box-sizing: border-box;\n  position: relative;\n  margin-bottom: 10px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat Regular\";\n  font-size: 16px;\n  color: white;\n  margin: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%] {\n  width: 100%;\n  position: relative;\n  display: flex;\n  align-items: center;\n  margin-bottom: 5px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%] {\n  width: 360px;\n  margin: 0 auto;\n  background-color: white;\n  text-align: center;\n  border-radius: 4px;\n  border: solid 5px #04b865;\n  position: relative;\n  min-height: 382px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .mascota[_ngcontent-%COMP%] {\n  position: absolute;\n  width: 85px;\n  border-radius: 30px;\n  top: 14px;\n  right: 18px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   .numero[_ngcontent-%COMP%] {\n  position: absolute;\n  padding: 0;\n  font-size: 30px;\n  font-weight: bold;\n  color: black;\n  margin: 0;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(1) {\n  top: 172px;\n  left: 33px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(2) {\n  top: 172px;\n  left: 97px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(3) {\n  top: 172px;\n  left: 161px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(4) {\n  top: 172px;\n  left: 224px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(5) {\n  top: 172px;\n  left: 288px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(6) {\n  top: 219px;\n  left: 64px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(7) {\n  top: 219px;\n  left: 128px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(8) {\n  top: 219px;\n  left: 192px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(9) {\n  top: 219px;\n  left: 256px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(10) {\n  top: 267px;\n  left: 96px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   p.numero[_ngcontent-%COMP%]:nth-of-type(11) {\n  top: 267px;\n  left: 160px;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox.boleto[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%] {\n  width: 70%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%]   .fraccion[_ngcontent-%COMP%] {\n  font-family: \"Monstserrat SemiBold\";\n  margin: 2px;\n  padding: 5px;\n  text-align: center;\n  color: white;\n  width: 35px;\n  height: 35px;\n  font-weight: bold;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .left[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-weight: bold;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: flex-end;\n  width: 30%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%] {\n  width: 40%;\n  padding: 3px;\n  cursor: pointer;\n  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);\n  transition: width 0.3s ease;\n}\n.contenedor_informacion_ticket[_ngcontent-%COMP%]   .ticketBox[_ngcontent-%COMP%]   .right[_ngcontent-%COMP%]   img.trash[_ngcontent-%COMP%]:hover {\n  width: 44%;\n  transition: width 0.3s ease;\n}\n@media screen and (max-width: 1000px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 150px;\n    top: 50px;\n    right: 5px;\n  }\n}\n@media screen and (max-width: 500px) {\n  .contenedor_informacion_ticket[_ngcontent-%COMP%]   img.logoTicket[_ngcontent-%COMP%] {\n    position: absolute;\n    width: 120px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRpY2tldC12ZW50YXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0E7RUFDRSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBVFc7RUFVWCx5QkFWVztFQVdYLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBQU5GO0FBUUU7RUFDRSxrQ0FuQmE7RUFvQmIsZUFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0FBTko7QUFRSTtFQUNFLG1DQTFCYTtBQW9CbkI7QUFVRTtFQUVFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0FBVEo7QUFXSTtFQUdFLFlBQUE7RUFDQSxjQUFBO0VBRUEsdUJBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EseUJBQUE7RUFFQSxrQkFBQTtFQUNBLGlCQUFBO0FBYk47QUFlTTtFQUNFLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLG1CQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7QUFiUjtBQWlCTTtFQUNFLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLFlBQUE7RUFDQSxTQUFBO0FBZlI7QUFrQk07RUFDRSxVQUFBO0VBQ0EsVUFBQTtBQWhCUjtBQW1CTTtFQUNFLFVBQUE7RUFDQSxVQUFBO0FBakJSO0FBb0JNO0VBQ0UsVUFBQTtFQUNBLFdBQUE7QUFsQlI7QUFxQk07RUFDRSxVQUFBO0VBQ0EsV0FBQTtBQW5CUjtBQXNCTTtFQUNFLFVBQUE7RUFDQSxXQUFBO0FBcEJSO0FBdUJNO0VBQ0UsVUFBQTtFQUNBLFVBQUE7QUFyQlI7QUF3Qk07RUFDRSxVQUFBO0VBQ0EsV0FBQTtBQXRCUjtBQXlCTTtFQUNFLFVBQUE7RUFDQSxXQUFBO0FBdkJSO0FBMEJNO0VBQ0UsVUFBQTtFQUNBLFdBQUE7QUF4QlI7QUEyQk07RUFDRSxVQUFBO0VBQ0EsVUFBQTtBQXpCUjtBQTRCTTtFQUNFLFVBQUE7RUFDQSxXQUFBO0FBMUJSO0FBZ0NNO0VBQ0UsV0FBQTtBQTlCUjtBQW9DSTtFQUNFLFVBQUE7QUFsQ047QUFvQ007RUFDRSxtQ0EzSVc7RUE0SVgsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0FBbENSO0FBcUNNO0VBQ0UsaUJBQUE7QUFuQ1I7QUF1Q0k7RUFDRSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSw4QkFBQTtFQUNBLHFCQUFBO0VBQ0EsVUFBQTtBQXJDTjtBQXVDTTtFQUNFLFdBQUE7QUFyQ1I7QUF1Q1E7RUFDRSxVQUFBO0VBQ0EsWUFBQTtFQUNBLGVBQUE7RUFDQSxpR0FBQTtFQUNBLDJCQUFBO0FBckNWO0FBdUNVO0VBQ0UsVUFBQTtFQUNBLDJCQUFBO0FBckNaO0FBOENBO0VBRUk7SUFDRSxlQUFBO0VBNUNKO0VBK0NFO0lBQ0Usa0JBQUE7SUFDQSxZQUFBO0lBQ0EsU0FBQTtJQUNBLFVBQUE7RUE3Q0o7QUFDRjtBQWlEQTtFQUVJO0lBQ0Usa0JBQUE7SUFDQSxZQUFBO0VBaERKO0FBQ0YiLCJmaWxlIjoidGlja2V0LXZlbnRhcy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRmdWVudGUtdGl0dWxvOiBcIk1vbnN0c2VycmF0IEJvbGRcIjtcbiRmdWVudGUtc3VidGl0dWxvOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG4kZnVlbnRlLXBhcnJhZm86IFwiTW9uc3RzZXJyYXQgUmVndWxhclwiO1xuJGZ1ZW50ZS1ib3RvbmVzOiBcIk1vbnN0c2VycmF0IFNlbWlCb2xkXCI7XG5cbiRjb2xvci1wb3pvOiAjMDRiODY1O1xuXG4uY29udGVuZWRvcl9pbmZvcm1hY2lvbl90aWNrZXQge1xuICB3aWR0aDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gIGJvcmRlci13aWR0aDogMXB4IDA7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci1jb2xvcjogJGNvbG9yLXBvem87XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb2xvci1wb3pvO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIG1hcmdpbi1ib3R0b206IDEwcHg7XG5cbiAgcCB7XG4gICAgZm9udC1mYW1pbHk6ICRmdWVudGUtcGFycmFmbztcbiAgICBmb250LXNpemU6IDE2cHg7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIG1hcmdpbjogNXB4O1xuXG4gICAgc3BhbiB7XG4gICAgICBmb250LWZhbWlseTogJGZ1ZW50ZS1zdWJ0aXR1bG87XG4gICAgfVxuICB9XG5cbiAgLnRpY2tldEJveCB7XG5cbiAgICB3aWR0aDogMTAwJTtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcblxuICAgICYuYm9sZXRvIHtcblxuXG4gICAgICB3aWR0aDogMzYwcHg7XG4gICAgICBtYXJnaW46IDAgYXV0bztcblxuICAgICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICBib3JkZXI6IHNvbGlkIDVweCAkY29sb3ItcG96bztcblxuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgbWluLWhlaWdodDogMzgycHg7XG5cbiAgICAgIC5tYXNjb3RhIHtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICB3aWR0aDogODVweDtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMzBweDtcbiAgICAgICAgdG9wOiAxNHB4O1xuICAgICAgICByaWdodDogMThweDtcbiAgICAgIH1cblxuXG4gICAgICAubnVtZXJvIHtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBmb250LXNpemU6IDMwcHg7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgICBjb2xvcjogYmxhY2s7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgIH1cblxuICAgICAgcC5udW1lcm86bnRoLW9mLXR5cGUoMSkge1xuICAgICAgICB0b3A6IDE3MnB4O1xuICAgICAgICBsZWZ0OiAzM3B4O1xuICAgICAgfVxuXG4gICAgICBwLm51bWVybzpudGgtb2YtdHlwZSgyKSB7XG4gICAgICAgIHRvcDogMTcycHg7XG4gICAgICAgIGxlZnQ6IDk3cHg7XG4gICAgICB9XG5cbiAgICAgIHAubnVtZXJvOm50aC1vZi10eXBlKDMpIHtcbiAgICAgICAgdG9wOiAxNzJweDtcbiAgICAgICAgbGVmdDogMTYxcHg7XG4gICAgICB9XG5cbiAgICAgIHAubnVtZXJvOm50aC1vZi10eXBlKDQpIHtcbiAgICAgICAgdG9wOiAxNzJweDtcbiAgICAgICAgbGVmdDogMjI0cHg7XG4gICAgICB9XG5cbiAgICAgIHAubnVtZXJvOm50aC1vZi10eXBlKDUpIHtcbiAgICAgICAgdG9wOiAxNzJweDtcbiAgICAgICAgbGVmdDogMjg4cHg7XG4gICAgICB9XG5cbiAgICAgIHAubnVtZXJvOm50aC1vZi10eXBlKDYpIHtcbiAgICAgICAgdG9wOiAyMTlweDtcbiAgICAgICAgbGVmdDogNjRweFxuICAgICAgfVxuXG4gICAgICBwLm51bWVybzpudGgtb2YtdHlwZSg3KSB7XG4gICAgICAgIHRvcDogMjE5cHg7XG4gICAgICAgIGxlZnQ6IDEyOHB4XG4gICAgICB9XG5cbiAgICAgIHAubnVtZXJvOm50aC1vZi10eXBlKDgpIHtcbiAgICAgICAgdG9wOiAyMTlweDtcbiAgICAgICAgbGVmdDogMTkycHhcbiAgICAgIH1cblxuICAgICAgcC5udW1lcm86bnRoLW9mLXR5cGUoOSkge1xuICAgICAgICB0b3A6IDIxOXB4O1xuICAgICAgICBsZWZ0OiAyNTZweFxuICAgICAgfVxuXG4gICAgICBwLm51bWVybzpudGgtb2YtdHlwZSgxMCkge1xuICAgICAgICB0b3A6IDI2N3B4O1xuICAgICAgICBsZWZ0OiA5NnB4O1xuICAgICAgfVxuXG4gICAgICBwLm51bWVybzpudGgtb2YtdHlwZSgxMSkge1xuICAgICAgICB0b3A6IDI2N3B4O1xuICAgICAgICBsZWZ0OiAxNjBweDtcbiAgICAgIH1cblxuXG5cblxuICAgICAgaW1nIHtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB9XG5cblxuICAgIH1cblxuICAgIC5sZWZ0IHtcbiAgICAgIHdpZHRoOiA3MCU7XG5cbiAgICAgIC5mcmFjY2lvbiB7XG4gICAgICAgIGZvbnQtZmFtaWx5OiAkZnVlbnRlLXN1YnRpdHVsbztcbiAgICAgICAgbWFyZ2luOiAycHg7XG4gICAgICAgIHBhZGRpbmc6IDVweDtcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIHdpZHRoOiAzNXB4O1xuICAgICAgICBoZWlnaHQ6IDM1cHg7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgfVxuXG4gICAgICBwIHtcbiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgICB9XG4gICAgfVxuXG4gICAgLnJpZ2h0IHtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgICAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xuICAgICAgd2lkdGg6IDMwJTtcblxuICAgICAgaW1nIHtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG5cbiAgICAgICAgJi50cmFzaCB7XG4gICAgICAgICAgd2lkdGg6IDQwJTtcbiAgICAgICAgICBwYWRkaW5nOiAzcHg7XG4gICAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICAgIGZpbHRlcjogaW52ZXJ0KDEwMCUpIHNlcGlhKDAlKSBzYXR1cmF0ZSg3NTAwJSkgaHVlLXJvdGF0ZSgzNjBkZWcpIGJyaWdodG5lc3MoMTA4JSkgY29udHJhc3QoMTA5JSk7XG4gICAgICAgICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xuXG4gICAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgICB3aWR0aDogNDQlO1xuICAgICAgICAgICAgdHJhbnNpdGlvbjogd2lkdGggMC4zcyBlYXNlO1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuXG4gICAgICB9XG4gICAgfVxuICB9XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMDBweCkge1xuICAuY29udGVuZWRvcl9pbmZvcm1hY2lvbl90aWNrZXQge1xuICAgIHAge1xuICAgICAgZm9udC1zaXplOiAxNHB4O1xuICAgIH1cblxuICAgIGltZy5sb2dvVGlja2V0IHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIHdpZHRoOiAxNTBweDtcbiAgICAgIHRvcDogNTBweDtcbiAgICAgIHJpZ2h0OiA1cHg7XG4gICAgfVxuICB9XG59XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDUwMHB4KSB7XG4gIC5jb250ZW5lZG9yX2luZm9ybWFjaW9uX3RpY2tldCB7XG4gICAgaW1nLmxvZ29UaWNrZXQge1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgd2lkdGg6IDEyMHB4O1xuICAgIH1cbiAgfVxufSJdfQ== */"]
 });
 
 /***/ }),
@@ -7239,10 +7278,6 @@ class LoaderComponent {
                 this.logoPath = 'assets/img/lotto-sombra-2.png';
                 //this.logoPath = "assets/lottoLoader.gif";
                 break;
-            case 'facilotto':
-                this.logoPath = 'assets/img/facilotto-sombra.png';
-                //this.logoPath = "assets/lottoLoader.gif";
-                break;
             case 'pozo':
                 this.logoPath = 'assets/img/pozo-sombra.png';
                 //this.logoPath = "assets/pozoLoader.gif";
@@ -7856,17 +7891,6 @@ class VentasService {
                 ];
                 body['pozoRevancha'] = aux;
                 break;
-            case 14:
-                aux = [
-                    {
-                        combinacion: boleto.ticket.combinacion1,
-                        combinacion2: boleto.ticket.combinacion2,
-                        fracciones: boleto.fracciones,
-                        sorteo: boleto.sorteo,
-                    },
-                ];
-                body['millonaria'] = aux;
-                break;
             case 12:
                 aux = [
                     {
@@ -7980,17 +8004,6 @@ class VentasService {
                     },
                 ];
                 body['pozoRevancha'] = aux;
-                break;
-            case 14:
-                aux = [
-                    {
-                        combinacion: boleto.combinacion1,
-                        combinacion2: boleto.combinacion2,
-                        fracciones,
-                        sorteo: sorteo,
-                    },
-                ];
-                body['millonaria'] = aux;
                 break;
         }
         return new Promise((resolve, reject) => {

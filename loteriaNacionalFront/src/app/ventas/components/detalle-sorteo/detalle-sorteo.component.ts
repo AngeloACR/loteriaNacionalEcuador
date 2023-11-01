@@ -31,7 +31,6 @@ export class DetalleSorteoComponent implements OnInit {
   fondoPozo: boolean = false;
   imgNotFound: boolean = true;
   tipoLoteria?: number;
-  fondoMillonaria: boolean = false;
   fondoBingazo: boolean = false;
   days: any;
   hours: any;
@@ -48,14 +47,12 @@ export class DetalleSorteoComponent implements OnInit {
         this.isLoteria = true;
         this.fondoLotto = false;
         this.fondoBingazo = false;
-        this.fondoMillonaria = false;
         this.fondoPozo = false;
         break;
 
       case 'lotto':
         this.tipoLoteria = 2;
         this.fondoLotto = true;
-        this.fondoMillonaria = false;
         this.fondoBingazo = false;
         this.fondoLoteria = false;
         this.fondoPozo = false;
@@ -65,28 +62,15 @@ export class DetalleSorteoComponent implements OnInit {
         this.tipoLoteria = 5;
         this.fondoPozo = true;
         this.fondoLotto = false;
-        this.fondoMillonaria = false;
         this.fondoLoteria = false;
         this.fondoBingazo = false;
         this.isPozo = true;
-        break;
-
-      case 'millonaria':
-        this.tipoLoteria = 14;
-        this.isLoteria = true;
-
-        this.fondoMillonaria = true;
-        this.fondoPozo = false;
-        this.fondoLotto = false;
-        this.fondoBingazo = false;
-        this.fondoLoteria = false;
         break;
       case 'bingazo':
         this.tipoLoteria = 12;
         this.isLoteria = false;
 
         this.fondoBingazo = true;
-        this.fondoMillonaria = false;
         this.fondoPozo = false;
         this.fondoLotto = false;
         this.fondoLoteria = false;
@@ -141,10 +125,7 @@ export class DetalleSorteoComponent implements OnInit {
       this.seleccionado as sorteo
     ).cantidadDeFracciones;
     let auxPremioLoteria = parseInt(premio) * this.cantidadDeFracciones;
-    if (this.tipoLoteria == 14) {
-      auxPremioLoteria =
-        Math.ceil((parseInt(premio) * this.cantidadDeFracciones) / 10) * 10;
-    }
+
     this.premioLoteria = this.ventas
       .formatNumber(auxPremioLoteria)
       .split('.')[0];

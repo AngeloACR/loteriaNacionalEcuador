@@ -26,14 +26,6 @@
   >
   </app-boton-de-juego>
   <app-boton-de-juego
-    image="assets/img/millonaria-sombra.png"
-    [link]="linkMillonaria"
-    [token]="lotteryToken"
-    name="millonaria"
-    (authError)="authError()"
-  >
-  </app-boton-de-juego>
-  <app-boton-de-juego
     image="assets/img/bingazo-sombra.png"
     [link]="linkBingazo"
     [token]="lotteryToken"
@@ -76,15 +68,6 @@
   >
   </app-boton-de-juego>
   <app-boton-de-juego
-    image="assets/img/millonaria-sombra.png"
-    [link]="linkMillonaria"
-    [token]="lotteryToken"
-    [mini]="true"
-    name="millonaria"
-    (authError)="authError()"
-  >
-  </app-boton-de-juego>
-  <app-boton-de-juego
     image="assets/img/bingazo-sombra.png"
     [link]="linkBingazo"
     [token]="lotteryToken"
@@ -99,7 +82,6 @@
   (deleteLoteriaTicket)="deleteLoteriaTicket($event)"
   (deleteLottoTicket)="deleteLottoTicket($event)"
   (deletePozoTicket)="deletePozoTicket($event)"
-  (deleteMillonariaTicket)="deleteMillonariaTicket($event)"
   (deleteLoteriaFraccion)="deleteLoteriaFraccion($event)"
   (deleteBingazoTicket)="deleteBingazoTicket($event)"
   (emitirCompra)="comprar()"
@@ -110,7 +92,6 @@
   [ticketsPozoRevancha]="ticketsPozoRevancha"
   [ticketsBingazo]="ticketsBingazo"
   [ticketsPozo]="ticketsPozo"
-  [ticketsMillonaria]="ticketsMillonaria"
   tipoLoteria="loteria"
 ></app-floating-menu>
 <app-loader

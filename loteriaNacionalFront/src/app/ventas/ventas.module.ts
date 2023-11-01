@@ -17,12 +17,10 @@ import { DetalleDeVentaComponent } from './containers/detalle-de-venta/detalle-d
 import { LoteriaComponent } from './containers/loteria/loteria.component';
 import { PozoComponent } from './containers/pozo/pozo.component';
 import { LottoComponent } from './containers/lotto/lotto.component';
-import { MillonariaComponent } from './containers/millonaria/millonaria.component';
 import { DetalleSorteoComponent } from './components/detalle-sorteo/detalle-sorteo.component';
 import { LoteriaModule } from '../juegos/loteria/loteria.module';
 import { LottoModule } from '../juegos/lotto/lotto.module';
 import { PozoModule } from '../juegos/pozo/pozo.module';
-import { MillonariaModule } from '../juegos/millonaria/millonaria.module';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './containers/home/home.component';
 import { BotonDeJuegoComponent } from './components/boton-de-juego/boton-de-juego.component';
@@ -31,9 +29,6 @@ import { SaldoInsuficienteComponent } from './components/saldo-insuficiente/sald
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { BuscarNumeroDirective } from './directives/buscar-numero.directive';
-import { AgregarTicketDirective } from './directives/agregar-ticket.directive';
-import { BorrarTicketDirective } from './directives/borrar-ticket.directive';
 import { PozoRevanchaModule } from '../juegos/pozoRevancha/pozo-revancha.module';
 import { BingazoModule } from '../juegos/bingazo/bingazo.module';
 import { BingazoComponent } from './containers/bingazo/bingazo.component';
@@ -56,7 +51,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BingazoComponent,
     PozoComponent,
     LottoComponent,
-    MillonariaComponent,
     DetalleSorteoComponent,
     HomeComponent,
     BotonDeJuegoComponent,
@@ -81,7 +75,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     LoteriaComponent,
     PozoComponent,
     LottoComponent,
-    MillonariaComponent,
     //BuscarNumeroDirective,
     //AgregarTicketDirective,
   ],
@@ -91,7 +84,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     LottoModule,
     PozoModule,
     PozoRevanchaModule,
-    MillonariaModule,
     SharedModule,
     FormsModule,
     BingazoModule,

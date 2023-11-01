@@ -57,22 +57,6 @@ const mainController = {
           return item.tipoArchivo == "GANWEB" && item.tipoLoteria == 5;
         })
         .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
-      let resultadosMillonaria = files
-        .filter((item) => {
-          return item.tipoArchivo == "BOLPRE" && item.tipoLoteria == 14;
-        })
-        .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
-      let premiosMillonaria = files
-        .filter((item) => {
-          return item.tipoArchivo == "PREM" && item.tipoLoteria == 14;
-        })
-        .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
-      let ganadoresMillonaria = files
-        .filter((item) => {
-          return item.tipoArchivo == "GANWEB" && item.tipoLoteria == 14;
-        })
-        .sort((a, b) => a.sorteo - b.sorteo)[0].sorteo;
-
       let response = {
         resultadosLoteria,
         premiosLoteria,
@@ -80,9 +64,6 @@ const mainController = {
         resultadosLotto,
         premiosLotto,
         ganadoresLotto,
-        resultadosMillonaria,
-        premiosMillonaria,
-        ganadoresMillonaria,
         resultadosPozo,
         premiosPozo,
         ganadoresPozo,

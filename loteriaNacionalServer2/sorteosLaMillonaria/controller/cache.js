@@ -124,8 +124,6 @@ const cacheController = {
 
   actualizar: async () => {
     try {
-      await cacheController.setSorteosDisponibles();
-
       await cacheController.setUltimoResultado();
 
       await cacheController.setSorteos();

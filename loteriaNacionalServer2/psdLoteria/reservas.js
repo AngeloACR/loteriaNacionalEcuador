@@ -15,7 +15,6 @@ module.exports.reservarCombinaciones = async (
   lotto,
   pozo,
   pozoRevancha,
-  millonaria,
   bingazo,
   token,
   reservaId,
@@ -29,7 +28,6 @@ module.exports.reservarCombinaciones = async (
     let lottoCombinacionesXML = "";
     let pozoCombinacionesXML = "";
     let pozoRevanchaCombinacionesXML = "";
-    let millonariaCombinacionesXML = "";
     let bingazoCombinacionesXML = "";
     if (loteria.length != 0) {
       loteria.forEach((item) => {
@@ -89,25 +87,6 @@ module.exports.reservarCombinaciones = async (
               
             `;
     }
-    if (millonaria.length != 0) {
-      millonaria.forEach((item) => {
-        let combinacion = item.combinacion;
-        let combinacion2 = item.combinacion2;
-        let fraccionesXML = "";
-        let cant = 0;
-        item.fracciones.forEach((element) => {
-          fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
-          cant += 1;
-        });
-        millonariaCombinacionesXML = `${millonariaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" numero2="${combinacion2}" cantid="${cant}" >${fraccionesXML}</R>`;
-      });
-      millonariaCombinacionesXML = `
-            <JG id="14">
-            ${millonariaCombinacionesXML}
-            </JG>        
-              
-            `;
-    }
     if (bingazo.length != 0) {
       bingazo.forEach((item) => {
         let combinacion = item.combinacion;
@@ -149,7 +128,6 @@ module.exports.reservarCombinaciones = async (
     ${lottoCombinacionesXML} 
     ${pozoCombinacionesXML} 
     ${pozoRevanchaCombinacionesXML} 
-    ${millonariaCombinacionesXML} 
     ${bingazoCombinacionesXML} 
 
   </RS>
@@ -240,7 +218,6 @@ module.exports.eliminarReservas = async (
   lotto,
   pozo,
   pozoRevancha,
-  millonaria,
   bingazo,
   token,
   reservaId,
@@ -254,7 +231,6 @@ module.exports.eliminarReservas = async (
     let lottoCombinacionesXML = "";
     let pozoCombinacionesXML = "";
     let pozoRevanchaCombinacionesXML = "";
-    let millonariaCombinacionesXML = "";
     let bingazoCombinacionesXML = "";
 
     if (loteria.length != 0) {
@@ -312,23 +288,6 @@ module.exports.eliminarReservas = async (
               
             `;
     }
-    if (millonaria.length != 0) {
-      millonaria.forEach((item) => {
-        let combinacion = item.combinacion;
-        let combinacion2 = item.combinacion2;
-        let fraccionesXML = "";
-        item.fracciones.forEach((element) => {
-          fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
-        });
-        millonariaCombinacionesXML = `${millonariaCombinacionesXML}<R sorteo="${item.sorteo.sorteo}" numero="${combinacion}" numero2="${combinacion2}" >${fraccionesXML}</R>`;
-      });
-      millonariaCombinacionesXML = `
-            <JG id="14">
-            ${millonariaCombinacionesXML}
-            </JG>        
-              
-            `;
-    }
 
     if (bingazo.length != 0) {
       bingazo.forEach((item) => {
@@ -371,7 +330,6 @@ module.exports.eliminarReservas = async (
               ${lottoCombinacionesXML} 
               ${pozoCombinacionesXML}
               ${pozoRevanchaCombinacionesXML} 
-              ${millonariaCombinacionesXML}
               ${bingazoCombinacionesXML}
           
             </RS>
@@ -617,7 +575,6 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
               let lotto = boletos.filter((x) => x.tipoLoteria == 2);
               let pozo = boletos.filter((x) => x.tipoLoteria == 5);
               let pozoRevancha = boletos.filter((x) => x.tipoLoteria == 17);
-              let millonaria = boletos.filter((x) => x.tipoLoteria == 14);
               let bingazo = boletos.filter((x) => x.tipoLoteria == 12);
 
               let carrito = loteria.concat(lotto).concat(pozo);
@@ -626,7 +583,6 @@ module.exports.validarReservas = async (token, reservaId, user, ip) => {
                 lotto,
                 pozo,
                 pozoRevancha,
-                millonaria,
                 bingazo,
                 carrito,
               };
