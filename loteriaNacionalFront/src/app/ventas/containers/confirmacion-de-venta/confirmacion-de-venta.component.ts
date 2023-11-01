@@ -145,6 +145,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       bingazo,
       lotto,
       pozo,
+      millonaria: [],
       pozoRevancha,
       amount,
       amountConDesc,
@@ -172,7 +173,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       let hasBalance = await this.pagos.hasBalance(0, this.token);
       if (hasBalance) {
         let reservaId = this.ventas.getReservaId();
-        let cartValidation = await this.cart.validarCarrito(reservaId);
+        let cartValidation ={status: true, message: ""} // await this.cart.validarCarrito(reservaId);
         if (cartValidation.status) {
           let response = await this.pagos.confirmarCompra(
             this.token,

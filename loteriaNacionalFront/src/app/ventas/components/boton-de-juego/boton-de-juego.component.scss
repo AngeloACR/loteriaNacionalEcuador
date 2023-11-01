@@ -3,6 +3,7 @@ $color-loteria: #28AAE1;
 $color-lotto: #b51f20;
 $color-pozo: #04b865;
 $color-millonaria: #b51f20;
+$color-bingazo: #283479;
 $fuente-titulo: "Monstserrat Bold";
 $fuente-subtitulo: "Monstserrat SemiBold";
 $fuente-parrafo: "Monstserrat Regular";
@@ -10,28 +11,71 @@ $fuente-botones: "Monstserrat SemiBold";
 
 .lotteryBox {
 
-  font-family: "Helvetica";
-  font-style: italic;
-  font-weight: 700;
-  font-size: 25px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  color: #ffffff;
-
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 420px;
-  height: 140px;
-  margin: 20px 20px 20px 0;
-  box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.25);
-  border-radius: 45.5px;
 
-  .lotteryImg {
-    width: 50%;
-    transition: width 0.3s ease;
+  width: 420px;
+  height: 160px;
+  margin: 20px 20px 20px 0;
+  font-family: "Helvetica";
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+
+  color: #ffffff;
+  transition: height 0.5s ease-in-out;
+
+  .mobile {
+    background-color: white;
+    border-radius: 102px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+  }
+
+  &.bingazo {
+    .mobile {
+      color: $color-bingazo;
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+
+
+  &.pozo {
+    img {
+      margin-top: -23px;
+      width: 180px;
+    }
+
+    .mobile {
+      color: $color-pozo;
+    }
+  }
+
+  &.lotto {
+    .mobile {
+      color: $color-lotto;
+    }
+
+    img {
+      width: 180px;
+    }
+  }
+
+  &.loteria {
+    .mobile {
+      color: $color-loteria;
+    }
+
+    img {
+      width: 200px;
+    }
   }
 
   &:hover .lotteryImg {

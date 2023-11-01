@@ -68,9 +68,9 @@
     - 3988228
     - 3988258
 
+- Poner imagenes de boletos en detalle de compra - LISTO
+- Imagen de compra finalizada sacarla de figma - LISTO
 - Modificar menu box de compras
-- Poner imagenes de boletos en detalle de compra
-- Imagen de compra finalizada sacarla de figma
 - Chequeo general de estilo, validar que los botones de agg al carrito funcionan bien y tienen z index correcto
 - Validar que agg al carrito se bloquea cuando el boleto fue agregado. Pasa en loteria nacional
 
