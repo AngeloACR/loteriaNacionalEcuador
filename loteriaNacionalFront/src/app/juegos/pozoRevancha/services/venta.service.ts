@@ -90,34 +90,34 @@ export class VentaService {
     let mascotaPath;
     switch (mascota) {
       case '04':
-        mascotaPath = 'assets/mascotas/Delfin.png';
+        mascotaPath = 'assets/mascotas/Delfin.webp';
         break;
       case '02':
-        mascotaPath = 'assets/mascotas/Perro.png';
+        mascotaPath = 'assets/mascotas/Perro.webp';
         break;
       case '08':
-        mascotaPath = 'assets/mascotas/Llama.png';
+        mascotaPath = 'assets/mascotas/Llama.webp';
         break;
       case '09':
-        mascotaPath = 'assets/mascotas/Papagayo.png';
+        mascotaPath = 'assets/mascotas/Papagayo.webp';
         break;
       case '01':
-        mascotaPath = 'assets/mascotas/Conejo.png';
+        mascotaPath = 'assets/mascotas/Conejo.webp';
         break;
       case '10':
-        mascotaPath = 'assets/mascotas/Mono.png';
+        mascotaPath = 'assets/mascotas/Mono.webp';
         break;
       case '03':
-        mascotaPath = 'assets/mascotas/Galapago.png';
+        mascotaPath = 'assets/mascotas/Galapago.webp';
         break;
       case '05':
-        mascotaPath = 'assets/mascotas/Foca.png';
+        mascotaPath = 'assets/mascotas/Foca.webp';
         break;
       case '06':
-        mascotaPath = 'assets/mascotas/Condor.png';
+        mascotaPath = 'assets/mascotas/Condor.webp';
         break;
       case '07':
-        mascotaPath = 'assets/mascotas/Iguana.png';
+        mascotaPath = 'assets/mascotas/Iguana.webp';
         break;
       default:
         break;
@@ -128,61 +128,61 @@ export class VentaService {
   obtenerAnimalesSelecionados() {
     this.animales = [
       {
-        ruta: 'assets/mascotas/Condor.png',
+        ruta: 'assets/mascotas/Condor.webp',
         identificador: '06',
         nombre: 'Cóndor',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Iguana.png',
+        ruta: 'assets/mascotas/Iguana.webp',
         identificador: '07',
         nombre: 'Iguana',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Conejo.png',
+        ruta: 'assets/mascotas/Conejo.webp',
         identificador: '01',
         nombre: 'Conejo',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Delfin.png',
+        ruta: 'assets/mascotas/Delfin.webp',
         identificador: '04',
         nombre: 'Delfín',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Galapago.png',
+        ruta: 'assets/mascotas/Galapago.webp',
         identificador: '03',
         nombre: 'Galápago',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Llama.png',
+        ruta: 'assets/mascotas/Llama.webp',
         identificador: '08',
         nombre: 'Llama',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Mono.png',
+        ruta: 'assets/mascotas/Mono.webp',
         identificador: '10',
         nombre: 'Mono',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Papagayo.png',
+        ruta: 'assets/mascotas/Papagayo.webp',
         identificador: '09',
         nombre: 'Papagayo',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Perro.png',
+        ruta: 'assets/mascotas/Perro.webp',
         identificador: '02',
         nombre: 'Perro',
         status: false,
       },
       {
-        ruta: 'assets/mascotas/Foca.png',
+        ruta: 'assets/mascotas/Foca.webp',
         identificador: '05',
         nombre: 'Foca',
         status: false,
@@ -198,52 +198,52 @@ export class VentaService {
   obtenerCaracteristicasDeMascota(mascota: any) {
     let animales = [
       {
-        ruta: 'assets/mascotas/Condor.png',
+        ruta: 'assets/mascotas/Condor.webp',
         identificador: '06',
         nombre: 'Cóndor',
       },
       {
-        ruta: 'assets/mascotas/Iguana.png',
+        ruta: 'assets/mascotas/Iguana.webp',
         identificador: '07',
         nombre: 'Iguana',
       },
       {
-        ruta: 'assets/mascotas/Conejo.png',
+        ruta: 'assets/mascotas/Conejo.webp',
         identificador: '01',
         nombre: 'Conejo',
       },
       {
-        ruta: 'assets/mascotas/Delfin.png',
+        ruta: 'assets/mascotas/Delfin.webp',
         identificador: '04',
         nombre: 'Delfín',
       },
       {
-        ruta: 'assets/mascotas/Galapago.png',
+        ruta: 'assets/mascotas/Galapago.webp',
         identificador: '03',
         nombre: 'Galápago',
       },
       {
-        ruta: 'assets/mascotas/Llama.png',
+        ruta: 'assets/mascotas/Llama.webp',
         identificador: '08',
         nombre: 'Llama',
       },
       {
-        ruta: 'assets/mascotas/Mono.png',
+        ruta: 'assets/mascotas/Mono.webp',
         identificador: '10',
         nombre: 'Mono',
       },
       {
-        ruta: 'assets/mascotas/Papagayo.png',
+        ruta: 'assets/mascotas/Papagayo.webp',
         identificador: '09',
         nombre: 'Papagayo',
       },
       {
-        ruta: 'assets/mascotas/Perro.png',
+        ruta: 'assets/mascotas/Perro.webp',
         identificador: '02',
         nombre: 'Perro',
       },
       {
-        ruta: 'assets/mascotas/Foca.png',
+        ruta: 'assets/mascotas/Foca.webp',
         identificador: '05',
         nombre: 'Foca',
       },

@@ -70,25 +70,34 @@
 
 - Poner imagenes de boletos en detalle de compra - LISTO
 - Imagen de compra finalizada sacarla de figma - LISTO
-- Modificar menu box de compras
-- Chequeo general de estilo, validar que los botones de agg al carrito funcionan bien y tienen z index correcto
+- Modificar menu box de compras - LISTO
+- Chequeo general de estilo, validar que los botones de agg al carrito funcionan bien y tienen z index correcto - Listo
+
 - Validar que agg al carrito se bloquea cuando el boleto fue agregado. Pasa en loteria nacional
-
-- Reservar primero en loteria, luego agregar al carrito
 - Bloqueo de saldo no funciona bien
+- Reservar primero en loteria, luego agregar al carrito
 - Mejorar logica para agregar y quitar fracciones
-- Mejorar Rendimiento del menu header
-
-- Validar la hora de cierre del sorteo y bloquear las ventas para esa hora
 - Reducir tamaño de ventanas flotantes en movil
+
+- Implementacion de pega3
+- Resolver fallo de pago de premios
+- Mejorar Rendimiento del menu header
+- Implementación de descuentos 
+- Validar la hora de cierre del sorteo y bloquear las ventas para esa hora
 - Mejorar mensajes de error y loaders
 - Fallo en mandar el token desde el home en movil
 - Agregar token a boton de compra en menu de consulta
-
-
-- Implementacion de pega3
-- Implementación de descuentos 
 - Migrar de iframe a web component
+
+- Mejora del versionado para tener mas control sobre ramas activas en los diferentes entornos
+- Mejorar manejo de las variables de entorno
+- Mejorar manejo y propagacion de error cuando falla la db para evitar ventas en reserve
+- Mejorar validacion previa a la venta para obtener status de la reserva y reducir la complejidad
+
+
+- Migrar servicios ftp a a nodejs
+- Migrar de pm2 a docker
+- Validar actividades de Francisco
 
 - Implementacion de interfaz de soporte
     - Ventas en reserve
@@ -98,10 +107,6 @@
     - Listado de premios
     - Automatización de resolucion de ventas fallidas en alboran
 
-- Mejora del versionado para tener mas control sobre ramas activas en los diferentes entornos
-- Mejorar manejo de las variables de entorno
-- Mejorar manejo y propagacion de error cuando falla la db para evitar ventas en reserve
-- Mejorar validacion previa a la venta para obtener status de la reserva y reducir la complejidad
 
 - Refactorizar servidor
     - Optimizar manejo y propagacion de errores
@@ -127,10 +132,6 @@
     - Generador de txt con lista de codigos
     - Customizacion de logica de codigos promocionales
     - Logica para gestionar los codigos eficientemente (Definir mejor)
-
-- Migrar servicios ftp a a nodejs
-- Migrar de pm2 a docker
-- Validar actividades de Francisco
 
 - Min-height a body
 - Fondo del home gris
