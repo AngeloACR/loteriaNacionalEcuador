@@ -12,19 +12,30 @@ export class PublicComponent implements OnInit {
   consultasLink: string = '/consultas/loteria';
   juegosLink: string = 'https://www.loteria.com.ec/#/juegos';
   token: string;
+  isLoading: boolean = false;
   puntosDeLaSuerteLink: string =
     'https://www.loteria.com.ec/#/contenido/puntos-suerte';
   constructor(private actRoute: ActivatedRoute, private ventas: VentasService) {
+    this.isLoading = true;
     this.actRoute.params.subscribe((params) => {
       this.token = params['token'];
+      this.ventasLink = `${this.ventasLink}/${this.token}`;
+      this.isLoading = false;
     });
   }
 
   async ngOnInit() {
-    if (this.token) {
-      let data = await this.ventas.authUser(this.token);
+    try {
+
+      this.isLoading = true;
+      if (this.token) {
+        let data = await this.ventas.authUser(this.token);
+      }
+      this.isLoading = false;
+    } catch (error: any) {
+      this.isLoading = false;
+      this.openError(error.message, "Error")
     }
-    this.ventasLink = `${this.ventasLink}/${this.token}`;
   }
 
   checkToken(e: any) {

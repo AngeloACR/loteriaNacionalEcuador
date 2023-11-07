@@ -37,8 +37,12 @@ export class MenuBoxComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router
   ) {
+
+    this.loadingMessage = 'Espera mientras procesamos tu información';
+    this.isLoading = true;
     this.actRoute.params.subscribe((params) => {
       this.token = params['token'];
+      this.isLoading = false;
     });
   }
 

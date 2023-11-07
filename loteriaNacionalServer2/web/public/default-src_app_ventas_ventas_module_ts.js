@@ -7396,8 +7396,11 @@ class MenuBoxComponent {
     this.saldoInsuficiente = false;
     this.isValidationError = false;
     this.isError = false;
+    this.loadingMessage = 'Espera mientras procesamos tu información';
+    this.isLoading = true;
     this.actRoute.params.subscribe(params => {
       this.token = params['token'];
+      this.isLoading = false;
     });
   }
 

@@ -10,7 +10,12 @@
 </div>
 
 <div id="mobileLanding">
-  <a [href]="ventasLink" target="_parent" (click)="checkToken($event)" class="landingButton compras">
+  <a
+    [href]="ventasLink"
+    target="_parent"
+    (click)="checkToken($event)"
+    class="landingButton compras"
+  >
     <img src="assets/img/webicon01.png" alt="" />
   </a>
   <a [href]="consultasLink" target="_parent" class="landingButton consulta">
@@ -34,3 +39,5 @@
   [title]="errorTitle!"
   *ngIf="isError"
 ></app-error>
+
+<app-loader loader="loteria" *ngIf="isLoading"></app-loader>
