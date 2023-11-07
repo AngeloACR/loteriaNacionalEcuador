@@ -10,6 +10,7 @@ $color-millonaria: #b51f20;
 $color-revancha: #ffe401;
 $color-bingazo: #283479;
 
+
 .contenedor_ticket.fondoLoteria {
   background-color: $color-botton;
   border: 1px solid $color-botton;
@@ -44,11 +45,15 @@ $color-bingazo: #283479;
   width: 100%;
   overflow: hidden;
   background-color: #f9f9f9;
-
+  height:800px;
   .detailBox {
     overflow-y: scroll;
-    min-height: 20px;
-    max-height: 800px;
+    height: 550px;
+
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;
@@ -68,21 +73,16 @@ $color-bingazo: #283479;
       border-radius: 10px;
     }
 
-    .scroll {
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
 
-      div {
+    div {
+      width: 100%;
+
+      .ticketBox {
         width: 100%;
-
-        .ticketBox {
-          width: 100%;
-          margin: 10px 0;
-        }
+        margin: 10px 0;
       }
     }
+
 
     .noItem {
       margin: 10px;
@@ -234,11 +234,13 @@ $color-bingazo: #283479;
 }
 
 @media screen and (max-width: 1000px) {
-  .contenedor_ticket {
-    .logo_ticket {
-      img {
-        height: 10vh;
-      }
+  
+  
+  .contenedor_carrito{
+    height: 80vh;
+    .detailBox{
+      height: 50vh;
     }
   }
+
 }

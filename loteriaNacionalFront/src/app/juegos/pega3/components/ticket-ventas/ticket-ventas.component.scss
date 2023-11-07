@@ -59,7 +59,6 @@ $color-botton: #784494;
     transition: width 0.3s ease;
   }
   img.logoTicket {
-    position: absolute;
     width: 30%;
     bottom: 5px;
     right: 5px;
@@ -70,9 +69,9 @@ $color-botton: #784494;
   .contenedor_informacion_ticket {
     p {
       font-size: 14px;
+      font-weight: bold;
     }
     img.logoTicket {
-      position: absolute;
       width: 150px;
       top: 132px;
       right: 5px;
@@ -82,7 +81,6 @@ $color-botton: #784494;
 @media screen and (max-width: 500px) {
   .contenedor_informacion_ticket {
     img.logoTicket {
-      position: absolute;
       top: 115px;
       width: 120px;
     }

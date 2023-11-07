@@ -58,6 +58,7 @@ $fuente-botones: "Monstserrat SemiBold";
 }
 @media screen and (max-width: 600px) {
   .paymentBox {
+    width: 100%;
     .buttonBox{
       flex-direction: column;
     }

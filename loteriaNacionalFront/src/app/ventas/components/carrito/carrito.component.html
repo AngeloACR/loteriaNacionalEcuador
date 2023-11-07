@@ -68,50 +68,48 @@
     class="detailBox"
     *ngIf="seleccionadosCarrito && seleccionadosCarrito.length"
   >
-    <div class="scroll">
-      <ng-container *ngFor="let item of seleccionadosCarrito; let i = index">
-        <loteria-ticket-ventas
-          style="width: 100%"
-          *ngIf="item.tipoLoteria == 1"
-          (deleteTicket)="deleteLoteria(item)"
-          (deleteFraccion)="deleteFraccionLoteria(item, $event)"
-          [ticket]="item.ticket"
-          [sorteo]="item.sorteo"
-        >
-        </loteria-ticket-ventas>
-        <lotto-ticket-ventas
-          style="width: 100%"
-          *ngIf="item.tipoLoteria == 2"
-          (delete)="deleteLotto(item)"
-          [ticket]="item.ticket"
-          [sorteo]="item.sorteo"
-        >
-        </lotto-ticket-ventas>
-        <pozo-ticket-ventas
-          style="width: 100%"
-          *ngIf="item.tipoLoteria == 5"
-          (delete)="deletePozo(item)"
-          [ticket]="item.ticket"
-          [sorteo]="item.sorteo"
-        >
-        </pozo-ticket-ventas>
-        <revancha-ticket-ventas
-          style="width: 100%"
-          *ngIf="item.tipoLoteria == 17"
-          (delete)="deletePozoRevancha(item)"
-          [ticket]="item.ticket"
-          [sorteo]="item.sorteo"
-        >
-        </revancha-ticket-ventas>
-        <bingazo-ticket-ventas
-          style="width: 100%"
-          *ngIf="item.tipoLoteria == 12"
-          (delete)="deleteBingazo(item)"
-          [ticket]="item.ticket"
-          [sorteo]="item.sorteo"
-        >
-        </bingazo-ticket-ventas>
-      </ng-container>
-    </div>
+    <ng-container *ngFor="let item of seleccionadosCarrito; let i = index">
+      <loteria-ticket-ventas
+        style="width: 100%"
+        *ngIf="item.tipoLoteria == 1"
+        (deleteTicket)="deleteLoteria(item)"
+        (deleteFraccion)="deleteFraccionLoteria(item, $event)"
+        [ticket]="item.ticket"
+        [sorteo]="item.sorteo"
+      >
+      </loteria-ticket-ventas>
+      <lotto-ticket-ventas
+        style="width: 100%"
+        *ngIf="item.tipoLoteria == 2"
+        (delete)="deleteLotto(item)"
+        [ticket]="item.ticket"
+        [sorteo]="item.sorteo"
+      >
+      </lotto-ticket-ventas>
+      <pozo-ticket-ventas
+        style="width: 100%"
+        *ngIf="item.tipoLoteria == 5"
+        (delete)="deletePozo(item)"
+        [ticket]="item.ticket"
+        [sorteo]="item.sorteo"
+      >
+      </pozo-ticket-ventas>
+      <revancha-ticket-ventas
+        style="width: 100%"
+        *ngIf="item.tipoLoteria == 17"
+        (delete)="deletePozoRevancha(item)"
+        [ticket]="item.ticket"
+        [sorteo]="item.sorteo"
+      >
+      </revancha-ticket-ventas>
+      <bingazo-ticket-ventas
+        style="width: 100%"
+        *ngIf="item.tipoLoteria == 12"
+        (delete)="deleteBingazo(item)"
+        [ticket]="item.ticket"
+        [sorteo]="item.sorteo"
+      >
+      </bingazo-ticket-ventas>
+    </ng-container>
   </div>
 </div>

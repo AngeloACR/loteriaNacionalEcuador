@@ -303,7 +303,7 @@ $color-millonaria: #b51f20;
         width: 400px !important;
 
         &.loteria {
-          width: 400px;
+          width: 350px !important;
           display: flex;
           justify-content: space-around;
           align-items: center;
@@ -316,8 +316,8 @@ $color-millonaria: #b51f20;
 
           .ticketText {
             position: absolute;
-            right: 94px;
-            bottom: 9px;
+            right: 76px;
+            bottom: 20px;
             font-style: normal;
             font-weight: bold !important;
 
@@ -386,7 +386,7 @@ $color-millonaria: #b51f20;
 
             .combinacion5 {
               bottom: 32px;
-              border-radius: 6px;
+              border-radius: 10px;
               right: 0;
               position: absolute;
               height: 42px;
@@ -1065,6 +1065,39 @@ $color-millonaria: #b51f20;
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .containerDetails {
+    .containerInfoBox {
+      padding: 0;
+      .titleLoteryBox{
+        padding: 0;
+      }
+      .dateLoteryBox {
+        flex-direction: column;
+        justify-content: center;
+
+        .infoSorteoBox {
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          border-bottom: 1px solid black;
+          text-align: center;
+        }
+
+
+        .numberBox {
+          width: 100%;
+        }
+
+        .montoBox {
+          width: 100%;
         }
       }
     }

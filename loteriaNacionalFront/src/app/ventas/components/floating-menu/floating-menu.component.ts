@@ -18,7 +18,7 @@ import { CarritoService } from '../../services/carrito.service';
 })
 export class FloatingMenuComponent implements OnInit, AfterViewInit {
   isToggled: boolean = false;
-  @ViewChild('float', {static: false}) floatingBox: any;
+  @ViewChild('float', { static: false }) floatingBox: any;
 
 
 
@@ -37,7 +37,7 @@ export class FloatingMenuComponent implements OnInit, AfterViewInit {
   @Output() deleteBingazoTicket = new EventEmitter();
   @Output() deletePozoTicket = new EventEmitter();
   @Output() deletePozoRevanchaTicket = new EventEmitter();
-  constructor(private cart: CarritoService) {}
+  constructor(private cart: CarritoService) { }
   carrito: any = {};
   cerrar: any = {};
   ngOnInit() {

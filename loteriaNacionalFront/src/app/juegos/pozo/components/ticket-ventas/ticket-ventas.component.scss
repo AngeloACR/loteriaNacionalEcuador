@@ -184,11 +184,11 @@ $color-pozo: #04b865;
 @media screen and (max-width: 1000px) {
   .contenedor_informacion_ticket {
     p {
-      font-size: 14px;
+      font-size: 16px;
+      font-weight: bold;
     }
 
     img.logoTicket {
-      position: absolute;
       width: 150px;
       top: 50px;
       right: 5px;
@@ -199,7 +199,6 @@ $color-pozo: #04b865;
 @media screen and (max-width: 500px) {
   .contenedor_informacion_ticket {
     img.logoTicket {
-      position: absolute;
       width: 120px;
     }
   }

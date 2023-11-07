@@ -33,7 +33,7 @@ $color-loteria: #7c91a8;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      flex-direction: column; 
+      flex-direction: column;
       font-family: Open Sans;
       color: #1e1e1e;
       font-family: Open Sans !important;
@@ -98,4 +98,32 @@ $color-loteria: #7c91a8;
   .paymentBox {
     width: 95%;
   }
+}
+
+
+@media screen and (max-width: 800px) {
+
+  .paymentBox {
+    width: 95%;
+
+    .mensajeBox {
+      margin-top: 42px;
+      .ticket {
+        position: absolute;
+        height: 280px;
+        left: 50%;
+        transform: translateX(-50%) rotateZ(90deg);
+      }
+
+      .textBox {
+        right: 50%;
+        transform: translateX(50%);
+      }
+    }
+
+    .buttonsBox {
+      margin: 50px auto;
+    }
+  }
+
 }

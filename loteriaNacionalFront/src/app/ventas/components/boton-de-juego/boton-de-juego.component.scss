@@ -44,6 +44,12 @@ $fuente-botones: "Monstserrat SemiBold";
     img {
       width: 200px;
     }
+
+    &:hover img {
+      width: 240px;
+
+      transition: width 0.3s ease;
+    }
   }
 
 
@@ -51,6 +57,12 @@ $fuente-botones: "Monstserrat SemiBold";
     img {
       margin-top: -23px;
       width: 180px;
+    }
+
+    &:hover img {
+      width: 216px;
+
+      transition: width 0.3s ease;
     }
 
     .mobile {
@@ -66,6 +78,12 @@ $fuente-botones: "Monstserrat SemiBold";
     img {
       width: 180px;
     }
+
+    &:hover img {
+      width: 216px;
+
+      transition: width 0.3s ease;
+    }
   }
 
   &.loteria {
@@ -76,13 +94,14 @@ $fuente-botones: "Monstserrat SemiBold";
     img {
       width: 200px;
     }
+
+    &:hover img {
+      width: 240px;
+
+      transition: width 0.3s ease;
+    }
   }
 
-  &:hover .lotteryImg {
-    width: 60%;
-
-    transition: width 0.3s ease;
-  }
 
   .active {
     display: none;
@@ -154,7 +173,58 @@ $fuente-botones: "Monstserrat SemiBold";
 
 @media screen and (max-width: 800px) {
   .lotteryBox {
+
+
     width: 300px;
     height: 100px;
+
+    &.bingazo {
+      img {
+        width: 140px;
+      }
+
+      &:hover img {
+        width: 168px;
+      }
+    }
+
+
+    &.pozo {
+      img {
+        width: 140px;
+      }
+
+      &:hover img {
+        width: 168px;
+      }
+
+    }
+
+    &.lotto {
+      img {
+        width: 140px;
+      }
+
+      &:hover img {
+        width: 168px;
+      }
+    }
+
+    &.loteria {
+      img {
+        width: 140px;
+      }
+
+      &:hover img {
+        width: 168px;
+      }
+    }
+
+
+    .active {
+      display: none;
+    }
   }
+
+
 }

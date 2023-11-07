@@ -179,11 +179,11 @@ $color-botton: #b51f20;
 @media screen and (max-width: 1000px) {
   .contenedor_informacion_ticket {
     p {
-      font-size: 14px;
+      font-size: 16px;
+      font-weight: bold;
     }
 
     img.logoTicket {
-      position: absolute;
       width: 150px;
       top: 132px;
       right: 5px;
@@ -194,7 +194,6 @@ $color-botton: #b51f20;
 @media screen and (max-width: 500px) {
   .contenedor_informacion_ticket {
     img.logoTicket {
-      position: absolute;
       top: 115px;
       width: 120px;
     }
