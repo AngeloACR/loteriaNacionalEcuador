@@ -3973,43 +3973,43 @@ class ConsultaService {
 
     switch (mascota) {
       case '04':
-        mascotaPath = 'assets/mascotas/Delfin.png';
+        mascotaPath = 'assets/mascotas/Delfin.webp';
         break;
 
       case '02':
-        mascotaPath = 'assets/mascotas/Perro.png';
+        mascotaPath = 'assets/mascotas/Perro.webp';
         break;
 
       case '08':
-        mascotaPath = 'assets/mascotas/Llama.png';
+        mascotaPath = 'assets/mascotas/Llama.webp';
         break;
 
       case '09':
-        mascotaPath = 'assets/mascotas/Papagayo.png';
+        mascotaPath = 'assets/mascotas/Papagayo.webp';
         break;
 
       case '01':
-        mascotaPath = 'assets/mascotas/Conejo.png';
+        mascotaPath = 'assets/mascotas/Conejo.webp';
         break;
 
       case '10':
-        mascotaPath = 'assets/mascotas/Mono.png';
+        mascotaPath = 'assets/mascotas/Mono.webp';
         break;
 
       case '03':
-        mascotaPath = 'assets/mascotas/Galapago.png';
+        mascotaPath = 'assets/mascotas/Galapago.webp';
         break;
 
       case '05':
-        mascotaPath = 'assets/mascotas/Foca.png';
+        mascotaPath = 'assets/mascotas/Foca.webp';
         break;
 
       case '06':
-        mascotaPath = 'assets/mascotas/Condor.png';
+        mascotaPath = 'assets/mascotas/Condor.webp';
         break;
 
       case '07':
-        mascotaPath = 'assets/mascotas/Iguana.png';
+        mascotaPath = 'assets/mascotas/Iguana.webp';
         break;
 
       default:
