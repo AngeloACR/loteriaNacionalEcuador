@@ -138,6 +138,10 @@
               <p class="numero" *ngFor="let numero of ticket.display">
                 {{ numero }}
               </p>
+
+              <p class="carton">
+                {{ ticket.combinacion1 }}
+              </p>
             </div>
 
             <div class="buttonsBox">
@@ -157,6 +161,10 @@
             <img class="mascota" [src]="obtenerAnimal(ticket.mascota)" alt="" />
             <p class="numero" *ngFor="let numero of ticket.display">
               {{ numero }}
+            </p>
+
+            <p class="carton">
+              {{ ticket.combinacion1 }}
             </p>
             <div class="buttonsBox">
               <button
@@ -191,7 +199,6 @@
           </mat-paginator>
         </div>
       </div>
-
     </div>
 
     <app-carrito
@@ -253,4 +260,3 @@
   class="paymentItem"
   *ngIf="saldoInsuficiente"
 ></app-saldo-insuficiente>
-

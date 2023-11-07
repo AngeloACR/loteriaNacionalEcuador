@@ -55,11 +55,11 @@ $color-pozo: #ffe401;
 
       .mascota {
         position: absolute;
-        width: 65px;
+        width: 78px;
         border-radius: 30px;
 
-        top: 62px;
-        right: 76px;
+        top: -6px;
+        right: 2px;
 
       }
 
@@ -71,6 +71,15 @@ $color-pozo: #ffe401;
         font-weight: bold;
         color: black;
         margin: 0;
+      }
+
+
+      .carton {
+        position: absolute;
+        bottom: 1px;
+        left: 42px;
+        color: black;
+        font-weight: bold;
       }
 
       p.numero:nth-of-type(1) {

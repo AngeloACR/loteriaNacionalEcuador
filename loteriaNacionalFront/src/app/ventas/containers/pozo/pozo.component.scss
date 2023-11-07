@@ -184,13 +184,13 @@ mat-expansion-panel {
               position: absolute;
               left: -10000px;
 
-              &+label {
+              & + label {
                 display: block;
                 background-color: #fff;
                 text-align: center;
               }
 
-              &:checked+label {
+              &:checked + label {
                 background-color: $color-pozo;
                 border-radius: 15px;
                 transition: background-color 0.3s ease;
@@ -349,13 +349,13 @@ mat-expansion-panel {
             position: absolute;
             left: -10000px;
 
-            &+label {
+            & + label {
               display: block;
               background-color: #fff;
               text-align: center;
             }
 
-            &:checked+label {
+            &:checked + label {
               background-color: $color-pozo;
               border-radius: 15px;
               transition: background-color 0.3s ease;
@@ -374,7 +374,6 @@ mat-expansion-panel {
       }
 
       .ticketsBox {
-
         width: 100%;
         display: flex;
         align-items: center;
@@ -383,7 +382,6 @@ mat-expansion-panel {
         flex-wrap: wrap;
 
         .ticketBox {
-
           width: 250px;
           min-height: 458px;
           margin: 7px;
@@ -413,12 +411,11 @@ mat-expansion-panel {
 
             .mascota {
               position: absolute;
-              width: 60px;
+              width: 48px;
               border-radius: 30px;
-              top: 8px;
-              right: 12px;
+              top: 0px;
+              right: 6px;
             }
-
 
             .numero {
               position: absolute;
@@ -427,6 +424,14 @@ mat-expansion-panel {
               font-weight: bold;
               color: black;
               margin: 0;
+            }
+            .carton {
+              position: absolute;
+              top: 61px;
+              left: 12px;
+              font-size: 12px;
+              color: black;
+              font-weight: bold;
             }
 
             p.numero:nth-of-type(1) {
@@ -456,22 +461,22 @@ mat-expansion-panel {
 
             p.numero:nth-of-type(6) {
               top: 149px;
-              left: 43px
+              left: 43px;
             }
 
             p.numero:nth-of-type(7) {
               top: 149px;
-              left: 86px
+              left: 86px;
             }
 
             p.numero:nth-of-type(8) {
               top: 149px;
-              left: 130px
+              left: 130px;
             }
 
             p.numero:nth-of-type(9) {
               top: 149px;
-              left: 173px
+              left: 173px;
             }
 
             p.numero:nth-of-type(10) {
@@ -483,7 +488,6 @@ mat-expansion-panel {
               top: 181px;
               left: 108px;
             }
-
           }
 
           .revanchaBox {
@@ -500,17 +504,14 @@ mat-expansion-panel {
               }
             }
 
-
             .mascota {
               position: absolute;
-              width: 45px;
+              width: 48px;
               border-radius: 30px;
 
-              top: 42px;
-              right: 52px;
-
+              top: -3px;
+              right: 4px;
             }
-
 
             .numero {
               position: absolute;
@@ -521,6 +522,14 @@ mat-expansion-panel {
               margin: 0;
             }
 
+            .carton {
+              position: absolute;
+              bottom: 69px;
+              left: 33px;
+              font-size: 11px;
+              color: black;
+              font-weight: bold;
+            }
             p.numero:nth-of-type(1) {
               top: 95px;
               left: 29px;
@@ -580,7 +589,6 @@ mat-expansion-panel {
           img {
             width: 100%;
           }
-
         }
 
         hr {
@@ -635,7 +643,7 @@ mat-expansion-panel {
           }
         }
       }
- 
+
       .boton_boleto {
         width: 100%;
         margin: auto;
@@ -666,7 +674,7 @@ mat-expansion-panel {
     }
 
     .ticketScroller {
-        width: 400px;
+      width: 400px;
     }
   }
 }
@@ -678,7 +686,6 @@ mat-expansion-panel {
     .ventasBox {
       width: 100%;
     }
-
 
     .contendor_seleccion {
       width: 100% !important;

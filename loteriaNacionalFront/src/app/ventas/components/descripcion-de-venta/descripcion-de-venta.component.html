@@ -246,6 +246,9 @@
         <p class="numero" *ngFor="let numero of item.combinacion2.split(',')">
           {{ numero }}
         </p>
+        <p class="carton">
+          {{ item.combinacion1 }}
+        </p>
       </div>
       <div class="numberBox">
         <p>Cantidad:</p>
@@ -333,6 +336,10 @@
         <p class="numero" *ngFor="let numero of item.combinacion2.split(',')">
           {{ numero }}
         </p>
+
+        <p class="carton">
+          {{ item.combinacion1 }}
+        </p>
       </div>
       <div class="numberBox">
         <p>Cantidad:</p>
@@ -398,7 +405,10 @@
     </div>
   </div>
 
-  <div class="containerInfoBox" *ngIf="compra.millonaria && compra.millonaria.length != 0">
+  <div
+    class="containerInfoBox"
+    *ngIf="compra.millonaria && compra.millonaria.length != 0"
+  >
     <div class="titleMillonariaBox">
       <img src="assets/img/millonaria-sombra.png" width="180" />
     </div>

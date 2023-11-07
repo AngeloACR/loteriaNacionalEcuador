@@ -174,7 +174,7 @@ export class ConfirmacionDeVentaComponent implements OnInit {
       let hasBalance = await this.pagos.hasBalance(0, this.token);
       if (hasBalance) {
         let reservaId = this.ventas.getReservaId();
-        let cartValidation ={status: true, message: ""} // await this.cart.validarCarrito(reservaId);
+        let cartValidation = { status: true, message: '' }; // await this.cart.validarCarrito(reservaId);
         if (cartValidation.status) {
           let response = await this.pagos.confirmarCompra(
             this.token,
@@ -212,7 +212,9 @@ export class ConfirmacionDeVentaComponent implements OnInit {
     }
   }
   async abrirFinalizar() {
+    this.isLoading = true;
     await this.cart.borrarCarrito();
+    this.isLoading = false;
     this.router.navigateByUrl(
       `/compra_tus_juegos/venta_finalizada/${this.token!}/${this.idVenta!}`
     );

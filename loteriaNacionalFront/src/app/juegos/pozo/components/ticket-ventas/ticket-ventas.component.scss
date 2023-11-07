@@ -30,7 +30,6 @@ $color-pozo: #04b865;
   }
 
   .ticketBox {
-
     width: 100%;
     position: relative;
     display: flex;
@@ -38,8 +37,6 @@ $color-pozo: #04b865;
     margin-bottom: 5px;
 
     &.boleto {
-
-
       width: 360px;
       margin: 0 auto;
 
@@ -53,12 +50,11 @@ $color-pozo: #04b865;
 
       .mascota {
         position: absolute;
-        width: 85px;
+        width: 78px;
         border-radius: 30px;
-        top: 14px;
-        right: 18px;
+        top: -2px;
+        right: 6px;
       }
-
 
       .numero {
         position: absolute;
@@ -67,6 +63,14 @@ $color-pozo: #04b865;
         font-weight: bold;
         color: black;
         margin: 0;
+      }
+
+      .carton {
+        position: absolute;
+        top: 103px;
+        left: 14px;
+        color: black;
+        font-weight: bold;
       }
 
       p.numero:nth-of-type(1) {
@@ -96,22 +100,22 @@ $color-pozo: #04b865;
 
       p.numero:nth-of-type(6) {
         top: 219px;
-        left: 64px
+        left: 64px;
       }
 
       p.numero:nth-of-type(7) {
         top: 219px;
-        left: 128px
+        left: 128px;
       }
 
       p.numero:nth-of-type(8) {
         top: 219px;
-        left: 192px
+        left: 192px;
       }
 
       p.numero:nth-of-type(9) {
         top: 219px;
-        left: 256px
+        left: 256px;
       }
 
       p.numero:nth-of-type(10) {
@@ -124,14 +128,9 @@ $color-pozo: #04b865;
         left: 160px;
       }
 
-
-
-
       img {
         width: 100%;
       }
-
-
     }
 
     .left {
@@ -167,7 +166,8 @@ $color-pozo: #04b865;
           width: 40%;
           padding: 3px;
           cursor: pointer;
-          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg) brightness(108%) contrast(109%);
+          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(360deg)
+            brightness(108%) contrast(109%);
           transition: width 0.3s ease;
 
           &:hover {
@@ -175,7 +175,6 @@ $color-pozo: #04b865;
             transition: width 0.3s ease;
           }
         }
-
       }
     }
   }
