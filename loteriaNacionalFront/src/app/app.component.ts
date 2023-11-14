@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   isDetail: boolean = false;
   showPromo: boolean = false;
   showHeader: boolean = true;
-  logoPath: string = 'assets/img/loteria-sombra.png';
 
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {

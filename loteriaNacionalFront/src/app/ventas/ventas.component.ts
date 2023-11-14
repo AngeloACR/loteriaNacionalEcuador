@@ -9,6 +9,8 @@ import { VentasService } from './services/ventas.service';
 })
 export class VentasComponent implements OnInit {
   token: string = "";
+  logoPath: string
+   = 'assets/img/loteria-sombra.png';
   constructor(
     private ventas: VentasService,
     private actRoute: ActivatedRoute,
