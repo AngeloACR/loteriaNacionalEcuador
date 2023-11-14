@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   isDetail: boolean = false;
   showPromo: boolean = false;
   showHeader: boolean = true;
+  logoPath: string = 'assets/img/loteria-sombra.png';
+
   @HostListener('window:message', ['$event'])
   handleScroll(e: any) {
     if (e.data && e.data.message == 'scrolling') {
@@ -26,10 +28,7 @@ export class AppComponent implements OnInit {
       localStorage.setItem('screen', e.data.screen);
     }
   }
-  constructor(
-    private router: Router,
-    private ventas: VentasService
-  ) {
+  constructor(private router: Router, private ventas: VentasService) {
     this.isDetail = false;
     this.router.events.subscribe(async (event: Event) => {
       if (event instanceof NavigationStart) {
@@ -68,8 +67,8 @@ export class AppComponent implements OnInit {
     });
   }
   async ngOnInit() {
-    localStorage.setItem('top', "0");
-    localStorage.setItem('screen', "0");
+    localStorage.setItem('top', '0');
+    localStorage.setItem('screen', '0');
   }
   closePromo() {
     this.showPromo = false;
