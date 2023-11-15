@@ -94,7 +94,7 @@ const cacheController = {
       let timeout = 60 * 40;
       let client = redis.getClient();
       await client.connect();
-      await psdReservas.anularReserva(token, reservaId, user, ip);
+
       let carrito = {
         loteria: {},
         lotto: {},
