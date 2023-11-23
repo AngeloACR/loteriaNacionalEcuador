@@ -143,3 +143,5 @@
 
 - Agregar evento de scrolling en carrito flotante, errores y loaders - EN PAUSA
 
+- Enable bingazo in preproduction
+- Enable consulta de resultados de produccion en test
