@@ -1,6 +1,6 @@
 const https = require("https");
 var { exalogicError } = require("./errors");
-const config = require("../environments/production");
+const config = require("../environments/test");
 
 const { exalogicLogger } = require("./logging");
 
