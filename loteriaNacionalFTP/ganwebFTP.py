@@ -194,7 +194,7 @@ def main():
     filename = sys.argv[1]+".xml"
     #filepath = "http://67.43.9.57:9000/resultados/" + filename
     #filepath = "/home/acri/ftp/resultados"
-    filepath = "/home/acri/ftpResultados" + filename
+    filepath = "/home/acri/ftpResultados/" + filename
     #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
 
     # it's a file like object and works just like a file
