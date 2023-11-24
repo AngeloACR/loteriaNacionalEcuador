@@ -208,7 +208,7 @@ def main():
     with     codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
         data = file.read()
     with codecs.open(filepath, 'w', encoding='utf8') as file:
-        file.write(lines)
+        file.write(data)
     
     file = open(filename, 'r+', encoding="utf8")
 
