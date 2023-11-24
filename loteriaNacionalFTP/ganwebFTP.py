@@ -198,7 +198,11 @@ def main():
     #filepath = "/home/angeloacr/Proyectos/loteriaNacional/ganadores/"+filename
 
     # it's a file like object and works just like a file
-    data = urllib.request.urlopen(filepath)
+    #data = urllib.request.urlopen(filepath)
+   
+    with     codecs.open(filepath, 'r', encoding='iso-8859-1') as file:
+        data = file.read()
+
     with codecs.open(filename, 'w', encoding='utf8') as file:
         for line in data:  # files are iterable
             file.write(line.decode("iso-8859-1"))
