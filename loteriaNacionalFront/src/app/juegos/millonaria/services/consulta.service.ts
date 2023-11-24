@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ConsultaService {
   today = new Date();
-  mySource = environment.source;
+  mySource = environment.consultas;
+
 
   constructor(private http: HttpClient) {}
   async validarSorteo(sorteo: any) {
