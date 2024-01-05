@@ -1,5 +1,5 @@
 const helperServer = require("./helperServer");
-const config = require("../environments/test");
+const config = require("../environments/produccion");
 
 const cronjobs = require("./cronjobs");
 

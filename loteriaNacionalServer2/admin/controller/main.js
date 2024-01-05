@@ -1,6 +1,6 @@
 const Popup = require("../models/popup");
 const { adminLogger } = require("../logging");
-const config = require("../../environments/test");
+const config = require("../../environments/produccion");
 const fs = require("fs").promises;
 const path = require("path");
 const mainController = {
