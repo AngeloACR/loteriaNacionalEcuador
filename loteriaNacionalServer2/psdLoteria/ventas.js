@@ -5,8 +5,7 @@ var { loteriaError } = require("./errors");
 const path = require("path");
 
 const { loteriaVentasLogger } = require("./logging");
-const config = require("../environments/test");
-
+const config = require("../environments/production");
 
 const medioId = config.medioAplicativoId;
 const address = path.join(__dirname, config.aplicativoAddress);
@@ -407,7 +406,7 @@ module.exports.venderBoletos = async (
       ]]>
     </PI_DatosXml>`,
     };
-    
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -509,6 +508,255 @@ module.exports.venderBoletos = async (
   }
 };
 
+module.exports.venderBoletosFallidos = async (
+  ordComp,
+  total,
+  loteria,
+  lotto,
+  pozo,
+  pozoRevancha,
+  bingazo,
+  lotteryToken,
+  reservaId,
+  user,
+  ip
+) => {
+  try {
+    loteriaVentasLogger.silly("venderBoletos");
+
+    let client = await soap.createClientAsync(address, { envelopeKey: "s" });
+    let loteriaCombinacionesXML = "";
+    let lottoCombinacionesXML = "";
+    let pozoCombinacionesXML = "";
+    let pozoRevanchaCombinacionesXML = "";
+    let bingazoCombinacionesXML = "";
+    if (loteria.length != 0) {
+      loteria.forEach((item) => {
+        let combinacion = item.combinacion1;
+        let fraccionesXML = "";
+        let cant = 0;
+        item.fracciones.forEach((element) => {
+          fraccionesXML = `${fraccionesXML}<F id="${element}" />`;
+          cant += 1;
+        });
+
+        loteriaCombinacionesXML = `
+                ${loteriaCombinacionesXML}
+                <R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" >${fraccionesXML}</R>`;
+      });
+      loteriaCombinacionesXML = `
+            <JG id="1">
+                ${loteriaCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
+    if (lotto.length != 0) {
+      lotto.forEach((item) => {
+        let combinacion = item.combinacion1;
+        let cant = 1;
+        lottoCombinacionesXML = `
+                ${lottoCombinacionesXML}
+                <R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      lottoCombinacionesXML = `
+            <JG id="2">
+                ${lottoCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
+    if (pozo.length != 0) {
+      pozo.forEach((item) => {
+        let combinacion = item.combinacion1;
+        let cant = 1;
+        pozoCombinacionesXML = `
+                ${pozoCombinacionesXML}
+                <R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      pozoCombinacionesXML = `
+            <JG id="5">
+                ${pozoCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
+    if (pozoRevancha.length != 0) {
+      pozoRevancha.forEach((item) => {
+        let combinacion = item.combinacion1;
+        let cant = 1;
+        pozoRevanchaCombinacionesXML = `
+                ${pozoRevanchaCombinacionesXML}
+                <R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      pozoRevanchaCombinacionesXML = `
+            <JG id="17">
+                ${pozoRevanchaCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
+    if (bingazo.length != 0) {
+      bingazo.forEach((item) => {
+        let combinacion = item.combinacion1;
+        let cant = 1;
+        bingazoCombinacionesXML = `
+                ${bingazoCombinacionesXML}
+                <R sorteo="${item.sorteo}" numero="${combinacion}" cantid="${cant}" />`;
+      });
+      bingazoCombinacionesXML = `
+            <JG id="12">
+                ${bingazoCombinacionesXML}
+            </JG>        
+              
+            `;
+    }
+    let venta = `<V total="${total}"></V>`;
+
+    let message = {
+      $xml: `
+      <PI_DatosXml>
+      <![CDATA[
+        <mt>
+        <c>
+        <aplicacion>25</aplicacion>
+        <transaccion>15</transaccion>
+        <usuario>${config.usuarioAplicativo}</usuario>
+        <maquina>${ip}</maquina>
+        <codError>0</codError>
+        <msgError />
+        <medio>${medioId}</medio>
+        <token>${lotteryToken}</token>
+        <operacion>${Date.now()}</operacion>
+        </c>
+        <i>
+        <ReservaId>${reservaId}</ReservaId>
+        <xmlVenta>
+        <VT>
+        ${venta}
+        <FP ordComp="${ordComp}" >
+        <R forCo="CVT" Total="${total}" />
+        </FP>
+        </VT>
+        </xmlVenta>
+        <xmlNumeros>
+        <RS>
+        ${loteriaCombinacionesXML} 
+        ${lottoCombinacionesXML} 
+        ${pozoCombinacionesXML}
+        ${pozoRevanchaCombinacionesXML}
+        ${bingazoCombinacionesXML}
+        </RS>
+        </xmlNumeros>
+        <MedioId>${medioId}</MedioId>
+        <UsuarioId>${user}</UsuarioId>
+        </i>
+        </mt>
+      ]]>
+    </PI_DatosXml>`,
+    };
+    console.log(message);
+    return new Promise(async (resolve, reject) => {
+      client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
+        message,
+        async function (err, res, rawResponse, soapHeader, rawRequest) {
+          try {
+            if (err) reject(new Error(err));
+            let data = await parser.parseStringPromise(
+              res.fnEjecutaTransaccionResult
+            );
+            let errorCode = parseInt(data.mt.c[0].codError[0]);
+            if (!errorCode) {
+              let aux = data.mt.o[0].xmlVentaOutput[0];
+              let xmlVentaOutput = await parser.parseStringPromise(aux);
+              let ticketId = xmlVentaOutput.VTA.$.VId;
+              let instantaneas = [];
+              let instantaneasAux =
+                xmlVentaOutput.VTA.INST && xmlVentaOutput.VTA.INST[0].SOR
+                  ? xmlVentaOutput.VTA.INST[0].SOR
+                  : "";
+              if (instantaneasAux != "") {
+                instantaneasAux.forEach((sorteoAux) => {
+                  let sorteo = sorteoAux.$;
+
+                  let premios = sorteoAux.R.map((premio) => {
+                    return premio.$;
+                  });
+                  let data = {
+                    sorteo,
+                    premios,
+                  };
+                  instantaneas.push(data);
+                });
+              }
+              let response = {
+                instantaneas,
+                ticketId,
+                status: true,
+              };
+
+              let logData = {
+                data: message,
+                loteriaResponse: rawResponse,
+                customResponse: response,
+              };
+              loteriaVentasLogger.info("venderBoletos.loteria", logData);
+              resolve(response);
+            } else {
+              let errorMsg = data.mt.c[0].msgError[0];
+              loteriaVentasLogger.error("venderBoletos.loteria.error", {
+                data: message,
+                errorMessage: `${errorCode}-${errorMsg}`,
+              });
+              let errorData = {
+                status: false,
+                input: message,
+                errorMsg,
+                errorCode,
+                output: errorCode,
+                function: "venderBoletos",
+              };
+              resolve(errorData);
+              //              reject(new loteriaError(errorMsg, "loteria", errorData));
+            }
+          } catch (e) {
+            let errorMsg = e.message;
+
+            loteriaVentasLogger.error("venderBoletos.error", {
+              errorMessage: errorMsg,
+            });
+            let errorData = {
+              status: false,
+              input: e,
+              errorCode,
+              output: "",
+              function: "venderBoletos",
+            };
+            resolve(errorData);
+
+            //reject(new loteriaError(errorMsg, "loteria", errorData));
+          }
+        }
+      );
+    });
+  } catch (e) {
+    let errorMsg = e.message;
+
+    loteriaVentasLogger.error("venderBoletos.error", {
+      errorMessage: errorMsg,
+    });
+
+    let errorData = {
+      status: false,
+      input: e,
+      output: errorMsg,
+      function: "venderBoletos",
+    };
+    return errorData;
+    //throw new loteriaError(errorMsg, "loteria", errorData);
+  }
+};
+
 module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
   try {
     loteriaVentasLogger.silly("cancelarVenta");
@@ -537,7 +785,6 @@ module.exports.cancelarVenta = async (token, reservaId, user, motivo, ip) => {
           </mt>  
                     ]]>
                   </PI_DatosXml>`,
-      
     };
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
@@ -656,7 +903,7 @@ module.exports.agregarOrdenPago = async (
       ]]>
     </PI_DatosXml>`,
     };
-    
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -771,7 +1018,6 @@ module.exports.validarVentaPorOrdenDeCompra = async (
 
                     ]]>
                   </PI_DatosXml>`,
-      
     };
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(

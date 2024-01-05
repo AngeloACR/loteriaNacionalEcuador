@@ -4,8 +4,7 @@ var soap = require("soap");
 const path = require("path");
 var { loteriaError } = require("./errors");
 const { loteriaAuthLogger } = require("./logging");
-const config = require("../environments/test");
-
+const config = require("../environments/production");
 
 const usuarioClientePsd = config.usuarioAplicativo;
 const claveClientePsd = config.passwordAplicativo;
@@ -29,7 +28,7 @@ module.exports.authTest = async (user, password) => {
             <codError>0</codError>
             <msgError />
             <medio>${medioId}</medio>
-            <operacion>1234568891</operacion>
+            <operacion>${Date.now()}</operacion>
               </c>
           </mt>
           ]]>
@@ -75,7 +74,7 @@ module.exports.autenticarUsuario = async () => {
             <codError>0</codError>
             <msgError />
             <medio>${medioId}</medio>
-            <operacion>1234568891</operacion>
+            <operacion>${Date.now()}</operacion>
               </c>
           </mt>
           ]]>
@@ -135,7 +134,7 @@ module.exports.consultarDatosUsuario = async (lotteryToken, cliente, ip) => {
         ]]>
       </PI_DatosXml>`,
     };
-    
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
@@ -269,7 +268,7 @@ module.exports.consultarDatosUsuario2 = async (lotteryToken, cliente, ip) => {
         ]]>
       </PI_DatosXml>`,
     };
-    
+
     return new Promise(async (resolve, reject) => {
       client.ServicioMT.BasicHttpBinding_IServicioMT.fnEjecutaTransaccion(
         message,
