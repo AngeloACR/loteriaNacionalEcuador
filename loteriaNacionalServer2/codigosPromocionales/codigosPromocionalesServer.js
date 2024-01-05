@@ -4,7 +4,7 @@ const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
 const app = express();
-const config = require("../environments/produccion");
+const config = require("../environments/production");
 
 
 const routes = require("./routes/main");

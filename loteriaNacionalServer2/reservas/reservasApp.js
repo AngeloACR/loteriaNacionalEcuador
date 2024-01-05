@@ -1,5 +1,5 @@
 const reservasServer = require("./reservasServer");
-const config = require("../environments/produccion");
+const config = require("../environments/production");
 
 const cronjobs = require("./cronjobs");
 

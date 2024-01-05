@@ -4,7 +4,7 @@ const Config = require("../models/config");
 const Ventas = require("../../ventas/models/main");
 const emailCodigosPromocionales = require("../../correos/codigoPromocional");
 const { codigosPromocionalesLogger } = require("../logging");
-const config = require("../../environments/produccion");
+const config = require("../../environments/production");
 
 const fs = require("fs").promises;
 const path = require("path");

@@ -1,6 +1,6 @@
 const https = require("https");
 var { alboranError } = require("./errors");
-const config = require("../environments/produccion");
+const config = require("../environments/production");
 const { alboranLogger } = require("./logging");
 
 let alboranHost = config.alboranHost;

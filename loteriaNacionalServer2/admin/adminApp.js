@@ -1,5 +1,5 @@
 const adminServer = require("./adminServer");
-const config = require("../environments/produccion");
+const config = require("../environments/production");
 const cronjobs = require("./cronjobs");
 
 const adminPort = config.adminPort;
