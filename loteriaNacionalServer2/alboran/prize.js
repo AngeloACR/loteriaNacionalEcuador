@@ -14,6 +14,9 @@ function getCurrentTimeStamp() {
   //let n = `${y}-${m}-${d} ${a[3]}:${a[4]}:${a[5]}.000`;
   return n;
 }
+function getIfTimeout(e) {
+  return e.includes("504 Gateway Time-out");
+}
 const prizeController = {
   payLottery: async (data, endpoint) => {
     try {
@@ -28,11 +31,6 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
             */
       alboranLogger.silly("payLottery");
       let operationTimeStamp = getCurrentTimeStamp();
-      /*       let operationTimeStamp = new Date(Date.now())
-        .toISOString()
-        .replace("T", " ")
-        .replace("Z", "");
- */
       let alboranData = {
         transactionId: data.transactionId,
         prizesNumber: data.prizesNumber,
@@ -52,6 +50,12 @@ VP="1.000000" VD="1.000000" TP="DIN" RT="0" V="2861538"/>"
       alboranLogger.error("payLottery.error", {
         errorMessage: e.message,
       });
+      if (getIfTimeout(e.message)) {
+        return {
+          resultCode: "-9999",
+          resultDescription: "Timeout error!",
+        };
+      }
       throw new Error(e.message);
     }
   },

@@ -73,7 +73,7 @@
 - Modificar menu box de compras - LISTO
 - Chequeo general de estilo, validar que los botones de agg al carrito funcionan bien y tienen z index correcto - Listo
 
-- Validar que agg al carrito se bloquea cuando el boleto fue agregado. Pasa en loteria nacional
+- Validar que agg al carrito se bloquea cuando el boleto fue agregado. Pasa en loteria nacionalhttps://ventas.loteria.com.ec/compra_tus_juegos/detalle/1104199-3956134
 - Bloqueo de saldo no funciona bien
 - Reservar primero en loteria, luego agregar al carrito
 - Mejorar logica para agregar y quitar fracciones

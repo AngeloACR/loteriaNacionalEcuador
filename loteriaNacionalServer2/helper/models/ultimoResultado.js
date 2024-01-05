@@ -11,31 +11,16 @@ const ultimoResultadoSchema = new mongoose.Schema(
       ref: "Resultado",
     },
 
-    /*     ultimoResultadoLoteria: {
-      type: Schema.Types.ObjectId,
-      ref: "ResultadoLoteria",
-    },
- */
     ultimoResultadoLoteria: {
       combinacion1: {
         type: String,
       },
     },
-
-    /*     ultimoResultadoLotto: {
-      type: Schema.Types.ObjectId,
-      ref: "ResultadoLotto",
-    },
- */
     ultimoResultadoLotto: {
       combinacion1: {
         type: String,
       },
     },
-    /*    ultimoResultadoPozo: {
-        type: Schema.Types.ObjectId,
-        ref: "ResultadoPozo",
-      }, */
     ultimoResultadoPozo: {
       combinacion2: {
         type: String,
@@ -49,24 +34,6 @@ const ultimoResultadoSchema = new mongoose.Schema(
         type: String,
       },
     },
-    /*     resultadoLottoPlus: {
-        type: Schema.Types.ObjectId,
-        ref: "ResultadoLotto",
-      },
-      resultadoNosVemosJefe: {
-        type: Schema.Types.ObjectId,
-        ref: "ResultadoLotto",
-      },
-      resultadoAntojito: {
-        type: Schema.Types.ObjectId,
-        ref: "ResultadoLotto",
-      },
-      resultadosLottito: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: "ResultadoLotto",
-        },
-      ], */
     resultadoLottoPlus: {
       combinacion2: {
         type: String,

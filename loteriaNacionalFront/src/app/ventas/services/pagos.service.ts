@@ -99,9 +99,11 @@ export class PagosService {
     endpoint = `${endpoint}/getGanador`;
 
     address = this.mySource + address + endpoint;
+    console.log(body);
     return new Promise<boolean>((resolve, reject) => {
       this.http.post(address, body, { headers: headers }).subscribe(
         (data: any) => {
+          console.log(data);
           resolve(data);
         },
         (error: any) => {
