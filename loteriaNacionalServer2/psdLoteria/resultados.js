@@ -2,7 +2,7 @@ var xml2js = require("xml2js");
 var parser = xml2js.Parser();
 var soap = require("soap");
 const { loteriaConsultasLogger } = require("./logging");
-const config = require("../environments/production");
+const config = require("../environments/test");
 
 var { loteriaError } = require("./errors");
 const path = require("path");

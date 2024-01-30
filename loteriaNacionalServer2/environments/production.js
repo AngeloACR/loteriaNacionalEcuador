@@ -58,13 +58,12 @@ module.exports = {
   ventasURL: "https://ventas-api.loteria.com.ec",
   emailRemitente: "ayuda@loteria.com.ec",
   nombreRemitente: "Asistencia Loteria",
-  ftpBoletinesPath:
-    "/home/lottoweb/boletines",
-  ftpBoletosPath:
-    "/home/lottoweb/boletos",
-    resultadosPath: "/home/lottoweb/resultados",
-    pega3Path: "/home/lottoweb/pega3",
-    bingazoPath: "/home/lottoweb/bingazo",
+  ftpBoletinesPath: "/home/lottoweb/boletines",
+  ftpBoletosPath: "/home/lottoweb/boletos",
+  resultadosPath: "/home/lottoweb/resultados",
+  pega3Path: "/home/lottoweb/pega3",
+  pega4Path: "/home/lottoweb/pega4",
+  bingazoPath: "/home/lottoweb/bingazo",
 
   imgCorreosPath:
     "/home/acri/loteriaNacionalEcuador/loteriaNacionalUploads/correos",
