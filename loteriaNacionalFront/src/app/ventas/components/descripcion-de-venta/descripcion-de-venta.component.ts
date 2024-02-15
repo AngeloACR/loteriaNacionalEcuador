@@ -62,7 +62,15 @@ export class DescripcionDeVentaComponent implements OnInit {
 
     return formatter.format(number);
   }
-  filtrarBingazo(combinacion: any) {
-    return combinacion.replaceAll(",", ",\ ")
+  filtrarBingazo(combinacion: any, n: number) {
+    let originalArray =combinacion.split(",")
+    const transposedArray = new Array(originalArray.length);
+    for (let i = 0; i < originalArray.length; i++) {
+      const newRow = i % n;
+      const newCol = Math.floor(i / n);
+      const newIndex = newRow * n + newCol;
+      transposedArray[newIndex] = originalArray[i];
+    }
+    return transposedArray;
   }
 }

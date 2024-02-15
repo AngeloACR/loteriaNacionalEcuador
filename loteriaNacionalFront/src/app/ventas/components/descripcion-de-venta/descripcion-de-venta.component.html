@@ -520,7 +520,7 @@
         <p class="carton">{{ item.combinacion1 }}</p>
         <div class="numeros">
           <ng-container
-            *ngFor="let numero of filtrarBingazo(item.combinacion2).split(', ')"
+            *ngFor="let numero of filtrarBingazo(item.combinacion2, 5)"
           >
             <p *ngIf="numero != '00'">
               {{ numero }}
