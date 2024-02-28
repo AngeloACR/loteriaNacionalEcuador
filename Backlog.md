@@ -112,12 +112,6 @@
     - Optimizar manejo y propagacion de errores
     - Optimizar manejo de logging
 
-- Refactorizar frontend
-    - Simplificar navegacion
-    - Reducir cantidad de componentes
-    - Abstraer codigo duplicado
-    - Optimizar manejo de datos y funciones para el carrito
-
 - Crear protocolos para la implementacion de nuevos juegos
     - Consulta de juego
     - Venta de juego
@@ -133,15 +127,5 @@
     - Customizacion de logica de codigos promocionales
     - Logica para gestionar los codigos eficientemente (Definir mejor)
 
-- Min-height a body
-- Fondo del home gris
-- Proteger con guards las rutas de compra
-- Generar ruta de pruebas controladas en produccion
-
 - Documentacion sobre la infraestructura de la plataforma
 - Documentacion de incidencias
-
-- Agregar evento de scrolling en carrito flotante, errores y loaders - EN PAUSA
-
-- Enable bingazo in preproduction
-- Enable consulta de resultados de produccion en test
