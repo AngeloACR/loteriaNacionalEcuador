@@ -25,6 +25,7 @@ module.exports = {
   codigosPromocionalesPort: 10000,
   helperPort: 9500,
   sorteosFacilottoPort: 12250,
+  descuentosPort: 12550,
 
   host: "localhost",
 

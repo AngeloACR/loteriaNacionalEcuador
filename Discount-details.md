@@ -23,7 +23,7 @@
     - Create db schema for this, which should include:
         - Minimum value of purchase for the discount to be applied
         - Maximum value of purchase (validate the use of this one)
-        - ames involved in the discount
+        - Games involved in the discount
         - Draws involved in the discount
         - Initial date
         - Final date

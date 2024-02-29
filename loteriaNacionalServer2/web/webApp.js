@@ -1,5 +1,5 @@
 const webServer = require("./webServer");
-const config = require("../environments/production");
+const config = require("../environments/local");
 
 const webPort = config.webPort;
 const webFolder = "./public/";

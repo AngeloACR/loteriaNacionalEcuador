@@ -31,7 +31,7 @@ const config = require("../environments/production");
       "0951234566",
       "192.168.0.1"
     ); */
-    let aux = await juegos.consultaFiguras(data, 12, "192.168.0.1");
+    let aux = await juegos.consultaJuegos(data, "192.168.0.1");
     console.log(aux)
   } catch (error) {
     console.log(error);

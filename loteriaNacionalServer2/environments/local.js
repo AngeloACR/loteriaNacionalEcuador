@@ -25,6 +25,7 @@ module.exports = {
   helperPort: 9500,
   codigosPromocionalesPort: 10000,
   sorteosFacilottoPort: 12250,
+  descuentosPort: 12550,
   host: "localhost",
 
   alboranHost: "loteria.mongibello.tech",
