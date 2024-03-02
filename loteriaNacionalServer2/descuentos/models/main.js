@@ -44,11 +44,11 @@ const DescuentosSchema = new mongoose.Schema(
 
 DescuentosSchema.methods.validateIfActive = function () {
   const currentDate = new Date();
-  const isActiveNow =
-    currentDate >= this.initDate && currentDate <= this.endDate;
+  if (currentDate < this.initDate || currentDate > this.endDate) {
+    this.isActive = false;
+  }
 
   // Update the isActive field based on the current date
-  this.isActive = isActiveNow;
 
   // Save the document with the updated isActive field
   return this.save(); // Thi=s returns a Promise

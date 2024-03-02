@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,9 @@ import { MillonariaModule } from './juegos/millonaria/millonaria.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CodigosPromocionalesModule } from './codigos-promocionales/codigos-promocionales.module';
+import localeEsEc from '@angular/common/locales/es-EC';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEsEc, 'es-EC');
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,7 +39,10 @@ import { AdministracionModule } from './administracion/administracion.module';
     AdministracionModule,
   ],
   exports: [MatPaginatorModule, MatFormFieldModule, FormsModule],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-EC' },
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
