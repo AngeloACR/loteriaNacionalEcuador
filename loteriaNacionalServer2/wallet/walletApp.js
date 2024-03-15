@@ -1,5 +1,5 @@
 const walletServer = require("./walletServer");
-const config = require("../environments/local");
+const config = require("../environments/test");
 
 const cronjobs = require("./cronjobs");
 
