@@ -354,7 +354,7 @@ export class CarritoService {
           this.setBingazoLocal(data.bingazo);
           this.setPozoRevanchaLocal(data.pozoRevancha);
           //await this.setTotal();
-
+          console.log(data)
           resolve(data);
         },
         (error: any) => {

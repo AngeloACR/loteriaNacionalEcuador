@@ -15,10 +15,11 @@ import { CodigosPromocionalesModule } from './codigos-promocionales/codigos-prom
 import localeEsEc from '@angular/common/locales/es-EC';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEsEc, 'es-EC');
-
+import { DatePipe } from '@angular/common';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AdministracionModule } from './administracion/administracion.module';
+import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -32,6 +33,7 @@ import { AdministracionModule } from './administracion/administracion.module';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    AdminModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatFormFieldModule,
@@ -40,9 +42,10 @@ import { AdministracionModule } from './administracion/administracion.module';
   ],
   exports: [MatPaginatorModule, MatFormFieldModule, FormsModule],
   providers: [
+    DatePipe,
     { provide: LOCALE_ID, useValue: 'es-EC' },
 
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

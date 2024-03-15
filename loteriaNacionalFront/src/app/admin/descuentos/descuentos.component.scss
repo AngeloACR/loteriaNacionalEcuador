@@ -1,0 +1,22 @@
+::ng-deep.mat-tab-body {
+    height: calc(100vh - 50px) !important;
+
+    .mat-tab-body-content {
+        display: flex;
+    }
+}
+
+mat-card {
+    margin: auto;
+    width: 80%;
+
+    mat-card-header {
+        justify-content: center;
+    }
+
+    mat-card-content {
+        margin: 0 auto;
+    }
+
+
+}

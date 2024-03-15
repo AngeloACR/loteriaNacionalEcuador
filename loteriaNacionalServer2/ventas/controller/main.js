@@ -82,7 +82,7 @@ const ventasController = {
     alboranReservaId,
     alboranReservaData,
     total,
-    totalConDesc,
+    totalConDescuento,
     loteria,
     lotto,
     pozo,
@@ -98,7 +98,7 @@ const ventasController = {
     let loteriaVentaResponse = await psdVentas.venderBoletos(
       ordComp,
       total,
-      totalConDesc,
+      totalConDescuento,
       loteria,
       lotto,
       pozo,
@@ -418,14 +418,14 @@ const ventasController = {
       let reservaId = req.body.reservaId;
 
       let hasDescuento = req.body.hasDescuento;
-      let totalConDesc = parseFloat(req.body.amountConDesc).toFixed(2);
-      //let totalVenta = hasDescuento ? totalConDesc : total;
+      let totalConDescuento = parseFloat(req.body.amountConDesc).toFixed(2);
+      //let totalVenta = hasDescuento ? totalConDescuento : total;
 
       let totalVenta = total;
       /* CARGA DE COMPRA EN DB */
       let apiVentaData = {
         amount: total,
-        amountConDesc: totalConDesc,
+        amountConDesc: totalConDescuento,
         loteria: loteriaAux,
         lotto: lottoAux,
         bingazo: bingazoAux,
@@ -453,7 +453,7 @@ const ventasController = {
         alboranReservaId,
         alboranReservaData,
         total,
-        totalConDesc,
+        totalConDescuento,
         loteria,
         lotto,
         pozo,
@@ -531,8 +531,8 @@ const ventasController = {
         aux["fracciones"] = loteriaAux[id].ticket.seleccionados;
         aux["subtotal"] = parseFloat(loteriaAux[id].subtotal).toFixed(2);
         aux["tieneDescuento"] = loteriaAux[id].tieneDescuento;
-        aux["subtotalConDesc"] = parseFloat(
-          loteriaAux[id].subtotalConDesc
+        aux["subtotalConDescuento"] = parseFloat(
+          loteriaAux[id].subtotalConDescuento
         ).toFixed(2);
         aux["fecha"] = loteriaAux[id].sorteo.fecha;
         aux["sorteo"] = loteriaAux[id].sorteo.sorteo;
@@ -550,8 +550,8 @@ const ventasController = {
         aux["sorteo"] = lottoAux[id].sorteo.sorteo;
         aux["subtotal"] = parseFloat(lottoAux[id].subtotal).toFixed(2);
         aux["tieneDescuento"] = lottoAux[id].tieneDescuento;
-        aux["subtotalConDesc"] = parseFloat(
-          lottoAux[id].subtotalConDesc
+        aux["subtotalConDescuento"] = parseFloat(
+          lottoAux[id].subtotalConDescuento
         ).toFixed(2);
         aux["fecha"] = lottoAux[id].sorteo.fecha;
         lotto.push(aux);
@@ -566,8 +566,8 @@ const ventasController = {
         aux["sorteo"] = pozoAux[id].sorteo.sorteo;
         aux["subtotal"] = parseFloat(pozoAux[id].subtotal).toFixed(2);
         aux["tieneDescuento"] = pozoAux[id].tieneDescuento;
-        aux["subtotalConDesc"] = parseFloat(
-          pozoAux[id].subtotalConDesc
+        aux["subtotalConDescuento"] = parseFloat(
+          pozoAux[id].subtotalConDescuento
         ).toFixed(2);
         aux["fecha"] = pozoAux[id].sorteo.fecha;
         pozo.push(aux);
@@ -582,8 +582,8 @@ const ventasController = {
         aux["sorteo"] = pozoRevanchaAux[id].sorteo.sorteo;
         aux["subtotal"] = parseFloat(pozoRevanchaAux[id].subtotal).toFixed(2);
         aux["tieneDescuento"] = pozoRevanchaAux[id].tieneDescuento;
-        aux["subtotalConDesc"] = parseFloat(
-          pozoRevanchaAux[id].subtotalConDesc
+        aux["subtotalConDescuento"] = parseFloat(
+          pozoRevanchaAux[id].subtotalConDescuento
         ).toFixed(2);
         aux["fecha"] = pozoRevanchaAux[id].sorteo.fecha;
         pozoRevancha.push(aux);
@@ -598,14 +598,14 @@ const ventasController = {
         aux["sorteo"] = bingazoAux[id].sorteo.sorteo;
         aux["subtotal"] = parseFloat(bingazoAux[id].subtotal).toFixed(2);
         aux["tieneDescuento"] = bingazoAux[id].tieneDescuento;
-        aux["subtotalConDesc"] = parseFloat(
-          bingazoAux[id].subtotalConDesc
+        aux["subtotalConDescuento"] = parseFloat(
+          bingazoAux[id].subtotalConDescuento
         ).toFixed(2);
         aux["fecha"] = bingazoAux[id].sorteo.fecha;
         bingazo.push(aux);
       }
       let total = parseFloat(apiReservaData.amount).toFixed(2);
-      let totalConDesc = parseFloat(apiReservaData.amountConDesc).toFixed(2);
+      let totalConDescuento = parseFloat(apiReservaData.amountConDesc).toFixed(2);
       let reservaId = apiReservaData.reservaId;
       let ventaId = apiReservaData.ventaId;
       let alboranReservaId = apiReservaData.alboranReservaId;
@@ -622,7 +622,7 @@ const ventasController = {
         lotto,
         bingazo,
         total,
-        totalConDesc,
+        totalConDescuento,
         reservaId,
         ventaId,
         user,

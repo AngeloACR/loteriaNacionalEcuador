@@ -3,6 +3,7 @@ const CacheLoteria = require("../../sorteosLoteriaNacional/controller/cache");
 const CacheLotto = require("../../sorteosLotto/controller/cache");
 const CachePozo = require("../../sorteosPozoMillonario/controller/cache");
 const CacheBingazo = require("../../sorteosBingazo/controller/cache");
+const Descuentos = require("../../descuentos/models/main");
 const redis = require("../../cache");
 
 const cacheController = {
@@ -15,6 +16,72 @@ const cacheController = {
     let response = await client.get(`carrito-${carrito.user}`);
     await client.quit();
     return response;
+  },
+  applyDiscounts: async (carrito) => {
+    try {
+      let descuentosActivos = await Descuentos.getActives();
+      carrito.carrito = carrito.carrito.map((item) => {
+        item["subtotalConDescuento"] = item.subtotal;
+        return item;
+      });
+      descuentosActivos.forEach((descuento) => {
+        let itemsWithDescuento = carrito.carrito.filter((item) =>
+          descuento.sorteos.includes(item.sorteo.sorteo)
+        );
+        let itemsTotal = itemsWithDescuento.reduce(
+          (total, item) => total + parseFloat(item.subtotal),
+          0
+        );
+
+        itemsWithDescuento = itemsWithDescuento.map((item) => {
+          item["subtotalConDescuento"] =
+            itemsTotal >= descuento.minimum
+              ? parseFloat(item.subtotal) - parseFloat(descuento.discount)
+              : item.subtotal;
+          return item;
+        });
+        carrito.carrito = carrito.carrito.map((item) => {
+          let index = itemsWithDescuento.findIndex(
+            (itemWithDescuento) =>
+              item.identificador === itemWithDescuento.identificador
+          );
+          item["subtotalConDescuento"] =
+            index == -1
+              ? item.subtotal
+              : itemsWithDescuento[index].subtotalConDescuento;
+          return item;
+        });
+      });
+      carrito.carrito.forEach((item) => {
+        if (item.tipoLoteria == 1) {
+          carrito.loteria[item.identificador]["subtotalConDescuento"] =
+            item.subtotalConDescuento;
+        }
+        if (item.tipoLoteria == 2) {
+          carrito.lotto[item.identificador]["subtotalConDescuento"] =
+            item.subtotalConDescuento;
+        }
+        if (item.tipoLoteria == 5) {
+          carrito.pozo[item.identificador]["subtotalConDescuento"] =
+            item.subtotalConDescuento;
+        }
+        if (item.tipoLoteria == 17) {
+          carrito.pozoRevancha[item.identificador]["subtotalConDescuento"] =
+            item.subtotalConDescuento;
+        }
+        if (item.tipoLoteria == 12) {
+          carrito.bingazo[item.identificador]["subtotalConDescuento"] =
+            item.subtotalConDescuento;
+        }
+      });
+      carrito["totalConDescuento"] = carrito.carrito.reduce(
+        (total, item) => total + parseFloat(item.subtotalConDescuento),
+        0
+      );
+      return carrito;
+    } catch (error) {
+      throw error;
+    }
   },
   actualizarCarrito: async (req, res) => {
     try {
@@ -29,6 +96,7 @@ const cacheController = {
         reservaId: req.body.reservaId,
         user: req.body.user,
       };
+      carritoAux = await cacheController.applyDiscounts(carritoAux);
       let response = await cacheController.updateCart(carritoAux);
       res.status(200).json(JSON.parse(response));
     } catch (e) {

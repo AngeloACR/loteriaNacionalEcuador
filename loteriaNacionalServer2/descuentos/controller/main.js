@@ -13,8 +13,9 @@ const ventasController = {
         response: descuento,
         function: "create",
       };
+      descuento.validateIfActive()
       descuentosLogger.info("create.loteria", logData);
-      res.status(200).json(response);
+      res.status(200).json(descuento);
     } catch (e) {
       descuentosLogger.error("create.error", {
         errorMessage: e.message,

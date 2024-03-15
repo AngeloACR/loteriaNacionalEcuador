@@ -1,0 +1,85 @@
+<div class="descuentosBox">
+  <mat-form-field>
+    <mat-label>Fecha de inicio</mat-label>
+    <input
+      matInput
+      [min]="today"
+      [(ngModel)]="descuento.initDate"
+      [matDatepicker]="initDate"
+    />
+    <mat-datepicker-toggle matSuffix [for]="initDate"></mat-datepicker-toggle>
+    <mat-datepicker #initDate></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha de finalización</mat-label>
+    <input
+      matInput
+      [min]="descuento.initDate"
+      [(ngModel)]="descuento.endDate"
+      [matDatepicker]="endDate"
+    />
+    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Juegos</mat-label>
+    <mat-select
+      [(ngModel)]="descuento.juegos"
+      multiple
+      (selectionChange)="changeSorteos()"
+    >
+      <mat-option *ngFor="let juego of juegos" [value]="juego.id">{{
+        juego.nombre
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Sorteos</mat-label>
+    <mat-select [(ngModel)]="descuento.sorteos" multiple>
+      <mat-option *ngFor="let sorteo of sorteos" [value]="sorteo.sorteo">{{
+        sorteo.sorteo
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Valor mínimo de la compra</mat-label>
+    <input matInput type="number" [(ngModel)]="descuento.minimum" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Valor máximo de la compra</mat-label>
+    <input matInput type="number" [(ngModel)]="descuento.maximum" />
+  </mat-form-field>
+  <ng-container>
+    <mat-label>Tipo de descuento</mat-label>
+    <div class="typeToggle">
+      Monto fijo
+      <mat-slide-toggle color="Primary" [(ngModel)]="descuento.discountType">
+        Porcentaje
+      </mat-slide-toggle>
+    </div>
+  </ng-container>
+  <mat-form-field>
+    <mat-label>Monto de descuento</mat-label>
+    <input matInput type="number" [(ngModel)]="descuento.discount" />
+  </mat-form-field>
+  <br />
+  <button
+    [disabled]="checkIfNotCompleted()"
+    (click)="guardarDescuento()"
+    mat-button
+  >
+    GUARDAR DESCUENTO
+  </button>
+</div>
+
+
+<app-loader
+  loader="loteria"
+  [message]="loadingMessage!"
+  *ngIf="isLoading"
+></app-loader>
+<app-error
+  [msg]="errorMessage!"
+  (closeError)="closeError()"
+  *ngIf="isError"
+></app-error>

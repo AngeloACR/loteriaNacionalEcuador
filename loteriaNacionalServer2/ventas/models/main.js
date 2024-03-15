@@ -20,6 +20,10 @@ const VentaSchema = new mongoose.Schema(
         subtotal: {
           type: String,
         },
+        subtotalConDescuento: {
+          type: String,
+        },
+
         fracciones: [
           {
             type: String,
@@ -38,6 +42,10 @@ const VentaSchema = new mongoose.Schema(
         subtotal: {
           type: String,
         },
+        subtotalConDescuento: {
+          type: String,
+        },
+
         combinacion1: {
           type: String,
         },
@@ -63,6 +71,10 @@ const VentaSchema = new mongoose.Schema(
         subtotal: {
           type: String,
         },
+        subtotalConDescuento: {
+          type: String,
+        },
+
         fecha: {
           type: String,
         },
@@ -85,6 +97,10 @@ const VentaSchema = new mongoose.Schema(
         subtotal: {
           type: String,
         },
+        subtotalConDescuento: {
+          type: String,
+        },
+
         fecha: {
           type: String,
         },
@@ -107,6 +123,9 @@ const VentaSchema = new mongoose.Schema(
         subtotal: {
           type: String,
         },
+        subtotalConDescuento: {
+          type: String,
+        },
         fecha: {
           type: String,
         },
@@ -124,7 +143,7 @@ const VentaSchema = new mongoose.Schema(
     total: {
       type: String,
     },
-    totalConDesc: {
+    totalConDescuento: {
       type: String,
     },
     status: {

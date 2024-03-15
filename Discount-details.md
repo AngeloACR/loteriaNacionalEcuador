@@ -36,3 +36,4 @@
         - Final date should be the same or higher than initial date
         - Be able to select multiple or all games
         - Be able to select multiple or all draws according to the games selected, and that are available within the selected dates
+    - Add two components, one for discount creation and one for discounts list, with its respective routing and a simple header to navigate inbetween

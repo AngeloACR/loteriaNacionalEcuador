@@ -1,7 +1,7 @@
 const { createLogger, format, transports} = require("winston");
 const { combine, timestamp, prettyPrint } = format;
 
-module.exports.reservasLogger = createLogger({
+module.exports.descuentosLogger = createLogger({
   defaultMeta: { component: "descuentos" },
   format: combine(
     timestamp({

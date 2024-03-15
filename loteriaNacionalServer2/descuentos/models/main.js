@@ -4,8 +4,12 @@ const Schema = mongoose.Schema;
 
 const DescuentosSchema = new mongoose.Schema(
   {
-    isActive: {
+    isWithinDates: {
       type: Boolean,
+    },
+    activatedByUser: {
+      type: Boolean,
+      default: true,
     },
     juegos: [
       {
@@ -24,10 +28,10 @@ const DescuentosSchema = new mongoose.Schema(
       type: Number,
     },
     initDate: {
-      type: Date,
+      type: String,
     },
     endDate: {
-      type: Date,
+      type: String,
     },
     discount: {
       type: Number,
@@ -44,10 +48,15 @@ const DescuentosSchema = new mongoose.Schema(
 
 DescuentosSchema.methods.validateIfActive = function () {
   const currentDate = new Date();
-  if (currentDate < this.initDate || currentDate > this.endDate) {
-    this.isActive = false;
-  }
+  let initParts = this.initDate.split("-");
+  let endParts = this.endDate.split("-");
 
+  const initDate = new Date(`${initParts[2]}-${initParts[1]}-${initParts[0]}`);
+  const endDate = new Date(`${endParts[2]}-${endParts[1]}-${endParts[0]}`);
+  
+  this.isWithinDates = !(currentDate < initDate || currentDate > endDate);
+  
+  console.log(this.isWithinDates);
   // Update the isActive field based on the current date
 
   // Save the document with the updated isActive field
@@ -73,7 +82,7 @@ DescuentosSchema.statics = {
   },
   getActives: async function () {
     try {
-      let query = { isActive: true };
+      let query = { isWithinDates: true, activatedByUser: true };
       let descuentos = await this.find(query).lean();
       return descuentos;
     } catch (e) {

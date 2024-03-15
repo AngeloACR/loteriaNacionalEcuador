@@ -24,6 +24,8 @@ cd ../ventas
 pm2 start ventasApp.js --name ventasApp
 cd ../wallet
 pm2 start walletApp.js --name walletApp
+cd ../descuentos
+pm2 start app.js --name descuentosApp
 cd ../codigosPromocionales
 pm2 start codigosPromocionalesApp.js --name codigosPromocionalesApp
 cd ../web

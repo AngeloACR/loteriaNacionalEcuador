@@ -8,11 +8,17 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { CrearDescuentosComponent } from './components/crear-descuentos/crear-descuentos.component';
+import { VerDescuentosComponent } from './components/ver-descuentos/ver-descuentos.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   declarations: [
-    DescuentosComponent
+    DescuentosComponent,
+    CrearDescuentosComponent,
+    VerDescuentosComponent
   ],
   imports: [
     CommonModule,
@@ -20,8 +26,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
+    MatCardModule,
     MatSlideToggleModule,
     FormsModule,
+    MatTabsModule,
+    SharedModule,
     ReactiveFormsModule,
     DescuentosRoutingModule
   ]

@@ -18,6 +18,7 @@ cp ./wallet_api.conf /etc/nginx/api_conf.d/wallet_api.conf
 cp ./helper_api.conf /etc/nginx/api_conf.d/helper_api.conf
 cp ./bingazo_api.conf /etc/nginx/api_conf.d/bingazo_api.conf
 cp ./uploads_api.conf /etc/nginx/api_conf.d/uploads_api.conf
+cp ./descuentos_api.conf /etc/nginx/api_conf.d/descuentos_api.conf
 cp ./web.conf /etc/nginx/conf.d/web.conf
 cp ./cors /etc/nginx/cors
 
