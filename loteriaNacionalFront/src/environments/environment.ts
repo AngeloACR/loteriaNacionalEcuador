@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
 
-  source: 'http://localhost:100',
-  //source: 'https://ventas-api-prueba.loteria.com.ec',
+  //source: 'http://localhost:100',
+  source: 'https://ventas-api-prueba.loteria.com.ec',
   consultas: 'https://ventas-api.loteria.com.ec',
   front: 'https://ventas-prueba.loteria.com.ec',
   url: 'https://loteria2.mongibello.tech'
