@@ -41,6 +41,7 @@ module.exports.init = function (port) {
   app.use("/pega3", express.static(path.resolve(config.pega3Path)));
   app.use("/pega4", express.static(path.resolve(config.pega4Path)));
   app.use("/bingazo", express.static(path.resolve(config.bingazoPath)));
+  app.use("/loteria-link", express.static(path.resolve(config.loteriaLinkPath)));
   app.use("/", routes);
 
   return app;

@@ -64,6 +64,7 @@ module.exports = {
   resultadosPath: "/home/lottoweb/resultados",
   pega3Path: "/home/lottoweb/pega3",
   pega4Path: "/home/lottoweb/pega4",
+  loteriaLinkPath: "/home/lottoweb/loteria-link",
   bingazoPath: "/home/lottoweb/bingazo",
 
   imgCorreosPath:
