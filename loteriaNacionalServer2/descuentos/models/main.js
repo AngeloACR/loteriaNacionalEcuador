@@ -7,6 +7,10 @@ const DescuentosSchema = new mongoose.Schema(
     isWithinDates: {
       type: Boolean,
     },
+    isExpired: {
+      type: Boolean,
+      default: false,
+    },
     activatedByUser: {
       type: Boolean,
       default: true,
@@ -36,9 +40,6 @@ const DescuentosSchema = new mongoose.Schema(
     discount: {
       type: Number,
     },
-    discountType: {
-      type: Boolean,
-    },
   },
   {
     toJSON: { virtuals: true },
@@ -53,13 +54,16 @@ DescuentosSchema.methods.validateIfActive = function () {
 
   const initDate = new Date(`${initParts[2]}-${initParts[1]}-${initParts[0]}`);
   const endDate = new Date(`${endParts[2]}-${endParts[1]}-${endParts[0]}`);
-  
-  this.isWithinDates = !(currentDate < initDate || currentDate > endDate);
-  
-  console.log(this.isWithinDates);
-  // Update the isActive field based on the current date
 
-  // Save the document with the updated isActive field
+  this.isWithinDates = !(currentDate < initDate || currentDate > endDate);
+
+  this.isExpired = currentDate > endDate;
+
+  return this.save(); // Thi=s returns a Promise
+};
+DescuentosSchema.methods.changeActive = function () {
+  this.activatedByUser = !this.activatedByUser;
+
   return this.save(); // Thi=s returns a Promise
 };
 DescuentosSchema.statics = {

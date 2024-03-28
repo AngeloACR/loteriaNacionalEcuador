@@ -14,6 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { CrearDescuentosComponent } from './components/crear-descuentos/crear-descuentos.component';
 import { VerDescuentosComponent } from './components/ver-descuentos/ver-descuentos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     DescuentosComponent,
@@ -27,6 +28,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatDatepickerModule,
     MatInputModule,
     MatCardModule,
+    MatTableModule,
     MatSlideToggleModule,
     FormsModule,
     MatTabsModule,

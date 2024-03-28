@@ -21,8 +21,7 @@ export class CrearDescuentosComponent implements OnInit {
     maximum: 0,
     initDate: new Date(),
     endDate: new Date(),
-    discount: 0,
-    discountType: false
+    discount: 0
   };
 
   isLoading?: boolean;
@@ -49,9 +48,7 @@ export class CrearDescuentosComponent implements OnInit {
       this.isLoading = true;
       let token = await this.descuentos.getToken();
       let sorteosLoteria = await this.loteria.obtenerSorteo(token)
-      console.log(sorteosLoteria)
       let sorteosLotto = await this.lotto.obtenerSorteo(token)
-      let sorteosBingazo = await this.bingazo.obtenerSorteo(token)
       let sorteosPozo = await this.pozo.obtenerSorteo(token)
       let sorteosRevancha = await this.revancha.obtenerSorteo(token)
       this.juegos = [{
@@ -62,9 +59,8 @@ export class CrearDescuentosComponent implements OnInit {
         id: 5, nombre: "Pozo Millonario", sorteos: sorteosPozo
       }, {
         id: 17, nombre: "Pozo Revancha", sorteos: sorteosRevancha
-      }, {
-        id: 12, nombre: "Bingazo", sorteos: sorteosBingazo
-      },]
+      },
+      ]
       this.isLoading = false;
     } catch (error) {
       this.isLoading = false;
@@ -80,7 +76,6 @@ export class CrearDescuentosComponent implements OnInit {
     }).map((juego: any) => juego.sorteos).forEach((sorteos: any) => {
       this.sorteos = [...this.sorteos, ...sorteos]
     });
-    console.log(this.sorteos)
     this.descuento.sorteos = this.descuento.sorteos.filter((sorteo: any) => {
       let sorteos = this.sorteos.map((sorteo: any) => sorteo.sorteo)
       return sorteos.includes(sorteo)
@@ -91,9 +86,9 @@ export class CrearDescuentosComponent implements OnInit {
     try {
 
       this.isLoading = true;
+      if (this.descuento.discount <= 1 || this.descuento.discount >= 100) throw new Error("El porcentaje de descuento debe estar entre 1 y 100")
       this.descuento.initDate = this.datePipe.transform(this.descuento.initDate, 'dd-MM-YYYY')
       this.descuento.endDate = this.datePipe.transform(this.descuento.endDate, 'dd-MM-YYYY')
-      console.log(this.descuento.initDate, this.descuento.endDate)
       let data = await this.descuentos.guardarDescuento(this.descuento);
       this.descuento = {
         sorteos: [],
@@ -103,12 +98,11 @@ export class CrearDescuentosComponent implements OnInit {
         initDate: new Date(),
         endDate: new Date(),
         discount: 0,
-        discountType: false
       };
       this.isLoading = false;
     } catch (error: any) {
       this.isLoading = false;
-      this.openError(`Ha ocurrido el siguiente error: ${error.message}`)
+      this.openError(`${error.message}`)
       throw error
     }
   }

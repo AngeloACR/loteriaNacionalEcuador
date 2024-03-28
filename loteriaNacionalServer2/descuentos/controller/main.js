@@ -13,7 +13,7 @@ const ventasController = {
         response: descuento,
         function: "create",
       };
-      descuento.validateIfActive()
+      descuento.validateIfActive();
       descuentosLogger.info("create.loteria", logData);
       res.status(200).json(descuento);
     } catch (e) {
@@ -39,9 +39,35 @@ const ventasController = {
         function: "getAll",
       };
       descuentosLogger.info("getAll.loteria", logData);
-      res.status(200).json(finalResponse);
+      res.status(200).json(descuentos);
     } catch (e) {
       descuentosLogger.error("getAll.error", {
+        errorMessage: e.message,
+      });
+      let response = {
+        status: "error",
+        message: e.message,
+        code: e.code,
+        handler: e.handler,
+      };
+      res.status(400).json(response);
+    }
+  },
+  changeActive: async (req, res) => {
+    try {
+      let _id = req.params.id;
+      descuentosLogger.silly("changeActive");
+      let descuento = await Descuento.findOne({ _id });
+      descuento = await descuento.changeActive();
+      let logData = {
+        data: {},
+        response: descuento,
+        function: "changeActive",
+      };
+      descuentosLogger.info("changeActive.loteria", logData);
+      res.status(200).json(descuento);
+    } catch (e) {
+      descuentosLogger.error("changeActive.error", {
         errorMessage: e.message,
       });
       let response = {

@@ -34,4 +34,28 @@ export class DescuentosService {
     let response = await this.http.post(address, descuento, { headers: headers }).toPromise() as string
     return response
   }
+  async changeActive(id: any): Promise<Object> {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let address = '/descuentos';
+
+    let endpoint = `/active/${id}`;
+
+
+    address = this.mySource + address + endpoint;
+    let response = await this.http.put(address, { headers: headers }).toPromise() as string
+    return response
+  }
+  async getDescuentos(): Promise<Object> {
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let address = '/descuentos';
+
+    let endpoint = '/all';
+
+
+    address = this.mySource + address + endpoint;
+    let response = await this.http.get(address, { headers: headers }).toPromise() as string
+    return response
+  }
 }

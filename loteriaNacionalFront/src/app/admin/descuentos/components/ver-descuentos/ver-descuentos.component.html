@@ -1,1 +1,52 @@
-<p>ver-descuentos works!</p>
+<table mat-table [dataSource]="descuentos" class="mat-elevation-z8 discountTable">
+  <ng-container matColumnDef="juegos">
+    <th mat-header-cell *matHeaderCellDef>JUEGOS</th>
+    <td mat-cell *matCellDef="let element">{{ element.juegos.join(",\ ") }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="sorteos">
+    <th mat-header-cell *matHeaderCellDef>SORTEOS</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.sorteos.join(",\ ") }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="minimum">
+    <th mat-header-cell *matHeaderCellDef>MONTO MÍNIMO</th>
+    <td mat-cell *matCellDef="let element">{{ element.minimum }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="maximum">
+    <th mat-header-cell *matHeaderCellDef>MONTO MÁXIMO</th>
+    <td mat-cell *matCellDef="let element">{{ element.minimum }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="initDate">
+    <th mat-header-cell *matHeaderCellDef>FECHA DE INICIO</th>
+    <td mat-cell *matCellDef="let element">{{ element.initDate }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="endDate">
+    <th mat-header-cell *matHeaderCellDef>FECHA DE CIERRE</th>
+    <td mat-cell *matCellDef="let element">{{ element.endDate }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="discount">
+    <th mat-header-cell *matHeaderCellDef>% DESCUENTO</th>
+    <td mat-cell *matCellDef="let element">{{ element.discount }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="activatedByUser">
+    <th mat-header-cell *matHeaderCellDef>ACTIVO</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle
+        [checked]="element.activatedByUser"
+        [disabled]="element.isExpired"
+        (toggleChange)="updateDiscount(element)"
+      ></mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -49,18 +49,9 @@
     <mat-label>Valor máximo de la compra</mat-label>
     <input matInput type="number" [(ngModel)]="descuento.maximum" />
   </mat-form-field>
-  <ng-container>
-    <mat-label>Tipo de descuento</mat-label>
-    <div class="typeToggle">
-      Monto fijo
-      <mat-slide-toggle color="Primary" [(ngModel)]="descuento.discountType">
-        Porcentaje
-      </mat-slide-toggle>
-    </div>
-  </ng-container>
   <mat-form-field>
-    <mat-label>Monto de descuento</mat-label>
-    <input matInput type="number" [(ngModel)]="descuento.discount" />
+    <mat-label>Monto de descuento (%)</mat-label>
+    <input matInput type="number" min="1" max="100" [(ngModel)]="descuento.discount" />
   </mat-form-field>
   <br />
   <button

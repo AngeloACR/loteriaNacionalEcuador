@@ -35,8 +35,7 @@ const cacheController = {
 
         itemsWithDescuento = itemsWithDescuento.map((item) => {
           item["subtotalConDescuento"] =
-            itemsTotal >= descuento.minimum
-              ? parseFloat(item.subtotal) - parseFloat(descuento.discount)
+            itemsTotal >= descuento.minimum? parseFloat(item.subtotal) * (1-parseFloat(descuento.discount)/100)
               : item.subtotal;
           return item;
         });
